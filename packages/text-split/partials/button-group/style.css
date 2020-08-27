@@ -1,0 +1,28 @@
+.g-text-split > .g-grid-container > .text > .links {
+  &.as-buttons {
+    margin-bottom: -16px;
+
+    & .g-btn {
+      margin-right: 16px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &.as-links {
+    & .g-btn {
+      display: block;
+      float: left;
+      clear: both;
+      & + .g-btn {
+        margin-top: 8px;
+      }
+    }
+
+    &::after {
+      display: block;
+      float: none;
+      content: '';
+      clear: both;
+    }
+  }
+}

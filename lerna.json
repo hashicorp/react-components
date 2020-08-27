@@ -1,0 +1,16 @@
+{
+  "lerna": "3.22.1",
+  "packages": ["packages/*"],
+  "version": "independent",
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "*.test.js",
+        "props.json5",
+        "docs.mdx",
+        "README.md",
+        "package-lock.json"
+      ]
+    }
+  }
+}

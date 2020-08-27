@@ -1,0 +1,103 @@
+{
+  title: {
+    description: 'The text that appears inside the button.',
+    type: 'string',
+    control: 'text',
+    defaultValue: 'Button Text',
+    required: true,
+  },
+  url: {
+    description: 'Where the button links to when clicked.',
+    type: 'string',
+    control: 'text',
+    defaultValue: 'https://www.hashicorp.com',
+  },
+  className: {
+    description: 'A custom class to be added directly to the button if necessary.',
+    type: 'string',
+    control: 'text',
+    defaultValue: '',
+  },
+  external: {
+    description: 'If true, rel="noopener" and target="_blank" will be set.',
+    type: 'boolean',
+    control: 'checkbox',
+    defaultValue: false,
+  },
+  onClick: {
+    description: 'A function that will be called when the button is clicked.',
+    type: 'function',
+  },
+  size: {
+    description: 'Styles the button with modified padding and font-size.',
+    type: 'string',
+    control: 'select',
+    options: ['small', 'medium'],
+    defaultValue: 'medium',
+  },
+  linkType: {
+    description: 'Allows convenient rendering of animated icons associate with each link type. If "outbound", `rel="noopener"` and `target="_blank"` will be set.',
+    type: 'string',
+    control: 'select',
+    options: ['inbound', 'outbound', 'anchor', 'download'],
+  },
+  disabled: {
+    description: 'If true, button will be disabled',
+    type: 'boolean',
+    control: 'checkbox',
+    defaultValue: false,
+  },
+  theme: {
+    type: 'object',
+    description: 'Controls the visual appearance of the button.',
+    brand: {
+      description: 'Styles the button with a color based on a HashiCorp product',
+      type: 'string',
+      control: 'select',
+      options: [
+        'hashicorp',
+        'nomad',
+        'consul',
+        'terraform',
+        'vault',
+        'packer',
+        'vagrant',
+      ],
+      defaultValue: 'hashicorp',
+    },
+    variant: {
+      description: 'Applies a styling to the button based on the desired hierarchy.',
+      type: 'string',
+      control: 'select',
+      options: ['primary', 'secondary', 'tertiary', 'tertiary-neutral'],
+      defaultValue: 'primary',
+    },
+  },
+  icon: {
+    type: 'object',
+    description: 'Options for icon display within the button.',
+    svg: {
+      type: 'string',
+      description: 'SVG string to render, it will be resized to fit the button size.',
+      control: 'text',
+    },
+    position: {
+      type: 'string',
+      description: 'The position of the icon relative to the button text.',
+      control: 'select',
+      options: ['left', 'right'],
+      defaultValue: 'right',
+    },
+    isAnimated: {
+      type: 'boolean',
+      description: 'Whether or not to animate the icon. Requires a corresponding animationId to be set. Note that linkType will also serve as the animationId.',
+      control: 'checkbox',
+      defaultValue: false,
+    },
+    animationId: {
+      type: 'string',
+      description: 'A matching animationId, combined with "isAnimated" set to "true", will trigger specific icon animations on hover.',
+      control: 'string',
+    },
+  },
+}

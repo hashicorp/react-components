@@ -1,0 +1,24 @@
+{
+  "name": "@hashicorp/react-text-split",
+  "description": "Display a title, description, and links alongside arbitrary content",
+  "version": "0.3.3",
+  "author": "HashiCorp",
+  "contributors": [
+    "Zach Shilton"
+  ],
+  "dependencies": {
+    "@hashicorp/react-button": "^2.2.3",
+    "@hashicorp/react-global-styles": "^2.1.11-fonts.0"
+  },
+  "license": "MPL-2.0",
+  "main": "dist",
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}

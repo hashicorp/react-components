@@ -1,0 +1,59 @@
+.g-text-split > .g-grid-container > .text > ul.checkbox-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  & li.checkbox-item {
+    position: relative;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+    padding-left: 2.25em;
+
+    & > svg {
+      position: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      position: relative;
+      top: 0.1875em;
+      position: absolute;
+      left: 0;
+
+      & > #circle {
+        stroke: var(--gray-6);
+      }
+
+      & > #check {
+        stroke: var(--brand);
+      }
+
+      &.brand-terraform > #check {
+        stroke: var(--terraform);
+      }
+
+      &.brand-consul > #check {
+        stroke: var(--consul);
+      }
+
+      &.brand-nomad > #check {
+        stroke: var(--nomad);
+      }
+
+      &.brand-packer > #check {
+        stroke: var(--packer);
+      }
+
+      &.theme-dark > #circle {
+        stroke: var(--gray-3);
+      }
+    }
+
+    & > .text {
+      color: var(--gray-2);
+
+      &.theme-dark {
+        color: var(--gray-5);
+      }
+    }
+  }
+}

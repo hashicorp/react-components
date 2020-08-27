@@ -1,0 +1,30 @@
+{
+  "name": "@hashicorp/react-components",
+  "version": "0.0.0",
+  "dependencies": {
+    "@hashicorp/nextjs-scripts": "^12.0.1",
+    "@hashicorp/octavo": "0.0.2",
+    "@hashicorp/react-global-styles": "^4.4.2",
+    "next": "9.5.2",
+    "next-remote-watch": "^0.2.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^10.4.9",
+    "lerna": "^3.22.1",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
+    "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
+    "release:check-auth": "./scripts/release-check-npm-auth.sh",
+    "release:check-branch": "./scripts/release-check-branch.sh",
+    "start": "next-remote-watch \"./packages/*/{docs.mdx,props.json5}\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "vercel-build": "npm run bootstrap && next build"
+  }
+}

@@ -1,0 +1,156 @@
+@import '~@hashicorp/react-global-styles/custom-properties/color.css';
+
+.g-btn.variant-tertiary {
+  color: var(--brand);
+  border-color: transparent;
+  background-color: transparent;
+
+  & .icon svg {
+    & [fill] {
+      fill: var(--brand);
+    }
+    & [stroke] {
+      stroke: var(--brand);
+    }
+  }
+
+  &.size-small,
+  &.size-medium {
+    padding: 0;
+  }
+
+  &:hover:not([disabled]) {
+    border-color: transparent;
+  }
+
+  &[disabled] {
+    &.background-light,
+    &.background-brand-l3 {
+      color: rgba(0, 0, 0, 0.3);
+      & .icon svg {
+        & [fill] {
+          fill: rgba(0, 0, 0, 0.3);
+        }
+        & [stroke] {
+          stroke: rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+    &.background-dark,
+    &.background-brand {
+      color: rgba(255, 255, 255, 0.3);
+      & .icon svg {
+        & [fill] {
+          fill: rgba(255, 255, 255, 0.3);
+        }
+        & [stroke] {
+          stroke: rgba(255, 255, 255, 0.3);
+        }
+      }
+    }
+  }
+
+  &.background-brand {
+    color: var(--white);
+    & .icon svg {
+      & [fill] {
+        fill: var(--white);
+      }
+      & [stroke] {
+        stroke: var(--white);
+      }
+    }
+  }
+}
+
+/*
+BRAND STYLING
+Note: we might be able to figure out a better way to do this, maybe with an IE11 custom properties polyfill?
+See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
+*/
+.g-btn.variant-tertiary:not(.background-brand):not([disabled]) {
+  /* Brand -- HashiCorp */
+  /* Brand -- Vagrant */
+  /* Brand -- Vault */
+  &.brand-hashicorp,
+  &.brand-vault,
+  &.brand-vagrant {
+    /* Uses default values for --brand */
+  }
+
+  /* Brand -- Neutral */
+  &.brand-neutral {
+    color: var(--black);
+    & .icon svg {
+      & [fill] {
+        fill: var(--black);
+      }
+      & [stroke] {
+        stroke: var(--black);
+      }
+    }
+    &.background-dark {
+      color: var(--white);
+      & .icon svg {
+        & [fill] {
+          fill: var(--white);
+        }
+        & [stroke] {
+          stroke: var(--white);
+        }
+      }
+    }
+  }
+
+  /* Brand -- Consul */
+  &.brand-consul {
+    color: var(--consul);
+    & .icon svg {
+      & [fill] {
+        fill: var(--consul);
+      }
+      & [stroke] {
+        stroke: var(--consul);
+      }
+    }
+  }
+
+  /* Brand -- Nomad */
+  &.brand-nomad {
+    color: var(--nomad);
+    & .icon svg {
+      & [fill] {
+        fill: var(--nomad);
+      }
+      & [stroke] {
+        stroke: var(--nomad);
+      }
+    }
+  }
+
+  /* Brand -- Packer */
+  &.brand-packer {
+    color: var(--packer);
+    & .icon svg {
+      & [fill] {
+        fill: var(--packer);
+      }
+      & [stroke] {
+        stroke: var(--packer);
+      }
+    }
+  }
+
+  /* Brand -- Terraform */
+  &.brand-terraform {
+    color: var(--terraform);
+    & .icon svg {
+      & [fill] {
+        fill: var(--terraform);
+      }
+      & [stroke] {
+        stroke: var(--terraform);
+      }
+    }
+  }
+}

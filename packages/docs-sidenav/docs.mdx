@@ -1,0 +1,13 @@
+---
+componentName: 'DocsSidenav'
+---
+
+This is a cool component for documentation
+
+<LiveComponent>{`<DocsSidenav
+  product="${componentProps.product.defaultValue}"
+  currentPage="${componentProps.currentPage.defaultValue}"
+  category="${componentProps.category.defaultValue}"
+  order={${JSON.stringify(componentProps.order.defaultValue, null, 2)}}
+  data={${JSON.stringify(componentProps.data.defaultValue, null, 2)}}
+/>`}</LiveComponent>

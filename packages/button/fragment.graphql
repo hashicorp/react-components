@@ -1,0 +1,6 @@
+fragment buttonFields on SbcButtonV2Record {
+  title
+  url
+  external
+  brand
+}

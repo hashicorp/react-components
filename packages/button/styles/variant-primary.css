@@ -1,0 +1,200 @@
+@import '~@hashicorp/react-global-styles/custom-properties/color.css';
+
+.g-btn.variant-primary {
+  color: var(--white);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--brand);
+  background-color: var(--brand);
+
+  & .icon svg {
+    & [fill] {
+      fill: var(--white);
+    }
+    & [stroke] {
+      stroke: var(--white);
+    }
+  }
+
+  &::before {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &:active::before {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover:not([disabled])::before,
+  &:active:not([disabled])::before {
+    opacity: 1;
+  }
+
+  /* Disabled styles (shared across all style variations) */
+  &[disabled] {
+    &.background-light,
+    &.background-brand-l3 {
+      border-color: transparent;
+      background-color: rgba(0, 0, 0, 0.14);
+    }
+    &.background-brand,
+    &.background-dark {
+      border-color: transparent;
+      background-color: rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.24);
+      & .icon svg {
+        & [fill] {
+          fill: rgba(255, 255, 255, 0.24);
+        }
+        & [stroke] {
+          stroke: rgba(255, 255, 255, 0.24);
+        }
+      }
+    }
+  }
+
+  &.background-brand {
+    border-color: var(--white);
+    background-color: var(--white);
+    color: var(--black);
+
+    & .icon svg {
+      & [fill] {
+        fill: var(--black);
+      }
+      & [stroke] {
+        stroke: var(--black);
+      }
+    }
+
+    &::before {
+      background: var(--brand-l3);
+    }
+    &:active::before {
+      background: var(--brand-l2);
+    }
+  }
+}
+
+/*
+BRAND STYLING
+Note: we might be able to figure out a better way to do this, maybe with an IE11 custom properties polyfill?
+See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
+*/
+.g-btn.variant-primary:not([disabled]) {
+  /* Brand -- HashiCorp */
+  /* Brand -- Vagrant */
+  /* Brand -- Vault */
+  &.brand-hashicorp,
+  &.brand-vault,
+  &.brand-vagrant {
+    /* Uses default values for --brand */
+  }
+
+  /* Brand -- Neutral */
+  &.brand-neutral {
+    &:not(.background-brand),
+    &:not(.background-dark) {
+      border-color: var(--black);
+      background-color: var(--black);
+    }
+
+    &:not(.background-brand),
+    &:not(.background-dark) {
+      &::before {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      &:active::before {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &.background-dark,
+    &.background-brand {
+      border-color: var(--white);
+      background-color: var(--white);
+      color: var(--black);
+
+      & .icon svg {
+        & [fill] {
+          fill: var(--black);
+        }
+        & [stroke] {
+          stroke: var(--black);
+        }
+      }
+
+      &::before {
+        background: rgba(0, 0, 0, 0.1);
+      }
+      &:active::before {
+        background: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  /* Brand -- Consul */
+  &.brand-consul {
+    &:not(.background-brand) {
+      border-color: var(--consul);
+      background-color: var(--consul);
+    }
+    &.background-brand {
+      &::before {
+        background: var(--consul-l3);
+      }
+      &:active::before {
+        background: var(--consul-l2);
+      }
+    }
+  }
+
+  /* Brand -- Nomad */
+  &.brand-nomad {
+    &:not(.background-brand) {
+      border-color: var(--nomad);
+      background-color: var(--nomad);
+    }
+
+    &.background-brand {
+      &::before {
+        background: var(--nomad-l3);
+      }
+      &:active::before {
+        background: var(--nomad-l2);
+      }
+    }
+  }
+
+  /* Brand -- Packer */
+  &.brand-packer {
+    &:not(.background-brand) {
+      border-color: var(--packer);
+      background-color: var(--packer);
+    }
+    &.background-brand {
+      &::before {
+        background: var(--packer-l3);
+      }
+      &:active::before {
+        background: var(--packer-l2);
+      }
+    }
+  }
+
+  /* Brand -- Terraform */
+  &.brand-terraform {
+    &:not(.background-brand) {
+      border-color: var(--terraform);
+      background-color: var(--terraform);
+    }
+    &.background-brand {
+      &::before {
+        background: var(--terraform-l3);
+      }
+      &:active::before {
+        background: var(--terraform-l2);
+      }
+    }
+  }
+}
