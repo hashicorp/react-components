@@ -2,17 +2,13 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
 jobs:
-  test:
-    executor:
-      name: node/default
-      tag: "13"
+  run-tests:
+    docker:
+      - image: "cimg/base:stable"
     steps:
-      - checkout
-      - run:
-          command: npm run bootstrap
-      - run:
-          command: npm t
+      - node/test:
+          run-command: npm run bootstrap && npm t
 workflows:
   test:
     jobs:
-      - test
+      - run-tests
