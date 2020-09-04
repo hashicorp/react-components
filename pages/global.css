@@ -9,6 +9,7 @@
 @import '../packages/checkbox-input/style.css';
 @import '../packages/text-split/styles/index.css';
 @import '../packages/docs-sidenav/style.css';
+@import '../packages/accordion/style.css';
 
 body {
   margin: 0;

@@ -1,0 +1,44 @@
+---
+componentName: 'Accordion'
+---
+
+Display a list of titled items with expandable content.
+
+<LiveComponent>{`<Accordion
+  heading="My test accordion heading"
+  items={[
+    {
+      heading: 'My Accordion Item',
+      content: 'This is some default text in the collapsable area.',
+    },
+    {
+      heading: 'Another Accordion Item',
+      content: 'This is some text content with some <strong>strong text</strong>',
+    },
+  ]}
+/>`}</LiveComponent>
+
+#### Props Table
+
+👋 It's important to call out that for `accordion.items.content` you can pass Strings, HTML Content, React Content or Children
+
+<PropsTable props={componentProps} />
+
+#### Examples
+
+##### Accordion Item with HTML
+
+<LiveComponent>{`<Accordion
+  items={[
+    {
+      heading: 'Support Period & End-of-Life Policy',
+      content:
+        '<h6>Support Period</h6><p>HashiCorp will support <strong>Generally Available (GA)</strong> releases of active products for up to two (2) years. Code-fixes and hot-fixes are provided via a new minor release (Z) on top of the latest “major release” branch. A <strong>major release</strong> is identified by a change in the first (X) or second (Y) digit in the following versioning nomenclature:</p><p><code>Version X.Y.Z.</code></p><p>As a best practice, HashiCorp expects customers to stay current within two releases from the latest major version release in order to receive optimal support. Change logs for major releases are provided regularly on HashiCorp product pages for each HashiCorp product.</p>',
+    },
+    {
+      heading: 'Severity Definitions',
+      content:
+        '<p>Response and resolution times are based on your Service Level Agreement with HashiCorp. Please refer to <em>Bronze / Silver / Gold</em> SLA levels.</p><p>HashiCorp will make reasonable efforts to adhere to the response and resolution times for issues within the scope of its own software.</p><p>The following definitions of Severity should be used when opening tickets.</p><h6>Severity 1 (Urgent)</h6><p>Any error reported by the customer where the majority of users for a particular part of the software are affected, the error has high visibility, there is no workaround, and it affects customer’s ability to perform its business.</p>',
+    },
+  ]}
+/>`}</LiveComponent>

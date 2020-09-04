@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "heading": "My Accordion Item",
+      "content": "This is text in the collapsable area"
+    },
+    {
+      "heading": "Another Accordion Item",
+      "content": "This is some text content with some <strong>strong text</strong> and <code>some code</code> as well."
+    }
+  ]
+}
