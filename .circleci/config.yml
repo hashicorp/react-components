@@ -6,4 +6,4 @@ workflows:
     jobs:
       - node/test:
           setup:
-            - run: bootstrap && npm t
+            - run: npm run bootstrap
