@@ -26,7 +26,6 @@
     "start": "next-remote-watch \"./packages/*/{docs.mdx,props.json5}\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:ci": "./node_modules/.bin/lerna bootstrap && ./node_modules/.bin/jest",
     "vercel-build": "npm run bootstrap && next build"
   }
 }
