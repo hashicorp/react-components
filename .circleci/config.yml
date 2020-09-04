@@ -11,7 +11,7 @@ jobs:
       - run:
           command: npm run bootstrap
       - run:
-        command: npm t
+          command: npm t
 workflows:
   test:
     jobs:
