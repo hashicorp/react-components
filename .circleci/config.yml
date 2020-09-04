@@ -3,11 +3,10 @@ orbs:
   node: circleci/node@3.0.0
 jobs:
   run-tests:
-    docker:
-      - image: "cimg/base:stable"
+    executor: node/default
     steps:
-      - node/test:
-          run-command: npm run bootstrap && npm t
+      - run: npm run bootstrap
+      - run: npm test
 workflows:
   test:
     jobs:
