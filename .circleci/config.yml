@@ -5,4 +5,5 @@ workflows:
   test:
     jobs:
       - node/test:
-          run-command: npm run bootstrap && npm t
+          setup:
+            - run: bootstrap && npm t
