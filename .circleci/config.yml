@@ -5,5 +5,4 @@ workflows:
   test:
     jobs:
       - node/test:
-          setup:
-            - run: npm run test:ci
+          run-command: bootstrap && npm test
