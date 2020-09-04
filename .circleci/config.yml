@@ -1,13 +1,8 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
-jobs:
-  run-tests:
-    executor: node/default
-    steps:
-      - run: npm run bootstrap
-      - run: npm test
 workflows:
   test:
     jobs:
-      - run-tests
+      - node/test:
+          run-command: npm run bootstrap && npm t
