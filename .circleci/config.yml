@@ -10,8 +10,9 @@ jobs:
       - checkout
       - run:
           command: npm run bootstrap
-      - node/test
+      - run:
+        command: npm t
 workflows:
-  node-tests:
+  test:
     jobs:
       - test
