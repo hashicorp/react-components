@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import SvgArrowDown from './icons/arrow-down.svg.js'
+import SvgArrowDown from './icons/arrow-down.svg?include'
 
 import Collapsible from '../Collapsible'
 
