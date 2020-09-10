@@ -4,6 +4,26 @@ componentName: 'CheckboxInput'
 
 A basic checkbox and label that allow the user to control a `<input type="checkbox" />` element.
 
+## Playground
+
+_Note: the playground example may not function as expected, as `checkbox-input` expects a parent component to control the input._
+
+<LiveComponent>{`
+<CheckboxInput
+  label="This is an example checkbox"
+  field={{
+    name: 'example_checkbox',
+    value: false,
+    checked: false,
+    onChange: () => null,
+  }}
+  form={{
+    errors: { example_checkbox: 'This error example is required.' },
+    touched: { example_checkbox: true },
+  }}
+/>
+`}</LiveComponent>
+
 ## Examples
 
 <p className="g-type-label" style={{ color: 'var(--gray-4)' }}>
@@ -113,24 +133,6 @@ A basic checkbox and label that allow the user to control a `<input type="checkb
 
 </div>
 
-
-## Playground
-
-<LiveComponent>{`
-<CheckboxInput
-  label="This is an example checkbox"
-  field={{
-    name: 'example_checkbox',
-    value: false,
-    checked: false,
-    onChange: () => null,
-  }}
-  form={{
-    errors: { example_checkbox: 'This error example is required.' },
-    touched: { example_checkbox: true },
-  }}
-/>
-`}</LiveComponent>
 
 ## Props
 
