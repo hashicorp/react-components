@@ -114,6 +114,24 @@ A basic checkbox and label that allow the user to control a `<input type="checkb
 </div>
 
 
+## Playground
+
+<LiveComponent>{`
+<CheckboxInput
+  label="This is an example checkbox"
+  field={{
+    name: 'example_checkbox',
+    value: false,
+    checked: false,
+    onChange: () => null,
+  }}
+  form={{
+    errors: { example_checkbox: 'This error example is required.' },
+    touched: { example_checkbox: true },
+  }}
+/>
+`}</LiveComponent>
+
 ## Props
 
 <PropsTable props={componentProps} />
