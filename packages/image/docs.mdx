@@ -1,0 +1,27 @@
+---
+componentName: 'Image'
+---
+
+The `<Image />` component is used widely across HashiCorp properties. At its most basic, it looks like this:
+
+<LiveComponent>{`<Image alt='Image example' url='https://www.datocms-assets.com/2885/1592632185-hcp-social-share.jpg' />`}</LiveComponent>
+
+#### Image Props
+
+Here are the props that `<Image />` accepts:
+
+<PropsTable props={componentProps} />
+
+#### Playground
+
+The code editor below shows all available props. You can tinker with it by changing the values. All properties below are set to their default values to start.
+
+<LiveComponent>{`<Image
+  alt='HashiCorp Logo'
+  url='https://www.datocms-assets.com/2885/1508522484-share.jpg'
+  format='jpg'
+  steps={[250, 500, 750, 1000]}
+  sizes='50vw'
+  aspectRatio={[16, 9, 500]}
+  imgixOptions={{}}
+/>`}</LiveComponent>
