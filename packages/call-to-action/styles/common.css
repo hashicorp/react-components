@@ -1,0 +1,27 @@
+.g-call-to-action {
+  background: white;
+
+  & .g-type-display-2 {
+    margin: 0;
+    color: var(--gray-1);
+  }
+
+  & .g-type-body-large {
+    margin: 0;
+    color: var(--gray-3);
+  }
+
+  &.theme-gray {
+    background: var(--gray-7);
+  }
+
+  &.theme-dark {
+    background: black;
+    & .g-type-display-2 {
+      color: var(--white);
+    }
+    & .g-type-body-large {
+      color: var(--gray-6);
+    }
+  }
+}

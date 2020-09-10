@@ -1,0 +1,58 @@
+{
+  variant: {
+    description: 'Controls the overal format of the component',
+    type: 'string',
+    control: 'select',
+    options: ['centered', 'compact', 'links'],
+    defaultValue: 'centered',
+  },
+  heading: {
+    description: 'The main headline of the component',
+    type: 'string',
+    control: 'text',
+    defaultValue: 'This is the CallToAction component',
+  },
+  content: {
+    description: 'The body text of the component',
+    type: 'string',
+    control: 'text',
+    defaultValue: 'Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  background: {
+    description: 'Controls the background color of the component',
+    type: 'string',
+    control: 'select',
+    options: ['light', 'gray', 'dark'],
+    defaultValue: 'light',
+  },
+  brand: {
+    description: 'Set a brand theme',
+    type: 'string',
+    control: 'select',
+    options: [
+      'hashicorp',
+      'terraform',
+      'vault',
+      'nomad',
+      'consul',
+      'packer',
+      'vagrant',
+    ],
+  },
+  links: {
+    type: 'object',
+    description: 'An array of link objects to display',
+    text: {
+      description: 'The text of a link',
+      type: 'string',
+      control: 'text',
+      defaultValue: 'Click me',
+    },
+    url: {
+      description: 'Target URL for link',
+      type: 'string',
+      control: 'text',
+      defaultValue: 'https://www.example.com',
+    },
+  },
+}

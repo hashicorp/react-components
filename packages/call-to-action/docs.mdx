@@ -1,0 +1,31 @@
+---
+componentName: 'CallToAction'
+---
+
+A versatile component for displaying headlines, content copy and CTA links.
+
+<LiveComponent>{`<CallToAction
+  heading="Lorem Ipsum Dolor Sit Amet"
+  content="Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  links={[
+    {
+      text: 'First Action',
+      url: 'https://www.example.com',
+    },
+    {
+      text: 'Second Action',
+      url: 'https://www.example.com',
+    },
+  ]}
+  variant="centered"
+/>`}</LiveComponent>
+
+<KnobsComponent
+  knobs={{
+    heading: componentProps.heading,
+    content: componentProps.content,
+    variant: componentProps.variant,
+    background: componentProps.background,
+    brand: componentProps.brand,
+  }}
+/>

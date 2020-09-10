@@ -6,6 +6,7 @@
 /* global component css imports */
 /* these should be moved to css modules */
 @import '../packages/button/styles/index.css';
+@import '../packages/call-to-action/styles/index.css';
 @import '../packages/text-split/styles/index.css';
 @import '../packages/docs-sidenav/style.css';
 
