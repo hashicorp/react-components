@@ -1,0 +1,119 @@
+---
+componentName: 'CheckboxInput'
+---
+
+A basic checkbox and label that allow the user to control a `<input type="checkbox" />` element.
+
+## Examples
+
+<p className="g-type-label" style={{ color: 'var(--gray-4)' }}>
+  Light theme
+</p>
+
+<div style={{padding: "24px", border: "1px solid var(--gray-6)"}}>
+
+
+<CheckboxInput
+  label="Unchecked input item"
+  field={{
+    name: 'example-checkbox',
+    value: false,
+    checked: false,
+    onChange: () => null,
+  }}
+  form={{ errors: {}, touched: {} }}
+/>
+
+<br />
+
+<CheckboxInput
+  label="Unchecked with an error message"
+  field={{
+    name: 'testcheckbox',
+    value: false,
+    checked: false,
+    onChange: () => null,
+  }}
+  form={{
+    errors: {
+      testcheckbox: 'You must check this checkbox, or else.',
+    },
+    touched: { testcheckbox: true },
+  }}
+/>
+
+<br />
+
+<CheckboxInput
+  label="Checked input item"
+  field={{
+    name: 'example-checkbox',
+    value: true,
+    checked: true,
+    onChange: () => null,
+  }}
+  form={{ errors: {}, touched: {} }}
+/>
+
+</div>
+
+
+<br />
+<p className="g-type-label" style={{ color: 'var(--gray-4)' }}>
+  Dark theme
+</p>
+
+<div style={{padding: "24px", background: "black"}}>
+
+
+<CheckboxInput
+  label="Unchecked input item"
+  field={{
+    name: 'example-checkbox',
+    value: false,
+    checked: false,
+    onChange: () => null,
+  }}
+  form={{ errors: {}, touched: {} }}
+  theme={{ background: 'dark' }}
+/>
+
+<br />
+
+<CheckboxInput
+  label="Unchecked with an error message"
+  field={{
+    name: 'testcheckbox',
+    value: false,
+    checked: false,
+    onChange: () => null,
+  }}
+  form={{
+    errors: {
+      testcheckbox: 'You must check this checkbox, or else.',
+    },
+    touched: { testcheckbox: true },
+  }}
+  theme={{ background: 'dark' }}
+/>
+
+<br />
+
+<CheckboxInput
+  label="Checked input item"
+  field={{
+    name: 'example-checkbox',
+    value: true,
+    checked: true,
+    onChange: () => null,
+  }}
+  form={{ errors: {}, touched: {} }}
+  theme={{ background: 'dark' }}
+/>
+
+</div>
+
+
+## Props
+
+<PropsTable props={componentProps} />
