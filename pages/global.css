@@ -36,6 +36,7 @@
 @import '../packages/section-header/style.css';
 @import '../packages/search/style.css';
 @import '../packages/select-input/style.css';
+@import '../packages/case-study-slider/style.css';
 
 body {
   margin: 0;

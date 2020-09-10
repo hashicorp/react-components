@@ -1,0 +1,33 @@
+fragment caseStudySliderFields on SbcCaseStudyRecord {
+  id
+  caseStudyResource {
+    description
+    id
+    slug
+    showDemoRequest
+    image {
+      ...imageFields
+    }
+  }
+  company {
+    id
+    name
+    logo {
+      ...imageFields
+    }
+    monochromeLogo {
+      ...imageFields
+    }
+    whiteLogo {
+      ...imageFields
+    }
+    link
+  }
+  headline
+  description
+  buttonLabel
+  caseStudyImage {
+    ...imageFields
+  }
+  caseStudyLink
+}
