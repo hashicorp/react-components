@@ -1,0 +1,5 @@
+fragment imageFields on FileField {
+  url
+  alt
+  format
+}
