@@ -11,36 +11,35 @@ const defaultProps = transformProps(__dirname)
 describe('<DocsSidenav />', () => {
   it('should render and display nesting levels correctly', () => {
     render(<DocsSidenav {...defaultProps} />)
-    expect(screen.getByTestId('root').className).toContain('g-docs-sidenav')
 
     // For this test, we step through the expected nesting levels based on
     // the fixture data, ensuring that each level is nested properly and has
     // the classes to reflect whether it's shown as active
-    const levelOne = screen.getByTestId('/docs/agent')
-    expect(levelOne.className).toMatch(/dir/)
-    expect(levelOne.className).toMatch(/open active/)
+    const levelOne = screen.getByTestId('Vault Agent container')
+    expect(levelOne).toHaveClass('open')
+    expect(levelOne).toHaveClass('active')
 
-    const levelTwo = screen.getByTestId('/docs/agent/autoauth')
-    expect(levelTwo.className).toMatch(/dir/)
-    expect(levelTwo.className).toMatch(/open active/)
+    const levelTwo = screen.getByTestId('Auto-Auth container')
+    expect(levelTwo).toHaveClass('open')
+    expect(levelTwo).toHaveClass('active')
 
-    const levelThree = screen.getByTestId('/docs/agent/autoauth/methods')
-    expect(levelThree.className).toMatch(/dir/)
-    expect(levelThree.className).toMatch(/open active/)
+    const levelThree = screen.getByTestId('Methods container')
+    expect(levelThree).toHaveClass('open')
+    expect(levelThree).toHaveClass('active')
 
     const levelFour = screen.getByTestId('/docs/agent/autoauth/methods/aws')
-    expect(levelFour.className).toMatch(/active/)
+    expect(levelFour).toHaveClass('active')
 
     // Let's also make sure that other pages are not also displaying as active
     // First we check an identically named page at a different level
-    const dupe1 = screen.getByTestId('/docs/agent/autoauth/aws')
-    expect(dupe1.className).not.toMatch(/active/)
+    const [dupe1] = screen.getAllByTestId('/docs/agent/autoauth/aws')
+    expect(dupe1).not.toHaveClass('active')
     // Next we check a page at the same level but with a different name
     const dupe2 = screen.getByTestId('/docs/agent/autoauth/methods/gcp')
-    expect(dupe2.className).not.toMatch(/active/)
+    expect(dupe2).not.toHaveClass('active')
     // Finally we check the overview page at the same level
-    const dupe3 = screen.getByTestId('/docs/agent/autoauth/methods/index')
-    expect(dupe3.className).not.toMatch(/active/)
+    const dupe3 = screen.getByTestId('/docs/agent/autoauth/methods')
+    expect(dupe3).not.toHaveClass('active')
   })
 
   it.todo('should render accurately when the current page is an "overview"')
@@ -48,12 +47,46 @@ describe('<DocsSidenav />', () => {
   it('should expand/collapse directory-level menu items when clicked', () => {
     render(<DocsSidenav {...defaultProps} />)
 
-    const levelTwoLink = screen.getByTestId('/docs/agent/autoauth - link')
+    const levelTwoLink = screen.getByText('Auto-Auth')
     fireEvent.click(levelTwoLink)
-    const levelTwo = screen.getByTestId('/docs/agent/autoauth')
-    expect(levelTwo.className).not.toMatch(/open/)
+    const levelTwo = screen.getByTestId('Auto-Auth container')
+    expect(levelTwo).not.toHaveClass('open')
     fireEvent.click(levelTwoLink)
-    expect(levelTwo.className).toMatch(/open/)
+    expect(levelTwo).toHaveClass('open')
+  })
+
+  it('should not display menu item as active when it uses an href that matches currentPage', async () => {
+    render(<DocsSidenav {...defaultProps} currentPage="/docs/agent/autoauth/aws" />)
+
+    const autoAuthContainer = screen.getByTestId('Auto-Auth container')
+    expect(autoAuthContainer).toHaveClass('open')
+    expect(autoAuthContainer).toHaveClass('active')
+
+    const internalHrefContainer = screen.getByTestId('Internal Href container')
+    expect(internalHrefContainer).not.toHaveClass('open')
+    expect(internalHrefContainer).not.toHaveClass('active')
+
+    const [activeAwsLink, inactiveAwsLink] = screen.getAllByTestId('/docs/agent/autoauth/aws')
+    expect(activeAwsLink).toHaveClass('active')
+    expect(inactiveAwsLink).not.toHaveClass('active')
+  })
+
+  it('should display title from index file for directory-level menu items that specify name and use an index file', async () => {
+    render(
+      <DocsSidenav
+        {...defaultProps}
+        data={[
+          ...defaultProps.data,
+          {
+            __resourcePath: 'docs/agent/no-index-test/index.mdx',
+            page_title: 'Title From Index File',
+          }
+        ]}
+      />
+    )
+
+    const container = screen.getByTestId('Title From Index File container')
+    expect(container).toHaveTextContent('Title From Index File')
   })
 
   it('should show/hide the menu when the "menu" button is clicked on mobile', async () => {
@@ -142,5 +175,147 @@ describe('<DocsSidenav />', () => {
         />
       )
     }, 'The category "agent/no-index-test" is using a "name" property to indicate that it has no index, but also has a manually added "overview" page. This can be fixed with the following steps:\n\n- Change the "overview.mdx" page to be "index.mdx"\n- Remove the "name" property from the "no-index-test" data, instead indicate the category\'s name using the frontmatter on the new "index.mdx" page')
+  })
+
+  it('should render and display nesting levels correctly when provided new prop structure', () => {
+    render(
+      <DocsSidenav
+        product="default"
+        baseUrl="/docs"
+        activePath="agent/autoauth/methods/aws"
+        routes={[
+          {
+            title: 'Vault Agent',
+            routes: [
+              {
+                title: 'Overview',
+                path: 'agent',
+              },
+              {
+                title: 'Auto-Auth',
+                routes: [
+                  {
+                    title: 'Overview',
+                    path: 'agent/autoauth',
+                  },
+                  {
+                    title: 'Methods',
+                    routes: [
+                      {
+                        title: 'Overview',
+                        path: 'agent/autoauth/methods',
+                      },
+                      {
+                        title: 'External Link',
+                        href: 'https://google.com'
+                      },
+                      {
+                        title: 'AliCloud',
+                        path: 'agent/autoauth/methods/alicloud',
+                      },
+                      {
+                        title: '<code>AWS</code>',
+                        path: 'agent/autoauth/methods/aws',
+                      },
+                      {
+                        title: 'Azure',
+                        path: 'agent/autoauth/methods/azure',
+                      },
+                      { divider: true },
+                      {
+                        title: '<code>GCP</code>',
+                        path: 'agent/autoauth/methods/gcp',
+                      },
+                      {
+                        title: 'JWT',
+                        path: 'agent/autoauth/methods/jwt',
+                      },
+                      {
+                        title: 'Kubernetes',
+                        path: 'agent/autoauth/methods/kubernetes',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Sinks',
+                    routes: [
+                      {
+                        title: 'Overview',
+                        path: 'agent/autoauth/sinks',
+                      },
+                      {
+                        title: 'File',
+                        path: 'agent/autoauth/sinks/file'
+                      }
+                    ],
+                  },
+                  {
+                    title: '<code>AWS</code>',
+                    path: 'agent/autoauth/aws',
+                  },
+                ],
+              },
+              {
+                title: 'No Index Category',
+                routes: [
+                  {
+                    title: 'Foo Item',
+                    path: 'agent/no-index-test/foo',
+                  },
+                ],
+              },
+              {
+                title: 'Only Index Test <sup>ENT</sup>',
+                routes: [
+                  {
+                    title: 'Overview',
+                    path: 'agent/only-index-test',
+                  }
+                ],
+              },
+              {
+                title: 'Internal Href',
+                routes: [
+                  {
+                    title: 'Internal Link',
+                    path: 'agent/autoauth/aws',
+                    canonical: false
+                  },
+                ],
+              },
+            ],
+          },
+        ]}
+      />
+    )
+
+    // For this test, we step through the expected nesting levels based on
+    // the fixture data, ensuring that each level is nested properly and has
+    // the classes to reflect whether it's shown as active
+    const levelOne = screen.getByTestId('Vault Agent container')
+    expect(levelOne).toHaveClass('open')
+    expect(levelOne).toHaveClass('active')
+
+    const levelTwo = screen.getByTestId('Auto-Auth container')
+    expect(levelTwo).toHaveClass('open')
+    expect(levelTwo).toHaveClass('active')
+
+    const levelThree = screen.getByTestId('Methods container')
+    expect(levelThree).toHaveClass('open')
+    expect(levelThree).toHaveClass('active')
+
+    const levelFour = screen.getByTestId('/docs/agent/autoauth/methods/aws')
+    expect(levelFour).toHaveClass('active')
+
+    // Let's also make sure that other pages are not also displaying as active
+    // First we check an identically named page at a different level
+    const [dupe1] = screen.getAllByTestId('/docs/agent/autoauth/aws')
+    expect(dupe1).not.toHaveClass('active')
+    // Next we check a page at the same level but with a different name
+    const dupe2 = screen.getByTestId('/docs/agent/autoauth/methods/gcp')
+    expect(dupe2).not.toHaveClass('active')
+    // Finally we check the overview page at the same level
+    const dupe3 = screen.getByTestId('/docs/agent/autoauth/methods')
+    expect(dupe3).not.toHaveClass('active')
   })
 })

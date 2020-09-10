@@ -61,6 +61,13 @@
             content: [],
           },
           // { category: 'only-index-no-content' }
+          {
+            category: 'internal-href',
+            name: 'Internal Href',
+            content: [
+              { title: 'Internal Link', href: '/docs/agent/autoauth/aws' },
+            ],
+          },
         ],
       },
     ],
