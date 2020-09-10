@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import Image from './dist/index'
-import propsSpec from './props'
+import Image from './'
+import transformProps from '../../__test-helpers/transform-props'
 
-const defaultProps = global.propSpecToObj(propsSpec.default)
+const defaultProps = transformProps(__dirname)
 
 describe('<Image />', () => {
   it('should render with minimal props', () => {
