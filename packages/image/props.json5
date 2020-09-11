@@ -17,12 +17,12 @@
   steps: {
     type: 'array',
     description: 'An array of image widths that the image should be available at - the image closest to the current screen width will be used. Default value provided.',
-    defaultValue: [250, 500, 750, 1000],
+    defaultValue: [250, 500, 750, 1000, 1500, 2000, 2500],
   },
   sizes: {
     type: 'string',
     description: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-sizes - default value provided.',
-    defaultValue: '50vw',
+    defaultValue: '100vw',
   },
   aspectRatio: {
     type: 'array',
