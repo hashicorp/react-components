@@ -1,12 +1,14 @@
 import React from 'react'
 import { expect } from 'chai'
-import propsSpec from './props'
-import CaseStudySlider from './dist/index'
+import CaseStudySlider from './'
 import StatusBar from './StatusBar'
+import transformProps from '../../__test-helpers/transform-props'
+
+const defaultProps = transformProps(__dirname)
 
 testComponent(
   () => CaseStudySlider,
-  { sets: [], props: propsSpec },
+  { sets: [], props: defaultProps },
   ({ render, testTagAndClass, propValue, sinon }) => {
     testTagAndClass('div', 'g-case-study-slider')
 
@@ -151,7 +153,7 @@ testComponent(
 // Tests that should only work for the default set of props
 testComponent(
   () => CaseStudySlider,
-  { sets: ['default'], props: propsSpec },
+  { sets: ['default'], props: defaultProps },
   ({ render }) => {
     it.skip('should use provided custom button label', () => {
       const wrapper = render()
@@ -177,7 +179,7 @@ testComponent(
   () => CaseStudySlider,
   {
     sets: ['default', '2 case studies - Nomad', '2 case studies - Consul'],
-    props: propsSpec
+    props: defaultProps
   },
   ({ render, propValue, sinon }) => {
     it('should call the right functions when a logo is clicked', () => {
@@ -240,7 +242,7 @@ testComponent(
 
 testComponent(
   () => CaseStudySlider,
-  { sets: ['1 case study'], props: propsSpec },
+  { sets: ['1 case study'], props: defaultProps },
   ({ render }) => {
     it('should add class `single` to `slider-frame` when there is only 1 frame', () => {
       // const frames = propValue('data').caseStudies
@@ -265,7 +267,7 @@ testComponent(
   () => CaseStudySlider,
   {
     sets: ['2 case studies - Nomad', '2 case studies - Consul'],
-    props: propsSpec
+    props: defaultProps
   },
   ({ render }) => {
     it('should add class `double` to `logo-bar-container` when there are only 2 frames', () => {
@@ -289,7 +291,7 @@ testComponent(
 
 testComponent(
   () => CaseStudySlider,
-  { sets: ['Author provides image'], props: propsSpec },
+  { sets: ['Author provides image'], props: defaultProps },
   ({ renderDeep }) => {
     it('should use custom image alt when provided new image node', () => {
       expect(
