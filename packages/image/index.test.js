@@ -54,7 +54,7 @@ describe('<Image />', () => {
 
     expect(screen.getByTestId('image-root')).toBeInTheDocument()
 
-    expect(webpSource.sizes).toBe('50vw')
+    expect(webpSource.sizes).toBe('100vw')
     webpSource.srcset.split(',').map((src, i) => {
       expect(src).toMatch(
         new RegExp(
