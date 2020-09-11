@@ -1,0 +1,22 @@
+{
+  "name": "@hashicorp/react-callouts",
+  "version": "4.2.4",
+  "description": "Display a set of items, each with a title, description, option links, and an optional icon.",
+  "main": "dist",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/react-button": "^2.2.4",
+    "@hashicorp/react-inline-svg": "^1.0.2"
+  }
+}
