@@ -1,0 +1,20 @@
+{
+  "name": "@hashicorp/react-enterprise-alert",
+  "description": "Render an alert used to note the requirement of an enterprise product",
+  "version": "3.0.0",
+  "main": "index.jsx",
+  "dependencies": {
+    "@hashicorp/js-utils": "^1.0.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/enterprise-alert"
+  },
+  "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/enterprise-alert",
+  "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22enterprise-alert%22",
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
