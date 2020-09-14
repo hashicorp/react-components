@@ -1,0 +1,8 @@
+fragment alertFields on AlertRecord {
+  id
+  tag
+  text
+  textColor
+  tagColor
+  url
+}
