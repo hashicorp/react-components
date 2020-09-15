@@ -4,6 +4,11 @@
   "version": "3.0.0",
   "main": "index.jsx",
   "style": "style.css",
+  "files": [
+    "fragment.graphql",
+    "index.jsx",
+    "style.css"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/hashicorp/react-components.git",

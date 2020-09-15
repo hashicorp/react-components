@@ -34,7 +34,6 @@
       'warning-yellow',
       'success-green',
     ],
-    name: 'tagColor',
     defaultValue: 'vault-gray',
   },
   textColor: {
