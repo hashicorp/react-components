@@ -1,0 +1,57 @@
+{
+  features: {
+    description: '...',
+    type: 'array',
+    "0": {
+      heading: {
+        description: '...',
+        type: 'string',
+        control: 'text',
+        defaultValue: 'heading',
+      },
+      content: {
+        description: '...',
+        type: 'string',
+        control: 'text',
+        defaultValue: 'content',
+      },
+      link: {
+        description: '...',
+        type: 'object',
+        url: {
+          description: '...',
+          type: 'string',
+        },
+        alt: {
+          description: '...',
+          type: 'string',
+        },
+      },
+    },
+    defaultValue: [],
+  },
+  timing: {
+    type: 'string',
+    description: '...',
+    control: 'text',
+    defaultValue: '',
+  },
+  heading: {
+    type: 'string',
+    description: '...',
+    control: 'text',
+    defaultValue: '',
+  },
+  theme: {
+    type: 'string',
+    description: '...',
+    control: 'text',
+    defaultValue: '',
+  },
+  brand: {
+    type: 'string',
+    description: '...',
+    control: 'text',
+    defaultValue: '',
+  },
+}

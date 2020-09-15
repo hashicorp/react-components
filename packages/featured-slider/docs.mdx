@@ -1,0 +1,34 @@
+---
+componentName: 'FeaturedSlider'
+---
+
+The `<FeaturedSlider>` component renders a thing.
+
+<LiveComponent>{`<FeaturedSlider
+  heading="Heading"
+  theme="dark"
+  brand="terraform"
+  features={[
+    {
+      heading: 'heading',
+      content: 'content',
+      link: {
+        type: 'type',
+        text: 'text',
+        url: 'https://google.com/',
+      },
+      image: {
+        url: 'https://placehold.it/640x480?text=image',
+        alt: 'image',
+      },
+      logo: {
+        url: 'https://placehold.it/640x480?text=logo',
+        alt: 'logo',
+      }
+    }
+  ]}
+/>`}</LiveComponent>
+
+<PropsTable props={componentProps} />
+
+<KnobsComponent knobs={componentProps} />

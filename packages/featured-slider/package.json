@@ -1,0 +1,23 @@
+{
+  "name": "@hashicorp/react-featured-slider",
+  "description": "Render a slider for case studies",
+  "version": "2.0.0",
+  "main": "index.jsx",
+  "dependencies": {
+    "@hashicorp/react-button": "^2.2.4",
+    "@hashicorp/react-image": "^2.0.3",
+    "marked": "^1.0.0",
+    "use-resize-observer": "^6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/featured-slider"
+  },
+  "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/featured-slider",
+  "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22featured-slider%22",
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
