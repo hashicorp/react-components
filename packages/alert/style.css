@@ -1,0 +1,138 @@
+.g-alert {
+  display: inline-flex;
+  align-items: flex-start;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.dark {
+    & span,
+    & p {
+      color: var(--DEPRECATED-gray-1);
+    }
+  }
+  /* theming */
+  &.terraform-purple {
+    & span {
+      border-color: var(--terraform);
+    }
+
+    & svg {
+      & line {
+        stroke: var(--terraform);
+      }
+
+      & path {
+        fill: var(--terraform);
+      }
+    }
+  }
+
+  &.nomad-green {
+    & span {
+      border-color: var(--nomad);
+    }
+
+    & svg {
+      & line {
+        stroke: var(--nomad);
+      }
+
+      & path {
+        fill: var(--nomad);
+      }
+    }
+  }
+
+  &.consul-pink {
+    & span {
+      border-color: var(--consul);
+    }
+
+    & svg {
+      & line {
+        stroke: var(--consul);
+      }
+
+      & path {
+        fill: var(--consul);
+      }
+    }
+  }
+
+  &.error-red {
+    & span {
+      border-color: #b91b1b;
+    }
+
+    & svg {
+      & line {
+        stroke: #b91b1b;
+      }
+
+      & path {
+        fill: #b91b1b;
+      }
+    }
+  }
+
+  &.warning-yellow {
+    & span {
+      border-color: #e6ab25;
+    }
+
+    & svg {
+      & line {
+        stroke: #e6ab25;
+      }
+
+      & path {
+        fill: #e6ab25;
+      }
+    }
+  }
+
+  &.success-green {
+    & span {
+      border-color: #3ec574;
+    }
+
+    & svg {
+      & line {
+        stroke: #3ec574;
+      }
+
+      & path {
+        fill: #3ec574;
+      }
+    }
+  }
+
+  & span {
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid var(--brand);
+    border-radius: 3px;
+    margin-right: 12px;
+    color: var(--white);
+    white-space: nowrap;
+  }
+
+  & p {
+    color: var(--white);
+    margin: 0;
+  }
+
+  & svg {
+    margin-left: 12px;
+
+    & line {
+      stroke: var(--brand);
+    }
+
+    & path {
+      fill: var(--brand);
+    }
+  }
+}

@@ -3,6 +3,7 @@
   "description": "A small alert banner with a link",
   "version": "3.0.0",
   "main": "index.jsx",
+  "style": "style.css",
   "repository": {
     "type": "git",
     "url": "https://github.com/hashicorp/react-components.git",
