@@ -1,0 +1,18 @@
+{
+  "name": "@hashicorp/react-image",
+  "description": "super optimized image element, pulls from dato and formats for 7 screen sizes in two formats. Skips optimization for SVGs.",
+  "version": "2.0.3",
+  "author": "Hashicorp - Jeff Escalante",
+  "dependencies": {
+    "object-assign": "^4.1.1",
+    "query-string": "5.1.1"
+  },
+  "license": "MPL-2.0",
+  "main": "dist",
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
