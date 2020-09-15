@@ -4,7 +4,7 @@ componentName: 'Image'
 
 The `<Image />` component is used widely across HashiCorp properties. At its most basic, it looks like this:
 
-<LiveComponent>{`<Image alt='Image example' url='https://www.datocms-assets.com/2885/1592632185-hcp-social-share.jpg' />`}</LiveComponent>
+<LiveComponent>{`<Image alt='Image example' url='https://www.datocms-assets.com/2885/1592632185-hcp-social-share.jpg' style={{ maxWidth: '100%' }} />`}</LiveComponent>
 
 #### Image Props
 
@@ -24,4 +24,5 @@ The code editor below shows all available props. You can tinker with it by chang
   sizes='50vw'
   aspectRatio={[16, 9, 500]}
   imgixOptions={{}}
+  style={{ maxWidth: '100%' }}
 />`}</LiveComponent>
