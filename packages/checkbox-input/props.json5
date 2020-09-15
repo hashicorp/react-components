@@ -1,0 +1,30 @@
+{
+  label: {
+    type: 'string',
+    required: true,
+    description: 'Text to display next to the checkbox. Accepts plain text or HTML.',
+    defaultValue: 'My checkbox label',
+  },
+  field: {
+    type: 'json',
+    required: true,
+    description: 'Props to pass to the underlying <input /> element, `{ name, value, checked, onChange }`. Note that for this component, which uses `<input type="checkbox" />`, the `field.value` and `field.checked` properties should be identical. The `field` prop is typically supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
+    defaultValue: {
+      name: 'default-checkbox',
+      value: true,
+      checked: true,
+      onChange: null,
+    },
+  },
+  form: {
+    type: 'json',
+    required: true,
+    description: "Form data, `{ touched, errors }`, where `touched` and `errors` are objects, each with optional properties corresponding to each input's `field.name`. A non-empty error string `errors[field.name]` will be shown if present, but only if `touched[field.name]` is also truthy. The `form` prop is typically supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).",
+    defaultValue: { touched: {}, errors: {} },
+  },
+  theme: {
+    type: 'json',
+    description: 'Controls the appearance of the checkbox. `theme.background` should be one of `["light", "dark", "brand"].`',
+    defaultValue: { background: 'light' },
+  },
+}

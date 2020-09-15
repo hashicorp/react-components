@@ -1,0 +1,110 @@
+@import '~@hashicorp/react-global-styles/custom-properties/color.css';
+
+.g-checkbox-input {
+  & .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    & label {
+      margin-top: -4px;
+      color: var(--DEPRECATED-gray-4);
+      cursor: pointer;
+      & a {
+        color: var(--brand);
+      }
+    }
+
+    & .checkbox {
+      position: relative;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-left: 0px;
+      margin-right: 12px;
+
+      & input[type='checkbox'] {
+        width: 100%;
+        height: 100%;
+        appearance: none;
+        border: 1px solid var(--DEPRECATED-gray-8);
+        background-color: #fff;
+        border-radius: 2px;
+        transition: border 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          border-color: var(--brand);
+        }
+
+        &:checked {
+          border-color: var(--brand);
+          background-color: var(--brand);
+        }
+
+        &[data-has-error='true'] {
+          border-color: var(--danger);
+        }
+      }
+
+      & svg {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        pointer-events: none;
+        width: 12px;
+        height: 12px;
+        & path {
+          fill: var(--white);
+        }
+      }
+    }
+  }
+
+  & > .g-type-body-small.error {
+    color: var(--danger);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+
+  &[data-theme-bg='dark'] {
+    & .wrapper {
+      & label {
+        color: var(--DEPRECATED-gray-8);
+        & a {
+          color: var(--brand-on-dark);
+        }
+      }
+
+      & input[type='checkbox'] {
+        background-color: var(--DEPRECATED-gray-2);
+        border-color: var(--DEPRECATED-gray-3);
+        background-color: var(--DEPRECATED-gray-2);
+      }
+    }
+  }
+
+  &[data-theme-bg='brand'] {
+    & .wrapper {
+      & label {
+        color: var(--brand-l3);
+        & a {
+          color: var(--white);
+          text-decoration: underline;
+        }
+      }
+
+      & input[type='checkbox'][data-has-error='false'] {
+        &:hover {
+          border-color: var(--DEPRECATED-gray-8);
+        }
+        &:checked {
+          border-color: rgba(255, 255, 255, 0.25);
+        }
+      }
+    }
+    & > .g-type-body-small.error {
+      color: var(--danger-l1);
+    }
+  }
+}
