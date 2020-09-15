@@ -1,0 +1,19 @@
+{
+  "name": "@hashicorp/react-accordion",
+  "version": "0.3.0",
+  "description": "A block that displays a set of title + content items, with content collapsed by default, but expandable to view. Also includes an optional heading for the block.",
+  "main": "dist",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/react-global-styles": "^4.4.2",
+    "@hashicorp/react-inline-svg": "^1.0.2"
+  }
+}
