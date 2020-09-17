@@ -1,0 +1,17 @@
+{
+  "name": "@hashicorp/react-head",
+  "description": "Create a Hashicorp branded <head>.",
+  "version": "2.0.0",
+  "main": "index.jsx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/head"
+  },
+  "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/head",
+  "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22head%22",
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
