@@ -1,0 +1,43 @@
+{
+  name: {
+    type: 'string',
+    description: 'string used for cookie name (defaults to slugified text property)',
+    control: 'text',
+    defaultValue: '',
+  },
+  url: {
+    type: 'string',
+    description: 'where to link to when clicked',
+    required: true,
+    control: 'text',
+    defaultValue: '',
+  },
+  tag: {
+    type: 'string',
+    description: 'text contained inside the tag',
+    required: true,
+    control: 'text',
+    defaultValue: '',
+  },
+  theme: {
+    type: 'string',
+    description: 'banner\'s thematic style',
+    required: true,
+    control: 'text',
+    defaultValue: '',
+  },
+  text: {
+    type: 'string',
+    description: 'text in the main area',
+    required: true,
+    control: 'text',
+    defaultValue: '',
+  },
+  linkText: {
+    type: 'string',
+    description: 'secondary text styled as a link',
+    required: true,
+    control: 'text',
+    defaultValue: '',
+  },
+}

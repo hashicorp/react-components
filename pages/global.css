@@ -13,6 +13,7 @@
 @import '../packages/subnav/style.css';
 @import '../packages/call-to-action/style.css';
 @import '../packages/product-features-list/style.css';
+@import '../packages/alert-banner/style.css';
 
 body {
   margin: 0;
