@@ -1,0 +1,20 @@
+{
+  "name": "@hashicorp/react-product-features-list",
+  "description": "list for product features",
+  "version": "1.0.3",
+  "author": "Hashicorp - Nicole Forrester",
+  "license": "MPL-2.0",
+  "main": "dist",
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "@hashicorp/react-image": "^2.0.3"
+  }
+}
