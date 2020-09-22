@@ -62,6 +62,8 @@
         'vault',
         'packer',
         'vagrant',
+        'blue',
+        'red',
       ],
       defaultValue: 'hashicorp',
     },

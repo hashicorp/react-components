@@ -4,7 +4,7 @@
   "dependencies": {
     "@hashicorp/nextjs-scripts": "^12.0.1",
     "@hashicorp/octavo": "0.0.2",
-    "@hashicorp/react-global-styles": "^4.4.2",
+    "@hashicorp/react-global-styles": "^4.5.0",
     "next": "9.5.2",
     "next-remote-watch": "^0.2.0",
     "react": "16.13.1",
