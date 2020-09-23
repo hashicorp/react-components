@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import ProductFeaturesList from './dist/index'
+import ProductFeaturesList from './'
 
 const propsBase = {
   heading: 'Why Nomad?',
