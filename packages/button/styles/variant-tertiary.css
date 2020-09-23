@@ -153,4 +153,30 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
       }
     }
   }
+
+  /* Brand -- Blue */
+  &.brand-blue {
+    color: var(--blue);
+    & .icon svg {
+      & [fill] {
+        fill: var(--blue);
+      }
+      & [stroke] {
+        stroke: var(--blue);
+      }
+    }
+  }
+
+  /* Brand -- Red */
+  &.brand-red {
+    color: var(--red);
+    & .icon svg {
+      & [fill] {
+        fill: var(--red);
+      }
+      & [stroke] {
+        stroke: var(--red);
+      }
+    }
+  }
 }

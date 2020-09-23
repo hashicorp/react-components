@@ -197,4 +197,36 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
       }
     }
   }
+
+  /* Brand -- Blue */
+  &.brand-blue {
+    &:not(.background-brand) {
+      border-color: var(--blue);
+      background-color: var(--blue);
+    }
+    &.background-brand {
+      &::before {
+        background: var(--blue-l3);
+      }
+      &:active::before {
+        background: var(--blue-l2);
+      }
+    }
+  }
+
+  /* Brand -- Red */
+  &.brand-red {
+    &:not(.background-brand) {
+      border-color: var(--red);
+      background-color: var(--red);
+    }
+    &.background-brand {
+      &::before {
+        background: var(--red-l3);
+      }
+      &:active::before {
+        background: var(--red-l2);
+      }
+    }
+  }
 }
