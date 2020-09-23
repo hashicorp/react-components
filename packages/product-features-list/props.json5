@@ -1,0 +1,12 @@
+{
+  heading: {
+    type: 'string',
+    description: 'A centered title for the list',
+    defaultValue: '',
+  },
+  features: {
+    type: 'array',
+    description: 'An array of features to list',
+    options: ['[{title: String, content: String, icon: String}]'],
+  },
+}
