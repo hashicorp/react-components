@@ -160,7 +160,7 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
   }
 
   /* Brand -- Blue */
-  &.brand-terraform {
+  &.brand-blue {
     &.background-brand-l3 {
       &::before {
         background: var(--blue);
@@ -169,7 +169,7 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
   }
 
   /* Brand -- Red */
-  &.brand-terraform {
+  &.brand-red {
     &.background-brand-l3 {
       &::before {
         background: var(--red);
