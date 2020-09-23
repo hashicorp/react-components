@@ -7,8 +7,7 @@
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^2.2.3",
-    "@hashicorp/react-global-styles": "^2.1.11-fonts.0"
+    "@hashicorp/react-button": "^2.2.3"
   },
   "license": "MPL-2.0",
   "main": "dist",
