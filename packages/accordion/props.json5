@@ -8,8 +8,6 @@
     type: 'Array',
     description: 'an array of your expandable <AccordionElement> items',
     required: true,
-    options: [
-      '[{ heading: String, content: String/HTML/Children/ReactContent }]',
-    ],
+    itemType: '{ heading: string, content: (string|React.Element) }',
   },
 }
