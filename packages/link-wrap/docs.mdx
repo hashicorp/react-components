@@ -1,0 +1,17 @@
+---
+componentName: 'LinkWrap'
+---
+
+A component that will render a client-side routed nextjs link for local paths, and a normal `<a>` element for external links. If you do not pass a `Link` prop, it will render normal links in all cases.
+
+The `href` passed to this component expects relative urls to be used for internal routes, and absolute urls to be used for external routes.
+
+If this condition is not true, the links may not behave properly. Specifically, in the context of NextJS, this can result in internal links not using client-side transitions, or external links being erroneously prefetched. More info in [this PR](https://github.com/zeit/next.js/pull/8231), and [this open issue](https://github.com/zeit/next.js/issues/8555) could result in changes to this behavior.
+
+<LiveComponent>{`<LinkWrap href='https://www.hashicorp.com'>test link</LinkWrap>`}</LiveComponent>
+
+### Props
+
+The props listed below directly affect the behavior of this component. Any other props that are passed will be reflected on to the `<a>` element internally, so you can still pass things like `className`, `children`, etc and they will work correctly.
+
+<PropsTable props={componentProps} />
