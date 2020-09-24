@@ -15,6 +15,9 @@
   ],
   "license": "MPL-2.0",
   "main": "index.jsx",
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
   "publishConfig": {
     "access": "public"
   },
