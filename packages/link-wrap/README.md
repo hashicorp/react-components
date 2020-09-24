@@ -22,30 +22,9 @@ export default () => {
 }
 ```
 
-### Usage Notes
-
-The `href` passed to this component expects relative urls to be used for internal routes, and absolute urls to be used for external routes.
-
-If this condition is not true, the links may not behave properly. Specifically, in the context of NextJS, this can result in internal links not using client-side transitions, or external links being erroneously prefetched. More info in [this PR](https://github.com/zeit/next.js/pull/8231), and [this open issue](https://github.com/zeit/next.js/issues/8555) could result in changes to this behavior.
-
 ## Props
 
 See the [props file](props.json5) for more details on props!
-
-**Link Wrap** accepts the following props:
-
-- `Link` - [NextJS `Link` Component](https://nextjs.org/docs/api-reference/next/link), only required for client-side routing.
-- `href` - Path to an internal or external route.
-- `as` - Path rendered in the browser URL bar, used for dynamic routes. Optional.
-- `passHref` - Whether `Link` passes its `href` prop to the `a`. Defaults to `false`.
-- `prefetch` - Whether to prefetch the page in the background. Defaults to `true`.
-- `replace`- Whether to replace the current `history` state instead of adding a new URL into the stack. Defaults to `false`.
-- `scroll` - Whether to force the window scroll and focus to reset after navigation. Defaults to `false`.
-- `shallow` - Whether to change the URL without running `getInitialProps`. Defaults to `false`.
-
-Additional props (like `id`, `className`, or `children`) are passed to the `a`.
-
----
 
 ## isAbsoluteURL
 
