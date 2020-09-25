@@ -1,0 +1,32 @@
+@import './_temp-spacing-tokens.css';
+
+.g-call-to-action.variant-links {
+  padding: var(--space-block-padding) 0;
+
+  & .g-type-body-large {
+    max-width: 30em;
+  }
+  & .g-type-display-2 + .content-and-links .g-type-body-large {
+    margin-top: var(--space-display-2--body-large);
+  }
+
+  & .links {
+    margin-top: var(--space-body-large--buttons);
+
+    & .g-btn {
+      display: block;
+      float: left;
+      clear: both;
+      & + .g-btn {
+        margin-top: 8px;
+      }
+    }
+
+    &::after {
+      display: block;
+      float: none;
+      content: '';
+      clear: both;
+    }
+  }
+}

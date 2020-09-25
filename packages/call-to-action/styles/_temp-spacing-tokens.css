@@ -1,12 +1,10 @@
-.g-text-split {
+.g-call-to-action {
   /* Small Viewports */
   @media (--small) {
     --space-grid-gap: 20px;
     --space-block-padding: 64px;
     --space-block-padding-reduced: 48px;
-    --space-display-2--body: 16px;
     --space-display-2--body-large: 16px;
-
     --space-display-2--content: 48px;
     --space-body-large--buttons: 32px;
     --space-body-large--links: 24px;
@@ -17,7 +15,6 @@
   --space-grid-gap: 24px;
   --space-block-padding: 88px;
   --space-block-padding-reduced: 64px;
-  --space-display-2--body: 16px;
   --space-display-2--body-large: 16px;
   --space-display-2--content: 56px;
   --space-body-large--buttons: 32px;
@@ -28,7 +25,6 @@
     --space-grid-gap: 32px;
     --space-block-padding: 128px;
     --space-block-padding-reduced: 88px;
-    --space-display-2--body: 24px;
     --space-display-2--body-large: 24px;
     --space-display-2--content: 64px;
     --space-body-large--buttons: 40px;

@@ -1,0 +1,40 @@
+{
+  variant: {
+    type: 'string',
+    description: '',
+    options: ['centered', 'compact', 'links'],
+  },
+  heading: {
+    type: 'string',
+    description: '',
+    required: true,
+  },
+  content: {
+    type: 'string',
+    description: '',
+    required: true,
+  },
+  background: {
+    type: 'string',
+    description: '',
+    options: ['light', 'gray', 'dark'],
+  },
+  brand: {
+    type: 'string',
+    description: '',
+    options: [
+      'hashicorp',
+      'terraform',
+      'vault',
+      'nomad',
+      'consul',
+      'packer',
+      'vagrant',
+    ],
+  },
+  links: {
+    type: 'array',
+    description: '',
+    itemType: '{ text: string, url: string, type: ("inbound" | "outbound" | "anchor") }',
+  },
+}
