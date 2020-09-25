@@ -1,8 +1,3 @@
-fixtures
-helpers
-icons
-partials
-stories
-styles
-/*.js
-/*.css
+docs.mdx
+props.json5
+*.test.js
