@@ -1,27 +1,27 @@
 {
   variant: {
     type: 'string',
-    description: '',
+    description: 'Controls the visual appearance of the call to action, defaults to `centered`.',
     options: ['centered', 'compact', 'links'],
   },
   heading: {
     type: 'string',
-    description: '',
+    description: 'Header text',
     required: true,
   },
   content: {
     type: 'string',
-    description: '',
+    description: 'Description text',
     required: true,
   },
   background: {
     type: 'string',
-    description: '',
+    description: 'Color of background the CTA is on top of, default is `light`.',
     options: ['light', 'gray', 'dark'],
   },
   brand: {
     type: 'string',
-    description: '',
+    description: 'If a different brand color is needed for buttons it can be set with this prop.',
     options: [
       'hashicorp',
       'terraform',
@@ -34,7 +34,7 @@
   },
   links: {
     type: 'array',
-    description: '',
+    description: 'Links to be displayed as buttons. The first will be primary, following will be secondary.',
     itemType: '{ text: string, url: string, type: ("inbound" | "outbound" | "anchor") }',
   },
 }
