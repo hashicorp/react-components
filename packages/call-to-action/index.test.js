@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
-import CallToAction from './dist/index.js'
+import CallToAction from './'
 
 const baseProps = {
   heading: 'Lorem Ipsum Dolor Sit Amet',
