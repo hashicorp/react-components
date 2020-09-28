@@ -13,6 +13,7 @@
         'terraform',
         'vagrant',
         'vault',
+        'waypoint',
         'boundary',
       ],
     },
