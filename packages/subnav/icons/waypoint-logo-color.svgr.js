@@ -1,0 +1,28 @@
+import * as React from "react";
+
+function SvgWaypointLogoColor(props) {
+  return (
+    <div className="g-svg">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAA/CAYAAACCRFH+AAAABmJLR0QAzgDUANit7irPAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AkcFig3q5WtBQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAABnSURBVHja7cExAQAAAMKg9U9tDQ+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACuDUMuAAFgiY0FAAAAAElFTkSuQmCC"
+        className="svg-sizer"
+        alt=""
+        role="presentation"
+      />
+      <svg viewBox="0 0 328 63" height={63} width={328} {...props}>
+        <defs>
+          <style>{".waypoint-logo-color_svg__cls-1{fill:#14c6cb}"}</style>
+        </defs>
+        <g id="waypoint-logo-color_svg__LOGOS">
+          <path d="M137.82 39.22L145.51 8h7.56l-10 40.28H132.8l-7.38-32.42-7.37 32.42h-10.29L97.78 8h7.56L113 39.22 120.34 8h10.17zM175.8 48.29h-6.05l-.54-2a16.15 16.15 0 01-8.77 2.6c-5.38 0-7.68-3.69-7.68-8.77 0-6 2.6-8.29 8.59-8.29h7.07v-3.08c0-3.26-.9-4.41-5.62-4.41a40.82 40.82 0 00-8.17.91l-.9-5.63a38.26 38.26 0 0110.1-1.39c9.25 0 12 3.27 12 10.65zm-7.38-11.13H163c-2.42 0-3.08.67-3.08 2.91 0 2 .66 3 3 3a11.65 11.65 0 005.56-1.51zM196.49 48.29l-3.93 11.92h-7l3.69-11.92h-2.6l-9.32-29.46h7.56l6.72 22.38 6.77-22.38h7.56zM232.72 38.49c0 6.53-2.91 10.41-9.74 10.41a41.07 41.07 0 01-7.87-.85v12.16l-7.38 1V18.83h5.87l.73 2.48a15.52 15.52 0 019.31-3.08c5.93 0 9.08 3.51 9.08 10.22zm-17.61 3.33a33.06 33.06 0 006.54.79c2.66 0 3.69-1.27 3.69-3.94v-10.4c0-2.42-.91-3.75-3.63-3.75a10.48 10.48 0 00-6.6 2.66zM249 48.9c-10.1 0-12.82-5.57-12.82-11.62v-7.44c0-6.05 2.72-11.61 12.82-11.61s12.83 5.56 12.83 11.61v7.44c.04 6.05-2.69 11.62-12.83 11.62zm0-24.38c-3.93 0-5.44 1.75-5.44 5.08v7.92c0 3.33 1.51 5.09 5.44 5.09s5.45-1.76 5.45-5.09V29.6c.04-3.33-1.45-5.08-5.45-5.08zM266.34 14.66V6.13h7.38v8.53zm0 33.63V18.83h7.38v29.46zM297.18 48.29V27.73c0-1.58-.66-2.36-2.35-2.36s-5 1.09-7.69 2.48v20.44h-7.38V18.83h5.63l.73 2.48a29.54 29.54 0 0111.79-3.08c4.9 0 6.65 3.45 6.65 8.71v21.35zM326 47.75a20.57 20.57 0 01-6.47 1.15c-5.38 0-8.1-2.54-8.1-7.81V24.7H307v-5.87h4.42v-7.31l7.37-1v8.34h7.57l-.49 5.87h-7.08v15.4c0 1.57.73 2.6 2.67 2.6a14.34 14.34 0 003.69-.61z" />
+          <path
+            className="waypoint-logo-color_svg__cls-1"
+            d="M83.07 1.76L72.9 19.37 62.74 1.76h20.33zM28.8 13.52h-6.78l16.95 29.37-6.78 11.75L1.66 1.76h33.92l16.96 29.38 3.39-5.87L42.37 1.76h13.56l6.79 11.76 6.78 11.75-16.96 29.37L28.8 13.52z"
+          />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+export default SvgWaypointLogoColor;
