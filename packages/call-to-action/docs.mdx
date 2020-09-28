@@ -1,0 +1,16 @@
+---
+componentName: CallToAction
+---
+
+<LiveComponent>{`<CallToAction
+  heading='Test Heading'
+  content='test content'
+  links={[
+    { text: 'test link', url: '#', type: 'inbound' },
+    { text: 'test link', url: '#' }
+  ]}
+  brand='hashicorp'
+  variant='centered'
+/>`}</LiveComponent>
+
+<PropsTable props={componentProps} />

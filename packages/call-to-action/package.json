@@ -1,0 +1,21 @@
+{
+  "name": "@hashicorp/react-call-to-action",
+  "description": "Display a title, content, and links in a call-to-action format",
+  "version": "0.2.4",
+  "author": "HashiCorp",
+  "contributors": [
+    "Zach Shilton"
+  ],
+  "dependencies": {
+    "@hashicorp/react-button": "^2.2.4"
+  },
+  "keywords": [
+    "call to action",
+    "component",
+    "react"
+  ],
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
