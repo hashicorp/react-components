@@ -1,0 +1,135 @@
+.g-alert-banner {
+  display: none;
+  overflow: hidden;
+  position: relative;
+  transition: height 0.3s ease-out;
+
+  &.show {
+    display: block;
+  }
+
+  & > a.link {
+    display: block;
+    position: relative;
+    color: var(--white);
+    background: linear-gradient(90deg, #1563ff 1.56%, #08368b 100%);
+
+    &.consul {
+      background: linear-gradient(90deg, #ca2171 1.56%, #8e134a 100%);
+    }
+
+    &.nomad {
+      background: linear-gradient(90deg, #00bc7f 1.56%, #005738 100%);
+    }
+
+    &.terraform {
+      background: linear-gradient(90deg, #5f43e9 1.56%, #2a1c73 100%);
+    }
+
+    &.vault {
+      background: linear-gradient(90deg, #6a6d7a 1.56%, #373942 100%);
+    }
+
+    & > .g-grid-container {
+      display: flex;
+      align-items: flex-start;
+      padding-bottom: 15px;
+      padding-top: 15px;
+      justify-content: center;
+
+      &.has-large-tag {
+        @media (max-width: 575px) {
+          flex-direction: column;
+        }
+      }
+
+      & > .tag {
+        position: relative;
+        white-space: nowrap;
+        margin-right: 18px;
+
+        border: 1px solid var(--white);
+        border-radius: 4px;
+        color: var(--white);
+        padding: 3px 7px;
+      }
+
+      & > .text {
+        align-items: flex-start;
+        display: flex;
+        justify-content: center;
+        margin-right: 48px;
+
+        &.has-large-tag {
+          @media (max-width: 575px) {
+            margin-right: 0;
+            margin-top: 8px;
+          }
+        }
+
+        & > .link-text {
+          display: none;
+
+          @media (min-width: 992px) {
+            display: block;
+            margin-left: 24px;
+            text-decoration: underline;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+
+  & > .close {
+    position: absolute;
+    right: 24px;
+    top: 16px;
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    opacity: 0.75;
+    transition: opacity 0.15s;
+
+    & > svg {
+      display: block;
+      & [stroke] {
+        stroke: #66a2ff;
+      }
+    }
+
+    &.consul > svg [stroke] {
+      stroke: #f8d9e7;
+    }
+
+    &.nomad > svg [stroke] {
+      stroke: #6bd8b4;
+    }
+
+    &.terraform > svg [stroke] {
+      stroke: #a291f2;
+    }
+
+    &.vault > svg [stroke] {
+      stroke: #e5e6eb;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    & > .visually-hidden {
+      /* .visually-hidden courtesy of https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/ */
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  }
+}
