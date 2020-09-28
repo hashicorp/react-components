@@ -8,7 +8,6 @@
 .nav {
   height: 100%; /*  --hashi-stack-menu-height */
   display: flex;
-  justify-content: space-between;
   padding: 0 1.5rem;
   position: relative;
   z-index: 3;
@@ -25,5 +24,18 @@
   & > svg {
     height: 100%;
     width: 100%;
+  }
+}
+
+.menu {
+  display: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: auto;
+
+  @media (--large) {
+    display: flex;
+    justify-content: space-between;
   }
 }

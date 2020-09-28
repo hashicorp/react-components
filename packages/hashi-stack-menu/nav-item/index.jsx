@@ -6,7 +6,7 @@ import { useRef, useEffect } from 'react'
 export default function NavItem({
   active,
   handleActivate,
-
+  children,
   linkUrl,
   title,
 }) {
@@ -25,6 +25,7 @@ export default function NavItem({
       ) : (
         <AnchorLink url={linkUrl}>{title}</AnchorLink>
       )}
+      {children}
     </li>
   )
 }

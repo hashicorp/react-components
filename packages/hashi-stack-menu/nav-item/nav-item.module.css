@@ -3,6 +3,7 @@
   flex-direction: column;
   color: var(--brand);
   list-style: none;
+  position: relative;
 }
 .navItemActive {
 }
@@ -28,5 +29,8 @@
     position: absolute;
     right: 0.25rem;
     top: 1.65rem;
+    & path {
+      stroke: var(--gray-4);
+    }
   }
 }

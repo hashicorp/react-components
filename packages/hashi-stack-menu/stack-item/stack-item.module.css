@@ -1,0 +1,19 @@
+.stackItem {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-width: 200px;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.itemLink {
+  display: block;
+  width: 100%;
+}
+
+.docsLink {
+  display: block;
+  width: 100%;
+}
