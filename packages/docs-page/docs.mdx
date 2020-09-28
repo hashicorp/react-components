@@ -1,0 +1,37 @@
+---
+componentName: 'DocsPage'
+---
+
+We have a lot of docs sites, all of which render content in exactly the same way. This component is a minimal abstraction of that rendering, and is intended to be used entirely as a template for all documentation content.
+
+<LiveComponent>{`<DocsPage
+  product='vault'
+  resourceURL='https://example.com'
+  head={{
+    is: ({ children }) => children,
+    title: 'test',
+    description: 'test',
+    siteName: 'test'
+  }}
+  sidenav={{
+    category: 'docs',
+    currentPage: '/docs/test',
+    data: [{
+      __resourcePath: 'docs/test.mdx',
+      page_title: 'Testing Page',
+      sidebar_title: 'Testing Page'
+    }, {
+      __resourcePath: 'docs/test2.mdx',
+      page_title: 'Other Testing Page',
+      sidebar_title: 'Other Testing Page'
+    }],
+    order: [
+      'test',
+      'test2'
+    ]
+  }}
+><h1>Example Page</h1><p>This is a cool docs page!</p></DocsPage>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
