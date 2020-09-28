@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import CloseIcon from './close-icon'
 import cookie from 'js-cookie'
-import fragment from './fragment.graphql'
 import slugify from 'slugify'
+import fragment from './fragment.graphql'
 
 class AlertBanner extends Component {
   constructor(props) {

@@ -1,6 +1,3 @@
-@import '~@hashicorp/react-global-styles/custom-properties/color.css';
-@import '~@hashicorp/react-global-styles/custom-properties/font.css';
-
 .g-alert-banner {
   display: none;
   overflow: hidden;

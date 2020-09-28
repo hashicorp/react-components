@@ -1,43 +1,36 @@
 {
-  name: {
+  tag: {
     type: 'string',
-    description: 'string used for cookie name (defaults to slugified text property)',
+    description: 'The text contained inside the tag to the left',
+    required: true,
     control: 'text',
-    defaultValue: '',
+  },
+  text: {
+    type: 'string',
+    description: 'The text in the main area',
+    required: true,
+    control: 'text',
   },
   url: {
     type: 'string',
     description: 'where to link to when clicked',
     required: true,
     control: 'text',
-    defaultValue: '',
-  },
-  tag: {
-    type: 'string',
-    description: 'text contained inside the tag',
-    required: true,
-    control: 'text',
-    defaultValue: '',
   },
   theme: {
     type: 'string',
-    description: 'banner\'s thematic style',
-    required: true,
-    control: 'text',
-    defaultValue: '',
-  },
-  text: {
-    type: 'string',
-    description: 'text in the main area',
-    required: true,
-    control: 'text',
-    defaultValue: '',
+    description: 'Color theme to match a specific product',
+    control: 'select',
+    options: ['consul', 'terraform', 'nomad', 'vault'],
   },
   linkText: {
     type: 'string',
-    description: 'secondary text styled as a link',
-    required: true,
+    description: 'Secondary text styled as a link',
     control: 'text',
-    defaultValue: '',
+  },
+  name: {
+    type: 'string',
+    description: 'string used for cookie name (defaults to slugified text property)',
+    control: 'text',
   },
 }

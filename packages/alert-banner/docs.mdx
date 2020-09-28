@@ -2,12 +2,15 @@
 componentName: 'AlertBanner'
 ---
 
-This is a cool component for documentation
+`AlertBanner` is a component used widely across HashiCorp websites to draw attention to an important release, event, etc. It appears in bold colors at the top of the website, and can be dismissed.
 
-<LiveComponent>{`<AlertBanner text="text" tag="tag" />`}</LiveComponent>
+<LiveComponent>{`<AlertBanner
+  text="Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
+  tag="New"
+  url="https://hashicorp.com"
+  linkText='Check it out'
+/>`}</LiveComponent>
 
 #### Props
-
-There are many props that can be used to customize this component, all of which are listed below:
 
 <PropsTable props={componentProps} />

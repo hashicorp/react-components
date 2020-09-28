@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import AlertBanner from './index.jsx'
+import AlertBanner from './'
 
 describe('<AlertBanner />', () => {
   it('should render a <AlertBanner />', () => {
