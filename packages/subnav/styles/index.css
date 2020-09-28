@@ -86,6 +86,9 @@
         &.brand-red::after {
           background: var(--red);
         }
+        &.brand-blue::after {
+          background: var(--blue);
+        }
       }
 
       &:hover .text {
