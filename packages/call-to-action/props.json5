@@ -30,6 +30,8 @@
       'consul',
       'packer',
       'vagrant',
+      'red',
+      'blue',
     ],
   },
   links: {
