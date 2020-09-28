@@ -65,6 +65,9 @@
           background: var(--brand);
           opacity: 0;
         }
+        &.brand-hcp::after {
+          background: var(--black);
+        }
         &.brand-terraform::after {
           background: var(--terraform);
         }

@@ -9,12 +9,13 @@ import CtaLinks from './partials/CtaLinks/index.js'
 import traverse, { isObject } from './helpers/traverse/index.js'
 
 const brandWhitelist = {
-  terraform: 'terraform',
   consul: 'consul',
+  hcp: 'hcp',
   nomad: 'nomad',
-  vault: 'vault',
   packer: 'packer',
+  terraform: 'terraform',
   vagrant: 'vagrant',
+  vault: 'vault',
 }
 
 function SubnavInner(props) {
