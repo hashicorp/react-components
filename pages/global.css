@@ -10,6 +10,7 @@
 @import '../packages/text-split/styles/index.css';
 @import '../packages/docs-sidenav/style.css';
 @import '../packages/accordion/style.css';
+@import '../packages/subnav/style.css';
 
 body {
   margin: 0;

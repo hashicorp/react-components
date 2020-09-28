@@ -1,0 +1,25 @@
+{
+  "name": "@hashicorp/react-subnav",
+  "description": "Displays a navigation bar, with links and a call-to-action.",
+  "version": "3.2.6",
+  "author": "HashiCorp",
+  "contributors": [
+    "Zach Shilton"
+  ],
+  "dependencies": {
+    "@hashicorp/react-button": "^2.2.4",
+    "@hashicorp/react-global-styles": "^4.4.2",
+    "@hashicorp/react-inline-svg": "^1.0.2",
+    "@hashicorp/react-link-wrap": "^1.0.2",
+    "isomorphic-unfetch": "^3.0.0"
+  },
+  "keywords": [
+    "component",
+    "navigation",
+    "react"
+  ],
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
