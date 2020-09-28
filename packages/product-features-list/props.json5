@@ -1,0 +1,11 @@
+{
+  heading: {
+    type: 'string',
+    description: 'Header for the list',
+  },
+  features: {
+    type: 'array',
+    description: 'An array detailing each of the features - the icon should be a url',
+    itemType: '{ title: string, content: string, icon: string }',
+  },
+}
