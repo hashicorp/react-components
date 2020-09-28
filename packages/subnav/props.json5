@@ -5,7 +5,15 @@
     text: {
       type: 'string',
       description: "Passing a product slug to triggers a special case, where the product's logo and brand colors are used. Note that in other cases, it should be a string with proper casing.",
-      options: ['terraform', 'vault', 'consul', 'nomad', 'packer', 'vagrant'],
+      options: [
+        'consul',
+        'hcp',
+        'nomad',
+        'packer',
+        'terraform',
+        'vagrant',
+        'vault',
+      ],
     },
     url: {
       type: 'string',

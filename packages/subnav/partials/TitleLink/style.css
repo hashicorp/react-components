@@ -10,4 +10,12 @@
     height: 28px;
     width: auto;
   }
+
+  &.brand-hcp .svg-sizer {
+    width: 200px;
+
+    @media (--medium-up) {
+      width: 220px;
+    }
+  }
 }
