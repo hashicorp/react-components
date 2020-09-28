@@ -1,0 +1,899 @@
+---
+componentName: Content
+---
+
+A wrapper for long-form content, such as documentation, blog posts, whitepapers, etc.
+
+<LiveComponent>{`<Content
+  product='terraform'
+  content={<p>hello world <a href='#'>this is a link</a></p>}
+/>`}</LiveComponent>
+
+### Kitchen Sink
+
+<LiveComponent>{`<Content
+  product=''
+  content={<>
+    <h1>
+      <a
+        name="markdown-test-page"
+        className="__permalink-h"
+        href="#markdown-test-page"
+      >
+        &raquo;
+      </a>
+      Markdown Test Page
+    </h1>
+    <p>
+      These few opening paragraphs are just meant to reflect more realistic
+      content.
+    </p>
+    <p>
+      Certain Vault backends utilize plugins to extend their functionality
+      outside of what is available in the core Vault code. Often times these
+      backends will provide both builtin plugins and a mechanism for
+      executing external plugins.
+    </p>
+    <p>
+      Builtin plugins are shipped with Vault, often for commonly used
+      implementations, and require no additional operator intervention to
+      run. Builtin plugins are just like any other backend code inside
+      Vault.
+    </p>
+    <h2>
+      <a name="headings" className="__permalink-h" href="#headings">
+        &raquo;
+      </a>
+      Headings
+    </h2>
+    <p>
+      Builtin plugins are shipped with Vault, often for commonly used
+      implementations, and require no additional operator intervention to
+      run. Builtin plugins are just like any other backend code inside
+      Vault.
+    </p>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and must be registered to Vault by a privileged Vault user.
+      This section of the documentation will describe the architecture and
+      security of external plugins.
+    </p>
+    <h1>
+      <a name="page-heading" className="__permalink-h" href="#page-heading">
+        &raquo;
+      </a>
+      Page Heading <code>with code</code>
+    </h1>
+    <p>
+      The above heading should rarely if ever be used within page content,
+      it's just shown here as an example. Avoid using{' '}
+      <code># Page Level Headings</code> for top-level sections within
+      Markdown content and instead use <code>## Second Level Headings</code>
+      .
+    </p>
+    <p>
+      Certain Vault backends utilize plugins to extend their functionality
+      outside of what is available in the core Vault code. Often times these
+      backends will provide both builtin plugins and a mechanism for
+      executing external plugins.
+    </p>
+    <h2>
+      <a
+        name="second-level-heading"
+        className="__permalink-h"
+        href="#second-level-heading"
+      >
+        &raquo;
+      </a>
+      Second Level Heading <code>with code</code>
+    </h2>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and must be registered to Vault by a privileged Vault user.
+      This section of the documentation will describe the architecture and
+      security of external plugins.
+    </p>
+    <h3>
+      <a
+        name="third-level-heading-with-code"
+        className="__permalink-h"
+        href="#third-level-heading-with-code"
+      >
+        &raquo;
+      </a>
+      Third Level Heading <code>with code</code>
+    </h3>
+    <p>
+      Builtin plugins are shipped with Vault, often for commonly used
+      implementations, and require no additional operator intervention to
+      run. Builtin plugins are just like any other backend code inside
+      Vault.
+    </p>
+    <h4>
+      <a
+        name="fourth-level-heading"
+        className="__permalink-h"
+        href="#fourth-level-heading"
+      >
+        &raquo;
+      </a>
+      Fourth Level Heading <code>with code</code>
+    </h4>
+    <p>
+      Certain Vault backends utilize plugins to extend their functionality
+      outside of what is available in the core Vault code. Often times these
+      backends will provide both builtin plugins and a mechanism for
+      executing external plugins.
+    </p>
+    <h5>
+      <a
+        name="fifth-level-heading"
+        className="__permalink-h"
+        href="#fifth-level-heading"
+      >
+        &raquo;
+      </a>
+      Fifth Level Heading <code>with code</code>
+    </h5>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and must be registered to Vault by a privileged Vault user.
+      This section of the documentation will describe the architecture and
+      security of external plugins.
+    </p>
+    <h6>
+      <a
+        name="sixth-level-heading"
+        className="__permalink-h"
+        href="#sixth-level-heading"
+      >
+        &raquo;
+      </a>
+      Sixth Level Heading <code>with code</code>
+    </h6>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and must be registered to Vault by a privileged Vault user.
+      This section of the documentation will describe the architecture and
+      security of external plugins.
+    </p>
+    <h2>
+      <a
+        name="inline-text-styles"
+        className="__permalink-h"
+        href="#inline-text-styles"
+      >
+        &raquo;
+      </a>
+      Inline Text Styles
+    </h2>
+    <h6>
+      <a name="bold" className="__permalink-h" href="#bold">
+        &raquo;
+      </a>
+      Bold
+    </h6>
+    <p>
+      External plugins, on the other hand, are <strong>not shipped</strong>{' '}
+      with the Vault binary and must be registered to Vault by a{' '}
+      <strong>privileged</strong> Vault user. This section of the
+      documentation will describe the architecture and security of external
+      plugins.
+    </p>
+    <h6>
+      <a name="italic" className="__permalink-h" href="#italic">
+        &raquo;
+      </a>
+      Italic
+    </h6>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and <em>must be registered</em> to Vault by a{' '}
+      <em>privileged</em> Vault user. This section of the documentation will
+      describe the architecture and security of external plugins.
+    </p>
+    <h6>
+      <a
+        name="strikethrough"
+        className="__permalink-h"
+        href="#strikethrough"
+      >
+        &raquo;
+      </a>
+      Strikethrough
+    </h6>
+    <p>
+      External plugins, on the other hand, are <del>not</del> shipped with
+      the Vault binary and must be registered to Vault by a{' '}
+      <del>privileged</del> Vault user. This section of the documentation
+      will describe the architecture and security of external plugins.
+    </p>
+    <h6>
+      <a name="inline-code" className="__permalink-h" href="#inline-code">
+        &raquo;
+      </a>
+      Inline Code
+    </h6>
+    <p>
+      External plugins, on the other hand, are not shipped with the{' '}
+      <code>vault</code> binary and must be registered to Vault by a
+      privileged Vault user with <code>vault write</code>. This section of
+      the documentation will describe the architecture and security of
+      external plugins. And{' '}
+      <a href="#">
+        <code>linked code has to work too!</code>
+      </a>
+    </p>
+    <h2>
+      <a name="links" className="__permalink-h" href="#links">
+        &raquo;
+      </a>
+      Links
+    </h2>
+    <p>
+      There are multiple ways to define links, and we need to make sure
+      we're handling all of them correctly. All of the links in this section
+      should lead to <code>https://example.com</code>.
+    </p>
+    <p>
+      <a href="https://www.example.com">I'm an inline-style link</a>
+    </p>
+    <p>
+      <a href="https://www.example.com" title="Example Homepage">
+        I'm an inline-style link titled "Example Homepage"
+      </a>
+    </p>
+    <p>
+      URLs and URLs in angle brackets will automatically get turned into
+      links.
+      <a href="http://www.example.com">http://www.example.com</a> or{' '}
+      <a href="http://www.example.com">http://www.example.com</a>, but not
+      example.com.
+    </p>
+    <h6>
+      <a
+        name="reference-style-links"
+        className="__permalink-h"
+        href="#reference-style-links"
+      >
+        &raquo;
+      </a>
+      Reference-Style Links
+    </h6>
+    <p>
+      <a href="https://www.example.com">I'm a reference-style link</a>
+    </p>
+    <p>
+      <a href="https://www.example.com">
+        You can use numbers for reference-style link definitions
+      </a>
+    </p>
+    <p>
+      Or leave it empty and use the{' '}
+      <a href="https://www.example.com">link text itself</a>.
+    </p>
+    <p>Some text to show that the reference links can follow later.</p>
+    <p className="alert alert-warning" role="alert">
+      <strong>To Do</strong>: Add example of links inline in a paragraph of
+      text.
+    </p>
+    <h2>
+      <a
+        name="lists-unordered"
+        className="__permalink-h"
+        href="#lists-unordered"
+      >
+        &raquo;
+      </a>
+      Lists Unordered
+    </h2>
+    <p>
+      An extremely basic example of an unordered list looks something like
+      this:
+    </p>
+    <ul>
+      <li>One list item, could be short</li>
+      <li>A second list item, also not long</li>
+      <li>
+        Third list item, with a bit more detail that might make it wrap to
+        two lines
+      </li>
+      <li>
+        List item number four, with a considerable amount of text that
+        should probably wrap to a newline, as this line is too long not to
+        wrap
+      </li>
+      <li>A fifth list item, short again</li>
+    </ul>
+    <p>
+      An more complex example of an unordered list looks something like
+      this:
+    </p>
+    <ul>
+      <li>
+        <p>
+          Multi-paragraph list item. Certain Vault backends utilize plugins
+          to extend their functionality outside of what is available in the
+          core Vault code. Often times these backends will provide both
+          builtin plugins and a mechanism for executing external plugins.
+        </p>
+        <p>
+          This is another paragraph of text, nested within the first list
+          item. External plugins, on the other hand, are not shipped with
+          the Vault binary and must be registered to Vault by a privileged
+          Vault user. This section of the documentation will describe the
+          architecture and security of external plugins.
+        </p>
+      </li>
+      <li>
+        <p>
+          A second list item, also with multiple paragraphs and nested
+          content. Code blocks can be nested within list items.
+        </p>
+        <pre>
+          <code>
+            $ vault write code/block/example/myplugin-database-plugin \
+            sha_256=&lt;expected SHA256 Hex value of the plugin binary&gt; \
+            command="myplugin" Success! Data written to:
+            code/block/example/myplugin-database-plugin
+          </code>
+        </pre>
+      </li>
+      <li>
+        <p>
+          Third list item, again with multiple paragraphs and nested
+          content. We should probably build out detailed examples to ensure
+          all content works as expected when nested within list items, even
+          when nested multiple levels deep.
+        </p>
+        <ul>
+          <li>Here are a few sub-items.</li>
+          <li>Another sub-item in a nested list</li>
+          <li>
+            <p>
+              A third nested list item it could also contain nested content,
+              such as a short code snippet:
+            </p>
+            <pre>
+              <code>A short code snippet</code>
+            </pre>
+          </li>
+          <li>
+            <p>A fourth nested list item</p>
+            <ul>
+              <li>
+                The first item in a list nested three levels deep
+                <ul>
+                  <li>We have a few different bullet styles</li>
+                  <li>
+                    These nested lists show the extent of them
+                    <ul>
+                      <li>
+                        Further nesting, if you really want to use it,
+                        doesn't have different bullets
+                        <ul>
+                          <li>
+                            An example bullet in an unreasonably deep level
+                            of nesting
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>Item back up at the fourth level</li>
+                </ul>
+              </li>
+              <li>
+                <p>Another third-level nested list item</p>
+                <p className="alert alert-info" role="alert">
+                  <strong>Note</strong>: This list item has a nested note,
+                  too.
+                </p>
+              </li>
+              <li>
+                <p>Last nested item I promise</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          List item number four, with a considerable amount of text that
+          should probably wrap to a newline, as this line is too long not to
+          wrap. List items should accommodate have any kind of content
+          nested within them, an image is shown nested in this one.
+        </p>
+        <p>
+          <img
+            src="https://picsum.photos/300/150/?image=1075"
+            alt="Placeholder image"
+          />
+        </p>
+      </li>
+      <li>
+        <p>
+          A fifth list item, again with paragraph text. Certain Vault
+          backends utilize plugins to extend their functionality outside of
+          what is available in the core Vault code. Often times these
+          backends will provide both builtin plugins and a mechanism for
+          executing external plugins.
+        </p>
+      </li>
+    </ul>
+    <h2>
+      <a
+        name="lists-ordered"
+        className="__permalink-h"
+        href="#lists-ordered"
+      >
+        &raquo;
+      </a>
+      Lists Ordered
+    </h2>
+    <p>
+      An extremely basic example of an ordered list looks something like
+      this:
+    </p>
+    <ol>
+      <li>One list item, could be short</li>
+      <li>A second list item, also not long</li>
+      <li>
+        Third list item, with a bit more detail that might make it wrap to
+        two lines
+      </li>
+      <li>
+        List item number four, with a considerable amount of text that
+        should probably wrap to a newline, as this line is too long not to
+        wrap
+      </li>
+      <li>A fifth list item, short again</li>
+      <li>
+        Ordered lists should have a maximum of 99 items. The 100th item's
+        bullet will overflow the space designated for the list bullet.
+      </li>
+    </ol>
+    <p>
+      A more complex example of an ordered list looks something like this:
+    </p>
+    <ol>
+      <li>
+        <p>
+          Multi-paragraph list item. Certain Vault backends utilize plugins
+          to extend their functionality outside of what is available in the
+          core Vault code. Often times these backends will provide both
+          builtin plugins and a mechanism for executing external plugins.
+        </p>
+        <p>
+          This is another paragraph of text, nested within the first list
+          item. External plugins, on the other hand, are not shipped with
+          the Vault binary and must be registered to Vault by a privileged
+          Vault user. This section of the documentation will describe the
+          architecture and security of external plugins.
+        </p>
+      </li>
+      <li>
+        <p>
+          A second list item, also with multiple paragraphs and nested
+          content. Code blocks can be nested within list items.
+        </p>
+        <pre>
+          <code>
+            $ vault write code/block/example/myplugin-database-plugin \
+            sha_256=&lt;expected SHA256 Hex value of the plugin binary&gt; \
+            command="myplugin" Success! Data written to:
+            code/block/example/myplugin-database-plugin
+          </code>
+        </pre>
+      </li>
+      <li>
+        <p>
+          Third list item, again with multiple paragraphs and nested
+          content. We should probably build out detailed examples to ensure
+          all content works as expected when nested within list items, even
+          when nested multiple levels deep.
+        </p>
+        <ol>
+          <li>Here are a few sub-items.</li>
+          <li>Another sub-item in a nested list</li>
+          <li>
+            <p>
+              A third nested list item it could also contain nested content,
+              such as a short code snippet:
+            </p>
+            <pre>
+              <code>A short code snippet</code>
+            </pre>
+          </li>
+          <li>
+            <p>A fourth nested list item</p>
+            <ol>
+              <li>
+                The first item in a list nested three levels deep
+                <ol>
+                  <li>We have a few different bullet styles</li>
+                  <li>
+                    These nested lists show the extent of them
+                    <ol>
+                      <li>
+                        Further nesting, if you really want to use it,
+                        doesn't have different bullets
+                        <ol>
+                          <li>
+                            An example bullet in an unreasonably deep level
+                            of nesting
+                          </li>
+                        </ol>
+                      </li>
+                    </ol>
+                  </li>
+                  <li>Item back up at the fourth level</li>
+                </ol>
+              </li>
+              <li>
+                <p>Another third-level nested list item</p>
+                <p className="alert alert-info" role="alert">
+                  <strong>Note</strong>: This list item has a nested note,
+                  too.
+                </p>
+              </li>
+              <li>
+                <p>Last nested item I promise</p>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          List item number four, with a considerable amount of text that
+          should probably wrap to a newline, as this line is too long not to
+          wrap. List items should accommodate have any kind of content
+          nested within them, an image is shown nested in this one.
+        </p>
+        <p>
+          <img
+            src="https://picsum.photos/300/150/?image=1075"
+            alt="Placeholder image"
+          />
+        </p>
+      </li>
+      <li>
+        <p>
+          A fifth list item, again with paragraph text. Certain Vault
+          backends utilize plugins to extend their functionality outside of
+          what is available in the core Vault code. Often times these
+          backends will provide both builtin plugins and a mechanism for
+          executing external plugins.
+        </p>
+      </li>
+    </ol>
+    <h2>
+      <a name="code-blocks" className="__permalink-h" href="#code-blocks">
+        &raquo;
+      </a>
+      Code Blocks
+    </h2>
+    <h6>
+      <a
+        name="inline-code-1"
+        className="__permalink-h"
+        href="#inline-code-1"
+      >
+        &raquo;
+      </a>
+      Inline Code
+    </h6>
+    <p>
+      External plugins, on the other hand, are not shipped with the{' '}
+      <code>vault</code> binary and must be registered to Vault by a
+      privileged Vault user with <code>vault write</code>. This section of
+      the documentation will describe the architecture and security of
+      external plugins.
+    </p>
+    <h6>
+      <a
+        name="code-snippets"
+        className="__permalink-h"
+        href="#code-snippets"
+      >
+        &raquo;
+      </a>
+      Code Snippets
+    </h6>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and must be registered to Vault by a privileged Vault user.
+      This section of the documentation will describe the architecture and
+      security of external plugins.
+    </p>
+    <pre>
+      <code>
+        $ vault write code/block/example/myplugin-database-plugin \
+        sha_256=&lt;expected SHA256 Hex value of the plugin binary&gt; \
+        command="myplugin" Success! Data written to:
+        code/block/example/myplugin-database-plugin
+      </code>
+    </pre>
+    <h6>
+      <a
+        name="syntax-highlighting"
+        className="__permalink-h"
+        href="#syntax-highlighting"
+      >
+        &raquo;
+      </a>
+      Syntax Highlighting
+    </h6>
+    <p>
+      It would be amazing to be able to show syntax highlighting for
+      supported languages in this section as well.
+    </p>
+    <div className="highlight">
+      <pre className="highlight javascript">
+        <code>
+          <span className="p">{'{'}</span>
+          <span className="s2">"sub"</span>
+          <span className="p">:</span>{' '}
+          <span className="s2">"$SERVICE_ACCOUNT"</span>
+          <span className="p">,</span>
+          <span className="s2">"aud"</span>
+          <span className="p">:</span>{' '}
+          <span className="s2">"vault/$ROLE"</span>
+          <span className="p">,</span>
+          <span className="s2">"exp"</span>
+          <span className="p">:</span>{' '}
+          <span className="s2">"$EXPIRATION"</span>{' '}
+          <span className="c1">// optional</span>
+          <span className="p">}</span>
+        </code>
+      </pre>
+    </div>
+    <p className="alert alert-warning" role="alert">
+      <strong>To Do</strong>: Add examples of syntax highlighted examples
+      here for supported languages. Though that may be out of scope for the
+      functionality of this <code>.g-content</code> component?
+    </p>
+    <pre>
+      <code className="undefinedjavascript">
+        var s = 'JavaScript syntax highlighting' alert(s)
+      </code>
+    </pre>
+    <pre>
+      <code className="undefinedpython">
+        s = "Python syntax highlighting" print s
+      </code>
+    </pre>
+    <pre>
+      <code>
+        No language indicated, so no syntax highlighting. But let's throw in
+        a &lt;b&gt;tag&lt;/b&gt;.
+      </code>
+    </pre>
+    <h2>
+      <a name="alert-boxes" className="__permalink-h" href="#alert-boxes">
+        &raquo;
+      </a>
+      Alert Boxes
+    </h2>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and must be registered to Vault by a privileged Vault user.
+      This section of the documentation will describe the architecture and
+      security of external plugins.
+    </p>
+    <p className="alert alert-danger" role="alert">
+      <strong>Note</strong>: Reading the original connection's TLS
+      connection state is not supported in plugins. Please consider reading
+      this example <code>danger</code> note.
+    </p>
+    <p className="alert alert-warning" role="alert">
+      <strong>Note</strong>: Reading the original connection's TLS
+      connection state is not supported in some rare edge cases. Please
+      consider reading this example <code>warning</code> note.
+    </p>
+    <p className="alert alert-info" role="alert">
+      <strong>Note</strong>: Reading the original connection's TLS
+      connection state is also supported in plugins. Please consider reading
+      this example <code>info</code> note.
+    </p>
+    <p className="alert alert-success" role="alert">
+      <strong>Note</strong>: Reading the original connection's TLS
+      connection state is now supported in plugins. Please consider reading
+      this example <code>success</code> note.
+    </p>
+    <p>
+      Alert boxes may contain specific nested content - for example, images
+      and diagrams can be inserted into notes.
+    </p>
+    <p className="alert alert-success" role="alert">
+      <strong>Note</strong>: Here's an example of an image nested within a
+      Note. This might not look half bad with diagrams, as long as they have
+      a transparent background to avoid an unsightly white box.{' '}
+      <img
+        src="https://picsum.photos/300/150/?image=1075"
+        alt="Placeholder image"
+      />{' '}
+      Please consider reading this example <code>success</code> note.
+    </p>
+    <h2>
+      <a name="tables" className="__permalink-h" href="#tables">
+        &raquo;
+      </a>
+      Tables
+    </h2>
+    <p>Colons can be used to align columns.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tables</th>
+          <th align="center">Are</th>
+          <th align="right">Cool</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>col 3 is</td>
+          <td align="center">right-aligned</td>
+          <td align="right">$1600</td>
+        </tr>
+        <tr>
+          <td>col 2 is</td>
+          <td align="center">centered</td>
+          <td align="right">$12</td>
+        </tr>
+        <tr>
+          <td>zebra stripes</td>
+          <td align="center">are neat</td>
+          <td align="right">$1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      There must be at least 3 dashes separating each header cell. The outer
+      pipes (|) are optional, and you don't need to make the raw Markdown
+      line up prettily. You can also use inline Markdown.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Markdown</th>
+          <th>Less</th>
+          <th>Pretty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <em>Still</em>
+          </td>
+          <td>
+            <code>renders</code>
+          </td>
+          <td>
+            <strong>nicely</strong>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <p className="alert alert-warning" role="alert">
+      <strong>To Do</strong>: Add more realistic example. Grab a simple
+      table and a more complex table from some existing Docs or Guides
+      content.
+    </p>
+    <p className="alert alert-warning" role="alert">
+      <strong>To Do</strong>: Build out table styles to more closely match
+      updated design system. First, create mockups for table styles in
+      Components - Atoms file in Figma, then translate to styles. Probably
+      better to update table styles in{' '}
+      <code>global-styles/_tables.css</code> and not in this component.
+    </p>
+    <h2>
+      <a name="blockquotes" className="__permalink-h" href="#blockquotes">
+        &raquo;
+      </a>
+      Blockquotes
+    </h2>
+    <blockquote>
+      <p>
+        Blockquotes are very handy in email to emulate reply text. This line
+        is part of the same quote.
+      </p>
+    </blockquote>
+    <blockquote>
+      <p>
+        This is a very long line that will still be quoted properly when it
+        wraps. Oh boy let's keep writing to make sure this is long enough to
+        actually wrap for everyone. Oh, you can put{' '}
+        <strong>Markdown</strong> into a blockquote, of course{' '}
+        <em>emphasized text</em> doesn't stand out in the same way.
+      </p>
+    </blockquote>
+    <blockquote>
+      <p>This is a quoted code block sample.</p>
+      <pre>
+        <code> This is a code block</code>
+      </pre>
+    </blockquote>
+    <blockquote>
+      <p>This is a quoted image sample.</p>
+      <p>
+        <img
+          src="https://picsum.photos/300/150/?image=1075"
+          alt="Placeholder image"
+        />
+      </p>
+    </blockquote>
+    <blockquote>
+      <p>These are quoted lists, first an unordered example...</p>
+      <ul>
+        <li>
+          First item
+          <ul>
+            <li>Nested item one</li>
+            <li>Nested item two</li>
+            <li>Nested item three</li>
+          </ul>
+        </li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ul>
+      <p>Then an ordered example:</p>
+      <ol>
+        <li>
+          First item
+          <ol>
+            <li>Nested item one</li>
+            <li>Nested item two</li>
+            <li>Nested item three</li>
+          </ol>
+        </li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ol>
+    </blockquote>
+    <p className="alert alert-warning" role="alert">
+      <strong>To Do</strong>: Add more examples of block quote with nested
+      content. Could potentially include any valid markdown, although we'll
+      probably want to recommend against that kind of nesting, so probably
+      not a huge priority.
+    </p>
+    <h2>
+      <a
+        name="horizontal-rules"
+        className="__permalink-h"
+        href="#horizontal-rules"
+      >
+        &raquo;
+      </a>
+      Horizontal Rules
+    </h2>
+    <p>
+      External plugins, on the other hand, are not shipped with the Vault
+      binary and must be registered to Vault by a privileged Vault user.
+      This section of the documentation will describe the architecture and
+      security of external plugins.
+    </p>
+    <hr />
+    <p>
+      Certain Vault backends utilize plugins to extend their functionality
+      outside of what is available in the core Vault code. Often times these
+      backends will provide both builtin plugins and a mechanism for
+      executing external plugins.
+    </p>
+    <hr />
+    <pre>
+      <code>
+        $ vault write code/block/example/myplugin-database-plugin \
+        sha_256=&lt;expected SHA256 Hex value of the plugin binary&gt; \
+        command="myplugin" Success! Data written to:
+        code/block/example/myplugin-database-plugin
+      </code>
+    </pre>
+  </>}
+/>`}</LiveComponent>
