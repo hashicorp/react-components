@@ -26,4 +26,3 @@ function SvgWaypointLogoColor(props) {
 }
 
 export default SvgWaypointLogoColor;
-
