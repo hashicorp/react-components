@@ -1,0 +1,31 @@
+.stackItem {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-width: 200px;
+  justify-content: space-between;
+  padding-right: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.itemLink {
+  display: flex;
+  flex-grow: 1;
+  color: var(--gray-1);
+  & svg {
+    margin-right: 0.75rem;
+  }
+}
+
+.docsLink {
+  flex-shrink: 1;
+  padding: 0 0.5rem;
+  text-align: right;
+  display: flex;
+  color: var(--gray-4);
+}
+
+.productName {
+  text-transform: capitalize;
+}

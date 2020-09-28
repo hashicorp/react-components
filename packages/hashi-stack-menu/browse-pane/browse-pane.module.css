@@ -1,0 +1,28 @@
+.browsePane {
+  position: absolute;
+  top: 100%;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-6);
+  display: none;
+  height: 328px;
+  left: -2rem;
+  right: auto;
+  padding: 2rem 0;
+}
+
+.isOpen {
+  display: flex;
+  flex: 1 1 400px;
+  width: auto;
+  box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

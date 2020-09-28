@@ -1,0 +1,41 @@
+.hashiStackMenu {
+  --hashi-stack-menu-height: 56px;
+  width: 100%;
+  background: var(--gray-7);
+  height: var(--hashi-stack-menu-height);
+}
+
+.nav {
+  height: 100%; /*  --hashi-stack-menu-height */
+  display: flex;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 3;
+  list-style: none;
+  max-width: 900px;
+}
+
+.logoLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+
+  & > svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.menu {
+  display: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: auto;
+
+  @media (--large) {
+    display: flex;
+    justify-content: space-between;
+  }
+}

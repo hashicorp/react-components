@@ -1,0 +1,36 @@
+.navItem {
+  display: flex;
+  flex-direction: column;
+  color: var(--brand);
+  list-style: none;
+  position: relative;
+}
+.navItemActive {
+}
+
+.linkActive {
+  & svg {
+    transform: rotate(180deg);
+  }
+}
+
+.buttonReset {
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.link {
+  position: relative;
+  color: var(--gray-4);
+  padding: 1rem 1.25rem 1rem 1rem;
+  & svg {
+    position: absolute;
+    right: 0.25rem;
+    top: 1.65rem;
+    & path {
+      stroke: var(--gray-4);
+    }
+  }
+}
