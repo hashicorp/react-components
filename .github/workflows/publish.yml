@@ -110,8 +110,7 @@ jobs:
           fetch-depth: 0
       - run: git checkout master
       - run: npm ci --ignore-scripts
-      - run: ./node_modules/.bin/lerna bootstrap
-      - run: npm run packages:build
+      - run: npm run vercel-build
       - name: Register token
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_ACCESS_TOKEN" > ~/.npmrc
