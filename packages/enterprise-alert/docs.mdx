@@ -6,6 +6,16 @@ The `<EnterpriseAlert>` component renders a small alert used to note an enterpri
 
 <LiveComponent>{`<EnterpriseAlert product="terraform" />`}</LiveComponent>
 
+### Props
+
 <PropsTable props={componentProps} />
 
-<KnobsComponent knobs={componentProps} />
+### Inline
+
+Intended to be used as a "tag" after a headline, bullet point, etc.
+
+<LiveComponent>{`<EnterpriseAlert product="consul" inline />`}</LiveComponent>
+
+### Custom Content
+
+<LiveComponent>{`<EnterpriseAlert>custom message</EnterpriseAlert>`}</LiveComponent>
