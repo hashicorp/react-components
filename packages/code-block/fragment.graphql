@@ -1,0 +1,10 @@
+fragment codeBlockFields on SbcCodeBlockRecord {
+  id
+  code
+  chrome
+  language {
+    slug
+    position
+    name
+  }
+}
