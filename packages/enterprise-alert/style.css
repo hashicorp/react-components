@@ -1,0 +1,91 @@
+.g-enterprise-alert {
+  background: var(--DEPRECATED-gray-9);
+  display: flex;
+  align-items: center;
+  padding: 13px 18px;
+  border-radius: 3px;
+
+  & .tag {
+    background: black;
+    color: white;
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 6px 8px;
+    margin-right: 12px;
+  }
+
+  & p {
+    margin: 0;
+  }
+
+  &.consul {
+    & .tag {
+      background: var(--consul);
+    }
+
+    & p a {
+      color: var(--consul);
+    }
+  }
+
+  &.vault {
+    & .tag {
+      background: var(--vault);
+    }
+
+    & p a {
+      color: var(--vault);
+    }
+  }
+
+  &.terraform {
+    & .tag {
+      background: var(--terraform);
+    }
+
+    & p a {
+      color: var(--terraform);
+    }
+  }
+
+  &.nomad {
+    & .tag {
+      background: var(--nomad);
+    }
+
+    & p a {
+      color: var(--nomad);
+    }
+  }
+
+  &.packer {
+    & .tag {
+      background: var(--packer);
+    }
+
+    & p a {
+      color: var(--packer);
+    }
+  }
+
+  &.vagrant {
+    & .tag {
+      background: var(--vagrant);
+    }
+
+    & p a {
+      color: var(--vagrant);
+    }
+  }
+
+  &.inline {
+    background: none;
+    padding: 0 7px;
+    display: inline-flex;
+
+    & .tag {
+      margin-right: 0;
+      background: #333;
+    }
+  }
+}
