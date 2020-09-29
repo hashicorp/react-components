@@ -21,7 +21,7 @@
     type: 'string',
     description: 'Color theme to match a specific product',
     control: 'select',
-    options: ['consul', 'terraform', 'nomad', 'vault'],
+    options: ['consul', 'terraform', 'nomad', 'vault', 'red', 'blue'],
   },
   linkText: {
     type: 'string',
