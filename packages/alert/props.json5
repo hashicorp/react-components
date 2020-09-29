@@ -37,7 +37,7 @@
     defaultValue: 'vault-gray',
   },
   textColor: {
-    description: 'Background color of the text',
+    description: 'Background color of the text - default is `light`',
     type: 'string',
     control: 'select',
     options: ['dark', 'light'],
