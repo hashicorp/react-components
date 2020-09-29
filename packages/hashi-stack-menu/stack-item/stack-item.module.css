@@ -5,15 +5,23 @@
   width: 100%;
   min-width: 200px;
   justify-content: space-between;
-  padding: 0;
+  padding-right: 2rem;
+  margin-bottom: 0.25rem;
 }
 
 .itemLink {
-  display: block;
-  width: 100%;
+  display: flex;
+  color: var(--gray-1);
+  & svg {
+    margin-right: 0.75rem;
+  }
 }
 
 .docsLink {
-  display: block;
-  width: 100%;
+  display: flex;
+  color: var(--gray-4);
+}
+
+.productName {
+  text-transform: capitalize;
 }

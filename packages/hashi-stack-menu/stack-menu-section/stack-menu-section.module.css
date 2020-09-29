@@ -4,7 +4,6 @@
   display: flex;
   flex-wrap: wrap;
   min-width: 540px;
-
   &:last-of-type {
     border-right: none;
     min-width: 460px;
@@ -13,9 +12,14 @@
 
 .stackGroup {
   width: auto;
+  height: auto;
+  height: 100%;
+  max-height: calc(328px / 2);
   padding: 0;
   margin: 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .stackGroupHeading {
@@ -24,11 +28,11 @@
   letter-spacing: 0.06rem;
   margin: 0;
   width: 100%;
-  color: var(--gray-4);
+  color: var(--gray-2);
 }
 
 .stackGroupLinkList {
-  padding: 0;
+  padding: 1.25rem 0;
   margin: 0;
   width: 100%;
 }

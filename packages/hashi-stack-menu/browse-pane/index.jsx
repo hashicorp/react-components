@@ -1,20 +1,20 @@
-import StackMenuSection, { StackGroup } from '../stack-menu-section'
-import styles from './browse-menu.module.css'
+import StackMenuSection from '../stack-menu-section'
+import styles from './browse-pane.module.css'
 
-export default function BrowseMenu({ isOpen, children }) {
+export default function BrowsePane({ isOpen, children }) {
   return (
-    <section className={`${styles.browseMenu} ${isOpen ? styles.isOpen : ''}`}>
+    <section className={`${styles.browsePane} ${isOpen ? styles.isOpen : ''}`}>
       {children}
     </section>
   )
 }
 
-export function ProductBrowseMenu({ isOpen }) {
+export function ProductBrowsePane({ isOpen }) {
   return (
-    <BrowseMenu isOpen={isOpen}>
+    <BrowsePane isOpen={isOpen}>
       <StackMenuSection groups={DEFAULT_MENU_DATA.product} />
       <StackMenuSection groups={DEFAULT_MENU_DATA.platform} />
-    </BrowseMenu>
+    </BrowsePane>
   )
 }
 
@@ -68,7 +68,7 @@ const DEFAULT_MENU_DATA = {
       title: 'Applications',
       items: [
         {
-          platform: 'nomad',
+          product: 'nomad',
           url: 'https://www.nomadproject.io',
           docsLink: 'https://www.nomadproject.io/docs',
         },

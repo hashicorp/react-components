@@ -1,19 +1,15 @@
 import styles from './hashi-stack-menu.module.css'
+import { useState } from 'react'
 import Link from 'next/link'
 import Logo from './assets/logo'
 import NavItem from './nav-item'
-import { ProductBrowseMenu } from './browse-menu'
-import { useState } from 'react'
+import { ProductBrowsePane } from './browse-pane'
 
-export default function HashiStackMenu({ constrainWidth, children }) {
+export default function HashiStackMenu() {
   const [activeNavItem, setActiveNavItem] = useState('')
   const isActiveNavItem = (key) => activeNavItem === NAV_ITEM_TITLES[key]
   return (
-    <header
-      className={`${styles.hashiStackMenu} ${
-        constrainWidth ? `g-grid-container` : ''
-      }`}
-    >
+    <header className={styles.hashiStackMenu}>
       <nav className={styles.nav}>
         <Link href="/">
           <a className={styles.logoLink}>
@@ -30,7 +26,7 @@ export default function HashiStackMenu({ constrainWidth, children }) {
             }
             active={isActiveNavItem('a')}
           >
-            <ProductBrowseMenu isOpen={isActiveNavItem('a')} />
+            <ProductBrowsePane isOpen={isActiveNavItem('a')} />
           </NavItem>
           <NavItem title={NAV_ITEM_TITLES['b']} linkUrl={''} />
           <NavItem title={NAV_ITEM_TITLES['c']} linkUrl={''} />
