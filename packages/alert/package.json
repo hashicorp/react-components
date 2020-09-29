@@ -1,0 +1,22 @@
+{
+  "name": "@hashicorp/react-alert",
+  "description": "A small alert banner with a link",
+  "version": "2.0.3",
+  "author": "HashiCorp",
+  "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert%22",
+  "contributors": [
+    "Jeff Escalante"
+  ],
+  "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/alert",
+  "license": "MPL-2.0",
+  "main": "index.jsx",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/alert"
+  },
+  "style": "style.css"
+}

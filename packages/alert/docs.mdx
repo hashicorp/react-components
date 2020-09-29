@@ -1,0 +1,28 @@
+---
+componentName: 'Alert'
+---
+
+The `<Alert>` component renders a small alert banner with a link to another page. It is often used to redirect users to a new release or announcement.
+
+<LiveComponent>{`<Alert
+  url="#"
+  tag="New"
+  tagColor="terraform-purple"
+  text="Terraform Collaboration for Everyone"
+  textColor="dark"
+/>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Playground
+
+<KnobsComponent
+  knobs={{
+    tag: componentProps.tag,
+    text: componentProps.text,
+    tagColor: componentProps.tagColor,
+    textColor: componentProps.textColor,
+  }}
+/>
