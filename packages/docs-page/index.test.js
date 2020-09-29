@@ -3,6 +3,13 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import DocsPage from './'
 
+// TODO: this test needs to be rewritten. we should be testing:
+// - passes `head` prop to `HashiHead`
+// - passes `sidenav` and `product` props to `DocsSidenav`
+// - passes `children` and `product` to `Content`
+// - if there's a resourceURL, displays "edit this page" witn accurate URL
+// - if there are one or more `h2` in the children content, displays "jump to section" with correct headlines
+
 describe('<DocsPage />', () => {
   const templateHTML = '<template></template>'
   const sidebarHTML =
