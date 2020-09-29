@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import Tippy from '@tippy.js/react'
 import hljs from 'highlight.js/lib/highlight'
 import bash from 'highlight.js/lib/languages/bash'
@@ -22,7 +22,7 @@ class CodeBlock extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tooltip: 'Copy to Clipboard'
+      tooltip: 'Copy to Clipboard',
     }
 
     this.copyToClipboard = this.copyToClipboard.bind(this)
@@ -56,7 +56,7 @@ class CodeBlock extends Component {
         <ol className={this.props.prefix}>
           {hljs
             .highlightAuto(this.props.code, [
-              this.props.language ? this.props.language : null
+              this.props.language ? this.props.language : null,
             ])
             .value.split('\n')
             .map((l, stableIdx) => (

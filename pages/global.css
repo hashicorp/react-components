@@ -20,6 +20,7 @@
 @import '../packages/content/style.css';
 @import '../packages/enterprise-alert/style.css';
 @import '../packages/text-split/styles/index.css';
+@import '../packages/code-block/style.css';
 
 body {
   margin: 0;

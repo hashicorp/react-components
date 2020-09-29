@@ -50,7 +50,7 @@
   }
 
   & > span {
-    background-image: url('/img/clipboard.svg');
+    background-image: url('./img/clipboard.svg');
     background-color: white;
     background-size: 14px 15px;
     border-radius: 4px;
