@@ -6,6 +6,7 @@
   features: {
     type: 'array',
     description: 'An array detailing each of the features - the icon should be a url',
-    itemType: '{ title: string, content: string, icon: string }',
+    itemType: '{ title: string, content: string, icon: string, link: { type: string, text: string, url: string } }',
   },
+
 }
