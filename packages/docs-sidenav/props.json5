@@ -3,7 +3,7 @@
     type: 'string',
     description: 'Name of the current product for color theming',
     defaultValue: 'default',
-    options: ['default', 'nomad', 'consul', 'terraform', 'packer', 'vagrant'],
+    options: ['default', 'nomad', 'consul', 'terraform', 'packer', 'vagrant', 'red', 'blue'],
   },
   currentPage: {
     type: 'string',

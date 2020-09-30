@@ -22,6 +22,14 @@
     --highlight-color: var(--vagrant);
   }
 
+  &.theme-red {
+    --highlight-color: var(--red);
+  }
+
+  &.theme-blue {
+    --highlight-color: var(--blue);
+  }
+
   & > .nav {
     width: 275px;
   }
