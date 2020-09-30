@@ -1,25 +1,45 @@
 import styles from './nav-item.module.css'
-import slugify from 'slugify'
 import DropdownCarat from '../assets/icons/icon-dropdown'
 import { useRef, useEffect } from 'react'
+import BrowsePane from '../browse-pane'
+import StackMenuSection from '../stack-menu-section'
 
-export default function NavItem({
+export default function NavItem({ item, paneOpen, onPaneOpen, onPaneClose }) {
+  return item.sections ? (
+    <NavItemElement
+      title={item.title}
+      active={paneOpen}
+      toggleBrowsePane={paneOpen === false ? onPaneOpen : onPaneClose}
+    >
+      <BrowsePane isOpen={paneOpen}>
+        {item.sections.map((section) => (
+          <StackMenuSection
+            key={JSON.stringify(section)}
+            groups={section.groups}
+          />
+        ))}
+      </BrowsePane>
+    </NavItemElement>
+  ) : (
+    <NavItemElement title={item.title} linkUrl={item.linkUrl} />
+  )
+}
+
+function NavItemElement({
   active,
-  handleActivate,
+  toggleBrowsePane,
   children,
   linkUrl,
   title,
 }) {
-  const slug = slugify(title, { lower: true })
-
   return (
     <li
-      className={`${styles.navItem} ${slug}${
+      className={`${styles.navItem} ${
         active ? ` ${styles.navItemActive}` : ''
       }`}
     >
-      {handleActivate ? (
-        <DropdownButton active={active} onClick={() => handleActivate(slug)}>
+      {toggleBrowsePane ? (
+        <DropdownButton active={active} onClick={toggleBrowsePane}>
           {title}
         </DropdownButton>
       ) : (

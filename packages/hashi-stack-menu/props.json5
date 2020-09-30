@@ -1,0 +1,13 @@
+{
+  items: {
+    type: 'navItem[]',
+    required: true,
+    description: 'The array of all data to be rendered',
+    defaultValue: 'My checkbox label',
+  },
+  navItem: {
+    type: 'object',
+    required: true,
+    description: 'A top-level nav item that may optionally render a `<BrowsePane />` when activated',
+  },
+}
