@@ -15,6 +15,18 @@
   &.terraform {
     --highlight-color: var(--terraform);
   }
+  &.packer {
+    --highlight-color: var(--packer);
+  }
+  &.vagrant {
+    --highlight-color: var(--vagrant);
+  }
+  &.red {
+    --highlight-color: var(--red);
+  }
+  &.blue {
+    --highlight-color: var(--blue);
+  }
 }
 
 .g-content {
@@ -83,7 +95,7 @@
   }
 
   /*
-   *  
+   *
    *  Code
    *
    */
