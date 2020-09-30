@@ -14,7 +14,7 @@
     description: 'Description text',
     required: true,
   },
-  background: {
+  theme: {
     type: 'string',
     description: 'Color of background the CTA is on top of, default is `light`.',
     options: ['light', 'gray', 'dark'],
@@ -30,6 +30,8 @@
       'consul',
       'packer',
       'vagrant',
+      'red',
+      'blue',
     ],
   },
   links: {
