@@ -1,19 +1,19 @@
 .stackSection {
   border-right: 1px solid var(--gray-6);
-  padding: 0 3rem;
   display: flex;
   flex-wrap: wrap;
-  min-width: 540px;
+
+  justify-content: space-between;
+  padding: 0 2rem;
+
   &:last-of-type {
     border-right: none;
-    min-width: 460px;
   }
 }
 
 .stackGroup {
-  width: auto;
-  height: auto;
   height: 100%;
+
   max-height: calc(328px / 2);
   padding: 0;
   margin: 0;
