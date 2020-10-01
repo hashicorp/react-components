@@ -15,7 +15,7 @@
 }
 
 .docsLink {
-  padding: 0 0.5rem;
+  padding: 0 2rem;
   text-align: right;
   display: flex;
   color: var(--gray-4);
