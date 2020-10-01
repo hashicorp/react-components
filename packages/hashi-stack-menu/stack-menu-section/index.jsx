@@ -1,9 +1,15 @@
 import styles from './stack-menu-section.module.css'
 import StackItem from '../stack-item'
 
-export default function StackMenuSection({ groups }) {
+export default function StackMenuSection({ groups, visiblyNewSection }) {
   return (
-    <menu className={styles.stackSection}>
+    <menu
+      className={
+        visiblyNewSection
+          ? styles.stackMenuSectionPlusDivider
+          : styles.stackMenuSection
+      }
+    >
       {groups.map((g) => (
         <StackGroup key={g.title} heading={g.title} items={g.items} />
       ))}

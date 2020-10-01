@@ -1,24 +1,43 @@
-.stackSection {
-  border-right: 1px solid var(--gray-6);
+.stackMenuSection {
   display: flex;
-  flex-wrap: wrap;
-
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 0 2rem;
+}
 
-  &:last-of-type {
-    border-right: none;
+.stackMenuSectionPlusDivider {
+  composes: stackMenuSection;
+  position: relative;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  @media (min-width: 1600px) {
+    padding-top: 0;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    background: var(--gray-6);
+    top: -0.75rem;
+    left: 2rem;
+    height: 1px;
+    width: 80%;
+
+    @media (min-width: 1600px) {
+      left: -0.75rem;
+      height: 80%;
+      width: 1px;
+    }
   }
 }
 
 .stackGroup {
   height: 100%;
-
-  max-height: calc(328px / 2);
   padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
 }
 

@@ -17,9 +17,12 @@ export default function NavItem({
       toggleBrowsePanel={panelOpen === false ? onPanelOpen : onPanelClose}
     >
       <BrowsePanel isOpen={panelOpen}>
-        {item.sections.map((section) => (
+        {item.sections.map((section, idx) => (
           <StackMenuSection
             key={JSON.stringify(section)}
+            visiblyNewSection={
+              idx > 0 && item.sections[idx - 1].type !== section.type
+            }
             groups={section.groups}
           />
         ))}
@@ -38,11 +41,7 @@ function NavItemElement({
   title,
 }) {
   return (
-    <li
-      className={`${styles.navItem} ${
-        active ? ` ${styles.navItemActive}` : ''
-      }`}
-    >
+    <li className={styles.navItem}>
       {toggleBrowsePanel ? (
         <DropdownButton active={active} onClick={toggleBrowsePanel}>
           {title}

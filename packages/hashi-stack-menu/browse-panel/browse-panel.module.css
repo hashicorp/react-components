@@ -4,16 +4,23 @@
   background: var(--white);
   border-bottom: 1px solid var(--gray-6);
   display: none;
-  height: 328px;
+  min-height: 328px;
+  height: auto;
   left: -2rem;
   right: auto;
-  padding: 2rem 0;
+  padding: 2rem 0 0 0;
 }
 
 .isOpen {
   display: flex;
-  width: 60vw;
+  width: 360px;
+  flex-direction: column;
   box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
+  @media (min-width: 1600px) {
+    flex-direction: row;
+    width: 50vw;
+    justify-content: space-around;
+  }
 }
 
 .visually-hidden {
