@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   color: var(--gray-1);
+  position: relative;
 }
 
 .docsLink {
@@ -19,6 +20,7 @@
   text-align: right;
   display: flex;
   color: var(--gray-4);
+  position: relative;
 }
 
 .productName {
@@ -28,4 +30,21 @@
 .productIcon {
   margin-right: 0.75rem;
   max-width: 22px;
+}
+
+.badge {
+  position: absolute;
+  right: -1rem;
+  top: 6px;
+  padding: 1.5px 5px 2.5px 5px;
+  border-radius: 2px;
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  line-height: 1.272727273em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--gray-2);
+  color: var(--white);
 }

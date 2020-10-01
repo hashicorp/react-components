@@ -102,6 +102,7 @@ export const DEFAULT_HASHISTACK_DATA = [
           {
             product: 'nomad',
             url: 'https://www.nomadproject.io',
+            badge: 'New',
             iconUrl:
               'https://www.hashicorp.com/img/product-logos/nomad-icon-color.svg',
             docsLink: 'https://www.nomadproject.io/docs',

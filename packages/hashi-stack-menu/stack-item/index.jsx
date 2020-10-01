@@ -1,7 +1,7 @@
 import styles from './stack-item.module.css'
 
 export default function StackItem({ item }) {
-  const { product, platform, url, docsLink, iconUrl } = item
+  const { product, platform, url, docsLink, iconUrl, badge } = item
 
   if (product)
     return (
@@ -20,6 +20,7 @@ export default function StackItem({ item }) {
         </a>
         <a href={docsLink} className={styles.docsLink}>
           <span>Docs</span>
+          {badge && <span className={styles.badge}>{badge}</span>}
         </a>
       </li>
     )
@@ -28,6 +29,7 @@ export default function StackItem({ item }) {
       <li className={styles.stackItem}>
         <a className={styles.itemLink} href={url}>
           <span className={`g-type-body-small-strong`}>{platform}</span>
+          {badge && <span className={styles.badge}>{badge}</span>}
         </a>
       </li>
     )
