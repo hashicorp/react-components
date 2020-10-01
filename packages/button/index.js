@@ -82,6 +82,5 @@ Button.defaultProps = {
 }
 
 Button.fragmentSpec = { fragment }
-Button._name = 'Button'
 
 export default Button
