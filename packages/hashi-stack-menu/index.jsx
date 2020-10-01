@@ -115,6 +115,10 @@ export const DEFAULT_HASHISTACK_DATA = [
             url: 'https://cloud.hashicorp.com',
           },
           {
+            platform: 'HashiCorp Consul Service on Azure (HCS)',
+            url: 'https://www.hashicorp.com/products/consul/service-on-azure',
+          },
+          {
             platform: 'Terraform Cloud',
             url: 'https://app.terraform.io',
           },
