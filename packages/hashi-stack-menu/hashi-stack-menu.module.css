@@ -34,7 +34,7 @@
   height: 100%;
   width: auto;
 
-  @media (min-width: 1400px) {
+  @media (--large) {
     display: flex;
     justify-content: space-between;
   }
