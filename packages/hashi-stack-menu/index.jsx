@@ -115,7 +115,7 @@ export const DEFAULT_HASHISTACK_DATA = [
             url: 'https://cloud.hashicorp.com',
           },
           {
-            platform: 'HashiCorp Consul Service on Azure (HCS)',
+            platform: 'HashiCorp Consul Service on Azure',
             url: 'https://www.hashicorp.com/products/consul/service-on-azure',
           },
           {

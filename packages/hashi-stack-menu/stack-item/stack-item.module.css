@@ -5,18 +5,16 @@
   width: 100%;
   min-width: 200px;
   justify-content: space-between;
-  padding-right: 2rem;
   margin-bottom: 0.25rem;
 }
 
 .itemLink {
   display: flex;
-  flex-grow: 1;
+  justify-content: space-between;
   color: var(--gray-1);
 }
 
 .docsLink {
-  flex-shrink: 1;
   padding: 0 0.5rem;
   text-align: right;
   display: flex;
