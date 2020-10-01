@@ -1,24 +1,29 @@
 import styles from './nav-item.module.css'
 import DropdownCarat from '../assets/icons/icon-dropdown'
 import { useRef, useEffect } from 'react'
-import BrowsePane from '../browse-pane'
+import BrowsePanel from '../browse-panel'
 import StackMenuSection from '../stack-menu-section'
 
-export default function NavItem({ item, paneOpen, onPaneOpen, onPaneClose }) {
+export default function NavItem({
+  item,
+  panelOpen,
+  onPanelOpen,
+  onPanelClose,
+}) {
   return item.sections ? (
     <NavItemElement
       title={item.title}
-      active={paneOpen}
-      toggleBrowsePane={paneOpen === false ? onPaneOpen : onPaneClose}
+      active={panelOpen}
+      toggleBrowsePanel={panelOpen === false ? onPanelOpen : onPanelClose}
     >
-      <BrowsePane isOpen={paneOpen}>
+      <BrowsePanel isOpen={panelOpen}>
         {item.sections.map((section) => (
           <StackMenuSection
             key={JSON.stringify(section)}
             groups={section.groups}
           />
         ))}
-      </BrowsePane>
+      </BrowsePanel>
     </NavItemElement>
   ) : (
     <NavItemElement title={item.title} linkUrl={item.linkUrl} />
@@ -27,7 +32,7 @@ export default function NavItem({ item, paneOpen, onPaneOpen, onPaneClose }) {
 
 function NavItemElement({
   active,
-  toggleBrowsePane,
+  toggleBrowsePanel,
   children,
   linkUrl,
   title,
@@ -38,8 +43,8 @@ function NavItemElement({
         active ? ` ${styles.navItemActive}` : ''
       }`}
     >
-      {toggleBrowsePane ? (
-        <DropdownButton active={active} onClick={toggleBrowsePane}>
+      {toggleBrowsePanel ? (
+        <DropdownButton active={active} onClick={toggleBrowsePanel}>
           {title}
         </DropdownButton>
       ) : (
@@ -54,7 +59,7 @@ function DropdownButton({ active, onClick, children }) {
   return (
     <button
       type="button"
-      className={`${styles.buttonReset}  g-type-buttons-and-standalone-links ${
+      className={`${styles.buttonReset} g-type-buttons-and-standalone-links ${
         styles.link
       } ${active ? ` ${styles.linkActive}` : ''}`}
       onClick={onClick}

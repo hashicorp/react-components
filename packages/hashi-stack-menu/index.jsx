@@ -4,16 +4,10 @@ import Link from 'next/link'
 import Logo from './assets/logo'
 import NavItem from './nav-item'
 
-const H = () => <HashiStackMenu items={items} />
-
 function HashiStackMenu({ items }) {
-  const [activeNavKey, setActiveNavKey] = useState('')
-  // console.log(activeNavKey)
+  const [activePanelKey, setActivePanelKey] = useState('')
+  const isActive = (a) => activePanelKey === a
 
-  const isActive = (a) => activeNavKey === a
-  function handleSet(a) {
-    setActiveNavKey(a)
-  }
   return (
     <header className={styles.hashiStackMenu}>
       <nav className={styles.nav}>
@@ -27,9 +21,9 @@ function HashiStackMenu({ items }) {
             <NavItem
               key={`${item.title}-${idx}`}
               item={item}
-              paneOpen={isActive(item.title)}
-              onPaneOpen={() => handleSet(item.title)}
-              onPaneClose={() => setActiveNavKey('')}
+              panelOpen={isActive(item.title) || false}
+              onPanelOpen={() => setActivePanelKey(item.title)}
+              onPanelClose={() => setActivePanelKey('')}
             />
           ))}
         </NavMenu>
@@ -42,8 +36,9 @@ function NavMenu({ children }) {
   return <menu className={styles.menu}>{children}</menu>
 }
 
-const PRODUCT_BROWSE_PANE_DATA = [
+export const DEFAULT_HASHISTACK_DATA = [
   {
+    type: 'product',
     groups: [
       {
         title: 'Infrastructure',
@@ -51,16 +46,22 @@ const PRODUCT_BROWSE_PANE_DATA = [
           {
             product: 'packer',
             url: 'https://www.packer.io',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/packer-icon-color.svg',
             docsLink: 'https://www.packer.io/docs',
           },
           {
             product: 'terraform',
             url: 'https://www.terraform.io',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
             docsLink: 'https://www.terraform.io/docs/index.html',
           },
           {
             product: 'vagrant',
             url: 'https://www.vagrantup.com',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/vagrant-icon-color.svg',
             docsLink: 'https://www.vagrantup.com/docs',
           },
         ],
@@ -71,6 +72,8 @@ const PRODUCT_BROWSE_PANE_DATA = [
           {
             product: 'vault',
             url: 'https://www.vaultproject.io',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/vault-icon-color.svg',
             docsLink: 'https://www.vaultproject.io/docs',
           },
         ],
@@ -80,7 +83,9 @@ const PRODUCT_BROWSE_PANE_DATA = [
         items: [
           {
             product: 'consul',
-            url: 'https://www.consul.io/',
+            url: 'https://www.consul.io',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/consul-icon-color.svg',
             docsLink: 'https://www.consul.io/docs',
           },
         ],
@@ -91,6 +96,8 @@ const PRODUCT_BROWSE_PANE_DATA = [
           {
             product: 'nomad',
             url: 'https://www.nomadproject.io',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/nomad-icon-color.svg',
             docsLink: 'https://www.nomadproject.io/docs',
           },
         ],
@@ -98,6 +105,7 @@ const PRODUCT_BROWSE_PANE_DATA = [
     ],
   },
   {
+    type: 'platform',
     groups: [
       {
         title: 'Cloud',
@@ -129,10 +137,11 @@ const PRODUCT_BROWSE_PANE_DATA = [
 const items = [
   {
     title: 'Browse Products',
-    sections: PRODUCT_BROWSE_PANE_DATA,
+    sections: DEFAULT_HASHISTACK_DATA,
   },
   { title: 'HashiCorp Cloud Platform (HCP)', linkUrl: '#' },
   { title: 'About HashiCorp', linkUrl: '#' },
 ]
 
+const H = () => <HashiStackMenu items={items} currentSite={'nomad'} />
 export default H

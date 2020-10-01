@@ -1,13 +1,13 @@
 {
   items: {
-    type: 'navItem[]',
+    type: 'json',
     required: true,
-    description: 'The array of all data to be rendered',
+    description: 'The array of nav items and their panel data to be rendered',
     defaultValue: 'My checkbox label',
   },
-  navItem: {
-    type: 'object',
-    required: true,
-    description: 'A top-level nav item that may optionally render a `<BrowsePane />` when activated',
+  currentSite: {
+    type: 'string',
+    required: false,
+    description: 'The current product or platform site indicated by name used on the items array; will be matched with the correct item in the `items` array to indicate',
   },
 }
