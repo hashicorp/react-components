@@ -8,14 +8,25 @@
 .stackMenuSectionPlusDivider {
   composes: stackMenuSection;
   position: relative;
+  padding-top: 1rem;
+  margin-top: 1rem;
   @media (min-width: 1600px) {
-    &:before {
-      position: absolute;
-      content: '';
-      height: 80%;
+    padding-top: 0;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    background: var(--gray-6);
+    top: -0.75rem;
+    left: 2rem;
+    height: 1px;
+    width: 80%;
+
+    @media (min-width: 1600px) {
       left: -0.75rem;
+      height: 80%;
       width: 1px;
-      background: var(--gray-6);
     }
   }
 }
