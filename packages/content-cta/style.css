@@ -1,0 +1,80 @@
+.g-content-cta {
+  padding: 28px;
+
+  & h4 {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  & p {
+    margin: 0;
+    max-width: 30em;
+    color: var(--gray-2);
+
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & .links {
+    margin-top: 28px;
+    & a:first-child {
+      margin-right: 16px;
+
+      @media (max-width: 468px) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &.terraform {
+    border: 1px solid var(--terraform-l2);
+    background: var(--terraform-l3);
+
+    & h4,
+    & p > a {
+      color: var(--terraform);
+    }
+  }
+  &.nomad {
+    border: 1px solid var(--nomad-l2);
+    background: var(--nomad-l3);
+    & h4,
+    & p > a {
+      color: var(--nomad);
+    }
+  }
+  &.consul {
+    border: 1px solid var(--consul-l2);
+    background: var(--consul-l3);
+    & h4,
+    & p > a {
+      color: var(--consul);
+    }
+  }
+  &.packer {
+    border: 1px solid var(--packer-l2);
+    background: var(--packer-l3);
+    & h4,
+    & p > a {
+      color: var(--packer);
+    }
+  }
+  &.vault {
+    border: 1px solid var(--vault-l2);
+    background: var(--vault-l3);
+    & h4,
+    & p > a {
+      color: var(--vault);
+    }
+  }
+
+  &.vagrant {
+    border: 1px solid var(--vagrant-l2);
+    background: var(--vagrant-l3);
+    & h4,
+    & p > a {
+      color: var(--vagrant);
+    }
+  }
+}
