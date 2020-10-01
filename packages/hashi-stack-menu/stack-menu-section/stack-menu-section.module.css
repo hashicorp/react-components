@@ -30,28 +30,3 @@
     top: -1rem;
   }
 }
-
-.stackGroup {
-  padding: 0;
-  min-height: 50%;
-  margin-top: 1rem;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.stackGroupHeading {
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 0.06rem;
-  margin: 0;
-  width: 100%;
-  color: var(--gray-2);
-}
-
-.stackGroupLinkList {
-  padding: 1.25rem 0;
-  margin: 0;
-  width: 100%;
-}
