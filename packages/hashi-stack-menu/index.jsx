@@ -67,18 +67,6 @@ export const DEFAULT_HASHISTACK_DATA = [
         ],
       },
       {
-        title: 'Security',
-        items: [
-          {
-            product: 'vault',
-            url: 'https://www.vaultproject.io',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/vault-icon-color.svg',
-            docsLink: 'https://www.vaultproject.io/docs',
-          },
-        ],
-      },
-      {
         title: 'Networking',
         items: [
           {
@@ -90,6 +78,24 @@ export const DEFAULT_HASHISTACK_DATA = [
           },
         ],
       },
+    ],
+  },
+  {
+    type: 'product',
+    groups: [
+      {
+        title: 'Security',
+        items: [
+          {
+            product: 'vault',
+            url: 'https://www.vaultproject.io',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/vault-icon-color.svg',
+            docsLink: 'https://www.vaultproject.io/docs',
+          },
+        ],
+      },
+
       {
         title: 'Applications',
         items: [

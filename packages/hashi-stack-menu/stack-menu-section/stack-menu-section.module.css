@@ -1,24 +1,32 @@
-.stackSection {
-  border-right: 1px solid var(--gray-6);
+.stackMenuSection {
   display: flex;
-  flex-wrap: wrap;
-
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 0 2rem;
+}
 
-  &:last-of-type {
-    border-right: none;
+.stackMenuSectionPlusDivider {
+  composes: stackMenuSection;
+  position: relative;
+  @media (min-width: 1600px) {
+    &:before {
+      position: absolute;
+      content: '';
+      height: 80%;
+      left: -0.75rem;
+      width: 1px;
+      background: var(--gray-6);
+    }
   }
 }
 
 .stackGroup {
   height: 100%;
-
-  max-height: calc(328px / 2);
   padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
 }
 
