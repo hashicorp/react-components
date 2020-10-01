@@ -1,19 +1,31 @@
 .browsePanel {
   position: absolute;
-  top: 100%;
-  background: var(--white);
-  border-bottom: 1px solid var(--gray-6);
   display: none;
-  height: 328px;
-  left: -2rem;
-  right: auto;
-  padding: 2rem 0;
 }
 
 .isOpen {
+  height: 100vw;
+  top: 100%;
+  left: -2rem;
+  right: auto;
   display: flex;
-  width: 60vw;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100vw;
+  max-width: 859px;
+}
+
+.panelInner {
+  display: flex;
   box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  padding: 2rem 0 0 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-6);
+  overflow-y: hidden;
 }
 
 .visually-hidden {

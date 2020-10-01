@@ -5,8 +5,6 @@
   list-style: none;
   position: relative;
 }
-.navItemActive {
-}
 
 .linkActive {
   & svg {

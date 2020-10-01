@@ -5,7 +5,7 @@
   width: 100%;
   min-width: 200px;
   justify-content: space-between;
-  margin-bottom: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .itemLink {
