@@ -1,0 +1,27 @@
+{
+  heading: {
+    type: 'string',
+    required: true,
+  },
+  content: {
+    type: 'string|function',
+    required: true,
+  },
+  product: {
+    type: 'string',
+    control: 'select',
+    options: [
+      'hashicorp',
+      'terraform',
+      'vault',
+      'consul',
+      'nomad',
+      'packer',
+      'vagrant',
+    ],
+  },
+  links: {
+    type: 'array',
+    itemType: '{ url: string, text: string }',
+  },
+}

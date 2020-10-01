@@ -22,6 +22,7 @@
 @import '../packages/text-split/styles/index.css';
 @import '../packages/code-block/style.css';
 @import '../packages/featured-slider/style.css';
+@import '../packages/content-cta/style.css';
 
 body {
   margin: 0;
