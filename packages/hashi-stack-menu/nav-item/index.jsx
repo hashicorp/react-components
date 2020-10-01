@@ -1,25 +1,50 @@
 import styles from './nav-item.module.css'
-import slugify from 'slugify'
 import DropdownCarat from '../assets/icons/icon-dropdown'
 import { useRef, useEffect } from 'react'
+import BrowsePanel from '../browse-panel'
+import StackMenuSection from '../stack-menu-section'
 
 export default function NavItem({
+  item,
+  panelOpen,
+  onPanelOpen,
+  onPanelClose,
+}) {
+  return item.sections ? (
+    <NavItemElement
+      title={item.title}
+      active={panelOpen}
+      toggleBrowsePanel={panelOpen === false ? onPanelOpen : onPanelClose}
+    >
+      <BrowsePanel isOpen={panelOpen}>
+        {item.sections.map((section) => (
+          <StackMenuSection
+            key={JSON.stringify(section)}
+            groups={section.groups}
+          />
+        ))}
+      </BrowsePanel>
+    </NavItemElement>
+  ) : (
+    <NavItemElement title={item.title} linkUrl={item.linkUrl} />
+  )
+}
+
+function NavItemElement({
   active,
-  handleActivate,
+  toggleBrowsePanel,
   children,
   linkUrl,
   title,
 }) {
-  const slug = slugify(title, { lower: true })
-
   return (
     <li
-      className={`${styles.navItem} ${slug}${
+      className={`${styles.navItem} ${
         active ? ` ${styles.navItemActive}` : ''
       }`}
     >
-      {handleActivate ? (
-        <DropdownButton active={active} onClick={() => handleActivate(slug)}>
+      {toggleBrowsePanel ? (
+        <DropdownButton active={active} onClick={toggleBrowsePanel}>
           {title}
         </DropdownButton>
       ) : (
@@ -34,7 +59,7 @@ function DropdownButton({ active, onClick, children }) {
   return (
     <button
       type="button"
-      className={`${styles.buttonReset}  g-type-buttons-and-standalone-links ${
+      className={`${styles.buttonReset} g-type-buttons-and-standalone-links ${
         styles.link
       } ${active ? ` ${styles.linkActive}` : ''}`}
       onClick={onClick}
