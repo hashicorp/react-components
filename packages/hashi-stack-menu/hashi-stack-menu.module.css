@@ -8,7 +8,7 @@
 .nav {
   height: 100%; /*  --hashi-stack-menu-height */
   display: flex;
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 0 0;
   position: relative;
   z-index: 3;
   list-style: none;
