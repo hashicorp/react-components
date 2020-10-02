@@ -6,9 +6,9 @@
   position: relative;
 }
 
-.linkActive {
+.buttonActive {
   & svg {
-    transform: rotate(180deg);
+    transform: rotate(-180deg);
   }
 }
 
@@ -17,6 +17,10 @@
   border-style: none;
   cursor: pointer;
   padding: 0;
+  margin-right: 0.5rem;
+  & svg {
+    transition: 0.3s transform;
+  }
 }
 
 .link {

@@ -60,7 +60,7 @@ function DropdownButton({ active, onClick, children }) {
       type="button"
       className={`${styles.buttonReset} g-type-buttons-and-standalone-links ${
         styles.link
-      } ${active ? ` ${styles.linkActive}` : ''}`}
+      } ${active ? ` ${styles.buttonActive}` : ''}`}
       onClick={onClick}
     >
       {children}
