@@ -19,7 +19,7 @@ export default function NavItem({
       <BrowsePanel isOpen={panelOpen}>
         {item.sections.map((section, idx) => (
           <StackMenuSection
-            key={JSON.stringify(section)}
+            key={JSON.stringify(section.type)}
             visiblyNewSection={
               idx > 0 && item.sections[idx - 1].type !== section.type
             }

@@ -1,28 +1,40 @@
 import styles from './hashi-stack-menu.module.css'
-import { useState } from 'react'
-import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import Logo from './assets/logo'
 import NavItem from './nav-item'
+import slugify from 'slugify'
 
-export default function HashiStackMenu({ items }) {
+export default function HashiStackMenu({ Link, items, onPanelChange }) {
   const [activePanelKey, setActivePanelKey] = useState('')
   const isActive = (a) => activePanelKey === a
+
+  useEffect(() => {
+    if (onPanelChange) {
+      onPanelChange(activePanelKey)
+    }
+  }, [activePanelKey])
 
   return (
     <header className={styles.hashiStackMenu}>
       <nav className={styles.nav}>
-        <Link href="/">
+        {Link ? (
+          <Link href="/">
+            <a className={styles.logoLink}>
+              <Logo />
+            </a>
+          </Link>
+        ) : (
           <a className={styles.logoLink}>
             <Logo />
           </a>
-        </Link>
+        )}
         <NavMenu>
-          {items?.map((item, idx) => (
+          {items?.map((item) => (
             <NavItem
-              key={`${item.title}-${idx}`}
+              key={slugifyToKey(item.title)}
               item={item}
-              panelOpen={isActive(item.title) || false}
-              onPanelOpen={() => setActivePanelKey(item.title)}
+              panelOpen={isActive(slugifyToKey(item.title)) || false}
+              onPanelOpen={() => setActivePanelKey(slugifyToKey(item.title))}
               onPanelClose={() => setActivePanelKey('')}
             />
           ))}
@@ -30,6 +42,10 @@ export default function HashiStackMenu({ items }) {
       </nav>
     </header>
   )
+}
+
+function slugifyToKey(title) {
+  return slugify(title, { lower: true })
 }
 
 function NavMenu({ children }) {
