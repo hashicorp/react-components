@@ -9,4 +9,9 @@
     required: false,
     description: 'An optional callback function run on change of the active panel state',
   },
+  Link: {
+    type: 'component',
+    required: false,
+    description: "An optional prop to pass `next/link` for adding clientside navigation to the site's index page; Link will wrap and anchor tag on the Logo",
+  },
 }
