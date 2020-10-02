@@ -2,12 +2,6 @@
   items: {
     type: 'json',
     required: true,
-    description: 'The array of nav items and their panel data to be rendered',
-    defaultValue: 'My checkbox label',
-  },
-  currentSite: {
-    type: 'string',
-    required: false,
-    description: 'The current product or platform site indicated by name used on the items array; will be matched with the correct item in the `items` array to indicate',
+    description: 'The array of nav items and their applicable browse panel data to be rendered',
   },
 }
