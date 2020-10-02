@@ -64,6 +64,9 @@ function DropdownButton({ active, onClick, children }) {
       onClick={onClick}
     >
       {children}
+      <span className={styles.visuallyHidden}>
+        {active ? 'Close this menu' : 'Open this menu'}
+      </span>
       <DropdownCarat />
     </button>
   )

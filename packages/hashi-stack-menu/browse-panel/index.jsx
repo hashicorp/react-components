@@ -7,8 +7,3 @@ export default function BrowsePanel({ isOpen, children }) {
     </section>
   )
 }
-
-// ToDo: a11y
-// function VisualHiddenSpan({ children }) {
-//   return <span className={styles.visuallyHidden}>{children}</span>
-// }
