@@ -4,4 +4,9 @@
     required: true,
     description: 'The array of nav items and their applicable browse panel data to be rendered',
   },
+  onPanelChange: {
+    type: 'function',
+    required: false,
+    description: 'An optional callback function run on change of the active panel state',
+  },
 }
