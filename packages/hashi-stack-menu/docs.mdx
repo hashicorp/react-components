@@ -88,6 +88,7 @@ componentName: 'HashiStackMenu'
             {
                 platform: 'HashiCorp Cloud Platform (HCP)',
                 url: 'https://cloud.hashicorp.com',
+                badge: 'New'
             },
             {
                 platform: 'HashiCorp Consul Service on Azure',
@@ -121,95 +122,50 @@ componentName: 'HashiStackMenu'
 
 <PropsTable props={componentProps} />
 
-#### Example Props 
+### Example prop usage
+
+To use the `items` prop means providing a lot of JSON data for the component to render. For convenience we have some named exports to assist.
+
+Let's start at the top-level `items` prop.
+
+At this level, the prop data is pretty simple, and is used to render `<NavItem />` components
 
 ```javascript
 const items = [
   {
     title: 'Browse Products',
-    sections: DEFAULT_HASHISTACK_DATA,
+    sections: DEFAULT_MENU_SECTIONS,
   },
-  { title: 'HashiCorp Cloud Platform (HCP)', linkUrl: '#' },
-  { title: 'About HashiCorp', linkUrl: '#' },
+  {
+    title: 'HashiCorp Cloud Platform (HCP)',
+    linkUrl: 'https://cloud.hashicorp.com',
+  },
+  { title: 'About HashiCorp', linkUrl: 'https://www.hashicorp.com/about' },
 ]
 ```
 
-### Default Sections Array
+When `sections` are provided, a `<NavItem />` will render as a dropdown-style button and expect the appropriate data for its dropdown-activated panel.
+
+Let's explore the named exports we've included to assist in adding `sections`
+
+##### Named export: `DEFAULT_PRODUCT_GROUPS`
+
+Default HashiStackMenu sections are exported to conveniently populate the _Browse Products_ panel
 
 ```javascript
-export const DEFAULT_HASHISTACK_DATA = [
+export const DEFAULT_MENU_SECTIONS = [
   {
     type: 'product',
     groups: [
-      {
-        title: 'Infrastructure',
-        items: [
-          {
-            product: 'packer',
-            url: 'https://www.packer.io',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/packer-icon-color.svg',
-            docsLink: 'https://www.packer.io/docs',
-          },
-          {
-            product: 'terraform',
-            url: 'https://www.terraform.io',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
-            docsLink: 'https://www.terraform.io/docs/index.html',
-          },
-          {
-            product: 'vagrant',
-            url: 'https://www.vagrantup.com',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/vagrant-icon-color.svg',
-            docsLink: 'https://www.vagrantup.com/docs',
-          },
-        ],
-      },
-      {
-        title: 'Networking',
-        items: [
-          {
-            product: 'consul',
-            url: 'https://www.consul.io',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/consul-icon-color.svg',
-            docsLink: 'https://www.consul.io/docs',
-          },
-        ],
-      },
+      DEFAULT_PRODUCT_GROUPS['infrastructure'],
+      DEFAULT_PRODUCT_GROUPS['networking'],
     ],
   },
   {
     type: 'product',
     groups: [
-      {
-        title: 'Security',
-        items: [
-          {
-            product: 'vault',
-            url: 'https://www.vaultproject.io',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/vault-icon-color.svg',
-            docsLink: 'https://www.vaultproject.io/docs',
-          },
-        ],
-      },
-
-      {
-        title: 'Applications',
-        items: [
-          {
-            product: 'nomad',
-            url: 'https://www.nomadproject.io',
-            badge: 'New',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/nomad-icon-color.svg',
-            docsLink: 'https://www.nomadproject.io/docs',
-          },
-        ],
-      },
+      DEFAULT_PRODUCT_GROUPS['security'],
+      DEFAULT_PRODUCT_GROUPS['applications'],
     ],
   },
   {
@@ -247,3 +203,73 @@ export const DEFAULT_HASHISTACK_DATA = [
 ]
 ```
 
+##### Named export: `DEFAULT_PRODUCT_GROUPS`
+
+A dictionary of product groups is also exported to support to allow new products to be easily merged into these groups without code changes
+
+```javascript
+export const DEFAULT_PRODUCT_GROUPS = {
+  infrastructure: {
+    title: 'Infrastructure',
+    items: [
+      {
+        product: 'packer',
+        url: 'https://www.packer.io',
+        iconUrl:
+          'https://www.hashicorp.com/img/product-logos/packer-icon-color.svg',
+        docsLink: 'https://www.packer.io/docs',
+      },
+      {
+        product: 'terraform',
+        url: 'https://www.terraform.io',
+        iconUrl:
+          'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
+        docsLink: 'https://www.terraform.io/docs/index.html',
+      },
+      {
+        product: 'vagrant',
+        url: 'https://www.vagrantup.com',
+        iconUrl:
+          'https://www.hashicorp.com/img/product-logos/vagrant-icon-color.svg',
+        docsLink: 'https://www.vagrantup.com/docs',
+      },
+    ],
+  },
+  networking: {
+    title: 'Networking',
+    items: [
+      {
+        product: 'consul',
+        url: 'https://www.consul.io',
+        iconUrl:
+          'https://www.hashicorp.com/img/product-logos/consul-icon-color.svg',
+        docsLink: 'https://www.consul.io/docs',
+      },
+    ],
+  },
+  security: {
+    title: 'Security',
+    items: [
+      {
+        product: 'vault',
+        url: 'https://www.vaultproject.io',
+        iconUrl:
+          'https://www.hashicorp.com/img/product-logos/vault-icon-color.svg',
+        docsLink: 'https://www.vaultproject.io/docs',
+      },
+    ],
+  },
+  applications: {
+    title: 'Applications',
+    items: [
+      {
+        product: 'nomad',
+        url: 'https://www.nomadproject.io',
+        iconUrl:
+          'https://www.hashicorp.com/img/product-logos/nomad-icon-color.svg',
+        docsLink: 'https://www.nomadproject.io/docs',
+      },
+    ],
+  },
+}
+```

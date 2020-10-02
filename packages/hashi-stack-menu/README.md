@@ -1,3 +1,3 @@
-# Text Split
+# HashiStack Menu
 
-Display a title, description, and links alongside arbitrary content.
+Display the entire suite of products, platforms, and technologies provided by HashiCorp in a single menu
