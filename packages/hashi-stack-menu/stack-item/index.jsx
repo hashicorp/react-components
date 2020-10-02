@@ -29,7 +29,7 @@ export default function StackItem({ item }) {
       <li className={styles.stackItem}>
         <a className={styles.itemLink} href={url}>
           <span className={`g-type-body-small-strong`}>{platform}</span>
-          {badge && <span className={styles.badge}>{badge}</span>}
+          {badge && <span className={styles.platformBadge}>{badge}</span>}
         </a>
       </li>
     )
