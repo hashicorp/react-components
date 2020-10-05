@@ -1,8 +1,5 @@
-import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import transformProps from '../../__test-helpers/transform-props'
-
 import CheckboxInput from './'
 
 const defaultProps = transformProps(__dirname)

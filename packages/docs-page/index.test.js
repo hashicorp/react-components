@@ -1,6 +1,4 @@
-import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import DocsPage from './'
 
 // TODO: this test needs to be rewritten. we should be testing:

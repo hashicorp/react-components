@@ -1,7 +1,5 @@
-import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
-import { ConsentManager } from './'
+import ConsentManager from './'
 
 const defaultProps = {
   version: 0,
@@ -29,7 +27,7 @@ const defaultProps = {
       url: 'http://www.an-optional-url-for-a-script-to-add-to-the-page.com',
     },
     {
-      name: 'Name of the service',
+      name: 'Name of the service 2',
       category: 'Example Category',
       description: 'A script with additional elements to be injected',
       body: '',
@@ -183,7 +181,7 @@ test('if accept all button is clicked, any open dialogs are closed and all analy
 async function runWithMockedImport(module, mock, cb) {
   jest.resetModules()
   jest.mock(module, () => mock)
-  const { ConsentManager, open } = await import('./')
+  const { default: ConsentManager, open } = await import('./')
   cb(ConsentManager, open)
   jest.resetAllMocks()
 }
