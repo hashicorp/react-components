@@ -17,9 +17,6 @@ export default function StackItem({ item }) {
           <span className={`g-type-body-small-strong ${styles.productName}`}>
             {product}
           </span>
-        </a>
-        <a href={docsLink} className={styles.docsLink}>
-          <span>Docs</span>
           {badge && <span className={styles.badge}>{badge}</span>}
         </a>
       </li>
@@ -29,7 +26,7 @@ export default function StackItem({ item }) {
       <li className={styles.stackItem}>
         <a className={styles.itemLink} href={url}>
           <span className={`g-type-body-small-strong`}>{platform}</span>
-          {badge && <span className={styles.platformBadge}>{badge}</span>}
+          {badge && <span className={styles.badge}>{badge}</span>}
         </a>
       </li>
     )

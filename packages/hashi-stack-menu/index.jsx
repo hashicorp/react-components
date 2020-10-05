@@ -61,21 +61,18 @@ export const DEFAULT_PRODUCT_GROUPS = {
         url: 'https://www.packer.io',
         iconUrl:
           'https://www.hashicorp.com/img/product-logos/packer-icon-color.svg',
-        docsLink: 'https://www.packer.io/docs',
       },
       {
         product: 'terraform',
         url: 'https://www.terraform.io',
         iconUrl:
           'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
-        docsLink: 'https://www.terraform.io/docs/index.html',
       },
       {
         product: 'vagrant',
         url: 'https://www.vagrantup.com',
         iconUrl:
           'https://www.hashicorp.com/img/product-logos/vagrant-icon-color.svg',
-        docsLink: 'https://www.vagrantup.com/docs',
       },
     ],
   },
@@ -87,7 +84,6 @@ export const DEFAULT_PRODUCT_GROUPS = {
         url: 'https://www.consul.io',
         iconUrl:
           'https://www.hashicorp.com/img/product-logos/consul-icon-color.svg',
-        docsLink: 'https://www.consul.io/docs',
       },
     ],
   },
@@ -99,7 +95,6 @@ export const DEFAULT_PRODUCT_GROUPS = {
         url: 'https://www.vaultproject.io',
         iconUrl:
           'https://www.hashicorp.com/img/product-logos/vault-icon-color.svg',
-        docsLink: 'https://www.vaultproject.io/docs',
       },
     ],
   },
@@ -111,7 +106,6 @@ export const DEFAULT_PRODUCT_GROUPS = {
         url: 'https://www.nomadproject.io',
         iconUrl:
           'https://www.hashicorp.com/img/product-logos/nomad-icon-color.svg',
-        docsLink: 'https://www.nomadproject.io/docs',
       },
     ],
   },
@@ -158,7 +152,6 @@ export const DEFAULT_MENU_SECTIONS = [
           {
             product: 'Sentinel',
             url: 'https://www.hashicorp.com/sentinel',
-            docsLink: 'https://docs.hashicorp.com/sentinel',
           },
         ],
       },
