@@ -1,6 +1,9 @@
 .g-learn-callout {
   padding-top: 88px;
   padding-bottom: 88px;
+  background-size: contain;
+  background-position: bottom right;
+  background-repeat: no-repeat;
 
   @media (max-width: 768px) {
     padding-top: 64px;
@@ -62,11 +65,11 @@
     }
 
     & > a {
+      display: flex;
+      cursor: pointer;
       margin: 0 16px;
       width: 33.333%;
       transition: box-shadow 0.25s, transform 0.25s, -webkit-transform 0.25s;
-      display: flex;
-      cursor: pointer;
 
       &:hover {
         box-shadow: 0 16px 28px rgba(37, 38, 45, 0.12);
@@ -136,33 +139,37 @@
           }
         }
       }
-    }
 
-    &.brand-consul {
-      & .content label {
-        color: var(--consul);
-      }
-    }
-
-    /* Brand -- Nomad */
-    &.brand-nomad {
-      & .content label {
+      & label {
         color: var(--nomad);
       }
     }
+  }
 
-    /* Brand -- Packer */
-    &.brand-packer {
-      & .content label {
-        color: var(--packer);
-      }
+  &.brand-consul {
+    & .content label {
+      color: var(--consul);
     }
+  }
 
-    /* Brand -- Terraform */
-    &.brand-terraform {
-      & .content label {
-        color: var(--terraform);
-      }
+  /* Brand -- Nomad */
+  &.brand-nomad {
+    & .content label {
+      color: var(--nomad);
+    }
+  }
+
+  /* Brand -- Packer */
+  &.brand-packer {
+    & .content label {
+      color: var(--packer);
+    }
+  }
+
+  /* Brand -- Terraform */
+  &.brand-terraform {
+    & .content label {
+      color: var(--terraform);
     }
   }
 }
