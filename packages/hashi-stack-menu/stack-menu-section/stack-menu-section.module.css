@@ -2,16 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding: 0 2rem;
+  justify-content: space-between;
+  padding: 0;
   margin: 0;
-  height: 100%;
-  overflow-y: hidden;
-  min-height: 200px;
-  &:nth-of-type(2) {
-    margin-left: -3rem;
-    padding-right: 2rem;
-  }
 }
 
 .stackMenuSectionPlusDivider {
@@ -19,7 +12,6 @@
   padding: 0;
   padding-left: 4rem;
   position: relative;
-  flex-grow: 1;
   &:before {
     position: absolute;
     content: '';
@@ -27,6 +19,5 @@
     height: 90%;
     background: var(--gray-6);
     left: 0;
-    top: -1rem;
   }
 }

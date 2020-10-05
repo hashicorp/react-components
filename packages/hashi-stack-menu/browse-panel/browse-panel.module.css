@@ -8,9 +8,13 @@
   left: -2rem;
   right: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
+  padding: 2rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-6);
   justify-content: flex-start;
-  width: 859px;
+  width: 832px;
 }
 
 .panelInner {
