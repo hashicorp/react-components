@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-hero",
   "description": "basic full page hero with a lot of customization options",
-  "version": "3.1.7",
+  "version": "4.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante"
@@ -12,7 +12,7 @@
     "@hashicorp/react-alert": "^2.0.3",
     "@hashicorp/react-button": "^2.2.6",
     "@hashicorp/react-image": "^2.0.3",
-    "@hashicorp/react-text-input": "^2.0.3",
+    "@hashicorp/react-text-input": "^3.0.0",
     "formik": "^1.5.8",
     "marked": "^0.7.0",
     "promise-polyfill": "^8.1.0",

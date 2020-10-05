@@ -5,7 +5,7 @@
   "contributors": [
     "Zach Shilton"
   ],
-  "version": "2.0.3",
+  "version": "3.0.0",
   "license": "MPL-2.0",
   "peerDependencies": {
     "react": "^16.9.0"
