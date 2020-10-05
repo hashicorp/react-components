@@ -4,6 +4,7 @@
   color: var(--brand);
   list-style: none;
   position: relative;
+  white-space: nowrap;
 }
 
 .buttonActive {

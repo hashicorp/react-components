@@ -1,5 +1,6 @@
 import styles from './nav-item.module.css'
-import DropdownCarat from '../assets/icons/icon-dropdown'
+import DropdownCarat from '../assets/icon-dropdown.svg?include'
+import InlineSvg from '@hashicorp/react-inline-svg'
 import { useRef, useEffect } from 'react'
 import BrowsePanel from '../browse-panel'
 import StackMenuSection from '../stack-menu-section'
@@ -73,7 +74,7 @@ function DropdownButton({ active, onClick, children }) {
       <span className={styles.visuallyHidden}>
         {active ? 'Close this menu' : 'Open this menu'}
       </span>
-      <DropdownCarat />
+      <InlineSvg src={DropdownCarat} noDiv />
     </button>
   )
 }

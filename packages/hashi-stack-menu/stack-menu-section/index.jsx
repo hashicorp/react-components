@@ -5,7 +5,7 @@ export default function StackMenuSection({ groups, visiblyNewSection }) {
   return (
     <menu
       className={
-        visiblyNewSection
+        visiblyNewSection // If this is a `visiblyNewSection`, a divider (as `:before` psuedoelement) + increased padding are added to the left side
           ? styles.stackMenuSectionPlusDivider
           : styles.stackMenuSection
       }
