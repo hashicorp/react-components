@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-code-block",
   "description": "a styled code block with clipboard functionality",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "HashiCorp",
   "contributors": [
     "Michael Schonfeld"
