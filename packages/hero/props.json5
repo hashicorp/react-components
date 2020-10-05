@@ -1,0 +1,154 @@
+{
+  data: {
+    type: 'object',
+    description: 'All of the data for the hero',
+    // sub-props
+    title: {
+      type: 'string',
+      description: 'Primary title text',
+    },
+    // TODO: fix this
+    _description: {
+      type: 'string',
+      description: 'Subheading text',
+    },
+    centered: {
+      type: 'boolean',
+      description: 'Whether or not to center the contents',
+    },
+    theme: {
+      type: 'string',
+      options: [
+        'vagrant-blue',
+        'terraform-purple',
+        'vault-gray',
+        'consul-pink',
+        'nomad-green',
+      ],
+      description: 'Color theme of links, buttons, highlights',
+    },
+    backgroundTheme: {
+      type: 'string',
+      options: ['dark', 'light'],
+      description: 'Adjust the text color if its over a dark or light background image',
+    },
+    backgroundImage: {
+      type: 'object',
+      description: 'Object with a `url`, `format`, and `alt` field, sets the background of the hero',
+    },
+    smallTextTag: {
+      type: 'string',
+      description: 'A small section of text that appears on top of the primary headline if present',
+    },
+    titleLogo: {
+      type: 'object',
+      description: 'A small logo intended to appear above the primary headline - object with a `url`, `format`, and `alt` fields',
+    },
+    alert: {
+      type: 'object',
+      description: 'An `Alert` component, displays above the primary headline. Object with the fields `url`, `tag`, `tagColor`, and `text`',
+    },
+    formLeadInput: {
+      type: 'object',
+      description: 'A single-field form intended to capture emails, appears below the headline, description, and buttons. Object with fields `destinationUrl` and `buttonText`',
+    },
+    buttons: {
+      type: 'array',
+      description: 'Array of buttons to display below the title and subtitle as the primary calls to action.',
+      itemType: '{ title: string, url: string, external: boolean, theme: string, gaPrefix: string }',
+    },
+    helpText: {
+      type: 'string',
+      description: 'A small piece of help text that appears below buttons/form input, html allowed',
+    },
+    image: {
+      type: 'object',
+      description: 'Object with a `url`, `format`, and `alt` field, sets an image to the right of the text',
+    },
+    videos: {
+      type: 'array',
+      description: 'One or more videos to play to the right of the text and buttons',
+      itemType: '{ name: string, playbackRate: integer, src: { srcType: string, url: string }[] }',
+    },
+    defaultValue: {
+      title: 'Testing 123',
+      description: 'Lorem ipsum dolor sit amet, consectetur amet adipiscing elit dolor lorem.',
+      centered: false,
+      backgroundTheme: 'dark',
+      theme: 'nomad-green',
+      backgroundImage: {
+        url: 'https://www.datocms-assets.com/2885/1538522323-vault-grid-background.jpg',
+        format: 'svg',
+        alt: 'terraform background',
+      },
+      smallTextTag: null,
+      titleLogo: {
+        url: 'https://www.datocms-assets.com/2885/1512161155-terraform-color.svg',
+        format: 'svg',
+        alt: 'terraform logo',
+      },
+      alert: {
+        url: '#',
+        tag: 'NEW',
+        tagColor: 'error-red',
+        text: 'Some notification',
+      },
+      formLeadInput: { destinationUrl: '#', buttonText: 'Submit' },
+      buttons: [
+        {
+          title: 'Download',
+          url: '#',
+          external: false,
+          theme: '',
+          gaPrefix: null,
+        },
+        {
+          title: 'Get Started',
+          url: '#',
+          external: false,
+          theme: '',
+          gaPrefix: null,
+        },
+      ],
+      helpText: '<a href="#">View demo of web UI</a>',
+      videos: [
+        {
+          name: 'UI',
+          playbackRate: 2,
+          src: [
+            {
+              srcType: 'ogg',
+            },
+            {
+              srcType: 'webm',
+              url: '',
+            },
+            {
+              srcType: 'mp4',
+              url: '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-ui.mp4',
+            },
+          ],
+        },
+        {
+          name: 'CLI',
+          src: [
+            {
+              srcType: 'mp4',
+              url: '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-cli.mp4',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  centered: {
+    type: 'boolean',
+    description: 'Whether or not to center the hero content',
+    defaultValue: false,
+  },
+  gaPrefix: {
+    type: 'string',
+    description: 'prefix override for CTA custom events',
+    defaultValue: null,
+  },
+}

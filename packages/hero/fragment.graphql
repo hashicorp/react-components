@@ -1,0 +1,55 @@
+fragment heroFields on HeroSectionRecord {
+  id
+  _modelApiKey
+  videos {
+    id
+    name
+    src {
+      url
+      srcType
+    }
+    playbackRate
+  }
+  image {
+    url
+    alt
+    size
+  }
+  title
+  titleLogo {
+    url
+    alt
+    height
+    format
+    id
+    size
+    title
+    width
+  }
+  alert {
+    ...alertFields
+  }
+  description
+  centered
+  backgroundTheme
+  backgroundImage {
+    width
+    size
+    url
+    alt
+  }
+  buttons {
+    id
+    title
+    position
+    external
+    url
+  }
+  formLeadInput {
+    destinationUrl
+    buttonText
+  }
+  helpText
+  smallTextTag
+  theme
+}
