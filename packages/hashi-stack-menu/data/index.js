@@ -76,28 +76,22 @@ export const DEFAULT_MENU_SECTIONS = [
     type: 'platform',
     groups: [
       {
-        title: 'Cloud',
+        title: 'HashiCorp Cloud Platform',
         items: [
           {
-            platform: 'HashiCorp Cloud Platform (HCP)',
-            url: 'https://cloud.hashicorp.com',
-          },
-          {
-            platform: 'HashiCorp Consul Service on Azure',
-            url: 'https://www.hashicorp.com/products/consul/service-on-azure',
-          },
-          {
-            platform: 'Terraform Cloud',
+            product: 'terraform',
             url: 'https://app.terraform.io',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
           },
         ],
       },
       {
-        title: 'Policy',
+        title: 'Partner Services',
         items: [
           {
-            product: 'Sentinel',
-            url: 'https://www.hashicorp.com/sentinel',
+            platform: 'HashiCorp Consul Service on Azure',
+            url: 'https://www.hashicorp.com/products/consul/service-on-azure',
           },
         ],
       },
@@ -109,10 +103,6 @@ export default [
   {
     title: 'Browse Products',
     sections: DEFAULT_MENU_SECTIONS,
-  },
-  {
-    title: 'HashiCorp Cloud Platform (HCP)',
-    linkUrl: 'https://cloud.hashicorp.com',
   },
   { title: 'About HashiCorp', linkUrl: 'https://www.hashicorp.com/about' },
 ]
