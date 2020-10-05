@@ -2,7 +2,7 @@ import Button from '@hashicorp/react-button'
 
 export default function LearnCallout({ headline, brand, background, items }) {
   return (
-    <div className={`g-learn-callout brand-${brand ? brand : 'neutral'}`} style={{backgroundImage: background ? url(background) : none}}>
+    <div className={`g-learn-callout brand-${brand ? brand : 'neutral'}`} style={{backgroundImage: background ? url(background) : 'none'}}>
       <div className="g-grid-container learn-container">
         <div className="column-container">
           {/* need this wrapper to flex center the .column-content */}
