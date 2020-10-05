@@ -1,8 +1,8 @@
 import { render, fireEvent, screen } from '@testing-library/react'
 import TextInput from '.'
-import propsJs from './props.js'
+import transformProps from '../../__test-helpers/transform-props'
 
-const defaultProps = global.propSpecToObj(propsJs.default)
+const defaultProps = transformProps(__dirname)
 
 describe('<TextInput />', () => {
   it('should render a `.g-text-input` <div> root element', () => {
