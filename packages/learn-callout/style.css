@@ -139,13 +139,17 @@
           }
         }
       }
-
-      & label {
-        color: var(--nomad);
-      }
     }
   }
 
+  /* Brand -- Hashicorp */
+  &.brand-hashicorp {
+    & .content label {
+      color: var(--default);
+    }
+  }
+
+  /* Brand -- Consul */
   &.brand-consul {
     & .content label {
       color: var(--consul);
@@ -170,6 +174,34 @@
   &.brand-terraform {
     & .content label {
       color: var(--terraform);
+    }
+  }
+
+  /* Brand -- Vault */
+  &.brand-vault {
+    & .content label {
+      color: var(--vault);
+    }
+  }
+
+  /* Brand -- Vagrant */
+  &.brand-vagrant {
+    & .content label {
+      color: var(--vagrant);
+    }
+  }
+
+  /* Brand -- Red */
+  &.brand-red {
+    & .content label {
+      color: var(--red);
+    }
+  }
+
+  /* Brand -- Blue */
+  &.brand-blue {
+    & .content label {
+      color: var(--blue);
     }
   }
 }
