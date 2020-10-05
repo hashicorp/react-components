@@ -76,7 +76,7 @@ function DropdownButton({ active, onClick, children }) {
       <span className={styles.visuallyHidden}>
         {active ? 'Close this menu' : 'Open this menu'}
       </span>
-      <InlineSvg src={DropdownCarat} noDiv />
+      <InlineSvg src={DropdownCarat} />
     </button>
   )
 }

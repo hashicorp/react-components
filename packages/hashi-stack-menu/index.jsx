@@ -55,5 +55,5 @@ function NavMenu({ children }) {
 }
 
 function Logo() {
-  return <InlineSvg src={LogoSvg} noDiv />
+  return <InlineSvg src={LogoSvg} />
 }
