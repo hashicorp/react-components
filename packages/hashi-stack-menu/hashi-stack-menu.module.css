@@ -1,12 +1,11 @@
 .hashiStackMenu {
-  --hashi-stack-menu-height: 56px;
   width: 100%;
   background: var(--gray-7);
-  height: var(--hashi-stack-menu-height);
+  height: 56px;
 }
 
 .nav {
-  height: 100%; /*  --hashi-stack-menu-height */
+  height: 100%;
   display: flex;
   padding: 0 1.5rem 0 0;
   position: relative;
