@@ -10,6 +10,7 @@
 }
 
 .stackGroupHeading {
+  composes: g-type-display-6 from global;
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 0.06rem;

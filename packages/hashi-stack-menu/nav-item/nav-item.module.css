@@ -25,6 +25,7 @@
 }
 
 .link {
+  composes: g-type-buttons-and-standalone-links from global;
   position: relative;
   color: var(--gray-4);
   padding: 1rem 1.25rem 1rem 1rem;

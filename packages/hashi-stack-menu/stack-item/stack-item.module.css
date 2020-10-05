@@ -17,7 +17,11 @@
   position: relative;
 }
 
+.itemName {
+  composes: g-type-body-small-strong from global;
+}
 .productName {
+  composes: itemName;
   text-transform: capitalize;
 }
 

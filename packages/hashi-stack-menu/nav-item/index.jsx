@@ -19,11 +19,13 @@ export default function NavItem({
       toggleBrowsePanel={panelOpen === false ? onPanelOpen : onPanelClose}
     >
       <BrowsePanel isOpen={panelOpen} closeFn={onPanelClose}>
-        {item.sections.map((section, idx) => (
+        {item.sections.map((section, stableIdx) => (
           <StackMenuSection
-            key={JSON.stringify({ type: section.type, index: idx })}
+            // eslint-disable-next-line react/no-array-index-key
+            key={stableIdx}
             visiblyNewSection={
-              idx > 0 && item.sections[idx - 1].type !== section.type
+              stableIdx > 0 &&
+              item.sections[stableIdx - 1].type !== section.type
             }
             groups={section.groups}
           />
@@ -65,9 +67,9 @@ function DropdownButton({ active, onClick, children }) {
   return (
     <button
       type="button"
-      className={`${styles.buttonReset} g-type-buttons-and-standalone-links ${
-        styles.link
-      } ${active ? ` ${styles.buttonActive}` : ''}`}
+      className={`${styles.buttonReset} ${styles.link} ${
+        active ? ` ${styles.buttonActive}` : ''
+      }`}
       onClick={onClick}
     >
       {children}
@@ -91,11 +93,7 @@ function AnchorLink({ url, children }) {
     }
   }, [linkRef])
   return (
-    <a
-      ref={linkRef}
-      className={`g-type-buttons-and-standalone-links ${styles.link}`}
-      href={url}
-    >
+    <a ref={linkRef} className={styles.link} href={url}>
       {children}
     </a>
   )

@@ -14,9 +14,7 @@ export default function StackItem({ item }) {
               alt={`${product} by HashiCorp`}
             />
           )}
-          <span className={`g-type-body-small-strong ${styles.productName}`}>
-            {product}
-          </span>
+          <span className={styles.productName}>{product}</span>
           {badge && <span className={styles.badge}>{badge}</span>}
         </a>
       </li>
@@ -25,7 +23,7 @@ export default function StackItem({ item }) {
     return (
       <li className={styles.stackItem}>
         <a className={styles.itemLink} href={url}>
-          <span className={`g-type-body-small-strong`}>{platform}</span>
+          <span className={styles.itemName}>{platform}</span>
           {badge && <span className={styles.badge}>{badge}</span>}
         </a>
       </li>
