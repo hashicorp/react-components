@@ -32,7 +32,7 @@
 .badge {
   position: absolute;
   text-align: center;
-  left: calc(100% + 0.5rem);
+  left: calc(100% + 1rem);
   top: 4px;
   padding: 1.5px 4px 1.5px 6px;
   border-radius: 2px;
