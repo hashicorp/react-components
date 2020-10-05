@@ -25,6 +25,8 @@
 @import '../packages/content-cta/style.css';
 @import '../packages/consent-manager/style.css';
 @import '../packages/toggle/style.css';
+@import '../packages/text-input/style.css';
+@import '../packages/hero/style.css';
 
 body {
   margin: 0;

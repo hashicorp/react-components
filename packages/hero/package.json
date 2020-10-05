@@ -1,0 +1,28 @@
+{
+  "name": "@hashicorp/react-hero",
+  "description": "basic full page hero with a lot of customization options",
+  "version": "3.1.7",
+  "author": "HashiCorp",
+  "contributors": [
+    "Jeff Escalante"
+  ],
+  "dependencies": {
+    "@hashicorp/js-utils": "next",
+    "@hashicorp/localstorage-polyfill": "^1.0.14",
+    "@hashicorp/react-alert": "^2.0.3",
+    "@hashicorp/react-button": "^2.2.6",
+    "@hashicorp/react-image": "^2.0.3",
+    "@hashicorp/react-text-input": "^2.0.3",
+    "formik": "^1.5.8",
+    "marked": "^0.7.0",
+    "promise-polyfill": "^8.1.0",
+    "query-string": "^5.1.1"
+  },
+  "license": "MPL-2.0",
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
