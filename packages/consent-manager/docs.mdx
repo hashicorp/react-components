@@ -1,0 +1,56 @@
+---
+componentName: ConsentManager
+---
+
+A GDPR-compliant consent manager, integrated with segment.
+
+<LiveComponent>{`<ConsentManager
+  segmentWriteKey='iyi06c432UL7SB1r3fQReec4bNwFyzkW'
+  utilServerRoot='https://hashicorp-web-util-staging.herokuapp.com'
+  privacyPolicyLink='https://www.hashicorp.com/privacy'
+  segmentServices={[
+    {
+      name: 'Example Name',
+      category: 'Example Category',
+      description:
+        'A short description of what the service is and how your company uses the data.',
+    },
+  ]}
+  additionalServices={[
+    {
+      name: 'Name of the service',
+      category: 'Example Category',
+      description:
+        'A short description of what the service is and how your company uses the data.',
+      body:
+        '/* a chunk of javascript to add to the page if permission is granted - this is optional */',
+      url: 'http://www.an-optional-url-for-a-script-to-add-to-the-page.com',
+    },
+    {
+      name: 'Name of the service',
+      category: 'Example Category',
+      description: 'A script with additional elements to be injected',
+      body: '',
+      url: 'https://source-url-of-script.com',
+      async: true,
+      addToBody: true,
+      dataAttrs: [
+        {
+          name: 'test',
+          value: 'foobar',
+        },
+      ],
+    },
+  ]}
+  categories={[
+    {
+      name: 'Example Category',
+      description: 'A short description of the category',
+    },
+  ]}
+  forceShow={true}
+/>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />

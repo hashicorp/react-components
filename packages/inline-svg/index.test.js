@@ -1,8 +1,5 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
-
-import InlineSvg from './index.jsx'
+import { render } from '@testing-library/react'
+import InlineSvg from './'
 
 describe('<InlineSvg />', () => {
   it('should render an svg and any additional props', () => {

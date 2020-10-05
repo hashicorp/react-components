@@ -9,4 +9,5 @@ module.exports = {
     '\\.pnp\\.[^\\/]+$',
   ],
   verbose: true,
+  setupFilesAfterEnv: ['<rootDir>/__test-helpers/extend-expect.js'],
 }

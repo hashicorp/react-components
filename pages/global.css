@@ -23,6 +23,8 @@
 @import '../packages/code-block/style.css';
 @import '../packages/featured-slider/style.css';
 @import '../packages/content-cta/style.css';
+@import '../packages/consent-manager/style.css';
+@import '../packages/toggle/style.css';
 
 body {
   margin: 0;

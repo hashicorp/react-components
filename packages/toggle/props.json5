@@ -1,0 +1,10 @@
+{
+  enabled: {
+    type: 'boolean',
+    description: 'Whether the toggle is on or off, defaults to false',
+  },
+  onChange: {
+    type: 'function',
+    description: 'Function that will be called when the toggle is changed to on or off',
+  },
+}

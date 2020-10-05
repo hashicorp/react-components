@@ -1,7 +1,5 @@
 import 'regenerator-runtime/runtime'
-import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import DocsSidenav from './'
 import transformProps from '../../__test-helpers/transform-props'
 import expectThrow from '../../__test-helpers/expect-throw'
