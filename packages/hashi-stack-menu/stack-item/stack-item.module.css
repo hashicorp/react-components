@@ -33,7 +33,7 @@
 .badge {
   position: absolute;
   text-align: center;
-  right: -3rem;
+  left: calc(100% + 0.5rem);
   top: 4px;
   padding: 1.5px 4px 1.5px 6px;
   border-radius: 2px;
@@ -44,6 +44,14 @@
   line-height: 1.272727273em;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  background: var(--white);
+  color: var(--gray-4);
+  border: 1px solid var(--gray-5);
+}
+
+.badgeTypeNew {
+  composes: badge;
   background: var(--gray-2);
   color: var(--white);
+  border-color: var(--gray-2);
 }
