@@ -5,12 +5,13 @@
   justify-content: space-between;
   padding: 0;
   margin: 0;
+  flex: 1 1 auto;
 }
 
 .stackMenuSectionPlusDivider {
   composes: stackMenuSection;
   padding: 0;
-  padding-left: 4rem;
+  margin-left: 4rem;
   position: relative;
   &:before {
     position: absolute;
@@ -18,6 +19,6 @@
     width: 1px;
     height: 90%;
     background: var(--gray-6);
-    left: 0;
+    left: -4rem;
   }
 }

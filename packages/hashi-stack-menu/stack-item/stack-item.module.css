@@ -3,7 +3,6 @@
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  min-width: 200px;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 0.25rem;
