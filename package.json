@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/nextjs-scripts": "^13.0.0",
-    "@hashicorp/octavo": "0.1.1",
+    "@hashicorp/octavo": "0.1.2",
     "@hashicorp/react-global-styles": "^4.5.0",
     "next": "9.5.3",
     "next-remote-watch": "^0.2.0",

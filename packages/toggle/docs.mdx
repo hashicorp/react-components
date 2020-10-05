@@ -1,0 +1,21 @@
+---
+componentName: Toggle
+---
+
+A simple toggle, used primarily in consent manager.
+
+<LiveComponent>{`<Toggle />`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+You can pass the `enabled` prop in to toggle.
+
+<LiveComponent>{`<Toggle enabled />`}</LiveComponent>
+
+You can also pass the `onChange` function to react when the toggle changes state
+
+<LiveComponent>{`<Toggle onChange={() => console.log('toggle changed')} />`}</LiveComponent>

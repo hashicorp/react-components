@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import slugify from 'slugify'
 
-import Button from './index.js'
+import Button from './'
 
 describe('<Button />', () => {
   it('should render a `.g-btn` <button/> when no url is passed', () => {
