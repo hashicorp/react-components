@@ -14,6 +14,7 @@ export default function Toggle({ enabled, onChange = () => {} }) {
         setEnabledState(!enabledState)
         onChange(enabledState)
       }}
+      data-testid="react-toggle"
     >
       <div className="switch-toggle" />
     </div>
