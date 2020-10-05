@@ -2,7 +2,7 @@
   items: {
     type: 'array',
     required: true,
-    itemType: '{ title: string, sections: [ { type: string, groups: [ { title: string, items: [ { product: string, url: string, iconUrl: string, docsLink: string, badge: string } | { platform: string, url: string, badge: string } ]} ] } ]',
+    itemType: '{ title: string, sections: [ { type: string, groups: [ { title: string, items: [ { product: string, url: string, iconUrl: string, badge: string } | { platform: string, url: string, badge: string } ]} ] } ]',
     description: 'The array of nav items and their applicable browse panel data to be rendered',
   },
   onPanelChange: {

@@ -1,7 +1,7 @@
 import styles from './stack-item.module.css'
 
 export default function StackItem({ item }) {
-  const { product, platform, url, docsLink, iconUrl, badge } = item
+  const { product, platform, url, iconUrl, badge } = item
 
   if (product)
     return (

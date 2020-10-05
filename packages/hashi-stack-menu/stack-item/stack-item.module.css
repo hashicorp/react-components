@@ -17,14 +17,6 @@
   position: relative;
 }
 
-.docsLink {
-  padding: 0 2rem;
-  text-align: right;
-  display: flex;
-  color: var(--gray-4);
-  position: relative;
-}
-
 .productName {
   text-transform: capitalize;
 }
