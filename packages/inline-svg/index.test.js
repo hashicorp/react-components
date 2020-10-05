@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react'
-
-import InlineSvg from './index.jsx'
+import InlineSvg from './'
 
 describe('<InlineSvg />', () => {
   it('should render an svg and any additional props', () => {
