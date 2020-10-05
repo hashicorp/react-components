@@ -4,7 +4,7 @@
 }
 
 .isOpen {
-  height: 100vw;
+  height: 100vh;
   top: 100%;
   left: -2rem;
   right: auto;
@@ -13,6 +13,7 @@
   justify-content: flex-start;
   width: 100vw;
   max-width: 859px;
+  pointer-events: none; /* Don't block pointer events on the full 100vh */
 }
 
 .panelInner {
@@ -26,4 +27,5 @@
   background: var(--white);
   border-bottom: 1px solid var(--gray-6);
   overflow-y: hidden;
+  pointer-events: all; /* As a child of .browsePanel, specifically bring pointer events back */
 }

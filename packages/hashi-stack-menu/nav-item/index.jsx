@@ -3,6 +3,7 @@ import DropdownCarat from '../assets/icons/icon-dropdown'
 import { useRef, useEffect } from 'react'
 import BrowsePanel from '../browse-panel'
 import StackMenuSection from '../stack-menu-section'
+import useOnClickOutsideDropdown from '../use-on-click-outside-dropdown'
 
 export default function NavItem({
   item,
@@ -16,7 +17,7 @@ export default function NavItem({
       active={panelOpen}
       toggleBrowsePanel={panelOpen === false ? onPanelOpen : onPanelClose}
     >
-      <BrowsePanel isOpen={panelOpen}>
+      <BrowsePanel isOpen={panelOpen} closeFn={onPanelClose}>
         {item.sections.map((section, idx) => (
           <StackMenuSection
             key={JSON.stringify({ type: section.type, index: idx })}
@@ -40,8 +41,13 @@ function NavItemElement({
   linkUrl,
   title,
 }) {
+  // The <li> is the parent of <BrowsePanel /> which will slot into here as {children}
+  // Becuase the <li> is a parent it makes it ideal to handle the outside click hook which relies on a ref + the DOM element heirarchy
+  const parentItemRef = useRef(null)
+
+  useOnClickOutsideDropdown(parentItemRef, active, toggleBrowsePanel)
   return (
-    <li className={styles.navItem}>
+    <li ref={parentItemRef} className={styles.navItem}>
       {toggleBrowsePanel ? (
         <DropdownButton active={active} onClick={toggleBrowsePanel}>
           {title}
