@@ -26,6 +26,6 @@
     "start": "next-remote-watch \"./packages/*/{docs.mdx,props.json5}\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "vercel-build": "npm run bootstrap && next build",
+    "vercel-build": "npm run bootstrap && next build"
   }
 }
