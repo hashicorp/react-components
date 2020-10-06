@@ -5,13 +5,11 @@
 }
 
 .nav {
+  composes: g-grid-container from global;
   height: 100%;
   display: flex;
-  padding: 0 1.5rem 0 0;
   position: relative;
-  z-index: 3;
   list-style: none;
-  max-width: 900px;
 }
 
 .logoLink {
@@ -20,11 +18,13 @@
   justify-content: center;
   height: 100%;
   padding: 0.5rem 0.5rem 0.5rem 0; /* no padding on left side to allow for grid container on consumer's end */
+  margin-right: 1rem;
 
   & div {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 101px;
   }
   & svg {
     height: 100%;
