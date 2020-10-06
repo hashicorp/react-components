@@ -19,11 +19,12 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 0; /* no padding on left side to allow for grid container on consumer's end */
+
   & div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem 1rem 1rem 0; /* no padding on left side to allow for grid container on consumer's end */
   }
   & svg {
     height: 100%;
