@@ -15,6 +15,7 @@
   border-bottom: 1px solid var(--gray-6);
   justify-content: flex-start;
   width: 832px;
+  z-index: 901; /* subnav is 900 */
 }
 
 .panelInner {
