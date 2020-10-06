@@ -1,0 +1,24 @@
+.stackGroup {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stackGroupHeading {
+  composes: g-type-display-6 from global;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.06rem;
+  margin: 0;
+  width: 100%;
+  color: var(--gray-2);
+}
+
+.stackGroupLinkList {
+  padding: 1.25rem 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}

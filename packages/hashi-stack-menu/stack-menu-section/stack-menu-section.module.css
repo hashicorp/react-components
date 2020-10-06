@@ -1,0 +1,24 @@
+.stackMenuSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.stackMenuSectionPlusDivider {
+  composes: stackMenuSection;
+  padding: 0;
+  margin-left: 4rem;
+  position: relative;
+  &:before {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 100%;
+    background: var(--gray-6);
+    left: -4rem;
+  }
+}

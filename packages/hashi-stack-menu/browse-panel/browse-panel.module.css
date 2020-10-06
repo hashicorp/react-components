@@ -1,0 +1,31 @@
+.browsePanel {
+  position: absolute;
+  display: none;
+}
+
+.isOpen {
+  top: 100%;
+  left: -1rem;
+  right: auto;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
+  padding: 2rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-6);
+  justify-content: flex-start;
+  width: 832px;
+}
+
+.panelInner {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
+  padding: 2rem 0 0 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-6);
+  overflow-y: hidden;
+}

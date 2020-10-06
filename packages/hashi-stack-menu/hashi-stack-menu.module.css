@@ -1,0 +1,46 @@
+.hashiStackMenu {
+  width: 100%;
+  background: var(--gray-7);
+  height: 56px;
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  padding: 0 1.5rem 0 0;
+  position: relative;
+  z-index: 3;
+  list-style: none;
+  max-width: 900px;
+}
+
+.logoLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 0; /* no padding on left side to allow for grid container on consumer's end */
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  & svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.menu {
+  display: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: auto;
+
+  @media (--large) {
+    display: flex;
+    justify-content: space-between;
+  }
+}

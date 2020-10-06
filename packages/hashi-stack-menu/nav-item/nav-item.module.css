@@ -1,0 +1,63 @@
+.navItem {
+  display: flex;
+  flex-direction: column;
+  color: var(--brand);
+  list-style: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+.buttonReset {
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 0.5rem;
+  & svg {
+    transition: 0.3s transform;
+  }
+}
+
+.link {
+  composes: g-type-buttons-and-standalone-links from global;
+  position: relative;
+  color: var(--gray-4);
+  padding: 1rem 1.25rem 1rem 1rem;
+  transition: color 0.1s;
+  & svg {
+    position: absolute;
+    right: 0.25rem;
+    top: 1.65rem;
+    & path {
+      stroke: var(--gray-4);
+    }
+  }
+  &:hover {
+    color: var(--gray-1);
+    & svg {
+      & path {
+        stroke: var(--gray-1);
+      }
+    }
+  }
+}
+.buttonActive {
+  color: var(--gray-1);
+  & svg {
+    transform: rotate(-180deg);
+    & path {
+      stroke: var(--black);
+    }
+  }
+}
+
+.visuallyHidden {
+  /* .visuallyHidden courtesy of https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/ */
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
