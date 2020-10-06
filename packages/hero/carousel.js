@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 export default class HeroCarousel extends Component {
   constructor(props) {
@@ -6,7 +6,7 @@ export default class HeroCarousel extends Component {
 
     this.state = {
       active: null,
-      deactivating: null
+      deactivating: null,
     }
   }
 
@@ -16,7 +16,7 @@ export default class HeroCarousel extends Component {
 
     // deactivate currently active item
     this.setState({
-      deactivating: this.state.active
+      deactivating: this.state.active,
     })
 
     // after deactivation animation finishes
@@ -37,7 +37,7 @@ export default class HeroCarousel extends Component {
 
     this.setState({
       active: index,
-      deactivating: null
+      deactivating: null,
     })
 
     // set video playback rate
@@ -63,7 +63,7 @@ export default class HeroCarousel extends Component {
           // video successfully played, controls won't be necessary
           video.removeAttribute('controls')
         })
-        .catch(error => {
+        .catch((error) => {
           // video play failed, make sure users have controls
           video.setAttribute('controls', true)
           /* eslint-disable-next-line no-console */
@@ -93,7 +93,7 @@ export default class HeroCarousel extends Component {
               className={`video-wrapper${
                 this.state.active === i ? ' is-active' : ''
               }${this.state.deactivating === i ? ' is-deactivating' : ''}`}
-              ref={el => el !== null && this.videoWrappers.push(el)}
+              ref={(el) => el !== null && this.videoWrappers.push(el)}
             >
               <div className="bar">
                 <span />
@@ -104,7 +104,7 @@ export default class HeroCarousel extends Component {
                 <video
                   muted
                   playsInline
-                  ref={el => el !== null && this.videos.push(el)}
+                  ref={(el) => el !== null && this.videos.push(el)}
                   onEnded={() => {
                     this.switchToVideo(
                       i < this.props.videos.length - 1 ? i + 1 : 0
@@ -112,7 +112,7 @@ export default class HeroCarousel extends Component {
                   }}
                 >
                   {video.src.map(
-                    src =>
+                    (src) =>
                       typeof src.url != 'undefined' &&
                       src.url != '' && (
                         <source
@@ -139,7 +139,9 @@ export default class HeroCarousel extends Component {
               <div className="control-hover">
                 {control.name ? control.name : ''}
                 <div className="progress-bar">
-                  <span ref={el => el !== null && this.progressBars.push(el)} />
+                  <span
+                    ref={(el) => el !== null && this.progressBars.push(el)}
+                  />
                 </div>
               </div>
             </div>
