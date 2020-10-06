@@ -5,7 +5,7 @@
 
 .isOpen {
   top: 100%;
-  left: -2rem;
+  left: -1rem;
   right: auto;
   display: flex;
   flex-direction: row;

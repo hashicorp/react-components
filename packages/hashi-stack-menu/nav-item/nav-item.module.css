@@ -7,12 +7,6 @@
   white-space: nowrap;
 }
 
-.buttonActive {
-  & svg {
-    transform: rotate(-180deg);
-  }
-}
-
 .buttonReset {
   background-color: transparent;
   border-style: none;
@@ -29,12 +23,30 @@
   position: relative;
   color: var(--gray-4);
   padding: 1rem 1.25rem 1rem 1rem;
+  transition: color 0.1s;
   & svg {
     position: absolute;
     right: 0.25rem;
     top: 1.65rem;
     & path {
       stroke: var(--gray-4);
+    }
+  }
+  &:hover {
+    color: var(--gray-1);
+    & svg {
+      & path {
+        stroke: var(--gray-1);
+      }
+    }
+  }
+}
+.buttonActive {
+  color: var(--gray-1);
+  & svg {
+    transform: rotate(-180deg);
+    & path {
+      stroke: var(--black);
     }
   }
 }
