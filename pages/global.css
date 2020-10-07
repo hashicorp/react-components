@@ -28,6 +28,7 @@
 @import '../packages/text-input/style.css';
 @import '../packages/hero/style.css';
 @import '../packages/logo-grid/style.css';
+@import '../packages/vertical-text-block-list/style.css';
 
 body {
   margin: 0;

@@ -1,0 +1,22 @@
+{
+  "name": "@hashicorp/react-vertical-text-block-list",
+  "description": "Vertical block list of links",
+  "version": "2.0.3",
+  "author": "HashiCorp",
+  "contributors": [
+    "Mike Wickett",
+    "Jeff Escalante"
+  ],
+  "dependencies": {
+    "@hashicorp/react-image": "^2.0.3",
+    "@hashicorp/react-link-wrap": "^0.0.3",
+    "marked": "^0.7.0"
+  },
+  "license": "MPL-2.0",
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
