@@ -4,16 +4,16 @@ export const DEFAULT_PRODUCT_GROUPS = {
     title: 'Infrastructure',
     items: [
       {
-        product: 'packer',
-        url: 'https://www.packer.io',
-        iconUrl:
-          'https://www.hashicorp.com/img/product-logos/packer-icon-color.svg',
-      },
-      {
         product: 'terraform',
         url: 'https://www.terraform.io',
         iconUrl:
           'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
+      },
+      {
+        product: 'packer',
+        url: 'https://www.packer.io',
+        iconUrl:
+          'https://www.hashicorp.com/img/product-logos/packer-icon-color.svg',
       },
       {
         product: 'vagrant',
