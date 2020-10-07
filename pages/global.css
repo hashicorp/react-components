@@ -27,6 +27,7 @@
 @import '../packages/toggle/style.css';
 @import '../packages/text-input/style.css';
 @import '../packages/hero/style.css';
+@import '../packages/logo-grid/style.css';
 
 body {
   margin: 0;

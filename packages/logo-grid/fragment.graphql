@@ -1,0 +1,17 @@
+fragment logoGridFields on SbcLogoGridRecord {
+  size
+  removeBorders
+  companies {
+    name
+    companyType
+    logo {
+      ...imageFields
+    }
+    monochromeLogo {
+      ...imageFields
+    }
+    integrationPage {
+      slug
+    }
+  }
+}
