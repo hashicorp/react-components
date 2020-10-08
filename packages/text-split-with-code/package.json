@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-text-split-with-code",
   "description": "Display a title, description, and links alongside a code block",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Brandon Romano"
