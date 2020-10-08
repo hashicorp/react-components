@@ -19,7 +19,6 @@
 @import '../packages/docs-page/style.css';
 @import '../packages/content/style.css';
 @import '../packages/enterprise-alert/style.css';
-@import '../packages/text-split/styles/index.css';
 @import '../packages/code-block/style.css';
 @import '../packages/featured-slider/style.css';
 @import '../packages/content-cta/style.css';
@@ -31,6 +30,8 @@
 @import '../packages/vertical-text-block-list/style.css';
 @import '../packages/tabs/style.css';
 @import '../packages/tabbed-accordion/style.css';
+@import '../packages/text-split/styles/index.css';
+@import '../packages/text-split-with-code/style.css';
 
 body {
   margin: 0;
