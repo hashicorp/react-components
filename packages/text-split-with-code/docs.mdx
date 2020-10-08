@@ -1,0 +1,38 @@
+---
+componentName: TextSplitWithCode
+---
+
+Display a title, description, and links alongside a code block.
+
+<LiveComponent>{`<TextSplitWithCode
+  textSplit={{
+    heading: 'Headline',
+    content: 'Lorem ipsum dolor sit amet.'
+  }}
+  codeBlock={{
+    chrome: true,
+    code: 'console.log("hello world")',
+    language: 'javascript'
+  }}
+/>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+Dark theme:
+
+<LiveComponent>{`<TextSplitWithCode
+  textSplit={{
+    heading: 'Headline',
+    content: 'Lorem ipsum dolor sit amet.',
+    theme: 'dark'
+  }}
+  codeBlock={{
+    chrome: true,
+    code: 'console.log("hello world")',
+    language: 'javascript'
+  }}
+/>`}</LiveComponent>
