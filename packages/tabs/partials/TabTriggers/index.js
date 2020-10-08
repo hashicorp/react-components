@@ -1,4 +1,3 @@
-import React from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import TabTrigger from './partials/TabTrigger/index.js'
 import SvgChevronRight from './icons/chevron-right_black.svg.js'
@@ -35,11 +34,11 @@ class TabTriggers extends React.Component {
       sizeReference: parentElem.querySelector('.size-reference'),
       tabTriggers: parentElem.querySelectorAll('.g-tab-trigger'),
       prevArrow: parentElem.querySelector('.arrow.prev'),
-      nextArrow: parentElem.querySelector('.arrow.next')
+      nextArrow: parentElem.querySelector('.arrow.next'),
     }
     //  Determine combined width of contained items
     let contentWidth = 0
-    elems.tabTriggers.forEach(t => (contentWidth += t.offsetWidth))
+    elems.tabTriggers.forEach((t) => (contentWidth += t.offsetWidth))
     //  Determine width of available space
     //  using the .g-grid-container.size-reference element
     const availableSpace = elems.sizeReference.offsetWidth
@@ -95,7 +94,7 @@ class TabTriggers extends React.Component {
                   <TabTrigger
                     key={stableIdx}
                     activeTabIdx={activeTabIdx}
-                    setActiveTabIdx={targetIdx => {
+                    setActiveTabIdx={(targetIdx) => {
                       setActiveTabIdx(targetIdx)
                       this.updateScrollOffset(targetIdx)
                     }}

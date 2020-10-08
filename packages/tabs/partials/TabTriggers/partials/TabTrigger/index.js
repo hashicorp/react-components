@@ -1,15 +1,14 @@
-import React from 'react'
 import Tippy from '@tippy.js/react'
 import TooltipIcon from './icons/tooltip.svg.js'
 
-const TabTrigger = props => {
+const TabTrigger = (props) => {
   const { item, activeTabIdx, setActiveTabIdx } = props
   const isActiveTab = item.tabIndex === activeTabIdx
   return (
     <button
       className={`g-tab-trigger ${isActiveTab ? ' active' : ''}`}
       data-tabindex={item.tabIndex}
-      onMouseDown={e => e.preventDefault()}
+      onMouseDown={(e) => e.preventDefault()}
       onClick={() => setActiveTabIdx(item.tabIndex)}
     >
       <span className="inner">
