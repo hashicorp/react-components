@@ -79,6 +79,13 @@ export const DEFAULT_MENU_SECTIONS = [
         title: 'HashiCorp Cloud Platform',
         items: [
           {
+            product: 'consul',
+            url: 'https://www.hashicorp.com/cloud-platform',
+            iconUrl:
+              'https://www.hashicorp.com/img/product-logos/consul-icon-color.svg',
+            badge: 'Private Beta',
+          },
+          {
             product: 'terraform',
             url: 'https://app.terraform.io',
             iconUrl:
@@ -90,7 +97,7 @@ export const DEFAULT_MENU_SECTIONS = [
         title: 'Partner Services',
         items: [
           {
-            platform: 'HashiCorp Consul Service on Azure',
+            platform: 'HashiCorp Consul Service (HCS) on Azure',
             url: 'https://www.hashicorp.com/products/consul/service-on-azure',
           },
         ],
