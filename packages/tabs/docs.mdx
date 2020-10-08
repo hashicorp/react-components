@@ -1,0 +1,91 @@
+---
+componentName: Tabs
+---
+
+General purpose tabs component. Used heavily across all websites, but especially heavily on Learn.
+
+<LiveComponent>{`<Tabs
+  items={[
+    { heading: 'First Tab', tabChildren: () => <p>First tab content</p> },
+    { heading: 'Second Tab', tabChildren: () => <p>Second tab content</p> },
+    { heading: 'Third tab', tabChildren: () => <p>Third tab content</p> }
+  ]}
+/>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+A bunch of tabs:
+
+<LiveComponent>{`<Tabs
+    items={[
+      {
+        heading: 'First tab',
+        tabChildren: () => null
+      },
+      {
+        heading: 'Second tab with long name',
+        tabChildren: () => null
+      },
+      {
+        heading: 'Third long name tab',
+        tabChildren: () => null
+      },
+      {
+        heading: 'Fourth tab lots of tabs',
+        tabChildren: () => null
+      },
+      {
+        heading: 'Fifth tab',
+        tabChildren: () => null
+      },
+      {
+        heading: 'Sixth tab',
+        tabChildren: () => null
+      },
+      {
+        heading: 'Seventh tab with an even longer name than the second tab',
+        tabChildren: () => null
+      }
+    ]}
+  />`}</LiveComponent>
+
+With tooltips!
+
+<LiveComponent>{`<Tabs
+  items={[
+    {
+      heading: 'First tab',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Second tab with long name',
+      tooltip:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Third long name tab',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Fourth tab lots of tabs',
+      tooltip:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Fifth tab',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Sixth tab',
+      tooltip:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
+      tabChildren: () => null
+    }
+  ]}
+/>`}</LiveComponent>

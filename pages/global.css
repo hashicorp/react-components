@@ -29,6 +29,7 @@
 @import '../packages/hero/style.css';
 @import '../packages/logo-grid/style.css';
 @import '../packages/vertical-text-block-list/style.css';
+@import '../packages/tabs/style.css';
 
 body {
   margin: 0;

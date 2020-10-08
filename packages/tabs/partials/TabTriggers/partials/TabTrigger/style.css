@@ -1,0 +1,75 @@
+.g-tab-trigger {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (--medium-up) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
+  }
+
+  & .inner {
+    display: flex;
+    align-items: center;
+    padding-top: 19px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid transparent;
+    color: var(--gray-4);
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover {
+    & .inner {
+      color: var(--gray-1);
+    }
+  }
+
+  &.active {
+    & .inner {
+      color: var(--gray-1);
+      border-bottom-color: var(--brand);
+    }
+  }
+
+  &:focus {
+    & .inner {
+      color: var(--brand);
+      text-decoration: underline;
+    }
+  }
+
+  & .tooltip {
+    margin-left: 0.5rem;
+    width: 1.125rem;
+
+    & svg {
+      width: 100%;
+    }
+  }
+}
+
+/* Override tooltip styles */
+.g-tab-trigger-tippy-tooltip {
+  max-width: 75vw !important;
+  @media (min-width: 380px) {
+    max-width: 350px !important;
+  }
+}

@@ -1,0 +1,67 @@
+@import './partials/TabTriggers/style.css';
+
+.g-tabs {
+  &.consul {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--consul);
+    }
+  }
+
+  &.vault {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--vault);
+    }
+  }
+
+  &.terraform {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--terraform);
+    }
+  }
+
+  &.nomad {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--nomad);
+    }
+  }
+
+  &.packer {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--packer);
+    }
+  }
+
+  &.vagrant {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--vagrant);
+    }
+  }
+
+  &.red {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--red);
+    }
+  }
+
+  &.blue {
+    & .g-tab-triggers .active .inner {
+      border-bottom-color: var(--blue);
+    }
+  }
+}
+
+.g-tabs-full-border {
+  & .g-tab-triggers {
+    border-bottom: 1px solid var(--gray-6);
+
+    & .bottom-border {
+      display: none;
+    }
+  }
+}
+
+.g-tabs-centered {
+  & .tooltip-space-overflow {
+    justify-content: center;
+  }
+}
