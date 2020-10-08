@@ -1,0 +1,44 @@
+{
+  "heading": "Sample Tabbed Accordion",
+  "tabs": [
+    {
+      "heading": "My First Tab",
+      "items": [
+        {
+          "heading": "My Accordion Item",
+          "content": "Developers, system engineers, architects and security professionals who work with cloud infrastructure and cloud-native architecture should attend HashiDays to discover the latest technical insights and deep-dives, learn what’s new with HashiCorp open-source tools & enterprise products, receive product training, and connect with other HashiCorp community members who build and use HashiCorp tools every day."
+        },
+        {
+          "heading": "Another Accordion Item",
+          "content": "This is some text content with some <strong>strong text</strong> and <code>some code</code> as well."
+        }
+      ]
+    },
+    {
+      "heading": "Another Tab",
+      "items": [
+        {
+          "heading": "Tab 2 Accordion Item",
+          "content": "Developers, system engineers, architects and security professionals who work with cloud infrastructure and cloud-native architecture should attend HashiDays to discover the latest technical insights and deep-dives, learn what’s new with HashiCorp open-source tools & enterprise products, receive product training, and connect with other HashiCorp community members who build and use HashiCorp tools every day."
+        },
+        {
+          "heading": "More questions",
+          "content": "This is some text content with some <strong>strong text</strong> and <code>some code</code> as well."
+        }
+      ]
+    },
+    {
+      "heading": "Third Tab",
+      "items": [
+        {
+          "heading": "Accordion Item in Tab 3",
+          "content": "Tab 3, Developers, system engineers, architects and security professionals who work with cloud infrastructure and cloud-native architecture should attend HashiDays to discover the latest technical insights and deep-dives, learn what’s new with HashiCorp open-source tools & enterprise products, receive product training, and connect with other HashiCorp community members who build and use HashiCorp tools every day."
+        },
+        {
+          "heading": "Third Tab question",
+          "content": "This is some text content with some <strong>strong text</strong> and <code>some code</code> as well."
+        }
+      ]
+    }
+  ]
+}

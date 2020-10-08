@@ -1,0 +1,11 @@
+{
+  heading: {
+    type: 'string',
+    description: '',
+  },
+  tabs: {
+    type: 'array',
+    description: '',
+    itemType: '{ heading: string, items: { heading: string, content: string } }',
+  },
+}

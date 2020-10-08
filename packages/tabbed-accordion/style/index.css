@@ -1,0 +1,22 @@
+@import './_temp-spacing-tokens.css';
+
+.g-tabbed-accordion {
+  padding-top: var(--space-block-padding);
+  padding-bottom: var(--space-block-padding);
+  background: white;
+
+  & .g-type-display-2 {
+    margin: 0;
+  }
+
+  & .heading-container {
+    text-align: center;
+    & + .g-tabs {
+      margin-top: var(--space-display-2--content);
+    }
+  }
+
+  & .g-accordion-items {
+    margin-top: 40px;
+  }
+}
