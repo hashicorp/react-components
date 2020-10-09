@@ -33,6 +33,7 @@
 @import '../packages/text-split/styles/index.css';
 @import '../packages/text-split-with-code/style.css';
 @import '../packages/text-split-with-logo-grid/style.css';
+@import '../packages/section-header/style.css';
 
 body {
   margin: 0;
