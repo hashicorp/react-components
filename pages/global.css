@@ -32,6 +32,7 @@
 @import '../packages/tabbed-accordion/style.css';
 @import '../packages/text-split/styles/index.css';
 @import '../packages/text-split-with-code/style.css';
+@import '../packages/text-split-with-logo-grid/style.css';
 
 body {
   margin: 0;
