@@ -5,20 +5,22 @@
   justify-content: space-between;
   padding: 0;
   margin: 0;
-  flex: 1 1 auto;
+  flex: 1 1 125px;
 }
 
 .stackMenuSectionPlusDivider {
   composes: stackMenuSection;
   padding: 0;
-  margin-left: 4rem;
+  margin-left: 80px;
   position: relative;
+  flex: 1 0 260px;
+
   &:before {
     position: absolute;
     content: '';
     width: 1px;
     height: 100%;
     background: var(--gray-6);
-    left: -4rem;
+    left: -64px;
   }
 }
