@@ -1,0 +1,48 @@
+---
+componentName: TextSplitWithImage
+---
+
+Display an image alongside a title, description, and links.
+
+<LiveComponent>{`<TextSplitWithImage
+  textSplit={{
+    heading: 'Heading',
+    content: 'Vestibulum id ligula porta felis euismod semper.',
+    linkStyle: 'links',
+    links: [{
+      text: 'Example Link',
+      url: 'https://www.hashicorp.com',
+      type: 'outbound'
+    }]
+  }}
+  image={{
+    url: 'https://www.datocms-assets.com/2885/1508522484-share.jpg',
+    alt: 'My special alt text'
+  }}
+/>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+Text on the right side:
+
+<LiveComponent>{`<TextSplitWithImage
+  textSplit={{
+    textSide: 'right',
+    heading: 'Heading',
+    content: 'Vestibulum id ligula porta felis euismod semper.',
+    linkStyle: 'links',
+    links: [{
+      text: 'Example Link',
+      url: 'https://www.hashicorp.com',
+      type: 'outbound'
+    }]
+  }}
+  image={{
+    url: 'https://www.datocms-assets.com/2885/1508522484-share.jpg',
+    alt: 'My special alt text'
+  }}
+/>`}</LiveComponent>

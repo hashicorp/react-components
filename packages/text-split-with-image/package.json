@@ -1,0 +1,17 @@
+{
+  "name": "@hashicorp/react-text-split-with-image",
+  "version": "1.4.2",
+  "description": "Display an image alongside a title, description, and links.",
+  "author": "HashiCorp",
+  "contributors": [
+    "Brandon Romano"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/react-image": "^2.0.3",
+    "@hashicorp/react-text-split": "^0.4.2"
+  }
+}
