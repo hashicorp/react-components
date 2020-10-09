@@ -1,0 +1,24 @@
+---
+componentName: SectionHeader
+---
+
+Very simple headline & subheading for a section of a page.
+
+<LiveComponent>{`<SectionHeader
+  headline='Headline'
+  description='Maecenas sed **diam eget** risus varius blandit sit amet non magna.'
+/>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+With `useH1` prop:
+
+<LiveComponent>{`<SectionHeader
+  headline='Headline'
+  description='Maecenas sed diam eget risus varius blandit sit amet non magna.'
+  useH1={true}
+/>`}</LiveComponent>
