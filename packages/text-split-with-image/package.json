@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-text-split-with-image",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "description": "Display an image alongside a title, description, and links.",
   "author": "HashiCorp",
   "contributors": [
