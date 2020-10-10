@@ -27,7 +27,7 @@
   }
 
   &.theme-blue {
-    --highlight-color: var(--blue-d1);
+    --highlight-color: #13ACAE;
   }
 
   & > .nav {
