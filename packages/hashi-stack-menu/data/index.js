@@ -54,6 +54,12 @@ export const DEFAULT_PRODUCT_GROUPS = {
         url: 'https://www.nomadproject.io',
         iconSrc: require('../assets/product-icons/nomad-icon-color.svg?include'),
       },
+      {
+        product: 'waypoint',
+        url: 'https://www.waypointproject.io',
+        iconSrc: require('../assets/product-icons/waypoint-icon-color.svg?include'),
+        badge: 'New',
+      },
     ],
   },
 }
