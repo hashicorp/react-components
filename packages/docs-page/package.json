@@ -1,15 +1,15 @@
 {
   "name": "@hashicorp/react-docs-page",
   "description": "Create a Hashicorp branded docs page in NextJS projects.",
-  "version": "6.2.1",
+  "version": "6.3.0",
   "author": "Hashicorp",
   "contributors": [
     "Jonathan Neal"
   ],
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/react-content": "^5.1.0",
-    "@hashicorp/react-docs-sidenav": "^5.1.0",
+    "@hashicorp/react-content": "^5.2.0",
+    "@hashicorp/react-docs-sidenav": "^5.2.0",
     "@hashicorp/react-head": "^1.1.4",
     "@hashicorp/react-inline-svg": "^1.0.2"
   },
