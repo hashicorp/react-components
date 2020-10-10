@@ -1,0 +1,188 @@
+# @hashicorp/react-search
+
+## Props
+
+### renderHitContent
+
+> `function` | `({ hit: object, Highlight: React.Node }) => React.Component` | _Required_
+
+A render function whose result is used to display each query "hit"
+
+**Params**
+
+| Property  | Type         | Description                                                                         |
+|-----------|--------------|-------------------------------------------------------------------------------------|
+| hit       | `object`     | https://www.algolia.com/doc/api-reference/widgets/highlight/react/#widget-param-hit |
+| Highlight | `React.Node` | https://www.algolia.com/doc/api-reference/widgets/highlight/react/                  |
+
+### resolveHitLink
+
+> `function` | | `( hit: object ) => NextLinkProps` | _Optional_ | **Default:** (hit) => ({ href:`/${hit.objectID}` })
+
+A function whose return value is spread as props to `next/link`.
+For more information about the available props, reference the next/link documentation: https://nextjs.org/docs/api-reference/next/link
+
+**Params**
+
+| Property | Type     | Description                                                                         |
+|----------|----------|-------------------------------------------------------------------------------------|
+| hit      | `object` | https://www.algolia.com/doc/api-reference/widgets/highlight/react/#widget-param-hit |
+
+### placeholder
+
+> `string` | _Optional_ | **Default:** `Search`
+
+## Usage
+
+```jsx
+import Search from '@hashicorp/react-search'
+
+function SearchBar() {
+  return (
+    <Search
+      renderHitContent={({ hit, Highlight }) => <div>...</div>}
+      resolveHitLink={(hit) => ({ href: { pathname: `/${hit.objectID}`, query: { id: hit.__queryID} } })}
+      placeholder="Search documentation"
+    />
+}
+```
+
+### Environment Variables
+
+This component relies on the presence of the following environment variables to be available client side:
+
+```text
+NEXT_PUBLIC_ALGOLIA_APP_ID
+NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY
+NEXT_PUBLIC_ALGOLIA_INDEX
+```
+
+### React
+
+To use the primary `<Search />` component, ensure it exists as a child of the `<SearchProvider />` component. For example:
+
+**App.jsx**
+
+```jsx
+import Search, { SearchProvider } from '@hashicorp/react-search'
+
+function App() {
+  return (
+    <>
+      <SearchProvider>
+        <Search
+          renderHitContent={({hit, Highlight}) => (
+            <span className="name">
+              <Highlight attribute="name" hit={hit} tagName="span" />
+            </span>
+          )}
+          resolveHitLink={(hit) => ({ href: `/${hit.objectID}` })}
+        />
+        <ComponentA>
+        <ComponentB>
+      </SearchProvider>
+      <ComponentC__WithoutSearchContext>
+    </>
+  )
+}
+```
+
+Any child component of `<SearchProvider />` can utilize the provided `useSearch()` hook and access search-specific information. For example:
+
+```jsx
+import { useSearch } from '@hashicorp/react-search'
+
+function ComponentA() {
+  const { query } = useSearch()
+
+  return <code>Search query: {query}</code>
+}
+```
+
+## useSearch()
+
+`useSearch()` exposes the following values:
+
+- `client` (`object`) - Initialized Algolia client
+- `indexName` (`string`) - The name of the Algolia index that search is performed upon
+- `initAlgoliaInsights` (`function`) - Required to initialize Algolia
+- `isCancelled` (`boolean`) - Indicates if search is currently cancelled or not
+- `logClick` (`function`) - Fires an analytics event via the `search-insights` package
+- `query` (`string`) - Current search query
+- `setIsCancelled` (`function`) - Setter function that updates the search cancel state
+- `setQuery` (`function`) - Setter function that updates the search query
+
+
+## Tools
+
+This package includes a `tools.js` file that includes Algolia-related Node.js scripts
+
+### Usage
+
+```js
+const { indexDocsContent, indexContent } = require('@hashicorp/react-search/tools')
+/* It's worth noting that you'd only want to use *one* of the two exported functions */
+```
+
+#### indexDocsContent
+> `function` | `(config: object)`
+This specific helper function is designed specifically for perfoming search indexing on our various product sites' documentation pages.
+
+##### config.algoliaConfig: { appId: string, apiKey: string, index: string }
+
+Algolia-related configuration
+
+_Default_:
+```js
+{
+  apiKey: process.env.ALGOLIA_API_KEY,
+  appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+  index: process.env.NEXT_PUBLIC_ALGOLIA_INDEX,
+}
+```
+
+##### config.contentDir: string
+
+Path to directory that contains the content to be indexed by Algolia
+
+_Default_: `path.join(__dirname, 'pages')`
+
+##### config.filesPattern: string
+
+[minimatch](https://github.com/isaacs/minimatch)-style string to be performed within `config.contentDir`. The results of this pattern match will determine which files to index.
+
+_Default_: `'**/*.mdx'`
+
+##### config.globOptions: { [k:string]: any }
+
+Additional options to include to the glob match. Available options [here](https://github.com/isaacs/node-glob#options)
+
+_Default_: `{ ignore: path.join(config.contentDir, 'partials/**/*') }`
+
+##### config.frontmatterKeys: string[]
+
+Assuming your search-indexed content includes [frontmatter](https://jekyllrb.com/docs/front-matter/), the keys included in this `array` will be included as search criteria.
+
+_Default_: `['page_title', 'description']`
+
+
+#### indexContent
+> `function` | `(config: object)`
+This generic helper function allows for custom Algolia indexing
+
+##### config.algoliaConfig: { appId: string, apiKey: string, index: string }
+
+Algolia-related configuration
+
+_Default_:
+```js
+{
+  apiKey: process.env.ALGOLIA_API_KEY,
+  appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+  index: process.env.NEXT_PUBLIC_ALGOLIA_INDEX,
+}
+```
+
+##### config.getSearchObjects: () => any
+
+This function should return an array of objects that will get passed to Algolias [`partialUpdateObjects`](https://www.algolia.com/doc/api-reference/api-methods/partial-update-objects/) function
