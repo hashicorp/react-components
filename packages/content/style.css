@@ -25,7 +25,7 @@
     --highlight-color: var(--red);
   }
   &.blue {
-    --highlight-color: var(--blue);
+    --highlight-color: var(--blue-d1);
   }
 }
 
