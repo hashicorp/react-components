@@ -35,6 +35,7 @@
 @import '../packages/text-split-with-logo-grid/style.css';
 @import '../packages/section-header/style.css';
 @import '../packages/search/style.css';
+@import '../packages/select-input/style.css';
 
 body {
   margin: 0;
