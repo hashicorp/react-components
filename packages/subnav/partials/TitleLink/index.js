@@ -7,6 +7,7 @@ import SvgrPackerLogoColour from '../../icons/packer-logo-color.svgr.js'
 import SvgrTerraformLogoColour from '../../icons/terraform-logo-color.svgr.js'
 import SvgrVagrantLogoColour from '../../icons/vagrant-logo-color.svgr.js'
 import SvgrVaultLogoColour from '../../icons/vault-logo-color.svgr.js'
+import SvgrBoundaryLogoColour from '../../icons/boundary-logo-color.svgr.js'
 
 const logoDict = {
   consul: SvgrConsulLogoColour,
@@ -16,6 +17,7 @@ const logoDict = {
   terraform: SvgrTerraformLogoColour,
   vagrant: SvgrVagrantLogoColour,
   vault: SvgrVaultLogoColour,
+  boundary: SvgrBoundaryLogoColour,
 }
 
 function TitleLink(props) {
