@@ -25,21 +25,22 @@
 }
 
 .productIcon {
-  margin-right: 0.75rem;
+  margin-right: 8px;
   width: 22px;
+  height: auto;
 }
 
 .badge {
   position: absolute;
   text-align: center;
-  left: calc(100% + 1rem);
+  left: calc(100% + 10px);
   top: 4px;
   padding: 1.5px 4px 1.5px 6px;
   border-radius: 2px;
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.6875rem;
+  font-size: 10px;
   line-height: 1.272727273em;
   text-transform: uppercase;
   letter-spacing: 0.08em;

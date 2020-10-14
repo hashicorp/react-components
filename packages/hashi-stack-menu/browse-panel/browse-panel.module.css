@@ -16,6 +16,7 @@
   justify-content: flex-start;
   width: 832px;
   z-index: 901; /* subnav is 900 */
+  min-height: 310px;
 }
 
 .panelInner {

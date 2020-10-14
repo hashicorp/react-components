@@ -20,15 +20,10 @@
   padding: 0.5rem 0.5rem 0.5rem 0; /* no padding on left side to allow for grid container on consumer's end */
   margin-right: 1rem;
 
-  & div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 101px;
-  }
   & svg {
     height: 100%;
     width: 100%;
+    max-width: 101px;
   }
 }
 
@@ -39,7 +34,7 @@
   height: 100%;
   width: auto;
 
-  @media (--large) {
+  @media (min-width: 960px) {
     display: flex;
     justify-content: space-between;
   }

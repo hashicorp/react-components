@@ -6,20 +6,17 @@ export const DEFAULT_PRODUCT_GROUPS = {
       {
         product: 'terraform',
         url: 'https://www.terraform.io',
-        iconUrl:
-          'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
+        iconSrc: require('../assets/product-icons/terraform-icon-color.svg?include'),
       },
       {
         product: 'packer',
         url: 'https://www.packer.io',
-        iconUrl:
-          'https://www.hashicorp.com/img/product-logos/packer-icon-color.svg',
+        iconSrc: require('../assets/product-icons/packer-icon-color.svg?include'),
       },
       {
         product: 'vagrant',
         url: 'https://www.vagrantup.com',
-        iconUrl:
-          'https://www.hashicorp.com/img/product-logos/vagrant-icon-color.svg',
+        iconSrc: require('../assets/product-icons/vagrant-icon-color.svg?include'),
       },
     ],
   },
@@ -29,8 +26,7 @@ export const DEFAULT_PRODUCT_GROUPS = {
       {
         product: 'consul',
         url: 'https://www.consul.io',
-        iconUrl:
-          'https://www.hashicorp.com/img/product-logos/consul-icon-color.svg',
+        iconSrc: require('../assets/product-icons/consul-icon-color.svg?include'),
       },
     ],
   },
@@ -40,8 +36,13 @@ export const DEFAULT_PRODUCT_GROUPS = {
       {
         product: 'vault',
         url: 'https://www.vaultproject.io',
-        iconUrl:
-          'https://www.hashicorp.com/img/product-logos/vault-icon-color.svg',
+        iconSrc: require('../assets/product-icons/vault-icon-color.svg?include'),
+      },
+      {
+        product: 'boundary',
+        url: 'https://www.boundaryproject.io',
+        iconSrc: require('../assets/product-icons/boundary-icon-color.svg?include'),
+        badge: 'New',
       },
     ],
   },
@@ -51,8 +52,7 @@ export const DEFAULT_PRODUCT_GROUPS = {
       {
         product: 'nomad',
         url: 'https://www.nomadproject.io',
-        iconUrl:
-          'https://www.hashicorp.com/img/product-logos/nomad-icon-color.svg',
+        iconSrc: require('../assets/product-icons/nomad-icon-color.svg?include'),
       },
     ],
   },
@@ -81,15 +81,19 @@ export const DEFAULT_MENU_SECTIONS = [
           {
             product: 'consul',
             url: 'https://www.hashicorp.com/cloud-platform',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/consul-icon-color.svg',
-            badge: 'Private Beta',
+            iconSrc: require('../assets/product-icons/consul-icon-color.svg?include'),
+            badge: 'Public Beta',
           },
           {
             product: 'terraform',
             url: 'https://app.terraform.io',
-            iconUrl:
-              'https://www.hashicorp.com/img/product-logos/terraform-icon-color.svg',
+            iconSrc: require('../assets/product-icons/terraform-icon-color.svg?include'),
+          },
+          {
+            product: 'vault',
+            url: 'https://www.hashicorp.com/cloud-platform',
+            iconSrc: require('../assets/product-icons/vault-icon-color.svg?include'),
+            badge: 'Private Beta',
           },
         ],
       },
