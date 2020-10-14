@@ -1,35 +1,25 @@
-import { expect } from 'chai'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 import StatusBar from './StatusBar.js'
 
-testComponent(
-  () => StatusBar,
-  ({ testTagAndClass, render }) => {
-    testTagAndClass('div', 'progress-bar')
+describe('<StatusBar />', () => {
+  test('should add the dark class when needed', () => {
+    const darkElem = render(<StatusBar dark={true} />).container.firstChild
+    expect(darkElem).toHaveClass('dark')
 
-    it('should add the dark class when needed', () => {
-      expect(
-        render({ dark: true })
-          .find('.progress-bar')
-          .prop('className')
-      ).to.contain('dark')
+    const lightElem = render(<StatusBar dark={false} />).container.firstChild
+    expect(lightElem).not.toHaveClass('dark')
+  })
 
-      expect(
-        render({ dark: false })
-          .find('.progress-bar')
-          .prop('className')
-      ).to.not.contain('dark')
-    })
+  test('should add the active class when needed', () => {
+    const active = render(<StatusBar active={true} timing={1} />).container.firstChild
+    
+    expect(active.querySelector('span')).toHaveClass('active')
+    expect(active.querySelector('span')).toHaveAttribute('style', 'animation-duration: 1s;')
 
-    it('should add the active class when needed', () => {
-      const active = render({ active: true, timing: 1 }).find('span')
-      expect(active.prop('className')).to.contain('active')
-      expect(active.render().attr('style')).to.contain('animation-duration:1s')
-
-      const inactive = render({ active: false, timing: 1 }).find('span')
-      expect(inactive.prop('className')).to.not.contain('active')
-      expect(inactive.render().attr('style')).to.contain(
-        'animation-duration:0s'
-      )
-    })
-  }
-)
+    const inactive = render(<StatusBar active={false} timing={1} />).container.firstChild
+    
+    expect(inactive.querySelector('span')).not.toHaveClass('active')
+    expect(inactive.querySelector('span')).toHaveAttribute('style', 'animation-duration: 0s;')
+  })
+})
