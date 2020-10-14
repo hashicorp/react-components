@@ -27,7 +27,8 @@
   & svg {
     position: absolute;
     right: 0.25rem;
-    top: 1.65rem;
+    top: 0;
+    height: 100%;
     & path {
       stroke: var(--gray-4);
     }
