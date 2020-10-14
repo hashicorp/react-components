@@ -26,8 +26,9 @@
 
 .productIcon {
   margin-right: 8px;
-  width: 22px;
-  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .badge {
