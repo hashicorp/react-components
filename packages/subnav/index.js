@@ -16,6 +16,7 @@ const brandWhitelist = {
   terraform: 'terraform',
   vagrant: 'vagrant',
   vault: 'vault',
+  boundary: 'boundary',
 }
 
 function SubnavInner(props) {
@@ -39,6 +40,24 @@ function SubnavInner(props) {
     return value
   })
 
+  // TODO, Brand Refactor
+  // this needs to be removed after we refactor
+  // our brands to properly be their names.
+  //
+  // This nav component leaks a little bit, as we have an automagical
+  // treatment of the text for the brands, so there needs to be a little
+  // translation so we can keep all of our other components just 'red'
+  // for their branding.
+  //
+  // When this is refactored, all uses of styleBrand should be eliminated,
+  // and we should go back to just directly passing the `brand` variable around.
+  var styleBrand;
+  if(brand === 'boundary') {
+    styleBrand = 'red';
+  } else {
+    styleBrand = brand;
+  }
+
   return (
     <div
       className={`constrain-width-wrapper ${
@@ -46,7 +65,7 @@ function SubnavInner(props) {
       }`}
     >
       <div
-        className={`g-subnav-inner  brand-${brand}  ${
+        className={`g-subnav-inner  brand-${styleBrand}  ${
           constrainWidth ? 'is-constrained' : ''
         }`}
         data-overflow-target
@@ -54,21 +73,21 @@ function SubnavInner(props) {
         <TitleLink
           text={titleLink.text}
           url={titleLink.url}
-          brand={brand}
+          brand={styleBrand}
           Link={Link}
         />
         {!hasOverflow && (
           <MenuItemsDefault
             menuItems={menuItemsWithActive}
             menuItemsAlign={menuItemsAlign}
-            brand={brand}
+            brand={styleBrand}
             Link={Link}
           />
         )}
         {!hasOverflow && (
           <CtaLinks
             links={ctaLinks}
-            brand={brand}
+            brand={styleBrand}
             Link={Link}
             hideGithubStars={hideGithubStars}
           />
@@ -78,7 +97,7 @@ function SubnavInner(props) {
             menuItems={menuItemsWithActive}
             ctaLinks={ctaLinks}
             hideGithubStars={hideGithubStars}
-            brand={brand}
+            brand={styleBrand}
             Link={Link}
           />
         )}

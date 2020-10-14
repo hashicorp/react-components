@@ -83,6 +83,9 @@
         &.brand-packer::after {
           background: var(--packer);
         }
+        &.brand-red::after {
+          background: var(--red);
+        }
       }
 
       &:hover .text {
