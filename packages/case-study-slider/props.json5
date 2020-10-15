@@ -2,8 +2,10 @@
   data: {
     type: 'json',
     description: 'Data for the case study slider',
-    defaultValue: {
-      caseStudies: [
+    caseStudies: {
+      type: 'array',
+      description: 'Collection of case study objects',
+      defaultValue: [
         {
           company: {
             monochromeLogo: {
