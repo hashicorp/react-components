@@ -17,6 +17,7 @@ const brandWhitelist = {
   vagrant: 'vagrant',
   vault: 'vault',
   boundary: 'boundary',
+  waypoint: 'waypoint',
 }
 
 function SubnavInner(props) {
@@ -42,18 +43,20 @@ function SubnavInner(props) {
 
   // TODO, Brand Refactor
   // this needs to be removed after we refactor
-  // our brands to properly be their names.
+  // our brands to properly be waypoint & boundary.
   //
   // This nav component leaks a little bit, as we have an automagical
   // treatment of the text for the brands, so there needs to be a little
   // translation so we can keep all of our other components just 'red'
-  // for their branding.
+  // and 'blue' for their branding.
   //
   // When this is refactored, all uses of styleBrand should be eliminated,
   // and we should go back to just directly passing the `brand` variable around.
   var styleBrand;
   if(brand === 'boundary') {
     styleBrand = 'red';
+  } else if(brand === 'waypoint') {
+    styleBrand = 'blue';
   } else {
     styleBrand = brand;
   }
