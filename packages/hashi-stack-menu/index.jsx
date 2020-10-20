@@ -4,7 +4,6 @@ import InlineSvg from '@hashicorp/react-inline-svg'
 import LogoSvg from './assets/logo.svg?include'
 import NavItem from './nav-item'
 import slugify from 'slugify'
-import Link from 'next/link'
 import HASHI_STACK_MENU_ITEMS from './data'
 
 export default function HashiStackMenu({ onPanelChange }) {
@@ -20,11 +19,9 @@ export default function HashiStackMenu({ onPanelChange }) {
   return (
     <header className={styles.hashiStackMenu}>
       <nav className={styles.nav}>
-        <Link href="/">
-          <a className={styles.logoLink}>
-            <Logo />
-          </a>
-        </Link>
+        <a href="https://www.hashicorp.com/" className={styles.logoLink}>
+          <Logo />
+        </a>
         <NavMenu>
           {HASHI_STACK_MENU_ITEMS?.map((item) => (
             <NavItem
