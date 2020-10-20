@@ -40,4 +40,28 @@ describe('<AlertBanner />', () => {
     container.querySelector('.close').click()
     expect(didClose).toBe(true)
   })
+
+  describe('with an expiration date set', () => {
+    beforeAll(() => {
+      // Lock Date.now() with value of Oct. 20, 2020
+      const lockedDateNow = new Date('2020-10-20T00:00:00-07:00').valueOf()
+      jest.spyOn(Date, 'now').mockImplementation(() => lockedDateNow)
+    })
+
+    afterAll(() => {
+      Date.now.mockRestore()
+    })
+
+    it('should show the banner when the current date has not surpassed the expiration date', () => {
+      const expirationDate = '2020-10-30T12:00:00-07:00'
+      const { container } = render(<AlertBanner text="text" tag="tag" expirationDate={expirationDate} />)
+      expect(container.firstChild).toHaveClass('show')
+    })
+
+    it('should NOT show the banner when the current date has surpassed the expiration date', () => {
+      const expirationDate = '2020-10-01T12:00:00-07:00'
+      const { container } = render(<AlertBanner text="text" tag="tag" expirationDate={expirationDate} />)
+      expect(container.firstChild).not.toHaveClass('show')
+    })
+  })
 })

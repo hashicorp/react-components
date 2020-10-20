@@ -33,4 +33,9 @@
     description: 'string used for cookie name (defaults to slugified text property)',
     control: 'text',
   },
+  expirationDate: {
+    type: 'string',
+    description: 'A datetime string that, when set, controls if the alert banner should appear',
+    control: 'text',
+  },
 }

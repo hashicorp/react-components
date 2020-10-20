@@ -4,4 +4,5 @@ fragment alertBannerFields on AlertBannerRecord {
   text
   linkText
   url
+  expirationDate
 }
