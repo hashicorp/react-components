@@ -11,6 +11,12 @@ componentName: 'AlertBanner'
   linkText='Check it out'
 />`}</LiveComponent>
 
+<LiveComponent>{`<AlertBanner
+  text="This banner should not show up."
+  tag="Expired"
+  expirationDate="2020-01-01T12:00:00-07:00"
+/>`}</LiveComponent>
+
 #### Props
 
 <PropsTable props={componentProps} />

@@ -8,6 +8,7 @@ class AlertBanner extends Component {
   constructor(props) {
     super(props)
 
+    this.expirationDate = props.expirationDate
     this.name = props.name || slugify(props.text, { lower: true })
     this.state = { show: true }
     this.banner = React.createRef()
@@ -47,8 +48,18 @@ class AlertBanner extends Component {
   }
 
   componentDidMount() {
+    const isCookieSet = cookie.get(`banner_${this.name}`)
+    const hasExpired = this.expirationDate && Date.now() > Date.parse(this.expirationDate)
+
     // if cookie isn't set, show the component
-    this.setState({ show: cookie.get(`banner_${this.name}`) ? false : true })
+    if (!isCookieSet) {
+      this.setState({ show: true })
+    }
+
+    // if past expiration date, don't show the component
+    if (hasExpired) {
+      this.setState({ show: false })
+    }
   }
 
   onClose() {
