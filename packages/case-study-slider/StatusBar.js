@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function StatusBar({ dark, active, timing, brand }) {
   return (
     <div className={`progress-bar${dark ? ' dark' : ''}`}>
