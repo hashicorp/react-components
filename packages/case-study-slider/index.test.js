@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import CaseStudySlider from './'
-// import StatusBar from './StatusBar'
 import transformProps from '../../__test-helpers/transform-props'
 
 const defaultProps = transformProps(__dirname)
