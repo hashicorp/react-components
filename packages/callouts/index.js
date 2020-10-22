@@ -1,16 +1,14 @@
-import React from 'react'
 import CalloutItem from './partials/callout-item/index.js'
 
-function Callouts(props) {
-  const {
-    heading,
-    subheading,
-    centerHeading,
-    layout,
-    theme,
-    brand,
-    items,
-  } = props
+function Callouts({
+  heading,
+  subheading,
+  centerHeading,
+  layout,
+  theme,
+  brand,
+  items,
+}) {
   if (!layout)
     throw new Error('The "layout" prop is required, please pass in a value')
   return (

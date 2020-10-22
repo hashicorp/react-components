@@ -1,9 +1,15 @@
-import React from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Button from '@hashicorp/react-button'
 
-function CalloutItem(props) {
-  const { icon, heading, content, link, layout, theme, brand } = props
+export default function CalloutItem({
+  icon,
+  heading,
+  content,
+  link,
+  layout,
+  theme,
+  brand,
+}) {
   const hasBadLink = link && (!link.text || !link.url)
   if (hasBadLink) {
     throw new Error('`link` must have both `text` and a `url`')
@@ -54,7 +60,7 @@ function CalloutItem(props) {
               theme={{
                 brand,
                 background: theme,
-                variant: 'tertiary'
+                variant: 'tertiary',
               }}
             />
           </div>
@@ -63,5 +69,3 @@ function CalloutItem(props) {
     </div>
   )
 }
-
-export default CalloutItem

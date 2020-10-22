@@ -1,7 +1,4 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
-
 import propsDefault from './fixtures/default.json'
 import CalloutItem from './index.js'
 
