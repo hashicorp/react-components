@@ -3,7 +3,6 @@
     type: 'string',
     description: 'Heading copy to show on the left/top',
     control: 'input',
-    defaultValue: 'Learn the latest skills',
     required: true,
   },
   brand: {
