@@ -1,0 +1,144 @@
+---
+componentName: 'CaseStudySlider'
+---
+
+A slider component that can display up to three case studies and allow a visitor to toggle between them, and click through to read.
+
+<LiveComponent>{`<CaseStudySlider 
+  data={{
+    caseStudies: [
+      {
+        company: {
+          monochromeLogo: {
+            url: 'https://www.datocms-assets.com/2885/1538067560-proofpoint-logo-reg-k.png',
+          },
+          whiteLogo: {
+            url: 'https://www.datocms-assets.com/2885/1538067567-proofpoint-logo-reg-reversed.png',
+          },
+        },
+        headline: 'Case Study 1',
+        description: 'Sample Text 1',
+        caseStudyResource: {
+          slug: 'https://www.hashicorp.com',
+          image: {
+            url: 'https://www.datocms-assets.com/2885/1538142087-ye-endahl.jpg',
+          },
+        },
+        buttonLabel: 'Custom Label',
+      },
+      {
+        company: {
+          monochromeLogo: {
+            url: 'https://www.datocms-assets.com/2885/1524097005-adobe-black-1.svg',
+          },
+          whiteLogo: {
+            url: 'https://www.datocms-assets.com/2885/1524097013-adobe-white-1.svg',
+          },
+        },
+        headline: 'Case Study 2',
+        description: 'Sample Text 2',
+        caseStudyResource: {
+          slug: 'https://www.hashicorp.com',
+          image: {
+            url: 'https://www.datocms-assets.com/2885/1538233406-wa-6h7-400x400.jpg',
+          },
+        },
+      },
+    ]
+  }}
+  timing={10}
+  dark={false}
+/>`}</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Example
+
+<LiveComponent>{`<CaseStudySlider 
+  data={{
+    caseStudies: [
+      {
+        company: {
+          monochromeLogo: {
+            url: 'https://www.datocms-assets.com/2885/1538067560-proofpoint-logo-reg-k.png',
+            alt: 'Logo dark',
+            format: 'png',
+          },
+          whiteLogo: {
+            url: 'https://www.datocms-assets.com/2885/1538067567-proofpoint-logo-reg-reversed.png',
+            alt: 'Logo white',
+            format: 'png',
+          },
+        },
+        headline: 'This is the first case study',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut arcu justo, et convallis lectus. Sed commodo massa eget risus feugiat suscipit. ',
+        caseStudyResource: {
+          slug: 'https://www.hashicorp.com',
+          image: {
+            url: 'https://www.datocms-assets.com/2885/1538142087-ye-endahl.jpg',
+            alt: 'Test image',
+            format: 'jpg',
+          },
+        },
+        buttonLabel: 'Custom Label',
+      },
+      {
+        company: {
+          monochromeLogo: {
+            url: 'https://www.datocms-assets.com/2885/1524097005-adobe-black-1.svg',
+            alt: 'Logo dark',
+            format: 'svg',
+          },
+          whiteLogo: {
+            url: 'https://www.datocms-assets.com/2885/1524097013-adobe-white-1.svg',
+            alt: 'Logo white',
+            format: 'svg',
+          },
+        },
+        headline: 'This is the second case study',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut arcu justo, et convallis lectus. Sed commodo massa eget risus feugiat suscipit. Nulla velit lectus, imperdiet cursus tempor at, ',
+        caseStudyResource: {
+          slug: 'https://www.hashicorp.com',
+          image: {
+            url: 'https://www.datocms-assets.com/2885/1538233406-wa-6h7-400x400.jpg',
+            alt: 'Test image',
+            format: 'jpg',
+          },
+        },
+      },
+      {
+        company: {
+          monochromeLogo: {
+            url: 'https://www.datocms-assets.com/2885/1535495419-black.png',
+            alt: 'Logo dark',
+            format: 'png',
+          },
+          whiteLogo: {
+            url: 'https://www.datocms-assets.com/2885/1535495424-white.png',
+            alt: 'Logo white',
+            format: 'png',
+          },
+        },
+        headline: 'This is the third case study',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut arcu justo, et convallis lectus. Sed commodo massa eget risus feugiat suscipit. Nulla velit lectus, ',
+        caseStudyResource: {
+          slug: 'https://www.hashicorp.com',
+          image: {
+            url: 'https://www.datocms-assets.com/2885/1535120026-36755049704aeaabe64ddk.jpg',
+            alt: 'Test image',
+            format: 'jpg',
+          },
+        },
+        caseStudyImage: {
+          url: 'https://www.datocms-assets.com/2885/1535120026-36755049704aeaabe64ddk.jpg',
+          alt: 'Case Study image override',
+          format: 'jpg',
+        },
+      },
+    ],
+  }}
+  timing={10}
+  dark={false}
+/>`}</LiveComponent>
