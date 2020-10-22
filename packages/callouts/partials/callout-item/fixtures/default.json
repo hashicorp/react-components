@@ -1,0 +1,9 @@
+{
+  "icon": "<svg><title>Default svg title</title></svg>",
+  "heading": "My test heading",
+  "content": "My test content",
+  "link": {
+    "text": "My test link",
+    "url": "/some/test/path"
+  }
+}
