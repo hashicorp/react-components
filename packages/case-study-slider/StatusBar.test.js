@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import StatusBar from './StatusBar.js'
 
 describe('<StatusBar />', () => {
@@ -12,14 +11,22 @@ describe('<StatusBar />', () => {
   })
 
   test('should add the active class when needed', () => {
-    const active = render(<StatusBar active={true} timing={1} />).container.firstChild
-    
-    expect(active.querySelector('span')).toHaveClass('active')
-    expect(active.querySelector('span')).toHaveAttribute('style', 'animation-duration: 1s;')
+    const active = render(<StatusBar active={true} timing={1} />).container
+      .firstChild
 
-    const inactive = render(<StatusBar active={false} timing={1} />).container.firstChild
-    
+    expect(active.querySelector('span')).toHaveClass('active')
+    expect(active.querySelector('span')).toHaveAttribute(
+      'style',
+      'animation-duration: 1s;'
+    )
+
+    const inactive = render(<StatusBar active={false} timing={1} />).container
+      .firstChild
+
     expect(inactive.querySelector('span')).not.toHaveClass('active')
-    expect(inactive.querySelector('span')).toHaveAttribute('style', 'animation-duration: 0s;')
+    expect(inactive.querySelector('span')).toHaveAttribute(
+      'style',
+      'animation-duration: 0s;'
+    )
   })
 })

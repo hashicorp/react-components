@@ -5,7 +5,9 @@
     caseStudies: {
       type: 'array',
       description: 'Collection of case study objects',
-      defaultValue: [
+    },
+    defaultValue: {
+      caseStudies: [
         {
           company: {
             monochromeLogo: {
@@ -87,7 +89,6 @@
       ],
     },
   },
-
   timing: {
     type: 'integer',
     description: 'Slider timing in seconds',

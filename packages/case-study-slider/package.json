@@ -2,7 +2,10 @@
   "name": "@hashicorp/react-case-study-slider",
   "description": "displays up to three case studies",
   "version": "2.1.4",
-  "author": "Hashicorp - Mike Wickett",
+  "author": "HashiCorp",
+  "contributors": [
+    "Mike Wickett"
+  ],
   "dependencies": {
     "@hashicorp/react-button": "^2.2.4",
     "@hashicorp/react-image": "^2.0.3",
@@ -11,7 +14,6 @@
   "peerDependencies": {
     "react": "^16.9.0"
   },
-  "main": "dist",
   "publishConfig": {
     "access": "public"
   }

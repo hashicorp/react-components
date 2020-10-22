@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import { render } from '@testing-library/react'
 import CaseStudySlider from './'
 import transformProps from '../../__test-helpers/transform-props'
 
@@ -17,19 +16,25 @@ describe('<CaseStudySlider />', () => {
     const rootElem = container.firstChild
     const numStudies = defaultProps.data.caseStudies.length
 
-    expect(rootElem.querySelectorAll('.slider-frame').length).toEqual(numStudies)
+    expect(rootElem.querySelectorAll('.slider-frame').length).toEqual(
+      numStudies
+    )
     if (numStudies > 1) {
-      expect(rootElem.querySelectorAll('.progress-bar').length).toEqual(numStudies)
+      expect(rootElem.querySelectorAll('.progress-bar').length).toEqual(
+        numStudies
+      )
     } else {
       expect(rootElem.querySelector('.progress-bar').exists()).toEqual(false)
     }
   })
 
   test('should adapt the button to the theme', () => {
-    const darkElem = render(<CaseStudySlider {...defaultProps} dark={true} />).container.firstChild
+    const darkElem = render(<CaseStudySlider {...defaultProps} dark={true} />)
+      .container.firstChild
     expect(darkElem.querySelector('.g-btn')).toHaveClass('background-dark')
 
-    const lightElem = render(<CaseStudySlider {...defaultProps} dark={false} />).container.firstChild
+    const lightElem = render(<CaseStudySlider {...defaultProps} dark={false} />)
+      .container.firstChild
     expect(lightElem.querySelector('.g-btn')).toHaveClass('background-light')
   })
 
@@ -38,41 +43,44 @@ describe('<CaseStudySlider />', () => {
     const rootElem = container.firstChild
 
     expect(rootElem.querySelector('.g-btn')).toHaveTextContent('Custom Label')
-    expect(rootElem.querySelectorAll('.g-btn')[1]).toHaveTextContent('Read Case Study')
+    expect(rootElem.querySelectorAll('.g-btn')[1]).toHaveTextContent(
+      'Read Case Study'
+    )
   })
 
-
   test('should add class `single` to `slider-frame` when there is only 1 frame', () => {
-    const {container} = render(
+    const { container } = render(
       <CaseStudySlider
         {...defaultProps}
         data={{
           ...defaultProps.data,
-          caseStudies: defaultProps.data.caseStudies.slice(0, 1)
+          caseStudies: defaultProps.data.caseStudies.slice(0, 1),
         }}
-      />)
-    
+      />
+    )
+
     const rootElem = container.firstChild
 
     expect(rootElem.querySelector('.slider-frame')).toHaveClass('single')
   })
 
   test('should add class `double` to `logo-bar-container` when there are only 2 frames', () => {
-        const {container} = render(
+    const { container } = render(
       <CaseStudySlider
         {...defaultProps}
         data={{
           ...defaultProps.data,
-          caseStudies: defaultProps.data.caseStudies.slice(0, 2)
+          caseStudies: defaultProps.data.caseStudies.slice(0, 2),
         }}
-      />)
+      />
+    )
 
     const rootElem = container.firstChild
     expect(rootElem.querySelector('.logo-bar-container')).toHaveClass('double')
   })
 })
 
-// TODO Add these Enzyme/Sinon-centric tests back 
+// TODO Add these Enzyme/Sinon-centric tests back
 
 // test('default timing should be 10', () => {
 //   expect(render(<CaseStudySlider {...defaultProps} timing={undefined} />).state('timing')).toEqual(10)
@@ -157,7 +165,6 @@ describe('<CaseStudySlider />', () => {
 //       .attr('alt')
 //   ).toEqual('Case Study image override')
 // })
-
 
 // testComponent(
 //   () => CaseStudySlider,
@@ -269,4 +276,3 @@ describe('<CaseStudySlider />', () => {
 //     })
 //   }
 // )
-
