@@ -50,6 +50,18 @@ jobs:
               body
             })
 
+  log_package:
+    name: Log package name
+    runs-on: ubuntu-latest
+    needs: scan_changed_packages
+    if: ${{ needs.scan_changed_packages.outputs.packageName != 'N/A' }}
+    steps:
+      - name: Log package name
+        env:
+          PACKAGE_NAME: ${{ needs.scan_changed_packages.outputs.packageName }}
+        run: |
+          echo "Change detected in package: $PACKAGE_NAME ..."
+
   verify_description:
     name: Verify description
     runs-on: ubuntu-latest
