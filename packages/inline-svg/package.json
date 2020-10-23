@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-inline-svg",
-  "description": "Renders an SVG from a given string.",
+  "description": "Renders an .svg from a given string.",
   "version": "4.0.2",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22inline-svg%22",
