@@ -1,0 +1,29 @@
+name: HashiBot Package Publisher Debugger
+
+on:
+  pull_request:
+
+jobs:
+  release_package:
+    name: Publish package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: git checkout master
+      - run: npm ci --ignore-scripts
+      - run: npm run vercel-build
+      - name: Register token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_ACCESS_TOKEN" > ~/.npmrc
+          echo "_auth=$NPM_ACCESS_TOKEN" >>  ~/.npmrc
+          echo "email=<mktg-dev-github-bot@hashicorp.com>" >>  ~/.npmrc
+          echo "always-auth=true" >>  ~/.npmrc
+          git config --global user.email "mktg-dev-github-bot@hashicorp.com"
+          git config --global user.name "HashiBot Web"
+        env:
+          NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+      - run: cat ~/.npmrc
+      - run: npm logout
+      - run: npm whoami --verbose
