@@ -109,8 +109,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: git checkout master
-      - run: npm ci --ignore-scripts
-      - run: npm run vercel-build
+      - run: npm logout
       - name: Register token
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_ACCESS_TOKEN" > ~/.npmrc
@@ -121,6 +120,8 @@ jobs:
           git config --global user.name "HashiBot Web"
         env:
           NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+      - run: npm ci --ignore-scripts
+      - run: npm run vercel-build
       - name: Tag major version
         if: ${{ needs.verify_description.outputs.version == 'Major'}}
         run: |
