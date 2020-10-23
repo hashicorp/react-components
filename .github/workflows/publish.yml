@@ -125,15 +125,21 @@ jobs:
       - name: Tag major version
         if: ${{ needs.verify_description.outputs.version == 'Major'}}
         run: |
-          echo "::set-env name=VERSION::$( ./node_modules/.bin/lerna version major --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' )"
+          echo 'VERSION<<EOF' >> $GITHUB_ENV
+          ./node_modules/.bin/lerna version major --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
       - name: Tag minor version
         if: ${{ needs.verify_description.outputs.version == 'Minor'}}
         run: |
-          echo "::set-env name=VERSION::$( ./node_modules/.bin/lerna version minor --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' )"
+          echo 'VERSION<<EOF' >> $GITHUB_ENV
+          ./node_modules/.bin/lerna version minor --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
       - name: Tag patch version
         if: ${{ needs.verify_description.outputs.version == 'Patch'}}
         run: |
-          echo "::set-env name=VERSION::$( ./node_modules/.bin/lerna version patch --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' )"
+          echo 'VERSION<<EOF' >> $GITHUB_ENV
+          ./node_modules/.bin/lerna version patch --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
       - name: Create GitHub release
         uses: actions/github-script@v2
         with:
