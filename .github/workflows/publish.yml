@@ -19,7 +19,7 @@ jobs:
       - name: Parse changed packages
         id: parse_changed
         run: |
-          echo "::set-output name=package_name::$( npx lerna changed --json | jq -r 'if . | length == 1 then .[0].name | tostring else "N/A" end' )"
+          echo "::set-output name=package_name::$( echo $(npx lerna changed --json || echo "{}") | jq -r 'if . | length == 1 then .[0].name | tostring else "N/A" end' )"
 
   add_comment:
     name: Add warning comment to PR author
@@ -60,7 +60,7 @@ jobs:
         env:
           PACKAGE_NAME: ${{ needs.scan_changed_packages.outputs.packageName }}
         run: |
-          echo "Change detected in package: $PACKAGE_NAME ..."
+          echo "Change detected in package: $PACKAGE_NAME"
 
   verify_description:
     name: Verify description
@@ -121,19 +121,19 @@ jobs:
         with:
           fetch-depth: 0
       - run: git checkout master
-      - run: npm logout
       - name: Register token
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_ACCESS_TOKEN" > ~/.npmrc
-          echo "_auth=$NPM_ACCESS_TOKEN" >>  ~/.npmrc
-          echo "email=<mktg-dev-github-bot@hashicorp.com>" >>  ~/.npmrc
-          echo "always-auth=true" >>  ~/.npmrc
+          echo "_auth=$NPM_ACCESS_TOKEN" >> ~/.npmrc
+          echo "email=<mktg-dev-github-bot@hashicorp.com>" >> ~/.npmrc
+          echo "always-auth=true" >> ~/.npmrc
           git config --global user.email "mktg-dev-github-bot@hashicorp.com"
           git config --global user.name "HashiBot Web"
         env:
           NPM_ACCESS_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
       - run: npm ci --ignore-scripts
       - run: npm run vercel-build
+      - run: npm logout
       - name: Tag major version
         if: ${{ needs.verify_description.outputs.version == 'Major'}}
         run: |
