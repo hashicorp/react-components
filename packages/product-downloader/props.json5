@@ -7,12 +7,14 @@
   productName: {
     type: 'string',
     description: 'human readable name for the product',
+    defaultValue: 'Waypoint',
     required: true,
   },
   productId: {
     type: 'string',
     description: 'slug/identifier for the product. Used for downloads and links',
     control: 'select',
+    defaultValue: 'waypoint',
     options: [
       'terraform',
       'vault',
@@ -28,6 +30,7 @@
   latestVersion: {
     type: 'string',
     description: 'latest version of the product',
+    defaultValue: '0.1.0',
     required: true,
   },
   tutorialLink: {

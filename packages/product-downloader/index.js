@@ -70,7 +70,7 @@ export default function ProductDownloader({
             <h2>Getting Started</h2>
             <p>{getStartedDescription}</p>
             <div className={styles.links}>
-              {getStartedLinks.map((link) => (
+              {getStartedLinks?.map((link) => (
                 <a href={link.href} key={link.href}>
                   {link.label}
                 </a>
@@ -94,7 +94,7 @@ export default function ProductDownloader({
   )
 }
 
-export const packageManagers = {
+const packageManagers = {
   homebrew: {
     label: 'Homebrew',
     url: '#',
@@ -134,7 +134,7 @@ export const packageManagers = {
   },
 }
 
-export const packageManagersByOs = {
+const packageManagersByOs = {
   darwin: packageManagers.homebrew,
   linux: [
     packageManagers.ubuntu,
