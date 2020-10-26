@@ -130,6 +130,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
       - run: npm run vercel-build
+      - name: Configure git credentials
+        run: |
+          git config --global user.email "mktg-dev-github-bot@hashicorp.com"
+          git config --global user.name "HashiBot Web"
       - name: Tag major version
         if: ${{ needs.verify_description.outputs.version == 'Major'}}
         run: |
@@ -150,10 +154,6 @@ jobs:
           echo 'EOF' >> $GITHUB_ENV
       - name: Print version
         run: echo $VERSION
-      - name: Config git
-        run: |
-          git config --global user.email "mktg-dev-github-bot@hashicorp.com"
-          git config --global user.name "HashiBot Web"
       - name: Create GitHub release
         uses: actions/github-script@v2
         with:
