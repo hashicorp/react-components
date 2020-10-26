@@ -1,0 +1,94 @@
+{
+  releases: {
+    type: 'object',
+    description: 'API response from releases endpoint',
+    required: true,
+  },
+  productName: {
+    type: 'string',
+    description: 'human readable name for the product',
+    required: true,
+  },
+  productId: {
+    type: 'string',
+    description: 'slug/identifier for the product. Used for downloads and links',
+    control: 'select',
+    options: [
+      'terraform',
+      'vault',
+      'nomad',
+      'consul',
+      'packer',
+      'vagrant',
+      'red',
+      'blue',
+    ],
+    required: true,
+  },
+  latestVersion: {
+    type: 'string',
+    description: 'latest version of the product',
+    required: true,
+  },
+  tutorialLink: {
+    type: 'object',
+    description: 'link to the product tutorial',
+    href: {
+      type: 'string',
+      description: 'location of the link',
+    },
+    label: {
+      type: 'string',
+      description: 'link text',
+    },
+  },
+  merchandisingSlot: {
+    type: 'React.Element',
+    description: 'component to be rendered underneath the downloader cards',
+  },
+  logo: {
+    type: 'React.Element',
+    description: 'product logo',
+    required: true,
+  },
+  getStartedLinks: {
+    type: 'array',
+    description: 'links in the "Get Started" section',
+    href: {
+      type: 'text',
+      description: 'location of the link',
+    },
+    label: {
+      type: 'string',
+      description: 'link text',
+    },
+  },
+  getStartedDescription: {
+    type: 'text',
+    description: 'description of the "Get Started" section',
+  },
+  containers: {
+    type: 'array',
+    description: 'links to package containers',
+    href: {
+      type: 'text',
+      description: 'location of the link',
+    },
+    label: {
+      type: 'string',
+      description: 'link text',
+    },
+  },
+  tutorials: {
+    type: 'array',
+    description: 'links to tutorials',
+    href: {
+      type: 'text',
+      description: 'location of the link',
+    },
+    label: {
+      type: 'string',
+      description: 'link text',
+    },
+  },
+}

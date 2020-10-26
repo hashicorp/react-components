@@ -1,0 +1,145 @@
+import React, { useState, useMemo, useEffect } from 'react'
+
+import DownloadCards from './partials/download-cards'
+import ReleaseInformation from './partials/release-information'
+import {
+  sortPlatforms,
+  sortAndFilterReleases,
+  detectOs,
+} from './utils/downloader'
+
+import styles from './style.module.css'
+
+export default function ProductDownloader({
+  releases,
+  productName,
+  productId,
+  brand,
+  latestVersion,
+  tutorialLink,
+  merchandisingSlot,
+  logo,
+  getStartedLinks,
+  getStartedDescription,
+  containers,
+  tutorials,
+}) {
+  const currentRelease = releases.versions[latestVersion]
+
+  const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
+    currentRelease,
+  ])
+  const osKeys = Object.keys(sortedDownloads)
+  const [osIndex, setSelectedOsIndex] = useState()
+
+  // Sort our releases for our ReleaseInformation section
+  const latestReleases = sortAndFilterReleases(Object.keys(releases.versions))
+  const sortedReleases = latestReleases.map((releaseVersion) => ({
+    ...sortPlatforms(releases.versions[releaseVersion]),
+    version: releaseVersion,
+  }))
+
+  const tabData = Object.keys(sortedDownloads).map((osKey) => ({
+    os: osKey,
+    packageManagers: packageManagersByOs[osKey] || null,
+  }))
+
+  useEffect(() => {
+    // if we're on the client side, detect the default platform only on initial render
+    const index = osKeys.indexOf(detectOs(window.navigator.platform))
+    setSelectedOsIndex(index)
+  }, [])
+
+  return (
+    <div className={styles.root}>
+      <h1>Download {productName}</h1>
+      <DownloadCards
+        brand={brand}
+        defaultTabIdx={osIndex}
+        tabData={tabData}
+        downloads={sortedDownloads}
+        version={latestVersion}
+        logo={logo}
+        tutorialLink={tutorialLink}
+        merchandisingSlot={merchandisingSlot}
+      />
+
+      {
+        <div className="g-container">
+          <div className={styles.gettingStarted}>
+            <h2>Getting Started</h2>
+            <p>{getStartedDescription}</p>
+            <div className={styles.links}>
+              {getStartedLinks.map((link) => (
+                <a href={link.href} key={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      }
+
+      <ReleaseInformation
+        productId={productId}
+        productName={productName}
+        brand={brand}
+        releases={sortedReleases}
+        latestVersion={latestVersion}
+        packageManagers={Object.values(packageManagers)}
+        containers={containers}
+        tutorials={tutorials}
+      />
+    </div>
+  )
+}
+
+export const packageManagers = {
+  homebrew: {
+    label: 'Homebrew',
+    url: '#',
+    commands: ['brew tap hashicorp/tap', 'brew install hashicorp/tap/waypoint'],
+  },
+  ubuntu: {
+    label: 'Ubuntu/Debian',
+    commands: [
+      'curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -',
+      'sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"',
+      'sudo apt-get update && sudo apt-get install waypoint',
+    ],
+  },
+  centos: {
+    label: 'CentOS/RHEL',
+    commands: [
+      'sudo yum install -y yum-utils',
+      'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo',
+      'sudo yum -y install waypoint',
+    ],
+  },
+  fedora: {
+    label: 'Fedora',
+    commands: [
+      'sudo dnf install -y dnf-plugins-core',
+      'sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo',
+      'sudo dnf -y install waypoint',
+    ],
+  },
+  amazonLinux: {
+    label: 'Amazon Linux',
+    commands: [
+      'sudo yum install -y yum-utils',
+      'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo',
+      'sudo yum -y install waypoint',
+    ],
+  },
+}
+
+export const packageManagersByOs = {
+  darwin: packageManagers.homebrew,
+  linux: [
+    packageManagers.ubuntu,
+    packageManagers.centos,
+    packageManagers.fedora,
+    packageManagers.amazonLinux,
+  ],
+}

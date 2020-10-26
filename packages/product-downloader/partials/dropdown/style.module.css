@@ -1,0 +1,86 @@
+.root {
+  display: inline-block;
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  list-style: none;
+  max-height: 250px;
+  overflow-y: auto;
+  top: 35px;
+  width: 100%;
+  padding: 0;
+  background-color: var(--white);
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.option {
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: var(--brand);
+  color: var(--white);
+
+  &:hover {
+    background-color: var(--brand-d1);
+  }
+
+  &:global {
+    &.consul {
+      background-color: var(--consul);
+      &:hover {
+        background-color: var(--consul-d1);
+      }
+    }
+
+    &.vault {
+      background-color: var(--vault);
+      &:hover {
+        background-color: var(--vault-d1);
+      }
+    }
+
+    &.terraform {
+      background-color: var(--terraform);
+      &:hover {
+        background-color: var(--terraform-d1);
+      }
+    }
+
+    &.nomad {
+      background-color: var(--nomad);
+      &:hover {
+        background-color: var(--nomad-d1);
+      }
+    }
+
+    &.packer {
+      background-color: var(--packer);
+      &:hover {
+        background-color: var(--packer-d1);
+      }
+    }
+
+    &.vagrant {
+      background-color: var(--vagrant);
+      &:hover {
+        background-color: var(--vagrant-d1);
+      }
+    }
+
+    &.red {
+      background-color: var(--red);
+      &:hover {
+        background-color: var(--red-d1);
+      }
+    }
+
+    &.blue {
+      background-color: var(--blue);
+      &:hover {
+        background-color: var(--blue-d1);
+      }
+    }
+  }
+}
