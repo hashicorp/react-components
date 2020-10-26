@@ -123,7 +123,6 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          always-auth: true
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
       - run: npm ci --ignore-scripts
@@ -140,18 +139,24 @@ jobs:
           echo 'VERSION<<EOF' >> $GITHUB_ENV
           ./node_modules/.bin/lerna version major --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
       - name: Tag minor version
         if: ${{ needs.verify_description.outputs.version == 'Minor'}}
         run: |
           echo 'VERSION<<EOF' >> $GITHUB_ENV
           ./node_modules/.bin/lerna version minor --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
       - name: Tag patch version
         if: ${{ needs.verify_description.outputs.version == 'Patch'}}
         run: |
           echo 'VERSION<<EOF' >> $GITHUB_ENV
           ./node_modules/.bin/lerna version patch --yes | jq -Rsr 'split(" => ") | .[1] | gsub("[\\n\\t]"; "")' >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
       - name: Print version
         run: echo $VERSION
       - name: Create GitHub release
