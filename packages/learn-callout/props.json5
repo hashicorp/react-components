@@ -1,0 +1,37 @@
+{
+  heading: {
+    type: 'string',
+    description: 'Heading copy to show on the left/top',
+    control: 'input',
+    required: true,
+  },
+  brand: {
+    type: 'string',
+    description: 'Sets the brand colors to be used',
+    control: 'dropdown',
+    defaultValue: 'hashicorp',
+    required: true,
+    options: [
+      'hashicorp',
+      'terraform',
+      'vault',
+      'nomad',
+      'consul',
+      'packer',
+      'vagrant',
+      'red',
+      'blue',
+    ],
+  },
+  background: {
+    type: 'string',
+    description: 'URL for a background image',
+    control: 'input',
+  },
+  items: {
+    type: 'array',
+    description: 'Array of items to appear on the right/bottom - the icon should be a url',
+    itemType: '{ title: string, category: string, time: string, link: string, image: string}',
+    required: true,
+  },
+}
