@@ -73,7 +73,7 @@ export default function ReleaseInformation({
                         href={file}
                         key={arch}
                         onClick={() =>
-                          trackDownload('waypoint', version, os, arch)
+                          trackDownload(productId, version, os, arch)
                         }
                       >
                         {prettyArch(arch)}
