@@ -1,13 +1,10 @@
 const withHashicorp = require('@hashicorp/nextjs-scripts')
-const withOctavo = require('@hashicorp/octavo')
+const withSwingset = require('swingset')
 
 module.exports = withHashicorp({
-  transpileModules: [
-    '@hashicorp/octavo',
-    '@hashicorp/react-.*',
-  ],
+  transpileModules: ['swingset', '@hashicorp/react-.*'],
 })(
-  withOctavo({
+  withSwingset({
     componentsRoot: 'packages/*',
   })({ svgo: { plugins: [{ removeViewBox: false }] } })
 )

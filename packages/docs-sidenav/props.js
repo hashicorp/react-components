@@ -1,29 +1,39 @@
-{
+module.exports = {
   product: {
     type: 'string',
     description: 'Name of the current product for color theming',
-    defaultValue: 'default',
-    options: ['default', 'nomad', 'consul', 'terraform', 'packer', 'vagrant', 'red', 'blue'],
+    testValue: 'default',
+    options: [
+      'default',
+      'nomad',
+      'consul',
+      'terraform',
+      'packer',
+      'vagrant',
+      'red',
+      'blue',
+    ],
   },
   currentPage: {
     type: 'string',
-    description: 'Path to the current page, used to select the currently active page.',
-    defaultValue: '/docs/agent/autoauth/methods/aws',
+    description:
+      'Path to the current page, used to select the currently active page.',
+    testValue: '/docs/agent/autoauth/methods/aws',
   },
   category: {
     type: 'string',
     description: 'Top level navigation category, for example docs, api, etc.',
-    defaultValue: 'docs',
+    testValue: 'docs',
   },
   disableFilter: {
     type: 'boolean',
     description: 'If true, disable the sidebar filter input',
-    defaultValue: false,
+    testValue: false,
   },
   order: {
-    type: 'json',
-    description: '',
-    defaultValue: [
+    type: 'object',
+    description: 'user-defined navigation configuration object',
+    testValue: [
       {
         category: 'agent',
         content: [
@@ -66,9 +76,17 @@
     ],
   },
   data: {
-    type: 'json',
-    description: 'base64 encoded html markup to be displayed',
-    defaultValue: [
+    type: 'array',
+    description:
+      'array of frontmatter data objects from all pages that need to be displayed within the nav',
+    properties: [
+      {
+        __resourcePath: { type: 'string' },
+        page_title: { type: 'string' },
+        sidebar_title: { type: 'string' },
+      },
+    ],
+    testValue: [
       {
         __resourcePath: 'docs/agent/autoauth/methods/gcp.mdx',
         page_title: 'Vault Agent Auto-Auth GCP Method',

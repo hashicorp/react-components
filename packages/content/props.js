@@ -1,4 +1,4 @@
-{
+module.exports = {
   content: {
     type: 'React.Element',
     description: 'Content to be rendered and styled by the component',
@@ -6,7 +6,7 @@
   product: {
     type: 'string',
     description: 'Product name for accent color',
-    control: 'select',
+    control: { type: 'select' },
     options: [
       'hashicorp',
       'terraform',

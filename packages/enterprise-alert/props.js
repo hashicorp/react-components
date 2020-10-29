@@ -1,22 +1,22 @@
-{
+module.exports = {
   product: {
     description: 'Product name for the alert',
     type: 'string',
-    control: 'select',
+    control: { type: 'select' },
     options: ['consul', 'nomad', 'terraform', 'vault'],
-    defaultValue: 'consul',
+    testValue: 'consul',
     required: true,
   },
   inline: {
-    description: 'Determines whether to display the alert inline and only with a tagline',
+    description:
+      'Determines whether to display the alert inline and only with a tagline',
     type: 'boolean',
-    control: 'checkbox',
-    defaultValue: false,
+    control: { type: 'checkbox' },
+    testValue: false,
   },
   children: {
     description: 'Custom content replacing the content of the alert',
     type: 'string',
-    control: 'textarea',
-    defaultValue: '',
+    control: { type: 'textarea' },
   },
 }

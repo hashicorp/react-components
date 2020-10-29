@@ -1,4 +1,4 @@
-{
+module.exports = {
   heading: {
     type: 'string',
     required: true,
@@ -9,7 +9,7 @@
   },
   product: {
     type: 'string',
-    control: 'select',
+    control: { type: 'select' },
     options: [
       'hashicorp',
       'terraform',
@@ -22,6 +22,17 @@
   },
   links: {
     type: 'array',
-    itemType: '{ url: string, text: string }',
+    properties: [
+      {
+        url: {
+          type: 'string',
+          description: 'link url',
+        },
+        text: {
+          type: 'string',
+          description: 'link text',
+        },
+      },
+    ],
   },
 }

@@ -1,31 +1,58 @@
-{
+const image = {
+  url: {
+    type: 'string',
+    description: 'url of the image',
+  },
+  alt: {
+    type: 'string',
+    description: 'alt text for the image',
+  },
+  format: {
+    type: 'string',
+    description: 'format of the image, like "jpg" or "svg"',
+  },
+}
+
+module.exports = {
   data: {
     type: 'array',
     description: 'An array of data for displaying logos',
-    itemType: '{ name: string, description: string, logo: { url: string }, integrationPage: string }',
-    control: 'json',
+    control: { type: 'json' },
+    properties: [
+      {
+        name: { type: 'string' },
+        description: { type: 'string' },
+        logo: { type: 'object', properties: image },
+        integrationPage: { type: 'string' },
+      },
+    ],
     defaultValue: [
       {
         name: 'Solo.io',
-        description: 'Gloo provides all the tools needed to glue together traditional and cloud-native apps.',
+        description:
+          'Gloo provides all the tools needed to glue together traditional and cloud-native apps.',
         link: '',
         integrationPage: { slug: '' },
         logo: {
-          url: 'https://www.datocms-assets.com/2885/1531117610-sknnx4wk400x4002.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1531117610-sknnx4wk400x4002.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url: 'https://www.datocms-assets.com/2885/1531120298-sknnx4wk400x400black.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1531120298-sknnx4wk400x400black.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url: 'https://www.datocms-assets.com/2885/1531120304-sknnx4wk400x400white.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1531120304-sknnx4wk400x400white.svg',
           format: 'svg',
         },
       },
       {
         name: 'PostgreSQL',
-        description: 'PostgreSQL is a powerful, open source object-relational database system.',
+        description:
+          'PostgreSQL is a powerful, open source object-relational database system.',
         link: '',
         integrationPage: { slug: '' },
         logo: {
@@ -33,11 +60,13 @@
           format: 'svg',
         },
         monochromeLogo: {
-          url: 'https://www.datocms-assets.com/2885/1539818117-postgresql-black.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1539818117-postgresql-black.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url: 'https://www.datocms-assets.com/2885/1539818125-postgresql-white.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1539818125-postgresql-white.svg',
           format: 'svg',
         },
       },
@@ -100,15 +129,18 @@
         link: '',
         integrationPage: { slug: '' },
         logo: {
-          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
           format: 'svg',
         },
       },
@@ -118,15 +150,18 @@
         link: '',
         integrationPage: { slug: '' },
         logo: {
-          url: 'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url: 'https://www.datocms-assets.com/2885/1539799149-azure-stacked-black.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1539799149-azure-stacked-black.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url: 'https://www.datocms-assets.com/2885/1539799149-azure-stacked-white.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1539799149-azure-stacked-white.svg',
           format: 'svg',
         },
       },
@@ -226,15 +261,18 @@
         link: '',
         integrationPage: { slug: 'aws' },
         logo: {
-          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
+          url:
+            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
           format: 'svg',
         },
       },
@@ -243,39 +281,37 @@
   color: {
     type: 'string',
     options: ['monochrome', 'white'],
-    control: 'select',
-    description: 'Color modifier for logos - make sure all logos have the selected color in the data',
-    defaultValue: null,
+    control: { type: 'select' },
+    description:
+      'Color modifier for logos - make sure all logos have the selected color in the data',
   },
   size: {
     type: 'string',
     options: ['small', 'medium', 'large'],
-    control: 'select',
+    control: { type: 'select' },
     description: 'Display size of the logos within the grid',
-    defaultValue: 'small',
+    default: 'small',
   },
   removeBorders: {
     type: 'boolean',
     description: 'If true, borders around logo items will be removed',
-    control: 'checkbox',
-    defaultValue: false,
+    control: { type: 'checkbox', value: false },
   },
   hashUrl: {
     type: 'boolean',
     description: 'If true, hashes the url with the company slug when clicked',
-    control: 'checkbox',
-    defaultValue: false,
+    control: { type: 'checkbox', value: false },
   },
   integrationLink: {
     type: 'boolean',
-    description: 'If true, links to integration pages are enabled if an item has a valid `data.integrationPage` property. It will override `details` if true',
-    control: 'checkbox',
-    defaultValue: false,
+    description:
+      'If true, links to integration pages are enabled if an item has a valid `data.integrationPage` property. It will override `details` if true',
+    control: { type: 'checkbox', value: false },
   },
   details: {
     type: 'boolean',
-    description: 'If true, creates a popup with company details when a logo is clicked',
-    control: 'checkbox',
-    defaultValue: false,
+    description:
+      'If true, creates a popup with company details when a logo is clicked',
+    control: { type: 'checkbox', value: false },
   },
 }

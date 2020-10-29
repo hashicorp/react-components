@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/nextjs-scripts": "^13.0.0",
-    "@hashicorp/octavo": "0.2.0",
     "@hashicorp/react-global-styles": "^4.6.1",
     "next": "9.5.5",
     "next-remote-watch": "^0.2.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "swingset": "^0.3.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",

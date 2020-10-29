@@ -1,6 +1,6 @@
 # HashiCorp React Components
 
-This project is a [lerna](https://github.com/lerna/lerna) monorepo containing a library of react components that are shared between multiple HashiCorp web properties. It also includes a component playground that uses [octavo](https://github.com/hashicorp/octavo) to create a space where component authors and contributors can experiment with and quickly iterate on component design and functionality.
+This project is a [lerna](https://github.com/lerna/lerna) monorepo containing a library of react components that are shared between multiple HashiCorp web properties. It also includes a component playground that uses [swingset](https://github.com/hashicorp/swingset) to create a space where component authors and contributors can experiment with and quickly iterate on component design and functionality.
 
 ## Usage
 
@@ -12,8 +12,8 @@ The `packages` directory contains all the individual components. Let's talk abou
 
 - `index.jsx`: primary export of the component itself
 - `index.test.js`: tests for the component, run using [jest](https://jestjs.io/)
-- `docs.mdx`: documentation for the component, see [octavo docs](https://github.com/hashicorp/octavo#usage) for more details on the format
-- `props.json5`: information about the component's props, see [octavo docs](https://github.com/hashicorp/octavo#props) for more details on the format
+- `docs.mdx`: documentation for the component, see [swingset docs](https://github.com/hashicorp/swingset#usage) for more details on the format
+- `props.json5`: information about the component's props, see [swingset docs](https://github.com/hashicorp/swingset#props) for more details on the format
 
 ## Publishing Packages
 

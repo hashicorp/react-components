@@ -1,126 +1,122 @@
-const props = {}
-props.default = [
-  {
-    name: 'version',
+module.exports = {
+  version: {
     type: 'string',
     description:
-      'Version number - increment to override previous consent preferences and force the user to re-accept, if services have changed.',
-    value: '0'
+      'bump this number when services have changed to "reset" the consent manager and prompt for consent again',
   },
-  {
-    name: 'showDialog',
-    type: 'boolean',
-    description: 'If set to true, the consent preferences dialog will open.',
-    value: false
+  privacyPolicyLink: {
+    type: 'string',
+    description: "a link to the company's privacy policy page",
   },
-  {
-    name: 'segmentWriteKey',
+  segmentWriteKey: {
+    type: 'string',
+    description: 'segment.io write key',
+  },
+  utilServerRoot: {
     type: 'string',
     description:
-      'Segment write key, used to fetch integrations. This is a public key by default, no security concerns here.',
-    value: 'iyi06c432UL7SB1r3fQReec4bNwFyzkW'
+      "root path of the instance of HashiCorp's `web-utility-server` to use. This is used to fetch integrations based on segment write key",
   },
-  {
-    name: 'utilServerRoot',
-    type: 'string',
-    description:
-      'Root URL of the web-utility-server to use. Default is staging, you can override with localhost if you wish',
-    value: 'https://hashicorp-web-util-staging.herokuapp.com'
-  },
-  {
-    name: 'privacyPolicyLink',
-    type: 'string',
-    description:
-      'A link to the company privacy policy, to be displayed within the consent manager interface when relevant.',
-    value: 'https://www.hashicorp.com/privacy'
-  },
-  {
-    name: 'companyName',
-    type: 'string',
-    description:
-      'Name of your company, to be displayed within the interface where relevant.',
-    value: 'HashiCorp'
-  },
-  {
-    name: 'segmentServices',
+  segmentServices: {
     type: 'array',
     description:
-      'Set these options to override the category and/or description of a Segment-integrated service.',
-    value: [
+      'use this to override the category or description of a service provided by Segment',
+    properties: [
       {
-        name:
-          'Name of segment service - must be an exact match to the name segment provides',
-        category: 'Example Category',
-        description:
-          'A short description of what the service is and how your company uses the data.'
-      }
-    ]
-  },
-  {
-    name: 'additionalServices',
-    type: 'array',
-    description:
-      'Any additional data-collecting scripts outside of Segment that you wish to include in the consent manager.',
-    value: [
-      {
-        name: 'Name of the service',
-        category: 'Example Category',
-        description:
-          'A short description of what the service is and how your company uses the data.',
-        body:
-          '// a chunk of javascript to add to the page if permission is granted\n// this is optional',
-        url: 'http://www.an-optional-url-for-a-script-to-add-to-the-page.com'
+        name: {
+          type: 'string',
+          description:
+            'name of the service - must exactly match the name returned from the segment API',
+        },
+        category: {
+          type: 'string',
+          description:
+            'name of the category you want the integration to appear within - must match the name of a category defined in the `categories` prop',
+        },
+        description: {
+          type: 'string',
+          description:
+            'description of the service, overrides the default description returned from segment',
+        },
       },
-      {
-        name: 'Name of the service',
-        category: 'Example Category',
-        description: 'A script with additional elements to be injected',
-        body: '',
-        url: 'https://source-url-of-script.com',
-        async: true,
-        addToBody: true,
-        dataAttrs: [
-          {
-            name: 'test',
-            value: 'foobar'
-          }
-        ]
-      }
-    ]
+    ],
   },
-  {
-    name: 'categories',
+  categories: {
     type: 'array',
     description:
-      'List of categories to group services into, along with their descriptions.',
-    value: [
+      'categories in which various services reside. entire categories can be toggled on or off',
+    properties: [
       {
-        name: 'Example Category',
-        description: 'A short description of the category'
-      }
-    ]
+        name: {
+          type: 'string',
+          description:
+            'name of the category as it appears in the consent manager interface',
+        },
+        description: {
+          type: 'string',
+          description:
+            'description of the category as it appears in the consent manager interface',
+        },
+      },
+    ],
   },
-  {
-    name: 'container',
-    type: 'string',
+  additionalServices: {
+    type: 'array',
     description:
-      'An html selector that the consent manager will be injected into, if you are using the "init" method.',
-    value: '#consent-manager'
+      'Additional integrations outside of Segment that you wish to include in the consent manager can be added using this prop. They are injected using a `<script>` tag, which can be controlled via the props below.',
+    properties: [
+      {
+        name: {
+          type: 'string',
+          description: 'name of the integration as it appears in the interface',
+        },
+        description: {
+          type: 'string',
+          description:
+            'description of the integration as it appears in the interface',
+        },
+        category: {
+          type: 'string',
+          description:
+            'category the integration should be part of. must exactly match a category defined in the `categories` prop',
+        },
+        body: {
+          type: 'string',
+          description:
+            'This and all the following props are optional. If adding a script, the contents of the script can be defined using this prop, and it will be dropped into a `<script>` tag on the page',
+        },
+        url: {
+          type: 'string',
+          description:
+            'If linkng to a script that lives at a URL, the url can be defined using this prop and it will be loaded in via `<script>` tag',
+        },
+        async: {
+          type: 'boolean',
+          description:
+            'If defining a script using `body` or `url`, setting this prop to `true` will add the `async` attribute to the script tag.',
+        },
+        addToBody: {
+          type: 'boolean',
+          description:
+            'scripts are added to the `<head>` by default, but if this prop is set to `true` it will instead be added to `<body>`',
+        },
+        dataAttrs: {
+          type: 'object',
+          description:
+            'this prop can be used to place data attributes on the script tag',
+          properties: {
+            name: {
+              type: 'string',
+              description:
+                'name of the data attribute - no need to prefix with `data-`',
+            },
+            value: {
+              type: 'string',
+              description: 'value of the data attrivute',
+            },
+          },
+        },
+      },
+    ],
   },
-  {
-    name: 'forceShow',
-    type: 'boolean',
-    description:
-      "If set to true, the consent banner will show no matter what country you are in. Otherwise it will only show if you're in the EU.",
-    value: true
-  },
-  {
-    name: 'preferences',
-    type: 'object',
-    description: 'Consent preferences object',
-    value: {}
-  }
-]
-
-props.name = 'Consent Manager'
-export default props
+}

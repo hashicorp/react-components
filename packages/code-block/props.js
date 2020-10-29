@@ -1,4 +1,4 @@
-{
+module.exports = {
   code: {
     type: 'string',
     description: 'A block of code to be displayed as an example',
