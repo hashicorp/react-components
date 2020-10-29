@@ -4,11 +4,45 @@
     description: 'API response from releases endpoint',
     required: true,
   },
+  packageManagers: {
+    type: 'array',
+    description: 'object containing array of package managers (and associated commands), grouped by OS',
+    required: true,
+    label: {
+      type: 'string',
+      description: 'human readable name of the package manager',
+    },
+    url: {
+      type: 'url',
+      description: 'package manager informational link, used in release information section',
+    },
+    commmands: {
+      type: 'array',
+      description: 'array of commands. each array index is rendered on a new line',
+    },
+    os: {
+      type: 'string',
+      description: 'which operating system this package manager is for',
+      options: [
+        'darwin',
+        'freebsd',
+        'openbsd',
+        'netbsd',
+        'archlinux',
+        'linux',
+        'windows',
+      ],
+    },
+  },
   productName: {
     type: 'string',
     description: 'human readable name for the product',
     defaultValue: 'Waypoint',
     required: true,
+  },
+  changelog: {
+    type: 'string',
+    description: 'custom changelog URL',
   },
   productId: {
     type: 'string',

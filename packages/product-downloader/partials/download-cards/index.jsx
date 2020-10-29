@@ -55,12 +55,13 @@ function Cards({
   tutorialLink,
 }) {
   const arches = downloads[os]
-  const hasPackageManager = Boolean(packageManagers)
-  const hasMultiplePackageManagers = Array.isArray(packageManagers)
+  const hasPackageManager = packageManagers.length > 0;
+  const hasMultiplePackageManagers = packageManagers.length > 0;
 
   return (
     <>
       <div
+        data-testid="download-cards"
         className={
           hasMultiplePackageManagers
             ? styles.downloadCardsSingle

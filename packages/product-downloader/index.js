@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'
@@ -23,6 +23,8 @@ export default function ProductDownloader({
   getStartedDescription,
   containers,
   tutorials,
+  packageManagers,
+  changelog,
 }) {
   const currentRelease = releases.versions[latestVersion]
 
@@ -41,7 +43,9 @@ export default function ProductDownloader({
 
   const tabData = Object.keys(sortedDownloads).map((osKey) => ({
     os: osKey,
-    packageManagers: packageManagersByOs[osKey] || null,
+    packageManagers: packageManagers.filter(
+      (packageManager) => packageManager.os === osKey
+    ),
   }))
 
   useEffect(() => {
@@ -86,60 +90,11 @@ export default function ProductDownloader({
         brand={brand}
         releases={sortedReleases}
         latestVersion={latestVersion}
-        packageManagers={Object.values(packageManagers)}
+        packageManagers={packageManagers}
         containers={containers}
         tutorials={tutorials}
+        changelog={changelog}
       />
     </div>
   )
-}
-
-const packageManagers = {
-  homebrew: {
-    label: 'Homebrew',
-    url: '#',
-    commands: ['brew tap hashicorp/tap', 'brew install hashicorp/tap/waypoint'],
-  },
-  ubuntu: {
-    label: 'Ubuntu/Debian',
-    commands: [
-      'curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -',
-      'sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"',
-      'sudo apt-get update && sudo apt-get install waypoint',
-    ],
-  },
-  centos: {
-    label: 'CentOS/RHEL',
-    commands: [
-      'sudo yum install -y yum-utils',
-      'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo',
-      'sudo yum -y install waypoint',
-    ],
-  },
-  fedora: {
-    label: 'Fedora',
-    commands: [
-      'sudo dnf install -y dnf-plugins-core',
-      'sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo',
-      'sudo dnf -y install waypoint',
-    ],
-  },
-  amazonLinux: {
-    label: 'Amazon Linux',
-    commands: [
-      'sudo yum install -y yum-utils',
-      'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo',
-      'sudo yum -y install waypoint',
-    ],
-  },
-}
-
-const packageManagersByOs = {
-  darwin: packageManagers.homebrew,
-  linux: [
-    packageManagers.ubuntu,
-    packageManagers.centos,
-    packageManagers.fedora,
-    packageManagers.amazonLinux,
-  ],
 }
