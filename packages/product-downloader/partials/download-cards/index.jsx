@@ -55,8 +55,8 @@ function Cards({
   tutorialLink,
 }) {
   const arches = downloads[os]
-  const hasPackageManager = packageManagers.length > 0;
-  const hasMultiplePackageManagers = packageManagers.length > 0;
+  const hasPackageManager = packageManagers.length > 0
+  const hasMultiplePackageManagers = packageManagers.length > 1
 
   return (
     <>
@@ -71,7 +71,7 @@ function Cards({
         {hasPackageManager && (
           <div className={styles.packageManagers}>
             <span className={styles.cardTitle}>Package Manager</span>
-            {Array.isArray(packageManagers) ? (
+            {hasMultiplePackageManagers ? (
               <Tabs
                 theme={theme}
                 items={packageManagers.map(({ label, commands }) => ({
@@ -89,7 +89,7 @@ function Cards({
               />
             ) : (
               <div className={styles.install}>
-                {packageManagers.commands.map((command) => (
+                {packageManagers[0].commands.map((command) => (
                   <pre key={command}>{command}</pre>
                 ))}
               </div>
