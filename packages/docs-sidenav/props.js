@@ -81,9 +81,12 @@ module.exports = {
       'array of frontmatter data objects from all pages that need to be displayed within the nav',
     properties: [
       {
-        __resourcePath: { type: 'string' },
-        page_title: { type: 'string' },
-        sidebar_title: { type: 'string' },
+        type: 'object',
+        properties: {
+          __resourcePath: { type: 'string' },
+          page_title: { type: 'string' },
+          sidebar_title: { type: 'string' },
+        },
       },
     ],
     testValue: [

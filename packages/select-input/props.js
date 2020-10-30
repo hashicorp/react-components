@@ -1,38 +1,47 @@
-{
+module.exports = {
   name: {
     type: 'string',
     description: 'input name attribute',
-    defaultValue: 'selection',
+    testValue: 'selection',
   },
   label: {
     type: 'string',
     description: 'text to display above the input',
-    defaultValue: 'Label',
+    testValue: 'Label',
   },
   defaultLabel: {
     type: 'string',
     description: 'text to act as placeholder label',
-    defaultValue: 'Placeholder',
+    testValue: 'Placeholder',
   },
   value: {
     type: 'object',
     description: 'set the value via prop',
-    // sub-properties
-    name: {
-      type: 'string',
-      description: 'programmatic name of the option',
-    },
-    label: {
-      type: 'string',
-      description: 'visual, human-readable name of the option',
+    properties: {
+      name: {
+        type: 'string',
+        description: 'programmatic name of the option',
+      },
+      label: {
+        type: 'string',
+        description: 'visual, human-readable name of the option',
+      },
     },
   },
   options: {
     type: 'array',
     description: 'array of option objects within the select',
-    itemType: '{ name: string, label: string }',
+    properties: [
+      {
+        type: 'object',
+        properties: {
+          name: { type: 'string' },
+          label: { type: 'string' },
+        },
+      },
+    ],
     required: true,
-    defaultValue: [
+    testValue: [
       {
         name: '1',
         label: 'One',

@@ -20,10 +20,13 @@ module.exports = {
     control: { type: 'json' },
     properties: [
       {
-        name: { type: 'string' },
-        description: { type: 'string' },
-        logo: { type: 'object', properties: image },
-        integrationPage: { type: 'string' },
+        type: 'object',
+        properties: {
+          name: { type: 'string' },
+          description: { type: 'string' },
+          logo: { type: 'object', properties: image },
+          integrationPage: { type: 'string' },
+        },
       },
     ],
     defaultValue: [

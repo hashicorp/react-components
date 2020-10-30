@@ -1,8 +1,0 @@
-{
-  items: {
-    type: 'object',
-    itemType: '{ heading: string, tooltip: string, tabChildren: function }',
-    description: 'Data to be displayed as tabs. `tabChildren` is a render prop.',
-    required: true,
-  },
-}

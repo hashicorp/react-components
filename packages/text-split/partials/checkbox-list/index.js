@@ -1,9 +1,8 @@
-import React from 'react'
 import SvgrCheckCircle from './icons/check-circle.svg.jsx'
 
 function CheckboxList(props) {
   const { items, theme, brand } = props
-  const validItems = items && items.filter(l => l !== '')
+  const validItems = items && items.filter((l) => l !== '')
   const hasItems = validItems && validItems.length > 0
   if (!hasItems) return null
   return (

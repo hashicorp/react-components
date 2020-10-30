@@ -27,7 +27,10 @@ module.exports = {
       'Defines one or more `<link rel="stylesheet">` tags. Use it to add global styles to the page.',
     properties: [
       {
-        href: { type: 'string' },
+        type: 'object',
+        properties: {
+          href: { type: 'string' },
+        },
       },
     ],
   },
@@ -37,9 +40,12 @@ module.exports = {
       'Defines one or more `<link rel="preload">` tags. Use it when you’ll need a resource soon.',
     properties: [
       {
-        href: { type: 'string' },
-        as: { type: 'string' },
-        type: { type: 'string' },
+        type: 'object',
+        properties: {
+          href: { type: 'string' },
+          as: { type: 'string' },
+          type: { type: 'string' },
+        },
       },
     ],
   },
@@ -49,9 +55,12 @@ module.exports = {
       'Defines the favicon using one or more `<link rel="icon">` tags.',
     properties: [
       {
-        href: { type: 'string' },
-        type: { type: 'string' },
-        sizes: { type: 'string' },
+        type: 'object',
+        properties: {
+          href: { type: 'string' },
+          type: { type: 'string' },
+          sizes: { type: 'string' },
+        },
       },
     ],
   },

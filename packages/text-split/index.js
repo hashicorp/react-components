@@ -1,4 +1,3 @@
-import React from 'react'
 import ButtonGroup from './partials/button-group/index.js'
 import CheckboxList from './partials/checkbox-list/index.js'
 
@@ -12,7 +11,7 @@ function TextSplit(props) {
     links,
     linkStyle,
     textSide,
-    children
+    children,
   } = props
   if (!heading && !content) {
     throw new Error('<TextSplit /> requires either heading or content')
@@ -62,7 +61,6 @@ TextSplit.defaultProps = {
   theme: 'light',
   brand: 'hashicorp',
   linkStyle: 'links',
-  headingLevel: 2
 }
 
 export default TextSplit

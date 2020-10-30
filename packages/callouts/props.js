@@ -48,30 +48,33 @@ module.exports = {
       'An array of item objects, each with properties `{ icon, heading, content, link }`. . `heading` is a string. `content` can be either a string, or a render function for custom content - the render function will be provided a props object `{ theme, brand }`. `link` is an object with properties `{ text, url, type }`. `link.text` is a string. `link.url` is a string. `link.type` is one of "inbound", "outbound", or "anchor", and sets the icon shown next to the link.',
     properties: [
       {
-        icon: {
-          type: 'string|function',
-          description:
-            "A SVG string, or a render function for an SVGR component - the render function is provided a props object `{ theme, brand }` to facilitate matching the parent component's appearance",
-        },
-        heading: {
-          type: 'string',
-          description: 'The heading text within the callout',
-        },
-        content: {
-          type: 'string|function',
-          description:
-            'Can be either a string, or a render function for custom content - the render function will be provided a props object `{ theme, brand }`',
-        },
-        link: {
-          type: 'object',
-          description: 'creates a button linking to a URL within the callout',
-          properties: {
-            text: { type: 'string', description: 'the text that is linked' },
-            url: { type: 'string', description: 'url that is linked to' },
-            type: {
-              type: 'string',
-              description: 'sets the icon shown next to the link',
-              options: ['inbound', 'outbound', 'anchor'],
+        type: 'object',
+        properties: {
+          icon: {
+            type: 'string|function',
+            description:
+              "A SVG string, or a render function for an SVGR component - the render function is provided a props object `{ theme, brand }` to facilitate matching the parent component's appearance",
+          },
+          heading: {
+            type: 'string',
+            description: 'The heading text within the callout',
+          },
+          content: {
+            type: 'string|function',
+            description:
+              'Can be either a string, or a render function for custom content - the render function will be provided a props object `{ theme, brand }`',
+          },
+          link: {
+            type: 'object',
+            description: 'creates a button linking to a URL within the callout',
+            properties: {
+              text: { type: 'string', description: 'the text that is linked' },
+              url: { type: 'string', description: 'url that is linked to' },
+              type: {
+                type: 'string',
+                description: 'sets the icon shown next to the link',
+                options: ['inbound', 'outbound', 'anchor'],
+              },
             },
           },
         },

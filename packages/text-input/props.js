@@ -1,9 +1,10 @@
-{
+module.exports = {
   field: {
     type: 'object',
-    description: 'Props for the input element, supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
+    description:
+      'Props for the input element, supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
     required: true,
-    defaultValue: {
+    testValue: {
       name: 'mytextinput',
       value: '',
     },
@@ -23,9 +24,10 @@
   },
   form: {
     type: 'object',
-    description: 'Form data including `error` and `touched` info, supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
+    description:
+      'Form data including `error` and `touched` info, supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
     required: true,
-    defaultValue: { errors: {}, touched: {} },
+    testValue: { errors: {}, touched: {} },
     // sub-props
     value: {
       type: 'object',
@@ -35,24 +37,25 @@
   label: {
     type: 'string',
     description: 'Label text, HTML allowed.',
-    defaultValue: 'My text input label',
+    testValue: 'My text input label',
   },
   type: {
     type: 'string',
     control: 'select',
     options: ['text', 'email', 'hidden'],
     description: '`type` for the input field.',
-    defaultValue: 'text',
+    testValue: 'text',
   },
   placeholder: {
     type: 'string',
     description: 'Placeholder text for the field',
-    defaultValue: 'My placeholder',
+    testValue: 'My placeholder',
   },
   theme: {
     type: 'object',
-    description: 'Controls the appearance of the text input. `theme.background` should be one of `["light", "dark", "brand"].`',
-    defaultValue: { background: 'light' },
+    description:
+      'Controls the appearance of the text input. `theme.background` should be one of `["light", "dark", "brand"].`',
+    testValue: { background: 'light' },
     // sub-properties
     background: {
       type: 'string',

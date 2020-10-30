@@ -24,13 +24,16 @@ module.exports = {
     type: 'array',
     properties: [
       {
-        url: {
-          type: 'string',
-          description: 'link url',
-        },
-        text: {
-          type: 'string',
-          description: 'link text',
+        type: 'object',
+        properties: {
+          url: {
+            type: 'string',
+            description: 'link url',
+          },
+          text: {
+            type: 'string',
+            description: 'link text',
+          },
         },
       },
     ],

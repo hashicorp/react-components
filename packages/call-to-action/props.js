@@ -43,15 +43,18 @@ module.exports = {
       'Links to be displayed as buttons. The first will be primary, following will be secondary.',
     properties: [
       {
-        text: {
-          type: 'string',
-        },
-        url: {
-          type: 'string',
-        },
-        type: {
-          type: 'string',
-          options: ['inbound', 'outbound', 'anchor'],
+        type: 'object',
+        properties: {
+          text: {
+            type: 'string',
+          },
+          url: {
+            type: 'string',
+          },
+          type: {
+            type: 'string',
+            options: ['inbound', 'outbound', 'anchor'],
+          },
         },
       },
     ],

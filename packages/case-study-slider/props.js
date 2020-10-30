@@ -23,50 +23,53 @@ module.exports = {
         description: 'Collection of case study objects',
         properties: [
           {
-            company: {
-              type: 'object',
-              description:
-                'object containing a company logo, typically returned directly from nextjs',
-              properties: {
-                monochromeLogo: {
-                  type: 'object',
-                  description: 'black/gray logo',
-                  properties: image,
-                },
-                whiteLogo: {
-                  type: 'object',
-                  description: 'white logo',
-                  properties: image,
-                },
-              },
-            },
-            headline: {
-              type: 'string',
-              description: 'headline text',
-            },
-            description: {
-              type: 'string',
-              description: 'body text under the deadline',
-            },
-            caseStudyResource: {
-              slug: {
-                type: 'string',
-                description: 'slug returned from the CMS',
-              },
-              image: {
+            type: 'object',
+            properties: {
+              company: {
                 type: 'object',
-                description: 'case study resource image',
+                description:
+                  'object containing a company logo, typically returned directly from nextjs',
+                properties: {
+                  monochromeLogo: {
+                    type: 'object',
+                    description: 'black/gray logo',
+                    properties: image,
+                  },
+                  whiteLogo: {
+                    type: 'object',
+                    description: 'white logo',
+                    properties: image,
+                  },
+                },
+              },
+              headline: {
+                type: 'string',
+                description: 'headline text',
+              },
+              description: {
+                type: 'string',
+                description: 'body text under the deadline',
+              },
+              caseStudyResource: {
+                slug: {
+                  type: 'string',
+                  description: 'slug returned from the CMS',
+                },
+                image: {
+                  type: 'object',
+                  description: 'case study resource image',
+                  properties: image,
+                },
+              },
+              caseStudyImage: {
+                type: 'object',
+                description: 'image representing a linked case study',
                 properties: image,
               },
-            },
-            caseStudyImage: {
-              type: 'object',
-              description: 'image representing a linked case study',
-              properties: image,
-            },
-            buttonLabel: {
-              type: 'string',
-              description: 'overrides the button text',
+              buttonLabel: {
+                type: 'string',
+                description: 'overrides the button text',
+              },
             },
           },
         ],

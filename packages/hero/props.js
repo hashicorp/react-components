@@ -89,10 +89,13 @@ module.exports = {
         // TODO: import the button props.js and drop it here?
         properties: [
           {
-            title: { type: 'string' },
-            url: { type: 'string' },
-            external: { type: 'boolean' },
-            theme: { type: 'string' },
+            type: 'object',
+            properties: {
+              title: { type: 'string' },
+              url: { type: 'string' },
+              external: { type: 'boolean' },
+              theme: { type: 'string' },
+            },
           },
         ],
       },
@@ -112,19 +115,27 @@ module.exports = {
           'One or more videos to play to the right of the text and buttons',
         properties: [
           {
-            name: {
-              type: 'string',
-              description: 'name of the video displayed in the UI',
-            },
-            playbackRate: {
-              type: 'number',
-              description:
-                'integer indicating the playback rate, with 1 being the default',
-            },
-            src: {
-              type: 'array',
-              description: 'one or more video sources',
-              properties: [{ srcType: 'string', url: 'string' }],
+            type: 'object',
+            properties: {
+              name: {
+                type: 'string',
+                description: 'name of the video displayed in the UI',
+              },
+              playbackRate: {
+                type: 'number',
+                description:
+                  'integer indicating the playback rate, with 1 being the default',
+              },
+              src: {
+                type: 'array',
+                description: 'one or more video sources',
+                properties: [
+                  {
+                    type: 'object',
+                    properties: { srcType: 'string', url: 'string' },
+                  },
+                ],
+              },
             },
           },
         ],

@@ -10,14 +10,17 @@ module.exports = {
     required: true,
     properties: [
       {
-        heading: {
-          type: 'string',
-          description: 'the title and heading of the accordion element',
-        },
-        content: {
-          type: 'string|React.Element',
-          description:
-            'content within the expandable area - can be a string or jsx content',
+        type: 'object',
+        properties: {
+          heading: {
+            type: 'string',
+            description: 'the title and heading of the accordion element',
+          },
+          content: {
+            type: 'string|React.Element',
+            description:
+              'content within the expandable area - can be a string or jsx content',
+          },
         },
       },
     ],
