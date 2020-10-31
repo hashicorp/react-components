@@ -217,9 +217,9 @@ describe('<ProductDownloader />', () => {
       )
     })
 
-    it('should list install links for all package managers', () => {
+    it('should list install links for all package managers with links', () => {
       const { getAllByText } = setup()
-      expect(getAllByText('Install with')).toHaveLength(5)
+      expect(getAllByText('Install with')).toHaveLength(1)
     })
 
     it('should render tutorials if provided', () => {
