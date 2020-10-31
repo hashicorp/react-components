@@ -55,7 +55,7 @@ export default function ProductDownloader({
   }, [])
 
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${brand ? brand : ''}`}>
       <h1>Download {productName}</h1>
       <DownloadCards
         brand={brand}
@@ -71,7 +71,7 @@ export default function ProductDownloader({
       {
         <div className="g-container">
           <div className={styles.gettingStarted}>
-            <h2>Getting Started</h2>
+            <h2>Get Started</h2>
             <p>{getStartedDescription}</p>
             <div className={styles.links}>
               {getStartedLinks?.map((link) => (
@@ -90,7 +90,9 @@ export default function ProductDownloader({
         brand={brand}
         releases={sortedReleases}
         latestVersion={latestVersion}
-        packageManagers={packageManagers}
+        packageManagers={packageManagers.filter(
+          (packageManager) => !!packageManager.url
+        )}
         containers={containers}
         tutorials={tutorials}
         changelog={changelog}
