@@ -10,7 +10,7 @@ module.exports = {
     type: 'object',
     required: true,
     description:
-      'Props to pass to the underlying <input /> element, `{ name, value, checked, onChange }`. Note that for this component, which uses `<input type="checkbox" />`, the `field.value` and `field.checked` properties should be identical. The `field` prop is typically supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
+      'Props to pass to the underlying `<input />` element, `{ name, value, checked, onChange }`. Note that for this component, which uses `<input type="checkbox" />`, the `field.value` and `field.checked` properties should be identical. The `field` prop is typically supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
     testValue: {
       name: 'default-checkbox',
       value: true,

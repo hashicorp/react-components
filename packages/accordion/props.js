@@ -1,12 +1,13 @@
 module.exports = {
   heading: {
     type: 'String',
-    description: 'the text for the <h2> that precedes your expandable elements',
+    description:
+      'the text for the `<h2>` that precedes your expandable elements',
     required: false,
   },
   items: {
     type: 'Array',
-    description: 'an array of your expandable <AccordionElement> items',
+    description: 'an array of your expandable `<AccordionElement>` items',
     required: true,
     properties: [
       {
