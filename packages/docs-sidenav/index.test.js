@@ -4,7 +4,10 @@ import DocsSidenav from './'
 import transformProps from '../../__test-helpers/transform-props'
 import expectThrow from '../../__test-helpers/expect-throw'
 
-const defaultProps = transformProps(__dirname)
+let defaultProps
+beforeAll(async () => {
+  defaultProps = await transformProps(__dirname)
+})
 
 describe('<DocsSidenav />', () => {
   it('should render and display nesting levels correctly', () => {

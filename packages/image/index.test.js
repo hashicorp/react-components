@@ -2,7 +2,10 @@ import { render, screen } from '@testing-library/react'
 import Image from './'
 import transformProps from '../../__test-helpers/transform-props'
 
-const defaultProps = transformProps(__dirname)
+let defaultProps
+beforeAll(async () => {
+  defaultProps = await transformProps(__dirname)
+})
 
 describe('<Image />', () => {
   it('should render with minimal props', () => {

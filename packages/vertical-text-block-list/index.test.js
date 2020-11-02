@@ -2,7 +2,10 @@ import { render, screen } from '@testing-library/react'
 import VerticalTextBlockList from './'
 import transformProps from '../../__test-helpers/transform-props'
 
-const defaultProps = transformProps(__dirname)
+let defaultProps
+beforeAll(async () => {
+  defaultProps = await transformProps(__dirname)
+})
 
 describe('<VerticalTextBlockList />', () => {
   it('should render correctly with default props', () => {

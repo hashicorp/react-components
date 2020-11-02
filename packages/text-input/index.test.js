@@ -2,7 +2,10 @@ import { render, fireEvent, screen } from '@testing-library/react'
 import TextInput from '.'
 import transformProps from '../../__test-helpers/transform-props'
 
-const defaultProps = transformProps(__dirname)
+let defaultProps
+beforeAll(async () => {
+  defaultProps = await transformProps(__dirname)
+})
 
 describe('<TextInput />', () => {
   it('should render a `.g-text-input` <div> root element', () => {

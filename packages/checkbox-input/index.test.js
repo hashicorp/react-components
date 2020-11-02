@@ -2,13 +2,15 @@ import { render, fireEvent, screen } from '@testing-library/react'
 import transformProps from '../../__test-helpers/transform-props'
 import CheckboxInput from './'
 
-const defaultProps = transformProps(__dirname)
+let defaultProps
+beforeAll(async () => {
+  defaultProps = await transformProps(__dirname)
+})
 
 // @TODO: our props.json5 format doesn't seem to allow the expression of
 // function values as default prop values. For now, we manually
 // set the onChange prop to a function, otherwise we'll get a warning
 // from React about rendering a "read-only" field.
-defaultProps.field.onChange = () => null
 
 describe('<CheckboxInput />', () => {
   it('should render a `.g-checkbox-input` <div> root element', () => {

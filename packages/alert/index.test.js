@@ -2,7 +2,10 @@ import { render, screen } from '@testing-library/react'
 import transformProps from '../../__test-helpers/transform-props'
 import Alert from './'
 
-const defaultProps = transformProps(__dirname)
+let defaultProps
+beforeAll(async () => {
+  defaultProps = await transformProps(__dirname)
+})
 
 describe('<Alert />', () => {
   test('renders correctly', () => {

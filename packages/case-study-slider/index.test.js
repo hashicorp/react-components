@@ -2,7 +2,10 @@ import { render } from '@testing-library/react'
 import CaseStudySlider from './'
 import transformProps from '../../__test-helpers/transform-props'
 
-const defaultProps = transformProps(__dirname)
+let defaultProps
+beforeAll(async () => {
+  defaultProps = await transformProps(__dirname)
+})
 
 describe('<CaseStudySlider />', () => {
   test('renders properly', () => {
