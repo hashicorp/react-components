@@ -5,12 +5,10 @@ import CheckboxInput from './'
 let defaultProps
 beforeAll(async () => {
   defaultProps = await transformProps(__dirname)
+  // @TODO: props.js values are passed through getStaticProps and therefore
+  // cannot contain functions as the results are serialized.
+  defaultProps.field.onChange = () => null
 })
-
-// @TODO: our props.json5 format doesn't seem to allow the expression of
-// function values as default prop values. For now, we manually
-// set the onChange prop to a function, otherwise we'll get a warning
-// from React about rendering a "read-only" field.
 
 describe('<CheckboxInput />', () => {
   it('should render a `.g-checkbox-input` <div> root element', () => {

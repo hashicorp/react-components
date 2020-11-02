@@ -15,7 +15,7 @@ module.exports = {
       name: 'default-checkbox',
       value: true,
       checked: true,
-      onChange: () => null,
+      onChange: null,
     },
   },
   form: {
