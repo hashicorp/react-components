@@ -60,7 +60,7 @@ export function detectOs(platform) {
 export function prettyOs(os) {
   switch (os) {
     case 'darwin':
-      return 'Mac OS X'
+      return 'macOS'
     case 'freebsd':
       return 'FreeBSD'
     case 'openbsd':
