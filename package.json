@@ -8,7 +8,7 @@
     "next-remote-watch": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "swingset": "^0.4.1"
+    "swingset": "^0.4.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.5",
