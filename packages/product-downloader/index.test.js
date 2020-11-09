@@ -1,11 +1,7 @@
-import {
-  fireEvent,
-  getByText,
-  queryByText,
-  render,
-} from '@testing-library/react'
-import transformProps from '../../__test-helpers/transform-props'
+import { fireEvent, getByText, render } from '@testing-library/react'
 import ProductDownloader from './'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
 const releases = {
   name: 'Waypoint',
@@ -120,7 +116,7 @@ const packageManagers = [
 ]
 
 const defaultProps = {
-  ...transformProps(__dirname),
+  ...getTestValues(props),
   releases,
   packageManagers,
 }

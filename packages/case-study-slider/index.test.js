@@ -1,11 +1,9 @@
 import { render } from '@testing-library/react'
 import CaseStudySlider from './'
-import transformProps from '../../__test-helpers/transform-props'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
-let defaultProps
-beforeAll(async () => {
-  defaultProps = await transformProps(__dirname)
-})
+const defaultProps = getTestValues(props)
 
 describe('<CaseStudySlider />', () => {
   test('renders properly', () => {

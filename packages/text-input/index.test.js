@@ -1,11 +1,9 @@
 import { render, fireEvent, screen } from '@testing-library/react'
 import TextInput from '.'
-import transformProps from '../../__test-helpers/transform-props'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
-let defaultProps
-beforeAll(async () => {
-  defaultProps = await transformProps(__dirname)
-})
+const defaultProps = getTestValues(props)
 
 describe('<TextInput />', () => {
   it('should render a `.g-text-input` <div> root element', () => {

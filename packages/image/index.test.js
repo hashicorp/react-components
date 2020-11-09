@@ -1,11 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import Image from './'
-import transformProps from '../../__test-helpers/transform-props'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
-let defaultProps
-beforeAll(async () => {
-  defaultProps = await transformProps(__dirname)
-})
+const defaultProps = getTestValues(props)
 
 describe('<Image />', () => {
   it('should render with minimal props', () => {

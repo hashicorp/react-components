@@ -1,14 +1,12 @@
-import { render, fireEvent, screen } from '@testing-library/react'
-import transformProps from '../../__test-helpers/transform-props'
 import CheckboxInput from './'
+import { render, fireEvent, screen } from '@testing-library/react'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
-let defaultProps
-beforeAll(async () => {
-  defaultProps = await transformProps(__dirname)
-  // @TODO: props.js values are passed through getStaticProps and therefore
-  // cannot contain functions as the results are serialized.
-  defaultProps.field.onChange = () => null
-})
+const defaultProps = getTestValues(props)
+// @TODO: props.js values are passed through getStaticProps and therefore
+// cannot contain functions as the results are serialized.
+defaultProps.field.onChange = () => null
 
 describe('<CheckboxInput />', () => {
   it('should render a `.g-checkbox-input` <div> root element', () => {
