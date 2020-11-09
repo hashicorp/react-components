@@ -4,4 +4,4 @@ A slider component that can display up to three case studies and allow a visitor
 
 ### Props
 
-See the [props file](props.json5) for more details on the component's props!
+See the [props file](props.js) for more details on the component's props!

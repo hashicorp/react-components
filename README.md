@@ -13,7 +13,7 @@ The `packages` directory contains all the individual components. Let's talk abou
 - `index.jsx`: primary export of the component itself
 - `index.test.js`: tests for the component, run using [jest](https://jestjs.io/)
 - `docs.mdx`: documentation for the component, see [swingset docs](https://github.com/hashicorp/swingset#usage) for more details on the format
-- `props.json5`: information about the component's props, see [swingset docs](https://github.com/hashicorp/swingset#props) for more details on the format
+- `props.js`: information about the component's props, see [swingset docs](https://github.com/hashicorp/swingset#props) for more details on the format
 
 ## Publishing Packages
 
