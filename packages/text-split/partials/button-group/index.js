@@ -1,10 +1,9 @@
-import React from 'react'
 import Button from '@hashicorp/react-button'
 
 function ButtonGroup(props) {
   const { brand, links, linkStyle, theme } = props
   const hasLinks = links && links.length > 0
-  if (hasLinks && links.filter(l => !l.text || !l.url).length > 0) {
+  if (hasLinks && links.filter((l) => !l.text || !l.url).length > 0) {
     throw new Error(
       '<TextSplit /> <ButtonGroup /> `links` must have both a title and a URL'
     )
@@ -27,7 +26,7 @@ function ButtonGroup(props) {
             theme={{
               variant: buttonVariant,
               brand: brand,
-              background: buttonBackground
+              background: buttonBackground,
             }}
             linkType={link.type || 'inbound'}
             title={link.text}

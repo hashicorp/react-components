@@ -1,0 +1,46 @@
+module.exports = {
+  url: {
+    description: 'URL that the alert points to',
+    type: 'string',
+    control: { type: 'text' },
+    testValue: '#',
+    required: true,
+  },
+  tag: {
+    description: 'Label or summary of the main alert message',
+    type: 'string',
+    control: { type: 'text' },
+    testValue: 'New',
+    required: true,
+  },
+  text: {
+    description: 'Primary message of the alert',
+    type: 'string',
+    control: { type: 'text' },
+    testValue: 'Tortor Tellus Inceptos Parturient',
+    required: true,
+  },
+  tagColor: {
+    description: 'Background color of the tag',
+    type: 'string',
+    control: { type: 'select' },
+    options: [
+      'terraform-purple',
+      'nomad-green',
+      'vault-gray',
+      'consul-pink',
+      'vagrant-blue',
+      'error-red',
+      'warning-yellow',
+      'success-green',
+    ],
+    testValue: 'vault-gray',
+  },
+  textColor: {
+    description: 'Background color of the text - default is `light`',
+    type: 'string',
+    control: { type: 'select' },
+    options: ['dark', 'light'],
+    testValue: 'dark',
+  },
+}

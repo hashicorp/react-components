@@ -2,18 +2,18 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
-    "@hashicorp/nextjs-scripts": "^13.0.0",
-    "@hashicorp/octavo": "0.2.0",
+    "@hashicorp/nextjs-scripts": "^13.2.0",
     "@hashicorp/react-global-styles": "^4.6.1",
     "next": "9.5.5",
     "next-remote-watch": "^0.2.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "swingset": "^0.4.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.0.4",
-    "jest": "^26.5.2",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.1",
+    "jest": "^26.6.3",
     "lerna": "^3.22.1",
     "regenerator-runtime": "^0.13.7"
   },
@@ -23,7 +23,7 @@
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
     "release:check-auth": "./scripts/release-check-npm-auth.sh",
     "release:check-branch": "./scripts/release-check-branch.sh",
-    "start": "next-remote-watch \"./packages/*/{docs.mdx,props.json5}\"",
+    "start": "next-remote-watch \"./packages/*/{docs.mdx,props.js}\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "vercel-build": "npm run bootstrap && next build"

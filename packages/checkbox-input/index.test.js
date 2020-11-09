@@ -1,13 +1,11 @@
-import { render, fireEvent, screen } from '@testing-library/react'
-import transformProps from '../../__test-helpers/transform-props'
 import CheckboxInput from './'
+import { render, fireEvent, screen } from '@testing-library/react'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
-const defaultProps = transformProps(__dirname)
-
-// @TODO: our props.json5 format doesn't seem to allow the expression of
-// function values as default prop values. For now, we manually
-// set the onChange prop to a function, otherwise we'll get a warning
-// from React about rendering a "read-only" field.
+const defaultProps = getTestValues(props)
+// @TODO: props.js values are passed through getStaticProps and therefore
+// cannot contain functions as the results are serialized.
 defaultProps.field.onChange = () => null
 
 describe('<CheckboxInput />', () => {

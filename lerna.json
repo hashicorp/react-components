@@ -6,7 +6,7 @@
     "publish": {
       "ignoreChanges": [
         "*.test.js",
-        "props.json5",
+        "props.js",
         "docs.mdx",
         "README.md",
         "package-lock.json"

@@ -1,10 +1,11 @@
 import 'regenerator-runtime/runtime'
 import { render, fireEvent, screen } from '@testing-library/react'
 import DocsSidenav from './'
-import transformProps from '../../__test-helpers/transform-props'
 import expectThrow from '../../__test-helpers/expect-throw'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
-const defaultProps = transformProps(__dirname)
+const defaultProps = getTestValues(props)
 
 describe('<DocsSidenav />', () => {
   it('should render and display nesting levels correctly', () => {

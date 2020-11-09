@@ -4,4 +4,4 @@ Side navigation for HashiCorp's product documentation. Fairly tightly tied to ou
 
 ### Props
 
-See [the props file](props.json5) for more details.
+See [the props file](props.js) for more details.

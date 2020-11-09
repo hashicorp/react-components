@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react'
-import transformProps from '../../__test-helpers/transform-props'
 import Alert from './'
+import { render, screen } from '@testing-library/react'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
 
-const defaultProps = transformProps(__dirname)
+const defaultProps = getTestValues(props)
 
 describe('<Alert />', () => {
   test('renders correctly', () => {

@@ -24,7 +24,7 @@ export default () => {
 
 ## Props
 
-See the [props file](props.json5) for more details on props!
+See the [props file](props.js) for more details on props!
 
 ## isAbsoluteURL
 

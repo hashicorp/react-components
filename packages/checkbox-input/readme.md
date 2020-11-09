@@ -4,7 +4,7 @@ A controlled checkbox input intended for use with Formik.
 
 ## Props
 
-For props documentation, see the `props.json5` file, or [visit the playground](https://react-components.hashicorp.vercel.app/).
+For props documentation, see the `props.js` file, or [visit the playground](https://react-components.hashicorp.vercel.app/).
 
 ## Dependents
 

@@ -1,5 +1,5 @@
-import createPage from '@hashicorp/octavo/page'
-import createStaticProps from '@hashicorp/octavo/getStaticProps'
+import createPage from 'swingset/page'
+import createStaticProps from 'swingset/getStaticProps'
 import Head from 'next/head'
 import Link from 'next/head'
 import { SearchProvider } from '../packages/search'
