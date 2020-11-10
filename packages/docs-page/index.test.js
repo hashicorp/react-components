@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import DocsPage from './'
 
 test.todo(
   'passes `title`, `description`, and `siteName` correctly to <HashiHead>'
