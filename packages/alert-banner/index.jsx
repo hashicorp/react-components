@@ -74,6 +74,7 @@ class AlertBanner extends Component {
     const name = `banner_${this.name}`
     cookie.set(name, 1)
 
+    this.setState({ show: false })
     this.trackEvent('close')
   }
 
