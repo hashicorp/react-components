@@ -198,34 +198,34 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
     }
   }
 
-  /* Brand -- Blue */
-  &.brand-blue {
+  /* Brand -- Waypiunt */
+  &.brand-waypoint {
     &:not(.background-brand) {
-      border-color: var(--blue);
-      background-color: var(--blue);
+      border-color: var(--waypoint);
+      background-color: var(--waypoint);
     }
     &.background-brand {
       &::before {
-        background: var(--blue-l3);
+        background: var(--waypoint-l3);
       }
       &:active::before {
-        background: var(--blue-l2);
+        background: var(--waypoint-l2);
       }
     }
   }
 
-  /* Brand -- Red */
-  &.brand-red {
+  /* Brand -- Boundary */
+  &.brand-boundary {
     &:not(.background-brand) {
-      border-color: var(--red);
-      background-color: var(--red);
+      border-color: var(--boundary);
+      background-color: var(--boundary);
     }
     &.background-brand {
       &::before {
-        background: var(--red-l3);
+        background: var(--boundary-l3);
       }
       &:active::before {
-        background: var(--red-l2);
+        background: var(--boundary-l2);
       }
     }
   }

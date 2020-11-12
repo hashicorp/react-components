@@ -191,17 +191,17 @@
     }
   }
 
-  /* Brand -- Red */
-  &.brand-red {
+  /* Brand -- Boundary */
+  &.brand-boundary {
     & .content label {
-      color: var(--red);
+      color: var(--boundary);
     }
   }
 
-  /* Brand -- Blue */
-  &.brand-blue {
+  /* Brand -- Waypoint */
+  &.brand-waypoint {
     & .content label {
-      color: var(--blue);
+      color: var(--waypoint);
     }
   }
 }

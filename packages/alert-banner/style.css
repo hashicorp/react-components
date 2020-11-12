@@ -30,12 +30,12 @@
       background: linear-gradient(90deg, #6a6d7a 1.56%, #373942 100%);
     }
 
-    &.red {
-      background: linear-gradient(90deg, #DE464C 1.56%, #CF4A4F 100%);
+    &.boundary {
+      background: linear-gradient(90deg, #de464c 1.56%, #cf4a4f 100%);
     }
 
-    &.blue {
-      background: linear-gradient(90deg, #14C6CB 1.56%, #15a7ab 100%);
+    &.waypoint {
+      background: linear-gradient(90deg, #14c6cb 1.56%, #15a7ab 100%);
     }
 
     & > .g-grid-container {
@@ -124,12 +124,12 @@
       stroke: #e5e6eb;
     }
 
-    &.red > svg [stroke] {
-      stroke: #FFFFFF;
+    &.boundary > svg [stroke] {
+      stroke: #ffffff;
     }
 
-    &.blue > svg [stroke] {
-      stroke: #FFFFFF;
+    &.waypoint > svg [stroke] {
+      stroke: #ffffff;
     }
 
     &:hover {

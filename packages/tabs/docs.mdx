@@ -18,6 +18,20 @@ General purpose tabs component. Used heavily across all websites, but especially
 
 ### Examples
 
+With appearance-based options set:
+
+<LiveComponent>{`<Tabs
+  theme='boundary'
+  fullWidthBorder={true}
+  centered={true}
+  defaultTabIdx={1}
+  items={[
+    { heading: 'First Tab', tabChildren: () => <p>First tab content</p> },
+    { heading: 'Second Tab', tabChildren: () => <p>Second tab content</p> },
+    { heading: 'Third tab', tabChildren: () => <p>Third tab content</p> }
+  ]}
+/>`}</LiveComponent>
+
 A bunch of tabs:
 
 <LiveComponent>{`<Tabs

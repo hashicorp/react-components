@@ -33,8 +33,8 @@ module.exports = {
       'consul',
       'packer',
       'vagrant',
-      'red',
-      'blue',
+      'boundary',
+      'waypoint',
     ],
   },
   links: {

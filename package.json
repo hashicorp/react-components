@@ -2,8 +2,8 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
+    "@hashicorp/mktg-global-styles": "^2.0.0",
     "@hashicorp/nextjs-scripts": "^13.2.0",
-    "@hashicorp/react-global-styles": "^4.6.1",
     "next": "9.5.5",
     "next-remote-watch": "^0.2.0",
     "react": "16.13.1",

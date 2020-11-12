@@ -21,7 +21,7 @@ module.exports = {
     type: 'string',
     description: 'Color theme to match a specific product',
     control: { type: 'select' },
-    options: ['consul', 'terraform', 'nomad', 'vault', 'red', 'blue'],
+    options: ['consul', 'terraform', 'nomad', 'vault', 'boundary', 'waypoint'],
   },
   linkText: {
     type: 'string',
