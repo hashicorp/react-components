@@ -198,7 +198,7 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
     }
   }
 
-  /* Brand -- Waypiunt */
+  /* Brand -- Waypoint */
   &.brand-waypoint {
     &:not(.background-brand) {
       border-color: var(--waypoint);
