@@ -3,8 +3,8 @@ module.exports = {
     type: 'string',
     description: 'Color theme to match a specific product',
     control: { type: 'select' },
-    options: ['consul', 'terraform', 'nomad', 'vault', 'red', 'blue'],
-    testValue: 'blue',
+    options: ['consul', 'terraform', 'nomad', 'vault', 'waypoint', 'boundary'],
+    testValue: 'terraform',
   },
   lines: {
     type: 'array',

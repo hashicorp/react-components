@@ -15,10 +15,10 @@ describe('<CommandLineTerminal />', () => {
 
   it('renders theme class if provided', () => {
     const { getByTestId } = render(
-      <CommandLineTerminal {...defaultProps} theme="red" />
+      <CommandLineTerminal {...defaultProps} theme="boundary" />
     )
 
-    expect(getByTestId('terminal-root')).toHaveClass('red')
+    expect(getByTestId('terminal-root')).toHaveClass('boundary')
   })
 
   it('renders code lines', () => {

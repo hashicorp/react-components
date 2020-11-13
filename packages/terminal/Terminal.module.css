@@ -3,15 +3,17 @@
   --terminal-title-color: var(--gray-2);
   --terminal-body-color: var(--gray-1);
   --terminal-code-color: var(--brand);
+  --terminal-title-height: 46px;
 
-  width: 837px;
+  width: 100%;
+  height: 100%;
 
   & .titleBar {
     display: flex;
     align-items: center;
     background: var(--terminal-title-color);
     width: 100%;
-    height: 46px;
+    height: var(--terminal-title-height);
     border-radius: var(--terminal-radius) var(--terminal-radius) 0 0;
 
     & .title {
@@ -43,15 +45,10 @@
 
   & .content {
     width: 100%;
-    min-height: 525px;
-    height: 100%;
+    height: calc(100% - var(--terminal-title-height));
     background: var(--terminal-body-color);
     border-radius: 0 0 var(--terminal-radius) var(--terminal-radius);
     padding: 24px 32px;
-
-    @media (--medium-up) {
-      height: 525px;
-    }
   }
 
   &:global {
@@ -79,12 +76,12 @@
       --terminal-code-color: var(--vagrant);
     }
 
-    &.red {
-      --terminal-code-color: var(--red);
+    &.waypoint {
+      --terminal-code-color: var(--waypoint);
     }
 
-    &.blue {
-      --terminal-code-color: var(--blue);
+    &.boundary {
+      --terminal-code-color: var(--boundary);
     }
   }
 }
