@@ -1,9 +1,9 @@
 # Alert
 
-The `<ProductDownloader>` component the interface that powers the downloads page.
+The `<CommandLineTerminal>` is a representation of a terminal in a static state.
 
 ## Installation
 
 ```sh
-npm install @hashicorp/react-product-downloader
+npm install @hashicorp/react-command-line-terminal
 ```
