@@ -1,13 +1,12 @@
 {
   "name": "@hashicorp/react-command-line-terminal",
   "description": "Static UI element to render a command line terminal with code",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner",
     "Brandon Romano"
   ],
-  "dependencies": {},
   "license": "MPL-2.0",
   "peerDependencies": {
     "react": "^16.9.0"

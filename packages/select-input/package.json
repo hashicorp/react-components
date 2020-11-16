@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-select-input",
   "description": "Select input field",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "HashiCorp",
   "contributors": [
     "Richard Flosi"
