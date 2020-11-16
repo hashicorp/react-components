@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-hashi-stack-menu",
   "description": "A menu for displaying the entire HashiCorp stack",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "HashiCorp",
   "contributors": [
     "Jimmy Merritello"
