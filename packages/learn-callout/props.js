@@ -19,8 +19,8 @@ module.exports = {
       'consul',
       'packer',
       'vagrant',
-      'red',
-      'blue',
+      'boundary',
+      'waypoint',
     ],
   },
   background: {

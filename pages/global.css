@@ -1,9 +1,6 @@
-@import '~@hashicorp/react-global-styles/style.css';
-@import '~@hashicorp/react-global-styles/font.css';
-@import '~@hashicorp/react-global-styles/custom-media.css';
-@import '~@hashicorp/react-global-styles/custom-properties/color.css';
+@import '~@hashicorp/mktg-global-styles/style.css';
 /* TODO: this should be embedded into react-content */
-@import '~@hashicorp/react-global-styles/_temporary-to-remove/tables.css';
+@import '~@hashicorp/mktg-global-styles/_temporary-to-remove/tables.css';
 
 /* global component css imports */
 /* these should be moved to css modules */

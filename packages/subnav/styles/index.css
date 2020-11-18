@@ -83,11 +83,11 @@
         &.brand-packer::after {
           background: var(--packer);
         }
-        &.brand-red::after {
-          background: var(--red);
+        &.brand-boundary::after {
+          background: var(--boundary);
         }
-        &.brand-blue::after {
-          background: var(--blue);
+        &.brand-waypoint::after {
+          background: var(--waypoint);
         }
       }
 

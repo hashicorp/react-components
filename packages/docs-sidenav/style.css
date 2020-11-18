@@ -22,12 +22,12 @@
     --highlight-color: var(--vagrant);
   }
 
-  &.theme-red {
-    --highlight-color: var(--red);
+  &.theme-boundary {
+    --highlight-color: var(--boundary);
   }
 
-  &.theme-blue {
-    --highlight-color: #13ACAE;
+  &.theme-waypoint {
+    --highlight-color: #13acae;
   }
 
   & > .nav {

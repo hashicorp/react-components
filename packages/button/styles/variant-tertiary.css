@@ -154,28 +154,28 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
     }
   }
 
-  /* Brand -- Blue */
-  &.brand-blue {
-    color: var(--blue);
+  /* Brand -- Waypoint */
+  &.brand-waypoint {
+    color: var(--waypoint);
     & .icon svg {
       & [fill] {
-        fill: var(--blue);
+        fill: var(--waypoint);
       }
       & [stroke] {
-        stroke: var(--blue);
+        stroke: var(--waypoint);
       }
     }
   }
 
-  /* Brand -- Red */
-  &.brand-red {
-    color: var(--red);
+  /* Brand -- Boundary */
+  &.brand-boundary {
+    color: var(--boundary);
     & .icon svg {
       & [fill] {
-        fill: var(--red);
+        fill: var(--boundary);
       }
       & [stroke] {
-        stroke: var(--red);
+        stroke: var(--boundary);
       }
     }
   }

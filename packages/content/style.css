@@ -21,11 +21,11 @@
   &.vagrant {
     --highlight-color: var(--vagrant);
   }
-  &.red {
-    --highlight-color: var(--red);
+  &.boundary {
+    --highlight-color: var(--boundary);
   }
-  &.blue {
-    --highlight-color: #13ACAE;
+  &.waypoint {
+    --highlight-color: #13acae;
   }
 }
 

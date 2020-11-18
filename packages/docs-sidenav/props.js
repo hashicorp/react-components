@@ -10,8 +10,8 @@ module.exports = {
       'terraform',
       'packer',
       'vagrant',
-      'red',
-      'blue',
+      'boundary',
+      'waypoint',
     ],
   },
   currentPage: {

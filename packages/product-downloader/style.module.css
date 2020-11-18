@@ -40,14 +40,14 @@
       --brand-d1: var(--vagrant-d1);
     }
 
-    &.red {
-      --brand: var(--red);
-      --brand-d1: var(--red-d1);
+    &.boundary {
+      --brand: var(--boundary);
+      --brand-d1: var(--boundary-d1);
     }
 
-    &.blue {
-      --brand: var(--blue);
-      --brand-d1: var(--blue-d1);
+    &.waypoint {
+      --brand: var(--waypoint);
+      --brand-d1: var(--waypoint-d1);
     }
   }
 }

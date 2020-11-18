@@ -159,20 +159,20 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
     }
   }
 
-  /* Brand -- Blue */
-  &.brand-blue {
+  /* Brand -- Waypoint */
+  &.brand-waypoint {
     &.background-brand-l3 {
       &::before {
-        background: var(--blue);
+        background: var(--waypoint);
       }
     }
   }
 
-  /* Brand -- Red */
-  &.brand-red {
+  /* Brand -- Boundary */
+  &.brand-boundary {
     &.background-brand-l3 {
       &::before {
-        background: var(--red);
+        background: var(--boundary);
       }
     }
   }

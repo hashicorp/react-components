@@ -37,15 +37,15 @@
     }
   }
 
-  &.red {
+  &.boundary {
     & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--red);
+      border-bottom-color: var(--boundary);
     }
   }
 
-  &.blue {
+  &.waypoint {
     & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--blue);
+      border-bottom-color: var(--waypoint);
     }
   }
 }

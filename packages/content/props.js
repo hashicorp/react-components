@@ -15,8 +15,8 @@ module.exports = {
       'nomad',
       'packer',
       'vagrant',
-      'red',
-      'blue',
+      'boundary',
+      'waypoint',
     ],
   },
 }
