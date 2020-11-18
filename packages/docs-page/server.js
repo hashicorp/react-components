@@ -34,13 +34,13 @@ export async function generateStaticProps(subpath, productName, params) {
   return {
     props: {
       data: allFrontMatter.map((p) => {
-        p.__resourcePath = `docs/${p.__resourcePath}`
+        p.__resourcePath = `${subpath}/${p.__resourcePath}`
         return p
       }),
       mdxSource,
       frontMatter,
       filePath,
-      pagePath: `/docs/${pagePath}`,
+      pagePath: `/${subpath}/${pagePath}`,
     },
   }
 }
