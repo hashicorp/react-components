@@ -1,6 +1,6 @@
 # DocsPage
 
-The **DocsPage** component lets you create a Hashicorp branded docs page in NextJS projects using `next-mdx-remote`. This is a very highly abstracted component with slightly more involved usage sinceit renders an entire page.
+The **DocsPage** component lets you create a Hashicorp branded docs page in NextJS projects using `next-mdx-remote`. This is a very highly abstracted component with slightly more involved usage since it renders an entire page.
 
 ## Example Usage
 
