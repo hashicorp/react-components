@@ -45,7 +45,7 @@ export default function DocsPage({
         <div id="sidebar" role="complementary">
           <div className="nav docs-nav">
             <DocsSidenav
-              product={name}
+              product={slug}
               Link={Link}
               category={subpath}
               currentPage={pagePath}
@@ -56,7 +56,7 @@ export default function DocsPage({
         </div>
         {/* render the markdown content */}
         <div id="inner" role="main">
-          <Content product={name} content={content} />
+          <Content product={slug} content={content} />
         </div>
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
