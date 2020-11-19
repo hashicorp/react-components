@@ -1,89 +1,51 @@
 # DocsPage
 
-The **DocsPage** component lets you create a Hashicorp branded docs page in NextJS projects.
+The **DocsPage** component lets you create a Hashicorp branded docs page in NextJS projects using `next-mdx-remote`. This is a very highly abstracted component with slightly more involved usage since it renders an entire page.
 
-```shell
-npm install @hashicorp/react-docs-page
-```
+## Example Usage
 
-## Usage
+This component must be used on an [optional catch-all route](https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes) page, like `pages/docs/[[slug]].mdx` - example source shown below:
 
-```jsx
+```js
+import order from 'data/docs-navigation.js'
 import DocsPage from '@hashicorp/react-docs-page'
+import {
+  generateStaticPaths,
+  generateStaticProps,
+} from '@hashicorp/react-docs-page/server'
 
-<DocsPage
-  head={{
-    is: require('next/head'),
-    title: 'Introduction | HashiDocs by HashiCorp'
-    description: 'Documentation for things that go without explaining.',
-    siteName: 'HashiDocs by HashiCorp',
-  }}
-  product="hashidocs"
-  resourceURL="https://github.com/hashicorp/hashidocs/blob/master/website/pages/docs/introduction.mdx"
-  sidenav={{
-    Link: require('next/link'),
-    category: 'intro',
-    currentPage: '/docs/configuration',
-    data: require('path/to/pages/*.mdx').frontMatter,
-    order: require('path/to/data/hashidocs-navigation')
-  }}
-/>
+const productName = 'Vault'
+const productSlug = 'vault'
+// this example is at `pages/docs/[[slug]].mdx` - if the path is different
+// this 'subpath' prop should be adjusted to match
+const subpath = 'docs'
+
+function DocsLayout(props) {
+  return (
+    <DocsPage
+      productName={productName}
+      productSlug={productSlug}
+      subpath={subpath}
+      order={order}
+      showEditPage={true}
+      staticProps={props}
+    />
+  )
+}
+
+export async function getStaticPaths() {
+  return generateStaticPaths(subpath)
+}
+
+export async function getStaticProps({ params }) {
+  return generateStaticProps(subpath, productName, params)
+}
+
+export default DocsLayout
 ```
+
+This may seem like a complex example, but there is a lot going on here. The component is taking care of an entire base-level route, including an index page and its potentially hundreds of sub-pages, while providing a minimal interface surface area.
 
 ## Props
 
-### head
-
-The `head` prop defines the props passed into [HashiHead].
-
-```jsx
-{
-  is: require('next/head'),
-  title: 'JSON Job Specification - HTTP API',
-  description: 'Jobs can also be specified via the HTTP API using a JSON format. This guide discusses the job specification in JSON format.',
-  siteName: 'Nomad by HashiCorp'
-}
-```
-
-### product
-
-The `product` prop defines the current product for color theming.
-It is used exclusively by [DocsSidenav].
-
-```jsx
-{
-  product: 'nomad'
-}
-```
-
-### resourceURL
-
-The `resourceURL` prop defines the source used to generate the content of the page.
-
-```jsx
-{
-  resourceURL: 'https://https://github.com/hashicorp/nomad/blob/master/website/pages/docs/commands/acl/bootstrap.mdx'
-}
-```
-
-### sidenav
-
-The `sidenav` prop defines the props passed into [DocsSidenav].
-
-```jsx
-{
-  Link: require('next/link'),
-  category: 'intro',
-  currentPage: '/docs/configuration',
-  data: require('path/to/pages/*.mdx').frontMatter,
-  order: require('path/to/data/api-navigation')
-}
-```
-
-### children
-
-Additional children may be appended to the component.
-
-[docssidenav]: https://github.com/hashicorp/web-components/tree/master/packages/docs-sidenav
-[frontmatter]: https://jekyllrb.com/docs/front-matter/
-[hashihead]: https://github.com/hashicorp/web-components/tree/master/packages/head
+See [props.js](props.js) for more information on props.

@@ -1,19 +1,25 @@
 {
   "name": "@hashicorp/react-docs-page",
   "description": "Create a Hashicorp branded docs page in NextJS projects.",
-  "version": "8.0.0",
+  "version": "8.0.0-canary.2",
   "author": "Hashicorp",
   "contributors": [
-    "Jonathan Neal"
+    "Jeff Escalante"
   ],
-  "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/react-content": "^6.0.0",
     "@hashicorp/react-docs-sidenav": "^6.0.0",
     "@hashicorp/react-head": "^1.1.6",
-    "@hashicorp/react-inline-svg": "^1.0.2"
+    "fs-exists-sync": "0.1.0",
+    "gray-matter": "4.0.2",
+    "js-yaml": "3.14.0",
+    "line-reader": "0.4.0",
+    "readdirp": "3.5.0"
   },
+  "license": "MPL-2.0",
   "peerDependencies": {
+    "@hashicorp/nextjs-scripts": "13.0.0",
+    "next-mdx-remote": "1.0.0",
     "react": "^16.9.0"
   },
   "publishConfig": {
