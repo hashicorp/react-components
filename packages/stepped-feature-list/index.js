@@ -3,20 +3,23 @@ import styles from './style.module.css'
 import Button from '@hashicorp/react-button'
 import Carousel from 'nuka-carousel'
 
-export default function SteppedFeaturesList({ features }) {
+export default function SteppedFeaturesList({ features, brand }) {
   return (
     <>
       {/* carousel rendered at smaller breakpoints */}
       <FeaturesCarousel features={features} />
-      <FeaturesList features={features} />
+      <FeaturesList features={features} brand={brand} />
     </>
   )
 }
 
-function FeaturesList({ features }) {
+function FeaturesList({ features, brand }) {
   const [activeFeature, setActiveFeature] = useState(0)
   return (
-    <div className={styles.features} data-testid="features-vertical-list">
+    <div
+      className={`${styles.features} ${brand ? brand : ''}`}
+      data-testid="features-vertical-list"
+    >
       <ul className={styles.options}>
         {features.map((feature, stableIdx) => (
           <Feature

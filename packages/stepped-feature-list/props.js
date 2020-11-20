@@ -1,4 +1,22 @@
 module.exports = {
+  brand: {
+    type: 'string',
+    description: 'Sets the brand colors to be used',
+    control: { type: 'dropdown' },
+    defaultValue: 'hashicorp',
+    required: true,
+    options: [
+      'hashicorp',
+      'terraform',
+      'vault',
+      'nomad',
+      'consul',
+      'packer',
+      'vagrant',
+      'boundary',
+      'waypoint',
+    ],
+  },
   features: {
     type: 'array',
     description: 'Features that get rendered in each stepped slide',

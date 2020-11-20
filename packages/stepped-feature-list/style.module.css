@@ -36,6 +36,7 @@
 
 .features {
   display: none;
+  --tab-color: var(--brand);
 
   @media (--medium-up) {
     display: grid;
@@ -44,6 +45,40 @@
     min-height: auto;
     overflow-anchor: none;
     align-items: center;
+  }
+
+  &:global {
+    &.consul {
+      --tab-color: var(--consul);
+    }
+
+    &.vault {
+      --tab-color: var(--vault);
+    }
+
+    &.terraform {
+      --tab-color: var(--terraform);
+    }
+
+    &.nomad {
+      --tab-color: var(--nomad);
+    }
+
+    &.packer {
+      --tab-color: var(--packer);
+    }
+
+    &.vagrant {
+      --tab-color: var(--vagrant);
+    }
+
+    &.waypoint {
+      --tab-color: var(--waypoint);
+    }
+
+    &.boundary {
+      --tab-color: var(--boundary);
+    }
   }
 }
 
@@ -61,7 +96,7 @@
 
 .activeFeature {
   composes: feature;
-  border-color: var(--blue);
+  border-color: var(--tab-color);
 
   & .body {
     opacity: 1;
