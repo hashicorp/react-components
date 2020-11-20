@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-stepped-feature-list",
   "description": "Renders a list of features for a product",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner"
