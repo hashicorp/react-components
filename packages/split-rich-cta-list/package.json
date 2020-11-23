@@ -1,0 +1,22 @@
+{
+  "name": "@hashicorp/react-split-rich-cta-list",
+  "description": "Display a horizontally split title with a list of rich CTAs.",
+  "version": "1.0.0",
+  "author": "HashiCorp",
+  "contributors": [
+    "Brandon Romano",
+    "Noel Quiles"
+  ],
+  "dependencies": {
+    "@hashicorp/react-inline-svg": "^1.0.2",
+    "@hashicorp/react-link-wrap": "^2.0.2",
+    "classnames": "^2.2.6"
+  },
+  "license": "MPL-2.0",
+  "peerDependencies": {
+    "react": "^16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
