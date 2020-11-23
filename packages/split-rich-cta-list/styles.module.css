@@ -1,0 +1,112 @@
+.splitRichCTAList {
+  display: flex;
+  justify-content: space-between;
+  @media (width < 910px) {
+    flex-direction: column;
+  }
+
+  & h3 {
+    margin-top: 0;
+    max-width: 325px;
+
+    @media (width < 910px) {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+
+  & > ul {
+    max-width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    @media (width < 910px) {
+      margin: 0 auto;
+    }
+
+    @media (width < 768px) {
+      width: 100%;
+    }
+
+
+    & > li {
+      padding-left: 16px;
+      @media (width < 910px) {
+        padding-left: 0px;
+      }
+
+      & > a {
+        display: flex;
+        padding: 28px;
+        transition: 0.25s ease;
+        transition-property: background-color;
+        width: 100%;
+
+        &:hover {
+          background-color: var(--gray-7);
+        }
+
+        & .icon {
+          flex-shrink: 0;
+          margin-right: 28px;
+          width: 32px;
+        }
+
+        & .text {
+          flex-grow: 1;
+          & h5 {
+            margin-bottom: 8px;
+            margin-top: 0;
+            color: var(--brand);
+            &.terraform {
+              color: var(--terraform);
+            }
+            &.consul {
+              color: var(--consul);
+            }
+            &.nomad {
+              color: var(--nomad);
+            }
+            &.vault {
+              color: var(--vault);
+            }
+            &.vagrant {
+              color: var(--vagrant);
+            }
+            &.packer {
+              color: var(--packer);
+            }
+            &.waypoint {
+              color: var(--waypoint);
+            }
+            &.boundary {
+              color: var(--boundary);
+            }
+          }
+
+          & p.bodySmall {
+            color: var(--gray-2);
+            margin: 0;
+          }
+        }
+
+        & .arrow {
+          align-self: center;
+          margin-left: 56px;
+
+          & svg path {
+            fill: var(--black);
+          }
+        }
+      }
+    }
+  }
+}
+
+.bodySmall {
+  composes: g-type-body-small from global;
+}
