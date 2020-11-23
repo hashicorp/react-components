@@ -25,7 +25,16 @@ componentName: 'SplitRichCTAList'
   ]}
 />`}</LiveComponent>
 
-## Place it in a Container
+
+#### SplitRichCTAList Props
+
+There are many props that can be used to customize this component, all of which are listed below:
+
+<PropsTable props={componentProps} />
+
+## Usage
+
+### Place it in a Container
 
 The `SplitRichCTAList` is not opinionated about the container it is placed in (`g-grid-container`, custom page wrapper etc), but it does want to be placed in a reasonable container, else it will not look good on large screen sizes. The example usage above does not have it placed in a container, which will illustrate the issues it runs into on large screen sizes.
 
@@ -35,7 +44,7 @@ The `SplitRichCTAList` is not opinionated about the container it is placed in (`
 </section>
 ```
 
-## Passing an Icon
+### Passing an Icon
 
 Above we have embedded the entire SVG code being passed to the `icon` prop, which is simply just a workaround to get this component rendering in swingset.
 
