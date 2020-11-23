@@ -8,7 +8,7 @@
     "Noel Quiles"
   ],
   "dependencies": {
-    "@hashicorp/react-inline-svg": "^4.0.6",
+    "@hashicorp/react-inline-svg": "^1.0.2",
     "@hashicorp/react-link-wrap": "^2.0.2",
     "classnames": "^2.2.6"
   },
