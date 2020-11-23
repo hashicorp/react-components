@@ -11,7 +11,7 @@ export default function SplitRichCTAList({className, brand, title, items}) {
       <h3>{title}</h3>
       <ul>
         {items.map((item) => (
-          <li>
+          <li key={item.title}>
             <LinkWrap
               Link={Link}
               key={item.title}
