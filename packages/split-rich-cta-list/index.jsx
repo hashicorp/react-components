@@ -14,7 +14,6 @@ export default function SplitRichCTAList({className, brand, heading, items}) {
           <li key={item.title}>
             <LinkWrap
               Link={Link}
-              key={item.title}
               href={item.linkUrl}
               className={styles.item}
             >
