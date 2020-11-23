@@ -5,10 +5,10 @@ import LinkWrap from '@hashicorp/react-link-wrap'
 import RightArrow from './img/arrow-right.svg?include'
 import styles from './styles.module.css'
 
-export default function SplitRichCTAList({className, brand, title, items}) {
+export default function SplitRichCTAList({className, brand, heading, items}) {
   return (
     <div className={classNames(styles.splitRichCTAList, className)}>
-      <h3>{title}</h3>
+      <h3>{heading}</h3>
       <ul>
         {items.map((item) => (
           <li key={item.title}>

@@ -17,9 +17,9 @@ module.exports = {
     ],
     testValue: 'hashicorp',
   },
-  title: {
+  heading: {
     type: 'string',
-    description: 'Title to the left of the CTAs',
+    description: 'Heading to the left of the CTAs',
   },
   items: {
     type: 'array',
