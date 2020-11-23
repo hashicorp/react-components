@@ -16,7 +16,7 @@
   }
 
   & > ul {
-    max-width: 100%;
+    max-width: 640px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -98,7 +98,7 @@
           align-self: center;
           margin-left: 56px;
 
-          & svg path {
+          & path {
             fill: var(--black);
           }
         }
