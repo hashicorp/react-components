@@ -63,7 +63,7 @@ export default function DocsPage({
       {showEditPage && (
         <div id="edit-this-page" className="g-container">
           <a
-            href={`https://github.com/hashicorp/${slug}/blob/${mainBranch}/website/content/docs/${filePath}`}
+            href={`https://github.com/hashicorp/${slug}/blob/${mainBranch}/website/content/${filePath}`}
           >
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>

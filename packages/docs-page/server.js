@@ -17,7 +17,13 @@ export async function generateStaticPaths(subpath) {
   return { paths, fallback: false }
 }
 
-export async function generateStaticProps(subpath, productName, params) {
+export async function generateStaticProps({
+  subpath,
+  productName,
+  params,
+  additionalComponents,
+  scope,
+}) {
   const docsPath = path.join(process.cwd(), 'content', subpath)
   const pagePath = params.page ? params.page.join('/') : '/'
 
@@ -28,7 +34,8 @@ export async function generateStaticProps(subpath, productName, params) {
   const { mdxSource, frontMatter, filePath } = await renderPageMdx(
     docsPath,
     pagePath,
-    generateComponents(productName)
+    generateComponents(productName, additionalComponents),
+    scope
   )
 
   return {
@@ -39,7 +46,7 @@ export async function generateStaticProps(subpath, productName, params) {
       }),
       mdxSource,
       frontMatter,
-      filePath,
+      filePath: `${subpath}/${filePath}`,
       pagePath: `/${subpath}/${pagePath}`,
     },
   }
@@ -60,7 +67,7 @@ async function getStaticMdxPaths(root) {
   })
 }
 
-async function renderPageMdx(root, pagePath, components) {
+async function renderPageMdx(root, pagePath, components, scope) {
   // get the page being requested - figure out if its index page or leaf
   // prefer leaf if both are present
   const leafPath = path.join(root, `${pagePath}.mdx`)
@@ -87,6 +94,7 @@ async function renderPageMdx(root, pagePath, components) {
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
     }),
     components,
+    scope,
   })
 
   return {
