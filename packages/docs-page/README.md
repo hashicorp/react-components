@@ -4,7 +4,7 @@ The **DocsPage** component lets you create a Hashicorp branded docs page in Next
 
 ## Example Usage
 
-This component must be used on an [optional catch-all route](https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes) page, like `pages/docs/[[slug]].mdx` - example source shown below:
+This component is intended to be used on an [optional catch-all route](https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes) page, like `pages/docs/[[slug]].mdx` - example source shown below:
 
 ```js
 import order from 'data/docs-navigation.js'
@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  return generateStaticProps(subpath, productName, params)
+  return generateStaticProps({ subpath, productName, params })
 }
 
 export default DocsLayout
