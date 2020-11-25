@@ -18,6 +18,7 @@ async function getPackageJson(filePathInRepo) {
     },
   })
   const data = await response.json()
+  console.log({ data })
   const fileString = decodeBase64(data.content)
   return JSON.parse(fileString)
 }
@@ -101,6 +102,8 @@ export default async function handler(req, res) {
   } = req
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/json')
-  const data = await fetchUsageDetails(packageName.join('/'))
+  const packageNameJoined = packageName.join('/')
+  console.log({ packageNameJoined })
+  const data = await fetchUsageDetails(packageNameJoined)
   res.end(JSON.stringify(data))
 }

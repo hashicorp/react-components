@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-function fetchUsageDetails() {
-  return { foo: 'bar' }
-}
-
 function UsageDetails({ packageName }) {
   const [data, setData] = useState(null)
 
