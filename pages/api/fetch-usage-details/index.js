@@ -29,9 +29,7 @@ async function getPackageJson(repo, projectDir = '') {
 }
 
 function decodeBase64(str) {
-  return typeof window === 'undefined'
-    ? Buffer.from(str, 'base64').toString('utf8')
-    : window.atob(str)
+  return Buffer.from(str, 'base64').toString('utf8')
 }
 
 export default handler
