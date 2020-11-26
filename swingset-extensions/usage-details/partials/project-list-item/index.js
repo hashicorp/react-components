@@ -36,6 +36,12 @@ function ProjectListItem({ packageName, repo, dir }) {
       const params = { json: JSON.stringify(requestData) }
       const response = await fetch(`${API_URL}?${qs(params)}`)
       const data = await response.json()
+      if (data.error)
+        console.error(
+          `Error fetching usage data from ${repo}: ${JSON.stringify(
+            data.error
+          )}`
+        )
       setData(data)
     }
     getDetails()

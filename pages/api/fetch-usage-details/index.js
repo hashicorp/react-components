@@ -21,6 +21,11 @@ async function getPackageJson(repo, projectDir = '') {
   try {
     const response = await fetch(url, { headers })
     const data = await response.json()
+    // GitHub sends back a 200, but with { message }
+    // for things like "Bad credentials". We want to
+    // catch that so that we don't always get the
+    // same decodeBase64() error from undefined content
+    if (!data.content) return { error: data }
     const fileString = decodeBase64(data.content)
     return { data: JSON.parse(fileString) }
   } catch (error) {
