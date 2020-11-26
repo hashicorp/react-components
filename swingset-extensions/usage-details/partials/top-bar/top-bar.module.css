@@ -1,0 +1,51 @@
+.root {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--gray-6);
+}
+
+.heading {
+  margin: 0;
+  composes: g-type-display-3 from global;
+}
+
+.sourcegraphLink {
+  display: none;
+
+  @media (--medium-up) {
+    display: flex;
+    margin-left: auto;
+    color: var(--gray-2);
+    align-items: center;
+
+    &:hover {
+      color: var(--brand);
+    }
+  }
+}
+
+.sourcegraphLogo {
+  margin: 0 4px;
+  & > svg {
+    display: block;
+  }
+}
+
+.externalIcon {
+  & > svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+
+    & [stroke] {
+      stroke: var(--gray-4);
+    }
+  }
+
+  &[data-hovered='true'] {
+    & > svg [stroke] {
+      stroke: var(--brand);
+    }
+  }
+}

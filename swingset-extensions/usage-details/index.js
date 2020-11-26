@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import ProjectListItem from './partials/project-list-item'
+import TopBar from './partials/top-bar'
+import styles from './usage-details.module.css'
+import PROJECT_LIST from './project-list'
 
 function UsageDetails({ packageName }) {
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    async function getDetails() {
-      const response = await fetch(`/api/fetch-usage-details/${packageName}`)
-      const data = await response.json()
-      setData(data)
-    }
-
-    getDetails()
-  }, [packageName])
-
   return (
-    <div>
-      <pre>
-        <code>
-          {packageName}
-          <br />
-          <br />
-          {data ? JSON.stringify(data, null, 2) : 'Loading usage details...'}
-        </code>
-      </pre>
-    </div>
+    <section className={styles.root}>
+      <TopBar packageName={packageName} />
+      <ul className={styles.list}>
+        {PROJECT_LIST.map(({ repo, dir }) => {
+          return (
+            <ProjectListItem
+              key={`${repo}${dir}`}
+              packageName={packageName}
+              repo={repo}
+              dir={dir}
+            />
+          )
+        })}
+      </ul>
+    </section>
   )
 }
 
