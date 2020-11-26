@@ -107,3 +107,8 @@
     display: none;
   }
 }
+
+.error {
+  margin-left: 8px;
+  color: var(--danger);
+}

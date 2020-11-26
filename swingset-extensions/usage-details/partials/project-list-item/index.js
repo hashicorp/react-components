@@ -75,6 +75,13 @@ function ProjectListItem({ packageName, repo, dir }) {
         </div>
         {data && hasDependency ? (
           <div className={styles.versionUsed}>{data.versionUsed}</div>
+        ) : data && hasError ? (
+          <div
+            className={styles.error}
+            title="There was an error fetching usage data. You might need to add an .env.local file with a valid GITHUB_API_TOKEN."
+          >
+            FAILED
+          </div>
         ) : null}
       </a>
     </li>
