@@ -1,162 +1,38 @@
+@import '@hashicorp/nextjs-scripts/prism/style.css';
+
 .g-code-block {
   position: relative;
-  border-radius: 4px;
-  word-break: break-all;
-  word-wrap: break-word;
-  font-size: 0.8em;
-  display: block;
-  line-height: 1.6em;
-  background: #191f28;
-  padding: 6px 10px;
-  color: white;
-  white-space: pre-wrap;
 
-  & > ol {
-    display: table;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  & > .clipboard-icon {
+    align-items: center;
+    background: var(--gray-1);
+    border: none;
+    border-radius: 4px;
+    color: var(--gray-5);
+    cursor: pointer;
+    display: flex;
+    padding: 3px 8px 4px 8px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: color 0.2s ease-in-out;
 
-    & > li {
-      display: table-row;
-      counter-increment: table-ol;
-      vertical-align: middle;
-      white-space: pre;
+    & > svg {
+      display: block;
+      margin-left: 8px;
 
-      &:before {
-        content: '\200B';
-        display: table-cell;
-        padding-right: 7px;
-        text-align: right;
-        color: teal;
+      & [fill] {
+        fill: var(--gray-5);
+        transition: fill 0.2s ease-in-out;
       }
     }
 
-    &.numbered > li:before {
-      content: counter(table-ol);
-    }
-
-    &.dollar > li:before {
-      content: '$';
-    }
-
-    &.terminal > li:before {
-      content: '>';
-    }
-  }
-
-  &:hover span {
-    opacity: 1;
-  }
-
-  & > span {
-    background-image: url('./img/clipboard.svg');
-    background-color: white;
-    background-size: 14px 15px;
-    border-radius: 4px;
-    background-position: center center;
-    background-repeat: no-repeat;
-
-    width: 25px;
-    height: 25px;
-    display: block;
-    position: absolute;
-    top: 3px;
-    right: 4px;
-    cursor: pointer;
-    border-radius: 4px;
-
-    transition: opacity 0.3s ease-in-out;
-    opacity: 0;
-
     &:hover {
-      background-color: #aaa;
+      color: var(--white);
+
+      & > svg [fill] {
+        fill: var(--white);
+      }
     }
-
-    &:active {
-      top: 4px;
-    }
-  }
-}
-
-/******************************
- * Highlight.js Theme Styles
- * https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai-sublime.min.css
-******************************/
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #23241f;
-}
-.hljs,
-.hljs-tag,
-.hljs-subst {
-  color: #f8f8f2;
-}
-.hljs-strong,
-.hljs-emphasis {
-  color: #a8a8a2;
-}
-.hljs-bullet,
-.hljs-quote,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal,
-.hljs-link {
-  color: #ae81ff;
-}
-.hljs-code,
-.hljs-title,
-.hljs-section,
-.hljs-selector-class {
-  color: #a6e22e;
-}
-.hljs-strong {
-  font-weight: bold;
-}
-.hljs-emphasis {
-  font-style: italic;
-}
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-name,
-.hljs-attr {
-  color: #f92672;
-}
-.hljs-symbol,
-.hljs-attribute {
-  color: #66d9ef;
-}
-.hljs-params,
-.hljs-class .hljs-title {
-  color: #f8f8f2;
-}
-.hljs-string,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-variable {
-  color: #e6db74;
-}
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
-  color: #75715e;
-}
-
-/*************************
- * Highlight.js Overrides
-**************************/
-
-/* Preserve space between two consecutive "string" elements */
-.hljs-string + .hljs-string {
-  &:before {
-    content: ' ';
   }
 }
