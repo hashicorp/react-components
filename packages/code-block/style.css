@@ -1,7 +1,40 @@
 .g-code-block {
   position: relative;
 
-  & > .clipboard-icon {
+  & > .window-bar {
+    background: #262930; /* to match nextjs-scripts/prism/style.css */
+    border-bottom: 1px solid var(--gray-3);
+    line-height: 0;
+    padding: 0 18px;
+    width: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    & > span {
+      background: var(--gray-3);
+      border-radius: 50%;
+      display: inline-block;
+      height: 12px;
+      margin: 12px 0;
+      width: 12px;
+
+      & + span {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  & > pre {
+    position: relative;
+
+    &[data-has-window-bar='true'] {
+      border: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  & .clipboard-icon {
     align-items: center;
     background: var(--gray-1);
     border: none;

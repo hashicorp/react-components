@@ -18,26 +18,41 @@ function CodeBlock({ code, language, options = {} }) {
   const isHtmlString = typeof code === 'string'
 
   return (
-    <pre className={`g-code-block language-${language}`}>
-      <code
-        ref={codeRef}
+    <div className="g-code-block">
+      {options.showWindowBar && <WindowBar />}
+      <pre
         className={`language-${language}`}
-        dangerouslySetInnerHTML={isHtmlString ? { __html: code } : null}
+        data-has-window-bar={options.showWindowBar}
       >
-        {isHtmlString ? null : code}
-      </code>
-
-      {!options.hideClipboard && (
-        <button
-          className="clipboard-icon g-type-body-small-strong"
-          data-track="code-block-clipboard-icon"
-          onClick={copyCode}
+        <code
+          ref={codeRef}
+          className={`language-${language}`}
+          dangerouslySetInnerHTML={isHtmlString ? { __html: code } : null}
         >
-          {tooltipText}
-          <InlineSvg src={ClipboardIcon} />
-        </button>
-      )}
-    </pre>
+          {isHtmlString ? null : code}
+        </code>
+        {!options.hideClipboard && (
+          <button
+            className="clipboard-icon g-type-body-small-strong"
+            data-track="code-block-clipboard-icon"
+            onClick={copyCode}
+          >
+            {tooltipText}
+            <InlineSvg src={ClipboardIcon} />
+          </button>
+        )}
+      </pre>
+    </div>
+  )
+}
+
+function WindowBar() {
+  return (
+    <div className="window-bar">
+      <span />
+      <span />
+      <span />
+    </div>
   )
 }
 

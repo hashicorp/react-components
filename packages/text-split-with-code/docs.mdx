@@ -10,8 +10,8 @@ Display a title, description, and links alongside a code block.
     content: 'Lorem ipsum dolor sit amet.'
   }}
   codeBlock={{
-    chrome: true,
-    code: 'console.log("hello world")',
+    options: { showWindowBar: true, hideClipboard: true },
+    code: \`<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n\`,
     language: 'javascript'
   }}
 />`}</LiveComponent>
@@ -31,8 +31,59 @@ Dark theme:
     theme: 'dark'
   }}
   codeBlock={{
-    chrome: true,
-    code: 'console.log("hello world")',
+    options: { showWindowBar: true, hideClipboard: true },
+    code: \`<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n\`,
     language: 'javascript'
   }}
 />`}</LiveComponent>
+
+<TextSplitWithCode
+  textSplit={{
+    heading: 'Container Orchestration',
+    textSide: 'right',
+    content:
+      'Deploy, manage, and scale your containers with the Docker, Podman, or Singularity task driver.',
+    links: [
+      {
+        text: 'Read More',
+        url: 'https://learn.hashicorp.com/collections/nomad/manage-jobs',
+        type: 'outbound',
+      },
+    ],
+  }}
+  codeBlock={{
+    code: `task <span class="token string">"webservice"</span> <span class="token punctuation">{</span>\n\t<span class="token property">driver</span> <span class="token punctuation">=</span> <span class="token string">"docker"</span>\n  \n\t<span class="token keyword">config</span> <span class="token punctuation">{</span>\n\t\t<span class="token property">image</span> <span class="token punctuation">=</span> <span class="token string">"redis:3.2"</span>\n\t\t<span class="token keyword">labels</span> <span class="token punctuation">{</span>\n\t\t\t<span class="token property">group</span> <span class="token punctuation">=</span> <span class="token string">"webservice-cache"</span>\n\t  <span class="token punctuation">}</span>\n\t<span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`,
+    language: 'hcl',
+    options: { hideClipboard: true, showWindowBar: true },
+  }}
+/>
+
+<TextSplitWithCode
+  textSplit={{
+    heading: 'Windows Support',
+    textSide: 'right',
+    content:
+      'Deploy Windows containers and processes or run Nomad as a native Windows service with Service Control Manager and NSSM.',
+    links: [
+      {
+        text: 'Watch Jet.com use case',
+        url:
+          'https://www.hashicorp.com/resources/running-windows-microservices-on-nomad-at-jet-com',
+        type: 'outbound',
+      },
+    ],
+  }}
+  codeBlock={{
+    options: { hideClipboard: true, showWindowBar: true },
+    code: `sc.exe start "Nomad"\n\nSERVICE_NAME: Nomad
+\tTYPE\t : 10 WIN32_OWN_PROCESS
+\tSTATE\t : 4 RUNNING
+\t(STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+\tWIN32_EXIT_CODE : 0 (0x0)
+\tSERVICE_EXIT_CODE : 0 (0x0)
+\tCHECKPOINT \t: 0x0
+\tWAIT_HINT \t: 0x0
+\tPID\t : 8008
+\tFLAGS\t :`,
+  }}
+/>

@@ -16,6 +16,11 @@ module.exports = {
     description:
       'Additional options that enable supplementary `code-block` features.',
     properties: {
+      showWindowBar: {
+        type: 'boolean',
+        description:
+          'Set to `true` to display a window chrome bar UI above the code block.',
+      },
       hideClipboard: {
         type: 'boolean',
         description:
