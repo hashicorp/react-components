@@ -1,14 +1,6 @@
 .root {
   display: flex;
   width: 20em;
-  /*
-  We could hide repos that don't use
-  the package in question, but this
-  tends to cause lots of layout jank
-  &[data-not-used='true'] {
-    display: none;
-  }
-  */
 }
 
 .linkContainer {
@@ -77,6 +69,7 @@
     margin-top: 1px;
     width: 20px;
     height: 20px;
+
     & [stroke] {
       stroke: var(--gray-6);
     }

@@ -16,8 +16,8 @@ function ProjectListItem({ packageName, repo, dir }) {
   const repoLabel = `${repo.replace('hashicorp/', '')}${dir ? dir : ''}`
 
   const isLoading = !data
-  const hasError = !isLoading && data.error
-  const hasDependency = !isLoading && data.versionUsed
+  const errorMsg = !isLoading && data.error
+  const versionUsed = !isLoading && data.versionUsed
 
   useEffect(() => {
     async function getDetails() {
@@ -36,61 +36,59 @@ function ProjectListItem({ packageName, repo, dir }) {
       const params = { json: JSON.stringify(requestData) }
       const response = await fetch(`${API_URL}?${qs(params)}`)
       const data = await response.json()
-      if (data.error)
-        console.error(
-          `Error fetching usage data from ${repo}. This might be an issue with the GITHUB_API_TOKEN env variable, which should be present in .env.local for local development. Full error: ${JSON.stringify(
-            data.error
-          )}`
-        )
+      if (data.error) {
+        let msg = `Error fetching usage data from ${repo}.`
+        msg += `This might be an issue with the GITHUB_API_TOKEN env variable, `
+        msg += `which should be present in .env.local for local development.`
+        msg += `Full error: ${JSON.stringify(data.error)}`
+        console.error(msg)
+      }
       setData(data)
     }
     getDetails()
   }, [packageName])
 
   return (
-    <li className={styles.root} data-not-used={!hasDependency}>
-      <a
-        ref={linkRef}
-        className={styles.linkContainer}
-        href={repoUrl}
-        data-loading={!data}
-        data-not-used={!hasDependency}
-      >
-        {isLoading ? (
-          <InlineSvg className={styles.loadingIcon} src={svgLoadingSpinner} />
-        ) : hasDependency ? (
-          <InlineSvg
-            className={styles.githubIcon}
-            src={svgGitHubIcon}
-            data-hovered={isHovered}
-          />
-        ) : (
-          <InlineSvg
-            className={styles.xIcon}
-            src={svgXIcon}
-            data-hovered={isHovered}
-            data-has-error={hasError}
-          />
-        )}
+    <li className={styles.root}>
+      <a ref={linkRef} className={styles.linkContainer} href={repoUrl}>
+        <Icon
+          isLoading={isLoading}
+          versionUsed={versionUsed}
+          isHovered={isHovered}
+        />
         <div
           className={styles.repoLabel}
           data-hovered={isHovered}
-          data-not-used={!hasDependency}
+          data-not-used={!versionUsed}
         >
           {repoLabel}
         </div>
-        {data && hasDependency ? (
-          <div className={styles.versionUsed}>{data.versionUsed}</div>
-        ) : data && hasError ? (
-          <div
-            className={styles.error}
-            title="There was an error fetching usage data. You might need to add an .env.local file with a valid GITHUB_API_TOKEN."
-          >
-            FAILED
-          </div>
-        ) : null}
+        {versionUsed && <div className={styles.versionUsed}>{versionUsed}</div>}
+        {errorMsg && <div className={styles.error}>FAILED</div>}
       </a>
     </li>
+  )
+}
+
+function Icon({ isLoading, versionUsed, isHovered }) {
+  if (isLoading) {
+    return <InlineSvg className={styles.loadingIcon} src={svgLoadingSpinner} />
+  }
+  if (versionUsed) {
+    return (
+      <InlineSvg
+        className={styles.githubIcon}
+        src={svgGitHubIcon}
+        data-hovered={isHovered}
+      />
+    )
+  }
+  return (
+    <InlineSvg
+      className={styles.xIcon}
+      src={svgXIcon}
+      data-hovered={isHovered}
+    />
   )
 }
 
