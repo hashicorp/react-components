@@ -37,9 +37,9 @@ function ProjectListItem({ packageName, repo, dir }) {
       const response = await fetch(`${API_URL}?${qs(params)}`)
       const data = await response.json()
       if (data.error) {
-        let msg = `Error fetching usage data from ${repo}.`
+        let msg = `Error fetching usage data from ${repo}. `
         msg += `This might be an issue with the GITHUB_API_TOKEN env variable, `
-        msg += `which should be present in .env.local for local development.`
+        msg += `which should be present in .env.local for local development. `
         msg += `Full error: ${JSON.stringify(data.error)}`
         console.error(msg)
       }
