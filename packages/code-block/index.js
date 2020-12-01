@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import processSnippet from './utils/process-snippet'
 import copyToClipboard from './utils/copy-to-clipboard'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import ClipboardIcon from './svg/clipboard-icon.svg.js'
+import svgClipboardIcon from './svg/clipboard-icon.svg.js'
 
 function CodeBlock({ code, language, options = {} }) {
   const codeRef = useRef()
@@ -31,14 +31,14 @@ function CodeBlock({ code, language, options = {} }) {
         >
           {isHtmlString ? null : code}
         </code>
-        {!options.hideClipboard && (
+        {options.showClipboard && (
           <button
             className="clipboard-icon g-type-body-small-strong"
             data-track="code-block-clipboard-icon"
             onClick={copyCode}
           >
             {tooltipText}
-            <InlineSvg src={ClipboardIcon} />
+            <InlineSvg src={svgClipboardIcon} />
           </button>
         )}
       </pre>

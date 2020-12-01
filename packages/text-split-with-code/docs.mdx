@@ -10,7 +10,7 @@ Display a title, description, and links alongside a code block.
     content: 'Lorem ipsum dolor sit amet.'
   }}
   codeBlock={{
-    options: { showWindowBar: true, hideClipboard: true },
+    options: { showWindowBar: true },
     code: \`<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n\`,
     language: 'javascript'
   }}
@@ -31,7 +31,7 @@ Dark theme:
     theme: 'dark'
   }}
   codeBlock={{
-    options: { showWindowBar: true, hideClipboard: true },
+    options: { showWindowBar: true },
     code: \`<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n\`,
     language: 'javascript'
   }}
@@ -54,7 +54,7 @@ Dark theme:
   codeBlock={{
     code: `task <span class="token string">"webservice"</span> <span class="token punctuation">{</span>\n\t<span class="token property">driver</span> <span class="token punctuation">=</span> <span class="token string">"docker"</span>\n  \n\t<span class="token keyword">config</span> <span class="token punctuation">{</span>\n\t\t<span class="token property">image</span> <span class="token punctuation">=</span> <span class="token string">"redis:3.2"</span>\n\t\t<span class="token keyword">labels</span> <span class="token punctuation">{</span>\n\t\t\t<span class="token property">group</span> <span class="token punctuation">=</span> <span class="token string">"webservice-cache"</span>\n\t  <span class="token punctuation">}</span>\n\t<span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`,
     language: 'hcl',
-    options: { hideClipboard: true, showWindowBar: true },
+    options: { showWindowBar: true },
   }}
 />
 
@@ -74,7 +74,7 @@ Dark theme:
     ],
   }}
   codeBlock={{
-    options: { hideClipboard: true, showWindowBar: true },
+    options: { showWindowBar: true },
     code: `sc.exe start "Nomad"\n\nSERVICE_NAME: Nomad
 \tTYPE\t : 10 WIN32_OWN_PROCESS
 \tSTATE\t : 4 RUNNING

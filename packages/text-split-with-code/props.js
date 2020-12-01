@@ -34,10 +34,10 @@ module.exports = {
             description:
               'Set to `true` to display a window chrome bar UI above the code block.',
           },
-          hideClipboard: {
+          showClipboard: {
             type: 'boolean',
             description:
-              'Set to `true` to hide the copy-to-clipboard prompt and functionality.',
+              'Set to `true` to show the copy-to-clipboard prompt and functionality.',
           },
         },
       },

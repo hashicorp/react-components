@@ -21,6 +21,7 @@ A formatted code block for displaying lovely lines of code.
 
 <CodeBlock
   language="javascript"
+  options={{ showClipboard: true, showWindowBar: true }}
   code={`<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n`}
 />
 
@@ -48,14 +49,15 @@ A formatted code block for displaying lovely lines of code.
 
 <CodeBlock
   language="javascript"
+  options={{ showClipboard: true, showWindowBar: true }}
   code={
     <>
-      <span class="token console class-name">console</span>
-      <span class="token punctuation">.</span>
-      <span class="token method function property-access">log</span>
-      <span class="token punctuation">(</span>
-      <span class="token string">"Hello world!"</span>
-      <span class="token punctuation">)</span>
+      <span className="token console class-name">console</span>
+      <span className="token punctuation">.</span>
+      <span className="token method function property-access">log</span>
+      <span className="token punctuation">(</span>
+      <span className="token string">"Hello world!"</span>
+      <span className="token punctuation">)</span>
     </>
   }
 />
@@ -64,57 +66,57 @@ A formatted code block for displaying lovely lines of code.
   language="go"
   code={
     <>
-      <span class="token keyword">package</span> main{'\n\n'}
-      <span class="token keyword">import</span> <span class="token string">
+      <span className="token keyword">package</span> main{'\n\n'}
+      <span className="token keyword">import</span> <span className="token string">
         "fmt"
       </span>
       {'\n\n'}
-      <span class="token keyword">func</span> <span class="token function">
+      <span className="token keyword">func</span> <span className="token function">
         main
       </span>
-      <span class="token punctuation">(</span>
-      <span class="token punctuation">)</span> <span class="token punctuation">
+      <span className="token punctuation">(</span>
+      <span className="token punctuation">)</span> <span className="token punctuation">
         {'{'}
       </span>
       {'\n'}
-      {'    '}ch <span class="token operator">:=</span> <span class="token function">
+      {'    '}ch <span className="token operator">:=</span> <span className="token function">
         make
       </span>
-      <span class="token punctuation">(</span>
-      <span class="token keyword">chan</span> <span class="token builtin">
+      <span className="token punctuation">(</span>
+      <span className="token keyword">chan</span> <span className="token builtin">
         float64
       </span>
-      <span class="token punctuation">)</span>
+      <span className="token punctuation">)</span>
       {'\n'}
-      {'    '}ch <span class="token operator">&lt;-</span>{' '}
-      <span class="token number">1.0e10</span>{' '}
-      <span class="token comment">// magic number</span>
+      {'    '}ch <span className="token operator">&lt;-</span>{' '}
+      <span className="token number">1.0e10</span>{' '}
+      <span className="token comment">// magic number</span>
       {'\n'}
-      {'    '}x<span class="token punctuation">,</span> ok{' '}
-      <span class="token operator">:=</span>{' '}
-      <span class="token operator">&lt;-</span> ch{'\n'}
+      {'    '}x<span className="token punctuation">,</span> ok{' '}
+      <span className="token operator">:=</span>{' '}
+      <span className="token operator">&lt;-</span> ch{'\n'}
       {'    '}
-      <span class="token keyword">defer</span> fmt
-      <span class="token punctuation">.</span>
-      <span class="token function">Println</span>
-      <span class="token punctuation">(</span>
-      <span class="token string">"exiting now"</span>
-      <span class="token punctuation">)</span>
-      {'\n'}
-      {'    '}
-      <span class="token keyword">go</span>{' '}
-      <span class="token function">println</span>
-      <span class="token punctuation">(</span>
-      <span class="token function">len</span>
-      <span class="token punctuation">(</span>
-      <span class="token string">"hello world!"</span>
-      <span class="token punctuation">)</span>
-      <span class="token punctuation">)</span>
+      <span className="token keyword">defer</span> fmt
+      <span className="token punctuation">.</span>
+      <span className="token function">Println</span>
+      <span className="token punctuation">(</span>
+      <span className="token string">"exiting now"</span>
+      <span className="token punctuation">)</span>
       {'\n'}
       {'    '}
-      <span class="token keyword">return</span>
+      <span className="token keyword">go</span>{' '}
+      <span className="token function">println</span>
+      <span className="token punctuation">(</span>
+      <span className="token function">len</span>
+      <span className="token punctuation">(</span>
+      <span className="token string">"hello world!"</span>
+      <span className="token punctuation">)</span>
+      <span className="token punctuation">)</span>
       {'\n'}
-      <span class="token punctuation">}</span>
+      {'    '}
+      <span className="token keyword">return</span>
+      {'\n'}
+      <span className="token punctuation">}</span>
     </>
   }
 />
