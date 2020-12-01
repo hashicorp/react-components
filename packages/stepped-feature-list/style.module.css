@@ -1,5 +1,5 @@
 .featuresCarousel {
-  @media (--medium-up) {
+  @media (min-width: 1120px) {
     display: none;
   }
 
@@ -38,7 +38,7 @@
   display: none;
   --tab-color: var(--brand);
 
-  @media (--medium-up) {
+  @media (min-width: 1120px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 40px;
