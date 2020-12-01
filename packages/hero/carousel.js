@@ -105,6 +105,7 @@ export default class HeroCarousel extends Component {
                   muted
                   playsInline
                   ref={(el) => el !== null && this.videos.push(el)}
+                  loop={videos.length === 1}
                   onEnded={() => {
                     this.switchToVideo(
                       i < this.props.videos.length - 1 ? i + 1 : 0
