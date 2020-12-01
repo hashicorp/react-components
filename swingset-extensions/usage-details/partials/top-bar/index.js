@@ -1,7 +1,7 @@
 import InlineSvg from '@hashicorp/react-inline-svg'
 import styles from './top-bar.module.css'
-import svgSourcegraphLogo from '../../svg/sourcegraph-logo.svg.js'
-import svgExternalLink from '../../svg/external-link.svg.js'
+import svgSourcegraphLogo from '../../svg/sourcegraph-logo.svg?include'
+import svgExternalLink from '../../svg/external-link.svg?include'
 import qs from '../../utils/query-string'
 import useHover from '../../hooks/use-hover'
 
