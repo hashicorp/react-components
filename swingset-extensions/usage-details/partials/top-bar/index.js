@@ -1,11 +1,11 @@
 import InlineSvg from '@hashicorp/react-inline-svg'
 import styles from './top-bar.module.css'
-import svgSourcegraphLogo from '../../svg/sourcegraph-logo.svg?include'
-import svgExternalLink from '../../svg/external-link.svg?include'
 import qs from '../../utils/query-string'
 import useHover from '../../hooks/use-hover'
+import getConfig from 'next/config'
 
-const SOURCEGRAPH_URL = 'https://glacial-inlet-01066.herokuapp.com'
+const { publicRuntimeConfig } = getConfig()
+const { SOURCEGRAPH_URL } = publicRuntimeConfig
 
 function TopBar({ packageName }) {
   const [linkRef, isHovered] = useHover()
@@ -24,11 +24,11 @@ function TopBar({ packageName }) {
         Search with{' '}
         <InlineSvg
           className={styles.sourcegraphLogo}
-          src={svgSourcegraphLogo}
+          src={require('../../svg/sourcegraph-logo.svg?include')}
         />
         <InlineSvg
           className={styles.externalIcon}
-          src={svgExternalLink}
+          src={require('../../svg/external-link.svg?include')}
           data-hovered={isHovered}
         />
       </a>

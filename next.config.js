@@ -10,5 +10,10 @@ module.exports = withHashicorp({
 })(
   withSwingset({
     componentsRoot: 'packages/*',
-  })({ svgo: { plugins: [{ removeViewBox: false }] } })
+  })({
+    svgo: { plugins: [{ removeViewBox: false }] },
+    publicRuntimeConfig: {
+      SOURCEGRAPH_URL: process.env.SOURCEGRAPH_URL,
+    },
+  })
 )

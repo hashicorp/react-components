@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import useHover from '../../hooks/use-hover'
-import svgGitHubIcon from '../../svg/github-icon.svg?include'
-import svgXIcon from '../../svg/x-icon.svg?include'
-import svgLoadingSpinner from '../../svg/loading-spinner.svg?include'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import styles from './project-list-item.module.css'
 
@@ -69,13 +66,18 @@ function ProjectListItem({ packageName, repo, dir }) {
 
 function Icon({ isLoading, versionUsed, isHovered }) {
   if (isLoading) {
-    return <InlineSvg className={styles.loadingIcon} src={svgLoadingSpinner} />
+    return (
+      <InlineSvg
+        className={styles.loadingIcon}
+        src={require('../../svg/loading-spinner.svg?include')}
+      />
+    )
   }
   if (versionUsed) {
     return (
       <InlineSvg
         className={styles.githubIcon}
-        src={svgGitHubIcon}
+        src={require('../../svg/github-icon.svg?include')}
         data-hovered={isHovered}
       />
     )
@@ -83,7 +85,7 @@ function Icon({ isLoading, versionUsed, isHovered }) {
   return (
     <InlineSvg
       className={styles.xIcon}
-      src={svgXIcon}
+      src={require('../../svg/x-icon.svg?include')}
       data-hovered={isHovered}
     />
   )
