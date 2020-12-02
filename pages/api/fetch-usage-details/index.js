@@ -5,7 +5,7 @@ const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN
 const PKG_JSON_CACHE = new NodeCache({ stdTTL: 300 })
 
 async function handler(req, res) {
-  const { packageName, repo, dir } = JSON.parse(req.query.json)
+  const { packageName, repo, dir } = req.body
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/json')
   const data = await getProjectUse(packageName, repo, dir)

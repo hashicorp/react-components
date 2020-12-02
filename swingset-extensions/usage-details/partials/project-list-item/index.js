@@ -23,20 +23,12 @@ function ProjectListItem({ packageName, repo, dir }) {
     let isMounted = true
 
     async function getDetails() {
-      /**
-       * @TODO
-       * Would prefer to send a POST request here,
-       * but POST requests to `/api` routes don't
-       * seem to work with `next-remote-watch`
-       * For details, see:
-       * https://github.com/hashicorp/next-remote-watch/pull/10
-       *
-       * In the meantime, we don't have tons of request data,
-       * so we can just send it as a query string
-       */
       const requestData = { packageName, repo, dir }
-      const params = { json: JSON.stringify(requestData) }
-      const response = await fetch(`${API_URL}?${qs(params)}`)
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestData),
+      })
       const data = await response.json()
       if (data.error) {
         let msg = `Error fetching usage data from ${repo}. `
