@@ -3,13 +3,13 @@ module.exports = {
     type: 'string',
     required: true,
     description:
-      'A string of highlighted HTML elements. These elements will be rendered into a `<pre><code>` container.',
+      'A string of highlighted HTML or React elements. These elements will be rendered into a `<pre><code>` container. Note that a plain string can be passed, though it will not be highlighted.',
   },
   language: {
     type: 'options',
     options: ['ebnf', 'go', 'hcl', 'javascript', 'shell'],
     description:
-      'Used for the `code` element\'s `class="language-*"`, for compatibility with language-specific highlight styles in [our shared Prism stylesheet](https://github.com/hashicorp/nextjs-scripts/blob/master/prism/style.css). This prop should be identical to the value used to generated the highlighted `code` prop.',
+      'Used for the `code` element\'s `class="language-*"`, for compatibility with language-specific highlight styles in [our shared Prism stylesheet](https://github.com/hashicorp/nextjs-scripts/blob/master/prism/style.css). This value should be identical to the `language` used to generate the highlighted `code`.',
   },
   options: {
     type: 'object',
