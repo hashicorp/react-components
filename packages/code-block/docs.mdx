@@ -40,6 +40,13 @@ With `code` as plain text, without highlighting
 
 <CodeBlock code={`$ echo "hello world!"\n`} />
 
+With `options.showWindowBar`
+
+<CodeBlock
+  options={{ showWindowBar: true }}
+  code={`sc.exe start "Nomad"\n\nSERVICE_NAME: Nomad\n\tTYPE\t : 10 WIN32_OWN_PROCESS\n\tSTATE\t : 4 RUNNING\n\t(STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)\n\tWIN32_EXIT_CODE : 0 (0x0)\n\tSERVICE_EXIT_CODE : 0 (0x0)\n\tCHECKPOINT \t: 0x0\n\tWAIT_HINT \t: 0x0\n\tPID\t : 8008\n\tFLAGS\t :`}
+/>
+
 With `options.showClipboard`
 
 <CodeBlock
