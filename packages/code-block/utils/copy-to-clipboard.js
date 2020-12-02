@@ -16,7 +16,7 @@ function copyToClipboard(string) {
     document.execCommand('copy')
     document.body.removeChild(copyElem)
     return true
-  } catch (ex) {
+  } catch (err) {
     //  We should try to clean up the tempElem
     //  just in case it did get created
     document.body.removeChild(copyElem)
