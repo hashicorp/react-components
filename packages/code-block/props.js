@@ -1,3 +1,5 @@
+const refractor = require('refractor')
+
 module.exports = {
   code: {
     type: 'string',
@@ -7,9 +9,8 @@ module.exports = {
   },
   language: {
     type: 'options',
-    options: ['ebnf', 'go', 'hcl', 'javascript', 'shell'],
     description:
-      'Used for the `code` element\'s `class="language-*"`, for compatibility with language-specific highlight styles in [our shared Prism stylesheet](https://github.com/hashicorp/nextjs-scripts/blob/master/prism/style.css). This value should be identical to the `language` used to generate the highlighted `code`.',
+      'Used for the `code` element\'s `class="language-*"`, for compatibility with language-specific highlight styles in [our shared Prism stylesheet](https://github.com/hashicorp/nextjs-scripts/blob/master/prism/style.css). This value should be identical to the `language` used to generate the highlighted `code`. All [`refractor` languages](https://github.com/wooorm/refractor#syntaxes) are supported.',
   },
   options: {
     type: 'object',
