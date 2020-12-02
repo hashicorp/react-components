@@ -1,10 +1,9 @@
-import React from 'react'
 import ProjectListItem from './partials/project-list-item'
 import TopBar from './partials/top-bar'
 import styles from './usage-details.module.css'
 import PROJECT_LIST from './project-list'
 
-function UsageDetails({ packageName }) {
+export default function UsageDetails({ packageName }) {
   return (
     <section className={styles.root}>
       <TopBar packageName={packageName} />
@@ -23,5 +22,3 @@ function UsageDetails({ packageName }) {
     </section>
   )
 }
-
-export default UsageDetails

@@ -20,6 +20,8 @@ function ProjectListItem({ packageName, repo, dir }) {
   const versionUsed = !isLoading && data.versionUsed
 
   useEffect(() => {
+    let isMounted = true
+
     async function getDetails() {
       /**
        * @TODO
@@ -43,9 +45,13 @@ function ProjectListItem({ packageName, repo, dir }) {
         msg += `Full error: ${JSON.stringify(data.error)}`
         console.error(msg)
       }
-      setData(data)
+      //  Avoid trying to setData if the component is not mounted
+      if (isMounted) setData(data)
     }
+
     getDetails()
+
+    return () => (isMounted = false)
   }, [packageName])
 
   return (
