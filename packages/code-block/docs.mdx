@@ -12,25 +12,14 @@ A formatted code block for displaying lovely lines of code.
 
 ### Examples
 
-`code` as `html`
+With `code` as HTML
 
 <CodeBlock
   language="shell-session"
   code={`<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>\n`}
 />
 
-<CodeBlock
-  language="javascript"
-  options={{ showClipboard: true, showWindowBar: true }}
-  code={`<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n`}
-/>
-
-<CodeBlock
-  language="go"
-  code={`<span class="token keyword">package</span> main\n\n<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">float64</span><span class="token punctuation">)</span>\n    ch <span class="token operator">&lt;-</span> <span class="token number">1.0e10</span>    <span class="token comment">// magic number</span>\n    x<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&lt;-</span> ch\n    <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"exiting now"</span><span class="token punctuation">)</span>\n    <span class="token keyword">go</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\n    <span class="token keyword">return</span>\n<span class="token punctuation">}</span>`}
-/>
-
-`code` as React elements
+With `code` as React elements
 
 <CodeBlock
   language="shell-session"
@@ -47,22 +36,14 @@ A formatted code block for displaying lovely lines of code.
   }
 />
 
-<CodeBlock
-  language="javascript"
-  options={{ showClipboard: true, showWindowBar: true }}
-  code={
-    <>
-      <span className="token console class-name">console</span>
-      <span className="token punctuation">.</span>
-      <span className="token method function property-access">log</span>
-      <span className="token punctuation">(</span>
-      <span className="token string">"Hello world!"</span>
-      <span className="token punctuation">)</span>
-    </>
-  }
-/>
+With `code` as plain text, without highlighting
+
+<CodeBlock code={`$ echo "hello world!"\n`} />
+
+With `options.showClipboard`
 
 <CodeBlock
+  options={{ showClipboard: true }}
   language="go"
   code={
     <>
@@ -119,4 +100,12 @@ A formatted code block for displaying lovely lines of code.
       <span className="token punctuation">}</span>
     </>
   }
+/>
+
+With `options.showClipboard` and `options.showWindowBar`
+
+<CodeBlock
+  options={{ showClipboard: true, showWindowBar: true }}
+  language="hcl"
+  code={`task <span class="token string">"webservice"</span> <span class="token punctuation">{</span>\n\t<span class="token property">driver</span> <span class="token punctuation">=</span> <span class="token string">"docker"</span>\n  \n\t<span class="token keyword">config</span> <span class="token punctuation">{</span>\n\t\t<span class="token property">image</span> <span class="token punctuation">=</span> <span class="token string">"redis:3.2"</span>\n\t\t<span class="token keyword">labels</span> <span class="token punctuation">{</span>\n\t\t\t<span class="token property">group</span> <span class="token punctuation">=</span> <span class="token string">"webservice-cache"</span>\n\t  <span class="token punctuation">}</span>\n\t<span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
 />
