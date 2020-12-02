@@ -1,5 +1,3 @@
-const refractor = require('refractor')
-
 module.exports = {
   code: {
     type: 'string',
