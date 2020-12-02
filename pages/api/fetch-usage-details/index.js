@@ -1,4 +1,8 @@
+const NodeCache = require('node-cache')
 const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN
+
+//  Cache package.json requests for 5 minutes
+const PKG_JSON_CACHE = new NodeCache({ stdTTL: 300 })
 
 async function handler(req, res) {
   const { packageName, repo, dir } = JSON.parse(req.query.json)
@@ -17,6 +21,10 @@ async function getProjectUse(packageName, repo, dir = '') {
 async function getPackageJson(repo, projectDir = '') {
   const filepath = `${projectDir}/package.json`
   const url = `https://api.github.com/repos/${repo}/contents${filepath}`
+  //  Return cached data if we have it
+  const cachedData = PKG_JSON_CACHE.get(url)
+  if (cachedData) return { data: cachedData }
+  //  Otherwise, re-fetch the data...
   const headers = { Authorization: `token ${GITHUB_API_TOKEN}` }
   try {
     const response = await fetch(url, { headers })
@@ -27,8 +35,12 @@ async function getPackageJson(repo, projectDir = '') {
     // same decodeBase64() error from undefined content
     if (!data.content) return { error: data }
     const fileString = decodeBase64(data.content)
-    return { data: JSON.parse(fileString) }
+    const packageJson = JSON.parse(fileString)
+    //  Update our cache
+    PKG_JSON_CACHE.set(url, packageJson)
+    return { data: packageJson }
   } catch (error) {
+    console.error(error)
     return { error }
   }
 }
