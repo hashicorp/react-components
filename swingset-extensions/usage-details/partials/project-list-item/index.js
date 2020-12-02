@@ -4,7 +4,6 @@ import svgGitHubIcon from '../../svg/github-icon.svg?include'
 import svgXIcon from '../../svg/x-icon.svg?include'
 import svgLoadingSpinner from '../../svg/loading-spinner.svg?include'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import qs from '../../utils/query-string'
 import styles from './project-list-item.module.css'
 
 const API_URL = '/api/fetch-usage-details'
