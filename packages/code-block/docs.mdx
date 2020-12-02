@@ -116,3 +116,19 @@ With `options.showClipboard` and `options.showWindowBar`
   language="hcl"
   code={`task <span class="token string">"webservice"</span> <span class="token punctuation">{</span>\n\t<span class="token property">driver</span> <span class="token punctuation">=</span> <span class="token string">"docker"</span>\n  \n\t<span class="token keyword">config</span> <span class="token punctuation">{</span>\n\t\t<span class="token property">image</span> <span class="token punctuation">=</span> <span class="token string">"redis:3.2"</span>\n\t\t<span class="token keyword">labels</span> <span class="token punctuation">{</span>\n\t\t\t<span class="token property">group</span> <span class="token punctuation">=</span> <span class="token string">"webservice-cache"</span>\n\t  <span class="token punctuation">}</span>\n\t<span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
 />
+
+## Copy to clipboard details
+
+### Shell snippet parsing
+
+**Note that any code starting with a `$` character on the first line will be interpreted as a shell snippet.**
+
+This is intended to allow the display of control characters such as `$` and shell output in the code block, while ensuring that when copying the snippet, only the executable part of the snippet is copied to the clipboard.
+
+| Scenario                          | Supported | What gets copied                                                  | Example                                                                                                              |
+| --------------------------------- | --------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Single line commands              | ✅        | The command will be copied without the leading `$`.               | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#step-5-retrieve-the-secrets)             |
+| Multi-line commands               | ✅        | The multi-line command will be copied, without the leading `$`.   | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#q-how-do-i-save-multiple-values-at-once) |
+| Commands with output              | ✅        | The command will be copied without the leading `$` or the output. | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#additional-discussion)                   |
+| Non-shell Snippets                | ✅        | The entire snippet will be copied.                                | [🔗](https://learn.hashicorp.com/nomad/getting-started/jobs#modifying-a-job)                                         |
+| Multi-line with multiple commands | ❌        | Not supported. Only the first command will be copied.             | 🛑                                                                                                                   |
