@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import processSnippet from './utils/process-snippet'
 import copyToClipboard from './utils/copy-to-clipboard'
 import InlineSvg from '@hashicorp/react-inline-svg'
