@@ -33,9 +33,6 @@
 }
 .buttonActive {
   color: var(--gray-1);
-  &:after {
-    content: --dropdown-carat-content;
-  }
   & .dropdownCarat {
     transform: rotate(-180deg);
     & path {
