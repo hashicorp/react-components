@@ -22,22 +22,20 @@
   transition: color 0.1s;
   display: flex;
   align-items: center;
+  &:hover {
+    color: var(--gray-1);
+  }
+
   & .dropdownCarat {
     margin: 2px 0 0 8px;
     transition: 0.3s transform;
   }
-
-  &:hover {
-    color: var(--gray-1);
-  }
 }
+
 .buttonActive {
   color: var(--gray-1);
   & .dropdownCarat {
     transform: rotate(-180deg);
-    & path {
-      stroke: var(--black);
-    }
   }
 }
 
