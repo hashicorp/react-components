@@ -73,13 +73,13 @@
       width: 100%;
       flex-shrink: 0;
 
+      @media (--medium-up) {
+        width: calc((100% - 32px) / 2);
+      }
+
       & > img {
         display: block;
         width: 100%;
-      }
-
-      @media (--medium-up) {
-        width: calc((100% - 32px) / 2);
       }
     }
   }
