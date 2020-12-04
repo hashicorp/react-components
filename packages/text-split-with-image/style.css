@@ -1,0 +1,6 @@
+.g-text-split-with-image {
+  & img {
+    display: block;
+    width: 100%;
+  }
+}

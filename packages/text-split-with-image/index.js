@@ -5,7 +5,9 @@ export default function TextSplitWithImage({ image, textSplit }) {
   const altWithFallback = image.alt || textSplit.heading || ''
   return (
     <TextSplit {...textSplit}>
-      <Image {...image} alt={altWithFallback} />
+      <div className="g-text-split-with-image">
+        <Image {...image} alt={altWithFallback} />
+      </div>
     </TextSplit>
   )
 }

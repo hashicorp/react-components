@@ -76,11 +76,6 @@
       @media (--medium-up) {
         width: calc((100% - 32px) / 2);
       }
-
-      & > img {
-        display: block;
-        width: 100%;
-      }
     }
   }
 }
