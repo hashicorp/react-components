@@ -12,39 +12,31 @@
   border-style: none;
   cursor: pointer;
   padding: 0;
-  margin-right: 0.5rem;
-  & svg {
-    transition: 0.3s transform;
-  }
 }
 
 .link {
   composes: g-type-body-small-strong from global;
   position: relative;
   color: var(--gray-4);
-  padding: 1rem 1.25rem 1rem 1rem;
+  padding: 1rem;
   transition: color 0.1s;
-  & svg {
-    position: absolute;
-    right: 0.25rem;
-    top: 0;
-    height: 100%;
-    & path {
-      stroke: var(--gray-4);
-    }
+  display: flex;
+  align-items: center;
+  & .dropdownCarat {
+    margin: 2px 0 0 8px;
+    transition: 0.3s transform;
   }
+
   &:hover {
     color: var(--gray-1);
-    & svg {
-      & path {
-        stroke: var(--gray-1);
-      }
-    }
   }
 }
 .buttonActive {
   color: var(--gray-1);
-  & svg {
+  &:after {
+    content: --dropdown-carat-content;
+  }
+  & .dropdownCarat {
     transform: rotate(-180deg);
     & path {
       stroke: var(--black);

@@ -1,6 +1,4 @@
 import styles from './nav-item.module.css'
-import DropdownCarat from '../assets/icon-dropdown.svg?include'
-import InlineSvg from '@hashicorp/react-inline-svg'
 import { useRef, useEffect } from 'react'
 import BrowsePanel from '../browse-panel'
 import StackMenuSection from '../stack-menu-section'
@@ -76,7 +74,15 @@ function DropdownButton({ active, onClick, children }) {
       <span className={styles.visuallyHidden}>
         {active ? 'Close this menu' : 'Open this menu'}
       </span>
-      <InlineSvg src={DropdownCarat} />
+      <img
+        className={styles.dropdownCarat}
+        alt="" // https://www.w3.org/WAI/tutorials/images/decorative/
+        src={
+          active
+            ? require('./../assets/icon-dropdown-gray-1.svg')
+            : require('./../assets/icon-dropdown-gray-4.svg')
+        }
+      />
     </button>
   )
 }
