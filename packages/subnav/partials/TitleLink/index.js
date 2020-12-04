@@ -9,6 +9,7 @@ import SvgrVagrantLogoColour from '../../icons/vagrant-logo-color.svgr.js'
 import SvgrVaultLogoColour from '../../icons/vault-logo-color.svgr.js'
 import SvgrBoundaryLogoColour from '../../icons/boundary-logo-color.svgr.js'
 import SvgrWaypointLogoColour from '../../icons/waypoint-logo-color.svgr.js'
+import SvgrTerraformCloudLogoColour from '../../icons/terraform-cloud-logo-color.svgr.js'
 
 const logoDict = {
   consul: SvgrConsulLogoColour,
@@ -20,6 +21,7 @@ const logoDict = {
   vault: SvgrVaultLogoColour,
   boundary: SvgrBoundaryLogoColour,
   waypoint: SvgrWaypointLogoColour,
+  tfc: SvgrTerraformCloudLogoColour,
 }
 
 function TitleLink(props) {
