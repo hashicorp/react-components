@@ -35,6 +35,7 @@ function CodeBlock({ code, language, options = {} }) {
           <button
             className="clipboard-icon g-type-body-small-strong"
             data-track="code-block-clipboard-icon"
+            role="button"
             onClick={copyCode}
           >
             {tooltipText}
