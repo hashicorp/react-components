@@ -5,6 +5,9 @@
   list-style: none;
   position: relative;
   white-space: nowrap;
+  & + .navItem {
+    margin-left: 24px;
+  }
 }
 
 .buttonReset {
@@ -18,10 +21,11 @@
   composes: g-type-body-small-strong from global;
   position: relative;
   color: var(--gray-4);
-  padding: 1rem;
+  padding: 1rem 0;
   transition: color 0.1s;
   display: flex;
   align-items: center;
+
   &:hover {
     color: var(--gray-1);
   }
