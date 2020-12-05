@@ -14,6 +14,7 @@ const brandWhitelist = {
   nomad: 'nomad',
   packer: 'packer',
   terraform: 'terraform',
+  tfc: 'terraform',
   vagrant: 'vagrant',
   vault: 'vault',
   boundary: 'boundary',
