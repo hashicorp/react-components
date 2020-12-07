@@ -61,10 +61,12 @@ export default function DocsPage({
           <Content
             product={slug}
             content={
-              <SearchProvider>
-                <SearchBar product={name} />
+              <>
+                <SearchProvider>
+                  <SearchBar product={name} />
+                </SearchProvider>
                 {content}
-              </SearchProvider>
+              </>
             }
           />
         </div>
