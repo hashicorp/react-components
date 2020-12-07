@@ -1,63 +1,72 @@
 import TextSplit from '@hashicorp/react-text-split'
 import Image from '@hashicorp/react-image'
-import dictionarySvgColor from '@hashicorp/mktg-assets/dist/companies/dictionary-svgr-color.js'
-import dictionarySvgWhite from '@hashicorp/mktg-assets/dist/companies/dictionary-svgr-white.js'
+import dictionarySvgrColor from '@hashicorp/mktg-assets/dist/companies/dictionary-svgr-color.js'
+import dictionarySvgrWhite from '@hashicorp/mktg-assets/dist/companies/dictionary-svgr-white.js'
+import styles from './styles/text-split-with-logo-grid.module.css'
 
-export default function TextSplitWithLogoGrid({ images, textSplit }) {
-  const logoDict =
-    textSplit.theme === 'dark' ? dictionarySvgWhite : dictionarySvgColor
-  const parsedImages = images.map((imgProps) => {
-    // If we have an image URL for src, jus use the Image component
-    if (typeof imgProps !== 'string' && !!imgProps.url) {
-      const { hasWhitespace, ...restImgProps } = imgProps
-      return {
-        hasWhitespace,
-        renderImage: () => <Image {...restImgProps} />,
-      }
+function parseLogoGridItems(items, theme) {
+  const logoDict = theme === 'dark' ? dictionarySvgrWhite : dictionarySvgrColor
+  return items.map((rawItem) => {
+    const itemProps = typeof rawItem === 'string' ? { slug: rawItem } : rawItem
+    const { slug, linkUrl, hasWhitespace, ...restItemProps } = itemProps
+    const isDictLogo = Boolean(slug)
+    const SvgrLogo = isDictLogo && logoDict[slug]
+    if (isDictLogo && !SvgrLogo) {
+      let error = `<TextSplitWithLogoGrid /> could not find logo for slug ${slug}. `
+      error += `Please check the slug being passed in, or get in touch `
+      error += `with #team-mktg-design to have this logo added.`
+      throw new Error(error)
     }
-    // Otherwise, try to find an SVGR from our company logo dictionary
-    const slug = imgProps
-    const SvgrLogo = logoDict[slug]
-    if (!SvgrLogo) {
-      throw new Error(
-        `<TextSplitWithLogoGrid /> could not find logo for slug ${slug}. Please check the slug being passed in, or get in touch with #team-mktg-design to have this logo added.`
-      )
-    }
-
+    const GridItem = isDictLogo
+      ? () => <SvgrLogo title={slug} />
+      : () => <Image {...restItemProps} />
     return {
-      // Our shared company logos have built-in whitespace
-      // We don't assume this for other images passed in
-      hasWhitespace: true,
-      renderImage: () => <SvgrLogo title={slug} />,
+      hasWhitespace: isDictLogo ? true : hasWhitespace,
+      linkUrl,
+      GridItem,
     }
   })
-  const imgCount = parsedImages.length
+}
+
+function LogoGrid({ items, theme }) {
+  const parsedItems = parseLogoGridItems(items, theme)
+  const imgCount = parsedItems.length
   const isBrokenLayout = imgCount % 3 !== 0 || imgCount > 9
   if (isBrokenLayout) {
-    throw new Error(
-      `<TextSplitWithLogoGrid /> was passed ${imgCount} images, which would result in a broken layout. There must be exactly 3, 6, or 9 images.`
-    )
+    let err = `<TextSplitWithLogoGrid /> was passed ${imgCount} items, `
+    err += `which would result in a broken layout. `
+    err += `There must be exactly 3, 6, or 9 items.`
+    throw new Error(err)
   }
   return (
-    <TextSplit {...textSplit}>
-      <div className="g-text-split-with-logo-grid">
-        {parsedImages.map((logoImg, stableIdx) => {
-          const { hasWhitespace, renderImage } = logoImg
-          const whitespaceClass = hasWhitespace ? 'has-whitespace' : ''
-          return (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={stableIdx} className="grid-item">
-              <div className="image-aspect">
-                <div
-                  className={`inner background-${textSplit.theme} ${whitespaceClass}`}
-                >
-                  {renderImage()}
-                </div>
-              </div>
+    <div className={styles.textSplitWithLogoGrid}>
+      {parsedItems.map((logoGridItem, stableIdx) => {
+        const { hasWhitespace, linkUrl, GridItem } = logoGridItem
+        const ItemWrapper = linkUrl ? 'a' : 'div'
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={stableIdx} className={styles.gridItem}>
+            <div className={styles.itemAspect}>
+              <ItemWrapper
+                href={linkUrl || undefined}
+                className={styles.itemAspectInner}
+                data-theme={theme}
+                data-has-whitespace={hasWhitespace}
+              >
+                <GridItem />
+              </ItemWrapper>
             </div>
-          )
-        })}
-      </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+export default function TextSplitWithLogoGrid({ logoGrid, textSplit }) {
+  return (
+    <TextSplit {...textSplit}>
+      <LogoGrid items={logoGrid} theme={textSplit.theme} />
     </TextSplit>
   )
 }

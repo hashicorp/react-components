@@ -1,0 +1,79 @@
+.textSplitWithLogoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+
+  @media (min-width: 400px) {
+    margin: -8px;
+  }
+}
+
+.gridItem {
+  display: flex;
+  padding: 4px;
+  width: 33.33%;
+
+  @media (min-width: 400px) {
+    padding: 8px;
+  }
+}
+
+.itemAspect {
+  padding-bottom: 66.66%;
+  position: relative;
+  width: 100%;
+
+  @media (min-width: 900px) {
+    padding-bottom: 75%;
+  }
+
+  @media (--large) {
+    padding-bottom: 66.66%;
+  }
+}
+
+.itemAspectInner {
+  align-items: center;
+  background: white;
+  border: 1px solid var(--gray-6);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: box-shadow 0.25s;
+
+  &[href]:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &[data-theme='dark'] {
+    background: none;
+    border-color: var(--gray-3);
+  }
+
+  /* <Image /> might render with a wrapping <picture> tag
+  we need to account for that as well */
+  & > picture {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+
+  /* For most images, we can't expect built-in whitespace
+  or a consistent aspect ratio, so max-width and max-height
+  are applied */
+  & > img,
+  & > picture > img {
+    height: auto;
+    max-height: 60%;
+    max-width: 75%;
+    width: auto;
+  }
+}

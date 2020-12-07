@@ -10,7 +10,7 @@ Display a logo grid alongside a title, description, and links.
     content: 'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
     checkboxes: ['Checkbox 1', 'Checkbox 2']
   }}
-  images={['microsoft-azure', 'aws', 'google', 'vmware', 'alibaba-cloud', {
+  logoGrid={['microsoft-azure', 'aws', 'google', 'vmware', 'alibaba-cloud', {
     url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
     alt: 'Serverless'
   }]}
@@ -24,32 +24,52 @@ Display a logo grid alongside a title, description, and links.
 
 With three items:
 
-<LiveComponent>{`<TextSplitWithLogoGrid
+<LiveComponent collapsed>{`<TextSplitWithLogoGrid
   textSplit={{
     heading: 'Example Heading',
     content: 'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
   }}
-  images={['microsoft-azure', 'aws', 'google']}
+  logoGrid={['microsoft-azure', 'aws', 'google']}
 />`}</LiveComponent>
 
-With nine items:
+With nine items, some linked:
 
-<LiveComponent>{`<TextSplitWithLogoGrid
+<LiveComponent collapsed>{`<TextSplitWithLogoGrid
   textSplit={{
     heading: 'Example Heading',
-    content: 'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+    content:
+      'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
   }}
-  images={['microsoft-azure', 'aws', 'google', 'vmware', 'alibaba-cloud', 'oracle', 'kubernetes', 'datadog', 'openstack']}
+  logoGrid={[
+    {
+      slug: 'microsoft-azure',
+      linkUrl: 'https://www.hashicorp.com/integrations/microsoft',
+    },
+    {
+      slug: 'aws',
+      linkUrl: 'https://www.hashicorp.com/integrations/aws',
+    },
+    {
+      slug: 'google',
+      linkUrl: 'https://www.hashicorp.com/integrations/google-cloud',
+    },
+    'vmware',
+    'alibaba-cloud',
+    'oracle',
+    'kubernetes',
+    'datadog',
+    'openstack',
+  ]}
 />`}</LiveComponent>
 
 With extreme image dimensions:
 
-<LiveComponent>{`<TextSplitWithLogoGrid
+<LiveComponent collapsed>{`<TextSplitWithLogoGrid
   textSplit={{
     heading: 'Example Heading',
     content: 'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
   }}
-  images={[
+  logoGrid={[
     {
       alt: 'Wide Image',
       url: 'https://placehold.it/700x100'
