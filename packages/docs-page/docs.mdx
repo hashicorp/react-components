@@ -30,12 +30,13 @@ We have a lot of docs sites, all of which render content in exactly the same way
           '  return mdx(MDXLayout, _extends({}, layoutProps, props, {\n' +
           '    components: components,\n' +
           '    mdxType: "MDXLayout"\n' +
-          '  }), mdx("h1", null, "Example Page"), mdx("p", null, "This is a cool docs page!"));\n' +
+          '  }), mdx("h1", { className: "g-type-display-2" }, "Example Page"), mdx("p", null, "This is a cool docs page!"));\n' +
           '}\n' +
           '\n' +
           ';\n' +
           'MDXContent.isMDXComponent = true;',
-        renderedOutput: '<h1>Example Page</h1><p>This is a cool docs page!</p>',
+        renderedOutput:
+          '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p>',
         scope: {},
       },
       data: [
@@ -56,13 +57,13 @@ We have a lot of docs sites, all of which render content in exactly the same way
     },
   }}
 >{`<DocsPage
-  product={{ name: 'Vault', slug: 'vault' }}
+  product={{ name: 'Nomad', slug: 'nomad' }}
   subpath='docs'
   order={['test', 'test2']}
   // pass in the results of executing the 'generateStaticProps' function from '@hashicorp/react-docs-page/server'
   staticProps={staticPropsResult}
 >
-  <h1>Example Page</h1>
+  <h1 className='g-type-display-2'>Example Page</h1>
   <p>This is a cool docs page!</p>
 </DocsPage>`}</LiveComponent>
 

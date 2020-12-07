@@ -5,6 +5,8 @@ import HashiHead from '@hashicorp/react-head'
 import Head from 'next/head'
 import Link from 'next/link'
 import hydrate from 'next-mdx-remote/hydrate'
+import { SearchProvider } from '@hashicorp/react-search'
+import SearchBar from './search-bar'
 import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 
@@ -56,7 +58,15 @@ export default function DocsPage({
         </div>
         {/* render the markdown content */}
         <div id="inner" role="main">
-          <Content product={slug} content={content} />
+          <Content
+            product={slug}
+            content={
+              <SearchProvider>
+                <SearchBar product={name} />
+                {content}
+              </SearchProvider>
+            }
+          />
         </div>
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}

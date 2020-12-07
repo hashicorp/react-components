@@ -30,6 +30,10 @@
         padding-right: 0;
       }
 
+      & > :first-child {
+        padding-top: 0;
+      }
+
       & > h1:first-child {
         margin-top: 0;
 
