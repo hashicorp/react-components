@@ -9,7 +9,7 @@ module.exports = {
     required: true,
     properties: textSplitProps,
   },
-  images: {
+  logoGrid: {
     type: 'object | string',
     description:
       'Data passed to the LogoGrid component. Can also be a string which is mapped to a company logo.',

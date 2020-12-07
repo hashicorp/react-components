@@ -66,7 +66,7 @@
     width: 100%;
   }
 
-  /* For most images, we can't expect built-in whitespace
+  /* We can't expect built-in whitespace
   or a consistent aspect ratio, so max-width and max-height
   are applied */
   & > img,
