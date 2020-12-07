@@ -9,7 +9,7 @@ function CodeBlock({ code, language, options = {} }) {
   const [tooltipText, setTooltipText] = useState('Copy')
 
   function copyCode() {
-    const snippet = processSnippet(codeRef.current.innerText)
+    const snippet = processSnippet(codeRef.current.textContent)
     const isCopied = copyToClipboard(snippet)
     setTooltipText(isCopied ? 'Copied!' : 'Failed')
     setTimeout(() => setTooltipText('Copy'), 2000)

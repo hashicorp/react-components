@@ -1,5 +1,11 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import CodeBlock from './'
+// Mock copy-to-clipboard
+jest.mock('./utils/copy-to-clipboard')
+import copyToClipboard from './utils/copy-to-clipboard'
+// We want to make sure copied code is passed through processSnippet,
+// we import it so that we don't have to manually recreate its output
+import processSnippet from './utils/process-snippet'
 
 afterEach(cleanup)
 
@@ -61,21 +67,32 @@ it('should render a keyboard-focusable `Copy` button', () => {
   expect(screen.getByText('Copy')).toHaveFocus
 })
 
-/**
- * @TODO
- *
- * It would be really nice to test the
- * copy-to-clipboard functionality.
- *
- * However, `jsdom` doesn't support `innerText`,
- * ( ref: https://github.com/jsdom/jsdom/issues/1245 )
- * and it doesn't support `document.execCommand`,
- * so we can test this currently, because `fireEvent.click()`
- * even on the "Copy" button ends up throwing an error.
- *
- * This might be something we need to test with Cypress...
- * Or it might be something where we could refactor
- * the `copy-to-clipboard` function in order to
- * make it more test-able.
- */
-it.todo('should use the `Copy` button to copy code to the clipboard')
+it('should use the `Copy` button to copy code to the clipboard', () => {
+  const codeString = "console.log('Hello world!')"
+  const codeHtml = `<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Hello world!'</span><span class="token punctuation">)</span>`
+  render(<CodeBlock code={codeHtml} options={{ showClipboard: true }} />)
+  // Find and click the copy button
+  const buttonElem = screen.getByText('Copy')
+  expect(buttonElem).toBeInTheDocument()
+  fireEvent.click(buttonElem)
+  //  Expect copyToClipboard to have been called with our code snippet
+  //  (note: this function is mocked at the top of this test file)
+  expect(copyToClipboard).toHaveBeenCalled()
+  expect(copyToClipboard).toHaveBeenCalledWith(codeString)
+  copyToClipboard.mockClear()
+})
+
+it('should use process-snippet to strip the leading $ from shell snippets', () => {
+  const codeString = '$ echo "hello world!"'
+  const codeHtml = `<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>`
+  render(<CodeBlock code={codeHtml} options={{ showClipboard: true }} />)
+  // Find and click the copy button
+  const buttonElem = screen.getByText('Copy')
+  expect(buttonElem).toBeInTheDocument()
+  fireEvent.click(buttonElem)
+  //  Expect copyToClipboard to have been called with our code snippet
+  //  (note: this function is mocked at the top of this test file)
+  //  We also expect the code to have been modified by processSnippet
+  const expectedCode = processSnippet(codeString)
+  expect(copyToClipboard).toHaveBeenCalledWith(expectedCode)
+})
