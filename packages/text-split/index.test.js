@@ -140,4 +140,35 @@ describe('<TextSplit />', () => {
     expect(screen.getByAltText(customAltText)).toBeVisible()
     expect(screen.getByText(customCopy)).toBeVisible()
   })
+
+  it('should correctly render React content', () => {
+    const textString = 'This is some React content'
+    const reactContent = (
+      <p>
+        <strong>{textString}</strong>
+      </p>
+    )
+    render(<TextSplit reactContent={reactContent}>Hello</TextSplit>)
+    const customElem = screen.getByText(textString)
+    expect(customElem).toBeVisible()
+    expect(customElem.tagName).toBe('STRONG')
+  })
+
+  it('should error if both string and React content are passed', () => {
+    const textString = 'This is some React content'
+    const reactContent = (
+      <p>
+        <strong>{textString}</strong>
+      </p>
+    )
+    const content = 'foo'
+    //  Suppress console.error for this test, we expect an error
+    jest.spyOn(console, 'error')
+    global.console.error.mockImplementation(() => {})
+    expect(() => {
+      render(<TextSplit reactContent={reactContent} content={content} />)
+    }).toThrowError()
+    //  Restore console.error for further tests
+    global.console.error.mockRestore()
+  })
 })

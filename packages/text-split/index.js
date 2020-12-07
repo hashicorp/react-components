@@ -1,10 +1,10 @@
 import ButtonGroup from './partials/button-group/index.js'
 import CheckboxList from './partials/checkbox-list/index.js'
-
 function TextSplit(props) {
   const {
     heading,
     content,
+    reactContent,
     theme,
     brand,
     checkboxes,
@@ -13,9 +13,16 @@ function TextSplit(props) {
     textSide,
     children,
   } = props
-  if (!heading && !content) {
+  if (!heading && !content && !reactContent) {
     throw new Error('<TextSplit /> requires either heading or content')
   }
+
+  if (content && reactContent) {
+    throw new Error(
+      'Using both "content" and "reactContent" within <TextSplit /> is not allowed. Please choose only one.'
+    )
+  }
+
   return (
     <div className={`g-text-split background-${theme}`}>
       <div className={`g-grid-container text-at-${textSide}`}>
@@ -43,6 +50,7 @@ function TextSplit(props) {
               })}
             </div>
           )}
+          {reactContent ? reactContent : null}
           <CheckboxList items={checkboxes} brand={brand} theme={theme} />
           <ButtonGroup
             links={links}

@@ -10,6 +10,11 @@ module.exports = {
     description:
       'text content, as a string. newlines are broken into paragraphs',
   },
+  reactContent: {
+    type: 'string',
+    description:
+      "An alternative to content through which arbitrary React elements can be rendered into the 'text side' of the component.",
+  },
   theme: {
     type: 'string',
     options: ['light', 'dark', 'gray'],
