@@ -6,7 +6,8 @@ import TextSplitWithLogoGrid from '@hashicorp/react-text-split-with-logo-grid'
  * Receives an array of textSplit objects,
  * and automatically renders the appropriate
  * TextSplitWith* component.
- * @param {*} props.textSplits - an item in this array can be any one of: { textSplit, codeBlock }, { textSplit, image }, or { textSplit, logoGrid }
+ * @param {Object} props - props
+ * @param {Object[]} props.textSplits - an item in this array can be any one of: { textSplit, codeBlock }, { textSplit, image }, or { textSplit, logoGrid }
  */
 export default function TextSplits({ textSplits }) {
   return textSplits.map((entry, stableIdx) => {
