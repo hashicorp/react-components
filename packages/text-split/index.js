@@ -4,7 +4,6 @@ function TextSplit(props) {
   const {
     heading,
     content,
-    reactContent,
     theme,
     brand,
     checkboxes,
@@ -13,15 +12,12 @@ function TextSplit(props) {
     textSide,
     children,
   } = props
-  if (!heading && !content && !reactContent) {
+  if (!heading && !content) {
     throw new Error('<TextSplit /> requires either heading or content')
   }
 
-  if (content && reactContent) {
-    throw new Error(
-      'Using both "content" and "reactContent" within <TextSplit /> is not allowed. Please choose only one.'
-    )
-  }
+  const hasStringContent = content && typeof content === 'string'
+  const hasReactContent = content && !hasStringContent
 
   return (
     <div className={`g-text-split background-${theme}`}>
@@ -36,21 +32,11 @@ function TextSplit(props) {
               {heading}
             </h2>
           )}
-          {content && (
-            <div data-testid="content">
-              {content.split('\n').map((paragraph, stableIdx) => {
-                // Avoid rendering empty <p>, caused by eg `\n\n`
-                if (paragraph === '') return null
-                // eslint-disable-next-line react/no-array-index-key
-                return (
-                  <p key={stableIdx} className={`g-type-body theme-${theme}`}>
-                    {paragraph}
-                  </p>
-                )
-              })}
-            </div>
-          )}
-          {reactContent ? reactContent : null}
+          {hasStringContent ? (
+            <ContentString contentString={content} theme={theme} />
+          ) : hasReactContent ? (
+            content
+          ) : null}
           <CheckboxList items={checkboxes} brand={brand} theme={theme} />
           <ButtonGroup
             links={links}
@@ -60,6 +46,24 @@ function TextSplit(props) {
           />
         </div>
       </div>
+    </div>
+  )
+}
+
+function ContentString({ contentString, theme }) {
+  const paragraphs = contentString.split('\n')
+  return (
+    <div data-testid="content">
+      {paragraphs.map((paragraph, stableIdx) => {
+        // Avoid rendering empty <p>, caused by eg `\n\n`
+        if (paragraph === '') return null
+        // eslint-disable-next-line react/no-array-index-key
+        return (
+          <p key={stableIdx} className={`g-type-body theme-${theme}`}>
+            {paragraph}
+          </p>
+        )
+      })}
     </div>
   )
 }

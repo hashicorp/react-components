@@ -6,14 +6,9 @@ module.exports = {
     description: 'headline above the text content',
   },
   content: {
-    type: 'string',
+    type: 'function | string',
     description:
-      'text content, as a string. newlines are broken into paragraphs',
-  },
-  reactContent: {
-    type: 'string',
-    description:
-      "An alternative to content through which arbitrary React elements can be rendered into the 'text side' of the component.",
+      'Content to be shown under the `heading`. Accepts either a `string` or `React` content. If a `string` is passed, it will be rendered into paragraph tags. Each newline in the string will create a new paragraph.',
   },
   theme: {
     type: 'string',
