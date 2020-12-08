@@ -102,6 +102,27 @@ describe('<TextSplitWithLogoGrid />', () => {
     global.console.error.mockRestore()
   })
 
+  it('should throw an error if a logoGrid item has no slug and no url', () => {
+    const { textSplit } = propsBase
+    //  Suppress console.error for this test, we expect an error
+    jest.spyOn(console, 'error')
+    global.console.error.mockImplementation(() => {})
+    expect(() => {
+      render(
+        <TextSplitWithLogoGrid
+          textSplit={textSplit}
+          logoGrid={[
+            'adobe',
+            { linkUrl: '/', alt: 'No slug or url' },
+            'microsoft-azure',
+          ]}
+        />
+      )
+    }).toThrowError()
+    //  Restore console.error for further tests
+    global.console.error.mockRestore()
+  })
+
   it('should throw an error if there are not exactly 3, 6, or 9 logoGrid', () => {
     const { logoGrid, textSplit } = propsBase
     //  Suppress console.error for this test, we expect an error

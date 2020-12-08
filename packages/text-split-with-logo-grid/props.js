@@ -11,26 +11,33 @@ module.exports = {
   },
   logoGrid: {
     type: 'object | string',
-    description:
-      'Data passed to the LogoGrid component. Can also be a string which is mapped to a company logo.',
+    description: 'An array of `logoGrid` items.',
     required: true,
     properties: [
       {
         type: 'string',
         description:
-          'a string representing a company in our default asset library',
-        options: Object.keys(dictionarySvgColor.default),
+          'String option for a `logoGrid` array item. A shortcut for passing a `{ slug }` object. The string should be a valid company `slug`, as listed under `logoGrid[x].slug`.',
       },
       {
         type: 'object',
-        description: 'a custom company image',
-        properties: Object.assign({}, imageProps, {
-          hasWhitespace: {
-            type: 'boolean',
-            description:
-              'set this to `true` if the image has built in whitespace surrounding it ',
+        description:
+          'Object option for a `logoGrid` array item. Note that one of `slug` or `url` must be present for the item to render. Properties are listed below.',
+        properties: Object.assign(
+          {
+            slug: {
+              type: 'string',
+              description:
+                'A slug representing a company in our default asset library.',
+              options: Object.keys(dictionarySvgColor.default),
+            },
+            linkUrl: {
+              type: 'string',
+              description: 'A url to which the logo grid item should link',
+            },
           },
-        }),
+          imageProps
+        ),
       },
     ],
   },
