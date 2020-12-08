@@ -155,18 +155,11 @@ describe('<TextSplit />', () => {
   })
 
   it('should error if both string and React content are passed', () => {
-    const textString = 'This is some React content'
-    const reactContent = (
-      <p>
-        <strong>{textString}</strong>
-      </p>
-    )
-    const content = 'foo'
     //  Suppress console.error for this test, we expect an error
     jest.spyOn(console, 'error')
     global.console.error.mockImplementation(() => {})
     expect(() => {
-      render(<TextSplit reactContent={reactContent} content={content} />)
+      render(<TextSplit reactContent={<p>React content</p>} content={'foo'} />)
     }).toThrowError()
     //  Restore console.error for further tests
     global.console.error.mockRestore()
