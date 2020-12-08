@@ -10,6 +10,7 @@
     "@hashicorp/react-content": "^6.0.0",
     "@hashicorp/react-docs-sidenav": "^6.0.1",
     "@hashicorp/react-head": "^1.1.6",
+    "@hashicorp/react-search": "^2.1.3",
     "fs-exists-sync": "0.1.0",
     "gray-matter": "4.0.2",
     "js-yaml": "3.14.0",
