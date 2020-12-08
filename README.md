@@ -15,6 +15,15 @@ The `packages` directory contains all the individual components. Let's talk abou
 - `docs.mdx`: documentation for the component, see [swingset docs](https://github.com/hashicorp/swingset#usage) for more details on the format
 - `props.js`: information about the component's props, see [swingset docs](https://github.com/hashicorp/swingset#props) for more details on the format
 
+## Environment Variables
+
+A few of the elements in our playground rely on environment variables in order to function correctly. We have a `react-components .env.local` stored in 1Password if you'd like to quickly get started. Details on each environment variable:
+
+- `GITHUB_API_TOKEN`
+  - Used in `UsageDetails` to fetch `package.json`s from each of our projects
+- `SOURCEGRAPH_URL`
+  - Used in `UsageDetails` to build links out to our SourceGraph instance
+
 ## Publishing Packages
 
 We manage and distribute packages to [`npm`](https://www.npmjs.com/) using [Lerna](https://lerna.js.org/). Each component is independently published and versioned.
@@ -60,20 +69,26 @@ For most web-components packages, this means checking the `hashicorp-www-next` r
 The current workaround is not ideal, but should completely fix the issue. Definitely reach out if you need assistance, as almost everyone on the team has run into this:
 
 1. **Remove the "Publish" commit**. The "Publish" commit will most likely be your most recent commit, in which case the command below can be used. **These commands rewrite git history, so use caution!**
+
    ```sh
    git reset --hard HEAD^ # reset the previous commit
    git push origin master --force-with-lease # push new history
    ```
+
 1. **Delete the tags** that point to the deleted publish commit
+
    ```sh
    git tag --delete {tagname} # delete the local tag
    git push --delete origin {tagname} # delete the remote tag
    ```
+
    For example:
+
    ```sh
    git tag --delete @hashicorp/react-secondary-nav@2.1.0
    git push --delete origin @hashicorp/react-secondary-nav@2.1.0
    ```
+
    If multiple packages were published, you'll need to delete tags for each individual package.
 
 Now everything should be reset to its state prior to the publish failure.

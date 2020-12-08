@@ -46,6 +46,14 @@ export default DocsLayout
 
 This may seem like a complex example, but there is a lot going on here. The component is taking care of an entire base-level route, including an index page and its potentially hundreds of sub-pages, while providing a minimal interface surface area.
 
+In order for the search functionality to work properly, this component requires a `.env` file with the following keys filled in:
+
+```
+NEXT_PUBLIC_ALGOLIA_APP_ID
+NEXT_PUBLIC_ALGOLIA_INDEX
+NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY
+```
+
 ## Props
 
 See [props.js](props.js) for more information on props.

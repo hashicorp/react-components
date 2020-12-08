@@ -12,6 +12,7 @@ module.exports = {
         options: [
           'consul',
           'hcp',
+          'tfc',
           'nomad',
           'packer',
           'terraform',
