@@ -92,7 +92,7 @@ export const DEFAULT_MENU_SECTIONS = [
           },
           {
             product: 'terraform',
-            url: 'https://app.terraform.io',
+            url: 'https://www.terraform.io/cloud',
             iconSrc: require('../assets/product-icons/terraform-icon-color.svg?include'),
           },
           {
