@@ -27,7 +27,7 @@ function TextSplit(props) {
           {heading && (
             <h2
               data-testid="heading"
-              className={`heading g-type-display-2 theme-${theme}`}
+              className={`heading g-type-display-3 theme-${theme}`}
             >
               {heading}
             </h2>
