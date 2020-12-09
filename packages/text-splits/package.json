@@ -14,8 +14,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@hashicorp/react-text-split-with-code": "^1.0.2-alpha.48",
-    "@hashicorp/react-text-split-with-image": "^2.0.2-alpha.48",
-    "@hashicorp/react-text-split-with-logo-grid": "^2.0.2-alpha.48"
+    "@hashicorp/react-text-split-with-code": "^1.0.2-alpha.55",
+    "@hashicorp/react-text-split-with-image": "^2.0.2-alpha.55",
+    "@hashicorp/react-text-split-with-logo-grid": "^2.0.2-alpha.55"
   }
 }
