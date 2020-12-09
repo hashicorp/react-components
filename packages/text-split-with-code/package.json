@@ -7,7 +7,7 @@
     "Brandon Romano"
   ],
   "dependencies": {
-    "@hashicorp/react-code-block": "^2.0.5-alpha.33",
+    "@hashicorp/react-code-block": "^2.0.5-alpha.52",
     "@hashicorp/react-global-styles": "^4.5.0",
     "@hashicorp/react-text-split": "^1.1.1"
   },
