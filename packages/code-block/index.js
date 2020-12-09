@@ -3,7 +3,7 @@ import processSnippet from './utils/process-snippet'
 import copyToClipboard from './utils/copy-to-clipboard'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import svgClipboardIcon from './svg/clipboard-icon.svg.js'
-
+import fragment from './fragment.graphql'
 function CodeBlock({ code, language, options = {} }) {
   const codeRef = useRef()
   const [tooltipText, setTooltipText] = useState('Copy')
@@ -56,5 +56,7 @@ function WindowBar() {
     </div>
   )
 }
+
+CodeBlock.fragmentSpec = { fragment }
 
 export default CodeBlock
