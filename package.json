@@ -2,8 +2,8 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
-    "@hashicorp/mktg-global-styles": "^2.0.0",
-    "@hashicorp/nextjs-scripts": "^13.2.0",
+    "@hashicorp/mktg-global-styles": "^2.1.0",
+    "@hashicorp/nextjs-scripts": "^13.4.0",
     "next": "9.5.5",
     "next-remote-watch": "^0.3.0",
     "node-cache": "^5.1.2",
@@ -12,8 +12,8 @@
     "swingset": "^0.4.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.1",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
     "jest": "^26.6.3",
     "lerna": "^3.22.1",
     "regenerator-runtime": "^0.13.7"
