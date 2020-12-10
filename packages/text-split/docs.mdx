@@ -13,3 +13,21 @@ componentName: 'TextSplit'
 >bar</TextSplit>`}</LiveComponent>
 
 <UsageDetails packageName="@hashicorp/react-text-split" />
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+<LiveComponent>{`<TextSplit
+  content={<p style={{color: "var(--brand)"}}><strong>Hello</strong> world, this is some <em>custom</em> React content</p>}
+  linkStyle='buttons'
+  links={[
+    { text: 'primary action', url: '#' },
+    { text: 'secondary action', url: '#' },
+    { text: 'tertiary', url: '#' }
+  ]}
+>bar</TextSplit>`}</LiveComponent>
+
+

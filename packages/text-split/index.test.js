@@ -140,4 +140,17 @@ describe('<TextSplit />', () => {
     expect(screen.getByAltText(customAltText)).toBeVisible()
     expect(screen.getByText(customCopy)).toBeVisible()
   })
+
+  it('should correctly render React content', () => {
+    const textString = 'This is some React content'
+    const content = (
+      <p>
+        <strong>{textString}</strong>
+      </p>
+    )
+    render(<TextSplit content={content}>Hello</TextSplit>)
+    const customElem = screen.getByText(textString)
+    expect(customElem).toBeVisible()
+    expect(customElem.tagName).toBe('STRONG')
+  })
 })

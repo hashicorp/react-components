@@ -4,13 +4,134 @@ componentName: 'CodeBlock'
 
 A formatted code block for displaying lovely lines of code.
 
-<LiveComponent>{`<CodeBlock
-  code='echo "hello world!"'
-  prefix='dollar'
-/>`}</LiveComponent>
+<LiveComponent>{`<CodeBlock language="shell-session" code={\`<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>\n\`} />`}</LiveComponent>
 
 <UsageDetails packageName="@hashicorp/react-code-block" />
 
 ### Props
 
 <PropsTable props={componentProps} />
+
+### Examples
+
+With `code` as HTML
+
+<CodeBlock
+  language="go"
+  code={`<span class="token keyword">package</span> main\n\n<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">float64</span><span class="token punctuation">)</span>\n    ch <span class="token operator">&#x3C;-</span> <span class="token number">1.0e10</span>    <span class="token comment">// magic number</span>\n    x<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&#x3C;-</span> ch\n    <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"exiting now"</span><span class="token punctuation">)</span>\n    <span class="token keyword">go</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\n    <span class="token keyword">return</span>\n<span class="token punctuation">}</span>`}
+/>
+
+With `code` as React elements
+
+<CodeBlock
+  language="shell-session"
+  code={
+    <>
+      <span className="token command">
+        <span className="token shell-symbol important">$</span>{' '}
+        <span className="token bash language-bash">
+          <span className="token builtin class-name">echo</span>{' '}
+          <span className="token string">"hello world!"</span>
+        </span>
+      </span>
+    </>
+  }
+/>
+
+With `code` as plain text, without highlighting
+
+<CodeBlock code={`$ echo "hello world!"\n`} />
+
+With `options.showWindowBar`
+
+<CodeBlock
+  options={{ showWindowBar: true }}
+  code={`sc.exe start "Nomad"\n\nSERVICE_NAME: Nomad\n\tTYPE\t : 10 WIN32_OWN_PROCESS\n\tSTATE\t : 4 RUNNING\n\t(STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)\n\tWIN32_EXIT_CODE : 0 (0x0)\n\tSERVICE_EXIT_CODE : 0 (0x0)\n\tCHECKPOINT \t: 0x0\n\tWAIT_HINT \t: 0x0\n\tPID\t : 8008\n\tFLAGS\t :`}
+/>
+
+With `options.showClipboard`
+
+<CodeBlock
+  options={{ showClipboard: true }}
+  language="go"
+  code={
+    <>
+      <span className="token keyword">package</span> main{'\n\n'}
+      <span className="token keyword">import</span> <span className="token string">
+        "fmt"
+      </span>
+      {'\n\n'}
+      <span className="token keyword">func</span> <span className="token function">
+        main
+      </span>
+      <span className="token punctuation">(</span>
+      <span className="token punctuation">)</span> <span className="token punctuation">
+        {'{'}
+      </span>
+      {'\n'}
+      {'    '}ch <span className="token operator">:=</span> <span className="token function">
+        make
+      </span>
+      <span className="token punctuation">(</span>
+      <span className="token keyword">chan</span> <span className="token builtin">
+        float64
+      </span>
+      <span className="token punctuation">)</span>
+      {'\n'}
+      {'    '}ch <span className="token operator">&lt;-</span>{' '}
+      <span className="token number">1.0e10</span>
+      {'    '}
+      <span className="token comment">// magic number</span>
+      {'\n'}
+      {'    '}x<span className="token punctuation">,</span> ok{' '}
+      <span className="token operator">:=</span>{' '}
+      <span className="token operator">&lt;-</span> ch{'\n'}
+      {'    '}
+      <span className="token keyword">defer</span> fmt
+      <span className="token punctuation">.</span>
+      <span className="token function">Println</span>
+      <span className="token punctuation">(</span>
+      <span className="token string">"exiting now"</span>
+      <span className="token punctuation">)</span>
+      {'\n'}
+      {'    '}
+      <span className="token keyword">go</span>{' '}
+      <span className="token function">println</span>
+      <span className="token punctuation">(</span>
+      <span className="token function">len</span>
+      <span className="token punctuation">(</span>
+      <span className="token string">"hello world!"</span>
+      <span className="token punctuation">)</span>
+      <span className="token punctuation">)</span>
+      {'\n'}
+      {'    '}
+      <span className="token keyword">return</span>
+      {'\n'}
+      <span className="token punctuation">}</span>
+    </>
+  }
+/>
+
+With `options.showClipboard` and `options.showWindowBar`
+
+<CodeBlock
+  options={{ showClipboard: true, showWindowBar: true }}
+  language="hcl"
+  code={`task <span class="token string">"webservice"</span> <span class="token punctuation">{</span>\n\t<span class="token property">driver</span> <span class="token punctuation">=</span> <span class="token string">"docker"</span>\n  \n\t<span class="token keyword">config</span> <span class="token punctuation">{</span>\n\t\t<span class="token property">image</span> <span class="token punctuation">=</span> <span class="token string">"redis:3.2"</span>\n\t\t<span class="token keyword">labels</span> <span class="token punctuation">{</span>\n\t\t\t<span class="token property">group</span> <span class="token punctuation">=</span> <span class="token string">"webservice-cache"</span>\n\t  <span class="token punctuation">}</span>\n\t<span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
+/>
+
+## Copy to clipboard details
+
+### Shell snippet parsing
+
+**Note that any code starting with a `$` character on the first line will be interpreted as a shell snippet.**
+
+This is intended to allow the display of control characters such as `$` and shell output in the code block, while ensuring that when copying the snippet, only the executable part of the snippet is copied to the clipboard.
+
+| Scenario                          | Supported | What gets copied                                                  | Example                                                                                                              |
+| --------------------------------- | --------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Single line commands              | ✅        | The command will be copied without the leading `$`.               | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#step-5-retrieve-the-secrets)             |
+| Multi-line commands               | ✅        | The multi-line command will be copied, without the leading `$`.   | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#q-how-do-i-save-multiple-values-at-once) |
+| Commands with output              | ✅        | The command will be copied without the leading `$` or the output. | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#additional-discussion)                   |
+| Non-shell Snippets                | ✅        | The entire snippet will be copied.                                | [🔗](https://learn.hashicorp.com/nomad/getting-started/jobs#modifying-a-job)                                         |
+| Multi-line with multiple commands | ❌        | Not supported. Only the first command will be copied.             | 🛑                                                                                                                   |

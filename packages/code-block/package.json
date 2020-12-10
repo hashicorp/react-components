@@ -1,14 +1,11 @@
 {
   "name": "@hashicorp/react-code-block",
-  "description": "a styled code block with clipboard functionality",
-  "version": "2.0.4",
+  "description": "A simple code block with clipboard functionality",
+  "version": "3.0.0-alpha.1",
   "author": "HashiCorp",
-  "contributors": [
-    "Michael Schonfeld"
-  ],
   "dependencies": {
-    "@tippy.js/react": "^2.1.2",
-    "highlight.js": "^9.15.6"
+    "@hashicorp/react-inline-svg": "^4.0.6",
+    "shellwords": "^0.1.1"
   },
   "license": "MPL-2.0",
   "main": "index.js",
@@ -17,6 +14,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "style": "style.css"
+  }
 }

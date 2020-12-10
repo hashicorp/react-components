@@ -1,62 +1,98 @@
-import { render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import CodeBlock from './'
+// Mock copy-to-clipboard
+jest.mock('./utils/copy-to-clipboard')
+import copyToClipboard from './utils/copy-to-clipboard'
+// We want to make sure copied code is passed through processSnippet,
+// we import it so that we don't have to manually recreate its output
+import processSnippet from './utils/process-snippet'
 
-it('should render correctly with basic props', () => {
-  const { container } = render(<CodeBlock prefix="dollar" code="abc" />)
+afterEach(cleanup)
+
+it('should render a root element with a `g-code-block` class', () => {
+  const { container } = render(<CodeBlock code="some-example-code" />)
   expect(container.firstChild).toHaveClass('g-code-block')
-  expect(container.firstChild).toHaveClass('dollar')
-  expect(screen.getByText('abc')).toBeInTheDocument()
 })
 
-// TODO: add these tests back
+it('should render `code` passed as a string of highlighted HTML', () => {
+  const codeToken = `html-highlighted-code`
+  const tokenClass = 'my-html-token-class'
+  const codeHtml = `<span class='${tokenClass}'>${codeToken}</span>`
+  render(<CodeBlock code={codeHtml} />)
+  expect(screen.getByText(codeToken)).toBeInTheDocument()
+  expect(screen.getByText(codeToken)).toHaveClass(tokenClass)
+})
 
-// it('should not add any class names when there is no prefix', () => {
-//   const wrapper = render()
-//   expect(wrapper.find('code').prop('className')).to.equal('g-code-block')
-// })
+it('should render `code` passed as React elements', () => {
+  const codeToken = `react-highlighted-code`
+  const tokenClass = 'my-react-token-class'
+  const codeReact = <span className={tokenClass}>{codeToken}</span>
+  render(<CodeBlock code={codeReact} />)
+  expect(screen.getByText(codeToken)).toBeInTheDocument()
+  expect(screen.getByText(codeToken)).toHaveClass(tokenClass)
+})
 
-// describe.each(['numbered', 'dollar', 'terminal'])('Line Prefix', (prefix) => {
-//   it(`should append ${prefix} before the code`, () => {
-//     const wrapper = render({ prefix })
-//     expect(wrapper.find('ol').prop('className')).to.contain(prefix)
-//   })
-// })
+it('should pass `language` to `language-*` classes on `pre` and `code`', () => {
+  const code = 'Hello world'
+  const language = 'my-special-language'
+  const { container } = render(<CodeBlock code={code} language={language} />)
+  const preElem = container.firstChild.firstChild
+  const codeElem = preElem.firstChild
+  expect(preElem).toHaveClass(`language-${language}`)
+  expect(codeElem).toHaveClass(`language-${language}`)
+})
 
-// it('should break the given code into separate lines', () => {
-//   const wrapper = render({
-//     code: 'first line\nsecond line\nthird line',
-//     prefix: 'dollar',
-//   })
-//   expect(wrapper.find('ol').find('li').length).to.equal(3)
-// })
+it('should render a button with a `Copy` label', () => {
+  render(
+    <CodeBlock
+      code={`console.log(\"Hello world\");`}
+      options={{ showClipboard: true }}
+    />
+  )
+  const buttonElem = screen.getByText('Copy')
+  expect(buttonElem).toBeInTheDocument()
+  expect(buttonElem.tagName).toBe('BUTTON')
+})
 
-// it('should render a copy-to-clipboard .g-tooltip button', () => {
-//   const wrapper = render({ prefix: '$' })
-//   expect(wrapper.find('.g-tooltip').exists()).to.equal(true)
-// })
+it('should render a keyboard-focusable `Copy` button', () => {
+  const { container } = render(
+    <CodeBlock
+      code={`console.log(\"Hello world\");`}
+      options={{ showClipboard: true }}
+    />
+  )
+  expect(screen.getByText('Copy')).not.toHaveFocus
+  const tabChar = 9
+  fireEvent.keyDown(container, { charCode: tabChar })
+  expect(screen.getByText('Copy')).toHaveFocus
+})
 
-// it('should gracefully catch document.execCommand exceptions when copying to clipboard', () => {
-//   const clock = sinon.useFakeTimers()
-//   document.execCommand = function () {
-//     throw new Error('BYE')
-//   }
-//   const wrapper = render({ prefix: '$' })
-//   const getButton = () => wrapper.find('.g-tooltip').at(0)
-//   expect(wrapper.state().tooltip).to.equal('Copy to Clipboard')
-//   getButton().simulate('click')
-//   expect(wrapper.state().tooltip).to.equal('Failed to Copy')
-//   clock.runToLast()
-//   wrapper.update()
-//   expect(wrapper.state().tooltip).to.equal('Copy to Clipboard')
-// })
+it('should use the `Copy` button to copy code to the clipboard', () => {
+  const codeString = "console.log('Hello world!')"
+  const codeHtml = `<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Hello world!'</span><span class="token punctuation">)</span>`
+  render(<CodeBlock code={codeHtml} options={{ showClipboard: true }} />)
+  // Find and click the copy button
+  const buttonElem = screen.getByText('Copy')
+  expect(buttonElem).toBeInTheDocument()
+  fireEvent.click(buttonElem)
+  //  Expect copyToClipboard to have been called with our code snippet
+  //  (note: this function is mocked at the top of this test file)
+  expect(copyToClipboard).toHaveBeenCalled()
+  expect(copyToClipboard).toHaveBeenCalledWith(codeString)
+  copyToClipboard.mockClear()
+})
 
-// it('should change the clipboard button tooltip when clicked, then revert back', () => {
-//   const clock = sinon.useFakeTimers()
-//   const wrapper = render({ prefix: '$' })
-//   expect(wrapper.state().tooltip).to.equal('Copy to Clipboard')
-//   wrapper.find('.g-tooltip').at(0).simulate('click')
-//   expect(wrapper.state().tooltip).to.equal('Copied!')
-//   clock.runToLast()
-//   wrapper.update()
-//   expect(wrapper.state().tooltip).to.equal('Copy to Clipboard')
-// })
+it('should use process-snippet to strip the leading $ from shell snippets', () => {
+  const codeString = '$ echo "hello world!"'
+  const codeHtml = `<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>`
+  render(<CodeBlock code={codeHtml} options={{ showClipboard: true }} />)
+  // Find and click the copy button
+  const buttonElem = screen.getByText('Copy')
+  expect(buttonElem).toBeInTheDocument()
+  fireEvent.click(buttonElem)
+  //  Expect copyToClipboard to have been called with our code snippet
+  //  (note: this function is mocked at the top of this test file)
+  //  We also expect the code to have been modified by processSnippet
+  const expectedCode = processSnippet(codeString)
+  expect(copyToClipboard).toHaveBeenCalledWith(expectedCode)
+})
