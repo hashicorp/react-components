@@ -13,7 +13,7 @@ describe('<InlineSvg />', () => {
     const { container } = render(<InlineSvg {...props} />)
     const rootElem = container.firstChild
 
-    expect(rootElem.localName).toBe('svg')
+    expect(rootElem.localName).toBe('div')
     expect(rootElem.getAttribute('id')).toMatch(props.id)
     expect(rootElem.getAttribute('class')).toMatch(props.className)
     expect(rootElem.hasAttribute('src')).toBe(false)
@@ -31,7 +31,7 @@ describe('<InlineSvg />', () => {
     const rootElem = container.firstChild
 
     expect(rootElem).toHaveClass('test-class')
-    expect(rootElem.localName).toBe('svg')
+    expect(rootElem.localName).toBe('div')
     expect(rootElem.getAttribute('id')).toMatch(props.id)
     expect(rootElem.getAttribute('class')).toMatch(props.className)
     expect(rootElem.hasAttribute('src')).toBe(false)
@@ -39,12 +39,12 @@ describe('<InlineSvg />', () => {
   })
 
   it('should render an empty svg if the contents are invalid', () => {
-    const props = { src: '<p>Hello World' }
+    const props = { src: '<pU(DFASD' }
 
     const { container } = render(<InlineSvg {...props} />)
     const rootElem = container.firstChild
 
-    expect(rootElem.localName).toBe('svg')
+    expect(rootElem.localName).toBe('div')
     expect(rootElem.childNodes.length).toBe(0)
   })
 })
