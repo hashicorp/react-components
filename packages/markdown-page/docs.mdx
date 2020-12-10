@@ -72,7 +72,7 @@ This component is intended to take in a local markdown file and render it as a s
 
 <PropsTable props={componentProps} />
 
-### Using mdx components
+### Usage with `getStaticProps`
 
 The code sample above shows the component as rendered - this one shows how it would be used in conjuction with `generateStaticProps`:
 
@@ -87,6 +87,29 @@ export default function MyPage({ staticProps }) {
 export function getStaticProps() {
   return generateStaticProps({
     pagePath: 'content/test-page.mdx', // resolved from project root
+  })
+}
+```
+
+### Usage with Custom Components
+
+If you would like to use markdown components within the page, you can pass a `components` argument to both `generateStaticProps` and `<MarkdownPage />`, as such:
+
+```jsx
+import MarkdownPage from '@hashicorp/react-markdown-page'
+import generateStaticProps from '@hashicorp/react-markdown-page/server'
+import TestComponent from './test-component'
+
+const components = { TestComponent }
+
+export default function MyPage({ staticProps }) {
+  return <MarkdownPage {...staticProps} components={components} />
+}
+
+export function getStaticProps() {
+  return generateStaticProps({
+    pagePath: 'content/test-page.mdx', // resolved from project root
+    components,
   })
 }
 ```
