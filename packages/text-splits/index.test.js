@@ -18,7 +18,7 @@ const exampleTextSplits = [
         linkUrl: 'https://www.hashicorp.com/integrations/aws',
       },
       {
-        slug: 'google-cloud',
+        slug: 'google',
         linkUrl: 'https://www.hashicorp.com/integrations/google-cloud',
       },
       'vmware',
