@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-markdown-page",
   "description": "Create a single page based on a mdx file in NextJS projects.",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante"
