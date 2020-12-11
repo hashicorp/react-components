@@ -157,20 +157,20 @@
   We don't want to clobber these with our default link styles */
   & a:not([class]),
   & a.__permalink-h {
-    color: var(--highlight-color);
+    color: var(--highlight-color-text);
     position: relative;
     transition: color 0.3s;
     text-decoration: none;
 
     &:hover {
-      color: var(--highlight-color);
+      color: var(--highlight-color-text);
       &:not(.__permalink-h) {
         text-decoration: underline;
       }
     }
 
     & > code {
-      color: var(--highlight-color);
+      color: var(--highlight-color-text);
     }
   }
 
