@@ -15,9 +15,9 @@ async function indexDocsContent({
     index: process.env.NEXT_PUBLIC_ALGOLIA_INDEX,
     apiKey: process.env.ALGOLIA_API_KEY,
   },
-  contentDir = path.join(projectRoot, 'pages'),
+  contentDir = path.join(projectRoot, 'content'),
   filesPattern = '**/*.mdx',
-  globOptions = { ignore: path.join(projectRoot, 'pages', 'partials/**/*') },
+  globOptions = { ignore: path.join(projectRoot, 'content', 'partials/**/*') },
   frontmatterKeys = ['page_title', 'description'],
 } = {}) {
   const searchObjects = await getDocsSearchObjects({

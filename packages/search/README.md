@@ -11,7 +11,7 @@ A render function whose result is used to display each query "hit"
 **Params**
 
 | Property  | Type         | Description                                                                         |
-|-----------|--------------|-------------------------------------------------------------------------------------|
+| --------- | ------------ | ----------------------------------------------------------------------------------- |
 | hit       | `object`     | https://www.algolia.com/doc/api-reference/widgets/highlight/react/#widget-param-hit |
 | Highlight | `React.Node` | https://www.algolia.com/doc/api-reference/widgets/highlight/react/                  |
 
@@ -25,7 +25,7 @@ For more information about the available props, reference the next/link document
 **Params**
 
 | Property | Type     | Description                                                                         |
-|----------|----------|-------------------------------------------------------------------------------------|
+| -------- | -------- | ----------------------------------------------------------------------------------- |
 | hit      | `object` | https://www.algolia.com/doc/api-reference/widgets/highlight/react/#widget-param-hit |
 
 ### placeholder
@@ -112,7 +112,6 @@ function ComponentA() {
 - `setIsCancelled` (`function`) - Setter function that updates the search cancel state
 - `setQuery` (`function`) - Setter function that updates the search query
 
-
 ## Tools
 
 This package includes a `tools.js` file that includes Algolia-related Node.js scripts
@@ -120,19 +119,24 @@ This package includes a `tools.js` file that includes Algolia-related Node.js sc
 ### Usage
 
 ```js
-const { indexDocsContent, indexContent } = require('@hashicorp/react-search/tools')
+const {
+  indexDocsContent,
+  indexContent,
+} = require('@hashicorp/react-search/tools')
 /* It's worth noting that you'd only want to use *one* of the two exported functions */
 ```
 
 #### indexDocsContent
+
 > `function` | `(config: object)`
-This specific helper function is designed specifically for perfoming search indexing on our various product sites' documentation pages.
+> This specific helper function is designed specifically for perfoming search indexing on our various product sites' documentation pages.
 
 ##### config.algoliaConfig: { appId: string, apiKey: string, index: string }
 
 Algolia-related configuration
 
 _Default_:
+
 ```js
 {
   apiKey: process.env.ALGOLIA_API_KEY,
@@ -165,16 +169,17 @@ Assuming your search-indexed content includes [frontmatter](https://jekyllrb.com
 
 _Default_: `['page_title', 'description']`
 
-
 #### indexContent
+
 > `function` | `(config: object)`
-This generic helper function allows for custom Algolia indexing
+> This generic helper function allows for custom Algolia indexing
 
 ##### config.algoliaConfig: { appId: string, apiKey: string, index: string }
 
 Algolia-related configuration
 
 _Default_:
+
 ```js
 {
   apiKey: process.env.ALGOLIA_API_KEY,
@@ -186,3 +191,48 @@ _Default_:
 ##### config.getSearchObjects: () => any
 
 This function should return an array of objects that will get passed to Algolias [`partialUpdateObjects`](https://www.algolia.com/doc/api-reference/api-methods/partial-update-objects/) function
+
+## Setting Up Algolia
+
+In order for this component to work at all, you will need to configure an algolia index. Steps to manage this are below:
+
+- Log in to algolia.com using HashiCorp SSO. If you do not have access to algolia, reach out to IT and request access.
+- Within algolia, select "incices", then "create new index". See existing indices for naming patterns when choosing your index name. For docs sites, it is usually `product_NAME`.
+- In your local `.env` file, use the index name as your `NEXT_PUBLIC_ALGOLIA_INDEX` value
+- Make sure that you have created a file in your project that runs the `indexDocsContent` script out of `tools. The file should be quite simple, and look like this:
+
+  ```js
+  const { indexDocsContent } = require('@hashicorp/react-search/tools')
+  indexDocsContent()
+  ```
+
+- Typically we run this script via circleci. Head over to your project's circle configuration and add a block along these lines to jobs:
+
+  ```yaml
+  jobs:
+    algolia-index:
+      docker:
+        - image: docker.mirror.hashicorp.services/node:12
+      steps:
+        - checkout
+        - run:
+            name: Push content to Algolia Index
+            command: |
+              cd website/
+              npm install
+              node scripts/index_search_content.js
+  ```
+
+- Then make sure to run the job in the workflows section as well, only when the website is deployed. For docs sites this is on merge to the `stable-website` branch. For most other HashiCorp websites, this is on merge to `main` or `master`.
+
+  ```yaml
+  workflows:
+    - algolia-index:
+        filters:
+          branches:
+            only:
+              - stable-website
+  ```
+
+- Also make sure to grab the Algolia API key, which is sensitive and should not be public, and add it to the environment variables in circleci.
+- With this in place, you should be all set! Run the index script once locally, manually setting the algolia API key (like `ALGOLIA_API_KEY=xxxx node scripts/index_search_content.js`) to seed the index and make sure that the component is fully functional locally, then everything should be set!
