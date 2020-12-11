@@ -48,7 +48,7 @@
     top: 10px;
     transition: color 0.2s ease-in-out;
 
-    & > svg {
+    & svg {
       display: block;
       margin-left: 8px;
 
@@ -61,7 +61,7 @@
     &:hover {
       color: var(--white);
 
-      & > svg [fill] {
+      & svg [fill] {
         fill: var(--white);
       }
     }
