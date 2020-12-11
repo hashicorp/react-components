@@ -18,7 +18,7 @@
   justify-content: center;
   height: 100%;
   padding: 0.5rem 0.5rem 0.5rem 0; /* no padding on left side to allow for grid container on consumer's end */
-  margin-right: 1rem;
+  margin-right: 32px;
 
   & svg {
     height: 100%;

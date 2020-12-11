@@ -5,6 +5,9 @@
   list-style: none;
   position: relative;
   white-space: nowrap;
+  & + .navItem {
+    margin-left: 24px;
+  }
 }
 
 .buttonReset {
@@ -12,43 +15,31 @@
   border-style: none;
   cursor: pointer;
   padding: 0;
-  margin-right: 0.5rem;
-  & svg {
-    transition: 0.3s transform;
-  }
 }
 
 .link {
   composes: g-type-body-small-strong from global;
   position: relative;
   color: var(--gray-4);
-  padding: 1rem 1.25rem 1rem 1rem;
+  padding: 1rem 0;
   transition: color 0.1s;
-  & svg {
-    position: absolute;
-    right: 0.25rem;
-    top: 0;
-    height: 100%;
-    & path {
-      stroke: var(--gray-4);
-    }
-  }
+  display: flex;
+  align-items: center;
+
   &:hover {
     color: var(--gray-1);
-    & svg {
-      & path {
-        stroke: var(--gray-1);
-      }
-    }
+  }
+
+  & .dropdownCarat {
+    margin: 4px 0 0 8px;
+    transition: 0.3s transform;
   }
 }
+
 .buttonActive {
   color: var(--gray-1);
-  & svg {
+  & .dropdownCarat {
     transform: rotate(-180deg);
-    & path {
-      stroke: var(--black);
-    }
   }
 }
 
