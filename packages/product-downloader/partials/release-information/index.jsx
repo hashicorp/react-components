@@ -67,7 +67,7 @@ export default function ReleaseInformation({
               {Object.entries(selectedVersion).map(([os, release]) => (
                 <Fragment key={os}>
                   <div className={styles.os}>{prettyOs(os)}</div>
-                  <div>
+                  <div className={styles.arches}>
                     {Object.entries(release).map(([arch, file]) => (
                       <a
                         href={file}
