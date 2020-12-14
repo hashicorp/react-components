@@ -35,8 +35,9 @@ it('should render `code` passed as React elements', () => {
 it('should pass `language` to `language-*` classes on `pre` and `code`', () => {
   const code = 'Hello world'
   const language = 'my-special-language'
-  const { container } = render(<CodeBlock code={code} language={language} />)
-  const preElem = container.firstChild.firstChild
+  render(<CodeBlock code={code} language={language} />)
+  const codeTokenElem = screen.getByText(code)
+  const preElem = codeTokenElem.closest('pre')
   const codeElem = preElem.firstChild
   expect(preElem).toHaveClass(`language-${language}`)
   expect(codeElem).toHaveClass(`language-${language}`)
