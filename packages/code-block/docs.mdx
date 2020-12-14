@@ -120,6 +120,15 @@ With `options.showClipboard` and `options.showWindowBar`
   code={`task <span class="token string">"webservice"</span> <span class="token punctuation">{</span>\n\t<span class="token property">driver</span> <span class="token punctuation">=</span> <span class="token string">"docker"</span>\n  \n\t<span class="token keyword">config</span> <span class="token punctuation">{</span>\n\t\t<span class="token property">image</span> <span class="token punctuation">=</span> <span class="token string">"redis:3.2"</span>\n\t\t<span class="token keyword">labels</span> <span class="token punctuation">{</span>\n\t\t\t<span class="token property">group</span> <span class="token punctuation">=</span> <span class="token string">"webservice-cache"</span>\n\t  <span class="token punctuation">}</span>\n\t<span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
 />
 
+With long lines that are likely to overflow
+
+<CodeBlock
+  options={{ showWindowBar: true, showClipboard: true }}
+  code={
+    'public class VaultDemoOrderServiceApplication  {\n\n  private static final Logger logger = LoggerFactory.getLogger(VaultDemoOrderServiceApplication.class);\n\n  @Autowired\n  private SessionManager sessionManager;\n\n  @Value("${spring.datasource.username}")\n  private String dbUser;\n\n  @Value("${spring.datasource.password}")\n  private String dbPass;\n\n  public static void main(String[] args) {\n    SpringApplication.run(VaultDemoOrderServiceApplication.class, args);\n  }\n\n  @PostConstruct\n  public void initIt() throws Exception {\n    logger.info("Got Vault Token: " + sessionManager.getSessionToken().getToken());\n    logger.info("Got DB User: " + dbUser);\n  }\n}'
+  }
+/>
+
 ## Copy to clipboard details
 
 ### Shell snippet parsing

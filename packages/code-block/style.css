@@ -24,10 +24,10 @@
     }
   }
 
-  & > pre {
+  & > .block-wrapper {
     position: relative;
 
-    &[data-has-window-bar='true'] {
+    & > pre[data-has-window-bar='true'] {
       border: none;
       border-top-left-radius: 0;
       border-top-right-radius: 0;

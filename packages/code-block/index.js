@@ -20,17 +20,19 @@ function CodeBlock({ code, language, options = {} }) {
   return (
     <div className="g-code-block">
       {options.showWindowBar && <WindowBar />}
-      <pre
-        className={`language-${language}`}
-        data-has-window-bar={options.showWindowBar}
-      >
-        <code
-          ref={codeRef}
+      <div className="block-wrapper">
+        <pre
           className={`language-${language}`}
-          dangerouslySetInnerHTML={isHtmlString ? { __html: code } : null}
+          data-has-window-bar={options.showWindowBar}
         >
-          {isHtmlString ? null : code}
-        </code>
+          <code
+            ref={codeRef}
+            className={`language-${language}`}
+            dangerouslySetInnerHTML={isHtmlString ? { __html: code } : null}
+          >
+            {isHtmlString ? null : code}
+          </code>
+        </pre>
         {options.showClipboard && (
           <button
             className="clipboard-icon g-type-body-small-strong"
@@ -42,7 +44,7 @@ function CodeBlock({ code, language, options = {} }) {
             <InlineSvg src={svgClipboardIcon} />
           </button>
         )}
-      </pre>
+      </div>
     </div>
   )
 }
