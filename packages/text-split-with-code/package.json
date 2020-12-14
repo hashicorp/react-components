@@ -1,13 +1,13 @@
 {
   "name": "@hashicorp/react-text-split-with-code",
   "description": "Display a title, description, and links alongside a code block",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "HashiCorp",
   "contributors": [
     "Brandon Romano"
   ],
   "dependencies": {
-    "@hashicorp/react-code-block": "^3.0.1",
+    "@hashicorp/react-code-block": "^3.0.2",
     "@hashicorp/react-global-styles": "^4.5.0",
     "@hashicorp/react-text-split": "^1.2.0"
   },
