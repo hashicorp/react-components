@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-product-downloader",
   "description": "Interface for downloading HashiCorp products",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner"
