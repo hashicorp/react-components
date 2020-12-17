@@ -12,7 +12,7 @@
   &:global {
     &.consul {
       --brand: var(--consul);
-      --brand-d1: var(--consul);
+      --brand-d1: var(--consul-d1);
     }
 
     &.vault {
