@@ -44,7 +44,6 @@
 
   /* On large viewports, all content is spaced from edge of container */
   @media (min-width: 768px) {
-    hyphens: none;
     padding-left: 2rem;
     padding-right: 2rem;
   }
