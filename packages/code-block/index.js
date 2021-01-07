@@ -18,7 +18,7 @@ function CodeBlock({ code, language, options = {} }) {
   const isHtmlString = typeof code === 'string'
 
   return (
-    <div className="g-code-block">
+    <div className="g-code-block" data-heap-track="code-block">
       {options.showWindowBar && <WindowBar />}
       <div className="block-wrapper">
         <pre
@@ -36,7 +36,7 @@ function CodeBlock({ code, language, options = {} }) {
         {options.showClipboard && (
           <button
             className="clipboard-icon g-type-body-small-strong"
-            data-track="code-block-clipboard-icon"
+            data-heap-track="code-block-clipboard-icon"
             type="button"
             onClick={copyCode}
           >
