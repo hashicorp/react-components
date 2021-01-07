@@ -18,7 +18,7 @@ function CodeBlock({ code, language, options = {} }) {
   const isHtmlString = typeof code === 'string'
 
   return (
-    <div className="g-code-block">
+    <div className="g-code-block" data-heap-track="code-block">
       {options.showWindowBar && <WindowBar />}
       <div className="block-wrapper">
         <pre
