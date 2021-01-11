@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react'
 
 export default function Toggle({ enabled, onChange = () => {} }) {
   const [enabledState, setEnabledState] = useState(enabled || false)
+
   useEffect(() => {
-    setEnabledState(enabled)
-    onChange(enabledState)
+    const enabledAsBoolean = Boolean(enabled)
+
+    if (enabledAsBoolean === enabledState) return
+
+    onChange(enabledAsBoolean)
+
+    setEnabledState(enabledAsBoolean)
   }, [enabled])
 
   return (
@@ -12,7 +18,7 @@ export default function Toggle({ enabled, onChange = () => {} }) {
       className={`switch ${enabledState ? 'on' : ''}`}
       onClick={() => {
         setEnabledState(!enabledState)
-        onChange(enabledState)
+        onChange(!enabledState)
       }}
       data-testid="react-toggle"
     >
