@@ -18,11 +18,29 @@ test('when the enabled prop changes after render, it is reflected', () => {
   expect(screen.getByTestId('react-toggle')).toHaveClass('on')
 })
 
-test('when the enabled prop changes, it should not fire onChange', () => {
+test('when the enabled prop changes, it should fire onChange', () => {
   const onChange = jest.fn()
   const { rerender } = render(<Toggle onChange={onChange} />)
-  rerender(<Toggle enabled />)
-  expect(onChange).not.toHaveBeenCalled()
+  rerender(<Toggle enabled onChange={onChange} />)
+  expect(onChange).toHaveBeenCalled()
+})
+
+test('when the enabled prop changes, it should not fire onChange if it is the same as the current state', () => {
+  const onChange = jest.fn()
+  const { rerender } = render(<Toggle onChange={onChange} />)
+  const toggle = screen.getByTestId('react-toggle')
+  fireEvent.click(toggle)
+  rerender(<Toggle enabled onChange={onChange} />)
+  expect(onChange).toHaveBeenCalledTimes(1)
+})
+
+test('when the enabled prop changes, it should fire onChange if it is different from the current state', () => {
+  const onChange = jest.fn()
+  const { rerender } = render(<Toggle onChange={onChange} />)
+  const toggle = screen.getByTestId('react-toggle')
+  fireEvent.click(toggle)
+  rerender(<Toggle enabled={false} onChange={onChange} />)
+  expect(onChange).toHaveBeenCalledTimes(2)
 })
 
 test('when clicked, the enabled status switches', () => {

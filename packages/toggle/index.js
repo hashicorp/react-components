@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react'
 
 export default function Toggle({ enabled, onChange = () => {} }) {
   const [enabledState, setEnabledState] = useState(enabled || false)
+
   useEffect(() => {
-    setEnabledState((currentValue) => {
-      if (currentValue === Boolean(enabled)) return currentValue
-      return enabled
-    })
+    const enabledAsBoolean = Boolean(enabled)
+
+    if (enabledAsBoolean === enabledState) return
+
+    onChange(enabledAsBoolean)
+
+    setEnabledState(enabledAsBoolean)
   }, [enabled])
 
   return (
