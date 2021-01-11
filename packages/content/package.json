@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-content",
   "description": "Styled prose content",
-  "version": "6.1.1",
+  "version": "6.2.0",
   "author": "HashiCorp",
   "contributors": [
     "Mike Wickett",
