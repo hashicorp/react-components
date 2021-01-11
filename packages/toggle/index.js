@@ -4,7 +4,7 @@ export default function Toggle({ enabled, onChange = () => {} }) {
   const [enabledState, setEnabledState] = useState(enabled || false)
   useEffect(() => {
     setEnabledState((currentValue) => {
-      if (currentValue === enabled) return currentValue
+      if (currentValue === Boolean(enabled)) return currentValue
       return enabled
     })
   }, [enabled])
