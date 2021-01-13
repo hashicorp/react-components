@@ -3,7 +3,7 @@
 set -e
 
 NL=$'\n'
-GRAY=$'\e[30m'
+GRAY=$'\e[02;39m'
 RED=$'\e[31m'
 GREEN=$'\e[32m'
 NC=$'\e[0m'
