@@ -10,27 +10,23 @@ import SearchBar from './search-bar'
 import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 
-export default function DocsPage({
-  product: { name, slug },
-  subpath,
-  order,
-  mainBranch = 'main',
-  showEditPage = true,
+export function DocsPageWrapper({
   additionalComponents,
-  staticProps: { mdxSource, data, frontMatter, pagePath, filePath },
+  children,
+  mainBranch = 'main',
+  order,
+  product: { name, slug },
+  showEditPage = true,
+  staticProps: { data, frontMatter, pagePath, filePath },
+  subpath,
 }) {
-  // This component is written to work with next-mdx-remote -- here is hydrates the content
-  const content = hydrate(mdxSource, {
-    components: generateComponents(name, additionalComponents),
-  })
-
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
   useEffect(() => {
     const node = document.querySelector('#inner')
     if (!node) return
     return temporary_injectJumpToSection(node)
-  }, [content])
+  }, [children])
 
   return (
     <div id="p-docs">
@@ -65,7 +61,7 @@ export default function DocsPage({
                 <SearchProvider>
                   <SearchBar product={name} />
                 </SearchProvider>
-                {content}
+                {children}
               </>
             }
           />
@@ -84,4 +80,23 @@ export default function DocsPage({
       )}
     </div>
   )
+}
+
+export default function DocsPage(props) {
+  const {
+    product: { name, slug },
+    subpath,
+    order,
+    mainBranch = 'main',
+    showEditPage = true,
+    additionalComponents,
+    staticProps: { mdxSource, data, frontMatter, pagePath, filePath },
+  } = props
+
+  // This component is written to work with next-mdx-remote -- here is hydrates the content
+  const content = hydrate(mdxSource, {
+    components: generateComponents(name, additionalComponents),
+  })
+
+  return <DocsPageWrapper {...props}>{content}</DocsPageWrapper>
 }
