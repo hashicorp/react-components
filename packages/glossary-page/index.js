@@ -4,9 +4,6 @@ import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
 
-import order from 'data/docs-navigation.js'
-import { productName, productSlug } from 'data/metadata'
-
 function GlossaryTableOfContents({ terms }) {
   return (
     <ul>
@@ -20,35 +17,32 @@ function GlossaryTableOfContents({ terms }) {
 }
 
 export default function GlossaryPage({
+  additionalComponents,
   product,
   terms,
   content,
   docsPageData,
+  order,
 }) {
   return (
     <div>
       <DocsPageWrapper
-        product={{ name: product.name, slug: product.slug }}
-        staticProps={{
-          frontMatter: {
-            page_title: 'Glossary',
-            layout: 'docs',
-            description: 'Glossary',
-          },
-          data: docsPageData,
-          filePath: '/glossary',
-          pagePath: '/docs/glossary/',
-        }}
+        allPageData={docsPageData}
+        description="Glossary"
+        filePath="/glossary"
         order={[...order, { title: 'Glossary', href: '/docs/glossary' }]}
+        pagePath="/docs/glossary/"
+        pageTitle="Glossary"
+        product={{ name: product.name, slug: product.slug }}
         subpath="docs"
       >
         <>
-          <h1>{productName} Glossary</h1>
+          <h1>{product.name} Glossary</h1>
           <p>
             This page collects brief definitions of some of the technical terms
-            used in the documentation for {productName}, as well as some terms
+            used in the documentation for {product.name}, as well as some terms
             that come up frequently in conversations throughout the{' '}
-            {productName} community.
+            {product.name} community.
           </p>
           <GlossaryTableOfContents terms={terms} />
           {hydrate(content, {

@@ -8,9 +8,8 @@ import { fastReadFrontMatter } from '@hashicorp/react-docs-page/server'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
 
-export async function generateGetStaticProps({
+export default async function generateStaticProps({
   additionalComponents,
-  params,
   productName,
   scope,
   subpath,
