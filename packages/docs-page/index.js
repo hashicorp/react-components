@@ -11,13 +11,16 @@ import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 
 export function DocsPageWrapper({
-  additionalComponents,
+  allPageData,
   children,
+  description,
+  filePath,
   mainBranch = 'main',
   order,
+  pagePath,
+  pageTitle,
   product: { name, slug },
   showEditPage = true,
-  staticProps: { data, frontMatter, pagePath, filePath },
   subpath,
 }) {
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
@@ -33,8 +36,8 @@ export function DocsPageWrapper({
       {/* render the page's data to the document head */}
       <HashiHead
         is={Head}
-        title={`${frontMatter.page_title} | ${name} by HashiCorp`}
-        description={frontMatter.description}
+        title={`${pageTitle} | ${name} by HashiCorp`}
+        description={description}
         siteName={`${name} by HashiCorp`}
       />
       {/* render the sidebar nav */}
@@ -47,7 +50,7 @@ export function DocsPageWrapper({
               Link={Link}
               category={subpath}
               currentPage={pagePath}
-              data={data}
+              data={allPageData}
               order={order}
             />
           </div>
@@ -82,21 +85,35 @@ export function DocsPageWrapper({
   )
 }
 
-export default function DocsPage(props) {
-  const {
-    product: { name, slug },
-    subpath,
-    order,
-    mainBranch = 'main',
-    showEditPage = true,
-    additionalComponents,
-    staticProps: { mdxSource, data, frontMatter, pagePath, filePath },
-  } = props
-
+export default function DocsPage({
+  product,
+  product: { name, slug },
+  subpath,
+  order,
+  mainBranch = 'main',
+  showEditPage = true,
+  additionalComponents,
+  staticProps: { mdxSource, data, frontMatter, pagePath, filePath },
+}) {
   // This component is written to work with next-mdx-remote -- here is hydrates the content
   const content = hydrate(mdxSource, {
     components: generateComponents(name, additionalComponents),
   })
 
-  return <DocsPageWrapper {...props}>{content}</DocsPageWrapper>
+  return (
+    <DocsPageWrapper
+      allPageData={data}
+      description={frontMatter.description}
+      filePath={filePath}
+      mainBranch={mainBranch}
+      order={order}
+      pagePath={pagePath}
+      pageTitle={frontMatter.page_title}
+      product={product}
+      showEditPage={showEditPage}
+      subpath={subpath}
+    >
+      {content}
+    </DocsPageWrapper>
+  )
 }
