@@ -104,7 +104,7 @@ async function renderPageMdx(root, pagePath, components, scope) {
   }
 }
 
-async function fastReadFrontMatter(p) {
+export async function fastReadFrontMatter(p) {
   const fm = []
   for await (const entry of readdirp(p, { fileFilter: '*.mdx' })) {
     let lineNum = 0
