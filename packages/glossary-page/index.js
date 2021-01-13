@@ -36,7 +36,7 @@ export default function GlossaryPage({
             description: 'Glossary',
           },
           data: docsPageData,
-          filePath: 'docs/glossary.mdx',
+          filePath: '/glossary',
           pagePath: '/docs/glossary/',
         }}
         order={[...order, { title: 'Glossary', href: '/docs/glossary' }]}
