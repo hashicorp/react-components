@@ -18,17 +18,19 @@ function GlossaryTableOfContents({ terms }) {
 
 export default function GlossaryPage({
   additionalComponents,
-  product,
-  terms,
   content,
   docsPageData,
+  mainBranch = 'main',
   order,
+  product,
+  terms,
 }) {
   return (
     <DocsPageWrapper
       allPageData={docsPageData}
       description="Glossary"
-      filePath="/glossary"
+      filePath="glossary"
+      mainBranch={mainBranch}
       order={[...order, { title: 'Glossary', href: '/docs/glossary' }]}
       pagePath="/docs/glossary/"
       pageTitle="Glossary"
