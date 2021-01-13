@@ -25,31 +25,29 @@ export default function GlossaryPage({
   order,
 }) {
   return (
-    <div>
-      <DocsPageWrapper
-        allPageData={docsPageData}
-        description="Glossary"
-        filePath="/glossary"
-        order={[...order, { title: 'Glossary', href: '/docs/glossary' }]}
-        pagePath="/docs/glossary/"
-        pageTitle="Glossary"
-        product={{ name: product.name, slug: product.slug }}
-        subpath="docs"
-      >
-        <>
-          <h1>{product.name} Glossary</h1>
-          <p>
-            This page collects brief definitions of some of the technical terms
-            used in the documentation for {product.name}, as well as some terms
-            that come up frequently in conversations throughout the{' '}
-            {product.name} community.
-          </p>
-          <GlossaryTableOfContents terms={terms} />
-          {hydrate(content, {
-            components: generateComponents(product.name, additionalComponents),
-          })}
-        </>
-      </DocsPageWrapper>
-    </div>
+    <DocsPageWrapper
+      allPageData={docsPageData}
+      description="Glossary"
+      filePath="/glossary"
+      order={[...order, { title: 'Glossary', href: '/docs/glossary' }]}
+      pagePath="/docs/glossary/"
+      pageTitle="Glossary"
+      product={{ name: product.name, slug: product.slug }}
+      subpath="docs"
+    >
+      <>
+        <h1>{product.name} Glossary</h1>
+        <p>
+          This page collects brief definitions of some of the technical terms
+          used in the documentation for {product.name}, as well as some terms
+          that come up frequently in conversations throughout the {product.name}{' '}
+          community.
+        </p>
+        <GlossaryTableOfContents terms={terms} />
+        {hydrate(content, {
+          components: generateComponents(product.name, additionalComponents),
+        })}
+      </>
+    </DocsPageWrapper>
   )
 }
