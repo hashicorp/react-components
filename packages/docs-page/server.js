@@ -106,7 +106,12 @@ async function renderPageMdx(root, pagePath, components, scope) {
 }
 
 // We are memoizing this function as it does a non-trivial amount of I/O to read frontmatter for all mdx files in a directory
-const fastReadFrontMatter = moize(async function fastReadFrontMatter(p) {
+const fastReadFrontMatter =
+  process.env.NODE_ENV === 'production'
+    ? moize(fastReadFrontMatterFn)
+    : fastReadFrontMatterFn
+
+async function fastReadFrontMatterFn(p) {
   const fm = []
   for await (const entry of readdirp(p, { fileFilter: '*.mdx' })) {
     let lineNum = 0
@@ -144,4 +149,4 @@ const fastReadFrontMatter = moize(async function fastReadFrontMatter(p) {
     )
   }
   return Promise.all(fm)
-})
+}
