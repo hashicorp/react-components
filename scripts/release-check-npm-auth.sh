@@ -2,12 +2,13 @@
 
 set -e
 
-GRAY='\033[1;30m'
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+NL=$'\n'
+GRAY=$'\e[02;39m'
+RED=$'\e[31m'
+GREEN=$'\e[32m'
+NC=$'\e[0m'
 
-echo "\n${GRAY}Checking npm auth...${NC}"
+echo "${NL}${GRAY}Checking npm auth...${NC}"
 NPMNAME=$(npm whoami)
 echo "${GREEN}✓${NC} Logged in as ${GREEN}${NPMNAME}${NC}"
 echo "${GRAY}Checking hashicorp:developers membership...${NC}"
@@ -25,15 +26,15 @@ if [ ${#AUTHPARTS[@]} != 2 ]; then
     echo "${RED}SCRIPT ERROR!${NC}Failed to parse TFA from your npm profile."
     echo "${GRAY} your npm profile for reference:"
     npm profile get --parseable
+    echo "${NC}${NL}"
     exit 1
 fi
 
 if [ ${AUTHPARTS[1]} == "auth-and-writes" ]; then
-    echo "${GREEN}✓${NC} 2FA for ${GREEN}${AUTHPARTS[1]}${NC} is ${GREEN}active${NC}\n"
+    echo "${GREEN}✓${NC} 2FA for ${GREEN}${AUTHPARTS[1]}${NC} is ${GREEN}active${NC}${NL}"
 else
-
-    echo "${RED}ERROR!${NC} 2FA seems to be set to ${RED}${AUTHPARTS[1]}${NC} for ${NPMNAME}. \nYou must ${RED}enable 2FA for auth-and-writes${NC} to run release commands.\n"
+    echo "${RED}ERROR!${NC} 2FA seems to be set to ${RED}${AUTHPARTS[1]}${NC} for ${NPMNAME}. ${NL}You must ${RED}enable 2FA for auth-and-writes${NC} to run release commands.${NL}"
     echo "${GRAY}Your npm profile:"
     npm profile get --parseable
-    echo "\n"
+    echo "${NC}${NL}"
 fi

@@ -86,9 +86,9 @@ export const DEFAULT_MENU_SECTIONS = [
         items: [
           {
             product: 'consul',
-            url: 'https://www.hashicorp.com/cloud-platform',
+            url: 'https://cloud.hashicorp.com/',
             iconSrc: require('../assets/product-icons/consul-icon-color.svg?include'),
-            badge: 'Public Beta',
+            badge: 'Generally Available',
           },
           {
             product: 'terraform',
@@ -97,9 +97,9 @@ export const DEFAULT_MENU_SECTIONS = [
           },
           {
             product: 'vault',
-            url: 'https://www.hashicorp.com/cloud-platform',
+            url: 'https://cloud.hashicorp.com/',
             iconSrc: require('../assets/product-icons/vault-icon-color.svg?include'),
-            badge: 'Private Beta',
+            badge: 'Public Beta',
           },
         ],
       },
