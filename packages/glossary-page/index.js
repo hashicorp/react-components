@@ -2,8 +2,8 @@ import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import generateComponents from '@hashicorp/react-docs-page/components'
-import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
 
+// TODO: generate slug for anchor in ToC
 function GlossaryTableOfContents({ terms }) {
   return (
     <ul>
@@ -18,12 +18,11 @@ function GlossaryTableOfContents({ terms }) {
 
 export default function GlossaryPage({
   additionalComponents,
-  content,
-  docsPageData,
-  mainBranch = 'main',
+  mainBranch,
   order,
   product,
-  terms,
+  showEditPage,
+  staticProps: { content, terms, docsPageData },
 }) {
   return (
     <DocsPageWrapper
@@ -36,6 +35,7 @@ export default function GlossaryPage({
       pageTitle="Glossary"
       product={{ name: product.name, slug: product.slug }}
       subpath="docs"
+      showEditPage={showEditPage}
     >
       <>
         <h1>{product.name} Glossary</h1>

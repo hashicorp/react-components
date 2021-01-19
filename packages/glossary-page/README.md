@@ -11,14 +11,12 @@ import generateStaticProps from '@hashicorp/react-glossary-page/server'
 import order from 'data/docs-navigation.js'
 import { productName, productSlug } from 'data/metadata'
 
-export default function GlossaryLayout({ terms, content, docsPageData }) {
+export default function GlossaryLayout({ content, docsPageData, terms }) {
   return (
     <GlossaryPage
-      content={content}
-      docsPageData={docsPageData}
       order={order}
       product={{ name: productName, slug: productSlug }}
-      terms={terms}
+      staticProps={{ content, docsPageData, terms }}
     />
   )
 }
@@ -26,7 +24,6 @@ export default function GlossaryLayout({ terms, content, docsPageData }) {
 export async function getStaticProps() {
   return generateStaticProps({
     productName,
-    subpath: 'docs',
   })
 }
 ```

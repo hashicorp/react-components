@@ -3,6 +3,7 @@ import renderToString from 'next-mdx-remote/render-to-string'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
+import slugify from 'slugify'
 import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import { fastReadFrontMatter } from '@hashicorp/react-docs-page/server'
 import generateComponents from '@hashicorp/react-docs-page/components'
@@ -12,7 +13,6 @@ export default async function generateStaticProps({
   additionalComponents,
   productName,
   scope,
-  subpath,
 }) {
   const docsPath = path.join(process.cwd(), 'content', 'docs')
 
@@ -57,6 +57,7 @@ async function getGlossaryTerms() {
 
         return {
           title: data.title,
+          slug: slugify(data.title, { lower: true, strict: true }),
           content: `## ${data.title}\n${content}`,
         }
       })
