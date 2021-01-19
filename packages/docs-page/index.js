@@ -87,7 +87,6 @@ export function DocsPageWrapper({
 
 export default function DocsPage({
   product,
-  product: { name, slug },
   subpath,
   order,
   mainBranch = 'main',
@@ -97,7 +96,7 @@ export default function DocsPage({
 }) {
   // This component is written to work with next-mdx-remote -- here is hydrates the content
   const content = hydrate(mdxSource, {
-    components: generateComponents(name, additionalComponents),
+    components: generateComponents(product.name, additionalComponents),
   })
 
   return (
