@@ -94,7 +94,7 @@ export default function DocsPage({
   additionalComponents,
   staticProps: { mdxSource, data, frontMatter, pagePath, filePath },
 }) {
-  // This component is written to work with next-mdx-remote -- here is hydrates the content
+  // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
     components: generateComponents(product.name, additionalComponents),
   })
