@@ -28,4 +28,4 @@ export async function getStaticProps() {
 
 ## Props
 
-_WIP_
+See [props.js](./props.js) for more information on props.
