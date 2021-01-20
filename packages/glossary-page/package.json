@@ -15,6 +15,9 @@
     "@hashicorp/react-docs-page": "^10.4.0",
     "react": "^16.9.0"
   },
+  "devDependencies": {
+    "@hashicorp/react-docs-page": "^10.4.0"
+  },
   "publishConfig": {
     "access": "public"
   }
