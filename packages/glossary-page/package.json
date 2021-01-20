@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-glossary-page",
-  "description": "Create a Hashicorp branded docs page in NextJS projects.",
+  "description": "Create a Hashicorp branded glossary page in NextJS projects.",
   "version": "0.0.1",
   "author": "HashiCorp",
   "contributors": [
