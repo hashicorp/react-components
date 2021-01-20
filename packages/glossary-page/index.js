@@ -30,7 +30,7 @@ export default function GlossaryPage({
       description="Glossary"
       filePath="glossary"
       mainBranch={mainBranch}
-      order={[...order, { title: 'Glossary', href: '/docs/glossary' }]}
+      order={order}
       pagePath="/docs/glossary/"
       pageTitle="Glossary"
       product={{ name: product.name, slug: product.slug }}
