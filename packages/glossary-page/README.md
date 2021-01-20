@@ -26,6 +26,15 @@ export async function getStaticProps() {
 }
 ```
 
+To ensure a link appears in the docs navigation, be sure to add an item to the `data/docs-navigation.js` file. The glossary link should appear at the top-level of the navigation.
+
+```js
+{
+  title: 'Glossary',
+  href: '/docs/glossary',
+}
+```
+
 ## Props
 
 See [props.js](./props.js) for more information on props.
