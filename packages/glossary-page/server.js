@@ -8,6 +8,7 @@ import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import { fastReadFrontMatter } from '@hashicorp/react-docs-page/server'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
+import generateSlug from '@hashicorp/remark-plugins/generate_slug'
 
 export default async function generateStaticProps({
   additionalComponents,
@@ -57,7 +58,7 @@ async function getGlossaryTerms() {
 
         return {
           title: data.title,
-          slug: slugify(data.title, { lower: true, strict: true }),
+          slug: generateSlug(data.title),
           content: `## ${data.title}\n${content}`,
         }
       })

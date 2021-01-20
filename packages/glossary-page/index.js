@@ -2,14 +2,14 @@ import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import generateComponents from '@hashicorp/react-docs-page/components'
+import s from './style.module.css'
 
-// TODO: generate slug for anchor in ToC
 function GlossaryTableOfContents({ terms }) {
   return (
-    <ul>
-      {terms.map(({ title }) => (
+    <ul className={s.tableOfContents}>
+      {terms.map(({ title, slug }) => (
         <li key={title}>
-          <a href={`#${title}`}>{title}</a>
+          <a href={`#${slug}`}>{title}</a>
         </li>
       ))}
     </ul>
