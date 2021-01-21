@@ -20,7 +20,7 @@ module.exports = {
           body: {
             type: 'string',
             description:
-              'text that appears to the right of the headline, can contain markdown',
+              'text that appears to the right of the headline, can contain HTML',
           },
           linkUrl: {
             type: 'string',

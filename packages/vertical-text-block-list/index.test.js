@@ -31,7 +31,9 @@ describe('<VerticalTextBlockList />', () => {
 
   it('should render body text as markdown', () => {
     render(
-      <VerticalTextBlockList data={[{ header: 'test', body: '**foo**' }]} />
+      <VerticalTextBlockList
+        data={[{ header: 'test', body: '<strong>foo</strong>' }]}
+      />
     )
     expect(
       screen.getByTestId(`body-text-test`).querySelector('strong')

@@ -1,4 +1,3 @@
-import marked from 'marked'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import Image from '@hashicorp/react-image'
 
@@ -24,7 +23,7 @@ export default function VerticalTextBlockList({ data, centerText, Link }) {
               <div
                 className="body-text g-type-body-large"
                 dangerouslySetInnerHTML={{
-                  __html: marked.inlineLexer(item.body, []),
+                  __html: item.body,
                 }}
                 data-testid={`body-text-${item.header}`}
               />
