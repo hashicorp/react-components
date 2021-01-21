@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Logo from './Logo'
 import StatusBar from './StatusBar'
-import marked from 'marked'
 import Button from '@hashicorp/react-button'
 import Image from '@hashicorp/react-image'
 import fragment from './fragment.graphql'
@@ -16,7 +15,7 @@ class CaseStudySlider extends Component {
       timing: timing,
       numFrames: this.data.caseStudies.length,
       measure: true,
-      containerWidth: 0
+      containerWidth: 0,
     }
 
     this.frames = []
@@ -48,7 +47,7 @@ class CaseStudySlider extends Component {
         this.setState(
           {
             numFrames: this.data.caseStudies.length,
-            measure: true
+            measure: true,
           },
           () => {
             if (this.data.caseStudies.length === 1) {
@@ -67,7 +66,7 @@ class CaseStudySlider extends Component {
       this.setState(
         {
           timing: parseInt(this.props.timing),
-          active: 0
+          active: 0,
         },
         this.resetTimer
       )
@@ -109,7 +108,7 @@ class CaseStudySlider extends Component {
       this.setState({
         frameSize: width,
         containerWidth: width * this.state.numFrames,
-        measure: false
+        measure: false,
       })
     }
   }
@@ -131,7 +130,7 @@ class CaseStudySlider extends Component {
         ? {}
         : {
             width: `${containerWidth}px`,
-            transform: `translateX(-${(containerWidth / numFrames) * active}px`
+            transform: `translateX(-${(containerWidth / numFrames) * active}px`,
           }
 
     // Create inline styling to apply to each frame
@@ -168,7 +167,7 @@ class CaseStudySlider extends Component {
           <div className="slider-container" style={containerStyle}>
             {/* React pushes a null ref the first time, so we're filtering those out. */}
             {/* see https://reactjs.org/docs/refs-and-the-dom.html#caveats-with-callback-refs */}
-            {caseStudies.map(caseStudy => {
+            {caseStudies.map((caseStudy) => {
               const caseStudyLink =
                 caseStudy.caseStudyLink ||
                 `/resources/${caseStudy.caseStudyResource.slug}`
@@ -176,7 +175,7 @@ class CaseStudySlider extends Component {
                 <div
                   className={`slider-frame${single ? ' single' : ''}`}
                   style={frameStyle}
-                  ref={el => el && this.frames.push(el)}
+                  ref={(el) => el && this.frames.push(el)}
                   key={caseStudy.headline}
                 >
                   <div className="case-study">
@@ -198,13 +197,13 @@ class CaseStudySlider extends Component {
                       <h3
                         className="g-type-display-4"
                         dangerouslySetInnerHTML={{
-                          __html: marked.inlineLexer(caseStudy.headline, [])
+                          __html: caseStudy.headline,
                         }}
                       />
                       <p
                         className="g-type-body"
                         dangerouslySetInnerHTML={{
-                          __html: marked.inlineLexer(caseStudy.description, [])
+                          __html: caseStudy.description,
                         }}
                       />
                       <Button

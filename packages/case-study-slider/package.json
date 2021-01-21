@@ -8,8 +8,7 @@
   ],
   "dependencies": {
     "@hashicorp/react-button": "^2.2.4",
-    "@hashicorp/react-image": "^2.0.3",
-    "marked": "^0.7.0"
+    "@hashicorp/react-image": "^2.0.3"
   },
   "peerDependencies": {
     "react": "^16.9.0"
