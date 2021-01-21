@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@hashicorp/react-button": "^2.2.6",
-    "@hashicorp/react-image": "^2.0.3",
-    "marked": "^1.0.0"
+    "@hashicorp/react-image": "^2.0.3"
   }
 }
