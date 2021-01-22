@@ -6,6 +6,7 @@ module.exports = withHashicorp({
     'swingset',
     '@hashicorp/react-.*',
     '@hashicorp/nextjs-scripts',
+    '@hashicorp/sentinel-embedded',
   ],
 })(
   withSwingset({

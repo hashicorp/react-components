@@ -5,7 +5,7 @@ module.exports = {
     '\\.svg(?:\\?.*)*$': '<rootDir>/__test-helpers/mocks/svg-mock.js',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!@hashicorp/react-)',
+    '/node_modules/(?!(@hashicorp/react-|@hashicorp/sentinel-embedded))',
     '\\.pnp\\.[^\\/]+$',
   ],
   verbose: true,
