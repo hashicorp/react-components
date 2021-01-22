@@ -49,7 +49,8 @@ class AlertBanner extends Component {
 
   componentDidMount() {
     const isCookieSet = cookie.get(`banner_${this.name}`)
-    const hasExpired = this.expirationDate && Date.now() > Date.parse(this.expirationDate)
+    const hasExpired =
+      this.expirationDate && Date.now() > Date.parse(this.expirationDate)
 
     // if cookie isn't set, show the component
     if (!isCookieSet) {

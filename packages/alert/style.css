@@ -12,6 +12,7 @@
       color: var(--DEPRECATED-gray-1);
     }
   }
+
   /* theming */
   &.terraform-purple {
     & span {

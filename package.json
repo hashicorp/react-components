@@ -14,12 +14,15 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
+    "eslint": "^7.18.0",
     "jest": "^26.6.3",
     "lerna": "^3.22.1",
+    "prettier": "^2.2.1",
     "regenerator-runtime": "^0.13.7"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "lint": "eslint . --ext js,jsx,ts,tsx",
     "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
     "release:check-auth": "./scripts/release-check-npm-auth.sh",

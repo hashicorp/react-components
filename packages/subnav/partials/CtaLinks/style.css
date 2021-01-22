@@ -20,8 +20,9 @@
       /* Forces full width so we have 1 button per line */
       display: block;
       width: 100%;
+
       /* Spaces consecutive buttons vertically */
-      margin-left: 0px;
+      margin-left: 0;
       margin-top: 16px;
 
       &:last-of-type {

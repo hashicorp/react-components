@@ -18,7 +18,7 @@
       transition: box-shadow 0.2s ease;
 
       &:hover {
-        box-shadow: 0px 6px 38px rgba(37, 38, 45, 0.12);
+        box-shadow: 0 6px 38px rgba(37, 38, 45, 0.12);
       }
 
       /* This wrapper can be a div or an a depending on props */
@@ -50,7 +50,7 @@
 
             &::after {
               position: absolute;
-              bottom: 0em;
+              bottom: 0;
               left: 0;
               content: '';
               width: 100%;

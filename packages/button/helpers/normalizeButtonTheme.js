@@ -11,7 +11,7 @@ function normalizeButtonTheme(theme) {
   return {
     variant: theme.variant || 'primary',
     brand: theme.brand || 'hashicorp',
-    background: theme.background || 'light'
+    background: theme.background || 'light',
   }
 }
 
@@ -21,29 +21,29 @@ const legacyThemeDict = {
   'light-outline': {
     variant: 'secondary',
     brand: 'neutral',
-    background: 'dark'
+    background: 'dark',
   },
   'dark-outline': {
     variant: 'secondary',
     brand: 'neutral',
-    background: 'light'
+    background: 'light',
   },
   'purple-fill': {
     variant: 'primary',
     brand: 'terraform',
-    background: 'light'
+    background: 'light',
   },
   'purple-outline': {
     variant: 'secondary',
     brand: 'terraform',
-    background: 'dark'
+    background: 'dark',
   },
   'pink-fill': { variant: 'primary', brand: 'consul', background: 'light' },
   'pink-outline': {
     variant: 'secondary',
     brand: 'consul',
-    background: 'dark'
-  }
+    background: 'dark',
+  },
 }
 
 export default normalizeButtonTheme

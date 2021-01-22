@@ -1,3 +1,4 @@
+import React from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import TabTrigger from './partials/TabTrigger/index.js'
 import SvgChevronRight from './icons/chevron-right_black.svg.js'

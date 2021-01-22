@@ -70,7 +70,7 @@ function parseFormat(format, url) {
 }
 
 function formatSteps(steps, opts, aspectRatio, src) {
-  return steps.map(s => `${formatSrc(src, opts, s, aspectRatio)} ${s}w`)
+  return steps.map((s) => `${formatSrc(src, opts, s, aspectRatio)} ${s}w`)
 }
 
 function formatSrc(src, opts, width, aspectRatio) {

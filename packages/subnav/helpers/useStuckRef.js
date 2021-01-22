@@ -25,7 +25,7 @@ support `IntersectionObserver` or CSS `position: sticky`.
 export default function useStuckRef(deps) {
   const [isStuck, setStuck] = useState(false)
 
-  const stuckRef = useCallback(target => {
+  const stuckRef = useCallback((target) => {
     if (target && IntersectionObserver) {
       const intersectionObserver = new IntersectionObserver(([entry]) => {
         const nowIsStuck = entry.intersectionRatio < 1

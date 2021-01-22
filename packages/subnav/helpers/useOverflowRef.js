@@ -24,7 +24,7 @@ MutationObserver Compatibility (https://developer.mozilla.org/en-US/docs/Web/API
 export default function useOverflowRef(deps) {
   const [[hasOverflow, scrollWidth], setState] = useState([false, 0])
 
-  const overflowRef = useCallback(target => {
+  const overflowRef = useCallback((target) => {
     var viewport
     let requestId
     let mutationObserver

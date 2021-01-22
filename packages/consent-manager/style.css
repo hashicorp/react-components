@@ -35,9 +35,8 @@
     & a {
       color: #fff;
       text-decoration: underline;
-    }
 
-    & a.manage-link {
+    &.manage-link {
       font-size: 0.8rem;
       color: #eee;
       font-weight: var(--font-weight-bold);
@@ -47,6 +46,7 @@
       &:hover {
         color: #ddd;
       }
+    }
     }
 
     & button {
@@ -128,7 +128,7 @@
 
       /* List of categories/integrations */
       & #outline {
-        padding: 0px 20px;
+        padding: 0 20px;
 
         /* Categories */
         & .category {
