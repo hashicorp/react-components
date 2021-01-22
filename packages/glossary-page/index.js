@@ -1,5 +1,4 @@
 import hydrate from 'next-mdx-remote/hydrate'
-import matter from 'gray-matter'
 import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import s from './style.module.css'
