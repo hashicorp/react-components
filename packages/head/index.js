@@ -43,6 +43,10 @@ export default function Head(props) {
         props.image,
         <meta property="og:image" content={props.image} key="og:image" />
       )}
+      {whenString(
+        props.canonical,
+        <link rel="canonical" key="canonical" href={props.canonicalUrl} />
+      )}
       {whenArray(props.preload, ({ href, ...linkProps }) => (
         <link href={href} {...linkProps} rel="preload" key={href} />
       ))}
