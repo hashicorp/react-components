@@ -9,8 +9,8 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-        name: lint
-        command: npm run lint
+          name: lint
+          command: npm run lint
 workflows:
   test:
     jobs:
