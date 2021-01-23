@@ -3,6 +3,8 @@ orbs:
   node: circleci/node@3.0.0
 jobs:
   lint:
+    docker:
+      image: cimg/node:14.15
     steps:
       - checkout
       - node/install-packages
