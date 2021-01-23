@@ -4,7 +4,7 @@ orbs:
 jobs:
   lint:
     docker:
-      - image: cimg/node:14.15
+      - image: cimg/node:13.11.0
     steps:
       - checkout
       - node/install-packages
