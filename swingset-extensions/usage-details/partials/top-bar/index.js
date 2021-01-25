@@ -20,7 +20,7 @@ function TopBar({ packageJson }) {
       {packageJson ? (
         <div className={styles.packageDetails}>
           <div className={styles.currentVersion}>
-            <label className={styles.currentVersionLabel}>Latest:</label>
+            <span className={styles.currentVersionLabel}>Latest:</span>
             <code className={styles.currentVersionNumber}>
               {packageJson.version || 'No published version detected'}
             </code>
