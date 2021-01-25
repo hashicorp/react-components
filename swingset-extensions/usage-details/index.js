@@ -23,7 +23,7 @@ export default function UsageDetails({ packageJson }) {
       ) : (
         <p>
           No <code>package.json</code> detected for this component. Maybe this
-          component hasn't been published to <code>npm</code>?
+          component hasn&apos;t been published to <code>npm</code>?
         </p>
       )}
     </section>
