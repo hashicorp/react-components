@@ -59,11 +59,12 @@
 }
 .currentVersionLabel {
   display: block;
-  composes: g-type-code from global;
   color: var(--gray-2);
 }
 .currentVersionNumber {
   display: block;
+  composes: g-type-code from global;
+  line-height: 1.625rem;
   margin-left: 8px;
   color: #d73a49;
   background: #f6f8fa;
