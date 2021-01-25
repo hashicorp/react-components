@@ -4,6 +4,7 @@
 
 .g-callouts {
   /* Spacing */
+
   /* Below assumes we set { preserve: true } for our CSS custom properties plugin,
   or even better, use an IE11-specific polyfill so we can use custom properties as they're intended to be used */
   padding-top: var(--space-block-padding);

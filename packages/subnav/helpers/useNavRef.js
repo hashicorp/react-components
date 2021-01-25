@@ -11,6 +11,6 @@ export default function useNavRef(deps) {
     function navRef(target) {
       stuckRef(target, deps)
       overflowRef(target, deps)
-    }
+    },
   ]
 }

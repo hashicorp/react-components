@@ -6,6 +6,7 @@
 
 .g-subnav {
   --gray-6-transparent: rgba(174, 176, 183, 0.45);
+
   position: sticky;
   top: -1px;
   z-index: 900;
@@ -46,7 +47,7 @@
 
     & .style-dropdown {
       border-radius: 4px;
-      box-shadow: 0px 8px 12px rgba(37, 38, 45, 0.08);
+      box-shadow: 0 8px 12px rgba(37, 38, 45, 0.08);
       background: var(--white);
       z-index: 1;
     }

@@ -384,7 +384,8 @@ function renderNavTree({
         >
           <span>
             {/* Note: this is rendered as a link, but with no href. We should test to see if */}
-            {/* a button element would be more semantically appropriate for a11y. */}
+            {/* a button element would be more semantically appropriate for a11y. (https://app.asana.com/0/1100423001970639/1199667739287943/f) */}
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a
               onClick={item.content && toggleNav}
               data-testid={`/${category}/${folderPath} - link`}

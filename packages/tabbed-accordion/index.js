@@ -16,6 +16,7 @@ function TabbedAccordion({ heading, tabs }) {
         items={tabs.map((tab) => {
           return {
             heading: tab.heading,
+            // eslint-disable-next-line react/display-name -- This is the expected usage
             tabChildren: () => <AccordionItems items={tab.items} />,
           }
         })}

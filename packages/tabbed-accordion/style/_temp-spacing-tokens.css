@@ -12,6 +12,7 @@
   }
 
   /* Medium Viewports */
+
   /* (IE fallback, so no media query) */
   --space-grid-gap: 24px;
   --space-block-padding: 88px;
