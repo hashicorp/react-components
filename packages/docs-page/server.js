@@ -106,7 +106,7 @@ async function renderPageMdx(root, pagePath, components, scope) {
 }
 
 // We are memoizing this function as it does a non-trivial amount of I/O to read frontmatter for all mdx files in a directory
-const fastReadFrontMatter =
+export const fastReadFrontMatter =
   process.env.NODE_ENV === 'production'
     ? moize(fastReadFrontMatterFn)
     : fastReadFrontMatterFn

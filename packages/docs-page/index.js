@@ -12,6 +12,7 @@ import temporary_injectJumpToSection from './temporary_jump-to-section'
 
 export function DocsPageWrapper({
   allPageData,
+  canonicalUrl,
   children,
   description,
   filePath,
@@ -36,9 +37,10 @@ export function DocsPageWrapper({
       {/* render the page's data to the document head */}
       <HashiHead
         is={Head}
-        title={`${pageTitle} | ${name} by HashiCorp`}
+        canonicalUrl={canonicalUrl}
         description={description}
         siteName={`${name} by HashiCorp`}
+        title={`${pageTitle} | ${name} by HashiCorp`}
       />
       {/* render the sidebar nav */}
       {/* TODO: we can probably remove several of these wrappers */}
@@ -87,7 +89,6 @@ export function DocsPageWrapper({
 
 export default function DocsPage({
   product,
-  product: { name, slug },
   subpath,
   order,
   mainBranch = 'main',
@@ -97,12 +98,13 @@ export default function DocsPage({
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
-    components: generateComponents(name, additionalComponents),
+    components: generateComponents(product.name, additionalComponents),
   })
 
   return (
     <DocsPageWrapper
       allPageData={data}
+      canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
       filePath={filePath}
       mainBranch={mainBranch}

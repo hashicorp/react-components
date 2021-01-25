@@ -1,0 +1,8 @@
+.tableOfContents {
+  column-width: 14em;
+  margin-block-start: 0;
+
+  & li:first-of-type {
+    margin-top: 0;
+  }
+}

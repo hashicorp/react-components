@@ -73,7 +73,7 @@ export default class FeaturedSlider extends Component {
     }
   }
 
-  resetTimer(x) {
+  resetTimer() {
     clearInterval(this.timer)
     this.timer = setInterval(() => this.tick(), this.state.timing * 1000)
   }

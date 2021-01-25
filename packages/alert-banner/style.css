@@ -55,7 +55,6 @@
         position: relative;
         white-space: nowrap;
         margin-right: 18px;
-
         border: 1px solid var(--white);
         border-radius: 4px;
         color: var(--white);
@@ -125,11 +124,11 @@
     }
 
     &.boundary > svg [stroke] {
-      stroke: #ffffff;
+      stroke: #fff;
     }
 
     &.waypoint > svg [stroke] {
-      stroke: #ffffff;
+      stroke: #fff;
     }
 
     &:hover {

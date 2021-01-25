@@ -6,13 +6,13 @@
     --space-block-padding-reduced: 48px;
     --space-display-2--body: 16px;
     --space-display-2--body-large: 16px;
-
     --space-display-2--content: 48px;
     --space-body-large--buttons: 32px;
     --space-body-large--links: 24px;
   }
 
   /* Medium Viewports */
+
   /* (IE fallback, so no media query) */
   --space-grid-gap: 24px;
   --space-block-padding: 88px;

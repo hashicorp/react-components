@@ -82,7 +82,9 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
 */
 .g-btn.variant-primary:not([disabled]) {
   /* Brand -- HashiCorp */
+
   /* Brand -- Vagrant */
+
   /* Brand -- Vault */
   &.brand-hashicorp,
   &.brand-vault,

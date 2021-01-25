@@ -16,7 +16,7 @@ function TopBar({ packageJson }) {
   //  (we already know the version from our UsageDetails component!)
   return (
     <div className={styles.root}>
-      <h2 className={styles.heading}>Where it's used</h2>
+      <h2 className={styles.heading}>Where it&apos;s used</h2>
       {packageJson ? (
         <div className={styles.packageDetails}>
           <div className={styles.currentVersion}>

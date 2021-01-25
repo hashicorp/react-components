@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 function TerraformCloudLogoColor(props) {
   return (
@@ -41,8 +41,7 @@ function TerraformCloudLogoColor(props) {
         fill="#000"
       />
     </svg>
-  );
+  )
 }
 
-export default TerraformCloudLogoColor;
-
+export default TerraformCloudLogoColor

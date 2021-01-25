@@ -8,7 +8,7 @@ export {
   IconProp,
   PreloadProp,
   StyleSheetProp,
-  TwitterCardProp
+  TwitterCardProp,
 }
 
 declare function Head<C = React.ReactElement>(
@@ -16,6 +16,9 @@ declare function Head<C = React.ReactElement>(
 ): HeadProps['is']
 
 interface HeadProps<C = React.ReactElement> {
+  /** Canonical URL for the page. */
+  canonicalUrl?: string
+
   /** Children appended directly to the head tag. */
   children?: React.ReactNode
 
@@ -88,7 +91,7 @@ declare type StyleSheetProp = {
 
 declare enum TwitterCardProp {
   SummaryCard = 'summary',
-  SummaryCardWithLargeImage = 'summary_large_image'
+  SummaryCardWithLargeImage = 'summary_large_image',
 }
 
 declare enum asProp {
@@ -103,5 +106,5 @@ declare enum asProp {
   Style = 'style',
   Track = 'track',
   Video = 'video',
-  Worker = 'worker'
+  Worker = 'worker',
 }

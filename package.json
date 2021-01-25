@@ -14,12 +14,17 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
+    "eslint": "^7.18.0",
+    "husky": "^4.3.8",
     "jest": "^26.6.3",
     "lerna": "^3.22.1",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
     "regenerator-runtime": "^0.13.7"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "lint": "eslint . --ext js,jsx,ts,tsx --max-warnings 0",
     "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
     "release:check-auth": "./scripts/release-check-npm-auth.sh",
@@ -29,5 +34,16 @@
     "test:ci": "jest --runInBand",
     "test:watch": "jest --watch",
     "vercel-build": "npm run bootstrap && next build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx|ts|tsx)": [
+      "next-hashicorp format",
+      "eslint"
+    ]
   }
 }

@@ -46,7 +46,7 @@ it('should pass `language` to `language-*` classes on `pre` and `code`', () => {
 it('should render a button with a `Copy` label', () => {
   render(
     <CodeBlock
-      code={`console.log(\"Hello world\");`}
+      code={`console.log("Hello world");`}
       options={{ showClipboard: true }}
     />
   )
@@ -58,7 +58,7 @@ it('should render a button with a `Copy` label', () => {
 it('should render a keyboard-focusable `Copy` button', () => {
   const { container } = render(
     <CodeBlock
-      code={`console.log(\"Hello world\");`}
+      code={`console.log("Hello world");`}
       options={{ showClipboard: true }}
     />
   )
