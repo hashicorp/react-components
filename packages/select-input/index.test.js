@@ -1,4 +1,4 @@
-import SelectInput from './'
+// import SelectInput from './'
 
 test.todo('opens the select menu when clicked')
 test.todo('closes the select menu when clicked after its open')

@@ -16,7 +16,7 @@ export default function ProductFeaturesList({ heading, features }) {
               {link && (
                 <Button
                   linkType={link.type}
-                  theme={{ variant: 'tertiary-neutral'}}
+                  theme={{ variant: 'tertiary-neutral' }}
                   title={link.text}
                   url={link.url}
                 />

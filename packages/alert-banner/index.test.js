@@ -54,13 +54,17 @@ describe('<AlertBanner />', () => {
 
     it('should show the banner when the current date has not surpassed the expiration date', () => {
       const expirationDate = '2020-10-30T12:00:00-07:00'
-      const { container } = render(<AlertBanner text="text" tag="tag" expirationDate={expirationDate} />)
+      const { container } = render(
+        <AlertBanner text="text" tag="tag" expirationDate={expirationDate} />
+      )
       expect(container.firstChild).toHaveClass('show')
     })
 
     it('should NOT show the banner when the current date has surpassed the expiration date', () => {
       const expirationDate = '2020-10-01T12:00:00-07:00'
-      const { container } = render(<AlertBanner text="text" tag="tag" expirationDate={expirationDate} />)
+      const { container } = render(
+        <AlertBanner text="text" tag="tag" expirationDate={expirationDate} />
+      )
       expect(container.firstChild).not.toHaveClass('show')
     })
   })

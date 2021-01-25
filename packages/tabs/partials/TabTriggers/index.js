@@ -1,3 +1,4 @@
+import React from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import TabTrigger from './partials/TabTrigger/index.js'
 import SvgChevronRight from './icons/chevron-right_black.svg.js'
@@ -92,6 +93,8 @@ class TabTriggers extends React.Component {
               <div className="tooltip-space-overflow">
                 {items.map((item, stableIdx) => (
                   <TabTrigger
+                    // This array is stable, so we can use index as key
+                    // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
                     activeTabIdx={activeTabIdx}
                     setActiveTabIdx={(targetIdx) => {

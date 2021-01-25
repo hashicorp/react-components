@@ -21,17 +21,17 @@ function smoothScroll(window, elem, targetPosnInput, optionsIn) {
   const options = {
     speedPxPerSecond: (optionsIn && optionsIn.speedPxPerSecond) || 900,
     minDuration: (optionsIn && optionsIn.minDuration) || 200,
-    maxDuration: (optionsIn && optionsIn.maxDuration) || 600
+    maxDuration: (optionsIn && optionsIn.maxDuration) || 600,
   }
   const { speedPxPerSecond, minDuration, maxDuration } = options
   //  Determine target distance change, using current and target positions passed
   const startPosn = {
     x: elemIsWindow ? elem.scrollX : elem.scrollLeft,
-    y: elemIsWindow ? elem.scrollY : elem.scrollTop
+    y: elemIsWindow ? elem.scrollY : elem.scrollTop,
   }
   const targetPosn = {
     x: targetPosnInput.x || startPosn.x,
-    y: targetPosnInput.y || startPosn.y
+    y: targetPosnInput.y || startPosn.y,
   }
   const { x, y } = targetPosn
   const deltaX = x - startPosn.x
@@ -69,7 +69,7 @@ function smoothScroll(window, elem, targetPosnInput, optionsIn) {
 
 //  From https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
 //  t: current time, b: begInnIng value, c: change In value, d: duration
-const easeInOutQuad = function(t, b, c, d) {
+const easeInOutQuad = function (t, b, c, d) {
   if ((t /= d / 2) < 1) return (c / 2) * t * t + b
   return (-c / 2) * (--t * (t - 2) - 1) + b
 }

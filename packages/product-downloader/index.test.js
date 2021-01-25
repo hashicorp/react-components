@@ -158,7 +158,7 @@ describe('<ProductDownloader />', () => {
 
     it('should support choosing a different package manager for an OS', () => {
       platform.mockReturnValue('Linux')
-      const { getByTestId, getAllByText, debug } = setup()
+      const { getByTestId } = setup()
       const downloadCards = getByTestId('download-cards')
 
       expect(

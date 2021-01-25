@@ -25,7 +25,9 @@ export default function DocsSidenav({
   const [content, setContent] = useState(allContent)
 
   // remove leading slash and base level "docs"/"api"/etc
-  const current = currentPage.split('/').slice(1 + category.split('/').length)
+  const currentPath = currentPage
+    .split('/')
+    .slice(1 + category.split('/').length)
 
   return (
     <div
@@ -60,7 +62,14 @@ export default function DocsSidenav({
             value={filterInput}
           />
         )}
-        {renderNavTree(category, content, current, filterInput, Link)}
+        {renderNavTree({
+          category,
+          content,
+          currentPath,
+          currentPage,
+          filterInput,
+          Link,
+        })}
       </ul>
     </div>
   )
@@ -266,7 +275,14 @@ function matchOrderToData(currentPage, order, pageData, stack = []) {
 }
 
 // Recursively renders the markup for the nested navigation
-function renderNavTree(category, content, currentPath, filterInput, Link) {
+function renderNavTree({
+  category,
+  content,
+  currentPath,
+  currentPage,
+  filterInput,
+  Link,
+}) {
   return content.map((item, idx) => {
     // dividers are the only items left as strings
     // This array is stable, so we can use index as key
@@ -276,13 +292,17 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
     // if the link property has been set to true, we're rendering a direct link
     // rather than a link to a docs page
     if (item.title && item.href) {
+      let className = item.href.match(/^http[s]*:\/\//) ? 'external ' : ''
+      // allow direct links to be highlighted if they happen to live in the docs hierarchy
+      if (item.href === currentPage) className += 'active'
+
       return (
         <li
           // This array is stable, so we can use index as key
           // eslint-disable-next-line react/no-array-index-key
           key={idx}
           data-testid={item.href}
-          className={item.href.match(/^http[s]*:\/\//) ? 'external' : ''}
+          className={className}
         >
           <LinkWrap
             Link={Link}
@@ -364,7 +384,8 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
         >
           <span>
             {/* Note: this is rendered as a link, but with no href. We should test to see if */}
-            {/* a button element would be more semantically appropriate for a11y. */}
+            {/* a button element would be more semantically appropriate for a11y. (https://app.asana.com/0/1100423001970639/1199667739287943/f) */}
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a
               onClick={item.content && toggleNav}
               data-testid={`/${category}/${folderPath} - link`}
@@ -407,13 +428,13 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
                   </LinkWrap>
                 </li>
               )}
-              {renderNavTree(
+              {renderNavTree({
                 category,
-                item.content,
+                content: item.content,
                 currentPath,
                 filterInput,
-                Link
-              )}
+                Link,
+              })}
             </ul>
           )}
         </li>

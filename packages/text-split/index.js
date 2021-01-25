@@ -57,8 +57,9 @@ function ContentString({ contentString, theme }) {
       {paragraphs.map((paragraph, stableIdx) => {
         // Avoid rendering empty <p>, caused by eg `\n\n`
         if (paragraph === '') return null
-        // eslint-disable-next-line react/no-array-index-key
         return (
+          // This array is stable, so we can use index as key
+          // eslint-disable-next-line react/no-array-index-key
           <p key={stableIdx} className={`g-type-body theme-${theme}`}>
             {paragraph}
           </p>
