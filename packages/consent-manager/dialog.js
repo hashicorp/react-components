@@ -141,6 +141,8 @@ export default class ConsentPreferences extends Component {
           </div>
         </div>
         <div className="category-fold">
+          {/* TODO: this should most likely be a button */}
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a
             onClick={() => {
               this.handleFold(name)

@@ -13,8 +13,9 @@ function MenuItemsDefault(props) {
         }
         const { text, url, submenu, _isActiveUrl } = menuItem
         return menuItem.submenu ? (
-          // eslint-disable-next-line react/no-array-index-key
           <NavLinkWithDropdown
+            // This array is stable, so we can use index as key
+            // eslint-disable-next-line react/no-array-index-key
             key={stableIdx}
             text={text}
             submenu={submenu}
@@ -22,8 +23,9 @@ function MenuItemsDefault(props) {
             Link={Link}
           />
         ) : (
-          // eslint-disable-next-line react/no-array-index-key
           <NavLink
+            // This array is stable, so we can use index as key
+            // eslint-disable-next-line react/no-array-index-key
             key={stableIdx}
             text={text}
             url={url}

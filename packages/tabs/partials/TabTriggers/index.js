@@ -93,6 +93,8 @@ class TabTriggers extends React.Component {
               <div className="tooltip-space-overflow">
                 {items.map((item, stableIdx) => (
                   <TabTrigger
+                    // This array is stable, so we can use index as key
+                    // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
                     activeTabIdx={activeTabIdx}
                     setActiveTabIdx={(targetIdx) => {

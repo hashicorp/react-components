@@ -24,6 +24,8 @@ function FeaturesList({ features, brand }) {
         {features.map((feature, stableIdx) => (
           <Feature
             id={stableIdx}
+            // This array is stable, so we can use index as key
+            // eslint-disable-next-line react/no-array-index-key
             key={stableIdx}
             title={feature.title}
             active={stableIdx === activeFeature}
@@ -63,6 +65,8 @@ function FeaturesCarousel({ features }) {
         }}
       >
         {features.map((feature, stableIdx) => (
+          // This array is stable, so we can use index as key
+          // eslint-disable-next-line react/no-array-index-key
           <div key={stableIdx}>
             <Feature Element="div" id={stableIdx} title={feature.title} active>
               {feature.description}

@@ -22,6 +22,8 @@ export default function ConsentBanner({
         .
       </span>
       <div>
+        {/* TODO: this should most likely be a button */}
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
           href="#"
           className="manage-link"
