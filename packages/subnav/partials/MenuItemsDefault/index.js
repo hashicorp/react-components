@@ -1,3 +1,4 @@
+import React from 'react'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import DropdownTrigger from '../DropdownTrigger/index.js'
 

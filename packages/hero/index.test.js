@@ -1,4 +1,4 @@
-import Hero from './'
+// import Hero from './'
 
 test.todo(
   'renders the `title` and `description` props correctly, without orphans'

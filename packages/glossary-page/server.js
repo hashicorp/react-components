@@ -1,10 +1,7 @@
-import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
-import slugify from 'slugify'
-import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import { fastReadFrontMatter } from '@hashicorp/react-docs-page/server'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
@@ -13,7 +10,6 @@ import generateSlug from '@hashicorp/remark-plugins/generate_slug'
 export default async function generateStaticProps({
   additionalComponents,
   productName,
-  scope,
 }) {
   const docsPath = path.join(process.cwd(), 'content', 'docs')
 

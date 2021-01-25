@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react'
-import LogoGrid from './'
+// import LogoGrid from './'
 
 test.todo('Displays logos that are passed in via the `data` prop')
 test.todo(

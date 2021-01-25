@@ -1,10 +1,13 @@
 function normalizeButtonTheme(theme) {
   //  Handle legacy string themes, passed directly or from Dato
   const isLegacyStringTheme = typeof theme === 'string'
-  const isSlugStringTheme = theme.hasOwnProperty('slug')
+  const isSlugStringTheme = Object.prototype.hasOwnProperty.call(theme, 'slug')
   if (isLegacyStringTheme || isSlugStringTheme) {
     const stringTheme = isSlugStringTheme ? theme.slug : theme
-    const mappedTheme = legacyThemeDict.hasOwnProperty(stringTheme)
+    const mappedTheme = Object.prototype.hasOwnProperty.call(
+      legacyThemeDict,
+      stringTheme
+    )
     if (mappedTheme) return legacyThemeDict[stringTheme]
   }
   //  Return a valid theme object, with fallbacks

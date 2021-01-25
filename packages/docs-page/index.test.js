@@ -1,5 +1,3 @@
-import { render } from '@testing-library/react'
-
 test.todo(
   'passes `title`, `description`, and `siteName` correctly to <HashiHead>'
 )

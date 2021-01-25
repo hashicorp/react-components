@@ -45,6 +45,7 @@ it('should save preferences', () => {
   const originalCookiesSet = cookies.set
 
   // mocks
+  // eslint-disable-next-line no-import-assign -- it's mocked, so the rule does not apply
   cookiesJS.getDomain = jest.fn().mockImplementation(() => 'baz.net')
   cookies.set = jest.fn()
 
@@ -55,6 +56,7 @@ it('should save preferences', () => {
   expect(JSON.stringify(lastArgs)).toBe(JSON.stringify(args))
 
   // restore mocks
+  // eslint-disable-next-line no-import-assign -- it's mocked, so the rule does not apply
   cookiesJS.getDomain = originalCookiesJSGetDomain
   cookies.set = originalCookiesSet
 })

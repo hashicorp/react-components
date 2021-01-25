@@ -88,8 +88,11 @@ export default class ConsentPreferences extends Component {
     return this.state.groupedIntegrations[category].some((tool) => {
       return (
         this.state.consent &&
-        this.state.consent.hasOwnProperty(tool.origin) &&
-        this.state.consent[tool.origin].hasOwnProperty(tool.name) &&
+        Object.prototype.hasOwnProperty.call(this.state.consent, tool.origin) &&
+        Object.prototype.hasOwnProperty.call(
+          this.state.consent[tool.origin],
+          tool.name
+        ) &&
         this.state.consent[tool.origin][tool.name]
       )
     })

@@ -19,7 +19,7 @@ function TopBar({ packageName }) {
 
   return (
     <div className={styles.root}>
-      <h2 className={styles.heading}>Where it's used</h2>
+      <h2 className={styles.heading}>Where it&apos;s used</h2>
       <a ref={linkRef} className={styles.sourcegraphLink} href={searchUrl}>
         Search with{' '}
         <InlineSvg
