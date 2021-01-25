@@ -22,7 +22,7 @@ export default function ConsentBanner({
         .
       </span>
       <div>
-        {/* TODO: this should most likely be a button */}
+        {/* TODO: this should most likely be a button (https://app.asana.com/0/1100423001970639/1199667739287943/f) */}
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
           href="#"

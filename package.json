@@ -24,7 +24,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "lint": "eslint . --ext js,jsx,ts,tsx",
+    "lint": "eslint . --ext js,jsx,ts,tsx --max-warnings 0",
     "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
     "release:check-auth": "./scripts/release-check-npm-auth.sh",
