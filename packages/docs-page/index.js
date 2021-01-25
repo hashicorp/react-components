@@ -12,6 +12,7 @@ import temporary_injectJumpToSection from './temporary_jump-to-section'
 
 export function DocsPageWrapper({
   allPageData,
+  canonicalUrl,
   children,
   description,
   filePath,
@@ -36,9 +37,10 @@ export function DocsPageWrapper({
       {/* render the page's data to the document head */}
       <HashiHead
         is={Head}
-        title={`${pageTitle} | ${name} by HashiCorp`}
+        canonicalUrl={canonicalUrl}
         description={description}
         siteName={`${name} by HashiCorp`}
+        title={`${pageTitle} | ${name} by HashiCorp`}
       />
       {/* render the sidebar nav */}
       {/* TODO: we can probably remove several of these wrappers */}
@@ -102,6 +104,7 @@ export default function DocsPage({
   return (
     <DocsPageWrapper
       allPageData={data}
+      canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
       filePath={filePath}
       mainBranch={mainBranch}

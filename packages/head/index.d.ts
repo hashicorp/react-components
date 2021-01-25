@@ -16,6 +16,9 @@ declare function Head<C = React.ReactElement>(
 ): HeadProps['is']
 
 interface HeadProps<C = React.ReactElement> {
+  /** Canonical URL for the page. */
+  canonicalUrl?: string
+
   /** Children appended directly to the head tag. */
   children?: React.ReactNode
 
