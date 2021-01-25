@@ -17,33 +17,37 @@ function TopBar({ packageJson }) {
   return (
     <div className={styles.root}>
       <h2 className={styles.heading}>Where it's used</h2>
-      {packageJson && packageJson.version ? (
-        <div className={styles.currentVersion}>
-          <label className={styles.currentVersionLabel}>Latest:</label>
-          <code className={styles.currentVersionNumber}>
-            {packageJson.version || 'No published version detected'}
-          </code>
+      {packageJson ? (
+        <div className={styles.packageDetails}>
+          {packageJson.version ? (
+            <div className={styles.currentVersion}>
+              <label className={styles.currentVersionLabel}>Latest:</label>
+              <code className={styles.currentVersionNumber}>
+                {packageJson.version || 'No published version detected'}
+              </code>
+            </div>
+          ) : null}
+          {packageJson.name ? (
+            <a
+              ref={linkRef}
+              className={styles.sourcegraphLink}
+              href={`${SOURCEGRAPH_URL}?${qs({
+                q: `-file:.json$ ${packageJson.name}`,
+              })}`}
+            >
+              Search with{' '}
+              <InlineSvg
+                className={styles.sourcegraphLogo}
+                src={require('../../svg/sourcegraph-logo.svg?include')}
+              />
+              <InlineSvg
+                className={styles.externalIcon}
+                src={require('../../svg/external-link.svg?include')}
+                data-hovered={isHovered}
+              />
+            </a>
+          ) : null}
         </div>
-      ) : null}
-      {packageJson && packageJson.name ? (
-        <a
-          ref={linkRef}
-          className={styles.sourcegraphLink}
-          href={`${SOURCEGRAPH_URL}?${qs({
-            q: `-file:.json$ ${packageJson.name}`,
-          })}`}
-        >
-          Search with{' '}
-          <InlineSvg
-            className={styles.sourcegraphLogo}
-            src={require('../../svg/sourcegraph-logo.svg?include')}
-          />
-          <InlineSvg
-            className={styles.externalIcon}
-            src={require('../../svg/external-link.svg?include')}
-            data-hovered={isHovered}
-          />
-        </a>
       ) : null}
     </div>
   )
