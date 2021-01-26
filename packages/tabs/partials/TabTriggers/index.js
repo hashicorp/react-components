@@ -81,7 +81,14 @@ class TabTriggers extends React.Component {
   }
 
   render() {
-    const { items, setActiveTabIdx, activeTabIdx } = this.props
+    const {
+      items,
+      setActiveTabIdx,
+      activeTabIdx,
+      activeTabPath,
+      setActiveTabPath,
+    } = this.props
+
     return (
       <div className="g-tab-triggers" ref={this.parentRef}>
         <div className="g-grid-container">
@@ -96,9 +103,11 @@ class TabTriggers extends React.Component {
                     // This array is stable, so we can use index as key
                     // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
+                    activeTabPath={activeTabPath}
                     activeTabIdx={activeTabIdx}
-                    setActiveTabIdx={(targetIdx) => {
+                    setActiveTab={(targetIdx, pathId) => {
                       setActiveTabIdx(targetIdx)
+                      pathId && setActiveTabPath(pathId)
                       this.updateScrollOffset(targetIdx)
                     }}
                     item={item}

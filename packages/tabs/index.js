@@ -12,6 +12,17 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
     isDefaultOutOfBounds ? 0 : defaultTabIdx
   )
 
+  let ctx
+  // need to catch if this hook isn't called within context
+  try {
+    ctx = useTabPaths()
+  } catch (e) {
+    console.warn(
+      'The `TabProvider` cannot be accessed. Make sure it is added if needing to use Tab Paths.',
+      { e }
+    )
+  }
+
   return (
     <section
       className={`g-tabs ${theme}${centered ? ' g-tabs-centered' : ''}${
@@ -22,8 +33,11 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
         items={items.map((item, idx) => ({
           tabIndex: idx,
           heading: item.heading,
+          tabPathId: item.tabPathId,
           ...(item.tooltip && { tooltip: item.tooltip }),
         }))}
+        activeTabPath={ctx?.activeTabPath}
+        setActiveTabPath={ctx?.setActiveTabPath}
         activeTabIdx={activeTabIdx}
         setActiveTabIdx={setActiveTabIdx}
       />
