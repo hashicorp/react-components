@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import TabTriggers from './partials/TabTriggers/index.js'
+import TabProvider, { useTabPaths } from './provider'
 
 function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
   const isDefaultOutOfBounds =
@@ -39,3 +40,4 @@ Tabs.defaultProps = {
 }
 
 export default Tabs
+export { TabProvider, useTabPaths }
