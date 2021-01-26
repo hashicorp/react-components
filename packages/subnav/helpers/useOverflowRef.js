@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 const MutationObserver =
-  (typeof window !== 'undefined' && MutationObserver) || null
+  (typeof window !== 'undefined' && window.MutationObserver) || null
 const mutationOpts = { attributes: true, childList: true, subtree: true }
 
 /*
