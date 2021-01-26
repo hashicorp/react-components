@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^2.1.0",
-    "@hashicorp/nextjs-scripts": "^13.5.0",
+    "@hashicorp/nextjs-scripts": "^14.1.4",
     "next": "9.5.5",
     "next-remote-watch": "^0.3.0",
     "node-cache": "^5.1.2",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "lint": "eslint . --ext js,jsx,ts,tsx --max-warnings 0",
+    "lint": "next-hashicorp lint",
     "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
     "release:check-auth": "./scripts/release-check-npm-auth.sh",

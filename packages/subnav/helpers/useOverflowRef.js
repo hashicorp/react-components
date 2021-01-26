@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 
-const MutationObserver = globalThis.MutationObserver || null
+const MutationObserver =
+  (typeof window !== 'undefined' && MutationObserver) || null
 const mutationOpts = { attributes: true, childList: true, subtree: true }
 
 /*
