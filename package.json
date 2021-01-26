@@ -43,7 +43,7 @@
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
       "next-hashicorp format",
-      "eslint"
+      "next-hashicorp lint"
     ]
   }
 }
