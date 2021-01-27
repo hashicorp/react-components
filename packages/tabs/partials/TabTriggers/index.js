@@ -105,10 +105,14 @@ class TabTriggers extends React.Component {
                     key={stableIdx}
                     activeTabGroup={activeTabGroup}
                     activeTabIdx={activeTabIdx}
-                    setActiveTab={(targetIdx, pathId) => {
+                    setActiveTab={(targetIdx, groupId) => {
                       setActiveTabIdx(targetIdx)
-                      if (pathId && setActiveTabGroup) {
-                        setActiveTabGroup(pathId)
+                      if (setActiveTabGroup) {
+                        // if the item is a part of a group, activate it
+                        // otherwise reset the group
+                        groupId
+                          ? setActiveTabGroup(groupId)
+                          : setActiveTabGroup(null)
                       }
                       this.updateScrollOffset(targetIdx)
                     }}
