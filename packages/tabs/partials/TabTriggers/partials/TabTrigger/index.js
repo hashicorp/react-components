@@ -3,19 +3,25 @@ import TooltipIcon from './icons/tooltip.svg.js'
 
 const TabTrigger = (props) => {
   const { item, activeTabIdx, setActiveTab, activeTabGroup } = props
-  const isActiveTab = item.group
-    ? item.group === activeTabGroup
-    : item.tabIndex === activeTabIdx
+  function isActiveTab() {
+    let active = false
+    const isInActiveGroup = !!item.group && item.group === activeTabGroup
 
-  // TODO: need to check if multiple tabs are 'active'
-  // should this controller be at the base level??
-  // and just pass down 'isActive' & 'setIsActive' to this level
-  // lots of edge cases to consider here, should the path reset if a new
-  // non-path item is selected?
+    if (isInActiveGroup) {
+      active = true
+      // if the tab is active based on group and the
+      // index doesn't match, update the active index
+      item.tabIndex !== activeTabIdx && setActiveTab(item.tabIndex)
+    } else if (item.tabIndex === activeTabIdx) {
+      active = true
+    }
+
+    return active
+  }
 
   return (
     <button
-      className={`g-tab-trigger ${isActiveTab ? ' active' : ''}`}
+      className={`g-tab-trigger ${isActiveTab() ? ' active' : ''}`}
       data-tabindex={item.tabIndex}
       onMouseDown={(e) => e.preventDefault()}
       onClick={() => setActiveTab(item.tabIndex, item.group)}
