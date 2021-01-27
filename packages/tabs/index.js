@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
@@ -11,12 +11,17 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
     // fallback to 0 to avoid throwing an error
     isDefaultOutOfBounds ? 0 : defaultTabIdx
   )
+  const groupCtx = useTabGroups()
 
-  const ctx = useTabGroups()
-  if (ctx === undefined)
-    console.warn(
-      'The `TabProvider` cannot be accessed. Make sure it wraps the Tabs components so Tab Groups can work properly.'
-    )
+  useEffect(() => {
+    const hasGroups = items.filter((item) => item.group).length > 0
+    if (hasGroups) {
+      groupCtx === undefined &&
+        console.warn(
+          'The `TabProvider` cannot be accessed. Make sure it wraps the Tabs components so Tab Groups can work properly.'
+        )
+    }
+  }, [])
 
   return (
     <section
@@ -31,8 +36,8 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
           group: item.group,
           ...(item.tooltip && { tooltip: item.tooltip }),
         }))}
-        activeTabGroup={ctx?.activeTabGroup}
-        setActiveTabGroup={ctx?.setActiveTabGroup}
+        activeTabGroup={groupCtx?.activeTabGroup}
+        setActiveTabGroup={groupCtx?.setActiveTabGroup}
         activeTabIdx={activeTabIdx}
         setActiveTabIdx={setActiveTabIdx}
       />
