@@ -44,7 +44,7 @@ module.exports = {
       group: {
         type: 'string',
         description:
-          "A unique identifier for a tab 'group' that, when active, all Tabs with this id will become active when one is selected.",
+          "A unique identifier for a tab 'group' that, when active, all Tabs with this id will become active when one is selected. _Note_ it's necessary to wrap the page with `TabProvider` for this feature to function. ",
       },
       tabChildren: {
         type: 'function',
