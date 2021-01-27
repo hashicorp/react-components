@@ -107,9 +107,8 @@ class TabTriggers extends React.Component {
                     activeTabIdx={activeTabIdx}
                     setActiveTab={(targetIdx, groupId) => {
                       setActiveTabIdx(targetIdx)
+                      // ensures the function isn't called out of context
                       if (setActiveTabGroup) {
-                        // if the item is a part of a group, activate it
-                        // otherwise reset the group
                         groupId
                           ? setActiveTabGroup(groupId)
                           : setActiveTabGroup(null)
