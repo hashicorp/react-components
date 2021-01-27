@@ -1,16 +1,16 @@
 import { createContext, useState, useContext } from 'react'
 
-export function useTabPaths() {
+export function useTabGroups() {
   return useContext(TabContext)
 }
 
 export const TabContext = createContext()
 
 export default function TabProvider({ children }) {
-  const [activeTabPath, setActiveTabPath] = useState('')
+  const [activeTabGroup, setActiveTabGroup] = useState()
 
   return (
-    <TabContext.Provider value={{ activeTabPath, setActiveTabPath }}>
+    <TabContext.Provider value={{ activeTabGroup, setActiveTabGroup }}>
       {children}
     </TabContext.Provider>
   )

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import TabTriggers from './partials/TabTriggers/index.js'
-import TabProvider, { useTabPaths } from './provider'
+import TabProvider, { useTabGroups } from './provider'
 
 function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
   const isDefaultOutOfBounds =
@@ -12,16 +12,11 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
     isDefaultOutOfBounds ? 0 : defaultTabIdx
   )
 
-  let ctx
-  // need to catch if this hook isn't called within context
-  try {
-    ctx = useTabPaths()
-  } catch (e) {
+  const ctx = useTabGroups()
+  if (ctx === undefined)
     console.warn(
-      'The `TabProvider` cannot be accessed. Make sure it is added if needing to use Tab Paths.',
-      { e }
+      'The `TabProvider` cannot be accessed. Make sure it wraps the Tabs components so Tab Groups can work properly.'
     )
-  }
 
   return (
     <section
@@ -33,11 +28,11 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
         items={items.map((item, idx) => ({
           tabIndex: idx,
           heading: item.heading,
-          tabPathId: item.tabPathId,
+          group: item.group,
           ...(item.tooltip && { tooltip: item.tooltip }),
         }))}
-        activeTabPath={ctx?.activeTabPath}
-        setActiveTabPath={ctx?.setActiveTabPath}
+        activeTabGroup={ctx?.activeTabGroup}
+        setActiveTabGroup={ctx?.setActiveTabGroup}
         activeTabIdx={activeTabIdx}
         setActiveTabIdx={setActiveTabIdx}
       />
@@ -54,4 +49,4 @@ Tabs.defaultProps = {
 }
 
 export default Tabs
-export { TabProvider, useTabPaths }
+export { TabProvider, useTabGroups }

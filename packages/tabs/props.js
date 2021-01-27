@@ -41,10 +41,10 @@ module.exports = {
         type: 'string',
         description: 'Optional tooltip to be displayed next to the tab title',
       },
-      tabPathId: {
+      group: {
         type: 'string',
         description:
-          "A unique identifier for a 'path' that, when active, all Tabs with this id will become active when one is selected.",
+          "A unique identifier for a tab 'group' that, when active, all Tabs with this id will become active when one is selected.",
       },
       tabChildren: {
         type: 'function',

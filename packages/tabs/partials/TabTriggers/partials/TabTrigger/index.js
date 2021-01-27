@@ -2,10 +2,10 @@ import Tippy from '@tippy.js/react'
 import TooltipIcon from './icons/tooltip.svg.js'
 
 const TabTrigger = (props) => {
-  const { item, activeTabIdx, setActiveTab, activeTabPath } = props
-  const hasTabPath = item.tabPathId
-  const isActivePath = item.tabPathId === activeTabPath
-  const isActiveTab = hasTabPath ? isActivePath : item.tabIndex === activeTabIdx
+  const { item, activeTabIdx, setActiveTab, activeTabGroup } = props
+  const isActiveTab = item.group
+    ? item.group === activeTabGroup
+    : item.tabIndex === activeTabIdx
 
   // TODO: need to check if multiple tabs are 'active'
   // should this controller be at the base level??
@@ -18,7 +18,7 @@ const TabTrigger = (props) => {
       className={`g-tab-trigger ${isActiveTab ? ' active' : ''}`}
       data-tabindex={item.tabIndex}
       onMouseDown={(e) => e.preventDefault()}
-      onClick={() => setActiveTab(item.tabIndex, item.tabPathId)}
+      onClick={() => setActiveTab(item.tabIndex, item.group)}
     >
       <span className="inner">
         <span className="g-type-body-strong">{item.heading}</span>

@@ -85,8 +85,8 @@ class TabTriggers extends React.Component {
       items,
       setActiveTabIdx,
       activeTabIdx,
-      activeTabPath,
-      setActiveTabPath,
+      activeTabGroup,
+      setActiveTabGroup,
     } = this.props
 
     return (
@@ -103,11 +103,13 @@ class TabTriggers extends React.Component {
                     // This array is stable, so we can use index as key
                     // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
-                    activeTabPath={activeTabPath}
+                    activeTabGroup={activeTabGroup}
                     activeTabIdx={activeTabIdx}
                     setActiveTab={(targetIdx, pathId) => {
                       setActiveTabIdx(targetIdx)
-                      pathId && setActiveTabPath(pathId)
+                      if (pathId && setActiveTabGroup) {
+                        setActiveTabGroup(pathId)
+                      }
                       this.updateScrollOffset(targetIdx)
                     }}
                     item={item}
