@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
 import Tippy from '@tippy.js/react'
 import TooltipIcon from './icons/tooltip.svg.js'
+import { useTabGroups } from '../../../../provider.js'
 
 const TabTrigger = (props) => {
-  const { item, activeTabIdx, setActiveTab, activeTabGroup } = props
-  const isInActiveGroup = !!item.group && item.group === activeTabGroup
+  const { item, activeTabIdx, setActiveTab } = props
+  const groupCtx = useTabGroups()
+  const activeGroup = groupCtx?.activeTabGroup
+  const isInActiveGroup = groupCtx && !!item.group && item.group === activeGroup
   const isActiveIndex = item.tabIndex === activeTabIdx
   const isActiveTab = isInActiveGroup || isActiveIndex ? true : false
 
@@ -12,7 +15,7 @@ const TabTrigger = (props) => {
     // if the tab is active based on group and the
     // index doesn't match, update the active index
     if (isInActiveGroup) !isActiveIndex && setActiveTab(item.tabIndex)
-  }, [activeTabGroup])
+  }, [activeGroup])
 
   return (
     <button

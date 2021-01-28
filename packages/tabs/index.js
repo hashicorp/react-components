@@ -44,7 +44,6 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
           group: item.group,
           ...(item.tooltip && { tooltip: item.tooltip }),
         }))}
-        activeTabGroup={groupCtx?.activeTabGroup}
         activeTabIdx={activeTabIdx}
         setActiveTab={setActiveTab}
       />

@@ -81,7 +81,7 @@ class TabTriggers extends React.Component {
   }
 
   render() {
-    const { items, activeTabIdx, activeTabGroup, setActiveTab } = this.props
+    const { items, activeTabIdx, setActiveTab } = this.props
 
     return (
       <div className="g-tab-triggers" ref={this.parentRef}>
@@ -97,7 +97,6 @@ class TabTriggers extends React.Component {
                     // This array is stable, so we can use index as key
                     // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
-                    activeTabGroup={activeTabGroup}
                     activeTabIdx={activeTabIdx}
                     setActiveTab={(targetIdx, groupId) => {
                       setActiveTab(targetIdx, groupId)
