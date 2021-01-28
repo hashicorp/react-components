@@ -10,7 +10,8 @@ export default function TabProvider({ children }) {
   const [activeTabGroup, setActiveTabGroup] = useState()
 
   return (
-    <TabContext.Provider value={{ activeTabGroup, setActiveTabGroup }}>
+    const contextValue = useMemo(() => ({ activeTabGroup, setActiveTabGroup }), [activeTabGroup])
+    <TabContext.Provider value={contextValue}>
       {children}
     </TabContext.Provider>
   )
