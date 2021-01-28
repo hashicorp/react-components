@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react'
+import { createContext, useState, useContext, useMemo } from 'react'
 
 export function useTabGroups() {
   return useContext(TabContext)
@@ -8,11 +8,11 @@ export const TabContext = createContext()
 
 export default function TabProvider({ children }) {
   const [activeTabGroup, setActiveTabGroup] = useState()
+  const contextValue = useMemo(() => ({ activeTabGroup, setActiveTabGroup }), [
+    activeTabGroup,
+  ])
 
   return (
-    const contextValue = useMemo(() => ({ activeTabGroup, setActiveTabGroup }), [activeTabGroup])
-    <TabContext.Provider value={contextValue}>
-      {children}
-    </TabContext.Provider>
+    <TabContext.Provider value={contextValue}>{children}</TabContext.Provider>
   )
 }
