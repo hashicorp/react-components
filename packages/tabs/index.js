@@ -13,6 +13,11 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
   )
   const groupCtx = useTabGroups()
 
+  function setActiveTab(targetIdx, groupId) {
+    setActiveTabIdx(targetIdx)
+    if (groupCtx) groupCtx.setActiveTabGroup(groupId)
+  }
+
   useEffect(() => {
     const hasGroups = items.filter((item) => item.group).length > 0
     if (
@@ -40,9 +45,8 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
           ...(item.tooltip && { tooltip: item.tooltip }),
         }))}
         activeTabGroup={groupCtx?.activeTabGroup}
-        setActiveTabGroup={groupCtx?.setActiveTabGroup}
         activeTabIdx={activeTabIdx}
-        setActiveTabIdx={setActiveTabIdx}
+        setActiveTab={setActiveTab}
       />
       <div className="g-grid-container">
         {items[activeTabIdx].tabChildren()}
