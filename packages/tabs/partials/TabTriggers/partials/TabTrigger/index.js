@@ -1,27 +1,22 @@
+import { useEffect } from 'react'
 import Tippy from '@tippy.js/react'
 import TooltipIcon from './icons/tooltip.svg.js'
 
 const TabTrigger = (props) => {
   const { item, activeTabIdx, setActiveTab, activeTabGroup } = props
-  function isActiveTab() {
-    let active = false
-    const isInActiveGroup = !!item.group && item.group === activeTabGroup
+  const isInActiveGroup = !!item.group && item.group === activeTabGroup
+  const isActiveIndex = item.tabIndex === activeTabIdx
+  const isActiveTab = isInActiveGroup || isActiveIndex ? true : false
 
-    if (isInActiveGroup) {
-      active = true
-      // if the tab is active based on group and the
-      // index doesn't match, update the active index
-      item.tabIndex !== activeTabIdx && setActiveTab(item.tabIndex)
-    } else if (item.tabIndex === activeTabIdx) {
-      active = true
-    }
-
-    return active
-  }
+  useEffect(() => {
+    // if the tab is active based on group and the
+    // index doesn't match, update the active index
+    if (isInActiveGroup) !isActiveIndex && setActiveTab(item.tabIndex)
+  }, [activeTabGroup])
 
   return (
     <button
-      className={`g-tab-trigger ${isActiveTab() ? ' active' : ''}`}
+      className={`g-tab-trigger ${isActiveTab ? ' active' : ''}`}
       data-tabindex={item.tabIndex}
       onMouseDown={(e) => e.preventDefault()}
       onClick={() => setActiveTab(item.tabIndex, item.group)}
