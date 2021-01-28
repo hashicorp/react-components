@@ -15,10 +15,9 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
 
   useEffect(() => {
     const hasGroups = items.filter((item) => item.group).length > 0
-    if (hasGroups) {
-      groupCtx === undefined &&
+    if (process.env.NODE_ENV !== 'production' && hasGroups && groupCtx === undefined) {
         console.warn(
-          'The `TabProvider` cannot be accessed. Make sure it wraps the Tabs components so Tab Groups can work properly.'
+          'The `TabProvider` cannot be accessed. Make sure it wraps the `Tabs` components so Tab Groups can work properly.'
         )
     }
   }, [])
