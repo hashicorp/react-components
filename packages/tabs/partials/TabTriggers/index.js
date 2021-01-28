@@ -109,7 +109,7 @@ class TabTriggers extends React.Component {
                       setActiveTabIdx(targetIdx)
                       // ensures the function isn't called out of context
                       if (setActiveTabGroup) {
-                        setActiveTabGroup(groupId ? groupId : null)
+                        setActiveTabGroup(groupId)
                       }
                       this.updateScrollOffset(targetIdx)
                     }}
