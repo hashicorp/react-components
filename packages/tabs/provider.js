@@ -4,7 +4,7 @@ export function useTabGroups() {
   return useContext(TabContext)
 }
 
-export const TabContext = createContext()
+const TabContext = createContext()
 
 export default function TabProvider({ children }) {
   const [activeTabGroup, setActiveTabGroup] = useState()
