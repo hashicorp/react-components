@@ -7,7 +7,7 @@ const TabTrigger = (props) => {
   const { item, activeTabIdx, setActiveTab } = props
   const groupCtx = useTabGroups()
   const activeGroup = groupCtx?.activeTabGroup
-  const isInActiveGroup = groupCtx && !!item.group && item.group === activeGroup
+  const isInActiveGroup = groupCtx && item.group && item.group === activeGroup
   const isActiveIndex = item.tabIndex === activeTabIdx
   const isActiveTab = isInActiveGroup || isActiveIndex ? true : false
 
