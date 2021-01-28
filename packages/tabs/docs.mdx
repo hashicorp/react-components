@@ -111,19 +111,17 @@ With Tab Groups — First, second and third tabs should be actively synced based
 <LiveComponent>{`<Tabs
   items={[
     {
-      heading: 'First tab',
+      heading: 'First tab group',
       group: 'first',
       tabChildren: () => null
     },
     {
-      heading: 'Second tab with long name',
+      heading: 'Second tab group',
       group: 'second',
-      tooltip:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
       tabChildren: () => null
     },
     {
-      heading: 'Third long name tab',
+      heading: 'Third tab group',
       group: 'third',
       tabChildren: () => null
     },
@@ -140,8 +138,6 @@ With Tab Groups — First, second and third tabs should be actively synced based
     {
       heading: 'Second tab!',
       group: 'second',
-      tooltip:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
       tabChildren: () => null
     },
     {
@@ -150,24 +146,4 @@ With Tab Groups — First, second and third tabs should be actively synced based
       tabChildren: () => null
     },
   ]}
-/>`}</LiveComponent>
-
-<LiveComponent>{`<Tabs
-  items={[
-    {
-      heading: 'First tab',
-      group: 'first',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Second, not in a group',
-      tooltip:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Third, not in a group',
-      tabChildren: () => null
-    },
-]}
 />`}</LiveComponent>
