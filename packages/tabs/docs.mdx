@@ -105,3 +105,45 @@ With tooltips!
     }
   ]}
 />`}</LiveComponent>
+
+With Tab Groups — First, second and third tabs should be actively synced based on their matching `group` property. _Note_ the `TabProvider` must wrap the page where this component is used for 'groups' to function properly.
+
+<LiveComponent>{`<Tabs
+  items={[
+    {
+      heading: 'First tab group',
+      group: 'first',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Second tab group',
+      group: 'second',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Third tab group',
+      group: 'third',
+      tabChildren: () => null
+    },
+  ]}
+/>`}</LiveComponent>
+
+<LiveComponent>{`<Tabs
+  items={[
+    {
+      heading: 'First tab!',
+      group: 'first',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Second tab!',
+      group: 'second',
+      tabChildren: () => null
+    },
+    {
+      heading: 'Third tab!',
+      group: 'third',
+      tabChildren: () => null
+    },
+  ]}
+/>`}</LiveComponent>

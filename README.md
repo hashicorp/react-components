@@ -54,7 +54,7 @@ By default, `npm run release:canary` will publish a pre-patch canary release. If
 
 ### Publishing Production Releases
 
-Production releases should only be published off of `master`.
+Production releases should only be published off of `main`.
 
 ```sh
 npm run release
@@ -72,7 +72,7 @@ The current workaround is not ideal, but should completely fix the issue. Defini
 
    ```sh
    git reset --hard HEAD^ # reset the previous commit
-   git push origin master --force-with-lease # push new history
+   git push origin main --force-with-lease # push new history
    ```
 
 1. **Delete the tags** that point to the deleted publish commit

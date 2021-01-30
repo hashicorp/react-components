@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import Tabs from './'
+import Tabs, { TabProvider, useTabGroups } from './'
 
 const baseProps = {
   items: [
@@ -22,6 +22,10 @@ const baseProps = {
       },
     },
   ],
+}
+
+const renderWithProvider = (ui) => {
+  return render(<TabProvider>{ui}</TabProvider>)
 }
 
 describe('<Tabs />', () => {
@@ -111,5 +115,57 @@ describe('<Tabs />', () => {
   it('should gracefully handle a default tab index that is out of bounds', () => {
     const { getByText } = render(<Tabs {...baseProps} defaultTabIdx={6} />)
     expect(getByText('Tab 1 Content')).toBeInTheDocument()
+  })
+
+  it('should render children of all active group items when clicked', () => {
+    const items = [
+      {
+        heading: 'h1',
+        group: '1',
+        tabChildren() {
+          return 'Group 1'
+        },
+      },
+      {
+        heading: 'h2',
+        group: '2',
+        tabChildren() {
+          return 'Group 2'
+        },
+      },
+      {
+        heading: 'h3',
+        group: '3',
+        tabChildren() {
+          return 'Group 3'
+        },
+      },
+    ]
+    renderWithProvider(
+      <>
+        <Tabs items={items} />
+        <Tabs items={items} />
+        <Tabs items={items} />
+      </>
+    )
+    items.forEach((item) => {
+      const groupTabs = screen.getAllByText(item.heading)
+      // click one group item
+      fireEvent.click(groupTabs[0])
+      const groupChildren = screen.getAllByText(item.tabChildren())
+      // all associated group items should render
+      expect(groupChildren.length).toBe(3)
+    })
+  })
+})
+
+describe('<TabProvider />', () => {
+  it('should provide a context object', () => {
+    function Consumer() {
+      const context = useTabGroups()
+      return <div>{typeof context}</div>
+    }
+    renderWithProvider(<Consumer />)
+    expect(screen.getByText('object')).toBeInTheDocument()
   })
 })

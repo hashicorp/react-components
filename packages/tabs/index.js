@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TabTriggers from './partials/TabTriggers/index.js'
+import TabProvider, { useTabGroups } from './provider'
 
 function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
   const isDefaultOutOfBounds =
@@ -10,6 +11,25 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
     // fallback to 0 to avoid throwing an error
     isDefaultOutOfBounds ? 0 : defaultTabIdx
   )
+  const groupCtx = useTabGroups()
+
+  function setActiveTab(targetIdx, groupId) {
+    setActiveTabIdx(targetIdx)
+    if (groupCtx) groupCtx.setActiveTabGroup(groupId)
+  }
+
+  useEffect(() => {
+    const hasGroups = items.filter((item) => item.group).length > 0
+    if (
+      process.env.NODE_ENV !== 'production' &&
+      hasGroups &&
+      groupCtx === undefined
+    ) {
+      console.warn(
+        'The `TabProvider` cannot be accessed. Make sure it wraps the `Tabs` components so Tab Groups can work properly.'
+      )
+    }
+  }, [])
 
   return (
     <section
@@ -21,10 +41,11 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
         items={items.map((item, idx) => ({
           tabIndex: idx,
           heading: item.heading,
+          group: item.group,
           ...(item.tooltip && { tooltip: item.tooltip }),
         }))}
         activeTabIdx={activeTabIdx}
-        setActiveTabIdx={setActiveTabIdx}
+        setActiveTab={setActiveTab}
       />
       <div className="g-grid-container">
         {items[activeTabIdx].tabChildren()}
@@ -39,3 +60,4 @@ Tabs.defaultProps = {
 }
 
 export default Tabs
+export { TabProvider, useTabGroups }

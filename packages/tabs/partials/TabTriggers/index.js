@@ -81,7 +81,8 @@ class TabTriggers extends React.Component {
   }
 
   render() {
-    const { items, setActiveTabIdx, activeTabIdx } = this.props
+    const { items, activeTabIdx, setActiveTab } = this.props
+
     return (
       <div className="g-tab-triggers" ref={this.parentRef}>
         <div className="g-grid-container">
@@ -97,8 +98,8 @@ class TabTriggers extends React.Component {
                     // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
                     activeTabIdx={activeTabIdx}
-                    setActiveTabIdx={(targetIdx) => {
-                      setActiveTabIdx(targetIdx)
+                    setActiveTab={(targetIdx, groupId) => {
+                      setActiveTab(targetIdx, groupId)
                       this.updateScrollOffset(targetIdx)
                     }}
                     item={item}
@@ -111,7 +112,7 @@ class TabTriggers extends React.Component {
             className="arrow prev"
             onClick={() => {
               if (activeTabIdx > 0) {
-                setActiveTabIdx(activeTabIdx - 1)
+                setActiveTab(activeTabIdx - 1, items[activeTabIdx - 1].group)
                 this.updateScrollOffset(activeTabIdx - 1)
               } else {
                 this.updateScrollOffset(activeTabIdx)
@@ -124,7 +125,7 @@ class TabTriggers extends React.Component {
             className="arrow next"
             onClick={() => {
               if (activeTabIdx < items.length - 1) {
-                setActiveTabIdx(activeTabIdx + 1)
+                setActiveTab(activeTabIdx + 1, items[activeTabIdx + 1].group)
                 this.updateScrollOffset(activeTabIdx + 1)
               } else {
                 this.updateScrollOffset(activeTabIdx)
