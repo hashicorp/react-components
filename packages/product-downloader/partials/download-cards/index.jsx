@@ -74,21 +74,7 @@ function Cards({
           <div className={styles.packageManagers}>
             <span className={styles.cardTitle}>Package Manager</span>
             {hasMultiplePackageManagers ? (
-              <Tabs
-                theme={theme}
-                items={packageManagers.map(({ label, commands }) => ({
-                  heading: label,
-                  tabChildren: function TabChildren() {
-                    return (
-                      <div className={styles.install}>
-                        {commands.map((command) => (
-                          <pre key={command}>{command}</pre>
-                        ))}
-                      </div>
-                    )
-                  },
-                }))}
-              >
+              <Tabs theme={theme}>
                 {packageManagers.map((mgr, stableIdx) => {
                   const { label, commands } = mgr
                   return (
