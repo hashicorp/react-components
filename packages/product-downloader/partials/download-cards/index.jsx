@@ -1,4 +1,4 @@
-import Tabs from '@hashicorp/react-tabs'
+import Tabs, { Tab } from '@hashicorp/react-tabs'
 
 import { prettyOs, prettyArch } from '../../utils/downloader'
 import styles from './style.module.css'
@@ -21,10 +21,12 @@ export default function DownloadTabs({
       theme={brand}
       className={styles.tabs}
       defaultTabIdx={defaultTabIdx}
-      items={tabData.map(({ os, packageManagers }) => ({
-        heading: prettyOs(os),
-        tabChildren: function TabChildren() {
-          return (
+    >
+      {tabData.map((tab, stableIdx) => {
+        const { os, packageManagers } = tab
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <Tab key={stableIdx} heading={prettyOs(os)}>
             <div className={styles.cards}>
               <Cards
                 key={os}
@@ -38,10 +40,10 @@ export default function DownloadTabs({
               />
               {merchandisingSlot}
             </div>
-          )
-        },
-      }))}
-    />
+          </Tab>
+        )
+      })}
+    </Tabs>
   )
 }
 
@@ -86,7 +88,21 @@ function Cards({
                     )
                   },
                 }))}
-              />
+              >
+                {packageManagers.map((mgr, stableIdx) => {
+                  const { label, commands } = mgr
+
+                  return (
+                    <Tab key={stableIdx} heading={label}>
+                      <div className={styles.install}>
+                        {commands.map((command) => (
+                          <pre key={command}>{command}</pre>
+                        ))}
+                      </div>
+                    </Tab>
+                  )
+                })}
+              </Tabs>
             ) : (
               <div className={styles.install}>
                 {packageManagers[0].commands.map((command) => (
