@@ -31,8 +31,8 @@ module.exports = {
       'If true, the border line underneath the tabs expands to the full width of the container, rather than being slightly padded from the edges',
     control: { type: 'checkbox' },
   },
-  items: {
-    type: 'object',
+  children: {
+    type: 'React.ReactNode',
     description: 'Data to be displayed as tabs',
     required: true,
     properties: {
