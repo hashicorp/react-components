@@ -1,0 +1,36 @@
+.root {
+  text-align: center;
+  max-width: 784px;
+  margin: 0 auto;
+}
+
+.headlineOne {
+  composes: g-type-display-1 from global;
+  margin: 0;
+}
+
+.headlineTwo {
+  composes: g-type-display-2 from global;
+  margin: 0;
+}
+
+.description {
+  composes: g-type-body-large from global;
+  margin-top: 16px;
+
+  @media (--large) {
+    margin-top: 24px;
+  }
+
+  & > p {
+    margin: 0;
+
+    & + p {
+      margin-top: 16px;
+
+      @media (--large) {
+        margin-top: 24px;
+      }
+    }
+  }
+}

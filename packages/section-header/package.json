@@ -7,8 +7,7 @@
     "Jeff Escalante"
   ],
   "dependencies": {
-    "@hashicorp/js-utils": "^1.0.10",
-    "marked": "^0.7.0"
+    "@hashicorp/js-utils": "^1.0.10"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
