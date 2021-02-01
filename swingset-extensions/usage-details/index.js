@@ -3,22 +3,29 @@ import TopBar from './partials/top-bar'
 import styles from './usage-details.module.css'
 import PROJECT_LIST from './project-list'
 
-export default function UsageDetails({ packageName }) {
+export default function UsageDetails({ packageJson }) {
   return (
     <section className={styles.root}>
-      <TopBar packageName={packageName} />
-      <ul className={styles.list}>
-        {PROJECT_LIST.map(({ repo, dir }) => {
-          return (
-            <ProjectListItem
-              key={`${repo}${dir}`}
-              packageName={packageName}
-              repo={repo}
-              dir={dir}
-            />
-          )
-        })}
-      </ul>
+      <TopBar packageJson={packageJson} />
+      {packageJson ? (
+        <ul className={styles.list}>
+          {PROJECT_LIST.map(({ repo, dir }) => {
+            return (
+              <ProjectListItem
+                key={`${repo}${dir}`}
+                packageName={packageJson.name}
+                repo={repo}
+                dir={dir}
+              />
+            )
+          })}
+        </ul>
+      ) : (
+        <p>
+          No <code>package.json</code> detected for this component. Maybe this
+          component hasn&apos;t been published to <code>npm</code>?
+        </p>
+      )}
     </section>
   )
 }

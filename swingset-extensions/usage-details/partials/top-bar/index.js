@@ -7,31 +7,44 @@ import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
 const { SOURCEGRAPH_URL } = publicRuntimeConfig
 
-function TopBar({ packageName }) {
+function TopBar({ packageJson }) {
   const [linkRef, isHovered] = useHover()
 
   //  Build our SourceGraph URL, with pre-filled query
   //  We exclude `.json` files, since we usually don't
   //  really care about package.json in SourceGraph
   //  (we already know the version from our UsageDetails component!)
-  const sourceGraphQuery = `-file:.json$ ${packageName}`
-  const searchUrl = `${SOURCEGRAPH_URL}?${qs({ q: sourceGraphQuery })}`
-
   return (
     <div className={styles.root}>
       <h2 className={styles.heading}>Where it&apos;s used</h2>
-      <a ref={linkRef} className={styles.sourcegraphLink} href={searchUrl}>
-        Search with{' '}
-        <InlineSvg
-          className={styles.sourcegraphLogo}
-          src={require('../../svg/sourcegraph-logo.svg?include')}
-        />
-        <InlineSvg
-          className={styles.externalIcon}
-          src={require('../../svg/external-link.svg?include')}
-          data-hovered={isHovered}
-        />
-      </a>
+      {packageJson ? (
+        <div className={styles.packageDetails}>
+          <div className={styles.currentVersion}>
+            <span className={styles.currentVersionLabel}>Latest:</span>
+            <code className={styles.currentVersionNumber}>
+              {packageJson.version || 'No published version detected'}
+            </code>
+          </div>
+          <a
+            ref={linkRef}
+            className={styles.sourcegraphLink}
+            href={`${SOURCEGRAPH_URL}?${qs({
+              q: `-file:.json$ ${packageJson.name}`,
+            })}`}
+          >
+            Search with{' '}
+            <InlineSvg
+              className={styles.sourcegraphLogo}
+              src={require('../../svg/sourcegraph-logo.svg?include')}
+            />
+            <InlineSvg
+              className={styles.externalIcon}
+              src={require('../../svg/external-link.svg?include')}
+              data-hovered={isHovered}
+            />
+          </a>
+        </div>
+      ) : null}
     </div>
   )
 }
