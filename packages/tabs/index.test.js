@@ -123,6 +123,21 @@ describe('<Tabs />', () => {
       expect(groupChildren.length).toBe(3)
     })
   })
+
+  it('should handle only one tab', () => {
+    function SingleTab({ item }) {
+      const { heading, content } = item
+      return (
+        <Tabs>
+          <Tab heading={heading}>
+            <div>{content}</div>
+          </Tab>
+        </Tabs>
+      )
+    }
+    const { getByText } = render(<SingleTab item={baseItems[0]} />)
+    expect(getByText('Tab 1 Content')).toBeInTheDocument()
+  })
 })
 
 describe('<TabProvider />', () => {

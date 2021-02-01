@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Children } from 'react'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
 function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
+  if (!children) return null
+
+  children = !Array.isArray(children) ? Children.toArray(children) : children
+
   const isDefaultOutOfBounds =
     defaultTabIdx >= children.length || defaultTabIdx < 0
 
