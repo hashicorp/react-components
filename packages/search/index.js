@@ -4,7 +4,12 @@ import Hits from './hits'
 import SearchBox from './search-box'
 import SearchProvider, { useSearch } from './provider'
 
-function Search({ placeholder = 'Search', renderHitContent, resolveHitLink }) {
+function Search({
+  placeholder = 'Search',
+  renderHitContent,
+  resolveHitLink,
+  onEnter,
+}) {
   if (!renderHitContent) {
     throw new Error(
       'Please provide a `renderHitContent` prop to the Search component'
@@ -48,6 +53,7 @@ function Search({ placeholder = 'Search', renderHitContent, resolveHitLink }) {
               renderHitContent,
               resolveHitLink,
               setCancelled,
+              onEnter,
             }}
           />
         )}

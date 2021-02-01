@@ -16,10 +16,10 @@ function Hits({
   resolveHitLink,
   query,
   setCancelled,
+  onEnter,
 }) {
   const selectedHit = useRef(null)
   const [hitsTabIndex, setHitsTabIndex] = useState(null)
-
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
@@ -56,9 +56,14 @@ function Hits({
     }
   }
 
-  function handleEnter(e) {
-    e.preventDefault()
-    selectedHit.current?.click()
+  function handleEnter(event) {
+    //  if focus is currently applied to a search result,
+    //  we do nothing - i.e., redirect to the result via native browser event handler.
+    //  only intercept if callback is provided and we're focused on something that isn't a hit result.
+    if (!event.target.classList.contains('hit-link-wrapper') && onEnter) {
+      event.preventDefault()
+      onEnter({ event, query })
+    }
   }
 
   function incrementTabIndex() {
@@ -66,6 +71,7 @@ function Hits({
     const nextIndex = startIndex + 1
     if (nextIndex > hits.length) return setHitsTabIndex(1)
     setHitsTabIndex(nextIndex)
+    selectedHit.current.focus()
   }
 
   function decrementTabIndex() {
@@ -73,6 +79,7 @@ function Hits({
     const nextIndex = startIndex - 1
     if (nextIndex < 1) return setHitsTabIndex(hits.length)
     setHitsTabIndex(nextIndex)
+    selectedHit.current.focus()
   }
 
   function scrollToActive(el) {
