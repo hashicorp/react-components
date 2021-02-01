@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
-function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
+function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
   const isDefaultOutOfBounds =
-    defaultTabIdx >= items.length || defaultTabIdx < 0
+    defaultTabIdx >= children.length || defaultTabIdx < 0
 
   const [activeTabIdx, setActiveTabIdx] = useState(
     // if specified default is out of bounds (ie, it's determined at runtime),
@@ -19,7 +19,7 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
   }
 
   useEffect(() => {
-    const hasGroups = items.filter((item) => item.group).length > 0
+    const hasGroups = children.filter((tab) => tab.props.group).length > 0
     if (
       process.env.NODE_ENV !== 'production' &&
       hasGroups &&
@@ -38,17 +38,20 @@ function Tabs({ items, defaultTabIdx, centered, fullWidthBorder, theme }) {
       }`}
     >
       <TabTriggers
-        items={items.map((item, idx) => ({
-          tabIndex: idx,
-          heading: item.heading,
-          group: item.group,
-          ...(item.tooltip && { tooltip: item.tooltip }),
-        }))}
+        items={children.map((tab, idx) => {
+          const { heading, group, tooltip } = tab.props
+          return {
+            tabIndex: idx,
+            heading,
+            group,
+            tooltip,
+          }
+        })}
         activeTabIdx={activeTabIdx}
         setActiveTab={setActiveTab}
       />
       <div className="g-grid-container">
-        {items[activeTabIdx].tabChildren()}
+        {children[activeTabIdx].props.children}
       </div>
     </section>
   )
@@ -59,5 +62,9 @@ Tabs.defaultProps = {
   theme: '',
 }
 
+function Tab({ children }) {
+  return <>{children}</>
+}
+
 export default Tabs
-export { TabProvider, useTabGroups }
+export { TabProvider, useTabGroups, Tab }
