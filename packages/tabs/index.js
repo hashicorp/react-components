@@ -4,7 +4,6 @@ import TabProvider, { useTabGroups } from './provider'
 
 function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
   if (!children) return null
-
   children = !Array.isArray(children) ? Children.toArray(children) : children
 
   const isDefaultOutOfBounds =

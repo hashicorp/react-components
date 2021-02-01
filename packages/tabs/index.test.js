@@ -24,6 +24,7 @@ function BaseTabs({ items, defaultTabIdx = 0 }) {
       {items.map((tab, i) => {
         const { heading, tooltip, group, content } = tab
         return (
+          // eslint-disable-next-line react/no-array-index-key
           <Tab key={i} heading={heading} tooltip={tooltip} group={group}>
             <div>{content}</div>
           </Tab>

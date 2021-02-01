@@ -91,8 +91,8 @@ function Cards({
               >
                 {packageManagers.map((mgr, stableIdx) => {
                   const { label, commands } = mgr
-
                   return (
+                    // eslint-disable-next-line react/no-array-index-key
                     <Tab key={stableIdx} heading={label}>
                       <div className={styles.install}>
                         {commands.map((command) => (
