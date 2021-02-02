@@ -22,27 +22,22 @@ export default function DownloadTabs({
       className={styles.tabs}
       defaultTabIdx={defaultTabIdx}
     >
-      {tabData.map((tab, stableIdx) => {
-        const { os, packageManagers } = tab
-        return (
-          // eslint-disable-next-line react/no-array-index-key
-          <Tab key={stableIdx} heading={prettyOs(os)}>
-            <div className={styles.cards}>
-              <Cards
-                key={os}
-                os={os}
-                downloads={downloads}
-                packageManagers={packageManagers}
-                version={version}
-                theme={brand}
-                logo={logo}
-                tutorialLink={tutorialLink}
-              />
-              {merchandisingSlot}
-            </div>
-          </Tab>
-        )
-      })}
+      {tabData.map(({ os, packageManagers }) => (
+        <Tab key={os} heading={prettyOs(os)}>
+          <div className={styles.cards}>
+            <Cards
+              os={os}
+              downloads={downloads}
+              packageManagers={packageManagers}
+              version={version}
+              theme={brand}
+              logo={logo}
+              tutorialLink={tutorialLink}
+            />
+            {merchandisingSlot}
+          </div>
+        </Tab>
+      ))}
     </Tabs>
   )
 }
@@ -75,19 +70,15 @@ function Cards({
             <span className={styles.cardTitle}>Package Manager</span>
             {hasMultiplePackageManagers ? (
               <Tabs theme={theme}>
-                {packageManagers.map((mgr, stableIdx) => {
-                  const { label, commands } = mgr
-                  return (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <Tab key={stableIdx} heading={label}>
-                      <div className={styles.install}>
-                        {commands.map((command) => (
-                          <pre key={command}>{command}</pre>
-                        ))}
-                      </div>
-                    </Tab>
-                  )
-                })}
+                {packageManagers.map(({ label, commands }) => (
+                  <Tab key={label} heading={label}>
+                    <div className={styles.install}>
+                      {commands.map((command) => (
+                        <pre key={command}>{command}</pre>
+                      ))}
+                    </div>
+                  </Tab>
+                ))}
               </Tabs>
             ) : (
               <div className={styles.install}>
