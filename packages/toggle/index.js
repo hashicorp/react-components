@@ -25,7 +25,7 @@ export default function Toggle({ enabled, onChange = () => {} }) {
         role="switch"
         checked={enabledState}
         onChange={handleChange}
-        className={'switch-input'}
+        className="switch-input"
         data-testid="react-toggle"
       />
       <span className={`switch ${enabledState ? 'on' : ''}`} />
