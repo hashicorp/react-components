@@ -4,13 +4,17 @@ componentName: Tabs
 
 General purpose tabs component. Used heavily across all websites, but especially heavily on Learn.
 
-<LiveComponent>{`<Tabs
-  items={[
-    { heading: 'First Tab', tabChildren: () => <p>First tab content</p> },
-    { heading: 'Second Tab', tabChildren: () => <p>Second tab content</p> },
-    { heading: 'Third tab', tabChildren: () => <p>Third tab content</p> }
-  ]}
-/>`}</LiveComponent>
+<LiveComponent>{`<Tabs>
+  <Tab heading="First Tab">
+    <p>First tab content</p>
+  </Tab>
+  <Tab heading="Second Tab">
+    <p>Second tab content</p>
+  </Tab>
+  <Tab heading="Third Tab">
+    <p>Third tab content</p>
+  </Tab>
+</Tabs>`}</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -27,123 +31,65 @@ With appearance-based options set:
   fullWidthBorder={true}
   centered={true}
   defaultTabIdx={1}
-  items={[
-    { heading: 'First Tab', tabChildren: () => <p>First tab content</p> },
-    { heading: 'Second Tab', tabChildren: () => <p>Second tab content</p> },
-    { heading: 'Third tab', tabChildren: () => <p>Third tab content</p> }
-  ]}
-/>`}</LiveComponent>
+>
+  <Tab heading="First Tab">
+    <p>First tab content</p>
+  </Tab>
+  <Tab heading="Second Tab">
+    <p>Second tab content</p>
+  </Tab>
+  <Tab heading="Third Tab">
+    <p>Third tab content</p>
+  </Tab>
+</Tabs>`}</LiveComponent>
 
 A bunch of tabs:
 
-<LiveComponent>{`<Tabs
-    items={[
-      {
-        heading: 'First tab',
-        tabChildren: () => null
-      },
-      {
-        heading: 'Second tab with long name',
-        tabChildren: () => null
-      },
-      {
-        heading: 'Third long name tab',
-        tabChildren: () => null
-      },
-      {
-        heading: 'Fourth tab lots of tabs',
-        tabChildren: () => null
-      },
-      {
-        heading: 'Fifth tab',
-        tabChildren: () => null
-      },
-      {
-        heading: 'Sixth tab',
-        tabChildren: () => null
-      },
-      {
-        heading: 'Seventh tab with an even longer name than the second tab',
-        tabChildren: () => null
-      }
-    ]}
-  />`}</LiveComponent>
+<LiveComponent>{`<Tabs>
+  <Tab heading="First Tab" />
+  <Tab heading="Second tab with long name"/>
+  <Tab heading="Third long name tab" />
+  <Tab heading="Fourth tab lots of tabs" />
+  <Tab heading="Fifth Tab" />
+  <Tab heading="Sixth Tab" />
+  <Tab heading="Seventh tab with an even longer name than the second tab" />
+</Tabs>`}</LiveComponent>
 
 With tooltips!
 
-<LiveComponent>{`<Tabs
-  items={[
-    {
-      heading: 'First tab',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Second tab with long name',
-      tooltip:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Third long name tab',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Fourth tab lots of tabs',
-      tooltip:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Fifth tab',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Sixth tab',
-      tooltip:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.',
-      tabChildren: () => null
-    }
-  ]}
-/>`}</LiveComponent>
+<LiveComponent>{`<Tabs>
+  <Tab heading="First Tab" />
+  <Tab heading="Second tab with long name" tooltip="What a useful tip!" />
+  <Tab heading="Third long name tab" />
+  <Tab heading="Fourth tab lots of tabs" tooltip="How neat is that?" />
+  <Tab heading="Fifth Tab" />
+  <Tab heading="Sixth Tab" tooltip="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.'"/>
+</Tabs>`}</LiveComponent>
 
-With Tab Groups — First, second and third tabs should be actively synced based on their matching `group` property. _Note_ the `TabProvider` must wrap the page where this component is used for 'groups' to function properly.
+With Tab Groups:
 
-<LiveComponent>{`<Tabs
-  items={[
-    {
-      heading: 'First tab group',
-      group: 'first',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Second tab group',
-      group: 'second',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Third tab group',
-      group: 'third',
-      tabChildren: () => null
-    },
-  ]}
-/>`}</LiveComponent>
+First, second and third tabs should be actively synced based on their matching `group` property. _Note_ the `TabProvider` must wrap the page where this component is used for 'groups' to function properly.
 
-<LiveComponent>{`<Tabs
-  items={[
-    {
-      heading: 'First tab!',
-      group: 'first',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Second tab!',
-      group: 'second',
-      tabChildren: () => null
-    },
-    {
-      heading: 'Third tab!',
-      group: 'third',
-      tabChildren: () => null
-    },
-  ]}
-/>`}</LiveComponent>
+<LiveComponent>{`<Tabs>
+  <Tab heading="First Tab" group="first">
+    <p>First tab content</p>
+  </Tab>
+  <Tab heading="Second Tab" group="second">
+    <p>Second tab content</p>
+  </Tab>
+  <Tab heading="Third Tab" group="third">
+    <p>Third tab content</p>
+  </Tab>
+</Tabs>`}</LiveComponent>
+
+<LiveComponent>{`<Tabs>
+  <Tab heading="First Tab" group="first">
+    <p>First tab content</p>
+  </Tab>
+  <Tab heading="Second Tab" group="second">
+    <p>Second tab content</p>
+  </Tab>
+  <Tab heading="Third Tab" group="third">
+    <p>Third tab content</p>
+  </Tab>
+</Tabs>`}</LiveComponent>
