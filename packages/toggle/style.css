@@ -52,7 +52,8 @@
   cursor: default;
 
   &:focus + .switch {
-    outline: -webkit-focus-ring-color auto 1px;
+    outline: 1px auto;
+    outline-color: -webkit-focus-ring-color;
     outline-offset: 1px;
   }
 }
