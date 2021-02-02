@@ -21,12 +21,10 @@ const baseItems = [
 function BaseTabs({ items, defaultTabIdx = 0 }) {
   return (
     <Tabs defaultTabIdx={defaultTabIdx}>
-      {items.map((tab, i) => {
-        const { heading, tooltip, group, content } = tab
+      {items.map(({ heading, tooltip, group, content }) => {
         return (
-          // eslint-disable-next-line react/no-array-index-key
-          <Tab key={i} heading={heading} tooltip={tooltip} group={group}>
-            <div>{content}</div>
+          <Tab key={heading} heading={heading} tooltip={tooltip} group={group}>
+            {content}
           </Tab>
         )
       })}
