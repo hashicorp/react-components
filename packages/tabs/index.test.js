@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import Tabs, { TabProvider, useTabGroups, Tab } from './'
 
-const baseTabData = [
+const baseProps = [
   {
     heading: 'First Tab',
     tooltip: 'Cool Tip',
@@ -38,22 +38,22 @@ const renderWithProvider = (ui) => {
 
 describe('<Tabs />', () => {
   it('should render a `.g-tabs` <div> root element', () => {
-    const { container } = render(<BaseTabs tabs={baseTabData} />)
+    const { container } = render(<BaseTabs tabs={baseProps} />)
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('SECTION')
     expect(rootElem).toHaveClass('g-tabs')
   })
 
   it("should render each tab's heading", () => {
-    render(<BaseTabs tabs={baseTabData} />)
-    baseTabData.forEach((tab) => {
+    render(<BaseTabs tabs={baseProps} />)
+    baseProps.forEach((tab) => {
       expect(screen.getByText(tab.heading)).toBeInTheDocument()
     })
   })
 
   it('should optionally render a tooltip if provided as a prop', () => {
-    render(<BaseTabs tabs={baseTabData} />)
-    const tabsWithTips = baseTabData.filter((tab) => tab.tooltip)
+    render(<BaseTabs tabs={baseProps} />)
+    const tabsWithTips = baseProps.filter((tab) => tab.tooltip)
     //  Ensure the tooltip icons are rendering
     const tooltips = screen.getAllByTestId('tooltip-icon')
     expect(tooltips.length).toBe(2)
@@ -77,8 +77,8 @@ describe('<Tabs />', () => {
   })
 
   it("should render each tab's children when the corresponding heading is clicked", () => {
-    const { getByText } = render(<BaseTabs tabs={baseTabData} />)
-    baseTabData.forEach((tab) => {
+    const { getByText } = render(<BaseTabs tabs={baseProps} />)
+    baseProps.forEach((tab) => {
       const { heading, content } = tab
       const targetTab = getByText(heading)
       expect(targetTab).toBeInTheDocument()
@@ -89,20 +89,20 @@ describe('<Tabs />', () => {
 
   it('should initially select provided tab index if provided as a prop', () => {
     const { getByText } = render(
-      <BaseTabs tabs={baseTabData} defaultTabIdx={2} />
+      <BaseTabs tabs={baseProps} defaultTabIdx={2} />
     )
     expect(getByText('Tab 3 Content')).toBeInTheDocument()
   })
 
   it('should gracefully handle a default tab index that is out of bounds', () => {
     const { getByText } = render(
-      <BaseTabs tabs={baseTabData} defaultTabIdx={6} />
+      <BaseTabs tabs={baseProps} defaultTabIdx={6} />
     )
     expect(getByText('Tab 1 Content')).toBeInTheDocument()
   })
 
   it('should render children of all active group tabs when clicked', () => {
-    const tabsWithGroups = baseTabData.map((tab, i) => ({
+    const tabsWithGroups = baseProps.map((tab, i) => ({
       group: `${i}`,
       ...tab,
     }))
@@ -113,7 +113,7 @@ describe('<Tabs />', () => {
         <BaseTabs tabs={tabsWithGroups} />
       </>
     )
-    baseTabData.forEach((tab) => {
+    baseProps.forEach((tab) => {
       const groupTabs = getAllByText(tab.heading)
       // click one group tab
       fireEvent.click(groupTabs[0])
@@ -134,7 +134,7 @@ describe('<Tabs />', () => {
         </Tabs>
       )
     }
-    const { getByText } = render(<SingleTab tab={baseTabData[0]} />)
+    const { getByText } = render(<SingleTab tab={baseProps[0]} />)
     expect(getByText('Tab 1 Content')).toBeInTheDocument()
   })
 })
