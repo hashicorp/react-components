@@ -4,32 +4,32 @@ import TooltipIcon from './icons/tooltip.svg.js'
 import { useTabGroups } from '../../../../provider.js'
 
 const TabTrigger = (props) => {
-  const { item, activeTabIdx, setActiveTab } = props
+  const { tab, activeTabIdx, setActiveTab } = props
   const groupCtx = useTabGroups()
   const activeGroup = groupCtx?.activeTabGroup
-  const isInActiveGroup = groupCtx && item.group && item.group === activeGroup
-  const isActiveIndex = item.tabIndex === activeTabIdx
+  const isInActiveGroup = groupCtx && tab.group && tab.group === activeGroup
+  const isActiveIndex = tab.tabIndex === activeTabIdx
   const isActiveTab = isInActiveGroup || isActiveIndex ? true : false
 
   useEffect(() => {
     // if the tab is active based on group and the
     // index doesn't match, update the active index
-    if (isInActiveGroup) !isActiveIndex && setActiveTab(item.tabIndex)
+    if (isInActiveGroup) !isActiveIndex && setActiveTab(tab.tabIndex)
   }, [activeGroup])
 
   return (
     <button
       className={`g-tab-trigger ${isActiveTab ? ' active' : ''}`}
-      data-tabindex={item.tabIndex}
+      data-tabindex={tab.tabIndex}
       onMouseDown={(e) => e.preventDefault()}
-      onClick={() => setActiveTab(item.tabIndex, item.group)}
+      onClick={() => setActiveTab(tab.tabIndex, tab.group)}
     >
       <span className="inner">
-        <span className="g-type-body-strong">{item.heading}</span>
-        {item.tooltip && (
+        <span className="g-type-body-strong">{tab.heading}</span>
+        {tab.tooltip && (
           <Tippy
             className="g-tab-trigger-tippy-tooltip"
-            content={item.tooltip}
+            content={tab.tooltip}
             animation="fade"
             arrow={true}
             placement="top"

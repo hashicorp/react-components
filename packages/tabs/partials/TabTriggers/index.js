@@ -37,7 +37,7 @@ class TabTriggers extends React.Component {
       prevArrow: parentElem.querySelector('.arrow.prev'),
       nextArrow: parentElem.querySelector('.arrow.next'),
     }
-    //  Determine combined width of contained items
+    //  Determine combined width of contained tabs
     let contentWidth = 0
     elems.tabTriggers.forEach((t) => (contentWidth += t.offsetWidth))
     //  Determine width of available space
@@ -81,7 +81,7 @@ class TabTriggers extends React.Component {
   }
 
   render() {
-    const { items, activeTabIdx, setActiveTab } = this.props
+    const { tabs, activeTabIdx, setActiveTab } = this.props
 
     return (
       <div className="g-tab-triggers" ref={this.parentRef}>
@@ -92,7 +92,7 @@ class TabTriggers extends React.Component {
           <div className="inner">
             <div className="content-container g-grid-container">
               <div className="tooltip-space-overflow">
-                {items.map((item, stableIdx) => (
+                {tabs.map((tab, stableIdx) => (
                   <TabTrigger
                     // This array is stable, so we can use index as key
                     // eslint-disable-next-line react/no-array-index-key
@@ -102,7 +102,7 @@ class TabTriggers extends React.Component {
                       setActiveTab(targetIdx, groupId)
                       this.updateScrollOffset(targetIdx)
                     }}
-                    item={item}
+                    tab={tab}
                   />
                 ))}
               </div>
@@ -112,7 +112,7 @@ class TabTriggers extends React.Component {
             className="arrow prev"
             onClick={() => {
               if (activeTabIdx > 0) {
-                setActiveTab(activeTabIdx - 1, items[activeTabIdx - 1].group)
+                setActiveTab(activeTabIdx - 1, tabs[activeTabIdx - 1].group)
                 this.updateScrollOffset(activeTabIdx - 1)
               } else {
                 this.updateScrollOffset(activeTabIdx)
@@ -124,8 +124,8 @@ class TabTriggers extends React.Component {
           <div
             className="arrow next"
             onClick={() => {
-              if (activeTabIdx < items.length - 1) {
-                setActiveTab(activeTabIdx + 1, items[activeTabIdx + 1].group)
+              if (activeTabIdx < tabs.length - 1) {
+                setActiveTab(activeTabIdx + 1, tabs[activeTabIdx + 1].group)
                 this.updateScrollOffset(activeTabIdx + 1)
               } else {
                 this.updateScrollOffset(activeTabIdx)
