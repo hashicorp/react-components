@@ -49,10 +49,10 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
       }`}
     >
       <TabTriggers
-        tabs={children.map((tab, idx) => {
+        tabs={children.map((tab, index) => {
           const { heading, group, tooltip } = tab.props
           return {
-            tabIndex: idx,
+            index,
             heading,
             group,
             tooltip,

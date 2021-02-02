@@ -8,21 +8,21 @@ const TabTrigger = (props) => {
   const groupCtx = useTabGroups()
   const activeGroup = groupCtx?.activeTabGroup
   const isInActiveGroup = groupCtx && tab.group && tab.group === activeGroup
-  const isActiveIndex = tab.tabIndex === activeTabIdx
+  const isActiveIndex = tab.index === activeTabIdx
   const isActiveTab = isInActiveGroup || isActiveIndex ? true : false
 
   useEffect(() => {
     // if the tab is active based on group and the
     // index doesn't match, update the active index
-    if (isInActiveGroup) !isActiveIndex && setActiveTab(tab.tabIndex)
+    if (isInActiveGroup) !isActiveIndex && setActiveTab(tab.index)
   }, [activeGroup])
 
   return (
     <button
       className={`g-tab-trigger ${isActiveTab ? ' active' : ''}`}
-      data-tabindex={tab.tabIndex}
+      data-tabindex={tab.index}
       onMouseDown={(e) => e.preventDefault()}
-      onClick={() => setActiveTab(tab.tabIndex, tab.group)}
+      onClick={() => setActiveTab(tab.index, tab.group)}
     >
       <span className="inner">
         <span className="g-type-body-strong">{tab.heading}</span>
