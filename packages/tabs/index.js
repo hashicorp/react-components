@@ -3,7 +3,14 @@ import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
 function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
-  if (!children) return null
+  if (!children) {
+    process.env.NODE_ENV !== 'production' &&
+      console.warn(
+        '@hashicorp/react-tabs: There are no `Tab` children for the `Tabs` component to render.'
+      )
+    return null
+  }
+
   children = !Array.isArray(children) ? Children.toArray(children) : children
 
   const isDefaultOutOfBounds =
@@ -29,7 +36,7 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
       groupCtx === undefined
     ) {
       console.warn(
-        'The `TabProvider` cannot be accessed. Make sure it wraps the `Tabs` components so Tab Groups can work properly.'
+        '@hashicorp/react-tabs: The `TabProvider` cannot be accessed. Make sure it wraps the `Tabs` components so Tab Groups can work properly.'
       )
     }
   }, [])
