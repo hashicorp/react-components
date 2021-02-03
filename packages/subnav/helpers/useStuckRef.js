@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 
-const IntersectionObserver = globalThis.IntersectionObserver || null
+const IntersectionObserver =
+  (typeof window !== 'undefined' && window.IntersectionObserver) || null
 const intersectionOpts = { threshold: [1] }
 
 /*

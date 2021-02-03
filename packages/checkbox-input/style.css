@@ -79,7 +79,6 @@
       & input[type='checkbox'] {
         background-color: var(--DEPRECATED-gray-2);
         border-color: var(--DEPRECATED-gray-3);
-        background-color: var(--DEPRECATED-gray-2);
       }
     }
   }

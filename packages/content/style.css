@@ -36,9 +36,7 @@
     --highlight-color: var(--waypoint);
     --highlight-color-text: var(--waypoint-text);
   }
-}
 
-.g-content {
   margin: auto;
   color: var(--gray-2);
 
@@ -150,6 +148,23 @@
       color: inherit;
       font-size: 0.825em;
     }
+
+    & a.__permalink-h {
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      order: 1;
+      position: relative;
+      left: -0.7em;
+      margin-right: -0.5em;
+    }
+
+    &:hover {
+      & a.__permalink-h {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+    }
   }
 
   /* Links */
@@ -223,11 +238,11 @@
   & ol {
     & li {
       counter-increment: li;
-    &::before {
-      font-size: 0.75em;
-      line-height: calc(1.75 / 0.75);
-      content: counter(li);
-    }
+      &::before {
+        font-size: 0.75em;
+        line-height: calc(1.75 / 0.75);
+        content: counter(li);
+      }
     }
     & ol li::before {
       content: counter(li, lower-roman);
@@ -300,30 +315,6 @@
     border-left: 6px solid var(--gray-7);
     & em {
       font-style: normal;
-    }
-  }
-
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6 {
-    & a.__permalink-h {
-      display: inline-block;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      order: 1;
-      position: relative;
-      left: -0.7em;
-      margin-right: -0.5em;
-    }
-
-    &:hover {
-      & a.__permalink-h {
-        opacity: 1;
-        transition: opacity 0.2s ease;
-      }
     }
   }
 

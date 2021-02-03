@@ -1,5 +1,3 @@
-import './helpers/globalThis'
-
 import useNavRef from './helpers/useNavRef'
 
 import MenuItemsOverflow from './partials/MenuItemsOverflow/index.js'

@@ -1,9 +1,6 @@
 @import './_temp-g-svg.css';
 @import './_temp-resets.css';
 
-:root {
-}
-
 .g-subnav {
   --gray-6-transparent: rgba(174, 176, 183, 0.45);
 
