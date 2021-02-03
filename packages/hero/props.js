@@ -24,7 +24,7 @@ module.exports = {
       },
       description: {
         type: 'string',
-        description: 'Subheading text',
+        description: 'Subheading text, HTML allowed',
       },
       centered: {
         type: 'boolean',
@@ -102,7 +102,7 @@ module.exports = {
       helpText: {
         type: 'string',
         description:
-          'A small piece of help text that appears below buttons/form input, html allowed',
+          'A small piece of help text that appears below buttons/form input, HTML allowed',
       },
       image: {
         type: 'object',

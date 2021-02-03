@@ -1,4 +1,3 @@
-import marked from 'marked'
 import Image from '@hashicorp/react-image'
 import Alert from '@hashicorp/react-alert'
 import Button from '@hashicorp/react-button'
@@ -46,20 +45,15 @@ function Hero({ data, centered, gaPrefix }) {
             <h1
               className="g-type-display-1"
               dangerouslySetInnerHTML={{
-                __html: eliminateOrphans(
-                  marked.inlineLexer(data.title, []),
-                  h1OrphanCount
-                ),
+                __html: eliminateOrphans(data.title, h1OrphanCount),
               }}
             />
           )}
           {data.description && (
-            <p
-              className="g-type-body-large"
+            <div
+              className="description g-type-body-large"
               dangerouslySetInnerHTML={{
-                __html: eliminateOrphans(
-                  marked.inlineLexer(data.description, [])
-                ),
+                __html: eliminateOrphans(data.description),
               }}
             />
           )}
@@ -104,9 +98,7 @@ function Hero({ data, centered, gaPrefix }) {
           )}
           {data.helpText && (
             <div className="help-text g-type-buttons-and-standalone-links">
-              <div
-                dangerouslySetInnerHTML={{ __html: marked(data.helpText) }}
-              />
+              <div dangerouslySetInnerHTML={{ __html: data.helpText }} />
               <ArrowIcon />
             </div>
           )}

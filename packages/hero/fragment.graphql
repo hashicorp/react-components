@@ -29,7 +29,7 @@ fragment heroFields on HeroSectionRecord {
   alert {
     ...alertFields
   }
-  description
+  description(markdown: true)
   centered
   backgroundTheme
   backgroundImage {
@@ -49,7 +49,7 @@ fragment heroFields on HeroSectionRecord {
     destinationUrl
     buttonText
   }
-  helpText
+  helpText(markdown: true)
   smallTextTag
   theme
 }
