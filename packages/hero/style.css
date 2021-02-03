@@ -245,13 +245,21 @@
     }
 
     & .description {
-      margin: 0;
+      margin-top: 24px;
+
+      @media (--small) {
+        margin-top: 16px;
+      }
 
       & > p {
-        margin-top: 24px;
+        margin: 0;
 
-        @media (--small) {
-          margin-top: 16px;
+        & + p {
+          margin-top: 24px;
+
+          @media (--small) {
+            margin-top: 16px;
+          }
         }
       }
     }
