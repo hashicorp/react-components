@@ -53,7 +53,7 @@ function Hero({ data, centered, gaPrefix }) {
             <div
               className="description g-type-body-large"
               dangerouslySetInnerHTML={{
-                __html: eliminateOrphans(data.description),
+                __html: eliminateOrphans(data.description.trim()),
               }}
             />
           )}
@@ -98,7 +98,7 @@ function Hero({ data, centered, gaPrefix }) {
           )}
           {data.helpText && (
             <div className="help-text g-type-buttons-and-standalone-links">
-              <div dangerouslySetInnerHTML={{ __html: data.helpText }} />
+              <div dangerouslySetInnerHTML={{ __html: data.helpText.trim() }} />
               <ArrowIcon />
             </div>
           )}
