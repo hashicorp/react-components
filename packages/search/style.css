@@ -2,12 +2,17 @@
   --search-bar-height: 40px;
   --search-bar-focus-outline: rgba(220, 221, 224, 0.45);
   --legend-height: 40px;
+  --results-max-height: 350px;
+  --callout-height: 0px;  /* set in js if `renderCalloutCta` provided */
+  --callout-max-height: 48px;
   --mobile-margin: 24px;
   --mobile-margin-negative: -24px;
   --nav-height: 64px;
   /* Allow focus ring to be fully visible on Safari */
   padding-top: 3px;
   width: 100%;
+
+  position: relative;
 
   @media (min-width: 768px) and (max-width: 939px) {
     margin: 0 0.5rem;
@@ -170,8 +175,11 @@
 
 /* Hits */
 .g-search .c-hits {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  max-height: calc(var(--results-max-height) + var(--callout-height));
   z-index: 890;
+  box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
 
   & .no-hits {
     position: absolute;
@@ -202,19 +210,13 @@
     }
   }
 
-  & .hits {
-    position: absolute;
-    width: 100%;
-    box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
-  }
-
   & .hits-list {
     list-style: none;
     overflow-y: scroll;
     background: var(--white);
     margin: 0;
     padding: 0;
-    max-height: 45vh;
+    max-height: calc(var(--results-max-height) - var(--legend-height) - var(--callout-height));
 
     & .hit-link-wrapper {
       width: 100%;
@@ -316,6 +318,11 @@
 
   & .ais-Highlight-highlighted {
     background-color: rgba(102, 162, 255, 0.47);
+  }
+
+  & .callout-cta {
+    height: var(--callout-height);
+    width: 100%;
   }
 }
 

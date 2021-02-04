@@ -7,8 +7,10 @@ import SearchProvider, { useSearch } from './provider'
 function Search({
   placeholder = 'Search',
   renderHitContent,
+  renderCalloutCta,
   resolveHitLink,
   onEnter,
+  showSearchLegend = true,
 }) {
   if (!renderHitContent) {
     throw new Error(
@@ -32,8 +34,12 @@ function Search({
     setCancelled(true)
   }
 
+  const cssVars = {}
+  if (!showSearchLegend) cssVars['--legend-height'] = '0px'
+  if (renderCalloutCta) cssVars['--callout-height'] = 'var(--callout-max-height)'
+
   return (
-    <div className="g-search">
+    <div className="g-search" style={cssVars}>
       <InstantSearch indexName={indexName} searchClient={client} refresh>
         <Configure distinct={1} hitsPerPage={25} clickAnalytics />
         <SearchBox
@@ -53,7 +59,8 @@ function Search({
               renderHitContent,
               resolveHitLink,
               setCancelled,
-              onEnter,
+              showSearchLegend,
+              renderCalloutCta,
             }}
           />
         )}

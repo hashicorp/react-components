@@ -13,10 +13,12 @@ function Hits({
   /* Props passed explicity */
   handleEscape,
   renderHitContent,
+  renderCalloutCta,
   resolveHitLink,
   query,
   setCancelled,
   onEnter,
+  showSearchLegend,
 }) {
   const selectedHit = useRef(null)
   const [hitsTabIndex, setHitsTabIndex] = useState(null)
@@ -102,8 +104,8 @@ function Hits({
           </span>
         </div>
       ) : (
-        <div className="hits">
-          <SearchLegend />
+        <>
+          {showSearchLegend && <SearchLegend />}
           <ul className="hits-list">
             {hits.map((hit) => (
               <Hit
@@ -119,7 +121,10 @@ function Hits({
               />
             ))}
           </ul>
-        </div>
+        </>
+      )}
+      {renderCalloutCta && (
+        <div className="callout-cta">{renderCalloutCta()}</div>
       )}
     </div>
   )
