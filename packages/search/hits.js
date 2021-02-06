@@ -60,7 +60,7 @@ function Hits({
     const nextIndex = startIndex + 1
     if (nextIndex > hits.length) return setHitsTabIndex(1)
     setHitsTabIndex(nextIndex)
-    selectedHit.current.focus()
+    selectedHit?.current.focus()
   }
 
   function decrementTabIndex() {
@@ -68,7 +68,7 @@ function Hits({
     const nextIndex = startIndex - 1
     if (nextIndex < 1) return setHitsTabIndex(hits.length)
     setHitsTabIndex(nextIndex)
-    selectedHit.current.focus()
+    selectedHit?.current.focus()
   }
 
   function scrollToActive(el) {

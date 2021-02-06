@@ -182,8 +182,6 @@
   box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
 
   & .no-hits {
-    position: absolute;
-    left: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
