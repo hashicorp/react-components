@@ -1,8 +1,17 @@
 module.exports = {
+  onSubmit: {
+    type: 'function',
+    description: 'Handle search form submission',
+    default: '(event) => { event.preventDefault() }',
+  },
   placeholder: {
     type: 'string',
     description: 'Placeholder content within the search box',
     default: 'Search',
+  },
+  renderCalloutCta: {
+    type: 'function',
+    description: 'Render function for displaying a small CTA beneath the search results',
   },
   renderHitContent: {
     type: 'function',
@@ -15,4 +24,9 @@ module.exports = {
     description:
       'Optional function to transform the results of any given hit. Primarily used to remove `/index` from resuling urls',
   },
+  showSearchLegend: {
+    type: 'boolean',
+    description: 'Enable the search keyboard legend',
+    default: false,
+  }
 }
