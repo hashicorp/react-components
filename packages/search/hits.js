@@ -100,7 +100,6 @@ function Hits({
             id="search-results"
             role="listbox"
             aria-labelledby="search-box-label"
-            role="listbox"
           >
             {hits.map((hit) => (
               <Hit
