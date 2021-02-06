@@ -3,9 +3,10 @@ import createStaticProps from 'swingset/getStaticProps'
 import Head from 'next/head'
 import Link from 'next/head'
 import { SearchProvider } from '../packages/search'
+import { Tab } from '../packages/tabs'
 import UsageDetails from '../swingset-extensions/usage-details'
 
-const components = { Head, Link, SearchProvider, UsageDetails }
+const components = { Head, Link, SearchProvider, UsageDetails, Tab }
 
 export default createPage({ components })
 export const getStaticProps = createStaticProps({ components })

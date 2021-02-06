@@ -11,7 +11,7 @@ export default function DocsSidenav({
   category,
   Link,
   product,
-  disableFilter = false
+  disableFilter = false,
 }) {
   const [open, setOpen] = useState(false)
   const [filterInput, setFilterInput] = useState('')
@@ -25,32 +25,34 @@ export default function DocsSidenav({
   const [content, setContent] = useState(allContent)
 
   // remove leading slash and base level "docs"/"api"/etc
-  const current = currentPage.split('/').slice(1 + category.split('/').length)
+  const currentPath = currentPage
+    .split('/')
+    .slice(1 + category.split('/').length)
 
   return (
     <div
       className={`g-docs-sidenav${open ? ' open' : ''}${
         product ? ` theme-${product}` : ''
       }`}
-      data-testid='root'
+      data-testid="root"
     >
       <div
-        className='toggle'
+        className="toggle"
         onClick={() => setOpen(!open)}
-        data-testid='mobile-menu'
+        data-testid="mobile-menu"
       >
         <span>
           <MenuIcon /> Documentation Menu
         </span>
       </div>
-      <ul className='nav docs-nav'>
-        <div className='mobile-close' onClick={() => setOpen(!open)}>
+      <ul className="nav docs-nav">
+        <div className="mobile-close" onClick={() => setOpen(!open)}>
           &times;
         </div>
         {!disableFilter && (
           <input
-            className='filter'
-            placeholder='Filter...'
+            className="filter"
+            placeholder="Filter..."
             onChange={filterInputChange.bind(
               null,
               setFilterInput,
@@ -60,7 +62,14 @@ export default function DocsSidenav({
             value={filterInput}
           />
         )}
-        {renderNavTree(category, content, current, filterInput, Link)}
+        {renderNavTree({
+          category,
+          content,
+          currentPath,
+          currentPage,
+          filterInput,
+          Link,
+        })}
       </ul>
     </div>
   )
@@ -109,14 +118,14 @@ function findContent(content, value) {
 
 // Given a set of front matter data, adds a `path` variable formatted for correct links
 function calculatePath(pageData, category) {
-  return pageData.map(p => {
-    p.path = p.__resourcePath
+  return pageData.map((p) => ({
+    ...p,
+    path: p.__resourcePath
       .split('/')
       .slice(category.split('/').length)
       .join('/')
-      .replace(/\.mdx$/, '')
-    return p
-  })
+      .replace(/\.mdx$/, ''),
+  }))
 }
 
 // Matches up user-defined navigation hierarcy with front matter from the correct pages.
@@ -140,14 +149,14 @@ function calculatePath(pageData, category) {
 // }
 function matchOrderToData(currentPage, order, pageData, stack = []) {
   // go through each item in the user-established order
-  return order.map(item => {
+  return order.map((item) => {
     if (typeof item === 'string') {
       // if a string like '-----' is given, we render a divider
       if (item.match(/^-+$/)) return item
 
       // if we have a string, that's a terminal page. we match it with
       // the provided page data and return the enhanced object
-      const itemData = pageData.filter(page => {
+      const itemData = pageData.filter((page) => {
         // break down the full path and strip the html extension
         const pageDataPath = page.path.split('/')
         // copy the stack and push the item as the file path
@@ -194,18 +203,18 @@ function matchOrderToData(currentPage, order, pageData, stack = []) {
         throw new Error(
           `The item "${_item.stack.join(
             '/'
-          )}" within "data/${topLevelCategory}-navigation.js" has a category but no content, indicating that there is a folder that contains only an "index.mdx" file, which is not allowed. To fix this, move and rename "pages/${topLevelCategory}/${_item.stack.join(
-            '/'
-          ) + '/index.mdx'}" to "pages/${topLevelCategory}/${_item.stack.join(
-            '/'
-          ) + '.mdx'}", then change the value from "{ category: '${
+          )}" within "data/${topLevelCategory}-navigation.js" has a category but no content, indicating that there is a folder that contains only an "index.mdx" file, which is not allowed. To fix this, move and rename "pages/${topLevelCategory}/${
+            _item.stack.join('/') + '/index.mdx'
+          }" to "pages/${topLevelCategory}/${
+            _item.stack.join('/') + '.mdx'
+          }", then change the value from "{ category: '${
             _item.category
           }' }" to just "${item.category}"`
         )
       }
 
       // grab the index page, as it can contain data about the top level link
-      pageData.some(page => {
+      pageData.some((page) => {
         const pageDataPath = page.path.split('/')
 
         const depthLevelsMatch = _item.stack.length === pageDataPath.length - 1
@@ -266,7 +275,14 @@ function matchOrderToData(currentPage, order, pageData, stack = []) {
 }
 
 // Recursively renders the markup for the nested navigation
-function renderNavTree(category, content, currentPath, filterInput, Link) {
+function renderNavTree({
+  category,
+  content,
+  currentPath,
+  currentPage,
+  filterInput,
+  Link,
+}) {
   return content.map((item, idx) => {
     // dividers are the only items left as strings
     // This array is stable, so we can use index as key
@@ -276,13 +292,17 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
     // if the link property has been set to true, we're rendering a direct link
     // rather than a link to a docs page
     if (item.title && item.href) {
+      let className = item.href.match(/^http[s]*:\/\//) ? 'external ' : ''
+      // allow direct links to be highlighted if they happen to live in the docs hierarchy
+      if (item.href === currentPage) className += 'active'
+
       return (
         <li
           // This array is stable, so we can use index as key
           // eslint-disable-next-line react/no-array-index-key
           key={idx}
           data-testid={item.href}
-          className={item.href.match(/^http[s]*:\/\//) ? 'external' : ''}
+          className={className}
         >
           <LinkWrap
             Link={Link}
@@ -298,8 +318,8 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
       let className = ''
       if (
         fileMatch(
-          item.path.split('/').filter(x => x),
-          currentPath.filter(x => x)
+          item.path.split('/').filter((x) => x),
+          currentPath.filter((x) => x)
         )
       )
         className += 'active '
@@ -317,7 +337,7 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
             Link={Link}
             href={`/${category}/${item.path}`}
             dangerouslySetInnerHTML={{
-              __html: item.sidebar_title || item.page_title
+              __html: item.sidebar_title || item.page_title,
             }}
           />
         </li>
@@ -340,8 +360,8 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
       // now we test whether the current url is a match for the category and the page
       const categoryMatches = categoryMatch(folderPath.split('/'), currentPath)
       const fileMatches = fileMatch(
-        folderPath.split('/').filter(x => x),
-        currentPath.filter(x => x)
+        folderPath.split('/').filter((x) => x),
+        currentPath.filter((x) => x)
       )
         ? 'active'
         : ''
@@ -364,7 +384,8 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
         >
           <span>
             {/* Note: this is rendered as a link, but with no href. We should test to see if */}
-            {/* a button element would be more semantically appropriate for a11y. */}
+            {/* a button element would be more semantically appropriate for a11y. (https://app.asana.com/0/1100423001970639/1199667739287943/f) */}
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a
               onClick={item.content && toggleNav}
               data-testid={`/${category}/${folderPath} - link`}
@@ -375,7 +396,7 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
                   {
                     <span
                       dangerouslySetInnerHTML={{
-                        __html: title
+                        __html: title,
                       }}
                     ></span>
                   }
@@ -383,7 +404,7 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
               ) : (
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: title
+                    __html: title,
                   }}
                 ></span>
               )}
@@ -392,7 +413,7 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
 
           {/* if the item has content, we need to recurse */}
           {item.content && (
-            <ul className='nav' key={folderPath}>
+            <ul className="nav" key={folderPath}>
               {!item.name && (!filterInput || item.matchedFilter) && (
                 <li
                   className={`${fileMatches ? 'active ' : ''}${
@@ -407,13 +428,13 @@ function renderNavTree(category, content, currentPath, filterInput, Link) {
                   </LinkWrap>
                 </li>
               )}
-              {renderNavTree(
+              {renderNavTree({
                 category,
-                item.content,
+                content: item.content,
                 currentPath,
                 filterInput,
-                Link
-              )}
+                Link,
+              })}
             </ul>
           )}
         </li>
@@ -428,13 +449,13 @@ function findFilterMatches(item) {
   if (item.matchedFilter) return true
   return (
     item.content &&
-    item.content.map(child => findFilterMatches(child)).some(x => x)
+    item.content.map((child) => findFilterMatches(child)).some((x) => x)
   )
 }
 
 // Given an array of pages, returns only pages whose paths contain the given category.
 function filterData(data, category) {
-  return data.filter(d => d.path.split('/').indexOf(category) > -1)
+  return data.filter((d) => d.path.split('/').indexOf(category) > -1)
 }
 
 // If the nav item category is entirely contained by the current page's path,

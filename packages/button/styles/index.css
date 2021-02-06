@@ -46,18 +46,18 @@
     &.is-animated {
       transition: transform 0.2s;
       &[data-animation='inbound'] {
-        transform: translate3D(0px, 0px, 0px);
+        transform: translate3d(0, 0, 0);
       }
       &[data-animation='anchor'] {
-        transform: translate3D(0px, 0px, 0px);
+        transform: translate3d(0, 0, 0);
       }
       &[data-animation='outbound'] [data-animation-target] {
         transition: transform 0.2s;
-        transform: translate3D(0px, 0px, 0px);
+        transform: translate3d(0, 0, 0);
       }
       &[data-animation='download'] [data-animation-target] {
         transition: transform 0.2s;
-        transform: translate3D(0px, 0px, 0px);
+        transform: translate3d(0, 0, 0);
       }
     }
 
@@ -79,16 +79,16 @@
     cursor: pointer;
     & .icon.is-animated {
       &[data-animation='inbound'] {
-        transform: translate3D(2px, 0, 0);
+        transform: translate3d(2px, 0, 0);
       }
       &[data-animation='anchor'] {
-        transform: translate3D(0, 2px, 0);
+        transform: translate3d(0, 2px, 0);
       }
       &[data-animation='outbound'] [data-animation-target] {
-        transform: translate3D(2px, -2px, 0);
+        transform: translate3d(2px, -2px, 0);
       }
       &[data-animation='download'] [data-animation-target] {
-        transform: translate3D(0, 2px, 0);
+        transform: translate3d(0, 2px, 0);
       }
     }
   }

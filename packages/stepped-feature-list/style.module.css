@@ -36,6 +36,7 @@
 
 .features {
   display: none;
+
   --tab-color: var(--brand);
 
   @media (min-width: 1120px) {

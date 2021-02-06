@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup, fireEvent } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 import AccordionItems from './'
@@ -62,6 +62,7 @@ describe('<AccordionItems />', () => {
         items={[
           {
             heading: 'With An Image',
+            // eslint-disable-next-line react/display-name -- this is the expected usage
             content: () => (
               <div>
                 Some markup: <img src="" alt={imageAlt} />

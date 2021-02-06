@@ -63,7 +63,7 @@
     top: 18px;
     right: 13px;
     font-size: 1.7em;
-    padding: 0px 14px;
+    padding: 0 14px;
     cursor: pointer;
     color: #333;
     transition: opacity 0.3s ease;
@@ -101,7 +101,7 @@
       padding: 8px 0;
       margin: 0;
 
-      &:after {
+      &::after {
         content: '';
         border-bottom: 1px solid var(--DEPRECATED-gray-9);
         display: block;
@@ -118,15 +118,15 @@
 
       &.active,
       &.dir {
-        &:after,
-        &:before {
+        &::after,
+        &::before {
           content: '';
           display: block;
           position: absolute;
           border-radius: 50%;
         }
 
-        &:before {
+        &::before {
           background: var(--white);
         }
       }
@@ -139,7 +139,7 @@
         }
 
         &:not(.dir) {
-          &:after {
+          &::after {
             width: 4px;
             height: 4px;
             background: var(--highlight-color);
@@ -148,7 +148,7 @@
             border-radius: 50%;
           }
 
-          &:before {
+          &::before {
             width: 14px;
             height: 14px;
             left: -7px;

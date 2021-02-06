@@ -3,6 +3,7 @@ import path from 'path'
 import existsSync from 'fs-exists-sync'
 import readdirp from 'readdirp'
 import lineReader from 'line-reader'
+import moize from 'moize'
 import matter from 'gray-matter'
 import { safeLoad } from 'js-yaml'
 import renderToString from 'next-mdx-remote/render-to-string'
@@ -40,10 +41,10 @@ export async function generateStaticProps({
 
   return {
     props: {
-      data: allFrontMatter.map((p) => {
-        p.__resourcePath = `${subpath}/${p.__resourcePath}`
-        return p
-      }),
+      data: allFrontMatter.map((p) => ({
+        ...p,
+        __resourcePath: `${subpath}/${p.__resourcePath}`,
+      })),
       mdxSource,
       frontMatter,
       filePath: `${subpath}/${filePath}`,
@@ -104,7 +105,13 @@ async function renderPageMdx(root, pagePath, components, scope) {
   }
 }
 
-async function fastReadFrontMatter(p) {
+// We are memoizing this function as it does a non-trivial amount of I/O to read frontmatter for all mdx files in a directory
+export const fastReadFrontMatter =
+  process.env.NODE_ENV === 'production'
+    ? moize(fastReadFrontMatterFn)
+    : fastReadFrontMatterFn
+
+async function fastReadFrontMatterFn(p) {
   const fm = []
   for await (const entry of readdirp(p, { fileFilter: '*.mdx' })) {
     let lineNum = 0

@@ -1,5 +1,5 @@
 import { AccordionItems } from '@hashicorp/react-accordion'
-import Tabs from '@hashicorp/react-tabs'
+import Tabs, { Tab } from '@hashicorp/react-tabs'
 
 function TabbedAccordion({ heading, tabs }) {
   return (
@@ -12,14 +12,14 @@ function TabbedAccordion({ heading, tabs }) {
           <h2 className="g-type-display-2">{heading}</h2>
         </div>
       )}
-      <Tabs
-        items={tabs.map((tab) => {
-          return {
-            heading: tab.heading,
-            tabChildren: () => <AccordionItems items={tab.items} />,
-          }
-        })}
-      />
+      <Tabs>
+        {tabs.map((tab, stableIdx) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <Tab key={stableIdx} heading={tab.heading}>
+            <AccordionItems items={tab.items} />
+          </Tab>
+        ))}
+      </Tabs>
     </section>
   )
 }

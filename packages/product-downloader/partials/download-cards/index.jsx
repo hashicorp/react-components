@@ -1,4 +1,4 @@
-import Tabs from '@hashicorp/react-tabs'
+import Tabs, { Tab } from '@hashicorp/react-tabs'
 
 import { prettyOs, prettyArch } from '../../utils/downloader'
 import styles from './style.module.css'
@@ -21,27 +21,24 @@ export default function DownloadTabs({
       theme={brand}
       className={styles.tabs}
       defaultTabIdx={defaultTabIdx}
-      items={tabData.map(({ os, packageManagers }) => ({
-        heading: prettyOs(os),
-        tabChildren: function TabChildren() {
-          return (
-            <div className={styles.cards}>
-              <Cards
-                key={os}
-                os={os}
-                downloads={downloads}
-                packageManagers={packageManagers}
-                version={version}
-                theme={brand}
-                logo={logo}
-                tutorialLink={tutorialLink}
-              />
-              {merchandisingSlot}
-            </div>
-          )
-        },
-      }))}
-    />
+    >
+      {tabData.map(({ os, packageManagers }) => (
+        <Tab key={os} heading={prettyOs(os)}>
+          <div className={styles.cards}>
+            <Cards
+              os={os}
+              downloads={downloads}
+              packageManagers={packageManagers}
+              version={version}
+              theme={brand}
+              logo={logo}
+              tutorialLink={tutorialLink}
+            />
+            {merchandisingSlot}
+          </div>
+        </Tab>
+      ))}
+    </Tabs>
   )
 }
 
@@ -72,21 +69,17 @@ function Cards({
           <div className={styles.packageManagers}>
             <span className={styles.cardTitle}>Package Manager</span>
             {hasMultiplePackageManagers ? (
-              <Tabs
-                theme={theme}
-                items={packageManagers.map(({ label, commands }) => ({
-                  heading: label,
-                  tabChildren: function TabChildren() {
-                    return (
-                      <div className={styles.install}>
-                        {commands.map((command) => (
-                          <pre key={command}>{command}</pre>
-                        ))}
-                      </div>
-                    )
-                  },
-                }))}
-              />
+              <Tabs theme={theme}>
+                {packageManagers.map(({ label, commands }) => (
+                  <Tab key={label} heading={label}>
+                    <div className={styles.install}>
+                      {commands.map((command) => (
+                        <pre key={command}>{command}</pre>
+                      ))}
+                    </div>
+                  </Tab>
+                ))}
+              </Tabs>
             ) : (
               <div className={styles.install}>
                 {packageManagers[0].commands.map((command) => (

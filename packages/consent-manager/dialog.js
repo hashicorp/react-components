@@ -88,8 +88,11 @@ export default class ConsentPreferences extends Component {
     return this.state.groupedIntegrations[category].some((tool) => {
       return (
         this.state.consent &&
-        this.state.consent.hasOwnProperty(tool.origin) &&
-        this.state.consent[tool.origin].hasOwnProperty(tool.name) &&
+        Object.prototype.hasOwnProperty.call(this.state.consent, tool.origin) &&
+        Object.prototype.hasOwnProperty.call(
+          this.state.consent[tool.origin],
+          tool.name
+        ) &&
         this.state.consent[tool.origin][tool.name]
       )
     })
@@ -138,6 +141,8 @@ export default class ConsentPreferences extends Component {
           </div>
         </div>
         <div className="category-fold">
+          {/* TODO: this should most likely be a button (https://app.asana.com/0/1100423001970639/1199667739287943/f) */}
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a
             onClick={() => {
               this.handleFold(name)

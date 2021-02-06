@@ -20,7 +20,7 @@
       flex-shrink: 0;
       width: 20px;
       height: 20px;
-      margin-left: 0px;
+      margin-left: 0;
       margin-right: 12px;
 
       & input[type='checkbox'] {
@@ -79,7 +79,6 @@
       & input[type='checkbox'] {
         background-color: var(--DEPRECATED-gray-2);
         border-color: var(--DEPRECATED-gray-3);
-        background-color: var(--DEPRECATED-gray-2);
       }
     }
   }

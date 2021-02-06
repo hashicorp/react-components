@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 
-const IntersectionObserver = globalThis.IntersectionObserver || null
+const IntersectionObserver =
+  (typeof window !== 'undefined' && window.IntersectionObserver) || null
 const intersectionOpts = { threshold: [1] }
 
 /*
@@ -25,7 +26,7 @@ support `IntersectionObserver` or CSS `position: sticky`.
 export default function useStuckRef(deps) {
   const [isStuck, setStuck] = useState(false)
 
-  const stuckRef = useCallback(target => {
+  const stuckRef = useCallback((target) => {
     if (target && IntersectionObserver) {
       const intersectionObserver = new IntersectionObserver(([entry]) => {
         const nowIsStuck = entry.intersectionRatio < 1

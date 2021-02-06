@@ -28,13 +28,21 @@ module.exports = {
       {
         type: 'object',
         properties: {
-          icon: { type: 'svg', description: 'The SVG icon to display in the CTA' },
+          icon: {
+            type: 'svg',
+            description: 'The SVG icon to display in the CTA',
+          },
           title: { type: 'string', description: 'The CTA title text' },
-          description: { type: 'string', description: 'The CTA description text' },
-          linkUrl: { type: 'string', description: 'The destination of the CTA when clicked' },
+          description: {
+            type: 'string',
+            description: 'The CTA description text',
+          },
+          linkUrl: {
+            type: 'string',
+            description: 'The destination of the CTA when clicked',
+          },
         },
       },
     ],
   },
-
 }

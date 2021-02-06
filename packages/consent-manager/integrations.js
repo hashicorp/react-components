@@ -47,7 +47,9 @@ function zipIntegrations(
   // Go through each developer-defined segment service and update
   // segmentObj with any overrides
   for (var i = 0; i < segmentOverrides.length; i++) {
-    if (segmentObj.hasOwnProperty(segmentOverrides[i].name)) {
+    if (
+      Object.prototype.hasOwnProperty.call(segmentObj, segmentOverrides[i].name)
+    ) {
       segmentObj[segmentOverrides[i].name] = Object.assign(
         segmentObj[segmentOverrides[i].name],
         segmentOverrides[i]
@@ -81,7 +83,7 @@ function groupByCategory(integrations) {
   let grouped = {}
 
   integrations.forEach((integration) => {
-    if (grouped.hasOwnProperty(integration.category)) {
+    if (Object.prototype.hasOwnProperty.call(grouped, integration.category)) {
       grouped[integration.category].push(integration)
     } else {
       grouped[integration.category] = [integration]

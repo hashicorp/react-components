@@ -34,9 +34,7 @@
 
   &:hover {
     cursor: pointer;
-  }
 
-  &:hover {
     & .inner {
       color: var(--gray-1);
     }

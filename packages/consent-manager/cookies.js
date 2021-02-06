@@ -48,6 +48,6 @@ export function savePreferences(prefs, version) {
   const domain = getDomain()
   cookies.set(COOKIE_KEY, assign(prefs, { version: version }), {
     expires: COOKIE_EXPIRES,
-    domain
+    domain,
   })
 }

@@ -6,6 +6,9 @@
 function copyToClipboard(string) {
   //  We can't do this if there's no `document`, so don't try
   if (typeof document === 'undefined') return false
+
+  let copyElem
+
   try {
     //  Create a temporary `textarea` from which to select & copy
     let copyElem = document.createElement('textarea')

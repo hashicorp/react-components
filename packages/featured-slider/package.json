@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-featured-slider",
   "description": "featured slider for case studies",
-  "version": "1.1.10",
+  "version": "1.1.12",
   "author": "HashiCorp",
   "contributors": [
     "Nicole Forrester"
@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@hashicorp/react-button": "^2.2.6",
-    "@hashicorp/react-image": "^2.0.3",
-    "marked": "^1.0.0"
+    "@hashicorp/react-image": "^2.0.3"
   }
 }

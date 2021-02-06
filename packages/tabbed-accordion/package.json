@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-tabbed-accordion",
   "description": "Tabs with accordions nested inside",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
@@ -9,7 +9,7 @@
   "dependencies": {
     "@hashicorp/react-accordion": "^0.3.1",
     "@hashicorp/react-global-styles": "^4.5.0",
-    "@hashicorp/react-tabs": "^2.0.0"
+    "@hashicorp/react-tabs": "^3.0.0"
   },
   "keywords": [],
   "license": "MPL-2.0",

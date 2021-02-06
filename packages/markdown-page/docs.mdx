@@ -80,15 +80,13 @@ The code sample above shows the component as rendered - this one shows how it wo
 import MarkdownPage from '@hashicorp/react-markdown-page'
 import generateStaticProps from '@hashicorp/react-markdown-page/server'
 
-export default function MyPage({ staticProps }) {
+export default function MyPage(staticProps) {
   return <MarkdownPage {...staticProps} />
 }
 
-export function getStaticProps() {
-  return generateStaticProps({
-    pagePath: 'content/test-page.mdx', // resolved from project root
-  })
-}
+export const getStaticProps = generateStaticProps({
+  pagePath: 'content/test-page.mdx', // resolved from project root
+})
 ```
 
 ### Usage with Custom Components
@@ -102,16 +100,15 @@ import TestComponent from './test-component'
 
 const components = { TestComponent }
 
-export default function MyPage({ staticProps }) {
+export default function MyPage(staticProps) {
   return <MarkdownPage {...staticProps} components={components} />
 }
 
-export function getStaticProps() {
-  return generateStaticProps({
-    pagePath: 'content/test-page.mdx', // resolved from project root
-    components,
-  })
+export const getStaticProps = generateStaticProps({
+  pagePath: 'content/test-page.mdx', // resolved from project root
+  components,
+})
 }
 ```
 
-<UsageDetails packageName="@hashicorp/react-markdown-page" />
+<UsageDetails packageJson={packageJson} />

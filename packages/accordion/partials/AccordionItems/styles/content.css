@@ -1,14 +1,14 @@
 .g-accordion-item {
   & .content {
-    padding-top: 0px;
+    padding-top: 0;
     padding-bottom: 24px;
 
     & > *:first-child {
-      margin-top: 0px;
+      margin-top: 0;
     }
 
     & > *:last-child {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -20,11 +20,11 @@
     line-height: 1.765em;
 
     & > *:first-child {
-      margin-top: 0px;
+      margin-top: 0;
     }
 
     & > *:last-child {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
 
     & p {

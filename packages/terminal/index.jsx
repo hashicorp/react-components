@@ -25,6 +25,8 @@ export default function CommandLineTerminal({ lines, title, noScroll, theme }) {
           <div className={styles.codeWrapper}>
             {lines &&
               lines.map((line, index) => (
+                // This array is stable, so we can use index as key
+                // eslint-disable-next-line react/no-array-index-key
                 <Fragment key={index}>
                   <pre
                     className={classNames({

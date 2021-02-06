@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component, createRef } from 'react'
 import CloseIcon from './close-icon'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
@@ -11,7 +11,7 @@ class AlertBanner extends Component {
     this.expirationDate = props.expirationDate
     this.name = props.name || slugify(props.text, { lower: true })
     this.state = { show: true }
-    this.banner = React.createRef()
+    this.banner = createRef()
   }
 
   render() {
@@ -49,7 +49,8 @@ class AlertBanner extends Component {
 
   componentDidMount() {
     const isCookieSet = cookie.get(`banner_${this.name}`)
-    const hasExpired = this.expirationDate && Date.now() > Date.parse(this.expirationDate)
+    const hasExpired =
+      this.expirationDate && Date.now() > Date.parse(this.expirationDate)
 
     // if cookie isn't set, show the component
     if (!isCookieSet) {

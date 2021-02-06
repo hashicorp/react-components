@@ -6,6 +6,7 @@
 
   & .size-reference {
     /* This element has zero height, but is still "visible"" */
+
     /* Its width is used to determine when to use [data-overflow='true'] */
   }
 
@@ -53,6 +54,7 @@
       min-width: 100%;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+
       /* Restrict tooltip space overflow */
       height: 65px;
 

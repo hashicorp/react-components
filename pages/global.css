@@ -1,9 +1,11 @@
 @import '@hashicorp/nextjs-scripts/prism/style.css';
 @import '~@hashicorp/mktg-global-styles/style.css';
+
 /* TODO: this should be embedded into react-content */
 @import '~@hashicorp/mktg-global-styles/_temporary-to-remove/tables.css';
 
 /* global component css imports */
+
 /* these should be moved to css modules */
 @import '../packages/alert/style.css';
 @import '../packages/button/styles/index.css';

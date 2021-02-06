@@ -36,9 +36,7 @@
     --highlight-color: var(--waypoint);
     --highlight-color-text: var(--waypoint-text);
   }
-}
 
-.g-content {
   margin: auto;
   color: var(--gray-2);
 
@@ -107,6 +105,7 @@
    *  Code
    *
    */
+
   /* Code font */
   & code {
     font-family: var(--font-monospace);
@@ -149,9 +148,27 @@
       color: inherit;
       font-size: 0.825em;
     }
+
+    & a.__permalink-h {
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      order: 1;
+      position: relative;
+      left: -0.7em;
+      margin-right: -0.5em;
+    }
+
+    &:hover {
+      & a.__permalink-h {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+    }
   }
 
   /* Links */
+
   /* Note: custom components are used in g-content areas.
   We don't want to clobber these with our default link styles */
   & a:not([class]),
@@ -182,11 +199,12 @@
 
     & li {
       position: relative;
+
       /* Vertical margins for single-paragraph content, multi-paragraph content
       renders as <p> within <li>, resulting in larger vertical margins */
       margin-top: 12px;
       margin-bottom: 12px;
-      &:before {
+      &::before {
         position: absolute;
         top: 0;
         left: 0;
@@ -199,19 +217,19 @@
 
   /* List - ordered bullets */
   & ul {
-    & li:before {
+    & li::before {
       content: '\2022';
     }
-    & ul li:before {
+    & ul li::before {
       content: '\25AB';
     }
-    & ul li ul li:before {
+    & ul li ul li::before {
       content: '\203A';
     }
-    & ul li ul li ul li:before {
+    & ul li ul li ul li::before {
       content: '\2013';
     }
-    & ul li ul li ul li ul li:before {
+    & ul li ul li ul li ul li::before {
       content: '\2022';
     }
   }
@@ -220,22 +238,22 @@
   & ol {
     & li {
       counter-increment: li;
+      &::before {
+        font-size: 0.75em;
+        line-height: calc(1.75 / 0.75);
+        content: counter(li);
+      }
     }
-    & li:before {
-      font-size: 0.75em;
-      line-height: calc(1.75 / 0.75);
-      content: counter(li);
-    }
-    & ol li:before {
+    & ol li::before {
       content: counter(li, lower-roman);
     }
-    & ol li ol li:before {
+    & ol li ol li::before {
       content: counter(li, lower-latin);
     }
-    & ol li ol li ol li:before {
+    & ol li ol li ol li::before {
       content: counter(li, upper-roman);
     }
-    & ol li ol li ol li ol li:before {
+    & ol li ol li ol li ol li::before {
       content: counter(li);
     }
   }
@@ -249,6 +267,7 @@
   }
 
   /* Alerts */
+
   /* TODO: move this into an alert component to be used within mdx */
   & .alert {
     padding: 1em;
@@ -299,32 +318,8 @@
     }
   }
 
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6 {
-    & a.__permalink-h {
-      display: inline-block;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      order: 1;
-      position: relative;
-      left: -0.7em;
-      margin-right: -0.5em;
-    }
-
-    &:hover {
-      & a.__permalink-h {
-        opacity: 1;
-        transition: opacity 0.2s ease;
-      }
-    }
-  }
-
   /* Remove the top margin from any first item */
   & > *:first-child {
-    margin-top: 0px;
+    margin-top: 0;
   }
 }

@@ -31,8 +31,8 @@ module.exports = {
       'If true, the border line underneath the tabs expands to the full width of the container, rather than being slightly padded from the edges',
     control: { type: 'checkbox' },
   },
-  items: {
-    type: 'object',
+  children: {
+    type: 'React.ReactNode',
     description: 'Data to be displayed as tabs',
     required: true,
     properties: {
@@ -41,9 +41,10 @@ module.exports = {
         type: 'string',
         description: 'Optional tooltip to be displayed next to the tab title',
       },
-      tabChildren: {
-        type: 'function',
-        description: 'Render prop for content display, should return jsx',
+      group: {
+        type: 'string',
+        description:
+          "A unique identifier for a tab 'group' that, when active, all Tabs with this id will become active when one is selected. _Note_ it's necessary to wrap the page with `TabProvider` for this feature to function. ",
       },
     },
   },
