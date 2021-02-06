@@ -51,7 +51,7 @@ function Search({
     <div className="g-search" style={cssVars}>
       <InstantSearch indexName={indexName} searchClient={client} refresh>
         <Configure distinct={1} hitsPerPage={25} clickAnalytics />
-        <label id="search-label" htmlFor="search-box" className="visually-hidden">Search tutorials</label>
+        <label id="search-box-label" htmlFor="search-box" className="visually-hidden">Search tutorials</label>
         <SearchBox
           {...{
             handleEscape,
