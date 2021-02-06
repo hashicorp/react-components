@@ -14,6 +14,7 @@ function SearchBox({
   query,
   setCancelled,
   setQuery,
+  onSubmit,
 }) {
   const searchBoxRef = useRef(null)
 
@@ -62,7 +63,7 @@ function SearchBox({
 
   return (
     <div className="c-search-box">
-      <form noValidate action="" role="search">
+      <form noValidate action="" role="search" onSubmit={onSubmit}>
         <input
           className="g-type-body-strong"
           ref={searchBoxRef}

@@ -9,7 +9,7 @@ function Search({
   renderHitContent,
   renderCalloutCta,
   resolveHitLink,
-  onEnter,
+  onSubmit = (event) => { event.preventDefault() },
   showSearchLegend = true,
 }) {
   if (!renderHitContent) {
@@ -49,6 +49,7 @@ function Search({
             query,
             setCancelled,
             setQuery,
+            onSubmit,
           }}
         />
         {query && !isCancelled && (
