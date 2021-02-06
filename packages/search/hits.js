@@ -17,7 +17,6 @@ function Hits({
   resolveHitLink,
   query,
   setCancelled,
-  onEnter,
   showSearchLegend,
   onSetActiveHit = () => {},
 }) {
