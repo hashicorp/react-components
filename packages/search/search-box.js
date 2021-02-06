@@ -15,6 +15,7 @@ function SearchBox({
   setCancelled,
   setQuery,
   onSubmit,
+  activeHit,
 }) {
   const searchBoxRef = useRef(null)
 
@@ -65,6 +66,7 @@ function SearchBox({
     <div className="c-search-box">
       <form noValidate action="" role="search" onSubmit={onSubmit}>
         <input
+          id="search-box"
           className="g-type-body-strong"
           ref={searchBoxRef}
           type="search"
@@ -78,6 +80,9 @@ function SearchBox({
           value={query}
           onChange={onChange}
           onKeyDown={onSearchBoxKeyDown}
+          aria-autocomplete="list"
+          aria-controls="search-results"
+          aria-activedescendant={activeHit > -1 ? `hit-${activeHit}` : ''}
         />
         <button
           type="submit"
@@ -97,9 +102,9 @@ function SearchBox({
           }}
         />
         {/*
-         * Show a spinner when search stalled (`isSearchStalled`). Default: 200ms
-         * Configurable: https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/#widget-param-stalledsearchdelay
-         */}
+        * Show a spinner when search stalled (`isSearchStalled`). Default: 200ms
+        * Configurable: https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/#widget-param-stalledsearchdelay
+        */}
         {isSearchStalled && (
           <div className="icon-loading">
             <svg

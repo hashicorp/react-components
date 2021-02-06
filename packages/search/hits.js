@@ -19,6 +19,7 @@ function Hits({
   setCancelled,
   onEnter,
   showSearchLegend,
+  onSetActiveHit = () => {},
 }) {
   const selectedHit = useRef(null)
   const [hitsTabIndex, setHitsTabIndex] = useState(null)
@@ -60,7 +61,8 @@ function Hits({
     const nextIndex = startIndex + 1
     if (nextIndex > hits.length) return setHitsTabIndex(1)
     setHitsTabIndex(nextIndex)
-    selectedHit?.current.focus()
+    selectedHit.current?.focus()
+    onSetActiveHit(nextIndex)
   }
 
   function decrementTabIndex() {
@@ -68,7 +70,8 @@ function Hits({
     const nextIndex = startIndex - 1
     if (nextIndex < 1) return setHitsTabIndex(hits.length)
     setHitsTabIndex(nextIndex)
-    selectedHit?.current.focus()
+    selectedHit?.current?.focus()
+    onSetActiveHit(nextIndex)
   }
 
   function scrollToActive(el) {
@@ -93,7 +96,13 @@ function Hits({
       ) : (
         <>
           {showSearchLegend && <SearchLegend />}
-          <ul className="hits-list">
+          <ul
+            className="hits-list"
+            id="search-results"
+            role="listbox"
+            aria-labelledby="search-box-label"
+            role="listbox"
+          >
             {hits.map((hit) => (
               <Hit
                 key={hit.objectID}
@@ -172,7 +181,7 @@ const Hit = forwardRef(
     }
 
     return (
-      <li className="hit-item">
+      <li className="hit-item" id={`hit-${hit.__position}`}>
         <Link {...hitLink} passHref>
           <LinkWithClick
             ref={ref}

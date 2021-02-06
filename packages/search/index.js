@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import Hits from './hits'
 import SearchBox from './search-box'
@@ -30,6 +30,15 @@ function Search({
 
   useEffect(initAlgoliaInsights, [])
 
+  //  keep track of the currently selected result for accessible labeling
+  const [hitIndex, setHitIndex] = useState(-1)
+
+  useEffect(() => {
+    if (query === '' || isCancelled) {
+      setHitIndex(-1)
+    }
+  }, [query, isCancelled])
+
   function handleEscape() {
     setCancelled(true)
   }
@@ -42,6 +51,7 @@ function Search({
     <div className="g-search" style={cssVars}>
       <InstantSearch indexName={indexName} searchClient={client} refresh>
         <Configure distinct={1} hitsPerPage={25} clickAnalytics />
+        <label id="search-label" for="search-box" className="visually-hidden">Search tutorials</label>
         <SearchBox
           {...{
             handleEscape,
@@ -51,6 +61,7 @@ function Search({
             setQuery,
             onSubmit,
           }}
+          activeHit={hitIndex}
         />
         {query && !isCancelled && (
           <Hits
@@ -63,6 +74,7 @@ function Search({
               showSearchLegend,
               renderCalloutCta,
             }}
+            onSetActiveHit={setHitIndex}
           />
         )}
       </InstantSearch>
