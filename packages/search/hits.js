@@ -33,9 +33,6 @@ function Hits({
 
   function onKeyDown(e) {
     switch ([e.ctrlKey, e.keyCode].join(',')) {
-      // [Enter]
-      case 'false,13':
-        return handleEnter(e)
       // [Escape]
       case 'false,27':
         setHitsTabIndex(null)
@@ -55,16 +52,6 @@ function Hits({
       case 'true,80':
         e.preventDefault()
         return decrementTabIndex()
-    }
-  }
-
-  function handleEnter(event) {
-    //  if focus is currently applied to a search result,
-    //  we do nothing - i.e., redirect to the result via native browser event handler.
-    //  only intercept if callback is provided and we're focused on something that isn't a hit result.
-    if (!event.target.classList.contains('hit-link-wrapper') && onEnter) {
-      event.preventDefault()
-      onEnter({ event, query })
     }
   }
 
