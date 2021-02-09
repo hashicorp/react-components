@@ -44,6 +44,7 @@ function Hits({
       // [Ctrl-n]
       case 'false,40':
       case 'true,78':
+        e.preventDefault()
         if (!hitsTabIndex) {
           setHitsTabIndex(0)
           scrollToActive()
