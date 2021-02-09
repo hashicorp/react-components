@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-text-split-with-image",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Display an image alongside a title, description, and links.",
   "author": "HashiCorp",
   "contributors": [
@@ -12,6 +12,6 @@
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/react-image": "^2.0.3",
-    "@hashicorp/react-text-split": "^1.2.1"
+    "@hashicorp/react-text-split": "^1.2.2"
   }
 }

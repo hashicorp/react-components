@@ -1,14 +1,14 @@
 {
   "name": "@hashicorp/react-product-downloader",
   "description": "Interface for downloading HashiCorp products",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner"
   ],
   "dependencies": {
     "@hashicorp/react-button": "^2.2.8",
-    "@hashicorp/react-tabs": "^3.0.0",
+    "@hashicorp/react-tabs": "^3.0.1",
     "semver": "^7.3.2"
   },
   "license": "MPL-2.0",

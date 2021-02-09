@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-glossary-page",
   "description": "Create a Hashicorp branded glossary page in NextJS projects.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "HashiCorp",
   "contributors": [
     "Bryce Kalow"
@@ -16,7 +16,7 @@
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "@hashicorp/react-docs-page": "^10.7.0"
+    "@hashicorp/react-docs-page": "^10.7.1"
   },
   "publishConfig": {
     "access": "public"
