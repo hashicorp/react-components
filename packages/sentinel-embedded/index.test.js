@@ -3,6 +3,11 @@ import SentinelEmbedded from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 
+// Due to the Sentinel embedded code performing a dynamic
+// import on client side, we need to wait until promises
+// are resolved before running assertions against CodeMirror.
+// A description of this solution can be found here:
+//    https://stackoverflow.com/a/51045733
 function flushPromises() {
   return new Promise((resolve) => setImmediate(resolve))
 }
