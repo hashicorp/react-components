@@ -1,5 +1,5 @@
 fragment sectionHeaderFields on SbcSectionHeaderRecord {
   headline
-  description
+  description(markdown: true)
   useH1
 }
