@@ -82,7 +82,7 @@ function SearchBox({
           onKeyDown={onSearchBoxKeyDown}
           aria-autocomplete="list"
           aria-controls="search-results"
-          aria-activedescendant={activeHit > -1 ? `hit-${activeHit}` : ''}
+          aria-activedescendant={activeHit > 0 ? `hit-${activeHit}` : ''}
         />
         <button
           type="submit"

@@ -28,7 +28,10 @@ function Hits({
   }, [hitsTabIndex])
 
   useEffect(() => {
-    if (selectedHit?.current) scrollToActive(selectedHit.current)
+    if (selectedHit?.current) {
+      scrollToActive(selectedHit.current)
+    }
+    onSetActiveHit(hitsTabIndex)
   }, [hitsTabIndex])
 
   function onKeyDown(e) {
@@ -60,8 +63,6 @@ function Hits({
     const nextIndex = startIndex + 1
     if (nextIndex > hits.length) return setHitsTabIndex(1)
     setHitsTabIndex(nextIndex)
-    selectedHit.current?.focus()
-    onSetActiveHit(nextIndex)
   }
 
   function decrementTabIndex() {
@@ -69,8 +70,6 @@ function Hits({
     const nextIndex = startIndex - 1
     if (nextIndex < 1) return setHitsTabIndex(hits.length)
     setHitsTabIndex(nextIndex)
-    selectedHit?.current?.focus()
-    onSetActiveHit(nextIndex)
   }
 
   function scrollToActive(el) {
@@ -79,6 +78,9 @@ function Hits({
       behavior: 'smooth',
       block: 'nearest',
       inline: 'nearest',
+    })
+    el.focus({
+      preventScroll: true,
     })
   }
 
