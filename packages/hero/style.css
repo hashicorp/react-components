@@ -244,11 +244,23 @@
       margin: 0;
     }
 
-    & > p {
-      margin: 24px 0 0 0;
+    & .description {
+      margin-top: 24px;
 
-      @media (max-width: 767px) {
+      @media (--small) {
         margin-top: 16px;
+      }
+
+      & > p {
+        margin: 0;
+
+        & + p {
+          margin-top: 24px;
+
+          @media (--small) {
+            margin-top: 16px;
+          }
+        }
       }
     }
 
