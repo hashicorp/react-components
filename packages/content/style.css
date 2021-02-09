@@ -4,39 +4,6 @@
   --highlight-color: var(--brand);
   --highlight-color-text: var(--brand-text);
 
-  &.consul {
-    --highlight-color: var(--consul);
-    --highlight-color-text: var(--consul-text);
-  }
-  &.vault {
-    --highlight-color: var(--brand);
-    --highlight-color-text: var(--brand-text);
-  }
-  &.nomad {
-    --highlight-color: var(--nomad);
-    --highlight-color-text: var(--nomad-text);
-  }
-  &.terraform {
-    --highlight-color: var(--terraform);
-    --highlight-color-text: var(--terraform-text);
-  }
-  &.packer {
-    --highlight-color: var(--packer);
-    --highlight-color-text: var(--packer-text);
-  }
-  &.vagrant {
-    --highlight-color: var(--vagrant);
-    --highlight-color-text: var(--vagrant-text);
-  }
-  &.boundary {
-    --highlight-color: var(--boundary);
-    --highlight-color-text: var(--boundary-text);
-  }
-  &.waypoint {
-    --highlight-color: var(--waypoint);
-    --highlight-color-text: var(--waypoint-text);
-  }
-
   margin: auto;
   color: var(--gray-2);
 
