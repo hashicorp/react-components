@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^2.1.0",
-    "@hashicorp/nextjs-scripts": "^14.1.6",
-    "next": "9.5.5",
+    "@hashicorp/nextjs-scripts": "^16.1.0",
+    "next": "^10.0.6",
     "next-remote-watch": "^0.3.0",
     "node-cache": "^5.1.2",
     "react": "16.13.1",
@@ -24,6 +24,8 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "bs": "npm run bootstrap",
+    "hard-reset": "rm -rf node_modules && rm -rf .next && lerna clean -y && npm i && npm run bs",
     "lint": "next-hashicorp lint",
     "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
