@@ -9,6 +9,5 @@ module.exports = {
     '\\.pnp\\.[^\\/]+$',
   ],
   verbose: true,
-  setupFiles: ['dotenv/config'],
   setupFilesAfterEnv: ['<rootDir>/__test-helpers/extend-expect.js'],
 }

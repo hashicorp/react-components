@@ -5,7 +5,23 @@ const renderWithProvider = (ui) => {
   return render(<SearchProvider>{ui}</SearchProvider>)
 }
 
+const originalEnv = process.env
+
+function setupEnv() {
+  jest.resetModules()
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID = 'foo'
+  process.env.NEXT_PUBLIC_ALGOLIA_INDEX = 'bar'
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY = 'baz'
+}
+
+function teardownEnv() {
+  process.env = originalEnv
+}
+
 describe('<Search />', () => {
+  beforeAll(setupEnv)
+  afterAll(teardownEnv)
+
   it('should render a `.g-search` <div> root element', () => {
     const { container } = renderWithProvider(
       <Search renderHitContent={() => {}} />
@@ -28,6 +44,9 @@ describe('<Search />', () => {
 })
 
 describe('<SearchProvider />', () => {
+  beforeAll(setupEnv)
+  afterAll(teardownEnv)
+
   it('should provide a context object', () => {
     function Consumer() {
       const context = useSearch()
