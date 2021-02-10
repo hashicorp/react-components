@@ -16,15 +16,14 @@ describe('<Search />', () => {
   })
 
   it('should render an empty input by default', () => {
-    const { container } = renderWithProvider(
+    const { container, getByRole } = renderWithProvider(
       <Search renderHitContent={() => {}} />
     )
 
-    const input = container.querySelector('input')
-    const results = container.querySelector('.c-hits')
+    const input = getByRole('searchbox')
     expect(input).toHaveAttribute('id', SEARCH_BOX_ID)
     expect(input).toHaveAttribute('aria-activedescendant', '')
-    expect(results).toBeNull()
+    expect(container.querySelector('.c-hits')).toBeNull()
   })
 })
 
