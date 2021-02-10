@@ -12,7 +12,14 @@
     display: block;
     position: relative;
     color: var(--white);
-    background: linear-gradient(90deg, #1563ff 1.56%, #08368b 100%);
+    background: linear-gradient(
+      90deg,
+      var(--brand) 1.56%,
+      var(--brand-d2) 100%
+    );
+    /** these colors are different than the brand custom properties. although they are close to d2 & d1 
+    * this component will need further refactoring once the colors are changed
+    **/
 
     &.consul {
       background: linear-gradient(90deg, #ca2171 1.56%, #8e134a 100%);
@@ -30,12 +37,10 @@
       background: linear-gradient(90deg, #6a6d7a 1.56%, #373942 100%);
     }
 
+    /** boundary doesn't have a d1 or d2... so this would need to be a one off */
+
     &.boundary {
       background: linear-gradient(90deg, #de464c 1.56%, #cf4a4f 100%);
-    }
-
-    &.waypoint {
-      background: linear-gradient(90deg, #14c6cb 1.56%, #15a7ab 100%);
     }
 
     & > .g-grid-container {
@@ -103,9 +108,14 @@
     & > svg {
       display: block;
       & [stroke] {
-        stroke: #66a2ff;
+        stroke: var(--brand-l1);
       }
     }
+
+    /** 
+    Again colors here aren't --brand-l1 across the board, 
+    some and some values of --{product}-l1 don't provide enough contrast
+     **/
 
     &.consul > svg [stroke] {
       stroke: #f8d9e7;

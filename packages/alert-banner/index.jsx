@@ -1,4 +1,5 @@
 import { Component, createRef } from 'react'
+import { withProductMeta } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import CloseIcon from './close-icon'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
@@ -16,18 +17,19 @@ class AlertBanner extends Component {
 
   render() {
     const { show } = this.state
-    const { url, tag, theme, text, linkText } = this.props
+    const { product, url, tag, text, linkText } = this.props
+    const { themeClass } = product
 
     const tagClass = tag.length > 3 ? 'has-large-tag' : ''
 
     return (
       <div
-        className={`g-alert-banner ${theme} ${show ? 'show' : ''} `}
+        className={`g-alert-banner ${themeClass} ${show ? 'show' : ''} `}
         ref={this.banner}
       >
         <a
           href={url}
-          className={`link ${theme}`}
+          className={`link ${themeClass}`}
           onClick={() => this.trackEvent('click')}
         >
           <span className={`g-grid-container ${tagClass}`}>
@@ -39,7 +41,10 @@ class AlertBanner extends Component {
             </span>
           </span>
         </a>
-        <button className={`close ${theme}`} onClick={() => this.onClose()}>
+        <button
+          className={`close ${themeClass}`}
+          onClick={() => this.onClose()}
+        >
           <CloseIcon />
           <span className="visually-hidden">Dismiss alert</span>
         </button>
@@ -81,13 +86,13 @@ class AlertBanner extends Component {
 
   trackEvent(type) {
     if (window.analytics) {
-      const { tag, theme, text, linkText } = this.props
+      const { tag, product, text, linkText } = this.props
 
       window.analytics.track(type.charAt(0).toUpperCase() + type.slice(1), {
         category: 'Alert Banner',
         label: `${text} - ${linkText} | ${type}`,
         tag: tag,
-        theme: theme,
+        product: product.name,
       })
     }
   }
@@ -95,4 +100,4 @@ class AlertBanner extends Component {
 
 AlertBanner.fragmentSpec = { fragment }
 
-export default AlertBanner
+export default withProductMeta(AlertBanner)
