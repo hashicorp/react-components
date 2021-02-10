@@ -26,6 +26,7 @@ class AlertBanner extends Component {
       <div
         className={`g-alert-banner ${themeClass} ${show ? 'show' : ''} `}
         ref={this.banner}
+        hidden={!this.state.show && true}
       >
         <a
           href={url}

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import AlertBanner from './'
 
 describe('<AlertBanner />', () => {
@@ -24,21 +24,11 @@ describe('<AlertBanner />', () => {
   })
 
   it('should close when clicking on close', () => {
-    let didClose = false
-    class AlertBannerText extends AlertBanner {
-      onClose() {
-        didClose = true
-      }
-    }
     const { container } = render(
-      <AlertBannerText
-        text="text"
-        tag="tag"
-        linkText="https://hashicorp.com/"
-      />
+      <AlertBanner text="text" tag="tag" linkText="https://hashicorp.com/" />
     )
-    container.querySelector('.close').click()
-    expect(didClose).toBe(true)
+    screen.getByRole('button', { name: 'Dismiss alert' }).click()
+    expect(container.firstChild).not.toBeVisible()
   })
 
   describe('with an expiration date set', () => {
