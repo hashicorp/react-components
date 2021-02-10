@@ -1,11 +1,11 @@
 module.exports = {
   moduleNameMapper: {
-    '\\.module.css$': '<rootDir>/__test-helpers/mocks/css-module-mock.js',
+    '\\.module.css$': 'identity-obj-proxy',
     '\\.graphql$': '<rootDir>/__test-helpers/mocks/graphql-fragment-mock.js',
     '\\.svg(?:\\?.*)*$': '<rootDir>/__test-helpers/mocks/svg-mock.js',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!(@hashicorp/react-|@hashicorp/sentinel-embedded))',
+    '/node_modules/(?!(@hashicorp/react-|@hashicorp/sentinel-embedded|@hashicorp/nextjs-scripts))',
     '\\.pnp\\.[^\\/]+$',
   ],
   verbose: true,
