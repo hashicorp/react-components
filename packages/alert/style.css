@@ -15,20 +15,6 @@
 
   /* theming */
 
-  & span {
-    border-color: var(--brand);
-  }
-
-  & svg {
-    & line {
-      stroke: var(--brand);
-    }
-
-    & path {
-      fill: var(--brand);
-    }
-  }
-
   &.error {
     & span {
       border-color: #b91b1b;
