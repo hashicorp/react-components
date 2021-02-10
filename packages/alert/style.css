@@ -14,55 +14,8 @@
   }
 
   /* theming */
-  &.terraform-purple {
-    & span {
-      border-color: var(--terraform);
-    }
 
-    & svg {
-      & line {
-        stroke: var(--terraform);
-      }
-
-      & path {
-        fill: var(--terraform);
-      }
-    }
-  }
-
-  &.nomad-green {
-    & span {
-      border-color: var(--nomad);
-    }
-
-    & svg {
-      & line {
-        stroke: var(--nomad);
-      }
-
-      & path {
-        fill: var(--nomad);
-      }
-    }
-  }
-
-  &.consul-pink {
-    & span {
-      border-color: var(--consul);
-    }
-
-    & svg {
-      & line {
-        stroke: var(--consul);
-      }
-
-      & path {
-        fill: var(--consul);
-      }
-    }
-  }
-
-  &.error-red {
+  &.error {
     & span {
       border-color: #b91b1b;
     }
@@ -78,7 +31,7 @@
     }
   }
 
-  &.warning-yellow {
+  &.warning {
     & span {
       border-color: #e6ab25;
     }
@@ -94,7 +47,7 @@
     }
   }
 
-  &.success-green {
+  &.success {
     & span {
       border-color: #3ec574;
     }

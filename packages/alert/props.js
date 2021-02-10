@@ -1,4 +1,23 @@
 module.exports = {
+  product: {
+    description:
+      'The associated product to pull in respective brand theme colors. The default is hashicorp blue.',
+    type: 'string',
+    control: { type: 'select' },
+    options: [
+      'hashicorp',
+      'boundary',
+      'consul',
+      'nomad',
+      'packer',
+      'terraform',
+      'vault',
+      'vagrant',
+      'waypoint',
+    ],
+    testValue: 'terraform',
+    required: false,
+  },
   url: {
     description: 'URL that the alert points to',
     type: 'string',
@@ -20,21 +39,12 @@ module.exports = {
     testValue: 'Tortor Tellus Inceptos Parturient',
     required: true,
   },
-  tagColor: {
-    description: 'Background color of the tag',
+  state: {
+    description: 'Special tag states that override brand values.',
     type: 'string',
     control: { type: 'select' },
-    options: [
-      'terraform-purple',
-      'nomad-green',
-      'vault-gray',
-      'consul-pink',
-      'vagrant-blue',
-      'error-red',
-      'warning-yellow',
-      'success-green',
-    ],
-    testValue: 'vault-gray',
+    options: ['error', 'warning', 'success'],
+    required: false,
   },
   textColor: {
     description: 'Background color of the text - default is `light`',

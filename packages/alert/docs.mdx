@@ -7,7 +7,7 @@ The `<Alert>` component renders a small alert banner with a link to another page
 <LiveComponent>{`<Alert
   url="#"
   tag="New"
-  tagColor="terraform-purple"
+  product="terraform"
   text="Terraform Collaboration for Everyone"
   textColor="dark"
 />`}</LiveComponent>
@@ -28,3 +28,14 @@ The `<Alert>` component renders a small alert banner with a link to another page
     textColor: componentProps.textColor,
   }}
 /> -->
+
+If you need to override the brand color with a special _state_ (error, warning, success):
+
+<LiveComponent>{`<Alert
+  url="#"
+  tag="New"
+  product="terraform"
+  text="Terraform Collaboration for Everyone"
+  textColor="dark"
+  state="error"
+/>`}</LiveComponent>

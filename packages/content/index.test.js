@@ -7,6 +7,7 @@ test('renders content accurately', () => {
 })
 
 test('renders a product class if one is passed', () => {
-  const { container } = render(<Content product="test" />)
-  expect(container.firstChild).toHaveClass('test')
+  const { container } = render(<Content product="terraform" />)
+
+  expect(container.firstChild).toHaveClass('terraform')
 })
