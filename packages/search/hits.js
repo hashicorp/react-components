@@ -129,6 +129,7 @@ function Hits({
 }
 
 export default connectHits(Hits)
+export { Hits as HitsComponent }
 
 /* eslint-disable react/display-name */
 

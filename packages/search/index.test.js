@@ -1,5 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import Search, { SearchProvider, useSearch, SEARCH_BOX_ID } from './'
+import Search, {
+  SearchProvider,
+  useSearch,
+  SEARCH_BOX_ID,
+  SEARCH_RESULTS_ID,
+} from './'
+import { HitsComponent } from './hits'
 
 const renderWithProvider = (ui) => {
   return render(<SearchProvider>{ui}</SearchProvider>)
@@ -40,6 +46,30 @@ describe('<Search />', () => {
     expect(input).toHaveAttribute('id', SEARCH_BOX_ID)
     expect(input).toHaveAttribute('aria-activedescendant', '')
     expect(container.querySelector('.c-hits')).toBeNull()
+  })
+})
+
+describe('<Hits />', () => {
+  it('should display no results with invalid input', () => {
+    const { queryByText, queryByRole } = renderWithProvider(
+      <HitsComponent hits={[]} renderHitContent={() => {}} />
+    )
+
+    expect(queryByRole('listbox')).toBeNull()
+    expect(queryByText('No results for undefined...')).toBeInTheDocument()
+  })
+
+  it('should render results when given valid input', () => {
+    const { getByRole } = renderWithProvider(
+      <HitsComponent
+        hits={[{ objectID: 'foo' }, { objectID: 'bar' }]}
+        renderHitContent={({ objectID }) => <span>{objectID}</span>}
+      />
+    )
+
+    const resultsEl = getByRole('listbox')
+    expect(resultsEl).toBeInTheDocument()
+    expect(resultsEl).toHaveAttribute('id', SEARCH_RESULTS_ID)
   })
 })
 
