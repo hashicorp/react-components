@@ -6,6 +6,7 @@ import InlineSvg from '@hashicorp/react-inline-svg'
 import SearchLegend from './legend'
 import { useSearch } from './provider'
 import IconReturn from './img/return.svg.js'
+import { SEARCH_BOX_LABEL_ID, SEARCH_RESULTS_ID } from '.'
 
 function Hits({
   /* Props provided from connector */
@@ -100,9 +101,9 @@ function Hits({
           {showSearchLegend && <SearchLegend />}
           <ul
             className="hits-list"
-            id="search-results"
+            id={SEARCH_RESULTS_ID}
             role="listbox"
-            aria-labelledby="search-box-label"
+            aria-labelledby={SEARCH_BOX_LABEL_ID}
           >
             {hits.map((hit) => (
               <Hit

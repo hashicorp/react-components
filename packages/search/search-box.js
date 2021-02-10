@@ -3,6 +3,7 @@ import { connectSearchBox } from 'react-instantsearch-dom'
 import IconMagGlass from './img/search.svg.js'
 import IconX from './img/search-x.svg.js'
 import IconSlash from './img/slash-search-toggle.js'
+import { SEARCH_BOX_ID, SEARCH_RESULTS_ID } from './'
 
 function SearchBox({
   /* Props provided from connector */
@@ -66,7 +67,7 @@ function SearchBox({
     <div className="c-search-box">
       <form noValidate action="" role="search" onSubmit={onSubmit}>
         <input
-          id="search-box"
+          id={SEARCH_BOX_ID}
           className="g-type-body-strong"
           ref={searchBoxRef}
           type="search"
@@ -81,7 +82,7 @@ function SearchBox({
           onChange={onChange}
           onKeyDown={onSearchBoxKeyDown}
           aria-autocomplete="list"
-          aria-controls="search-results"
+          aria-controls={SEARCH_RESULTS_ID}
           aria-activedescendant={activeHit > 0 ? `hit-${activeHit}` : ''}
         />
         <button
@@ -102,9 +103,9 @@ function SearchBox({
           }}
         />
         {/*
-        * Show a spinner when search stalled (`isSearchStalled`). Default: 200ms
-        * Configurable: https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/#widget-param-stalledsearchdelay
-        */}
+         * Show a spinner when search stalled (`isSearchStalled`). Default: 200ms
+         * Configurable: https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/#widget-param-stalledsearchdelay
+         */}
         {isSearchStalled && (
           <div className="icon-loading">
             <svg
