@@ -6,15 +6,15 @@ function SentinelEmbedded({
   exampleId,
   exampleData,
   height,
-  policyPathContent,
+  policyContent,
   ...otherProps
 }) {
   let example = undefined
   if (typeof exampleData != 'undefined') {
     example = exampleData
-  } else if (policyPathContent) {
+  } else if (policyContent) {
     example = {
-      policy: policyPathContent,
+      policy: policyContent,
     }
   }
 

@@ -113,10 +113,10 @@ describe('<SentinelEmbedded />', () => {
     expect(codeMirror.getValue()).toBe('main = true')
   })
 
-  it('should pass policyPathContent into example', async () => {
+  it('should pass policyContent into example', async () => {
     expect.assertions(1)
     const { container } = render(
-      <SentinelEmbedded {...defaultProps} policyPathContent={'main = true'} />
+      <SentinelEmbedded {...defaultProps} policyContent={'main = true'} />
     )
 
     await flushPromises()
