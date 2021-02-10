@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react'
-import Search, { SearchProvider, SEARCH_BOX_ID } from './'
+import { render, screen, fireEvent } from '@testing-library/react'
+import Search, { SearchProvider, useSearch, SEARCH_BOX_ID } from './'
 
 const renderWithProvider = (ui) => {
   return render(<SearchProvider>{ui}</SearchProvider>)
@@ -28,6 +28,38 @@ describe('<Search />', () => {
   })
 })
 
-// describe('<SearchProvider />', () => {
-//   it('should provide a context object', () => {})
-// })
+describe('<SearchProvider />', () => {
+  it('should provide a context object', () => {
+    function Consumer() {
+      const context = useSearch()
+      return <div>{typeof context}</div>
+    }
+    renderWithProvider(<Consumer />)
+    expect(screen.getByText('object')).toBeInTheDocument()
+  })
+
+  it('should accurately get/set query state', () => {
+    function SearchButton() {
+      const { query, setQuery } = useSearch()
+      const clickHandler = () => setQuery('nomad')
+      return (
+        <>
+          <button onClick={clickHandler}>
+            <span>query is {query}</span>
+          </button>
+        </>
+      )
+    }
+
+    const { container, getByText } = renderWithProvider(<SearchButton />)
+
+    //  empty string by default
+    expect(getByText('query is')).toBeDefined()
+
+    //  set the query value
+    fireEvent.click(container.firstChild)
+
+    //  verify query is applied
+    expect(getByText('query is nomad')).toBeDefined()
+  })
+})
