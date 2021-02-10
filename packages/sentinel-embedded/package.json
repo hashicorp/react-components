@@ -8,7 +8,7 @@
   ],
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/sentinel-embedded": "^0.0.7"
+    "@hashicorp/sentinel-embedded": "^0.0.8"
   },
   "peerDependencies": {
     "react": "^16.9.0"
