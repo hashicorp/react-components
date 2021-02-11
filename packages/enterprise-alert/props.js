@@ -1,9 +1,19 @@
 module.exports = {
   product: {
-    description: 'Product name for the alert',
+    description: 'Product name for the alert, link url, and theme colors.',
     type: 'string',
     control: { type: 'select' },
-    options: ['consul', 'nomad', 'terraform', 'vault'],
+    options: [
+      'hashicorp',
+      'boundary',
+      'consul',
+      'nomad',
+      'packer',
+      'terraform',
+      'vault',
+      'vagrant',
+      'waypoint',
+    ],
     testValue: 'consul',
     required: true,
   },
