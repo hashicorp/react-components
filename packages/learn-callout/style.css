@@ -142,66 +142,7 @@
     }
   }
 
-  /* Brand -- Hashicorp */
-  &.brand-hashicorp {
-    & .content label {
-      color: var(--default);
-    }
-  }
-
-  /* Brand -- Consul */
-  &.brand-consul {
-    & .content label {
-      color: var(--consul);
-    }
-  }
-
-  /* Brand -- Nomad */
-  &.brand-nomad {
-    & .content label {
-      color: var(--nomad);
-    }
-  }
-
-  /* Brand -- Packer */
-  &.brand-packer {
-    & .content label {
-      color: var(--packer);
-    }
-  }
-
-  /* Brand -- Terraform */
-  &.brand-terraform {
-    & .content label {
-      color: var(--terraform);
-    }
-  }
-
-  /* Brand -- Vault */
-  &.brand-vault {
-    & .content label {
-      color: var(--vault);
-    }
-  }
-
-  /* Brand -- Vagrant */
-  &.brand-vagrant {
-    & .content label {
-      color: var(--vagrant);
-    }
-  }
-
-  /* Brand -- Boundary */
-  &.brand-boundary {
-    & .content label {
-      color: var(--boundary);
-    }
-  }
-
-  /* Brand -- Waypoint */
-  &.brand-waypoint {
-    & .content label {
-      color: var(--waypoint);
-    }
+  & .content label {
+    color: var(--brand); /* Overriden per product by themeClass */
   }
 }
