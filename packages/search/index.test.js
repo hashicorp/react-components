@@ -38,11 +38,11 @@ describe('<Search />', () => {
   })
 
   it('should render an empty input by default', () => {
-    const { container, getByRole } = renderWithProvider(
+    const { container } = renderWithProvider(
       <Search renderHitContent={() => {}} />
     )
 
-    const input = getByRole('searchbox')
+    const input = screen.getByRole('searchbox')
     expect(input).toHaveAttribute('id', SEARCH_BOX_ID)
     expect(input).toHaveAttribute('aria-activedescendant', '')
     expect(container.querySelector('.c-hits')).toBeNull()
@@ -51,23 +51,23 @@ describe('<Search />', () => {
 
 describe('<Hits />', () => {
   it('should display no results with invalid input', () => {
-    const { queryByText, queryByRole } = renderWithProvider(
-      <HitsComponent hits={[]} renderHitContent={() => {}} />
-    )
+    renderWithProvider(<HitsComponent hits={[]} renderHitContent={() => {}} />)
 
-    expect(queryByRole('listbox')).toBeNull()
-    expect(queryByText('No results for undefined...')).toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).toBeNull()
+    expect(
+      screen.queryByText('No results for undefined...')
+    ).toBeInTheDocument()
   })
 
   it('should render results when given valid input', () => {
-    const { getByRole } = renderWithProvider(
+    renderWithProvider(
       <HitsComponent
         hits={[{ objectID: 'foo' }, { objectID: 'bar' }]}
         renderHitContent={({ objectID }) => <span>{objectID}</span>}
       />
     )
 
-    const resultsEl = getByRole('listbox')
+    const resultsEl = screen.getByRole('listbox')
     expect(resultsEl).toHaveAttribute('id', SEARCH_RESULTS_ID)
     expect(Array.from(resultsEl.querySelectorAll('.hit-item')).length).toBe(2)
   })
@@ -99,15 +99,15 @@ describe('<SearchProvider />', () => {
       )
     }
 
-    const { container, getByText } = renderWithProvider(<SearchButton />)
+    const { container } = renderWithProvider(<SearchButton />)
 
     //  empty string by default
-    expect(getByText('query is')).toBeDefined()
+    expect(screen.getByText('query is')).toBeDefined()
 
     //  set the query value
     fireEvent.click(container.firstChild)
 
     //  verify query is applied
-    expect(getByText('query is nomad')).toBeDefined()
+    expect(screen.getByText('query is nomad')).toBeDefined()
   })
 })
