@@ -1,9 +1,11 @@
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import Button from '@hashicorp/react-button'
 
-export default function LearnCallout({ headline, brand, background, items }) {
+export default function LearnCallout({ headline, product, background, items }) {
+  const { themeClass, slug } = useProductMeta(product)
   return (
     <div
-      className={`g-learn-callout brand-${brand ? brand : 'neutral'}`}
+      className={`g-learn-callout ${themeClass || 'brand-neutral'}`}
       style={{ backgroundImage: background ? `url('${background}')` : 'none' }}
     >
       <div className="g-grid-container learn-container">
@@ -15,9 +17,9 @@ export default function LearnCallout({ headline, brand, background, items }) {
               <Button
                 className="desktop-button"
                 title="Explore HashiCorp Learn"
-                url={`https://learn.hashicorp.com/${brand}`}
+                url={`https://learn.hashicorp.com/${slug}`}
                 linkType="outbound"
-                theme={{ variant: 'primary', brand }}
+                theme={{ variant: 'primary', brand: product }}
               />
             </div>
           </div>
@@ -50,9 +52,9 @@ export default function LearnCallout({ headline, brand, background, items }) {
         <Button
           className="mobile-button"
           title="Explore HashiCorp Learn"
-          url={`https://learn.hashicorp.com/${brand}`}
+          url={`https://learn.hashicorp.com/${slug}`}
           linkType="outbound"
-          theme={{ variant: 'primary', brand }}
+          theme={{ variant: 'primary', brand: product }}
         />
       </div>
     </div>

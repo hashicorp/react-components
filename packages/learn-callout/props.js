@@ -5,7 +5,7 @@ module.exports = {
     control: { type: 'input' },
     required: true,
   },
-  brand: {
+  product: {
     type: 'string',
     description: 'Sets the brand colors to be used',
     control: { type: 'dropdown' },
