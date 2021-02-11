@@ -120,3 +120,86 @@ Note how despite the color theme, the appearance is neutral.
     svg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M12 16a4 4 0 100-8 4 4 0 000 8z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M14.83 9.17l3.53-3.53M4.93 19.07l4.24-4.24" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   }}
 />`}</LiveComponent>
+
+### Sticker Sheet
+
+<div>
+  {(() => {
+    const variants = ['primary', 'secondary', 'tertiary', 'tertiary-neutral']
+    const title = 'My Button Title'
+    const brands = [
+      'hashicorp',
+      'neutral',
+      'terraform',
+      'consul',
+      'nomad',
+      'packer',
+    ]
+    const bgThemeDict = {
+      white: 'light',
+      'brand-l3': 'brand-l3',
+      black: 'dark',
+      'gray-1': 'dark',
+      brand: 'brand',
+    }
+    const bgKnob = 'white'
+    const background = bgThemeDict[bgKnob]
+    const disabled = false
+    // [null, 'anchor', 'inbound', 'outbound', 'download']
+    const linkType = null
+    const icon = {
+      position: 'right', // ['left', 'right']
+      isAnimated: false,
+    }
+    const size = 'medium' // ['small', 'medium']
+    return brands.map((brand) => {
+      const brandKey =
+        brand === 'hashicorp' ? 'brand' : brand === 'neutral' ? 'vault' : brand
+      const bgToken =
+        bgKnob === 'brand-l3'
+          ? `--${brandKey}-l3`
+          : bgKnob === 'brand'
+          ? `--${brandKey}`
+          : `--${bgKnob}`
+      return (
+        <div
+          style={{ padding: '24px 0 32px 0', background: `var(${bgToken})` }}
+        >
+          <div
+            style={{
+              marginLeft: '16px',
+              color:
+                background === 'light' || background === 'brand-l3'
+                  ? 'var(--gray-3)'
+                  : 'var(--white)',
+            }}
+            className="g-type-label"
+          >
+            {brand}
+          </div>
+          <div style={{ marginTop: '8px' }}>
+            {variants.map((variant) => {
+              return (
+                <span key={variant} style={{ marginLeft: '16px' }}>
+                  <Button
+                    icon={icon}
+                    linkType={linkType}
+                    disabled={disabled}
+                    title={title}
+                    size={size}
+                    url={'http://www.example.com'}
+                    theme={{
+                      brand,
+                      variant,
+                      background,
+                    }}
+                  />
+                </span>
+              )
+            })}
+          </div>
+        </div>
+      )
+    })
+  })()}
+</div>
