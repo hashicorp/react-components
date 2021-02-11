@@ -7,11 +7,9 @@
     "Cameron Stitt"
   ],
   "license": "MPL-2.0",
-  "dependencies": {
-    "@hashicorp/sentinel-embedded": "^0.0.8"
-  },
   "peerDependencies": {
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "@hashicorp/sentinel-embedded": "^0.0.9"
   },
   "publishConfig": {
     "access": "public"

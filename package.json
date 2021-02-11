@@ -9,7 +9,8 @@
     "node-cache": "^5.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "swingset": "0.5.1"
+    "swingset": "0.5.1",
+    "@hashicorp/sentinel-embedded": "^0.0.9"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
