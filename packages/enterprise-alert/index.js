@@ -1,8 +1,13 @@
-import { capitalize } from '@hashicorp/js-utils'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 
 export default function EnterpriseAlert({ product, inline, children }) {
+  const { name, slug, themeClass } = useProductMeta(product)
   return (
-    <div className={`g-enterprise-alert ${product}${inline ? ' inline' : ''}`}>
+    <div
+      className={`g-enterprise-alert ${themeClass || ''} ${
+        themeClass ? 'themed' : ''
+      } ${inline ? 'inline' : ''}`}
+    >
       <span className="tag g-type-tag-label">Enterprise</span>
       {!inline && (
         <p className="g-type-body">
@@ -12,11 +17,11 @@ export default function EnterpriseAlert({ product, inline, children }) {
             <>
               This feature requires{' '}
               <a
-                href={`https://www.hashicorp.com/products/${product}`}
+                href={`https://www.hashicorp.com/products/${slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <strong>{capitalize(product)} Enterprise</strong>
+                <strong>{name} Enterprise</strong>
               </a>
               .
             </>
