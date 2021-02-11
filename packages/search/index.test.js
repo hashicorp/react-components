@@ -68,8 +68,8 @@ describe('<Hits />', () => {
     )
 
     const resultsEl = getByRole('listbox')
-    expect(resultsEl).toBeInTheDocument()
     expect(resultsEl).toHaveAttribute('id', SEARCH_RESULTS_ID)
+    expect(Array.from(resultsEl.querySelectorAll('.hit-item')).length).toBe(2)
   })
 })
 
