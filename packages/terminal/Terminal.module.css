@@ -50,40 +50,6 @@
     border-radius: 0 0 var(--terminal-radius) var(--terminal-radius);
     padding: 24px 32px;
   }
-
-  &:global {
-    &.consul {
-      --terminal-code-color: var(--consul);
-    }
-
-    &.vault {
-      --terminal-code-color: var(--vault);
-    }
-
-    &.terraform {
-      --terminal-code-color: var(--terraform);
-    }
-
-    &.nomad {
-      --terminal-code-color: var(--nomad);
-    }
-
-    &.packer {
-      --terminal-code-color: var(--packer);
-    }
-
-    &.vagrant {
-      --terminal-code-color: var(--vagrant);
-    }
-
-    &.waypoint {
-      --terminal-code-color: var(--waypoint);
-    }
-
-    &.boundary {
-      --terminal-code-color: var(--boundary);
-    }
-  }
 }
 
 .overflowWrapper {

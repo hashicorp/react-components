@@ -1,11 +1,18 @@
 import { Fragment } from 'react'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import classNames from 'classnames'
 import styles from './Terminal.module.css'
 
-export default function CommandLineTerminal({ lines, title, noScroll, theme }) {
+export default function CommandLineTerminal({
+  lines,
+  title,
+  noScroll,
+  product,
+}) {
+  const { themeClass } = useProductMeta(product)
   return (
     <div
-      className={`${styles.terminal} ${theme ? theme : ''}`}
+      className={`${styles.terminal} ${themeClass || ''}`}
       data-testid="terminal-root"
     >
       <div className={styles.titleBar}>
