@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^2.1.0",
-    "@hashicorp/nextjs-scripts": "^16.1.1-canary.150.128.0",
+    "@hashicorp/nextjs-scripts": "^16.2.0-canary.150.136.0",
     "next": "^10.0.6",
     "next-remote-watch": "^0.3.0",
     "node-cache": "^5.1.2",
