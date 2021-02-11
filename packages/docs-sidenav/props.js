@@ -1,16 +1,17 @@
 module.exports = {
   product: {
     type: 'string',
-    description: 'Name of the current product for color theming',
-    testValue: 'default',
+    description: 'Name of the current product for color theming.',
+    testValue: 'nomad',
     options: [
-      'default',
-      'nomad',
-      'consul',
-      'terraform',
-      'packer',
-      'vagrant',
+      'hashicorp', // default
       'boundary',
+      'consul',
+      'nomad',
+      'packer',
+      'terraform',
+      'vault',
+      'vagrant',
       'waypoint',
     ],
   },

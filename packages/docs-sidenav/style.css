@@ -1,34 +1,7 @@
 .g-docs-sidenav {
-  /* Default highlight color (if no product is specified) */
-  --highlight-color: var(--brand);
-
-  &.theme-nomad {
-    --highlight-color: var(--nomad);
-  }
-
-  &.theme-terraform {
-    --highlight-color: var(--terraform);
-  }
-
-  &.theme-consul {
-    --highlight-color: var(--consul);
-  }
-
-  &.theme-packer {
-    --highlight-color: var(--packer);
-  }
-
-  &.theme-vagrant {
-    --highlight-color: var(--vagrant);
-  }
-
-  &.theme-boundary {
-    --highlight-color: var(--boundary);
-  }
-
-  &.theme-waypoint {
-    --highlight-color: #13acae;
-  }
+  --highlight-color: var(
+    --brand
+  ); /* color overridden per product by themeClass */
 
   & > .nav {
     width: 275px;
