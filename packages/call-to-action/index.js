@@ -1,7 +1,7 @@
 import Button from '@hashicorp/react-button'
 
 function CallToAction(props) {
-  const { heading, content, links, variant, brand, theme } = props
+  const { heading, content, links, variant, product, theme } = props
   if (!heading && !content) {
     throw new Error('<CallToAction /> requires either heading or content')
   }
@@ -10,9 +10,7 @@ function CallToAction(props) {
     throw new Error('<CallToAction /> `links` must have both a title and a URL')
   }
   return (
-    <div
-      className={`g-call-to-action variant-${variant} theme-${theme} brand-${brand}`}
-    >
+    <div className={`g-call-to-action variant-${variant} theme-${theme}}`}>
       <div className="g-grid-container">
         {heading && (
           <h2 data-testid="heading" className="g-type-display-2">
@@ -43,7 +41,7 @@ function CallToAction(props) {
                     linkType={linkType}
                     theme={{
                       variant: buttonVariant,
-                      brand,
+                      brand: product,
                       background: theme,
                     }}
                     title={link.text}

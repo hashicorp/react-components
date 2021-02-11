@@ -21,7 +21,7 @@ module.exports = {
       'Color of background the CTA is on top of, default is `light`.',
     options: ['light', 'gray', 'dark'],
   },
-  brand: {
+  product: {
     type: 'string',
     description:
       'If a different brand color is needed for buttons it can be set with this prop.',
