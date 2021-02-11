@@ -34,6 +34,16 @@ async function indexDocsContent({
   }
 }
 
+/**
+ * @typedef {Object} AlgoliaConfig - Algolia config object
+ * @property {String} [AlgoliaConfig.apiKey = process.env.NEXT_PUBLIC_ALGOLIA_API_KEY] - Algolia API key
+ * @property {String} [AlgoliaConfig.appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID] - Algolia app id
+ * @property {String} [AlgoliaConfig.index = process.env.NEXT_PUBLIC_ALGOLIA_INDEX] - Algolia index
+ * @typedef {{ objectID: String }} SearchObject - Algolia index item
+ * @param {Object} indexContentOptions
+ * @param {AlgoliaConfig} indexContentOptions.algoliaConfig - Algolia config
+ * @param {Function(): SearchObject[]} indeContentOptions.getSearchObjects - function that returns objects to index
+ */
 async function indexContent({
   algoliaConfig = {
     appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -89,6 +99,13 @@ async function getDocsSearchObjects({
   )
 }
 
+/**
+ * Uploads objects to index and removes stale objects not present in `searchObjects`
+ * @param {Object} indexSearchContentOptions
+ * @param {AlgoliaConfig} indexSearchContentOptions.algoliaConfig - Algolia config
+ * @param {SearchObject[]} indexSearchContentOptions.searchObjects - array of objects to index
+ * @return {Promise<void>}
+ */
 async function indexSearchContent({ algoliaConfig, searchObjects }) {
   const { apiKey, appId, index } = algoliaConfig
 
