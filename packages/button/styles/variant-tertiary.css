@@ -69,17 +69,6 @@ Note: we might be able to figure out a better way to do this, maybe with an IE11
 See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
 */
 .g-btn.variant-tertiary:not(.background-brand):not([disabled]) {
-  /* Brand -- HashiCorp */
-
-  /* Brand -- Vagrant */
-
-  /* Brand -- Vault */
-  &.brand-hashicorp,
-  &.brand-vault,
-  &.brand-vagrant {
-    /* Uses default values for --brand */
-  }
-
   /* Brand -- Neutral */
   &.brand-neutral {
     color: var(--black);
@@ -100,84 +89,6 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
         & [stroke] {
           stroke: var(--white);
         }
-      }
-    }
-  }
-
-  /* Brand -- Consul */
-  &.brand-consul {
-    color: var(--consul);
-    & .icon svg {
-      & [fill] {
-        fill: var(--consul);
-      }
-      & [stroke] {
-        stroke: var(--consul);
-      }
-    }
-  }
-
-  /* Brand -- Nomad */
-  &.brand-nomad {
-    color: var(--nomad);
-    & .icon svg {
-      & [fill] {
-        fill: var(--nomad);
-      }
-      & [stroke] {
-        stroke: var(--nomad);
-      }
-    }
-  }
-
-  /* Brand -- Packer */
-  &.brand-packer {
-    color: var(--packer);
-    & .icon svg {
-      & [fill] {
-        fill: var(--packer);
-      }
-      & [stroke] {
-        stroke: var(--packer);
-      }
-    }
-  }
-
-  /* Brand -- Terraform */
-  &.brand-terraform {
-    color: var(--terraform);
-    & .icon svg {
-      & [fill] {
-        fill: var(--terraform);
-      }
-      & [stroke] {
-        stroke: var(--terraform);
-      }
-    }
-  }
-
-  /* Brand -- Waypoint */
-  &.brand-waypoint {
-    color: var(--waypoint);
-    & .icon svg {
-      & [fill] {
-        fill: var(--waypoint);
-      }
-      & [stroke] {
-        stroke: var(--waypoint);
-      }
-    }
-  }
-
-  /* Brand -- Boundary */
-  &.brand-boundary {
-    color: var(--boundary);
-    & .icon svg {
-      & [fill] {
-        fill: var(--boundary);
-      }
-      & [stroke] {
-        stroke: var(--boundary);
       }
     }
   }

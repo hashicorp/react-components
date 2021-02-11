@@ -1,5 +1,6 @@
 import slugify from 'slugify'
 import fragment from './fragment.graphql'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import svgArrowRight from './icons/arrow-right.svg.js'
 import svgExternalLink from './icons/external-link.svg.js'
@@ -30,6 +31,7 @@ function Button({
   ...attrs
 }) {
   const themeObj = normalizeButtonTheme(theme)
+  const { themeClass } = useProductMeta(themeObj.brand)
   const gaSlug = slugify(title, { lower: true })
   const isExternal = url && (linkType === 'outbound' || external)
   const Elem = url ? 'a' : 'button'
@@ -46,7 +48,13 @@ function Button({
   const hasLeftIcon = hasIcon && parsedIcon.position === 'left'
   return (
     <Elem
-      className={`g-btn size-${size} variant-${themeObj.variant} background-${themeObj.background} brand-${themeObj.brand} ${className}`}
+      className={`g-btn size-${size} 
+        variant-${themeObj.variant} 
+        background-${themeObj.background} 
+        ${themeClass || ''} 
+        ${themeObj.brand === 'neutral' ? 'brand-neutral' : ''} 
+        ${className}
+      `}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
       href={url}
       rel={isExternal ? 'noopener' : undefined}
