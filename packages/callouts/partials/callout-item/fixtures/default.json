@@ -2,6 +2,7 @@
   "icon": "<svg><title>Default svg title</title></svg>",
   "heading": "My test heading",
   "content": "My test content",
+  "product": "hashicorp",
   "link": {
     "text": "My test link",
     "url": "/some/test/path"

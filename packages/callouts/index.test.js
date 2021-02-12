@@ -5,6 +5,7 @@ const baseProps = {
   heading: "Ensure Your Team's Success",
   layout: 'two-up',
   centerHeading: true,
+  product: 'hashicorp',
   items: [
     {
       heading: 'Worldwide Support',
