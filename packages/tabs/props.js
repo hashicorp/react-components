@@ -1,17 +1,18 @@
 module.exports = {
-  theme: {
+  product: {
     type: 'string',
     description: 'Optional product color theme',
     control: { type: 'select' },
     options: [
-      'vault',
+      'hashicorp',
+      'boundary',
       'consul',
       'nomad',
-      'terraform',
-      'vagrant',
       'packer',
+      'terraform',
+      'vault',
+      'vagrant',
       'waypoint',
-      'boundary',
     ],
   },
   defaultTabIdx: {

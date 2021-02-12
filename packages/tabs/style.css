@@ -1,52 +1,8 @@
 @import './partials/TabTriggers/style.css';
 
 .g-tabs {
-  &.consul {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--consul);
-    }
-  }
-
-  &.vault {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--vault);
-    }
-  }
-
-  &.terraform {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--terraform);
-    }
-  }
-
-  &.nomad {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--nomad);
-    }
-  }
-
-  &.packer {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--packer);
-    }
-  }
-
-  &.vagrant {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--vagrant);
-    }
-  }
-
-  &.boundary {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--boundary);
-    }
-  }
-
-  &.waypoint {
-    & .g-tab-triggers .active .inner {
-      border-bottom-color: var(--waypoint);
-    }
+  & .g-tab-triggers .active .inner {
+    border-bottom-color: var(--brand);
   }
 }
 
