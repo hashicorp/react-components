@@ -1,4 +1,5 @@
 import { useState, Fragment } from 'react'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 
 import Dropdown from '../dropdown'
 import {
@@ -10,7 +11,6 @@ import {
 import styles from './style.module.css'
 
 export default function ReleaseInformation({
-  productMeta,
   releases,
   latestVersion,
   packageManagers,
@@ -21,7 +21,7 @@ export default function ReleaseInformation({
   const [selectedVersionId, setSelectedVersionId] = useState(latestVersion)
   const { version, ...selectedVersion } =
     releases.find((release) => release.version === selectedVersionId) || {}
-  const { name, slug } = productMeta
+  const { name, slug } = useProductMeta()
 
   return (
     <div className={styles.root}>

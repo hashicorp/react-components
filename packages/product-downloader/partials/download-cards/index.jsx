@@ -9,7 +9,6 @@ export default function DownloadTabs({
   downloads,
   version,
   merchandisingSlot,
-  product,
   logo,
   tutorialLink,
 }) {
@@ -18,7 +17,6 @@ export default function DownloadTabs({
       key={defaultTabIdx}
       centered
       fullWidthBorder
-      product={product}
       className={styles.tabs}
       defaultTabIdx={defaultTabIdx}
     >
@@ -30,7 +28,6 @@ export default function DownloadTabs({
               downloads={downloads}
               packageManagers={packageManagers}
               version={version}
-              product={product}
               logo={logo}
               tutorialLink={tutorialLink}
             />
@@ -47,7 +44,6 @@ function Cards({
   downloads,
   packageManagers,
   version,
-  product,
   logo,
   tutorialLink,
 }) {
@@ -69,7 +65,7 @@ function Cards({
           <div className={styles.packageManagers}>
             <span className={styles.cardTitle}>Package Manager</span>
             {hasMultiplePackageManagers ? (
-              <Tabs product={product}>
+              <Tabs>
                 {packageManagers.map(({ label, commands }) => (
                   <Tab key={label} heading={label}>
                     <div className={styles.install}>
