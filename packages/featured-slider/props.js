@@ -26,18 +26,20 @@ module.exports = {
     control: { type: 'select' },
     options: ['light', 'dark'],
   },
-  brand: {
+  product: {
     type: 'string',
-    description: 'product-centric brand accents, if necessary',
+    description: 'Product-centric brand theme accents, if necessary',
     control: { type: 'select' },
     options: [
       'hashicorp',
-      'terraform',
-      'vault',
+      'boundary',
       'consul',
       'nomad',
       'packer',
+      'terraform',
+      'vault',
       'vagrant',
+      'waypoint',
     ],
   },
   features: {

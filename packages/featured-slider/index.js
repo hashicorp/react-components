@@ -1,9 +1,10 @@
 import { Component } from 'react'
+import { withProductMeta } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import StatusBar from './StatusBar'
 import Button from '@hashicorp/react-button'
 import Image from '@hashicorp/react-image'
 
-export default class FeaturedSlider extends Component {
+class FeaturedSlider extends Component {
   constructor(props) {
     super(props)
     const timing = this.props.timing ? parseInt(this.props.timing) : 10
@@ -112,7 +113,7 @@ export default class FeaturedSlider extends Component {
   render() {
     // Clear our frames array so we don't keep old refs around
     this.frames = []
-    const { heading, theme, brand, features } = this.props
+    const { heading, theme, product, features } = this.props
     const { measure, active, timing, numFrames, containerWidth } = this.state
 
     const single = numFrames === 1
@@ -159,7 +160,7 @@ export default class FeaturedSlider extends Component {
                       theme={theme}
                       active={active === i}
                       timing={timing}
-                      brand={brand}
+                      productClass={product.themeClass}
                     />
                   </div>
                 ))}
@@ -209,7 +210,7 @@ export default class FeaturedSlider extends Component {
                         />
                         <Button
                           theme={{
-                            brand,
+                            brand: product.slug,
                             variant: 'secondary',
                             background: theme,
                           }}
@@ -229,3 +230,5 @@ export default class FeaturedSlider extends Component {
     )
   }
 }
+
+export default withProductMeta(FeaturedSlider)
