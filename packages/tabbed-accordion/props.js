@@ -1,4 +1,4 @@
-const TabProps = require('../Tabs/props')
+const TabProps = require('../tabs/props')
 
 module.exports = {
   product: TabProps.product,
