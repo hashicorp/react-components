@@ -1,17 +1,16 @@
 import ButtonGroup from './partials/button-group/index.js'
 import CheckboxList from './partials/checkbox-list/index.js'
-function TextSplit(props) {
-  const {
-    heading,
-    content,
-    theme,
-    brand,
-    checkboxes,
-    links,
-    linkStyle,
-    textSide,
-    children,
-  } = props
+function TextSplit({
+  heading,
+  content,
+  theme,
+  product,
+  checkboxes,
+  links,
+  linkStyle,
+  textSide,
+  children,
+}) {
   if (!heading && !content) {
     throw new Error('<TextSplit /> requires either heading or content')
   }
@@ -37,11 +36,12 @@ function TextSplit(props) {
           ) : hasReactContent ? (
             content
           ) : null}
-          <CheckboxList items={checkboxes} brand={brand} theme={theme} />
+
+          <CheckboxList items={checkboxes} product={product} theme={theme} />
           <ButtonGroup
             links={links}
             linkStyle={linkStyle}
-            brand={brand}
+            product={product}
             theme={theme}
           />
         </div>

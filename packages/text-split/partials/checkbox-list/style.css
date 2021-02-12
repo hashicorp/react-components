@@ -25,22 +25,6 @@
         stroke: var(--brand);
       }
 
-      &.brand-terraform > #check {
-        stroke: var(--terraform);
-      }
-
-      &.brand-consul > #check {
-        stroke: var(--consul);
-      }
-
-      &.brand-nomad > #check {
-        stroke: var(--nomad);
-      }
-
-      &.brand-packer > #check {
-        stroke: var(--packer);
-      }
-
       &.theme-dark > #circle {
         stroke: var(--gray-3);
       }

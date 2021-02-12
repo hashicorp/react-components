@@ -1,7 +1,6 @@
 import Button from '@hashicorp/react-button'
 
-function ButtonGroup(props) {
-  const { brand, links, linkStyle, theme } = props
+function ButtonGroup({ product, links, linkStyle, theme }) {
   const hasLinks = links && links.length > 0
   if (hasLinks && links.filter((l) => !l.text || !l.url).length > 0) {
     throw new Error(
@@ -25,7 +24,7 @@ function ButtonGroup(props) {
             key={stableIdx}
             theme={{
               variant: buttonVariant,
-              brand: brand,
+              brand: product,
               background: buttonBackground,
             }}
             linkType={link.type || 'inbound'}
