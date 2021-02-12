@@ -34,7 +34,7 @@ class MenuItemsOverflow extends React.Component {
   }
 
   render() {
-    const { menuItems, ctaLinks, brand, Link, hideGithubStars } = this.props
+    const { menuItems, ctaLinks, product, Link, hideGithubStars } = this.props
     const { isCollapsed } = this.state
     return (
       <div className="menu-items-overflow" ref={this.parentRef}>
@@ -42,7 +42,7 @@ class MenuItemsOverflow extends React.Component {
           isCollapsed={isCollapsed}
           onClick={this.toggleCollapsed}
           text="Menu"
-          brand={brand}
+          product={product}
         />
         <div
           className={`dropdown style-dropdown ${
@@ -66,7 +66,7 @@ class MenuItemsOverflow extends React.Component {
                         key={subStableIdx}
                         url={subItem.url}
                         text={subItem.text}
-                        brand={brand}
+                        product={product}
                         Link={Link}
                       />
                     ))}
@@ -80,7 +80,7 @@ class MenuItemsOverflow extends React.Component {
                     key={stableIdx}
                     url={url}
                     text={text}
-                    brand={brand}
+                    product={product}
                     Link={Link}
                   />
                 )
@@ -90,7 +90,7 @@ class MenuItemsOverflow extends React.Component {
           <CtaLinks
             links={ctaLinks}
             isInDropdown={true}
-            brand={brand}
+            product={product}
             hideGithubStars={hideGithubStars}
           />
         </div>
@@ -100,7 +100,7 @@ class MenuItemsOverflow extends React.Component {
 }
 
 function SubmenuItem(props) {
-  const { url, text, brand, Link } = props
+  const { url, text, product, Link } = props
   return (
     <li>
       <LinkWrap
@@ -109,7 +109,7 @@ function SubmenuItem(props) {
         href={url}
         title={text}
       >
-        <span className={`text brand-${brand}`}>{text}</span>
+        <span className={`text brand-${product}`}>{text}</span>
       </LinkWrap>
     </li>
   )

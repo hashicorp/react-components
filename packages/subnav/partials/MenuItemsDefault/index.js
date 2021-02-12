@@ -3,7 +3,7 @@ import LinkWrap from '@hashicorp/react-link-wrap'
 import DropdownTrigger from '../DropdownTrigger/index.js'
 
 function MenuItemsDefault(props) {
-  const { menuItems, brand, Link, menuItemsAlign } = props
+  const { menuItems, product, Link, menuItemsAlign } = props
   return (
     <ul className={`menu-items-default menu-items-align-${menuItemsAlign}`}>
       {menuItems.map((menuItem, stableIdx) => {
@@ -19,7 +19,7 @@ function MenuItemsDefault(props) {
             key={stableIdx}
             text={text}
             submenu={submenu}
-            brand={brand}
+            product={product}
             Link={Link}
           />
         ) : (
@@ -30,7 +30,7 @@ function MenuItemsDefault(props) {
             text={text}
             url={url}
             isActive={_isActiveUrl}
-            brand={brand}
+            product={product}
             Link={Link}
           />
         )
@@ -44,7 +44,7 @@ function VerticalDivider() {
 }
 
 function NavLink(props) {
-  const { text, url, brand, isActive, Link } = props
+  const { text, url, product, isActive, Link } = props
   return (
     <li>
       <LinkWrap
@@ -54,7 +54,7 @@ function NavLink(props) {
         }`}
         href={url}
       >
-        <span className={`text brand-${brand}`}>{text}</span>
+        <span className={`text brand-${product} `}>{text}</span>
       </LinkWrap>
     </li>
   )
@@ -91,7 +91,7 @@ class NavLinkWithDropdown extends React.Component {
   }
 
   render() {
-    const { text, submenu, brand, Link } = this.props
+    const { text, submenu, product, Link } = this.props
     const { isCollapsed } = this.state
     const hasActiveChild = submenu.reduce((acc, s) => {
       return s._isActiveUrl || acc
@@ -102,7 +102,7 @@ class NavLinkWithDropdown extends React.Component {
           onClick={this.toggleCollapsed}
           isCollapsed={isCollapsed}
           text={text}
-          brand={brand}
+          product={product}
           isActive={hasActiveChild}
         />
         <ul
@@ -120,7 +120,7 @@ class NavLinkWithDropdown extends React.Component {
                   className="g-type-body-small-strong style-menu-item"
                   href={url}
                 >
-                  <span className={`text brand-${brand}`}>{text}</span>
+                  <span className={`text brand-${product}`}>{text}</span>
                 </LinkWrap>
               </li>
             )

@@ -1,17 +1,25 @@
+import classNames from 'classnames'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import SvgChevronDown from '../../icons/chevron-down.svg.js'
 
 function DropdownTrigger(props) {
-  const { onClick, isCollapsed, text, brand, isActive } = props
+  const { onClick, isCollapsed, text, product, isActive } = props
   return (
     <button
-      className={`dropdown-trigger g-type-body-small-strong brand-${brand} style-menu-item ${
-        isCollapsed ? 'is-collapsed' : ''
-      } ${isActive ? 'is-active' : ''}`}
+      className={classNames(
+        'dropdown-trigger',
+        'g-type-body-small-strong',
+        `brand-${product}`,
+        'style-menu-item',
+        { 'is-collapsed': isCollapsed },
+        {
+          'is-active': isActive,
+        }
+      )}
       onMouseDown={(e) => e.preventDefault()}
       onClick={onClick}
     >
-      <span className={`text brand-${brand}`}>{text}</span>
+      <span className={`text brand-${product}`}>{text}</span>
       <InlineSvg src={SvgChevronDown} />
     </button>
   )
