@@ -1,6 +1,6 @@
 module.exports = {
   product: {
-    type: 'object',
+    type: 'string',
     description: 'Name and slug of the product this page is being rendered for',
     properties: {
       name: {
@@ -12,14 +12,15 @@ module.exports = {
         description: 'HashiCorp product slug',
         control: { type: 'select' },
         options: [
+          'hashicorp',
+          'boundary',
+          'consul',
+          'nomad',
+          'packer',
           'terraform',
           'vault',
-          'nomad',
-          'consul',
-          'packer',
           'vagrant',
-          'red',
-          'blue',
+          'waypoint',
         ],
       },
     },
