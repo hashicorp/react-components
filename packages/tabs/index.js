@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import classNames from 'classnames'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
-function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
+function Tabs({ defaultTabIdx, centered, fullWidthBorder, product, children }) {
   if (!children) {
     process.env.NODE_ENV !== 'production' &&
       console.warn(
@@ -23,6 +25,7 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
     isDefaultOutOfBounds ? 0 : defaultTabIdx
   )
   const groupCtx = useTabGroups()
+  const { themeClass } = useProductMeta(product)
 
   function setActiveTab(targetIdx, groupId) {
     setActiveTabIdx(targetIdx)
@@ -44,9 +47,14 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
 
   return (
     <section
-      className={`g-tabs ${theme}${centered ? ' g-tabs-centered' : ''}${
-        fullWidthBorder ? ' g-tabs-full-border' : ''
-      }`}
+      className={classNames(
+        'g-tabs',
+        themeClass,
+        {
+          'g-tabs-centered': centered,
+        },
+        { 'g-tabs-full-border': fullWidthBorder }
+      )}
     >
       <TabTriggers
         tabs={children.map((tab, index) => {
@@ -70,7 +78,7 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, theme, children }) {
 
 Tabs.defaultProps = {
   defaultTabIdx: 0,
-  theme: '',
+  product: 'hashicorp',
 }
 
 function Tab({ children }) {
