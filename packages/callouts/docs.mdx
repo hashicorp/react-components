@@ -26,17 +26,17 @@ Display a set of items, each with a title, description, option links, and an opt
 
 ## Examples
 
-"Two Up" Layout
+"Two Up" Layout.
 
 <LiveComponent>{`<Callouts
   heading="Ensure Your Team's Success"
   layout="two-up"
   centerHeading={true}
   theme="light"
-  brand="terraform"
+  product="terraform"
   items={[
     {
-      icon: ({ brand }) => (
+      icon: ({ product }) => (
         <div
           style={{
             width: '56px',
@@ -46,8 +46,8 @@ Display a set of items, each with a title, description, option links, and an opt
             alignItems: 'center',
             justifyContent: 'center',
             background: \`var(--\${
-              brand && brand != 'hashicorp' ? brand : 'brand'
-            })\`,
+            product && product != 'hashicorp' ? product : 'brand'
+          })\`,
           }}
           dangerouslySetInnerHTML={{
             __html:
@@ -65,7 +65,7 @@ Display a set of items, each with a title, description, option links, and an opt
       },
     },
     {
-      icon: ({ brand }) => (
+      icon: ({ product }) => (
         <div
           style={{
             width: '56px',
@@ -75,8 +75,8 @@ Display a set of items, each with a title, description, option links, and an opt
             alignItems: 'center',
             justifyContent: 'center',
             background: \`var(--\${
-              brand && brand != 'hashicorp' ? brand : 'brand'
-            })\`,
+            product && product != 'hashicorp' ? product : 'brand'
+          })\`,
           }}
           dangerouslySetInnerHTML={{
             __html:
@@ -94,7 +94,7 @@ Display a set of items, each with a title, description, option links, and an opt
       },
     },
     {
-      icon: ({ brand }) => (
+      icon: ({ product }) => (
         <div
           style={{
             width: '56px',
@@ -104,8 +104,8 @@ Display a set of items, each with a title, description, option links, and an opt
             alignItems: 'center',
             justifyContent: 'center',
             background: \`var(--\${
-              brand && brand != 'hashicorp' ? brand : 'brand'
-            })\`,
+            product && product != 'hashicorp' ? product : 'brand'
+          })\`,
           }}
           dangerouslySetInnerHTML={{
             __html:
@@ -123,7 +123,7 @@ Display a set of items, each with a title, description, option links, and an opt
       },
     },
     {
-      icon: ({ brand }) => (
+      icon: ({ product }) => (
         <div
           style={{
             width: '56px',
@@ -133,8 +133,8 @@ Display a set of items, each with a title, description, option links, and an opt
             alignItems: 'center',
             justifyContent: 'center',
             background: \`var(--\${
-              brand && brand != 'hashicorp' ? brand : 'brand'
-            })\`,
+            product && product != 'hashicorp' ? product : 'brand'
+          })\`,
           }}
           dangerouslySetInnerHTML={{
             __html:

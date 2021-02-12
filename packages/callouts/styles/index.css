@@ -10,7 +10,7 @@
   padding-top: var(--space-block-padding);
   padding-bottom: var(--space-block-padding);
 
-  /* Themeing */
+  /* Theming */
   &.theme-light {
     background: var(--white);
   }

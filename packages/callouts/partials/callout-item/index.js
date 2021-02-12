@@ -8,7 +8,7 @@ export default function CalloutItem({
   link,
   layout,
   theme,
-  brand,
+  product,
 }) {
   const hasBadLink = link && (!link.text || !link.url)
   if (hasBadLink) {
@@ -27,7 +27,7 @@ export default function CalloutItem({
     <div className={`callout-item layout-${layout} theme-${theme}`}>
       {renderIcon && (
         <div data-testid="icon" className={`icon layout-${layout}`}>
-          {renderIcon({ theme, brand })}
+          {renderIcon({ theme, product })}
         </div>
       )}
 
@@ -48,7 +48,7 @@ export default function CalloutItem({
             {content}
           </p>
         ) : isContentRenderProp ? (
-          content({ theme, brand })
+          content({ theme, product })
         ) : null}
 
         {link && (
@@ -58,7 +58,7 @@ export default function CalloutItem({
               url={link.url}
               linkType={link.linkType || 'inbound'}
               theme={{
-                brand,
+                brand: product,
                 background: theme,
                 variant: 'tertiary',
               }}
