@@ -15,7 +15,7 @@ module.exports = {
     options: ['light', 'dark', 'gray'],
     default: 'light',
   },
-  brand: Object.assign(buttonProps.theme.properties.brand, {
+  product: Object.assign(buttonProps.theme.properties.brand, {
     default: 'hashicorp',
   }),
   checkboxes: {
