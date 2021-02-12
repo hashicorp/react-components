@@ -4,7 +4,7 @@ import FeaturedSlider from './'
 const propsBase = {
   heading: 'Use Cases',
   theme: 'dark',
-  brand: 'nomad',
+  product: 'nomad',
   features: [
     {
       logo: {
