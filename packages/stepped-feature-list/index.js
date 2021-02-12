@@ -1,26 +1,28 @@
 import { useState } from 'react'
-import styles from './style.module.css'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import s from './style.module.css'
 import Button from '@hashicorp/react-button'
 import Carousel from 'nuka-carousel'
 
-export default function SteppedFeaturesList({ features, brand }) {
+export default function SteppedFeaturesList({ features, product }) {
   return (
     <>
       {/* carousel rendered at smaller breakpoints */}
       <FeaturesCarousel features={features} />
-      <FeaturesList features={features} brand={brand} />
+      <FeaturesList features={features} product={product} />
     </>
   )
 }
 
-function FeaturesList({ features, brand }) {
+function FeaturesList({ features, product }) {
   const [activeFeature, setActiveFeature] = useState(0)
+  const { themeClass } = useProductMeta(product)
   return (
     <div
-      className={`${styles.features} ${brand ? brand : ''}`}
+      className={`${s.features} ${themeClass || ''}`}
       data-testid="features-vertical-list"
     >
-      <ul className={styles.options}>
+      <ul className={s.options}>
         {features.map((feature, stableIdx) => (
           <Feature
             id={stableIdx}
@@ -36,23 +38,21 @@ function FeaturesList({ features, brand }) {
           </Feature>
         ))}
       </ul>
-      <div className={styles.contentWrapper}>
-        {features[activeFeature].content}
-      </div>
+      <div className={s.contentWrapper}>{features[activeFeature].content}</div>
     </div>
   )
 }
 
 function FeaturesCarousel({ features }) {
   return (
-    <div className={styles.featuresCarousel} data-testid="features-carousel">
+    <div className={s.featuresCarousel} data-testid="features-carousel">
       <Carousel
         renderCenterRightControls={() => null}
         renderCenterLeftControls={() => null}
         wrapAround
         swiping
         defaultControlsConfig={{
-          pagingDotsContainerClassName: styles.pagingDots,
+          pagingDotsContainerClassName: s.pagingDots,
         }}
         cellSpacing={40}
         getControlsContainerStyles={(key) => {
@@ -71,7 +71,7 @@ function FeaturesCarousel({ features }) {
             <Feature Element="div" id={stableIdx} title={feature.title} active>
               {feature.description}
             </Feature>
-            <div className={styles.contentWrapper}>
+            <div className={s.contentWrapper}>
               {features[stableIdx].content}
             </div>
           </div>
@@ -91,10 +91,10 @@ function Feature({
   Element = 'li',
 }) {
   return (
-    <Element className={active ? styles.activeFeature : styles.feature}>
+    <Element className={active ? s.activeFeature : s.feature}>
       {onClick ? (
         <button
-          className={styles.heading}
+          className={s.heading}
           onClick={() => onClick(id)}
           aria-expanded={active}
           aria-controls={`feature-${id}`}
@@ -102,19 +102,18 @@ function Feature({
           {title}
         </button>
       ) : (
-        <span className={styles.heading}>{title}</span>
+        <span className={s.heading}>{title}</span>
       )}
-      <div className={styles.body} id={`feature-${id}`} aria-hidden={!active}>
+      <div className={s.body} id={`feature-${id}`} aria-hidden={!active}>
         <p>{children}</p>
         {learnMoreLink && (
           <Button
             url={learnMoreLink}
-            className={styles.learnMoreLink}
+            className={s.learnMoreLink}
             title="Learn more"
             linkType="inbound"
             theme={{
               variant: 'tertiary-neutral',
-              brand: 'terraform',
             }}
           />
         )}
