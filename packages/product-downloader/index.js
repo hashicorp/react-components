@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'
@@ -12,9 +13,7 @@ import styles from './style.module.css'
 
 export default function ProductDownloader({
   releases,
-  productName,
-  productId,
-  brand,
+  product,
   latestVersion,
   tutorialLink,
   merchandisingSlot,
@@ -26,6 +25,7 @@ export default function ProductDownloader({
   packageManagers,
   changelog,
 }) {
+  const { name, slug, themeClass } = useProductMeta(product)
   const currentRelease = releases.versions[latestVersion]
 
   const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
@@ -55,10 +55,10 @@ export default function ProductDownloader({
   }, [])
 
   return (
-    <div className={`${styles.root} ${brand ? brand : ''}`}>
-      <h1>Download {productName}</h1>
+    <div className={`${styles.root} ${themeClass || ''}`}>
+      <h1>Download {name}</h1>
       <DownloadCards
-        brand={brand}
+        product={slug}
         defaultTabIdx={osIndex}
         tabData={tabData}
         downloads={sortedDownloads}
@@ -85,9 +85,7 @@ export default function ProductDownloader({
       }
 
       <ReleaseInformation
-        productId={productId}
-        productName={productName}
-        brand={brand}
+        productMeta={{ name, slug }}
         releases={sortedReleases}
         latestVersion={latestVersion}
         packageManagers={packageManagers.filter(
