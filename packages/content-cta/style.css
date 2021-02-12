@@ -27,54 +27,13 @@
     }
   }
 
-  &.terraform {
-    border: 1px solid var(--terraform-l2);
-    background: var(--terraform-l3);
+  &.hasTheme {
+    border: 1px solid var(--brand-l2);
+    background: var(--brand-l3);
 
     & h4,
     & p > a {
-      color: var(--terraform);
-    }
-  }
-  &.nomad {
-    border: 1px solid var(--nomad-l2);
-    background: var(--nomad-l3);
-    & h4,
-    & p > a {
-      color: var(--nomad);
-    }
-  }
-  &.consul {
-    border: 1px solid var(--consul-l2);
-    background: var(--consul-l3);
-    & h4,
-    & p > a {
-      color: var(--consul);
-    }
-  }
-  &.packer {
-    border: 1px solid var(--packer-l2);
-    background: var(--packer-l3);
-    & h4,
-    & p > a {
-      color: var(--packer);
-    }
-  }
-  &.vault {
-    border: 1px solid var(--vault-l2);
-    background: var(--vault-l3);
-    & h4,
-    & p > a {
-      color: var(--vault);
-    }
-  }
-
-  &.vagrant {
-    border: 1px solid var(--vagrant-l2);
-    background: var(--vagrant-l3);
-    & h4,
-    & p > a {
-      color: var(--vagrant);
+      color: var(--brand);
     }
   }
 }
