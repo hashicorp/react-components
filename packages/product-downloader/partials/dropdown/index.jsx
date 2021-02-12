@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import Button from '@hashicorp/react-button'
 import styles from './style.module.css'
 
-export default function Dropdown({ options, onChange, title, brand }) {
+export default function Dropdown({ options, onChange, title, product }) {
   const [open, setOpen] = useState(false)
   const buttonRef = useRef()
 
@@ -23,7 +23,7 @@ export default function Dropdown({ options, onChange, title, brand }) {
     <div className={styles.root} ref={buttonRef}>
       <Button
         className="trigger"
-        theme={{ brand }}
+        theme={{ brand: product }}
         onClick={() => setOpen((open) => !open)}
         aria-expanded={open}
         aria-controls="menu-list"
@@ -39,7 +39,7 @@ export default function Dropdown({ options, onChange, title, brand }) {
         <ul className={styles.menu} id="menu-list" role="menu">
           {options.map((option) => (
             <li
-              className={`${styles.option} ${brand}`}
+              className={`${styles.option}`}
               tabIndex={0}
               role="menuitem"
               key={option.value}

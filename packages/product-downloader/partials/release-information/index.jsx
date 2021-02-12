@@ -10,19 +10,18 @@ import {
 import styles from './style.module.css'
 
 export default function ReleaseInformation({
-  productId,
+  productMeta,
   releases,
-  productName,
   latestVersion,
   packageManagers,
   containers,
   tutorials,
   changelog,
-  brand,
 }) {
   const [selectedVersionId, setSelectedVersionId] = useState(latestVersion)
   const { version, ...selectedVersion } =
     releases.find((release) => release.version === selectedVersionId) || {}
+  const { name, slug } = productMeta
 
   return (
     <div className={styles.root}>
@@ -34,13 +33,10 @@ export default function ReleaseInformation({
               <div className={styles.releases}>Releases:</div>
               <div>
                 <Dropdown
-                  title={`${productName} ${getVersionLabel(
-                    version,
-                    latestVersion
-                  )}`}
-                  brand={brand}
+                  title={`${name} ${getVersionLabel(version, latestVersion)}`}
+                  product={slug}
                   options={releases.map((releaseData) => ({
-                    label: `${productName} ${getVersionLabel(
+                    label: `${name} ${getVersionLabel(
                       releaseData.version,
                       latestVersion
                     )}`,
@@ -51,7 +47,7 @@ export default function ReleaseInformation({
                 <a
                   href={
                     changelog ||
-                    `https://github.com/hashicorp/${productId}/blob/v${version}/CHANGELOG.md`
+                    `https://github.com/hashicorp/${slug}/blob/v${version}/CHANGELOG.md`
                   }
                   className={styles.changelog}
                 >
@@ -62,7 +58,7 @@ export default function ReleaseInformation({
           )}
           <div className={styles.latestDownloads}>Latest Downloads:</div>
           <div>
-            Package downloads for {productName} {version}
+            Package downloads for {name} {version}
             <div className={styles.downloads}>
               {Object.entries(selectedVersion).map(([os, release]) => (
                 <Fragment key={os}>
@@ -72,9 +68,7 @@ export default function ReleaseInformation({
                       <a
                         href={file}
                         key={arch}
-                        onClick={() =>
-                          trackDownload(productId, version, os, arch)
-                        }
+                        onClick={() => trackDownload(slug, version, os, arch)}
                       >
                         {prettyArch(arch)}
                       </a>
@@ -86,13 +80,13 @@ export default function ReleaseInformation({
             <p>
               You can find the{' '}
               <a
-                href={`https://releases.hashicorp.com/${productId}/${version}/${productId}_${version}_SHA256SUMS`}
+                href={`https://releases.hashicorp.com/${slug}/${version}/${slug}_${version}_SHA256SUMS`}
               >
-                SHA256 checksums for {productName} {version}
+                SHA256 checksums for {name} {version}
               </a>{' '}
               online and you can{' '}
               <a
-                href={`https://releases.hashicorp.com/${productId}/${version}/${productId}_${version}_SHA256SUMS.sig`}
+                href={`https://releases.hashicorp.com/${slug}/${version}/${slug}_${version}_SHA256SUMS.sig`}
               >
                 verify the checksums signature file
               </a>{' '}
