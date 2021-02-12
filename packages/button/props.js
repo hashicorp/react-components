@@ -58,6 +58,7 @@ module.exports = {
         type: 'string',
         control: { type: 'select' },
         options: [
+          'neutral',
           'hashicorp',
           'nomad',
           'consul',
