@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import fragment from './fragment.graphql'
 
@@ -6,9 +7,7 @@ function Alert({ product, url, tag, text, state, textColor }) {
   return (
     <a
       href={url}
-      className={`g-alert ${themeClass || ''} ${state || ''} ${
-        textColor || ''
-      }`}
+      className={classNames('g-alert', themeClass, state, textColor)}
     >
       <span className="g-type-tag-label" data-testid="tag">
         {tag}
