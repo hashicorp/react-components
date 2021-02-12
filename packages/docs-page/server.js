@@ -24,6 +24,7 @@ export async function generateStaticProps({
   params,
   additionalComponents,
   scope,
+  remarkPlugins,
 }) {
   const docsPath = path.join(process.cwd(), 'content', subpath)
   const pagePath = params.page ? params.page.join('/') : '/'
@@ -36,7 +37,8 @@ export async function generateStaticProps({
     docsPath,
     pagePath,
     generateComponents(productName, additionalComponents),
-    scope
+    scope,
+    remarkPlugins
   )
 
   return {
@@ -68,7 +70,13 @@ async function getStaticMdxPaths(root) {
   })
 }
 
-async function renderPageMdx(root, pagePath, components, scope) {
+async function renderPageMdx(
+  root,
+  pagePath,
+  components,
+  scope,
+  remarkPlugins = []
+) {
   // get the page being requested - figure out if its index page or leaf
   // prefer leaf if both are present
   const leafPath = path.join(root, `${pagePath}.mdx`)
@@ -93,6 +101,7 @@ async function renderPageMdx(root, pagePath, components, scope) {
   const mdxSource = await renderToString(content, {
     mdxOptions: markdownDefaults({
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
+      addRemarkPlugins: remarkPlugins,
     }),
     components,
     scope,
