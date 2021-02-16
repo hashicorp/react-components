@@ -12,12 +12,14 @@ module.exports = {
     control: { type: 'select' },
     options: [
       'hashicorp',
-      'terraform',
-      'vault',
+      'boundary',
       'consul',
       'nomad',
       'packer',
+      'terraform',
+      'vault',
       'vagrant',
+      'waypoint',
     ],
   },
   links: {
