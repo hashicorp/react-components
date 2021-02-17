@@ -42,7 +42,7 @@ async function indexDocsContent({
  * @typedef {{ objectID: String }} SearchObject - Algolia index item
  * @param {Object} indexContentOptions
  * @param {AlgoliaConfig} indexContentOptions.algoliaConfig - Algolia config
- * @param {Function(): SearchObject[]} indeContentOptions.getSearchObjects - function that returns objects to index
+ * @param {() => Promise<SearchObject[]>} indexContentOptions.getSearchObjects - function that returns objects to index
  * @param {Object} [indexContentOptions.settings] - configurable search settings https://www.algolia.com/doc/api-reference/settings-api-parameters/
  */
 async function indexContent({

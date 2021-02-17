@@ -186,6 +186,25 @@ _Default_:
 }
 ```
 
-##### config.getSearchObjects: () => any
+##### config.getSearchObjects: () => Promise<SearchObject[]>
 
-This function should return an array of objects that will get passed to Algolias [`partialUpdateObjects`](https://www.algolia.com/doc/api-reference/api-methods/partial-update-objects/) function
+This function should return an array of objects that will get passed to Algolia's [`saveObjects`](https://www.algolia.com/doc/api-reference/api-methods/save-objects/) function. Each object must have an `objectID` attribute.
+
+##### config.settings: { [k:string]: any }
+
+Optional `settings` object that can be used to configure the given index's settings. [:point_right: Browse available settings](https://www.algolia.com/doc/api-reference/settings-api-parameters/)
+It's preferable to configure the index this way rather with the web UI because it keeps our settings in source control.
+
+Ex:
+
+```js
+  await indexContent({
+    algoliaConfig,
+    getSearchObjects,
+    settings: {
+      searchableAttributes: ['name'],
+      attributesForFaceting: ['category'],
+    },
+  })
+```
+
