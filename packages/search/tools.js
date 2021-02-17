@@ -31,7 +31,7 @@ async function indexDocsContent({
       algoliaConfig,
       searchObjects,
       settings: {
-        searchableAttributes: frontmatterKeys,
+        searchableAttributes: ['headings', ...frontmatterKeys],
       },
     })
   } catch (e) {
