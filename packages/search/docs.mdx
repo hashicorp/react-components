@@ -164,6 +164,7 @@ _Default_: `{ ignore: path.join(config.contentDir, 'partials/**/*') }`
 ##### config.frontmatterKeys: string[]
 
 Assuming your search-indexed content includes [frontmatter](https://jekyllrb.com/docs/front-matter/), the keys included in this `array` will be included as search criteria.
+They will also be set as [`searchableAttributes`](https://www.algolia.com/doc/api-reference/api-parameters/searchableAttributes/) in the index configuration.
 
 _Default_: `['page_title', 'description']`
 

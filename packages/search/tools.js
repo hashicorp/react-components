@@ -27,7 +27,13 @@ async function indexDocsContent({
     frontmatterKeys,
   })
   try {
-    await indexSearchContent({ algoliaConfig, searchObjects })
+    await indexSearchContent({
+      algoliaConfig,
+      searchObjects,
+      settings: {
+        searchableAttributes: frontmatterKeys,
+      },
+    })
   } catch (e) {
     console.error(e)
     process.exit(1)
