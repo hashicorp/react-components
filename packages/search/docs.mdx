@@ -6,7 +6,7 @@ A search box and results based on Algolia. Used primarily on documentation websi
 
 <LiveComponent>{`<SearchProvider>
   <Search
-    renderHitContent={({ hit, Highlight }) => <div>...</div>}
+    renderHitContent={({ hit, Highlight }) => <div><p>{hit.description}</p></div>}
     resolveHitLink={(hit) => ({ href: { pathname: '/' + hit.objectID, query: { id: hit.__queryID} } })}
     placeholder="Search documentation"
   />
