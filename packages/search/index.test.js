@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import randomWords from 'random-words'
 import Search, {
   SearchProvider,
   useSearch,
@@ -129,49 +130,39 @@ describe('search tools', () => {
 
   let algoliaConfig = {}
 
-  const searchObjects = [
-    {
-      objectID: 0,
-      name: 'Foo',
-      category: 'A',
-      timestamp: new Date(),
-    },
-    {
-      objectID: 1,
-      name: 'Bar',
-      category: 'B',
-      timestamp: new Date(),
-    },
-    {
-      objectID: 2,
-      name: 'Baz',
-      category: 'B',
-      timestamp: new Date(),
-    },
-  ]
+  const searchObjects = new Array(20).fill(0).map((item, index) => ({
+    objectID: index,
+    name: `Search object ${index}`,
+    category: index % 2 ? 'A' : 'B',
+    timestamp: new Date(),
+    description: randomWords({ exactly: 10, join: ' ' }),
+  }))
 
   const getSearchObjects = () => searchObjects
 
   beforeEach(() => {
-    require('dotenv').config() //  grab real value for app ID
-    process.env.NEXT_PUBLIC_ALGOLIA_INDEX = 'react-components_TEST' //  ensure we're using test index
-    process.env.ALGOLIA_API_KEY = '44ed2a0b923b306ea74acd4ac0dee741' //  this key only has access to the test index
+    require('dotenv').config()
 
     algoliaConfig = {
       appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
       index: process.env.NEXT_PUBLIC_ALGOLIA_INDEX,
-      apiKey: process.env.ALGOLIA_API_KEY,
+      apiKey: '44ed2a0b923b306ea74acd4ac0dee741', //  this key only has access to the test index
     }
   })
 
   it('should index content', async () => {
-    await indexContent({
-      algoliaConfig,
-      getSearchObjects,
-      settings: {
-        searchableAttributes: ['name'],
-        attributesForFaceting: ['category'],
-      },
-    })
+    //  double check we're using the right index
+    expect(process.env.NEXT_PUBLIC_ALGOLIA_INDEX).toBe('react-components_TEST')
+
+    await expect(
+      indexContent({
+        algoliaConfig,
+        getSearchObjects,
+        settings: {
+          searchableAttributes: ['name', 'description'],
+          attributesForFaceting: ['category'],
+        },
+      })
+    ).resolves.not.toThrowError()
   })
 })

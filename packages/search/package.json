@@ -25,5 +25,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "random-words": "^1.1.1"
   }
 }
