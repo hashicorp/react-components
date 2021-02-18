@@ -1,7 +1,7 @@
 .g-search {
   --search-bar-height: 40px;
   --search-bar-focus-outline: rgba(220, 221, 224, 0.45);
-  --legend-height: 40px;
+  --legend-height: 40px; /* set in js if `showSearchLegend` provided */
   --results-max-height: 350px;
   --callout-height: 0px;  /* set in js if `renderCalloutCta` provided */
   --callout-max-height: 48px;
