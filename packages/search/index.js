@@ -64,7 +64,7 @@ function Search({
           htmlFor={SEARCH_BOX_ID}
           className="visually-hidden"
         >
-          Search tutorials
+          {placeholder}
         </label>
         <SearchBox
           {...{
