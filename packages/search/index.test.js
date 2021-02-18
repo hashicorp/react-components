@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import randomWords from 'random-words'
 import Search, {
   SearchProvider,
   useSearch,
@@ -6,6 +7,7 @@ import Search, {
   SEARCH_RESULTS_ID,
 } from './'
 import { HitsComponent } from './hits'
+import { indexContent } from './tools'
 
 const renderWithProvider = (ui) => {
   return render(<SearchProvider>{ui}</SearchProvider>)
@@ -13,20 +15,25 @@ const renderWithProvider = (ui) => {
 
 const originalEnv = process.env
 
-function setupEnv() {
-  jest.resetModules()
+const setDummyVars = () => {
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID = 'foo'
   process.env.NEXT_PUBLIC_ALGOLIA_INDEX = 'bar'
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY = 'baz'
 }
 
+function setupEnv() {
+  jest.resetModules()
+  process.env = { ...originalEnv } //  copy original environment
+}
+
 function teardownEnv() {
-  process.env = originalEnv
+  process.env = originalEnv //  restore original environment
 }
 
 describe('<Search />', () => {
   beforeAll(setupEnv)
   afterAll(teardownEnv)
+  beforeEach(setDummyVars)
 
   it('should render a `.g-search` <div> root element', () => {
     const { container } = renderWithProvider(
@@ -50,6 +57,10 @@ describe('<Search />', () => {
 })
 
 describe('<Hits />', () => {
+  beforeAll(setupEnv)
+  afterAll(teardownEnv)
+  beforeEach(setDummyVars)
+
   it('should display no results with invalid input', () => {
     renderWithProvider(<HitsComponent hits={[]} renderHitContent={() => {}} />)
 
@@ -76,6 +87,7 @@ describe('<Hits />', () => {
 describe('<SearchProvider />', () => {
   beforeAll(setupEnv)
   afterAll(teardownEnv)
+  beforeEach(setDummyVars)
 
   it('should provide a context object', () => {
     function Consumer() {
@@ -109,5 +121,48 @@ describe('<SearchProvider />', () => {
 
     //  verify query is applied
     expect(screen.getByText('query is nomad')).toBeDefined()
+  })
+})
+
+describe('search tools', () => {
+  beforeAll(setupEnv)
+  afterAll(teardownEnv)
+
+  let algoliaConfig = {}
+
+  const searchObjects = new Array(20).fill(0).map((item, index) => ({
+    objectID: index,
+    name: `Search object ${index}`,
+    category: index % 2 ? 'A' : 'B',
+    timestamp: new Date(),
+    description: randomWords({ exactly: 10, join: ' ' }),
+  }))
+
+  const getSearchObjects = () => searchObjects
+
+  beforeEach(() => {
+    require('dotenv').config()
+
+    algoliaConfig = {
+      appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+      index: process.env.NEXT_PUBLIC_ALGOLIA_INDEX,
+      apiKey: '44ed2a0b923b306ea74acd4ac0dee741', //  this key only has access to the test index
+    }
+  })
+
+  it('should index content', async () => {
+    //  double check we're using the right index
+    expect(process.env.NEXT_PUBLIC_ALGOLIA_INDEX).toBe('react-components_TEST')
+
+    await expect(
+      indexContent({
+        algoliaConfig,
+        getSearchObjects,
+        settings: {
+          searchableAttributes: ['name', 'description'],
+          attributesForFaceting: ['category'],
+        },
+      })
+    ).resolves.not.toThrowError()
   })
 })

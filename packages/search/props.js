@@ -11,7 +11,8 @@ module.exports = {
   },
   renderCalloutCta: {
     type: 'function',
-    description: 'Render function for displaying a small CTA beneath the search results',
+    description:
+      'Render function for displaying a small CTA beneath the search results',
   },
   renderHitContent: {
     type: 'function',
@@ -28,5 +29,5 @@ module.exports = {
     type: 'boolean',
     description: 'Enable the search keyboard legend',
     default: false,
-  }
+  },
 }

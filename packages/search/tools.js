@@ -27,13 +27,30 @@ async function indexDocsContent({
     frontmatterKeys,
   })
   try {
-    await indexSearchContent({ algoliaConfig, searchObjects })
+    await indexSearchContent({
+      algoliaConfig,
+      searchObjects,
+      settings: {
+        searchableAttributes: ['headings', ...frontmatterKeys],
+      },
+    })
   } catch (e) {
     console.error(e)
     process.exit(1)
   }
 }
 
+/**
+ * @typedef {Object} AlgoliaConfig - Algolia config object
+ * @property {String} [AlgoliaConfig.apiKey = process.env.NEXT_PUBLIC_ALGOLIA_API_KEY] - Algolia API key
+ * @property {String} [AlgoliaConfig.appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID] - Algolia app id
+ * @property {String} [AlgoliaConfig.index = process.env.NEXT_PUBLIC_ALGOLIA_INDEX] - Algolia index
+ * @typedef {{ objectID: String }} SearchObject - Algolia index item
+ * @param {Object} indexContentOptions
+ * @param {AlgoliaConfig} indexContentOptions.algoliaConfig - Algolia config
+ * @param {() => Promise<SearchObject[]>} indexContentOptions.getSearchObjects - function that returns objects to index
+ * @param {Object} [indexContentOptions.settings] - configurable search settings https://www.algolia.com/doc/api-reference/settings-api-parameters/
+ */
 async function indexContent({
   algoliaConfig = {
     appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -41,6 +58,7 @@ async function indexContent({
     apiKey: process.env.ALGOLIA_API_KEY,
   },
   getSearchObjects,
+  settings,
 }) {
   if (!getSearchObjects || typeof getSearchObjects !== 'function') {
     throw new Error(
@@ -49,10 +67,10 @@ async function indexContent({
   }
   const searchObjects = await getSearchObjects()
   try {
-    await indexSearchContent({ algoliaConfig, searchObjects })
+    await indexSearchContent({ algoliaConfig, searchObjects, settings })
   } catch (e) {
     console.error(e)
-    process.exit(1)
+    throw e
   }
 }
 
@@ -89,7 +107,15 @@ async function getDocsSearchObjects({
   )
 }
 
-async function indexSearchContent({ algoliaConfig, searchObjects }) {
+/**
+ * Uploads objects to index and removes stale objects not present in `searchObjects`
+ * @param {Object} indexSearchContentOptions
+ * @param {AlgoliaConfig} indexSearchContentOptions.algoliaConfig - Algolia config
+ * @param {SearchObject[]} indexSearchContentOptions.searchObjects - array of objects to index
+ * @param {Object} [indexSearchContentOptions.settings] - configurable search settings https://www.algolia.com/doc/api-reference/settings-api-parameters/
+ * @return {Promise<void>}
+ */
+async function indexSearchContent({ algoliaConfig, searchObjects, settings }) {
   const { apiKey, appId, index } = algoliaConfig
 
   if (!apiKey || !appId || !index) {
@@ -98,44 +124,40 @@ async function indexSearchContent({ algoliaConfig, searchObjects }) {
     )
   }
 
-  console.log(`Updating ${searchObjects.length} indices...`)
+  console.log(`Updating ${searchObjects.length} objects...`)
 
-  try {
-    const searchClient = algoliasearch(appId, apiKey)
-    const searchIndex = searchClient.initIndex(index)
+  const searchClient = algoliasearch(appId, apiKey)
+  const searchIndex = searchClient.initIndex(index)
 
-    const { objectIDs } = await searchIndex.partialUpdateObjects(
-      searchObjects,
-      {
-        createIfNotExists: true,
-      }
-    )
+  const { objectIDs } = await searchIndex.saveObjects(searchObjects)
 
-    let staleIds = []
+  if (settings) {
+    console.log(`Updating settings: ${Object.keys(settings)} `)
 
-    await searchIndex.browseObjects({
-      query: '',
-      batch: (batch) => {
-        staleIds = staleIds.concat(
-          batch
-            .filter(({ objectID }) => !objectIDs.includes(objectID))
-            .map(({ objectID }) => objectID)
-        )
-      },
-    })
-
-    if (staleIds.length > 0) {
-      console.log(`Deleting ${staleIds.length} stale indices:`)
-      console.log(staleIds)
-
-      await searchIndex.deleteObjects(staleIds)
-    }
-
-    console.log('Done!')
-    process.exit(0)
-  } catch (error) {
-    throw new Error(error)
+    await searchIndex.setSettings(settings)
   }
+
+  let staleIds = []
+
+  await searchIndex.browseObjects({
+    query: '',
+    batch: (batch) => {
+      staleIds = staleIds.concat(
+        batch
+          .filter(({ objectID }) => !objectIDs.includes(objectID))
+          .map(({ objectID }) => objectID)
+      )
+    },
+  })
+
+  if (staleIds.length > 0) {
+    console.log(`Deleting ${staleIds.length} stale objects:`)
+    console.log(staleIds)
+
+    await searchIndex.deleteObjects(staleIds)
+  }
+
+  console.log('Done!')
 }
 
 async function collectHeadings(mdxContent) {
