@@ -6,13 +6,16 @@ A search box and results based on Algolia. Used primarily on documentation websi
 
 <LiveComponent>{`<SearchProvider>
   <Search
-    renderHitContent={({ hit, Highlight }) => <div>...</div>}
+    renderHitContent={({ hit, Highlight }) => <div><p>{hit.description}</p></div>}
     resolveHitLink={(hit) => ({ href: { pathname: '/' + hit.objectID, query: { id: hit.__queryID} } })}
     placeholder="Search documentation"
   />
 </SearchProvider>`}</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
+
+## Props
+<PropsTable props={componentProps} />
 
 ## More Details on Function Props
 
@@ -161,6 +164,7 @@ _Default_: `{ ignore: path.join(config.contentDir, 'partials/**/*') }`
 ##### config.frontmatterKeys: string[]
 
 Assuming your search-indexed content includes [frontmatter](https://jekyllrb.com/docs/front-matter/), the keys included in this `array` will be included as search criteria.
+They will also be set as [`searchableAttributes`](https://www.algolia.com/doc/api-reference/api-parameters/searchableAttributes/) in the index configuration.
 
 _Default_: `['page_title', 'description']`
 
@@ -183,6 +187,24 @@ _Default_:
 }
 ```
 
-##### config.getSearchObjects: () => any
+##### config.getSearchObjects: () => Promise<SearchObject[]>
 
-This function should return an array of objects that will get passed to Algolias [`partialUpdateObjects`](https://www.algolia.com/doc/api-reference/api-methods/partial-update-objects/) function
+This function should return an array of objects that will get passed to Algolia's [`saveObjects`](https://www.algolia.com/doc/api-reference/api-methods/save-objects/) function. Each object must have an `objectID` attribute.
+
+##### config.settings: { [k:string]: any }
+
+Optional `settings` object that can be used to configure the given index's [settings](https://www.algolia.com/doc/api-reference/settings-api-parameters/).
+It's preferable to configure the index this way rather with the web UI because it keeps our settings in source control.
+
+Ex:
+
+```js
+  await indexContent({
+    algoliaConfig,
+    getSearchObjects,
+    settings: {
+      searchableAttributes: ['name'],
+      attributesForFaceting: ['category'],
+    },
+  })
+```

@@ -6,6 +6,7 @@ import InlineSvg from '@hashicorp/react-inline-svg'
 import SearchLegend from './legend'
 import { useSearch } from './provider'
 import IconReturn from './img/return.svg.js'
+import { SEARCH_BOX_LABEL_ID, SEARCH_RESULTS_ID } from '.'
 
 function Hits({
   /* Props provided from connector */
@@ -13,27 +14,29 @@ function Hits({
   /* Props passed explicity */
   handleEscape,
   renderHitContent,
+  renderCalloutCta,
   resolveHitLink,
   query,
   setCancelled,
+  showSearchLegend,
+  onSetActiveHit = () => {},
 }) {
   const selectedHit = useRef(null)
   const [hitsTabIndex, setHitsTabIndex] = useState(null)
-
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [hitsTabIndex])
 
   useEffect(() => {
-    if (selectedHit?.current) scrollToActive(selectedHit.current)
+    if (selectedHit?.current) {
+      scrollToActive(selectedHit.current)
+    }
+    onSetActiveHit(hitsTabIndex)
   }, [hitsTabIndex])
 
   function onKeyDown(e) {
     switch ([e.ctrlKey, e.keyCode].join(',')) {
-      // [Enter]
-      case 'false,13':
-        return handleEnter(e)
       // [Escape]
       case 'false,27':
         setHitsTabIndex(null)
@@ -42,6 +45,7 @@ function Hits({
       // [Ctrl-n]
       case 'false,40':
       case 'true,78':
+        e.preventDefault()
         if (!hitsTabIndex) {
           setHitsTabIndex(0)
           scrollToActive()
@@ -54,11 +58,6 @@ function Hits({
         e.preventDefault()
         return decrementTabIndex()
     }
-  }
-
-  function handleEnter(e) {
-    e.preventDefault()
-    selectedHit.current?.click()
   }
 
   function incrementTabIndex() {
@@ -82,6 +81,9 @@ function Hits({
       block: 'nearest',
       inline: 'nearest',
     })
+    el.focus({
+      preventScroll: true,
+    })
   }
 
   return (
@@ -95,9 +97,14 @@ function Hits({
           </span>
         </div>
       ) : (
-        <div className="hits">
-          <SearchLegend />
-          <ul className="hits-list">
+        <>
+          {showSearchLegend && <SearchLegend />}
+          <ul
+            className="hits-list"
+            id={SEARCH_RESULTS_ID}
+            role="listbox"
+            aria-labelledby={SEARCH_BOX_LABEL_ID}
+          >
             {hits.map((hit) => (
               <Hit
                 key={hit.objectID}
@@ -112,13 +119,17 @@ function Hits({
               />
             ))}
           </ul>
-        </div>
+        </>
+      )}
+      {renderCalloutCta && (
+        <div className="callout-cta">{renderCalloutCta()}</div>
       )}
     </div>
   )
 }
 
 export default connectHits(Hits)
+export { Hits as HitsComponent }
 
 /* eslint-disable react/display-name */
 
@@ -173,7 +184,7 @@ const Hit = forwardRef(
     }
 
     return (
-      <li className="hit-item">
+      <li className="hit-item" id={`hit-${hit.__position}`}>
         <Link {...hitLink} passHref>
           <LinkWithClick
             ref={ref}

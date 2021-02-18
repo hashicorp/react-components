@@ -3,6 +3,7 @@ import { connectSearchBox } from 'react-instantsearch-dom'
 import IconMagGlass from './img/search.svg.js'
 import IconX from './img/search-x.svg.js'
 import IconSlash from './img/slash-search-toggle.js'
+import { SEARCH_BOX_ID, SEARCH_RESULTS_ID } from './'
 
 function SearchBox({
   /* Props provided from connector */
@@ -14,6 +15,8 @@ function SearchBox({
   query,
   setCancelled,
   setQuery,
+  onSubmit,
+  activeHit,
 }) {
   const searchBoxRef = useRef(null)
 
@@ -62,8 +65,9 @@ function SearchBox({
 
   return (
     <div className="c-search-box">
-      <form noValidate action="" role="search">
+      <form noValidate action="" role="search" onSubmit={onSubmit}>
         <input
+          id={SEARCH_BOX_ID}
           className="g-type-body-strong"
           ref={searchBoxRef}
           type="search"
@@ -77,6 +81,9 @@ function SearchBox({
           value={query}
           onChange={onChange}
           onKeyDown={onSearchBoxKeyDown}
+          aria-autocomplete="list"
+          aria-controls={SEARCH_RESULTS_ID}
+          aria-activedescendant={activeHit > 0 ? `hit-${activeHit}` : ''}
         />
         <button
           type="submit"
