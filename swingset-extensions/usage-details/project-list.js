@@ -10,6 +10,7 @@ const PROJECT_LIST = [
   'hashicorp/learn',
   'hashicorp/nextjs-scripts',
   'hashicorp/terraform-website-next',
+  'hashicorp/how-hashicorp-works',
   ['hashicorp/waypoint', '/website'],
   ['hashicorp/boundary', '/website'],
   ['hashicorp/nomad', '/website'],
