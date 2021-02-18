@@ -31,6 +31,17 @@
     border-radius: 2px !important;
     -webkit-appearance: none !important;
   }
+
+  & .visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
 }
 
 /* SearchBox */
@@ -357,16 +368,5 @@
     font-size: 13px;
     color: var(--gray-4);
     padding-left: 8px;
-  }
-
-  & .visually-hidden {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
   }
 }
