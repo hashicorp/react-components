@@ -1,5 +1,5 @@
 module.exports = {
-  brand: {
+  product: {
     type: 'string',
     description: 'Sets the brand colors to be used',
     control: { type: 'dropdown' },
