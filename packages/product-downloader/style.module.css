@@ -8,48 +8,6 @@
   & h1 {
     text-align: center;
   }
-
-  &:global {
-    &.consul {
-      --brand: var(--consul);
-      --brand-d1: var(--consul-d1);
-    }
-
-    &.vault {
-      --brand: var(--vault);
-      --brand-d1: var(--vault-d1);
-    }
-
-    &.terraform {
-      --brand: var(--terraform);
-      --brand-d1: var(--terraform-d1);
-    }
-
-    &.nomad {
-      --brand: var(--nomad);
-      --brand-d1: var(--nomad-d1);
-    }
-
-    &.packer {
-      --brand: var(--packer);
-      --brand-d1: var(--packer-d1);
-    }
-
-    &.vagrant {
-      --brand: var(--vagrant);
-      --brand-d1: var(--vagrant-d1);
-    }
-
-    &.boundary {
-      --brand: var(--boundary);
-      --brand-d1: var(--boundary-d1);
-    }
-
-    &.waypoint {
-      --brand: var(--waypoint);
-      --brand-d1: var(--waypoint-d1);
-    }
-  }
 }
 
 .logo {

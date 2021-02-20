@@ -44,33 +44,27 @@ module.exports = {
       },
     ],
   },
-  productName: {
+  product: {
     type: 'string',
-    description: 'human readable name for the product',
-    testValue: 'Waypoint',
+    description:
+      'A lower-case identifier for the product. Used to generate a slug, name, and color theme class.',
+    testValue: 'waypoint',
+    options: [
+      'hashicorp',
+      'boundary',
+      'consul',
+      'nomad',
+      'packer',
+      'terraform',
+      'vault',
+      'vagrant',
+      'waypoint',
+    ],
     required: true,
   },
   changelog: {
     type: 'string',
     description: 'custom changelog URL',
-  },
-  productId: {
-    type: 'string',
-    description:
-      'slug/identifier for the product. Used for downloads and links',
-    control: { type: 'select' },
-    testValue: 'waypoint',
-    options: [
-      'terraform',
-      'vault',
-      'nomad',
-      'consul',
-      'packer',
-      'vagrant',
-      'boundary',
-      'waypoint',
-    ],
-    required: true,
   },
   latestVersion: {
     type: 'string',
