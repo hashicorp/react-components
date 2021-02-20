@@ -1,9 +1,19 @@
 module.exports = {
-  theme: {
+  product: {
     type: 'string',
-    description: 'Color theme to match a specific product',
+    description: 'Specifies product brand theme colors.',
     control: { type: 'select' },
-    options: ['consul', 'terraform', 'nomad', 'vault', 'waypoint', 'boundary'],
+    options: [
+      'hashicorp',
+      'boundary',
+      'consul',
+      'nomad',
+      'packer',
+      'terraform',
+      'vault',
+      'vagrant',
+      'waypoint',
+    ],
     testValue: 'terraform',
   },
   lines: {
