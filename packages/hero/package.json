@@ -13,6 +13,7 @@
     "@hashicorp/react-button": "^2.2.6",
     "@hashicorp/react-image": "^2.0.3",
     "@hashicorp/react-text-input": "^3.0.1",
+    "classnames": "^2.2.6",
     "formik": "^1.5.8",
     "promise-polyfill": "^8.1.0",
     "query-string": "^5.1.1"
