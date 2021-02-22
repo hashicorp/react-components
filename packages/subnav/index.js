@@ -1,3 +1,5 @@
+import classNames from 'classnames'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import useNavRef from './helpers/useNavRef'
 
 import MenuItemsOverflow from './partials/MenuItemsOverflow/index.js'
@@ -6,7 +8,7 @@ import MenuItemsDefault from './partials/MenuItemsDefault/index.js'
 import CtaLinks from './partials/CtaLinks/index.js'
 import traverse, { isObject } from './helpers/traverse/index.js'
 
-const brandWhitelist = {
+const productAllowList = {
   consul: 'consul',
   hcp: 'hcp',
   nomad: 'nomad',
@@ -19,20 +21,20 @@ const brandWhitelist = {
   waypoint: 'waypoint',
 }
 
-function SubnavInner(props) {
-  const {
-    hasOverflow,
-    titleLink,
-    ctaLinks,
-    hideGithubStars,
-    menuItems,
-    menuItemsAlign,
-    constrainWidth,
-    currentPath,
-    Link,
-  } = props
+function SubnavInner({
+  hasOverflow,
+  titleLink,
+  ctaLinks = [],
+  hideGithubStars,
+  menuItems,
+  menuItemsAlign = 'center',
+  constrainWidth,
+  currentPath,
+  Link,
+}) {
   // Set the brand theme automatically based on the nav's title
-  const brand = brandWhitelist[titleLink.text.toLowerCase()] || 'hashicorp'
+  const product = productAllowList[titleLink.text.toLowerCase()] || 'hashicorp'
+  const { themeClass } = useProductMeta(product) // overrides --brand css vars
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
   const menuItemsWithActive = traverse(menuItems, (_key, value) => {
     const hasUrl = isObject(value) && value.url
@@ -42,34 +44,37 @@ function SubnavInner(props) {
 
   return (
     <div
-      className={`constrain-width-wrapper ${
-        constrainWidth ? 'g-grid-container' : ''
-      }`}
+      className={classNames('constrain-width-wrapper ', {
+        'g-grid-container': constrainWidth,
+      })}
     >
       <div
-        className={`g-subnav-inner  brand-${brand}  ${
-          constrainWidth ? 'is-constrained' : ''
-        }`}
+        className={classNames(
+          'g-subnav-inner',
+          { 'brand-hcp': product === 'hcp' },
+          themeClass,
+          { 'is-constrained': constrainWidth }
+        )}
         data-overflow-target
       >
         <TitleLink
           text={titleLink.text}
           url={titleLink.url}
-          brand={brand}
+          product={product}
           Link={Link}
         />
         {!hasOverflow && (
           <MenuItemsDefault
             menuItems={menuItemsWithActive}
             menuItemsAlign={menuItemsAlign}
-            brand={brand}
+            product={product}
             Link={Link}
           />
         )}
         {!hasOverflow && (
           <CtaLinks
             links={ctaLinks}
-            brand={brand}
+            product={product}
             Link={Link}
             hideGithubStars={hideGithubStars}
           />
@@ -79,7 +84,7 @@ function SubnavInner(props) {
             menuItems={menuItemsWithActive}
             ctaLinks={ctaLinks}
             hideGithubStars={hideGithubStars}
-            brand={brand}
+            product={product}
             Link={Link}
           />
         )}
@@ -92,15 +97,15 @@ function Subnav(props) {
   const [isSticky, hasOverflow, wrapperRef] = useNavRef()
 
   return (
-    <nav ref={wrapperRef} className={`g-subnav ${isSticky ? 'is-sticky' : ''}`}>
+    <nav
+      ref={wrapperRef}
+      className={classNames('g-subnav', {
+        'is-sticky': isSticky,
+      })}
+    >
       <SubnavInner {...props} hasOverflow={hasOverflow} isSticky={isSticky} />
     </nav>
   )
-}
-
-Subnav.defaultProps = {
-  menuItemsAlign: 'center',
-  ctaLinks: [],
 }
 
 export default Subnav

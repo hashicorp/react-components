@@ -3,7 +3,7 @@ import svgGithub from './icons/github.svg.js'
 import GithubStarsLink from './github-stars-link/index.js'
 
 function CtaLinks(props) {
-  const { links, brand, isInDropdown, hideGithubStars } = props
+  const { links, product, isInDropdown, hideGithubStars } = props
   return (
     <div className={`cta-links ${isInDropdown ? 'is-in-dropdown' : ''}`}>
       {links.map((link, stableIdx) => {
@@ -36,7 +36,10 @@ function CtaLinks(props) {
             title={link.text}
             url={link.url}
             icon={isDownload ? iconDownload : isGithub ? iconGithub : undefined}
-            theme={{ brand, variant: isLastButton ? 'primary' : 'secondary' }}
+            theme={{
+              brand: product,
+              variant: isLastButton ? 'primary' : 'secondary',
+            }}
             linkType={isDownload ? 'download' : undefined}
           />
         )

@@ -25,12 +25,12 @@ const logoDict = {
 }
 
 function TitleLink(props) {
-  const { text, url, brand, Link } = props
+  const { text, url, product, Link } = props
   const Logo = logoDict[text.toLowerCase()]
   return (
     <LinkWrap
       Link={Link}
-      className={`title-link brand-${brand} ${!Logo ? 'is-text' : ''}`}
+      className={`title-link brand-${product} ${!Logo ? 'is-text' : ''}`}
       href={url}
       title={text}
     >
