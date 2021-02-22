@@ -11,6 +11,9 @@
     "@hashicorp/react-global-styles": "^4.5.0",
     "@hashicorp/react-tabs": "^3.0.1"
   },
+  "peerDependencies": {
+    "@hashicorp/nextjs-scripts": ">16.x"
+  },
   "keywords": [],
   "license": "MPL-2.0",
   "publishConfig": {
