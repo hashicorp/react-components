@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^2.1.0",
-    "@hashicorp/nextjs-scripts": "^16.2.0-canary.150.136.0",
+    "@hashicorp/nextjs-scripts": "^16.2.0",
+    "@hashicorp/sentinel-embedded": "^0.0.9",
     "classnames": "^2.2.6",
     "next": "^10.0.6",
     "next-remote-watch": "^0.3.0",
     "node-cache": "^5.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "swingset": "0.5.1",
-    "@hashicorp/sentinel-embedded": "^0.0.9"
+    "swingset": "0.5.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
