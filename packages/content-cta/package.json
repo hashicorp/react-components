@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-content-cta",
   "description": "alert style content callout with product theming",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "author": "HashiCorp",
   "contributors": [
     "Nicole Forrester"
@@ -11,8 +11,8 @@
   },
   "license": "MPL-2.0",
   "peerDependencies": {
-    "react": "^16.9.0",
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/nextjs-scripts": ">16.x",
+    "react": "^16.9.0"
   },
   "publishConfig": {
     "access": "public"

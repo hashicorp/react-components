@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-text-split",
   "description": "Display a title, description, and links alongside arbitrary content",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
@@ -12,8 +12,8 @@
   },
   "license": "MPL-2.0",
   "peerDependencies": {
-    "react": "^16.9.0",
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/nextjs-scripts": ">16.x",
+    "react": "^16.9.0"
   },
   "publishConfig": {
     "access": "public"

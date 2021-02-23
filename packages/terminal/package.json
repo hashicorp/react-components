@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-command-line-terminal",
   "description": "Static UI element to render a command line terminal with code",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner",
@@ -9,8 +9,8 @@
   ],
   "license": "MPL-2.0",
   "peerDependencies": {
-    "react": "^16.9.0",
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/nextjs-scripts": ">16.x",
+    "react": "^16.9.0"
   },
   "publishConfig": {
     "access": "public"
