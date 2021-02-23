@@ -1,3 +1,5 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   heading: {
     type: 'string',
@@ -8,19 +10,7 @@ module.exports = {
     required: true,
   },
   product: {
-    type: 'string',
-    control: { type: 'select' },
-    options: [
-      'hashicorp',
-      'boundary',
-      'consul',
-      'nomad',
-      'packer',
-      'terraform',
-      'vault',
-      'vagrant',
-      'waypoint',
-    ],
+    ...baseProps.product,
   },
   links: {
     type: 'array',

@@ -1,3 +1,5 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   releases: {
     type: 'object',
@@ -45,21 +47,8 @@ module.exports = {
     ],
   },
   product: {
-    type: 'string',
-    description:
-      'A lower-case identifier for the product. Used to generate a slug, name, and color theme class.',
+    ...baseProps.product,
     testValue: 'waypoint',
-    options: [
-      'hashicorp',
-      'boundary',
-      'consul',
-      'nomad',
-      'packer',
-      'terraform',
-      'vault',
-      'vagrant',
-      'waypoint',
-    ],
     required: true,
   },
   changelog: {

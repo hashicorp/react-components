@@ -1,21 +1,8 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   product: {
-    description: 'Product name for the alert, link url, and theme colors.',
-    type: 'string',
-    control: { type: 'select' },
-    options: [
-      'hashicorp',
-      'boundary',
-      'consul',
-      'nomad',
-      'packer',
-      'terraform',
-      'vault',
-      'vagrant',
-      'waypoint',
-    ],
-    testValue: 'consul',
-    required: true,
+    ...baseProps.product,
   },
   inline: {
     description:

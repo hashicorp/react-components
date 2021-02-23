@@ -1,22 +1,8 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   product: {
-    description:
-      'The associated product to pull in respective brand theme colors. The default is hashicorp blue.',
-    type: 'string',
-    control: { type: 'select' },
-    options: [
-      'hashicorp',
-      'boundary',
-      'consul',
-      'nomad',
-      'packer',
-      'terraform',
-      'vault',
-      'vagrant',
-      'waypoint',
-    ],
-    testValue: 'terraform',
-    required: false,
+    ...baseProps.product,
   },
   url: {
     description: 'URL that the alert points to',

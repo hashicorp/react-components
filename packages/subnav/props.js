@@ -1,3 +1,5 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   titleLink: {
     type: 'object',
@@ -9,18 +11,7 @@ module.exports = {
         type: 'string',
         description:
           "Passing a product slug to triggers a special case, where the product's logo and brand colors are used. Note that in other cases, it should be a string with proper casing.",
-        options: [
-          'consul',
-          'hcp',
-          'tfc',
-          'nomad',
-          'packer',
-          'terraform',
-          'vagrant',
-          'vault',
-          'waypoint',
-          'boundary',
-        ],
+        options: [...baseProps.product.options, 'hcp', 'tfc'],
       },
       url: {
         type: 'string',

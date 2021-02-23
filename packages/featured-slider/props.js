@@ -1,3 +1,5 @@
+const baseProps = require('../../props.js')
+
 const image = {
   url: {
     type: 'string',
@@ -27,20 +29,7 @@ module.exports = {
     options: ['light', 'dark'],
   },
   product: {
-    type: 'string',
-    description: 'Product-centric brand theme accents, if necessary',
-    control: { type: 'select' },
-    options: [
-      'hashicorp',
-      'boundary',
-      'consul',
-      'nomad',
-      'packer',
-      'terraform',
-      'vault',
-      'vagrant',
-      'waypoint',
-    ],
+    ...baseProps.product,
   },
   features: {
     type: 'array',
