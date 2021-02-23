@@ -1,4 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
+import useProductMeta, {
+  ProductMetaProvider,
+} from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'
@@ -12,9 +15,7 @@ import styles from './style.module.css'
 
 export default function ProductDownloader({
   releases,
-  productName,
-  productId,
-  brand,
+  product,
   latestVersion,
   tutorialLink,
   merchandisingSlot,
@@ -26,6 +27,7 @@ export default function ProductDownloader({
   packageManagers,
   changelog,
 }) {
+  const { name, themeClass } = useProductMeta(product)
   const currentRelease = releases.versions[latestVersion]
 
   const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
@@ -55,48 +57,45 @@ export default function ProductDownloader({
   }, [])
 
   return (
-    <div className={`${styles.root} ${brand ? brand : ''}`}>
-      <h1>Download {productName}</h1>
-      <DownloadCards
-        brand={brand}
-        defaultTabIdx={osIndex}
-        tabData={tabData}
-        downloads={sortedDownloads}
-        version={latestVersion}
-        logo={logo}
-        tutorialLink={tutorialLink}
-        merchandisingSlot={merchandisingSlot}
-      />
-
-      {
-        <div className="g-container">
-          <div className={styles.gettingStarted}>
-            <h2>Get Started</h2>
-            <p>{getStartedDescription}</p>
-            <div className={styles.links}>
-              {getStartedLinks?.map((link) => (
-                <a href={link.href} key={link.href}>
-                  {link.label}
-                </a>
-              ))}
+    <ProductMetaProvider product={product}>
+      <div className={`${styles.root} ${themeClass || ''}`}>
+        <h1>Download {name}</h1>
+        <DownloadCards
+          defaultTabIdx={osIndex}
+          tabData={tabData}
+          downloads={sortedDownloads}
+          version={latestVersion}
+          logo={logo}
+          tutorialLink={tutorialLink}
+          merchandisingSlot={merchandisingSlot}
+        />
+        {
+          <div className="g-container">
+            <div className={styles.gettingStarted}>
+              <h2>Get Started</h2>
+              <p>{getStartedDescription}</p>
+              <div className={styles.links}>
+                {getStartedLinks?.map((link) => (
+                  <a href={link.href} key={link.href}>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      }
+        }
 
-      <ReleaseInformation
-        productId={productId}
-        productName={productName}
-        brand={brand}
-        releases={sortedReleases}
-        latestVersion={latestVersion}
-        packageManagers={packageManagers.filter(
-          (packageManager) => !!packageManager.url
-        )}
-        containers={containers}
-        tutorials={tutorials}
-        changelog={changelog}
-      />
-    </div>
+        <ReleaseInformation
+          releases={sortedReleases}
+          latestVersion={latestVersion}
+          packageManagers={packageManagers.filter(
+            (packageManager) => !!packageManager.url
+          )}
+          containers={containers}
+          tutorials={tutorials}
+          changelog={changelog}
+        />
+      </div>
+    </ProductMetaProvider>
   )
 }

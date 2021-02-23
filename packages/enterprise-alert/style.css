@@ -14,68 +14,17 @@
     margin-right: 12px;
   }
 
+  &.themed {
+    & .tag {
+      background: var(--brand);
+    }
+    & p a {
+      color: var(--brand);
+    }
+  }
+
   & p {
     margin: 0;
-  }
-
-  &.consul {
-    & .tag {
-      background: var(--consul);
-    }
-
-    & p a {
-      color: var(--consul);
-    }
-  }
-
-  &.vault {
-    & .tag {
-      background: var(--vault);
-    }
-
-    & p a {
-      color: var(--vault);
-    }
-  }
-
-  &.terraform {
-    & .tag {
-      background: var(--terraform);
-    }
-
-    & p a {
-      color: var(--terraform);
-    }
-  }
-
-  &.nomad {
-    & .tag {
-      background: var(--nomad);
-    }
-
-    & p a {
-      color: var(--nomad);
-    }
-  }
-
-  &.packer {
-    & .tag {
-      background: var(--packer);
-    }
-
-    & p a {
-      color: var(--packer);
-    }
-  }
-
-  &.vagrant {
-    & .tag {
-      background: var(--vagrant);
-    }
-
-    & p a {
-      color: var(--vagrant);
-    }
   }
 
   &.inline {

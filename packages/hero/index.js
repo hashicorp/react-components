@@ -1,93 +1,101 @@
+import classNames from 'classnames'
 import Image from '@hashicorp/react-image'
 import Alert from '@hashicorp/react-alert'
 import Button from '@hashicorp/react-button'
 import { eliminateOrphans } from '@hashicorp/js-utils'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import VideoCarousel from './carousel'
 import ArrowIcon from './arrow-icon'
 import HeroLeadForm from './heroLeadForm'
 import fragment from './fragment.graphql'
 
-const normalizeThemeBrand = {
-  'vagrant-blue': 'hashicorp',
-  'terraform-purple': 'terraform',
-  'vault-gray': 'vault',
-  'consul-pink': 'consul',
-  'nomad-green': 'nomad',
-}
-
 function Hero({ data, centered, gaPrefix }) {
-  const hasVideos = data.videos && data.videos.length > 0
-  const backgroundTheme = data.backgroundTheme || 'dark'
+  const {
+    alert,
+    backgroundImage,
+    backgroundTheme = 'dark',
+    buttons,
+    description,
+    formLeadInput,
+    helpText,
+    image,
+    product,
+    smallTextTag,
+    title,
+    titleLogo,
+    videos,
+  } = data
+  const hasVideos = videos && videos.length > 0
+  const { themeClass } = useProductMeta(product)
   const h1OrphanCount = 9
 
   return (
     <div
-      className={`g-hero ${data.theme || ''} ${backgroundTheme} ${
-        centered || data.centered ? 'centered' : ''
-      } ${hasVideos ? 'has-videos' : ''}`}
-    >
-      {data.backgroundImage && (
-        <Image className="bg" {...data.backgroundImage} />
+      className={classNames(
+        'g-hero',
+        themeClass,
+        backgroundTheme,
+        { centered: centered || data.centered },
+        { 'has-videos': hasVideos }
       )}
+    >
+      {backgroundImage && <Image className="bg" {...backgroundImage} />}
       <div className="g-container">
         <div className="headline">
-          {data.smallTextTag && <div className="tag">{data.smallTextTag}</div>}
-          {data.titleLogo && <Image className="logo" {...data.titleLogo} />}
-          {data.alert && (
+          {smallTextTag && <div className="tag">{smallTextTag}</div>}
+          {titleLogo && <Image className="logo" {...titleLogo} />}
+          {alert && (
             <Alert
-              url={data.alert.url}
-              tag={data.alert.tag}
-              tagColor={data.alert.tagColor}
-              text={data.alert.text}
+              url={alert.url}
+              tag={alert.tag}
+              tagColor={alert.tagColor}
+              text={alert.text}
             />
           )}
-          {data.title && (
+          {title && (
             <h1
               className="g-type-display-1"
               dangerouslySetInnerHTML={{
-                __html: eliminateOrphans(data.title, h1OrphanCount),
+                __html: eliminateOrphans(title, h1OrphanCount),
               }}
             />
           )}
-          {data.description && (
+          {description && (
             <div
               className="description g-type-body-large"
               dangerouslySetInnerHTML={{
-                __html: eliminateOrphans(data.description.trim()),
+                __html: eliminateOrphans(description.trim()),
               }}
             />
           )}
-          {data.formLeadInput && (
+          {formLeadInput && (
             <div className="form-lead">
               <HeroLeadForm
-                submitRedirectUrl={data.formLeadInput.destinationUrl}
-                buttonText={data.formLeadInput.buttonText}
+                submitRedirectUrl={formLeadInput.destinationUrl}
+                buttonText={formLeadInput.buttonText}
                 theme={{
                   background: backgroundTheme,
-                  brand: normalizeThemeBrand[data.theme],
+                  brand: product,
                   variant: 'primary',
                 }}
               />
             </div>
           )}
-          {!data.formLeadInput && data.buttons && data.buttons.length > 0 && (
+          {!formLeadInput && buttons && buttons.length > 0 && (
             <div className="buttons">
-              {data.buttons.map((button, idx) => {
+              {buttons.map((button, idx) => {
                 if (gaPrefix) button.gaPrefix = gaPrefix
                 return (
                   <Button
                     key={button.title}
                     {...button}
                     theme={{
-                      brand:
-                        idx === 0
-                          ? normalizeThemeBrand[data.theme] || 'hashicorp'
-                          : 'neutral',
+                      brand: idx === 0 ? product : 'neutral',
                       variant: idx === 0 ? 'primary' : 'secondary',
                       background:
                         idx === 0
                           ? 'light'
-                          : normalizeThemeBrand[data.theme]
+                          : product
                           ? backgroundTheme
                           : 'dark',
                     }}
@@ -96,21 +104,19 @@ function Hero({ data, centered, gaPrefix }) {
               })}
             </div>
           )}
-          {data.helpText && (
+          {helpText && (
             <div className="help-text g-type-buttons-and-standalone-links">
-              <div dangerouslySetInnerHTML={{ __html: data.helpText.trim() }} />
+              <div dangerouslySetInnerHTML={{ __html: helpText.trim() }} />
               <ArrowIcon />
             </div>
           )}
         </div>
-        {data.image && (
+        {image && (
           <div className="image">
-            <Image {...data.image} />
+            <Image {...image} />
           </div>
         )}
-        {!data.image && data.videos && data.videos.length > 0 && (
-          <VideoCarousel videos={data.videos} />
-        )}
+        {!image && hasVideos && <VideoCarousel videos={videos} />}
       </div>
     </div>
   )

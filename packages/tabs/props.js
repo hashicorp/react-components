@@ -1,18 +1,8 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
-  theme: {
-    type: 'string',
-    description: 'Optional product color theme',
-    control: { type: 'select' },
-    options: [
-      'vault',
-      'consul',
-      'nomad',
-      'terraform',
-      'vagrant',
-      'packer',
-      'waypoint',
-      'boundary',
-    ],
+  product: {
+    ...baseProps.product,
   },
   defaultTabIdx: {
     type: 'integer',

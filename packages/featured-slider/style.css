@@ -82,15 +82,6 @@
           height: 100%;
           display: block;
           animation-duration: 10s;
-          &.nomad {
-            background-color: var(--nomad);
-          }
-          &.consul {
-            background-color: var(--consul);
-          }
-          &.terraform {
-            background-color: var(--terraform);
-          }
           &.active {
             animation-name: case-study-bar;
             animation-timing-function: linear;

@@ -28,24 +28,26 @@ module.exports = {
     testValue: 'light',
     options: ['light', 'dark'],
   },
-  brand: {
+  product: {
     type: 'string',
-    description: 'Name of the current product for color theming',
-    testValue: 'light',
+    description: 'Product name for color theming',
+    testValue: 'boundary',
     options: [
       'hashicorp',
       'terraform',
       'vault',
-      'consul',
       'nomad',
+      'consul',
       'packer',
       'vagrant',
+      'boundary',
+      'waypoint',
     ],
   },
   items: {
     type: 'array',
     description:
-      'An array of item objects, each with properties `{ icon, heading, content, link }`. . `heading` is a string. `content` can be either a string, or a render function for custom content - the render function will be provided a props object `{ theme, brand }`. `link` is an object with properties `{ text, url, type }`. `link.text` is a string. `link.url` is a string. `link.type` is one of "inbound", "outbound", or "anchor", and sets the icon shown next to the link.',
+      'An array of item objects, each with properties `{ icon, heading, content, link }`. . `heading` is a string. `content` can be either a string, or a render function for custom content - the render function will be provided a props object `{ theme, product }`. `link` is an object with properties `{ text, url, type }`. `link.text` is a string. `link.url` is a string. `link.type` is one of "inbound", "outbound", or "anchor", and sets the icon shown next to the link.',
     properties: [
       {
         type: 'object',
@@ -53,7 +55,7 @@ module.exports = {
           icon: {
             type: 'string|function',
             description:
-              "A SVG string, or a render function for an SVGR component - the render function is provided a props object `{ theme, brand }` to facilitate matching the parent component's appearance",
+              "A SVG string, or a render function for an SVGR component - the render function is provided a props object `{ theme, product }` to facilitate matching the parent component's appearance",
           },
           heading: {
             type: 'string',
@@ -62,7 +64,7 @@ module.exports = {
           content: {
             type: 'string|function',
             description:
-              'Can be either a string, or a render function for custom content - the render function will be provided a props object `{ theme, brand }`',
+              'Can be either a string, or a render function for custom content - the render function will be provided a props object `{ theme, product }`',
           },
           link: {
             type: 'object',

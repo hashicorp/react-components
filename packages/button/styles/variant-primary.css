@@ -81,17 +81,6 @@ Note: we might be able to figure out a better way to do this, maybe with an IE11
 See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
 */
 .g-btn.variant-primary:not([disabled]) {
-  /* Brand -- HashiCorp */
-
-  /* Brand -- Vagrant */
-
-  /* Brand -- Vault */
-  &.brand-hashicorp,
-  &.brand-vault,
-  &.brand-vagrant {
-    /* Uses default values for --brand */
-  }
-
   /* Brand -- Neutral */
   &.brand-neutral {
     &:not(.background-brand),
@@ -128,103 +117,6 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
       }
       &:active::before {
         background: rgba(0, 0, 0, 0.2);
-      }
-    }
-  }
-
-  /* Brand -- Consul */
-  &.brand-consul {
-    &:not(.background-brand) {
-      border-color: var(--consul);
-      background-color: var(--consul);
-    }
-    &.background-brand {
-      &::before {
-        background: var(--consul-l3);
-      }
-      &:active::before {
-        background: var(--consul-l2);
-      }
-    }
-  }
-
-  /* Brand -- Nomad */
-  &.brand-nomad {
-    &:not(.background-brand) {
-      border-color: var(--nomad);
-      background-color: var(--nomad);
-    }
-
-    &.background-brand {
-      &::before {
-        background: var(--nomad-l3);
-      }
-      &:active::before {
-        background: var(--nomad-l2);
-      }
-    }
-  }
-
-  /* Brand -- Packer */
-  &.brand-packer {
-    &:not(.background-brand) {
-      border-color: var(--packer);
-      background-color: var(--packer);
-    }
-    &.background-brand {
-      &::before {
-        background: var(--packer-l3);
-      }
-      &:active::before {
-        background: var(--packer-l2);
-      }
-    }
-  }
-
-  /* Brand -- Terraform */
-  &.brand-terraform {
-    &:not(.background-brand) {
-      border-color: var(--terraform);
-      background-color: var(--terraform);
-    }
-    &.background-brand {
-      &::before {
-        background: var(--terraform-l3);
-      }
-      &:active::before {
-        background: var(--terraform-l2);
-      }
-    }
-  }
-
-  /* Brand -- Waypoint */
-  &.brand-waypoint {
-    &:not(.background-brand) {
-      border-color: var(--waypoint);
-      background-color: var(--waypoint);
-    }
-    &.background-brand {
-      &::before {
-        background: var(--waypoint-l3);
-      }
-      &:active::before {
-        background: var(--waypoint-l2);
-      }
-    }
-  }
-
-  /* Brand -- Boundary */
-  &.brand-boundary {
-    &:not(.background-brand) {
-      border-color: var(--boundary);
-      background-color: var(--boundary);
-    }
-    &.background-brand {
-      &::before {
-        background: var(--boundary-l3);
-      }
-      &:active::before {
-        background: var(--boundary-l2);
       }
     }
   }

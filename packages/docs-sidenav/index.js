@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import MenuIcon from './menu-icon'
 import ChevronIcon from './chevron-icon'
@@ -15,6 +16,7 @@ export default function DocsSidenav({
 }) {
   const [open, setOpen] = useState(false)
   const [filterInput, setFilterInput] = useState('')
+  const { themeClass } = useProductMeta(product)
 
   // we memoize here as the page matching is a pure, expensive calculation that
   // does not need to re-run every render
@@ -31,9 +33,7 @@ export default function DocsSidenav({
 
   return (
     <div
-      className={`g-docs-sidenav${open ? ' open' : ''}${
-        product ? ` theme-${product}` : ''
-      }`}
+      className={`g-docs-sidenav${open ? ' open' : ''} ${themeClass || ''}`}
       data-testid="root"
     >
       <div

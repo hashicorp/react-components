@@ -1,3 +1,5 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   releases: {
     type: 'object',
@@ -44,33 +46,14 @@ module.exports = {
       },
     ],
   },
-  productName: {
-    type: 'string',
-    description: 'human readable name for the product',
-    testValue: 'Waypoint',
+  product: {
+    ...baseProps.product,
+    testValue: 'waypoint',
     required: true,
   },
   changelog: {
     type: 'string',
     description: 'custom changelog URL',
-  },
-  productId: {
-    type: 'string',
-    description:
-      'slug/identifier for the product. Used for downloads and links',
-    control: { type: 'select' },
-    testValue: 'waypoint',
-    options: [
-      'terraform',
-      'vault',
-      'nomad',
-      'consul',
-      'packer',
-      'vagrant',
-      'boundary',
-      'waypoint',
-    ],
-    required: true,
   },
   latestVersion: {
     type: 'string',

@@ -1,10 +1,8 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
-  theme: {
-    type: 'string',
-    description: 'Color theme to match a specific product',
-    control: { type: 'select' },
-    options: ['consul', 'terraform', 'nomad', 'vault', 'waypoint', 'boundary'],
-    testValue: 'terraform',
+  product: {
+    ...baseProps.product,
   },
   lines: {
     type: 'array',

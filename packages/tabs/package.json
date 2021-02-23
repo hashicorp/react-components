@@ -11,6 +11,9 @@
     "@hashicorp/react-inline-svg": "^1.0.2",
     "@tippy.js/react": "^3.1.1"
   },
+  "peerDependencies": {
+    "@hashicorp/nextjs-scripts": ">16.x"
+  },
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"

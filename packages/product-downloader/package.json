@@ -11,6 +11,9 @@
     "@hashicorp/react-tabs": "^3.0.1",
     "semver": "^7.3.2"
   },
+  "peerDependencies": {
+    "@hashicorp/nextjs-scripts": ">16.x"
+  },
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"

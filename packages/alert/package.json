@@ -18,5 +18,11 @@
     "url": "https://github.com/hashicorp/react-components.git",
     "directory": "packages/alert"
   },
-  "style": "style.css"
+  "style": "style.css",
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
+  "peerDependencies": {
+    "@hashicorp/nextjs-scripts": ">16.x"
+  }
 }

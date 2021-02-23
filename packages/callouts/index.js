@@ -1,3 +1,4 @@
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import CalloutItem from './partials/callout-item/index.js'
 
 function Callouts({
@@ -5,12 +6,14 @@ function Callouts({
   subheading,
   centerHeading,
   layout,
-  theme,
-  brand,
+  theme = 'light',
+  product = 'hashicorp',
   items,
 }) {
   if (!layout)
     throw new Error('The "layout" prop is required, please pass in a value')
+
+  const { slug } = useProductMeta(product)
   return (
     <section className={`g-callouts theme-${theme}`}>
       <div className="g-grid-container">
@@ -48,7 +51,7 @@ function Callouts({
                   link={item.link}
                   layout={layout}
                   theme={theme}
-                  brand={brand}
+                  product={slug}
                 />
               </div>
             )
@@ -57,11 +60,6 @@ function Callouts({
       </div>
     </section>
   )
-}
-
-Callouts.defaultProps = {
-  theme: 'light',
-  brand: 'hashicorp',
 }
 
 export default Callouts

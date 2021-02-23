@@ -1,11 +1,8 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   product: {
-    description: 'Product name for the alert',
-    type: 'string',
-    control: { type: 'select' },
-    options: ['consul', 'nomad', 'terraform', 'vault'],
-    testValue: 'consul',
-    required: true,
+    ...baseProps.product,
   },
   inline: {
     description:

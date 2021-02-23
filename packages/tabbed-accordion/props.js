@@ -1,4 +1,7 @@
+const TabProps = require('../tabs/props')
+
 module.exports = {
+  product: TabProps.product,
   heading: {
     type: 'string',
     description: 'headline above the accordion',

@@ -66,27 +66,6 @@
         &.brand-hcp::after {
           background: var(--black);
         }
-        &.brand-terraform::after {
-          background: var(--terraform);
-        }
-        &.brand-consul::after {
-          background: var(--consul);
-        }
-        &.brand-nomad::after {
-          background: var(--nomad);
-        }
-        &.brand-vagrant::after {
-          background: var(--vagrant);
-        }
-        &.brand-packer::after {
-          background: var(--packer);
-        }
-        &.brand-boundary::after {
-          background: var(--boundary);
-        }
-        &.brand-waypoint::after {
-          background: var(--waypoint);
-        }
       }
 
       &:hover .text {
