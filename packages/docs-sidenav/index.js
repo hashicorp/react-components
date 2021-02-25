@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import Link from 'next/link'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import svgMenuIcon from './icons/menu.svg?include'
@@ -17,6 +18,7 @@ export default function DocsSidenav({
 }) {
   const [open, setOpen] = useState(false)
   const [filterInput, setFilterInput] = useState('')
+  const { themeClass } = useProductMeta(product)
   const [content, setContent] = useState(navData)
   const [filteredContent, setFilteredContent] = useState(navData)
 
@@ -39,7 +41,7 @@ export default function DocsSidenav({
   }, [filterInput, content])
 
   return (
-    <div className={s.root} style={{ '--brand': `var(--${product})` }}>
+    <div className={`${s.root} ${themeClass || ''}`}>
       <div className={s.toggle} onClick={() => setOpen(!open)}>
         <span>
           <InlineSvg src={svgMenuIcon} /> Documentation Menu

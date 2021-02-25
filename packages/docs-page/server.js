@@ -75,7 +75,7 @@ async function renderPageMdx(
   currentPath,
   components,
   scope,
-  remarkPlugins
+  remarkPlugins = []
 ) {
   // get the page being requested - figure out if its index page or leaf
   // prefer leaf if both are present
