@@ -21,9 +21,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c47c50a8419f6278073505ebbe25c9fbe4faab07",
-  "devDependencies": {
-    "gray-matter": "^4.0.2",
-    "klaw-sync": "^6.0.0"
-  }
+  "gitHead": "c47c50a8419f6278073505ebbe25c9fbe4faab07"
 }

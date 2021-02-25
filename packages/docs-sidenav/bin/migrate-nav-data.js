@@ -4,6 +4,17 @@ const path = require('path')
 const grayMatter = require('gray-matter')
 const klawSync = require('klaw-sync')
 
+/*
+USAGE
+
+Eg:
+- old nav data is in ./data/docs-navigation.js
+- content is in ./content/docs
+- output file is ./data/docs-nav-data.json
+
+npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.7 migrate-nav-data ./data/docs-navigation.js ./content/docs ./data/docs-nav-data.json
+*/
+
 const navigationJsData = require(path.resolve(process.argv[2]))
 const CONTENT_DIR = path.join(process.cwd(), process.argv[3])
 const OUT_FILE = path.join(process.cwd(), process.argv[4])
