@@ -19,7 +19,7 @@ export function DocsPageWrapper({
   pageTitle,
   product: { name, slug },
   showEditPage = true,
-  subpath,
+  subpath, // TODO rename to baseRoute, more accurate
 }) {
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -46,7 +46,7 @@ export function DocsPageWrapper({
           <div className="nav docs-nav">
             <DocsSidenav
               product={slug}
-              rootPath={subpath}
+              rootPath={subpath} // TODO rename to baseRoute, more accurate
               currentPath={currentPath}
               navData={navData}
             />
@@ -80,29 +80,9 @@ export function DocsPageWrapper({
   )
 }
 
-/*
-
-  const editLink = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/content/${filePath}`
-
-<DocsPage
-  product={{ name: "Packer", slug: "packer" }}
-  subpath="docs"
-  navData={navData}
-  editLink={editLink}
-  showEditPage={true}
-  additionalComponents={}
-  staticProps={{
-    mdxSource,
-    frontMatter,
-    currentPath
-  }}
-/>
-
-*/
-
 export default function DocsPage({
   product,
-  subpath,
+  subpath, // TODO rename to baseRoute, more accurate
   navData,
   editLink,
   showEditPage = true,
@@ -124,7 +104,7 @@ export default function DocsPage({
       pageTitle={frontMatter.page_title}
       product={product}
       showEditPage={showEditPage}
-      subpath={subpath}
+      subpath={subpath} // TODO rename to baseRoute, more accurate
     >
       {content}
     </DocsPageWrapper>

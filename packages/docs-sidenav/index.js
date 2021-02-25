@@ -11,7 +11,7 @@ import s from './style.module.css'
 
 export default function DocsSidenav({
   currentPath,
-  rootPath,
+  rootPath, // TODO rename to baseRoute, more accurate
   product,
   disableFilter = false,
   navData,

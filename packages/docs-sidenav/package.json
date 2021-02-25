@@ -15,7 +15,7 @@
   },
   "license": "MPL-2.0",
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x",
+    "@hashicorp/nextjs-scripts": ">16.2",
     "react": "^16.9.0"
   },
   "publishConfig": {
