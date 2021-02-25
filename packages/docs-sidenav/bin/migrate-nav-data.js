@@ -1,32 +1,26 @@
+#! /usr/bin/env node
 const fs = require('fs')
 const path = require('path')
 const grayMatter = require('gray-matter')
 const klawSync = require('klaw-sync')
-const navigationJs = require('../../website/data/docs-navigation')
-// Temp - setting this up as part of a GitHub action, just to make
-// things easier during dev, really the JSON format would be
-// updated itself and the old format would be dropped
-const util = require('util')
-const exec = util.promisify(require('child_process').exec)
 
-const INPUT_DIR = 'website/content'
-const OUTPUT_DIR = '.generated'
-const OUTPUT_FILE = 'docs-navigation.json'
+const navigationJsData = require(path.resolve(process.argv[2]))
+const CONTENT_DIR = path.join(process.cwd(), process.argv[3])
+const OUT_FILE = path.join(process.cwd(), process.argv[4])
 
-convertAndWrite().then(() => {
-  //  Stage the changes so they're ready to commit
-  // (kind of relies on the outputDir, which is why it happens here)
-  const outputFile = path.join(process.cwd(), OUTPUT_DIR, OUTPUT_FILE)
-  exec(`git add ${outputFile}`).then(() => {
-    console.log('✅ Done')
-  })
-})
+runMigration(navigationJsData, CONTENT_DIR, OUT_FILE)
 
-async function convertAndWrite() {
+async function runMigration(navigationJsData, contentDir, outFile) {
+  const { navData } = await getMigratedNavData(navigationJsData, contentDir)
+  fs.writeFileSync(outFile, JSON.stringify(navData, null, 2))
+  // fs.writeFileSync(outFile, JSON.stringify(collectedFrontmatter, null, 2))
+}
+
+async function getMigratedNavData(navigationJsData, contentDir) {
   const fileFilter = (f) => path.extname(f.path) === '.mdx'
-  const collectedFrontmatter = await collectFrontmatter(INPUT_DIR, fileFilter)
-  const navJson = convertNavTree(navigationJs, collectedFrontmatter, [], 'docs')
-  writeJsonFile(navJson, OUTPUT_DIR, OUTPUT_FILE)
+  const collectedFrontmatter = await collectFrontmatter(contentDir, fileFilter)
+  const navData = convertNavTree(navigationJsData, collectedFrontmatter, [], '')
+  return { navData, collectedFrontmatter }
 }
 
 function convertNavTree(navTree, collectedFrontmatter, pathStack, subfolder) {
@@ -158,12 +152,11 @@ async function collectFrontmatter(inputDir, fileFilter) {
     traverseAll: true,
     filter: fileFilter,
   }).map((f) => f.path)
-  const inputDirPath = path.join(process.cwd(), inputDir)
   const collectedFrontmatter = await Promise.all(
     targetFilepaths.map(async (filePath) => {
       const rawFile = fs.readFileSync(filePath, 'utf-8')
       const { data: frontmatter } = grayMatter(rawFile)
-      const __resourcePath = path.relative(inputDirPath, filePath)
+      const __resourcePath = path.relative(inputDir, filePath)
       return { __resourcePath, ...frontmatter }
     })
   )
@@ -172,15 +165,4 @@ async function collectFrontmatter(inputDir, fileFilter) {
 
 function formatTitle(title) {
   return title.replace(/<tt>/g, '<code>').replace(/<\/tt>/g, '</code>')
-}
-
-function writeJsonFile(data, dir, file) {
-  // Set up a directory for output
-  const outputDir = path.join(process.cwd(), dir)
-  const outputFile = path.join(outputDir, file)
-  fs.mkdirSync(outputDir, { recursive: true })
-  //  Stringify the collected frontmatter, and write the file
-  const fileString = JSON.stringify(data, null, 2)
-  fs.writeFileSync(outputFile, fileString)
-  return true
 }

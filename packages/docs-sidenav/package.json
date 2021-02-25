@@ -3,6 +3,10 @@
   "description": "Sidebar used for navigation HashiCorp docs",
   "version": "7.0.0",
   "author": "HashiCorp",
+  "bin": {
+    "npx-hello-world": "bin/npx-hello-world.js",
+    "migrate-nav-data": "bin/migrate-nav-data.js"
+  },
   "contributors": [
     "Jeff Escalante"
   ],
@@ -17,5 +21,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c47c50a8419f6278073505ebbe25c9fbe4faab07"
+  "gitHead": "c47c50a8419f6278073505ebbe25c9fbe4faab07",
+  "devDependencies": {
+    "gray-matter": "^4.0.2",
+    "klaw-sync": "^6.0.0"
+  }
 }
