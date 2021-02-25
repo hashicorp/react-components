@@ -3,7 +3,6 @@ import Content from '@hashicorp/react-content'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import HashiHead from '@hashicorp/react-head'
 import Head from 'next/head'
-import Link from 'next/link'
 import hydrate from 'next-mdx-remote/hydrate'
 import { SearchProvider } from '@hashicorp/react-search'
 import SearchBar from './search-bar'
@@ -11,18 +10,17 @@ import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 
 export function DocsPageWrapper({
-  allPageData,
   canonicalUrl,
   children,
   description,
   filePath,
   mainBranch = 'main',
-  order,
-  pagePath,
+  currentPath,
   pageTitle,
   product: { name, slug },
   showEditPage = true,
   subpath,
+  navData,
 }) {
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -49,11 +47,9 @@ export function DocsPageWrapper({
           <div className="nav docs-nav">
             <DocsSidenav
               product={slug}
-              Link={Link}
-              category={subpath}
-              currentPage={pagePath}
-              data={allPageData}
-              order={order}
+              rootPath={subpath}
+              currentPath={currentPath}
+              navData={navData}
             />
           </div>
         </div>
@@ -90,11 +86,11 @@ export function DocsPageWrapper({
 export default function DocsPage({
   product,
   subpath,
-  order,
+  navData,
   mainBranch = 'main',
   showEditPage = true,
   additionalComponents,
-  staticProps: { mdxSource, data, frontMatter, pagePath, filePath },
+  staticProps: { mdxSource, frontMatter, currentPath, filePath },
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
@@ -103,13 +99,12 @@ export default function DocsPage({
 
   return (
     <DocsPageWrapper
-      allPageData={data}
+      navData={navData}
       canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
       filePath={filePath}
       mainBranch={mainBranch}
-      order={order}
-      pagePath={pagePath}
+      currentPath={currentPath}
       pageTitle={frontMatter.page_title}
       product={product}
       showEditPage={showEditPage}

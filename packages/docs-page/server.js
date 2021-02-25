@@ -27,7 +27,7 @@ export async function generateStaticProps({
   remarkPlugins,
 }) {
   const docsPath = path.join(process.cwd(), 'content', subpath)
-  const pagePath = params.page ? params.page.join('/') : '/'
+  const currentPath = params.page ? params.page.join('/') : '/'
 
   // get frontmatter from all other pages in the category, for the sidebar
   const allFrontMatter = await fastReadFrontMatter(docsPath)
@@ -35,7 +35,7 @@ export async function generateStaticProps({
   // render the current page path markdown
   const { mdxSource, frontMatter, filePath } = await renderPageMdx(
     docsPath,
-    pagePath,
+    currentPath,
     generateComponents(productName, additionalComponents),
     scope,
     remarkPlugins
@@ -50,7 +50,7 @@ export async function generateStaticProps({
       mdxSource,
       frontMatter,
       filePath: `${subpath}/${filePath}`,
-      pagePath: `/${subpath}/${pagePath}`,
+      currentPath,
     },
   }
 }
@@ -72,15 +72,15 @@ async function getStaticMdxPaths(root) {
 
 async function renderPageMdx(
   root,
-  pagePath,
+  currentPath,
   components,
   scope,
-  remarkPlugins = []
+  remarkPlugins
 ) {
   // get the page being requested - figure out if its index page or leaf
   // prefer leaf if both are present
-  const leafPath = path.join(root, `${pagePath}.mdx`)
-  const indexPath = path.join(root, `${pagePath}/index.mdx`)
+  const leafPath = path.join(root, `${currentPath}.mdx`)
+  const indexPath = path.join(root, `${currentPath}/index.mdx`)
   let page, filePath
 
   if (existsSync(leafPath)) {

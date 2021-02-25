@@ -1,3 +1,5 @@
+const navDataExample = require('../docs-sidenav/fixtures/navdata-example.json')
+
 module.exports = {
   product: {
     type: 'string',
@@ -30,10 +32,13 @@ module.exports = {
     description:
       'The path this page is rendering under, for example "docs" or "api-docs". Passed directly to the `category` prop of `@hashicorp/react-docs-sidenav`',
   },
-  order: {
+  navData: {
     type: 'object',
-    description:
-      'Pass in the export of a `data/xxx-navigation.js` file, this is the user-defined navigation order and structure. Passed directly to the `order` prop to `@hashicorp/react-docs-sidenav` - see that component for details on object structure.',
+    testValue: navDataExample,
+  },
+  currentPath: {
+    type: 'string',
+    testValue: 'agent/autoauth',
   },
   additionalComponents: {
     type: 'object',

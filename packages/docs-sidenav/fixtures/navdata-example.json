@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Vault Agent",
+    "routes": [
+      {
+        "title": "Overview",
+        "path": "agent"
+      },
+      {
+        "title": "Auto-Auth",
+        "routes": [
+          {
+            "title": "Overview",
+            "path": "agent/autoauth"
+          },
+          {
+            "title": "Methods",
+            "routes": [
+              {
+                "title": "Overview",
+                "path": "agent/autoauth/methods"
+              },
+              {
+                "title": "External Link",
+                "href": "https://google.com"
+              },
+              {
+                "title": "AliCloud",
+                "path": "agent/autoauth/methods/alicloud"
+              },
+              { "divider": true },
+              {
+                "title": "<code>GCP</code>",
+                "path": "agent/autoauth/methods/gcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "No Index Category",
+        "routes": [
+          {
+            "title": "Foo Item",
+            "path": "agent/no-index-test/foo"
+          }
+        ]
+      },
+      {
+        "title": "Only Index Test <sup>ENT</sup>",
+        "routes": [
+          {
+            "title": "Overview",
+            "path": "agent/only-index-test"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -39,27 +39,15 @@ We have a lot of docs sites, all of which render content in exactly the same way
           '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p>',
         scope: {},
       },
-      data: [
-        {
-          __resourcePath: 'docs/test.mdx',
-          page_title: 'Testing Page',
-          sidebar_title: 'Testing Page',
-        },
-        {
-          __resourcePath: 'docs/test2.mdx',
-          page_title: 'Other Testing Page',
-          sidebar_title: 'Other Testing Page',
-        },
-      ],
       frontMatter: { page_title: 'Test Page', description: 'test description' },
-      pagePath: '/docs/test',
       filePath: 'test.mdx',
+      currentPath: componentProps.currentPath.testValue,
     },
   }}
 >{`<DocsPage
   product={{ name: 'Nomad', slug: 'nomad' }}
   subpath='docs'
-  order={['test', 'test2']}
+  navData={${JSON.stringify(componentProps.navData.testValue, null, 2)}}
   // pass in the results of executing the 'generateStaticProps' function from '@hashicorp/react-docs-page/server'
   staticProps={staticPropsResult}
 >
