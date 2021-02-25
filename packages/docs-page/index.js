@@ -96,6 +96,7 @@ export function DocsPageWrapper({
     frontMatter,
     currentPath
   }}
+/>
 
 */
 
