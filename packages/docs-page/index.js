@@ -15,12 +15,12 @@ export function DocsPageWrapper({
   description,
   filePath,
   mainBranch = 'main',
+  navData,
   currentPath,
   pageTitle,
   product: { name, slug },
   showEditPage = true,
   subpath,
-  navData,
 }) {
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -99,11 +99,11 @@ export default function DocsPage({
 
   return (
     <DocsPageWrapper
-      navData={navData}
       canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
       filePath={filePath}
       mainBranch={mainBranch}
+      navData={navData}
       currentPath={currentPath}
       pageTitle={frontMatter.page_title}
       product={product}
