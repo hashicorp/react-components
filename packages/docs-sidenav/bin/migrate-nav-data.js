@@ -12,7 +12,7 @@ Eg:
 - content is in ./content/docs
 - output file is ./data/docs-nav-data.json
 
-npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.7 migrate-nav-data ./data/docs-navigation.js ./content/docs ./data/docs-nav-data.json
+npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.8 migrate-nav-data ./data/docs-navigation.js ./content/docs ./data/docs-nav-data.json
 */
 
 const navigationJsData = require(path.resolve(process.argv[2]))
