@@ -13,8 +13,7 @@ export function DocsPageWrapper({
   canonicalUrl,
   children,
   description,
-  filePath,
-  mainBranch = 'main',
+  editLink,
   navData,
   currentPath,
   pageTitle,
@@ -71,9 +70,7 @@ export function DocsPageWrapper({
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
       {showEditPage && (
         <div id="edit-this-page" className="g-container">
-          <a
-            href={`https://github.com/hashicorp/${slug}/blob/${mainBranch}/website/content/${filePath}`}
-          >
+          <a href={editLink}>
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>
           </a>
@@ -83,14 +80,33 @@ export function DocsPageWrapper({
   )
 }
 
+/*
+
+  const editLink = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/content/${filePath}`
+
+<DocsPage
+  product={{ name: "Packer", slug: "packer" }}
+  subpath="docs"
+  navData={navData}
+  editLink={editLink}
+  showEditPage={true}
+  additionalComponents={}
+  staticProps={{
+    mdxSource,
+    frontMatter,
+    currentPath
+  }}
+
+*/
+
 export default function DocsPage({
   product,
   subpath,
   navData,
-  mainBranch = 'main',
+  editLink,
   showEditPage = true,
   additionalComponents,
-  staticProps: { mdxSource, frontMatter, currentPath, filePath },
+  staticProps: { mdxSource, frontMatter, currentPath },
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
@@ -101,8 +117,7 @@ export default function DocsPage({
     <DocsPageWrapper
       canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
-      filePath={filePath}
-      mainBranch={mainBranch}
+      editLink={editLink}
       navData={navData}
       currentPath={currentPath}
       pageTitle={frontMatter.page_title}

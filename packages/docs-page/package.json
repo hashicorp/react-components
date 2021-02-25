@@ -8,7 +8,7 @@
   ],
   "dependencies": {
     "@hashicorp/react-content": "^6.2.2",
-    "@hashicorp/react-docs-sidenav": "^6.0.4-alpha.18",
+    "@hashicorp/react-docs-sidenav": "6.1.1-alpha.10",
     "@hashicorp/react-head": "^1.2.0",
     "@hashicorp/react-search": "^4.1.0",
     "fs-exists-sync": "0.1.0",
