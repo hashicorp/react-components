@@ -44,8 +44,13 @@ async function generateStaticProps(
   navDataFile,
   localContentDir,
   params,
-  productName,
-  paramId = DEFAULT_PARAM_ID
+  {
+    productName, // optional, used to configure EnterpriseAlert
+    additionalComponents = {},
+    remarkPlugins = [],
+    scope, // optional, I think?
+    paramId = DEFAULT_PARAM_ID,
+  }
 ) {
   //  Read in the nav data, and resolve local filePaths
   const navData = await resolveNavData(navDataFile, localContentDir)
@@ -56,7 +61,12 @@ async function generateStaticProps(
   //  Set up the MDX content to re-hydrate client-side
   const { filePath } = navNode
   const mdxString = fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
-  const { mdxSource, frontMatter } = await renderPageMdx(mdxString, productName)
+  const { mdxSource, frontMatter } = await renderPageMdx(mdxString, {
+    productName,
+    additionalComponents,
+    remarkPlugins,
+    scope,
+  })
   // Return all the props
   return { currentPath, frontMatter, mdxSource, navData }
 }
