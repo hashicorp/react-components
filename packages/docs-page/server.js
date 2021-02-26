@@ -9,7 +9,7 @@ const DEFAULT_PARAM_ID = 'page'
 async function generateStaticPaths(
   navDataFile,
   localContentDir,
-  paramId = DEFAULT_PARAM_ID
+  { paramId = DEFAULT_PARAM_ID } = {}
 ) {
   // Fetch and parse navigation data
   const navData = await resolveNavData(navDataFile, localContentDir)
