@@ -11,7 +11,7 @@ async function renderPageMdx(
     additionalComponents = {},
     remarkPlugins = [],
     scope, // optional, i think?
-  }
+  } = {}
 ) {
   const components = generateComponents(productName, additionalComponents)
   const { data: frontMatter, content } = grayMatter(mdxFileString)
