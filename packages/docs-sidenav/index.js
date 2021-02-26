@@ -13,8 +13,8 @@ export default function DocsSidenav({
   currentPath,
   baseRoute,
   product,
-  disableFilter = false,
   navData,
+  disableFilter = false,
 }) {
   const [open, setOpen] = useState(false)
   const [filterInput, setFilterInput] = useState('')
