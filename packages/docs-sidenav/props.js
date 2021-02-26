@@ -23,10 +23,9 @@ module.exports = {
       'Path to the current page, used to select the currently active page.',
     testValue: 'agent/autoauth',
   },
-  rootPath: {
+  baseRoute: {
     type: 'string',
-    description:
-      'Top level navigation category, for example `docs`, `api`, etc.',
+    description: 'Top level navigation route, for example `docs`, `api`, etc.',
     testValue: 'docs',
   },
   disableFilter: {

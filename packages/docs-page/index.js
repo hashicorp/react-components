@@ -86,11 +86,10 @@ export function DocsPageWrapper({
 export default function DocsPage({
   product,
   baseRoute,
-  navData,
   mainBranch,
   showEditPage = true,
   additionalComponents,
-  staticProps: { mdxSource, frontMatter, currentPath },
+  staticProps: { mdxSource, frontMatter, currentPath, navData },
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
