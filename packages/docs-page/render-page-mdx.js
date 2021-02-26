@@ -8,13 +8,15 @@ async function renderPageMdx(
   mdxFileString,
   {
     productName,
+    mdxContentHook = (c) => c,
     additionalComponents = {},
     remarkPlugins = [],
     scope, // optional, i think?
   } = {}
 ) {
   const components = generateComponents(productName, additionalComponents)
-  const { data: frontMatter, content } = grayMatter(mdxFileString)
+  const { data: frontMatter, content: rawContent } = grayMatter(mdxFileString)
+  const content = mdxContentHook(rawContent)
   const mdxSource = await renderToString(content, {
     mdxOptions: markdownDefaults({
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
