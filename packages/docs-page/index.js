@@ -13,13 +13,13 @@ export function DocsPageWrapper({
   canonicalUrl,
   children,
   description,
-  editLink,
   navData,
   currentPath,
   pageTitle,
+  baseRoute,
+  mainBranch = 'main',
   product: { name, slug },
   showEditPage = true,
-  subpath, // TODO rename to baseRoute, more accurate
 }) {
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -28,6 +28,9 @@ export function DocsPageWrapper({
     if (!node) return
     return temporary_injectJumpToSection(node)
   }, [children])
+
+  // mainBranch is only used to generate the editPageUrl
+  const editPageUrl = `https://github.com/hashicorp/${slug}/blob/${mainBranch}/website/content/${baseRoute}/${currentPath}`
 
   return (
     <div id="p-docs">
@@ -46,7 +49,7 @@ export function DocsPageWrapper({
           <div className="nav docs-nav">
             <DocsSidenav
               product={slug}
-              rootPath={subpath} // TODO rename to baseRoute, more accurate
+              baseRoute={baseRoute}
               currentPath={currentPath}
               navData={navData}
             />
@@ -70,7 +73,7 @@ export function DocsPageWrapper({
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
       {showEditPage && (
         <div id="edit-this-page" className="g-container">
-          <a href={editLink}>
+          <a href={editPageUrl}>
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>
           </a>
@@ -82,9 +85,9 @@ export function DocsPageWrapper({
 
 export default function DocsPage({
   product,
-  subpath, // TODO rename to baseRoute, more accurate
+  baseRoute,
   navData,
-  editLink,
+  mainBranch,
   showEditPage = true,
   additionalComponents,
   staticProps: { mdxSource, frontMatter, currentPath },
@@ -98,13 +101,13 @@ export default function DocsPage({
     <DocsPageWrapper
       canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
-      editLink={editLink}
+      mainBranch={mainBranch}
       navData={navData}
       currentPath={currentPath}
       pageTitle={frontMatter.page_title}
       product={product}
       showEditPage={showEditPage}
-      subpath={subpath} // TODO rename to baseRoute, more accurate
+      baseRoute={baseRoute}
     >
       {content}
     </DocsPageWrapper>

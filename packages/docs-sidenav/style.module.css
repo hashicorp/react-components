@@ -184,7 +184,7 @@
   }
 }
 
-.navCategoryIcon {
+.navBranchIcon {
   composes: navItemIcon;
   transition: transform 0.15s ease;
 
@@ -193,7 +193,7 @@
   }
 }
 
-.navCategorySubnav {
+.navBranchSubnav {
   display: none;
   list-style: none;
   margin: 0;

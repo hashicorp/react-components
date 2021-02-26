@@ -11,7 +11,7 @@ import s from './style.module.css'
 
 export default function DocsSidenav({
   currentPath,
-  rootPath, // TODO rename to baseRoute, more accurate
+  baseRoute,
   product,
   disableFilter = false,
   navData,
@@ -60,7 +60,7 @@ export default function DocsSidenav({
           />
         )}
         <NavTree
-          category={rootPath}
+          baseRoute={baseRoute}
           content={filteredContent || []}
           currentPath={currentPath}
           Link={Link}
@@ -115,7 +115,7 @@ function filterContent(content, searchValue) {
   }, [])
 }
 
-function NavTree({ content, category, Link }) {
+function NavTree({ content, baseRoute, Link }) {
   return content.map((item, idx) => {
     //  Dividers
     if (item.divider) {
@@ -133,21 +133,21 @@ function NavTree({ content, category, Link }) {
           key={item.path}
           title={item.title}
           isActive={item.__isActive}
-          url={`/${category}/${item.path}`}
+          url={`/${baseRoute}/${item.path}`}
           Link={Link}
         />
       )
     }
-    // Otherwise, render a nav category
+    // Otherwise, render a nav branch
     // (this will recurse and render a nav tree)
     return (
-      <NavCategory
+      <NavBranch
         key={item.title}
         title={item.title}
         routes={item.routes}
         isActive={item.__isActive}
         isFiltered={item.__isFiltered}
-        category={category}
+        baseRoute={baseRoute}
         Link={Link}
       />
     )
@@ -172,7 +172,7 @@ function NavLeaf({ title, url, Link, isActive }) {
   )
 }
 
-function NavCategory({ title, routes, category, isActive, isFiltered, Link }) {
+function NavBranch({ title, routes, baseRoute, isActive, isFiltered, Link }) {
   const [isOpen, setIsOpen] = useState(false)
 
   // Ensure categories appear open if they're active
@@ -189,15 +189,15 @@ function NavCategory({ title, routes, category, isActive, isFiltered, Link }) {
       >
         <InlineSvg
           src={svgChevron}
-          className={s.navCategoryIcon}
+          className={s.navBranchIcon}
           data-is-open={isOpen}
           data-is-active={isActive}
         />
         <span dangerouslySetInnerHTML={{ __html: title }} />
       </button>
 
-      <ul className={s.navCategorySubnav} data-is-open={isOpen}>
-        <NavTree category={category} content={routes} Link={Link} />
+      <ul className={s.navBranchSubnav} data-is-open={isOpen}>
+        <NavTree baseRoute={baseRoute} content={routes} Link={Link} />
       </ul>
     </li>
   )
