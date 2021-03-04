@@ -10,10 +10,51 @@ function validateBranchRoutes(navNodes, depth = 0) {
   // Augment each navNode with its path __stack
   const navNodesWithStacks = navNodes.map((navNode) => {
     // Handle leaf nodes - split their paths into a __stack
-    if (navNode.path) return { ...navNode, __stack: navNode.path.split('/') }
+    if (navNode.path) {
+      if (!navNode.title) {
+        throw new Error(
+          `Missing nav-data title on NavLeaf. Please add a title to the node with the path value ${navNode.path}.`
+        )
+      }
+      return { ...navNode, __stack: navNode.path.split('/') }
+    }
     // Handle branch nodes - we recurse depth-first here
-    if (navNode.routes) return handleBranchNode(navNode, depth)
-    // Other nodes aren't relevant, we don't touch them
+    if (navNode.routes) {
+      const nodeWithStacks = handleBranchNode(navNode, depth)
+      if (!navNode.title) {
+        const branchPath = nodeWithStacks.__stack.join('/')
+        throw new Error(
+          `Missing nav-data title on NavBranch. Please add a title to the node with the inferred path ${branchPath}.`
+        )
+      }
+      return nodeWithStacks
+    }
+    // Handle direct link nodes, identifiable
+    // by the presence of an href, to ensure they have a title
+    if (navNode.href) {
+      if (!navNode.title) {
+        throw new Error(
+          `Missing nav-data title on NavDirectLink. Please add a title to the node with href ${navNode.href}.`
+        )
+      }
+    }
+    // Handle unrecognized navNodes that have a title value, but nothing else
+    if (navNode.title) {
+      throw new Error(
+        `Missing nav-data title on unrecognized node. Please add an href, path, or routes to the node with title ${navNode.title}.`
+      )
+    }
+    // Ensure the only other node type is
+    // a divider node, if not, throw an error
+    if (!navNode.divider) {
+      throw new Error(
+        `Unrecognized nav-data node. Please ensure all nav-data nodes are either NavLeaf, NavBranch, NavDirectLink, or NavDivider types. Invalid node: ${JSON.stringify(
+          navNode
+        )}`
+      )
+    }
+    // Other nodes, really just divider nodes,
+    // aren't relevant, so we don't touch them
     return navNode
   })
   // Gather all the path stacks at this level
@@ -87,24 +128,3 @@ function handleBranchNode(navNode, depth) {
 }
 
 module.exports = validateRouteStructure
-
-//
-//
-//
-//
-//
-//
-//
-//
-
-// TODO - throw error if any non-divider node does not have a title
-// function collectEmptyTitleErrors(navData) {
-//   const errors = [];
-//   return errors;
-// }
-
-// TODO - throw error if direct link nodes don't have both { title, href }
-// function collectDirectLinkErrors(navData) {
-//   const errors = [];
-//   return errors;
-// }
