@@ -1,44 +1,42 @@
 # DocsPage
 
-The **DocsPage** component lets you create a Hashicorp branded docs page in NextJS projects using `next-mdx-remote`. This is a very highly abstracted component with slightly more involved usage since it renders an entire page.
+The **DocsPage** component lets you create a Hashicorp branded docs page in NextJS projects using `next-mdx-remote`. This is a very highly abstracted component with slightly more involved usage since it renders an entire collection of pages.
 
 ## Example Usage
 
-This component is intended to be used on an [optional catch-all route](https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes) page, like `pages/docs/[[slug]].mdx` - example source shown below:
+This component is intended to be used on an [optional catch-all route](https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes) page, like `pages/docs/[[...page]].mdx` - example source shown below:
 
-```js
-import order from 'data/docs-navigation.js'
+```jsx
 import DocsPage from '@hashicorp/react-docs-page'
+// Imports below are only used server-side
 import {
   generateStaticPaths,
   generateStaticProps,
 } from '@hashicorp/react-docs-page/server'
 
-const productName = 'Vault'
-const productSlug = 'vault'
-// this example is at `pages/docs/[[slug]].mdx` - if the path is different
-// this 'subpath' prop should be adjusted to match
-const subpath = 'docs'
+//  Set up DocsPage settings
+const BASE_ROUTE = 'docs'
+const NAV_DATA = 'data/docs-nav-data.json'
+const CONTENT_DIR = 'content/docs'
+const PRODUCT = {
+  name: 'Packer',
+  slug: 'packer',
+}
 
 function DocsLayout(props) {
   return (
-    <DocsPage
-      productName={productName}
-      productSlug={productSlug}
-      subpath={subpath}
-      order={order}
-      showEditPage={true}
-      staticProps={props}
-    />
+    <DocsPage baseRoute={BASE_ROUTE} product={PRODUCT} staticProps={props} />
   )
 }
 
 export async function getStaticPaths() {
-  return generateStaticPaths(subpath)
+  const paths = await generateStaticPaths(NAV_DATA, CONTENT_DIR)
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
-  return generateStaticProps({ subpath, productName, params })
+  const props = await generateStaticProps(NAV_DATA, CONTENT_DIR, params)
+  return { props }
 }
 
 export default DocsLayout
