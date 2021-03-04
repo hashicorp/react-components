@@ -1,4 +1,5 @@
 const navDataExample = require('../docs-sidenav/fixtures/navdata-example.json')
+const sharedProps = require('../../props')
 
 module.exports = {
   product: {
@@ -9,22 +10,7 @@ module.exports = {
         type: 'string',
         description: 'Human-readable proper case product name',
       },
-      slug: {
-        type: 'string',
-        description: 'HashiCorp product slug',
-        control: { type: 'select' },
-        options: [
-          'hashicorp',
-          'boundary',
-          'consul',
-          'nomad',
-          'packer',
-          'terraform',
-          'vault',
-          'vagrant',
-          'waypoint',
-        ],
-      },
+      slug: sharedProps.product,
     },
   },
   subpath: {
