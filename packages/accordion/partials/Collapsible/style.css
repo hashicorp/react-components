@@ -1,6 +1,6 @@
 .g-collapsible {
   overflow: hidden;
-  height: auto;
+  height: 0px;
   transition: height 0.3s;
 
   & .inner {
