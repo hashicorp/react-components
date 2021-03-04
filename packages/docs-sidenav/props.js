@@ -1,22 +1,8 @@
-const sampleNavData = require('./fixtures/navdata-example.json')
-
-const productSlugs = [
-  'nomad',
-  'consul',
-  'terraform',
-  'packer',
-  'vagrant',
-  'boundary',
-  'waypoint',
-]
+const sampleNavData = require('./fixtures/nav-data.json')
+const sharedProps = require('../../props')
 
 module.exports = {
-  product: {
-    type: 'string',
-    description: 'Slug of the current product for color theming',
-    testValue: 'terraform',
-    options: productSlugs,
-  },
+  product: sharedProps.product,
   currentPath: {
     type: 'string',
     description:
@@ -25,7 +11,8 @@ module.exports = {
   },
   baseRoute: {
     type: 'string',
-    description: 'Top level navigation route, for example `docs`, `api`, etc.',
+    description:
+      'Top level navigation route, for example `docs`, `api-docs`, etc.',
     testValue: 'docs',
   },
   disableFilter: {
@@ -35,7 +22,8 @@ module.exports = {
   },
   navData: {
     type: 'object',
-    description: 'Tree of navigation data to render',
+    description:
+      'Tree of navigation data to render. See `docs-sidenav/types.js` for details.',
     testValue: sampleNavData,
   },
 }

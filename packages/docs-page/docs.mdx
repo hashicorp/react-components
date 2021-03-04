@@ -7,8 +7,6 @@ We have a lot of docs sites, all of which render content in exactly the same way
 <LiveComponent
   components={{
     staticPropsResult: {
-      currentPath: componentProps.currentPath.testValue,
-      frontMatter: { page_title: 'Test Page', description: 'test description' },
       mdxSource: {
         compiledSource:
           '"use strict";\n' +
@@ -41,7 +39,9 @@ We have a lot of docs sites, all of which render content in exactly the same way
           '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p>',
         scope: {},
       },
-      navData: componentProps.navData.testValue,
+      navData: componentProps.staticProps.properties.navData.testValue,
+      currentPath: componentProps.staticProps.properties.currentPath.testValue,
+      frontMatter: { page_title: 'Test Page', description: 'test description' },
     },
   }}
 >{`<DocsPage

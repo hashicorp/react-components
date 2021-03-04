@@ -132,12 +132,6 @@
   & code {
     margin-left: 2px;
     font-size: 0.875rem;
-
-    /* Alt design option: with background, as inline
-    color: var(--code-dark);
-    background: var(--code-light-transparent);
-    padding: 0.3em 0.625em;
-    border-radius: 3px; */
   }
 }
 

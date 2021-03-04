@@ -1,8 +1,8 @@
-// navData is an array of NavNodes
-declare const navData: NavNode[]
+// NavData is an array of NavNodes
+export type NavData = NavNode[]
 
 // A NavNode can be any of these types
-type NavNode = NavLeaf | NavDirectLink | NavDivider | NavBranch
+export type NavNode = NavLeaf | NavDirectLink | NavDivider | NavBranch
 
 // A NavLeaf represents a page with content.
 //
