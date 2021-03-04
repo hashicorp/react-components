@@ -100,7 +100,6 @@ function addIsActiveToNode(navNode, currentPath, pathname) {
   // return true if the path matches the router.pathname
   if (navNode.href) {
     const isActive = navNode.href === pathname
-    console.log({ href: navNode.href, pathname, isActive })
     return { ...navNode, __isActive: isActive }
   }
   // Otherwise, it's a divider, so return unmodified
