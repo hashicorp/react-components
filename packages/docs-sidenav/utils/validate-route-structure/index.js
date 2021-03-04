@@ -77,7 +77,7 @@ function validateBranchRoutes(navNodes, depth = 0) {
 
 function handleBranchNode(navNode, depth) {
   // We recurse depth-first here, and we'll throw an error
-  // if the nested routes had structural issues
+  // if any nested routes have structural issues
   const [path, routesWithStacks] = validateBranchRoutes(
     navNode.routes,
     depth + 1

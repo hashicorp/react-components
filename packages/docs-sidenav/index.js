@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import LinkWrap, { isAbsoluteURL } from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import svgMenuIcon from './icons/menu.svg?include'
 import svgChevron from './icons/chevron.svg?include'
@@ -16,23 +18,23 @@ export default function DocsSidenav({
   navData,
   disableFilter = false,
 }) {
+  const router = useRouter()
+  const pathname = router ? router.pathname : null
   const [open, setOpen] = useState(false)
   const [filterInput, setFilterInput] = useState('')
-  const { themeClass } = useProductMeta(product)
   const [content, setContent] = useState(navData)
   const [filteredContent, setFilteredContent] = useState(navData)
+  const { themeClass } = useProductMeta(product)
 
-  // When currentPath changes, update content
-  // to ensure `__isActive` props on each content item
-  // are accurate and up-to-date
-  // (Note: we could also reset filter input here,
-  // if we don't want to filter input to persist
-  // across client-side navigation, with something like:
+  // When currentPath changes, update content to ensure
+  // `__isActive` props on each content item are up-to-date
+  // Note: we could also reset filter input here, if we don't
+  // want to filter input to persist across client-side nav, ie:
   // setFilterInput("")
   useEffect(() => {
     if (!navData) return
-    setContent(addIsActiveToNodes(navData, currentPath))
-  }, [currentPath, navData])
+    setContent(addIsActiveToNodes(navData, currentPath, pathname))
+  }, [currentPath, navData, pathname])
 
   // When filter input changes, update content
   // to filter out items that don't match
@@ -70,15 +72,21 @@ export default function DocsSidenav({
   )
 }
 
-function addIsActiveToNodes(navNodes, currentPath) {
-  return navNodes.slice().map((node) => addIsActiveToNode(node, currentPath))
+function addIsActiveToNodes(navNodes, currentPath, pathname) {
+  return navNodes
+    .slice()
+    .map((node) => addIsActiveToNode(node, currentPath, pathname))
 }
 
-function addIsActiveToNode(navNode, currentPath) {
+function addIsActiveToNode(navNode, currentPath, pathname) {
   // If it's a node with child routes, return true
   // if any of the child routes are active
   if (navNode.routes) {
-    const routesWithActive = addIsActiveToNodes(navNode.routes, currentPath)
+    const routesWithActive = addIsActiveToNodes(
+      navNode.routes,
+      currentPath,
+      pathname
+    )
     const isActive = routesWithActive.filter((r) => r.__isActive).length > 0
     return { ...navNode, routes: routesWithActive, __isActive: isActive }
   }
@@ -88,10 +96,14 @@ function addIsActiveToNode(navNode, currentPath) {
     const isActive = navNode.path === currentPath
     return { ...navNode, __isActive: isActive }
   }
-  // Otherwise, return false
-  // (for dividers, external links, etc)
-  // TODO - do we need to worry about highlighting external links? yes probably,
-  // sometimes these are used not as "external" but to internal links outside the baseRoute
+  // If it's a direct link,
+  // return true if the path matches the router.pathname
+  if (navNode.href) {
+    const isActive = navNode.href === pathname
+    console.log({ href: navNode.href, pathname, isActive })
+    return { ...navNode, __isActive: isActive }
+  }
+  // Otherwise, it's a divider, so return unmodified
   return navNode
 }
 
@@ -116,7 +128,7 @@ function filterContent(content, searchValue) {
   }, [])
 }
 
-function NavTree({ content, baseRoute, Link }) {
+function NavTree({ baseRoute, content }) {
   return content.map((item, idx) => {
     //  Dividers
     if (item.divider) {
@@ -125,7 +137,14 @@ function NavTree({ content, baseRoute, Link }) {
     }
     // Direct links
     if (item.title && item.href) {
-      return <DirectLink key={item.title} title={item.title} href={item.href} />
+      return (
+        <DirectLink
+          key={item.title + item.href}
+          title={item.title}
+          href={item.href}
+          isActive={item.__isActive}
+        />
+      )
     }
     // Individual pages (leaf nodes)
     if (item.path) {
@@ -135,7 +154,6 @@ function NavTree({ content, baseRoute, Link }) {
           title={item.title}
           isActive={item.__isActive}
           url={`/${baseRoute}/${item.path}`}
-          Link={Link}
         />
       )
     }
@@ -149,13 +167,12 @@ function NavTree({ content, baseRoute, Link }) {
         isActive={item.__isActive}
         isFiltered={item.__isFiltered}
         baseRoute={baseRoute}
-        Link={Link}
       />
     )
   })
 }
 
-function NavLeaf({ title, url, Link, isActive }) {
+function NavLeaf({ title, url, isActive }) {
   // if the item has a path, it's a leaf node so we render a link to the page
   return (
     <li>
@@ -173,7 +190,7 @@ function NavLeaf({ title, url, Link, isActive }) {
   )
 }
 
-function NavBranch({ title, routes, baseRoute, isActive, isFiltered, Link }) {
+function NavBranch({ title, routes, baseRoute, isActive, isFiltered }) {
   const [isOpen, setIsOpen] = useState(false)
 
   // Ensure categories appear open if they're active
@@ -198,7 +215,7 @@ function NavBranch({ title, routes, baseRoute, isActive, isFiltered, Link }) {
       </button>
 
       <ul className={s.navBranchSubnav} data-is-open={isOpen}>
-        <NavTree baseRoute={baseRoute} content={routes} Link={Link} />
+        <NavTree baseRoute={baseRoute} content={routes} />
       </ul>
     </li>
   )
@@ -208,14 +225,25 @@ function Divider() {
   return <hr className={s.divider} />
 }
 
-function DirectLink({ title, href }) {
+function DirectLink({ title, href, isActive }) {
   return (
     <li>
-      <a className={s.navItem} href={href}>
-        <InlineSvg src={svgBullet} className={s.navLeafIcon} />
+      <LinkWrap
+        className={s.navItem}
+        href={href}
+        Link={Link}
+        data-is-active={isActive}
+      >
+        <InlineSvg
+          src={svgBullet}
+          className={s.navLeafIcon}
+          data-is-active={isActive}
+        />
         <span dangerouslySetInnerHTML={{ __html: title }} />
-        <InlineSvg src={svgExternalLink} className={s.externalLinkIcon} />
-      </a>
+        {isAbsoluteURL(href) ? (
+          <InlineSvg src={svgExternalLink} className={s.externalLinkIcon} />
+        ) : null}
+      </LinkWrap>
     </li>
   )
 }

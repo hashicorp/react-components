@@ -6,7 +6,7 @@ module.exports = {
     type: 'string',
     required: true,
     description:
-      'The `name` and `slug` of the product this page is being rendered for. Used for theming, page `<title />`, and the `Edit this page` link.',
+      'The `name` and `slug` of the product this page is being rendered for. The `slug` is used for the `Edit this page` link.',
     properties: {
       name: {
         type: 'string',

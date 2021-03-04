@@ -18,7 +18,7 @@ module.exports = {
   },
   disableFilter: {
     type: 'boolean',
-    description: 'If true, disable the sidebar filter input',
+    description: 'If `true`, disable the sidebar filter input.',
     testValue: false,
   },
   navData: {

@@ -21,10 +21,6 @@
                 "path": "agent/autoauth/methods"
               },
               {
-                "title": "External Link",
-                "href": "https://google.com"
-              },
-              {
                 "title": "AliCloud",
                 "path": "agent/autoauth/methods/alicloud"
               },
@@ -32,6 +28,15 @@
               {
                 "title": "<code>GCP</code>",
                 "path": "agent/autoauth/methods/gcp"
+              },
+              { "divider": true },
+              {
+                "title": "External Link",
+                "href": "https://google.com"
+              },
+              {
+                "title": "Internal Direct Link",
+                "href": "/some-non-docs-path"
               }
             ]
           }

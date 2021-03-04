@@ -10,6 +10,7 @@
     "Jeff Escalante"
   ],
   "dependencies": {
+    "@hashicorp/react-link-wrap": "^2.0.2",
     "fuzzysearch": "1.0.3"
   },
   "license": "MPL-2.0",

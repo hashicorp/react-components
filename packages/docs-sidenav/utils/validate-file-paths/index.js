@@ -11,13 +11,11 @@ async function validateFilePaths(navNodes, localDir) {
 }
 
 async function validateNode(navNode, localDir) {
-  // Handle leaf nodes
+  // Ignore remote leaf nodes, these already
+  // have their content file explicitly defined
+  if (navNode.remoteFile) return navNode
+  // Handle local leaf nodes
   if (navNode.path) {
-    // Ignore remote leaf nodes, these already
-    // have their content file explicitly defined
-    // TODO is there a way we can avoid remoteFile nodes, without making this implementation have to know about them?
-    if (navNode.remoteFile) return navNode
-    //  Handle local leaf nodes
     const indexFilePath = path.join(navNode.path, 'index.mdx')
     const namedFilePath = `${navNode.path}.mdx`
     const hasIndexFile = fs.existsSync(
