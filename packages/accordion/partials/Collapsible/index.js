@@ -8,12 +8,7 @@ import React, { useRef, useEffect } from 'react'
 
 function Collapsible({ isCollapsed, children }) {
   const parentElem = useRef(null)
-  let isFirstRender = false
-
-  /** Patch for height transition bug on first render */
-  useEffect(() => {
-    isFirstRender = true
-  }, [])
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
     cleanupTransition(parentElem.current)
@@ -21,7 +16,12 @@ function Collapsible({ isCollapsed, children }) {
 
   useEffect(() => {
     adjustHeight(isCollapsed, parentElem, isFirstRender)
-  }, [isCollapsed, isFirstRender])
+  }, [isCollapsed])
+
+  /** Patch for height transition bug on first render */
+  useEffect(() => {
+    isFirstRender.current = false
+  }, [])
 
   return (
     <div className="g-collapsible" ref={parentElem}>
@@ -41,7 +41,7 @@ function adjustHeight(isCollapsed, parentElemRef, isFirstRender) {
     //  Transition from auto to 0
     innerElem.style.opacity = 0
     // Ensures no height transition flash on first render
-    if (!isFirstRender) {
+    if (isFirstRender.current === false) {
       elem.style.height = computedStyle.height // set to px height, not auto
     }
     elem.offsetHeight // force repaint
