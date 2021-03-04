@@ -6,11 +6,12 @@ module.exports = {
   currentPath: {
     type: 'string',
     description:
-      'Path to the current page, used to select the currently active page.',
+      'Path to the current page, relative to the `baseRoute`. Used to highlight the current page.',
     testValue: 'agent/autoauth',
   },
   baseRoute: {
     type: 'string',
+    required: true,
     description:
       'Top level navigation route, for example `docs`, `api-docs`, etc.',
     testValue: 'docs',
@@ -22,6 +23,7 @@ module.exports = {
   },
   navData: {
     type: 'object',
+    required: true,
     description:
       'Tree of navigation data to render. See `docs-sidenav/types.js` for details.',
     testValue: sampleNavData,

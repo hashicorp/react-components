@@ -4,18 +4,22 @@ const sharedProps = require('../../props')
 module.exports = {
   product: {
     type: 'string',
+    required: true,
     description:
       'The `name` and `slug` of the product this page is being rendered for. Used for theming, page `<title />`, and the `Edit this page` link.',
     properties: {
       name: {
         type: 'string',
-        description: 'Human-readable proper case product name',
+        required: true,
+        description:
+          'Human-readable proper case product name. Used for the page `<title />` and `og:site_name`.',
       },
       slug: sharedProps.product,
     },
   },
   baseRoute: {
     type: 'string',
+    required: true,
     description:
       'The path this page is rendering under, for example `"docs"` or `"api-docs"`. Passed directly to the `baseRoute` prop of `@hashicorp/react-docs-sidenav`. Also used for the `Edit this page` link.',
   },
@@ -38,17 +42,39 @@ module.exports = {
   },
   staticProps: {
     type: 'object',
+    required: true,
     description:
       'Directly pass the return value of `server/generateStaticProps` in here.',
     properties: {
       mdxSource: {
         type: 'object',
+        required: true,
         description:
           "Data returned from running `next-mdx-remote/render-to-string` on the page's isolated `.mdx` file contents.",
       },
       frontmatter: {
         type: 'object',
+        required: true,
         description: "Frontmatter object parsed from the page's `.mdx` file.",
+        properties: {
+          canonicalUrl: {
+            type: 'string',
+            description:
+              'Optional canonical URL. Passed directly to [@hashicorp/react-head](/?component=Head).',
+          },
+          description: {
+            type: 'string',
+            description:
+              'Used for the `<meta name="description" />`. Passed directly to [@hashicorp/react-head](/?component=Head).',
+            required: true,
+          },
+          pageTitle: {
+            type: 'string',
+            description:
+              'Used to construct the meta `<title />` tag, then passed to [@hashicorp/react-head](/?component=Head).',
+            required: true,
+          },
+        },
       },
       currentPath: docsSidenavProps.currentPath,
       navData: docsSidenavProps.navData,

@@ -29,9 +29,6 @@ export function DocsPageWrapper({
     return temporary_injectJumpToSection(node)
   }, [children])
 
-  // mainBranch is only used to generate the editPageUrl
-  const editPageUrl = `https://github.com/hashicorp/${slug}/blob/${mainBranch}/website/content/${baseRoute}/${currentPath}`
-
   return (
     <div id="p-docs">
       {/* render the page's data to the document head */}
@@ -73,7 +70,9 @@ export function DocsPageWrapper({
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
       {showEditPage && (
         <div id="edit-this-page" className="g-container">
-          <a href={editPageUrl}>
+          <a
+            href={`https://github.com/hashicorp/${slug}/blob/${mainBranch}/website/content/${baseRoute}/${currentPath}`}
+          >
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>
           </a>

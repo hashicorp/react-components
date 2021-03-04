@@ -90,7 +90,8 @@ function addIsActiveToNode(navNode, currentPath) {
   }
   // Otherwise, return false
   // (for dividers, external links, etc)
-  // TODO - do we need to worry about highlighting external links?
+  // TODO - do we need to worry about highlighting external links? yes probably,
+  // sometimes these are used not as "external" but to internal links outside the baseRoute
   return navNode
 }
 
