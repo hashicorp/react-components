@@ -13,6 +13,8 @@ async function validateFilePaths(navNodes, localDir) {
 async function validateNode(navNode, localDir) {
   // Ignore remote leaf nodes, these already
   // have their content file explicitly defined
+  // (note: remote leaf nodes are currently only used
+  // for Packer plugin documentation)
   if (navNode.remoteFile) return navNode
   // Handle local leaf nodes
   if (navNode.path) {
