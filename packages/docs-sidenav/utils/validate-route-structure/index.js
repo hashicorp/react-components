@@ -10,7 +10,14 @@ function validateBranchRoutes(navNodes, depth = 0) {
   // Augment each navNode with its path __stack
   const navNodesWithStacks = navNodes.map((navNode) => {
     // Handle leaf nodes - split their paths into a __stack
-    if (navNode.path) {
+    if (typeof navNode.path !== 'undefined') {
+      if (navNode.path == '') {
+        throw new Error(
+          `Empty path value on NavLeaf. Path values must be non-empty strings. Node: ${JSON.stringify(
+            navNode
+          )}.`
+        )
+      }
       if (!navNode.title) {
         throw new Error(
           `Missing nav-data title on NavLeaf. Please add a title to the node with the path value ${navNode.path}.`
@@ -31,7 +38,14 @@ function validateBranchRoutes(navNodes, depth = 0) {
     }
     // Handle direct link nodes, identifiable
     // by the presence of an href, to ensure they have a title
-    if (navNode.href) {
+    if (typeof navNode.href !== 'undefined') {
+      if (navNode.href == '') {
+        throw new Error(
+          `Empty href value on NavDirectLink. href values must be non-empty strings. Node: ${JSON.stringify(
+            navNode
+          )}.`
+        )
+      }
       if (!navNode.title) {
         throw new Error(
           `Missing nav-data title on NavDirectLink. Please add a title to the node with href ${navNode.href}.`

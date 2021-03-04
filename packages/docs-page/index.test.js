@@ -2,7 +2,7 @@ test.todo(
   'passes `title`, `description`, and `siteName` correctly to <HashiHead>'
 )
 test.todo(
-  'passes `product`, `category`, `currentPage`, `data`, and `order` correctly to <DocsSidenav>'
+  'passes `product`, `baseRoute`, `currentPath`, and `navData` correctly to <DocsSidenav>'
 )
 test.todo('passes `product` and `content` correctly to <Content>')
 test.todo('displays `showEditPage` as true by default')
