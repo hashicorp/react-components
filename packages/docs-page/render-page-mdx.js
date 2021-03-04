@@ -11,7 +11,7 @@ async function renderPageMdx(
     mdxContentHook = (c) => c,
     additionalComponents = {},
     remarkPlugins = [],
-    scope, // optional, i think?
+    scope,
   } = {}
 ) {
   const components = generateComponents(productName, additionalComponents)

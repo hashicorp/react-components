@@ -45,7 +45,12 @@ async function generateStaticProps(
   localContentDir,
   params,
   {
-    productName, // optional, used to configure EnterpriseAlert
+    // Note: productName is ultimately only passed to createEnterpriseAlert.
+    // we may be able to remove the need for this additional arg / option by
+    // leveraging recent work on our product-meta provider:
+    // where arg is used: https://github.com/hashicorp/nextjs-scripts/blob/462eb2efa0c95ab5d81ad1b5d7896427a0263011/lib/providers/docs/index.jsx#L35-L48
+    // product-meta: https://github.com/hashicorp/nextjs-scripts/tree/main/lib/providers/product-meta
+    productName,
     additionalComponents = {},
     remarkPlugins = [],
     scope, // optional, I think?
