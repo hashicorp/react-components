@@ -25,11 +25,7 @@ async function renderPageMdx(
     components,
     scope,
   })
-
-  return {
-    mdxSource,
-    frontMatter,
-  }
+  return { mdxSource, frontMatter }
 }
 
 export default renderPageMdx

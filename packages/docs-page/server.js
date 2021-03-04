@@ -4,6 +4,10 @@ import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import renderPageMdx from './render-page-mdx'
 
+// So far, we have a pattern of using a common value for
+// docs catchall route parameters: route/[[...page]].jsx.
+// This default parameter ID captures that pattern.
+// It can be overridden via options.
 const DEFAULT_PARAM_ID = 'page'
 
 async function generateStaticPaths(
@@ -18,10 +22,6 @@ async function generateStaticPaths(
 }
 
 async function resolveNavData(filePath, localContentDir) {
-  // TODO - memo-ize? Will that affect things? Rationale is that NextJS
-  // must be calling this function twice for every page render...
-  // and input arguments and therefore return value will always be the same.
-  // So may be worth memo-izing.
   const navDataFile = path.join(process.cwd(), filePath)
   const navDataRaw = JSON.parse(fs.readFileSync(navDataFile, 'utf8'))
   const withFilePaths = await validateFilePaths(navDataRaw, localContentDir)
@@ -63,9 +63,9 @@ async function generateStaticProps(
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
   //  Get the navNode that matches this path
   const navNode = getNodeFromPath(currentPath, navData, localContentDir)
-  //  Set up the MDX content to re-hydrate client-side
-  const { filePath } = navNode
-  const mdxString = fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
+  //  Read in and process MDX content from the navNode's filePath
+  const mdxFile = path.join(process.cwd(), navNode.filePath)
+  const mdxString = fs.readFileSync(mdxFile, 'utf8')
   const { mdxSource, frontMatter } = await renderPageMdx(mdxString, {
     productName,
     additionalComponents,
@@ -145,6 +145,11 @@ function getPathArraysFromNodes(navNodes) {
   return slugs
 }
 
+// We currently export most utilities individually,
+// since we have cases such as Packer remote plugin docs
+// where we want to re-use these utilities to build
+// getStaticPaths and getStaticProps functions that
+// fall outside the use case of local-only content
 export {
   generateStaticPaths,
   generateStaticProps,

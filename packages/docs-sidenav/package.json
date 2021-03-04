@@ -4,8 +4,7 @@
   "version": "7.0.0",
   "author": "HashiCorp",
   "bin": {
-    "npx-hello-world": "bin/npx-hello-world.js",
-    "migrate-nav-data": "bin/migrate-nav-data.js"
+    "migrate-to-mktg-032": "bin/migrate-to-mktg-032.js"
   },
   "contributors": [
     "Jeff Escalante"

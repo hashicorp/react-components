@@ -1,18 +1,41 @@
 #! /usr/bin/env node
+
 const fs = require('fs')
 const path = require('path')
 const grayMatter = require('gray-matter')
 const klawSync = require('klaw-sync')
 
 /*
+
+MIGRATE TO MKTG-032
+
+This utility is intended to automate migration from the `.js` navigation data format,
+to the `.json` format proposed and approved in the MKTG-032 RFC.
+
+ref: https://docs.google.com/document/d/1kYvbyd6njHFSscoE1dtDNHQ3U8IzaMdcjOS0jg87rHg
+
 USAGE
 
-Eg:
-- old nav data is in ./data/docs-navigation.js
-- content is in ./content/docs
-- output file is ./data/docs-nav-data.json
+Using this command isn't *quite* as straightforward as we'd like,
+we've had to make some compromises to the terseness of the command in order
+to avoid installing migration-related packages into `@hashicorp/react-docs-sidenav`.
 
-npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.10 migrate-nav-data ./data/docs-navigation.js ./content/docs ./data/docs-nav-data.json
+Here's a full example command:
+
+```
+npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.10 migrate-to-mktg-032 ./data/docs-navigation.js ./content/docs ./data/docs-nav-data.json
+```
+
+This a bit wordy - we can break this command down argument by argument:
+
+- `npx` - We're running the command with `npx`. The `bin` config in `@hashicorp/react-docs-sidenav` points to this file.
+- `--package gray-matter` - we need `gray-matter` to run the command, but we don't need it in `docs-sidenav`. Using this argument lets us install `gray-matter` as we run the migration script, rather than having to make it a dependency of `docs-sidenav`.
+- `--package klaw-sync` - as above, we need this dep, but don't want to install it in `docs-sidenav`
+- `--package @hashicorp/react-docs-sidenav@6.1.1-alpha.10 migrate-to-mktg-032` - this final `--package` argument both installs the package, and acts as the package where `npx` expects to find the `migrate-to-mktg-032` script (this file!)
+- `./data/docs-navigation.js` - the data source file, our previous `.js` format
+- `./content/docs` - the content source file, we need to extract `sidebar_title` values from frontmatter.
+- `./data/docs-nav-data.json` - the destination file for the converted format
+
 */
 
 const navigationJsData = require(path.resolve(process.argv[2]))
@@ -156,6 +179,7 @@ function convertNavLeaf(navNode, collectedFrontmatter, pathStack, subfolder) {
   if (!title) {
     throw new Error(`Could not find title in frontmatter of ${pathToMatch}.`)
   }
+  // TODO should remove all `sidebar_title` values from each `.mdx` file as part of this process
   // Return the new format for the nav leaf
   return { title: formatTitle(title), path: pathNewFormat }
 }
