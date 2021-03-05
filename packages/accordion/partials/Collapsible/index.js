@@ -66,14 +66,14 @@ function handleTransitionEnd(event) {
 
 function cleanupTransition(elem) {
   if (!elem || !(elem instanceof Element)) return
-  const elemStyle = getComputedStyle(elem)
+  const computedStyle = getComputedStyle(elem)
   const innerElem = elem.firstChild
   const innerElemStyle = getComputedStyle(innerElem)
-  const isCollapsed = innerElemStyle.opacity === '0'
+  const isCollapsed = computedStyle.height === '0px'
   if (isCollapsed) {
     innerElem.style.display = 'none'
     //  Transition delay modifications allow expected difference in collapse and expanding animation sequence
-    const heightDrtn = parseFloat(elemStyle['transition-duration'])
+    const heightDrtn = parseFloat(computedStyle['transition-duration'])
     const opacityDrtn = parseFloat(innerElemStyle['transition-duration'])
     if (heightDrtn && opacityDrtn) {
       innerElem.style.transitionDelay = `${heightDrtn - opacityDrtn}s`
