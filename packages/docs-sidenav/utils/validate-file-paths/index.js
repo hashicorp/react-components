@@ -27,14 +27,13 @@ async function validateNode(navNode, localDir) {
       path.join(process.cwd(), localDir, namedFilePath)
     )
     if (!hasIndexFile && !hasNamedFile) {
-      console.log(JSON.stringify(navNode, null, 2))
       throw new Error(
         `Could not find file to match path "${navNode.path}". Neither "${namedFilePath}" or "${indexFilePath}" could be found.`
       )
     }
     if (hasIndexFile && hasNamedFile) {
-      console.warn(
-        `Ambiguous path "${navNode.path}". Both "${namedFilePath}" and "${indexFilePath}" exist.`
+      throw new Error(
+        `Ambiguous path "${navNode.path}". Both "${namedFilePath}" and "${indexFilePath}" exist. Please delete one of these files.`
       )
     }
     const filePath = path.join(

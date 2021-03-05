@@ -1,5 +1,9 @@
 [
   {
+    "title": "What is Vault?",
+    "path": "what-is-vault"
+  },
+  {
     "title": "Vault Agent",
     "routes": [
       {
