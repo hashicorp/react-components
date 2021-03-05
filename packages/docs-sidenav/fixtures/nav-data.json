@@ -18,6 +18,10 @@
             "path": "agent/autoauth"
           },
           {
+            "title": "AWS Agent",
+            "path": "agent/autoauth/aws"
+          },
+          {
             "title": "Methods",
             "routes": [
               {
@@ -27,6 +31,10 @@
               {
                 "title": "AliCloud",
                 "path": "agent/autoauth/methods/alicloud"
+              },
+              {
+                "title": "AWS",
+                "path": "agent/autoauth/methods/aws"
               },
               { "divider": true },
               {

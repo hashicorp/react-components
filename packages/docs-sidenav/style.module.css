@@ -27,7 +27,7 @@
     transition-property: box-shadow, transform;
     top: 0;
 
-    &[data-open='true'] {
+    &[data-is-mobile-open='true'] {
       box-shadow: 2px 2px 20px rgba(37, 38, 45, 0.2);
       transform: translateX(100%);
       padding-left: 25px;
@@ -56,15 +56,17 @@
   }
 }
 
-.toggle {
+.mobileMenuToggle {
   align-items: center;
   background: var(--white);
   bottom: 0;
+  border: none;
   border-top: 1px solid var(--gray-6);
   border-bottom: 1px solid var(--gray-6);
   cursor: pointer;
   display: none;
   justify-content: center;
+  line-height: inherit;
   left: 0;
   padding: 12px;
   transition-delay: 0.3s; /* waits for menu to close before adjusting z-index */

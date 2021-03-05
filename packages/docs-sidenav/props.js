@@ -7,7 +7,7 @@ module.exports = {
     type: 'string',
     description:
       'Path to the current page, relative to the `baseRoute`. Used to highlight the current page.',
-    testValue: 'agent/autoauth',
+    testValue: 'agent/autoauth/methods/aws',
   },
   baseRoute: {
     type: 'string',

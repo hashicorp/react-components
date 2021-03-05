@@ -20,7 +20,7 @@ export default function DocsSidenav({
 }) {
   const router = useRouter()
   const pathname = router ? router.pathname : null
-  const [open, setOpen] = useState(false)
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [filterInput, setFilterInput] = useState('')
   const [content, setContent] = useState(navData)
   const [filteredContent, setFilteredContent] = useState(navData)
@@ -43,14 +43,20 @@ export default function DocsSidenav({
   }, [filterInput, content])
 
   return (
-    <div className={`${s.root} ${themeClass || ''}`}>
-      <div className={s.toggle} onClick={() => setOpen(!open)}>
+    <div className={`g-docs-sidenav ${s.root} ${themeClass || ''}`}>
+      <button
+        className={s.mobileMenuToggle}
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+      >
         <span>
           <InlineSvg src={svgMenuIcon} /> Documentation Menu
         </span>
-      </div>
-      <ul className={s.rootList} data-open={open}>
-        <div className={s.mobileClose} onClick={() => setOpen(!open)}>
+      </button>
+      <ul className={s.rootList} data-is-mobile-open={isMobileOpen}>
+        <div
+          className={s.mobileClose}
+          onClick={() => setIsMobileOpen(!isMobileOpen)}
+        >
           &times;
         </div>
         {!disableFilter && (
