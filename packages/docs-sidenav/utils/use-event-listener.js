@@ -1,4 +1,3 @@
-/* eslint-disable max-params */
 import { useRef, useEffect } from 'react'
 
 const useEventListener = (
@@ -17,13 +16,10 @@ const useEventListener = (
   useEffect(() => {
     const isSupported = element && element.addEventListener
     if (!isSupported) return
-
     const eventListener = (event) => savedHandler.current(event)
     const opts = { capture, passive, once }
     element.addEventListener(eventName, eventListener, opts)
-    return () => {
-      element.removeEventListener(eventName, eventListener, opts)
-    }
+    return () => element.removeEventListener(eventName, eventListener, opts)
   }, [eventName, element, capture, passive, once])
 }
 
