@@ -5,7 +5,9 @@ function validateRouteStructure(navData) {
 function validateBranchRoutes(navNodes, depth = 0) {
   //  In order to be a valid branch, there needs to be at least one navNode.
   if (navNodes.length === 0) {
-    throw new Error(`Found empty array of navNodes. Depth: ${depth}`)
+    throw new Error(
+      `Found empty array of navNodes at depth ${depth}. There must be more than one route.`
+    )
   }
   // Augment each navNode with its path __stack
   const navNodesWithStacks = navNodes.map((navNode) => {
@@ -20,7 +22,7 @@ function validateBranchRoutes(navNodes, depth = 0) {
       }
       if (!navNode.title) {
         throw new Error(
-          `Missing nav-data title on NavLeaf. Please add a title to the node with the path value ${navNode.path}.`
+          `Missing nav-data title. Please add a non-empty title to the node with the path "${navNode.path}".`
         )
       }
       return { ...navNode, __stack: navNode.path.split('/') }
@@ -31,7 +33,7 @@ function validateBranchRoutes(navNodes, depth = 0) {
       if (!navNode.title) {
         const branchPath = nodeWithStacks.__stack.join('/')
         throw new Error(
-          `Missing nav-data title on NavBranch. Please add a title to the node with the inferred path ${branchPath}.`
+          `Missing nav-data title on NavBranch. Please add a title to the node with the inferred path "${branchPath}".`
         )
       }
       return nodeWithStacks
@@ -48,15 +50,9 @@ function validateBranchRoutes(navNodes, depth = 0) {
       }
       if (!navNode.title) {
         throw new Error(
-          `Missing nav-data title on NavDirectLink. Please add a title to the node with href ${navNode.href}.`
+          `Missing nav-data title on NavDirectLink. Please add a title to the node with href "${navNode.href}".`
         )
       }
-    }
-    // Handle unrecognized navNodes that have a title value, but nothing else
-    if (navNode.title) {
-      throw new Error(
-        `Missing nav-data title on unrecognized node. Please add an href, path, or routes to the node with title ${navNode.title}.`
-      )
     }
     // Ensure the only other node type is
     // a divider node, if not, throw an error
@@ -64,7 +60,7 @@ function validateBranchRoutes(navNodes, depth = 0) {
       throw new Error(
         `Unrecognized nav-data node. Please ensure all nav-data nodes are either NavLeaf, NavBranch, NavDirectLink, or NavDivider types. Invalid node: ${JSON.stringify(
           navNode
-        )}`
+        )}.`
       )
     }
     // Other nodes, really just divider nodes,
@@ -87,7 +83,7 @@ function validateBranchRoutes(navNodes, depth = 0) {
   })
   if (duplicateRoutes.length > 0) {
     throw new Error(
-      `Duplicate routes found:\n\n${JSON.stringify(duplicateRoutes)}\n`
+      `Duplicate routes found for "${duplicateRoutes[0]}". Please resolve duplicates.`
     )
   }
   // Gather an array of all resolved paths at this level
@@ -111,7 +107,9 @@ function validateBranchRoutes(navNodes, depth = 0) {
     // If we have any other number of parts in the
     // leaf node's path, then it is invalid.
     throw new Error(
-      `Invalid path depth. At depth ${depth}, found path "${stack.join('/')}"`
+      `Invalid path depth. At depth ${depth}, found path "${stack.join(
+        '/'
+      )}". Please move this path to the correct depth of ${stack.length - 1}.`
     )
   })
   // We expect all routes at any level to share the same parent directory.
@@ -123,7 +121,11 @@ function validateBranchRoutes(navNodes, depth = 0) {
   // We throw an error if we find mismatched paths
   // that don't share the same parent path.
   if (uniqueParents.length > 1) {
-    throw new Error(`Found mismatched paths: ${JSON.stringify(uniqueParents)}`)
+    throw new Error(
+      `Found mismatched paths at depth ${depth}: ${JSON.stringify(
+        uniqueParents
+      )}.`
+    )
   }
   const path = uniqueParents[0]
   //  Finally, we return
