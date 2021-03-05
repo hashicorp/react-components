@@ -1,5 +1,5 @@
 🎟️ [Asana Task]()
-🔍 [Preview Link](https://react-components-git-{branch-slug}.hashicorp.vercel.app)
+🔍 [Preview Link](https://react-components-git-{branch-slug}-hashicorp.vercel.app)
 
 ---
 
