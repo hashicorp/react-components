@@ -5,9 +5,22 @@ componentName: 'DocsPage'
 We have a lot of docs sites, all of which render content in exactly the same way. This component is a minimal abstraction of that rendering, and is intended to be used entirely as a template for all documentation content.
 
 <LiveComponent
-  components={{ staticPropsResult: componentProps.staticProps.testValue }}
->
-  {`<DocsPage
+  components={{
+    staticPropsResult: {
+      mdxSource: componentProps.staticProps.properties.mdxSource.testValue,
+      frontMatter: {
+        page_title:
+          componentProps.staticProps.properties.frontMatter.properties
+            .page_title.testValue,
+        description:
+          componentProps.staticProps.properties.frontMatter.properties
+            .description.testValue,
+      },
+      currentPath: componentProps.staticProps.properties.currentPath.testValue,
+      navData: componentProps.staticProps.properties.navData.testValue,
+    },
+  }}
+>{`<DocsPage
   product={{ name: 'Nomad', slug: 'nomad' }}
   baseRoute='docs'
   // pass in the results of executing the 'generateStaticProps' function from '@hashicorp/react-docs-page/server'
@@ -15,8 +28,7 @@ We have a lot of docs sites, all of which render content in exactly the same way
 >
   <h1 className='g-type-display-2'>Example Page</h1>
   <p>This is a cool docs page!</p>
-</DocsPage>`}
-</LiveComponent>
+</DocsPage>`}</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 

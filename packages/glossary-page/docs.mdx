@@ -7,7 +7,7 @@ This is a specialized view built on top of `DocsPage` to render a glossary page 
 <LiveComponent
   components={{
     staticPropsResult: {
-      content: {
+      mdxSource: {
         compiledSource:
           '"use strict";\n' +
           '\n' +
@@ -150,25 +150,14 @@ bandwidth.
 `,
         },
       ],
-      docsPageData: [
-        {
-          __resourcePath: 'docs/test.mdx',
-          page_title: 'Testing Page',
-          sidebar_title: 'Testing Page',
-        },
-        {
-          __resourcePath: 'docs/test2.mdx',
-          page_title: 'Other Testing Page',
-          sidebar_title: 'Other Testing Page',
-        },
-      ],
+      navData: componentProps.staticProps.properties.navData.testValue,
     },
   }}
 >
-  {`<GlossaryPage product={{ name: 'Consul', slug: 'consul' }} order={['test', 'test2']} staticProps={staticPropsResult} />`}
+  {`<GlossaryPage product={{ name: 'Consul', slug: 'consul' }} staticProps={staticPropsResult} />`}
 </LiveComponent>
 
-<UsageDetails packageName="@hashicorp/react-glossary-page" />
+<UsageDetails packageJson={packageJson} />
 
 ### Props
 
