@@ -63,7 +63,7 @@ describe('<DocsPage />', () => {
   it('displays `showEditPage` as true by default, and renders `mainBranch` in the link', () => {
     render(<DocsPage {...defaultProps} />)
     const expectedHref =
-      'https://github.com/hashicorp/terraform/blob/main/website/content/docs/agent/autoauth/methods/aws.mdx'
+      'https://github.com/hashicorp/vault/blob/master/website/content/docs/agent/autoauth/methods/aws.mdx'
     const editPageLink = screen.getByText('Edit this page').parentNode
     expect(editPageLink.getAttribute('href')).toBe(expectedHref)
   })
