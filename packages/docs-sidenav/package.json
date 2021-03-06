@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-docs-sidenav",
   "description": "Sidebar used for navigation HashiCorp docs",
-  "version": "7.0.0",
+  "version": "6.1.0",
   "author": "HashiCorp",
   "bin": {
     "migrate-to-mktg-032": "bin/migrate-to-mktg-032.js"
