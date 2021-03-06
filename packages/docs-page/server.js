@@ -44,14 +44,10 @@ async function generateStaticProps(
   navDataFile,
   localContentDir,
   params,
+  product,
   {
-    // Note: productName is ultimately only passed to createEnterpriseAlert.
-    // we may be able to remove the need for this additional arg / option by
-    // leveraging recent work on our product-meta provider:
-    // where arg is used: https://github.com/hashicorp/nextjs-scripts/blob/462eb2efa0c95ab5d81ad1b5d7896427a0263011/lib/providers/docs/index.jsx#L35-L48
-    // product-meta: https://github.com/hashicorp/nextjs-scripts/tree/main/lib/providers/product-meta
-    productName,
     additionalComponents = {},
+    mainBranch = 'main',
     remarkPlugins = [],
     scope, // optional, I think?
     paramId = DEFAULT_PARAM_ID,
@@ -67,13 +63,15 @@ async function generateStaticProps(
   const mdxFile = path.join(process.cwd(), navNode.filePath)
   const mdxString = fs.readFileSync(mdxFile, 'utf8')
   const { mdxSource, frontMatter } = await renderPageMdx(mdxString, {
-    productName,
+    productName: product.name,
     additionalComponents,
     remarkPlugins,
     scope,
   })
+  // Construct the githubFileUrl, used for "Edit this page" link
+  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/content/${navNode.filePath}`
   // Return all the props
-  return { currentPath, frontMatter, mdxSource, navData }
+  return { currentPath, frontMatter, githubFileUrl, mdxSource, navData }
 }
 
 async function validateNavData(navData, localContentDir) {

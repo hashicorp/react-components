@@ -22,14 +22,8 @@ module.exports = {
     type: 'string',
     required: true,
     description:
-      'The path this page is rendering under, for example `"docs"` or `"api-docs"`. Passed directly to the `baseRoute` prop of `@hashicorp/react-docs-sidenav`. Also used for the `Edit this page` link.',
+      'The path this page is rendering under, for example `"docs"` or `"api-docs"`. Passed directly to the `baseRoute` prop of `@hashicorp/react-docs-sidenav`.',
     testValue: 'docs',
-  },
-  mainBranch: {
-    type: 'string',
-    description:
-      'The default branch of the project being documented, typically either "master" or "main". Used for the `Edit this page` link.',
-    default: 'main',
   },
   showEditPage: {
     type: 'boolean',
@@ -48,6 +42,12 @@ module.exports = {
     description:
       'Directly pass the return value of `server/generateStaticProps` in here.',
     properties: {
+      githubFileUrl: {
+        type: 'string',
+        description:
+          "A link to the page's associated `.mdx` file on GitHub. Used for the `Edit this page` link.",
+        testValue: `https://github.com/hashicorp/vault/blob/master/website/content/docs/agent/autoauth/methods/aws.mdx`,
+      },
       mdxSource: {
         type: 'object',
         description:

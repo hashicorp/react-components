@@ -17,7 +17,7 @@ export function DocsPageWrapper({
   currentPath,
   pageTitle,
   baseRoute,
-  mainBranch = 'main',
+  githubFileUrl,
   product: { name, slug },
   showEditPage = true,
 }) {
@@ -70,9 +70,7 @@ export function DocsPageWrapper({
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
       {showEditPage && (
         <div id="edit-this-page" className="g-container">
-          <a
-            href={`https://github.com/hashicorp/${slug}/blob/${mainBranch}/website/content/${baseRoute}/${currentPath}`}
-          >
+          <a href={githubFileUrl}>
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>
           </a>
@@ -85,10 +83,9 @@ export function DocsPageWrapper({
 export default function DocsPage({
   product,
   baseRoute,
-  mainBranch,
   showEditPage = true,
   additionalComponents,
-  staticProps: { mdxSource, frontMatter, currentPath, navData },
+  staticProps: { mdxSource, frontMatter, currentPath, navData, githubFileUrl },
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
@@ -99,7 +96,7 @@ export default function DocsPage({
     <DocsPageWrapper
       canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
-      mainBranch={mainBranch}
+      githubFileUrl={githubFileUrl}
       navData={navData}
       currentPath={currentPath}
       pageTitle={frontMatter.page_title}

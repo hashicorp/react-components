@@ -38,12 +38,6 @@ module.exports = {
       'if true, an "edit this page" link will appear on the bottom right',
     default: true,
   },
-  mainBranch: {
-    type: 'string',
-    description:
-      'The default branch of the project being documented, typically either "master" or "main". Used for the `showEditPage` prop',
-    default: 'main',
-  },
   staticProps: {
     type: 'object',
     description:
@@ -72,6 +66,7 @@ module.exports = {
           },
         ],
       },
+      githubFileUrl: docsPageProps.staticProps.properties.githubFileUrl,
       mdxSource: docsPageProps.staticProps.properties.mdxSource,
       navData: docsPageProps.staticProps.properties.navData,
     },

@@ -17,17 +17,16 @@ function GlossaryTableOfContents({ terms }) {
 
 export default function GlossaryPage({
   additionalComponents,
-  mainBranch,
   product,
   showEditPage,
-  staticProps: { mdxSource, terms, navData },
+  staticProps: { mdxSource, terms, navData, githubFileUrl },
 }) {
   return (
     <DocsPageWrapper
       navData={navData}
       description="Glossary"
       filePath="glossary"
-      mainBranch={mainBranch}
+      githubFileUrl={githubFileUrl}
       currentPath="glossary"
       pageTitle="Glossary"
       product={{ name: product.name, slug: product.slug }}

@@ -2,33 +2,42 @@ import renderToString from 'next-mdx-remote/render-to-string'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
-import { fastReadFrontMatter } from '@hashicorp/react-docs-page/server'
+import { validateFilePaths } from '@hashicorp/react-docs-page/server'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
 import generateSlug from '@hashicorp/remark-plugins/generate_slug'
 
 export default async function generateStaticProps({
+  navDataFile,
   additionalComponents,
-  productName,
+  product,
+  mainBranch = 'main',
 }) {
   const docsPath = path.join(process.cwd(), 'content', 'docs')
 
-  const docsPageData = (await fastReadFrontMatter(docsPath)).map((p) => {
-    p.__resourcePath = `docs/${p.__resourcePath}`
-    return p
+  //  Read in the nav-data.json file
+  const navDataFilePath = path.join(process.cwd(), navDataFile)
+  const navDataRaw = JSON.parse(fs.readFileSync(navDataFilePath, 'utf8'))
+  const navData = await validateFilePaths(navDataRaw, docsPath)
+
+  //  Construct the mdxSource from the provided terms
+  const { terms, mdxBlob } = await getGlossaryTerms()
+  const mdxSource = await renderToString(mdxBlob, {
+    mdxOptions: markdownDefaults({
+      resolveIncludes: path.join(process.cwd(), 'content/partials'),
+    }),
+    components: generateComponents(product.name, additionalComponents),
   })
 
-  const { terms, mdxBlob } = await getGlossaryTerms()
+  // Construct the githubFileUrl, used for "Edit this page" link
+  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/content/glossary.mdx`
+
   return {
     props: {
       terms,
-      content: await renderToString(mdxBlob, {
-        mdxOptions: markdownDefaults({
-          resolveIncludes: path.join(process.cwd(), 'content/partials'),
-        }),
-        components: generateComponents(productName, additionalComponents),
-      }),
-      docsPageData,
+      mdxSource,
+      navData,
+      githubFileUrl,
     },
   }
 }

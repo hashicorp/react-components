@@ -35,7 +35,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const props = await generateStaticProps(NAV_DATA, CONTENT_DIR, params)
+  const props = await generateStaticProps(
+    NAV_DATA,
+    CONTENT_DIR,
+    params,
+    PRODUCT
+  )
   return { props }
 }
 
