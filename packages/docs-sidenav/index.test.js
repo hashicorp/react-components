@@ -1,6 +1,4 @@
-// import 'regenerator-runtime/runtime'
 import { render, fireEvent, screen } from '@testing-library/react'
-// import expectThrow from '../../__test-helpers/expect-throw'
 import DocsSidenav from './'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
