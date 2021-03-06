@@ -5,7 +5,19 @@ const path = require('path')
 const grayMatter = require('gray-matter')
 const klawSync = require('klaw-sync')
 
-const CONTENT_DIR = path.join(process.cwd(), process.argv[3])
+/*
+
+DELETE sidebar_title FROM ALL .mdx FRONTMATTER
+
+USAGE
+
+```
+npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.52 delete-sidebar-title-frontmatter ./content
+```
+
+*/
+
+const CONTENT_DIR = path.join(process.cwd(), process.argv[2])
 
 function fileFilter(f) {
   return path.extname(f.path) === '.mdx'
