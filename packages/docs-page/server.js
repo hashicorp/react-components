@@ -69,7 +69,7 @@ async function generateStaticProps(
     scope,
   })
   // Construct the githubFileUrl, used for "Edit this page" link
-  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/content/${navNode.filePath}`
+  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
   // Return all the props
   return { currentPath, frontMatter, githubFileUrl, mdxSource, navData }
 }
