@@ -5,46 +5,9 @@ componentName: 'DocsPage'
 We have a lot of docs sites, all of which render content in exactly the same way. This component is a minimal abstraction of that rendering, and is intended to be used entirely as a template for all documentation content.
 
 <LiveComponent
-  components={{
-    staticPropsResult: {
-      mdxSource: {
-        compiledSource:
-          '"use strict";\n' +
-          '\n' +
-          'function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n' +
-          '\n' +
-          'function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n' +
-          '\n' +
-          'function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\n' +
-          '\n' +
-          '/* @jsxRuntime classic */\n' +
-          '\n' +
-          '/* @jsx mdx */\n' +
-          'var layoutProps = {};\n' +
-          'var MDXLayout = "wrapper";\n' +
-          '\n' +
-          'function MDXContent(_ref) {\n' +
-          '  var components = _ref.components,\n' +
-          '      props = _objectWithoutProperties(_ref, ["components"]);\n' +
-          '\n' +
-          '  return mdx(MDXLayout, _extends({}, layoutProps, props, {\n' +
-          '    components: components,\n' +
-          '    mdxType: "MDXLayout"\n' +
-          '  }), mdx("h1", { className: "g-type-display-2" }, "Example Page"), mdx("p", null, "This is a cool docs page!"));\n' +
-          '}\n' +
-          '\n' +
-          ';\n' +
-          'MDXContent.isMDXComponent = true;',
-        renderedOutput:
-          '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p>',
-        scope: {},
-      },
-      navData: componentProps.staticProps.properties.navData.testValue,
-      frontMatter: { page_title: 'Test Page', description: 'test description' },
-      currentPath: componentProps.staticProps.properties.currentPath.testValue,
-    },
-  }}
->{`<DocsPage
+  components={{ staticPropsResult: componentProps.staticProps.testValue }}
+>
+  {`<DocsPage
   product={{ name: 'Nomad', slug: 'nomad' }}
   baseRoute='docs'
   // pass in the results of executing the 'generateStaticProps' function from '@hashicorp/react-docs-page/server'
@@ -52,7 +15,8 @@ We have a lot of docs sites, all of which render content in exactly the same way
 >
   <h1 className='g-type-display-2'>Example Page</h1>
   <p>This is a cool docs page!</p>
-</DocsPage>`}</LiveComponent>
+</DocsPage>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
