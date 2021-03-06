@@ -23,7 +23,7 @@ to avoid installing migration-related packages into `@hashicorp/react-docs-siden
 Here's a full example command:
 
 ```
-npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.10 migrate-to-mktg-032 ./data/docs-navigation.js ./content/docs ./data/docs-nav-data.json
+npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.52 migrate-to-mktg-032 ./data/docs-navigation.js ./content/docs ./data/docs-nav-data.json
 ```
 
 This a bit wordy - we can break this command down argument by argument:
@@ -179,7 +179,6 @@ function convertNavLeaf(navNode, collectedFrontmatter, pathStack, subfolder) {
   if (!title) {
     throw new Error(`Could not find title in frontmatter of ${pathToMatch}.`)
   }
-  // TODO should remove all `sidebar_title` values from each `.mdx` file as part of this process
   // Return the new format for the nav leaf
   return { title: formatTitle(title), path: pathNewFormat }
 }
