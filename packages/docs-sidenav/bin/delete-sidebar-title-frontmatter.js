@@ -12,7 +12,7 @@ DELETE sidebar_title FROM ALL .mdx FRONTMATTER
 USAGE
 
 ```
-npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.52 delete-sidebar-title-frontmatter ./content
+npx --package gray-matter --package klaw-sync --package @hashicorp/react-docs-sidenav@6.1.1-alpha.53 delete-sidebar-title-frontmatter ./content
 ```
 
 */
