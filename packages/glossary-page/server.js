@@ -30,7 +30,7 @@ export default async function generateStaticProps({
   })
 
   // Construct the githubFileUrl, used for "Edit this page" link
-  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/content/glossary.mdx`
+  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/content/glossary`
 
   return {
     props: {
