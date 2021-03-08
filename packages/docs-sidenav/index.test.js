@@ -16,39 +16,35 @@ describe('<DocsSidenav />', () => {
     // For this test, we step through the expected nesting levels based on
     // the fixture data, ensuring that each level is nested properly and has
     // the classes to reflect whether it's shown as active
-    const branchOne = screen.getByText('Vault Agent').parentNode
-    expect(branchOne.nodeName).toBe('BUTTON')
+    const branchOne = screen.getByText('Vault Agent').closest('button')
     expect(branchOne.getAttribute('data-is-active')).toBe('true')
     expect(branchOne.getAttribute('data-is-open')).toBe('true')
 
-    const branchTwo = screen.getByText('Auto-Auth').parentNode
-    expect(branchTwo.nodeName).toBe('BUTTON')
+    const branchTwo = screen.getByText('Auto-Auth').closest('button')
     expect(branchTwo.getAttribute('data-is-active')).toBe('true')
     expect(branchTwo.getAttribute('data-is-open')).toBe('true')
 
-    const branchThree = screen.getByText('Methods').parentNode
-    expect(branchThree.nodeName).toBe('BUTTON')
+    const branchThree = screen.getByText('Methods').closest('button')
     expect(branchThree.getAttribute('data-is-active')).toBe('true')
     expect(branchThree.getAttribute('data-is-open')).toBe('true')
 
-    const activeLeaf = screen.getByText('AWS').parentNode
-    expect(activeLeaf.nodeName).toBe('A')
+    const activeLeaf = screen.getByText('AWS').closest('a')
     expect(activeLeaf.getAttribute('data-is-active')).toBe('true')
 
     // Let's also make sure that other pages are not also displaying as active
     // First we check an similarly named page at a different level
-    const inactiveLeafOne = screen.getByText('AWS Agent').parentNode
-    expect(inactiveLeafOne.nodeName).toBe('A')
+    const inactiveLeafOne = screen.getByText('AWS Agent').closest('a')
     expect(inactiveLeafOne.getAttribute('data-is-active')).toBe('false')
     // Next we check a page at the same level but with a different name
-    const inactiveLeafTwo = screen.getByText('GCP').parentNode.parentNode
-    expect(inactiveLeafTwo.nodeName).toBe('A')
+    const inactiveLeafTwo = screen.getByText('GCP').closest('a')
     expect(inactiveLeafTwo.getAttribute('data-is-active')).toBe('false')
     // Finally we check the overview page at the same level
-    const inactiveLeafThree = screen.getAllByText('Overview').filter((node) => {
-      const href = node.parentNode.getAttribute('href')
-      return href === '/docs/agent/autoauth/methods'
-    })[0].parentNode
+    const inactiveLeafThree = screen
+      .getAllByText('Overview')
+      .map((node) => node.closest('a'))
+      .filter((linkElem) => {
+        return linkElem.getAttribute('href') === '/docs/agent/autoauth/methods'
+      })[0]
     expect(inactiveLeafThree.getAttribute('data-is-active')).toBe('false')
   })
 
@@ -57,17 +53,19 @@ describe('<DocsSidenav />', () => {
     const expectedHref = `/docs/${currentPath}`
     render(<DocsSidenav {...defaultProps} currentPath={currentPath} />)
     // Check the "overview" index node we've set as active using currentPath
-    const activeIndexLeaf = screen.getAllByText('Overview').filter((node) => {
-      return node.parentNode.getAttribute('href') === expectedHref
-    })[0].parentNode
+    const activeIndexLeaf = screen
+      .getAllByText('Overview')
+      .map((node) => node.closest('a'))
+      .filter((linkElem) => {
+        return linkElem.getAttribute('href') === expectedHref
+      })[0]
     expect(activeIndexLeaf.getAttribute('data-is-active')).toBe('true')
   })
 
   it('expands and collapses nav branch items when clicked', () => {
     render(<DocsSidenav {...defaultProps} />)
     // Ensure the element exists, and is currently open
-    const branchTwo = screen.getByText('Auto-Auth').parentNode
-    expect(branchTwo.nodeName).toBe('BUTTON')
+    const branchTwo = screen.getByText('Auto-Auth').closest('button')
     expect(branchTwo.getAttribute('data-is-active')).toBe('true')
     expect(branchTwo.getAttribute('data-is-open')).toBe('true')
     // Click the item, then ensure it's closed, but still active
@@ -89,8 +87,9 @@ describe('<DocsSidenav />', () => {
     expect(sidebarNavList.nodeName).toBe('UL')
     expect(sidebarNavList.getAttribute('data-is-mobile-open')).toBe('false')
     // Get the menu button
-    const mobileMenuToggle = screen.getByText('Documentation Menu').parentNode
-    expect(mobileMenuToggle.nodeName).toBe('BUTTON')
+    const mobileMenuToggle = screen
+      .getByText('Documentation Menu')
+      .closest('button')
     // Click the menu button, and check the sidebar opens
     fireEvent.click(mobileMenuToggle)
     expect(sidebarNavList.getAttribute('data-is-mobile-open')).toBe('true')

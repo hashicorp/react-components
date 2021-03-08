@@ -44,8 +44,10 @@ describe('<DocsPage />', () => {
     // Confirm `product` is passed via document title
     expect(document.title).toBe(`Test Page | Terraform by HashiCorp`)
     // Confirm `baseRoute` and `navData` by checking for a rendered link
-    const activeLeaf = screen.getByText('AWS').parentNode
-    expect(activeLeaf.nodeName).toBe('A')
+    const activeLeaf = screen.getByText('AWS').closest('a')
+    expect(activeLeaf.getAttribute('href')).toBe(
+      '/docs/agent/autoauth/methods/aws'
+    )
     // Confirm `currentPath` by ensuring a link is marked as active
     expect(activeLeaf.getAttribute('data-is-active')).toBe('true')
   })
@@ -56,7 +58,7 @@ describe('<DocsPage />', () => {
     const contentParagraph = screen.getByText('This is a cool docs page!')
     expect(contentParagraph.tagName).toBe('P')
     // Confirm `product` is passed via class
-    const contentContainer = contentParagraph.parentNode.parentNode
+    const contentContainer = contentParagraph.closest('article')
     expect(contentContainer.className).toContain('terraform')
   })
 
@@ -64,7 +66,7 @@ describe('<DocsPage />', () => {
     render(<DocsPage {...defaultProps} />)
     const expectedHref =
       'https://github.com/hashicorp/vault/blob/master/website/content/docs/agent/autoauth/methods/aws.mdx'
-    const editPageLink = screen.getByText('Edit this page').parentNode
+    const editPageLink = screen.getByText('Edit this page').closest('a')
     expect(editPageLink.getAttribute('href')).toBe(expectedHref)
   })
 
