@@ -53,6 +53,8 @@ function validateBranchRoutes(navNodes, depth = 0) {
           `Missing nav-data title on NavDirectLink. Please add a title to the node with href "${navNode.href}".`
         )
       }
+      // Otherwise, we have a valid direct link node, we return it
+      return navNode
     }
     // Ensure the only other node type is
     // a divider node, if not, throw an error
@@ -127,6 +129,8 @@ function validateBranchRoutes(navNodes, depth = 0) {
       )}.`
     )
   }
+  // Note: some branches may not have any children with paths,
+  // for example branches with only direct links. So, path may be undefined.
   const path = uniqueParents[0]
   //  Finally, we return
   return [path, navNodesWithStacks]
@@ -139,7 +143,11 @@ function handleBranchNode(navNode, depth) {
     navNode.routes,
     depth + 1
   )
-  const __stack = path.split('/')
+  // Path will be undefined if the child routes are
+  // only non-path nodes (such as direct links).
+  // In this case, we set __stack to false so this route
+  // is left out of tree structure validation
+  const __stack = !path ? false : path.split('/')
   return { ...navNode, __stack, routes: routesWithStacks }
 }
 

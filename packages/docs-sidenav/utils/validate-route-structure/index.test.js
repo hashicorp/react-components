@@ -166,4 +166,31 @@ describe('<DocsSidenav /> - validate-file-paths', () => {
     )}.`
     expect(() => validateRouteStructure(navData)).toThrow(emptyHrefError)
   })
+
+  it('does not throw an error for a valid nav-data tree with a direct-links-only branch', () => {
+    const navData = [
+      {
+        title: 'Why Use Packer?',
+        path: 'why',
+      },
+      {
+        title: 'Direct Link',
+        href: 'https://www.hashicorp.com',
+      },
+      {
+        title: 'Direct Links Only Branch',
+        routes: [
+          {
+            title: 'Install',
+            href: '/intro/getting-started/install',
+          },
+          {
+            title: 'Build An Image',
+            href: '/intro/getting-started/build-image',
+          },
+        ],
+      },
+    ]
+    expect(() => validateRouteStructure(navData)).not.toThrow()
+  })
 })
