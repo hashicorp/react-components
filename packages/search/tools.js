@@ -4,6 +4,7 @@ const algoliasearch = require('algoliasearch')
 const glob = require('glob')
 const matter = require('gray-matter')
 const path = require('path')
+const fs = require('fs')
 const remark = require('remark')
 const visit = require('unist-util-visit')
 
@@ -18,7 +19,7 @@ async function indexDocsContent({
   contentDir = path.join(projectRoot, 'content'),
   filesPattern = '**/*.mdx',
   globOptions = { ignore: path.join(projectRoot, 'content', 'partials/**/*') },
-  frontmatterKeys = ['page_title', 'description'],
+  frontmatterKeys,
 } = {}) {
   const searchObjects = await getDocsSearchObjects({
     contentDir,
@@ -82,29 +83,31 @@ async function getDocsSearchObjects({
 }) {
   const globPattern = path.join(contentDir, filesPattern)
   const files = await glob.sync(globPattern, globOptions)
-
-  return await Promise.all(
+  const searchObjects = await Promise.all(
     files.map(async (fullPath) => {
-      const { content, data } = matter.read(fullPath)
-
-      const searchableDimensions = frontmatterKeys.reduce((acc, key) => {
-        return { ...acc, [key]: data[key] }
-      }, {})
-
-      const headings = await collectHeadings(content)
-
-      // Get path relative to `contentDir`
-      const __resourcePath = fullPath.replace(`${contentDir}/`, '')
-      // Use clean URL for Algolia id
-      const objectID = __resourcePath.replace('.mdx', '')
-
-      return {
-        ...searchableDimensions,
-        headings,
-        objectID,
-      }
+      const fileString = fs.readFileSync(fullPath, 'utf8')
+      const urlPath = fullPath.replace(`${contentDir}/`, '').replace('.mdx', '')
+      return await getDocsSearchObject(urlPath, fileString, frontmatterKeys)
     })
   )
+  return searchObjects
+}
+
+async function getDocsSearchObject(
+  urlPath,
+  fileString,
+  frontmatterKeys = ['page_title', 'description']
+) {
+  const { content, data } = matter(fileString)
+  const searchableDimensions = frontmatterKeys.reduce((acc, key) => {
+    return { ...acc, [key]: data[key] }
+  }, {})
+  const headings = await collectHeadings(content)
+  return {
+    ...searchableDimensions,
+    headings,
+    objectID: urlPath,
+  }
 }
 
 /**
@@ -185,4 +188,6 @@ async function collectHeadings(mdxContent) {
 module.exports = {
   indexDocsContent,
   indexContent,
+  getDocsSearchObjects,
+  getDocsSearchObject,
 }
