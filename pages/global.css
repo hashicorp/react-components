@@ -41,3 +41,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.swingset-logo {
+  margin: 1rem 1rem 0.25rem 2rem;
+  height: 32px;
+}
