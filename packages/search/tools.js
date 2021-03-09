@@ -188,6 +188,5 @@ async function collectHeadings(mdxContent) {
 module.exports = {
   indexDocsContent,
   indexContent,
-  getDocsSearchObjects,
   getDocsSearchObject,
 }
