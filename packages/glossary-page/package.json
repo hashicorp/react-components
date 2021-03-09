@@ -7,16 +7,13 @@
     "Bryce Kalow"
   ],
   "dependencies": {
+    "@hashicorp/react-docs-page": "10.9.4-alpha.57",
     "@hashicorp/remark-plugins": "^3.1.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/nextjs-scripts": "13.0.0",
-    "@hashicorp/react-docs-page": "^10.4.0",
     "react": "^16.9.0"
-  },
-  "devDependencies": {
-    "@hashicorp/react-docs-page": "^10.9.3"
   },
   "publishConfig": {
     "access": "public"

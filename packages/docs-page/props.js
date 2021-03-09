@@ -1,60 +1,121 @@
+const docsSidenavProps = require('../docs-sidenav/props')
+const sharedProps = require('../../props')
+
 module.exports = {
   product: {
     type: 'string',
-    description: 'Name and slug of the product this page is being rendered for',
+    required: true,
+    description:
+      'The `name` and `slug` of the product this page is being rendered for. The `slug` is used for the `Edit this page` link.',
     properties: {
       name: {
         type: 'string',
-        description: 'Human-readable proper case product name',
+        required: true,
+        description:
+          'Human-readable proper case product name. Used for the page `<title />` and `og:site_name`.',
       },
-      slug: {
-        type: 'string',
-        description: 'HashiCorp product slug',
-        control: { type: 'select' },
-        options: [
-          'hashicorp',
-          'boundary',
-          'consul',
-          'nomad',
-          'packer',
-          'terraform',
-          'vault',
-          'vagrant',
-          'waypoint',
-        ],
-      },
+      slug: sharedProps.product,
     },
+    testValue: { name: 'Terraform', slug: sharedProps.product.testValue },
   },
-  subpath: {
+  baseRoute: {
     type: 'string',
+    required: true,
     description:
-      'The path this page is rendering under, for example "docs" or "api-docs". Passed directly to the `category` prop of `@hashicorp/react-docs-sidenav`',
-  },
-  order: {
-    type: 'object',
-    description:
-      'Pass in the export of a `data/xxx-navigation.js` file, this is the user-defined navigation order and structure. Passed directly to the `order` prop to `@hashicorp/react-docs-sidenav` - see that component for details on object structure.',
-  },
-  additionalComponents: {
-    type: 'object',
-    description:
-      'Object containing additional components to be made available within mdx pages. Uses the format { [key]: Component }, for example, `{ TestComponent: () => <p>hello world</p> }`',
+      'The path this page is rendering under, for example `"docs"` or `"api-docs"`. Passed directly to the `baseRoute` prop of `@hashicorp/react-docs-sidenav`.',
+    testValue: 'docs',
   },
   showEditPage: {
     type: 'boolean',
     description:
-      'if true, an "edit this page" link will appear on the bottom right',
+      'If `true`, an `Edit this page` link will appear on the bottom right of each page.',
     default: true,
   },
-  mainBranch: {
-    type: 'string',
+  additionalComponents: {
+    type: 'object',
     description:
-      'The default branch of the project being documented, typically either "master" or "main". Used for the `showEditPage` prop',
-    default: 'main',
+      'Object containing additional components to be made available within mdx pages. Uses the format `{ [key]: Component }`, for example, `{ TestComponent: () => <p>hello world</p> }`',
   },
   staticProps: {
     type: 'object',
+    required: true,
     description:
       'Directly pass the return value of `server/generateStaticProps` in here.',
+    properties: {
+      githubFileUrl: {
+        type: 'string',
+        description:
+          "A link to the page's associated `.mdx` file on GitHub. Used for the `Edit this page` link.",
+        testValue: `https://github.com/hashicorp/vault/blob/master/website/content/docs/agent/autoauth/methods/aws.mdx`,
+      },
+      mdxSource: {
+        type: 'object',
+        description:
+          "Data returned from running `next-mdx-remote/render-to-string` on the page's `.mdx` file contents.",
+        required: true,
+        testValue: {
+          compiledSource:
+            '"use strict";\n' +
+            '\n' +
+            'function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n' +
+            '\n' +
+            'function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n' +
+            '\n' +
+            'function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\n' +
+            '\n' +
+            '/* @jsxRuntime classic */\n' +
+            '\n' +
+            '/* @jsx mdx */\n' +
+            'var layoutProps = {};\n' +
+            'var MDXLayout = "wrapper";\n' +
+            '\n' +
+            'function MDXContent(_ref) {\n' +
+            '  var components = _ref.components,\n' +
+            '      props = _objectWithoutProperties(_ref, ["components"]);\n' +
+            '\n' +
+            '  return mdx(MDXLayout, _extends({}, layoutProps, props, {\n' +
+            '    components: components,\n' +
+            '    mdxType: "MDXLayout"\n' +
+            '  }), mdx("h1", { className: "g-type-display-2" }, "Example Page"), mdx("p", null, "This is a cool docs page!"));\n' +
+            '}\n' +
+            '\n' +
+            ';\n' +
+            'MDXContent.isMDXComponent = true;',
+          renderedOutput:
+            '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p>',
+          scope: {},
+        },
+      },
+      frontMatter: {
+        type: 'object',
+        required: true,
+        description: "Frontmatter object parsed from the page's `.mdx` file.",
+        properties: {
+          canonical_url: {
+            type: 'string',
+            description:
+              'Optional canonical URL. Passed directly to [@hashicorp/react-head](/?component=Head).',
+          },
+          description: {
+            type: 'string',
+            description:
+              'Used for the `<meta name="description" />`. Passed directly to [@hashicorp/react-head](/?component=Head).',
+            required: true,
+            testValue: 'Test description',
+          },
+          page_title: {
+            type: 'string',
+            description:
+              'Used to construct the meta `<title />` tag, then passed to [@hashicorp/react-head](/?component=Head).',
+            required: true,
+            testValue: 'Test Page',
+          },
+        },
+        testValue: {},
+      },
+      currentPath: docsSidenavProps.currentPath,
+      navData: docsSidenavProps.navData,
+    },
+    testValue: {},
   },
 }

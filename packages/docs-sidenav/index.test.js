@@ -1,145 +1,100 @@
-import 'regenerator-runtime/runtime'
 import { render, fireEvent, screen } from '@testing-library/react'
 import DocsSidenav from './'
-import expectThrow from '../../__test-helpers/expect-throw'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 
 const defaultProps = getTestValues(props)
 
 describe('<DocsSidenav />', () => {
-  it('should render and display nesting levels correctly', () => {
-    render(<DocsSidenav {...defaultProps} />)
-    expect(screen.getByTestId('root').className).toContain('g-docs-sidenav')
+  it('renders a root element with a g-docs-sidenav className', () => {
+    const { container } = render(<DocsSidenav {...defaultProps} />)
+    expect(container.firstChild.className).toContain('g-docs-sidenav')
+  })
 
+  it('renders and displays nesting levels correctly', () => {
+    render(<DocsSidenav {...defaultProps} />)
     // For this test, we step through the expected nesting levels based on
     // the fixture data, ensuring that each level is nested properly and has
     // the classes to reflect whether it's shown as active
-    const levelOne = screen.getByTestId('/docs/agent')
-    expect(levelOne.className).toMatch(/dir/)
-    expect(levelOne.className).toMatch(/open active/)
+    const branchOne = screen.getByText('Vault Agent').closest('button')
+    expect(branchOne.getAttribute('data-is-active')).toBe('true')
+    expect(branchOne.getAttribute('data-is-open')).toBe('true')
 
-    const levelTwo = screen.getByTestId('/docs/agent/autoauth')
-    expect(levelTwo.className).toMatch(/dir/)
-    expect(levelTwo.className).toMatch(/open active/)
+    const branchTwo = screen.getByText('Auto-Auth').closest('button')
+    expect(branchTwo.getAttribute('data-is-active')).toBe('true')
+    expect(branchTwo.getAttribute('data-is-open')).toBe('true')
 
-    const levelThree = screen.getByTestId('/docs/agent/autoauth/methods')
-    expect(levelThree.className).toMatch(/dir/)
-    expect(levelThree.className).toMatch(/open active/)
+    const branchThree = screen.getByText('Methods').closest('button')
+    expect(branchThree.getAttribute('data-is-active')).toBe('true')
+    expect(branchThree.getAttribute('data-is-open')).toBe('true')
 
-    const levelFour = screen.getByTestId('/docs/agent/autoauth/methods/aws')
-    expect(levelFour.className).toMatch(/active/)
+    const activeLeaf = screen.getByText('AWS').closest('a')
+    expect(activeLeaf.getAttribute('data-is-active')).toBe('true')
 
     // Let's also make sure that other pages are not also displaying as active
-    // First we check an identically named page at a different level
-    const dupe1 = screen.getByTestId('/docs/agent/autoauth/aws')
-    expect(dupe1.className).not.toMatch(/active/)
+    // First we check an similarly named page at a different level
+    const inactiveLeafOne = screen.getByText('AWS Agent').closest('a')
+    expect(inactiveLeafOne.getAttribute('data-is-active')).toBe('false')
     // Next we check a page at the same level but with a different name
-    const dupe2 = screen.getByTestId('/docs/agent/autoauth/methods/gcp')
-    expect(dupe2.className).not.toMatch(/active/)
+    const inactiveLeafTwo = screen.getByText('GCP').closest('a')
+    expect(inactiveLeafTwo.getAttribute('data-is-active')).toBe('false')
     // Finally we check the overview page at the same level
-    const dupe3 = screen.getByTestId('/docs/agent/autoauth/methods/index')
-    expect(dupe3.className).not.toMatch(/active/)
+    const inactiveLeafThree = screen
+      .getAllByText('Overview')
+      .map((node) => node.closest('a'))
+      .filter((linkElem) => {
+        return linkElem.getAttribute('href') === '/docs/agent/autoauth/methods'
+      })[0]
+    expect(inactiveLeafThree.getAttribute('data-is-active')).toBe('false')
   })
 
-  it.todo('should render accurately when the current page is an "overview"')
+  it('renders accurately when the current page is an "overview"', () => {
+    const currentPath = 'agent/autoauth/methods'
+    const expectedHref = `/docs/${currentPath}`
+    render(<DocsSidenav {...defaultProps} currentPath={currentPath} />)
+    // Check the "overview" index node we've set as active using currentPath
+    const activeIndexLeaf = screen
+      .getAllByText('Overview')
+      .map((node) => node.closest('a'))
+      .filter((linkElem) => {
+        return linkElem.getAttribute('href') === expectedHref
+      })[0]
+    expect(activeIndexLeaf.getAttribute('data-is-active')).toBe('true')
+  })
 
-  it('should expand/collapse directory-level menu items when clicked', () => {
+  it('expands and collapses nav branch items when clicked', () => {
+    render(<DocsSidenav {...defaultProps} />)
+    // Ensure the element exists, and is currently open
+    const branchTwo = screen.getByText('Auto-Auth').closest('button')
+    expect(branchTwo.getAttribute('data-is-active')).toBe('true')
+    expect(branchTwo.getAttribute('data-is-open')).toBe('true')
+    // Click the item, then ensure it's closed, but still active
+    fireEvent.click(branchTwo)
+    expect(branchTwo.getAttribute('data-is-active')).toBe('true')
+    expect(branchTwo.getAttribute('data-is-open')).toBe('false')
+    // Click it again, and it should be open again, still active
+    fireEvent.click(branchTwo)
+    expect(branchTwo.getAttribute('data-is-active')).toBe('true')
+    expect(branchTwo.getAttribute('data-is-open')).toBe('true')
+  })
+
+  it('shows and hides the mobile menu when the "menu" button is clicked', () => {
     render(<DocsSidenav {...defaultProps} />)
 
-    const levelTwoLink = screen.getByTestId('/docs/agent/autoauth - link')
-    fireEvent.click(levelTwoLink)
-    const levelTwo = screen.getByTestId('/docs/agent/autoauth')
-    expect(levelTwo.className).not.toMatch(/open/)
-    fireEvent.click(levelTwoLink)
-    expect(levelTwo.className).toMatch(/open/)
-  })
-
-  it('should show/hide the menu when the "menu" button is clicked on mobile', async () => {
-    render(<DocsSidenav {...defaultProps} />)
-
-    const mobileMenu = screen.getByTestId('mobile-menu')
-    const sidebarNav = screen.getByTestId('root')
-
-    expect(sidebarNav).not.toHaveClass('open')
-    fireEvent.click(mobileMenu)
-    expect(sidebarNav).toHaveClass('open')
-    fireEvent.click(mobileMenu)
-    expect(sidebarNav).not.toHaveClass('open')
-  })
-
-  it('should error when a category is used with no content', () => {
-    expectThrow(() => {
-      render(<DocsSidenav {...defaultProps} order={[{ category: 'test' }]} />)
-    }, 'The item "test" within "data/docs-navigation.js" has a category but no content, indicating that there is a folder that contains only an "index.mdx" file, which is not allowed. To fix this, move and rename "pages/docs/test/index.mdx" to "pages/docs/test.mdx", then change the value from "{ category: \'test\' }" to just "test"')
-  })
-
-  it('should error when a page is not found within a category', () => {
-    expectThrow(() => {
-      render(
-        <DocsSidenav
-          {...defaultProps}
-          order={[
-            {
-              category: 'agent',
-              content: [{ category: 'test', content: ['foo'] }],
-            },
-          ]}
-        />
-      )
-    }, 'The page "foo" was not found within the category "agent/test". Please double-check to ensure that "docs/agent/test/foo.mdx" exists. If this page was never intended to exist, remove the key "foo" from the category "agent/test" in "data/docs-navigation.js"')
-  })
-
-  it('should error when a direct link does not use both "title" and "href"', () => {
-    expectThrow(() => {
-      render(<DocsSidenav {...defaultProps} order={[{ title: 'foo' }]} />)
-    }, 'Malformed direct sidebar link:\n\n {"title":"foo"}\n\nDirect links must have a "href" and a "title" property.')
-
-    expectThrow(() => {
-      render(<DocsSidenav {...defaultProps} order={[{ href: 'bar' }]} />)
-    }, 'Malformed direct sidebar link:\n\n {"href":"bar"}\n\nDirect links must have a "href" and a "title" property.')
-  })
-
-  it('should error when a category contains no index file and no name', () => {
-    expectThrow(() => {
-      render(
-        <DocsSidenav
-          {...defaultProps}
-          order={[
-            {
-              category: 'agent',
-              content: [
-                {
-                  category: 'no-index-test',
-                  content: ['foo'],
-                },
-              ],
-            },
-          ]}
-        />
-      )
-    }, 'An index page or "name" property is required for all categories.\nIf you would like an index page for this category, please add an index file at the path "agent/no-index-test/index.mdx".\nIf you do not want an index page for this category, please add a "name" property to the category object to specify the category\'s human-readable title.\n\nItem:\n{\n  "category": "no-index-test",\n  "content": [\n    "foo"\n  ],\n  "stack": [\n    "agent",\n    "no-index-test"\n  ]\n}')
-  })
-
-  it('should error when a category uses a name property and specifies an overview page', () => {
-    expectThrow(() => {
-      render(
-        <DocsSidenav
-          {...defaultProps}
-          order={[
-            {
-              category: 'agent',
-              content: [
-                {
-                  category: 'no-index-test',
-                  name: 'No Index Test',
-                  content: ['overview'],
-                },
-              ],
-            },
-          ]}
-        />
-      )
-    }, 'The category "agent/no-index-test" is using a "name" property to indicate that it has no index, but also has a manually added "overview" page. This can be fixed with the following steps:\n\n- Change the "overview.mdx" page to be "index.mdx"\n- Remove the "name" property from the "no-index-test" data, instead indicate the category\'s name using the frontmatter on the new "index.mdx" page')
+    // Get the sidebar nav list
+    // (it's the only role=list element with data-is-mobile-open defined)
+    const sidebarNavList = screen.getAllByRole('list')[0]
+    expect(sidebarNavList.nodeName).toBe('UL')
+    expect(sidebarNavList.getAttribute('data-is-mobile-open')).toBe('false')
+    // Get the menu button
+    const mobileMenuToggle = screen
+      .getByText('Documentation Menu')
+      .closest('button')
+    // Click the menu button, and check the sidebar opens
+    fireEvent.click(mobileMenuToggle)
+    expect(sidebarNavList.getAttribute('data-is-mobile-open')).toBe('true')
+    // Click the menu button again, and check the sidebar closes
+    fireEvent.click(mobileMenuToggle)
+    expect(sidebarNavList.getAttribute('data-is-mobile-open')).toBe('false')
   })
 })

@@ -1,161 +1,158 @@
 import fs from 'fs'
 import path from 'path'
-import existsSync from 'fs-exists-sync'
-import readdirp from 'readdirp'
-import lineReader from 'line-reader'
-import moize from 'moize'
-import matter from 'gray-matter'
-import { safeLoad } from 'js-yaml'
-import renderToString from 'next-mdx-remote/render-to-string'
-import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
-import generateComponents from './components'
+import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
+import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
+import renderPageMdx from './render-page-mdx'
 
-export async function generateStaticPaths(subpath) {
-  const paths = await getStaticMdxPaths(
-    path.join(process.cwd(), 'content', subpath)
-  )
+// So far, we have a pattern of using a common value for
+// docs catchall route parameters: route/[[...page]].jsx.
+// This default parameter ID captures that pattern.
+// It can be overridden via options.
+const DEFAULT_PARAM_ID = 'page'
 
-  return { paths, fallback: false }
-}
-
-export async function generateStaticProps({
-  subpath,
-  productName,
-  params,
-  additionalComponents,
-  scope,
-  remarkPlugins,
-}) {
-  const docsPath = path.join(process.cwd(), 'content', subpath)
-  const pagePath = params.page ? params.page.join('/') : '/'
-
-  // get frontmatter from all other pages in the category, for the sidebar
-  const allFrontMatter = await fastReadFrontMatter(docsPath)
-
-  // render the current page path markdown
-  const { mdxSource, frontMatter, filePath } = await renderPageMdx(
-    docsPath,
-    pagePath,
-    generateComponents(productName, additionalComponents),
-    scope,
-    remarkPlugins
-  )
-
-  return {
-    props: {
-      data: allFrontMatter.map((p) => ({
-        ...p,
-        __resourcePath: `${subpath}/${p.__resourcePath}`,
-      })),
-      mdxSource,
-      frontMatter,
-      filePath: `${subpath}/${filePath}`,
-      pagePath: `/${subpath}/${pagePath}`,
-    },
-  }
-}
-
-async function getStaticMdxPaths(root) {
-  const files = await readdirp.promise(root, { fileFilter: ['*.mdx'] })
-
-  return files.map(({ path: p }) => {
-    return {
-      params: {
-        page: p
-          .replace(/\.mdx$/, '')
-          .split('/')
-          .filter((p) => p !== 'index'),
-      },
-    }
-  })
-}
-
-async function renderPageMdx(
-  root,
-  pagePath,
-  components,
-  scope,
-  remarkPlugins = []
+async function generateStaticPaths(
+  navDataFile,
+  localContentDir,
+  { paramId = DEFAULT_PARAM_ID } = {}
 ) {
-  // get the page being requested - figure out if its index page or leaf
-  // prefer leaf if both are present
-  const leafPath = path.join(root, `${pagePath}.mdx`)
-  const indexPath = path.join(root, `${pagePath}/index.mdx`)
-  let page, filePath
-
-  if (existsSync(leafPath)) {
-    page = fs.readFileSync(leafPath, 'utf8')
-    filePath = leafPath
-  } else if (existsSync(indexPath)) {
-    page = fs.readFileSync(indexPath, 'utf8')
-    filePath = indexPath
-  } else {
-    // NOTE: if we decide to let docs pages render dynamically, we should replace this
-    // error with a straight 404, at least in production.
-    throw new Error(
-      `We went looking for "${leafPath}" and "${indexPath}" but neither one was found.`
-    )
-  }
-
-  const { data: frontMatter, content } = matter(page)
-  const mdxSource = await renderToString(content, {
-    mdxOptions: markdownDefaults({
-      resolveIncludes: path.join(process.cwd(), 'content/partials'),
-      addRemarkPlugins: remarkPlugins,
-    }),
-    components,
-    scope,
-  })
-
-  return {
-    mdxSource,
-    frontMatter,
-    filePath: filePath.replace(`${root}/`, ''),
-  }
+  // Fetch and parse navigation data
+  const navData = await resolveNavData(navDataFile, localContentDir)
+  const paths = getPathsFromNavData(navData, paramId)
+  return paths
 }
 
-// We are memoizing this function as it does a non-trivial amount of I/O to read frontmatter for all mdx files in a directory
-export const fastReadFrontMatter =
-  process.env.NODE_ENV === 'production'
-    ? moize(fastReadFrontMatterFn)
-    : fastReadFrontMatterFn
+async function resolveNavData(filePath, localContentDir) {
+  const navDataFile = path.join(process.cwd(), filePath)
+  const navDataRaw = JSON.parse(fs.readFileSync(navDataFile, 'utf8'))
+  const withFilePaths = await validateFilePaths(navDataRaw, localContentDir)
+  return withFilePaths
+}
 
-async function fastReadFrontMatterFn(p) {
-  const fm = []
-  for await (const entry of readdirp(p, { fileFilter: '*.mdx' })) {
-    let lineNum = 0
-    const content = []
-    fm.push(
-      new Promise((resolve, reject) => {
-        lineReader.eachLine(
-          entry.fullPath,
-          (line) => {
-            // if it has any content other than `---`, the file doesn't have front matter, so we close
-            if (lineNum === 0 && !line.match(/^---$/)) {
-              console.warn(
-                `WARNING: The file "${entry.path}" is missing front matter. Please add front matter to ensure the file's metadata is properly populated.`
-              )
-              content.push('---')
-              content.push('page_title: "ERROR: Missing Frontmatter"')
-              return false
-            }
-            // if it's not the first line and we have a bottom delimiter, exit
-            if (lineNum !== 0 && line.match(/^---$/)) return false
-            // now we read lines until we match the bottom delimiters
-            content.push(line)
-            // increment line number
-            lineNum++
-          },
-          (err) => {
-            if (err) return reject(err)
-            content.push(`__resourcePath: "${entry.path}"`)
-            resolve(safeLoad(content.slice(1).join('\n')), {
-              filename: entry.fullPath,
-            })
-          }
-        )
-      })
+async function getPathsFromNavData(
+  navDataResolved,
+  paramId = DEFAULT_PARAM_ID
+) {
+  //  Transform navigation data into path arrays
+  const pagePathArrays = getPathArraysFromNodes(navDataResolved)
+  // Include an empty array for the "/" index page path
+  const allPathArrays = [[]].concat(pagePathArrays)
+  const paths = allPathArrays.map((p) => ({ params: { [paramId]: p } }))
+  return paths
+}
+
+async function generateStaticProps(
+  navDataFile,
+  localContentDir,
+  params,
+  product,
+  {
+    additionalComponents = {},
+    mainBranch = 'main',
+    remarkPlugins = [],
+    scope, // optional, I think?
+    paramId = DEFAULT_PARAM_ID,
+  } = {}
+) {
+  //  Read in the nav data, and resolve local filePaths
+  const navData = await resolveNavData(navDataFile, localContentDir)
+  // Build the currentPath from page parameters
+  const currentPath = params[paramId] ? params[paramId].join('/') : ''
+  //  Get the navNode that matches this path
+  const navNode = getNodeFromPath(currentPath, navData, localContentDir)
+  //  Read in and process MDX content from the navNode's filePath
+  const mdxFile = path.join(process.cwd(), navNode.filePath)
+  const mdxString = fs.readFileSync(mdxFile, 'utf8')
+  const { mdxSource, frontMatter } = await renderPageMdx(mdxString, {
+    productName: product.name,
+    additionalComponents,
+    remarkPlugins,
+    scope,
+  })
+  // Construct the githubFileUrl, used for "Edit this page" link
+  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
+  // Return all the props
+  return { currentPath, frontMatter, githubFileUrl, mdxSource, navData }
+}
+
+async function validateNavData(navData, localContentDir) {
+  const withFilePaths = await validateFilePaths(navData, localContentDir)
+  // Note: validateRouteStructure returns navData with additional __stack properties,
+  // which detail the path we've inferred for each branch and node
+  // (branches do not have paths defined explicitly, so we need to infer them)
+  // We don't actually need the __stack properties for rendering, they're just
+  // used in validation, so we don't use the output of this function.
+  validateRouteStructure(withFilePaths)
+  // Return the resolved, validated navData
+  return withFilePaths
+}
+
+function getNodeFromPath(pathToMatch, navData, localContentDir) {
+  // If there is no path array, we return a
+  // constructed "home page" node. This is just to
+  // provide authoring convenience to not have to define
+  // this node. However, we could ask for this node to
+  // be explicitly defined in `navData` (and if it isn't,
+  // then we'd render a 404 for the root path)
+  const isLandingPage = pathToMatch === ''
+  if (isLandingPage) {
+    return {
+      filePath: path.join(localContentDir, 'index.mdx'),
+    }
+  }
+  //  If it's not a landing page, then we search
+  // through our navData to find the node with a path
+  // that matches the pathArray we're looking for.
+  function flattenRoutes(nodes) {
+    return nodes.reduce((acc, n) => {
+      if (!n.routes) return acc.concat(n)
+      return acc.concat(flattenRoutes(n.routes))
+    }, [])
+  }
+  const allNodes = flattenRoutes(navData)
+  const matches = allNodes.filter((n) => n.path === pathToMatch)
+  // Throw an error for missing files - if this happens,
+  // we might have an issue with `getStaticPaths` or something
+  if (matches.length === 0) {
+    throw new Error(`Missing resource to match "${pathToMatch}"`)
+  }
+  // Throw an error if there are multiple matches
+  // If this happens, there's likely an issue in the
+  // content source repo
+  if (matches.length > 1) {
+    throw new Error(
+      `Ambiguous path matches for "${pathToMatch}". Found:\n\n${JSON.stringify(
+        matches
+      )}`
     )
   }
-  return Promise.all(fm)
+  //  Otherwise, we have exactly one match,
+  //  and we can return the filePath off of it
+  return matches[0]
+}
+
+function getPathArraysFromNodes(navNodes) {
+  const slugs = navNodes.reduce((acc, navNode) => {
+    // Individual items have a path, these should be added
+    if (navNode.path) return acc.concat([navNode.path.split('/')])
+    // Category items have child routes, these should all be added
+    if (navNode.routes)
+      return acc.concat(getPathArraysFromNodes(navNode.routes))
+    // All other node types (dividers, external links) can be ignored
+    return acc
+  }, [])
+  return slugs
+}
+
+// We currently export most utilities individually,
+// since we have cases such as Packer remote plugin docs
+// where we want to re-use these utilities to build
+// getStaticPaths and getStaticProps functions that
+// fall outside the use case of local-only content
+export {
+  generateStaticPaths,
+  generateStaticProps,
+  getNodeFromPath,
+  getPathsFromNavData,
+  validateNavData,
+  validateFilePaths,
 }

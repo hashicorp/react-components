@@ -14,7 +14,7 @@ export default function temporary_injectJumpToSection(node) {
     // slice removes the anchor link character
     return {
       id: h2.querySelector('.__target-h').id,
-      text: h2.innerText.slice(1),
+      text: h2.textContent.slice(1), // slice removes permalink » character
     }
   })
 

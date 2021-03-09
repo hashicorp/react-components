@@ -2,14 +2,13 @@
 componentName: 'DocsSidenav'
 ---
 
-This is a cool component for documentation
+DocsSidenav renders a tree of links, with the option to include nested sections. Horizontal dividers can also be included between items.
 
 <LiveComponent>{`<DocsSidenav
   product="${componentProps.product.testValue}"
-  currentPage="${componentProps.currentPage.testValue}"
-  category="${componentProps.category.testValue}"
-  order={${JSON.stringify(componentProps.order.testValue, null, 2)}}
-  data={${JSON.stringify(componentProps.data.testValue, null, 2)}}
+  currentPath="${componentProps.currentPath.testValue}"
+  baseRoute="${componentProps.baseRoute.testValue}"
+  navData={${JSON.stringify(componentProps.navData.testValue, null, 2)}}
 />`}</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />

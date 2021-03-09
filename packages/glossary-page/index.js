@@ -17,23 +17,20 @@ function GlossaryTableOfContents({ terms }) {
 
 export default function GlossaryPage({
   additionalComponents,
-  mainBranch,
-  order,
   product,
   showEditPage,
-  staticProps: { content, terms, docsPageData },
+  staticProps: { mdxSource, terms, navData, githubFileUrl },
 }) {
   return (
     <DocsPageWrapper
-      allPageData={docsPageData}
+      navData={navData}
       description="Glossary"
       filePath="glossary"
-      mainBranch={mainBranch}
-      order={order}
-      pagePath="/docs/glossary"
+      githubFileUrl={githubFileUrl}
+      currentPath="glossary"
       pageTitle="Glossary"
       product={{ name: product.name, slug: product.slug }}
-      subpath="docs"
+      baseRoute="docs"
       showEditPage={showEditPage}
     >
       <>
@@ -45,7 +42,7 @@ export default function GlossaryPage({
           community.
         </p>
         <GlossaryTableOfContents terms={terms} />
-        {hydrate(content, {
+        {hydrate(mdxSource, {
           components: generateComponents(product.name, additionalComponents),
         })}
       </>

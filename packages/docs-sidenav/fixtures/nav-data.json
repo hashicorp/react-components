@@ -1,0 +1,77 @@
+[
+  {
+    "title": "What is Vault?",
+    "path": "what-is-vault"
+  },
+  {
+    "title": "Vault Agent",
+    "routes": [
+      {
+        "title": "Overview",
+        "path": "agent"
+      },
+      {
+        "title": "Auto-Auth",
+        "routes": [
+          {
+            "title": "Overview",
+            "path": "agent/autoauth"
+          },
+          {
+            "title": "AWS Agent",
+            "path": "agent/autoauth/aws"
+          },
+          {
+            "title": "Methods",
+            "routes": [
+              {
+                "title": "Overview",
+                "path": "agent/autoauth/methods"
+              },
+              {
+                "title": "AliCloud",
+                "path": "agent/autoauth/methods/alicloud"
+              },
+              {
+                "title": "AWS",
+                "path": "agent/autoauth/methods/aws"
+              },
+              { "divider": true },
+              {
+                "title": "<code>GCP</code>",
+                "path": "agent/autoauth/methods/gcp"
+              },
+              { "divider": true },
+              {
+                "title": "External Link",
+                "href": "https://google.com"
+              },
+              {
+                "title": "Internal Direct Link",
+                "href": "/some-non-docs-path"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "No Index Category",
+        "routes": [
+          {
+            "title": "Foo Item",
+            "path": "agent/no-index-test/foo"
+          }
+        ]
+      },
+      {
+        "title": "Only Index Test <sup>ENT</sup>",
+        "routes": [
+          {
+            "title": "Overview",
+            "path": "agent/only-index-test"
+          }
+        ]
+      }
+    ]
+  }
+]
