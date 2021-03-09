@@ -7,7 +7,7 @@
     "Bryce Kalow"
   ],
   "dependencies": {
-    "@hashicorp/react-docs-page": "10.9.4-alpha.57",
+    "@hashicorp/react-docs-page": "^11.0.1",
     "@hashicorp/remark-plugins": "^3.1.1"
   },
   "license": "MPL-2.0",
