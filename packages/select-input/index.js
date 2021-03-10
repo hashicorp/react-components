@@ -1,7 +1,7 @@
 // Downshift should be pinned to 3.1.5, aria-selected behavior changed after that version, and the new behaviour is not what we want at the moment
 import classNames from 'classnames'
 import Downshift from 'downshift'
-import * as s from './style.module.css'
+import s from './style.module.css'
 
 const FONT_SIZES = {
   large: '16px',
