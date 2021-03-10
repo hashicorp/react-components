@@ -1,5 +1,12 @@
 // Downshift should be pinned to 3.1.5, aria-selected behavior changed after that version, and the new behaviour is not what we want at the moment
+import classNames from 'classnames'
 import Downshift from 'downshift'
+import * as s from './style.module.css'
+
+const FONT_SIZES = {
+  large: '16px',
+  small: '14px',
+}
 
 /**
  * Select input field
@@ -20,6 +27,7 @@ export default function SelectInput({
   options,
   value,
   onValueChange = () => {},
+  size = 'large',
 }) {
   const displayLabel = defaultLabel || 'Select an option'
   // Changes to the value prop will re-render this component by updating the key value.
@@ -45,8 +53,13 @@ export default function SelectInput({
       }) => {
         return (
           <div
-            className={`g-select-input ${isOpen ? 'open' : ''}`}
+            className={classNames(s.select, 'g-select-input', {
+              [s.open]: isOpen,
+            })}
             data-cy={name}
+            style={{
+              '--select-font-size': FONT_SIZES[size],
+            }}
           >
             <label {...getLabelProps()} onClick={toggleMenu}>
               {label}
@@ -54,8 +67,25 @@ export default function SelectInput({
             <input type="hidden" name={name} value={inputValue} />
             <button {...getInputProps()} onClick={toggleMenu} type="button">
               {selectedItem ? selectedItem.label : displayLabel}
+              <span className={s.arrow} aria-hidden>
+                <svg viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
+                  <title>Mask</title>
+                  <defs>
+                    <path
+                      d="M413.293 1341.293l-5.293 5.293-5.293-5.293a.999.999 0 1 0-1.414 1.414l6 6a.997.997 0 0 0 1.414 0l6-6a.999.999 0 1 0-1.414-1.414"
+                      id="a"
+                    />
+                  </defs>
+                  <use
+                    fill="#9A9EA5"
+                    xlinkHref="#a"
+                    transform="translate(-401 -1341)"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </span>
             </button>
-            <div>
+            <div className={s.selectBox}>
               <ul {...getMenuProps()}>
                 {options.map((opt, index) => {
                   return (
@@ -63,7 +93,9 @@ export default function SelectInput({
                       key={opt.name}
                       data-name={opt.name}
                       data-label={opt.label}
-                      className={highlightedIndex === index ? 'active' : ''}
+                      className={classNames({
+                        [s.active]: highlightedIndex === index,
+                      })}
                       {...getItemProps({ item: opt })}
                     >
                       {opt.label}

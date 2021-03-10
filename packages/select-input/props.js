@@ -14,6 +14,11 @@ module.exports = {
     description: 'text to act as placeholder label',
     testValue: 'Placeholder',
   },
+  size: {
+    type: 'string',
+    description: 'Controls font size and size of the element',
+    testValue: 'large',
+  },
   value: {
     type: 'object',
     description: 'set the value via prop',
