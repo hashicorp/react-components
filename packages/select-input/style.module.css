@@ -1,5 +1,10 @@
 .select {
   --select-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  --select-font-size: 16px;
+
+  &[data-size='small'] {
+    --select-font-size: 14px;
+  }
 
   width: 100%;
   font-size: var(--select-font-size, 16px);
@@ -28,12 +33,7 @@
     position: relative;
 
     &:hover {
-      border: 1px solid #7f858d;
-    }
-
-    &:focus {
-      border: 1px solid var(--brand);
-      outline: none;
+      border: 1px solid var(--gray-4);
     }
 
     &:placeholder-shown {
@@ -79,20 +79,15 @@
         cursor: pointer;
 
         &:hover,
-        &.active {
+        &[data-active='true'] {
           background: var(--gray-6);
         }
       }
     }
   }
 
-  &.open {
-    outline: 0;
-
+  &[aria-expanded='true'] {
     & > button {
-      border: 1px solid var(--brand);
-      outline: 0;
-
       & .arrow svg {
         transform: rotate(-180deg);
       }

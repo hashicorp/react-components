@@ -3,11 +3,6 @@ import classNames from 'classnames'
 import Downshift from 'downshift'
 import s from './style.module.css'
 
-const FONT_SIZES = {
-  medium: '16px',
-  small: '14px',
-}
-
 /**
  * Select input field
  * @prop {String} name - input name attribute
@@ -45,7 +40,6 @@ export default function SelectInput({
         getInputProps,
         getMenuProps,
         getItemProps,
-        isOpen,
         toggleMenu,
         selectedItem,
         inputValue,
@@ -53,13 +47,9 @@ export default function SelectInput({
       }) => {
         return (
           <div
-            className={classNames(s.select, 'g-select-input', {
-              [s.open]: isOpen,
-            })}
+            className={classNames(s.select, 'g-select-input')}
             data-cy={name}
-            style={{
-              '--select-font-size': FONT_SIZES[size],
-            }}
+            data-size={size}
           >
             <label {...getLabelProps()} onClick={toggleMenu}>
               {label}
@@ -93,9 +83,7 @@ export default function SelectInput({
                       key={opt.name}
                       data-name={opt.name}
                       data-label={opt.label}
-                      className={classNames({
-                        [s.active]: highlightedIndex === index,
-                      })}
+                      data-active={highlightedIndex === index}
                       {...getItemProps({ item: opt })}
                     >
                       {opt.label}
