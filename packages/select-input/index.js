@@ -4,7 +4,7 @@ import Downshift from 'downshift'
 import s from './style.module.css'
 
 const FONT_SIZES = {
-  large: '16px',
+  medium: '16px',
   small: '14px',
 }
 
@@ -27,7 +27,7 @@ export default function SelectInput({
   options,
   value,
   onValueChange = () => {},
-  size = 'large',
+  size = 'medium',
 }) {
   const displayLabel = defaultLabel || 'Select an option'
   // Changes to the value prop will re-render this component by updating the key value.

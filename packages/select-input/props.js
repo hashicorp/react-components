@@ -17,7 +17,7 @@ module.exports = {
   size: {
     type: 'string',
     description: 'Controls font size and size of the element',
-    testValue: 'large',
+    testValue: 'medium',
   },
   value: {
     type: 'object',
