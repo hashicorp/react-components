@@ -18,6 +18,8 @@ module.exports = {
     type: 'string',
     description: 'Controls font size and size of the element',
     testValue: 'medium',
+    control: { type: 'select' },
+    options: ['small', 'medium'],
   },
   value: {
     type: 'object',
