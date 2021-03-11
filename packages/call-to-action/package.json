@@ -10,7 +10,7 @@
     "@hashicorp/react-button": "^2.2.4"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/nextjs-scripts": ">=16.x"
   },
   "keywords": [
     "call to action",
