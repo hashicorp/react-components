@@ -1,6 +1,3 @@
-@import '~@hashicorp/react-global-styles/custom-properties/color.css';
-@import '~@hashicorp/react-global-styles/custom-properties/font.css';
-
 @import './variant-primary.css';
 @import './variant-secondary.css';
 @import './variant-tertiary.css';

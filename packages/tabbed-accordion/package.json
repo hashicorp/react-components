@@ -8,11 +8,11 @@
   ],
   "dependencies": {
     "@hashicorp/react-accordion": "^1.0.6",
-    "@hashicorp/react-global-styles": "^4.5.0",
     "@hashicorp/react-tabs": "^4.0.0"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/nextjs-scripts": ">16.x",
+    "@hashicorp/mktg-global-styles": ">2.2.x"
   },
   "keywords": [],
   "license": "MPL-2.0",

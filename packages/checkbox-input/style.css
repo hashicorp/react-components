@@ -1,5 +1,3 @@
-@import '~@hashicorp/react-global-styles/custom-properties/color.css';
-
 .g-checkbox-input {
   & .wrapper {
     display: flex;
