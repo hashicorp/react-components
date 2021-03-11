@@ -14,7 +14,7 @@
 
     & .submenu-title {
       margin: 12px 0 8px 0;
-      color: var(--gray-4);
+      color: var(--gray-3);
     }
 
     & hr.divider {
@@ -22,7 +22,7 @@
       border: 0;
       padding: 0;
       height: 1px;
-      background: var(--gray-6);
+      background: var(--gray-5);
     }
 
     & a.submenu-item {

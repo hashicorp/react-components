@@ -46,7 +46,7 @@
     margin-top: 40px;
     margin-bottom: 8px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--gray-6);
+    border-bottom: 1px solid var(--gray-5);
   }
 
   & h4 {
@@ -62,7 +62,7 @@
   }
 
   & h6 {
-    color: var(--gray-3);
+    color: var(--gray-2);
     margin-top: 20px;
     margin-bottom: 16px;
   }
@@ -175,7 +175,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        color: var(--gray-5);
+        color: var(--gray-4);
         margin-left: calc(-1 * 1.3rem);
         width: 1.3rem;
       }
@@ -279,7 +279,7 @@
     margin: 2em 0;
     padding-left: 2em;
     font-style: italic;
-    border-left: 6px solid var(--gray-7);
+    border-left: 6px solid var(--gray-6);
     & em {
       font-style: normal;
     }

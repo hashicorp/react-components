@@ -2,7 +2,7 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
-    "@hashicorp/mktg-global-styles": "^2.1.0",
+    "@hashicorp/mktg-global-styles": "^2.1.1-canary.0",
     "@hashicorp/nextjs-scripts": "^16.2.0",
     "@hashicorp/sentinel-embedded": "^0.0.9",
     "classnames": "^2.2.6",
