@@ -15,7 +15,7 @@
     display: block;
     position: relative;
     z-index: 0;
-    border-bottom: 1px solid var(--gray-6);
+    border-bottom: 1px solid var(--gray-5);
     &.for-overflow {
       display: none;
     }
@@ -101,10 +101,10 @@
         width: 20px;
         height: 20px;
         & [fill] {
-          fill: var(--gray-4);
+          fill: var(--gray-3);
         }
         & [stroke] {
-          stroke: var(--gray-4);
+          stroke: var(--gray-3);
         }
       }
 

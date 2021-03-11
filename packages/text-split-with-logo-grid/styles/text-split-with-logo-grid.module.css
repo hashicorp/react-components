@@ -35,7 +35,7 @@
 .itemAspectInner {
   align-items: center;
   background: white;
-  border: 1px solid var(--gray-6);
+  border: 1px solid var(--gray-5);
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -52,7 +52,7 @@
 
   &[data-theme='dark'] {
     background: none;
-    border-color: var(--gray-3);
+    border-color: var(--gray-2);
   }
 
   /* <Image /> might render with a wrapping <picture> tag

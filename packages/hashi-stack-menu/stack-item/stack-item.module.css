@@ -46,8 +46,8 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   background: var(--white);
-  color: var(--gray-4);
-  border: 1px solid var(--gray-5);
+  color: var(--gray-3);
+  border: 1px solid var(--gray-4);
 }
 
 .badgeTypeNew {

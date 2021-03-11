@@ -13,7 +13,7 @@
 
     & li {
       width: 100%;
-      border: 1px solid var(--DEPRECATED-gray-9);
+      border: 1px solid var(--gray-5);
       margin: 16px 0;
       transition: box-shadow 0.2s ease;
 

@@ -9,7 +9,7 @@
   &.dark {
     & span,
     & p {
-      color: var(--DEPRECATED-gray-1);
+      color: var(--gray-1);
     }
   }
 

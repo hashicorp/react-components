@@ -9,6 +9,6 @@
 
   & .g-accordion-items {
     margin-top: 64px;
-    border-top: 1px solid var(--gray-6);
+    border-top: 1px solid var(--gray-5);
   }
 }

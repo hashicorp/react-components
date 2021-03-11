@@ -1,5 +1,5 @@
 .g-accordion-item {
-  border-bottom: 1px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-5);
 
   &:first-child {
     border-top: none;
@@ -31,10 +31,10 @@
         width: 24px;
         height: 24px;
         & [fill] {
-          fill: var(--gray-5);
+          fill: var(--gray-4);
         }
         & [stroke] {
-          stroke: var(--gray-5);
+          stroke: var(--gray-4);
         }
       }
 

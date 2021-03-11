@@ -1,5 +1,5 @@
 .switch {
-  background: var(--DEPRECATED-gray-7);
+  background: var(--gray-4);
   width: 55px;
   height: 30px;
   border-radius: 18px;
@@ -22,8 +22,8 @@
   &::after {
     content: '';
     display: block;
-    border: 1px solid var(--DEPRECATED-gray-7);
-    box-shadow: 1px 1px 1px var(--DEPRECATED-gray-4);
+    border: 1px solid var(--gray-4);
+    box-shadow: 1px 1px 1px var(--gray-2);
     width: 25px;
     height: 24px;
     top: 3px;
