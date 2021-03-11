@@ -8,12 +8,12 @@
   ],
   "dependencies": {
     "@hashicorp/react-code-block": "^3.0.5",
-    "@hashicorp/react-global-styles": "^4.5.0",
     "@hashicorp/react-text-split": "^2.0.0"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "@hashicorp/mktg-global-styles": ">2.2.x"
   },
   "publishConfig": {
     "access": "public"
