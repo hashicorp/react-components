@@ -188,7 +188,11 @@ class CaseStudySlider extends Component {
                         />
                       </a>
                     </div>
-                    <div className="feature-content g-type-body">
+                    <div
+                      className={`feature-content g-type-body ${
+                        dark ? 'dark' : 'light'
+                      }`}
+                    >
                       {single && (
                         <div className="single-logo">
                           <Logo dark={dark} image={caseStudy.company} />
@@ -207,7 +211,10 @@ class CaseStudySlider extends Component {
                         }}
                       />
                       <Button
-                        theme={dark ? 'light-outline' : 'dark-outline'}
+                        theme={{
+                          variant: 'secondary',
+                          background: dark ? 'dark' : 'light',
+                        }}
                         title={caseStudy.buttonLabel || 'Read Case Study'}
                         url={caseStudyLink}
                       />
