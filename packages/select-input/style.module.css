@@ -1,0 +1,102 @@
+.select {
+  --select-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  --select-font-size: 16px;
+
+  &[data-size='small'] {
+    --select-font-size: 14px;
+  }
+
+  width: 100%;
+  font-size: var(--select-font-size, 16px);
+
+  & > label {
+    display: block;
+    padding-bottom: 0.5em;
+    font-size: 0.75em;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-4);
+    text-transform: uppercase;
+  }
+
+  & > button {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid var(--gray-5);
+    border-radius: 2px;
+    box-sizing: border-box;
+    box-shadow: var(--select-shadow);
+    background: var(--white);
+    font-size: 1em;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+
+    &:hover {
+      border: 1px solid var(--gray-4);
+    }
+
+    &:placeholder-shown {
+      color: var(--gray-7);
+    }
+
+    & .arrow {
+      position: absolute;
+      right: 0.75em;
+      top: calc(50% - 10px);
+
+      & > svg {
+        vertical-align: middle;
+        width: 11px;
+        height: 6px;
+        transition: transform 0.2s;
+      }
+    }
+  }
+
+  & .selectBox {
+    position: relative;
+    margin: 0;
+
+    & ul {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--gray-5);
+      box-sizing: border-box;
+      box-shadow: var(--select-shadow);
+      border-radius: 2px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0.25em;
+      width: 100%;
+      z-index: 5;
+
+      & li {
+        width: 100%;
+        padding: 0.5em;
+        cursor: pointer;
+
+        &:hover,
+        &[data-active='true'] {
+          background: var(--gray-6);
+        }
+      }
+    }
+  }
+
+  &[aria-expanded='true'] {
+    & > button {
+      & .arrow svg {
+        transform: rotate(-180deg);
+      }
+    }
+
+    & > .selectBox ul {
+      display: block;
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+  }
+}
