@@ -55,6 +55,7 @@ function Button({
         `variant-${themeObj.variant}`,
         themeClass,
         { 'brand-neutral': themeObj.brand === 'neutral' },
+        `background-${themeObj.background}`,
         className
       )}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
