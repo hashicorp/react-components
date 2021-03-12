@@ -51,9 +51,11 @@ export default function SelectInput({
             data-cy={name}
             data-size={size}
           >
-            <label {...getLabelProps()} onClick={toggleMenu}>
-              {label}
-            </label>
+            {label ? (
+              <label {...getLabelProps()} onClick={toggleMenu}>
+                {label}
+              </label>
+            ) : null}
             <input type="hidden" name={name} value={inputValue} />
             <button {...getInputProps()} onClick={toggleMenu} type="button">
               {selectedItem ? selectedItem.label : displayLabel}
