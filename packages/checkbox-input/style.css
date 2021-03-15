@@ -23,15 +23,22 @@
       margin-left: 0;
       margin-right: 12px;
 
-      & input[type='checkbox'] {
+      & input {
         width: 100%;
         height: 100%;
         appearance: none;
         border: 1px solid var(--DEPRECATED-gray-8);
         background-color: #fff;
-        border-radius: 2px;
         transition: border 0.2s;
         cursor: pointer;
+
+        &[type='checkbox'] {
+          border-radius: 2px;
+        }
+
+        &[type='radio'] {
+          border-radius: 10px;
+        }
 
         &:hover {
           border-color: var(--brand);
@@ -76,7 +83,7 @@
         }
       }
 
-      & input[type='checkbox'] {
+      & input {
         background-color: var(--DEPRECATED-gray-2);
         border-color: var(--DEPRECATED-gray-3);
       }
@@ -93,7 +100,7 @@
         }
       }
 
-      & input[type='checkbox'][data-has-error='false'] {
+      & input[data-has-error='false'] {
         &:hover {
           border-color: var(--DEPRECATED-gray-8);
         }

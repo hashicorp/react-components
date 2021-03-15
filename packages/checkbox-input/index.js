@@ -4,7 +4,7 @@ import uuidv1 from 'uuid/v1'
 function CheckboxInput(props) {
   //  `field` and `form` props come from Formik
   //  https://jaredpalmer.com/formik/docs/api/field
-  const { label, theme, field, form } = props
+  const { label, theme, field, form, type } = props
   const error = form.touched[field.name] && form.errors[field.name]
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
@@ -16,7 +16,7 @@ function CheckboxInput(props) {
           {field.value && <SvgrCheckmark />}
           <input
             id={inputId}
-            type="checkbox"
+            type={type}
             data-has-error={(!!error).toString()}
             {...field}
           />
@@ -38,6 +38,7 @@ function CheckboxInput(props) {
 
 CheckboxInput.defaultProps = {
   theme: { background: 'light' },
+  type: 'checkbox',
 }
 
 const SvgrCheckmark = (props) => (

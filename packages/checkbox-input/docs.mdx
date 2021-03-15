@@ -26,6 +26,8 @@ _Note: `checkbox-input` expects a parent component to control the input. The liv
 
 ## Examples
 
+### Themes
+
 <p className="g-type-label" style={{ color: 'var(--gray-4)' }}>
   Light theme
 </p>
@@ -129,6 +131,33 @@ _Note: `checkbox-input` expects a parent component to control the input. The liv
 />
 
 </div>
+
+### Radio Type
+
+
+<CheckboxInput
+  label="Yes"
+  field={{
+    name: 'radio-test',
+    value: true,
+    checked: true,
+    onChange: () => {}
+  }}
+  type="radio"
+/>
+
+<br />
+
+<CheckboxInput
+  label="No"
+  field={{
+    name: 'radio-test',
+    value: false,
+    checked: false,
+    onChange: () => {}
+  }}
+  type="radio"
+/>
 
 ## Props
 

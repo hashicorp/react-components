@@ -1,4 +1,9 @@
 module.exports = {
+  type: {
+    type: 'string',
+    required: false,
+    description: 'Input type. Defaults to `checkbox`',
+  },
   label: {
     type: 'string',
     required: true,
