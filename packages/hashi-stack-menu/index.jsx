@@ -1,7 +1,7 @@
 import styles from './hashi-stack-menu.module.css'
 import { useEffect, useState } from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import LogoSvg from './assets/logo.svg?include'
+import LogoSvg from '@hashicorp/mktg-logos/corporate/hashicorp/primary/black.svg?include'
 import NavItem from './nav-item'
 import slugify from 'slugify'
 import HASHI_STACK_MENU_ITEMS from './data'
