@@ -65,10 +65,10 @@
     }
 
     &::before {
-      background: var(--brand-l3);
+      background: var(--brand-secondary);
     }
     &:active::before {
-      background: var(--brand-l2);
+      background: var(--brand-secondary);
     }
   }
 }

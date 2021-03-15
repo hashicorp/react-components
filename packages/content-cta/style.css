@@ -28,8 +28,8 @@
   }
 
   &.hasTheme {
-    border: 1px solid var(--brand-l2);
-    background: var(--brand-l3);
+    border: 1px solid var(--brand-secondary);
+    background: var(--brand-secondary);
 
     & h4,
     & p > a {
