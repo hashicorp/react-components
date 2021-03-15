@@ -23,6 +23,6 @@
   color: var(--white);
 
   &:hover {
-    background-color: var(--brand-d1);
+    background-color: var(--brand);
   }
 }

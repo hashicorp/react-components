@@ -70,7 +70,7 @@
       & label {
         color: var(--gray-5);
         & a {
-          color: var(--brand-on-dark);
+          color: var(--brand-link-on-dark);
         }
       }
 
@@ -84,7 +84,7 @@
   &[data-theme-bg='brand'] {
     & .wrapper {
       & label {
-        color: var(--brand-l3);
+        color: var(--brand-secondary);
         & a {
           color: var(--white);
           text-decoration: underline;

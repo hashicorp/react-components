@@ -2,7 +2,7 @@
 .g-content {
   /* Default highlight color (if no product is specified) */
   --highlight-color: var(--brand);
-  --highlight-color-text: var(--brand-text);
+  --highlight-color-text: var(--brand-link);
 
   margin: auto;
   color: var(--gray-2);
@@ -250,9 +250,9 @@
     }
 
     &.alert-info {
-      background-color: var(--brand-l3);
+      background-color: var(--brand-secondary);
       color: #416f8c; /* TODO non-standard color */
-      border: 1px solid var(--brand-l2);
+      border: 1px solid var(--brand-secondary);
     }
 
     &.alert-success {
