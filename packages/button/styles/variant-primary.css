@@ -1,5 +1,3 @@
-@import '~@hashicorp/react-global-styles/custom-properties/color.css';
-
 .g-btn.variant-primary {
   color: var(--white);
   border-width: 1px;

@@ -3,7 +3,7 @@
 
   & > .window-bar {
     background: #262930; /* to match nextjs-scripts/prism/style.css */
-    border-bottom: 1px solid var(--gray-3);
+    border-bottom: 1px solid var(--gray-2);
     line-height: 0;
     padding: 0 18px;
     width: 100%;
@@ -11,7 +11,7 @@
     border-top-right-radius: 4px;
 
     & > span {
-      background: var(--gray-3);
+      background: var(--gray-2);
       border-radius: 50%;
       display: inline-block;
       height: 12px;
@@ -39,7 +39,7 @@
     background: var(--gray-1);
     border: none;
     border-radius: 4px;
-    color: var(--gray-5);
+    color: var(--gray-4);
     cursor: pointer;
     display: flex;
     padding: 3px 8px 4px 8px;
@@ -53,7 +53,7 @@
       margin-left: 8px;
 
       & [fill] {
-        fill: var(--gray-5);
+        fill: var(--gray-4);
         transition: fill 0.2s ease-in-out;
       }
     }

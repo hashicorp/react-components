@@ -71,7 +71,7 @@
     height: 20px;
 
     & [stroke] {
-      stroke: var(--gray-6);
+      stroke: var(--gray-5);
     }
   }
 }
@@ -81,7 +81,7 @@
   color: var(--gray-2);
 
   &[data-not-used='true'] {
-    color: var(--gray-4);
+    color: var(--gray-3);
   }
 
   &[data-hovered='true'] {

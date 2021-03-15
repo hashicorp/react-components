@@ -8,14 +8,14 @@
   ],
   "dependencies": {
     "@hashicorp/react-button": "^2.2.4",
-    "@hashicorp/react-global-styles": "^4.4.2",
     "@hashicorp/react-inline-svg": "^1.0.2",
     "@hashicorp/react-link-wrap": "^1.0.2",
     "classnames": "^2.2.6",
     "isomorphic-unfetch": "^3.0.0"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/nextjs-scripts": ">=16.x",
+    "@hashicorp/mktg-global-styles": ">=2.x"
   },
   "keywords": [
     "component",

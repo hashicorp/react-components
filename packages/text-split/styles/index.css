@@ -8,7 +8,7 @@
   padding: var(--space-block-padding) 0;
 
   &.background-gray {
-    background: var(--gray-7);
+    background: var(--gray-6);
   }
 
   &.background-dark {
@@ -56,7 +56,7 @@
         color: var(--gray-2);
 
         &.theme-dark {
-          color: var(--gray-5);
+          color: var(--gray-4);
         }
 
         & + .g-type-body {

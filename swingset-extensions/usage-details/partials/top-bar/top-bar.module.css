@@ -3,7 +3,7 @@
   align-items: flex-end;
   flex-wrap: wrap;
   padding-bottom: 1em;
-  border-bottom: 1px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-5);
 }
 
 .heading {
@@ -43,7 +43,7 @@
     height: 18px;
 
     & [stroke] {
-      stroke: var(--gray-4);
+      stroke: var(--gray-3);
     }
   }
 

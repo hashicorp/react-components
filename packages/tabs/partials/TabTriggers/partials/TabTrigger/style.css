@@ -27,7 +27,7 @@
     padding-top: 19px;
     padding-bottom: 16px;
     border-bottom: 3px solid transparent;
-    color: var(--gray-4);
+    color: var(--gray-3);
     transition: color 0.2s;
     white-space: nowrap;
   }

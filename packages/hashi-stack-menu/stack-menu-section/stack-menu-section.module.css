@@ -20,7 +20,7 @@
     content: '';
     width: 1px;
     height: 100%;
-    background: var(--gray-6);
+    background: var(--gray-5);
     left: -64px;
   }
 }
