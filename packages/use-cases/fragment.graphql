@@ -1,0 +1,14 @@
+fragment useCasesFields on SbcUseCasesSectionRecord {
+  items {
+    image {
+      ...imageFields
+    }
+    title
+    description
+    link {
+      title
+      url
+      external
+    }
+  }
+}
