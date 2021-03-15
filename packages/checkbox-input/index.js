@@ -39,6 +39,10 @@ function CheckboxInput(props) {
 CheckboxInput.defaultProps = {
   theme: { background: 'light' },
   type: 'checkbox',
+  form: {
+    errors: {},
+    touched: {},
+  },
 }
 
 const SvgrCheckmark = (props) => (

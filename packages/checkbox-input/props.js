@@ -25,7 +25,6 @@ module.exports = {
   },
   form: {
     type: 'object',
-    required: true,
     description:
       'Form data. A non-empty error string `errors[field.name]` will be shown if present, but only if `touched[field.name]` is also truthy. The `form` prop is typically supplied by [Formik <Field/>](https://jaredpalmer.com/formik/docs/api/field).',
     properties: {
