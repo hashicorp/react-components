@@ -11,32 +11,8 @@
   & > a.link {
     display: block;
     position: relative;
-    color: var(--white);
-    background: linear-gradient(90deg, #1563ff 1.56%, #08368b 100%);
-
-    &.consul {
-      background: linear-gradient(90deg, #ca2171 1.56%, #8e134a 100%);
-    }
-
-    &.nomad {
-      background: linear-gradient(90deg, #00bc7f 1.56%, #005738 100%);
-    }
-
-    &.terraform {
-      background: linear-gradient(90deg, #5f43e9 1.56%, #2a1c73 100%);
-    }
-
-    &.vault {
-      background: linear-gradient(90deg, #6a6d7a 1.56%, #373942 100%);
-    }
-
-    &.boundary {
-      background: linear-gradient(90deg, #de464c 1.56%, #cf4a4f 100%);
-    }
-
-    &.waypoint {
-      background: linear-gradient(90deg, #14c6cb 1.56%, #15a7ab 100%);
-    }
+    color: var(--black);
+    background: var(--brand-secondary);
 
     & > .g-grid-container {
       display: flex;
@@ -55,9 +31,9 @@
         position: relative;
         white-space: nowrap;
         margin-right: 18px;
-        border: 1px solid var(--white);
+        border: 1px solid var(--brand);
         border-radius: 4px;
-        color: var(--white);
+        color: var(--black);
         padding: 3px 7px;
       }
 
@@ -76,6 +52,7 @@
 
         & > .link-text {
           display: none;
+          color: var(--brand-link);
 
           @media (min-width: 992px) {
             display: block;
@@ -103,32 +80,8 @@
     & > svg {
       display: block;
       & [stroke] {
-        stroke: #66a2ff;
+        stroke: var(--black);
       }
-    }
-
-    &.consul > svg [stroke] {
-      stroke: #f8d9e7;
-    }
-
-    &.nomad > svg [stroke] {
-      stroke: #6bd8b4;
-    }
-
-    &.terraform > svg [stroke] {
-      stroke: #a291f2;
-    }
-
-    &.vault > svg [stroke] {
-      stroke: #e5e6eb;
-    }
-
-    &.boundary > svg [stroke] {
-      stroke: #fff;
-    }
-
-    &.waypoint > svg [stroke] {
-      stroke: #fff;
     }
 
     &:hover {
