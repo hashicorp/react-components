@@ -2,7 +2,8 @@
   "name": "@hashicorp/react-use-cases",
   "description": "A set of three horizontally-aligned callout boxes containing an icon, a short title, and descriptive text, and a link.",
   "version": "2.0.1",
-  "author": "Hashicorp - RJ Spiker",
+  "author": "HashiCorp",
+  "contributors": ["RJ Spiker"],
   "dependencies": {
     "@hashicorp/react-image": "^3.0.4",
     "marked": "^0.7.0"
