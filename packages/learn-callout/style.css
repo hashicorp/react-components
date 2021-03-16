@@ -143,6 +143,6 @@
   }
 
   & .content label {
-    color: var(--brand); /* Overriden per product by themeClass */
+    color: var(--gray-3); /* Overriden per product by themeClass */
   }
 }
