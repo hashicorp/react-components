@@ -3,6 +3,8 @@ module.exports = {
     type: 'string',
     required: false,
     description: 'Input type. Defaults to `checkbox`',
+    options: ['checkbox', 'radio'],
+    default: 'checkbox',
   },
   label: {
     type: 'string',

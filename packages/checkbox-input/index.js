@@ -13,7 +13,7 @@ function CheckboxInput(props) {
     <div className="g-checkbox-input" data-theme-bg={theme.background}>
       <div className="wrapper">
         <span className="checkbox">
-          {field.value && <SvgrCheckmark />}
+          {field.value && type === 'checkbox' && <SvgrCheckmark />}
           <input
             id={inputId}
             type={type}
