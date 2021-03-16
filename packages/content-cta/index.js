@@ -1,4 +1,4 @@
-import withProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import Button from '@hashicorp/react-button'
 
 export default function ContentCta({
@@ -16,7 +16,7 @@ export default function ContentCta({
   }
   const isContentString = typeof content === 'string'
   const isContentRenderProp = typeof content === 'function'
-  const { themeClass } = withProductMeta(product)
+  const { themeClass } = useProductMeta(product)
 
   return (
     <div
