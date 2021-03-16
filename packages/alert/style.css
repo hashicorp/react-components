@@ -11,54 +11,64 @@
     & p {
       color: var(--gray-1);
     }
+
+    & svg {
+      & line {
+        stroke: var(--gray-1);
+      }
+
+      & path {
+        fill: var(--gray-1);
+      }
+    }
   }
 
   /* theming */
 
   &.error {
     & span {
-      border-color: #b91b1b;
+      border-color: var(--danger);
     }
 
     & svg {
       & line {
-        stroke: #b91b1b;
+        stroke: var(--danger);
       }
 
       & path {
-        fill: #b91b1b;
+        fill: var(--danger);
       }
     }
   }
 
   &.warning {
     & span {
-      border-color: #e6ab25;
+      border-color: var(--warning);
     }
 
     & svg {
       & line {
-        stroke: #e6ab25;
+        stroke: var(--warning);
       }
 
       & path {
-        fill: #e6ab25;
+        fill: var(--warning);
       }
     }
   }
 
   &.success {
     & span {
-      border-color: #3ec574;
+      border-color: var(--success);
     }
 
     & svg {
       & line {
-        stroke: #3ec574;
+        stroke: var(--success);
       }
 
       & path {
-        fill: #3ec574;
+        fill: var(--success);
       }
     }
   }
@@ -82,11 +92,11 @@
     margin-left: 12px;
 
     & line {
-      stroke: var(--brand);
+      stroke: var(--white);
     }
 
     & path {
-      fill: var(--brand);
+      fill: var(--white);
     }
   }
 }
