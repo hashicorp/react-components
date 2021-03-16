@@ -1,5 +1,5 @@
 .g-btn.variant-primary {
-  color: var(--brand-text-on-primary);
+  color: var(--brand-text-on-primary), var(--white);
   border-width: 1px;
   border-style: solid;
   border-color: var(--brand);
@@ -7,10 +7,10 @@
 
   & .icon svg {
     & [fill] {
-      fill: var(--brand-text-on-primary);
+      fill: var(--brand-text-on-primary), var(--white);
     }
     & [stroke] {
-      stroke: var(--brand-text-on-primary);
+      stroke: var(--brand-text-on-primary) . var(--white);
     }
   }
 
