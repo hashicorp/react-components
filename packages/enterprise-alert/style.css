@@ -19,7 +19,7 @@
       background: var(--brand);
     }
     & p a {
-      color: var(--brand);
+      color: var(--brand-link);
     }
   }
 

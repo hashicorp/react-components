@@ -132,10 +132,10 @@
   }
 
   &[data-is-active='true'] {
-    color: var(--brand);
+    color: var(--brand-link);
 
     &:hover {
-      color: var(--brand);
+      color: var(--brand-link);
     }
   }
 
@@ -170,10 +170,10 @@
   &[data-is-active='true'] {
     & svg {
       & [stroke] {
-        stroke: var(--brand);
+        stroke: var(--brand-link);
       }
       & [fill] {
-        fill: var(--brand);
+        fill: var(--brand-link);
       }
     }
   }
