@@ -10,7 +10,7 @@
       fill: var(--brand-text-on-primary), var(--white);
     }
     & [stroke] {
-      stroke: var(--brand-text-on-primary) . var(--white);
+      stroke: var(--brand-text-on-primary), var(--white);
     }
   }
 
