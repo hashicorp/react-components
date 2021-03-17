@@ -77,7 +77,7 @@
   composes: card;
 
   & a {
-    color: var(--brand);
+    color: var(--brand-link);
   }
 
   & :global {
