@@ -31,7 +31,7 @@
   }
 
   & .downloadLink {
-    color: var(--brand);
+    color: var(--brand-link);
     margin-right: 16px;
   }
 }
