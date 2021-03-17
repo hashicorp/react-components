@@ -43,7 +43,7 @@
           }
 
           & a {
-            color: var(--brand);
+            color: var(--brand-link);
             position: relative;
             transition: color 0.3s;
             text-decoration: none;
@@ -61,7 +61,7 @@
             }
 
             &:hover {
-              color: var(--brand);
+              color: var(--brand-link);
 
               &::after {
                 opacity: 1;
