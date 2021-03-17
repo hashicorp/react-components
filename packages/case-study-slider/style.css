@@ -95,6 +95,9 @@
 
       & .slider-frame {
         & .case-study {
+          & .dark {
+            color: white;
+          }
           & .feature-image {
             margin-bottom: 2rem;
 

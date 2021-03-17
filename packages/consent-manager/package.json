@@ -8,7 +8,7 @@
     "Jeff Escalante"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^2.2.6",
+    "@hashicorp/react-button": "^4.1.0",
     "@hashicorp/react-toggle": "^2.1.0",
     "@segment/in-eu": "^0.2.1",
     "js-cookie": "^2.2.0"
