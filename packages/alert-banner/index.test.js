@@ -24,21 +24,13 @@ describe('<AlertBanner />', () => {
   })
 
   it('should close when clicking on close', () => {
-    let didClose = false
-    class AlertBannerText extends AlertBanner {
-      onClose() {
-        didClose = true
-      }
-    }
     const { container } = render(
-      <AlertBannerText
-        text="text"
-        tag="tag"
-        linkText="https://hashicorp.com/"
-      />
+      <AlertBanner text="text" tag="tag" linkText="https://hashicorp.com/" />
     )
+    const banner = container.querySelector('.g-alert-banner')
+    expect(banner.classList.contains('show')).toEqual(true)
     container.querySelector('.close').click()
-    expect(didClose).toBe(true)
+    expect(banner.classList.contains('show')).toEqual(false)
   })
 
   describe('with an expiration date set', () => {
