@@ -7,7 +7,7 @@
 
   & .tag {
     background: black;
-    color: white;
+    color: var(--brand-text-on-primary, --white);
     border-radius: 3px;
     text-transform: uppercase;
     padding: 6px 8px;
@@ -34,7 +34,13 @@
 
     & .tag {
       margin-right: 0;
-      background: #333;
+      background: var(--gray-2);
+    }
+  }
+
+  &.inline.themed {
+    & .tag {
+      background: var(--brand);
     }
   }
 }
