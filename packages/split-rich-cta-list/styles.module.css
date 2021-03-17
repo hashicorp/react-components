@@ -31,7 +31,6 @@
       width: 100%;
     }
 
-
     & > li {
       padding-left: 16px;
       @media (width < 910px) {
@@ -44,6 +43,7 @@
         transition: 0.25s ease;
         transition-property: background-color;
         width: 100%;
+        color: var(--black);
 
         &:hover {
           background-color: var(--gray-6);
@@ -60,31 +60,6 @@
           & h5 {
             margin-bottom: 8px;
             margin-top: 0;
-            color: var(--brand);
-            &.terraform {
-              color: var(--terraform);
-            }
-            &.consul {
-              color: var(--consul);
-            }
-            &.nomad {
-              color: var(--nomad);
-            }
-            &.vault {
-              color: var(--vault);
-            }
-            &.vagrant {
-              color: var(--vagrant);
-            }
-            &.packer {
-              color: var(--packer);
-            }
-            &.waypoint {
-              color: var(--waypoint);
-            }
-            &.boundary {
-              color: var(--boundary);
-            }
           }
 
           & p.bodySmall {
