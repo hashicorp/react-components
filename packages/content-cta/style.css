@@ -28,11 +28,10 @@
   }
 
   &.hasTheme {
-    border: 1px solid var(--brand-secondary);
     background: var(--brand-secondary);
 
     & p > a {
-      color: var(--brand);
+      color: var(--brand-link);
     }
   }
 }
