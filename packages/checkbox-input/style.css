@@ -9,7 +9,7 @@
       color: var(--gray-2);
       cursor: pointer;
       & a {
-        color: var(--brand);
+        color: var(--brand-link);
       }
     }
 
