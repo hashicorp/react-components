@@ -49,54 +49,6 @@
     }
   }
 
-  &.consul-pink {
-    & .help-text svg {
-      & line {
-        stroke: var(--consul);
-      }
-
-      & path {
-        fill: var(--consul);
-      }
-    }
-
-    & .carousel .progress-bar span {
-      background: var(--consul);
-    }
-  }
-
-  &.nomad-green {
-    & .help-text svg {
-      & line {
-        stroke: var(--nomad);
-      }
-
-      & path {
-        fill: var(--nomad);
-      }
-    }
-
-    & .carousel .progress-bar span {
-      background: var(--nomad);
-    }
-  }
-
-  &.terraform-purple {
-    & .help-text svg {
-      & line {
-        stroke: var(--terraform);
-      }
-
-      & path {
-        fill: var(--terraform);
-      }
-    }
-
-    & .carousel .progress-bar span {
-      background: var(--terraform);
-    }
-  }
-
   &.light {
     background: var(--white);
     color: var(--black);
@@ -375,6 +327,13 @@
 
       & svg {
         margin: 0 0 1px 12px;
+        & line {
+          stroke: var(--brand);
+        }
+
+        & path {
+          fill: var(--brand);
+        }
 
         @media (max-width: 1119px) {
           margin-left: 6px;
