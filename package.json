@@ -33,6 +33,7 @@
     "hard-reset": "rm -rf node_modules && rm -rf .next && lerna clean -y && npm i && npm run bs",
     "lint": "next-hashicorp lint",
     "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
+    "release:canary-force": "npm run release:check-auth && lerna publish --preid=next --canary --force-publish",
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
     "release:check-auth": "./scripts/release-check-npm-auth.sh",
     "release:check-branch": "./scripts/release-check-branch.sh",
