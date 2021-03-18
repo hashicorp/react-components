@@ -32,7 +32,7 @@
 
   &[disabled] {
     &.background-light,
-    &.background-brand-l3 {
+    &.background-brand-secondary {
       color: rgba(0, 0, 0, 0.3);
       & .icon svg {
         & [fill] {
@@ -57,8 +57,8 @@
     }
   }
 
-  /* Shared styles for all secondary buttons on brand-l3 background */
-  &.background-brand-l3 {
+  /* Shared styles for all secondary buttons on brand-secondary background */
+  &.background-brand-secondary {
     &::before {
       background: var(--brand);
     }
@@ -105,7 +105,7 @@ See https://gist.github.com/zchsh/5eb843af4ef3a6d11b86ccb7af2251fd
 .g-btn.variant-secondary:not([disabled]) {
   /* Brand -- Neutral */
   &.brand-neutral {
-    &.background-brand-l3 {
+    &.background-brand-secondary {
       &::before {
         background: var(--black);
       }
