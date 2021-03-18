@@ -36,7 +36,7 @@
 
   &[disabled] {
     &.background-light,
-    &.background-brand-l3 {
+    &.background-brand-secondary {
       color: rgba(0, 0, 0, 0.3);
       & .icon svg {
         & [fill] {
