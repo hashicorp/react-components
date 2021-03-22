@@ -103,14 +103,12 @@ async function generateStaticProps(
       // Return all the props
 
       return {
-        props: {
-          versions,
-          currentPath,
-          frontMatter: doc.metadata,
-          githubFileUrl,
-          mdxSource,
-          navData: navData.navData,
-        },
+        versions,
+        currentPath,
+        frontMatter: doc.metadata,
+        githubFileUrl,
+        mdxSource,
+        navData: navData.navData,
       }
     }
   }
