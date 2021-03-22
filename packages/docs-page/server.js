@@ -2,6 +2,12 @@ import fs from 'fs'
 import path from 'path'
 import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
+import {
+  loadVersionListFromManifest,
+  loadVersionedDocument,
+  loadVersionedNavData,
+  getVersionFromPath,
+} from '@hashicorp/versioned-docs/server'
 import renderPageMdx from './render-page-mdx'
 
 // So far, we have a pattern of using a common value for
@@ -51,12 +57,66 @@ async function generateStaticProps(
     remarkPlugins = [],
     scope, // optional, I think?
     paramId = DEFAULT_PARAM_ID,
+    basePath,
+    currentVersion,
   } = {}
 ) {
-  //  Read in the nav data, and resolve local filePaths
-  const navData = await resolveNavData(navDataFile, localContentDir)
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
+
+  let versions = []
+
+  // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
+  if (process.env.ENABLE_VERSIONED_DOCS) {
+    const versionFromPath = getVersionFromPath(params.page)
+
+    versions = [
+      { label: `${currentVersion} (latest)`, name: 'latest' },
+      ...(await loadVersionListFromManifest()),
+    ]
+
+    if (versionFromPath) {
+      let doc
+      const [{ mdxSource }, navData] = await Promise.all([
+        loadVersionedDocument(
+          product.slug,
+          [basePath, ...params.page].join('/')
+        ).then((docResult) => {
+          doc = docResult
+          const mdx = renderPageMdx(doc.markdownSource, {
+            productName: product.name,
+            additionalComponents,
+            remarkPlugins,
+            scope,
+          })
+
+          return mdx
+        }),
+        loadVersionedNavData(product.slug, versionFromPath),
+      ])
+
+      const currentPath = params.page ? params.page.join('/') : ''
+
+      // TODO: construct the correct path to the versioned file
+      // Construct the githubFileUrl, used for "Edit this page" link
+      const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/master/website/`
+      // Return all the props
+
+      return {
+        props: {
+          versions,
+          currentPath,
+          frontMatter: doc.metadata,
+          githubFileUrl,
+          mdxSource,
+          navData: navData.navData,
+        },
+      }
+    }
+  }
+
+  //  Read in the nav data, and resolve local filePaths
+  const navData = await resolveNavData(navDataFile, localContentDir)
   //  Get the navNode that matches this path
   const navNode = getNodeFromPath(currentPath, navData, localContentDir)
   //  Read in and process MDX content from the navNode's filePath
@@ -71,7 +131,14 @@ async function generateStaticProps(
   // Construct the githubFileUrl, used for "Edit this page" link
   const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
   // Return all the props
-  return { currentPath, frontMatter, githubFileUrl, mdxSource, navData }
+  return {
+    currentPath,
+    frontMatter,
+    githubFileUrl,
+    mdxSource,
+    navData,
+    versions,
+  }
 }
 
 async function validateNavData(navData, localContentDir) {

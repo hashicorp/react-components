@@ -20,6 +20,7 @@ export function DocsPageWrapper({
   githubFileUrl,
   product: { name, slug },
   showEditPage = true,
+  versionSelect,
 }) {
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -43,6 +44,7 @@ export function DocsPageWrapper({
       {/* TODO: we can probably remove several of these wrappers */}
       <div className="content-wrap g-container">
         <div id="sidebar" role="complementary">
+          {versionSelect}
           <div className="nav docs-nav">
             <DocsSidenav
               product={slug}
@@ -85,6 +87,7 @@ export default function DocsPage({
   baseRoute,
   showEditPage = true,
   additionalComponents,
+  versionSelect,
   staticProps: { mdxSource, frontMatter, currentPath, navData, githubFileUrl },
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
@@ -103,6 +106,7 @@ export default function DocsPage({
       product={product}
       showEditPage={showEditPage}
       baseRoute={baseRoute}
+      versionSelect={versionSelect}
     >
       {content}
     </DocsPageWrapper>
