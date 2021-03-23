@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-function SvgColor(props) {
+function SvgTerraformLogoColor(props) {
   return (
     <div className="g-svg">
       <img
@@ -17,6 +17,7 @@ function SvgColor(props) {
         xmlns="http://www.w3.org/2000/svg"
         {...props}
       >
+        <title>Terraform Logo</title>
         <g clipPath="url(#color_svg__clip0)">
           <path
             d="M98.46 30.46H87.21v-6.72h30.121v6.72h-11.25v33.6h-7.62v-33.6z"
@@ -43,4 +44,4 @@ function SvgColor(props) {
   )
 }
 
-export default SvgColor
+export default SvgTerraformLogoColor
