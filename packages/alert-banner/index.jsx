@@ -28,7 +28,7 @@ class AlertBanner extends Component {
         className={classNames(
           'g-alert-banner',
           product.themeClass,
-          { show: show },
+          { show },
           { vault: product.slug === 'vault' }
         )}
         ref={this.banner}
