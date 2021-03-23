@@ -2,6 +2,7 @@ import { Component, createRef } from 'react'
 import CloseIcon from './close-icon'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
+import classNames from 'classnames'
 import { withProductMeta } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 
 import fragment from './fragment.graphql'
@@ -24,9 +25,12 @@ class AlertBanner extends Component {
 
     return (
       <div
-        className={`g-alert-banner ${product.themeClass} ${
-          show ? 'show' : ''
-        } `}
+        className={classNames(
+          'g-alert-banner',
+          product.themeClass,
+          { show: show },
+          { vault: product.slug === 'vault' }
+        )}
         ref={this.banner}
       >
         <a href={url} className="link" onClick={() => this.trackEvent('click')}>
@@ -93,6 +97,8 @@ class AlertBanner extends Component {
   }
 }
 
-AlertBanner.fragmentSpec = { fragment }
+const AlertBannerWithProductMeta = withProductMeta(AlertBanner)
 
-export default withProductMeta(AlertBanner)
+AlertBannerWithProductMeta.fragmentSpec = { fragment }
+
+export default AlertBannerWithProductMeta
