@@ -1,7 +1,7 @@
 import LinkWrap from '@hashicorp/react-link-wrap'
 
 import SvgrConsulLogoColour from '../../icons/consul-logo-color.svgr.js'
-import SvgrHCPLogoBlackWhite from '../../icons/hcp-logo-black-white.svgr.js'
+import SvgrHCPLogoBlackWhite from '../../icons/hcp-logo-black.svgr.js'
 import SvgrNomadLogoColour from '../../icons/nomad-logo-color.svgr.js'
 import SvgrPackerLogoColour from '../../icons/packer-logo-color.svgr.js'
 import SvgrTerraformLogoColour from '../../icons/terraform-logo-color.svgr.js'
