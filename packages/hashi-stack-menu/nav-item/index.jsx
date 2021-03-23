@@ -80,7 +80,7 @@ function DropdownButton({ active, onClick, children }) {
         src={
           active
             ? require('./../assets/icon-dropdown-gray-1.svg')
-            : require('./../assets/icon-dropdown-gray-4.svg')
+            : require('./../assets/icon-dropdown-gray-3.svg')
         }
       />
     </button>

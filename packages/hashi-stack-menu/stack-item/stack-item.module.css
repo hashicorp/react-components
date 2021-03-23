@@ -6,6 +6,11 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 0.25rem;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .itemLink {

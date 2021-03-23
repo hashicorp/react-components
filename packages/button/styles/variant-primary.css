@@ -30,7 +30,7 @@
   /* Disabled styles (shared across all style variations) */
   &[disabled] {
     &.background-light,
-    &.background-brand-l3 {
+    &.background-brand-secondary {
       border-color: transparent;
       background-color: rgba(0, 0, 0, 0.14);
     }
