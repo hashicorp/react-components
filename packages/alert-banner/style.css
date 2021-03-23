@@ -101,3 +101,9 @@
     }
   }
 }
+
+.vault {
+  & .tag {
+    border-color: var(--black) !important;
+  }
+}
