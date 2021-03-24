@@ -92,7 +92,7 @@ async function generateStaticProps(
 
           return mdx
         }),
-        loadVersionedNavData(product.slug, versionFromPath),
+        loadVersionedNavData(product.slug, basePath, versionFromPath),
       ])
 
       const currentPath = params.page ? params.page.join('/') : ''
