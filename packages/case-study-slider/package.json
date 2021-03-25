@@ -11,7 +11,9 @@
     "@hashicorp/react-image": "^2.0.3"
   },
   "peerDependencies": {
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
   },
   "publishConfig": {
     "access": "public"

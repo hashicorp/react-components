@@ -36,11 +36,11 @@
       margin-right: 0;
       background: var(--gray-2);
     }
-  }
 
-  &.inline.themed {
+  &.themed {
     & .tag {
       background: var(--brand);
     }
+  }
   }
 }
