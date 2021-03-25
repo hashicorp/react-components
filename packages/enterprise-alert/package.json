@@ -11,7 +11,8 @@
     "@hashicorp/js-utils": "^1.0.10"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=16.x"
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
   },
   "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/enterprise-alert",
   "license": "MPL-2.0",

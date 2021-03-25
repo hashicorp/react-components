@@ -14,8 +14,8 @@
     "isomorphic-unfetch": "^3.0.0"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=16.x",
-    "@hashicorp/mktg-global-styles": ">=2.x"
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
   },
   "keywords": [
     "component",
