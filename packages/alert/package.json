@@ -23,6 +23,7 @@
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=16.x"
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
   }
 }
