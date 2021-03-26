@@ -45,15 +45,17 @@ export function DocsPageWrapper({
       {/* TODO: we can probably remove several of these wrappers */}
       <div className="content-wrap g-container">
         <div id="sidebar" role="complementary">
-          <div
-            style={{
-              paddingLeft: '5px',
-              marginBottom: '1rem',
-              maxWidth: '90%',
-            }}
-          >
-            <VersionSelect versions={versions} />
-          </div>
+          {process.env.ENABLE_VERSIONED_DOCS ? (
+            <div
+              style={{
+                paddingLeft: '5px',
+                marginBottom: '1rem',
+                maxWidth: '90%',
+              }}
+            >
+              <VersionSelect versions={versions} />
+            </div>
+          ) : null}
           <div className="nav docs-nav">
             <DocsSidenav
               product={slug}
