@@ -11,6 +11,7 @@
     "@hashicorp/react-docs-sidenav": "^7.0.0",
     "@hashicorp/react-head": "^1.2.0",
     "@hashicorp/react-search": "^4.2.0",
+    "@hashicorp/versioned-docs": "^0.0.4",
     "fs-exists-sync": "0.1.0",
     "gray-matter": "4.0.2",
     "js-yaml": "3.14.0",
