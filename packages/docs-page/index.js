@@ -5,6 +5,7 @@ import HashiHead from '@hashicorp/react-head'
 import Head from 'next/head'
 import hydrate from 'next-mdx-remote/hydrate'
 import { SearchProvider } from '@hashicorp/react-search'
+import { VersionSelect } from '@hashicorp/versioned-docs/client'
 import SearchBar from './search-bar'
 import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
@@ -20,7 +21,7 @@ export function DocsPageWrapper({
   githubFileUrl,
   product: { name, slug },
   showEditPage = true,
-  versionSelect,
+  versions,
 }) {
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -44,7 +45,15 @@ export function DocsPageWrapper({
       {/* TODO: we can probably remove several of these wrappers */}
       <div className="content-wrap g-container">
         <div id="sidebar" role="complementary">
-          {versionSelect}
+          <div
+            style={{
+              paddingLeft: '5px',
+              marginBottom: '1rem',
+              maxWidth: '90%',
+            }}
+          >
+            <VersionSelect versions={versions} />
+          </div>
           <div className="nav docs-nav">
             <DocsSidenav
               product={slug}
@@ -87,8 +96,14 @@ export default function DocsPage({
   baseRoute,
   showEditPage = true,
   additionalComponents,
-  versionSelect,
-  staticProps: { mdxSource, frontMatter, currentPath, navData, githubFileUrl },
+  staticProps: {
+    mdxSource,
+    frontMatter,
+    currentPath,
+    navData,
+    githubFileUrl,
+    versions,
+  },
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
@@ -106,7 +121,7 @@ export default function DocsPage({
       product={product}
       showEditPage={showEditPage}
       baseRoute={baseRoute}
-      versionSelect={versionSelect}
+      versions={versions}
     >
       {content}
     </DocsPageWrapper>
