@@ -20,7 +20,7 @@
   padding: 8px 16px;
   cursor: pointer;
   background-color: var(--brand);
-  color: var(--white);
+  color: var(--brand-text-on-primary,--white);
 
   &:hover {
     background-color: var(--brand);
