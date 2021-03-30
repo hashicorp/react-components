@@ -95,12 +95,16 @@
     padding: 23px;
     text-align: center;
 
-    & svg {
-      margin-left: 8px;
-    }
+    & .arrow {
+      display: inline;
 
-    & path {
-      fill: var(--black);
+      & svg {
+        margin-left: 8px;
+      }
+
+      & path {
+        fill: var(--black);
+      }
     }
   }
 }
