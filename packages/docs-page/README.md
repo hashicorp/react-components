@@ -30,17 +30,20 @@ function DocsLayout(props) {
 }
 
 export async function getStaticPaths() {
-  const paths = await generateStaticPaths(NAV_DATA, CONTENT_DIR)
+  const paths = await generateStaticPaths({
+    navDataFile: NAV_DATA,
+    localContentDir: CONTENT_DIR,
+  })
   return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
-  const props = await generateStaticProps(
-    NAV_DATA,
-    CONTENT_DIR,
+  const props = await generateStaticProps({
+    navDataFile: NAV_DATA,
+    localContentDir: CONTENT_DIR,
     params,
-    PRODUCT
-  )
+    product: PRODUCT,
+  })
   return { props }
 }
 
