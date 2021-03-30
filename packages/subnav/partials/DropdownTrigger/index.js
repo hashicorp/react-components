@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import SvgChevronDown from '../../icons/chevron-down.svg.js'
+import SvgChevronDown from './icons/chevron-down.svg?include'
 
 function DropdownTrigger(props) {
   const { onClick, isCollapsed, text, product, isActive } = props
