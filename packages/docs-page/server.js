@@ -14,7 +14,7 @@ async function generateStaticPaths({
   navDataFile,
   localContentDir,
   paramId = DEFAULT_PARAM_ID,
-} = {}) {
+}) {
   // Fetch and parse navigation data
   const navData = await resolveNavData(navDataFile, localContentDir)
   const paths = getPathsFromNavData(navData, paramId)
@@ -50,7 +50,7 @@ async function generateStaticProps({
   remarkPlugins = [],
   scope, // optional, I think?
   paramId = DEFAULT_PARAM_ID,
-} = {}) {
+}) {
   //  Read in the nav data, and resolve local filePaths
   const navData = await resolveNavData(navDataFile, localContentDir)
   // Build the currentPath from page parameters
