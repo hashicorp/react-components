@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-alert-banner",
   "description": "Render an alert banner with text and a link",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert-banner%22",
   "contributors": [
@@ -13,8 +13,8 @@
     "slugify": "1.3.4"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=17.x",
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x"
   },
   "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/alert-banner",
   "license": "MPL-2.0",

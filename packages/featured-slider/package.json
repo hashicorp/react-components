@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-featured-slider",
   "description": "featured slider for case studies",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Nicole Forrester"
@@ -9,12 +9,12 @@
   "main": "index.js",
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/react-button": "^4.1.0",
+    "@hashicorp/react-button": "^5.0.0",
     "@hashicorp/react-image": "^2.0.3"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": "^16.9.0"
   },
   "publishConfig": {

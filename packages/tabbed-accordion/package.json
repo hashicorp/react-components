@@ -1,18 +1,18 @@
 {
   "name": "@hashicorp/react-tabbed-accordion",
   "description": "Tabs with accordions nested inside",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-accordion": "^1.0.6",
-    "@hashicorp/react-tabs": "^4.0.0"
+    "@hashicorp/react-accordion": "^2.0.0",
+    "@hashicorp/react-tabs": "^5.0.0"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=17.x",
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x"
   },
   "keywords": [],
   "license": "MPL-2.0",

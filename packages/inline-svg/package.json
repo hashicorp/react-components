@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-inline-svg",
   "description": "Renders an SVG from a given string",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22inline-svg%22",
   "contributors": [
@@ -16,9 +16,9 @@
   "license": "MPL-2.0",
   "main": "index.jsx",
   "peerDependencies": {
-    "react": "^16.9.0",
+    "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "react": "^16.9.0"
   },
   "publishConfig": {
     "access": "public"

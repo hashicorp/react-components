@@ -1,17 +1,17 @@
 {
   "name": "@hashicorp/react-call-to-action",
   "description": "Display a title, content, and links in a call-to-action format",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^4.1.0"
+    "@hashicorp/react-button": "^5.0.0"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=17.x",
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x"
   },
   "keywords": [
     "call to action",

@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-section-header",
   "description": "very simple headline & subheading for a section of a page",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante"
@@ -11,9 +11,9 @@
   },
   "license": "MPL-2.0",
   "peerDependencies": {
-    "react": "^16.9.0",
+    "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "react": "^16.9.0"
   },
   "publishConfig": {
     "access": "public"

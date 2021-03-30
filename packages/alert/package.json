@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-alert",
   "description": "A small alert banner with a link",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert%22",
   "contributors": [
@@ -23,7 +23,7 @@
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">=17.x",
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x"
   }
 }
