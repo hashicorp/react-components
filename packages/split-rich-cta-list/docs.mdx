@@ -3,7 +3,7 @@ componentName: 'SplitRichCTAList'
 ---
 
 <LiveComponent>{`<SplitRichCTAList
-  brand="terraform"
+  product="terraform"
   heading="Get Started with Terraform Modules on AWS"
   items={[
     {
@@ -25,7 +25,6 @@ componentName: 'SplitRichCTAList'
   ]}
 />`}</LiveComponent>
 
-
 #### SplitRichCTAList Props
 
 There are many props that can be used to customize this component, all of which are listed below:
@@ -40,7 +39,7 @@ The `SplitRichCTAList` is not opinionated about the container it is placed in (`
 
 ```
 <section className="g-grid-container">
-  <SplitRichCTAList brand="terraform" heading="Get Started with Terraform Modules on AWS" items={[]} />
+  <SplitRichCTAList product="terraform" heading="Get Started with Terraform Modules on AWS" items={[]} />
 </section>
 ```
 
@@ -52,14 +51,16 @@ Sane usage of this component would have you `require` in the SVG where this is b
 
 ```jsx
 <SplitRichCTAList
-  brand="terraform"
+  product="terraform"
   heading="Get Started with Terraform Modules on AWS"
   items={[
     {
       icon: require('./img/my-svg.svg'),
       title: 'Amazon Virtual Private Cloud (VPC) for Terraform on AWS',
-      description: 'Provision Amazon VPC resources, managed by Terraform, on the AWS Cloud.',
-      linkUrl: 'https://registry.terraform.io/modules/aws-quickstart/vpc/aws/latest',
+      description:
+        'Provision Amazon VPC resources, managed by Terraform, on the AWS Cloud.',
+      linkUrl:
+        'https://registry.terraform.io/modules/aws-quickstart/vpc/aws/latest',
     },
   ]}
 />

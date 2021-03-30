@@ -2,7 +2,7 @@
 .g-content {
   /* Default highlight color (if no product is specified) */
   --highlight-color: var(--brand);
-  --highlight-color-text: var(--brand-text);
+  --highlight-color-text: var(--brand-link);
 
   margin: auto;
   color: var(--gray-2);
@@ -30,41 +30,45 @@
   /* Headings */
 
   & h1 {
-    color: var(--gray-1);
+    color: var(--black);
     margin-top: 56px;
     margin-bottom: 24px;
   }
 
   & h2 {
-    color: var(--gray-1);
+    color: var(--black);
     margin-top: 40px;
     margin-bottom: 24px;
   }
 
   & h3 {
-    color: var(--gray-1);
+    color: var(--black);
     margin-top: 40px;
     margin-bottom: 8px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--gray-6);
+    border-bottom: 1px solid var(--gray-5);
   }
 
   & h4 {
-    color: var(--gray-1);
+    color: var(--black);
     margin-top: 32px;
     margin-bottom: 16px;
   }
 
   & h5 {
-    color: var(--gray-1);
+    color: var(--black);
     margin-top: 24px;
     margin-bottom: 16px;
   }
 
   & h6 {
-    color: var(--gray-3);
+    color: var(--black);
     margin-top: 20px;
     margin-bottom: 16px;
+  }
+
+  & strong {
+    color: var(--black);
   }
 
   /*
@@ -175,7 +179,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        color: var(--gray-5);
+        color: var(--gray-4);
         margin-left: calc(-1 * 1.3rem);
         width: 1.3rem;
       }
@@ -250,27 +254,19 @@
     }
 
     &.alert-info {
-      background-color: var(--brand-l3);
-      color: #416f8c; /* TODO non-standard color */
-      border: 1px solid var(--brand-l2);
+      background-color: var(--info-l2);
     }
 
     &.alert-success {
-      background-color: #e5fbe9; /* TODO non-standard color */
-      color: #438642; /* TODO non-standard color */
-      border: 1px solid #cff8d1; /* TODO non-standard color */
+      background-color: var(--success-l2);
     }
 
     &.alert-warning {
       background-color: var(--warning-l2);
-      color: #866d42; /* TODO non-standard color */
-      border: 1px solid #f8ebcf; /* TODO non-standard color */
     }
 
     &.alert-danger {
-      background-color: #fbe5e5; /* TODO non-standard color */
-      color: #864242; /* TODO non-standard color */
-      border: 1px solid #f8cfcf; /* TODO non-standard color */
+      background-color: var(--danger-l2);
     }
   }
 
@@ -279,7 +275,7 @@
     margin: 2em 0;
     padding-left: 2em;
     font-style: italic;
-    border-left: 6px solid var(--gray-7);
+    border-left: 6px solid var(--gray-6);
     & em {
       font-style: normal;
     }

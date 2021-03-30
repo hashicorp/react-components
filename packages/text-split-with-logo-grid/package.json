@@ -14,5 +14,10 @@
     "@hashicorp/mktg-assets": "1.0.0-alpha.3",
     "@hashicorp/react-image": "^2.0.3",
     "@hashicorp/react-text-split": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
   }
 }

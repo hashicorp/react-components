@@ -7,10 +7,11 @@
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^2.2.4"
+    "@hashicorp/react-button": "^4.1.0"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
   },
   "keywords": [
     "call to action",

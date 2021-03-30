@@ -158,7 +158,7 @@ export default class ConsentPreferences extends Component {
             >
               <path
                 d="M12.293.293L7 5.586 1.707.293A1 1 0 1 0 .293 1.707l6 6a.997.997 0 0 0 1.414 0l6-6A1 1 0 0 0 12.293.293"
-                fill="#1563FF"
+                fill="var(--brand)"
                 fillRule="evenodd"
               />
             </svg>

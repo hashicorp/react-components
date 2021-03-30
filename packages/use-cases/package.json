@@ -1,0 +1,26 @@
+{
+  "name": "@hashicorp/react-use-cases",
+  "description": "A set of three horizontally-aligned callout boxes containing an icon, a short title, and descriptive text, and a link.",
+  "version": "2.0.1",
+  "author": "HashiCorp",
+  "contributors": [
+    "RJ Spiker"
+  ],
+  "dependencies": {
+    "@hashicorp/react-image": "^3.0.4",
+    "@hashicorp/react-inline-svg": "^5.0.0",
+    "marked": "^0.7.0"
+  },
+  "license": "MPL-2.0",
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}

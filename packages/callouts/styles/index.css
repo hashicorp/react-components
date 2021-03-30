@@ -15,7 +15,7 @@
     background: var(--white);
   }
   &.theme-gray {
-    background: var(--gray-7);
+    background: var(--gray-6);
   }
   &.theme-dark {
     background: var(--black);
@@ -48,10 +48,10 @@
         max-width: 38em;
         &.theme-light,
         &.theme-gray {
-          color: var(--gray-3);
+          color: var(--gray-2);
         }
         &.theme-dark {
-          color: var(--gray-5);
+          color: var(--gray-4);
         }
         &.centered {
           text-align: center;

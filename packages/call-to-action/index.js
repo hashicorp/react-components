@@ -10,7 +10,7 @@ function CallToAction(props) {
     throw new Error('<CallToAction /> `links` must have both a title and a URL')
   }
   return (
-    <div className={`g-call-to-action variant-${variant} theme-${theme}}`}>
+    <div className={`g-call-to-action variant-${variant} theme-${theme}`}>
       <div className="g-grid-container">
         {heading && (
           <h2 data-testid="heading" className="g-type-display-2">

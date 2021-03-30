@@ -55,6 +55,7 @@ function Button({
         `variant-${themeObj.variant}`,
         themeClass,
         { 'brand-neutral': themeObj.brand === 'neutral' },
+        `background-${themeObj.background}`,
         className
       )}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
@@ -77,7 +78,9 @@ function ButtonIcon(props) {
   const SvgComponent = () => <InlineSvg src={svg} />
   return (
     <span
-      className={`icon at-${position} ${isAnimated ? 'is-animated' : ''}`}
+      className={classNames('icon', `at-${position}`, {
+        'is-animated': isAnimated,
+      })}
       data-animation={animationId}
     >
       <SvgComponent />

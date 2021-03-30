@@ -2,6 +2,9 @@ import { Component, createRef } from 'react'
 import CloseIcon from './close-icon'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
+import classNames from 'classnames'
+import { withProductMeta } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+
 import fragment from './fragment.graphql'
 
 class AlertBanner extends Component {
@@ -16,20 +19,21 @@ class AlertBanner extends Component {
 
   render() {
     const { show } = this.state
-    const { url, tag, theme, text, linkText } = this.props
+    const { url, tag, product, text, linkText } = this.props
 
     const tagClass = tag.length > 3 ? 'has-large-tag' : ''
 
     return (
       <div
-        className={`g-alert-banner ${theme} ${show ? 'show' : ''} `}
+        className={classNames(
+          'g-alert-banner',
+          product.themeClass,
+          { show },
+          { vault: product.slug === 'vault' }
+        )}
         ref={this.banner}
       >
-        <a
-          href={url}
-          className={`link ${theme}`}
-          onClick={() => this.trackEvent('click')}
-        >
+        <a href={url} className="link" onClick={() => this.trackEvent('click')}>
           <span className={`g-grid-container ${tagClass}`}>
             <span className="tag g-type-label">{tag}</span>
             <span className={`text g-type-body-small-strong ${tagClass}`}>
@@ -39,7 +43,7 @@ class AlertBanner extends Component {
             </span>
           </span>
         </a>
-        <button className={`close ${theme}`} onClick={() => this.onClose()}>
+        <button className="close" onClick={() => this.onClose()}>
           <CloseIcon />
           <span className="visually-hidden">Dismiss alert</span>
         </button>
@@ -81,18 +85,20 @@ class AlertBanner extends Component {
 
   trackEvent(type) {
     if (window.analytics) {
-      const { tag, theme, text, linkText } = this.props
+      const { tag, product, text, linkText } = this.props
 
       window.analytics.track(type.charAt(0).toUpperCase() + type.slice(1), {
         category: 'Alert Banner',
         label: `${text} - ${linkText} | ${type}`,
         tag: tag,
-        theme: theme,
+        theme: product,
       })
     }
   }
 }
 
-AlertBanner.fragmentSpec = { fragment }
+const AlertBannerWithProductMeta = withProductMeta(AlertBanner)
 
-export default AlertBanner
+AlertBannerWithProductMeta.fragmentSpec = { fragment }
+
+export default AlertBannerWithProductMeta

@@ -7,11 +7,13 @@
     "Mike Wickett"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^2.2.4",
+    "@hashicorp/react-button": "^4.1.0",
     "@hashicorp/react-image": "^2.0.3"
   },
   "peerDependencies": {
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "@hashicorp/nextjs-scripts": ">=17.x",
+    "@hashicorp/mktg-global-styles": ">=3.x"
   },
   "publishConfig": {
     "access": "public"

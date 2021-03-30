@@ -19,7 +19,7 @@
   /* Banner */
 
   & .g-consent-manager-banner {
-    background-color: #4482ff;
+    background-color: var(--brand-secondary);
     width: 100%;
     padding: 10px 15px;
     position: fixed;
@@ -33,20 +33,20 @@
     }
 
     & a {
-      color: #fff;
+      color: var(--brand-link);
       text-decoration: underline;
 
-    &.manage-link {
-      font-size: 0.8rem;
-      color: #eee;
-      font-weight: var(--font-weight-bold);
-      transition: color 1s ease-out;
-      text-decoration: none;
+      &.manage-link {
+        font-size: 0.8rem;
+        color: var(--gray-1);
+        font-weight: var(--font-weight-bold);
+        transition: color 200 ease-out;
+        text-decoration: none;
 
-      &:hover {
-        color: #ddd;
+        &:hover {
+          color: var(--brand-link);
+        }
       }
-    }
     }
 
     & button {
@@ -54,15 +54,17 @@
       font-weight: var(--font-weight-bold);
       padding: 10px 20px;
       border-radius: 2px;
-      transition: background-color 0.5s ease-out;
-      background-color: #fefefe;
+      transform: translate3d(0, 0, 0);
+      transition: transform 200ms ease;
+      background-color: var(--brand);
+      color: var(--white);
       font-size: 0.85rem;
       text-transform: uppercase;
       margin: 0 15px;
 
       &:hover {
         cursor: pointer;
-        background-color: #ddd;
+        transform: translate3d(-0.5px, -0.5px, 0);
       }
 
       @media (max-width: 1200px) {
@@ -88,8 +90,8 @@
   & .g-consent-visible-dialog {
     width: 60%;
     max-width: 830px;
-    background-color: #eee;
-    color: #000;
+    background-color: var(--brand-secondary);
+    color: var(--black);
     border-radius: 4px;
     overflow: hidden; /* IE */
     max-height: 80%;
@@ -114,7 +116,7 @@
         font-size: 1rem;
         font-weight: var(--font-weight-bold);
         text-transform: uppercase;
-        color: #fff;
+        color: var(--white);
       }
     }
 
@@ -122,7 +124,7 @@
       padding: 5px 25px;
       flex-grow: 1;
       overflow-y: scroll;
-      color: #222;
+      color: var(--black);
       font-size: 0.95rem;
       max-height: 500px; /* IE */
 

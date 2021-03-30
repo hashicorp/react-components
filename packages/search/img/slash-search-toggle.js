@@ -10,8 +10,15 @@ export default function IconSlash() {
       role="img"
     >
       <title>{"Type '/' to Search"}</title>
-      <rect x=".5" y=".5" width="23" height="23" rx=".5" stroke="#76767D" />
-      <path d="M9 18l6-12" stroke="#76767D" strokeWidth="1.5" />
+      <rect
+        x=".5"
+        y=".5"
+        width="23"
+        height="23"
+        rx=".5"
+        stroke="var(--gray-3)"
+      />
+      <path d="M9 18l6-12" stroke="var(--gray-3)" strokeWidth="1.5" />
     </svg>
   )
 }

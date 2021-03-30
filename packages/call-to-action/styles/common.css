@@ -8,11 +8,11 @@
 
   & .g-type-body-large {
     margin: 0;
-    color: var(--gray-3);
+    color: var(--gray-2);
   }
 
   &.theme-gray {
-    background: var(--gray-7);
+    background: var(--gray-6);
   }
 
   &.theme-dark {
@@ -21,7 +21,7 @@
       color: var(--white);
     }
     & .g-type-body-large {
-      color: var(--gray-6);
+      color: var(--gray-5);
     }
   }
 }

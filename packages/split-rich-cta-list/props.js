@@ -1,20 +1,8 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
-  brand: {
-    description:
-      'Styles the SplitRichCTAList with a color based on a HashiCorp product',
-    type: 'string',
-    control: { type: 'select' },
-    options: [
-      'hashicorp',
-      'nomad',
-      'consul',
-      'terraform',
-      'vault',
-      'packer',
-      'vagrant',
-      'waypoint',
-      'boundary',
-    ],
+  product: {
+    ...baseProps.product,
     testValue: 'hashicorp',
   },
   heading: {

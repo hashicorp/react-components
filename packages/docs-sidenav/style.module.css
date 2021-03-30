@@ -68,8 +68,8 @@
   background: var(--white);
   bottom: 0;
   border: none;
-  border-top: 1px solid var(--gray-6);
-  border-bottom: 1px solid var(--gray-6);
+  border-top: 1px solid var(--gray-5);
+  border-bottom: 1px solid var(--gray-5);
   cursor: pointer;
   display: none;
   font-size: inherit;
@@ -99,7 +99,7 @@
 
 .filterInput {
   color: var(--gray-2);
-  border: 1px solid var(--gray-6);
+  border: 1px solid var(--gray-5);
   background: var(--white);
   border-radius: 2px;
   padding: 8px;
@@ -115,7 +115,7 @@
 }
 
 .navItem {
-  color: var(--DEPRECATED-gray-4);
+  color: var(--gray-2);
   cursor: pointer;
   display: flex;
   padding: 7px 0;
@@ -128,14 +128,14 @@
   line-height: inherit;
 
   &:hover {
-    color: var(--DEPRECATED-gray-2);
+    color: var(--gray-1);
   }
 
   &[data-is-active='true'] {
-    color: var(--brand);
+    color: var(--brand-link);
 
     &:hover {
-      color: var(--brand);
+      color: var(--brand-link);
     }
   }
 
@@ -160,20 +160,20 @@
   & svg {
     display: block;
     & [stroke] {
-      stroke: var(--gray-4);
+      stroke: var(--gray-3);
     }
     & [fill] {
-      fill: var(--gray-4);
+      fill: var(--gray-3);
     }
   }
 
   &[data-is-active='true'] {
     & svg {
       & [stroke] {
-        stroke: var(--brand);
+        stroke: var(--brand-link);
       }
       & [fill] {
-        fill: var(--brand);
+        fill: var(--brand-link);
       }
     }
   }
@@ -209,11 +209,11 @@
 
   & > li {
     margin-left: 21.5px;
-    border-left: 1px solid var(--DEPRECATED-gray-9);
+    border-left: 1px solid var(--gray-5);
   }
 
   & > hr {
-    border-left: 1px solid var(--DEPRECATED-gray-9);
+    border-left: 1px solid var(--gray-5);
     margin-left: 21.5px;
   }
 }
@@ -230,7 +230,7 @@
 
   &::after {
     content: '';
-    border-bottom: 1px solid var(--DEPRECATED-gray-9);
+    border-bottom: 1px solid var(--gray-5);
     display: block;
     width: 90%;
 

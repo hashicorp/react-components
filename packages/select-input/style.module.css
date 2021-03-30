@@ -22,7 +22,7 @@
     display: block;
     width: 100%;
     padding: 0.75em;
-    border: 1px solid var(--gray-5);
+    border: 1px solid var(--gray-4);
     border-radius: 2px;
     box-sizing: border-box;
     box-shadow: var(--select-shadow);
@@ -33,11 +33,11 @@
     position: relative;
 
     &:hover {
-      border: 1px solid var(--gray-4);
+      border: 1px solid var(--gray-3);
     }
 
     &:placeholder-shown {
-      color: var(--gray-7);
+      color: var(--gray-6);
     }
 
     & .arrow {
@@ -61,7 +61,7 @@
     & ul {
       display: none;
       background: var(--white);
-      border: 1px solid var(--gray-5);
+      border: 1px solid var(--gray-4);
       box-sizing: border-box;
       box-shadow: var(--select-shadow);
       border-radius: 2px;
@@ -80,7 +80,7 @@
 
         &:hover,
         &[data-active='true'] {
-          background: var(--gray-6);
+          background: var(--gray-5);
         }
       }
     }

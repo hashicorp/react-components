@@ -12,7 +12,7 @@
   box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
   padding: 2rem;
   background: var(--white);
-  border-bottom: 1px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-5);
   justify-content: flex-start;
   width: 832px;
   z-index: 901; /* subnav is 900 */
@@ -28,6 +28,6 @@
   box-shadow: 0 4px 5px rgba(37, 38, 45, 0.12);
   padding: 2rem 0 0 0;
   background: var(--white);
-  border-bottom: 1px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-5);
   overflow-y: hidden;
 }
