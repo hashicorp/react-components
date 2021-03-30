@@ -1,7 +1,8 @@
 import React from 'react'
 import marked from 'marked'
+import InlineSvg from '@hashicorp/react-inline-svg'
 import Image from '@hashicorp/react-image'
-import Arrow from './arrow'
+import Arrow from './img/arrow.svg?include'
 import fragment from './fragment.graphql'
 
 function UseCases({ items }) {
@@ -49,7 +50,7 @@ function UseCases({ items }) {
             data-testid={`faux-link-${item.title}`}
           >
             {item.link.title}
-            <Arrow />
+            <InlineSvg className="arrow" src={Arrow} />
           </div>
         </a>
       ))}
