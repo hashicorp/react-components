@@ -120,12 +120,12 @@
   display: flex;
   padding: 7px 0;
   transition: color 0.2s ease;
-  align-items: center;
   background: none;
   border: none;
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
+  text-align: left;
 
   &:hover {
     color: var(--gray-1);
@@ -148,7 +148,7 @@
 .navItemIcon {
   position: relative;
   left: -8.5px;
-  top: 1px;
+  top: 6px;
   width: 16px;
   height: 16px;
   border-radius: 8px;
