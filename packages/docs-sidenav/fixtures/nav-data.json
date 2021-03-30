@@ -11,7 +11,7 @@
         "path": "agent"
       },
       {
-        "title": "Auto-Auth",
+        "title": "Auto-Auth With A Very Long NavCategory Title That Should Wrap To Multiple Lines",
         "routes": [
           {
             "title": "Overview",
@@ -29,7 +29,7 @@
                 "path": "agent/autoauth/methods"
               },
               {
-                "title": "AliCloud",
+                "title": "AliCloud With A Very Long NavLeaf Title That Should Wrap To Multiple Lines",
                 "path": "agent/autoauth/methods/alicloud"
               },
               {
