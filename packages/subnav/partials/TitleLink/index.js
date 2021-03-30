@@ -35,7 +35,7 @@ function TitleLink(props) {
       href={url}
       title={text}
     >
-      {Logo ? <InlineSvg className="svg-sizer" src={Logo} /> : text}
+      {Logo ? <InlineSvg src={Logo} /> : text}
     </LinkWrap>
   )
 }
