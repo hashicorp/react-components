@@ -18,34 +18,32 @@ import { generateStaticProps } from '@hashicorp/react-product-download-page/serv
 
 export default function DownloadPage(staticProps) {
   return <ProductDownloadPage
-    // required - image to be rendered as the primary logo
     logo={<img alt="Vault" src={require('./img/logo.svg')} />}
-    // optional, jsx code injected under download cards
     merchandisingSlot={<p>...</p>}
+    tutorialLink={{
+      label: 'Example',
+      href: '<url>',
+    }}
+    getStartedDescription="Follow step-by-step tutorials on the essentials of Vault."
+    getStartedLinks={[{
+      label: 'Example',
+      href: '<url>',
+    }]}
+    containers={[{
+      label: 'Example',
+      href: '<url>',
+    }]}
+    tutorials={[{
+      label: 'Example',
+      href: '<url>',
+    }]}
+    changelog='<url>'
     {...staticProps}
   />
 }
 
 export const getStaticProps = generateStaticProps({
   product: 'vault',
-  latestVersion: '1.0.0',
-  tutorialLink: {
-    label: 'Example',
-    href: '<url>',
-  },
-  getStartedDescription: "Follow step-by-step tutorials on the essentials of Vault."
-  getStartedLinks: [{
-    label: 'Example',
-    href: '<url>',
-  }],
-  containers: [{
-    label: 'Example',
-    href: '<url>',
-  }],
-  tutorials: [{
-    label: 'Example',
-    href: '<url>',
-  }],
-  changelog: '<url>'
+  latestVersion: '1.0.0'
 })
 ```
