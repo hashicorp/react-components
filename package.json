@@ -15,6 +15,7 @@
     "swingset": "0.6.1"
   },
   "devDependencies": {
+    "@octokit/core": "^3.3.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "dotenv": "^8.2.0",
