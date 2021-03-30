@@ -9,6 +9,11 @@
   & .svg-sizer {
     height: 34px;
     width: auto;
+
+    & svg {
+      height: inherit;
+      width: inherit;
+    }
   }
 
   &.brand-hcp .svg-sizer {
