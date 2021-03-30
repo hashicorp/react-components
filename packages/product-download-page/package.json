@@ -1,10 +1,11 @@
 {
-  "name": "@hashicorp/react-product-downloader",
-  "description": "Interface for downloading HashiCorp products",
+  "name": "@hashicorp/react-product-download-page",
+  "description": "The page where you go to download HashiCorp products",
   "version": "9.0.0",
   "author": "HashiCorp",
   "contributors": [
-    "Zack Tanner"
+    "Zack Tanner",
+    "Jeff Escalante"
   ],
   "dependencies": {
     "@hashicorp/react-button": "^5.0.0",
