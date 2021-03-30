@@ -20,7 +20,11 @@ describe('<DocsSidenav />', () => {
     expect(branchOne.getAttribute('data-is-active')).toBe('true')
     expect(branchOne.getAttribute('data-is-open')).toBe('true')
 
-    const branchTwo = screen.getByText('Auto-Auth').closest('button')
+    const branchTwo = screen
+      .getByText(
+        'Auto-Auth With A Very Long NavCategory Title That Should Wrap To Multiple Lines'
+      )
+      .closest('button')
     expect(branchTwo.getAttribute('data-is-active')).toBe('true')
     expect(branchTwo.getAttribute('data-is-open')).toBe('true')
 
@@ -65,7 +69,11 @@ describe('<DocsSidenav />', () => {
   it('expands and collapses nav branch items when clicked', () => {
     render(<DocsSidenav {...defaultProps} />)
     // Ensure the element exists, and is currently open
-    const branchTwo = screen.getByText('Auto-Auth').closest('button')
+    const branchTwo = screen
+      .getByText(
+        'Auto-Auth With A Very Long NavCategory Title That Should Wrap To Multiple Lines'
+      )
+      .closest('button')
     expect(branchTwo.getAttribute('data-is-active')).toBe('true')
     expect(branchTwo.getAttribute('data-is-open')).toBe('true')
     // Click the item, then ensure it's closed, but still active
