@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^3.0.1",
-    "@hashicorp/mktg-logos": "^1.0.1",
+    "@hashicorp/mktg-logos": "^1.0.2",
     "@hashicorp/nextjs-scripts": "^17.0.0",
     "@hashicorp/sentinel-embedded": "^0.0.9",
     "classnames": "^2.2.6",
