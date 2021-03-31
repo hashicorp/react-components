@@ -10,6 +10,7 @@ import {
   sortPlatforms,
   sortAndFilterReleases,
   detectOs,
+  SortedReleases,
 } from './utils/downloader'
 import { HashiCorpProduct } from '../../types'
 
@@ -120,6 +121,7 @@ export default function ProductDownloader({
         }
 
         <ReleaseInformation
+          // @ts-expect-error typescript thinks this is the wrong type and idk why
           releases={sortedReleases}
           latestVersion={latestVersion}
           containers={containers}
