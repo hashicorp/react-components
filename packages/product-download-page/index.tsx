@@ -53,29 +53,29 @@ export default function ProductDownloader({
   // This allows for flexible behavior on changing or adding new package manager configs on
   // a per-product basis if necessary.
   let packageManagers = generateDefaultPackageManagers(name)
-  if (packageManagerOverrides) {
+  const overrides = [...packageManagerOverrides]
+  if (overrides) {
     packageManagers = packageManagers
       .reduce((memo, pkg) => {
-        const override = packageManagerOverrides.find(
+        const override = overrides.find(
           (pkgOverride) => pkg.label === pkgOverride.label
         )
         if (override) {
           memo.push(override)
-          const idx = packageManagerOverrides.findIndex(
+          const idx = overrides.findIndex(
             (pkgOverride) => pkg.label === pkgOverride.label
           )
           // if we matched an override, remove from the array, anything that remains
           // is an addition instead of an override and we merge later
-          packageManagerOverrides.splice(idx, 1)
+          overrides.splice(idx, 1)
         } else {
           memo.push(pkg)
         }
         return memo
       }, [])
-      .concat(packageManagerOverrides)
+      .concat(overrides)
   }
 
-  // console.log(packageManagers)
   const tabData = Object.keys(sortedDownloads).map((osKey) => ({
     os: osKey,
     packageManagers: packageManagers.filter(
@@ -92,7 +92,7 @@ export default function ProductDownloader({
   return (
     <ProductMetaProvider product={product}>
       <HashiHead title={`Downloads | ${name} by HashiCorp`} />
-      <div className={`${styles.root} ${themeClass || ''} ${className}`}>
+      <div className={`${styles.root} ${themeClass || ''} ${className || ''}`}>
         <h1>Download {name}</h1>
         <DownloadCards
           defaultTabIdx={osIndex}
