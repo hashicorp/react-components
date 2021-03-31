@@ -1,6 +1,5 @@
 import { useState, Fragment } from 'react'
 import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
-
 import Dropdown from '../dropdown'
 import {
   prettyArch,
@@ -8,6 +7,7 @@ import {
   trackDownload,
   getVersionLabel,
 } from '../../utils/downloader'
+import { Link } from '../../'
 import styles from './style.module.css'
 
 export default function ReleaseInformation({
@@ -16,7 +16,7 @@ export default function ReleaseInformation({
   containers,
   tutorials,
   changelog,
-}) {
+}: Props): React.ReactElement {
   const [selectedVersionId, setSelectedVersionId] = useState(latestVersion)
   const { version, ...selectedVersion } =
     releases.find((release) => release.version === selectedVersionId) || {}
@@ -33,7 +33,6 @@ export default function ReleaseInformation({
               <div>
                 <Dropdown
                   title={`${name} ${getVersionLabel(version, latestVersion)}`}
-                  product={slug}
                   options={releases.map((releaseData) => ({
                     label: `${name} ${getVersionLabel(
                       releaseData.version,
@@ -102,7 +101,7 @@ export default function ReleaseInformation({
               <div className={styles.links}>
                 {containers.map((container) => (
                   <div key={container.label}>
-                    Run with <a href={container.url}>{container.label}</a>
+                    Run with <a href={container.href}>{container.label}</a>
                   </div>
                 ))}
               </div>
@@ -115,7 +114,7 @@ export default function ReleaseInformation({
               <div className={styles.links}>
                 {tutorials.map((tutorial) => (
                   <div key={tutorial.label}>
-                    <a href={tutorial.url}>{tutorial.label}</a>
+                    <a href={tutorial.href}>{tutorial.label}</a>
                   </div>
                 ))}
               </div>
@@ -125,4 +124,14 @@ export default function ReleaseInformation({
       </div>
     </div>
   )
+}
+
+// Types
+
+interface Props {
+  releases: { version: string }[]
+  latestVersion: string
+  containers: Link[]
+  tutorials: Link[]
+  changelog: string
 }

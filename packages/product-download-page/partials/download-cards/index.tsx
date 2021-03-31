@@ -1,6 +1,6 @@
 import Tabs, { Tab } from '@hashicorp/react-tabs'
-
-import { prettyOs, prettyArch } from '../../utils/downloader'
+import { prettyOs, prettyArch, SortedReleases } from '../../utils/downloader'
+import { Link, PackageManagerConfig } from '../..'
 import styles from './style.module.css'
 
 export default function DownloadTabs({
@@ -11,7 +11,7 @@ export default function DownloadTabs({
   merchandisingSlot,
   logo,
   tutorialLink,
-}) {
+}: Props): React.ReactElement {
   return (
     <Tabs
       key={defaultTabIdx}
@@ -46,7 +46,7 @@ function Cards({
   version,
   logo,
   tutorialLink,
-}) {
+}: CardsProps): React.ReactElement {
   const arches = downloads[os]
   const hasPackageManager = packageManagers.length > 0
   const hasMultiplePackageManagers = packageManagers.length > 1
@@ -111,4 +111,28 @@ function Cards({
       </div>
     </>
   )
+}
+
+// Types
+
+interface Props {
+  defaultTabIdx: number
+  tabData: {
+    os: string
+    packageManagers: PackageManagerConfig[]
+  }[]
+  downloads: SortedReleases
+  version: string
+  merchandisingSlot: React.ReactElement
+  logo: React.ReactElement
+  tutorialLink: Link
+}
+
+interface CardsProps {
+  os: string
+  downloads: SortedReleases
+  packageManagers: PackageManagerConfig[]
+  version: string
+  logo: React.ReactElement
+  tutorialLink: Link
 }

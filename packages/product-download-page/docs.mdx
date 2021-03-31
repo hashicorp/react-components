@@ -7,52 +7,25 @@ The `<ProductDownloadPage>` component renders a standardized downloads page used
 <LiveComponent>{`<ProductDownloadPage
   product="waypoint"
   latestVersion="0.1.0"
-  getStartedLinks={[]}
   logo={<strong>Waypoint</strong>}
   getStartedDescription="Lorem ipsum dolor sit amet"
   getStartedLinks={[{ href: '#', label: 'Link 1' }]}
+  tutorials={[{ href: '#', label: 'Tutorial' }]}
+  containers={[{ href: '#', label: 'Docker' }]}
+  merchandisingSlot={<p>arbitrary content can be added here</p>}
+  changelog='https://www.hashicorp.com'
   packageManagerOverrides={[
     {
-      label: 'Homebrew',
+      label: 'Extra',
+      commands: ['test command', 'foo'],
       url: '#',
-      commands: ['brew tap hashicorp/tap', 'brew install hashicorp/tap/waypoint'],
-      os: 'darwin',
-    },
-    {
-      label: 'Ubuntu/Debian',
-      os: 'linux',
-      commands: [
-        'curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -',
-        'sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"',
-        'sudo apt-get update && sudo apt-get install waypoint',
-      ],
-    },
-    {
-      label: 'CentOS/RHEL',
-      os: 'linux',
-      commands: [
-        'sudo yum install -y yum-utils',
-        'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo',
-        'sudo yum -y install waypoint',
-      ],
+      os: 'linux'
     },
     {
       label: 'Fedora',
-      os: 'linux',
-      commands: [
-        'sudo dnf install -y dnf-plugins-core',
-        'sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo',
-        'sudo dnf -y install waypoint',
-      ],
-    },
-    {
-      label: 'Amazon Linux',
-      os: 'linux',
-      commands: [
-        'sudo yum install -y yum-utils',
-        'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo',
-        'sudo yum -y install waypoint',
-      ],
+      commands: ['overridden!'],
+      url: '#',
+      os: 'linux'
     },
   ]}
   releases={{
@@ -82,6 +55,15 @@ The `<ProductDownloadPage>` component renders a standardized downloads page used
             url:
               'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
           },
+          {
+            name: 'waypoint',
+            version: '0.1.0',
+            os: 'linux',
+            arch: 'amd64',
+            filename: 'waypoint_0.1.0_windows_amd64.zip',
+            url:
+              'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_linux_amd64.zip',
+          }
         ],
       },
     },

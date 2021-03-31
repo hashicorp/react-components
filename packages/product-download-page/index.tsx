@@ -38,7 +38,7 @@ export default function ProductDownloader({
     currentRelease,
   ])
   const osKeys = Object.keys(sortedDownloads)
-  const [osIndex, setSelectedOsIndex] = useState()
+  const [osIndex, setSelectedOsIndex] = useState(0)
 
   // Sort our releases for our ReleaseInformation section
   const latestReleases = sortAndFilterReleases(Object.keys(releases.versions))
@@ -54,16 +54,28 @@ export default function ProductDownloader({
   // a per-product basis if necessary.
   let packageManagers = generateDefaultPackageManagers(name)
   if (packageManagerOverrides) {
-    packageManagers = packageManagers.reduce((memo, pkg) => {
-      const override = packageManagerOverrides.find(
-        (pkgOverride) => pkg.label === pkgOverride.label
-      )
-      memo.push(override ? override : pkg)
-      if (typeof override === 'undefined') memo.push(override)
-      return memo
-    }, [])
+    packageManagers = packageManagers
+      .reduce((memo, pkg) => {
+        const override = packageManagerOverrides.find(
+          (pkgOverride) => pkg.label === pkgOverride.label
+        )
+        if (override) {
+          memo.push(override)
+          const idx = packageManagerOverrides.findIndex(
+            (pkgOverride) => pkg.label === pkgOverride.label
+          )
+          // if we matched an override, remove from the array, anything that remains
+          // is an addition instead of an override and we merge later
+          packageManagerOverrides.splice(idx, 1)
+        } else {
+          memo.push(pkg)
+        }
+        return memo
+      }, [])
+      .concat(packageManagerOverrides)
   }
 
+  // console.log(packageManagers)
   const tabData = Object.keys(sortedDownloads).map((osKey) => ({
     os: osKey,
     packageManagers: packageManagers.filter(
@@ -110,9 +122,6 @@ export default function ProductDownloader({
         <ReleaseInformation
           releases={sortedReleases}
           latestVersion={latestVersion}
-          packageManagers={packageManagers.filter(
-            (packageManager) => !!packageManager.url
-          )}
           containers={containers}
           tutorials={tutorials}
           changelog={changelog}
@@ -142,12 +151,12 @@ interface Props {
   releases: ReleasesAPIResponse
 }
 
-interface Link {
+export interface Link {
   href: string
   label: string
 }
 
-type OperatingSystem =
+export type OperatingSystem =
   | 'darwin'
   | 'freebsd'
   | 'openbsd'
@@ -163,22 +172,23 @@ export interface PackageManagerConfig {
   os: OperatingSystem
 }
 
-interface ReleasesAPIResponse {
+export interface ReleaseVersion {
+  name: HashiCorpProduct
+  version: string
+  shasums: string
+  shasums_signature: string
+  builds: {
+    name: HashiCorpProduct
+    version: string
+    os: OperatingSystem
+    arch: string
+    filename: string
+    url: string
+  }[]
+}
+export interface ReleasesAPIResponse {
   name: HashiCorpProduct
   versions: {
-    [versionNumber: string]: {
-      name: HashiCorpProduct
-      version: string
-      shasums: string
-      shasums_signature: string
-      builds: {
-        name: HashiCorpProduct
-        version: string
-        os: OperatingSystem
-        arch: string
-        filename: string
-        url: string
-      }[]
-    }
+    [versionNumber: string]: ReleaseVersion
   }
 }
