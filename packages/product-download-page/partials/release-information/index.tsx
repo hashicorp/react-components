@@ -6,6 +6,7 @@ import {
   prettyOs,
   trackDownload,
   getVersionLabel,
+  SortedReleases,
 } from '../../utils/downloader'
 import { Link } from '../../'
 import styles from './style.module.css'
@@ -58,22 +59,26 @@ export default function ReleaseInformation({
           <div>
             Package downloads for {name} {version}
             <div className={styles.downloads}>
-              {Object.entries(selectedVersion).map(([os, release]) => (
-                <Fragment key={os}>
-                  <div className={styles.os}>{prettyOs(os)}</div>
-                  <div className={styles.arches}>
-                    {Object.entries(release).map(([arch, file]) => (
-                      <a
-                        href={file}
-                        key={arch}
-                        onClick={() => trackDownload(slug, version, os, arch)}
-                      >
-                        {prettyArch(arch)}
-                      </a>
-                    ))}
-                  </div>
-                </Fragment>
-              ))}
+              {/* something feels not right with the way typescript is losing track of
+              typings here, but i dont know what. for now, manually clarified the typings */}
+              {Object.entries(selectedVersion).map(
+                ([os, release]: [string, { [arch: string]: string }]) => (
+                  <Fragment key={os}>
+                    <div className={styles.os}>{prettyOs(os)}</div>
+                    <div className={styles.arches}>
+                      {Object.entries(release).map(([arch, file]) => (
+                        <a
+                          href={file}
+                          key={arch}
+                          onClick={() => trackDownload(slug, version, os, arch)}
+                        >
+                          {prettyArch(arch)}
+                        </a>
+                      ))}
+                    </div>
+                  </Fragment>
+                )
+              )}
             </div>
             <p>
               You can find the{' '}
@@ -129,7 +134,7 @@ export default function ReleaseInformation({
 // Types
 
 interface Props {
-  releases: { version: string }[]
+  releases: (SortedReleases & { version: string })[]
   latestVersion: string
   containers: Link[]
   tutorials: Link[]
