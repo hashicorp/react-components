@@ -1,17 +1,17 @@
 ---
-componentName: 'ProductDownloader'
+componentName: 'ProductDownloadPage'
 ---
 
-The `<ProductDownloader>` component renders the downloads page.
+The `<ProductDownloadPage>` component renders a standardized downloads page used across each of HashiCorp's product documentation websites.
 
-<LiveComponent>{`<ProductDownloader
+<LiveComponent>{`<ProductDownloadPage
   product="waypoint"
   latestVersion="0.1.0"
   getStartedLinks={[]}
   logo={<strong>Waypoint</strong>}
   getStartedDescription="Lorem ipsum dolor sit amet"
   getStartedLinks={[{ href: '#', label: 'Link 1' }]}
-  packageManagers={[
+  packageManagerOverrides={[
     {
       label: 'Homebrew',
       url: '#',

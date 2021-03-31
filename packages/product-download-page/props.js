@@ -6,7 +6,7 @@ module.exports = {
     description: 'API response from releases endpoint',
     required: true,
   },
-  packageManagers: {
+  packageManagersOverrides: {
     type: 'array',
     description:
       'object containing array of package managers (and associated commands), grouped by OS',

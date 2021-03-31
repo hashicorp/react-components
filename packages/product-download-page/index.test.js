@@ -233,5 +233,8 @@ describe('<ProductDownloader />', () => {
       expect(getByText('Container #1')).toBeInTheDocument()
       expect(getByText('Containers')).toBeInTheDocument()
     })
+
+    it.todo('should allow overrides of package managers if passed as a prop')
+    it.todo('should allow addition of new package managers if passed as a prop')
   })
 })

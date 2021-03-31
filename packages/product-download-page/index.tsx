@@ -1,22 +1,21 @@
-import { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import useProductMeta, {
   ProductMetaProvider,
 } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
-
+import HashiHead from '@hashicorp/react-head'
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'
+import generateDefaultPackageManagers from './package-managers'
 import {
   sortPlatforms,
   sortAndFilterReleases,
   detectOs,
 } from './utils/downloader'
+import { HashiCorpProduct } from '../../types'
 
 import styles from './style.module.css'
 
 export default function ProductDownloader({
-  releases,
-  product,
-  latestVersion,
   tutorialLink,
   merchandisingSlot,
   logo,
@@ -24,9 +23,14 @@ export default function ProductDownloader({
   getStartedDescription,
   containers,
   tutorials,
-  packageManagers,
   changelog,
-}) {
+  className,
+  packageManagerOverrides = [],
+  // these props are piped in from `generateStaticProps`
+  product,
+  latestVersion,
+  releases,
+}: Props): React.ReactElement {
   const { name, themeClass } = useProductMeta(product)
   const currentRelease = releases.versions[latestVersion]
 
@@ -43,6 +47,23 @@ export default function ProductDownloader({
     version: releaseVersion,
   }))
 
+  // Generate default package manager installation config, merge in overrides if present
+  // - if an override matches the label of a default, it overrides it
+  // - if not, it just gets pushed in
+  // This allows for flexible behavior on changing or adding new package manager configs on
+  // a per-product basis if necessary.
+  let packageManagers = generateDefaultPackageManagers(name)
+  if (packageManagerOverrides) {
+    packageManagers = packageManagers.reduce((memo, pkg) => {
+      const override = packageManagerOverrides.find(
+        (pkgOverride) => pkg.label === pkgOverride.label
+      )
+      memo.push(override ? override : pkg)
+      if (typeof override === 'undefined') memo.push(override)
+      return memo
+    }, [])
+  }
+
   const tabData = Object.keys(sortedDownloads).map((osKey) => ({
     os: osKey,
     packageManagers: packageManagers.filter(
@@ -58,7 +79,8 @@ export default function ProductDownloader({
 
   return (
     <ProductMetaProvider product={product}>
-      <div className={`${styles.root} ${themeClass || ''}`}>
+      <HashiHead title={`Downloads | ${name} by HashiCorp`} />
+      <div className={`${styles.root} ${themeClass || ''} ${className}`}>
         <h1>Download {name}</h1>
         <DownloadCards
           defaultTabIdx={osIndex}
@@ -98,4 +120,65 @@ export default function ProductDownloader({
       </div>
     </ProductMetaProvider>
   )
+}
+
+// -----
+// Types
+// -----
+
+interface Props {
+  tutorialLink: Link
+  merchandisingSlot: React.ReactElement
+  logo: React.ReactElement
+  getStartedLinks: Link[]
+  getStartedDescription: string
+  containers?: Link[]
+  tutorials?: Link[]
+  changelog?: string
+  className?: string
+  packageManagerOverrides?: PackageManagerConfig[]
+  product: HashiCorpProduct
+  latestVersion: string
+  releases: ReleasesAPIResponse
+}
+
+interface Link {
+  href: string
+  label: string
+}
+
+type OperatingSystem =
+  | 'darwin'
+  | 'freebsd'
+  | 'openbsd'
+  | 'netbsd'
+  | 'archlinux'
+  | 'linux'
+  | 'windows'
+
+export interface PackageManagerConfig {
+  label: string
+  url?: string
+  commands: string[]
+  os: OperatingSystem
+}
+
+interface ReleasesAPIResponse {
+  name: HashiCorpProduct
+  versions: {
+    [versionNumber: string]: {
+      name: HashiCorpProduct
+      version: string
+      shasums: string
+      shasums_signature: string
+      builds: {
+        name: HashiCorpProduct
+        version: string
+        os: OperatingSystem
+        arch: string
+        filename: string
+        url: string
+      }[]
+    }
+  }
 }

@@ -13,7 +13,6 @@ import styles from './style.module.css'
 export default function ReleaseInformation({
   releases,
   latestVersion,
-  packageManagers,
   containers,
   tutorials,
   changelog,
@@ -97,19 +96,6 @@ export default function ReleaseInformation({
             </p>
           </div>
 
-          {packageManagers?.length > 0 && (
-            <>
-              <div className={styles.heading}>Package Managers</div>
-              <div className={styles.links}>
-                {packageManagers.map((packageManager) => (
-                  <div key={packageManager.label}>
-                    Install with{' '}
-                    <a href={packageManager.url}>{packageManager.label}</a>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
           {containers?.length > 0 && (
             <>
               <div className={styles.heading}>Containers</div>

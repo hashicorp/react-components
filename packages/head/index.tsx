@@ -1,8 +1,8 @@
-export default function Head(props) {
-  const NextJsHead = props.is
+import Head from 'next/head'
 
+export default function HashiHead(props: Props): React.ReactElement {
   return (
-    <NextJsHead>
+    <Head>
       {whenString(props.title, <title>{props.title}</title>)}
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta property="og:locale" content="en_US" key="og:locale" />
@@ -57,7 +57,7 @@ export default function Head(props) {
         <link href={href} {...linkProps} rel="stylesheet" key={href} />
       ))}
       {props.children}
-    </NextJsHead>
+    </Head>
   )
 }
 
@@ -68,3 +68,55 @@ const whenArray = (value, mapFn) =>
 /** Return the value if it is a String */
 const whenString = (value, returnValue) =>
   typeof value === 'string' ? returnValue : null
+
+// -----
+// Types
+// -----
+
+interface Props {
+  canonicalUrl?: string
+  children?: React.ReactNode
+  description?: string
+  icon?: {
+    [key: string]: unknown
+    href: string
+    sizes?: string
+    type?: string
+  }[]
+  image?: string
+  pageName?: string
+  preload?: {
+    [key: string]: unknown
+    as: asProp
+    href: string
+    type?: string
+  }[]
+  siteName?: string
+  stylesheet?: {
+    [key: string]: unknown
+    href: string
+    media?: string
+  }[]
+  title?: string
+  twitterCard?: TwitterCardProp
+}
+
+declare enum TwitterCardProp {
+  SummaryCard = 'summary',
+  SummaryCardWithLargeImage = 'summary_large_image',
+}
+
+declare enum asProp {
+  Audio = 'audio',
+  Document = 'document',
+  Embed = 'embed',
+  Fetch = 'fetch',
+  Font = 'font',
+  Image = 'image',
+  Obejct = 'object',
+  Script = 'script',
+  Style = 'style',
+  Track = 'track',
+  Video = 'video',
+  Worker = 'worker',
+}

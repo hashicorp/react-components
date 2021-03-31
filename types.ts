@@ -1,0 +1,10 @@
+export type HashiCorpProduct =
+  | 'hashicorp'
+  | 'boundary'
+  | 'consul'
+  | 'nomad'
+  | 'packer'
+  | 'terraform'
+  | 'vault'
+  | 'vagrant'
+  | 'waypoint'
