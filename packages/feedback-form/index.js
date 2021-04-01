@@ -23,6 +23,7 @@ function Question(props) {
     case 'choice': {
       inputs = answers.map((answer) => (
         <Button
+          aria-label={answer.display}
           key={answer.display}
           title={answer.display}
           size="small"
@@ -50,6 +51,7 @@ function Question(props) {
             className={s.textArea}
           />
           <Button
+            aria-label={buttonText}
             title={buttonText}
             size="small"
             disabled={isButtonDisabled}
