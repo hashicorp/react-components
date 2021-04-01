@@ -1,0 +1,14 @@
+.choiceButton {
+  margin-left: 16px;
+}
+
+.textArea {
+  width: 100%;
+  display: block;
+  resize: none;
+  min-height: 100px;
+  border: 1px solid var(--gray-5);
+  padding: 10px;
+  line-height: 1em;
+  margin: 12px 0;
+}
