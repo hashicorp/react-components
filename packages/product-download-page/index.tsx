@@ -10,7 +10,6 @@ import {
   sortPlatforms,
   sortAndFilterReleases,
   detectOs,
-  SortedReleases,
 } from './utils/downloader'
 import { HashiCorpProduct } from '../../types'
 
@@ -27,6 +26,7 @@ export default function ProductDownloader({
   changelog,
   className,
   packageManagerOverrides = [],
+  enterpriseMode = false,
   // these props are piped in from `generateStaticProps`
   product,
   latestVersion,
@@ -43,10 +43,17 @@ export default function ProductDownloader({
 
   // Sort our releases for our ReleaseInformation section
   const latestReleases = sortAndFilterReleases(Object.keys(releases.versions))
-  const sortedReleases = latestReleases.map((releaseVersion) => ({
-    ...sortPlatforms(releases.versions[releaseVersion]),
-    version: releaseVersion,
-  }))
+  const sortedReleases = latestReleases
+    // remove enterprise releases unless enterpriseMode is active
+    .filter((releaseVersion) => {
+      const isEnterpriseVersion = !!releaseVersion.match(/\+ent$/)
+      if (enterpriseMode) return isEnterpriseVersion
+      return !isEnterpriseVersion
+    })
+    .map((releaseVersion) => ({
+      ...sortPlatforms(releases.versions[releaseVersion]),
+      version: releaseVersion,
+    }))
 
   // Generate default package manager installation config, merge in overrides if present
   // - if an override matches the label of a default, it overrides it
@@ -148,6 +155,7 @@ interface Props {
   changelog?: string
   className?: string
   packageManagerOverrides?: PackageManagerConfig[]
+  enterpriseMode: boolean
   product: HashiCorpProduct
   latestVersion: string
   releases: ReleasesAPIResponse

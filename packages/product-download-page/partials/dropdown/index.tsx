@@ -31,6 +31,7 @@ export default function Dropdown({
         aria-expanded={open}
         aria-controls="menu-list"
         aria-haspopup="true"
+        data-testid="version-dropdown"
         title={title}
         icon={{
           position: 'right',

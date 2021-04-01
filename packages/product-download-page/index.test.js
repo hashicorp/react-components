@@ -116,6 +116,19 @@ describe('<ProductDownloader />', () => {
       ).toBeInTheDocument()
     })
 
+    it('should filter out any enterprise releases by default', () => {
+      setup()
+      fireEvent.click(screen.getByTestId('version-dropdown'))
+      expect(screen.queryByText('0.1.0+ent')).not.toBeInTheDocument()
+    })
+
+    it('should only show enterprise releases if enterpriseMode is true', () => {
+      setup({ enterpriseMode: true, latestVersion: '0.1.0+ent' })
+      fireEvent.click(screen.getByTestId('version-dropdown'))
+      expect(screen.getByText('0.1.0+ent')).toBeInTheDocument()
+      expect(screen.queryByText('1.0.0')).not.toBeInTheDocument()
+    })
+
     it('should render the default changelog', () => {
       setup()
       expect(screen.getByText('Changelog')).toHaveAttribute(
@@ -156,6 +169,41 @@ const releases = {
   name: 'Waypoint',
   versions: {
     '0.1.0': {
+      name: 'Waypoint',
+      shasums: 'waypoint_0.1.0_SHA256SUMS',
+      shasums_signature: 'waypoint_0.1.0_SHA256SUMS.sig',
+      version: '0.1.0',
+      builds: [
+        {
+          name: 'waypoint',
+          version: '0.1.0',
+          os: 'darwin',
+          arch: 'amd64',
+          filename: 'waypoint_0.1.0_darwin_amd64.zip',
+          url:
+            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip',
+        },
+        {
+          name: 'waypoint',
+          version: '0.1.0',
+          os: 'windows',
+          arch: 'amd64',
+          filename: 'waypoint_0.1.0_windows_amd64.zip',
+          url:
+            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+        },
+        {
+          name: 'waypoint',
+          version: '0.1.0',
+          os: 'linux',
+          arch: 'amd64',
+          filename: 'waypoint_0.1.0_windows_amd64.zip',
+          url:
+            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+        },
+      ],
+    },
+    '0.1.0+ent': {
       name: 'Waypoint',
       shasums: 'waypoint_0.1.0_SHA256SUMS',
       shasums_signature: 'waypoint_0.1.0_SHA256SUMS.sig',
