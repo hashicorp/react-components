@@ -50,10 +50,11 @@ export default function ProductDownloader({
       if (enterpriseMode) return isEnterpriseVersion
       return !isEnterpriseVersion
     })
-    .map((releaseVersion) => ({
-      ...sortPlatforms(releases.versions[releaseVersion]),
-      version: releaseVersion,
-    }))
+    .map((releaseVersion) =>
+      Object.assign({}, sortPlatforms(releases.versions[releaseVersion]), {
+        version: releaseVersion,
+      })
+    )
 
   // Generate default package manager installation config, merge in overrides if present
   // - if an override matches the label of a default, it overrides it
@@ -128,7 +129,6 @@ export default function ProductDownloader({
         }
 
         <ReleaseInformation
-          // @ts-expect-error typescript thinks this is the wrong type and idk why
           releases={sortedReleases}
           latestVersion={latestVersion}
           containers={containers}
