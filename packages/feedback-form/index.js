@@ -66,7 +66,9 @@ function Question(props) {
 
   return (
     <div>
-      {followupMessage ? followupMessage : null}
+      {followupMessage ? (
+        <span className={s.followUp}>{followupMessage}</span>
+      ) : null}
       <label htmlFor={id}>{text}</label>
       {inputs}
     </div>
