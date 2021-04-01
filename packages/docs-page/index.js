@@ -18,6 +18,7 @@ export function DocsPageWrapper({
   pageTitle,
   baseRoute,
   githubFileUrl,
+  headProps,
   product: { name, slug },
   showEditPage = true,
 }) {
@@ -38,6 +39,7 @@ export function DocsPageWrapper({
         description={description}
         siteName={`${name} by HashiCorp`}
         title={`${pageTitle} | ${name} by HashiCorp`}
+        {...headProps}
       />
       {/* render the sidebar nav */}
       {/* TODO: we can probably remove several of these wrappers */}
@@ -86,6 +88,7 @@ export default function DocsPage({
   showEditPage = true,
   additionalComponents,
   staticProps: { mdxSource, frontMatter, currentPath, navData, githubFileUrl },
+  headProps,
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
@@ -103,6 +106,7 @@ export default function DocsPage({
       product={product}
       showEditPage={showEditPage}
       baseRoute={baseRoute}
+      headProps={headProps}
     >
       {content}
     </DocsPageWrapper>

@@ -118,4 +118,9 @@ module.exports = {
     },
     testValue: {},
   },
+  headProps: {
+    type: 'object',
+    description:
+      'Pass props directly to the rendered [@hashicorp/react-head](/?component=Head) component.',
+  },
 }

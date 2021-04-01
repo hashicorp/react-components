@@ -39,6 +39,26 @@ describe('<DocsPage />', () => {
     expect(site_name).toBe(`Terraform by HashiCorp`)
   })
 
+  it('Supports overriding props passed to <HashiHead>', () => {
+    render(
+      <DocsPage
+        {...defaultProps}
+        headProps={{
+          siteName: 'HashiCorp Cloud Platform',
+          title: 'Test Page | HashiCorp Cloud Platform',
+        }}
+      />
+    )
+    // title renders correctly
+    expect(document.title).toBe(`Test Page | HashiCorp Cloud Platform`)
+    // siteName renders correctly
+    const site_name = Array.prototype.slice
+      .call(document.getElementsByTagName('meta'))
+      .filter((tag) => tag.getAttribute('property') === 'og:site_name')[0]
+      .getAttribute('content')
+    expect(site_name).toBe(`HashiCorp Cloud Platform`)
+  })
+
   it('passes props correctly to <DocsSidenav>', () => {
     render(<DocsPage {...defaultProps} />)
     // Confirm `product` is passed via document title
