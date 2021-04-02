@@ -29,7 +29,7 @@ describe('<Head />', () => {
   })
 
   it('should render and display <title> tag', () => {
-    const { container } = renderHead(<Head is="head" title="Page Title" />)
+    const { container } = renderHead(<Head title="Page Title" />)
 
     expect(container.innerHTML).toBe(
       [
@@ -43,9 +43,7 @@ describe('<Head />', () => {
   })
 
   it('should render and display <meta name="description"> tag', () => {
-    const { container } = renderHead(
-      <Head is="head" description="Page Description" />
-    )
+    const { container } = renderHead(<Head description="Page Description" />)
 
     expect(container.innerHTML).toBe(
       [
@@ -59,7 +57,7 @@ describe('<Head />', () => {
   })
 
   it('should render and display <meta name="og:site_name"> tag', () => {
-    const { container } = renderHead(<Head is="head" siteName="Hashicorp" />)
+    const { container } = renderHead(<Head siteName="Hashicorp" />)
 
     expect(container.innerHTML).toBe(
       [
@@ -73,7 +71,7 @@ describe('<Head />', () => {
   })
 
   it('should render and display <meta name="og:title"> tag', () => {
-    const { container } = renderHead(<Head is="head" pageName="Page Title" />)
+    const { container } = renderHead(<Head pageName="Page Title" />)
 
     expect(container.innerHTML).toBe(
       [
@@ -87,7 +85,7 @@ describe('<Head />', () => {
   })
 
   it('should render and display <meta name="og:image"> tag', () => {
-    const { container } = renderHead(<Head is="head" image="/site-image.jpg" />)
+    const { container } = renderHead(<Head image="/site-image.jpg" />)
 
     expect(container.innerHTML).toBe(
       [
@@ -102,7 +100,7 @@ describe('<Head />', () => {
 
   it('should render and display <link rel="preload"> tags', () => {
     const { container } = renderHead(
-      <Head is="head" preload={[{ href: '/style.css', as: 'stylesheet' }]} />
+      <Head preload={[{ href: '/style.css', as: 'stylesheet' }]} />
     )
 
     expect(container.innerHTML).toBe(
@@ -118,7 +116,7 @@ describe('<Head />', () => {
 
   it('should render and display <link rel="icon"> tags', () => {
     const { container } = renderHead(
-      <Head is="head" icon={[{ href: '/favicon.gif', type: 'image/gif' }]} />
+      <Head icon={[{ href: '/favicon.gif', type: 'image/gif' }]} />
     )
 
     expect(container.innerHTML).toBe(
@@ -135,7 +133,6 @@ describe('<Head />', () => {
   it('should render and display <link rel="stylesheet"> tags', () => {
     const { container } = renderHead(
       <Head
-        is="head"
         stylesheet={[
           { href: '/style.css' },
           { href: '/print.css', media: 'print' },
@@ -157,7 +154,7 @@ describe('<Head />', () => {
 
   it('should render and display children', () => {
     const { container } = renderHead(
-      <Head is="head">
+      <Head>
         <meta property="article:section" content="Technology" />
       </Head>
     )
