@@ -48,5 +48,13 @@ export default function generateDefaultPackageManagers(
       ],
       os: 'linux',
     },
+    {
+      label: 'Homebrew',
+      commands: [
+        `brew tap hashicorp/tap`,
+        `brew install hashicorp/tap/${productName}`,
+      ],
+      os: 'linux',
+    },
   ]
 }
