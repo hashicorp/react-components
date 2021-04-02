@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function HashiHead(props: Props): React.ReactElement {
+export default function HashiHead(props: HashiHeadProps): React.ReactElement {
   return (
     <Head>
       {whenString(props.title, <title>{props.title}</title>)}
@@ -73,7 +73,7 @@ const whenString = (value, returnValue) =>
 // Types
 // -----
 
-interface Props {
+interface HashiHeadProps {
   canonicalUrl?: string
   children?: React.ReactNode
   description?: string

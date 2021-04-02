@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import Head from './'
 
 describe('<Head />', () => {
   const container = document.documentElement
@@ -8,9 +7,21 @@ describe('<Head />', () => {
     '<meta http-equiv="x-ua-compatible" content="ie=edge">'
   const metaDefaultTagsHTML =
     '<meta property="og:locale" content="en_US"><meta property="og:type" content="website"><meta property="article:publisher" content="https://www.facebook.com/HashiCorp/"><meta name="twitter:site" content="@HashiCorp"><meta name="twitter:card" content="summary_large_image">'
+  let Head
 
-  it('should render and display <head> tags', () => {
-    const { container } = renderHead(<Head is="head" />)
+  beforeEach(async () => {
+    jest.resetModules()
+    jest.mock('next/head', () => 'head')
+    const { default: MockedHead } = await import('./')
+    Head = MockedHead
+  })
+
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  test('should render and display <head> tags', () => {
+    const { container } = renderHead(<Head />)
 
     expect(container.innerHTML).toBe(
       ['<head>', metaHttpEquivHTML, metaDefaultTagsHTML, '</head>'].join('')
