@@ -101,22 +101,18 @@ interface Props {
   twitterCard?: TwitterCardProp
 }
 
-declare enum TwitterCardProp {
-  SummaryCard = 'summary',
-  SummaryCardWithLargeImage = 'summary_large_image',
-}
+type TwitterCardProp = 'summary' | 'summary_large_image'
 
-declare enum asProp {
-  Audio = 'audio',
-  Document = 'document',
-  Embed = 'embed',
-  Fetch = 'fetch',
-  Font = 'font',
-  Image = 'image',
-  Obejct = 'object',
-  Script = 'script',
-  Style = 'style',
-  Track = 'track',
-  Video = 'video',
-  Worker = 'worker',
-}
+type asProp =
+  | 'audio'
+  | 'document'
+  | 'embed'
+  | 'fetch'
+  | 'font'
+  | 'image'
+  | 'object'
+  | 'script'
+  | 'style'
+  | 'track'
+  | 'video'
+  | 'worker'

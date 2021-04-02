@@ -31,7 +31,7 @@ export default function ProductDownloader({
   product,
   latestVersion,
   releases,
-}: Props): React.ReactElement {
+}: ProductDownloaderProps): React.ReactElement {
   const { name, themeClass } = useProductMeta(product)
   const currentRelease = releases.versions[latestVersion]
 
@@ -144,7 +144,7 @@ export default function ProductDownloader({
 // Types
 // -----
 
-interface Props {
+interface ProductDownloaderProps {
   tutorialLink: Link
   merchandisingSlot: React.ReactElement
   logo: React.ReactElement

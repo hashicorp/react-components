@@ -11,7 +11,7 @@ export default function DownloadTabs({
   merchandisingSlot,
   logo,
   tutorialLink,
-}: Props): React.ReactElement {
+}: DownloadTabsProps): React.ReactElement {
   return (
     <Tabs
       key={defaultTabIdx}
@@ -115,7 +115,7 @@ function Cards({
 
 // Types
 
-interface Props {
+interface DownloadTabsProps {
   defaultTabIdx: number
   tabData: {
     os: string

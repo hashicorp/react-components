@@ -6,7 +6,7 @@ export default function Dropdown({
   options,
   onChange,
   title,
-}: Props): React.ReactElement {
+}: DropdownProps): React.ReactElement {
   const [open, setOpen] = useState(false)
   const buttonRef = useRef<HTMLDivElement>()
 
@@ -63,7 +63,7 @@ export default function Dropdown({
 
 // Types
 
-interface Props {
+interface DropdownProps {
   options: { label: string; value: string }[]
   onChange: (string) => void
   title: string

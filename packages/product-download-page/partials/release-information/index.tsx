@@ -17,7 +17,7 @@ export default function ReleaseInformation({
   containers,
   tutorials,
   changelog,
-}: Props): React.ReactElement {
+}: ReleaseInformationProps): React.ReactElement {
   const [selectedVersionId, setSelectedVersionId] = useState(latestVersion)
   const { version, ...selectedVersion } =
     releases.find((release) => release.version === selectedVersionId) || {}
@@ -133,7 +133,7 @@ export default function ReleaseInformation({
 
 // Types
 
-interface Props {
+interface ReleaseInformationProps {
   releases: (SortedReleases & { version: string })[]
   latestVersion: string
   containers: Link[]
