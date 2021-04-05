@@ -7,6 +7,10 @@ import thumbsDownIcon from './icons/thumbs-down.svg?include'
 
 import s from './style.module.css'
 
+const MAX_TRANSITION_DURATION_MS = 200
+
+const wait = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
 const FeedbackFormContext = createContext()
 
 function Question(props) {
@@ -21,20 +25,27 @@ function Question(props) {
 
   switch (type) {
     case 'choice': {
-      inputs = answers.map((answer) => (
-        <Button
-          aria-label={answer.display}
-          key={answer.display}
-          title={answer.display}
-          size="small"
-          onClick={(e) => feedbackContext.submitQuestion(e, { id, ...answer })}
-          icon={{
-            svg: answer.value === 'yes' ? thumbsUpIcon : thumbsDownIcon,
-            position: 'left',
-          }}
-          className={s.choiceButton}
-        />
-      ))
+      inputs = (
+        <div className={s.buttonWrapper}>
+          {answers.map((answer) => (
+            <Button
+              disabled={feedbackContext.isTransitioning}
+              aria-label={answer.display}
+              key={answer.display}
+              title={answer.display}
+              size="small"
+              onClick={(e) =>
+                feedbackContext.submitQuestion(e, { id, ...answer })
+              }
+              icon={{
+                svg: answer.value === 'yes' ? thumbsUpIcon : thumbsDownIcon,
+                position: 'left',
+              }}
+              className={s.choiceButton}
+            />
+          ))}
+        </div>
+      )
 
       break
     }
@@ -51,6 +62,7 @@ function Question(props) {
             className={s.textArea}
           />
           <Button
+            className={s.submitButton}
             aria-label={buttonText}
             title={buttonText}
             size="small"
@@ -104,7 +116,10 @@ export default function FeedbackForm({
         setResponses(newResponses)
 
         setIsTransitioning(true)
-        onQuestionSubmit(answer, sessionId).finally(() => {
+        Promise.race([
+          onQuestionSubmit(newResponses, sessionId),
+          wait(MAX_TRANSITION_DURATION_MS),
+        ]).finally(() => {
           setIsTransitioning(false)
           if (answer.nextQuestion) {
             setActiveQuestion(answer.nextQuestion)
