@@ -2,13 +2,17 @@ import { useState, useRef, useEffect } from 'react'
 import Button from '@hashicorp/react-button'
 import styles from './style.module.css'
 
-export default function Dropdown({ options, onChange, title }) {
+export default function Dropdown({
+  options,
+  onChange,
+  title,
+}: DropdownProps): React.ReactElement {
   const [open, setOpen] = useState(false)
-  const buttonRef = useRef()
+  const buttonRef = useRef<HTMLDivElement>()
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (buttonRef.current.contains(event.target)) return
+      if (buttonRef.current?.contains(event.target)) return
 
       setOpen(false)
     }
@@ -27,6 +31,7 @@ export default function Dropdown({ options, onChange, title }) {
         aria-expanded={open}
         aria-controls="menu-list"
         aria-haspopup="true"
+        data-testid="version-dropdown"
         title={title}
         icon={{
           position: 'right',
@@ -54,4 +59,12 @@ export default function Dropdown({ options, onChange, title }) {
       )}
     </div>
   )
+}
+
+// Types
+
+interface DropdownProps {
+  options: { label: string; value: string }[]
+  onChange: (string) => void
+  title: string
 }

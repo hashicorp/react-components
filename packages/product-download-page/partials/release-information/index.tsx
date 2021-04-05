@@ -1,23 +1,23 @@
 import { useState, Fragment } from 'react'
 import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
-
 import Dropdown from '../dropdown'
 import {
   prettyArch,
   prettyOs,
   trackDownload,
   getVersionLabel,
+  SortedReleases,
 } from '../../utils/downloader'
+import { Link } from '../../'
 import styles from './style.module.css'
 
 export default function ReleaseInformation({
   releases,
   latestVersion,
-  packageManagers,
   containers,
   tutorials,
   changelog,
-}) {
+}: ReleaseInformationProps): React.ReactElement {
   const [selectedVersionId, setSelectedVersionId] = useState(latestVersion)
   const { version, ...selectedVersion } =
     releases.find((release) => release.version === selectedVersionId) || {}
@@ -25,7 +25,7 @@ export default function ReleaseInformation({
 
   return (
     <div className={styles.root}>
-      <div className="g-container">
+      <main className="g-container">
         <h2>Release Information</h2>
         <div className={styles.grid}>
           {releases.length > 0 && (
@@ -34,7 +34,6 @@ export default function ReleaseInformation({
               <div>
                 <Dropdown
                   title={`${name} ${getVersionLabel(version, latestVersion)}`}
-                  product={slug}
                   options={releases.map((releaseData) => ({
                     label: `${name} ${getVersionLabel(
                       releaseData.version,
@@ -60,22 +59,26 @@ export default function ReleaseInformation({
           <div>
             Package downloads for {name} {version}
             <div className={styles.downloads}>
-              {Object.entries(selectedVersion).map(([os, release]) => (
-                <Fragment key={os}>
-                  <div className={styles.os}>{prettyOs(os)}</div>
-                  <div className={styles.arches}>
-                    {Object.entries(release).map(([arch, file]) => (
-                      <a
-                        href={file}
-                        key={arch}
-                        onClick={() => trackDownload(slug, version, os, arch)}
-                      >
-                        {prettyArch(arch)}
-                      </a>
-                    ))}
-                  </div>
-                </Fragment>
-              ))}
+              {/* something feels not right with the way typescript is losing track of
+              typings here, but i dont know what. for now, manually clarified the typings */}
+              {Object.entries(selectedVersion).map(
+                ([os, release]: [string, { [arch: string]: string }]) => (
+                  <Fragment key={os}>
+                    <div className={styles.os}>{prettyOs(os)}</div>
+                    <div className={styles.arches}>
+                      {Object.entries(release).map(([arch, file]) => (
+                        <a
+                          href={file}
+                          key={arch}
+                          onClick={() => trackDownload(slug, version, os, arch)}
+                        >
+                          {prettyArch(arch)}
+                        </a>
+                      ))}
+                    </div>
+                  </Fragment>
+                )
+              )}
             </div>
             <p>
               You can find the{' '}
@@ -97,26 +100,13 @@ export default function ReleaseInformation({
             </p>
           </div>
 
-          {packageManagers?.length > 0 && (
-            <>
-              <div className={styles.heading}>Package Managers</div>
-              <div className={styles.links}>
-                {packageManagers.map((packageManager) => (
-                  <div key={packageManager.label}>
-                    Install with{' '}
-                    <a href={packageManager.url}>{packageManager.label}</a>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
           {containers?.length > 0 && (
             <>
               <div className={styles.heading}>Containers</div>
               <div className={styles.links}>
                 {containers.map((container) => (
                   <div key={container.label}>
-                    Run with <a href={container.url}>{container.label}</a>
+                    Run with <a href={container.href}>{container.label}</a>
                   </div>
                 ))}
               </div>
@@ -129,14 +119,24 @@ export default function ReleaseInformation({
               <div className={styles.links}>
                 {tutorials.map((tutorial) => (
                   <div key={tutorial.label}>
-                    <a href={tutorial.url}>{tutorial.label}</a>
+                    <a href={tutorial.href}>{tutorial.label}</a>
                   </div>
                 ))}
               </div>
             </>
           )}
         </div>
-      </div>
+      </main>
     </div>
   )
+}
+
+// Types
+
+interface ReleaseInformationProps {
+  releases: (SortedReleases & { version: string })[]
+  latestVersion: string
+  containers: Link[]
+  tutorials: Link[]
+  changelog: string
 }
