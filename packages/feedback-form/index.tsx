@@ -1,4 +1,4 @@
-import { useContext, createContext, useMemo, useState } from 'react'
+import React, { useContext, createContext, useMemo, useState } from 'react'
 import shortid from 'shortid'
 import Button from '@hashicorp/react-button'
 
@@ -9,32 +9,36 @@ import s from './style.module.css'
 
 const MAX_TRANSITION_DURATION_MS = 200
 
-const wait = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+const wait = (delay: number) =>
+  new Promise((resolve) => setTimeout(resolve, delay))
 
-const FeedbackFormContext = createContext()
+const FeedbackFormContext = createContext<FeedbackFormContext>({})
 
-function Question(props) {
-  const { id, type, text, answers, buttonText, followupMessage } = props
+function Question(props: FeedbackQuestion) {
+  const { id, text, followupMessage } = props
 
   const [inputValue, setInputValue] = useState('')
   const feedbackContext = useContext(FeedbackFormContext)
 
   if (feedbackContext.activeQuestion !== id) return null
 
-  let inputs
+  let inputs: React.ReactNode
 
-  switch (type) {
+  switch (props.type) {
     case 'choice': {
+      const { answers } = props
+
       inputs = (
         <div className={s.buttonWrapper}>
           {answers.map((answer) => (
+            /* @ts-expect-error -- Button needs types */
             <Button
               disabled={feedbackContext.isTransitioning}
               aria-label={answer.display}
               key={answer.display}
               title={answer.display}
               size="small"
-              onClick={(e) =>
+              onClick={(e: React.MouseEvent) =>
                 feedbackContext.submitQuestion(e, { id, ...answer })
               }
               icon={{
@@ -50,6 +54,8 @@ function Question(props) {
       break
     }
     case 'text': {
+      const { buttonText } = props
+
       const isButtonDisabled =
         inputValue === '' || feedbackContext.isTransitioning
 
@@ -61,13 +67,14 @@ function Question(props) {
             onChange={(e) => setInputValue(e.currentTarget.value)}
             className={s.textArea}
           />
+          {/* @ts-expect-error -- Button needs types */}
           <Button
             className={s.submitButton}
             aria-label={buttonText}
             title={buttonText}
             size="small"
             disabled={isButtonDisabled}
-            onClick={(e) =>
+            onClick={(e: React.MouseEvent) =>
               feedbackContext.submitQuestion(e, { id, value: inputValue })
             }
           />
@@ -92,16 +99,15 @@ function Question(props) {
 export default function FeedbackForm({
   questions,
   finished,
-  onQuestionSubmit = () => {},
-}) {
-  // inProgress | finished
-  const [status, setStatus] = useState('inProgress')
+  onQuestionSubmit = () => void 0,
+}: FeedbackFormProps): React.ReactElement {
+  const [status, setStatus] = useState<'inProgress' | 'finished'>('inProgress')
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [responses, setResponses] = useState([])
   const [activeQuestion, setActiveQuestion] = useState(questions[0].id)
   const [sessionId] = useState(() => shortid.generate())
 
-  const contextValue = useMemo(
+  const contextValue: FeedbackFormContext = useMemo(
     () => ({
       isTransitioning,
       activeQuestion,
@@ -146,47 +152,52 @@ export default function FeedbackForm({
   )
 }
 
-// ;<FeedbackForm>
-//   <Question type="choice" id="helpful" text="Was this tutorial helpful?">
-//     <Answer value="yes" nextQuestion="reasonForVisit">
-//       <Button
-//         title="Yes"
-//         size="small"
-//         icon={{ svg: thumbsUpIcon, position: 'left' }}
-//       />
-//     </Answer>
-//     <Answer value="no" nextQuestion="suggestedImprovements">
-//       <Button
-//         title="No"
-//         size="small"
-//         icon={{ svg: thumbsDownIcon, position: 'left' }}
-//       />
-//     </Answer>
-//   </Question>
-//   <Question
-//     type="text"
-//     id="reasonForVisit"
-//     text={
-//       <>
-//         <strong>Why did you visit this tutorial?</strong> (optional)
-//       </>
-//     }
-//     buttonText="Complete Feedback"
-//   />
-//   <Question
-//     type="text"
-//     id="suggestedImprovements"
-//     text={
-//       <>
-//         <strong>How could this tutorial be more helpful?</strong> (optional)
-//       </>
-//     }
-//     buttonText="Complete Feedback"
-//     followupMessage={
-//       <>
-//         <strong>We&apos;re sorry to hear that.</strong> Your feedback will help
-//         us improve.
-//       </>
-//     }
-//   />
-// </FeedbackForm>
+/**
+ * Types
+ */
+
+interface FeedbackQuestionBase {
+  id: string
+  text: React.ReactNode
+  followupMessage: React.ReactNode
+}
+
+interface FeedbackQuestionChoice extends FeedbackQuestionBase {
+  type: 'choice'
+  answers: {
+    display: string
+    value: string
+    nextQuestion: string
+  }[]
+}
+
+interface FeedbackQuestionText extends FeedbackQuestionBase {
+  type: 'text'
+  buttonText: string
+}
+
+type FeedbackQuestion = FeedbackQuestionText | FeedbackQuestionChoice
+
+interface FeedbackResponse {
+  id: string
+  value: string
+}
+
+interface FeedbackFormProps {
+  questions: FeedbackQuestion[]
+  finished: React.ReactNode
+  onQuestionSubmit:
+    | (() => void)
+    | ((responses: FeedbackResponse[], sessionId: string) => Promise<void>)
+}
+
+type FeedbackFormContext =
+  | {
+      isTransitioning: boolean
+      activeQuestion: string | undefined
+      submitQuestion(
+        e: React.MouseEvent,
+        answer: FeedbackResponse & { nextQuestion?: string }
+      ): void
+    }
+  | Record<string, never>
