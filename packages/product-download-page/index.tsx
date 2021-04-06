@@ -15,7 +15,7 @@ import { HashiCorpProduct } from '../../types'
 
 import styles from './style.module.css'
 
-export default function ProductDownloader({
+export default function ProductDownloadsPage({
   tutorialLink,
   merchandisingSlot,
   logo,
@@ -31,7 +31,7 @@ export default function ProductDownloader({
   product,
   latestVersion,
   releases,
-}: ProductDownloaderProps): React.ReactElement {
+}: ProductDownloadsPageProps): React.ReactElement {
   const { name, themeClass } = useProductMeta(product)
   const currentRelease = releases.versions[latestVersion]
 
@@ -144,7 +144,7 @@ export default function ProductDownloader({
 // Types
 // -----
 
-interface ProductDownloaderProps {
+interface ProductDownloadsPageProps {
   tutorialLink: Link
   merchandisingSlot: React.ReactElement
   logo: React.ReactElement

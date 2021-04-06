@@ -1,13 +1,13 @@
 import { fireEvent, screen, getByText, render } from '@testing-library/react'
-import ProductDownloader from './'
+import ProductDownloadsPage from './'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 
 function setup(props) {
-  return render(<ProductDownloader {...defaultProps} {...props} />)
+  return render(<ProductDownloadsPage {...defaultProps} {...props} />)
 }
 
-describe('<ProductDownloader />', () => {
+describe('<ProductDownloadsPage />', () => {
   describe('Download Cards', () => {
     let platform
 
