@@ -31,7 +31,6 @@ function Question(props: FeedbackQuestion) {
       inputs = (
         <div className={s.buttonWrapper}>
           {answers.map((answer) => (
-            /* @ts-expect-error -- Button needs types */
             <Button
               disabled={feedbackContext.isTransitioning}
               aria-label={answer.display}
@@ -67,7 +66,6 @@ function Question(props: FeedbackQuestion) {
             onChange={(e) => setInputValue(e.currentTarget.value)}
             className={s.textArea}
           />
-          {/* @ts-expect-error -- Button needs types */}
           <Button
             className={s.submitButton}
             aria-label={buttonText}
