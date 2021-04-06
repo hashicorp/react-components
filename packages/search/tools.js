@@ -8,6 +8,8 @@ const fs = require('fs')
 const remark = require('remark')
 const visit = require('unist-util-visit')
 
+const DEFAULT_FRONTMATTER_KEYS = ['page_title', 'description']
+
 const projectRoot = process.cwd()
 
 async function indexDocsContent({
@@ -19,7 +21,7 @@ async function indexDocsContent({
   contentDir = path.join(projectRoot, 'content'),
   filesPattern = '**/*.mdx',
   globOptions = { ignore: path.join(projectRoot, 'content', 'partials/**/*') },
-  frontmatterKeys,
+  frontmatterKeys = DEFAULT_FRONTMATTER_KEYS,
 } = {}) {
   const searchObjects = await getDocsSearchObjects({
     contentDir,
@@ -96,7 +98,7 @@ async function getDocsSearchObjects({
 async function getDocsSearchObject(
   urlPath,
   fileString,
-  frontmatterKeys = ['page_title', 'description']
+  frontmatterKeys = DEFAULT_FRONTMATTER_KEYS
 ) {
   const { content, data } = matter(fileString)
   const searchableDimensions = frontmatterKeys.reduce((acc, key) => {

@@ -1,16 +1,17 @@
 import semverRSort from 'semver/functions/rsort'
 import semverPrerelease from 'semver/functions/prerelease'
 import semverValid from 'semver/functions/valid'
+import { ReleaseVersion } from '..'
 
-export function getVersionLabel(version, latestVersion) {
-  if (version === latestVersion) {
-    return `${version} (latest)`
-  }
-
+export function getVersionLabel(
+  version: string,
+  latestVersion: string
+): string {
+  if (version === latestVersion) return `${version} (latest)`
   return version
 }
 
-export function sortAndFilterReleases(releases) {
+export function sortAndFilterReleases(releases: string[]): string[] {
   const validReleases = releases.filter(semverValid)
   // descending sort on releases, while filtering out pre-releases
   return semverRSort(validReleases).filter(
@@ -18,7 +19,7 @@ export function sortAndFilterReleases(releases) {
   )
 }
 
-export function prettyArch(arch) {
+export function prettyArch(arch: string): string {
   switch (arch) {
     case 'all':
       return 'Universal (32 and 64-bit)'
@@ -47,8 +48,8 @@ export function prettyArch(arch) {
   }
 }
 
-export function detectOs(platform) {
-  for (let key in platformMap) {
+export function detectOs(platform: string): string | null {
+  for (const key in platformMap) {
     if (platform.indexOf(key) !== -1) {
       return platformMap[key]
     }
@@ -57,7 +58,7 @@ export function detectOs(platform) {
   return null
 }
 
-export function prettyOs(os) {
+export function prettyOs(os: string): string {
   switch (os) {
     case 'darwin':
       return 'macOS'
@@ -84,7 +85,7 @@ const platformMap = {
   Linux: 'linux',
 }
 
-export function sortPlatforms(releaseData) {
+export function sortPlatforms(releaseData: ReleaseVersion): SortedReleases {
   // first we pull the platforms out of the release data object and format it the way we want
   const platforms = releaseData.builds.reduce((acc, build) => {
     if (!acc[build.os]) acc[build.os] = {}
@@ -119,7 +120,18 @@ export function sortPlatforms(releaseData) {
   )
 }
 
-export function trackDownload(product, version, _os, _arch) {
+export interface SortedReleases {
+  [os: string]: {
+    [arch: string]: string
+  }
+}
+
+export function trackDownload(
+  product: string,
+  version: string,
+  _os: string,
+  _arch: string
+): void {
   const os = prettyOs(_os)
   const arch = prettyArch(_arch)
 
