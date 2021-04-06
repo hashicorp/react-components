@@ -119,7 +119,9 @@ export default function FeedbackForm({
 
         setResponses(newResponses)
 
+        // Set a transitioning state so we can disable buttons while submission is happening
         setIsTransitioning(true)
+        // Set a max transition time by using Promise.race to ensure there isn't a delay in user interaction
         Promise.race([
           onQuestionSubmit(newResponses, sessionId),
           wait(MAX_TRANSITION_DURATION_MS),
@@ -182,8 +184,17 @@ interface FeedbackResponse {
 }
 
 interface FeedbackFormProps {
+  /**
+   * The list of questions which are displayed to the user.
+   */
   questions: FeedbackQuestion[]
+  /**
+   * Renders after all questions have been answered
+   */
   finished: React.ReactNode
+  /**
+   * Called each time a question is submitted
+   */
   onQuestionSubmit:
     | (() => void)
     | ((responses: FeedbackResponse[], sessionId: string) => Promise<void>)
