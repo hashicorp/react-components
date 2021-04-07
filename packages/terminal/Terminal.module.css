@@ -84,7 +84,7 @@
         line-height: 16px;
       }
       &.navy {
-        color: var(--vagrant-l1);
+        color: #4294ff;
       }
       &.gray {
         color: var(--gray-4);
