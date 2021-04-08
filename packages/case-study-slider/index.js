@@ -116,7 +116,7 @@ class CaseStudySlider extends Component {
   render() {
     // Clear our frames array so we don't keep old refs around
     this.frames = []
-    const { caseStudies, brand } = this.data
+    const { caseStudies } = this.data
 
     const { measure, active, timing, numFrames, containerWidth } = this.state
     const { dark } = this.props
@@ -153,12 +153,7 @@ class CaseStudySlider extends Component {
                 <div className="logo-container">
                   <Logo dark={dark} image={company} />
                 </div>
-                <StatusBar
-                  dark={dark}
-                  active={active === i}
-                  timing={timing}
-                  brand={brand}
-                />
+                <StatusBar dark={dark} active={active === i} timing={timing} />
               </div>
             ))}
           </div>
