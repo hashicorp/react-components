@@ -13,6 +13,7 @@
 
   &.background-dark {
     background: var(--black);
+    color: var(--white);
   }
 
   & > .g-grid-container {
@@ -44,20 +45,11 @@
 
       & > .heading {
         margin: 0;
-
-        &.theme-dark {
-          color: var(--white);
-        }
       }
 
       & .g-type-body {
         margin: 0;
         margin-top: var(--space-display-2--body);
-        color: var(--gray-2);
-
-        &.theme-dark {
-          color: var(--gray-4);
-        }
 
         & + .g-type-body {
           margin-top: 16px;
