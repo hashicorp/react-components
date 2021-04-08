@@ -2,7 +2,7 @@
 
 .g-tabs {
   & .g-tab-triggers .active .inner {
-    border-bottom-color: var(--brand);
+    border-bottom-color: var(--black);
   }
 }
 
