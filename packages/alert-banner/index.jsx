@@ -32,7 +32,7 @@ class AlertBanner extends Component {
         <a href={url} className="link" onClick={() => this.trackEvent('click')}>
           <span className={`g-grid-container ${tagClass}`}>
             <span className="tag g-type-body-small-x-strong">{tag}</span>
-            <span className={`text g-type-body-small-strong ${tagClass}`}>
+            <span className={`text g-type-body-small ${tagClass}`}>
               {text}
               {linkText ? ' ' : null}
               {linkText ? (
