@@ -1,9 +1,10 @@
 import { Component, createRef } from 'react'
-import CloseIcon from './close-icon'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
 import classNames from 'classnames'
 import { withProductMeta } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import InlineSvg from '@hashicorp/react-inline-svg'
+import CloseIcon from './img/close-icon.svg?include'
 
 import fragment from './fragment.graphql'
 
@@ -25,26 +26,25 @@ class AlertBanner extends Component {
 
     return (
       <div
-        className={classNames(
-          'g-alert-banner',
-          product.themeClass,
-          { show },
-          { vault: product.slug === 'vault' }
-        )}
+        className={classNames('g-alert-banner', product.themeClass, { show })}
         ref={this.banner}
       >
         <a href={url} className="link" onClick={() => this.trackEvent('click')}>
           <span className={`g-grid-container ${tagClass}`}>
-            <span className="tag g-type-label">{tag}</span>
+            <span className="tag g-type-body-small-x-strong">{tag}</span>
             <span className={`text g-type-body-small-strong ${tagClass}`}>
               {text}
               {linkText ? ' ' : null}
-              {linkText ? <span className="link-text">{linkText}</span> : null}
+              {linkText ? (
+                <span className="link-text g-type-body-small-x-strong">
+                  {linkText}
+                </span>
+              ) : null}
             </span>
           </span>
         </a>
         <button className="close" onClick={() => this.onClose()}>
-          <CloseIcon />
+          <InlineSvg src={CloseIcon} />
           <span className="visually-hidden">Dismiss alert</span>
         </button>
       </div>
