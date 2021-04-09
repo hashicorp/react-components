@@ -14,7 +14,7 @@ const wait = (delay: number) =>
 
 const FeedbackFormContext = createContext<FeedbackFormContext>({})
 
-function Question(props: FeedbackQuestion) {
+const Question: React.FC<FeedbackQuestion> = (props) => {
   const { id, text, followupMessage } = props
 
   const [inputValue, setInputValue] = useState('')
