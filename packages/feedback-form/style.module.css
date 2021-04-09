@@ -26,7 +26,7 @@
   display: block;
   resize: none;
   min-height: 100px;
-  border: 1px solid var(--gray-6);
+  border: 1px solid var(--gray-5);
   font-family: var(--font-body);
   font-weight: var(--font-weight-reg);
   font-size: 1rem;
