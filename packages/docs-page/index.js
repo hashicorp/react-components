@@ -46,13 +46,7 @@ export function DocsPageWrapper({
       <div className="content-wrap g-container">
         <div id="sidebar" role="complementary">
           {process.env.ENABLE_VERSIONED_DOCS ? (
-            <div
-              style={{
-                paddingLeft: '5px',
-                marginBottom: '1rem',
-                maxWidth: '90%',
-              }}
-            >
+            <div className="version-select">
               <VersionSelect versions={versions} />
             </div>
           ) : null}
