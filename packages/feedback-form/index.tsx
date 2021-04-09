@@ -1,9 +1,21 @@
-import React, { useContext, createContext, useMemo, useState } from 'react'
+import React, {
+  useContext,
+  createContext,
+  useMemo,
+  useState,
+  useRef,
+} from 'react'
 import shortid from 'shortid'
 import Button from '@hashicorp/react-button'
 
 import thumbsUpIcon from './icons/thumbs-up.svg?include'
-import thumbsDownIcon from './icons/thumbs-down.svg?include'
+
+import {
+  FeedbackFormContext as FeedbackFormContextType,
+  FeedbackQuestion,
+  FeedbackFormProps,
+  FeedbackFormStatus,
+} from './types'
 
 import s from './style.module.css'
 
@@ -12,7 +24,7 @@ const MAX_TRANSITION_DURATION_MS = 200
 const wait = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay))
 
-const FeedbackFormContext = createContext<FeedbackFormContext>({})
+const FeedbackFormContext = createContext<FeedbackFormContextType>({})
 
 const Question: React.FC<FeedbackQuestion> = (props) => {
   const { id, text, followupMessage } = props
@@ -32,6 +44,7 @@ const Question: React.FC<FeedbackQuestion> = (props) => {
         <div className={s.buttonWrapper}>
           {answers.map((answer) => (
             <Button
+              type={answer.nextQuestion ? 'button' : 'submit'}
               disabled={feedbackContext.isTransitioning}
               aria-label={answer.display}
               key={answer.display}
@@ -41,10 +54,12 @@ const Question: React.FC<FeedbackQuestion> = (props) => {
                 feedbackContext.submitQuestion(e, { id, ...answer })
               }
               icon={{
-                svg: answer.value === 'yes' ? thumbsUpIcon : thumbsDownIcon,
+                svg: thumbsUpIcon,
                 position: 'left',
               }}
-              className={s.choiceButton}
+              className={`${s.choiceButton} ${
+                answer.value === 'no' ? s.negative : ''
+              }`}
             />
           ))}
         </div>
@@ -68,6 +83,7 @@ const Question: React.FC<FeedbackQuestion> = (props) => {
           />
           <Button
             className={s.submitButton}
+            type={props.nextQuestion ? 'button' : 'submit'}
             aria-label={buttonText}
             title={buttonText}
             size="small"
@@ -99,13 +115,20 @@ export default function FeedbackForm({
   finished,
   onQuestionSubmit = () => void 0,
 }: FeedbackFormProps): React.ReactElement {
-  const [status, setStatus] = useState<'inProgress' | 'finished'>('inProgress')
+  const [status, setStatus] = useState<FeedbackFormStatus>(
+    FeedbackFormStatus.inProgress
+  )
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [responses, setResponses] = useState([])
   const [activeQuestion, setActiveQuestion] = useState(questions[0].id)
-  const [sessionId] = useState(() => shortid.generate())
+  const sessionId = useRef()
 
-  const contextValue: FeedbackFormContext = useMemo(
+  const getSessionId = () => {
+    if (!sessionId.current) sessionId.current = shortid.generate()
+    return sessionId.current
+  }
+
+  const contextValue: FeedbackFormContextType = useMemo(
     () => ({
       isTransitioning,
       activeQuestion,
@@ -123,14 +146,14 @@ export default function FeedbackForm({
         setIsTransitioning(true)
         // Set a max transition time by using Promise.race to ensure there isn't a delay in user interaction
         Promise.race([
-          onQuestionSubmit(newResponses, sessionId),
+          onQuestionSubmit(newResponses, getSessionId()),
           wait(MAX_TRANSITION_DURATION_MS),
         ]).finally(() => {
           setIsTransitioning(false)
           if (answer.nextQuestion) {
             setActiveQuestion(answer.nextQuestion)
           } else {
-            setStatus('finished')
+            setStatus(FeedbackFormStatus.finished)
           }
         })
       },
@@ -141,72 +164,13 @@ export default function FeedbackForm({
   return (
     <FeedbackFormContext.Provider value={contextValue}>
       <form id="feedback-panel">
-        {status === 'inProgress'
+        {status === FeedbackFormStatus.inProgress
           ? questions.map((question) => (
               <Question key={question.id} {...question} />
             ))
           : null}
-        {status === 'finished' ? finished : null}
+        {status === FeedbackFormStatus.finished ? finished : null}
       </form>
     </FeedbackFormContext.Provider>
   )
 }
-
-/**
- * Types
- */
-
-interface FeedbackQuestionBase {
-  id: string
-  text: React.ReactNode
-  followupMessage: React.ReactNode
-}
-
-interface FeedbackQuestionChoice extends FeedbackQuestionBase {
-  type: 'choice'
-  answers: {
-    display: string
-    value: string
-    nextQuestion: string
-  }[]
-}
-
-interface FeedbackQuestionText extends FeedbackQuestionBase {
-  type: 'text'
-  buttonText: string
-}
-
-type FeedbackQuestion = FeedbackQuestionText | FeedbackQuestionChoice
-
-interface FeedbackResponse {
-  id: string
-  value: string
-}
-
-interface FeedbackFormProps {
-  /**
-   * The list of questions which are displayed to the user.
-   */
-  questions: FeedbackQuestion[]
-  /**
-   * Renders after all questions have been answered
-   */
-  finished: React.ReactNode
-  /**
-   * Called each time a question is submitted
-   */
-  onQuestionSubmit:
-    | (() => void)
-    | ((responses: FeedbackResponse[], sessionId: string) => Promise<void>)
-}
-
-type FeedbackFormContext =
-  | {
-      isTransitioning: boolean
-      activeQuestion: string | undefined
-      submitQuestion(
-        e: React.MouseEvent,
-        answer: FeedbackResponse & { nextQuestion?: string }
-      ): void
-    }
-  | Record<string, never>

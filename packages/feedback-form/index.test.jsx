@@ -42,7 +42,7 @@ describe('FeedbackForm', () => {
 
     userEvent.type(screen.getByRole('textbox'), 'answer')
 
-    userEvent.click(screen.getByText('Submit'))
+    userEvent.click(screen.getByRole('button'), { type: 'submit' })
 
     const finished = await screen.findByText('All done!')
 
@@ -58,7 +58,7 @@ describe('FeedbackForm', () => {
 
     userEvent.type(screen.getByRole('textbox'), 'answer')
 
-    userEvent.click(screen.getByText('Submit'))
+    userEvent.click(screen.getByRole('button'), { type: 'submit' })
 
     const finished = await screen.findByText('All done!')
 
@@ -91,7 +91,7 @@ describe('FeedbackForm', () => {
 
     userEvent.type(screen.getByRole('textbox'), 'answer')
 
-    userEvent.click(screen.getByText('Submit'))
+    userEvent.click(screen.getByRole('button'), { type: 'submit' })
 
     await screen.findByText('All done!')
 
