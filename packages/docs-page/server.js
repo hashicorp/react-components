@@ -70,46 +70,59 @@ async function generateStaticProps(
   if (process.env.ENABLE_VERSIONED_DOCS) {
     const versionFromPath = getVersionFromPath(params.page)
 
+    const currentVersionNormalized = currentVersion.startsWith('v')
+      ? currentVersion
+      : `v${currentVersion}`
+
     versions = [
-      { label: `${currentVersion} (latest)`, name: 'latest' },
-      ...(await loadVersionListFromManifest()),
+      ...(await loadVersionListFromManifest()).map((version) =>
+        version.name === currentVersionNormalized
+          ? {
+              label: `${currentVersionNormalized} (latest)`,
+              name: 'latest',
+            }
+          : version
+      ),
     ]
 
-    if (versionFromPath) {
-      let doc
-      const [{ mdxSource }, navData] = await Promise.all([
-        loadVersionedDocument(
-          product.slug,
-          [basePath, ...params.page].join('/')
-        ).then((docResult) => {
-          doc = docResult
-          const mdx = renderPageMdx(doc.markdownSource, {
-            productName: product.name,
-            additionalComponents,
-            remarkPlugins,
-            scope,
-          })
+    const versionToLoad = versionFromPath
+      ? [basePath, ...(params.page ?? [])].join('/')
+      : [basePath, currentVersionNormalized, ...(params.page ?? [])].join('/')
 
-          return mdx
-        }),
-        loadVersionedNavData(product.slug, basePath, versionFromPath),
-      ])
+    let doc
+    const [{ mdxSource }, navData] = await Promise.all([
+      loadVersionedDocument(product.slug, versionToLoad).then((docResult) => {
+        doc = docResult
+        const mdx = renderPageMdx(doc.markdownSource, {
+          productName: product.name,
+          additionalComponents,
+          remarkPlugins,
+          scope,
+        })
 
-      const currentPath = params.page ? params.page.join('/') : ''
+        return mdx
+      }),
+      loadVersionedNavData(
+        product.slug,
+        basePath,
+        versionFromPath ?? currentVersionNormalized
+      ),
+    ])
 
-      // TODO: construct the correct path to the versioned file
-      // Construct the githubFileUrl, used for "Edit this page" link
-      const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/master/website/`
-      // Return all the props
+    const currentPath = params.page ? params.page.join('/') : ''
 
-      return {
-        versions,
-        currentPath,
-        frontMatter: doc.metadata,
-        githubFileUrl,
-        mdxSource,
-        navData: navData.navData,
-      }
+    // TODO: construct the correct path to the versioned file
+    // Construct the githubFileUrl, used for "Edit this page" link
+    const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/master/website/`
+    // Return all the props
+
+    return {
+      versions,
+      currentPath,
+      frontMatter: doc.metadata,
+      githubFileUrl,
+      mdxSource,
+      navData: navData.navData,
     }
   }
 
