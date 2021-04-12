@@ -22,7 +22,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "next-mdx-remote": "1.0.0",
+    "next-mdx-remote": "^1.0.0",
     "react": "^16.9.0"
   },
   "publishConfig": {
