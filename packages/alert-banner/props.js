@@ -1,3 +1,5 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
   tag: {
     type: 'string',
@@ -17,12 +19,7 @@ module.exports = {
     required: true,
     control: { type: 'text' },
   },
-  theme: {
-    type: 'string',
-    description: 'Color theme to match a specific product',
-    control: { type: 'select' },
-    options: ['consul', 'terraform', 'nomad', 'vault', 'boundary', 'waypoint'],
-  },
+  product: { ...baseProps.product },
   linkText: {
     type: 'string',
     description: 'Secondary text styled as a link',

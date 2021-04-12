@@ -1,0 +1,60 @@
+.root {
+  composes: .g-container from global;
+  margin-top: 72px;
+  margin-bottom: 72px;
+
+  & a {
+    text-decoration: underline;
+  }
+
+  & h1 {
+    text-align: center;
+  }
+}
+
+.logo {
+  max-width: 140px;
+}
+
+.hosting {
+  border: 1px solid var(--gray-5);
+  padding: 16px;
+  text-align: center;
+  color: var(--gray-2);
+}
+
+.gettingStarted {
+  max-width: 680px;
+  margin: 40px auto 64px;
+  text-align: center;
+
+  & p {
+    color: var(--gray-2);
+  }
+
+  & a {
+    color: var(--black);
+  }
+
+  & h2 {
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  @media (--medium-up) {
+    margin: 88px auto 128px;
+  }
+}
+
+.links {
+  margin-top: 32px;
+  & a {
+    text-align: center;
+    display: block;
+    margin: 8px 0;
+  }
+}
+
+.signUpButton {
+  margin-left: 26px;
+}

@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-button",
   "description": "A clickable text box that allows a user to take an action.",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante"
@@ -13,7 +13,8 @@
   },
   "license": "MPL-2.0",
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x",
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": "^16.9.0"
   },
   "publishConfig": {

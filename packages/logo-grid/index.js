@@ -58,7 +58,7 @@ class LogoGrid extends Component {
           <Button
             title={`${c.name} Website`}
             url={c.link}
-            theme="dark-outline"
+            theme={{ variant: 'secondary' }}
             external={true}
           />
         )}

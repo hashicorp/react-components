@@ -3,7 +3,7 @@
   --search-bar-focus-outline: rgba(220, 221, 224, 0.45);
   --legend-height: 40px; /* set in js if `showSearchLegend` provided */
   --results-max-height: 350px;
-  --callout-height: 0px;  /* set in js if `renderCalloutCta` provided */
+  --callout-height: 0; /* set in js if `renderCalloutCta` provided */
   --callout-max-height: 48px;
   --mobile-margin: 24px;
   --mobile-margin-negative: -24px;
@@ -12,7 +12,6 @@
   /* Allow focus ring to be fully visible on Safari */
   padding-top: 3px;
   width: 100%;
-
   position: relative;
 
   @media (min-width: 768px) and (max-width: 939px) {
@@ -57,9 +56,9 @@
 
   & input {
     width: 100%;
-    color: var(--gray-4);
-    border: 1px solid var(--gray-7);
-    background: var(--gray-7);
+    color: var(--gray-3);
+    border: 1px solid var(--gray-6);
+    background: var(--gray-6);
     padding: 0 8px 0 40px;
     height: var(--search-bar-height);
     transition: width 0.2s ease-in-out;
@@ -198,7 +197,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #323339;
+    color: var(--gray-2);
     background: var(--white);
     margin: 0;
     padding: 0.5rem 1rem;
@@ -215,7 +214,7 @@
     }
 
     & .message {
-      color: var(--gray-3);
+      color: var(--gray-2);
       font-size: 0.75rem;
     }
   }
@@ -226,7 +225,9 @@
     background: var(--white);
     margin: 0;
     padding: 0;
-    max-height: calc(var(--results-max-height) - var(--legend-height) - var(--callout-height));
+    max-height: calc(
+      var(--results-max-height) - var(--legend-height) - var(--callout-height)
+    );
 
     & .hit-link-wrapper {
       width: 100%;
@@ -236,7 +237,7 @@
       &.active > .hit,
       &:focus > .hit,
       & > .hit:hover {
-        background: var(--gray-7);
+        background: var(--gray-6);
 
         & .icon-return {
           opacity: 1;
@@ -272,7 +273,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    color: #323339;
+    color: var(--gray-2);
     flex-wrap: wrap;
     width: 100%;
 
@@ -296,7 +297,7 @@
     }
 
     & .description {
-      color: var(--gray-3);
+      color: var(--gray-2);
       font-size: 0.75rem;
       margin-bottom: 0.5rem;
       width: 100%;
@@ -315,14 +316,14 @@
       padding: 0 0.5rem;
       border-radius: 2px;
       margin-right: 0.25rem;
-      border: 1px solid var(--gray-6);
-      color: var(--gray-4);
+      border: 1px solid var(--gray-5);
+      color: var(--gray-3);
     }
 
     & .product-name {
       margin-right: 0.5rem;
       position: relative;
-      color: var(--gray-3);
+      color: var(--gray-2);
     }
   }
 
@@ -344,7 +345,7 @@
   margin: 0;
   padding: 0 1rem;
   background: var(--white);
-  border-bottom: 1px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-5);
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -366,7 +367,7 @@
 
   & .g-type-tag-label {
     font-size: 13px;
-    color: var(--gray-4);
+    color: var(--gray-3);
     padding-left: 8px;
   }
 }

@@ -1,7 +1,7 @@
 import createPage from 'swingset/page'
 import createStaticProps from 'swingset/getStaticProps'
 import Head from 'next/head'
-import Link from 'next/head'
+import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
 import { Tab } from '../packages/tabs'
 import UsageDetails from '../swingset-extensions/usage-details'

@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-stepped-feature-list",
   "description": "Renders a list of features for a product",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner"
@@ -10,7 +10,8 @@
     "nuka-carousel": "^4.7.2"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x"
   },
   "license": "MPL-2.0",
   "publishConfig": {

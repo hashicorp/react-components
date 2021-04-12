@@ -6,16 +6,13 @@
   font-size: 1.25rem;
   line-height: 2.5rem;
 
-  & .svg-sizer {
-    height: 28px;
+  & svg {
+    height: 34px;
     width: auto;
+    display: block;
   }
 
-  &.brand-hcp .svg-sizer {
-    width: 200px;
-
-    @media (--medium-up) {
-      width: 220px;
-    }
+  &.brand-hcp svg {
+    height: 29px;
   }
 }

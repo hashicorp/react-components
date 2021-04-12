@@ -1,18 +1,18 @@
 {
   "name": "@hashicorp/react-tabs",
   "description": "Display content in a tabbed interface",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-global-styles": "^4.5.0",
     "@hashicorp/react-inline-svg": "^1.0.2",
     "@tippy.js/react": "^3.1.1"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x"
   },
   "license": "MPL-2.0",
   "publishConfig": {

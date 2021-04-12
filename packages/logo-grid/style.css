@@ -15,7 +15,7 @@
   & li {
     position: relative;
     margin: 15px;
-    border: 1px solid var(--DEPRECATED-gray-9);
+    border: 1px solid var(--gray-5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,7 +128,7 @@
     position: relative;
 
     & .close {
-      color: var(--DEPRECATED-gray-6);
+      color: var(--gray-3);
       position: absolute;
       top: 15px;
       right: 10px;

@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-enterprise-alert",
   "description": "Render an alert used to note the requirement of an enterprise product",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22enterprise-alert%22",
   "contributors": [
@@ -11,7 +11,8 @@
     "@hashicorp/js-utils": "^1.0.10"
   },
   "peerDependencies": {
-    "@hashicorp/nextjs-scripts": ">16.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/nextjs-scripts": ">=17.x"
   },
   "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/enterprise-alert",
   "license": "MPL-2.0",

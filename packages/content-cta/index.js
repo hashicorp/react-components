@@ -1,4 +1,5 @@
-import withProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
 
 export default function ContentCta({
@@ -16,11 +17,13 @@ export default function ContentCta({
   }
   const isContentString = typeof content === 'string'
   const isContentRenderProp = typeof content === 'function'
-  const { themeClass } = withProductMeta(product)
+  const { themeClass } = useProductMeta(product)
 
   return (
     <div
-      className={`g-content-cta ${themeClass ? `${themeClass} hasTheme` : ''} `}
+      className={classNames('g-content-cta', themeClass, {
+        hasTheme: themeClass,
+      })}
     >
       <h4 data-testid="heading" className="g-type-display-4">
         {heading}

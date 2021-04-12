@@ -16,11 +16,11 @@ import renderPageMdx from './render-page-mdx'
 // It can be overridden via options.
 const DEFAULT_PARAM_ID = 'page'
 
-async function generateStaticPaths(
+async function generateStaticPaths({
   navDataFile,
   localContentDir,
-  { paramId = DEFAULT_PARAM_ID } = {}
-) {
+  paramId = DEFAULT_PARAM_ID,
+}) {
   // Fetch and parse navigation data
   const navData = await resolveNavData(navDataFile, localContentDir)
   const paths = getPathsFromNavData(navData, paramId)
@@ -46,21 +46,21 @@ async function getPathsFromNavData(
   return paths
 }
 
-async function generateStaticProps(
+async function generateStaticProps({
   navDataFile,
   localContentDir,
   params,
   product,
-  {
-    additionalComponents = {},
-    mainBranch = 'main',
-    remarkPlugins = [],
-    scope, // optional, I think?
-    paramId = DEFAULT_PARAM_ID,
-    basePath,
-    currentVersion,
-  } = {}
-) {
+  additionalComponents = {},
+  mainBranch = 'main',
+  remarkPlugins = [],
+  scope, // optional, I think?
+  paramId = DEFAULT_PARAM_ID,
+  basePath,
+  currentVersion,
+}) {
+  //  Read in the nav data, and resolve local filePaths
+  const navData = await resolveNavData(navDataFile, localContentDir)
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
 

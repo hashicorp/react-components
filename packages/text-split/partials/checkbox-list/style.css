@@ -18,7 +18,7 @@
       left: 0;
 
       & > #circle {
-        stroke: var(--gray-6);
+        stroke: var(--gray-5);
       }
 
       & > #check {
@@ -26,7 +26,7 @@
       }
 
       &.theme-dark > #circle {
-        stroke: var(--gray-3);
+        stroke: var(--gray-2);
       }
     }
 
@@ -34,7 +34,7 @@
       color: var(--gray-2);
 
       &.theme-dark {
-        color: var(--gray-5);
+        color: var(--gray-4);
       }
     }
   }

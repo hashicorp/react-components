@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import Content from '@hashicorp/react-content'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import HashiHead from '@hashicorp/react-head'
-import Head from 'next/head'
 import hydrate from 'next-mdx-remote/hydrate'
 import { SearchProvider } from '@hashicorp/react-search'
 import { VersionSelect } from '@hashicorp/versioned-docs/client'
@@ -35,7 +34,6 @@ export function DocsPageWrapper({
     <div id="p-docs">
       {/* render the page's data to the document head */}
       <HashiHead
-        is={Head}
         canonicalUrl={canonicalUrl}
         description={description}
         siteName={`${name} by HashiCorp`}

@@ -13,7 +13,7 @@
 
     & li {
       width: 100%;
-      border: 1px solid var(--DEPRECATED-gray-9);
+      border: 1px solid var(--gray-5);
       margin: 16px 0;
       transition: box-shadow 0.2s ease;
 
@@ -43,7 +43,7 @@
           }
 
           & a {
-            color: var(--brand);
+            color: var(--brand-link);
             position: relative;
             transition: color 0.3s;
             text-decoration: none;
@@ -61,7 +61,7 @@
             }
 
             &:hover {
-              color: var(--brand);
+              color: var(--brand-link);
 
               &::after {
                 opacity: 1;

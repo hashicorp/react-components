@@ -4,6 +4,7 @@ import Subnav from './'
 const baseProps = {
   titleLink: {
     text: 'terraform',
+    product: 'terraform',
     url: '/',
   },
   ctaLinks: [
@@ -174,11 +175,16 @@ describe('<Subnav />', () => {
 
   logoSlugs.map((logoSlug) => {
     it(`should render product logos for product title "${logoSlug}", with alt text`, async () => {
-      render(<Subnav {...baseProps} titleLink={{ text: logoSlug }} />)
+      render(
+        <Subnav
+          {...baseProps}
+          titleLink={{ text: logoSlug, product: logoSlug }}
+        />
+      )
       await waitForGithubStarsUpdate()
-      const logoElem = screen.getAllByTitle(logoSlug)[0]
+      const logoElem = screen.getByTitle(logoSlug)
       expect(logoElem).toBeVisible()
-      expect(logoElem.querySelector('svg')).toBeVisible()
+      expect(logoElem.firstChild).toBeVisible()
     })
   })
 
