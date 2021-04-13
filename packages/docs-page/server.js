@@ -20,9 +20,29 @@ async function generateStaticPaths({
   navDataFile,
   localContentDir,
   paramId = DEFAULT_PARAM_ID,
+  product,
+  basePath,
+  currentVersion,
 }) {
-  // Fetch and parse navigation data
-  const navData = await resolveNavData(navDataFile, localContentDir)
+  let navData
+
+  // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
+  if (process.env.ENABLE_VERSIONED_DOCS) {
+    const currentVersionNormalized = currentVersion.startsWith('v')
+      ? currentVersion
+      : `v${currentVersion}`
+    // Fetch and parse navigation data
+    navData = (
+      await loadVersionedNavData(
+        product.slug,
+        basePath,
+        currentVersionNormalized
+      )
+    ).navData
+  } else {
+    navData = await resolveNavData(navDataFile, localContentDir)
+  }
+
   const paths = getPathsFromNavData(navData, paramId)
   return paths
 }
@@ -59,8 +79,6 @@ async function generateStaticProps({
   basePath,
   currentVersion,
 }) {
-  //  Read in the nav data, and resolve local filePaths
-  const navData = await resolveNavData(navDataFile, localContentDir)
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
 
