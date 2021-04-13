@@ -8,6 +8,7 @@ import {
   loadVersionedNavData,
   getVersionFromPath,
 } from '@hashicorp/versioned-docs/server'
+import { normalizeVersion } from '@hashicorp/versioned-docs/client'
 import renderPageMdx from './render-page-mdx'
 
 // So far, we have a pattern of using a common value for
@@ -28,23 +29,19 @@ async function generateStaticPaths({
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (process.env.ENABLE_VERSIONED_DOCS) {
-    const currentVersionNormalized = currentVersion.startsWith('v')
-      ? currentVersion
-      : `v${currentVersion}`
     // Fetch and parse navigation data
     navData = (
       await loadVersionedNavData(
         product.slug,
         basePath,
-        currentVersionNormalized
+        normalizeVersion(currentVersion)
       )
     ).navData
   } else {
     navData = await resolveNavData(navDataFile, localContentDir)
   }
 
-  const paths = getPathsFromNavData(navData, paramId)
-  return paths
+  return getPathsFromNavData(navData, paramId)
 }
 
 async function resolveNavData(filePath, localContentDir) {
@@ -88,9 +85,7 @@ async function generateStaticProps({
   if (process.env.ENABLE_VERSIONED_DOCS) {
     const versionFromPath = getVersionFromPath(params.page)
 
-    const currentVersionNormalized = currentVersion.startsWith('v')
-      ? currentVersion
-      : `v${currentVersion}`
+    const currentVersionNormalized = normalizeVersion(currentVersion)
 
     versions = [
       ...(await loadVersionListFromManifest()).map((version) =>
@@ -126,8 +121,6 @@ async function generateStaticProps({
         versionFromPath ?? currentVersionNormalized
       ),
     ])
-
-    const currentPath = params.page ? params.page.join('/') : ''
 
     // TODO: construct the correct path to the versioned file
     // Construct the githubFileUrl, used for "Edit this page" link
