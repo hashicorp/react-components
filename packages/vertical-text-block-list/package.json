@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-vertical-text-block-list",
   "description": "Vertical block list of links",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Mike Wickett",
