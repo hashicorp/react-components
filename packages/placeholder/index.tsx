@@ -31,7 +31,7 @@ function PlaceholderBox({
     <div
       // eslint-disable-next-line react/no-array-index-key
       key={index}
-      className={`${s.box} ${prose ? s.prose : ''}`}
+      className={s.box}
       style={{ width, height, ...props }}
     />
   ))
