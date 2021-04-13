@@ -8,7 +8,7 @@ const defaultProps = getTestValues(props)
 describe('<VerticalTextBlockList />', () => {
   it('should render correctly with default props', () => {
     render(<VerticalTextBlockList {...defaultProps} />)
-    expect(screen.getByTestId('root').className).toBe(
+    expect(screen.getByTestId('root').className).toContain(
       'g-vertical-text-block-list'
     )
 
