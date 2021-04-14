@@ -6,7 +6,8 @@
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert-banner%22",
   "contributors": [
     "Zach Shilton",
-    "Jeff Escalante"
+    "Jeff Escalante",
+    "Kendall Strautman"
   ],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^6.0.0",
