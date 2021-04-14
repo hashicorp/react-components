@@ -8,7 +8,10 @@ function filterContent(content, searchValue) {
     // if this is a divider node, don't show it in filtered results
     if (item.divider) return acc
     // all other nodes have a title, use it to check if the item is a direct match
-    const isTitleMatch = fuzzysearch(searchValue, item.title.toLowerCase())
+    const isTitleMatch = fuzzysearch(
+      searchValue.toLowerCase(),
+      item.title.toLowerCase()
+    )
     //  For nodes with no children, return early, only add the item if the title matches
     if (!item.routes) return isTitleMatch ? acc.concat(item) : acc
     // for branch nodes with matching children, return a clone of the
