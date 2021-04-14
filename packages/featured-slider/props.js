@@ -1,5 +1,3 @@
-const baseProps = require('../../props.js')
-
 const image = {
   url: {
     type: 'string',
@@ -27,9 +25,6 @@ module.exports = {
       'used to control whether the component appears on a light or dark background',
     control: { type: 'select' },
     options: ['light', 'dark'],
-  },
-  product: {
-    ...baseProps.product,
   },
   features: {
     type: 'array',
