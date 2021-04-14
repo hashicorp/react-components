@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-hashi-stack-menu",
   "description": "A menu for displaying the entire HashiCorp stack",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "author": "HashiCorp",
   "contributors": [
     "Jimmy Merritello"
@@ -14,7 +14,7 @@
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/mktg-logos": ">=1.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "react": "^16.9.0"
+    "react": ">=16.x"
   },
   "license": "MPL-2.0"
 }

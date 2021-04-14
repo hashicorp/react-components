@@ -1,19 +1,19 @@
 {
   "name": "@hashicorp/react-case-study-slider",
   "description": "displays up to three case studies",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "HashiCorp",
   "contributors": [
     "Mike Wickett"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^5.0.0",
+    "@hashicorp/react-button": "^5.0.1",
     "@hashicorp/react-image": "^2.0.3"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "react": "^16.9.0"
+    "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"
