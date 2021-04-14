@@ -46,7 +46,7 @@ export default function ProductDownloadsPage({
   const sortedReleases = latestReleases
     // remove enterprise releases unless enterpriseMode is active
     .filter((releaseVersion) => {
-      const isEnterpriseVersion = !!releaseVersion.match(/\+ent$/)
+      const isEnterpriseVersion = !!releaseVersion.match(/\+ent(?:-.*?)*$/)
       if (enterpriseMode) return isEnterpriseVersion
       return !isEnterpriseVersion
     })
