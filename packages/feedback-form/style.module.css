@@ -1,0 +1,46 @@
+.buttonWrapper {
+  display: inline;
+
+  @media (--small) {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+.choiceButton {
+  margin-left: 16px;
+
+  @media (--small) {
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  &.negative svg {
+    transform: rotate(180deg);
+  }
+}
+
+.submitButton {
+  margin-top: 32px;
+}
+
+.textArea {
+  width: 100%;
+  display: block;
+  resize: none;
+  min-height: 100px;
+  border: 1px solid var(--gray-5);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-reg);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  line-height: 1em;
+  padding: 10px;
+  margin-top: 12px;
+}
+
+.followUp {
+  display: block;
+  margin-bottom: 10px;
+}
