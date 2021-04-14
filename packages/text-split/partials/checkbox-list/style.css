@@ -29,4 +29,17 @@
       margin-top: 0;
     }
   }
+
+  & li.checkbox-item.theme-dark {
+    & .check-icon {
+      & svg {
+        & path {
+          stroke: var(--brand-secondary);
+        }
+        & rect {
+          fill: var(--gray-1);
+        }
+      }
+    }
+  }
 }
