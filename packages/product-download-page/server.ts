@@ -15,6 +15,8 @@ export function generateStaticProps({
       return {
         props: {
           releases: result,
+          product,
+          latestVersion,
         },
       }
     })

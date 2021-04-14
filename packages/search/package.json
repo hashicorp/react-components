@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-search",
   "description": "Algolia-powered search component",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "author": "HashiCorp",
   "contributors": [
     "Kevin Pruett",
@@ -23,7 +23,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "react": "^16.9.0"
+    "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"

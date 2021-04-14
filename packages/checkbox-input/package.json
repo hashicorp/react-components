@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-checkbox-input",
   "description": "A boolean input that displays a checkbox and label.",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
@@ -13,7 +13,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "react": "^16.9.0"
+    "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"

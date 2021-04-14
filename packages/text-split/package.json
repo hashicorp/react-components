@@ -1,13 +1,13 @@
 {
   "name": "@hashicorp/react-text-split",
   "description": "Display a title, description, and links alongside arbitrary content",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^5.0.0",
+    "@hashicorp/react-button": "^5.0.1",
     "@hashicorp/react-inline-svg": "^6.0.0",
     "classnames": "^2.2.6"
   },
@@ -15,7 +15,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "react": "^16.9.0"
+    "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"

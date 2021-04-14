@@ -1,4 +1,7 @@
+const baseProps = require('../../props.js')
+
 module.exports = {
+  product: { ...baseProps.product },
   centerText: {
     type: 'boolean',
     description: 'Is text centered on mobile viewports?',
