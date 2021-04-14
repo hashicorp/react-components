@@ -103,7 +103,6 @@ export default function DocsSidenav({
             placeholder="Filter..."
             onChange={(e) => setFilterInput(e.target.value)}
             value={filterInput}
-            type="text"
           />
         )}
         <NavTree
