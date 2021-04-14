@@ -1,11 +1,11 @@
 {
   "name": "@hashicorp/react-learn-callout",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A split view of CTA to the learn platform and tutorial links.",
   "author": "Hashicorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/react-button": "^5.0.0"
+    "@hashicorp/react-button": "^5.0.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
