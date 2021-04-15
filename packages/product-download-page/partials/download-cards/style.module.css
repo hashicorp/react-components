@@ -19,7 +19,7 @@
   margin: 54px 0 24px;
 
   & a {
-    color: var(--gray-2);
+    color: var(--black);
   }
 
   @media (--medium-up) {
@@ -61,7 +61,6 @@
   text-align: center;
   justify-content: space-between;
   padding: 40px 32px;
-  color: var(--gray-2);
   border: 1px solid var(--gray-5);
 
   &:first-child {

@@ -6,7 +6,7 @@
   }
 
   & button.trigger {
-    color: var(--gray-1);
+    color: var(--black);
     text-align: left;
     margin: 0;
     border: none;

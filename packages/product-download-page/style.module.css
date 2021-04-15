@@ -28,10 +28,6 @@
   margin: 40px auto 64px;
   text-align: center;
 
-  & p {
-    color: var(--gray-2);
-  }
-
   & a {
     color: var(--black);
   }

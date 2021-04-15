@@ -8,7 +8,7 @@
 
   & .g-type-body-large {
     margin: 0;
-    color: var(--gray-2);
+    color: var(--black);
   }
 
   &.theme-gray {
@@ -21,7 +21,7 @@
       color: var(--white);
     }
     & .g-type-body-large {
-      color: var(--gray-5);
+      color: var(--white);
     }
   }
 }

@@ -6,7 +6,6 @@
 
     & label {
       margin-top: -4px;
-      color: var(--gray-2);
       cursor: pointer;
       & a {
         color: var(--brand-link);

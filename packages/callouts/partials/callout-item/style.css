@@ -57,15 +57,10 @@
 
     & > .content {
       margin-top: 8px;
+      color: var(--black);
 
-      &.theme-light {
-        color: var(--gray-2);
-      }
-      &.theme-gray {
-        color: var(--black);
-      }
       &.theme-dark {
-        color: var(--gray-4);
+        color: var(--white);
       }
     }
 

@@ -2,14 +2,10 @@
   background-color: var(--gray-6);
   padding: 42px 0;
   margin: 42px 0;
-  color: var(--gray-2);
-
-  & p {
-    color: var(--gray-2);
-  }
+  color: var(--black);
 
   & a {
-    color: var(--gray-2);
+    color: var(--black);
   }
 
   & :global(.g-container) {

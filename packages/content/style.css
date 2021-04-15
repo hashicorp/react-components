@@ -5,7 +5,7 @@
   --highlight-color-text: var(--brand-link);
 
   margin: auto;
-  color: var(--gray-2);
+  color: var(--black);
 
   /* On large viewports, all content is spaced from edge of container */
   @media (min-width: 768px) {

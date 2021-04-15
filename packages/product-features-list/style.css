@@ -30,7 +30,7 @@
       & p {
         font-size: 15px;
         margin: 0;
-        color: var(--gray-2);
+        color: var(--black);
       }
 
       & a {
