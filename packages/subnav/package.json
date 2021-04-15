@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-subnav",
   "description": "Displays a navigation bar, with links and a call-to-action.",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
