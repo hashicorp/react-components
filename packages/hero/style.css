@@ -62,7 +62,7 @@
       }
 
       & h1 {
-        color: #252937;
+        color: var(--black);
       }
 
       & .help-text {
@@ -75,6 +75,10 @@
 
       & .progress-bar {
         background-color: var(--gray-5);
+
+        & span {
+          background-color: var(--black);
+        }
       }
     }
   }
@@ -460,7 +464,7 @@
       width: 100%;
 
       & span {
-        background: var(--brand);
+        background: var(--white);
         display: block;
         height: 2px;
         position: absolute;
