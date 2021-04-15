@@ -11,8 +11,7 @@
     "@tippy.js/react": "^3.1.1"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x"
+    "@hashicorp/mktg-global-styles": ">=3.x"
   },
   "license": "MPL-2.0",
   "publishConfig": {

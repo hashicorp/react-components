@@ -36,20 +36,19 @@
     cursor: pointer;
 
     & .inner {
-      color: var(--gray-1);
+      color: var(--black);
     }
   }
 
   &.active {
     & .inner {
-      color: var(--gray-1);
-      border-bottom-color: var(--brand);
+      color: var(--black);
     }
   }
 
   &:focus {
     & .inner {
-      color: var(--brand);
+      color: var(--black);
       text-decoration: underline;
     }
   }

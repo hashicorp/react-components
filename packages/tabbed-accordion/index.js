@@ -1,7 +1,7 @@
 import { AccordionItems } from '@hashicorp/react-accordion'
 import Tabs, { Tab } from '@hashicorp/react-tabs'
 
-function TabbedAccordion({ heading, tabs, product }) {
+function TabbedAccordion({ heading, tabs }) {
   return (
     <section className="g-tabbed-accordion">
       {heading && (
@@ -12,7 +12,7 @@ function TabbedAccordion({ heading, tabs, product }) {
           <h2 className="g-type-display-2">{heading}</h2>
         </div>
       )}
-      <Tabs product={product}>
+      <Tabs>
         {tabs.map((tab, stableIdx) => (
           // eslint-disable-next-line react/no-array-index-key
           <Tab key={stableIdx} heading={tab.heading}>
