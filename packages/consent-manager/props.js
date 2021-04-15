@@ -8,6 +8,10 @@ module.exports = {
     type: 'string',
     description: "a link to the company's privacy policy page",
   },
+  cookiePolicyLink: {
+    type: 'string',
+    description: "a link to the company's cookie policy page",
+  },
   segmentWriteKey: {
     type: 'string',
     description: 'segment.io write key',
