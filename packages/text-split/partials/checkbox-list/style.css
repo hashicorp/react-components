@@ -11,8 +11,6 @@
     margin-bottom: 0.75em;
 
     & .check-icon {
-      align-self: flex-end;
-      display: flex;
       margin-right: 16px;
 
       & svg {
