@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import { withProductMeta } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import StatusBar from './StatusBar'
 import Button from '@hashicorp/react-button'
 import Image from '@hashicorp/react-image'
@@ -113,7 +112,7 @@ class FeaturedSlider extends Component {
   render() {
     // Clear our frames array so we don't keep old refs around
     this.frames = []
-    const { heading, theme, product, features } = this.props
+    const { heading, theme, features } = this.props
     const { measure, active, timing, numFrames, containerWidth } = this.state
 
     const single = numFrames === 1
@@ -160,7 +159,6 @@ class FeaturedSlider extends Component {
                       theme={theme}
                       active={active === i}
                       timing={timing}
-                      productClass={product.themeClass}
                     />
                   </div>
                 ))}
@@ -210,7 +208,6 @@ class FeaturedSlider extends Component {
                         />
                         <Button
                           theme={{
-                            brand: product.slug,
                             variant: 'secondary',
                             background: theme,
                           }}
@@ -231,4 +228,4 @@ class FeaturedSlider extends Component {
   }
 }
 
-export default withProductMeta(FeaturedSlider)
+export default FeaturedSlider

@@ -74,11 +74,14 @@
 
         &.dark {
           background-color: var(--gray-2);
+          & span {
+            background-color: var(--white);
+          }
         }
 
         & span {
           width: 0;
-          background-color: var(--brand);
+          background-color: var(--black);
           height: 100%;
           display: block;
           animation-duration: 10s;
