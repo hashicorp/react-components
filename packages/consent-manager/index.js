@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import { render } from 'react-dom'
 import EventEmitter from 'events'
 import inEU from '@segment/in-eu'
 import ConsentBanner from './banner'
@@ -8,11 +7,6 @@ import { loadPreferences, savePreferences } from './cookies'
 import loadAnalytics from './load'
 
 const emitter = new EventEmitter()
-
-// TODO: remove this
-export function init(props) {
-  render(<ConsentManager {...props} />, document.querySelector(props.container))
-}
 
 export function open() {
   emitter.emit('openDialog')
