@@ -36,6 +36,7 @@
       margin-top: 32px;
       width: 100%;
       flex-shrink: 0;
+      color: var(--gray-2);
 
       @media (--medium-up) {
         margin-top: 0;

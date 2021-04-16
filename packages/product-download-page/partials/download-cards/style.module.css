@@ -1,6 +1,7 @@
 .cards {
   max-width: 880px;
   margin: 0 auto;
+  color: var(--gray-2);
 }
 
 .logoWrapper {
