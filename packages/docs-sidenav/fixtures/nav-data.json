@@ -64,6 +64,30 @@
         ]
       },
       {
+        "title": "Category With First Item Hidden",
+        "routes": [
+          {
+            "title": "First Item",
+            "path": "hidden-first-item/first",
+            "hidden": true
+          },
+          {
+            "title": "Second Item",
+            "path": "hidden-first-item/second"
+          }
+        ]
+      },
+      {
+        "title": "Hidden Category",
+        "hidden": true,
+        "routes": [
+          {
+            "title": "Overview",
+            "path": "hidden-category"
+          }
+        ]
+      },
+      {
         "title": "Only Index Test <sup>ENT</sup>",
         "routes": [
           {

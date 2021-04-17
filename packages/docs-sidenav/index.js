@@ -157,6 +157,7 @@ function NavTree({ baseRoute, content }) {
           key={item.path}
           title={item.title}
           isActive={item.__isActive}
+          isHidden={item.hidden}
           url={`/${baseRoute}/${item.path}`}
         />
       )
@@ -170,13 +171,21 @@ function NavTree({ baseRoute, content }) {
         routes={item.routes}
         isActive={item.__isActive}
         isFiltered={item.__isFiltered}
+        isHidden={item.hidden}
         baseRoute={baseRoute}
       />
     )
   })
 }
 
-function NavBranch({ title, routes, baseRoute, isActive, isFiltered }) {
+function NavBranch({
+  title,
+  routes,
+  baseRoute,
+  isActive,
+  isFiltered,
+  isHidden,
+}) {
   const [isOpen, setIsOpen] = useState(false)
 
   // Ensure categories appear open if they're active
@@ -184,7 +193,7 @@ function NavBranch({ title, routes, baseRoute, isActive, isFiltered }) {
   useEffect(() => setIsOpen(isActive || isFiltered), [isActive, isFiltered])
 
   return (
-    <li>
+    <li className={s.navBranch} data-is-hidden={isHidden}>
       <button
         className={s.navItem}
         onClick={() => setIsOpen(!isOpen)}
@@ -207,10 +216,10 @@ function NavBranch({ title, routes, baseRoute, isActive, isFiltered }) {
   )
 }
 
-function NavLeaf({ title, url, isActive }) {
+function NavLeaf({ title, url, isActive, isHidden }) {
   // if the item has a path, it's a leaf node so we render a link to the page
   return (
-    <li>
+    <li className={s.navLeaf} data-is-hidden={isHidden}>
       <Link href={url}>
         <a className={s.navItem} data-is-active={isActive}>
           <InlineSvg

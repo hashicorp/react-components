@@ -111,6 +111,18 @@
   }
 }
 
+.navBranch {
+  &[data-is-hidden='true'] {
+    display: none;
+  }
+}
+
+.navLeaf {
+  &[data-is-hidden='true'] {
+    display: none;
+  }
+}
+
 .navItem {
   color: var(--gray-2);
   cursor: pointer;
