@@ -23,6 +23,14 @@
     & h2 {
       color: var(--white);
     }
+
+    & h3 {
+      color: var(--white);
+    }
+
+    & p {
+      color: var(--gray-5);
+    }
   }
 }
 

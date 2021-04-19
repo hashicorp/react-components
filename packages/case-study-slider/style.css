@@ -46,6 +46,7 @@
 
         &.dark {
           background-color: var(--gray-2);
+
           & span {
             background-color: var(--white);
           }
@@ -91,7 +92,12 @@
       & .slider-frame {
         & .case-study {
           & .dark {
-            color: white;
+            & h3 {
+              color: white;
+            }
+            & p {
+              color: var(--gray-5);
+            }
           }
           & .feature-image {
             margin-bottom: 2rem;
