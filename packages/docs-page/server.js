@@ -114,7 +114,7 @@ async function generateStaticProps({
 
     // TODO: construct the correct path to the versioned file
     // Construct the githubFileUrl, used for "Edit this page" link
-    const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/master/website/`
+    const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
     // Return all the props
 
     return {
