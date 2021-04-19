@@ -95,13 +95,13 @@ async function generateStaticProps({
 
     const versions = await loadVersionListFromManifest(currentVersionNormalized)
 
-    const versionToLoad = versionFromPath
+    const pagePathToLoad = versionFromPath
       ? [basePath, ...(params.page ?? [])].join('/')
       : [basePath, currentVersionNormalized, ...(params.page ?? [])].join('/')
 
     let doc
     const [{ mdxSource }, navData] = await Promise.all([
-      loadVersionedDocument(product.slug, versionToLoad).then((docResult) => {
+      loadVersionedDocument(product.slug, pagePathToLoad).then((docResult) => {
         doc = docResult
         return mdxRenderer(docResult.markdownSource)
       }),
@@ -112,10 +112,8 @@ async function generateStaticProps({
       ),
     ])
 
-    // TODO: construct the correct path to the versioned file
     // Construct the githubFileUrl, used for "Edit this page" link
     const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
-    // Return all the props
 
     return {
       versions,
