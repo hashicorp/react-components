@@ -5,7 +5,8 @@ import HashiHead from '@hashicorp/react-head'
 import hydrate from 'next-mdx-remote/hydrate'
 import { SearchProvider } from '@hashicorp/react-search'
 import { VersionSelect } from '@hashicorp/versioned-docs/client'
-import SearchBar from './search-bar'
+import SearchBar from './components/search-bar'
+import VersionAlert from './components/version-alert'
 import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 
@@ -59,6 +60,9 @@ export function DocsPageWrapper({
         </div>
         {/* render the markdown content */}
         <div id="inner" role="main">
+          {process.env.ENABLE_VERSIONED_DOCS ? (
+            <VersionAlert product={name} />
+          ) : null}
           <Content
             product={slug}
             content={
