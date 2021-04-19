@@ -20,6 +20,10 @@ jest.mock('next/head', () => {
   }
 })
 
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(() => ({})),
+}))
+
 describe('<DocsPage />', () => {
   it('passes `title`, `description`, and `siteName` correctly to <HashiHead>', () => {
     render(<DocsPage {...defaultProps} />)
