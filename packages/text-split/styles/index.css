@@ -16,6 +16,8 @@
     color: var(--white);
 
     & .text {
+      color: var(--gray-5) !important;
+
       & h1,
       & h2,
       & h3,
@@ -24,10 +26,6 @@
       & h6 {
         color: var(--white) !important;
       }
-    }
-
-    & .text {
-      color: var(--gray-5) !important;
     }
   }
 
