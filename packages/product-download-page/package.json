@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-product-downloads-page",
   "description": "The page where you go to download HashiCorp products",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner",
@@ -10,7 +10,7 @@
   "dependencies": {
     "@hashicorp/react-button": "^5.0.1",
     "@hashicorp/react-head": "^3.0.2",
-    "@hashicorp/react-tabs": "^6.0.0",
+    "@hashicorp/react-tabs": "^6.0.1",
     "semver": "^7.3.2"
   },
   "peerDependencies": {
