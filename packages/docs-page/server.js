@@ -76,10 +76,16 @@ async function generateStaticProps({
   basePath,
   currentVersion,
 }) {
+  const mdxRenderer = (mdx) =>
+    renderPageMdx(mdx, {
+      productName: product.name,
+      additionalComponents,
+      remarkPlugins,
+      scope,
+    })
+
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
-
-  let versions = []
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (process.env.ENABLE_VERSIONED_DOCS) {
@@ -87,16 +93,7 @@ async function generateStaticProps({
 
     const currentVersionNormalized = normalizeVersion(currentVersion)
 
-    versions = [
-      ...(await loadVersionListFromManifest()).map((version) =>
-        version.name === currentVersionNormalized
-          ? {
-              label: `${currentVersionNormalized} (latest)`,
-              name: 'latest',
-            }
-          : version
-      ),
-    ]
+    const versions = await loadVersionListFromManifest(currentVersionNormalized)
 
     const versionToLoad = versionFromPath
       ? [basePath, ...(params.page ?? [])].join('/')
@@ -106,14 +103,7 @@ async function generateStaticProps({
     const [{ mdxSource }, navData] = await Promise.all([
       loadVersionedDocument(product.slug, versionToLoad).then((docResult) => {
         doc = docResult
-        const mdx = renderPageMdx(doc.markdownSource, {
-          productName: product.name,
-          additionalComponents,
-          remarkPlugins,
-          scope,
-        })
-
-        return mdx
+        return mdxRenderer(docResult.markdownSource)
       }),
       loadVersionedNavData(
         product.slug,
@@ -144,12 +134,8 @@ async function generateStaticProps({
   //  Read in and process MDX content from the navNode's filePath
   const mdxFile = path.join(process.cwd(), navNode.filePath)
   const mdxString = fs.readFileSync(mdxFile, 'utf8')
-  const { mdxSource, frontMatter } = await renderPageMdx(mdxString, {
-    productName: product.name,
-    additionalComponents,
-    remarkPlugins,
-    scope,
-  })
+  const { mdxSource, frontMatter } = await mdxRenderer(mdxString)
+
   // Construct the githubFileUrl, used for "Edit this page" link
   const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
   // Return all the props
@@ -159,7 +145,6 @@ async function generateStaticProps({
     githubFileUrl,
     mdxSource,
     navData,
-    versions,
   }
 }
 
