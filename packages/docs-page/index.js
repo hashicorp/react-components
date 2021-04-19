@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Content from '@hashicorp/react-content'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import HashiHead from '@hashicorp/react-head'
@@ -9,6 +10,7 @@ import SearchBar from './components/search-bar'
 import VersionAlert from './components/version-alert'
 import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
+import LoadingSkeleton from './components/loading-skeleton'
 
 export function DocsPageWrapper({
   canonicalUrl,
@@ -103,10 +105,14 @@ export default function DocsPage({
     versions,
   },
 }) {
+  const router = useRouter()
+
   // This component is written to work with next-mdx-remote -- here it hydrates the content
   const content = hydrate(mdxSource, {
     components: generateComponents(product.name, additionalComponents),
   })
+
+  if (router.isFallback) return <LoadingSkeleton />
 
   return (
     <DocsPageWrapper
