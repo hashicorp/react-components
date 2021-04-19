@@ -65,6 +65,10 @@
         color: var(--black);
       }
 
+      & .description {
+        color: var(--gray-2);
+      }
+
       & .help-text {
         color: #252937;
       }
@@ -202,6 +206,7 @@
 
     & .description {
       margin-top: 24px;
+      color: var(--gray-5);
 
       @media (--small) {
         margin-top: 16px;

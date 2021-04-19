@@ -85,6 +85,10 @@
       margin: 0 0 8px;
     }
 
+    & p {
+      color: var(--gray-2);
+    }
+
     & p:last-child {
       margin: 0;
     }

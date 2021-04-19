@@ -66,7 +66,7 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, children }) {
         activeTabIdx={activeTabIdx}
         setActiveTab={setActiveTab}
       />
-      <div className="g-grid-container">
+      <div className="g-grid-container content">
         {children[activeTabIdx].props.children}
       </div>
     </section>

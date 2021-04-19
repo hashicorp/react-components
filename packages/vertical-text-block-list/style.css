@@ -38,6 +38,8 @@
         }
 
         & .body-text {
+          color: var(--gray-2);
+
           @media (min-width: 768px) {
             flex-basis: 70%;
           }
