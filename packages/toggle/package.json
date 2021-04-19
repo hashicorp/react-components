@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-toggle",
   "description": "a simple toggle",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "HashiCorp",
   "contributors": [
     "Jennifer Yip",
@@ -11,7 +11,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "react": "^16.9.0"
+    "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"

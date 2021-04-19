@@ -1,11 +1,41 @@
+import classNames from 'classnames'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import Image from '@hashicorp/react-image'
+import useProductMeta, {
+  Products,
+} from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 
-export default function VerticalTextBlockList({ data, centerText, Link }) {
+interface VerticalTextBlockListProps {
+  data: TextBlock[]
+  product?: Products
+  centerText?: boolean
+  Link?: React.FC
+}
+
+type TextBlock = {
+  header: string
+  body: string
+  linkUrl?: string
+  logo?: {
+    url: string
+    alt: string
+  }
+}
+
+export default function VerticalTextBlockList({
+  data,
+  product = 'hashicorp',
+  centerText = false,
+  Link,
+}: VerticalTextBlockListProps) {
+  const { themeClass } = useProductMeta(product)
   return (
-    <div className="g-vertical-text-block-list" data-testid="root">
+    <div
+      className={classNames('g-vertical-text-block-list', themeClass)}
+      data-testid="root"
+    >
       <ul
-        className={`list${centerText ? ' centered-text' : ''}`}
+        className={classNames('list', { 'centered-text': centerText })}
         data-testid="item-list"
       >
         {data.map((item) => (
@@ -35,7 +65,14 @@ export default function VerticalTextBlockList({ data, centerText, Link }) {
   )
 }
 
-function MaybeLink({ link, LinkComponent, children }) {
+// TODO: use `LinkWrap` interface once its in TS
+interface MaybeLinkProps {
+  children: React.ReactNode
+  link?: string
+  LinkComponent?: React.FC
+}
+
+function MaybeLink({ link, LinkComponent, children }: MaybeLinkProps) {
   return link ? (
     <LinkWrap
       Link={LinkComponent}

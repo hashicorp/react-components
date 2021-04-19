@@ -1,6 +1,7 @@
 import className from 'classnames'
 import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
-import SvgrCheckCircle from './icons/check-circle.svg.jsx'
+import InlineSvg from '@hashicorp/react-inline-svg'
+import CheckSquare from './icons/check-square.svg?include'
 
 function CheckboxList({ items, theme, product }) {
   const validItems = items && items.filter((l) => l !== '')
@@ -23,7 +24,7 @@ function CheckboxList({ items, theme, product }) {
 function CheckboxItem({ text, theme }) {
   return (
     <li className={`checkbox-item theme-${theme} `}>
-      <SvgrCheckCircle className={`theme-${theme}`} />
+      <InlineSvg className={`check-icon theme-${theme}`} src={CheckSquare} />
       <span className={`text g-type-body theme-${theme}`}>{text}</span>
     </li>
   )

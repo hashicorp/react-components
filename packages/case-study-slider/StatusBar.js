@@ -1,8 +1,8 @@
-export default function StatusBar({ dark, active, timing, brand }) {
+export default function StatusBar({ dark, active, timing }) {
   return (
     <div className={`progress-bar${dark ? ' dark' : ''}`}>
       <span
-        className={`${active ? ' active' : ''} ${brand ? brand : ''}`}
+        className={`${active ? ' active' : ''} `}
         style={
           active
             ? { animationDuration: `${timing}s` }

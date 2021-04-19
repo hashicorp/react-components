@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-link-wrap",
   "description": "Wraps a standard 'a' element to enable NextJS Link usage",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Hashicorp",
   "contributors": [
     "Jeff Escalante"
@@ -10,7 +10,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/nextjs-scripts": ">=17.x",
-    "react": "^16.9.0"
+    "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"

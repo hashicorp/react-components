@@ -37,8 +37,6 @@
 .features {
   display: none;
 
-  --tab-color: var(--brand);
-
   @media (min-width: 1120px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -63,7 +61,7 @@
 
 .activeFeature {
   composes: feature;
-  border-color: var(--tab-color);
+  border-color: var(--black);
 
   & .body {
     opacity: 1;

@@ -1,27 +1,22 @@
 import { useState } from 'react'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import s from './style.module.css'
 import Button from '@hashicorp/react-button'
 import Carousel from 'nuka-carousel'
 
-export default function SteppedFeaturesList({ features, product }) {
+export default function SteppedFeaturesList({ features }) {
   return (
     <>
       {/* carousel rendered at smaller breakpoints */}
       <FeaturesCarousel features={features} />
-      <FeaturesList features={features} product={product} />
+      <FeaturesList features={features} />
     </>
   )
 }
 
-function FeaturesList({ features, product }) {
+function FeaturesList({ features }) {
   const [activeFeature, setActiveFeature] = useState(0)
-  const { themeClass } = useProductMeta(product)
   return (
-    <div
-      className={`${s.features} ${themeClass || ''}`}
-      data-testid="features-vertical-list"
-    >
+    <div className={`${s.features} `} data-testid="features-vertical-list">
       <ul className={s.options}>
         {features.map((feature, stableIdx) => (
           <Feature

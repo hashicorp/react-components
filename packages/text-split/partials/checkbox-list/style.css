@@ -5,36 +5,39 @@
   margin-bottom: 1em;
 
   & li.checkbox-item {
-    position: relative;
+    display: flex;
+    align-items: center;
     margin-top: 0.75em;
     margin-bottom: 0.75em;
-    padding-left: 2.25em;
 
-    & > svg {
-      width: 1.5em;
-      height: 1.5em;
-      top: 0.1875em;
-      position: absolute;
-      left: 0;
+    & .check-icon {
+      display: flex;
+      margin-right: 16px;
 
-      & > #circle {
-        stroke: var(--gray-5);
-      }
+      & svg {
+        width: 1.5em;
+        height: 1.5em;
 
-      & > #check {
-        stroke: var(--brand);
-      }
-
-      &.theme-dark > #circle {
-        stroke: var(--gray-2);
+        & #square {
+          fill: var(--brand-secondary);
+        }
       }
     }
 
     & > .text {
-      color: var(--gray-2);
+      margin-top: 0;
+    }
+  }
 
-      &.theme-dark {
-        color: var(--gray-4);
+  & li.checkbox-item.theme-dark {
+    & .check-icon {
+      & svg {
+        & path {
+          stroke: var(--brand-secondary);
+        }
+        & rect {
+          fill: var(--gray-1);
+        }
       }
     }
   }

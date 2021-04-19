@@ -49,12 +49,9 @@ function SubnavInner({
       })}
     >
       <div
-        className={classNames(
-          'g-subnav-inner',
-          { 'brand-hcp': product === 'hcp' },
-          themeClass,
-          { 'is-constrained': constrainWidth }
-        )}
+        className={classNames('g-subnav-inner', themeClass, {
+          'is-constrained': constrainWidth,
+        })}
         data-overflow-target
       >
         <TitleLink

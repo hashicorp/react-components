@@ -1,0 +1,140 @@
+---
+componentName: 'Placeholder'
+---
+
+Use `<Placeholder />` to render [skeleton loading states](https://uxdesign.cc/what-you-should-know-about-skeleton-screens-a820c45a571a). The component passed to the render prop, named `Box` below, accepts `prose`, `lines` and `repeat` as unique props. All other props are spread to the element's `style` prop.
+
+- `prose: boolean` - if true, styles the box as prose by wrapping in a `p` element
+- `lines: string[]` - Pass an array of line widths to render multi-line placeholders. Used in conjunction with `prose`
+- `repeat: number` - Repeat the placeholder element `n` times
+
+<LiveComponent>
+  {`<Placeholder>
+  {(Box) => (
+    <div
+      style={{
+        maxWidth: 'var(--site-max-width, 1200px)',
+        margin: '0 auto',
+        padding: '0 32px',
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+        marginTop: '72px',
+      }}
+    >
+      <div
+        style={{
+          marginRight: '2em',
+          width: '250px',
+          flexShrink: 0,
+        }}
+      >
+        <Box width="7ch" height="0.75rem" marginBottom="4px" />
+        <Box height="30px" />
+        <Box height="30px" />
+        <Box height="1rem" marginBottom="16px" repeat={3} />
+        <Box height="1px" />
+        <Box height="1rem" marginBottom="16px" repeat={5} />
+        <Box height="1px" />
+        <Box height="1rem" marginBottom="16px" repeat={3} />
+      </div>
+      <div
+        style={{
+          flex: '1 1',
+          padding: '0 32px',
+          overflow: 'auto',
+        }}
+      >
+        {/* Old Version Notice */}
+        <Box height="40px" />
+        {/* Search */}
+        <Box height="40px" marginBottom="56px" />
+        {/* H1 and Jump to Section */}
+        <Box width="16ch" fontSize="2.5rem" height="40px" marginBottom="24px" />
+        <Box
+          width="16ch"
+          height="1rem"
+          marginBottom="20px"
+          display="inline-block"
+        />
+        {/* Content */}
+        <Box lines={['80ch', '80ch', '65ch']} prose />
+        <Box lines={['70ch']} prose />
+        <Box lines={['80ch', '80ch', '80ch', '35ch']} prose />
+        <Box height="100px" margin="20px 0" display="inline-block" />
+      </div>
+    </div>
+  )}
+</Placeholder>`}
+</LiveComponent>
+
+<UsageDetails packageJson={packageJson} />
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Custom Background Color
+
+You can control the placeholder element background color using the `--placeholder-bg-color` CSS Variable.
+
+<LiveComponent>
+  {`<Placeholder>
+  {(Box) => (
+    <div
+      style={{
+        '--placeholder-bg-color': 'var(--gray-2)',
+        maxWidth: 'var(--site-max-width, 1200px)',
+        margin: '0 auto',
+        padding: '0 32px',
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+        marginTop: '72px',
+      }}
+    >
+      <div
+        style={{
+          marginRight: '2em',
+          width: '250px',
+          flexShrink: 0,
+        }}
+      >
+        <Box width="7ch" height="0.75rem" marginBottom="4px" />
+        <Box height="30px" />
+        <Box height="30px" />
+        <Box height="1rem" marginBottom="16px" repeat={3} />
+        <Box height="1px" />
+        <Box height="1rem" marginBottom="16px" repeat={5} />
+        <Box height="1px" />
+        <Box height="1rem" marginBottom="16px" repeat={3} />
+      </div>
+      <div
+        style={{
+          flex: '1 1',
+          padding: '0 32px',
+          overflow: 'auto',
+        }}
+      >
+        {/* Old Version Notice */}
+        <Box height="40px" />
+        {/* Search */}
+        <Box height="40px" marginBottom="56px" />
+        {/* H1 and Jump to Section */}
+        <Box width="16ch" fontSize="2.5rem" height="40px" marginBottom="24px" />
+        <Box
+          width="16ch"
+          height="1rem"
+          marginBottom="20px"
+          display="inline-block"
+        />
+        {/* Content */}
+        <Box lines={['80ch', '80ch', '65ch']} prose />
+        <Box lines={['70ch']} prose />
+        <Box lines={['80ch', '80ch', '80ch', '35ch']} prose />
+        <Box height="100px" margin="20px 0" display="inline-block" />
+      </div>
+    </div>
+  )}
+</Placeholder>`}
+</LiveComponent>

@@ -55,7 +55,7 @@
               content: '';
               width: 100%;
               height: 1px;
-              background-color: var(--brand);
+              background-color: var(--brand-link);
               opacity: 0;
               transition: opacity 0.3s;
             }

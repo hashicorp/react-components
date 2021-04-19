@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
-function Tabs({ defaultTabIdx, centered, fullWidthBorder, product, children }) {
+function Tabs({ defaultTabIdx, centered, fullWidthBorder, children }) {
   if (!children) {
     process.env.NODE_ENV !== 'production' &&
       console.warn(
@@ -25,7 +24,6 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, product, children }) {
     isDefaultOutOfBounds ? 0 : defaultTabIdx
   )
   const groupCtx = useTabGroups()
-  const { themeClass } = useProductMeta(product)
 
   function setActiveTab(targetIdx, groupId) {
     setActiveTabIdx(targetIdx)
@@ -49,7 +47,6 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, product, children }) {
     <section
       className={classNames(
         'g-tabs',
-        themeClass,
         {
           'g-tabs-centered': centered,
         },
@@ -78,7 +75,6 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, product, children }) {
 
 Tabs.defaultProps = {
   defaultTabIdx: 0,
-  product: 'hashicorp',
 }
 
 function Tab({ children }) {

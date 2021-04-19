@@ -51,20 +51,17 @@
 
     & .style-menu-item {
       & .text {
-        color: var(--gray-2);
+        color: var(--black);
         position: relative;
         &::after {
           content: '';
           position: absolute;
           left: 0;
           right: 0;
-          bottom: 3px;
+          bottom: 0;
           height: 2px;
-          background: var(--brand);
-          opacity: 0;
-        }
-        &.brand-hcp::after {
           background: var(--black);
+          opacity: 0;
         }
       }
 

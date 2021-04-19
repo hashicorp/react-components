@@ -1,8 +1,8 @@
-export default function StatusBar({ theme, active, timing, productClass }) {
+export default function StatusBar({ theme, active, timing }) {
   return (
     <div className={`progress-bar ${theme}`}>
       <span
-        className={`${active ? ' active' : ''} ${productClass || ''}`}
+        className={`${active ? ' active' : ''}`}
         style={
           active
             ? { animationDuration: `${timing}s` }

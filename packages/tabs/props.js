@@ -1,9 +1,4 @@
-const baseProps = require('../../props.js')
-
 module.exports = {
-  product: {
-    ...baseProps.product,
-  },
   defaultTabIdx: {
     type: 'integer',
     description:

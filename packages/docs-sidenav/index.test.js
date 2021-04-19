@@ -1,4 +1,5 @@
 import { render, fireEvent, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import DocsSidenav from './'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
@@ -64,6 +65,26 @@ describe('<DocsSidenav />', () => {
         return linkElem.getAttribute('href') === expectedHref
       })[0]
     expect(activeIndexLeaf.getAttribute('data-is-active')).toBe('true')
+  })
+
+  it('filters based on the input value', () => {
+    render(<DocsSidenav {...defaultProps} />)
+
+    expect(screen.queryByText('What is Vault?')).not.toBeNull()
+
+    userEvent.type(screen.getByPlaceholderText('Filter...'), 'nothing')
+
+    expect(screen.queryByText('What is Vault?')).toBeNull()
+  })
+
+  it('filters based on the input value - case insensitive', () => {
+    render(<DocsSidenav {...defaultProps} />)
+
+    expect(screen.queryByText('What is Vault?')).not.toBeNull()
+
+    userEvent.type(screen.getByPlaceholderText('Filter...'), 'wHaT iS VAulT?')
+
+    expect(screen.queryByText('What is Vault?')).not.toBeNull()
   })
 
   it('expands and collapses nav branch items when clicked', () => {
