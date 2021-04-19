@@ -4,6 +4,10 @@
   & .g-tab-triggers .active .inner {
     border-bottom-color: var(--black);
   }
+
+  & .content {
+    color: var(--gray-2);
+  }
 }
 
 .g-tabs-full-border {
