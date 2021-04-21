@@ -92,3 +92,35 @@ The current workaround is not ideal, but should completely fix the issue. Defini
    If multiple packages were published, you'll need to delete tags for each individual package.
 
 Now everything should be reset to its state prior to the publish failure.
+
+## Batch Release Notes
+
+Upon publishing new versions of any package(s), corresponding [GitHub release(s)](https://github.com/hashicorp/react-components/releases) should be published as well with information about the changes, migration notes and links to the PR where changes occurred.
+
+When publishing one or two packages, you can manually create the releases in the GitHub interface. However, if you released a big batch of updates that affects many packages in a similar way (think dependency updates), this process for publishing releases can be automated via [this helpful script](https://github.com/hashicorp/react-components/blob/main/scripts/create-batch-release-notes.js).
+
+### Setup
+
+To use this script, you'll need to setup some config. This script uses [Octokit](https://github.com/octokit/core.js#rest-api-example) to interface with the [GitHub API](https://docs.github.com/en/rest/reference/repos#create-a-release) easily.
+
+First, create a [new personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (select `repo` scope) and add it to your local `.env` file or just paste it directly into the script. This is how you'll authenticate to create the GitHub release. _Note, you'll also need to [**Enable SSO**](https://docs.github.com/en/github/authenticating-to-github/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) on the token since this is a Hashicorp repo_
+
+Next, you'll want to head to the script file: `scripts/create-batch-release-notes` and add in your release notes body (around line ~16).
+
+```js
+const RELEASE_BODY = `Add the release notes here`
+```
+
+This content will be published in the body of all the releases related to the recently published packages, so please ensure it's providing the correct info.
+
+### Executing the script
+
+Now you can run the script while passing in the `sha` of the publish commit as a command-line argument. (This is the commit that updates all the version numbers. [See this example](https://github.com/hashicorp/react-components/commit/49699840cdb61fffbe4cdbce01a10873626a2259))
+
+When you're ready, navigate to your terminal in the root of this project and run:
+
+```sh
+node scripts/create-batch-release-notes.js <YOUR_PUBLISH_SHA>
+```
+
+If all goes well, you should now see these releases published in GitHub. If you have issues, check that the access token has SSO-Enabled.
