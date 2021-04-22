@@ -26,7 +26,12 @@ class AlertBanner extends Component {
 
     return (
       <div
-        className={classNames('g-alert-banner', product.themeClass, { show })}
+        className={classNames(
+          'g-alert-banner',
+          product.themeClass,
+          { show },
+          { themed: !!product.themeClass }
+        )}
         ref={this.banner}
       >
         <a href={url} className="link" onClick={() => this.trackEvent('click')}>
