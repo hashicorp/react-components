@@ -105,7 +105,7 @@ To use this script, you'll need to setup some config. This script uses [Octokit]
 
 First, create a [new personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (select `repo` scope) and add it to your local `.env` file or just paste it directly into the script. This is how you'll authenticate to create the GitHub release. _Note, you'll also need to [**Enable SSO**](https://docs.github.com/en/github/authenticating-to-github/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) on the token since this is a Hashicorp repo_
 
-Next, you'll want to head to the script file: `scripts/create-batch-release-notes` and add in your release notes body (around line ~16).
+Next, you'll want to head to the script file: `scripts/create-batch-release-notes` and add in your release notes body.
 
 ```js
 const RELEASE_BODY = `Add the release notes here`
