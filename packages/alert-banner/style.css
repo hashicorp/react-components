@@ -8,11 +8,15 @@
     display: block;
   }
 
+  &.themed > a.link {
+    background: var(--brand-secondary);
+  }
+
   & > a.link {
     display: block;
     position: relative;
     color: var(--black);
-    background: var(--brand-secondary);
+    background: var(--vagrant-secondary); /** Corporate default */
 
     & > .g-grid-container {
       display: flex;
