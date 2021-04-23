@@ -4,7 +4,7 @@ fragment useCasesFields on SbcUseCasesSectionRecord {
       ...imageFields
     }
     title
-    description
+    description(markdown: true)
     link {
       title
       url
