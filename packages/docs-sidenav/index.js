@@ -25,7 +25,7 @@ export default function DocsSidenav({
   disableFilter = false,
 }) {
   const router = useRouter()
-  const pathname = router ? router.pathname : null
+  const activePath = router ? router.asPath : null
 
   // Get theme class
   // ( note: we could consider getting the product prop here,
@@ -53,11 +53,26 @@ export default function DocsSidenav({
   }, [isMobileOpen, setIsMenuFullyHidden])
   useEventListener('transitionend', handleMenuTransitionEnd, menuRef.current)
 
+  // Close the menu when there is a click outside
+  const handleDocumentClick = useCallback(
+    (event) => {
+      if (!isMobileOpen) return
+      const isClickOutside = !menuRef.current.contains(event.target)
+      if (isClickOutside) setIsMobileOpen(false)
+    },
+    [isMobileOpen]
+  )
+  useEventListener(
+    'click',
+    handleDocumentClick,
+    typeof window !== 'undefined' ? document : null
+  )
+
   // When client-side navigation occurs,
   // we want to close the mobile rather than keep it open
   useEffect(() => {
     setIsMobileOpen(false)
-  }, [pathname])
+  }, [activePath])
 
   // When path-related data changes, update content to ensure
   // `__isActive` props on each content item are up-to-date
@@ -66,8 +81,8 @@ export default function DocsSidenav({
   // setFilterInput("")
   useEffect(() => {
     if (!navData) return
-    setContent(flagActiveNodes(navData, currentPath, pathname))
-  }, [currentPath, navData, pathname])
+    setContent(flagActiveNodes(navData, currentPath, activePath))
+  }, [currentPath, navData, activePath])
 
   // When filter input changes, update content
   // to filter out items that don't match

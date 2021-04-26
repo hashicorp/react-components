@@ -2,10 +2,6 @@
 
 .root {
   position: relative;
-
-  @media (--mobile-viewports) {
-    z-index: 901; /* higher than g-subnav */
-  }
 }
 
 .rootList {
@@ -26,6 +22,7 @@
     transition: 0.3s ease-in-out;
     transition-property: box-shadow, transform;
     top: 0;
+    z-index: 901; /* higher than g-subnav */
 
     &[data-is-mobile-open='true'] {
       box-shadow: 2px 2px 20px rgba(37, 38, 45, 0.2);
