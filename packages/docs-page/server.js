@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
+import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
 import renderPageMdx from './render-page-mdx'
 
 // So far, we have a pattern of using a common value for
@@ -24,7 +25,7 @@ async function generateStaticPaths({
 async function resolveNavData(filePath, localContentDir) {
   const navDataFile = path.join(process.cwd(), filePath)
   const navDataRaw = JSON.parse(fs.readFileSync(navDataFile, 'utf8'))
-  const withFilePaths = await validateFilePaths(navDataRaw, localContentDir)
+  const withFilePaths = await validateNavData(navDataRaw, localContentDir)
   return withFilePaths
 }
 
@@ -74,6 +75,18 @@ async function generateStaticProps({
 
 async function validateNavData(navData, localContentDir) {
   const withFilePaths = await validateFilePaths(navData, localContentDir)
+  // Validate unlinked content checks for content files that are NOT
+  // included in the provided navData. This requires filesystem access,
+  // similar to validateFilePaths
+  const unlinkedRoutes = await validateUnlinkedContent(navData, localContentDir)
+  if (unlinkedRoutes.length > 0) {
+    const COLOR_RESET = '\x1b[0m'
+    const COLOR_RED = '\x1b[31m'
+    const jsonList = JSON.stringify(unlinkedRoutes, null, 2)
+    throw new Error(
+      `\n${COLOR_RED}Error: Unlinked pages found in the ${localContentDir} directory.\n\nPlease add these paths to the "${localContentDir}" nav data file, or remove the .mdx files.\n\n${jsonList}${COLOR_RESET}\n\n`
+    )
+  }
   // Note: validateRouteStructure returns navData with additional __stack properties,
   // which detail the path we've inferred for each branch and node
   // (branches do not have paths defined explicitly, so we need to infer them)
