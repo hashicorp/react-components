@@ -3,13 +3,18 @@ import TopBar from './partials/top-bar'
 import styles from './usage-details.module.css'
 import ReleaseDetails from '../release-details'
 import PROJECT_LIST from './project-list'
+import SourcegraphLink from './partials/sourcegraph-link'
 
-export default function UsageDetails({ packageJson }) {
+export default function UsageDetails({ packageJson = {} }) {
   return (
     <div>
       <section className={styles.root}>
-        <TopBar heading="Where it's used" packageJson={packageJson} />
-        {packageJson ? (
+        <TopBar
+          heading="Where it's used"
+          packageJson={packageJson}
+          linkSlot={<SourcegraphLink packageName={packageJson.name} />}
+        />
+        {packageJson.name ? (
           <ul className={styles.list}>
             {PROJECT_LIST.map(({ repo, dir }) => {
               return (

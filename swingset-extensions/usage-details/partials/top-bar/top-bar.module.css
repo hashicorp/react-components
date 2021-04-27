@@ -20,41 +20,6 @@
   flex-grow: 1;
 }
 
-.sourcegraphLink {
-  display: flex;
-  color: var(--gray-2);
-  align-items: center;
-
-  &:hover {
-    color: var(--brand);
-  }
-}
-
-.sourcegraphLogo {
-  margin: 0 4px;
-  & > svg {
-    display: block;
-  }
-}
-
-.externalIcon {
-  & > svg {
-    display: block;
-    width: 18px;
-    height: 18px;
-
-    & [stroke] {
-      stroke: var(--gray-3);
-    }
-  }
-
-  &[data-hovered='true'] {
-    & > svg [stroke] {
-      stroke: var(--brand);
-    }
-  }
-}
-
 .currentVersion {
   display: flex;
 }

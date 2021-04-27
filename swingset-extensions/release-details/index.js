@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Icon from '../usage-details/partials/icon'
+import Button from '../../packages/button'
 import PackageVersion from '../usage-details/partials/package-version'
 import TopBar from '../usage-details/partials/top-bar'
+import semverSort from './utils/semver-sort'
 import s from './style.module.css'
 
-const API_URL = '/api/fetch-release-details'
+const API_URL = '/api/fetch-registry-data'
 
-function ReleaseDetails({ packageJson }) {
-  if (!packageJson) return null
-  const [data, setData] = useState(false)
+function ReleaseDetails({ packageJson = {} }) {
+  const [{ error, versions, loaded }, setData] = useState({})
   const { name, version } = packageJson
 
-  const latestMajor = parseInt(version.match(/(\d+)\.(\d+)\.(.+)$/)[1])
+  const latestMajor = version
+    ? parseInt(version.match(/(\d+)\.(\d+)\.(.+)$/)[1])
+    : -1
   const majorVersionInts = [...Array(latestMajor + 1).keys()]
-
-  const isLoading = data == false
-  const error = !isLoading && data.error
-  const sortedVersions = !isLoading ? data.sortedVersions : []
 
   // Effect to fetch data from the npm registry, via API route
   useEffect(() => {
@@ -24,20 +23,27 @@ function ReleaseDetails({ packageJson }) {
     let isMounted = true
     // Set up fn to call API route
     async function getDetails() {
-      const requestData = { packageName: name }
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(requestData),
-      })
-      const data = await response.json()
-      if (data.error) {
-        let msg = `Error fetching release details for ${name}. `
-        msg += `Full error: ${JSON.stringify(data.error)}`
+      const dataToSet = { loaded: true }
+      const response = await fetch(API_URL + `/${name}`)
+      const [error, registryData] = await response.json()
+      if (error) {
+        let msg = `Error fetching registry data for ${name}. `
+        msg += `Full error: ${JSON.stringify(error)}`
         console.error(msg)
+        dataToSet.error = error
+      } else {
+        // Sort stable versions in descending order
+        const sortedVersions = Object.keys(registryData.versions)
+          .sort(semverSort)
+          .filter((v) => {
+            const z = v.match(/(\d+)\.(\d+)\.(.+)$/)[3]
+            const isStable = parseInt(z).toString() === z
+            return isStable
+          })
+        dataToSet.versions = sortedVersions
       }
       //  Avoid trying to setData if the component is not mounted
-      if (isMounted) setData(data)
+      if (isMounted) setData(dataToSet)
     }
     // Call getDetails
     getDetails()
@@ -49,20 +55,31 @@ function ReleaseDetails({ packageJson }) {
       <TopBar
         heading="Release notes"
         packageJson={packageJson}
-        hideSourcegraph
+        linkSlot={
+          <Button
+            url={`http://registry.npmjs.org/${name}`}
+            title="registry.npmjs.org"
+            theme={{ variant: 'tertiary' }}
+            linkType="outbound"
+          />
+        }
       />
       <div>
         {majorVersionInts.map((majorInt) => {
+          const matchingVersions =
+            versions &&
+            versions.filter((v) => {
+              const x = v.match(/(\d+)\.(\d+)\.(.+)$/)[1]
+              return parseInt(x) == majorInt
+            })
           return (
             <VersionSection
               key={majorInt}
               label={`${majorInt}.x.x`}
               name={name}
               error={error}
-              versions={sortedVersions.filter((v) => {
-                const x = v.match(/(\d+)\.(\d+)\.(.+)$/)[1]
-                return parseInt(x) == majorInt
-              })}
+              isLoading={!loaded}
+              versions={matchingVersions}
             />
           )
         })}
@@ -71,13 +88,13 @@ function ReleaseDetails({ packageJson }) {
   )
 }
 
-function VersionSection({ label, versions, name, error }) {
+function VersionSection({ label, versions, isLoading, name, error }) {
   return (
     <div className={s.versionSection}>
       <div className={s.versionSectionLabel}>
         <PackageVersion version={label} linked={false} name={name} />
       </div>
-      {versions && versions.length ? (
+      {versions && versions.length > 0 ? (
         <ul className={s.versionList}>
           {versions.map((version) => {
             return (
@@ -89,11 +106,13 @@ function VersionSection({ label, versions, name, error }) {
         </ul>
       ) : (
         <div className={s.loadingList}>
-          <Icon icon={error ? 'x' : 'loading'} />
+          {isLoading ? <Icon icon={error ? 'x' : 'loading'} /> : null}
           <span>
-            {error
+            {isLoading
+              ? `Loading ${label} releases...`
+              : error
               ? 'Error fetching registry data. Check the console.'
-              : `Loading ${label} releases...`}
+              : `No matching versions found for ${label}.`}
           </span>
         </div>
       )}

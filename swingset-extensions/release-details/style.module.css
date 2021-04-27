@@ -5,6 +5,16 @@
   padding-bottom: 1rem;
 }
 
+.registryLink {
+  display: flex;
+  color: var(--gray-2);
+  align-items: center;
+
+  &:hover {
+    color: var(--brand);
+  }
+}
+
 .versionSection {
   display: flex;
   align-items: flex-start;
