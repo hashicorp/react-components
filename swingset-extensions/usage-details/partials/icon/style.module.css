@@ -1,0 +1,64 @@
+.iconContainer {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > svg {
+    display: block;
+  }
+}
+
+.loadingIcon {
+  composes: iconContainer;
+
+  & > svg {
+    opacity: 0.3;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.githubIcon {
+  composes: iconContainer;
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &[data-hovered='true'] {
+    & > svg [fill] {
+      fill: var(--brand);
+    }
+  }
+}
+
+.xIcon {
+  composes: iconContainer;
+
+  & > svg {
+    margin-top: 1px;
+    width: 20px;
+    height: 20px;
+
+    & [stroke] {
+      stroke: var(--gray-5);
+    }
+  }
+}
