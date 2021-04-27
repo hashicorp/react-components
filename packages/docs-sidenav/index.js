@@ -25,7 +25,8 @@ export default function DocsSidenav({
   disableFilter = false,
 }) {
   const router = useRouter()
-  const activePath = router ? router.asPath : null
+  // splitting on ? to drop query parameters if they exist
+  const activePath = router ? router.asPath.split('?')[0] : null
 
   // Get theme class
   // ( note: we could consider getting the product prop here,
