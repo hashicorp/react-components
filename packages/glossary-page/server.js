@@ -1,15 +1,13 @@
-import renderToString from 'next-mdx-remote/render-to-string'
+import { serialize } from 'next-mdx-remote/serialize'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
 import { validateFilePaths } from '@hashicorp/react-docs-page/server'
-import generateComponents from '@hashicorp/react-docs-page/components'
 import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
 import generateSlug from '@hashicorp/remark-plugins/generate_slug'
 
 export default async function generateStaticProps({
   navDataFile,
-  additionalComponents,
   product,
   mainBranch = 'main',
 }) {
@@ -22,11 +20,10 @@ export default async function generateStaticProps({
 
   //  Construct the mdxSource from the provided terms
   const { terms, mdxBlob } = await getGlossaryTerms()
-  const mdxSource = await renderToString(mdxBlob, {
+  const mdxSource = await serialize(mdxBlob, {
     mdxOptions: markdownDefaults({
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
     }),
-    components: generateComponents(product.name, additionalComponents),
   })
 
   // Construct the githubFileUrl, used for "Edit this page" link
