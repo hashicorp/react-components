@@ -1,5 +1,5 @@
 import s from './style.module.css'
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 import HashiHead from '@hashicorp/react-head'
 import Content from '@hashicorp/react-content'
 
@@ -7,7 +7,7 @@ export default function MarkdownPage({
   staticProps: { head, mdxSource },
   components = {},
 }) {
-  const content = hydrate(mdxSource, { components })
+  const content = <MDXRemote {...mdxSource} components={components} />
   return (
     <>
       <HashiHead {...head} />
