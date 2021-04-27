@@ -53,7 +53,7 @@ function ReleaseDetails({ packageJson = {} }) {
   return (
     <section>
       <TopBar
-        heading="Release notes"
+        heading="Releases"
         packageJson={packageJson}
         linkSlot={
           <Button
