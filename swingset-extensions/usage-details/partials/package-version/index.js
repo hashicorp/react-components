@@ -6,7 +6,7 @@ function packageVersion({ name, version, linked = true }) {
   const releaseUrl =
     linked && name && version ? toReleaseUrl(name, version) : undefined
   return (
-    <Tag href={releaseUrl} className={s.root}>
+    <Tag href={releaseUrl} className={s.root} target="_blank" rel="noopener">
       {version}
     </Tag>
   )
