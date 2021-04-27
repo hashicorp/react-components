@@ -45,7 +45,6 @@ async function generateStaticProps({
   localContentDir,
   params,
   product,
-  additionalComponents = {},
   mainBranch = 'main',
   remarkPlugins = [],
   scope, // optional, I think?
@@ -61,8 +60,6 @@ async function generateStaticProps({
   const mdxFile = path.join(process.cwd(), navNode.filePath)
   const mdxString = fs.readFileSync(mdxFile, 'utf8')
   const { mdxSource, frontMatter } = await renderPageMdx(mdxString, {
-    productName: product.name,
-    additionalComponents,
     remarkPlugins,
     scope,
   })
