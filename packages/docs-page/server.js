@@ -28,7 +28,10 @@ async function generateStaticPaths({
   let navData
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
-  if (process.env.ENABLE_VERSIONED_DOCS) {
+  if (
+    process.env.ENABLE_VERSIONED_DOCS &&
+    process.env.VERCEL_ENV === 'production'
+  ) {
     // Fetch and parse navigation data
     navData = (
       await loadVersionedNavData(
@@ -91,37 +94,45 @@ async function generateStaticProps({
   if (process.env.ENABLE_VERSIONED_DOCS) {
     const versionFromPath = getVersionFromPath(params.page)
 
-    const currentVersionNormalized = normalizeVersion(currentVersion)
+    // Only load docs content from the DB if we're in production or there's an explicit version in the path
+    // Preview and dev environments will read the "latest" content from the filesystem
+    if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
+      const currentVersionNormalized = normalizeVersion(currentVersion)
 
-    const versions = await loadVersionListFromManifest(currentVersionNormalized)
+      const versions = await loadVersionListFromManifest(
+        currentVersionNormalized
+      )
 
-    const pagePathToLoad = versionFromPath
-      ? [basePath, ...(params.page ?? [])].join('/')
-      : [basePath, currentVersionNormalized, ...(params.page ?? [])].join('/')
+      const pagePathToLoad = versionFromPath
+        ? [basePath, ...(params.page ?? [])].join('/')
+        : [basePath, currentVersionNormalized, ...(params.page ?? [])].join('/')
 
-    let doc
-    const [{ mdxSource }, navData] = await Promise.all([
-      loadVersionedDocument(product.slug, pagePathToLoad).then((docResult) => {
-        doc = docResult
-        return mdxRenderer(docResult.markdownSource)
-      }),
-      loadVersionedNavData(
-        product.slug,
-        basePath,
-        versionFromPath ?? currentVersionNormalized
-      ),
-    ])
+      let doc
+      const [{ mdxSource }, navData] = await Promise.all([
+        loadVersionedDocument(product.slug, pagePathToLoad).then(
+          (docResult) => {
+            doc = docResult
+            return mdxRenderer(docResult.markdownSource)
+          }
+        ),
+        loadVersionedNavData(
+          product.slug,
+          basePath,
+          versionFromPath ?? currentVersionNormalized
+        ),
+      ])
 
-    // Construct the githubFileUrl, used for "Edit this page" link
-    const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
+      // Construct the githubFileUrl, used for "Edit this page" link
+      const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
 
-    return {
-      versions,
-      currentPath,
-      frontMatter: doc.metadata,
-      githubFileUrl,
-      mdxSource,
-      navData: navData.navData,
+      return {
+        versions,
+        currentPath,
+        frontMatter: doc.metadata,
+        githubFileUrl,
+        mdxSource,
+        navData: navData.navData,
+      }
     }
   }
 
