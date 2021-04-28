@@ -12,6 +12,7 @@
     "node-cache": "^5.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "semver": "^7.3.5",
     "swingset": "0.6.1"
   },
   "devDependencies": {
