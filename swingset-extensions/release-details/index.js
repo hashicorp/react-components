@@ -3,7 +3,7 @@ import Icon from '../usage-details/partials/icon'
 import Button from '../../packages/button'
 import PackageVersion from '../usage-details/partials/package-version'
 import TopBar from '../usage-details/partials/top-bar'
-import semverSort from './utils/semver-sort'
+import semverSort from 'semver/functions/sort'
 import s from './style.module.css'
 
 const API_URL = '/api/fetch-registry-data'
@@ -33,14 +33,14 @@ function ReleaseDetails({ packageJson = {} }) {
         dataToSet.error = error
       } else {
         // Sort stable versions in descending order
-        const sortedVersions = Object.keys(registryData.versions)
-          .sort(semverSort)
-          .filter((v) => {
-            const z = v.match(/(\d+)\.(\d+)\.(.+)$/)[3]
-            const isStable = parseInt(z).toString() === z
-            return isStable
-          })
-        dataToSet.versions = sortedVersions
+        const sortedStableVersions = semverSort(
+          Object.keys(registryData.versions)
+        ).filter((v) => {
+          const z = v.match(/(\d+)\.(\d+)\.(.+)$/)[3]
+          const isStable = parseInt(z).toString() === z
+          return isStable
+        })
+        dataToSet.versions = sortedStableVersions
       }
       //  Avoid trying to setData if the component is not mounted
       if (isMounted) setData(dataToSet)
