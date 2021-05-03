@@ -65,6 +65,10 @@
         color: var(--black);
       }
 
+      & .description {
+        color: var(--gray-2);
+      }
+
       & .help-text {
         color: #252937;
       }
@@ -74,7 +78,7 @@
       color: var(--black);
 
       & .progress-bar {
-        background-color: var(--gray-5);
+        background-color: rgba(0, 0, 0, 0.15);
 
         & span {
           background-color: var(--black);
@@ -202,6 +206,7 @@
 
     & .description {
       margin-top: 24px;
+      color: var(--gray-5);
 
       @media (--small) {
         margin-top: 16px;

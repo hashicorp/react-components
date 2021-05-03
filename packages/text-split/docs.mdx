@@ -39,3 +39,51 @@ With checkboxes:
   linkStyle='buttons'
   checkboxes={['One item', 'Second', 'And third']}
 >bar</TextSplit>`}</LiveComponent>
+
+"Dark Theme"
+
+<LiveComponent collapsed>{`
+<TextSplit
+  content={
+    <>
+      <h3>¿Qué tal?</h3>
+      <p>
+        <strong>Hello</strong> world, this is some <em>custom</em> React content
+      </p>
+    </>
+  }
+  linkStyle="buttons"
+  theme="dark"
+  links={[
+    { text: 'primary action', url: '#' },
+    { text: 'secondary action', url: '#' },
+    { text: 'tertiary', url: '#' },
+  ]}
+>
+  bar
+</TextSplit>`}</LiveComponent>
+
+"Gray Theme"
+
+<LiveComponent collapsed>{`
+<TextSplit
+  content={
+    <>
+    <h3>Por Ejemplo</h3>
+    <p>
+      <strong>Hello</strong> world, this is some <em>custom</em> React content
+    </p>
+    </>
+  }
+  linkStyle="buttons"
+  product="waypoint"
+  theme="gray"
+  links={[
+    { text: 'primary action', url: '#' },
+    { text: 'secondary action', url: '#' },
+    { text: 'tertiary', url: '#' },
+  ]}
+>
+  bar
+</TextSplit>
+`}</LiveComponent>

@@ -79,6 +79,7 @@
   overflow: hidden;
   font-size: 15px;
   transition: opacity 0.3s, max-height 0.3s;
+  color: var(--gray-2);
 }
 
 .options {

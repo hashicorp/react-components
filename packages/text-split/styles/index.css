@@ -14,6 +14,19 @@
   &.background-dark {
     background: var(--black);
     color: var(--white);
+
+    & .text {
+      color: var(--gray-5) !important;
+
+      & h1,
+      & h2,
+      & h3,
+      & h4,
+      & h5,
+      & h6 {
+        color: var(--white) !important;
+      }
+    }
   }
 
   & > .g-grid-container {
@@ -36,6 +49,16 @@
       margin-top: 32px;
       width: 100%;
       flex-shrink: 0;
+      color: var(--gray-2);
+
+      & h1,
+      & h2,
+      & h3,
+      & h4,
+      & h5,
+      & h6 {
+        color: var(--black);
+      }
 
       @media (--medium-up) {
         margin-top: 0;

@@ -17,6 +17,7 @@
 .description {
   composes: g-type-body-large from global;
   margin-top: 16px;
+  color: var(--gray-2);
 
   @media (--large) {
     margin-top: 24px;

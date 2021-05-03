@@ -12,9 +12,11 @@
     "node-cache": "^5.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "semver": "^7.3.5",
     "swingset": "0.6.1"
   },
   "devDependencies": {
+    "@octokit/core": "^3.3.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^13.1.1",

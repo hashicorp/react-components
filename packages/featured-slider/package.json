@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-featured-slider",
   "description": "featured slider for case studies",
-  "version": "4.0.0",
+  "version": "4.0.2",
   "author": "HashiCorp",
   "contributors": [
     "Nicole Forrester"
