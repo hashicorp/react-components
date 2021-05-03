@@ -13,7 +13,7 @@
     "@hashicorp/react-head": "^3.0.2",
     "@hashicorp/react-placeholder": "^0.1.0",
     "@hashicorp/react-search": "^5.0.2",
-    "@hashicorp/versioned-docs": "^0.0.11",
+    "@hashicorp/versioned-docs": "^0.0.13",
     "fs-exists-sync": "0.1.0",
     "gray-matter": "4.0.2",
     "js-yaml": "3.14.0",
