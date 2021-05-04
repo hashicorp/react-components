@@ -1,6 +1,18 @@
 var fs = require('fs')
 var path = require('path')
 
+/**
+ *
+ * Given navData and a content directory,
+ * return an array of .mdx files that are NOT included
+ * in the navData. If all files are included,
+ * returns an empty array.
+ *
+ * @param {*} navData - array of navData nodes
+ * @param {*} contentDir - path from the cwd to the content directory
+ * @returns {Array} - array of file paths which are present in the content directory,
+ * but missing from navData. Returns an empty array if all content files are included in navData.
+ */
 async function validateUnlinkedContent(navData, contentDir) {
   // Flatten navData to simplify filtering of missing files
   const navDataFlat = flattenNodes(navData)
