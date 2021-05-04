@@ -21,7 +21,9 @@ jest.mock('next/head', () => {
 })
 
 jest.mock('next/router', () => ({
-  useRouter: jest.fn(() => ({})),
+  useRouter: jest.fn(() => ({
+    asPath: '/docs/overview',
+  })),
 }))
 
 describe('<DocsPage />', () => {
