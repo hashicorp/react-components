@@ -1,0 +1,54 @@
+.heading {
+  composes: g-type-display-3 from global;
+  border-bottom: 1px solid var(--gray-5);
+  margin: 0 16px 24px 0;
+  padding-bottom: 1rem;
+}
+
+.registryLink {
+  display: flex;
+  color: var(--gray-2);
+  align-items: center;
+
+  &:hover {
+    color: var(--brand);
+  }
+}
+
+.versionSection {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.versionSectionLabel {
+  padding-right: 1rem;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.loadingList {
+  display: flex;
+  composes: g-type-code from global;
+  color: var(--gray-3);
+  line-height: 1.625rem;
+
+  & > span {
+    margin-left: 4px;
+  }
+}
+
+.versionList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.versionListItem {
+  padding: 0;
+  flex-shrink: 0;
+  padding-bottom: 8px;
+  padding-right: 8px;
+}
