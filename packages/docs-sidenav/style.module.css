@@ -111,16 +111,8 @@
   }
 }
 
-.navBranch {
-  &[data-is-hidden='true'] {
-    display: none;
-  }
-}
-
-.navLeaf {
-  &[data-is-hidden='true'] {
-    display: none;
-  }
+.hiddenNode {
+  display: none;
 }
 
 .navItem {

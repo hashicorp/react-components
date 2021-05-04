@@ -193,7 +193,7 @@ function NavBranch({
   useEffect(() => setIsOpen(isActive || isFiltered), [isActive, isFiltered])
 
   return (
-    <li className={s.navBranch} data-is-hidden={isHidden}>
+    <li className={isHidden ? s.hiddenNode : ''}>
       <button
         className={s.navItem}
         onClick={() => setIsOpen(!isOpen)}
@@ -219,7 +219,7 @@ function NavBranch({
 function NavLeaf({ title, url, isActive, isHidden }) {
   // if the item has a path, it's a leaf node so we render a link to the page
   return (
-    <li className={s.navLeaf} data-is-hidden={isHidden}>
+    <li className={isHidden ? s.hiddenNode : ''}>
       <Link href={url}>
         <a className={s.navItem} data-is-active={isActive}>
           <InlineSvg
