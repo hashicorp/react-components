@@ -13,7 +13,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "semver": "^7.3.5",
-    "swingset": "0.6.1"
+    "swingset": "^0.7.3-canary.0"
   },
   "devDependencies": {
     "@octokit/core": "^3.3.1",
