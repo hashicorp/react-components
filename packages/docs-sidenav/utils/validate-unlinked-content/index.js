@@ -17,7 +17,7 @@ async function validateUnlinkedContent(navData, contentDir) {
   // Flatten navData to simplify filtering of missing files
   const navDataFlat = flattenNodes(navData)
   // Read all files in the content directory
-  const files = await walkAsync(contentDir)
+  const files = await getFiles(path.join(process.cwd(), contentDir))
   // Filter out content files that are already
   // included in nav-data.json
   const missingPages = files
@@ -57,37 +57,15 @@ function flattenNodes(nodes) {
   }, [])
 }
 
-function walkAsync(relativeDir) {
-  const dirPath = path.join(process.cwd(), relativeDir)
-  return new Promise((resolve, reject) => {
-    walk(dirPath, function (err, result) {
-      if (err) reject(err)
-      resolve(result)
+async function getFiles(dir) {
+  const entries = await fs.promises.readdir(dir, { withFileTypes: true })
+  const files = await Promise.all(
+    entries.map((entry) => {
+      const res = path.resolve(dir, entry.name)
+      return entry.isDirectory() ? getFiles(res) : res
     })
-  })
-}
-
-function walk(dir, done) {
-  var results = []
-  fs.readdir(dir, function (err, list) {
-    if (err) return done(err)
-    var pending = list.length
-    if (!pending) return done(null, results)
-    list.forEach(function (file) {
-      file = path.resolve(dir, file)
-      fs.stat(file, function (err, stat) {
-        if (stat && stat.isDirectory()) {
-          walk(file, function (err, res) {
-            results = results.concat(res)
-            if (!--pending) done(null, results)
-          })
-        } else {
-          results.push(file)
-          if (!--pending) done(null, results)
-        }
-      })
-    })
-  })
+  )
+  return files.flat()
 }
 
 module.exports = validateUnlinkedContent
