@@ -84,7 +84,7 @@ async function validateNavData(navData, localContentDir) {
     const COLOR_RED = '\x1b[31m'
     const jsonList = JSON.stringify(unlinkedRoutes, null, 2)
     throw new Error(
-      `\n${COLOR_RED}Error: Unlinked pages found in the ${localContentDir} directory.\n\nPlease add these paths to the "${localContentDir}" nav data file, or remove the .mdx files.\n\n${jsonList}${COLOR_RESET}\n\n`
+      `\n${COLOR_RED}Error: Unlinked pages found in the ${localContentDir} directory.\n\nPlease add these paths to the "${localContentDir}" nav data file, or remove the .mdx files. If you want the pages to exist but not be linked in the navigation, you can add a "hidden" property to the page object in the navigation structure.\n\n${jsonList}${COLOR_RESET}\n\n`
     )
   }
   // Note: validateRouteStructure returns navData with additional __stack properties,
