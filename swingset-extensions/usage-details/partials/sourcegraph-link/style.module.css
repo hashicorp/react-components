@@ -1,0 +1,34 @@
+.sourcegraphLink {
+  composes: g-type-buttons-and-standalone-links from global;
+  display: flex;
+  color: var(--brand);
+  align-items: center;
+}
+
+.sourcegraphLogo {
+  margin: 0 8px 0 4px;
+  & > svg {
+    display: block;
+  }
+}
+
+.externalIcon {
+  & > svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    & [stroke] {
+      stroke: var(--brand);
+    }
+
+    & [data-animation-target] {
+      transition: transform 0.2s;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &[data-hovered='true'] > svg [data-animation-target] {
+    transform: translate3d(2px, -2px, 0);
+  }
+}

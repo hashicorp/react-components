@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import Icon from '../icon'
 import useHover from '../../hooks/use-hover'
-import InlineSvg from '@hashicorp/react-inline-svg'
+import PackageVersion from '../package-version'
 import styles from './project-list-item.module.css'
 
 const API_URL = '/api/fetch-usage-details'
@@ -46,8 +47,7 @@ function ProjectListItem({ packageName, repo, dir }) {
     <li className={styles.root}>
       <a ref={linkRef} className={styles.linkContainer} href={repoUrl}>
         <Icon
-          isLoading={isLoading}
-          versionUsed={versionUsed}
+          icon={isLoading ? 'loading' : versionUsed ? 'github' : 'x'}
           isHovered={isHovered}
         />
         <div
@@ -57,37 +57,13 @@ function ProjectListItem({ packageName, repo, dir }) {
         >
           {repoLabel}
         </div>
-        {versionUsed && <div className={styles.versionUsed}>{versionUsed}</div>}
+
         {errorMsg && <div className={styles.error}>FAILED</div>}
       </a>
+      {versionUsed && (
+        <PackageVersion version={versionUsed} name={packageName} />
+      )}
     </li>
-  )
-}
-
-function Icon({ isLoading, versionUsed, isHovered }) {
-  if (isLoading) {
-    return (
-      <InlineSvg
-        className={styles.loadingIcon}
-        src={require('../../svg/loading-spinner.svg?include')}
-      />
-    )
-  }
-  if (versionUsed) {
-    return (
-      <InlineSvg
-        className={styles.githubIcon}
-        src={require('../../svg/github-icon.svg?include')}
-        data-hovered={isHovered}
-      />
-    )
-  }
-  return (
-    <InlineSvg
-      className={styles.xIcon}
-      src={require('../../svg/x-icon.svg?include')}
-      data-hovered={isHovered}
-    />
   )
 }
 
