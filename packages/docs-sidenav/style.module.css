@@ -111,6 +111,10 @@
   }
 }
 
+.hiddenNode {
+  display: none;
+}
+
 .navItem {
   color: var(--gray-2);
   cursor: pointer;
