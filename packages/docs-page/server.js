@@ -90,7 +90,7 @@ async function generateStaticProps({
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (process.env.ENABLE_VERSIONED_DOCS) {
-    const versionFromPath = getVersionFromPath(params.page)
+    const versionFromPath = getVersionFromPath(params[paramId])
 
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
@@ -102,8 +102,10 @@ async function generateStaticProps({
       )
 
       const pagePathToLoad = versionFromPath
-        ? [basePath, ...(params.page ?? [])].join('/')
-        : [basePath, currentVersionNormalized, ...(params.page ?? [])].join('/')
+        ? [basePath, ...(params[paramId] ?? [])].join('/')
+        : [basePath, currentVersionNormalized, ...(params[paramId] ?? [])].join(
+            '/'
+          )
 
       let doc
       const [{ mdxSource }, navData] = await Promise.all([
