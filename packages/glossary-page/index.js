@@ -1,4 +1,4 @@
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 import { DocsPageWrapper } from '@hashicorp/react-docs-page'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import s from './style.module.css'
@@ -42,9 +42,10 @@ export default function GlossaryPage({
           community.
         </p>
         <GlossaryTableOfContents terms={terms} />
-        {hydrate(mdxSource, {
-          components: generateComponents(product.name, additionalComponents),
-        })}
+        <MDXRemote
+          {...mdxSource}
+          components={generateComponents(product.name, additionalComponents)}
+        />
       </>
     </DocsPageWrapper>
   )

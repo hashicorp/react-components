@@ -1,28 +1,19 @@
 import path from 'path'
-import renderToString from 'next-mdx-remote/render-to-string'
+import { serialize } from 'next-mdx-remote/serialize'
 import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
-import generateComponents from './components'
 import grayMatter from 'gray-matter'
 
 async function renderPageMdx(
   mdxFileString,
-  {
-    productName,
-    mdxContentHook = (c) => c,
-    additionalComponents = {},
-    remarkPlugins = [],
-    scope,
-  } = {}
+  { mdxContentHook = (c) => c, remarkPlugins = [], scope } = {}
 ) {
-  const components = generateComponents(productName, additionalComponents)
   const { data: frontMatter, content: rawContent } = grayMatter(mdxFileString)
   const content = mdxContentHook(rawContent)
-  const mdxSource = await renderToString(content, {
+  const mdxSource = await serialize(content, {
     mdxOptions: markdownDefaults({
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
       addRemarkPlugins: remarkPlugins,
     }),
-    components,
     scope,
   })
   return { mdxSource, frontMatter }

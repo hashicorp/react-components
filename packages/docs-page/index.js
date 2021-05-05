@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Content from '@hashicorp/react-content'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import HashiHead from '@hashicorp/react-head'
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
 import SearchBar from './search-bar'
 import generateComponents from './components'
@@ -86,9 +86,12 @@ export default function DocsPage({
   staticProps: { mdxSource, frontMatter, currentPath, navData, githubFileUrl },
 }) {
   // This component is written to work with next-mdx-remote -- here it hydrates the content
-  const content = hydrate(mdxSource, {
-    components: generateComponents(product.name, additionalComponents),
-  })
+  const content = (
+    <MDXRemote
+      {...mdxSource}
+      components={generateComponents(product.name, additionalComponents)}
+    />
+  )
 
   return (
     <DocsPageWrapper
