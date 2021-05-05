@@ -7,10 +7,13 @@
     "Jeff Escalante"
   ],
   "dependencies": {
+    "@hashicorp/react-alert": "^5.0.0",
     "@hashicorp/react-content": "^7.0.1",
     "@hashicorp/react-docs-sidenav": "^8.0.5",
     "@hashicorp/react-head": "^3.0.2",
+    "@hashicorp/react-placeholder": "^0.1.0",
     "@hashicorp/react-search": "^5.0.2",
+    "@hashicorp/versioned-docs": "^0.0.13",
     "fs-exists-sync": "0.1.0",
     "gray-matter": "4.0.2",
     "js-yaml": "3.14.0",
