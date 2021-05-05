@@ -71,7 +71,6 @@ async function generateStaticProps({
   localContentDir,
   params,
   product,
-  additionalComponents = {},
   mainBranch = 'main',
   remarkPlugins = [],
   scope, // optional, I think?
@@ -82,7 +81,6 @@ async function generateStaticProps({
   const mdxRenderer = (mdx) =>
     renderPageMdx(mdx, {
       productName: product.name,
-      additionalComponents,
       remarkPlugins,
       scope,
     })
