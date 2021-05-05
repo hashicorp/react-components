@@ -51,7 +51,7 @@ module.exports = {
       mdxSource: {
         type: 'object',
         description:
-          "Data returned from running `next-mdx-remote/render-to-string` on the page's `.mdx` file contents.",
+          "Data returned from running `next-mdx-remote/serialize` on the page's `.mdx` file contents.",
         required: true,
         testValue: {
           compiledSource:

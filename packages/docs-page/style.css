@@ -2,6 +2,12 @@
 @import '~@hashicorp/react-search/style.css';
 
 #p-docs {
+  & .version-select {
+    padding-left: 5px;
+    margin-bottom: 1rem;
+    max-width: 90%;
+  }
+
   & .content-wrap {
     display: flex;
     flex-direction: column;

@@ -32,7 +32,7 @@ export default function ProductDownloadsPage({
   latestVersion,
   releases,
 }: ProductDownloadsPageProps): React.ReactElement {
-  const { name, themeClass } = useProductMeta(product)
+  const { name, slug, themeClass } = useProductMeta(product)
   const currentRelease = releases.versions[latestVersion]
 
   const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
@@ -61,7 +61,7 @@ export default function ProductDownloadsPage({
   // - if not, it just gets pushed in
   // This allows for flexible behavior on changing or adding new package manager configs on
   // a per-product basis if necessary.
-  let packageManagers = generateDefaultPackageManagers(name)
+  let packageManagers = generateDefaultPackageManagers(slug)
   const overrides = [...packageManagerOverrides]
   if (overrides) {
     packageManagers = packageManagers

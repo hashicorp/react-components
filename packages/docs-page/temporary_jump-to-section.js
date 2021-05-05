@@ -2,7 +2,7 @@
 // while the team works on a more permanent solution. Please do not ever write code like this.
 // Ticket to fix this: https://app.asana.com/0/1100423001970639/1160656182754009
 export default function temporary_injectJumpToSection(node) {
-  const root = node.children[0]
+  const root = node.querySelector('.g-content')
   const firstH1 = root.querySelector('h1')
   const otherH2s = [].slice.call(root.querySelectorAll('h2')) // NodeList -> array
 

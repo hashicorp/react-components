@@ -1,0 +1,13 @@
+.wrapper {
+  padding: 5px;
+  margin: 0 32px 32px;
+  border-radius: 2px;
+  border: 1px solid var(--warning);
+  background-color: var(--warning-l2);
+  margin-bottom: 20px;
+
+  /* stylelint-disable-next-line */
+  & :global(.g-alert) {
+    width: 100%;
+  }
+}
