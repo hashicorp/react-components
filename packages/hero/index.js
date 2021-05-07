@@ -98,6 +98,7 @@ function Hero({ data, centered, gaPrefix }) {
                           : product
                           ? backgroundTheme
                           : 'dark',
+                      ...button.theme,
                     }}
                   />
                 )
