@@ -7,7 +7,9 @@ const defaultProps = getTestValues(props)
 
 describe('<Alert />', () => {
   test('renders correctly', () => {
-    const { container } = render(<Alert {...defaultProps} />)
+    const { container } = render(
+      <Alert {...defaultProps} className="g-alert" />
+    )
     const rootElem = container.firstChild
     expect(rootElem).toHaveClass('g-alert')
     expect(rootElem).toHaveClass(defaultProps.product)
