@@ -50,6 +50,7 @@ function Hero({ data, centered, gaPrefix }) {
               tag={alert.tag}
               tagColor={alert.tagColor}
               text={alert.text}
+              className="g-alert"
             />
           )}
           {title && (

@@ -9,7 +9,7 @@
   "dependencies": {
     "@hashicorp/js-utils": "next",
     "@hashicorp/localstorage-polyfill": "^1.0.14",
-    "@hashicorp/react-alert": "^2.0.3",
+    "@hashicorp/react-alert": "^5.0.0",
     "@hashicorp/react-button": "^5.0.1",
     "@hashicorp/react-image": "^2.0.3",
     "@hashicorp/react-text-input": "^4.0.1",
