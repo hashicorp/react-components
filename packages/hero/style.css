@@ -54,7 +54,7 @@
     color: var(--black);
 
     & .headline {
-      & .g-alert {
+      & .alert {
         & p,
         & span {
           color: var(--gray-1);
@@ -167,7 +167,7 @@
       }
     }
 
-    & .g-alert {
+    & .alert {
       margin-bottom: 24px;
 
       @media (max-width: 1119px) {
