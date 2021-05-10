@@ -34,6 +34,7 @@
 
       & .buttons {
         justify-content: center;
+        align-items: center;
 
         & .g-btn {
           @media (max-width: 600px) {
@@ -282,6 +283,7 @@
     & .buttons {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       margin: 24px -8px 0;
 
       @media (max-width: 1119px) {
@@ -297,9 +299,19 @@
       & .g-btn {
         margin: 16px 8px 0;
 
+        &.variant-tertiary {
+          margin-left: 24px;
+          margin-right: 24px;
+        }
+
         @media (max-width: 1119px) {
           margin-left: 12px;
           margin-right: 12px;
+
+          &.variant-tertiary {
+            margin-left: 32px;
+            margin-right: 32px;
+          }
         }
       }
     }
