@@ -1,9 +1,19 @@
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta, {
+  Products,
+} from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 
-function Alert({ product, url, tag, text, state, textColor, className }) {
+function Alert({
+  product,
+  url,
+  tag,
+  text,
+  state,
+  textColor,
+  className,
+}: AlertProps): React.ReactElement {
   const { themeClass } = useProductMeta(product)
   return (
     <a
@@ -55,3 +65,13 @@ function ArrowIcon() {
 Alert.fragmentSpec = { fragment }
 
 export default Alert
+
+interface AlertProps {
+  product: Products
+  url: string
+  tag: string
+  text: string
+  state: 'success' | 'warning' | 'error'
+  textColor: 'dark' | 'light'
+  className?: string
+}
