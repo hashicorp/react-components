@@ -39,4 +39,9 @@ module.exports = {
     options: ['dark', 'light'],
     testValue: 'dark',
   },
+  className: {
+    description: 'class to apply to the root element',
+    control: { type: 'text' },
+    type: 'string',
+  },
 }
