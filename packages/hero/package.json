@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-hero",
   "description": "basic full page hero with a lot of customization options",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante"
