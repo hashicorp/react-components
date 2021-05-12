@@ -9,11 +9,6 @@
 }
 
 #p-docs {
-  & .version-select {
-    margin-bottom: 1rem;
-    max-width: 90%;
-  }
-
   & .content-wrap {
     display: flex;
     flex-direction: column;
@@ -35,14 +30,10 @@
   }
 
   & #inner {
-    margin: 64px 0;
+    margin: 32px 0;
     overflow: auto;
     width: 100%;
     position: relative;
-
-    &.versionedDocsOffset {
-      margin-top: 22px;
-    }
 
     @media (min-width: 940px) {
       flex: 1;
@@ -143,6 +134,19 @@
       &.active {
         display: block;
       }
+    }
+  }
+
+  & .version-select {
+    margin-bottom: 1rem;
+    max-width: 90%;
+  }
+
+  & .versionedDocsOffset {
+    margin-top: 22px;
+
+    @media (max-width: 940px) {
+      margin-top: 0;
     }
   }
 }
