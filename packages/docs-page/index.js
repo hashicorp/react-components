@@ -64,7 +64,7 @@ export function DocsPageWrapper({
       />
       {/* render the sidebar nav */}
       {/* TODO: we can probably remove several of these wrappers */}
-      <div className="content-wrap g-container">
+      <div className="content-wrap g-grid-container">
         {isMobile ? null : versionAlert}
         <div id="sidebar" role="complementary">
           <div className="nav docs-nav">

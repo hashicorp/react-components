@@ -38,6 +38,10 @@
     @media (min-width: 940px) {
       flex: 1;
       margin: 0;
+
+      &.versionedDocsOffset {
+        margin-top: 22px;
+      }
     }
 
     & .g-content {
@@ -106,7 +110,7 @@
     cursor: pointer;
     display: inline-block;
     margin-bottom: 20px;
-    margin-left: 5px;
+    margin-left: 1rem;
     position: relative;
     user-select: none;
     z-index: 3;
@@ -128,8 +132,12 @@
       margin: 10px 0 0 0;
       padding: 0 0 0 30px;
       position: absolute;
-      width: 500px;
       z-index: 2;
+      width: 500px;
+
+      @media (max-width: 940px) {
+        width: 345px;
+      }
 
       &.active {
         display: block;
@@ -140,13 +148,5 @@
   & .version-select {
     margin-bottom: 1rem;
     max-width: 90%;
-  }
-
-  & .versionedDocsOffset {
-    margin-top: 22px;
-
-    @media (max-width: 940px) {
-      margin-top: 0;
-    }
   }
 }
