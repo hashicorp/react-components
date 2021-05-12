@@ -16,7 +16,6 @@ function useWindowSize() {
   useSafeLayoutEffect(() => {
     // Handler to call on window resize
     function handleResize() {
-      console.log('resize', window.innerWidth)
       // Set window width/height to state
       setWindowSize({
         width: window.innerWidth,
@@ -39,8 +38,6 @@ function useWindowSize() {
 
 export default function useIsMobile() {
   const { width: windowWidth } = useWindowSize()
-
-  console.log(windowWidth)
 
   return windowWidth < 940
 }
