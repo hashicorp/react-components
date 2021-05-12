@@ -1,6 +1,9 @@
 import Search from '@hashicorp/react-search'
+import useIsMobile from '../../use-is-mobile'
 
 export default function SearchBar({ product }) {
+  const isMobile = useIsMobile()
+
   return (
     <Search
       renderHitContent={({ hit, Highlight }) => (
@@ -18,7 +21,7 @@ export default function SearchBar({ product }) {
           pathname: `/${transformIdtoUrl(hit.objectID)}`,
         },
       })}
-      placeholder={`Search ${product} documentation`}
+      placeholder={isMobile ? `Search` : `Search ${product} documentation`}
     />
   )
 }

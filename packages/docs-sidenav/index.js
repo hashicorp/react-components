@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import LinkWrap, { isAbsoluteURL } from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'
+import IconMagGlass from '@hashicorp/react-search/img/search.svg.js'
 // local utilities
 import flagActiveNodes from './utils/flag-active-nodes'
 import filterContent from './utils/filter-content'
@@ -23,6 +24,8 @@ export default function DocsSidenav({
   product,
   navData,
   disableFilter = false,
+  versionSelect,
+  search,
 }) {
   const router = useRouter()
   // splitting on ? to drop query parameters if they exist
@@ -42,6 +45,9 @@ export default function DocsSidenav({
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   // isMobileFullyHidden reflects if the menu is fully transitioned to a hidden state
   const [isMenuFullyHidden, setIsMenuFullyHidden] = useState(true)
+
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+
   // We want to avoid exposing links to keyboard navigation
   // when the menu is hidden on mobile. But we don't want our
   // menu to flash when hide and shown. To meet both needs,
@@ -93,14 +99,38 @@ export default function DocsSidenav({
 
   return (
     <div className={`g-docs-sidenav ${s.root} ${themeClass || ''}`}>
-      <button
-        className={s.mobileMenuToggle}
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-      >
-        <span>
-          <InlineSvg src={svgMenuIcon} /> Documentation Menu
-        </span>
-      </button>
+      {!isSearchOpen ? (
+        <>
+          <button
+            className={`${s.mobileMenuToggle} g-type-body-small-strong`}
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+          >
+            <span>
+              <InlineSvg src={svgMenuIcon} /> Documentation Menu
+            </span>
+          </button>
+          <button
+            type="button"
+            aria-label="Show Search Bar"
+            className={s.searchToggle}
+            onClick={() => setIsSearchOpen(true)}
+            dangerouslySetInnerHTML={{
+              __html: IconMagGlass,
+            }}
+          />
+        </>
+      ) : (
+        <>
+          {search}
+          <button
+            type="button"
+            className={s.searchClose}
+            onClick={() => setIsSearchOpen(false)}
+          >
+            <span className="g-type-body-small-strong">Cancel</span>
+          </button>
+        </>
+      )}
       <ul
         className={s.rootList}
         ref={menuRef}
@@ -113,6 +143,7 @@ export default function DocsSidenav({
         >
           &times;
         </button>
+        {versionSelect}
         {!disableFilter && (
           <input
             className={s.filterInput}

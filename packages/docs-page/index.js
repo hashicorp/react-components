@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import Content from '@hashicorp/react-content'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
@@ -11,6 +12,7 @@ import VersionAlert from './components/version-alert'
 import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
+import useIsMobile from './use-is-mobile'
 
 export function DocsPageWrapper({
   canonicalUrl,
@@ -25,6 +27,8 @@ export function DocsPageWrapper({
   showEditPage = true,
   versions,
 }) {
+  const isMobile = useIsMobile()
+
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
   useEffect(() => {
@@ -32,6 +36,22 @@ export function DocsPageWrapper({
     if (!node) return
     return temporary_injectJumpToSection(node)
   }, [children])
+
+  const versionSelect = process.env.ENABLE_VERSIONED_DOCS ? (
+    <div className="version-select">
+      <VersionSelect versions={versions} />
+    </div>
+  ) : null
+
+  const search = (
+    <SearchProvider>
+      <SearchBar product={name} />
+    </SearchProvider>
+  )
+
+  const versionAlert = process.env.ENABLE_VERSIONED_DOCS ? (
+    <VersionAlert product={name} />
+  ) : null
 
   return (
     <div id="p-docs">
@@ -45,33 +65,33 @@ export function DocsPageWrapper({
       {/* render the sidebar nav */}
       {/* TODO: we can probably remove several of these wrappers */}
       <div className="content-wrap g-container">
+        {isMobile ? null : versionAlert}
         <div id="sidebar" role="complementary">
-          {process.env.ENABLE_VERSIONED_DOCS ? (
-            <div className="version-select">
-              <VersionSelect versions={versions} />
-            </div>
-          ) : null}
           <div className="nav docs-nav">
             <DocsSidenav
               product={slug}
               baseRoute={baseRoute}
               currentPath={currentPath}
               navData={navData}
+              versionSelect={versionSelect}
+              search={search}
             />
           </div>
         </div>
+        {isMobile ? versionAlert : null}
         {/* render the markdown content */}
-        <div id="inner" role="main">
-          {process.env.ENABLE_VERSIONED_DOCS ? (
-            <VersionAlert product={name} />
-          ) : null}
+        <div
+          id="inner"
+          role="main"
+          className={classNames(
+            process.env.ENABLE_VERSIONED_DOCS && 'versionedDocsOffset'
+          )}
+        >
           <Content
             product={slug}
             content={
               <>
-                <SearchProvider>
-                  <SearchBar product={name} />
-                </SearchProvider>
+                {isMobile ? null : search}
                 {children}
               </>
             }

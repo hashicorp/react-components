@@ -1,17 +1,29 @@
 .wrapper {
   padding: 5px;
-  margin: 0 32px 32px;
   border-radius: 2px;
-  border: 1px solid var(--warning);
   background-color: var(--warning-l2);
   margin-bottom: 20px;
+  width: calc(100% - 4em);
+  position: absolute;
+  top: -3em;
+
+  @media (max-width: 940px) {
+    position: unset;
+    width: 100%;
+  }
 
   /* stylelint-disable-next-line */
   & :global(.g-alert) {
     width: 100%;
 
     & span {
-      border-color: var(--warning);
+      border: none;
+      line-height: 1.667em;
+      color: var(--black);
+    }
+
+    & p {
+      color: var(--gray-2);
     }
 
     & svg line {
