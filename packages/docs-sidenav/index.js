@@ -109,15 +109,17 @@ export default function DocsSidenav({
               <InlineSvg src={svgMenuIcon} /> Documentation Menu
             </span>
           </button>
-          <button
-            type="button"
-            aria-label="Show Search Bar"
-            className={s.searchToggle}
-            onClick={() => setIsSearchOpen(true)}
-            dangerouslySetInnerHTML={{
-              __html: IconMagGlass,
-            }}
-          />
+          {search ? (
+            <button
+              type="button"
+              aria-label="Show Search Bar"
+              className={s.searchToggle}
+              onClick={() => setIsSearchOpen(true)}
+              dangerouslySetInnerHTML={{
+                __html: IconMagGlass,
+              }}
+            />
+          ) : null}
         </>
       ) : (
         <>
