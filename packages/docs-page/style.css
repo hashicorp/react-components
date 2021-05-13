@@ -48,6 +48,8 @@
     }
 
     & .g-content {
+      padding: 0 1rem;
+
       @media (--desktop-viewports) {
         padding-right: 0;
       }

@@ -80,6 +80,7 @@
   border: 0;
   background: none;
   display: none;
+  cursor: pointer;
 
   @media (--mobile-viewports) {
     display: block;

@@ -8,7 +8,6 @@
   ],
   "dependencies": {
     "@hashicorp/react-link-wrap": "^3.0.1",
-    "@hashicorp/react-search": "5.0.2",
     "fuzzysearch": "1.0.3"
   },
   "license": "MPL-2.0",
