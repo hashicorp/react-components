@@ -124,10 +124,10 @@ export default function DocsSidenav({
           {search}
           <button
             type="button"
-            className={s.searchClose}
+            className={`${s.searchClose} g-type-body-small-strong`}
             onClick={() => setIsSearchOpen(false)}
           >
-            <span className="g-type-body-small-strong">Cancel</span>
+            Cancel
           </button>
         </>
       )}
