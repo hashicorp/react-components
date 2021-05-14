@@ -2,6 +2,22 @@
 
 .root {
   position: relative;
+
+  @media (--mobile-viewports) {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid var(--gray-5);
+    border-bottom: 1px solid var(--gray-5);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 52px;
+  }
+
+  & :global(.g-search) {
+    padding: 12px 0;
+    margin-right: 12px;
+  }
 }
 
 .rootList {
@@ -9,7 +25,6 @@
   margin: 0;
   padding: 0;
   width: 275px;
-  padding-left: 5px;
 
   @media (--mobile-viewports) {
     background: var(--white);
@@ -60,22 +75,31 @@
   }
 }
 
+.searchToggle,
+.searchClose {
+  border: 0;
+  background: none;
+  display: none;
+  cursor: pointer;
+
+  @media (--mobile-viewports) {
+    display: block;
+  }
+}
+
 .mobileMenuToggle {
   align-items: center;
   background: var(--white);
   bottom: 0;
   border: none;
-  border-top: 1px solid var(--gray-5);
-  border-bottom: 1px solid var(--gray-5);
   cursor: pointer;
   display: none;
   font-size: inherit;
   justify-content: center;
   line-height: inherit;
   left: 0;
-  padding: 12px;
+  padding: 12px 0;
   transition-delay: 0.3s; /* waits for menu to close before adjusting z-index */
-  width: 100%;
   z-index: 74; /* less than product-subnav */
 
   @media (--mobile-viewports) {

@@ -1,13 +1,17 @@
 /** @TODO: remove once search is converted to use css modules https://app.asana.com/0/1100423001970639/1199982445969979/f **/
 @import '~@hashicorp/react-search/style.css';
 
-#p-docs {
-  & .version-select {
-    padding-left: 5px;
-    margin-bottom: 1rem;
-    max-width: 90%;
-  }
+@custom-media --mobile-viewports (max-width: 939px);
+@custom-media --desktop-viewports (min-width: 940px);
 
+/* @TODO: adjustment for versioned docs */
+@media (max-width: 767px) {
+  .g-alert-banner {
+    display: none !important;
+  }
+}
+
+#p-docs {
   & .content-wrap {
     display: flex;
     flex-direction: column;
@@ -16,7 +20,12 @@
     position: relative;
     width: 100%;
 
-    @media (min-width: 940px) {
+    @media (--mobile-viewports) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @media (--desktop-viewports) {
       flex-direction: row;
       margin-bottom: 24px;
       margin-top: 72px;
@@ -24,18 +33,24 @@
   }
 
   & #inner {
-    margin: 64px 0;
+    margin: 32px 0;
     overflow: auto;
     width: 100%;
+    position: relative;
 
-    @media (min-width: 940px) {
+    @media (--desktop-viewports) {
       flex: 1;
       margin: 0;
+
+      &.versionedDocsOffset {
+        margin-top: 22px;
+      }
     }
 
     & .g-content {
-      @media (max-width: 939px) {
-        padding-left: 0;
+      padding: 0 1rem;
+
+      @media (--desktop-viewports) {
         padding-right: 0;
       }
 
@@ -100,10 +115,13 @@
     cursor: pointer;
     display: inline-block;
     margin-bottom: 20px;
-    margin-left: 5px;
     position: relative;
     user-select: none;
     z-index: 3;
+
+    @media (--mobile-viewports) {
+      margin-left: 1rem;
+    }
 
     & .trigger {
       align-items: center;
@@ -122,12 +140,21 @@
       margin: 10px 0 0 0;
       padding: 0 0 0 30px;
       position: absolute;
-      width: 500px;
       z-index: 2;
+      width: 500px;
+
+      @media (--mobile-viewports) {
+        width: 345px;
+      }
 
       &.active {
         display: block;
       }
     }
+  }
+
+  & .version-select {
+    margin-bottom: 1rem;
+    max-width: 90%;
   }
 }
