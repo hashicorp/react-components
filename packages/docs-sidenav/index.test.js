@@ -126,4 +126,26 @@ describe('<DocsSidenav />', () => {
     fireEvent.click(mobileMenuToggle)
     expect(sidebarNavList.getAttribute('data-is-mobile-open')).toBe('false')
   })
+
+  it('does not render search toggle if no search is passed', () => {
+    render(<DocsSidenav {...defaultProps} />)
+
+    expect(screen.queryByLabelText('Show Search Bar')).toBeNull()
+  })
+
+  it('shows and hides the search box if search is passed', () => {
+    render(<DocsSidenav {...defaultProps} search={<div>search box</div>} />)
+
+    // Get the search button
+    const searchToggle = screen
+      .getByLabelText('Show Search Bar')
+      .closest('button')
+    // Click the menu button, and check the sidebar opens
+    fireEvent.click(searchToggle)
+
+    expect(screen.getByText('search box')).not.toBeNull()
+    // Click the menu button again, and check the sidebar closes
+    fireEvent.click(searchToggle)
+    expect(screen.queryByText('search box')).toBeNull()
+  })
 })
