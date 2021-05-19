@@ -81,6 +81,18 @@ describe('<Subnav />', () => {
     })
   })
 
+  it('should highlight the active link for nested routes', async () => {
+    render(<Subnav {...baseProps} currentPath="/docs/nested" />)
+    await waitForGithubStarsUpdate()
+    const activeMenuItem = baseProps.menuItems.filter((menuItem) => {
+      return menuItem.url === '/docs'
+    })[0]
+    const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
+    expect(menuItemTextElem).toBeVisible()
+    const linkElem = menuItemTextElem.parentNode
+    expect(linkElem.classList.contains('is-active')).toBe(true)
+  })
+
   it('should highlight the active link', async () => {
     render(<Subnav {...baseProps} />)
     await waitForGithubStarsUpdate()
