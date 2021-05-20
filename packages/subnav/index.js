@@ -7,6 +7,7 @@ import TitleLink from './partials/TitleLink/index.js'
 import MenuItemsDefault from './partials/MenuItemsDefault/index.js'
 import CtaLinks from './partials/CtaLinks/index.js'
 import traverse, { isObject } from './helpers/traverse/index.js'
+import { areBasePathsMatching } from './helpers/areBasePathsMatching'
 
 const productAllowList = {
   consul: 'consul',
@@ -38,7 +39,9 @@ function SubnavInner({
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
   const menuItemsWithActive = traverse(menuItems, (_key, value) => {
     const hasUrl = isObject(value) && value.url
-    if (hasUrl) value._isActiveUrl = value.url === currentPath
+    if (hasUrl) {
+      value._isActiveUrl = areBasePathsMatching(value.url, currentPath)
+    }
     return value
   })
 
