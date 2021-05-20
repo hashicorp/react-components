@@ -145,4 +145,6 @@ function SearchBox({
   )
 }
 
+export { SearchBox as SearchBoxElement }
+
 export default connectSearchBox(SearchBox)
