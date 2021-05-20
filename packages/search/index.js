@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import Hits from './hits'
-import SearchBox from './search-box'
+import SearchBox, { SearchBoxElement } from './search-box'
 import SearchProvider, { useSearch } from './provider'
 
 //  HTML `id`s used for aria attributes
@@ -99,4 +99,4 @@ function Search({
 }
 
 export default Search
-export { SearchProvider, useSearch }
+export { SearchProvider, useSearch, SearchBoxElement }
