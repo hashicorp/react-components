@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Tippy from '@tippy.js/react'
+import Tippy from '@tippyjs/react'
 import Image from '@hashicorp/react-image'
 import Button from '@hashicorp/react-button'
 import fragment from './fragment.graphql'

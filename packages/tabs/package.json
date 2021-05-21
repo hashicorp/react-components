@@ -7,11 +7,12 @@
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-inline-svg": "^1.0.2",
-    "@tippy.js/react": "^3.1.1"
+    "@hashicorp/react-inline-svg": "^6.0.1",
+    "@tippyjs/react": "^4.2.5"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
   },
   "license": "MPL-2.0",
   "publishConfig": {

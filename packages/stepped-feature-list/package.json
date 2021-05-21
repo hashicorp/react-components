@@ -7,10 +7,11 @@
     "Zack Tanner"
   ],
   "dependencies": {
-    "nuka-carousel": "^4.7.2"
+    "nuka-carousel": "^4.7.7"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
   },
   "license": "MPL-2.0",
   "publishConfig": {

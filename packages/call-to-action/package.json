@@ -10,7 +10,8 @@
     "@hashicorp/react-button": "^5.2.1"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
   },
   "keywords": [
     "call to action",

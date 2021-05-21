@@ -1,5 +1,5 @@
 import React from 'react'
-import uuidv1 from 'uuid/v1'
+import { v1 as uuidv1 } from 'uuid'
 
 function CheckboxInput(props) {
   //  `field` and `form` props come from Formik

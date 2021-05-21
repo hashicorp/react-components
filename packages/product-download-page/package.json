@@ -12,10 +12,11 @@
     "@hashicorp/react-button": "^5.2.1",
     "@hashicorp/react-head": "^3.1.1",
     "@hashicorp/react-tabs": "^6.0.1",
-    "semver": "^7.3.2"
+    "semver": "^7.3.5"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
   },
   "license": "MPL-2.0",
   "publishConfig": {

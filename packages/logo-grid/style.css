@@ -1,4 +1,4 @@
-@import '~tippy.js/themes/light.css';
+@import '~tippy.js/dist/tippy.css';
 
 .g-logo-grid {
   list-style: none;
@@ -6,6 +6,7 @@
   margin: -15px;
   display: flex;
   flex-wrap: wrap;
+
   &.medium {
     @media (max-width: 650px) {
       margin: -10px;

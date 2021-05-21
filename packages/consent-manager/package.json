@@ -10,7 +10,7 @@
   "dependencies": {
     "@hashicorp/react-button": "^5.2.1",
     "@hashicorp/react-toggle": "^3.0.2",
-    "js-cookie": "^2.2.0"
+    "js-cookie": "^2.2.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {

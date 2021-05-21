@@ -11,7 +11,8 @@
     "@hashicorp/react-tabs": "^6.0.1"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
   },
   "keywords": [],
   "license": "MPL-2.0",

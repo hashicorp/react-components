@@ -10,15 +10,12 @@
     "@hashicorp/platform-markdown-utils": "^0.1.0",
     "@hashicorp/react-content": "^8.0.0",
     "@hashicorp/react-head": "^3.1.1",
-    "gray-matter": "4.0.2"
-  },
-  "devDependencies": {
-    "next-mdx-remote": "*"
+    "gray-matter": "4.0.2",
+    "next-mdx-remote": ">=3.x"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "next-mdx-remote": ">=3.x",
     "react": ">=16.x"
   },
   "publishConfig": {

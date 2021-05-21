@@ -7,7 +7,7 @@
     "Zach Shilton"
   ],
   "dependencies": {
-    "uuid": "3.3.2"
+    "uuid": "8.3.2"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
@@ -16,6 +16,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "c47c50a8419f6278073505ebbe25c9fbe4faab07"
+  }
 }
