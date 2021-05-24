@@ -4,7 +4,7 @@ import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
 import {
-  loadVersionListFromManifest,
+  loadVersionList,
   loadVersionedDocument,
   loadVersionedNavData,
   getVersionFromPath,
@@ -100,7 +100,7 @@ async function generateStaticProps({
 
     const currentVersionNormalized = normalizeVersion(currentVersion)
 
-    versions = await loadVersionListFromManifest(currentVersionNormalized)
+    versions = await loadVersionList(product.slug)
 
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
