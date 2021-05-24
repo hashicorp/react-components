@@ -87,6 +87,7 @@ export default class ConsentManager extends Component {
         {this.state.showBanner && (
           <ConsentBanner
             privacyPolicyLink={this.props.privacyPolicyLink}
+            cookiePolicyLink={this.props.cookiePolicyLink}
             onManagePreferences={this.openDialog}
             onAccept={() => {
               this.saveAndLoadAnalytics({ loadAll: true })
@@ -104,6 +105,7 @@ export default class ConsentManager extends Component {
             preferences={this.state.preferences}
             categories={this.props.categories}
             privacyPolicyLink={this.props.privacyPolicyLink}
+            cookiePolicyLink={this.props.cookiePolicyLink}
             saveAndLoadAnalytics={this.saveAndLoadAnalytics}
           />
         )}

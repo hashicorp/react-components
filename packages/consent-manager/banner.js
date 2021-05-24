@@ -1,5 +1,6 @@
 export default function ConsentBanner({
   privacyPolicyLink,
+  cookiePolicyLink,
   onManagePreferences,
   onAccept,
 }) {
@@ -18,6 +19,15 @@ export default function ConsentBanner({
           data-testid="privacy-policy"
         >
           Privacy Policy
+        </a>{' '}
+        and{' '}
+        <a
+          href={cookiePolicyLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-testid="cookie-policy"
+        >
+          Cookie Policy
         </a>
         .
       </span>

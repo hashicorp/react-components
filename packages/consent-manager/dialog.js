@@ -209,6 +209,15 @@ export default class ConsentPreferences extends Component {
                   data-testid="privacy-policy-link"
                 >
                   Privacy Policy
+                </a>{' '}
+                and{' '}
+                <a
+                  href={this.props.cookiePolicyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="cookie-policy-link"
+                >
+                  Cookie Policy
                 </a>
                 .
               </p>
