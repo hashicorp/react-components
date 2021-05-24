@@ -7,7 +7,10 @@ import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import HashiHead from '@hashicorp/react-head'
 import { MDXRemote } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
-import { VersionSelect } from '@hashicorp/versioned-docs/client'
+import {
+  VersionSelect,
+  getVersionFromPath,
+} from '@hashicorp/versioned-docs/client'
 import SearchBar from './components/search-bar'
 import VersionAlert from './components/version-alert'
 import generateComponents from './components'
@@ -29,6 +32,8 @@ export function DocsPageWrapper({
   versions,
 }) {
   const isMobile = useIsMobile()
+  const { asPath } = useRouter()
+  const versionInPath = getVersionFromPath(asPath)
 
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -63,7 +68,7 @@ export function DocsPageWrapper({
         siteName={`${name} by HashiCorp`}
         title={`${pageTitle} | ${name} by HashiCorp`}
       />
-      {process.env.ENABLE_VERSIONED_DOCS ? (
+      {process.env.ENABLE_VERSIONED_DOCS && versionInPath ? (
         <Head>
           <meta name="robots" content="noindex" key="robots" />
         </Head>
