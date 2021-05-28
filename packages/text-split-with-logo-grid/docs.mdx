@@ -30,32 +30,49 @@ Display a logo grid alongside a title, description, and links.
 
 ### Examples
 
-With nine items, some linked:
+With 6 items, some linked:
 
 <LiveComponent collapsed>
-  {`<TextSplitWithLogoGrid
-  textSplit={{
-    heading: 'Example Heading',
-    content:
-      'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-  }}
-  logoGrid={[
-    {
-    url: '@hashicorp/mktg-logos/product/consul/logomark/color.svg',
-    alt: 'Consul',
-    linkUrl: '/docs/integrations/consul-integration',
-    },
-    {
-      url: '@hashicorp/mktg-logos/product/vault/logomark/color.svg?url',
-      alt: 'Vault',
-      linkUrl: '/docs/integrations/vault-integration',
-    },
-   {
-      url: '@hashicorp/mktg-logos/product/waypoint/logomark/color.svg?url',
-      alt: 'Vault',
-      linkUrl: '/docs/integrations/vault-integration',
-    },
-  ]}
-/>`}
+  {` <TextSplitWithLogoGrid
+    textSplit={{
+      heading: 'Run the infrastructure of your choice',
+      content:
+        'HashiCorp partners with all major cloud providers, making it easier for organizations to leverage all the tools to provision, secure, connect, and run their applications in any environment.',
+    }}
+    logoGrid={[
+      {
+        url: 'https://www.datocms-assets.com/2885/1566919170-aws.svg',
+        alt: 'AWS',
+        linkUrl: '/integrations/aws',
+      },
+      {
+        url:
+          'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
+        alt: 'Microsoft Azure',
+        linkUrl: '/integrations/microsoft',
+      },
+      {
+        url:
+          'https://www.datocms-assets.com/2885/1513617132-google-cloud.svg',
+        alt: 'Google Cloud',
+        linkUrl: '/integrations/google-cloud',
+      },
+      {
+        url: 'https://www.datocms-assets.com/2885/1566919186-oracle.svg',
+        alt: 'Oracle',
+        linkUrl: '/integrations/oracle',
+      },
+      {
+        url: 'https://www.datocms-assets.com/2885/1521842502-alibaba.png',
+        alt: 'Alibaba Cloud',
+        linkUrl: '/integrations/alibaba',
+      },
+      {
+        url: 'https://www.datocms-assets.com/2885/1616772767-vmware.png',
+        alt: 'Vmware',
+        linkUrl: '/integrations/vmware',
+      },
+    ]}
+  />`}
 
 </LiveComponent>
