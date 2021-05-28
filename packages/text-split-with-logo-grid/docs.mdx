@@ -76,3 +76,48 @@ With 6 items, some linked:
   />`}
 
 </LiveComponent>
+
+Dynamic imports: if defining data in a javascript file, you can import assets with `require` or `import`. The example below imports product logomarks from the `mktg-logos` package:
+
+```js
+logoGrid={[
+  {
+    url: require('@hashicorp/mktg-logos/products/consul/logomark/color.svg?url'),
+    alt: 'Consul',
+  },
+   {
+    url: require('@hashicorp/mktg-logos/products/nomad/logomark/color.svg?url'),
+    alt: 'Nomad',
+  },
+   {
+    url: require('@hashicorp/mktg-logos/products/terraform/logomark/color.svg?url'),
+    alt: 'Terraform',
+  },
+]}
+```
+
+Using `import` syntax:
+
+```js
+import ConsulLogo from '@hashicorp/mktg-logos/product/consul/logomark/color.svg?url'
+import NomadLogo from '@hashicorp/mktg-logos/product/nomad/logomark/color.svg?url'
+import TerraformLogo from '@hashicorp/mktg-logos/product/terraform/logomark/color.svg?url'
+
+//...
+
+logoGrid={[
+  {
+    url: ConsulLogo,
+    alt: 'Consul',
+  },
+   {
+    url: NomadLogo,
+    alt: 'Nomad',
+  },
+   {
+    url: TerraformLogo,
+    alt: 'Terraform',
+  },
+]}
+
+```
