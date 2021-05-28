@@ -9,15 +9,37 @@ const propsBase = {
     linkStyle: 'as-links',
   },
   logoGrid: [
-    'microsoft-azure',
-    'aws',
-    'google',
-    'vmware',
-    'alibaba-cloud',
-    'oracle',
-    'kubernetes',
-    'datadog',
-    'openstack',
+    {
+      url: 'https://www.datocms-assets.com/2885/1566919170-aws.svg',
+      alt: 'AWS',
+      linkUrl: '/integrations/aws',
+    },
+    {
+      url:
+        'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
+      alt: 'Microsoft Azure',
+      linkUrl: '/integrations/microsoft',
+    },
+    {
+      url: 'https://www.datocms-assets.com/2885/1513617132-google-cloud.svg',
+      alt: 'Google Cloud',
+      linkUrl: '/integrations/google-cloud',
+    },
+    {
+      url: 'https://www.datocms-assets.com/2885/1566919186-oracle.svg',
+      alt: 'Oracle',
+      linkUrl: '/integrations/oracle',
+    },
+    {
+      url: 'https://www.datocms-assets.com/2885/1521842502-alibaba.png',
+      alt: 'Alibaba Cloud',
+      linkUrl: '/integrations/alibaba',
+    },
+    {
+      url: 'https://www.datocms-assets.com/2885/1616772767-vmware.png',
+      alt: 'Vmware',
+      linkUrl: '/integrations/vmware',
+    },
   ],
 }
 
@@ -29,14 +51,6 @@ describe('<TextSplitWithLogoGrid />', () => {
     expect(rootElem).toHaveClass('g-text-split')
   })
 
-  it('should render the expected SVGR logo for a slug', () => {
-    const { logoGrid, textSplit } = propsBase
-    render(<TextSplitWithLogoGrid textSplit={textSplit} logoGrid={logoGrid} />)
-    logoGrid.forEach((slug) => {
-      expect(screen.getByTitle(slug)).toBeInTheDocument()
-    })
-  })
-
   it('should render a custom image', () => {
     const { textSplit } = propsBase
     const customImgAlt = 'My special custom image'
@@ -45,8 +59,12 @@ describe('<TextSplitWithLogoGrid />', () => {
         url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
         alt: customImgAlt,
       },
-      'adobe',
-      'datadog',
+      {
+        url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+      },
+      {
+        url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+      },
     ]
     render(<TextSplitWithLogoGrid textSplit={textSplit} logoGrid={logoGrid} />)
     expect(screen.getByAltText(customImgAlt)).toBeVisible()
@@ -59,11 +77,13 @@ describe('<TextSplitWithLogoGrid />', () => {
     const { textSplit } = propsBase
     const logoGrid = [
       {
-        slug: 'microsoft-azure',
+        url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+        alt: 'Serverless Icon',
         linkUrl: 'https://www.hashicorp.com/integrations/microsoft',
       },
       {
-        slug: 'aws',
+        url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+        alt: 'Serverless Icon 2',
         linkUrl: 'https://www.hashicorp.com/integrations/aws',
       },
       {
@@ -74,10 +94,8 @@ describe('<TextSplitWithLogoGrid />', () => {
       },
     ]
     render(<TextSplitWithLogoGrid textSplit={textSplit} logoGrid={logoGrid} />)
-    logoGrid.forEach(({ slug, alt, linkUrl }) => {
-      const gridItemElem = slug
-        ? screen.getByTitle(slug).closest('svg')
-        : screen.getByAltText(alt)
+    logoGrid.forEach(({ alt, linkUrl }) => {
+      const gridItemElem = screen.getByAltText(alt)
       expect(gridItemElem).toBeVisible()
       const linkElem = gridItemElem.closest('a')
       expect(linkElem).toBeVisible()
@@ -85,24 +103,7 @@ describe('<TextSplitWithLogoGrid />', () => {
     })
   })
 
-  it('should throw an error for unknown logo slugs', () => {
-    const { textSplit } = propsBase
-    //  Suppress console.error for this test, we expect an error
-    jest.spyOn(console, 'error')
-    global.console.error.mockImplementation(() => {})
-    expect(() => {
-      render(
-        <TextSplitWithLogoGrid
-          textSplit={textSplit}
-          logoGrid={['my-fake-company-logo', 'adobe', 'microsoft-azure']}
-        />
-      )
-    }).toThrowError()
-    //  Restore console.error for further tests
-    global.console.error.mockRestore()
-  })
-
-  it('should throw an error if a logoGrid item has no slug and no url', () => {
+  it('should throw an error if a logoGrid item has no url', () => {
     const { textSplit } = propsBase
     //  Suppress console.error for this test, we expect an error
     jest.spyOn(console, 'error')
@@ -112,9 +113,15 @@ describe('<TextSplitWithLogoGrid />', () => {
         <TextSplitWithLogoGrid
           textSplit={textSplit}
           logoGrid={[
-            'adobe',
-            { linkUrl: '/', alt: 'No slug or url' },
-            'microsoft-azure',
+            {
+              url:
+                'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+            },
+            { linkUrl: '/', alt: 'No url' },
+            {
+              url:
+                'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+            },
           ]}
         />
       )
