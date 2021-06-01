@@ -10,7 +10,13 @@ Display a logo grid alongside a title, description, and links.
     content: 'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
     checkboxes: ['Checkbox 1', 'Checkbox 2']
   }}
-  logoGrid={['microsoft-azure', 'aws', 'google', 'vmware', 'alibaba-cloud', {
+  logoGrid={[ {
+    url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+    alt: 'Serverless'
+  }, {
+    url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
+    alt: 'Serverless'
+  }, {
     url: 'https://www.datocms-assets.com/2885/1573738628-serverless.svg',
     alt: 'Serverless'
   }]}
@@ -24,74 +30,94 @@ Display a logo grid alongside a title, description, and links.
 
 ### Examples
 
-With three items:
+With 6 items, some linked:
 
-<LiveComponent collapsed>{`<TextSplitWithLogoGrid
-  textSplit={{
-    heading: 'Example Heading',
-    content: 'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-  }}
-  logoGrid={['microsoft-azure', 'aws', 'google']}
-/>`}</LiveComponent>
+<LiveComponent collapsed>
+  {` <TextSplitWithLogoGrid
+    textSplit={{
+      heading: 'Run the infrastructure of your choice',
+      content:
+        'HashiCorp partners with all major cloud providers, making it easier for organizations to leverage all the tools to provision, secure, connect, and run their applications in any environment.',
+    }}
+    logoGrid={[
+      {
+        url: 'https://www.datocms-assets.com/2885/1566919170-aws.svg',
+        alt: 'AWS',
+        linkUrl: '/integrations/aws',
+      },
+      {
+        url:
+          'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
+        alt: 'Microsoft Azure',
+        linkUrl: '/integrations/microsoft',
+      },
+      {
+        url:
+          'https://www.datocms-assets.com/2885/1513617132-google-cloud.svg',
+        alt: 'Google Cloud',
+        linkUrl: '/integrations/google-cloud',
+      },
+      {
+        url: 'https://www.datocms-assets.com/2885/1566919186-oracle.svg',
+        alt: 'Oracle',
+        linkUrl: '/integrations/oracle',
+      },
+      {
+        url: 'https://www.datocms-assets.com/2885/1521842502-alibaba.png',
+        alt: 'Alibaba Cloud',
+        linkUrl: '/integrations/alibaba',
+      },
+      {
+        url: 'https://www.datocms-assets.com/2885/1616772767-vmware.png',
+        alt: 'Vmware',
+        linkUrl: '/integrations/vmware',
+      },
+    ]}
+  />`}
 
-With nine items, some linked:
+</LiveComponent>
 
-<LiveComponent collapsed>{`<TextSplitWithLogoGrid
-  textSplit={{
-    heading: 'Example Heading',
-    content:
-      'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-  }}
-  logoGrid={[
-    {
-      slug: 'microsoft-azure',
-      linkUrl: 'https://www.hashicorp.com/integrations/microsoft',
-    },
-    {
-      slug: 'aws',
-      linkUrl: 'https://www.hashicorp.com/integrations/aws',
-    },
-    {
-      slug: 'google',
-      linkUrl: 'https://www.hashicorp.com/integrations/google-cloud',
-    },
-    'vmware',
-    'alibaba-cloud',
-    'oracle',
-    'kubernetes',
-    'datadog',
-    'openstack',
-  ]}
-/>`}</LiveComponent>
+Dynamic imports: if defining data in a javascript file, you can import assets with `require` or `import`. The example below imports product logomarks from the `mktg-logos` package:
 
-With extreme image dimensions:
+```js
+logoGrid={[
+  {
+    url: require('@hashicorp/mktg-logos/products/consul/logomark/color.svg?url'),
+    alt: 'Consul',
+  },
+   {
+    url: require('@hashicorp/mktg-logos/products/nomad/logomark/color.svg?url'),
+    alt: 'Nomad',
+  },
+   {
+    url: require('@hashicorp/mktg-logos/products/terraform/logomark/color.svg?url'),
+    alt: 'Terraform',
+  },
+]}
+```
 
-<LiveComponent collapsed>{`<TextSplitWithLogoGrid
-  textSplit={{
-    heading: 'Example Heading',
-    content: 'Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-  }}
-  logoGrid={[
-    {
-      alt: 'Wide Image',
-      url: 'https://placehold.it/700x100'
-    },
-    {
-      alt: 'Tall Image',
-      url: 'https://placehold.it/100x700'
-    },
-    {
-      alt: 'Square Small Image',
-      url: 'https://placehold.it/20x20'
-    },
-    {
-      alt: 'Square Large Image',
-      url: 'https://placehold.it/600x600'
-    },
-    'docker',
-    'consul',
-    'kubernetes',
-    'openstack',
-    'datadog'
-  ]}
-/>`}</LiveComponent>
+Using `import` syntax:
+
+```js
+import ConsulLogo from '@hashicorp/mktg-logos/product/consul/logomark/color.svg?url'
+import NomadLogo from '@hashicorp/mktg-logos/product/nomad/logomark/color.svg?url'
+import TerraformLogo from '@hashicorp/mktg-logos/product/terraform/logomark/color.svg?url'
+
+//...
+
+logoGrid={[
+  {
+    url: ConsulLogo,
+    alt: 'Consul',
+  },
+   {
+    url: NomadLogo,
+    alt: 'Nomad',
+  },
+   {
+    url: TerraformLogo,
+    alt: 'Terraform',
+  },
+]}
+
+```

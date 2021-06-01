@@ -10,23 +10,21 @@ const exampleTextSplits = [
     },
     logoGrid: [
       {
-        slug: 'microsoft-azure',
-        linkUrl: 'https://www.hashicorp.com/integrations/microsoft',
-      },
-      {
-        slug: 'aws',
+        url: 'https://www.datocms-assets.com/2885/1566919170-aws.svg',
+        alt: 'AWS',
         linkUrl: 'https://www.hashicorp.com/integrations/aws',
       },
       {
-        slug: 'google',
-        linkUrl: 'https://www.hashicorp.com/integrations/google-cloud',
+        url:
+          'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
+        alt: 'Microsoft Azure',
+        linkUrl: '/integrations/microsoft',
       },
-      'vmware',
-      'alibaba-cloud',
-      'oracle',
-      'kubernetes',
-      'datadog',
-      'openstack',
+      {
+        url: 'https://www.datocms-assets.com/2885/1513617132-google-cloud.svg',
+        alt: 'Google Cloud',
+        linkUrl: '/integrations/google-cloud',
+      },
     ],
   },
   {
@@ -71,9 +69,9 @@ describe('<TextSplitWithLogoGrid />', () => {
         expect(imageElem).toBeVisible()
         expect(imageElem.tagName).toBe('IMG')
       } else if (logoGrid) {
-        const svgElem = screen.getByTitle('aws').closest('svg')
-        expect(svgElem).toBeVisible()
-        const linkedItem = svgElem.closest('a')
+        const imgElem = screen.getByAltText('AWS').closest('img')
+        expect(imgElem).toBeVisible()
+        const linkedItem = imgElem.closest('a')
         expect(linkedItem).toBeVisible()
         expect(linkedItem.href).toBe(
           'https://www.hashicorp.com/integrations/aws'
