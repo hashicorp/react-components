@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
 import { Tab } from '../packages/tabs'
 import UsageDetails from '../swingset-extensions/usage-details'
+import rehypePrism from '@mapbox/rehype-prism'
 
 function Logo() {
   return (
@@ -25,6 +26,9 @@ function Logo() {
 }
 
 const components = { Head, Link, SearchProvider, UsageDetails, Tab }
+const mdxOptions = {
+  rehypePlugins: [[rehypePrism, { ignoreMissing: true }]],
+}
 
 export default createPage({ components, logo: <Logo /> })
-export const getStaticProps = createStaticProps({ components })
+export const getStaticProps = createStaticProps({ components, mdxOptions })
