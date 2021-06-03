@@ -1,0 +1,36 @@
+.button {
+  composes: g-type-body-small-strong from global;
+  align-items: center;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color-faded);
+  cursor: pointer;
+  display: flex;
+  padding: 0 16px;
+  line-height: 32px;
+
+  &:hover {
+    color: var(--text-color-base);
+  }
+
+  &[data-copied-state='true'] {
+    color: var(--text-color-success);
+  }
+}
+
+.svg {
+  position: relative;
+  margin-left: 4px;
+
+  & svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    & [fill] {
+      fill: currentcolor;
+      transition: fill 0.2s ease-in-out;
+    }
+  }
+}

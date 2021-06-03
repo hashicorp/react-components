@@ -1,4 +1,4 @@
-@import '@hashicorp/nextjs-scripts/prism/style.css';
+/* @import '@hashicorp/nextjs-scripts/prism/style.css'; */
 @import '~@hashicorp/mktg-global-styles/style.css';
 
 /* TODO: this should be embedded into react-content */
@@ -19,7 +19,6 @@
 @import '../packages/docs-page/style.css';
 @import '../packages/content/style.css';
 @import '../packages/enterprise-alert/style.css';
-@import '../packages/code-block/style.css';
 @import '../packages/featured-slider/style.css';
 @import '../packages/content-cta/style.css';
 @import '../packages/consent-manager/style.css';

@@ -1,0 +1,136 @@
+/*
+Note: Expects the following CSS properties:
+--background-highlighted-line
+--scrollbar-foreground
+--scrollbar-background
+--divider-line-color
+*/
+
+pre.pre {
+  --code-padding: 16px;
+  --code-font-size: 0.84375rem; /* 13.5 px at default text size */
+  --code-line-height: 1.625rem; /* 24px at default text size */
+
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+code.code {
+  /* @TODO - specificity here is needed to overcome globally scoped styles,
+  namely nextjs-scripts/prism/style.css.
+  We should consolidate styles to this package instead.
+  prism/style.css should have token coloration only, not layout concerns. */
+  &.code {
+    position: relative;
+    display: flex;
+    background: transparent;
+    overflow: hidden;
+  }
+}
+
+.linesColumn {
+  display: block;
+  flex-grow: 1;
+  padding: var(--code-padding) 0;
+  /*
+  
+  Ran into weird issues in Safari with overflow here.
+  Sometimes overflow-y appears... but toggling LITERALLY ANY
+  CSS property in dev tools, ANYWHERE IN THE DOCUMENT,
+  immediately resolves the issue 😳
+  
+  Should note as well this does NOT seem to be related to
+  the custom scrollbar styles below... I've tried disabling them,
+  but I still wind up with the same issue.
+
+  TLDR;, would love if this could just be "overflow: auto;",
+  but Safari-specific issues when macOS's "Always show scrollbars" pref is enabled
+  means I have to set overflow-y to "hidden" to reduce the impact of the bug
+  */
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* Scroll bar styles below */
+  /* web standard Firefox supports this */
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-foreground) transparent;
+  /* webkit prefixed Safari, Chrome, chromium-based browsers */
+  &::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-foreground);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbar-background);
+  }
+}
+
+.linesWrapper {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.numbersColumn {
+  display: block;
+  border-right: 1px solid var(--divider-line-color);
+  flex-shrink: 0;
+  padding: var(--code-padding) 0;
+}
+
+.LineNumber {
+  composes: g-type-code from global;
+  display: block;
+  font-size: var(--code-font-size);
+  line-height: var(--code-line-height);
+  white-space: pre;
+  padding: 0 var(--code-padding);
+  color: var(--text-color-faded);
+
+  &.isHighlighted {
+    background: var(--background-highlighted-line);
+    color: var(--text-color-base);
+  }
+
+  &.isNotHighlighted > * {
+    color: var(--text-color-faded);
+  }
+}
+
+.LineOfCode {
+  composes: g-type-code from global;
+  display: block;
+  color: var(--text-color-base);
+  padding-right: calc(var(--code-padding) * 2);
+  padding-left: var(--code-padding);
+  font-size: var(--code-font-size);
+  line-height: var(--code-line-height);
+  min-width: max-content;
+  white-space: pre;
+
+  &.hasFloatingCopyButton {
+    /* Adds right padding so that the floating copy button
+    does not obscure content at the end of the line */
+    padding-right: 96px;
+  }
+
+  &.isHighlighted {
+    background: var(--background-highlighted-line);
+  }
+
+  &.isNotHighlighted {
+    opacity: 0.7;
+
+    &,
+    & * {
+      color: var(--text-color-faded) !important;
+    }
+  }
+}

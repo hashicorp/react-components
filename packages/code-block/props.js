@@ -1,24 +1,46 @@
 module.exports = {
+  className: {
+    type: 'string',
+    description:
+      'A className string which will be added to the outer element of this component.',
+  },
   code: {
     type: 'string',
     required: true,
     description:
-      'A string of highlighted HTML or React elements. These elements will be rendered into a `<pre><code>` container. Note that a plain string can be passed, though it will not be highlighted.',
+      'A string of highlighted HTML or React elements. These elements will be rendered into a `<pre><code>` container.<br/><br/>A plain string can be passed, but it will not be highlighted.',
   },
   language: {
-    type: 'options',
+    type: 'string',
     description:
-      'Used for the `code` element\'s `class="language-*"`, for compatibility with language-specific highlight styles in [our shared Prism stylesheet](https://github.com/hashicorp/nextjs-scripts/blob/master/prism/style.css). This value should be identical to the `language` used to generate the highlighted `code`. All [`refractor` languages](https://github.com/wooorm/refractor#syntaxes) are supported.',
+      'Used to set a global `"language-*"` `className` on both the `pre` and `code` element, for compatibility with language-specific highlight styles. This value should be identical to the `language` used to generate the highlighted `code`.',
+  },
+  theme: {
+    type: 'string',
+    options: ['light', 'dark'],
+    default: 'light',
+    description:
+      'Sets the color theme for the code block. Intended to match light and dark system appearance, for example through CSS `@media (prefers-color-scheme)`.',
   },
   options: {
     type: 'object',
     description:
       'Additional options that enable supplementary `code-block` features.',
     properties: {
-      showWindowBar: {
+      chrome: {
         type: 'boolean',
         description:
           'Set to `true` to display a window chrome bar UI above the code block.',
+      },
+      highlight: {
+        type: 'string',
+        description:
+          'Specify line numbers to highlight. Supports a comma-separate list of numbers and number ranges, where number ranges are dash-separated pairs of numbers.<br/><br/>For example: `"5"` highlights line 5; `"2,5"` highlights lines 2 and 5; `"2-5"` highlights lines 2, 3, 4, and 5; `"2,6-8,11"` highlights line 2, 6, 7, 8 and 11.',
+      },
+      lineNumbers: {
+        type: 'boolean',
+        description:
+          'Set to `true` to display line numbers on the left edge of the code block.',
       },
       showClipboard: {
         type: 'boolean',

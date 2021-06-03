@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
 import { Tab } from '../packages/tabs'
+import CodeTabs from '../packages/code-block/partials/code-tabs'
+import codeMdxPrimitives from '../packages/code-block/mdx'
 import UsageDetails from '../swingset-extensions/usage-details'
 
 function Logo() {
@@ -43,7 +45,18 @@ function Index() {
   )
 }
 
-const components = { Head, Link, SearchProvider, UsageDetails, Tab }
+const { code, pre } = codeMdxPrimitives({ theme: 'light' })
+
+const components = {
+  code,
+  CodeTabs,
+  Head,
+  Link,
+  pre,
+  SearchProvider,
+  UsageDetails,
+  Tab,
+}
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })
 export const getStaticPaths = createStaticPaths()

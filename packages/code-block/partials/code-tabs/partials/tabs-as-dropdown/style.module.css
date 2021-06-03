@@ -1,0 +1,117 @@
+.tabsAsDropdown {
+  display: flex;
+  margin-left: auto;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.listboxInput {
+  position: relative;
+  border: none;
+}
+
+.listboxButton {
+  composes: g-type-body-small-strong from global;
+
+  color: var(--text-color-faded);
+  min-height: var(--base-height);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--text-color-base);
+  }
+}
+
+.dropdownIcon {
+  padding-left: 8px;
+  & svg {
+    display: block;
+    & [fill] {
+      fill: currentcolor;
+    }
+    & [stroke] {
+      stroke: currentcolor;
+    }
+  }
+}
+
+.listboxPopover {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  min-width: min-content;
+  border: 1px solid var(--background-tabs);
+  border-top: none;
+
+  &:focus-within {
+    outline: Highlight auto 4px;
+    outline: -webkit-focus-ring-color auto 4px;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.listboxList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+  /*
+  The styles below are required to override
+  globally scoped g-content styles. They should 
+  be removed once g-content is converted to CSS modules.
+  Task: https://app.asana.com/0/1199185162145226/1199185162145264/f
+  */
+  padding: 0 !important;
+}
+
+.listboxOption {
+  display: block;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  composes: g-type-body-small-strong from global;
+  color: var(--text-color-faded);
+  min-height: var(--dropdown-item-height);
+  display: flex;
+  align-items: center;
+  background: var(--background-tabs);
+  border-top: 1px solid var(--background-base);
+
+  &:hover {
+    cursor: pointer;
+    color: var(--text-color-base);
+  }
+
+  &[data-current-nav] {
+    background: var(--background-hovered-tab-item);
+  }
+
+  &[data-current-selected] {
+    background: var(--background-base);
+  }
+
+  /*
+  The styles below are required to override
+  globally scoped g-content styles. They should 
+  be removed once g-content is converted to CSS modules.
+  Task: https://app.asana.com/0/1199185162145226/1199185162145264/f
+  */
+  margin: 0 !important;
+  padding: 4px 8px !important;
+  &:before {
+    display: none;
+  }
+}

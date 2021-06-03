@@ -1,0 +1,30 @@
+.tabsAsTabs {
+  display: flex;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+.tabControl {
+  composes: g-type-body-small-strong from global;
+
+  background: none;
+  border: none;
+  color: var(--text-color-faded);
+  cursor: pointer;
+  min-height: var(--base-height);
+  padding: 0 16px;
+
+  &:last-child {
+    border-top-right-radius: 4px;
+  }
+
+  &:hover {
+    color: var(--text-color-base);
+    background: var(--background-hovered-tab-item);
+  }
+
+  &.isActive {
+    color: var(--text-color-base);
+    background: var(--background-base);
+  }
+}

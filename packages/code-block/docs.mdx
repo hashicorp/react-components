@@ -4,7 +4,7 @@ componentName: 'CodeBlock'
 
 A formatted code block for displaying lovely lines of code.
 
-<LiveComponent>{`<CodeBlock language="shell-session" code={\`<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>\n\`} />`}</LiveComponent>
+<LiveComponent>{`<CodeBlock language="shell-session" code={\`<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>\`} />`}</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -12,47 +12,281 @@ A formatted code block for displaying lovely lines of code.
 
 <PropsTable props={componentProps} />
 
+### Use in MDX
+
+In MDX contexts, the recommended approach is to replace the default `pre` and `code` elements using MDX primitives imported from `@hashicorp/react-code-block/partials/_mdx-primitives`.
+
+With these custom MDX primitives in place, the syntax for fenced code blocks can be used, and will automatically leverage our `CodeBlock` component. However, with fenced code alone, configuration will be limited to setting the `language` for syntax highlighting.
+
+`Source`
+
+````
+```
+const foo = 'bar'
+function hello() {
+  return Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+````
+
+`Result`
+
+<CodeBlock
+  options={{ showClipboard: true}}
+  theme="light"
+  code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>\n<span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>\n<span class="token punctuation">}</span>`}
+/>
+
+Syntax highlighting is set through the code fence's `infostring`, which is [the string directly after the opening code fence](https://spec.commonmark.org/0.12/#example-92). You can view a full list of supported syntax slugs and aliases in [the `refractor` README](https://github.com/wooorm/refractor#syntaxes).
+
+#### Configuration via CodeBlockConfig
+
+To support richer configuration of code blocks in MDX, we have a custom `CodeBlockConfig` component available.
+
+`CodeBlockConfig` is a wrapper component, similar to the [`ImageConfig` component in our `learn` repo](https://github.com/hashicorp/learn/tree/master/components/image-config). `CodeBlockConfig` can be used to wrap and configure an individual fenced code block.
+
+The `CodeBlockConfig` component supports all of the properties of `CodeBlock`'s `options` props, as detailed in the props table earlier on this page, with a few notable exceptions:
+
+- `showClipboard` is **not** supported, as the `Copy` button is shown by default in MDX contexts. Instead, a `hideClipboard` option is supported, as detailed below.
+- `chrome` is **not** supported, as we currently would like to limit such ornamentation to JSX contexts, such as feature callouts on marketing pages.
+
+##### The `hideClipboard` option
+
+The `hideClipboard` option can be used to prevent the `Copy` button from appearing.
+
+`Source`
+
+````
+&lt;CodeBlockConfig hideClipboard>
+
+```javascript
+const foo = 'bar'
+function hello() {
+  return Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+
+&lt;/CodeBlockConfig>
+````
+
+`Result`
+
+<CodeBlock
+  theme="light"
+  code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>\n<span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>\n<span class="token punctuation">}</span>`}
+/>
+
+~> **⚠️ Using `hideClipboard` with fenced code [`infostrings`](https://spec.commonmark.org/0.12/#example-92)**<br/><br/>Note that fenced code currently supports the `hideClipboard` option through the fenced code `infostring`. We want to move away from this practice, as consolidating configuration into the `CodeBlockConfig` component seems easier to reason about, and contributes to compliance with CommonMark and portability of our markdown.<br/><br/>For initial launch, we will **temporarily** continue to support the `hideClipboard` option on fenced code blocks. However, we will **print a warning** during development recommending the use of `<CodeBlockConfig />` instead. And in the near future, we plan on strictly requiring the use of `<CodeBlockConfig>` for the `hideClipboard` option.
+
 ### Examples
 
-With `code` as HTML
+#### Themes
+
+<div style={{ display: "grid", gridTemplateColumns: "50% 50%", gridGap: "1rem"  }}>
+
+<div>
+
+`"dark"`
+
+<CodeTabs heading="Set your primary datacenter" theme="dark">
+
+<CodeBlock
+  options={{
+    filename: 'hello-world.go',
+    lineNumbers: true,
+    showClipboard: true,
+  }}
+  language="go"
+  code={`<span class="token keyword">package</span> main\n\n<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">float64</span><span class="token punctuation">)</span>\n    ch <span class="token operator">&#x3C;-</span> <span class="token number">1.0e10</span>    <span class="token comment">// magic number</span>\n    x<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&#x3C;-</span> ch\n    <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"exiting now"</span><span class="token punctuation">)</span>\n    <span class="token keyword">go</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\n    <span class="token keyword">return</span>\n<span class="token punctuation">}</span>`}
+/>
+
+<CodeBlock
+  options={{
+    filename: 'consul-acl.hcl',
+    lineNumbers: true,
+    highlight: '3,6-8',
+    showClipboard: true,
+  }}
+  language="hcl"
+  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n<!-- -->  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n<!-- -->  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n<!-- -->  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n<!-- -->    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n<!-- -->  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
+/>
+
+</CodeTabs>
+
+</div>
+
+<div>
+
+`"light"`
+
+<CodeTabs heading="Set your primary datacenter" theme="light">
+
+<CodeBlock
+  options={{
+    filename: 'hello-world.go',
+    lineNumbers: true,
+    showClipboard: true,
+  }}
+  language="go"
+  code={`<span class="token keyword">package</span> main\n\n<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">float64</span><span class="token punctuation">)</span>\n    ch <span class="token operator">&#x3C;-</span> <span class="token number">1.0e10</span>    <span class="token comment">// magic number</span>\n    x<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&#x3C;-</span> ch\n    <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"exiting now"</span><span class="token punctuation">)</span>\n    <span class="token keyword">go</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\n    <span class="token keyword">return</span>\n<span class="token punctuation">}</span>`}
+/>
+
+<CodeBlock
+  options={{
+    filename: 'consul-acl.hcl',
+    lineNumbers: true,
+    highlight: '3,6-8',
+    showClipboard: true,
+  }}
+  language="hcl"
+  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n<!-- -->  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n<!-- -->  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n<!-- -->  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n<!-- -->    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n<!-- -->  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
+/>
+
+</CodeTabs>
+
+</div>
+
+</div>
+
+#### Basic features
+
+##### Copy to Clipboard
+
+With `options.showClipboard`
+
+<CodeBlock
+  options={{ showClipboard: true }}
+  language="go"
+  code={`<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n<span class="token punctuation">}</span>`}
+/>
+
+**Note: any code starting with a `$` character on the first line will be interpreted as a shell snippet when copied.**
+
+This is intended to allow the display of control characters such as `$` and shell output in the code block, while ensuring that when copying the snippet, only the executable part of the snippet is copied to the clipboard. As a basic example, the following snippet's `Copy` button should yield `echo "hello world"` rather than the full contents of the code block:
+
+<CodeBlock
+  options={{ showClipboard: true }}
+  code={`<span class="token shell-symbol important">$</span> echo "hello world"\nhello world`}
+/>
+
+More examples:
+
+| Scenario                          | Supported | What gets copied                                                  | Example                                                                                                              |
+| --------------------------------- | --------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Single line commands              | ✅        | The command will be copied without the leading `$`.               | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#step-5-retrieve-the-secrets)             |
+| Multi-line commands               | ✅        | The multi-line command will be copied, without the leading `$`.   | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#q-how-do-i-save-multiple-values-at-once) |
+| Commands with output              | ✅        | The command will be copied without the leading `$` or the output. | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#additional-discussion)                   |
+| Non-shell Snippets                | ✅        | The entire snippet will be copied.                                | [🔗](https://learn.hashicorp.com/nomad/getting-started/jobs#modifying-a-job)                                         |
+| Multi-line with multiple commands | ❌        | Not supported. Only the first command will be copied.             | 🛑                                                                                                                   |
+
+##### Window chrome
+
+With `options.chrome`
+
+<CodeBlock
+  options={{ chrome: true }}
+  language="go"
+  code={`<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n<span class="token punctuation">}</span>`}
+/>
+
+##### Overflow
+
+With overflow and floating copy button
+
+<CodeBlock
+  options={{ showClipboard: true }}
+  code={
+    '$ docker ps\nCONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES\n425d5ee58619        e791337790a6              "nginx -g \'daemon of…"   20 seconds ago      Up 19 seconds       0.0.0.0:8000->80/tcp     tutorial'
+  }
+/>
+
+With overflow and chrome
+
+<CodeBlock
+  options={{ showWindowBar: true, showClipboard: true }}
+  code={
+    '$ docker ps\nCONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES\n425d5ee58619        e791337790a6              "nginx -g \'daemon of…"   20 seconds ago      Up 19 seconds       0.0.0.0:8000->80/tcp     tutorial'
+  }
+/>
+
+##### Filename
+
+With `options.filename`
+
+<CodeBlock
+  options={{ filename: 'hello.go', showClipboard: true }}
+  language="go"
+  code={`<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n<span class="token punctuation">}</span>`}
+/>
+
+##### Heading
+
+With `options.heading`
+
+<CodeBlock
+  options={{ heading: 'Say hello in Go', showClipboard: true }}
+  language="go"
+  code={`<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n<span class="token punctuation">}</span>`}
+/>
+
+#### CodeTabs
+
+<CodeTabs>
+
+<CodeBlock
+  options={{ showClipboard: true }}
+  language="go"
+  code={`<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n<span class="token punctuation">}</span>`}
+/>
+
+<CodeBlock
+  options={{ showClipboard: true }}
+  language="bash"
+  code={`<span class="token shell-symbol important">$</span> echo "hello world"\nhello world`}
+/>
+
+</CodeTabs>
+
+#### Kitchen sink example
+
+<CodeTabs heading="Set your primary datacenter">
+
+<CodeBlock
+  options={{
+    filename: 'consul-acl.hcl',
+    lineNumbers: true,
+    highlight: '3,6-8',
+    showClipboard: true,
+  }}
+  language="hcl"
+  code={`primary_datacenter = "dc1"\nacl {\n  enabled        = true\n  default_policy = "deny"\n  down_policy    = "extend-cache"\n  tokens {\n    "agent" = "da666809-98ca-0e94-a99c-893c4bf5f9eb"\n  }\n}`}
+/>
+
+<CodeBlock
+  options={{
+    filename: 'consul-acl.json',
+    lineNumbers: true,
+    highlight: '4,7-9',
+    showClipboard: true,
+  }}
+  language="json"
+  code={`{\n  "primary_datacenter": "dc1",\n  "acl": {\n    "enabled": true,\n    "default_policy": "deny",\n    "down_policy": "extend-cache",\n    "tokens": {\n      "agent": "da666809-98ca-0e94-a99c-893c4bf5f9eb"\n    }\n  }\n}`}
+/>
+
+</CodeTabs>
+
+#### JSX vs HTML
+
+With `html` code
 
 <CodeBlock
   language="go"
   code={`<span class="token keyword">package</span> main\n\n<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">float64</span><span class="token punctuation">)</span>\n    ch <span class="token operator">&#x3C;-</span> <span class="token number">1.0e10</span>    <span class="token comment">// magic number</span>\n    x<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&#x3C;-</span> ch\n    <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"exiting now"</span><span class="token punctuation">)</span>\n    <span class="token keyword">go</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\n    <span class="token keyword">return</span>\n<span class="token punctuation">}</span>`}
 />
 
-With `code` as React elements
+With `jsx` code
 
 <CodeBlock
-  language="shell-session"
-  code={
-    <>
-      <span className="token command">
-        <span className="token shell-symbol important">$</span>{' '}
-        <span className="token bash language-bash">
-          <span className="token builtin class-name">echo</span>{' '}
-          <span className="token string">"hello world!"</span>
-        </span>
-      </span>
-    </>
-  }
-/>
-
-With `code` as plain text, without highlighting
-
-<CodeBlock code={`$ echo "hello world!"\n`} />
-
-With `options.showWindowBar`
-
-<CodeBlock
-  options={{ showWindowBar: true }}
-  code={`sc.exe start "Nomad"\n\nSERVICE_NAME: Nomad\n\tTYPE\t : 10 WIN32_OWN_PROCESS\n\tSTATE\t : 4 RUNNING\n\t(STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)\n\tWIN32_EXIT_CODE : 0 (0x0)\n\tSERVICE_EXIT_CODE : 0 (0x0)\n\tCHECKPOINT \t: 0x0\n\tWAIT_HINT \t: 0x0\n\tPID\t : 8008\n\tFLAGS\t :`}
-/>
-
-With `options.showClipboard`
-
-<CodeBlock
-  options={{ showClipboard: true }}
   language="go"
   code={
     <>
@@ -111,36 +345,3 @@ With `options.showClipboard`
     </>
   }
 />
-
-With `options.showClipboard` and `options.showWindowBar`
-
-<CodeBlock
-  options={{ showClipboard: true, showWindowBar: true }}
-  language="hcl"
-  code={`task <span class="token string">"webservice"</span> <span class="token punctuation">{</span>\n\t<span class="token property">driver</span> <span class="token punctuation">=</span> <span class="token string">"docker"</span>\n  \n\t<span class="token keyword">config</span> <span class="token punctuation">{</span>\n\t\t<span class="token property">image</span> <span class="token punctuation">=</span> <span class="token string">"redis:3.2"</span>\n\t\t<span class="token keyword">labels</span> <span class="token punctuation">{</span>\n\t\t\t<span class="token property">group</span> <span class="token punctuation">=</span> <span class="token string">"webservice-cache"</span>\n\t  <span class="token punctuation">}</span>\n\t<span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
-/>
-
-With long lines that are likely to overflow
-
-<CodeBlock
-  options={{ showWindowBar: true, showClipboard: true }}
-  code={
-    'public class VaultDemoOrderServiceApplication  {\n\n  private static final Logger logger = LoggerFactory.getLogger(VaultDemoOrderServiceApplication.class);\n\n  @Autowired\n  private SessionManager sessionManager;\n\n  @Value("${spring.datasource.username}")\n  private String dbUser;\n\n  @Value("${spring.datasource.password}")\n  private String dbPass;\n\n  public static void main(String[] args) {\n    SpringApplication.run(VaultDemoOrderServiceApplication.class, args);\n  }\n\n  @PostConstruct\n  public void initIt() throws Exception {\n    logger.info("Got Vault Token: " + sessionManager.getSessionToken().getToken());\n    logger.info("Got DB User: " + dbUser);\n  }\n}'
-  }
-/>
-
-## Copy to clipboard details
-
-### Shell snippet parsing
-
-**Note that any code starting with a `$` character on the first line will be interpreted as a shell snippet.**
-
-This is intended to allow the display of control characters such as `$` and shell output in the code block, while ensuring that when copying the snippet, only the executable part of the snippet is copied to the clipboard.
-
-| Scenario                          | Supported | What gets copied                                                  | Example                                                                                                              |
-| --------------------------------- | --------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Single line commands              | ✅        | The command will be copied without the leading `$`.               | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#step-5-retrieve-the-secrets)             |
-| Multi-line commands               | ✅        | The multi-line command will be copied, without the leading `$`.   | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#q-how-do-i-save-multiple-values-at-once) |
-| Commands with output              | ✅        | The command will be copied without the leading `$` or the output. | [🔗](https://learn.hashicorp.com/vault/secrets-management/sm-static-secrets#additional-discussion)                   |
-| Non-shell Snippets                | ✅        | The entire snippet will be copied.                                | [🔗](https://learn.hashicorp.com/nomad/getting-started/jobs#modifying-a-job)                                         |
-| Multi-line with multiple commands | ❌        | Not supported. Only the first command will be copied.             | 🛑                                                                                                                   |

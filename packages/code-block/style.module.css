@@ -1,0 +1,39 @@
+.root {
+  position: relative;
+  background: var(--background-base);
+  color: var(--text-color-base);
+  border-radius: 4px;
+
+  &::before {
+    content: '\200B';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    background: var(--background-spotlight);
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+  }
+
+  &[data-has-spotlight='true']::before {
+    opacity: 1;
+  }
+}
+
+.linesWrapper {
+  position: relative;
+}
+
+.copyButtonContainer {
+  position: absolute;
+  background: var(--background-base);
+  border-radius: 2px;
+  border: none;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+}

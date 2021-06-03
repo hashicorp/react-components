@@ -1,0 +1,136 @@
+/* layout */
+
+/*
+
+--divider-line-width: 1px;
+--chrome-bar-height: 48px;
+--snippet-bar-height: calc(var(--code-padding) * 2 + var(--code-line-height));
+--snippet-bar-height-chrome-only: calc(var(--chrome-bar-height));
+--code-padding-half: calc(var(--code-padding) / 2);
+*/
+
+.root {
+  --base-height: 58px;
+  --chrome-height: 48px;
+
+  align-items: center;
+  border-bottom: 1px solid var(--divider-line-color);
+  display: flex;
+  padding: 0 0 0 8px;
+  position: relative;
+}
+
+.leftSide {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rightSide {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+/* chrome */
+
+.chrome {
+  align-items: center;
+  display: flex;
+  min-height: var(--chrome-height);
+  padding: 0 8px;
+}
+
+.chromeDot {
+  background: var(--chrome-dot-color);
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+
+  & + .chromeDot {
+    margin-left: 8px;
+  }
+}
+
+/* filename */
+
+.filename {
+  composes: g-type-code from global;
+
+  font-size: 12.5px;
+  align-items: center;
+  color: var(--text-color-base);
+  display: flex;
+  min-height: var(--base-height);
+  padding: 8px;
+  position: relative;
+  top: 1px;
+
+  & svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    position: relative;
+    top: -1px;
+
+    & [fill] {
+      fill: var(--file-icon-color);
+    }
+
+    & [stroke] {
+      stroke: var(--file-icon-color);
+    }
+  }
+}
+
+/* heading */
+
+.heading {
+  composes: g-type-body-small-strong from global;
+
+  align-items: center;
+  color: var(--text-color-base);
+  display: flex;
+  padding: 8px;
+  min-height: var(--base-height);
+  line-height: 1.6;
+}
+
+/* source link */
+
+.sourceLink {
+  composes: g-type-body-small-strong from global;
+
+  align-items: center;
+  color: var(--text-color-base);
+  transition: color 0.2s ease-in-out;
+  display: flex;
+  min-height: var(--base-height);
+  padding: 0 8px;
+
+  & svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+
+    & [fill] {
+      fill: currentcolor;
+      transition: fill 0.2s ease-in-out;
+    }
+  }
+
+  &:hover {
+    color: var(--text-color-base);
+  }
+}
+
+/* copy button container */
+
+.copyBtnContainer {
+  align-items: center;
+  display: flex;
+  min-height: var(--base-height);
+}
