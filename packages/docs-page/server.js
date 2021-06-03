@@ -107,7 +107,8 @@ async function generateStaticProps({
     if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
       // remove trailing index to ensure we fetch the right document from the DB
       const paramsNoIndex = (params[paramId] ?? []).filter(
-        (param, idx) => param !== 'index' && idx === params[paramId].length - 1
+        (param, idx) =>
+          !(param === 'index' && idx === params[paramId].length - 1)
       )
       const pagePathToLoad = versionFromPath
         ? [basePath, ...paramsNoIndex].join('/')
