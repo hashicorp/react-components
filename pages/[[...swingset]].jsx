@@ -24,8 +24,27 @@ function Logo() {
   )
 }
 
+function Index() {
+  return (
+    <>
+      <h1>Welcome to HashiCorp&apos;s Component Library!</h1>
+      <p>
+        Select a component on the left <span aria-hidden="true">👈</span>, or
+        type <code>/</code> to search.
+        <ul>
+          <li>
+            <a href="https://github.com/hashicorp/react-components">
+              Repository
+            </a>
+          </li>
+        </ul>
+      </p>
+    </>
+  )
+}
+
 const components = { Head, Link, SearchProvider, UsageDetails, Tab }
 
-export default createPage({ components, logo: <Logo /> })
+export default createPage({ components, logo: <Logo />, index: <Index /> })
 export const getStaticPaths = createStaticPaths()
 export const getStaticProps = createStaticProps({ components })
