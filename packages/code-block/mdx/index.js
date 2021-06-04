@@ -5,7 +5,7 @@ import CodeBlockConfigRaw from '../partials/code-block-config'
 import classNames from 'classnames'
 import s from './style.module.css'
 
-const DEFAULT_THEME = 'light'
+const DEFAULT_THEME = 'dark'
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
 export function inlineCode(props) {

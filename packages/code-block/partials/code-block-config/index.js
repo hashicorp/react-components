@@ -9,7 +9,6 @@ function CodeBlockConfig({
   hideClipboard,
   highlight,
   lineNumbers,
-  tempDev,
   theme,
 }) {
   // Ensure there is exactly one valid child element
@@ -54,7 +53,6 @@ function CodeBlockConfig({
         highlight,
         heading,
         lineNumbers,
-        chrome: tempDev?.chrome,
         showClipboard: !hideClipboard,
       }}
     />

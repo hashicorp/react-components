@@ -2,10 +2,9 @@
 import { Children } from 'react'
 
 function splitJsxIntoLines(codeJsx) {
-  // Surface newlines so they appear at the top level only
-  // (this is the bulk of the work of this function)
+  // Newlines should appear at the top level only,
+  // in MDX contents we achieve this via a rehype plugin
   const withSurfacedNewlines = Children.toArray(codeJsx)
-  // const withSurfacedNewlines = surfaceNewlines(codeJsx)
   // Filter out any surfaces newlines, that are "in between"
   // other lines of code. Special exceptions should be made for:
   // 1. newlines at start or end of array - should be rendered as blank lines

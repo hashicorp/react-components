@@ -94,6 +94,37 @@ function CodeBlock({
   )
 }
 
+/*
+
+CodeBlock click event 
+(fire on click anywhere in component)
+(do we really want this?)
+
+window.analytics.track("Click", {
+  category: "CodeBlock",
+  language,
+  theme
+})
+
+CodeBlock copy event
+(fire on click of copy button)
+
+window.analytics.track("Copy", {
+  category: "CodeBlock",
+  language,
+  theme
+})
+
+CodeTabs selection event
+(fire on click of tab trigger)
+
+window.analytics.track("Tab", {
+  category: "CodeTabs",
+  language
+})
+
+*/
+
 CodeBlock.fragmentSpec = { fragment }
 
 export default CodeBlock

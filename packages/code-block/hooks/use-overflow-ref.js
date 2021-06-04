@@ -50,13 +50,6 @@ function useOverflowRef(deps) {
       const nowScrollWidth = target.scrollWidth
       const nowOffsetWidth = target.offsetWidth
       const nowHasOverflow = (scrollWidth || nowScrollWidth) > nowOffsetWidth
-      // console.log({
-      //   hasOverflow,
-      //   scrollWidth,
-      //   nowScrollWidth,
-      //   nowOffsetWidth,
-      //   nowHasOverflow,
-      // })
       if (hasOverflow !== nowHasOverflow) {
         cleanup()
         setState([nowHasOverflow, nowScrollWidth])
