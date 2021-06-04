@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import classNames from 'classnames'
 import processSnippet from './utils/process-snippet'
 import ClipboardButton from './partials/clipboard-button'
-import MetaBarSingle from './partials/meta-bar-single'
+import SnippetBar from './partials/snippet-bar'
 import s from './style.module.css'
 import themeDark from './theme-dark.module.css'
 import themeLight from './theme-light.module.css'
@@ -68,7 +68,7 @@ function CodeBlock({
     >
       <HiddenCopyContent ref={copyRef} code={code} />
       {hasTopBar ? (
-        <MetaBarSingle
+        <SnippetBar
           chrome={hasChrome}
           filename={filename}
           heading={heading}
