@@ -1,5 +1,5 @@
 import createPage from 'swingset/page'
-import createStaticProps from 'swingset/getStaticProps'
+import { createStaticProps, createStaticPaths } from 'swingset/server'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
@@ -27,4 +27,5 @@ function Logo() {
 const components = { Head, Link, SearchProvider, UsageDetails, Tab }
 
 export default createPage({ components, logo: <Logo /> })
+export const getStaticPaths = createStaticPaths()
 export const getStaticProps = createStaticProps({ components })
