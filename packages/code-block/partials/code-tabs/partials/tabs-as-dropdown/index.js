@@ -1,4 +1,3 @@
-import InlineSvg from '@hashicorp/react-inline-svg'
 import {
   ListboxInput,
   ListboxButton,
@@ -6,6 +5,7 @@ import {
   ListboxList,
   ListboxOption,
 } from '@reach/listbox'
+import InlineSvg from '@hashicorp/react-inline-svg'
 import svgChevronDown from '!!raw-loader!./chevron-down.svg'
 import s from './style.module.css'
 

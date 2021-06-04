@@ -8,6 +8,7 @@ import OverflowDetector from './partials/overflow-detector'
 import themeDark from '../../theme-dark.module.css'
 import themeLight from '../../theme-light.module.css'
 import s from './style.module.css'
+import analytics from '../../analytics'
 
 function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   /* @TODO - throw error if any children are invalid,
@@ -27,6 +28,12 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   // Use index-to-group syncing utility
   const tabGroupIds = parsedTabs.map((t) => t.group)
   const [activeTabIdx, setActiveTabIdx] = useIndexedTabs(tabGroupIds, 0)
+  // Track CodeTab selection with window.analytics
+  function setActiveTabWithEvent(tabIdx) {
+    analytics.trackTabSelect(tabGroupIds[tabIdx])
+    setActiveTabIdx(tabIdx)
+  }
+
   // gather labels
   const tabLabels = parsedTabs.map((t) => t.label)
 
@@ -55,13 +62,13 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
                 <TabsAsDropdown
                   tabLabels={tabLabels}
                   activeTabIdx={activeTabIdx}
-                  setActiveTabIdx={setActiveTabIdx}
+                  setActiveTabIdx={setActiveTabWithEvent}
                 />
               ) : (
                 <TabsAsTabs
                   tabLabels={tabLabels}
                   activeTabIdx={activeTabIdx}
-                  setActiveTabIdx={setActiveTabIdx}
+                  setActiveTabIdx={setActiveTabWithEvent}
                 />
               )}
             </div>

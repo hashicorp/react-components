@@ -5,8 +5,7 @@ import copyToClipboard from './copy-to-clipboard'
 import svgCopyAction from './svg/copy-action.svg.js'
 import svgCopySuccess from './svg/copy-success.svg.js'
 import s from './style.module.css'
-
-const HEAP_TRACK = 'code-block-clipboard-icon'
+import analytics, { heapAttributes } from '../../analytics'
 
 function ClipboardButton({
   className,
@@ -28,7 +27,8 @@ function ClipboardButton({
     const isCopied = await copyToClipboard(text)
     // If there's an internal failure copying text, exit early to handle the error
     if (!isCopied) return handleError(`ClipboardButton failed. Text: ${text}.`)
-    // Otherwise, things went well
+    // Otherwise, things went well, track the event and set state
+    analytics.trackCopy()
     setCopiedState(true)
   }
 
@@ -63,7 +63,7 @@ function ClipboardButton({
   return (
     <button
       className={classnames(s.button, className)}
-      data-heap-track={HEAP_TRACK}
+      data-heap-track={heapAttributes.copy}
       data-copied-state={copiedState}
       onClick={onClick}
       type="button"

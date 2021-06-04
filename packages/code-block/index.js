@@ -8,7 +8,7 @@ import themeDark from './theme-dark.module.css'
 import themeLight from './theme-light.module.css'
 import HiddenCopyContent from './partials/hidden-copy-content'
 import CodeLines from './partials/code-lines'
-
+import analytics, { heapAttributes } from '../../analytics'
 import fragment from './fragment.graphql'
 
 function CodeBlock({
@@ -64,7 +64,8 @@ function CodeBlock({
         baseThemeClass,
         syntaxClass
       )}
-      data-heap-track="code-block"
+      data-heap-track={heapAttributes.root}
+      onClick={analytics.trackCodeClick}
     >
       <HiddenCopyContent ref={copyRef} code={code} />
       {hasTopBar ? (
@@ -93,37 +94,6 @@ function CodeBlock({
     </div>
   )
 }
-
-/*
-
-CodeBlock click event 
-(fire on click anywhere in component)
-(do we really want this?)
-
-window.analytics.track("Click", {
-  category: "CodeBlock",
-  language,
-  theme
-})
-
-CodeBlock copy event
-(fire on click of copy button)
-
-window.analytics.track("Copy", {
-  category: "CodeBlock",
-  language,
-  theme
-})
-
-CodeTabs selection event
-(fire on click of tab trigger)
-
-window.analytics.track("Tab", {
-  category: "CodeTabs",
-  language
-})
-
-*/
 
 CodeBlock.fragmentSpec = { fragment }
 
