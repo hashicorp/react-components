@@ -8,7 +8,7 @@ import themeDark from './theme-dark.module.css'
 import themeLight from './theme-light.module.css'
 import HiddenCopyContent from './partials/hidden-copy-content'
 import CodeLines from './partials/code-lines'
-import analytics, { heapAttributes } from '../../analytics'
+import analytics, { heapAttributes } from './analytics'
 import fragment from './fragment.graphql'
 
 function CodeBlock({
