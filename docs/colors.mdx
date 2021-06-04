@@ -1,0 +1,58 @@
+---
+name: 'Colors'
+---
+
+# Colors!
+
+<>
+  {[
+    'brand',
+    'vagrant',
+    'packer',
+    'terraform',
+    'consul',
+    'boundary',
+    'vault',
+    'nomad',
+    'waypoint',
+  ].map((b) => (
+    <div style={{ marginBottom: '32px' }}>
+      <div
+        style={{
+          width: '100%',
+          backgroundColor: `var(--${b})`,
+          height: '100px',
+          position: 'relative',
+        }}
+      >
+        <code style={{ position: 'absolute', right: '16px', bottom: '16px' }}>
+          var(--{b})
+        </code>
+      </div>
+      <div
+        style={{
+          width: '100%',
+          backgroundColor: `var(--${b}-secondary)`,
+          height: '100px',
+          position: 'relative',
+        }}
+      >
+        <code style={{ position: 'absolute', right: '16px', bottom: '16px' }}>
+          var(--{b}-secondary)
+        </code>
+      </div>
+      <div
+        style={{
+          width: '100%',
+          background: `var(--${b}-gradient)`,
+          height: '100px',
+          position: 'relative',
+        }}
+      >
+        <code style={{ position: 'absolute', right: '16px', bottom: '16px' }}>
+          var(--{b}-gradient)
+        </code>
+      </div>
+    </div>
+  ))}
+</>

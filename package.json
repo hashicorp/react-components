@@ -41,7 +41,7 @@
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
     "release:check-auth": "./scripts/release-check-npm-auth.sh",
     "release:check-branch": "./scripts/release-check-branch.sh",
-    "start": "next-remote-watch \"./packages/*/{docs.mdx,props.js}\"",
+    "start": "next-remote-watch \"./{docs,packages}/{*/{docs.mdx,props.js,*.mdx}\"",
     "test": "jest",
     "test:ci": "jest --runInBand",
     "test:watch": "jest --watch",
