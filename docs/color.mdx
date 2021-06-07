@@ -1,0 +1,60 @@
+---
+name: 'Color'
+---
+
+<!-- workaround to drop swingset's styling of first h1 -->
+
+<h1 />
+
+# Color
+
+<span style={{ fontSize: '1.25rem', color: 'var(--gray-3)' }}>
+  Colors associated with HashiCorp's brand and products.
+</span>
+
+<>
+  {[
+    'brand',
+    'vagrant',
+    'packer',
+    'terraform',
+    'consul',
+    'boundary',
+    'vault',
+    'nomad',
+    'waypoint',
+  ].map((b) => (
+    <div
+      key={b}
+      style={{
+        marginBottom: '32px',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <h3>{b}</h3>
+      {['', '-secondary', '-gradient'].map((suffix) => (
+        <div
+          style={{
+            width: '100%',
+            background: `var(--${b}${suffix})`,
+            height: '100px',
+            position: 'relative',
+          }}
+        >
+          <code
+            style={{
+              position: 'absolute',
+              right: '16px',
+              bottom: '16px',
+              background: 'rgba(255,255,255,0.2)',
+              padding: '0.25rem 0.5rem',
+            }}
+          >
+            var(--{`${b}${suffix}`})
+          </code>
+        </div>
+      ))}
+    </div>
+  ))}
+</>
