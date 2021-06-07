@@ -11,15 +11,11 @@ const heapAttributes = {
 // trackCodeClick is intended to capture manual selection interaction with our `code-block` component.
 // (On Learn, we've found many readers click and select manually rather than using the Copy button)
 function trackCodeClick() {
-  /* @TODO write test - mock window.analytics, assert on call */
-  console.log('trackCodeClick')
   if (!window || !window.analytics) return
   window.analytics.track('Click', { category: 'CodeBlock' })
 }
 
 function trackCopy() {
-  /* @TODO write test - mock window.analytics, assert on call */
-  console.log('trackCopy')
   if (!window || !window.analytics) return
   window.analytics.track('Copy', { category: 'CodeBlock' })
 }

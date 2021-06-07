@@ -4,10 +4,13 @@ const syntaxes = require('./syntaxes')
 Pretty names allow us to keep
 a single source of truth on what language name
 each syntax slug corresponds to.
-@TODO take a more informed guess at which names
-we should set. Eg look through Learn and Dato,
-and determine which language slugs are in use there.
-Dato in particular should provide a good list.
+
+We've set this up to include all languages in 
+Dato. We can update this list to improve automatic
+"pretty" names, eg for CodeTabs. Note that if a "pretty"
+name isn't present, consumers should have the option to 
+use a custom "pretty" name. For example, in CodeTabs,
+you can pass an array of labels using the "tabs" prop.
 */
 const languageNames = {
   bash: 'Shell',
@@ -16,9 +19,12 @@ const languageNames = {
   go: 'Go',
   hcl: 'HCL',
   html: 'HTML',
+  java: 'Java',
   javascript: 'JavaScript',
   json: 'JSON',
+  python: 'Python',
   ruby: 'Ruby',
+  sentinel: 'Sentinel',
   shell: 'Shell',
   'shell-session': 'Shell',
   svg: 'SVG',

@@ -7,8 +7,10 @@ import {
 } from '@testing-library/react'
 import CodeBlock from './'
 // Mock copy-to-clipboard
-jest.mock('./partials/clipboard-button/copy-to-clipboard')
 import copyToClipboard from './partials/clipboard-button/copy-to-clipboard'
+jest.mock('./partials/clipboard-button/copy-to-clipboard', () => {
+  return jest.fn().mockImplementation(() => true)
+})
 // We want to make sure copied code is passed through processSnippet,
 // we import it so that we don't have to manually recreate its output
 import processSnippet from './utils/process-snippet'
@@ -102,6 +104,53 @@ it('should use the `Copy` button to copy code to the clipboard', async () => {
   await waitFor(() => expect(copyToClipboard).toHaveBeenCalledTimes(1))
   expect(copyToClipboard).toHaveBeenCalledWith(codeString)
   copyToClipboard.mockClear()
+})
+
+it('should track a "Copy" event when the "Copy" button is clicked', async () => {
+  // Setup - mock window.analytics
+  const forMockRestore = window.analytics
+  window.analytics = { track: jest.fn() }
+  // Tests
+  render(
+    <CodeBlock
+      code={`console.log("Hello world");`}
+      options={{ showClipboard: true }}
+    />
+  )
+  // Find and click the copy button
+  const buttonElem = screen.getByText('Copy')
+  expect(buttonElem).toBeInTheDocument()
+  fireEvent.click(buttonElem)
+  //  Expect window.analytics.track to have been called
+  await waitFor(() => expect(window.analytics.track).toHaveBeenCalledTimes(1))
+  expect(window.analytics.track).toBeCalledWith('Copy', {
+    category: 'CodeBlock',
+  })
+  // Cleanup
+  window.analytics = forMockRestore
+})
+
+it('should track a "Click" event when the root element is clicked', async () => {
+  // Setup - mock window.analytics
+  const forMockRestore = window.analytics
+  window.analytics = { track: jest.fn() }
+  // Tests
+  const { container } = render(
+    <CodeBlock
+      code={`console.log("Hello world");`}
+      options={{ showClipboard: true }}
+    />
+  )
+  // Find and click the copy button
+  const rootElem = container.firstChild
+  fireEvent.click(rootElem)
+  //  Expect window.analytics.track to have been called
+  await waitFor(() => expect(window.analytics.track).toHaveBeenCalledTimes(1))
+  expect(window.analytics.track).toBeCalledWith('Click', {
+    category: 'CodeBlock',
+  })
+  // Cleanup
+  window.analytics = forMockRestore
 })
 
 it('should use process-snippet to strip the leading $ from shell snippets', async () => {

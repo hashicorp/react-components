@@ -1,4 +1,7 @@
 function splitHtmlIntoLines(codeHtml) {
+  // Note that newlines should appear at the top level only,
+  // we have a rehype plugin to surface newlines in nextjs-scripts,
+  // as part of our highlighString() utility
   const lineParts = codeHtml.split('\n')
   return lineParts.map((lineHtml, stableIdx) => {
     return (
