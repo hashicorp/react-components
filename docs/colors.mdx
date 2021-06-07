@@ -1,8 +1,16 @@
 ---
-name: 'Colors'
+name: 'Color'
 ---
 
-# Colors!
+<!-- workaround to drop swingset's styling of first h1 -->
+
+<h1 />
+
+# Color
+
+<span style={{ fontSize: '1.25rem', color: 'var(--gray-3)' }}>
+  Colors associated with HashiCorp's brand and products.
+</span>
 
 <>
   {[
@@ -16,43 +24,37 @@ name: 'Colors'
     'nomad',
     'waypoint',
   ].map((b) => (
-    <div style={{ marginBottom: '32px' }}>
-      <div
-        style={{
-          width: '100%',
-          backgroundColor: `var(--${b})`,
-          height: '100px',
-          position: 'relative',
-        }}
-      >
-        <code style={{ position: 'absolute', right: '16px', bottom: '16px' }}>
-          var(--{b})
-        </code>
-      </div>
-      <div
-        style={{
-          width: '100%',
-          backgroundColor: `var(--${b}-secondary)`,
-          height: '100px',
-          position: 'relative',
-        }}
-      >
-        <code style={{ position: 'absolute', right: '16px', bottom: '16px' }}>
-          var(--{b}-secondary)
-        </code>
-      </div>
-      <div
-        style={{
-          width: '100%',
-          background: `var(--${b}-gradient)`,
-          height: '100px',
-          position: 'relative',
-        }}
-      >
-        <code style={{ position: 'absolute', right: '16px', bottom: '16px' }}>
-          var(--{b}-gradient)
-        </code>
-      </div>
+    <div
+      key={b}
+      style={{
+        marginBottom: '32px',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <h3>{b}</h3>
+      {['', '-secondary', '-gradient'].map((suffix) => (
+        <div
+          style={{
+            width: '100%',
+            background: `var(--${b}${suffix})`,
+            height: '100px',
+            position: 'relative',
+          }}
+        >
+          <code
+            style={{
+              position: 'absolute',
+              right: '16px',
+              bottom: '16px',
+              background: 'rgba(255,255,255,0.2)',
+              padding: '0.25rem 0.5rem',
+            }}
+          >
+            var(--{`${b}${suffix}`})
+          </code>
+        </div>
+      ))}
     </div>
   ))}
 </>
