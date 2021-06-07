@@ -6,6 +6,7 @@
 .topBar {
   background: var(--background-tabs);
   display: flex;
+  align-items: center;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   padding-left: 4px;
@@ -23,20 +24,12 @@
   white-space: nowrap;
 
   &.hasOverflow {
-    white-space: wrap;
+    white-space: normal;
   }
 }
 
-.tabChildWrapper {
-  display: none;
-
-  &.isActive {
-    display: block;
-  }
-
-  & .tabChild {
-    margin-top: 0 !important;
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-  }
+.tabChild {
+  margin-top: 0 !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
 }

@@ -33,7 +33,6 @@ export default function CodeTabsProvider({ children }) {
     // If the updatedPreferences are a useful value,
     // then save it to local storage
     if (updatedPreferences.length > 0) {
-      console.log('Updating local storage...')
       const storedValueJson = JSON.stringify(updatedPreferences)
       window.localStorage.setItem(LOCAL_STORAGE_KEY, storedValueJson)
     }

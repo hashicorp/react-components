@@ -21,8 +21,6 @@ function trackCopy() {
 }
 
 function trackTabSelect(tabGroup) {
-  /* @TODO write test - mock window.analytics, assert on call */
-  console.log('trackTabSelect', tabGroup)
   if (!window || !window.analytics) return
   window.analytics.track('Select CodeTab', { category: 'CodeBlock', tabGroup })
 }
