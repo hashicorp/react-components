@@ -29,6 +29,9 @@ export function code({
   // We determine whether to showClipboard from the hideClipboard metastring
   const hideClipboard = metastring && metastring.includes('hideClipboard')
   // Deprecation warning for hideClipboard in metastring
+  // Note: the hideClipboard metastring option is currently only used on Learn.
+  // The next major version of code-block should remove support for this option,
+  // and throw an error here instead of a warning (even when IS_DEV == false)
   if (hideClipboard && IS_DEV) {
     console.warn(
       `The hideClipboard option on fenced code metastring is deprecated. Please wrap your fenced code in <CodeBlockConfig hideClipboard> instead.`
