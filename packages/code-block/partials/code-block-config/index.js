@@ -26,7 +26,7 @@ function CodeBlockConfig({
   const childType = onlyChild.props.mdxType || onlyChild.type
   if (childType !== 'pre') {
     throw new Error(
-      `In CodeBlockConfig, found a child with type ${childType}. Please ensure a fenced code block, which corresponds to the MDX type "pre", is passed to CodeBlockConfig instead.`
+      `In CodeBlockConfig, found a child with type "${childType}". Please ensure a fenced code block, which corresponds to the MDX type "pre", is passed to CodeBlockConfig instead. In JSX, please use CodeBlock directly rather than CodeBlockConfig.`
     )
   }
   // Extract the language and code from the block
