@@ -40,7 +40,7 @@ function ClipboardButton({
   }
 
   // After displaying feedback on the success state,
-  // reset to the default appearance so that it' clear
+  // reset to the default appearance so that it's clear
   // the "Copy" button can be used again
   useEffect(() => {
     // Clear any pending timeouts, which can occur if the
