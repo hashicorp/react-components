@@ -113,3 +113,23 @@ it('should track a "tab select" event when a tab is clicked', async () => {
   // Cleanup
   window.analytics = forMockRestore
 })
+
+it('should throw an error if children of an unexpected type are provided', async () => {
+  //  Suppress console.error for this test, we expect an error
+  jest.spyOn(console, 'error')
+  global.console.error.mockImplementation(() => {})
+  expect(() => {
+    render(
+      <CodeTabsProvider>
+        <CodeTabs>
+          <CodeBlock language="javascript" code="console.log('Hello world!')" />
+          <p>
+            I&apos;m a weirdo. What am I doing here? I don&apos;t belong here.
+          </p>
+        </CodeTabs>
+      </CodeTabsProvider>
+    )
+  }).toThrowError()
+  //  Restore console.error for further tests
+  global.console.error.mockRestore()
+})

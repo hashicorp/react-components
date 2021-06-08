@@ -12,11 +12,37 @@ import analytics from '../../analytics'
 
 function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   const validChildren = Children.toArray(children)
-  // Throw an error if the tabs prop is defined, but does no
+  // Throw an error if the tabs prop is defined, but does not
   // match the number of valid children
   if (tabs !== undefined && tabs.length !== validChildren.length) {
     throw new Error(
       `In CodeTabs, the tabs array length must match the number of children. Found mismatched tabs length ${tabs.length} and children length ${validChildren.length}. Please adjust the tabs prop or the number of children to resolve this issue.`
+    )
+  }
+  // Throw an error if any individual child has a type other than
+  // the expected CodeBlock, CodeBlockConfig, or pre
+  const childTypes = validChildren.map((tabChild) => {
+    let type
+    // For JSX primitives, the type of captured by the type property
+    if (typeof tabChild.type == 'string') type = tabChild.type
+    // For function components in JSX, ie CodeBlock and CodeBlockConfig,
+    // tabChild.type is a function whose name we need
+    if (typeof tabChild.type == 'function') type = tabChild.type.name
+    // In MDX contexts, the component type is captured in mdxType
+    if (typeof tabChild.props.mdxType === 'string')
+      type = tabChild.props.mdxType
+    return type
+  })
+  const validTypes = ['CodeBlock', 'CodeBlockConfig', 'pre']
+  const unexpectedChildren = childTypes.filter((type) => {
+    const isInvalidType = validTypes.indexOf(type) === -1
+    return isInvalidType
+  })
+  if (unexpectedChildren.length) {
+    throw new Error(
+      `CodeTabs only accepts "CodeBlock", "CodeBlockConfig", or "pre" children. Found children with types: ${JSON.stringify(
+        childTypes
+      )}`
     )
   }
   // Parse tab labels and groupIds, using data from the tabs prop
