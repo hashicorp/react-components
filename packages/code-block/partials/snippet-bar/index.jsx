@@ -11,7 +11,6 @@ function SnippetBar({
   filename,
   getText,
   heading,
-  onCopiedStateChange,
   showClipboard,
   sourceUrl,
 }) {
@@ -50,10 +49,7 @@ function SnippetBar({
         ) : null}
         {showClipboard ? (
           <div className={s.copyBtnContainer}>
-            <ClipboardButton
-              getText={getText}
-              onCopiedStateChange={onCopiedStateChange}
-            />
+            <ClipboardButton getText={getText} />
           </div>
         ) : null}
       </div>

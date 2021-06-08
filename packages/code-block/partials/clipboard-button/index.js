@@ -7,11 +7,7 @@ import svgCopySuccess from '!!raw-loader!./svg/copy-success.svg'
 import s from './style.module.css'
 import analytics, { heapAttributes } from '../../analytics'
 
-function ClipboardButton({
-  className,
-  getText,
-  onCopiedStateChange = () => null,
-}) {
+function ClipboardButton({ className, getText }) {
   // copiedState can be null (initial), true (success), or false (failure)
   const [copiedState, setCopiedState] = useState()
   // we reset copiedState to its initial value using a timeout
@@ -46,8 +42,6 @@ function ClipboardButton({
     // Clear any pending timeouts, which can occur if the
     // button is quickly clicked multiple times
     clearTimeout(resetTimeout)
-    // Allow consumers to hook into the copiedState
-    onCopiedStateChange(copiedState)
     // Only run the copiedState reset if it's needed
     const needsReset = copiedState != null
     if (needsReset) {
