@@ -1,5 +1,23 @@
 import { Children } from 'react'
 
+/**
+ * Given an array of React children,
+ * split the array on newlines, grouping consecutive
+ * non-newline tokens in individual line elements,
+ * and return an array of React <span> elements,
+ * each of which will contain a single line.
+ *
+ * Note that JSX tokens should not be multi-line,
+ * ie, all newline characters should be surfaced
+ * to the top level rather than nested in syntax
+ * highlighting tokens (otherwise the line-by-line
+ * markup we render would be invalid). We have
+ * a rehype plugin we include with our markdown defaults
+ * to ensure newlines are surfaced in this way.
+ *
+ * @param {*} codeJsx Array of JSX elements, some of which may be newline strings
+ * @returns Array of JSX <span> elements representing individual lines
+ */
 function splitJsxIntoLines(codeJsx) {
   // Note: newlines should appear at the top level only,
   // in MDX contexts we achieve this via a rehype plugin in nextjs-scripts
