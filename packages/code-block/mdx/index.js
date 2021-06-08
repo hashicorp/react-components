@@ -1,7 +1,7 @@
 import React from 'react'
-import CodeBlockRaw from '..'
-import CodeTabsRaw from '../partials/code-tabs'
-import CodeBlockConfigRaw from '../partials/code-block-config'
+import CodeBlock from '..'
+import CodeTabs from '../partials/code-tabs'
+import CodeBlockConfig from '../partials/code-block-config'
 import normalizePlainCode from '../utils/normalize-plain-code'
 import classNames from 'classnames'
 import s from './style.module.css'
@@ -41,7 +41,7 @@ export function code({
   // rehype-prism plugin adds.
   const language = className ? className.replace('language-', '') : undefined
   return (
-    <CodeBlockRaw
+    <CodeBlock
       className={className}
       code={code}
       language={language}
@@ -51,13 +51,13 @@ export function code({
   )
 }
 
-export function CodeTabs({ theme = DEFAULT_THEME, ...props }) {
-  return <CodeTabsRaw className={s.codeMargin} {...props} theme={theme} />
+export function CodeTabsWithMargin({ theme = DEFAULT_THEME, ...props }) {
+  return <CodeTabs className={s.codeMargin} {...props} theme={theme} />
 }
 
-export function CodeBlock({ theme = DEFAULT_THEME, ...rest }) {
+export function CodeBlockWithMargin({ theme = DEFAULT_THEME, ...rest }) {
   return (
-    <CodeBlockRaw
+    <CodeBlock
       className={classNames({ [s.codeMargin]: !rest.hasBarAbove })}
       {...rest}
       theme={theme}
@@ -65,9 +65,9 @@ export function CodeBlock({ theme = DEFAULT_THEME, ...rest }) {
   )
 }
 
-export function CodeBlockConfig({ theme = DEFAULT_THEME, ...rest }) {
+export function CodeBlockConfigWithMargin({ theme = DEFAULT_THEME, ...rest }) {
   return (
-    <CodeBlockConfigRaw
+    <CodeBlockConfig
       className={classNames({ [s.codeMargin]: !rest.hasBarAbove })}
       {...rest}
       theme={theme}
@@ -81,13 +81,13 @@ export default function codeMdxPrimitives({ theme = DEFAULT_THEME } = {}) {
       return code({ theme, ...p })
     },
     CodeBlock: function themedCodeBlock(p) {
-      return CodeBlock({ theme, ...p })
+      return CodeBlockWithMargin({ theme, ...p })
     },
     CodeBlockConfig: function themedCodeBlockConfig(p) {
-      return CodeBlockConfig({ theme, ...p })
+      return CodeBlockConfigWithMargin({ theme, ...p })
     },
     CodeTabs: function themedCodeTabs(p) {
-      return CodeTabs({ theme, ...p })
+      return CodeTabsWithMargin({ theme, ...p })
     },
     pre: function themedPre(p) {
       return pre({ theme, ...p })
