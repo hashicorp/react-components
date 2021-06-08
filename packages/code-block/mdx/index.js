@@ -28,7 +28,7 @@ export function code({
   const code = normalizePlainCode(children)
   // We determine whether to showClipboard from the hideClipboard metastring
   const hideClipboard = metastring && metastring.includes('hideClipboard')
-  /* @TODO add deprecation warning for hideClipboard in metastring */
+  // Deprecation warning for hideClipboard in metastring
   if (hideClipboard && IS_DEV) {
     console.warn(
       `The hideClipboard option on fenced code metastring is deprecated. Please wrap your fenced code in <CodeBlockConfig hideClipboard> instead.`
