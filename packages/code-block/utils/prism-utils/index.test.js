@@ -18,7 +18,7 @@ describe('syntaxes', () => {
       .sort()
     if (missingEntries.length > 0) {
       console.log(
-        `Missing entries in prism/language-utils "syntaxes": ${JSON.stringify(
+        `Missing entries in code-block/utils/prism-utils/syntaxes: ${JSON.stringify(
           missingEntries
         )}`
       )
@@ -34,7 +34,7 @@ describe('syntaxes', () => {
       .sort()
     if (invalidEntries.length > 0) {
       console.log(
-        `Invalid entries in prism/language-utils "syntaxes": ${JSON.stringify(
+        `Invalid entries in code-block/utils/prism-utils/syntaxes: ${JSON.stringify(
           invalidEntries
         )}`
       )
@@ -65,10 +65,21 @@ describe('getLanguageName', () => {
 
   it('returns the pretty name for an alias', () => {
     expect(getLanguageName('js')).toBe('JavaScript')
-    expect(getLanguageName('dotnet')).toBe('C#')
   })
 
-  it('returns null if no language name is set for a valid slug', () => {
-    expect(getLanguageName('brainfuck')).toBe(null)
+  it('includes pretty names for all refractor.listLanguages() syntaxes and aliases', () => {
+    const missingEntries = refractorList
+      .filter((slugOrAlias) => {
+        return getLanguageName(slugOrAlias) === null
+      })
+      .sort()
+    if (missingEntries.length > 0) {
+      console.log(
+        `Missing entries in code-block/utils/prism-utils/pretty-names: ${JSON.stringify(
+          missingEntries
+        )}`
+      )
+    }
+    expect(missingEntries.length).toBe(0)
   })
 })

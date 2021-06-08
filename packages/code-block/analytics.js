@@ -11,18 +11,24 @@ const heapAttributes = {
 // trackCodeClick is intended to capture manual selection interaction with our `code-block` component.
 // (On Learn, we've found many readers click and select manually rather than using the Copy button)
 function trackCodeClick() {
-  if (!window || !window.analytics) return
+  if (!hasTrackFunction()) return
   window.analytics.track('Click', { category: 'CodeBlock' })
 }
 
 function trackCopy() {
-  if (!window || !window.analytics) return
+  if (!hasTrackFunction()) return
   window.analytics.track('Copy', { category: 'CodeBlock' })
 }
 
 function trackTabSelect(tabGroup) {
-  if (!window || !window.analytics) return
+  if (!hasTrackFunction()) return
   window.analytics.track('Select CodeTab', { category: 'CodeBlock', tabGroup })
+}
+
+function hasTrackFunction() {
+  return (
+    window && window.analytics && typeof window.analytics.track == 'function'
+  )
 }
 
 export { heapAttributes }

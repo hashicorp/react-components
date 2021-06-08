@@ -15,12 +15,12 @@ function useOverflowRef() {
 
   useEffect(() => {
     const cleanup = () => null
-    if (!overflowRef || !overflowRef.current) return cleanup
+    if (!overflowRef.current) return cleanup
     const { scrollWidth, offsetWidth } = overflowRef.current
     const nowHasOverflow = scrollWidth > offsetWidth
     if (hasOverflow !== nowHasOverflow) setHasOverflow(nowHasOverflow)
     return cleanup
-  }, [windowWidth])
+  }, [windowWidth, overflowRef.current])
 
   return [hasOverflow, overflowRef]
 }
