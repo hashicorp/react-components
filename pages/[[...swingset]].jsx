@@ -4,8 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
 import { Tab } from '../packages/tabs'
-import CodeTabs from '../packages/code-block/partials/code-tabs'
-import codeMdxPrimitives from '../packages/code-block/mdx'
+import codeMdxComponents from '../packages/code-block/mdx'
 import UsageDetails from '../swingset-extensions/usage-details'
 
 function Logo() {
@@ -45,10 +44,13 @@ function Index() {
   )
 }
 
-const { code, pre } = codeMdxPrimitives({ theme: 'light' })
+const { code, pre, CodeBlockConfig, CodeTabs } = codeMdxComponents({
+  theme: 'light',
+})
 
 const components = {
   code,
+  CodeBlockConfig,
   CodeTabs,
   Head,
   Link,
