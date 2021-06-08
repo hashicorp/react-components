@@ -50,7 +50,7 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   const parsedTabs = resolveTabData(validChildren, tabs)
   // Use index-to-group syncing utility
   const tabGroupIds = parsedTabs.map((t) => t.group)
-  const [activeTabIdx, setActiveTabIdx] = useIndexedTabs(tabGroupIds, 0)
+  const [activeTabIdx, setActiveTabIdx] = useIndexedTabs(tabGroupIds)
   // Track CodeTab selection with window.analytics
   function setActiveTabWithEvent(tabIdx) {
     analytics.trackTabSelect(tabGroupIds[tabIdx])

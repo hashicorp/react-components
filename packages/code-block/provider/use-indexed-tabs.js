@@ -12,7 +12,7 @@ function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
   const { activeTabGroup, setActiveTabGroup, preferredTabGroups } =
     useTabGroups() || {}
 
-  // In dev, warn if we're missing TabProvider context
+  // In dev, warn if we're missing context
   useEffect(() => {
     const hasExplicitGroups = tabGroupIds.filter(Boolean).length > 0
     const isMissingProvider = hasExplicitGroups && !setActiveTabGroup
@@ -23,7 +23,7 @@ function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
     }
   }, [])
 
-  // Enable setting of TabProvider group
+  // Enable setting of group value
   // Update both the active tab idx (for this specific tab set),
   // and the tab context's active group (to sync other tab sets)
   function setActiveTabIdx(targetIdx) {
@@ -32,7 +32,7 @@ function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
     if (targetGroup && setActiveTabGroup) setActiveTabGroup(targetGroup)
   }
 
-  // Enable getting of TabProvider group value
+  // Enable getting of group value
   // If context is present, then ensure that this tab set's
   // activeTabIdx updates when the context's value updates
   useEffect(() => {
