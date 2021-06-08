@@ -6,7 +6,7 @@ import svgGithub from '!!raw-loader!./svg/github.svg'
 
 import s from './style.module.css'
 
-function MetaBarSingle({
+function SnippetBar({
   chrome,
   filename,
   getText,
@@ -19,7 +19,7 @@ function MetaBarSingle({
 
   if (showClipboard && !getText) {
     throw new Error(
-      `MetaBarSingle was passed showClipboard without a getText function. To use the clipboard button, please also pass a getText() function, which should return [err, text], where text will be copied to the clipboard if err is falsy.`
+      `SnippetBar was passed showClipboard without a getText function. To use the clipboard button, please also pass a getText() function, which should return [err, text], where text will be copied to the clipboard if err is falsy.`
     )
   }
 
@@ -61,4 +61,4 @@ function MetaBarSingle({
   )
 }
 
-export default MetaBarSingle
+export default SnippetBar
