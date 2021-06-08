@@ -1,3 +1,9 @@
+/*
+Note: Expects CSS properties from 
+../../theme-(dark|light).module.css
+to be present.
+*/
+
 .root {
   --base-height: 48px;
   --dropdown-item-height: 40px;

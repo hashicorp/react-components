@@ -1,3 +1,9 @@
+/*
+Note: Expects CSS properties from 
+code-block/theme-(dark|light).module.css
+to be present.
+*/
+
 /* layout */
 
 .root {

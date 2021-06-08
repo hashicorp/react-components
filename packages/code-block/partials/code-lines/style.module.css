@@ -1,9 +1,7 @@
 /*
-Note: Expects the following CSS properties:
---background-highlighted-line
---scrollbar-foreground
---scrollbar-background
---divider-line-color
+Note: Expects CSS properties from 
+code-block/theme-(dark|light).module.css
+to be present.
 */
 
 pre.pre {
@@ -16,17 +14,11 @@ pre.pre {
   background-color: transparent;
 }
 
-code.code {
-  /* @TODO - specificity here is needed to overcome globally scoped styles,
-  namely nextjs-scripts/prism/style.css.
-  We should consolidate styles to this package instead.
-  prism/style.css should have token coloration only, not layout concerns. */
-  &.code {
-    position: relative;
-    display: flex;
-    background: transparent;
-    overflow: hidden;
-  }
+.code {
+  position: relative;
+  display: flex;
+  background: transparent;
+  overflow: hidden;
 }
 
 .linesColumn {
@@ -131,6 +123,9 @@ code.code {
 
     &,
     & * {
+      /* !important is necessary here to override
+      syntax highlight color styles, which are
+      globally scoped by necessity */
       color: var(--text-color-faded) !important;
     }
   }
