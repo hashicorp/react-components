@@ -17,7 +17,6 @@ pre.pre {
 .code {
   position: relative;
   display: flex;
-  background: transparent;
   overflow: hidden;
 }
 
