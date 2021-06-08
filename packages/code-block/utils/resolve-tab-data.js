@@ -1,8 +1,16 @@
-import { getCanonicalSlug, getLanguageName } from '../../../utils/prism-utils'
+import { getCanonicalSlug, getLanguageName } from './prism-utils'
 
 /**
- * @param {*} validChildren
- * @param {*} tabs
+ * Given an array of react children,
+ * and the tabs prop as passed to CodeTabs
+ * (which may be undefined),
+ * Return default values for tab labels and
+ * groups based on child code block languages,
+ * but allow these to be individually overridden by the
+ * values in the `tabs` prop array if present.
+ *
+ * @param {array} validChildren Array of React children, all of which must be one of CodeBlock, CodeBlockConfig, or pre elements
+ * @param {array} tabs Optional array of strings, to set tab "labels" only, or of { label, group } objects
  * @returns
  */
 function resolveTabData(validChildren, tabs) {

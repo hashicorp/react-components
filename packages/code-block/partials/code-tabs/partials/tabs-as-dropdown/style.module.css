@@ -101,6 +101,9 @@ to be present.
     color: var(--text-color-base);
   }
 
+  /* Note: these data- attributes come from
+  ReachUI, normally we would aim to use
+  stacked CSS classnames instead. */
   &[data-current-nav] {
     background: var(--background-hovered-tab-item);
   }

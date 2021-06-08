@@ -21,7 +21,6 @@ function TabsAsDropdown({ tabLabels, activeTabIdx, setActiveTabIdx }) {
         <ListboxPopover className={s.listboxPopover} portal={false}>
           <ListboxList className={s.listboxList}>
             {tabLabels.map((tabLabel, idx) => {
-              // const isActive = idx == activeTabIdx
               return (
                 <ListboxOption
                   // eslint-disable-next-line react/no-array-index-key

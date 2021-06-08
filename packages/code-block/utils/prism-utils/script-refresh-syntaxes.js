@@ -8,6 +8,10 @@ const exec = util.promisify(require('child_process').exec)
 This script refreshes the list of supported syntaxes from refractor.
 Knowing which syntax slugs have which aliases helps us improve CodeTabs
 preference functionality.
+
+You can run it from the root of react-components with:
+node ./packages/code-block/utils/prism-utils/script-refresh-syntaxes.js
+
 */
 
 const README_URL =

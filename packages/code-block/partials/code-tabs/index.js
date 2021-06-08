@@ -1,6 +1,6 @@
 import React, { Children } from 'react'
 import classNames from 'classnames'
-import resolveTabData from './utils/resolve-tab-data'
+import resolveTabData from '../../utils/resolve-tab-data'
 import useIndexedTabs from '../../provider/use-indexed-tabs'
 import TabsAsDropdown from './partials/tabs-as-dropdown'
 import TabsAsTabs from './partials/tabs-as-tabs'
