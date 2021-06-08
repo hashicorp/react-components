@@ -84,6 +84,74 @@ For now, we will **temporarily** continue to support the `hideClipboard` option 
 
 ### Examples
 
+#### Themes
+
+<div style={{ display: "grid", gridTemplateColumns: "50% 50%", gridGap: "1rem"  }}>
+
+<div>
+
+`"dark"`
+
+<CodeTabs heading="Set your primary datacenter" theme="dark">
+
+<CodeBlock
+  options={{
+    filename: 'hello-world.go',
+    lineNumbers: true,
+    showClipboard: true,
+  }}
+  language="go"
+  code={`<span class="token keyword">package</span> main\n\n<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">float64</span><span class="token punctuation">)</span>\n    ch <span class="token operator">&#x3C;-</span> <span class="token number">1.0e10</span>    <span class="token comment">// magic number</span>\n    x<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&#x3C;-</span> ch\n    <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"exiting now"</span><span class="token punctuation">)</span>\n    <span class="token keyword">go</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\n    <span class="token keyword">return</span>\n<span class="token punctuation">}</span>`}
+/>
+
+<CodeBlock
+  options={{
+    filename: 'consul-acl.hcl',
+    lineNumbers: true,
+    highlight: '3,6-8',
+    showClipboard: true,
+  }}
+  language="hcl"
+  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n<!-- -->  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n<!-- -->  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n<!-- -->  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n<!-- -->    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n<!-- -->  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
+/>
+
+</CodeTabs>
+
+</div>
+
+<div>
+
+`"light"`
+
+<CodeTabs heading="Set your primary datacenter" theme="light">
+
+<CodeBlock
+  options={{
+    filename: 'hello-world.go',
+    lineNumbers: true,
+    showClipboard: true,
+  }}
+  language="go"
+  code={`<span class="token keyword">package</span> main\n\n<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">float64</span><span class="token punctuation">)</span>\n    ch <span class="token operator">&#x3C;-</span> <span class="token number">1.0e10</span>    <span class="token comment">// magic number</span>\n    x<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&#x3C;-</span> ch\n    <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"exiting now"</span><span class="token punctuation">)</span>\n    <span class="token keyword">go</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>\n    <span class="token keyword">return</span>\n<span class="token punctuation">}</span>`}
+/>
+
+<CodeBlock
+  options={{
+    filename: 'consul-acl.hcl',
+    lineNumbers: true,
+    highlight: '3,6-8',
+    showClipboard: true,
+  }}
+  language="hcl"
+  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n<!-- -->  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n<!-- -->  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n<!-- -->  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n<!-- -->    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n<!-- -->  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
+/>
+
+</CodeTabs>
+
+</div>
+
+</div>
+
 #### Basic features
 
 ##### Copy to Clipboard

@@ -12,6 +12,7 @@
   /* Background colors */
   --background-base: #f6f8fa;
   --background-tabs: #ebeef0;
+  --background-hovered-tab-item: #eff2f4;
   --background-highlighted-line: #ebeef0;
   /* Scrollbar colors */
   --scrollbar-background: var(--background-base);

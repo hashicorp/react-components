@@ -1,8 +1,8 @@
 import React from 'react'
 import ClipboardButton from '../clipboard-button'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import svgFile from './svg/file.svg.js'
-import svgGithub from './svg/github.svg.js'
+import svgFile from '!!raw-loader!./svg/file.svg'
+import svgGithub from '!!raw-loader!./svg/github.svg'
 
 import s from './style.module.css'
 

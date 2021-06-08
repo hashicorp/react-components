@@ -78,19 +78,19 @@ export function CodeBlockConfig({ theme = DEFAULT_THEME, ...props }) {
 export default function codeMdxPrimitives({ theme = DEFAULT_THEME } = {}) {
   return {
     code: function themedCode(p) {
-      return code({ ...p, theme })
+      return code({ theme, ...p })
     },
     CodeBlock: function themedCodeBlock(p) {
-      return CodeBlock({ ...p, theme })
+      return CodeBlock({ theme, ...p })
     },
     CodeBlockConfig: function themedCodeBlockConfig(p) {
-      return CodeBlockConfig({ ...p, theme })
+      return CodeBlockConfig({ theme, ...p })
     },
     CodeTabs: function themedCodeTabs(p) {
-      return CodeTabs({ ...p, theme })
+      return CodeTabs({ theme, ...p })
     },
     pre: function themedPre(p) {
-      return pre({ ...p, theme })
+      return pre({ theme, ...p })
     },
   }
 }
