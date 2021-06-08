@@ -1,9 +1,8 @@
-// import surfaceNewlines from './surface-newlines'
 import { Children } from 'react'
 
 function splitJsxIntoLines(codeJsx) {
-  // Newlines should appear at the top level only,
-  // in MDX contents we achieve this via a rehype plugin
+  // Note: newlines should appear at the top level only,
+  // in MDX contexts we achieve this via a rehype plugin in nextjs-scripts
   const withSurfacedNewlines = Children.toArray(codeJsx)
   // Filter out any surfaces newlines, that are "in between"
   // other lines of code. Special exceptions should be made for:
