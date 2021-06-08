@@ -1,7 +1,20 @@
+/**
+ * Given a string of HTML, split it on newlines,
+ * and return an array of React <span> elements,
+ * each of which will contain a single line.
+ *
+ * Note that HTML tokens should not be multi-line,
+ * ie, all newline characters should be surfaced
+ * to the top level rather than nested in syntax
+ * highlighting tokens (otherwise the line-by-line
+ * markup we render would be invalid). We have
+ * a rehype plugin we use with our highlightString()
+ * utility to ensure newlines are surfaced in this way.
+ *
+ * @param {string} codeHtml String of HTML
+ * @returns Array of JSX <span> elements
+ */
 function splitHtmlIntoLines(codeHtml) {
-  // Note that newlines should appear at the top level only,
-  // we have a rehype plugin to surface newlines in nextjs-scripts,
-  // as part of our highlightString() utility
   const lineParts = codeHtml.split('\n')
   return lineParts.map((lineHtml, stableIdx) => {
     return (
