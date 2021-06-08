@@ -79,7 +79,7 @@ function CodeBlock({
           showClipboard={showClipboard}
         />
       ) : null}
-      <div className={s.linesWrapper}>
+      <div className={s.linesContainer}>
         <CodeLines
           code={code}
           language={language}
