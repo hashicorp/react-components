@@ -1,3 +1,0 @@
-$ docker ps
-CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
-425d5ee58619        e791337790a6              "nginx -g 'daemon of…"   20 seconds ago      Up 19 seconds       0.0.0.0:8000->80/tcp     tutorial
