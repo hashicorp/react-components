@@ -1,5 +1,6 @@
 import React, { Children } from 'react'
 import CodeBlock from '../../index.js'
+import normalizePlainCode from '../../utils/normalize-plain-code'
 
 function CodeBlockConfig({
   className,
@@ -33,13 +34,7 @@ function CodeBlockConfig({
     ? languageClass.replace('language-', '')
     : undefined
   const codeChildren = onlyChild.props.children.props.children
-  // Non-highlighted code, which appears when children are a string,
-  // seems to have an extra trailing newline. We remove it.
-  // Highlighted code is not affected.
-  const code =
-    typeof codeChildren == 'string'
-      ? codeChildren.replace(/\n$/, '')
-      : codeChildren
+  const code = normalizePlainCode(codeChildren)
 
   // Render the code block, using options passed to CodeBlockConfig
   return (

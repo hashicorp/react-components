@@ -2,6 +2,7 @@ import React from 'react'
 import CodeBlockRaw from '..'
 import CodeTabsRaw from '../partials/code-tabs'
 import CodeBlockConfigRaw from '../partials/code-block-config'
+import normalizePlainCode from '../utils/normalize-plain-code'
 import classNames from 'classnames'
 import s from './style.module.css'
 
@@ -31,8 +32,7 @@ export function code({
   // Non-highlighted code, which appears when children are a string,
   // seems to have an extra trailing newline. We remove it.
   // Highlighted code is not affected.
-  const code =
-    typeof children == 'string' ? children.replace(/\n$/, '') : children
+  const code = normalizePlainCode(children)
   // We determine whether to showClipboard from the hideClipboard metastring
   const hideClipboard = metastring && metastring.includes('hideClipboard')
   /* @TODO add deprecation warning for hideClipboard in metastring */
