@@ -9,18 +9,11 @@ import s from './style.module.css'
 const DEFAULT_THEME = 'dark'
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
-export function pre({ children, className, isNested }) {
-  // For direct use cases, ie plain fenced code, add margin
-  if (!isNested) return <div className={s.codeMargin}>{children}</div>
-  // For other use cases, ie in code tabs, forward className to
-  // children, and do not add margin
-  const childrenWithClassName = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, { className })
-    }
-    return child
-  })
-  return <>{childrenWithClassName}</>
+export function pre({ children, hasBarAbove }) {
+  // For use cases in code tabs, return children directly in a fragment
+  if (hasBarAbove) return <>{children}</>
+  // In all other cases, ie plain fenced code, add margin
+  return <div className={s.codeMargin}>{children}</div>
 }
 
 export function code({
@@ -59,19 +52,23 @@ export function CodeTabs({ theme = DEFAULT_THEME, ...props }) {
   return <CodeTabsRaw className={s.codeMargin} {...props} theme={theme} />
 }
 
-export function CodeBlock({ className, theme = DEFAULT_THEME, ...rest }) {
+export function CodeBlock({ theme = DEFAULT_THEME, ...rest }) {
   return (
     <CodeBlockRaw
-      className={classNames(s.codeMargin, className)}
+      className={classNames({ [s.codeMargin]: !rest.hasBarAbove })}
       {...rest}
       theme={theme}
     />
   )
 }
 
-export function CodeBlockConfig({ theme = DEFAULT_THEME, ...props }) {
+export function CodeBlockConfig({ theme = DEFAULT_THEME, ...rest }) {
   return (
-    <CodeBlockConfigRaw className={s.codeMargin} {...props} theme={theme} />
+    <CodeBlockConfigRaw
+      className={classNames({ [s.codeMargin]: !rest.hasBarAbove })}
+      {...rest}
+      theme={theme}
+    />
   )
 }
 

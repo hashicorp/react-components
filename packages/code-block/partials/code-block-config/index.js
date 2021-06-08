@@ -10,6 +10,7 @@ function CodeBlockConfig({
   hideClipboard,
   highlight,
   lineNumbers,
+  hasBarAbove,
   theme,
 }) {
   // Ensure there is exactly one valid child element
@@ -43,6 +44,7 @@ function CodeBlockConfig({
       code={code}
       language={language}
       theme={theme}
+      hasBarAbove={hasBarAbove}
       options={{
         filename,
         highlight,

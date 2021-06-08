@@ -106,7 +106,7 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
             // This is intentional, for example, it removes
             // any margin set in MDX custom components
             className: s.tabChild,
-            isNested: true,
+            hasBarAbove: true, // removes margin, and top border rounding, for better UI fit
             theme, // ensures theme of child code blocks in JSX matches tabs theme
           })
           return (

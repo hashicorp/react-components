@@ -16,6 +16,7 @@ function CodeBlock({
   code,
   language,
   theme = 'dark',
+  hasBarAbove = false,
   options = {
     chrome: false,
     highlight: false,
@@ -62,7 +63,8 @@ function CodeBlock({
         s.root,
         className,
         baseThemeClass,
-        syntaxClass
+        syntaxClass,
+        { [s.hasBarAbove]: hasBarAbove }
       )}
       data-heap-track={heapAttributes.root}
       onClick={analytics.trackCodeClick}
