@@ -45,7 +45,7 @@ function CodeLines({
             })}
           </span>
         ) : null}
-        <span className={s.linesColumn}>
+        <span className={classNames(s.linesColumn, s.styledScrollbars)}>
           <span className={s.linesWrapper}>
             {linesOfCode.map((lineChildren, stableIdx) => {
               const number = stableIdx + 1

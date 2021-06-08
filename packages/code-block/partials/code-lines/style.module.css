@@ -50,9 +50,10 @@ code.code {
   */
   overflow-x: auto;
   overflow-y: hidden;
+}
 
-  /* Scroll bar styles below */
-  /* web standard Firefox supports this */
+.styledScrollbars {
+  /* web standard Firefox */
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-foreground) transparent;
   /* webkit prefixed Safari, Chrome, chromium-based browsers */
