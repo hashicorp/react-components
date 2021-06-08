@@ -11,7 +11,7 @@
 
 .root {
   --base-height: 58px;
-  --chrome-height: 48px;
+  --chrome-height: 40px;
 
   align-items: center;
   border-bottom: 1px solid var(--divider-line-color);
