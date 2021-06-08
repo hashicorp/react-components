@@ -67,7 +67,6 @@ to be present.
 
 .listboxList {
   margin: 0;
-  padding: 0;
   list-style: none;
 
   &:focus {
@@ -84,7 +83,6 @@ to be present.
 }
 
 .listboxOption {
-  display: block;
   white-space: nowrap;
   user-select: none;
   cursor: pointer;
