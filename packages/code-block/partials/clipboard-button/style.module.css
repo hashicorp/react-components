@@ -14,7 +14,7 @@
     color: var(--text-color-base);
   }
 
-  &[data-copied-state='true'] {
+  &.isCopied {
     color: var(--text-color-success);
   }
 }

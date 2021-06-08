@@ -62,9 +62,10 @@ function ClipboardButton({
 
   return (
     <button
-      className={classnames(s.button, className)}
+      className={classnames(s.button, className, {
+        [s.isCopied]: copiedState == true,
+      })}
       data-heap-track={heapAttributes.copy}
-      data-copied-state={copiedState}
       onClick={onClick}
       type="button"
     >
