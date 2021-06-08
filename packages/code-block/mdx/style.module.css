@@ -1,13 +1,3 @@
 .codeMargin {
   margin: 1.5rem 0;
 }
-
-.inlineCode {
-  /*
-  @TODO update g-content styles to avoid clobbering,
-  then the !important here could be removed
-  https://app.asana.com/0/1199185162145226/1199185162145264/f
-  */
-  background: rgba(37, 41, 55, 0.06) !important; /* --code-dark at 6% opacity */
-  color: var(--code-dark) !important;
-}

@@ -8,10 +8,6 @@ import s from './style.module.css'
 const DEFAULT_THEME = 'dark'
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
-export function inlineCode(props) {
-  return <code className={s.inlineCode} {...props} />
-}
-
 export function pre({ children, className, isNested }) {
   // For direct use cases, ie plain fenced code, add margin
   if (!isNested) return <div className={s.codeMargin}>{children}</div>
@@ -93,7 +89,6 @@ export default function codeMdxPrimitives({ theme = DEFAULT_THEME } = {}) {
     CodeTabs: function themedCodeTabs(p) {
       return CodeTabs({ ...p, theme })
     },
-    inlineCode,
     pre: function themedPre(p) {
       return pre({ ...p, theme })
     },
