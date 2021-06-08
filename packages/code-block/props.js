@@ -22,6 +22,11 @@ module.exports = {
     description:
       'Sets the color theme for the code block. Intended to match light and dark system appearance, for example through CSS `@media (prefers-color-scheme)`.',
   },
+  hasBarAbove: {
+    type: 'boolean',
+    description:
+      'Intended for automatic use in CodeTabs, not meant as a consumer-facing prop. Set to `true` to remove border rounding from the top of the CodeBlock.',
+  },
   options: {
     type: 'object',
     description:
