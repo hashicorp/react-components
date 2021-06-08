@@ -26,7 +26,6 @@ function CodeLines({
         {lineNumbers ? (
           <span className={s.numbersColumn}>
             {linesOfCode.map((_lineChildren, stableIdx) => {
-              // For now, the line number is simply 1-indexed
               const number = stableIdx + 1
               const isHighlighted = highlightedLines.indexOf(number) !== -1
               const isNotHighlighted =
