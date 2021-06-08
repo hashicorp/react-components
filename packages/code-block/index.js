@@ -18,7 +18,7 @@ function CodeBlock({
   theme = 'dark',
   hasBarAbove = false,
   options = {
-    chrome: false,
+    showChrome: false,
     highlight: false,
     lineNumbers: false,
     showClipboard: false,
@@ -36,7 +36,7 @@ function CodeBlock({
   }
 
   const {
-    chrome,
+    showChrome,
     filename,
     heading,
     highlight,
@@ -49,7 +49,7 @@ function CodeBlock({
       'The options.showWindowBar prop has been renamed, and will be deprecated in a future version. Please use options.chrome instead.'
     )
   }
-  const hasChrome = showWindowBar || chrome
+  const hasChrome = showWindowBar || showChrome
   const hasTopBar = hasChrome || filename || heading
   const hasFloatingCopyButton = !hasTopBar && showClipboard
 
@@ -72,7 +72,7 @@ function CodeBlock({
       <HiddenCopyContent ref={copyRef} code={code} />
       {hasTopBar ? (
         <SnippetBar
-          chrome={hasChrome}
+          showChrome={hasChrome}
           filename={filename}
           heading={heading}
           getText={getText}

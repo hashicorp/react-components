@@ -48,7 +48,7 @@ To support richer configuration of code blocks in MDX, we have a custom `CodeBlo
 The `CodeBlockConfig` component supports all of the properties of `CodeBlock`'s `options` props, as detailed in the props table earlier on this page, with a few notable exceptions:
 
 - `showClipboard` is **not** supported, as the `Copy` button is shown by default in MDX contexts. Instead, a `hideClipboard` option is supported, as detailed below.
-- `chrome` is **not** supported, as we currently would like to limit such ornamentation to JSX contexts, such as feature callouts on marketing pages.
+- `showChrome` is **not** supported, as we currently would like to limit such ornamentation to JSX contexts, such as feature callouts on marketing pages.
 
 ##### The `hideClipboard` option
 
@@ -185,10 +185,10 @@ More examples:
 
 ##### Window chrome
 
-With `options.chrome`
+With `options.showChrome`
 
 <CodeBlock
-  options={{ chrome: true }}
+  options={{ showChrome: true }}
   language="go"
   code={`<span class="token keyword">import</span> <span class="token string">"fmt"</span>\n\n<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>\n<span class="token punctuation">}</span>`}
 />
@@ -207,7 +207,7 @@ With overflow and floating copy button
 With overflow and chrome
 
 <CodeBlock
-  options={{ showWindowBar: true, showClipboard: true }}
+  options={{ showChrome: true, showClipboard: true }}
   code={
     '$ docker ps\nCONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES\n425d5ee58619        e791337790a6              "nginx -g \'daemon of…"   20 seconds ago      Up 19 seconds       0.0.0.0:8000->80/tcp     tutorial'
   }

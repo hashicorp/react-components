@@ -1,14 +1,5 @@
 /* layout */
 
-/*
-
---divider-line-width: 1px;
---chrome-bar-height: 48px;
---snippet-bar-height: calc(var(--code-padding) * 2 + var(--code-line-height));
---snippet-bar-height-chrome-only: calc(var(--chrome-bar-height));
---code-padding-half: calc(var(--code-padding) / 2);
-*/
-
 .root {
   --base-height: 58px;
   --chrome-height: 40px;

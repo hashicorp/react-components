@@ -7,7 +7,7 @@ import svgGithub from '!!raw-loader!./svg/github.svg'
 import s from './style.module.css'
 
 function SnippetBar({
-  chrome,
+  showChrome,
   filename,
   getText,
   heading,
@@ -26,7 +26,7 @@ function SnippetBar({
   return (
     <div className={s.root}>
       <div className={s.leftSide}>
-        {chrome ? (
+        {showChrome ? (
           <div className={s.chrome}>
             <div className={s.chromeDot}></div>
             <div className={s.chromeDot}></div>
