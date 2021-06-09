@@ -6,7 +6,7 @@ import {
   ListboxOption,
 } from '@reach/listbox'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import svgChevronDown from '!!raw-loader!./chevron-down.svg'
+import svgChevronDown from './chevron-down.svg?include'
 import s from './style.module.css'
 
 function TabsAsDropdown({ tabLabels, activeTabIdx, setActiveTabIdx }) {
