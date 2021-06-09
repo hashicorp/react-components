@@ -68,17 +68,10 @@ function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
     } else if (localTabGroup !== activeTabGroup) {
       // If the current tab group is not null but does not match,
       // check if we have a directly matching tab we can switch to
-      const directMatchIdx = tabGroupIds.reduce((acc, groupId, tabIdx) => {
-        // If we have a match, stop looking
-        if (acc !== null) return acc
-        // If this tab matches, return its index
-        if (groupId == activeTabGroup) return tabIdx
-        // Otherwise, keep looking
-        return acc
-      }, null)
+      const directMatchIdx = tabGroupIds.findIndex((id) => id == activeTabGroup)
       // If we have a matching tab we can switch to,
       // then update this component's state to match
-      if (directMatchIdx !== null) return setLocalTabIdx(directMatchIdx)
+      if (directMatchIdx !== -1) return setLocalTabIdx(directMatchIdx)
     }
   }, [activeTabGroup, preferredTabGroups])
 
