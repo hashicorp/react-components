@@ -10,8 +10,14 @@ const DEFAULT_THEME = 'dark'
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
 export function pre({ children, hasBarAbove }) {
-  // For use cases in code tabs, return children directly in a fragment
-  if (hasBarAbove) return <>{children}</>
+  // For use cases in code tabs, return children directly in a fragment,
+  // passing on the hasBarAbove prop
+  if (hasBarAbove) {
+    const childrenWithProps = React.Children.toArray(children).map((child) => {
+      return React.cloneElement(child, { hasBarAbove })
+    })
+    return <>{childrenWithProps}</>
+  }
   // In all other cases, ie plain fenced code, add margin
   return <div className={s.codeMargin}>{children}</div>
 }
@@ -20,6 +26,7 @@ export function code({
   children,
   className,
   metastring,
+  hasBarAbove,
   theme = DEFAULT_THEME,
 }) {
   // Non-highlighted code, which appears when children are a string,
@@ -47,6 +54,7 @@ export function code({
       language={language}
       options={{ showClipboard: !hideClipboard }}
       theme={theme}
+      hasBarAbove={hasBarAbove}
     />
   )
 }
