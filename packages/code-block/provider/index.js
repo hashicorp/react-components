@@ -6,7 +6,7 @@ export function useTabGroups() {
 
 const CodeTabsContext = createContext()
 
-const LOCAL_STORAGE_KEY = '@hashicorp/react-code-tabs/provider.js'
+const LOCAL_STORAGE_KEY = '@hashicorp/react-code-block/code-tabs-prefs'
 const LENGTH_LIMIT = 20
 
 export default function CodeTabsProvider({ children }) {
