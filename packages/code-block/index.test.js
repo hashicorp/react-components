@@ -8,9 +8,9 @@ import {
 import CodeBlock from './'
 // Mock copy-to-clipboard
 import copyToClipboard from './partials/clipboard-button/copy-to-clipboard'
-jest.mock('./partials/clipboard-button/copy-to-clipboard', () => {
-  return jest.fn().mockImplementation(() => true)
-})
+jest.mock('./partials/clipboard-button/copy-to-clipboard', () =>
+  jest.fn().mockImplementation(() => true)
+)
 // We want to make sure copied code is passed through processSnippet,
 // we import it so that we don't have to manually recreate its output
 import processSnippet from './utils/process-snippet'
