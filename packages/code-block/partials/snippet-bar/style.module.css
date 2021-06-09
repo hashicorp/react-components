@@ -13,7 +13,7 @@ to be present.
   align-items: center;
   border-bottom: 1px solid var(--divider-line-color);
   display: flex;
-  padding: 0 0 0 8px;
+  padding-left: 8px;
   position: relative;
 }
 
