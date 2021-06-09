@@ -56,6 +56,8 @@ to be present.
   border-top: none;
 
   &:focus-within {
+    /* Mimic browser-native focus styles.
+    ref: https://css-tricks.com/copy-the-browsers-native-focus-styles/ */
     outline: Highlight auto 4px;
     outline: -webkit-focus-ring-color auto 4px;
   }

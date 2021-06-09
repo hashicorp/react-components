@@ -95,35 +95,6 @@ to be present.
   line-height: 1.6;
 }
 
-/* source link */
-
-.sourceLink {
-  composes: g-type-body-small-strong from global;
-
-  align-items: center;
-  color: var(--text-color-base);
-  transition: color 0.2s ease-in-out;
-  display: flex;
-  min-height: var(--base-height);
-  padding: 0 8px;
-
-  & svg {
-    display: block;
-    width: 18px;
-    height: 18px;
-    margin-left: 4px;
-
-    & [fill] {
-      fill: currentcolor;
-      transition: fill 0.2s ease-in-out;
-    }
-  }
-
-  &:hover {
-    color: var(--text-color-base);
-  }
-}
-
 /* copy button container */
 
 .copyBtnContainer {
