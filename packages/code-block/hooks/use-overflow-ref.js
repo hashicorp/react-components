@@ -11,7 +11,7 @@ function useOverflowRef() {
     const { scrollWidth, offsetWidth } = overflowRef.current
     const nowHasOverflow = scrollWidth > offsetWidth
     if (hasOverflow !== nowHasOverflow) setHasOverflow(nowHasOverflow)
-  }, [windowWidth, overflowRef.current])
+  }, [windowWidth])
 
   return [hasOverflow, overflowRef]
 }
