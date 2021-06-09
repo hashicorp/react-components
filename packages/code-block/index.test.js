@@ -119,6 +119,7 @@ it('should track a "Copy" event when the "Copy" button is clicked', async () => 
   )
   // Find and click the copy button
   const buttonElem = screen.getByText('Copy')
+  expect(buttonElem.tagName).toBe('BUTTON')
   expect(buttonElem).toBeInTheDocument()
   fireEvent.click(buttonElem)
   //  Expect window.analytics.track to have been called
@@ -141,7 +142,7 @@ it('should track a "Click" event when the root element is clicked', async () => 
       options={{ showClipboard: true }}
     />
   )
-  // Find and click the copy button
+  // Find and click the root element
   const rootElem = container.firstChild
   fireEvent.click(rootElem)
   //  Expect window.analytics.track to have been called
