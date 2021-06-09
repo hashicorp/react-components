@@ -18,7 +18,7 @@ function CodeBlockConfig({
   const childCount = Children.count(children)
   if (childCount !== 1 || validChildren.length !== 1) {
     throw new Error(
-      `In CodeBlockConfig, found ${childCount} total children and ${validChildren.length} valid children. Please ensure that CodeBlockConfig has exactly one child element, and ensure it is a valid.`
+      `In CodeBlockConfig, found ${childCount} total children and ${validChildren.length} valid children. Please ensure that CodeBlockConfig has exactly one child element, and ensure it is a valid element.`
     )
   }
   // Validate that the first child is a code block
