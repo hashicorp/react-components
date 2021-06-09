@@ -23,7 +23,6 @@ const OUT_FILE = path.join(
 main(README_URL, OUT_FILE)
 
 async function main(readmeUrl, outFile) {
-  console.log(readmeUrl)
   const { stdout: readmeString, stderr } = await exec(`curl -s ${readmeUrl}`)
   if (stderr) throw new Error(stderr)
   // Pull out the "supported syntaxes" part of the readme
