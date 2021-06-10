@@ -5,6 +5,18 @@ const exec = util.promisify(require('child_process').exec)
 
 /*
 
+🚨 Note: this script should not be run automatically. It's a fragile
+utility meant to be used as a quick tool to reflect which languages
+are available in `refractor`.
+
+I considered just running this once and tossing it, have left it in
+because it feels like it has potential to be useful in the future,
+eg if / when we bump refractor. Don't feel obliged to use it,
+and don't feel bad about deleting it if it doesn't feel useful.
+*/
+
+/*
+
 This script refreshes the list of supported syntaxes from refractor.
 Knowing which syntax slugs have which aliases helps us improve CodeTabs
 preference functionality.
