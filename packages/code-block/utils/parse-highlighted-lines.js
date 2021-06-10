@@ -8,8 +8,7 @@ function parseHighlightedLines(string) {
   const hasValidChars = /^[-,0-9\s]+$/.test(string)
   if (!hasValidChars) {
     throw new Error(
-      'The highlight prop must be a comma-separated list of single integers or ranges with a single dash between two integers. Found invalid characters: ' +
-        string
+      `The highlight prop must be a comma-separated list of single integers or ranges with a single dash between two integers. Found invalid characters: "${string}".`
     )
   }
   const parts = string.split(',')
@@ -22,8 +21,7 @@ function parsePart(string) {
   const dashParts = string.split('-')
   if (dashParts.length > 2) {
     throw new Error(
-      'Each comma-separated value in the highlight prop must be either a single integer, or a range with a single dash between two integers. Found a value with multiple dashes: ' +
-        string
+      `Each comma-separated value in the highlight prop must be either a single integer, or a range with a single dash between two integers. Found a value with multiple dashes: "${string}".`
     )
   }
   // Single integers are easy, just parse and return
@@ -33,11 +31,9 @@ function parsePart(string) {
     const isNaN = parsedInt !== parsedInt
     if (isNaN) {
       throw new Error(
-        'Each comma-separated value in the highlight prop must be either a single integer, or a range with a single dash between two integers. Found a value that parsed to NaN: ' +
-          string ===
-        ''
-          ? '<empty string>'
-          : string
+        `Each comma-separated value in the highlight prop must be either a single integer, or a range with a single dash between two integers. Found a value that parsed to NaN: "${
+          string === '' ? '<empty string>' : string
+        }".`
       )
     }
     return [parsedInt]
@@ -48,8 +44,7 @@ function parsePart(string) {
   const hasNaNEnd = endVal !== endVal
   if (hasNaNStart || hasNaNEnd) {
     throw new Error(
-      'Each comma-separated value in the highlight prop must be either a single integer, or a range with a single dash between two integers. Found a range that produced a NaN: ' +
-        string
+      `Each comma-separated value in the highlight prop must be either a single integer, or a range with a single dash between two integers. Found a range that produced a NaN: "${string}".`
     )
   }
   const length = endVal - startVal + 1
