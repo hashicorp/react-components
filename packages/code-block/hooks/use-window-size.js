@@ -1,8 +1,20 @@
 import { useState, useEffect } from 'react'
 
-// From:
-// https://usehooks.com/useWindowSize/
-
+/**
+ * Returns a { width, height } object
+ * representing the size of the global window.
+ * Updates the return value on window "resize".
+ *
+ * Swiped from:
+ * https://usehooks.com/useWindowSize/
+ *
+ * If you need similar functionality in another
+ * project or component, consider elevating this
+ * hook to a shared hooks package of some sort.
+ * Asana task: https://app.asana.com/0/1100423001970639/1200437064424402/f
+ *
+ * @returns {Object} A { width, height } object representing the size of the window
+ */
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
