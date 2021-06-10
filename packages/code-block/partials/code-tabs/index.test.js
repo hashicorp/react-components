@@ -129,7 +129,29 @@ it('should throw an error if children of an unexpected type are provided', async
         </CodeTabs>
       </CodeTabsProvider>
     )
-  }).toThrowError()
+  }).toThrowError(
+    'CodeTabs only accepts "CodeBlock", "CodeBlockConfig", or "pre" children. Found children with types: ["CodeBlock","p"]'
+  )
+  //  Restore console.error for further tests
+  global.console.error.mockRestore()
+})
+
+it('should throw an error if the tabs prop length does not match the number of children', async () => {
+  //  Suppress console.error for this test, we expect an error
+  jest.spyOn(console, 'error')
+  global.console.error.mockImplementation(() => {})
+  expect(() => {
+    render(
+      <CodeTabsProvider>
+        <CodeTabs tabs={['JavaScript', 'Go', 'Third Non-Existent Tab']}>
+          <CodeBlock language="javascript" code="console.log('Hello world!')" />
+          <CodeBlock language="go" code="fmt.Println('Hello world!')" />
+        </CodeTabs>
+      </CodeTabsProvider>
+    )
+  }).toThrowError(
+    'In CodeTabs, the tabs array length must match the number of children. Found mismatched tabs length 3 and children length 2. Please adjust the tabs prop or the number of children to resolve this issue.'
+  )
   //  Restore console.error for further tests
   global.console.error.mockRestore()
 })
