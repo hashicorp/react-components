@@ -28,11 +28,15 @@ function CodeBlock({
   const copyRef = useRef()
 
   function getText() {
-    // Gather the text content
-    const rawSnippet = copyRef.current.textContent
-    // Run additional processing, namely for shell commands
-    const snippet = processSnippet(rawSnippet)
-    return [null, snippet]
+    try {
+      // Gather the text content
+      const rawSnippet = copyRef.current.textContent
+      // Run additional processing, namely for shell commands
+      const snippet = processSnippet(rawSnippet)
+      return [null, snippet]
+    } catch (err) {
+      return [err, null]
+    }
   }
 
   const {
