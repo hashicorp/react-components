@@ -1,8 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import useIndexedTabs from './use-indexed-tabs'
-import CodeTabsProvider from '.'
-
-const LOCAL_STORAGE_KEY = '@hashicorp/react-code-block/code-tabs-prefs'
+import CodeTabsProvider, { LOCAL_STORAGE_KEY } from '.'
 
 afterEach(() => {
   window.localStorage.setItem(LOCAL_STORAGE_KEY, [])
