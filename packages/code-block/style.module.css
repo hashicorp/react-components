@@ -16,12 +16,18 @@
 
 .copyButtonContainer {
   position: absolute;
-  background: var(--background-base);
-  border-radius: 2px;
-  border: none;
   top: 0px;
   right: 0px;
   display: flex;
   align-items: center;
   min-height: 58px;
+}
+
+.copyButtonBackground {
+  position: relative;
+  background: var(--background-base);
+  border-radius: 2px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
 }
