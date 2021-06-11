@@ -6,7 +6,7 @@ const IS_DEV = process.env.NODE_ENV !== 'production'
 
 function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
   // Clamp the default value to ensure it doesn't cause issues
-  const clampedDefault = clamp(defaultTabIdx, 0, tabGroupIds.length)
+  const clampedDefault = clamp(defaultTabIdx, 0, tabGroupIds.length - 1)
   const [localTabIdx, setLocalTabIdx] = useState(clampedDefault)
   // Note that useTabGroups may return undefined if context is not present.
   const { activeTabGroup, setActiveTabGroup, preferredTabGroups } =

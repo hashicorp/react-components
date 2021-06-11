@@ -41,9 +41,14 @@ export default function CodeTabsProvider({ children }) {
   // Load activeTabGroup from cookie, if available
   useEffect(() => {
     const maybeStoredValue = window.localStorage.getItem(LOCAL_STORAGE_KEY)
-    if (maybeStoredValue && maybeStoredValue !== null) {
-      const parsedValue = JSON.parse(maybeStoredValue)
-      setPreferredTabGroups(parsedValue)
+    if (maybeStoredValue) {
+      // Try / catch in case JSON.parse fails
+      try {
+        const parsedValue = JSON.parse(maybeStoredValue)
+        if (parsedValue) setPreferredTabGroups(parsedValue)
+      } catch (err) {
+        console.error(err)
+      }
     }
   }, [])
 
