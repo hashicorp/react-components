@@ -79,10 +79,5 @@ const ProductMetaProvider = React.memo(function Provider({
 })
 
 export default useProductMeta
-export {
-  Products,
-  ProductMeta,
-  ProductContext,
-  ProductMetaProvider,
-  withProductMeta,
-}
+export type { Products, ProductMeta }
+export { ProductContext, ProductMetaProvider, withProductMeta }

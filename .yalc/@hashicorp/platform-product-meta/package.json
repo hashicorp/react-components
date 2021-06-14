@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/platform-product-meta",
   "description": "Product metadata utility for HashiCorp next.js websites",
-  "version": "0.0.0+174bb874",
+  "version": "0.0.0+30527877",
   "author": "HashiCorp",
   "peerDependencies": {
     "react": ">= 16.x"
@@ -15,5 +15,5 @@
     "access": "public",
     "directory": "dist"
   },
-  "yalcSig": "174bb8743016d2f725ee5219eccdac2a"
+  "yalcSig": "3052787724c7aab933f3e1bca3dbd950"
 }
