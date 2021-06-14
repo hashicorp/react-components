@@ -1,0 +1,5 @@
+$ cat <<EOF
+This is some text,
+& more text, that I'm
+writing in a heredoc.
+EOF

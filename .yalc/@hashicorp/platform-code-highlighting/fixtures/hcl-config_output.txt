@@ -1,0 +1,17 @@
+<span class="token keyword">variable<span class="token type variable"> "ami_id" </span></span><span class="token punctuation">{</span>
+  <span class="token property">type</span>        <span class="token punctuation">=</span> string
+  <span class="token property">description</span> <span class="token punctuation">=</span> <span class="token string">"AMI ID to use"</span>
+  <span class="token property">default</span>     <span class="token punctuation">=</span> <span class="token string">"ami-09d95fab7fff3776c"</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">variable<span class="token type variable"> "instance_type" </span></span><span class="token punctuation">{</span>
+  <span class="token property">type</span>        <span class="token punctuation">=</span> string
+  <span class="token property">description</span> <span class="token punctuation">=</span> <span class="token string">"Instance type to use"</span>
+  <span class="token property">default</span>     <span class="token punctuation">=</span> <span class="token string">"t3.micro"</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">variable<span class="token type variable"> "availability_zone" </span></span><span class="token punctuation">{</span>
+  <span class="token property">type</span>        <span class="token punctuation">=</span> string
+  <span class="token property">description</span> <span class="token punctuation">=</span> <span class="token string">"Availability Zone to use"</span>
+  <span class="token property">default</span>     <span class="token punctuation">=</span> <span class="token string">"us-east-1a"</span>
+<span class="token punctuation">}</span>

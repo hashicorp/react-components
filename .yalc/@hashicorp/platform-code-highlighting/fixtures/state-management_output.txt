@@ -1,0 +1,8 @@
+<span class="token punctuation">{</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+  <span class="token property">"terraform_version"</span><span class="token operator">:</span> <span class="token string">"0.13.5"</span><span class="token punctuation">,</span>
+  <span class="token property">"serial"</span><span class="token operator">:</span> <span class="token number">26</span><span class="token punctuation">,</span>
+  <span class="token property">"lineage"</span><span class="token operator">:</span> <span class="token string">"3c255742-debd-2c33-ff5f-53a5181f36b2"</span><span class="token punctuation">,</span>
+  <span class="token property">"outputs"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"resources"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>

@@ -2,7 +2,7 @@ import { Component, createRef } from 'react'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
 import classNames from 'classnames'
-import { withProductMeta } from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import { withProductMeta } from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import CloseIcon from './img/close-icon.svg?include'
 

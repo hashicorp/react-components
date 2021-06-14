@@ -1,0 +1,5 @@
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">EOF
+This is some text,
+&#x26; more text, that I'm
+writing in a heredoc.
+EOF</span></span></span>

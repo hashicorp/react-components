@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/platform-nextjs-plugin",
   "description": "Core plugin for HashiCorp next.js websites",
-  "version": "0.0.0+a0413fb2",
+  "version": "0.0.0+c206ca5c",
   "author": "HashiCorp",
   "scripts": {
     "build": "rm -rf ./dist && tsc"
@@ -29,5 +29,5 @@
     "access": "public",
     "directory": "dist"
   },
-  "yalcSig": "a0413fb287568ec631a20f9b18c881f9"
+  "yalcSig": "c206ca5c96c1db571ca631c4038aef39"
 }

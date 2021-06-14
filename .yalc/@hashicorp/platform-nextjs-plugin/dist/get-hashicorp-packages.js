@@ -28,6 +28,7 @@ function getHashicorpPackages(directory, isRecursive = false) {
   fs_1.default.readdirSync(dirToSearch).forEach((dir) => {
     if (
       (dir !== 'react-global-styles' && dir.startsWith('react-')) ||
+      dir.startsWith('platform-') ||
       dir === 'nextjs-scripts' ||
       dir === 'versioned-docs'
     )

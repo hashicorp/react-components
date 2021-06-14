@@ -7,6 +7,7 @@ module.exports = withHashicorp({
     '@hashicorp/react-.*',
     '@hashicorp/platform-*',
     '@hashicorp/sentinel-embedded',
+    '@hashicorp/platform-product-meta',
   ],
 })(
   withSwingset({
