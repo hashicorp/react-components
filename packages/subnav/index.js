@@ -25,6 +25,7 @@ const productAllowList = {
 function SubnavInner({
   hasOverflow,
   titleLink,
+  product,
   ctaLinks = [],
   hideGithubStars,
   menuItems,
@@ -33,8 +34,6 @@ function SubnavInner({
   currentPath,
   Link,
 }) {
-  // Set the brand theme automatically based on the nav's title
-  const product = productAllowList[titleLink.text.toLowerCase()] || 'hashicorp'
   const { themeClass } = useProductMeta(product) // overrides --brand css vars
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
   const menuItemsWithActive = traverse(menuItems, (_key, value) => {
@@ -95,6 +94,9 @@ function SubnavInner({
 
 function Subnav(props) {
   const [isSticky, hasOverflow, wrapperRef] = useNavRef()
+  // Set the brand theme automatically based on the nav's title
+  const product =
+    productAllowList[props.titleLink.text.toLowerCase()] || 'hashicorp'
 
   return (
     <nav
@@ -102,8 +104,14 @@ function Subnav(props) {
       className={classNames('g-subnav', {
         'is-sticky': isSticky,
       })}
+      aria-label={`${product} website navigation`}
     >
-      <SubnavInner {...props} hasOverflow={hasOverflow} isSticky={isSticky} />
+      <SubnavInner
+        {...props}
+        product={product}
+        hasOverflow={hasOverflow}
+        isSticky={isSticky}
+      />
     </nav>
   )
 }
