@@ -1,4 +1,4 @@
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta-meta'
 
 export default function EnterpriseAlert({ product, inline, children }) {
   const { name, slug, themeClass } = useProductMeta(product)

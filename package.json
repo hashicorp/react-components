@@ -5,6 +5,8 @@
     "@hashicorp/mktg-global-styles": "^3.0.2",
     "@hashicorp/mktg-logos": "^1.0.2",
     "@hashicorp/nextjs-scripts": "^17.0.0",
+    "@hashicorp/platform-nextjs-plugin": "file:.yalc/@hashicorp/platform-nextjs-plugin",
+    "@hashicorp/platform-product-meta": "file:.yalc/@hashicorp/platform-product-meta",
     "@hashicorp/sentinel-embedded": "^0.0.9",
     "classnames": "^2.2.6",
     "next": "^10.0.6",

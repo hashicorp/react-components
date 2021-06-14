@@ -1,0 +1,107 @@
+/* 
+ * Product Theme Classes 
+ * ----------------------
+ * These override the base 'brand' custom properties for the product theme
+ * 
+ * These are the current base 'brand' properties to override:
+ * See '@hashicorp/mktg-global-styles/custom-properties/color.css'
+ *
+  V3 Colors
+    --brand (cta-blue / primary)
+    --brand-secondary
+    --brand-accent
+    --brand-gradient
+    --brand-logomark
+    --brand-link
+    --brand-link-on-dark
+ * 
+ * If the custom property doesn't exist, it will defer to the root 'brand'
+ */
+
+.waypoint {
+  --brand: var(--waypoint);
+  --brand-secondary: var(--waypoint-secondary);
+  --brand-logomark: var(--waypoint-logomark);
+  --brand-accent: var(--waypoint-accent);
+  --brand-gradient: var(--waypoint-gradient);
+  --brand-link: var(--waypoint-link);
+  --brand-link-on-dark: var(--waypoint-link-on-dark);
+  --brand-text-on-primary: var(--waypoint-text-on-primary);
+}
+
+.boundary {
+  --brand: var(--boundary);
+  --brand-secondary: var(--boundary-secondary);
+  --brand-logomark: var(--boundary-logomark);
+  --brand-accent: var(--boundary-accent);
+  --brand-gradient: var(--boundary-gradient);
+  --brand-link: var(--boundary-link);
+  --brand-link-on-dark: var(--boundary-link-on-dark);
+  --brand-text-on-primary: var(--boundary-text-on-primary);
+}
+
+.vagrant {
+  --brand: var(--vagrant);
+  --brand-secondary: var(--vagrant-secondary);
+  --brand-logomark: var(--vagrant-logomark);
+  --brand-accent: var(--vagrant-accent);
+  --brand-gradient: var(--vagrant-gradient);
+  --brand-link: var(--vagrant-link);
+  --brand-link-on-dark: var(--vagrant-link-on-dark);
+  --brand-text-on-primary: var(--vagrant-text-on-primary);
+}
+
+.packer {
+  --brand: var(--packer);
+  --brand-secondary: var(--packer-secondary);
+  --brand-logomark: var(--packer-logomark);
+  --brand-accent: var(--packer-accent);
+  --brand-gradient: var(--packer-gradient);
+  --brand-link: var(--packer-link);
+  --brand-link-on-dark: var(--packer-link-on-dark);
+  --brand-text-on-primary: var(--packer-text-on-primary);
+}
+
+.nomad {
+  --brand: var(--nomad);
+  --brand-secondary: var(--nomad-secondary);
+  --brand-logomark: var(--nomad-logomark);
+  --brand-accent: var(--nomad-accent);
+  --brand-gradient: var(--nomad-gradient);
+  --brand-link: var(--nomad-link);
+  --brand-link-on-dark: var(--nomad-link-on-dark);
+  --brand-text-on-primary: var(--nomad-text-on-primary);
+}
+
+.terraform {
+  --brand: var(--terraform);
+  --brand-secondary: var(--terraform-secondary);
+  --brand-logomark: var(--terraform-logomark);
+  --brand-accent: var(--terraform-accent);
+  --brand-gradient: var(--terraform-gradient);
+  --brand-link: var(--terraform-link);
+  --brand-link-on-dark: var(--terraform-link-on-dark);
+  --brand-text-on-primary: var(--terraform-text-on-primary);
+}
+
+.consul {
+  --brand: var(--consul);
+  --brand-secondary: var(--consul-secondary);
+  --brand-logomark: var(--consul-logomark);
+  --brand-accent: var(--consul-accent);
+  --brand-gradient: var(--consul-gradient);
+  --brand-link: var(--consul-link);
+  --brand-link-on-dark: var(--consul-link-on-dark);
+  --brand-text-on-primary: var(--consul-text-on-primary);
+}
+
+.vault {
+  --brand: var(--vault);
+  --brand-secondary: var(--vault-secondary);
+  --brand-logomark: var(--vault-logomark);
+  --brand-accent: var(--vault-accent);
+  --brand-gradient: var(--vault-gradient);
+  --brand-link: var(--vault-link);
+  --brand-link-on-dark: var(--vault-link-on-dark);
+  --brand-text-on-primary: var(--vault-text-on-primary);
+}

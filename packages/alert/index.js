@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import fragment from './fragment.graphql'
 
 function Alert({ product, url, tag, text, state, textColor }) {

@@ -1,0 +1,18 @@
+{
+  "version": "v1",
+  "packages": {
+    "swingset": {
+      "signature": "41512158ed3d0ea882cacd365253b446",
+      "file": true,
+      "replaced": "^0.8.0"
+    },
+    "@hashicorp/platform-nextjs-plugin": {
+      "signature": "a0413fb287568ec631a20f9b18c881f9",
+      "file": true
+    },
+    "@hashicorp/platform-product-meta": {
+      "signature": "174bb8743016d2f725ee5219eccdac2a",
+      "file": true
+    }
+  }
+}
