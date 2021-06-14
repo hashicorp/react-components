@@ -18,7 +18,10 @@ export default function HashiStackMenu({ onPanelChange }) {
 
   return (
     <header className={styles.hashiStackMenu}>
-      <nav className={styles.nav}>
+      <nav
+        className={styles.nav}
+        aria-label="Primary HashiCorp website navigation"
+      >
         <a
           aria-label="To main HashiCorp website"
           href="https://www.hashicorp.com/"
