@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/platform-product-meta-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import useNavRef from './helpers/useNavRef'
 
 import MenuItemsOverflow from './partials/MenuItemsOverflow/index.js'

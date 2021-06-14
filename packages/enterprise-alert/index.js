@@ -1,4 +1,4 @@
-import useProductMeta from '@hashicorp/platform-product-meta-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 
 export default function EnterpriseAlert({ product, inline, children }) {
   const { name, slug, themeClass } = useProductMeta(product)

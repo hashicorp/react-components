@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 // @hashicorp imports
-import useProductMeta from '@hashicorp/platform-product-meta-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import LinkWrap, { isAbsoluteURL } from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'
 // local utilities

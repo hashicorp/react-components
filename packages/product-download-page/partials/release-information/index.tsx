@@ -1,5 +1,5 @@
 import { useState, Fragment } from 'react'
-import useProductMeta from '@hashicorp/platform-product-meta-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import Dropdown from '../dropdown'
 import {
   prettyArch,

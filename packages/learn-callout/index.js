@@ -1,4 +1,4 @@
-import useProductMeta from '@hashicorp/platform-product-meta-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import Button from '@hashicorp/react-button'
 
 export default function LearnCallout({ headline, product, background, items }) {

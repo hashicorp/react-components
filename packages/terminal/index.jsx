@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import useProductMeta from '@hashicorp/platform-product-meta-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import styles from './Terminal.module.css'
 

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/platform-product-meta-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import RightArrow from './img/arrow-right.svg?include'
