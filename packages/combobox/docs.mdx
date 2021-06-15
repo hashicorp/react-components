@@ -1,0 +1,18 @@
+---
+componentName: 'Combobox'
+---
+
+<LiveComponent>{`
+      <Combobox onSelect={() => console.log('foo')}>
+        <ComboboxInput aria-labelledby="demo" />
+        <ComboboxPopover>
+          <ComboboxList aria-labelledby="demo">
+            <ComboboxOption value="Apple" />
+            <ComboboxOption value="Banana" />
+            <ComboboxOption value="Orange" />
+            <ComboboxOption value="Pineapple" />
+            <ComboboxOption value="Kiwi" />
+          </ComboboxList>
+      </ComboboxPopover>
+      </Combobox>
+      `}</LiveComponent>
