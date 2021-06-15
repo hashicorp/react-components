@@ -1,0 +1,10 @@
+query BlogPosts {
+  allBlogPosts(first: 25) {
+    slug
+    title
+    snippet
+    thumbnail {
+      ...imageFields
+    }
+  }
+}

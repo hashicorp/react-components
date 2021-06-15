@@ -29,6 +29,14 @@
     "@hashicorp/platform-code-highlighting": {
       "signature": "24d7c81790f5c5104814003a45260586",
       "file": true
+    },
+    "@hashicorp/platform-cli": {
+      "signature": "917b63deb3ae7adaca47e4edeb31e97b",
+      "file": true
+    },
+    "@types/hashicorp-web": {
+      "signature": "d27d577133cb6dc2494eebb67f397b4c",
+      "file": true
     }
   }
 }

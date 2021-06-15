@@ -4,7 +4,8 @@
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^3.0.2",
     "@hashicorp/mktg-logos": "^1.0.2",
-    "@hashicorp/nextjs-scripts": "^17.0.0",
+    "@hashicorp/nextjs-scripts": "^18.4.0",
+    "@hashicorp/platform-cli": "file:.yalc/@hashicorp/platform-cli",
     "@hashicorp/platform-code-highlighting": "file:.yalc/@hashicorp/platform-code-highlighting",
     "@hashicorp/platform-docs-mdx": "file:.yalc/@hashicorp/platform-docs-mdx",
     "@hashicorp/platform-markdown-utils": "file:.yalc/@hashicorp/platform-markdown-utils",
@@ -12,6 +13,7 @@
     "@hashicorp/platform-product-meta": "file:.yalc/@hashicorp/platform-product-meta",
     "@hashicorp/platform-util": "file:.yalc/@hashicorp/platform-util",
     "@hashicorp/sentinel-embedded": "^0.0.9",
+    "@types/hashicorp-web": "file:.yalc/@types/hashicorp-web",
     "classnames": "^2.2.6",
     "next": "^10.0.6",
     "next-remote-watch": "^0.3.0",
@@ -35,7 +37,7 @@
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
-    "regenerator-runtime": "^0.13.7"
+    "typescript": "^4.3.2"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",

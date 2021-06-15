@@ -1,5 +1,5 @@
 module.exports = {
   root: true,
-  extends: './node_modules/@hashicorp/nextjs-scripts/.eslintrc.js',
+  extends: './node_modules/@hashicorp/platform-cli/config/.eslintrc.js',
   /* Specify overrides here */
 }

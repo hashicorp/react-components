@@ -1,0 +1,505 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const path = require('path')
+const pkg = require('./package.json')
+const signale = require('signale')
+const chalk = require('chalk')
+const ESLintCLIEngine = require('eslint').CLIEngine
+const lintStaged = require('lint-staged')
+const prettier = require('prettier')
+const globby = require('globby')
+const fs = require('fs')
+const stylelint = require('stylelint')
+
+const generators = require('./generators')
+const open = require('open')
+const datoApiConfig = require('@hashicorp/platform-cms/config')
+
+program.version(pkg.version)
+
+const projectRoot = process.cwd()
+const pluginRoot = path.join(__dirname, '..')
+
+// change command directory to project root
+process.chdir(projectRoot)
+
+// Linting Task
+program
+  .command('lint [files...]')
+  .description('Lint CSS and JS files')
+  .action(async (files) => {
+    files = files.length ? files : ['**/*']
+
+    /** Stylelint configuration filename. */
+    const stylelintConfigBase = '.stylelintrc.js'
+
+    /** ESlint configuration filename. */
+    const eslintConfigBase = '.eslintrc.js'
+
+    // ensure local linting configuration files.
+    checkForConfig(stylelintConfigBase)
+    checkForConfig(eslintConfigBase)
+
+    signale.await('Linting with Stylelint...')
+
+    const stylelintConfigFile = path.join(projectRoot, stylelintConfigBase)
+
+    const cssResults = await doStylelint(files, stylelintConfigFile)
+    const cssErrorsSize = cssResults.errors.length
+
+    logLintResults(cssResults.errors, 'error')
+    logLintResults(cssResults.warnings, 'warning')
+
+    if (!cssErrorsSize) signale.success('Stylelint passed!')
+
+    signale.await('Linting with ESLint...')
+
+    const jsResults = await doEslint(files)
+    const jsErrorSize = jsResults.errors.length
+
+    logLintResults(jsResults.errors, 'error')
+    logLintResults(jsResults.warnings, 'warning')
+
+    if (!jsErrorSize) signale.success('ESLint passed!')
+
+    process.exit(cssErrorsSize || jsErrorSize ? 1 : 0)
+  })
+
+// StyleLint Task
+program
+  .command('lint:css [files...]')
+  .description('Lint CSS files with StyleLint')
+  .action(async (files) => {
+    files = files.length ? files : ['**/*']
+
+    /** Stylelint configuration filename. */
+    const stylelintConfigBase = '.stylelintrc.js'
+
+    // ensure local stylelint configuration files.
+    checkForConfig(stylelintConfigBase)
+
+    signale.await('Linting with Stylelint...')
+
+    const stylelintConfigFile = path.join(projectRoot, stylelintConfigBase)
+
+    const cssResults = await doStylelint(files, stylelintConfigFile)
+    const cssErrorsSize = cssResults.errors.length
+
+    logLintResults(cssResults.errors, 'error')
+    logLintResults(cssResults.warnings, 'warning')
+
+    if (!cssErrorsSize) signale.success('Stylelint passed!')
+
+    process.exit(cssErrorsSize ? 1 : 0)
+  })
+
+// ESLint Task
+program
+  .command('lint:js [files...]')
+  .description('Lint source files with ESLint')
+  .action(async (files) => {
+    files = files.length ? files : ['**/*']
+
+    /** ESlint configuration filename. */
+    const eslintConfigBase = '.eslintrc.js'
+
+    // ensure local eslint configuration file.
+    checkForConfig(eslintConfigBase)
+
+    signale.await('Linting with ESLint...')
+
+    const jsResults = await doEslint(files)
+    const jsErrorSize = jsResults.errors.length
+
+    logLintResults(jsResults.errors, 'error')
+    logLintResults(jsResults.warnings, 'warning')
+
+    if (!jsErrorSize) signale.success('ESLint passed!')
+
+    process.exit(jsErrorSize ? 1 : 0)
+  })
+
+/** Runs ESLint over files and returns any errors and warnings. */
+async function doEslint(files) {
+  const filesExpanded = await globby(files, {
+    ignore: ['node_modules/', 'public/', 'out/'],
+    gitignore: true,
+  })
+  const validExtensions = ['.js', '.jsx', '.ts', '.tsx']
+  const validFiles = filesExpanded.filter((f) =>
+    validExtensions.includes(path.extname(f))
+  )
+  if (validFiles.length === 0) {
+    signale.warn('ESLint did not find any valid files to lint')
+    return { errors: [], warnings: [] }
+  }
+
+  const { results } = new ESLintCLIEngine({
+    extensions: validExtensions,
+    fix: true,
+  }).executeOnFiles(validFiles)
+  const errors = []
+  const warnings = []
+
+  for (const { filePath: file, messages } of results) {
+    const fileErrors = []
+    const fileWarnings = []
+
+    for (const { severity, ruleId: rule, message, line, column } of messages) {
+      const messages = severity === 2 ? fileErrors : fileWarnings
+
+      if (rule) messages.push({ rule, message, line, column })
+    }
+
+    if (fileErrors.length) errors.push({ file, messages: fileErrors })
+    if (fileWarnings.length) warnings.push({ file, messages: fileWarnings })
+  }
+
+  return { errors, warnings }
+}
+
+/** Runs Stylelint over files and returns any errors and warnings. */
+async function doStylelint(files, stylelintConfigFile) {
+  const filesExpanded = await globby(files, {
+    ignore: ['node_modules/', 'public/', 'out/'],
+    gitignore: true,
+  })
+  const validFiles = filesExpanded.filter((f) => path.extname(f) === '.css')
+  if (validFiles.length === 0) {
+    signale.warn('Stylelint did not find any valid files to lint')
+    return { errors: [], warnings: [] }
+  }
+
+  const { results } = await stylelint.lint({
+    configFile: stylelintConfigFile,
+    files: validFiles,
+    fix: true,
+    globbyOptions: { gitignore: true },
+  })
+  const errors = []
+  const warnings = []
+
+  for (const { source: file, warnings: messages } of results) {
+    const fileErrors = []
+    const fileWarnings = []
+
+    for (const { severity, rule, text: message, line, column } of messages) {
+      const messages = severity === 'error' ? fileErrors : fileWarnings
+
+      if (rule) messages.push({ rule, message, line, column })
+    }
+
+    if (fileErrors.length) errors.push({ file, messages: fileErrors })
+    if (fileWarnings.length) warnings.push({ file, messages: fileWarnings })
+  }
+
+  return { errors, warnings }
+}
+
+program
+  .command('format [files...]')
+  .description('Format files with Prettier')
+  .action(async (fileGlobs) => {
+    signale.await('Formatting files with Prettier...')
+    checkForConfig('prettier.config.js')
+
+    // no arguments provided = all files
+    fileGlobs = fileGlobs.length ? fileGlobs : ['**/*']
+
+    // if relative paths are given, lets make them absolute
+    const fileGlobsFullPath = fileGlobs.map((f) =>
+      f[0] === path.sep ? f : path.join(projectRoot, f)
+    )
+
+    // we will use this later to determine which files prettier can lint, and
+    // what parser it should use to lint them
+    // https://prettier.io/docs/en/options.html#parser
+    const extensionParserMap = {
+      mdx: 'mdx',
+      md: 'markdown',
+      jsx: 'babel',
+      js: 'babel',
+      tsx: 'babel-ts',
+      ts: 'babel-ts',
+      css: 'css',
+      json: 'json',
+      html: 'html',
+      graphql: 'graphql',
+      yaml: 'yaml',
+      yml: 'yaml',
+    }
+
+    // take prettierignore into account
+    // read ignore file if present, format into negate patterns, add to glob array
+    const prettierIgnore = await globby(
+      path.join(projectRoot, '.prettierignore')
+    )
+
+    if (prettierIgnore[0]) {
+      const content = fs.readFileSync(prettierIgnore[0], 'utf8')
+      fileGlobsFullPath.push(
+        ...content
+          .split(/\r?\n/)
+          .filter(Boolean)
+          .filter((ignore) => !ignore.startsWith('#'))
+          .map((ignore) => {
+            if (ignore.startsWith('!'))
+              return '!' + path.posix.join(projectRoot, ignore.slice(1))
+            return '!' + path.posix.join(projectRoot, ignore)
+          })
+      )
+    }
+
+    // get the glob-expanded paths
+    const files = await globby(fileGlobsFullPath, {
+      ignore: [
+        path.join(projectRoot, 'node_modules/'),
+        path.join(projectRoot, 'public/'),
+        path.join(projectRoot, 'out/'),
+      ],
+    })
+
+    // drop out any files that are not able to be processed by prettier
+    const filteredFiles = files.filter((f) => {
+      return Object.keys(extensionParserMap).includes(path.extname(f).slice(1))
+    })
+
+    // if there aren't any left, note that we aren't doing any formatting
+    if (filteredFiles.length === 0) {
+      signale.warn('Prettier did not find any valid files to format')
+    }
+
+    // now we pull out the file contents and extensions for parsing
+    const fileContents = filteredFiles.map((f) => fs.readFileSync(f, 'utf8'))
+    const fileExtensions = filteredFiles.map((f) => path.extname(f).slice(1))
+
+    // then format the file contents through prettier
+    const prettierConfig = await prettier.resolveConfig(projectRoot)
+
+    const formattedFileContents = fileContents.map((content, idx) => {
+      signale.info(
+        `Formatting ${filteredFiles[idx].replace(projectRoot, '').slice(1)}`
+      )
+      return prettier.format(
+        content,
+        Object.assign({}, prettierConfig, {
+          filepath: files[idx],
+          parser: extensionParserMap[fileExtensions[idx]],
+        })
+      )
+    })
+
+    // finally, we write back to the original file
+    formattedFileContents.forEach((content, idx) =>
+      fs.writeFileSync(filteredFiles[idx], content)
+    )
+
+    signale.success('Formatting complete!')
+  })
+
+// Perform git pre-commit hook with lint-staged package
+program
+  .command('precommit')
+  .option('-v --verbose', 'Verbose output from commands run')
+  .description('A recommended set of checks to be run before each commit')
+  .action(async (opts) => {
+    const configPath = path.join(pluginRoot, 'config/lint-staged.config.js')
+
+    try {
+      const success = await lintStaged({
+        configPath,
+        verbose: opts.verbose,
+      })
+      if (!success) process.exit(1)
+    } catch (e) {
+      // Failed to load configuration
+      signale.error(e)
+      process.exit(1)
+    }
+  })
+
+// Generators
+program
+  .command('generate <cmd>')
+  .description('Generate a new template for a page or component')
+  .action((subcommand) => {
+    generators[subcommand]()
+  })
+
+program.on('command:*', () => {
+  signale.log(
+    'Invalid command: %s\nSee --help for a list of available commands.',
+    program.args.join(' ')
+  )
+  process.exit(1)
+})
+
+// Markdown Blocks
+
+program
+  .command('markdown-blocks <path>')
+  .description('Evaluate markdown blocks on a given markdown file')
+  .action((filePath) => {
+    const absPath = path.resolve(process.cwd(), filePath)
+    const contents = fs.readFileSync(absPath, 'utf8')
+
+    // In the block of code below, we cheaply parse the markdown file and pull out names and locations of blocks
+    let matching = false
+    const matches = []
+    const contentsSplit = contents.split('\n')
+
+    contentsSplit.map((line, idx) => {
+      if (!matching) {
+        // by default, we search for a block opening. if there is one, we set the value of "matching"
+        // and track the block name and the index of the line where the block begins
+        const beginMatch = line.match(/^<!--\s+BEGIN:\s(.*?)\s+-->$/)
+        if (beginMatch) {
+          matching = true
+          matches.push({ start: idx, block: beginMatch[1] })
+        }
+      } else {
+        // If we are actively matching within a block, monitor for the end
+        const endMatch = line.match(/^<!--\s+END:\s(.*?)\s+-->$/)
+        if (endMatch) {
+          const latestMatch = matches[matches.length - 1]
+
+          // If we reach and end with an un-matching block name, throw an error
+          if (endMatch[1] !== latestMatch.block) {
+            throw new Error(
+              `Mismatched block names: Block opens with "${latestMatch.block}", and closes with "${endMatch[1]}". Please make sure opening and closing block names are matching. Blocks can not be nested.`
+            )
+          }
+
+          // Push the ending index of the block into the match result and set matching to false
+          latestMatch.end = idx
+          matching = false
+        }
+      }
+    })
+
+    // Now that we have all the info we need about the blocks, let's do the replacements
+    let offset = 0
+    matches.map((match) => {
+      // find and read the block file
+      let block
+      const blockPath = path.join(
+        __dirname,
+        'markdown-blocks',
+        `${match.block}.md`
+      )
+
+      try {
+        block = fs.readFileSync(blockPath, 'utf8')
+      } catch (err) {
+        if (err.toString().match('ENOENT')) {
+          throw new Error(
+            `Block "${match.block}" was specified, but no matching file was found at "${blockPath}"`
+          )
+        } else {
+          throw err
+        }
+      }
+
+      // trim off trailing newline, split by lines
+      block = block.trim().split('\n')
+
+      // now we prepare to replace the content! we do this with a splice, where we
+      // specify the start index, how many items we want to delete, and then what we want to
+      // replace them with
+
+      // start one index later to avoid overwriting block start comment
+      const startAtIndex = match.start + offset + 1
+      // delete one less line to avoid overwriting block end comment
+      const linesToDelete = match.end - match.start - 1
+
+      contentsSplit.splice(
+        startAtIndex,
+        linesToDelete,
+        '<!-- Generated text, do not edit directly -->',
+        '',
+        ...block,
+        ''
+      )
+
+      // since our above splice changed the indices, we need to account for the offset
+      // here we account for the added block length, add 3 for the "generated text" comment
+      // and two surrounding newlines, then subtract existing lines to get the overall offset
+      offset += block.length + 3 - linesToDelete
+    })
+
+    // finally we write the modified file!
+    fs.writeFileSync(absPath, contentsSplit.join('\n'))
+  })
+
+// Launch Dato's GraphiQL Explorer
+program
+  .command('graphiql')
+  .description("Launch Dato's GraphiQL in-browser IDE")
+  .action(() => {
+    open(
+      `https://cda-explorer.datocms.com/?apitoken=${datoApiConfig.headers.Authorization}`,
+      { url: true }
+    )
+  })
+
+program.parse(process.argv)
+
+function checkForConfig(filename) {
+  signale.await(`Looking for presence of ${filename}...`)
+
+  if (fs.existsSync(path.join(projectRoot, filename))) {
+    signale.success(`Found an existing ${filename}`)
+  } else {
+    createConfigFile(filename)
+
+    signale.success(`Created ${filename}!`)
+  }
+}
+
+function createConfigFile(filename) {
+  let contents
+
+  if (filename === '.eslintrc.js') {
+    contents = `module.exports = {
+  root: true,
+  extends: './node_modules/@hashicorp/nextjs-scripts/.eslintrc.js',
+  /* Specify overrides here */
+}\n`
+  } else {
+    contents = `module.exports = {
+  ...require("@hashicorp/nextjs-scripts/${filename}")
+  /* Specify overrides here */
+}\n`
+  }
+
+  fs.writeFileSync(path.join(projectRoot, filename), contents)
+}
+
+/** Logs the results of a lint. */
+function logLintResults(results, severity) {
+  const chalkBySeverity = severity === 'error' ? chalk.red : chalk.yellow
+  const signaleBySeverity = severity === 'error' ? signale.error : signale.warn
+
+  results.map((result) => {
+    result.messages.map((message) => {
+      signale.log(
+        `${chalkBySeverity(`› ${message.message}`)} ${chalk.bold(
+          `[${message.rule}]`
+        )}`
+      )
+
+      signale.log(
+        `  ${chalk.blue(result.file)}${chalk.gray(':')}${chalk.magenta(
+          `${message.line}${chalk.gray(':')}${message.column}`
+        )}`
+      )
+    })
+  })
+
+  if (results.length) {
+    signale.log('')
+    signaleBySeverity(`Found ${results.length} ${severity}(s)`)
+    signale.log('')
+  }
+}

@@ -1,0 +1,11 @@
+query BlogPost($slug: String!) {
+  blogPost(filter: { slug: { eq: $slug } }) {
+    id
+    slug
+    body
+    date
+    author {
+      ...authorCardFields
+    }
+  }
+}

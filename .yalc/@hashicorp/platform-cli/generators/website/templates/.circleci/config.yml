@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build-website-docker-image:
+    docker:
+      - image: circleci/buildpack-deps
+    shell: /usr/bin/env bash -euo pipefail -c
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker Image if Necessary
+          command: |
+            # Ignore job if running an enterprise build
+            IMAGE_TAG=$(cat Dockerfile package-lock.json | sha256sum | awk '{print $1;}')
+            echo "Using $IMAGE_TAG"
+            if curl https://hub.docker.com/v2/repositories/hashicorp/<%= name %>-website/tags/$IMAGE_TAG -fsL > /dev/null; then
+                echo "Dependencies have not changed, not building a new website docker image."
+            else
+                cd website/
+                docker build -t hashicorp/<%= name %>-website:$IMAGE_TAG .
+                docker tag hashicorp/<%= name %>-website:$IMAGE_TAG hashicorp/<%= name %>-website:latest
+                docker login -u $WEBSITE_DOCKER_USER -p $WEBSITE_DOCKER_PASS
+                docker push hashicorp/<%= name %>-website
+            fi
