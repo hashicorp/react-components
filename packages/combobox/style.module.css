@@ -1,37 +1,70 @@
 .combobox {
   --reach-combobox: 1;
-  & [data-reach-combobox-popover] {
-    border: solid 1px hsla(0, 0%, 0%, 0.25);
-    background: hsla(0, 100%, 100%, 0.99);
-    font-size: 85%;
+  z-index: 2;
+}
+
+.popover {
+  &[data-reach-combobox-popover] {
+    border: 1px solid var(--gray-5);
+    margin-top: 4px;
+
+    & [data-reach-combobox-list] {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      box-shadow: var(--select-shadow);
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    & [data-reach-combobox-option] {
+      cursor: pointer;
+      margin: 0;
+    }
+
+    & [data-reach-combobox-option][aria-selected='true'] {
+      background: var(--gray-5);
+    }
+
+    & [data-reach-combobox-option]:hover {
+      background: var(--gray-5);
+    }
+
+    & [data-reach-combobox-option][aria-selected='true']:hover {
+      background: var(--gray-4);
+    }
+  }
+}
+
+.input {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--gray-2);
+  border: 1px solid var(--gray-5);
+  background: var(--white);
+  border-radius: 2px;
+  padding: 12px;
+  line-height: 1.5em; /* Match .g-type-* line-height for siblings (i.e. buttons) */
+
+  &:placeholder-shown {
+    color: var(--gray-3);
   }
 
-  & [data-reach-combobox-list] {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    user-select: none;
+  &[data-has-error='true'] {
+    border-color: var(--danger);
   }
+}
 
-  & [data-reach-combobox-option] {
-    cursor: pointer;
-    margin: 0;
-    padding: 0.25rem 0.5rem;
-  }
+.option {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  padding: 8px;
+  color: var(--gray-2);
 
-  & [data-reach-combobox-option][aria-selected='true'] {
-    background: hsl(211, 10%, 95%);
-  }
-
-  & [data-reach-combobox-option]:hover {
-    background: hsl(211, 10%, 92%);
-  }
-
-  & [data-reach-combobox-option][aria-selected='true']:hover {
-    background: hsl(211, 10%, 90%);
-  }
-
-  & [data-suggested-value] {
-    font-weight: bold;
-  }
+  /* @TODO - Re-document this?
+  & [data-highlighted] {
+    font-weight: 400;
+  } */
 }
