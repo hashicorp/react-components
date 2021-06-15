@@ -50,7 +50,7 @@ function slugifyToKey(title) {
 }
 
 function NavMenu({ children }) {
-  return <menu className={styles.menu}>{children}</menu>
+  return <ul className={styles.menu}>{children}</ul>
 }
 
 function Logo() {
