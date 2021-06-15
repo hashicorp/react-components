@@ -62,8 +62,18 @@
   font-size: 16px;
   padding: 8px;
   color: var(--gray-2);
-
-  /* @TODO - Re-document this?
+  /* Note: consider how the following selectors render in <ComboboxOptionText />  */
+  /* [data-reach-combobox-option-text] {
+  } 
+  /* the matching segments of text */
+  & [data-user-value] {
+    font-weight: var(--font-weight-bold);
+  }
+  /* the unmatching segments */
+  /* [data-suggested-value] {
+  } */
+  /* Customize with: https://reach.tech/combobox/#comboboxoptiontext-css-selectors */
+  /*
   & [data-highlighted] {
     font-weight: 400;
   } */
