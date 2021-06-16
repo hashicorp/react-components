@@ -12,6 +12,13 @@ module.exports = {
     control: { type: 'text' },
     testValue: 'https://www.hashicorp.com',
   },
+  label: {
+    description:
+      'A label that describes what this button does or where it takes the user. This is used for accessibility when the button text itself may not provide enough behavioral context. For example, when using generic CTAs ("Learn More"), use this property to add clarity.',
+    type: 'string',
+    control: { type: 'text' },
+    testValue: 'To main HashiCorp website',
+  },
   className: {
     description:
       'A custom class to be added directly to the button if necessary.',
