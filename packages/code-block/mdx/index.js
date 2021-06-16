@@ -63,16 +63,6 @@ export function CodeTabsWithMargin({ theme = DEFAULT_THEME, ...props }) {
   return <CodeTabs className={s.codeMargin} {...props} theme={theme} />
 }
 
-export function CodeBlockWithMargin({ theme = DEFAULT_THEME, ...rest }) {
-  return (
-    <CodeBlock
-      className={classNames({ [s.codeMargin]: !rest.hasBarAbove })}
-      {...rest}
-      theme={theme}
-    />
-  )
-}
-
 export function CodeBlockConfigWithMargin({ theme = DEFAULT_THEME, ...rest }) {
   return (
     <CodeBlockConfig
@@ -87,9 +77,6 @@ export default function codeMdxPrimitives({ theme = DEFAULT_THEME } = {}) {
   return {
     code: function themedCode(p) {
       return code({ theme, ...p })
-    },
-    CodeBlock: function themedCodeBlock(p) {
-      return CodeBlockWithMargin({ theme, ...p })
     },
     CodeBlockConfig: function themedCodeBlockConfig(p) {
       return CodeBlockConfigWithMargin({ theme, ...p })
