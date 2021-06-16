@@ -81,7 +81,7 @@ test('does not show the banner if not in EU', async () => {
 
 test('sets existing preferences and does not show the banner if preferences are already set', async () => {
   await runWithMockedImport(
-    './cookies',
+    './partials/cookies',
     {
       loadPreferences: () => {
         return { All: false, 'Segment.io': false }
@@ -97,7 +97,7 @@ test('sets existing preferences and does not show the banner if preferences are 
 
 test('shows the banner if preferences are set but version has increased', async () => {
   await runWithMockedImport(
-    './cookies',
+    './partials/cookies',
     {
       loadPreferences: () => {
         return { All: false, 'Segment.io': false, version: 1 }
@@ -114,7 +114,7 @@ test('shows the banner if preferences are set but version has increased', async 
 test('automatically opts in to all if not in EU', async () => {
   let prefs
   await runWithMockedImport(
-    './cookies',
+    './partials/cookies',
     {
       loadPreferences: () => {},
       savePreferences: (preferences) => {
@@ -130,7 +130,7 @@ test('automatically opts in to all if not in EU', async () => {
 
 test('if the manage preferences button is clicked, opens the dialog and makes body un-scrollable', async () => {
   await runWithMockedImport(
-    './dialog',
+    './partials/dialog',
     () => {
       return <p data-testid="mocked-dialog">test</p>
     },
@@ -145,7 +145,7 @@ test('if the manage preferences button is clicked, opens the dialog and makes bo
 
 test('opens the dialog when the open function is called', async () => {
   await runWithMockedImport(
-    './dialog',
+    './partials/dialog',
     () => {
       return <p data-testid="mocked-dialog">test</p>
     },
@@ -161,7 +161,7 @@ test('opens the dialog when the open function is called', async () => {
 test('if accept all button is clicked, any open dialogs are closed and all analytics are loaded', async () => {
   let prefs
   await runWithMockedImport(
-    './cookies',
+    './partials/cookies',
     {
       loadPreferences: () => {},
       savePreferences: (preferences) => {
