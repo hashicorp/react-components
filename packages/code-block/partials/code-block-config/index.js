@@ -35,6 +35,9 @@ function CodeBlockConfig({
     ? languageClass.replace('language-', '')
     : undefined
   const codeChildren = onlyChild.props.children.props.children
+  // Non-highlighted code, which appears when children are a string,
+  // needs to have its HTML entities escaped.
+  // Highlighted code is not affected.
   const code = normalizePlainCode(codeChildren)
 
   // Render the code block, using options passed to CodeBlockConfig

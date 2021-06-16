@@ -17,6 +17,11 @@
 function splitHtmlIntoLines(codeHtml) {
   const lineParts = codeHtml.split('\n')
   return lineParts.map((lineHtml, stableIdx) => {
+    // Cut trailing newlines
+    const isLastLine = stableIdx == lineParts.length - 1
+    const isTrailingNewline = isLastLine && lineHtml == ''
+    if (isTrailingNewline) return null
+    // Otherwise, render the line
     return (
       <span
         // This array is stable, so we can use index as key

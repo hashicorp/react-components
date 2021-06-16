@@ -30,7 +30,7 @@ export function code({
   theme = DEFAULT_THEME,
 }) {
   // Non-highlighted code, which appears when children are a string,
-  // seems to have an extra trailing newline. We remove it.
+  // needs to have its HTML entities escaped.
   // Highlighted code is not affected.
   const code = normalizePlainCode(children)
   // We determine whether to showClipboard from the hideClipboard metastring
