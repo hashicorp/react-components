@@ -5,9 +5,9 @@
 
 import { Component } from 'react'
 import getIntegrations from './integrations'
+import CloseButton from '../img/icn_close'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
-import CloseButton from './icn_close'
 
 export default class ConsentPreferences extends Component {
   constructor(props) {
