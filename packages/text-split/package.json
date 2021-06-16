@@ -1,13 +1,13 @@
 {
   "name": "@hashicorp/react-text-split",
   "description": "Display a title, description, and links alongside arbitrary content",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^5.0.1",
+    "@hashicorp/react-button": "^5.1.0",
     "@hashicorp/react-inline-svg": "^6.0.0",
     "classnames": "^2.2.6"
   },
