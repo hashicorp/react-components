@@ -77,7 +77,7 @@
 
   &:global(.regex),
   &:global(.important) {
-    color: #e90;
+    color: #f25a92;
   }
 
   &:global(.important) {
