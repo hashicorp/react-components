@@ -9,6 +9,8 @@ import {
   ComboboxOptionText,
   ComboboxOptionProps,
 } from '@reach/combobox'
+import { useMemo, useState } from 'react'
+import filterOptions from './utils/filter-options'
 
 export default function Combobox({ onSelect, children }) {
   return (
@@ -18,7 +20,7 @@ export default function Combobox({ onSelect, children }) {
   )
 }
 
-export function ComboboxPopover({ onSelect, children, ...props }) {
+export function ComboboxPopover({ children, ...props }) {
   return (
     <ReachComboboxPopover className={s.popover} {...props}>
       {children}
@@ -26,7 +28,7 @@ export function ComboboxPopover({ onSelect, children, ...props }) {
   )
 }
 
-export function ComboboxInput({ className, ...props }) {
+export function ComboboxInput({ className = '', ...props }) {
   const mergedClassName = className ? `${s.option} ${className}` : s.input
   return <ReachComboboxInput className={mergedClassName} {...props} />
 }
@@ -36,7 +38,7 @@ export interface HashiComboboxOptionProps extends ComboboxOptionProps {
 }
 
 export function ComboboxOption({
-  className,
+  className = '',
   ...props
 }: HashiComboboxOptionProps) {
   const mergedClassName = className ? `${s.option} ${className}` : s.option
@@ -45,3 +47,28 @@ export function ComboboxOption({
 
 // @TODO - Export styled child components
 export { ComboboxList, ComboboxOptionText }
+
+export function ComboboxTypeahead({ label, onSelect, options, renderOption }) {
+  const [term, setTerm] = useState('')
+
+  const results = useOptionMatch({ term, options })
+  return (
+    <Combobox onSelect={onSelect}>
+      <ComboboxInput onChange={(e) => setTerm(e.target.value)} />
+      {results?.length > 0 ? (
+        <ComboboxPopover>
+          <ComboboxList aria-labelledby={label}>
+            {results.map((r) =>
+              renderOption({ value: r.value, label: r.label })
+            )}
+          </ComboboxList>
+        </ComboboxPopover>
+      ) : null}
+    </Combobox>
+  )
+}
+
+function useOptionMatch({ term, options }) {
+  const filteredOptions = useMemo(() => filterOptions(term, options), [term])
+  return filteredOptions !== 0 ? filteredOptions : options // Return all options if the filtered list is still empty
+}

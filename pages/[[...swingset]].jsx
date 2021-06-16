@@ -10,6 +10,7 @@ import {
   ComboboxList,
   ComboboxOption,
   ComboboxOptionText,
+  ComboboxTypeahead,
 } from '../packages/combobox'
 
 import { Tab } from '../packages/tabs'
@@ -63,6 +64,7 @@ const components = {
   ComboboxList,
   ComboboxOption,
   ComboboxOptionText,
+  ComboboxTypeahead,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })

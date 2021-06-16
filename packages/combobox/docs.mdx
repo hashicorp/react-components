@@ -18,3 +18,15 @@ componentName: 'Combobox'
       </Combobox>
       `}
 </LiveComponent>
+
+<LiveComponent>
+  {`
+    <ComboboxTypeahead onSelect={(e) => console.log(e)} 
+      renderOption={(r) => <ComboboxOption value={r.value} />}
+      options={[
+        { label: 'Apple', value: 'apple' },
+        { label: 'Orange', value: 'orange' },
+      ]}
+      />
+      `}
+</LiveComponent>
