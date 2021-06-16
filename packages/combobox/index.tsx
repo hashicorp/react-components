@@ -70,5 +70,5 @@ export function ComboboxTypeahead({ label, onSelect, options, renderOption }) {
 
 function useOptionMatch({ term, options }) {
   const filteredOptions = useMemo(() => filterOptions(term, options), [term])
-  return filteredOptions !== 0 ? filteredOptions : options // Return all options if the filtered list is still empty
+  return filteredOptions.length !== 0 ? filteredOptions : options // Return all options if the filtered list is still empty
 }
