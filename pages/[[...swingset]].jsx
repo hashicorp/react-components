@@ -11,6 +11,8 @@ import {
   ComboboxOption,
   ComboboxOptionText,
 } from '../packages/combobox'
+import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
+import FormikStateViewer from '../swingset-extensions/formik-state-viewer'
 
 import { Tab } from '../packages/tabs'
 import UsageDetails from '../swingset-extensions/usage-details'
@@ -63,6 +65,12 @@ const components = {
   ComboboxList,
   ComboboxOption,
   ComboboxOptionText,
+  Formik,
+  Form,
+  Field,
+  FieldArray,
+  ErrorMessage,
+  FormikStateViewer,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })
