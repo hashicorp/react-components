@@ -50,7 +50,7 @@ function CodeBlock({
   } = options
   if (showWindowBar) {
     console.warn(
-      'The options.showWindowBar prop has been renamed, and will be deprecated in a future version. Please use options.chrome instead.'
+      'The options.showWindowBar prop has been renamed, and will be deprecated in a future version. Please use options.showChrome instead.'
     )
   }
   const hasChrome = showWindowBar || showChrome
