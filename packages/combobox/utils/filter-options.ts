@@ -5,16 +5,7 @@ export default function filterOptions(term, options) {
   if (!term) return options
   // Otherwise we reduce the options array to only matching options
   return options.reduce((acc, item) => {
-    const isLabelMatch = fuzzysearch(
-      term.toLowerCase(),
-      item.label.toLowerCase()
-    )
-    if (isLabelMatch) return acc.concat(item)
-
-    const isValueMatch = fuzzysearch(
-      term.toLowerCase(),
-      item.value.toLowerCase()
-    )
+    const isValueMatch = fuzzysearch(term.toLowerCase(), item.toLowerCase())
     if (isValueMatch) return acc.concat(item)
     return acc
   }, [])

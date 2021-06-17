@@ -3,15 +3,6 @@ import { createStaticProps, createStaticPaths } from 'swingset/server'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
-// @TODO - Figure out peerComponents which are actually just partials of this component
-import {
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-  ComboboxOptionText,
-  ComboboxTypeahead,
-} from '../packages/combobox'
 
 import { Tab } from '../packages/tabs'
 import UsageDetails from '../swingset-extensions/usage-details'
@@ -59,12 +50,6 @@ const components = {
   SearchProvider,
   UsageDetails,
   Tab,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-  ComboboxOptionText,
-  ComboboxTypeahead,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })

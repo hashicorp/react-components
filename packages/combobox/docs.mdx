@@ -6,11 +6,15 @@ componentName: 'Combobox'
 
 <LiveComponent>
   {`
-    <ComboboxTypeahead onSelect={(e) => console.log(e)} 
-      renderOption={(r) => <ComboboxOption value={r.value} />}
+    <Combobox 
+      onSelect={(e) => console.log(e)} 
+      renderOption={(option) => <ComboboxOption value={option} />}
       options={[
-        { label: 'Apple', value: 'apple' },
-        { label: 'Orange', value: 'orange' },
+      'Apple',
+      'Orange', 
+      'Banana',
+      'Pineapple',
+      'Kiwi'
       ]}
       />
       `}
@@ -20,7 +24,7 @@ componentName: 'Combobox'
 
 <LiveComponent>
   {`
-      <Combobox onSelect={() => console.log('foo')}>
+      <ComboboxBase onSelect={() => console.log('foo')}>
         <ComboboxInput aria-labelledby="demo" />
         <ComboboxPopover>
           <ComboboxList aria-labelledby="demo">
@@ -31,6 +35,6 @@ componentName: 'Combobox'
             <ComboboxOption value="Kiwi" />
           </ComboboxList>
       </ComboboxPopover>
-      </Combobox>
+      </ComboboxBase>
       `}
 </LiveComponent>
