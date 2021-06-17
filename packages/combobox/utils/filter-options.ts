@@ -1,6 +1,7 @@
 import fuzzysearch from 'fuzzysearch'
+import { OptionMatchParam } from '../'
 
-export default function filterOptions(term, options) {
+export default function filterOptions({ term, options }: OptionMatchParam) {
   // if there's no search term we short-circuit and return everything
   if (!term) return options
   // Otherwise we reduce the options array to only matching options

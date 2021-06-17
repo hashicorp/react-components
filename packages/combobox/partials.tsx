@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import {
   Combobox as ReachCombobox,
   ComboboxInput as ReachComboboxInput,
@@ -6,10 +7,13 @@ import {
   ComboboxOption as ReachComboboxOption,
   ComboboxOptionText,
   ComboboxOptionProps,
+  ComboboxProps,
+  ComboboxPopoverProps,
+  ComboboxInputProps,
 } from '@reach/combobox'
 import s from './style.module.css'
 
-export function ComboboxBase({ onSelect, children, ...props }) {
+export function ComboboxBase({ onSelect, children, ...props }: ComboboxProps) {
   return (
     <div className={s.combobox}>
       <ReachCombobox onSelect={onSelect} {...props}>
@@ -19,7 +23,14 @@ export function ComboboxBase({ onSelect, children, ...props }) {
   )
 }
 
-export function ComboboxPopover({ children, ...props }) {
+export interface HashiComboboxPopoverProps extends ComboboxPopoverProps {
+  children: ReactNode
+}
+
+export function ComboboxPopover({
+  children,
+  ...props
+}: HashiComboboxPopoverProps) {
   return (
     <ReachComboboxPopover className={s.popover} {...props}>
       {children}
@@ -27,7 +38,15 @@ export function ComboboxPopover({ children, ...props }) {
   )
 }
 
-export function ComboboxInput({ className = '', ...props }) {
+export interface HashiComboboxInputProps extends ComboboxInputProps {
+  className?: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export function ComboboxInput({
+  className = '',
+  ...props
+}: HashiComboboxInputProps) {
   const mergedClassName = className ? `${s.option} ${className}` : s.input
   return <ReachComboboxInput className={mergedClassName} {...props} />
 }
@@ -44,5 +63,4 @@ export function ComboboxOption({
   return <ReachComboboxOption className={mergedClassName} {...props} />
 }
 
-// @TODO - Export styled child components
 export { ComboboxList, ComboboxOptionText }
