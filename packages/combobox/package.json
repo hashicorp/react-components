@@ -9,7 +9,8 @@
   ],
   "license": "MPL-2.0",
   "dependencies": {
-    "@reach/combobox": "0.15.1"
+    "@reach/combobox": "0.15.1",
+    "fuzzysearch": "1.0.3"
   },
   "publishConfig": {
     "access": "public"
