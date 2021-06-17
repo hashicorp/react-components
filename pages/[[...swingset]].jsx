@@ -3,14 +3,6 @@ import { createStaticProps, createStaticPaths } from 'swingset/server'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
-// @TODO - Figure out peerComponents which are actually just named exports of this component
-import {
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-  ComboboxOptionText,
-} from '../packages/combobox'
 
 import { Tab } from '../packages/tabs'
 import codeMdxComponents from '../packages/code-block/mdx'
@@ -67,11 +59,6 @@ const components = {
   SearchProvider,
   UsageDetails,
   Tab,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-  ComboboxOptionText,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })

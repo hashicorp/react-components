@@ -2,9 +2,29 @@
 componentName: 'Combobox'
 ---
 
+### A batteries-included typeahead combobox
+
 <LiveComponent>
   {`
-      <Combobox onSelect={() => console.log('foo')}>
+    <Combobox 
+      onSelect={(e) => console.log(e)} 
+      renderOption={(option) => <ComboboxOption value={option} />}
+      options={[
+      'Apple',
+      'Orange', 
+      'Banana',
+      'Pineapple',
+      'Kiwi'
+      ]}
+      />
+      `}
+</LiveComponent>
+
+### With composition of components
+
+<LiveComponent>
+  {`
+      <ComboboxBase onSelect={() => console.log('foo')}>
         <ComboboxInput aria-labelledby="demo" />
         <ComboboxPopover>
           <ComboboxList aria-labelledby="demo">
@@ -15,6 +35,6 @@ componentName: 'Combobox'
             <ComboboxOption value="Kiwi" />
           </ComboboxList>
       </ComboboxPopover>
-      </Combobox>
+      </ComboboxBase>
       `}
 </LiveComponent>
