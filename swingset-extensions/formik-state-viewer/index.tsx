@@ -19,7 +19,7 @@ export default function FormikStateViewer() {
         <pre>
           <code>
             {Object.keys(values).map(
-              (value) => `${value} : ${values[value]}\n`
+              (key) => `${key} : ${values[key]}\n`
             )}
           </code>
         </pre>
