@@ -52,7 +52,7 @@ export function ComboboxInput({
 }
 
 export interface HashiComboboxOptionProps extends ComboboxOptionProps {
-  className: string
+  className?: string
 }
 
 export function ComboboxOption({

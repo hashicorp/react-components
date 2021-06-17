@@ -1,3 +1,4 @@
+import { useMemo, useState, ReactNode, Fragment } from 'react'
 import {
   ComboboxInput,
   ComboboxPopover,
@@ -6,15 +7,16 @@ import {
   ComboboxOptionText,
   ComboboxBase,
 } from './partials'
-import { useMemo, useState, ReactNode, Fragment } from 'react'
 import filterOptions from './utils/filter-options'
+import { useCallback } from 'react'
 
-interface ComboboxProps {
+export interface ComboboxProps {
   label: string
   onSelect: (value) => void
   renderOption: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
+  onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 type ComboboxOptionValue = string
@@ -24,16 +26,30 @@ export default function Combobox({
   onSelect,
   options,
   openOnFocus = true,
+  onInputChange,
   renderOption,
 }: ComboboxProps) {
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
+
+  const handleInputValueChange = useCallback(
+    (e) => {
+      setTerm(e.currentTarget.value)
+      if (onInputChange) return onInputChange(e)
+    },
+    [onInputChange]
+  )
+
   return (
-    <ComboboxBase openOnFocus={openOnFocus} onSelect={onSelect}>
-      <ComboboxInput onChange={(e) => setTerm(e.currentTarget.value)} />
+    <ComboboxBase
+      openOnFocus={openOnFocus}
+      onSelect={onSelect}
+      aria-label={label}
+    >
+      <ComboboxInput onChange={handleInputValueChange} />
       {results?.length > 0 ? (
         <ComboboxPopover>
-          <ComboboxList aria-labelledby={label}>
+          <ComboboxList>
             {results.map((option) => (
               <Fragment key={option}>{renderOption(option)}</Fragment> // Prevent key warning
             ))}

@@ -12,6 +12,9 @@
     "@reach/combobox": "0.15.1",
     "fuzzysearch": "1.0.3"
   },
+  "optionalDependencies": {
+    "formik": "^2.2.9"
+  },
   "publishConfig": {
     "access": "public"
   }
