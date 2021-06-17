@@ -38,3 +38,28 @@ componentName: 'Combobox'
       </ComboboxBase>
       `}
 </LiveComponent>
+
+### Example Form
+
+<LiveComponent>{`
+        <Formik
+          initialValues={{ token: '' }}
+          validate={values => {
+            const errors = {};
+            if (values.token.length < 5) {
+              errors.token = 'Invalid code. Too short.';
+            }
+            return errors;
+          }}
+          onSubmit={(values, actions) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              actions.setSubmitting(false);
+            }, 1000);
+          }}
+        >
+          <Form>
+            <Field name="token" type="tel" />
+            <FormikStateViewer />
+          </Form>
+        </Formik>`}</LiveComponent>
