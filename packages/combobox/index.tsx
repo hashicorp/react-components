@@ -11,10 +11,10 @@ import filterOptions from './utils/filter-options'
 
 interface ComboboxProps {
   label: string
-  onSelect: () => void
+  onSelect: (value) => void
   renderOption: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
-  openOnFocus: boolean
+  openOnFocus?: boolean
 }
 
 type ComboboxOptionValue = string
