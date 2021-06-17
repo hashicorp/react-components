@@ -1,47 +1,66 @@
-import s from './style.module.css'
-
 import {
-  Combobox as ReachCombobox,
-  ComboboxInput as ReachComboboxInput,
-  ComboboxPopover as ReachComboboxPopover,
+  ComboboxInput,
+  ComboboxPopover,
   ComboboxList,
-  ComboboxOption as ReachComboboxOption,
+  ComboboxOption,
   ComboboxOptionText,
-  ComboboxOptionProps,
-} from '@reach/combobox'
+  ComboboxBase,
+} from './partials'
+import { useMemo, useState, ReactNode, Fragment } from 'react'
+import filterOptions from './utils/filter-options'
 
-export default function Combobox({ onSelect, children }) {
+interface ComboboxProps {
+  label: string
+  onSelect: (value) => void
+  renderOption: (option: ComboboxOptionValue) => ReactNode
+  options: ComboboxOptionValue[]
+  openOnFocus?: boolean
+}
+
+type ComboboxOptionValue = string
+
+export default function Combobox({
+  label,
+  onSelect,
+  options,
+  openOnFocus = true,
+  renderOption,
+}: ComboboxProps) {
+  const [term, setTerm] = useState('')
+  const results = useOptionMatch({ term, options })
   return (
-    <div className={s.combobox}>
-      <ReachCombobox onSelect={onSelect}>{children}</ReachCombobox>
-    </div>
+    <ComboboxBase openOnFocus={openOnFocus} onSelect={onSelect}>
+      <ComboboxInput onChange={(e) => setTerm(e.currentTarget.value)} />
+      {results?.length > 0 ? (
+        <ComboboxPopover>
+          <ComboboxList aria-labelledby={label}>
+            {results.map((option) => (
+              <Fragment key={option}>{renderOption(option)}</Fragment> // Prevent key warning
+            ))}
+          </ComboboxList>
+        </ComboboxPopover>
+      ) : null}
+    </ComboboxBase>
   )
 }
 
-export function ComboboxPopover({ onSelect, children, ...props }) {
-  return (
-    <ReachComboboxPopover className={s.popover} {...props}>
-      {children}
-    </ReachComboboxPopover>
-  )
+export interface OptionMatchParam {
+  term: string
+  options: ComboboxOptionValue[]
 }
 
-export function ComboboxInput({ className, ...props }) {
-  const mergedClassName = className ? `${s.option} ${className}` : s.input
-  return <ReachComboboxInput className={mergedClassName} {...props} />
+export function useOptionMatch({ term, options }: OptionMatchParam) {
+  const filteredOptions = useMemo(() => filterOptions({ term, options }), [
+    term,
+  ])
+  return filteredOptions.length !== 0 ? filteredOptions : options // Return all options if the filtered list is still empty
 }
 
-export interface HashiComboboxOptionProps extends ComboboxOptionProps {
-  className: string
+export {
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+  ComboboxOptionText,
+  ComboboxBase,
 }
-
-export function ComboboxOption({
-  className,
-  ...props
-}: HashiComboboxOptionProps) {
-  const mergedClassName = className ? `${s.option} ${className}` : s.option
-  return <ReachComboboxOption className={mergedClassName} {...props} />
-}
-
-// @TODO - Export styled child components
-export { ComboboxList, ComboboxOptionText }
