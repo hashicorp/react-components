@@ -1,9 +1,12 @@
 .combobox {
   --reach-combobox: 1;
-  z-index: 2;
+  position: relative;
 }
 
 .popover {
+  &[data-reach-combobox] {
+    position: relative;
+  }
   &[data-reach-combobox-popover] {
     border: 1px solid var(--gray-5);
     margin-top: 4px;
@@ -38,6 +41,7 @@
 }
 
 .input {
+  width: 100%;
   font-family: inherit;
   font-size: 1rem;
   color: var(--gray-2);
@@ -77,4 +81,28 @@
   & [data-highlighted] {
     font-weight: 400;
   } */
+}
+
+.button {
+  --icon-frame: min-content;
+  position: absolute;
+  background: none;
+  border: none;
+  top: 1px;
+  right: 0;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dropdownCaretIcon {
+  width: 20px;
+  height: auto;
+  transition: 0.3s transform;
+}
+
+.dropdownCaretIconActive {
+  transform: rotate(-180deg);
 }

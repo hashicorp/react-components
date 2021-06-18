@@ -43,23 +43,24 @@ componentName: 'Combobox'
 
 <LiveComponent>{`
         <Formik
-          initialValues={{ token: '' }}
-          validate={values => {
-            const errors = {};
-            if (values.token.length < 5) {
-              errors.token = 'Invalid code. Too short.';
-            }
-            return errors;
-          }}
-          onSubmit={(values, actions) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              actions.setSubmitting(false);
-            }, 1000);
-          }}
+          initialValues={{ favoriteFruit: '' }}
+          onSubmit={(values) => alert(JSON.stringify(values))}
         >
+        {({handleSubmit}) =>  (
           <Form>
-            <Field name="token" type="tel" />
+               <ComboboxField
+                renderOption={(option) => <ComboboxOption value={option} />}
+                name="favoriteFruit"
+                options={[
+                'Apple',
+                'Orange',
+                'Banana',
+                'Pineapple',
+                'Kiwi'
+                ]}
+                />
+                <button onClick={handleSubmit}>Submit!</button>
             <FormikStateViewer />
           </Form>
+        )}
         </Formik>`}</LiveComponent>
