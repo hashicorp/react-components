@@ -8,6 +8,7 @@ interface ComboboxFieldProps extends IComboboxFieldProps {
 }
 
 export default function ComboboxField({ name, ...props }: ComboboxFieldProps) {
+  if (!name) return null
   const [, , helpers] = useField(name)
   return (
     <Combobox
