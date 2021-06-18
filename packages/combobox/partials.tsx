@@ -10,7 +10,12 @@ import {
   ComboboxProps,
   ComboboxPopoverProps,
   ComboboxInputProps,
+  ComboboxButton as ReachComboboxButton,
+  useComboboxContext,
 } from '@reach/combobox'
+import { VisuallyHidden } from '@reach/visually-hidden'
+import classnames from 'classnames'
+
 import s from './style.module.css'
 
 export function ComboboxBase({ onSelect, children, ...props }: ComboboxProps) {
@@ -25,14 +30,19 @@ export function ComboboxBase({ onSelect, children, ...props }: ComboboxProps) {
 
 export interface HashiComboboxPopoverProps extends ComboboxPopoverProps {
   children: ReactNode
+  className?: string
 }
 
 export function ComboboxPopover({
+  className = '',
   children,
   ...props
 }: HashiComboboxPopoverProps) {
   return (
-    <ReachComboboxPopover className={s.popover} {...props}>
+    <ReachComboboxPopover
+      className={classnames(s.popover, className)}
+      {...props}
+    >
       {children}
     </ReachComboboxPopover>
   )
@@ -47,8 +57,9 @@ export function ComboboxInput({
   className = '',
   ...props
 }: HashiComboboxInputProps) {
-  const mergedClassName = className ? `${s.option} ${className}` : s.input
-  return <ReachComboboxInput className={mergedClassName} {...props} />
+  return (
+    <ReachComboboxInput className={classnames(s.input, className)} {...props} />
+  )
 }
 
 export interface HashiComboboxOptionProps extends ComboboxOptionProps {
@@ -61,6 +72,23 @@ export function ComboboxOption({
 }: HashiComboboxOptionProps) {
   const mergedClassName = className ? `${s.option} ${className}` : s.option
   return <ReachComboboxOption className={mergedClassName} {...props} />
+}
+
+export function ComboboxButton({ label, className = '', ...props }) {
+  const { isExpanded } = useComboboxContext()
+
+  return (
+    <ReachComboboxButton className={classnames(s.button, className)} {...props}>
+      <VisuallyHidden>{label}</VisuallyHidden>
+      <img
+        className={classnames(s.dropdownCaretIcon, {
+          [s.dropdownCaretIconActive]: isExpanded,
+        })}
+        alt="" // https://www.w3.org/WAI/tutorials/images/decorative/
+        src={require('./assets/icon-dropdown-gray.svg')}
+      />
+    </ReachComboboxButton>
+  )
 }
 
 export { ComboboxList, ComboboxOptionText }
