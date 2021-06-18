@@ -1,4 +1,4 @@
-import { useMemo, useState, ReactNode, Fragment } from 'react'
+import { useCallback, useMemo, useState, ReactNode, Fragment } from 'react'
 import {
   ComboboxInput,
   ComboboxPopover,
@@ -8,7 +8,6 @@ import {
   ComboboxBase,
 } from './partials'
 import filterOptions from './utils/filter-options'
-import { useCallback } from 'react'
 
 export interface ComboboxProps {
   label: string
