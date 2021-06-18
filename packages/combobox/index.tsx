@@ -47,7 +47,7 @@ export default function Combobox({
       onSelect={onSelect}
       aria-label={label}
     >
-      <ComboboxButton label={buttonLabel} type="button" />
+      <ComboboxButton label={buttonLabel} />
       <ComboboxInput onChange={handleInputValueChange} />
       {results?.length > 0 ? (
         <ComboboxPopover>

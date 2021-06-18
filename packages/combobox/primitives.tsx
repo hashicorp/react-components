@@ -78,19 +78,21 @@ export function ComboboxOption({
 export interface ComboboxButtonProps extends ReachComboboxButtonProps {
   label?: string
   className?: string
-  type?: string
 }
 
 export function ComboboxButton({
   label,
   className = '',
-  type = 'button',
   ...props
 }: ComboboxButtonProps) {
   const { isExpanded } = useComboboxContext()
 
   return (
-    <ReachComboboxButton className={classnames(s.button, className)} {...props}>
+    <ReachComboboxButton
+      className={classnames(s.button, className)}
+      {...props}
+      type="button"
+    >
       <VisuallyHidden>{label || 'Show all options'}</VisuallyHidden>
       <img
         className={classnames(s.dropdownCaretIcon, {
