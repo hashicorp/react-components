@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-text-splits",
   "description": "Renders an array of text-split components",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@hashicorp/react-text-split-with-code": "^3.2.0",
+    "@hashicorp/react-text-split-with-code": "^3.3.0",
     "@hashicorp/react-text-split-with-image": "^4.2.0",
     "@hashicorp/react-text-split-with-logo-grid": "^5.1.0"
   },
