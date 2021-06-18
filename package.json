@@ -41,7 +41,7 @@
     "typescript": "^4.3.2"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap -- --no-optional",
     "bs": "npm run bootstrap",
     "hard-reset": "rm -rf node_modules && rm -rf .next && lerna clean -y && npm i && npm run bs",
     "lint": "next-hashicorp lint",
