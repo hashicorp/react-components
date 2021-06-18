@@ -1,11 +1,7 @@
 import { useField } from 'formik'
 import Combobox, { ComboboxProps } from '../'
 
-type IComboboxFieldProps = Omit<ComboboxProps, 'onSelect'>
-
-interface ComboboxFieldProps extends IComboboxFieldProps {
-  name: string
-}
+type ComboboxFieldProps = { name: string } & Omit<ComboboxProps, 'onSelect'>
 
 export default function ComboboxField({ name, ...props }: ComboboxFieldProps) {
   if (!name) return null
