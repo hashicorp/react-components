@@ -6,11 +6,13 @@ import {
   ComboboxOption,
   ComboboxOptionText,
   ComboboxBase,
-} from './partials'
+  ComboboxButton,
+} from './primitives'
 import filterOptions from './utils/filter-options'
 
 export interface ComboboxProps {
   label: string
+  buttonLabel?: string
   onSelect: (value) => void
   renderOption: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
@@ -22,6 +24,7 @@ type ComboboxOptionValue = string
 
 export default function Combobox({
   label,
+  buttonLabel = 'Show all options',
   onSelect,
   options,
   openOnFocus = true,
@@ -30,7 +33,6 @@ export default function Combobox({
 }: ComboboxProps) {
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
-
   const handleInputValueChange = useCallback(
     (e) => {
       setTerm(e.currentTarget.value)
@@ -45,6 +47,7 @@ export default function Combobox({
       onSelect={onSelect}
       aria-label={label}
     >
+      <ComboboxButton label={buttonLabel} />
       <ComboboxInput onChange={handleInputValueChange} />
       {results?.length > 0 ? (
         <ComboboxPopover>
