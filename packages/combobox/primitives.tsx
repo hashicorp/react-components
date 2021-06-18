@@ -1,16 +1,17 @@
 import { ReactNode } from 'react'
 import {
   Combobox as ReachCombobox,
+  ComboboxButton as ReachComboboxButton,
   ComboboxInput as ReachComboboxInput,
   ComboboxPopover as ReachComboboxPopover,
   ComboboxList,
   ComboboxOption as ReachComboboxOption,
   ComboboxOptionText,
-  ComboboxOptionProps,
   ComboboxProps,
-  ComboboxPopoverProps,
-  ComboboxInputProps,
-  ComboboxButton as ReachComboboxButton,
+  ComboboxPopoverProps as ReachComboboxPopoverProps,
+  ComboboxInputProps as ReachComboboxInputProps,
+  ComboboxOptionProps as ReachComboboxOptionProps,
+  ComboboxButtonProps as ReachComboboxButtonProps,
   useComboboxContext,
 } from '@reach/combobox'
 import { VisuallyHidden } from '@reach/visually-hidden'
@@ -28,7 +29,7 @@ export function ComboboxBase({ onSelect, children, ...props }: ComboboxProps) {
   )
 }
 
-export interface HashiComboboxPopoverProps extends ComboboxPopoverProps {
+export interface ComboboxPopoverProps extends ReachComboboxPopoverProps {
   children: ReactNode
   className?: string
 }
@@ -37,7 +38,7 @@ export function ComboboxPopover({
   className = '',
   children,
   ...props
-}: HashiComboboxPopoverProps) {
+}: ComboboxPopoverProps) {
   return (
     <ReachComboboxPopover
       className={classnames(s.popover, className)}
@@ -48,7 +49,7 @@ export function ComboboxPopover({
   )
 }
 
-export interface HashiComboboxInputProps extends ComboboxInputProps {
+export interface ComboboxInputProps extends ReachComboboxInputProps {
   className?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -56,30 +57,39 @@ export interface HashiComboboxInputProps extends ComboboxInputProps {
 export function ComboboxInput({
   className = '',
   ...props
-}: HashiComboboxInputProps) {
+}: ComboboxInputProps) {
   return (
     <ReachComboboxInput className={classnames(s.input, className)} {...props} />
   )
 }
 
-export interface HashiComboboxOptionProps extends ComboboxOptionProps {
+export interface ComboboxOptionProps extends ReachComboboxOptionProps {
   className?: string
 }
 
 export function ComboboxOption({
   className = '',
   ...props
-}: HashiComboboxOptionProps) {
+}: ComboboxOptionProps) {
   const mergedClassName = className ? `${s.option} ${className}` : s.option
   return <ReachComboboxOption className={mergedClassName} {...props} />
 }
 
-export function ComboboxButton({ label, className = '', ...props }) {
+export interface ComboboxButtonProps extends ReachComboboxButtonProps {
+  label?: string
+  className?: string
+}
+
+export function ComboboxButton({
+  label,
+  className = '',
+  ...props
+}: ComboboxButtonProps) {
   const { isExpanded } = useComboboxContext()
 
   return (
     <ReachComboboxButton className={classnames(s.button, className)} {...props}>
-      <VisuallyHidden>{label}</VisuallyHidden>
+      <VisuallyHidden>{label || 'Show all options'}</VisuallyHidden>
       <img
         className={classnames(s.dropdownCaretIcon, {
           [s.dropdownCaretIconActive]: isExpanded,

@@ -7,7 +7,7 @@ import {
   ComboboxOptionText,
   ComboboxBase,
   ComboboxButton,
-} from './partials'
+} from './primitives'
 import filterOptions from './utils/filter-options'
 
 export interface ComboboxProps {
