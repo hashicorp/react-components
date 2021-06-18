@@ -17,7 +17,6 @@
     "url": "https://github.com/hashicorp/react-components.git",
     "directory": "packages/skip-link"
   },
-  "dependencies": {},
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x"
   }
