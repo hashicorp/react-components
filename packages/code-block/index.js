@@ -1,60 +1,104 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+import classNames from 'classnames'
 import processSnippet from './utils/process-snippet'
-import copyToClipboard from './utils/copy-to-clipboard'
-import InlineSvg from '@hashicorp/react-inline-svg'
-import svgClipboardIcon from './svg/clipboard-icon.svg.js'
+import ClipboardButton from './partials/clipboard-button'
+import SnippetBar from './partials/snippet-bar'
+import themeDark from './theme-dark.module.css'
+import themeLight from './theme-light.module.css'
+import HiddenCopyContent from './partials/hidden-copy-content'
+import CodeLines from './partials/code-lines'
+import analytics, { heapAttributes } from './analytics'
 import fragment from './fragment.graphql'
-function CodeBlock({ code, language, options = {} }) {
-  const codeRef = useRef()
-  const [tooltipText, setTooltipText] = useState('Copy')
+import s from './style.module.css'
 
-  function copyCode() {
-    const snippet = processSnippet(codeRef.current.textContent)
-    const isCopied = copyToClipboard(snippet)
-    setTooltipText(isCopied ? 'Copied!' : 'Failed')
-    setTimeout(() => setTooltipText('Copy'), 2000)
+function CodeBlock({
+  className,
+  code,
+  language,
+  theme = 'dark',
+  hasBarAbove = false,
+  options = {
+    showChrome: false,
+    highlight: false,
+    lineNumbers: false,
+    showClipboard: false,
+    showWindowBar: false,
+  },
+}) {
+  const copyRef = useRef()
+
+  function getText() {
+    try {
+      // Gather the text content
+      const rawSnippet = copyRef.current.textContent
+      // Run additional processing, namely for shell commands
+      const snippet = processSnippet(rawSnippet)
+      return [null, snippet]
+    } catch (err) {
+      return [err, null]
+    }
   }
 
-  const isHtmlString = typeof code === 'string'
+  const {
+    showChrome,
+    filename,
+    heading,
+    highlight,
+    lineNumbers,
+    showClipboard,
+    showWindowBar,
+  } = options
+  if (showWindowBar) {
+    console.warn(
+      'The options.showWindowBar prop has been renamed, and will be deprecated in a future version. Please use options.showChrome instead.'
+    )
+  }
+  const hasChrome = showWindowBar || showChrome
+  const hasTopBar = hasChrome || filename || heading
+  const hasFloatingCopyButton = !hasTopBar && showClipboard
+
+  const baseThemeClass = theme == 'dark' ? themeDark.base : themeLight.base
+  const syntaxClass = theme == 'dark' ? themeDark.syntax : themeLight.syntax
 
   return (
-    <div className="g-code-block" data-heap-track="code-block">
-      {options.showWindowBar && <WindowBar />}
-      <div className="block-wrapper">
-        <pre
-          className={`language-${language}`}
-          data-has-window-bar={options.showWindowBar}
-        >
-          <code
-            ref={codeRef}
-            className={`language-${language}`}
-            dangerouslySetInnerHTML={isHtmlString ? { __html: code } : null}
-          >
-            {isHtmlString ? null : code}
-          </code>
-        </pre>
-        {options.showClipboard && (
-          <button
-            className="clipboard-icon g-type-body-small-strong"
-            data-heap-track="code-block-clipboard-icon"
-            type="button"
-            onClick={copyCode}
-          >
-            {tooltipText}
-            <InlineSvg src={svgClipboardIcon} />
-          </button>
-        )}
+    <div
+      className={classNames(
+        'g-code-block',
+        s.root,
+        className,
+        baseThemeClass,
+        syntaxClass,
+        { [s.hasBarAbove]: hasBarAbove }
+      )}
+      data-heap-track={heapAttributes.root}
+      onClick={analytics.trackCodeClick}
+    >
+      <HiddenCopyContent ref={copyRef} code={code} />
+      {hasTopBar ? (
+        <SnippetBar
+          showChrome={hasChrome}
+          filename={filename}
+          heading={heading}
+          getText={getText}
+          showClipboard={showClipboard}
+        />
+      ) : null}
+      <div className={s.linesContainer}>
+        <CodeLines
+          code={code}
+          language={language}
+          highlight={highlight}
+          lineNumbers={lineNumbers}
+          hasFloatingCopyButton={hasFloatingCopyButton}
+        />
+        {hasFloatingCopyButton ? (
+          <div className={s.copyButtonContainer}>
+            <div className={s.copyButtonBackground}>
+              <ClipboardButton getText={getText} />
+            </div>
+          </div>
+        ) : null}
       </div>
-    </div>
-  )
-}
-
-function WindowBar() {
-  return (
-    <div className="window-bar">
-      <span />
-      <span />
-      <span />
     </div>
   )
 }

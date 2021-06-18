@@ -37,7 +37,7 @@ describe('<TextSplitWithCode />', () => {
   it('should pass the code to the code-block component', () => {
     const testCode = 'My sample code'
     render(<TextSplitWithCode {...baseProps} codeBlock={{ code: testCode }} />)
-    const testCodeElem = screen.getByText(testCode)
+    const testCodeElem = screen.getAllByText(testCode)[1]
     expect(testCodeElem).toBeVisible()
     expect(testCodeElem.closest('.g-code-block')).toBeVisible()
   })

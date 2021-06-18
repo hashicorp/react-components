@@ -60,7 +60,7 @@ describe('<TextSplitWithLogoGrid />', () => {
       const { textSplit, codeBlock, image, logoGrid } = item
       expect(screen.getByText(textSplit.heading)).toBeVisible()
       if (codeBlock) {
-        const codeTokenElem = screen.getByText('driver')
+        const codeTokenElem = screen.getAllByText('driver')[1]
         expect(codeTokenElem).toBeVisible()
         expect(codeTokenElem.tagName).toBe('SPAN')
         expect(codeTokenElem).toHaveClass('token')
