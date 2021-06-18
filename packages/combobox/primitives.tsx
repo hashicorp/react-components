@@ -78,11 +78,13 @@ export function ComboboxOption({
 export interface ComboboxButtonProps extends ReachComboboxButtonProps {
   label?: string
   className?: string
+  type?: string
 }
 
 export function ComboboxButton({
   label,
   className = '',
+  type = 'button',
   ...props
 }: ComboboxButtonProps) {
   const { isExpanded } = useComboboxContext()

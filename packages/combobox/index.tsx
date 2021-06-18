@@ -12,7 +12,7 @@ import filterOptions from './utils/filter-options'
 
 export interface ComboboxProps {
   label: string
-  buttonLabel: string
+  buttonLabel?: string
   onSelect: (value) => void
   renderOption: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
@@ -24,7 +24,7 @@ type ComboboxOptionValue = string
 
 export default function Combobox({
   label,
-  buttonLabel,
+  buttonLabel = 'Show all options',
   onSelect,
   options,
   openOnFocus = true,
