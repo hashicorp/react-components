@@ -1,0 +1,24 @@
+{
+  "name": "@hashicorp/skip-link",
+  "description": "A skip-to-contentlink",
+  "version": "1.0.0",
+  "author": "HashiCorp",
+  "contributors": [
+    "Kendall Strautman"
+  ],
+  "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/skip-link",
+  "license": "MPL-2.0",
+  "main": "index.tsx",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/skip-link"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x"
+  }
+}

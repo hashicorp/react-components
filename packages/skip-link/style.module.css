@@ -1,0 +1,29 @@
+.skipLink {
+  composes: g-type-body from global;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  position: absolute;
+  transition: transform 300ms ease-in;
+  transform: translateY(-100%);
+  color: var(--black);
+  background-color: var(--brand-secondary);
+  height: 48px;
+  width: max-content;
+  padding: 8px 16px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  border: 1px solid var(--brand);
+}
+
+.skipLink:focus {
+  z-index: 666666668;
+  transform: translateY(0%);
+  transition: transform 300ms ease-out;
+  border: 2px solid var(--brand);
+  border-radius: 3px;
+}
