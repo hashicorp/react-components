@@ -4,21 +4,21 @@ import Combobox, { ComboboxProps } from '../'
 type ComboboxFieldProps = { name: string } & Omit<ComboboxProps, 'onSelect'>
 
 export default function ComboboxField({ name, ...props }: ComboboxFieldProps) {
-  const [, meta, helpers] = useField(name)
+  const [, meta, helpers] = useField(name) // https://formik.org/docs/api/useField#reference
 
   function handleTouched() {
     if (meta.touched) return
-    return helpers.setTouched(true, false) // Set touched if the input value changes at all, allow consumers to handle validation
+    return helpers.setTouched(true, false)
   }
   return (
     <Combobox
       onInputChange={(e) => {
-        handleTouched()
+        handleTouched() // Set touched if the input value changes at all
         if (e.currentTarget?.value === '')
           return helpers.setValue(e.currentTarget.value, true)
       }}
       onSelect={(value) => {
-        handleTouched()
+        handleTouched() // Set touched if the selected value changes at all
         helpers.setValue(value, true)
       }}
       {...props}
