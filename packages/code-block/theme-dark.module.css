@@ -78,21 +78,7 @@
     color: #fff;
   }
 
-  &:global(.important),
-  &:global(.statement),
-  &:global(.bold) {
-    font-weight: bold;
-  }
-
   &:global(.punctuation) {
     color: #bebec5;
-  }
-
-  &:global(.entity) {
-    cursor: help;
-  }
-
-  &:global(.italic) {
-    font-style: italic;
   }
 }

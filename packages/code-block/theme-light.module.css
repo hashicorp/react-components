@@ -80,22 +80,6 @@
     color: #f25a92;
   }
 
-  &:global(.important) {
-    font-weight: normal;
-  }
-
-  &:global(.bold) {
-    font-weight: bold;
-  }
-
-  &:global(.italic) {
-    font-style: italic;
-  }
-
-  &:global(.entity) {
-    cursor: help;
-  }
-
   &:global(.namespace) {
     opacity: 0.7;
   }
