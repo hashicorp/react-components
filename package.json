@@ -4,10 +4,12 @@
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^3.0.2",
     "@hashicorp/mktg-logos": "^1.0.2",
-    "@hashicorp/nextjs-scripts": "^17.0.0",
+    "@hashicorp/nextjs-scripts": "19.0.1",
     "@hashicorp/sentinel-embedded": "^0.0.9",
     "classnames": "^2.2.6",
+    "gray-matter": "4.0.3",
     "next": "^10.0.6",
+    "next-mdx-remote": "3.0.2",
     "next-remote-watch": "^0.3.0",
     "node-cache": "^5.1.2",
     "react": "16.13.1",

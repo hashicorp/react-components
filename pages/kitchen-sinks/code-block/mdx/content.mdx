@@ -1,0 +1,274 @@
+<Head title="Using Code Blocks in MDX - Swingset Kitchen Sinks" />
+
+<p>
+  <Link href="/kitchen-sinks/code-block">
+    <a>← Back</a>
+  </Link>
+</p>
+
+~> 🚧 **Note**: We're actively working to improve our `code-block` component, which involves many changes to the authoring interface and to design details. With this in mind, the examples below are currently intended for review and feedback, rather than reference.
+
+### `default-one-line`
+
+```javascript
+console.log(Math.random() > 0.5 ? 'Hello' : 'Bonjour')
+```
+
+### `default`
+
+```javascript
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+
+### `default-no-copy`
+
+<CodeBlockConfig hideClipboard>
+
+```javascript
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+
+</CodeBlockConfig>
+
+### `with-line-numbers`
+
+<CodeBlockConfig lineNumbers>
+
+```javascript
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+
+</CodeBlockConfig>
+
+### `with-highlight`
+
+<CodeBlockConfig lineNumbers highlight="3,9-11">
+
+```javascript
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+
+</CodeBlockConfig>
+
+### `with-file-name`
+
+<CodeBlockConfig filename="hello-world.js">
+
+```javascript
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+
+</CodeBlockConfig>
+
+### `with-heading`
+
+<CodeBlockConfig heading="Configure your environment">
+
+```javascript
+const foo = 'bar'
+function hello() {
+  Math.random() > 0.5 ? 'Hello' : 'Bonjour'
+}
+```
+
+</CodeBlockConfig>
+
+### `with-chrome`
+
+<CodeBlock
+  options={{ showClipboard: true, showChrome: true }}
+  code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span></span>\n<span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n  <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>\n<span class="token punctuation">}</span>`}
+/>
+
+### `with-chrome-only`
+
+<CodeBlock
+  options={{ showChrome: true }}
+  code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span></span>\n<span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n  <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>\n<span class="token punctuation">}</span>`}
+/>
+
+### `multi-language-tabs`
+
+<CodeTabs tabs={["JavaScript", "PHP"]} heading="Print to standard output">
+
+<CodeBlockConfig highlight="2" filename="hello-world.js" lineNumbers>
+
+```javascript
+let foo = 'bar'
+console.log(foo)
+```
+
+</CodeBlockConfig>
+
+```php
+var $foo = "bar";
+echo $foo
+```
+
+</CodeTabs>
+
+### `multi-language-dropdown`
+
+<CodeTabs heading="Print to standard output" tabs={["PHP", "JavaScript", "Python", "Java", "Node", "Go", ".NET"]}>
+
+```php
+var $foo = "bar";
+echo $foo
+```
+
+<CodeBlockConfig highlight="2" filename="hello-world.js" lineNumbers>
+
+```javascript
+let foo = 'bar'
+console.log(foo)
+```
+
+</CodeBlockConfig>
+
+```python
+foo = "bar"
+print(foo)
+```
+
+```java
+foo = "bar"
+print(foo)
+```
+
+```node
+const foo = 'bar'
+process.stdout.printLn(foo)
+```
+
+```go
+string foo = "bar"
+fmt.printLn(foo)
+```
+
+```dotnet
+string foo = "bar"
+print(foo)
+```
+
+</CodeTabs>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+### CodeTabs Sync Test
+
+<CodeTabs tabs={["JavaScript", "PHP"]}>
+
+<CodeBlockConfig highlight="2" filename="hello-world.js" lineNumbers>
+
+```javascript
+let foo = 'bar'
+console.log(foo)
+```
+
+</CodeBlockConfig>
+
+```php
+var $foo = "bar";
+echo $foo
+```
+
+</CodeTabs>
+
+## Table with `<code>`
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Labels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>nomad-autoscaler.policy.total_num</code>
+      </td>
+      <td>The number of policies currently held within the autoscaler</td>
+      <td>Gauge</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <code>nomad-autoscaler.policy.source.error_count</code>
+      </td>
+      <td>Tracks the number of errors generated by the policy sources</td>
+      <td>Counter</td>
+      <td>policy_source</td>
+    </tr>
+  </tbody>
+</table>
+
+## Table with `<inlineCode>`
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Labels</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <inlineCode>nomad-autoscaler.policy.total_num</inlineCode>
+      </td>
+      <td>The number of policies currently held within the autoscaler</td>
+      <td>Gauge</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <inlineCode>nomad-autoscaler.policy.source.error_count</inlineCode>
+      </td>
+      <td>Tracks the number of errors generated by the policy sources</td>
+      <td>Counter</td>
+      <td>policy_source</td>
+    </tr>
+  </tbody>
+</table>
