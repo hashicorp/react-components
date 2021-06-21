@@ -14,12 +14,19 @@ export function useSkipLinkContext(): SkipLinkTarget {
 
 interface SkipLinkProviderProps {
   children: ReactNode
+  anchorId?: string
 }
 
 // When using context to set the main anchor id, wrap your application this provider
-export function SkipLinkProvider({ children }: SkipLinkProviderProps) {
-  const [anchorId, setAnchorId] = useState(null)
-  const value = useMemo(() => ({ anchorId, setAnchorId }), [anchorId])
+export function SkipLinkProvider({
+  anchorId = null,
+  children,
+}: SkipLinkProviderProps) {
+  const [_anchorId, setAnchorId] = useState(anchorId)
+  const value = useMemo(() => ({ anchorId: _anchorId, setAnchorId }), [
+    _anchorId,
+    anchorId,
+  ])
   return (
     <SkipLinkContext.Provider value={value}>
       {children}
