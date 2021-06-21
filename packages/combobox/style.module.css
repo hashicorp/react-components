@@ -55,12 +55,12 @@
     color: var(--gray-3);
   }
 
-  &[data-has-error='true'] {
-    border-color: var(--danger);
-  }
   /* possible data-states: "idle" | "suggesting" | "navigating" | "interacting"  */
-  &[data-reach-combobox-input][data-state='idle'][data-has-error='true'] {
-    border: 1px solid red;
+  /* &[data-reach-combobox-input][data-state='idle'] {
+  } */
+
+  &[data-reach-combobox-input][data-has-error='true'] {
+    border-color: var(--danger);
   }
 }
 
