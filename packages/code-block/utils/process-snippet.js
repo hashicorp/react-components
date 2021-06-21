@@ -25,7 +25,13 @@ function parseShellSnippet(snippet) {
   if (!isMultiLine) return firstLine.replace('$ ', '')
   // Else, return the multiline snippet formatted with shellwords escape & split
   const multiLineFmt = shellwords.escape(snippet).replace('\\$\\', '')
-  return shellwords.split(multiLineFmt)
+  // @TODO - re-assess use of shellwords.split() here. What are we trying to accomplish?
+  // It seems this splits commands into distinct tokens - but we want to copy all
+  // tokens of the command in their original format, don't we?
+  // ref: https://github.com/jimmycuadra/shellwords (really light on docs)
+  // ref: https://ruby-doc.org/stdlib-1.9.3/libdoc/shellwords/rdoc/Shellwords.html (ruby module of same name, has better docs)
+  // asana task: https://app.asana.com/0/1100423001970639/1199504357822173/f
+  return shellwords.split(multiLineFmt).join(' ')
 }
 
 export default processSnippet

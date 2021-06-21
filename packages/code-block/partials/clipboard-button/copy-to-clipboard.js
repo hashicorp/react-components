@@ -5,7 +5,15 @@
  */
 function copyToClipboard(string) {
   //  We can't do this if there's no `document`, so don't try
-  if (typeof document === 'undefined') return false
+  if (typeof document === 'undefined') {
+    console.error('copyToClipboard failed, as document is undefined')
+    return false
+  }
+  //  We also can't do this if the argument is not a string
+  if (typeof string !== 'string') {
+    console.error('copyToClipboard received non-string argument: ' + string)
+    return false
+  }
 
   let copyElem
 
@@ -22,6 +30,7 @@ function copyToClipboard(string) {
   } catch (err) {
     //  We should try to clean up the tempElem
     //  just in case it did get created
+    console.error(err)
     document.body.removeChild(copyElem)
     return false
   }

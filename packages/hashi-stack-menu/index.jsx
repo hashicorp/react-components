@@ -18,8 +18,15 @@ export default function HashiStackMenu({ onPanelChange }) {
 
   return (
     <header className={styles.hashiStackMenu}>
-      <nav className={styles.nav}>
-        <a href="https://www.hashicorp.com/" className={styles.logoLink}>
+      <nav
+        className={styles.nav}
+        aria-label="Primary HashiCorp website navigation"
+      >
+        <a
+          aria-label="To main HashiCorp website"
+          href="https://www.hashicorp.com/"
+          className={styles.logoLink}
+        >
           <Logo />
         </a>
         <NavMenu>
@@ -43,7 +50,7 @@ function slugifyToKey(title) {
 }
 
 function NavMenu({ children }) {
-  return <menu className={styles.menu}>{children}</menu>
+  return <ul className={styles.menu}>{children}</ul>
 }
 
 function Logo() {

@@ -1,10 +1,10 @@
 import { Component } from 'react'
 import EventEmitter from 'events'
 import inEU from '@segment/in-eu'
-import ConsentBanner from './banner'
-import ConsentPreferences from './dialog'
-import { loadPreferences, savePreferences } from './cookies'
-import loadAnalytics from './load'
+import ConsentBanner from './partials/banner'
+import ConsentPreferences from './partials/dialog'
+import { loadPreferences, savePreferences } from './partials/cookies'
+import loadAnalytics from './partials/load'
 
 const emitter = new EventEmitter()
 

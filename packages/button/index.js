@@ -20,6 +20,7 @@ import normalizeButtonTheme from './helpers/normalizeButtonTheme.js'
 function Button({
   title,
   url,
+  label,
   external,
   theme,
   ga_prefix,
@@ -64,6 +65,7 @@ function Button({
       target={isExternal ? '_blank' : undefined}
       onClick={onClick}
       disabled={disabled}
+      aria-label={label}
       {...attrs}
     >
       {hasLeftIcon && <ButtonIcon icon={parsedIcon} />}
