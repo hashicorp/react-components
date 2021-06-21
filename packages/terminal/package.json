@@ -8,6 +8,9 @@
     "Brandon Romano"
   ],
   "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/platform-product-meta": "^0.1.0-canary.0"
+  },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "react": ">=16.x"

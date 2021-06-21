@@ -8,7 +8,8 @@
     "Jeff Escalante"
   ],
   "dependencies": {
-    "@hashicorp/js-utils": "^1.0.10"
+    "@hashicorp/js-utils": "^1.0.10",
+    "@hashicorp/platform-product-meta": "^0.1.0-canary.0"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x"

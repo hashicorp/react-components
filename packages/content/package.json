@@ -14,5 +14,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@hashicorp/platform-product-meta": "^0.1.0-canary.0"
   }
 }

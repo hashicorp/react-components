@@ -9,6 +9,7 @@
   "dependencies": {
     "@hashicorp/js-utils": "next",
     "@hashicorp/localstorage-polyfill": "^1.0.14",
+    "@hashicorp/platform-product-meta": "^0.1.0-canary.0",
     "@hashicorp/react-alert": "^2.0.3",
     "@hashicorp/react-button": "^5.1.0",
     "@hashicorp/react-image": "^2.0.3",

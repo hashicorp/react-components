@@ -1,7 +1,0 @@
-fragment authorCardFields on PersonRecord {
-  id
-  name
-  photo {
-    ...imageFields
-  }
-}

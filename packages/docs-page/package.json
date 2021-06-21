@@ -7,6 +7,8 @@
     "Jeff Escalante"
   ],
   "dependencies": {
+    "@hashicorp/platform-docs-mdx": "^0.1.0-canary.0",
+    "@hashicorp/platform-markdown-utils": "^0.1.0-canary.0",
     "@hashicorp/react-alert": "^5.0.0",
     "@hashicorp/react-content": "^7.0.1",
     "@hashicorp/react-docs-sidenav": "^8.2.0",

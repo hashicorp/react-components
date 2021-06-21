@@ -1,5 +1,0 @@
-query <%= page %>Query {
-  person {
-    id
-  }
-}
