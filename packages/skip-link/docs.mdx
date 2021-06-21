@@ -79,3 +79,21 @@ export default function BlogContentWrapper({ children }) {
   )
 }
 ```
+
+#### Passing _anchorId_ to the provider
+
+The `SkipLinkProvider` also accepts an `anchorId` prop. Which allows you to either set the initial value or set a value based on `pageProps`.
+
+**\_app.js**
+
+```js
+export default function App({ Component, pageProps }) {
+  // ...
+
+  return (
+    <SkipLinkProvider anchorId={pageProps.anchorId}>
+      <Component {...pageProps} />
+    </SkipLinkProvider>
+  )
+}
+```
