@@ -11,7 +11,7 @@ export default function ComboboxField({
   setValueOnChange = false, // Allows consumers to override the default behavior and validate arbitrary user input (i.e. not just from onSelect)
   ...props
 }: ComboboxFieldProps) {
-  const [field, meta, helpers] = useField(name) // https://formik.org/docs/api/useField#reference
+  const [_, meta, helpers] = useField(name) // https://formik.org/docs/api/useField#reference
 
   function handleTouched() {
     if (meta.touched) return
