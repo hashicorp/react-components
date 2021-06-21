@@ -1,4 +1,4 @@
-import { useSkipLinkContext } from './context'
+import { useSkipLinkContext, SkipLinkProvider } from './context'
 import s from './style.module.css'
 
 /**
@@ -30,3 +30,5 @@ export default function SkipLink({ anchorId }: SkipLinkProps) {
     </>
   )
 }
+
+export { SkipLinkProvider, useSkipLinkContext }
