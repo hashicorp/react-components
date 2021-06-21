@@ -55,7 +55,7 @@ export function pre({
   const language = className ? className.replace('language-', '') : undefined
   return (
     <CodeBlock
-      className={className}
+      className={classNames(className, { [s.codeMargin]: !hasBarAbove })}
       code={code}
       language={language}
       options={{ showClipboard: !hideClipboard }}
