@@ -18,6 +18,7 @@
   right: 0;
   text-align: center;
   border: 1px solid var(--brand);
+  opacity: 0;
 }
 
 .skipLink:focus {
@@ -26,4 +27,5 @@
   transition: transform 300ms ease-out;
   border: 2px solid var(--brand);
   border-radius: 3px;
+  opacity: 1;
 }
