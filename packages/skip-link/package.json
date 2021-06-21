@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-skip-link",
   "description": "A skip-to-content link",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Kendall Strautman"
