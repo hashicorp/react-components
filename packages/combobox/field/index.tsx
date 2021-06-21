@@ -21,6 +21,7 @@ export default function ComboboxField({ name, ...props }: ComboboxFieldProps) {
         handleTouched() // Set touched if the selected value changes at all
         helpers.setValue(value, true)
       }}
+      invalidInputValue={meta.error && true}
       {...props}
     />
   )

@@ -45,11 +45,28 @@ componentName: 'Combobox'
         <Formik
           initialValues={{ favoriteFruit: '' }}
           onSubmit={(values) => alert(JSON.stringify(values))}
+          validateOnBlur
+          validate={values => {
+            const errors = {};
+            const fruits = [
+                'Apple',
+                'Orange',
+                'Banana',
+                'Pineapple',
+                'Kiwi'
+                ]
+            if (!fruits.includes(values.favoriteFruit)) {
+              errors.favoriteFruit = 'Please select a value from the list';
+            }
+            return errors;
+          }}
         >
-        {({handleSubmit}) =>  (
+        {({ handleSubmit }) =>  (
           <Form>
                <ComboboxField
-                renderOption={(option) => <ComboboxOption value={option} />}
+                renderOption={(option) => 
+                    <ComboboxOption value={option} />
+                }
                 name="favoriteFruit"
                 options={[
                 'Apple',

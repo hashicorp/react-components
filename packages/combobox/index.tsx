@@ -18,6 +18,7 @@ export interface ComboboxProps {
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
   onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  invalidInputValue?: boolean
 }
 
 type ComboboxOptionValue = string
@@ -30,6 +31,7 @@ export default function Combobox({
   openOnFocus = true,
   onInputChange,
   renderOption,
+  invalidInputValue,
 }: ComboboxProps) {
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
@@ -48,7 +50,10 @@ export default function Combobox({
       aria-label={label}
     >
       <ComboboxButton label={buttonLabel} />
-      <ComboboxInput onChange={handleInputValueChange} />
+      <ComboboxInput
+        onChange={handleInputValueChange}
+        data-has-error={invalidInputValue ?? false}
+      />
       {results?.length > 0 ? (
         <ComboboxPopover>
           <ComboboxList>
