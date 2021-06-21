@@ -9,30 +9,36 @@ import s from './style.module.css'
 const DEFAULT_THEME = 'dark'
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
-export function pre({ children, hasBarAbove }) {
-  // For use cases in code tabs, return children directly in a fragment,
-  // passing on the hasBarAbove prop
-  if (hasBarAbove) {
-    const childrenWithProps = React.Children.toArray(children).map((child) => {
-      return React.cloneElement(child, { hasBarAbove })
-    })
-    return <>{childrenWithProps}</>
-  }
-  // In all other cases, ie plain fenced code, add margin
-  return <div className={s.codeMargin}>{children}</div>
-}
-
-export function code({
+export function pre({
   children,
   className,
   metastring,
   hasBarAbove,
   theme = DEFAULT_THEME,
 }) {
+  // Assert that there is exactly one valid child
+  const childArray = React.Children.toArray(children)
+  if (childArray.length !== 1) {
+    throw new Error(
+      `Found <pre> element in MDX with more than one child: ${JSON.stringify(
+        childArray
+      )}. Ensure <pre> and fenced code blocks contain text elements only.`
+    )
+  }
+  // Assert that the one valid child is a <code> element
+  const codeChild = childArray[0]
+  if (codeChild.props.mdxType !== 'code') {
+    throw new Error(
+      `Found <pre> element in MDX with more non-<code> child: ${JSON.stringify(
+        codeChild
+      )}. Ensure <pre> and fenced code blocks contain text elements only.`
+    )
+  }
+  const codeTokens = codeChild.props.children
   // Non-highlighted code, which appears when children are a string,
   // needs to have its HTML entities escaped.
   // Highlighted code is not affected.
-  const code = normalizePlainCode(children)
+  const code = normalizePlainCode(codeTokens)
   // We determine whether to showClipboard from the hideClipboard metastring
   const hideClipboard = metastring && metastring.includes('hideClipboard')
   // Deprecation warning for hideClipboard in metastring
@@ -75,9 +81,6 @@ export function CodeBlockConfigWithMargin({ theme = DEFAULT_THEME, ...rest }) {
 
 export default function codeMdxPrimitives({ theme = DEFAULT_THEME } = {}) {
   return {
-    code: function themedCode(p) {
-      return code({ theme, ...p })
-    },
     CodeBlockConfig: function themedCodeBlockConfig(p) {
       return CodeBlockConfigWithMargin({ theme, ...p })
     },
