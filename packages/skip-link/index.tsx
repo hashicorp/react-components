@@ -18,12 +18,12 @@ interface SkipLinkProps {
 
 export default function SkipLink({ anchorId }: SkipLinkProps) {
   const context = useSkipLinkContext()
-  const mainAnchorTarget = context?.mainTargetId || anchorId
+  const anchorTarget = context?.anchorId || anchorId
 
   return (
     <>
-      {mainAnchorTarget ? (
-        <a href={`#${mainAnchorTarget}`} className={s.skipLink}>
+      {anchorTarget ? (
+        <a href={`#${anchorTarget}`} className={s.skipLink}>
           Skip to main content
         </a>
       ) : null}

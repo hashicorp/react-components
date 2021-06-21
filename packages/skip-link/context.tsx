@@ -1,8 +1,8 @@
 import { createContext, memo, ReactNode, useContext, useState } from 'react'
 
 type SkipLinkTarget = null | {
-  mainTargetId: string // just in string format, without the # id signature
-  setMainTargetId(string): void
+  anchorId: string // just in string format, without the # id signature
+  setAnchorId(string): void
 }
 
 export const SkipLinkContext = createContext<SkipLinkTarget>(null)
@@ -20,11 +20,9 @@ interface SkipLinkProviderProps {
 export const SkipLinkProvider = memo(function Provider({
   children,
 }: SkipLinkProviderProps) {
-  const [mainId, setMainId] = useState(null)
+  const [anchorId, setAnchorId] = useState(null)
   return (
-    <SkipLinkContext.Provider
-      value={{ mainTargetId: mainId, setMainTargetId: setMainId }}
-    >
+    <SkipLinkContext.Provider value={{ anchorId, setAnchorId }}>
       {children}
     </SkipLinkContext.Provider>
   )
