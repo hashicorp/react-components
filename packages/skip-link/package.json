@@ -1,5 +1,5 @@
 {
-  "name": "@hashicorp/skip-link",
+  "name": "@hashicorp/react-skip-link",
   "description": "A skip-to-contentlink",
   "version": "1.0.0",
   "author": "HashiCorp",
