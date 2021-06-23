@@ -36,6 +36,11 @@ export default function ProductDownloadsPage({
   const _latestVersion = `${latestVersion}${enterpriseMode ? '+ent' : ''}`
   const currentRelease = releases.versions[_latestVersion]
 
+  if (!currentRelease)
+    throw new Error(
+      `We went looking for version "${_latestVersion}" but could not find it in the release data. Please make sure that the "latestVersion" prop matches the version name of an existing release.`
+    )
+
   const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
     currentRelease,
   ])
