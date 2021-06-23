@@ -105,4 +105,28 @@ describe('<UseCases />', () => {
       }
     })
   })
+
+  it('should render HTML item.descriptions', () => {
+    const propsWithHtml = {
+      items: [
+        {
+          title: 'Open and extensible remote access',
+          description:
+            'Integrate with <strong>existing tooling</strong>and APIs to simplify access.',
+          image: {
+            url:
+              'https://www.datocms-assets.com/2885/1565300480-workload-orchestration.png',
+          },
+          link: {
+            title: 'Learn more',
+            url: '/docs/common-workflows/manage-users-groups',
+          },
+        },
+      ],
+    }
+    render(<UseCases {...propsWithHtml} />)
+    const expectedStrong = screen.getByText('existing tooling')
+    expect(expectedStrong).toBeInTheDocument()
+    expect(expectedStrong.tagName).toBe('STRONG')
+  })
 })
