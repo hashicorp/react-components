@@ -9,6 +9,10 @@
   text-align: center;
   border-radius: 1px;
   border: none;
+  /* we might expect line-height: 100% to be set in normalize.css,
+  but it's not - we seem to have a forked or modified version of normalize.
+  for details: https://app.asana.com/0/1100423001970639/1160160189208209/f */
+  line-height: 100%;
   transition: transform 0.4s, color 0.2s, background 0.2s, border-color 0.2s;
   text-decoration: none;
   -webkit-appearance: none;
