@@ -3,10 +3,10 @@ import fragment from './fragment.graphql'
 import classNames from 'classnames'
 import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import svgArrowRight from './icons/arrow-right.svg.js'
-import svgExternalLink from './icons/external-link.svg.js'
-import svgChevronDown from './icons/chevron-down.svg.js'
-import svgDownload from './icons/download.svg.js'
+import svgArrowRight from './icons/arrow-right.svg?include'
+import svgExternalLink from './icons/external-link.svg?include'
+import svgChevronDown from './icons/chevron-down.svg?include'
+import svgDownload from './icons/download.svg?include'
 
 const linkTypeToIcon = {
   inbound: svgArrowRight,
