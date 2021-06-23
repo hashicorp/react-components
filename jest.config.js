@@ -12,7 +12,8 @@ module.exports = {
     // Note: babel-jest transform is from Jest's defaults for `transform`
     // ref: https://jestjs.io/docs/next/configuration
     '\\.[jt]sx?$': 'babel-jest',
-    // Load all .svg imports as raw strings.
+    // Load .svg imports as raw strings.
+    // Our mapping above means this only targets .svg?include imports.
     '\\.svg$': 'jest-raw-loader',
   },
   transformIgnorePatterns: [
