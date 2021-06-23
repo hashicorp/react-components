@@ -49,9 +49,6 @@
       &[data-animation='inbound'] {
         transform: translate3d(0, 0, 0);
       }
-      &[data-animation='anchor'] {
-        transform: translate3d(0, 0, 0);
-      }
       &[data-animation='outbound'] [data-animation-target] {
         transition: transform 0.2s;
         transform: translate3d(0, 0, 0);
@@ -81,9 +78,6 @@
     & .icon.is-animated {
       &[data-animation='inbound'] {
         transform: translate3d(2px, 0, 0);
-      }
-      &[data-animation='anchor'] {
-        transform: translate3d(0, 2px, 0);
       }
       &[data-animation='outbound'] [data-animation-target] {
         transform: translate3d(2px, -2px, 0);
