@@ -12,7 +12,6 @@ const IS_DEV = process.env.NODE_ENV !== 'production'
 export function pre({
   children,
   className,
-  metastring,
   hasBarAbove,
   theme = DEFAULT_THEME,
 }) {
@@ -40,6 +39,7 @@ export function pre({
   // Highlighted code is not affected.
   const code = normalizePlainCode(codeTokens)
   // We determine whether to showClipboard from the hideClipboard metastring
+  const metastring = codeChild.props.metastring
   const hideClipboard = metastring && metastring.includes('hideClipboard')
   // Deprecation warning for hideClipboard in metastring
   // Note: the hideClipboard metastring option is currently only used on Learn.
