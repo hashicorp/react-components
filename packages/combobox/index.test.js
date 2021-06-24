@@ -45,7 +45,6 @@ it('should focus the input when dropdown button is clicked', () => {
       options={['Apple', 'Orange', 'Banana', 'Pineapple', 'Kiwi']}
       label={label}
       buttonLabel={buttonLabel}
-      invalidInputValue
     />
   )
   // Check for focus on input after click of dropdown button
