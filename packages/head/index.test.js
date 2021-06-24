@@ -6,7 +6,7 @@ describe('<Head />', () => {
   const metaHttpEquivHTML =
     '<meta http-equiv="x-ua-compatible" content="ie=edge">'
   const metaDefaultTagsHTML =
-    '<meta property="og:locale" content="en_US"><meta property="og:type" content="website"><meta property="article:publisher" content="https://www.facebook.com/HashiCorp/"><meta name="twitter:site" content="@HashiCorp"><meta name="twitter:card" content="summary_large_image">'
+    '<meta property="og:locale" content="en_US"><meta property="og:type" content="website"><meta property="article:publisher" content="https://www.facebook.com/HashiCorp/"><meta name="twitter:site" content="@HashiCorp"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#000">'
   let Head
 
   beforeEach(async () => {
