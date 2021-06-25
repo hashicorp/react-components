@@ -18,36 +18,6 @@ it('should render an input element with a proper aria-label', () => {
   expect(screen.getByRole(role)).toHaveAttribute('aria-label', label)
 })
 
-it('should call onSelect', () => {
-  const label = 'Fruit picker'
-  const optionListRole = 'listbox'
-  const expectedTestId = 'foo-bar-Kiwi'
-  const inputRole = 'combobox'
-  const options = ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi']
-
-  render(
-    <Combobox
-      onSelect={(value) => value}
-      renderOption={(option) => (
-        <div data-testid={`foo-bar-${option}`}>{option}</div>
-      )}
-      options={options}
-      label={label}
-    />
-  )
-  const input = screen.getByRole(inputRole)
-
-  // Type `kiw`
-  fireEvent.change(input, { target: { value: 'kiw' } })
-
-  expect(
-    screen.getByRole(optionListRole).firstChild.firstChild
-  ).toHaveAttribute('data-testid', expectedTestId)
-
-  // Select first option in the list
-  fireEvent.click(screen.getByRole(optionListRole).firstChild)
-})
-
 it('should render our input with error state when invalidInputValue is true', () => {
   const label = 'Fruit picker'
   const role = 'combobox'
