@@ -6,7 +6,7 @@ This component allows folks using assistive technology to skip to the main conte
 
 **_Note_: this component remains hidden until focused.** Upon being clicked, focus will shift to the specified anchor element (main content). To test the live component below, click on this page heading or on the whitespace in the code editor, and then _press tab_. The skip link will appear and transition down.
 
-<LiveComponent>{`<SkipLink anchorId="docs-content" />`}</LiveComponent>
+<LiveComponent>{`<SkipLink anchorId="docs-content" portalTargetSelector="#skip-link-portal-target" />`}</LiveComponent>
 
 <UsageDetails packageName="@hashicorp/skip-link" />
 
