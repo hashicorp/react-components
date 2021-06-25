@@ -9,7 +9,6 @@ it('should render an input element with a proper aria-label', () => {
   render(
     <Combobox
       onSelect={(value) => value}
-      // renderOption={(option) => <ComboboxOption value={option} />}
       options={['Apple', 'Orange', 'Banana', 'Pineapple', 'Kiwi']}
       label={label}
     />
@@ -24,7 +23,6 @@ it('should render our input with error state when invalidInputValue is true', ()
   render(
     <Combobox
       onSelect={(value) => value}
-      // renderOption={(option) => <ComboboxOption value={option} />}
       options={['Apple', 'Orange', 'Banana', 'Pineapple', 'Kiwi']}
       label={label}
       invalidInputValue
@@ -41,7 +39,6 @@ it('should focus the input when dropdown button is clicked', () => {
   render(
     <Combobox
       onSelect={(value) => value}
-      // renderOption={(option) => <ComboboxOption value={option} />}
       options={['Apple', 'Orange', 'Banana', 'Pineapple', 'Kiwi']}
       label={label}
       buttonLabel={buttonLabel}
@@ -85,23 +82,6 @@ it('should filter to the proper options given enough characters', () => {
   expect(screen.getByRole(optionListRole).children.length).toBe(1)
 })
 
-it('should should all options when input value is completely different than the options', () => {
-  const label = 'Fruit picker'
-  const optionListRole = 'listbox'
-  const inputRole = 'combobox'
-  const options = ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi']
-
-  render(
-    <Combobox onSelect={(value) => value} options={options} label={label} />
-  )
-  const input = screen.getByRole(inputRole)
-
-  // Type large, unrelated string
-  fireEvent.change(input, { target: { value: 'zzzzzzzzzzzzzzzzzzzzzzzzz' } })
-
-  // Should match expectedInputValue, filter functionality should work such that it was rendered as the first option
-  expect(screen.getByRole(optionListRole).children.length).toBe(options.length)
-})
 
 it('should render a custom option component', () => {
   const label = 'Fruit picker'
