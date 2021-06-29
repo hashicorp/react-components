@@ -16,7 +16,7 @@ import s from './style.module.css'
  */
 
 interface SkipLinkProps {
-  anchorId?: string // just in string format, without the # id signature
+  anchorId: string // just in string format, without the # id signature
   portalTargetSelector?: string
 }
 
@@ -24,10 +24,10 @@ export default function SkipLink({
   anchorId,
   portalTargetSelector,
 }: SkipLinkProps) {
-  const isCsr = typeof window !== 'undefined'
+  const isClientside = typeof window !== 'undefined'
   if (!anchorId) {
-    console.warn(
-      'Warning: <SkipLink /> missing `anchorId`. Pass the id for the main content of the page.'
+    throw Error(
+      'Error: <SkipLink /> missing `anchorId`. Pass the id for the main content of the page.'
     )
   }
   if (!portalTargetSelector) {
@@ -35,13 +35,13 @@ export default function SkipLink({
       'Warning: <SkipLink /> missing `portalTargetSelector`. Pass the querySelector for the intended parent element for <SkipLink />.'
     )
   }
-  const skipLinkRef = useRef(null)
-  const portalContainer = isCsr && document?.querySelector(portalTargetSelector)
+  const portalContainer =
+    isClientside && document?.querySelector(portalTargetSelector)
 
-  if (!isCsr || !anchorId || !portalContainer) return null
+  if (!isClientside || !anchorId || !portalContainer) return null
 
   return createPortal(
-    <a ref={skipLinkRef} href={`#${anchorId}`} className={s.skipLink}>
+    <a href={`#${anchorId}`} className={s.skipLink}>
       Skip to main content
     </a>,
     portalContainer
