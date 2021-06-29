@@ -18,6 +18,8 @@
     "directory": "packages/skip-link"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x",
+    "react-dom": ">=16.x"
   }
 }
