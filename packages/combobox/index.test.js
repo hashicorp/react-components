@@ -81,7 +81,6 @@ it('should filter to the proper options given enough characters', () => {
   expect(screen.getByRole(optionListRole).children.length).toBe(1)
 })
 
-
 it('should render a custom option component', () => {
   const label = 'Fruit picker'
   const optionListRole = 'listbox'
@@ -143,4 +142,44 @@ it('should allow custom options to be selected', () => {
 
   // Should match expectedInputValue, filter functionality should work such that it was rendered as the first option
   expect(input).toHaveValue(expectedInputValue)
+})
+
+it('should pass the value to the custom onSelect handler', () => {
+  const label = 'Fruit picker'
+  const optionListRole = 'listbox'
+  const expectedTestId = 'foo-bar-Kiwi'
+  const inputRole = 'combobox'
+  const options = ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi']
+  const expectedInputValue = 'Kiwi'
+  const mockHandler = jest.fn((value) => value + ' is tastey')
+
+  render(
+    <Combobox
+      onSelect={mockHandler}
+      renderOption={(option) => (
+        <div data-testid={`foo-bar-${option}`}>{option}</div>
+      )}
+      options={options}
+      label={label}
+    />
+  )
+  const input = screen.getByRole(inputRole)
+
+  // Type `kiw`
+  fireEvent.change(input, { target: { value: 'kiw' } })
+
+  expect(
+    screen.getByRole(optionListRole).firstChild.firstChild
+  ).toHaveAttribute('data-testid', expectedTestId)
+
+  // Select first option in the list
+  fireEvent.click(screen.getByRole(optionListRole).firstChild)
+
+  // Should match expectedInputValue, filter functionality should work such that it was rendered as the first option
+  expect(input).toHaveValue(expectedInputValue)
+
+  // The return value of the mock function call was the expectedInputValue
+  expect(mockHandler.mock.results[0].value).toBe(
+    expectedInputValue + ' is tastey'
+  )
 })
