@@ -144,14 +144,14 @@ it('should allow custom options to be selected', () => {
   expect(input).toHaveValue(expectedInputValue)
 })
 
-it('should pass the value to the custom onSelect handler', () => {
+test('when an `onSelect` prop is provided and the user selects an option, the value should be passed to the `onSelect` handler ', () => {
   const label = 'Fruit picker'
   const optionListRole = 'listbox'
   const expectedTestId = 'foo-bar-Kiwi'
   const inputRole = 'combobox'
   const options = ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi']
   const expectedInputValue = 'Kiwi'
-  const mockHandler = jest.fn((value) => value + ' is tastey')
+  const mockHandler = jest.fn((value) => value + ' is tasty')
 
   render(
     <Combobox
@@ -180,6 +180,6 @@ it('should pass the value to the custom onSelect handler', () => {
 
   // The return value of the mock function call was the expectedInputValue
   expect(mockHandler.mock.results[0].value).toBe(
-    expectedInputValue + ' is tastey'
+    expectedInputValue + ' is tasty'
   )
 })
