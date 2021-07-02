@@ -33,7 +33,13 @@ export default function ProductDownloadsPage({
   releases,
 }: ProductDownloadsPageProps): React.ReactElement {
   const { name, slug, themeClass } = useProductMeta(product)
-  const currentRelease = releases.versions[latestVersion]
+  const _latestVersion = `${latestVersion}${enterpriseMode ? '+ent' : ''}`
+  const currentRelease = releases.versions[_latestVersion]
+
+  if (!currentRelease)
+    throw new Error(
+      `We went looking for version "${_latestVersion}" but could not find it in the release data. Please make sure that the "latestVersion" prop matches the version name of an existing release.`
+    )
 
   const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
     currentRelease,
@@ -61,7 +67,12 @@ export default function ProductDownloadsPage({
   // - if not, it just gets pushed in
   // This allows for flexible behavior on changing or adding new package manager configs on
   // a per-product basis if necessary.
-  let packageManagers = generateDefaultPackageManagers(slug)
+  //
+  // NOTE: enterprise releases do not currently work with package managers. according to rel-eng,
+  // this feature will be added in august 2021
+  let packageManagers = enterpriseMode
+    ? []
+    : generateDefaultPackageManagers(slug)
   const overrides = [...packageManagerOverrides]
   if (overrides) {
     packageManagers = packageManagers
@@ -102,12 +113,15 @@ export default function ProductDownloadsPage({
     <ProductMetaProvider product={product}>
       <HashiHead title={`Downloads | ${name} by HashiCorp`} />
       <div className={`${styles.root} ${themeClass || ''} ${className || ''}`}>
-        <h1>Download {name}</h1>
+        <h1>
+          Download {name}
+          {enterpriseMode ? ' Enterprise' : ''}
+        </h1>
         <DownloadCards
           defaultTabIdx={osIndex}
           tabData={tabData}
           downloads={sortedDownloads}
-          version={latestVersion}
+          version={_latestVersion}
           logo={logo}
           tutorialLink={tutorialLink}
           merchandisingSlot={merchandisingSlot}
@@ -130,7 +144,7 @@ export default function ProductDownloadsPage({
 
         <ReleaseInformation
           releases={sortedReleases}
-          latestVersion={latestVersion}
+          latestVersion={_latestVersion}
           containers={containers}
           tutorials={tutorials}
           changelog={changelog}
