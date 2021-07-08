@@ -30,6 +30,18 @@ it('should render our input with error state when invalidInputValue is true', ()
   expect(screen.getByRole(role)).toHaveAttribute('data-has-error', 'true')
 })
 
+it('should render a proper button label when provided', () => {
+  const defaultProps = {
+    label: 'Fruit picker',
+    options: ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi'],
+  }
+  const buttonLabel = 'Pick a fruit'
+
+  render(<Combobox {...defaultProps} buttonLabel={buttonLabel} />)
+
+  expect(screen.getByText(buttonLabel)).toBeInTheDocument()
+})
+
 it('should focus the input when dropdown button is clicked', () => {
   const defaultProps = {
     label: 'Fruit picker',
