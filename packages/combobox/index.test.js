@@ -3,11 +3,12 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 
 afterEach(cleanup)
 
+const defaultProps = {
+  label: 'Fruit picker',
+  options: ['Orange', 'Banana', 'Apple', 'Pineapple', 'Kiwi'],
+}
+
 it('should render an input element with a proper aria-label', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi'],
-  }
   const role = 'combobox'
 
   render(<Combobox {...defaultProps} />)
@@ -19,10 +20,6 @@ it('should render an input element with a proper aria-label', () => {
 })
 
 it('should render our input with error state when invalidInputValue is true', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi'],
-  }
   const role = 'combobox'
 
   render(<Combobox {...defaultProps} invalidInputValue />)
@@ -31,10 +28,6 @@ it('should render our input with error state when invalidInputValue is true', ()
 })
 
 it('should render a proper button label when provided', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi'],
-  }
   const buttonLabel = 'Pick a fruit'
 
   render(<Combobox {...defaultProps} buttonLabel={buttonLabel} />)
@@ -43,11 +36,6 @@ it('should render a proper button label when provided', () => {
 })
 
 it('should focus the input when dropdown button is clicked', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Pineapple', 'Apple', 'Kiwi'],
-  }
-
   const inputRole = 'combobox'
   const buttonLabel = 'Pick a fruit'
 
@@ -59,11 +47,6 @@ it('should focus the input when dropdown button is clicked', () => {
 })
 
 it('should filter to the proper options given enough characters', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Apple', 'Pineapple', 'Kiwi'],
-  }
-
   const inputRole = 'combobox'
   const optionListRole = 'listbox'
 
@@ -100,10 +83,6 @@ it('should filter to the proper options given enough characters', () => {
 })
 
 it('should render a custom option component', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Apple', 'Pineapple', 'Kiwi'],
-  }
   const inputRole = 'combobox'
   const expectedTestId = 'foo-bar-Kiwi'
 
@@ -128,10 +107,6 @@ it('should render a custom option component', () => {
 })
 
 it('should render the right number of options', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Apple', 'Pineapple', 'Kiwi'],
-  }
   const inputRole = 'combobox'
   const optionListRole = 'listbox'
 
@@ -148,10 +123,6 @@ it('should render the right number of options', () => {
 })
 
 it('should allow custom options to be selected', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Apple', 'Pineapple', 'Kiwi'],
-  }
   const expectedTestId = 'foo-bar-Kiwi'
   const inputRole = 'combobox'
   const expectedInputValue = 'Kiwi'
@@ -178,10 +149,6 @@ it('should allow custom options to be selected', () => {
 })
 
 test('when an `onSelect` prop is provided and the user selects an option, the value should be passed to the `onSelect` handler ', () => {
-  const defaultProps = {
-    label: 'Fruit picker',
-    options: ['Orange', 'Banana', 'Apple', 'Pineapple', 'Kiwi'],
-  }
   const inputRole = 'combobox'
   const expectedInputValue = 'Kiwi'
   const mockHandler = jest.fn((value) => value + ' is tasty')
