@@ -8,37 +8,32 @@ const defaultProps = {
   options: ['Orange', 'Banana', 'Apple', 'Pineapple', 'Kiwi'],
 }
 
-it('should render an input element with a proper aria-label', () => {
-  const role = 'combobox'
+const inputRole = 'combobox'
+const optionListRole = 'listbox'
+const buttonLabel = 'Pick a fruit'
 
+it('should render an input element with a proper aria-label', () => {
   render(<Combobox {...defaultProps} />)
 
-  expect(screen.getByRole(role)).toHaveAttribute(
+  expect(screen.getByRole(inputRole)).toHaveAttribute(
     'aria-label',
     defaultProps.label
   )
 })
 
 it('should render our input with error state when invalidInputValue is true', () => {
-  const role = 'combobox'
-
   render(<Combobox {...defaultProps} invalidInputValue />)
 
-  expect(screen.getByRole(role)).toHaveAttribute('data-has-error', 'true')
+  expect(screen.getByRole(inputRole)).toHaveAttribute('data-has-error', 'true')
 })
 
 it('should render a proper button label when provided', () => {
-  const buttonLabel = 'Pick a fruit'
-
   render(<Combobox {...defaultProps} buttonLabel={buttonLabel} />)
 
   expect(screen.getByText(buttonLabel)).toBeInTheDocument()
 })
 
 it('should focus the input when dropdown button is clicked', () => {
-  const inputRole = 'combobox'
-  const buttonLabel = 'Pick a fruit'
-
   render(<Combobox {...defaultProps} buttonLabel={buttonLabel} />)
 
   // Check for focus on input after click of dropdown button
@@ -47,9 +42,6 @@ it('should focus the input when dropdown button is clicked', () => {
 })
 
 it('should filter to the proper options given enough characters', () => {
-  const inputRole = 'combobox'
-  const optionListRole = 'listbox'
-
   render(
     <Combobox
       //  'Apple' should be the best match and is intentionally not placed as the first option.
@@ -83,7 +75,6 @@ it('should filter to the proper options given enough characters', () => {
 })
 
 it('should render a custom option component', () => {
-  const inputRole = 'combobox'
   const expectedTestId = 'foo-bar-Kiwi'
 
   render(
@@ -107,9 +98,6 @@ it('should render a custom option component', () => {
 })
 
 it('should render the right number of options', () => {
-  const inputRole = 'combobox'
-  const optionListRole = 'listbox'
-
   render(<Combobox {...defaultProps} />)
 
   const input = screen.getByRole(inputRole)
@@ -124,7 +112,7 @@ it('should render the right number of options', () => {
 
 it('should allow custom options to be selected', () => {
   const expectedTestId = 'foo-bar-Kiwi'
-  const inputRole = 'combobox'
+
   const expectedInputValue = 'Kiwi'
 
   render(
@@ -149,7 +137,6 @@ it('should allow custom options to be selected', () => {
 })
 
 test('when an `onSelect` prop is provided and the user selects an option, the value should be passed to the `onSelect` handler ', () => {
-  const inputRole = 'combobox'
   const expectedInputValue = 'Kiwi'
   const mockHandler = jest.fn((value) => value + ' is tasty')
 
