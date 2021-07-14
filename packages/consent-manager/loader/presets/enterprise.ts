@@ -9,5 +9,4 @@ export default {
     services.marketo,
     services.googleAds,
   ],
-  additionalServices: [services.bizible, services.engagio],
 }

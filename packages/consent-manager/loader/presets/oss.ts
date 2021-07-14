@@ -7,5 +7,5 @@ export default {
     services.linkedIn,
     services.marketo,
   ],
-  additionalServices: [services.optinMonster, services.bizible],
+  additionalServices: [services.optinMonster],
 }
