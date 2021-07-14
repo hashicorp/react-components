@@ -126,7 +126,7 @@ describe('<ProductDownloadsPage />', () => {
     })
 
     it('should only show enterprise releases if enterpriseMode is true', () => {
-      setup({ enterpriseMode: true, latestVersion: '0.1.0+ent' })
+      setup({ enterpriseMode: true, latestVersion: '0.1.0' })
       fireEvent.click(screen.getByTestId('version-dropdown'))
       expect(screen.getByText('0.1.0+ent')).toBeInTheDocument()
       expect(screen.queryByText('1.0.0')).not.toBeInTheDocument()
