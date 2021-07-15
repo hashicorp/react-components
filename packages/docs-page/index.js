@@ -38,6 +38,7 @@ export function DocsPageWrapper({
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
   useEffect(() => {
+    if (!document) return
     const node = document.querySelector('#inner')
     if (!node) return
     return temporary_injectJumpToSection(node)
