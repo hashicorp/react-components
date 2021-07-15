@@ -1,3 +1,6 @@
+@custom-media --mobile-viewports (max-width: 939px);
+@custom-media --desktop-viewports (min-width: 940px);
+
 .contentWrap {
   composes: g-grid-container from global;
 

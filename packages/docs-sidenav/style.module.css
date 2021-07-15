@@ -173,6 +173,7 @@
 }
 
 .navItemIcon {
+  align-items: center;
   background: white;
   position: relative;
   left: -8.5px;
@@ -181,7 +182,6 @@
   height: 16px;
   border-radius: 8px;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-shrink: 0;
 
