@@ -100,6 +100,7 @@ export function DocsPageWrapper({
           )}
         >
           <Content
+            className="g-content" // used in temporary_injectJumpToSection
             product={slug}
             content={
               <>

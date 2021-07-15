@@ -251,9 +251,9 @@
 
 .divider {
   background: none;
-  padding: 8px 0;
   border: none;
   margin: 0;
+  padding: 8px 0;
 
   &::after {
     content: '';

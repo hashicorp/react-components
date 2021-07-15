@@ -16,6 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@hashicorp/platform-product-meta": "^0.1.0"
+    "@hashicorp/platform-product-meta": "^0.1.0",
+    "classnames": "^2.3.1"
   }
 }
