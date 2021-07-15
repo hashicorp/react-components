@@ -1,5 +1,5 @@
 .root {
-  /* Base type style */
+  /* Base typography */
   composes: g-type-body-long from global;
 
   /* Include all content base styles */
