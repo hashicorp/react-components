@@ -2,13 +2,7 @@ const withHashicorp = require('@hashicorp/platform-nextjs-plugin')
 const withSwingset = require('swingset')
 
 module.exports = withHashicorp({
-  transpileModules: [
-    'swingset',
-    '@hashicorp/react-.*',
-    '@hashicorp/platform-*',
-    '@hashicorp/sentinel-embedded',
-    '@hashicorp/platform-product-meta',
-  ],
+  transpileModules: ['swingset', '@hashicorp/sentinel-embedded'],
 })(
   withSwingset({
     componentsRoot: 'packages/*',
