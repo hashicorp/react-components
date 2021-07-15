@@ -12,7 +12,7 @@
     color: var(--gray-2);
   }
 
-  & :global(.g-container) {
+  & :global(.g-grid-container) {
     max-width: 825px;
   }
 

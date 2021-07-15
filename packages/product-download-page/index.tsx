@@ -127,7 +127,7 @@ export default function ProductDownloadsPage({
           merchandisingSlot={merchandisingSlot}
         />
         {
-          <div className="g-container">
+          <div className="g-grid-container">
             <div className={styles.gettingStarted}>
               <h2>Get Started</h2>
               <p>{getStartedDescription}</p>

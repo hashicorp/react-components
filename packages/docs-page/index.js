@@ -113,7 +113,7 @@ export function DocsPageWrapper({
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
       {showEditPage && (
-        <div id="edit-this-page" className="g-container">
+        <div id="edit-this-page" className="g-grid-container">
           <a href={githubFileUrl}>
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>

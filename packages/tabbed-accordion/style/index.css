@@ -9,7 +9,7 @@
     margin: 0;
   }
 
-  & .heading-container {
+  & .heading-grid-container {
     text-align: center;
     & + .g-tabs {
       margin-top: var(--space-display-2--content);

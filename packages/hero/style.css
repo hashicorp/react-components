@@ -16,7 +16,7 @@
   &.centered {
     text-align: center;
 
-    & .g-container {
+    & .g-grid-container {
       align-items: center;
       flex-direction: column;
 
@@ -98,7 +98,7 @@
     min-height: 100%;
   }
 
-  & .g-container {
+  & .g-grid-container {
     display: flex;
     position: relative;
     align-items: center;

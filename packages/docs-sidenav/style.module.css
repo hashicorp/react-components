@@ -183,6 +183,12 @@
   justify-content: center;
   flex-shrink: 0;
 
+  & code {
+    font-family: var(--font-monospace);
+    font-size: 0.8125rem;
+    line-height: 1.375rem;
+  }
+
   & svg {
     display: block;
     & [stroke] {
