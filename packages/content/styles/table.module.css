@@ -60,5 +60,9 @@
     & table {
       background-color: #fff;
     }
+
+    & tr.warning td {
+      background: #fcf8e3;
+    }
   }
 }

@@ -1,6 +1,57 @@
 @custom-media --mobile-viewports (max-width: 939px);
 @custom-media --desktop-viewports (min-width: 940px);
 
+.root {
+  /* @TODO: adjustment for versioned docs */
+  & :global(.g-alert-banner) {
+    @media (max-width: 767px) {
+      display: none !important;
+    }
+  }
+
+  & :global(#jump-to-section) {
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+    position: relative;
+    user-select: none;
+    z-index: 3;
+
+    @media (--mobile-viewports) {
+      margin-left: 1rem;
+    }
+
+    & :global(.trigger) {
+      align-items: center;
+      display: flex;
+    }
+
+    & svg {
+      margin-left: 5px;
+    }
+
+    & :global(.dropdown) {
+      background: white;
+      border-radius: 3px;
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+      display: none;
+      margin: 10px 0 0 0;
+      padding: 0 0 0 30px;
+      position: absolute;
+      z-index: 2;
+      width: 500px;
+
+      @media (--mobile-viewports) {
+        width: 345px;
+      }
+
+      &:global(.active) {
+        display: block;
+      }
+    }
+  }
+}
+
 .contentWrap {
   composes: g-grid-container from global;
 
@@ -47,5 +98,36 @@
 
   & :global(.g-section-header) {
     margin-bottom: 100px;
+  }
+}
+
+.versionSelect {
+  margin-bottom: 1rem;
+  max-width: 90%;
+}
+
+.editThisPage {
+  composes: g-grid-container from global;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 48px;
+
+  & a {
+    align-items: center;
+    color: var(--gray-1);
+    display: flex;
+    opacity: 0.5;
+    padding-right: 32px;
+    transition: opacity 0.4s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    & > img {
+      height: 22px;
+      margin-right: 9px;
+      width: 23px;
+    }
   }
 }

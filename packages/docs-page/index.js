@@ -52,7 +52,7 @@ export function DocsPageWrapper({
   )
 
   const versionSelect = process.env.ENABLE_VERSIONED_DOCS ? (
-    <div className="version-select">
+    <div className={s.versionSelect}>
       <VersionSelect versions={versions} />
     </div>
   ) : null
@@ -62,7 +62,7 @@ export function DocsPageWrapper({
   ) : null
 
   return (
-    <div id="p-docs">
+    <div id="p-docs" className={s.root}>
       {/* render the page's data to the document head */}
       <HashiHead
         canonicalUrl={canonicalUrl}
@@ -114,7 +114,7 @@ export function DocsPageWrapper({
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
       {showEditPage && (
-        <div id="edit-this-page" className="g-grid-container">
+        <div className={s.editThisPage}>
           <a href={githubFileUrl}>
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>
