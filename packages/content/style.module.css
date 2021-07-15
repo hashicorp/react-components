@@ -1,5 +1,7 @@
 .root {
+  /* Base type style */
   composes: g-type-body-long from global;
+
   /* Include all content base styles */
   composes: a from './styles/a.module.css';
   composes: alert from './styles/alert.module.css';
