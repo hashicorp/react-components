@@ -17,7 +17,7 @@
   composes: strong from './styles/strong.module.css';
   composes: table from './styles/table.module.css';
 
-  /* Default text color */
+  /* Set default text color */
   color: var(--gray-2);
 
   /* Remove the top margin from any first item */

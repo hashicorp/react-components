@@ -236,8 +236,8 @@
   }
 
   & > li {
-    margin-left: 21.5px;
     border-left: 1px solid var(--gray-5);
+    margin-left: 21.5px;
   }
 
   & > hr {

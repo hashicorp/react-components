@@ -31,7 +31,7 @@ export default function temporary_injectJumpToSection(node) {
     </ul>`
   const el = document.createElement('div')
   el.innerHTML = html
-  el.id = 'jump-to-section'
+  el.classList.add('jump-to-section')
 
   // attach event listeners to make the dropdown work
   const trigger = el.querySelector('.trigger')
