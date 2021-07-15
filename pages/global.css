@@ -1,8 +1,5 @@
 @import '~@hashicorp/mktg-global-styles/style.css';
 
-/* TODO: this should be embedded into react-content */
-@import '~@hashicorp/mktg-global-styles/_temporary-to-remove/tables.css';
-
 /* global component css imports */
 
 /* these should be moved to css modules */
@@ -16,7 +13,6 @@
 @import '../packages/product-features-list/style.css';
 @import '../packages/alert-banner/style.css';
 @import '../packages/docs-page/style.css';
-@import '../packages/content/style.css';
 @import '../packages/enterprise-alert/style.css';
 @import '../packages/featured-slider/style.css';
 @import '../packages/content-cta/style.css';
@@ -33,11 +29,6 @@
 @import '../packages/case-study-slider/style.css';
 @import '../packages/learn-callout/style.css';
 @import '../packages/use-cases/style.css';
-
-body {
-  margin: 0;
-  padding: 0;
-}
 
 .swingset-logo {
   margin: 1rem 1rem 0.25rem 2rem;

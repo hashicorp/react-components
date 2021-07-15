@@ -1,4 +1,4 @@
-.g-content_lists {
+.olUlLists {
   /* Lists */
   & ul:not([class]),
   & ol:not([class]) {
@@ -17,7 +17,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        color: var(--gray-4);
+        color: var(--gray-3);
         margin-left: calc(-1 * 1.3rem);
         width: 1.3rem;
       }

@@ -1,0 +1,25 @@
+.root {
+  composes: g-type-body-long from global;
+  /* Include all content base styles */
+  composes: a from './styles/a.module.css';
+  composes: alert from './styles/alert.module.css';
+  composes: aPermalinks from './styles/a-permalinks.module.css';
+  composes: blockquote from './styles/blockquote.module.css';
+  composes: codeInline from './styles/code-inline.module.css';
+  composes: headings from './styles/headings.module.css';
+  composes: hr from './styles/hr.module.css';
+  composes: img from './styles/img.module.css';
+  composes: olUlLists from './styles/ol-ul-lists.module.css';
+  composes: p from './styles/p.module.css';
+  composes: pre from './styles/pre.module.css';
+  composes: strong from './styles/strong.module.css';
+  composes: table from './styles/table.module.css';
+
+  /* Set default color */
+  color: var(--gray-2);
+
+  /* Remove the top margin from any first item */
+  & > *:first-child {
+    margin-top: 0;
+  }
+}

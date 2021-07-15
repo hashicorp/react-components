@@ -1,0 +1,24 @@
+.pre {
+  & pre {
+    background-color: var(--code-dark, #1d1e1f);
+    border-radius: 3px;
+    margin: 1.5rem 0;
+    padding: 16px;
+    overflow: auto;
+    background: var(--code-dark);
+    color: var(--code-light);
+    font-family: var(--font-monospace);
+    font-weight: var(--font-weight-reg);
+    font-size: 0.844rem;
+    line-height: 1.63em;
+
+    & code {
+      font: inherit;
+      line-height: inherit;
+      color: inherit;
+      overflow-wrap: normal;
+      white-space: pre;
+      padding: 0;
+    }
+  }
+}

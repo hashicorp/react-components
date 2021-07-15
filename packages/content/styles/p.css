@@ -1,7 +1,0 @@
-.g-content_p {
-  /* Paragraph text */
-  & p {
-    /* @TODO margin around component should be handled at project level */
-    margin: 20px 0;
-  }
-}

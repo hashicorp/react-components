@@ -1,0 +1,33 @@
+.codeInline {
+  /* Inline code */
+  &:not(pre) code {
+    background: var(--code-light-transparent);
+    border-radius: 3px;
+    color: var(--code-dark);
+    font-family: var(--font-monospace);
+    font-weight: var(--font-weight-reg);
+    font-size: 0.844rem;
+    hyphens: none;
+    line-height: 1.63em;
+    padding: 0.3em 0.625em;
+  }
+
+  /* Inline code in headings */
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    & code {
+      display: inline;
+      font-size: 0.825em;
+      padding: 0.2em 0.4em;
+    }
+  }
+
+  /* Code in links */
+  & a code {
+    color: var(--brand-link);
+  }
+}

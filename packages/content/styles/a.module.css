@@ -1,16 +1,16 @@
-.g-content_a {
+.a {
   /* Links */
 
   /* Note: custom components are used in g-content areas.
   We don't want to clobber these with our default link styles */
   & a:not([class]) {
-    color: var(--highlight-color-text);
+    color: var(--brand-link);
     position: relative;
     transition: color 0.3s;
     text-decoration: none;
 
     &:hover {
-      color: var(--highlight-color-text);
+      color: var(--brand-link);
       text-decoration: underline;
     }
 
@@ -20,10 +20,6 @@
 
     &:visited:hover {
       color: var(--visited-d1);
-    }
-
-    & > code {
-      color: var(--highlight-color-text);
     }
   }
 }

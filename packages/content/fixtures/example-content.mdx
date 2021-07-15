@@ -1,0 +1,296 @@
+# Markdown Test Page
+
+These few opening paragraphs are just meant to reflect more realistic
+content.
+
+Certain Vault backends utilize plugins to extend their functionality
+outside of what is available in the core Vault code. Often times these
+backends will provide both builtin plugins and a mechanism for executing
+external plugins.
+
+Builtin plugins are shipped with Vault, often for commonly used
+implementations, and require no additional operator intervention to run.
+Builtin plugins are just like any other backend code inside Vault.
+
+## Headings
+
+# Heading One
+
+## Heading Two
+
+### Heading Three
+
+#### Heading Four
+
+##### Heading Five
+
+###### Heading Six
+
+## Text Blocks
+
+Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod.
+
+Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum.
+
+## Text Styles
+
+Emphasis, aka italics, with _asterisks_ or _underscores_.
+
+Strong emphasis, aka bold, with **asterisks** or **underscores**.
+
+Combined emphasis with **asterisks and _underscores_**.
+
+Strikethrough uses two tildes. ~~Scratch this.~~
+
+## Lists
+
+### Unordered List
+
+A basic example of an unordered list looks something like this:
+
+- One list item, could be short
+- A second list item, also not long
+- Third list item, with a bit more detail that might make it wrap to two lines
+- List item number four, with a considerable amount of text that should probably wrap to a newline, as this line is too long not to wrap
+- A fifth list item, short again
+
+### Ordered List
+
+A basic example of an ordered list looks something like this:
+
+1. One list item, could be short
+2. A second list item, also not long
+3. Third list item, with a bit more detail that might make it wrap to two lines
+4. List item number four, with a considerable amount of text that should probably wrap to a newline, as this line is too long not to wrap
+5. Ordered lists should have a maximum of 99 items. The 100th item's bullet will overflow the space designated for the list bullet.
+
+## Links
+
+[I'm an inline-style link](https://www.google.com). Here's some text so not everything is links. You can add titles to links, which will appear on hover. [I'm an inline-style link with title](https://www.google.com "Google's Homepage").
+
+There are other ways to write links. [I'm a reference-style link][arbitrary case-insensitive reference text]. [I'm a relative reference to a repository file](../blob/master/LICENSE). You can also [use numbers for reference-style link definitions][1]
+
+You can even leave link text empty use the [link text itself]. URLs and URLs in angle brackets will automatically get turned into links. http://www.example.com or <http://www.example.com>, but not example.com.
+
+Reference links can be placed later in the document, and aren't visible when rendered. They're placed below this text block in this example.
+
+[arbitrary case-insensitive reference text]: https://www.example.com
+[1]: https://www.example.com
+[link text itself]: https://www.example.com
+
+## Images
+
+Here's an example of an image, placed between two paragraphs of text.
+
+![Placeholder image](https://picsum.photos/300/150/?image=1075)
+
+Images can also appear in things like lists, alerts, and block quotes. This doesn't happen very often, if at all, so we haven't explicitly accounted for those options yet.
+
+## Code
+
+### Inline Code
+
+Inline `code` has `back-ticks around` it.
+
+This is some `inline code` in a large paragraph. Note that [`linked code`](https://www.example.com) also needs to be accounted for, current styles feel mismatched with other inline code. Vestibulum id ligula porta felis euismod semper. Fusce `dapibus`, tellus ac cursus commodo, `tortor mauris condimentum` nibh.
+
+### Code Blocks
+
+Code blocks in our content component are simple by default, and do not contain extra features such as "Copy to Clipboard" and syntax highlighting.
+
+Please see the docs for [@hashicorp/react-code-block](https://react-components.vercel.app/components/codeblock) for examples of our more complex `<CodeBlock />` component.
+
+> Further Details: Features such as "Copy to Clipboard" are enabled at the project level using [MDX](https://mdxjs.com/), which allows us to [substitute in components](https://mdxjs.com/getting-started#working-with-components) for certain types of authored content, as well as do other fancy things like highlight code. We're also currently in the process of [consolidating `<CodeBlock />` components and their styles](https://docs.google.com/document/d/1n5eCy4Z4eA1TgI8QxE1D3og7gd-k0wsMAf0tNIIAUjs/edit#), which will help use ensure extra features and highlighting styles are consistent across projects.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    ch := make(chan float64)
+    ch <- 1.0e10    // magic number
+    x, ok := <- ch
+    defer fmt.Println(`exitting now\`)
+    go println(len("hello world!"))
+    return
+}
+```
+
+### Tables
+
+| Tables                                          |                               Are                               |      Cool |
+| ----------------------------------------------- | :-------------------------------------------------------------: | --------: |
+| col 3 is                                        |                          right-aligned                          |  `$ 1600` |
+| col 2 is                                        |                            centered                             |    `$ 12` |
+| zebra stripes                                   |                            are neat                             |       $ 1 |
+| supports `inline code`                          |                 and **other** inline ~~things~~                 |   _hello_ |
+| row banding and `inline code`                   |                          works alright                          |     `eks` |
+| linked [`inline code`](https://www.example.com) |                          not the best                           | **10 MB** |
+| linked [`inline code`](https://www.example.com) |                        bad with banding                         |     $ 123 |
+| cells can have other stuff                      | ![Placeholder image](https://picsum.photos/300/150/?image=1075) |    `plan` |
+| they can be plain text                          |                 plain text below the image row                  |     $ 123 |
+| but cells can't contain                         |              blocks like code blocks, alerts, etc               |     $ 123 |
+
+### Blockquotes
+
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
+
+Quote break. Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula.
+
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can _put_ **Markdown** into a blockquote.
+
+Quote break. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+
+> You can also put any `other` elements in [`block quotes`](https://www.example.com)
+> Like images, for example
+> ![Placeholder image](https://picsum.photos/300/150/?image=1075)
+> Or maybe even one of our custom alerts
+>
+> -> This is an alert
+>
+> Lists also work
+>
+> - This
+> - Is
+> - A Lists
+>
+> Though more complex content nested in a blockquote doesn't currently see a lot of active use, so it may not be a high priority to account for.
+
+### Horizontal Rules
+
+Horizontal rules are often used to separate content. When writing [markdown](https://en.wikipedia.org/wiki/Markdown), they can be created with three or more hyphens, asterisks, or underscores.
+
+---
+
+Three consecutive horizontal rules looks like this:
+
+---
+
+---
+
+---
+
+Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+
+## Alerts
+
+> Note: these alert-style boxes require a custom markdown syntax. Our Docs and Learn sites are the main consumers of this custom addition. We hope to move these to leverage MDX custom components, rather than custom markdown parsing, in the near future.
+
+=> This is a **success** alert. Things like `inline code`, [links](https://www.example.com), linked [`inline code`](https://www.example.com), and ~~other~~ inline text _styles_ should be supported within the alert.
+
+-> This is an **information** alert. Things like `inline code`, [links](https://www.example.com), linked [`inline code`](https://www.example.com), and ~~other~~ inline text _styles_ should be supported within the alert.
+
+~> This is a **warning** alert. Things like `inline code`, [links](https://www.example.com), linked [`inline code`](https://www.example.com), and ~~other~~ inline text _styles_ should be supported within the alert.
+
+!> This is a **danger** alert. Things like `inline code`, [links](https://www.example.com), linked [`inline code`](https://www.example.com), and ~~other~~ inline text _styles_ should be supported within the alert.
+
+## Nested Lists
+
+### Unordered Nested List
+
+A more complex example of an unordered list looks something like this:
+
+- Multi-paragraph list item. Certain Vault backends utilize plugins to extend their functionality outside of what is available in the core Vault code. Often times these backends will provide both builtin plugins and a mechanism for executing external plugins. This is another paragraph of text, nested within the first list item. External plugins, on the other hand, are not shipped with the Vault binary and must be registered to Vault by a privileged Vault user. This section of the documentation will describe the architecture and security of external plugins.
+- A second list item, also with multiple paragraphs and nested content. Code blocks can be nested within list items.
+
+  ```
+  $ vault write code/block/example/myplugin-database-plugin \
+    sha_256=&lt;expected SHA256 Hex value of the plugin binary&gt; \
+    command="myplugin" Success! Data written to:
+    code/block/example/myplugin-database-plugin
+  ```
+
+- Third list item, again with multiple paragraphs and nested content. We should probably build out detailed examples to ensure all content works as expected when nested within list items, even when nested multiple levels deep.
+
+  - Here are a few sub-items
+  - Another sub-item in a nested list
+  - A third nested list item it could also contain nested content, such as a short code snippet:
+    ```
+    A short code snippet
+    ```
+  - A fourth nested list item
+
+    - The first item in a list nested three levels deep
+      - We have a few different bullet styles
+      - These nested lists show the extent of them
+        - Further nesting, if you really want to use it, doesn't have different bullets
+          - An example bullet in an unreasonably deep level of nesting
+      - Item back up at the fourth level
+    - Another third-level nested list item
+
+      -> **Note**: This list item has a nested note, too.
+
+    - Last nested item I promise
+
+- List item number four, with a considerable amount of text that should probably wrap to a newline, as this line is too long not to wrap. List items should accommodate have any kind of content nested within them, an image is shown nested in this one.
+
+  ![Placeholder image](https://picsum.photos/300/150/?image=1075)
+
+- A fifth list item, again with paragraph text. Certain Vault backends utilize plugins to extend their functionality outside of what is available in the core Vault code. Often times these backends will provide both builtin plugins and a mechanism for executing external plugins.
+
+### Ordered Nested List
+
+A more complex example of an unordered list looks something like this:
+
+1. Multi-paragraph list item. Certain Vault backends utilize plugins to extend their functionality outside of what is available in the core Vault code. Often times these backends will provide both builtin plugins and a mechanism for executing external plugins. This is another paragraph of text, nested within the first list item. External plugins, on the other hand, are not shipped with the Vault binary and must be registered to Vault by a privileged Vault user. This section of the documentation will describe the architecture and security of external plugins.
+
+2. A second list item, also with multiple paragraphs and nested content. Code blocks can be nested within list items.
+
+   ```
+   $ vault write code/block/example/myplugin-database-plugin \
+     sha_256=&lt;expected SHA256 Hex value of the plugin binary&gt; \
+     command="myplugin" Success! Data written to:
+     code/block/example/myplugin-database-plugin
+   ```
+
+3. Third list item, again with multiple paragraphs and nested content. We should probably build out detailed examples to ensure all content works as expected when nested within list items, even when nested multiple levels deep.
+
+   1. Here are a few sub-items
+   2. Another sub-item in a nested list
+   3. A third nested list item it could also contain nested content, such as a short code snippet:
+      ```
+      A short code snippet
+      ```
+   4. A fourth nested list item
+
+      1. The first item in a list nested three levels deep
+      2. We have a few different bullet styles
+      3. These nested lists show the extent of them
+         1. Further nesting, if you really want to use it, doesn't have different bullets
+            1. An example bullet in an unreasonably deep level of nesting
+      4. Item back up at the fourth level
+      5. Another third-level nested list item
+
+         -> **Note**: This list item has a nested note, too.
+
+      6. Last nested item I promise
+
+4. List item number four, with a considerable amount of text that should probably wrap to a newline, as this line is too long not to wrap. List items should accommodate have any kind of content nested within them, an image is shown nested in this one.
+
+   ![Placeholder image](https://picsum.photos/300/150/?image=1075)
+
+5. A fifth list item, again with paragraph text. Certain Vault backends utilize plugins to extend their functionality outside of what is available in the core Vault code. Often times these backends will provide both builtin plugins and a mechanism for executing external plugins.
+
+## With Button
+
+> Buttons that are passed a `url` prop are rendered as `<a />` tags. We have content styles for `<a />` tags. This test is intended to help ensure these styles don't interact in unexpected ways.
+
+[I'm an inline-style link](https://www.google.com). Here's some text so not everything is links. You can add titles to links, which will appear on hover. [I'm an inline-style link with title](https://www.google.com "Google's Homepage").
+
+There are other ways to write links. [I'm a reference-style link][arbitrary case-insensitive reference text]. [I'm a relative reference to a repository file](../blob/master/LICENSE). You can also [use numbers for reference-style link definitions][1]
+
+<Button
+  url="https://www.hashicorp.com"
+  title="My custom button"
+  theme={{ brand: 'terraform' }}
+/>
+
+You can even leave link text empty use the [link text itself]. URLs and URLs in angle brackets will automatically get turned into links. http://www.example.com or <http://www.example.com>, but not example.com.
+
+Reference links can be placed later in the document, and aren't visible when rendered. They're placed below this text block in this example.
+
+[arbitrary case-insensitive reference text]: https://www.example.com
+[1]: https://www.example.com
+[link text itself]: https://www.example.com

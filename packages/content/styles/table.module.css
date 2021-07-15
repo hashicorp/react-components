@@ -1,5 +1,5 @@
-.g-content_table {
-  table {
+.table {
+  & table {
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
@@ -7,7 +7,6 @@
     background-color: transparent;
     width: 100%;
     max-width: 100%;
-    /* @TODO margin around component should be handled at project level */
     margin-bottom: 20px;
 
     & th {

@@ -11,7 +11,7 @@ Once that refactor is complete, we should
 remove this class.
 */
 
-.g-content_temp-padded {
+.tempPaddedContent {
   margin: auto;
 
   /* On large viewports, all content is spaced from edge of container */
@@ -22,7 +22,7 @@ remove this class.
 
   /* On small viewports, all content except
   .highlight is spaced from edge of container */
-  & > *:not(.highlight) {
+  & > *:global(:not(.highlight)) {
     @media (max-width: 768px) {
       margin-left: 1rem;
       margin-right: 1rem;
