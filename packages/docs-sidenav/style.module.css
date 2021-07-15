@@ -175,15 +175,15 @@
 .navItemIcon {
   align-items: center;
   background: white;
+  border-radius: 8px;
   display: flex;
+  flex-shrink: 0;
   height: 16px;
+  justify-content: center;
   left: -8.5px;
   position: relative;
   top: 6px;
   width: 16px;
-  border-radius: 8px;
-  justify-content: center;
-  flex-shrink: 0;
 
   & svg {
     display: block;

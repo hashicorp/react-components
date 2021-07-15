@@ -9,10 +9,8 @@
   --mobile-margin-negative: -24px;
   --nav-height: 64px;
 
-  /* Allow focus ring to be fully visible on Safari */
-  padding-top: 3px;
-  width: 100%;
   position: relative;
+  width: 100%;
 
   @media (min-width: 768px) and (max-width: 939px) {
     margin: 0 0.5rem;
