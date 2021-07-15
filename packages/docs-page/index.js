@@ -17,6 +17,7 @@ import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
+import s from './style.module.css'
 
 export function DocsPageWrapper({
   canonicalUrl,
@@ -76,7 +77,7 @@ export function DocsPageWrapper({
       ) : null}
       {/* render the sidebar nav */}
       {/* TODO: we can probably remove several of these wrappers */}
-      <div className="content-wrap g-grid-container">
+      <div className={s.contentWrap}>
         {isMobile ? null : versionAlert}
         <div id="sidebar" role="complementary">
           <div className="nav docs-nav">
@@ -95,9 +96,9 @@ export function DocsPageWrapper({
         <div
           id="inner"
           role="main"
-          className={classNames(
-            process.env.ENABLE_VERSIONED_DOCS && 'versionedDocsOffset'
-          )}
+          className={classNames(s.inner, {
+            [s.versionedDocsOffset]: process.env.ENABLE_VERSIONED_DOCS,
+          })}
         >
           <Content
             className="g-content" // used in temporary_injectJumpToSection
