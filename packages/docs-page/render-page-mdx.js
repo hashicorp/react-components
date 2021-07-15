@@ -1,6 +1,6 @@
 import path from 'path'
 import { serialize } from 'next-mdx-remote/serialize'
-import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
+import markdownDefaults from '@hashicorp/platform-markdown-utils'
 import grayMatter from 'gray-matter'
 
 async function renderPageMdx(

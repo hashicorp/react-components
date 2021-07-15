@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import useProductMeta, {
   ProductMetaProvider,
-} from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+} from '@hashicorp/platform-product-meta'
 import HashiHead from '@hashicorp/react-head'
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'

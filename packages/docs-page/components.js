@@ -1,4 +1,4 @@
-import defaultMdxComponents from '@hashicorp/nextjs-scripts/lib/providers/docs'
+import defaultMdxComponents from '@hashicorp/platform-docs-mdx'
 
 export default function generateComponents(
   productName,

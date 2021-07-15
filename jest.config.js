@@ -17,7 +17,7 @@ module.exports = {
     '\\.svg$': 'jest-raw-loader',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!(@hashicorp/mktg-logos|@hashicorp/react-|@hashicorp/sentinel-embedded|@hashicorp/nextjs-scripts))',
+    '/node_modules/(?!(@hashicorp/mktg-logos|@hashicorp/react-|@hashicorp/sentinel-embedded|@hashicorp/nextjs-scripts|@hashicorp/platform-))',
     '\\.pnp\\.[^\\/]+$',
   ],
   verbose: true,

@@ -3,7 +3,7 @@ import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
 import { validateFilePaths } from '@hashicorp/react-docs-page/server'
-import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
+import markdownDefaults from '@hashicorp/platform-markdown-utils'
 import generateSlug from '@hashicorp/remark-plugins/generate_slug'
 
 export default async function generateStaticProps({

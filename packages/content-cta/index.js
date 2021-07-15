@@ -1,4 +1,4 @@
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
 

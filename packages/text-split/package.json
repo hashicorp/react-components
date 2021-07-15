@@ -7,6 +7,7 @@
     "Zach Shilton"
   ],
   "dependencies": {
+    "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-button": "^5.2.0",
     "@hashicorp/react-inline-svg": "^6.0.0",
     "classnames": "^2.2.6"
@@ -14,7 +15,6 @@
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   },
   "publishConfig": {

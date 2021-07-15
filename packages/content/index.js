@@ -1,5 +1,5 @@
 import React from 'react'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 
 export default function Content({ content, product }) {
   const { themeClass } = useProductMeta(product)

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { serialize } from 'next-mdx-remote/serialize'
-import markdownDefaults from '@hashicorp/nextjs-scripts/markdown'
+import markdownDefaults from '@hashicorp/platform-markdown-utils'
 import matter from 'gray-matter'
 
 export default function generateGetStaticProps({
