@@ -1,0 +1,6 @@
+.g-content_strong {
+  /* Ensure <strong /> stands out */
+  & strong {
+    color: var(--black);
+  }
+}

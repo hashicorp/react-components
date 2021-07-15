@@ -1,0 +1,18 @@
+.g-content_code-blocks {
+  /* Code Blocks */
+  & pre {
+    /* @TODO margin around component should be handled at project level */
+    margin: 1.5rem 0;
+    /* begin @TODO - move the below to nextjs-scripts/prism/style.css */
+    background: var(--code-dark);
+    border-radius: 3px;
+
+    & code {
+      padding: 0;
+      background: var(--code-dark);
+      color: var(--code-light);
+      font-family: var(--font-monospace);
+    }
+    /* end */
+  }
+}

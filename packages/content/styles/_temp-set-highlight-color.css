@@ -1,0 +1,19 @@
+/*
+Compromise / debt:
+This globally scoped className allows the deprecated
+--highlight-color and --highlight-color-text
+CSS custom properties to be set.
+
+This is intended as a temporary measure while we
+refactor all uses of g-content to use the revised
+properties, --brand and --brand-link.
+
+Once that refactor is complete, we should
+remove this class.
+*/
+
+.g-content_temp-set-highlight {
+  /* Default highlight color (if no product is specified) */
+  --highlight-color: var(--brand);
+  --highlight-color-text: var(--brand-link);
+}

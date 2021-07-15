@@ -1,0 +1,69 @@
+.g-content_lists {
+  /* Lists */
+  & ul,
+  & ol {
+    counter-reset: li;
+    padding-left: 1.3rem;
+    list-style: none;
+
+    & li {
+      position: relative;
+
+      /* Vertical margins for single-paragraph content, multi-paragraph content
+      renders as <p> within <li>, resulting in larger vertical margins */
+      margin-top: 12px;
+      margin-bottom: 12px;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--gray-4);
+        margin-left: calc(-1 * 1.3rem);
+        width: 1.3rem;
+      }
+    }
+  }
+
+  /* List - ordered bullets */
+  & ul {
+    & li::before {
+      content: '\2022';
+    }
+    & ul li::before {
+      content: '\25AB';
+    }
+    & ul li ul li::before {
+      content: '\203A';
+    }
+    & ul li ul li ul li::before {
+      content: '\2013';
+    }
+    & ul li ul li ul li ul li::before {
+      content: '\2022';
+    }
+  }
+
+  /* List - unordered bullets */
+  & ol {
+    & li {
+      counter-increment: li;
+      &::before {
+        font-size: 0.75em;
+        line-height: calc(1.75 / 0.75);
+        content: counter(li);
+      }
+    }
+    & ol li::before {
+      content: counter(li, lower-roman);
+    }
+    & ol li ol li::before {
+      content: counter(li, lower-latin);
+    }
+    & ol li ol li ol li::before {
+      content: counter(li, upper-roman);
+    }
+    & ol li ol li ol li ol li::before {
+      content: counter(li);
+    }
+  }
+}

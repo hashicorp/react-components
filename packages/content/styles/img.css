@@ -1,0 +1,10 @@
+.g-content__img {
+  /* Images */
+  & img,
+  & * > img {
+    /* @TODO margin around component should be handled at project level */
+    margin: 1rem auto;
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,0 +1,65 @@
+.g-content_table {
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-right: 0;
+    background-color: transparent;
+    width: 100%;
+    max-width: 100%;
+    /* @TODO margin around component should be handled at project level */
+    margin-bottom: 20px;
+
+    & th {
+      text-align: left;
+    }
+
+    & td {
+      border-right: 1px solid #ddd;
+    }
+
+    & td,
+    & th {
+      padding: 0;
+    }
+
+    & > tbody > tr:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+
+    & > thead > tr > th,
+    & > tbody > tr > th,
+    & > tfoot > tr > th,
+    & > thead > tr > td,
+    & > tbody > tr > td,
+    & > tfoot > tr > td {
+      padding: 8px;
+      line-height: 1.42857143;
+      vertical-align: top;
+      border-top: 1px solid #ddd;
+    }
+
+    & > thead > tr > th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #ddd;
+    }
+
+    & > caption + thead > tr:first-child > th,
+    & > colgroup + thead > tr:first-child > th,
+    & > thead:first-child > tr:first-child > th,
+    & > caption + thead > tr:first-child > td,
+    & > colgroup + thead > tr:first-child > td,
+    & > thead:first-child > tr:first-child > td {
+      border-top: 0;
+      border-right: 1px solid #ddd;
+    }
+
+    & > tbody + tbody {
+      border-top: 2px solid #ddd;
+    }
+
+    & table {
+      background-color: #fff;
+    }
+  }
+}

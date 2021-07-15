@@ -1,0 +1,35 @@
+.g-content_alert {
+  /* Alerts */
+
+  /* @TODO: move this into an alert component to be used within mdx */
+  & .alert {
+    padding: 1em;
+    border-radius: 3px;
+    /* @TODO margin around component should be handled at project level */
+    margin: 24px 0;
+
+    & > *:first-child {
+      margin-top: 0;
+    }
+
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+
+    &.alert-info {
+      background-color: var(--info-l2);
+    }
+
+    &.alert-success {
+      background-color: var(--success-l2);
+    }
+
+    &.alert-warning {
+      background-color: var(--warning-l2);
+    }
+
+    &.alert-danger {
+      background-color: var(--danger-l2);
+    }
+  }
+}

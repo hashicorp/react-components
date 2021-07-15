@@ -1,0 +1,31 @@
+/*
+Compromise / debt:
+This globally scoped className allows the deprecated
+"padded" appearance of g-content to be retained.
+
+This is intended as a temporary measure while we
+refactor all uses of g-content to set spacing around
+content at the project level.
+
+Once that refactor is complete, we should
+remove this class.
+*/
+
+.g-content_temp-padded {
+  margin: auto;
+
+  /* On large viewports, all content is spaced from edge of container */
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* On small viewports, all content except
+  .highlight is spaced from edge of container */
+  & > *:not(.highlight) {
+    @media (max-width: 768px) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+}

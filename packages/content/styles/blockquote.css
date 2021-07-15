@@ -1,0 +1,13 @@
+.g-content_blockquote {
+  /* Block quotes */
+  & blockquote {
+    /* @TODO margin around component should be handled at project level */
+    margin: 2em 0;
+    padding-left: 2em;
+    font-style: italic;
+    border-left: 6px solid var(--gray-6);
+    & em {
+      font-style: normal;
+    }
+  }
+}

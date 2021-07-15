@@ -1,0 +1,39 @@
+.g-content_permalinks {
+  /* Permalinks generally */
+  /* @TODO - are permalinks ever outside of headings? i don't think so... */
+  & a.__permalink-h {
+    color: var(--highlight-color-text);
+    position: relative;
+    transition: color 0.3s;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--highlight-color-text);
+    }
+  }
+
+  /* Permalinks in headings */
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    & a.__permalink-h {
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      order: 1;
+      position: relative;
+      left: -0.7em;
+      margin-right: -0.5em;
+    }
+
+    &:hover {
+      & a.__permalink-h {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+    }
+  }
+}
