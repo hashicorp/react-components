@@ -1,7 +1,7 @@
 .g-content_lists {
   /* Lists */
-  & ul,
-  & ol {
+  & ul:not([class]),
+  & ol:not([class]) {
     counter-reset: li;
     padding-left: 1.3rem;
     list-style: none;
@@ -24,8 +24,8 @@
     }
   }
 
-  /* List - ordered bullets */
-  & ul {
+  /* List - unordered bullets */
+  & ul:not([class]) {
     & li::before {
       content: '\2022';
     }
@@ -43,8 +43,8 @@
     }
   }
 
-  /* List - unordered bullets */
-  & ol {
+  /* List - ordered bullets */
+  & ol:not([class]) {
     & li {
       counter-increment: li;
       &::before {
