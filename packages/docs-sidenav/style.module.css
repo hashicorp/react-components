@@ -167,6 +167,8 @@
   & code {
     margin-left: 2px;
     font-size: 0.875rem;
+    font-family: var(--font-monospace);
+    line-height: 1.375rem;
   }
 }
 
@@ -182,12 +184,6 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-
-  & code {
-    font-family: var(--font-monospace);
-    font-size: 0.8125rem;
-    line-height: 1.375rem;
-  }
 
   & svg {
     display: block;
