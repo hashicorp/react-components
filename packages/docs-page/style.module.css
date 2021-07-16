@@ -21,7 +21,7 @@
       margin-left: 1rem;
     }
 
-    & .trigger {
+    & :global(.trigger) {
       align-items: center;
       display: flex;
     }
@@ -30,22 +30,27 @@
       margin-left: 5px;
     }
 
-    & .dropdown {
+    & :global(.dropdown) {
       background: white;
       border-radius: 3px;
       box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
       display: none;
       margin: 10px 0 0 0;
-      padding: 0 0 0 30px;
+      padding: 4px 16px;
       position: absolute;
       z-index: 2;
       width: 500px;
+      list-style: none;
 
       @media (--mobile-viewports) {
         width: 345px;
       }
 
-      &.active {
+      & li {
+        margin: 12px 0;
+      }
+
+      &:global(.active) {
         display: block;
       }
     }

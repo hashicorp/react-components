@@ -69,20 +69,73 @@ module.exports = {
             'var layoutProps = {};\n' +
             'var MDXLayout = "wrapper";\n' +
             '\n' +
-            'function MDXContent(_ref) {\n' +
-            '  var components = _ref.components,\n' +
-            '      props = _objectWithoutProperties(_ref, ["components"]);\n' +
-            '\n' +
-            '  return mdx(MDXLayout, _extends({}, layoutProps, props, {\n' +
-            '    components: components,\n' +
-            '    mdxType: "MDXLayout"\n' +
-            '  }), mdx("h1", { className: "g-type-display-2" }, "Example Page"), mdx("p", null, "This is a cool docs page!"));\n' +
-            '}\n' +
+            `function MDXContent(_ref) {
+              var components = _ref.components,
+                props = _objectWithoutProperties(_ref, ["components"]);
+              return mdx(
+                MDXLayout,
+                _extends({}, layoutProps, props, {
+                  components: components,
+                  mdxType: "MDXLayout",
+                }),
+                mdx("h1", { className: "g-type-display-2" }, "Example Page"),
+                mdx("p", null, "This is a cool docs page!"),
+                mdx(
+                  "h2",
+                  { className: "g-type-display-3" },
+                  mdx(
+                    "a",
+                    { className: "__permalink-h", href: "#second-heading" },
+                    "»"
+                  ),
+                  mdx(
+                    "a",
+                    { className: "__target-h", id: "second-heading", "aria-hidden": true },
+                    ""
+                  ),
+                  "Second heading"
+                ),
+                mdx("p", null, "This is a cool docs page!"),
+                mdx(
+                  "h2",
+                  { className: "g-type-display-3" },
+                  mdx(
+                    "a",
+                    { className: "__permalink-h", href: "#third-heading" },
+                    "»"
+                  ),
+                  mdx(
+                    "a",
+                    { className: "__target-h", id: "third-heading", "aria-hidden": true },
+                    ""
+                  ),
+                  "Third heading"
+                ),
+                mdx("p", null, "This is a cool docs page!"),
+                mdx(
+                  "h2",
+                  { className: "g-type-display-3" },
+                  mdx(
+                    "a",
+                    { className: "__permalink-h", href: "#fourth-heading" },
+                    "»"
+                  ),
+                  mdx(
+                    "a",
+                    { className: "__target-h", id: "fourth-heading", "aria-hidden": true },
+                    ""
+                  ),
+                  "Fourth heading"
+                ),
+                mdx("p", null, "This is a cool docs page!")
+              );
+            }
+            \n` +
             '\n' +
             ';\n' +
             'MDXContent.isMDXComponent = true;',
           renderedOutput:
-            '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p>',
+            '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p><h2 className="g-type-display-3">Second Heading</h2><p>This is a cool docs page!</p><h2 className="g-type-display-3">Third Heading</h2><p>This is a cool docs page!</p><h2 className="g-type-display-3">Fourth Heading</h2><p>This is a cool docs page!</p>',
           scope: {},
         },
       },

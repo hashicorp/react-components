@@ -258,8 +258,8 @@
   padding: 8px 0;
 
   &::after {
-    content: '';
     border-bottom: 1px solid var(--gray-5);
+    content: '';
     display: block;
     width: 90%;
 
