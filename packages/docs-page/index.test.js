@@ -61,7 +61,9 @@ describe('<DocsPage />', () => {
   it('passes `product` and `content` correctly to <Content>', () => {
     render(<DocsPage {...defaultProps} />)
     // Confirm `content` is being rendered
-    const contentParagraph = screen.getByText('This is a cool docs page!')
+    const contentParagraphs = screen.getAllByText('This is a cool docs page!')
+    expect(contentParagraphs.length).toBe(4)
+    const contentParagraph = contentParagraphs[0]
     expect(contentParagraph.tagName).toBe('P')
     // Confirm `product` is passed via class
     const contentContainer = contentParagraph.closest('article')
