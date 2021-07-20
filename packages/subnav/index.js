@@ -33,13 +33,16 @@ function SubnavInner({
   constrainWidth,
   currentPath,
   Link,
+  matchOnBasePath = false,
 }) {
   const { themeClass } = useProductMeta(product) // overrides --brand css vars
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
   const menuItemsWithActive = traverse(menuItems, (_key, value) => {
     const hasUrl = isObject(value) && value.url
     if (hasUrl) {
-      value._isActiveUrl = areBasePathsMatching(value.url, currentPath)
+      value._isActiveUrl = matchOnBasePath
+        ? areBasePathsMatching(value.url, currentPath)
+        : value.url === currentPath
     }
     return value
   })
