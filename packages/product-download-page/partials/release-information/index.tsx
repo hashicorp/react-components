@@ -26,7 +26,7 @@ export default function ReleaseInformation({
   return (
     <div className={styles.root}>
       <main className="g-grid-container">
-        <h2>Release Information</h2>
+        <h2 className={styles.mainHeading}>Release Information</h2>
         <div className={styles.grid}>
           {releases.length > 0 && (
             <>

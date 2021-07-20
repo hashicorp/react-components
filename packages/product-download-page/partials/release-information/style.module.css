@@ -15,15 +15,16 @@
   & :global(.g-grid-container) {
     max-width: 825px;
   }
+}
 
-  & h2 {
-    text-align: center;
-    color: var(--black);
-    margin-bottom: 54px;
+.mainHeading {
+  composes: g-type-display-2 from global;
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 54px;
 
-    @media (--medium-up) {
-      margin-bottom: 64px;
-    }
+  @media (--medium-up) {
+    margin-bottom: 64px;
   }
 }
 
