@@ -1,6 +1,5 @@
 .aPermalinks {
   /* Permalinks generally */
-  /* @TODO - are permalinks ever outside of headings? i don't think so... */
   & a:global(.__permalink-h) {
     color: var(--brand-link);
     position: relative;
