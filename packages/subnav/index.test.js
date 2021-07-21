@@ -81,8 +81,8 @@ describe('<Subnav />', () => {
     })
   })
 
-  it('should highlight the active link for nested routes', async () => {
-    render(<Subnav {...baseProps} currentPath="/docs/nested" />)
+  it('should highlight the active link for nested routes when matchOnBasePath=true', async () => {
+    render(<Subnav {...baseProps} currentPath="/docs/nested" matchOnBasePath />)
     await waitForGithubStarsUpdate()
     const activeMenuItem = baseProps.menuItems.filter((menuItem) => {
       return menuItem.url === '/docs'

@@ -98,4 +98,9 @@ module.exports = {
     description:
       "The NextJS Link component to make client-side routing possible. Note that this is passed directly to @hashicorp/react-link-wrap, so we'll fall back to a normal <a/> tag if this prop is not provided.",
   },
+  matchOnBasePath: {
+    type: 'boolean',
+    description:
+      'Whether or not to highlight items if the base path matches the current URL. Defaults to `false`, requiring a full URL  match.',
+  },
 }
