@@ -1,4 +1,9 @@
 .aPermalinks {
+  /* Note: these styles rely on elements
+  with global classes being added by our `anchor-links`
+  remark plugin.
+  ref: https://github.com/hashicorp/remark-plugins/tree/main/plugins/anchor-links */
+
   /* Permalinks generally */
   & a:global(.__permalink-h) {
     color: var(--brand-link);
