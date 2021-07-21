@@ -2,7 +2,7 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
-    "@hashicorp/mktg-global-styles": "4.0.0-zs.cleanup-for-css-modules.619a249226a53b4d553696abc6cfc8e65df6fe54.0",
+    "@hashicorp/mktg-global-styles": "4.0.0-zs.cleanup-for-css-modules.d32e407ffbd0970ec5aeb8ef536db3e7faa9f834.0",
     "@hashicorp/mktg-logos": "^1.0.2",
     "@hashicorp/nextjs-scripts": "^19.0.3",
     "@hashicorp/sentinel-embedded": "^0.0.9",

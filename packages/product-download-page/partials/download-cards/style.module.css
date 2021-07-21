@@ -114,6 +114,7 @@
     padding: 0;
     background-color: inherit;
     white-space: normal;
+    font-size: 0.844rem;
 
     &::before {
       color: #e93471;
