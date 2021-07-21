@@ -93,7 +93,6 @@
     bottom: 0;
     right: 0;
     object-fit: cover;
-    font-family: 'object-fit:cover'; /* IE polyfill */
     min-width: 100%;
     min-height: 100%;
   }

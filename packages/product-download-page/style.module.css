@@ -36,8 +36,8 @@
 
 .gettingStartedTitle {
   composes: g-type-display-2 from global;
-  text-align: center;
   margin: 16px 0;
+  text-align: center;
 }
 
 .gettingStartedDescription {

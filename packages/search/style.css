@@ -9,8 +9,8 @@
   --mobile-margin-negative: -24px;
   --nav-height: 64px;
 
-  position: relative;
   width: 100%;
+  position: relative;
 
   @media (min-width: 768px) and (max-width: 939px) {
     margin: 0 0.5rem;

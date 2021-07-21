@@ -1,4 +1,12 @@
 .alert {
+  /* 
+  Note: these styles rely on elements with global
+  classes being added by our `paragraph-custom-alerts` remark plugin.
+  ref: https://github.com/hashicorp/remark-plugins/tree/main/plugins/paragraph-custom-alerts
+
+  We have a task to consider replacing this plugin with a custom component:
+  https://app.asana.com/0/1100423001970639/1200034293471289/f
+  */
   & :global(.alert) {
     padding: 1em;
     border-radius: 3px;

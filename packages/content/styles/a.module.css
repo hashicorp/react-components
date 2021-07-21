@@ -1,10 +1,12 @@
 .a {
   /* Links */
 
-  /* Note: custom components are used in g-content areas.
+  /*
+  Note: custom components are used in g-content areas.
   We don't want to clobber these with our default link styles,
   so we use the :not([class]) selector to ensure these defaults
-  can be easily overriden. */
+  can be easily overriden.
+  */
   & a:not([class]) {
     color: var(--brand-link);
     position: relative;

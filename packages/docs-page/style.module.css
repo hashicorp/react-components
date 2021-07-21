@@ -2,13 +2,6 @@
 @custom-media --desktop-viewports (min-width: 940px);
 
 .root {
-  /* @TODO: adjustment for versioned docs */
-  & :global(.g-alert-banner) {
-    @media (max-width: 767px) {
-      display: none !important;
-    }
-  }
-
   & :global(.jump-to-section) {
     cursor: pointer;
     display: inline-block;

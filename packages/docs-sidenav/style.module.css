@@ -143,14 +143,14 @@
   color: var(--gray-2);
   cursor: pointer;
   display: flex;
+  padding: 7px 0;
+  transition: color 0.2s ease;
   background: none;
   border: none;
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
-  padding: 7px 0;
   text-align: left;
-  transition: color 0.2s ease;
 
   &:hover {
     color: var(--gray-1);
@@ -165,25 +165,25 @@
   }
 
   & code {
+    margin-left: 2px;
     font-size: 0.875rem;
     font-family: var(--font-monospace);
     line-height: 1.375rem;
-    margin-left: 2px;
   }
 }
 
 .navItemIcon {
-  align-items: center;
-  background: white;
-  border-radius: 8px;
-  display: flex;
-  flex-shrink: 0;
-  height: 16px;
-  justify-content: center;
-  left: -8.5px;
   position: relative;
+  left: -8.5px;
   top: 6px;
   width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 
   & svg {
     display: block;
@@ -236,8 +236,8 @@
   }
 
   & > li {
-    border-left: 1px solid var(--gray-5);
     margin-left: 21.5px;
+    border-left: 1px solid var(--gray-5);
   }
 
   & > hr {
@@ -254,12 +254,12 @@
 .divider {
   background: none;
   border: none;
-  margin: 0;
   padding: 8px 0;
+  margin: 0;
 
   &::after {
-    border-bottom: 1px solid var(--gray-5);
     content: '';
+    border-bottom: 1px solid var(--gray-5);
     display: block;
     width: 90%;
 
