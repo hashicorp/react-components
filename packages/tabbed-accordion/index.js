@@ -7,7 +7,7 @@ function TabbedAccordion({ heading, tabs }) {
       {heading && (
         <div
           data-testid="heading"
-          className="heading-grid-container g-grid-container"
+          className="heading-container g-grid-container"
         >
           <h2 className="g-type-display-2">{heading}</h2>
         </div>
