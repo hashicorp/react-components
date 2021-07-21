@@ -115,6 +115,7 @@
     background-color: inherit;
     white-space: normal;
     font-size: 0.844rem;
+    font-family: var(--font-monospace);
 
     &::before {
       color: #e93471;
