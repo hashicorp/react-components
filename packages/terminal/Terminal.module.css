@@ -50,6 +50,7 @@
     border-radius: 0 0 var(--terminal-radius) var(--terminal-radius);
     padding: 24px 32px;
 
+    /* Ensures that highlighted code maintains the same background as the terminal element */
     & pre {
       background: var(--terminal-body-color);
     }
