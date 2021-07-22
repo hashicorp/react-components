@@ -50,7 +50,7 @@
     border-radius: 0 0 var(--terminal-radius) var(--terminal-radius);
     padding: 24px 32px;
 
-    & > pre {
+    & pre {
       background: var(--terminal-body-color);
     }
   }
