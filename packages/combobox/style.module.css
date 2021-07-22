@@ -55,7 +55,11 @@
     color: var(--gray-3);
   }
 
-  &[data-has-error='true'] {
+  /* possible data-states: "idle" | "suggesting" | "navigating" | "interacting"  */
+  /* &[data-reach-combobox-input][data-state='idle'] {
+  } */
+
+  &[data-reach-combobox-input][data-has-error='true'] {
     border-color: var(--danger);
   }
 }
@@ -95,14 +99,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 }
 
 .dropdownCaretIcon {
+  --darken-on-active: brightness(10%);
   width: 20px;
   height: auto;
   transition: 0.3s transform;
+  &:hover {
+    filter: var(--darken-on-active);
+  }
 }
 
 .dropdownCaretIconActive {
   transform: rotate(-180deg);
+  filter: var(--darken-on-active);
 }

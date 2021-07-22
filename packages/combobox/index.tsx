@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState, ReactNode, Fragment } from 'react'
+import { useCallback, useMemo, useState, ReactNode } from 'react'
 import {
   ComboboxInput,
   ComboboxPopover,
@@ -8,16 +8,18 @@ import {
   ComboboxBase,
   ComboboxButton,
 } from './primitives'
+import { ComboboxOption as ReachComboboxOption } from '@reach/combobox'
 import filterOptions from './utils/filter-options'
 
 export interface ComboboxProps {
   label: string
   buttonLabel?: string
   onSelect: (value) => void
-  renderOption: (option: ComboboxOptionValue) => ReactNode
+  renderOption?: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
   onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  invalidInputValue?: boolean
 }
 
 type ComboboxOptionValue = string
@@ -30,6 +32,7 @@ export default function Combobox({
   openOnFocus = true,
   onInputChange,
   renderOption,
+  invalidInputValue,
 }: ComboboxProps) {
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
@@ -48,13 +51,22 @@ export default function Combobox({
       aria-label={label}
     >
       <ComboboxButton label={buttonLabel} />
-      <ComboboxInput onChange={handleInputValueChange} />
+      <ComboboxInput
+        onChange={handleInputValueChange}
+        data-has-error={invalidInputValue ?? false}
+      />
       {results?.length > 0 ? (
         <ComboboxPopover>
           <ComboboxList>
-            {results.map((option) => (
-              <Fragment key={option}>{renderOption(option)}</Fragment> // Prevent key warning
-            ))}
+            {results.map((option) =>
+              !!renderOption ? (
+                <ReachComboboxOption key={option} value={option}>
+                  {renderOption(option)}
+                </ReachComboboxOption>
+              ) : (
+                <ComboboxOption key={option} value={option} />
+              )
+            )}
           </ComboboxList>
         </ComboboxPopover>
       ) : null}
