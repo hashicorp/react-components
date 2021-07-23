@@ -156,6 +156,14 @@
       }
     }
 
+    &:visited:hover {
+      color: var(--visited-d1);
+    }
+
+    &:visited {
+      color: var(--visited);
+    }
+
     & > code {
       color: var(--highlight-color-text);
     }
