@@ -61,7 +61,7 @@ export function DocsPageWrapper({
   ) : null
 
   return (
-    <div id="p-docs" className={s.root}>
+    <div id="p-docs">
       {/* render the page's data to the document head */}
       <HashiHead
         canonicalUrl={canonicalUrl}
@@ -95,7 +95,7 @@ export function DocsPageWrapper({
         <div
           id="inner"
           role="main"
-          className={classNames(s.inner, {
+          className={classNames(s.inner, s.tempJumpToSectionParent, {
             [s.versionedDocsOffset]: process.env.ENABLE_VERSIONED_DOCS,
           })}
         >

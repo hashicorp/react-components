@@ -1,7 +1,21 @@
 @custom-media --mobile-viewports (max-width: 939px);
 @custom-media --desktop-viewports (min-width: 940px);
 
-.root {
+/*
+Note: class has been created as a CSS-modules-friendly
+stopgap to align with the _temporary_jump-to-section approach
+for rendering the jump links menu. Once we have a less
+temporary approach, this should likely be split into its own file.
+*/
+.tempJumpToSectionParent {
+  /*
+  adjusts the h1 bottom margin when the jump
+  menu is present. co-ordinated with JS classname addition
+  */
+  & :global(.has-jts) {
+    margin-bottom: 10px;
+  }
+
   & :global(.jump-to-section) {
     cursor: pointer;
     display: inline-block;
@@ -89,10 +103,6 @@
     &.versionedDocsOffset {
       margin-top: 22px;
     }
-  }
-
-  & :global(.has-jts) {
-    margin-bottom: 10px;
   }
 
   & :global(.g-section-header) {
