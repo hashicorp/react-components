@@ -37,4 +37,11 @@ module.exports = {
       'A datetime string that, when set, controls if the alert banner should appear',
     control: { type: 'text' },
   },
+  hideOnMobile: {
+    description:
+      'If true, the alert banner will be forcefully hidden on mobile.',
+    type: 'boolean',
+    control: { type: 'checkbox' },
+    testValue: false,
+  },
 }
