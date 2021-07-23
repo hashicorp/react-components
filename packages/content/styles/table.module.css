@@ -15,8 +15,8 @@
 
     & td,
     & th {
-      padding: 0;
       border-right: 1px solid #ddd;
+      padding: 0;
     }
 
     & > tbody > tr:nth-of-type(odd) {

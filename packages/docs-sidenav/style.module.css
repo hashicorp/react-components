@@ -99,7 +99,7 @@
   line-height: inherit;
   left: 0;
   padding: 12px 0;
-  transition-delay: 0.3s; /* waits for menu to close before adjusting z-index */
+  transition-delay: 0.3s; /* wait for menu to close before adjusting z-index */
   z-index: 74; /* less than product-subnav */
 
   @media (--mobile-viewports) {
