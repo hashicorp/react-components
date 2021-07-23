@@ -13,13 +13,10 @@
       text-align: left;
     }
 
-    & td {
-      border-right: 1px solid #ddd;
-    }
-
     & td,
     & th {
       padding: 0;
+      border-right: 1px solid #ddd;
     }
 
     & > tbody > tr:nth-of-type(odd) {
