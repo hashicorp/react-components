@@ -3,6 +3,8 @@
   /* Default highlight color (if no product is specified) */
   --highlight-color: var(--brand);
   --highlight-color-text: var(--brand-link);
+  --visited-link: #5c4ee5;
+  --visited-link-on-hover: #4c40bc;
 
   margin: auto;
   color: var(--gray-2);
@@ -154,6 +156,14 @@
       &:not(.__permalink-h) {
         text-decoration: underline;
       }
+    }
+
+    &:visited:hover {
+      color: var(--visited-link-on-hover);
+    }
+
+    &:visited {
+      color: var(--visited-link);
     }
 
     & > code {
