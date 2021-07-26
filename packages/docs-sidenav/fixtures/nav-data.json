@@ -36,6 +36,10 @@
                 "title": "AWS",
                 "path": "agent/autoauth/methods/aws"
               },
+              {
+                "title": "AWS active page alias",
+                "href": "/components/docssidenav"
+              },
               { "divider": true },
               {
                 "title": "<code>GCP</code>",
@@ -49,6 +53,20 @@
               {
                 "title": "Internal Direct Link",
                 "href": "/some-non-docs-path"
+              }
+            ]
+          },
+          {
+            "title": "With active nested alias",
+            "routes": [
+              {
+                "title": "Subcategory",
+                "routes": [
+                  {
+                    "title": "Active page alias In Another Category",
+                    "href": "/components/docssidenav"
+                  }
+                ]
               }
             ]
           }
