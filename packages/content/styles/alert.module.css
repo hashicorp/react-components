@@ -1,0 +1,39 @@
+.alert {
+  /* 
+  Note: these styles rely on elements with global
+  classes being added by our `paragraph-custom-alerts` remark plugin.
+  ref: https://github.com/hashicorp/remark-plugins/tree/main/plugins/paragraph-custom-alerts
+
+  We have a task to consider replacing this plugin with a custom component:
+  https://app.asana.com/0/1100423001970639/1200034293471289/f
+  */
+  & :global(.alert) {
+    padding: 1em;
+    border-radius: 3px;
+    margin: 24px 0;
+
+    & > *:first-child {
+      margin-top: 0;
+    }
+
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+
+    &:global(.alert-info) {
+      background-color: var(--info-l2);
+    }
+
+    &:global(.alert-success) {
+      background-color: var(--success-l2);
+    }
+
+    &:global(.alert-warning) {
+      background-color: var(--warning-l2);
+    }
+
+    &:global(.alert-danger) {
+      background-color: var(--danger-l2);
+    }
+  }
+}

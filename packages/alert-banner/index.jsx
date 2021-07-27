@@ -5,8 +5,8 @@ import classNames from 'classnames'
 import { withProductMeta } from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import CloseIcon from './img/close-icon.svg?include'
-
 import fragment from './fragment.graphql'
+import s from './style.module.css'
 
 class AlertBanner extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class AlertBanner extends Component {
 
   render() {
     const { show } = this.state
-    const { url, tag, product, text, linkText } = this.props
+    const { url, tag, product, text, linkText, hideOnMobile } = this.props
 
     const tagClass = tag.length > 3 ? 'has-large-tag' : ''
 
@@ -29,6 +29,7 @@ class AlertBanner extends Component {
         className={classNames(
           'g-alert-banner',
           product.themeClass,
+          { [s.hideOnMobile]: hideOnMobile },
           { show },
           { themed: !!product.themeClass }
         )}

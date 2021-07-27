@@ -17,6 +17,7 @@ import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
+import s from './style.module.css'
 
 export function DocsPageWrapper({
   canonicalUrl,
@@ -50,7 +51,7 @@ export function DocsPageWrapper({
   )
 
   const versionSelect = process.env.ENABLE_VERSIONED_DOCS ? (
-    <div className="version-select">
+    <div className={s.versionSelect}>
       <VersionSelect versions={versions} />
     </div>
   ) : null
@@ -75,7 +76,7 @@ export function DocsPageWrapper({
       ) : null}
       {/* render the sidebar nav */}
       {/* TODO: we can probably remove several of these wrappers */}
-      <div className="content-wrap g-grid-container">
+      <div className={s.contentWrap}>
         {isMobile ? null : versionAlert}
         <div id="sidebar" role="complementary">
           <div className="nav docs-nav">
@@ -94,11 +95,12 @@ export function DocsPageWrapper({
         <div
           id="inner"
           role="main"
-          className={classNames(
-            process.env.ENABLE_VERSIONED_DOCS && 'versionedDocsOffset'
-          )}
+          className={classNames(s.inner, s.tempJumpToSectionParent, {
+            [s.versionedDocsOffset]: process.env.ENABLE_VERSIONED_DOCS,
+          })}
         >
           <Content
+            className="g-content" // used in temporary_injectJumpToSection
             product={slug}
             content={
               <>
@@ -111,7 +113,7 @@ export function DocsPageWrapper({
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
       {showEditPage && (
-        <div id="edit-this-page" className="g-container">
+        <div className={s.editThisPage}>
           <a href={githubFileUrl}>
             <img src={require('./img/github-logo.svg')} alt="github logo" />
             <span>Edit this page</span>

@@ -1,0 +1,5 @@
+.strong {
+  & strong {
+    color: var(--black);
+  }
+}

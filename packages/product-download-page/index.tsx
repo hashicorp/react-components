@@ -113,7 +113,7 @@ export default function ProductDownloadsPage({
     <ProductMetaProvider product={product}>
       <HashiHead title={`Downloads | ${name} by HashiCorp`} />
       <div className={`${styles.root} ${themeClass || ''} ${className || ''}`}>
-        <h1>
+        <h1 className={styles.pageTitle}>
           Download {name}
           {enterpriseMode ? ' Enterprise' : ''}
         </h1>
@@ -127,13 +127,15 @@ export default function ProductDownloadsPage({
           merchandisingSlot={merchandisingSlot}
         />
         {
-          <div className="g-container">
+          <div className="g-grid-container">
             <div className={styles.gettingStarted}>
-              <h2>Get Started</h2>
-              <p>{getStartedDescription}</p>
+              <h2 className={styles.gettingStartedTitle}>Get Started</h2>
+              <p className={styles.gettingStartedDescription}>
+                {getStartedDescription}
+              </p>
               <div className={styles.links}>
                 {getStartedLinks?.map((link) => (
-                  <a href={link.href} key={link.href}>
+                  <a className={styles.link} href={link.href} key={link.href}>
                     {link.label}
                   </a>
                 ))}

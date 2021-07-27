@@ -7,7 +7,7 @@
     "Jeff Escalante"
   ],
   "dependencies": {
-    "@hashicorp/js-utils": "next",
+    "@hashicorp/js-utils": "^1.0.10",
     "@hashicorp/localstorage-polyfill": "^1.0.14",
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-alert": "^2.0.3",

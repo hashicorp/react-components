@@ -40,7 +40,7 @@ function Hero({ data, centered, gaPrefix }) {
       )}
     >
       {backgroundImage && <Image className="bg" {...backgroundImage} />}
-      <div className="g-container">
+      <div className="g-grid-container">
         <div className="headline">
           {smallTextTag && <div className="tag">{smallTextTag}</div>}
           {titleLogo && <Image className="logo" {...titleLogo} />}
