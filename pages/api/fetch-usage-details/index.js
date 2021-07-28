@@ -15,6 +15,13 @@ async function handler(req, res) {
 async function getProjectUse(packageName, repo, dir = '') {
   const { data, error } = await getPackageJson(repo, dir)
   if (error) return { error }
+  if (!data.dependencies) {
+    const err = `Repo ${repo} seems to have a valid package.json${
+      dir ? `(in ${dir})` : ''
+    }, but does not seem to have an dependencies listed.`
+    console.error(err)
+    return { error: err }
+  }
   return { versionUsed: data.dependencies[packageName] }
 }
 
