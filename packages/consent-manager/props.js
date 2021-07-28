@@ -21,6 +21,11 @@ module.exports = {
     description:
       "root path of the instance of HashiCorp's `web-utility-server` to use. This is used to fetch integrations based on segment write key",
   },
+  forceShow: {
+    type: 'boolean',
+    description:
+      'Useful for development, setting this to true will always show the consent bar even if a cookie with existing preferences is stored',
+  },
   segmentServices: {
     type: 'array',
     description:

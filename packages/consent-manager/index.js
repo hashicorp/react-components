@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import EventEmitter from 'events'
-import inEU from '@segment/in-eu'
 import ConsentBanner from './partials/banner'
 import ConsentPreferences from './partials/dialog'
 import { loadPreferences, savePreferences } from './partials/cookies'
@@ -47,7 +46,11 @@ export default class ConsentManager extends Component {
   }
 
   shouldRequireConsent() {
-    // 1. Check cookies
+    // 1. If prop override is set, always show the consent bar.
+    if (this.props.forceShow) {
+      return true
+    }
+    // 2. Check cookies and apply existing consent preferences if they've already been set.
     if (
       this.state.preferences &&
       this.state.preferences.version === this.props.version
@@ -60,14 +63,8 @@ export default class ConsentManager extends Component {
       )
       return false
     }
-    // 2. Check inEU. If in-eu, show consent. If not, show nothing. Load all.
-    if (inEU() || this.props.forceShow) {
-      return true
-    } else {
-      // Load all analytics
-      this.saveAndLoadAnalytics({ loadAll: true })
-      return false
-    }
+    // 3. Always show the consent bar if we don't have a response stored.
+    return true
   }
 
   componentDidMount() {
