@@ -44,12 +44,11 @@ function Index() {
   )
 }
 
-const { code, pre, CodeBlockConfig, CodeTabs } = codeMdxComponents({
+const { pre, CodeBlockConfig, CodeTabs } = codeMdxComponents({
   theme: 'light',
 })
 
 const components = {
-  code,
   CodeBlockConfig,
   CodeTabs,
   Head,
