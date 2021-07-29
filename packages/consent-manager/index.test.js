@@ -49,7 +49,6 @@ const defaultProps = {
     },
   ],
   container: '#consent-manager',
-  forceShow: true,
 }
 
 test('shows the banner if the forceShow prop is true', () => {
@@ -62,7 +61,7 @@ test('sets existing preferences and does not show the banner if preferences are 
     './partials/cookies',
     {
       loadPreferences: () => {
-        return { All: false, 'Segment.io': false }
+        return { loadAll: false, segment: false, version: 0 }
       },
       savePreferences: () => {},
     },
@@ -78,12 +77,14 @@ test('shows the banner if preferences are set but version has increased', async 
     './partials/cookies',
     {
       loadPreferences: () => {
-        return { All: false, 'Segment.io': false, version: 1 }
+        return { loadAll: false, segment: false, version: 1 }
       },
       savePreferences: () => {},
     },
     (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} version={2} />)
+      render(
+        <MockedConsentManager {...defaultProps} forceShow={false} version={2} />
+      )
       expect(screen.queryByTestId('consent-banner')).toBeInTheDocument()
     }
   )

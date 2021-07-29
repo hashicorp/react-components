@@ -26,7 +26,7 @@ export default class ConsentManager extends Component {
 
   saveAndLoadAnalytics(preferences) {
     if (typeof preferences === 'undefined') {
-      preferences = { All: false, 'Segment.io': false }
+      preferences = { loadAll: false, segment: false }
     }
     savePreferences(preferences, this.props.version)
 
@@ -52,7 +52,7 @@ export default class ConsentManager extends Component {
     }
     // 2. Check cookies and apply existing consent preferences if they've already been set.
     if (
-      this.state.preferences &&
+      Object.keys(this.state.preferences).length !== 0 &&
       this.state.preferences.version === this.props.version
     ) {
       // Load segment and custom integrations
@@ -62,9 +62,10 @@ export default class ConsentManager extends Component {
         this.props.additionalServices
       )
       return false
+    } else {
+      // 3. Always show the consent bar if we don't have a response stored.
+      return true
     }
-    // 3. Always show the consent bar if we don't have a response stored.
-    return true
   }
 
   componentDidMount() {
