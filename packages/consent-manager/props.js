@@ -3,23 +3,28 @@ module.exports = {
     type: 'string',
     description:
       'bump this number when services have changed to "reset" the consent manager and prompt for consent again',
+    required: true,
   },
   privacyPolicyLink: {
     type: 'string',
     description: "a link to the company's privacy policy page",
+    required: true,
   },
   cookiePolicyLink: {
     type: 'string',
     description: "a link to the company's cookie policy page",
+    required: true,
   },
   segmentWriteKey: {
     type: 'string',
     description: 'segment.io write key',
+    required: true,
   },
   utilServerRoot: {
     type: 'string',
     description:
       "root path of the instance of HashiCorp's `web-utility-server` to use. This is used to fetch integrations based on segment write key",
+    required: true,
   },
   forceShow: {
     type: 'boolean',
@@ -130,7 +135,7 @@ module.exports = {
               },
               value: {
                 type: 'string',
-                description: 'value of the data attrivute',
+                description: 'value of the data attribute',
               },
             },
           },
