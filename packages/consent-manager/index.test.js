@@ -57,28 +57,6 @@ test('shows the banner if the forceShow prop is true', () => {
   expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
 })
 
-test('shows the banner if in EU', async () => {
-  await runWithMockedImport(
-    '@segment/in-eu',
-    () => true,
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={false} />)
-      expect(screen.queryByTestId('consent-banner')).toBeInTheDocument()
-    }
-  )
-})
-
-test('does not show the banner if not in EU', async () => {
-  await runWithMockedImport(
-    '@segment/in-eu',
-    () => false,
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={false} />)
-      expect(screen.queryByTestId('consent-banner')).not.toBeInTheDocument()
-    }
-  )
-})
-
 test('sets existing preferences and does not show the banner if preferences are already set', async () => {
   await runWithMockedImport(
     './partials/cookies',
@@ -109,23 +87,6 @@ test('shows the banner if preferences are set but version has increased', async 
       expect(screen.queryByTestId('consent-banner')).toBeInTheDocument()
     }
   )
-})
-
-test('automatically opts in to all if not in EU', async () => {
-  let prefs
-  await runWithMockedImport(
-    './partials/cookies',
-    {
-      loadPreferences: () => {},
-      savePreferences: (preferences) => {
-        prefs = preferences
-      },
-    },
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={false} />)
-    }
-  )
-  expect(prefs.loadAll).toBe(true)
 })
 
 test('if the manage preferences button is clicked, opens the dialog and makes body un-scrollable', async () => {
