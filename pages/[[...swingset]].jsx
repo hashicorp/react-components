@@ -94,7 +94,7 @@ const mdxHeadings = {
   },
 }
 
-function mdxTable(props) {
+function table(props) {
   return (
     <div className={tableStyleWrapper.table}>
       <table {...props} />
@@ -111,7 +111,7 @@ const components = {
   SearchProvider,
   UsageDetails,
   Tab,
-  mdxTable,
+  table,
   ...mdxHeadings,
 }
 
