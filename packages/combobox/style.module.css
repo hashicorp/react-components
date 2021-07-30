@@ -1,0 +1,118 @@
+.combobox {
+  --reach-combobox: 1;
+  position: relative;
+}
+
+.popover {
+  &[data-reach-combobox] {
+    position: relative;
+  }
+  &[data-reach-combobox-popover] {
+    border: 1px solid var(--gray-5);
+    margin-top: 4px;
+
+    & [data-reach-combobox-list] {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      box-shadow: var(--select-shadow);
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    & [data-reach-combobox-option] {
+      cursor: pointer;
+      margin: 0;
+    }
+
+    & [data-reach-combobox-option][aria-selected='true'] {
+      background: var(--gray-5);
+    }
+
+    & [data-reach-combobox-option]:hover {
+      background: var(--gray-5);
+    }
+
+    & [data-reach-combobox-option][aria-selected='true']:hover {
+      background: var(--gray-4);
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--gray-2);
+  border: 1px solid var(--gray-5);
+  background: var(--white);
+  border-radius: 2px;
+  padding: 12px;
+  line-height: 1.5em; /* Match .g-type-* line-height for siblings (i.e. buttons) */
+
+  &:placeholder-shown {
+    color: var(--gray-3);
+  }
+
+  /* possible data-states: "idle" | "suggesting" | "navigating" | "interacting"  */
+  /* &[data-reach-combobox-input][data-state='idle'] {
+  } */
+
+  &[data-reach-combobox-input][data-has-error='true'] {
+    border-color: var(--danger);
+  }
+}
+
+.option {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  padding: 8px;
+  color: var(--gray-2);
+  /* Note: consider how the following selectors render in <ComboboxOptionText />  */
+  /* [data-reach-combobox-option-text] {
+  } 
+  /* the matching segments of text */
+  & [data-user-value] {
+    font-weight: var(--font-weight-bold);
+  }
+  /* the unmatching segments */
+  /* [data-suggested-value] {
+  } */
+  /* Customize with: https://reach.tech/combobox/#comboboxoptiontext-css-selectors */
+  /*
+  & [data-highlighted] {
+    font-weight: 400;
+  } */
+}
+
+.button {
+  --icon-frame: min-content;
+  position: absolute;
+  background: none;
+  border: none;
+  top: 1px;
+  right: 0;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dropdownCaretIcon {
+  --darken-on-active: brightness(10%);
+  width: 20px;
+  height: auto;
+  transition: 0.3s transform;
+  &:hover {
+    filter: var(--darken-on-active);
+  }
+}
+
+.dropdownCaretIconActive {
+  transform: rotate(-180deg);
+  filter: var(--darken-on-active);
+}

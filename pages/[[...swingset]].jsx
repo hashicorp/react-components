@@ -3,6 +3,10 @@ import { createStaticProps, createStaticPaths } from 'swingset/server'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
+import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
+import FormikStateViewer from '../swingset-extensions/formik-state-viewer'
+import ComboboxField from '../packages/combobox/field'
+
 import { Tab } from '../packages/tabs'
 import codeMdxComponents from '../packages/code-block/mdx'
 import UsageDetails from '../swingset-extensions/usage-details'
@@ -58,6 +62,13 @@ const components = {
   SearchProvider,
   UsageDetails,
   Tab,
+  Formik,
+  Form,
+  Field,
+  FieldArray,
+  ErrorMessage,
+  FormikStateViewer,
+  ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })
