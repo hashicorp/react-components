@@ -2,12 +2,36 @@
 componentName: 'Combobox'
 ---
 
-### A batteries-included typeahead combobox
+### Default, batteries-included typeahead combobox
 
 <LiveComponent>
   {`
     <Combobox 
       onSelect={(e) => console.log(e)} 
+      options={[
+      'Apple',
+      'Orange', 
+      'Banana',
+      'Pineapple',
+      'Kiwi'
+      ]}
+      />
+      `}
+</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+## Other Examples
+
+### With custom option component
+
+<LiveComponent>
+  {`
+    <Combobox 
+      onSelect={(e) => console.log(e)} 
+      renderOption={opt => <span style={{ color: 'var(--consul)'}}>{opt}</span>}
       options={[
       'Apple',
       'Orange', 
