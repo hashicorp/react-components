@@ -8,7 +8,6 @@ componentName: 'Combobox'
   {`
     <Combobox 
       onSelect={(e) => console.log(e)} 
-      renderOption={(option) => <ComboboxOption value={option} />}
       options={[
       'Apple',
       'Orange', 
@@ -64,9 +63,6 @@ componentName: 'Combobox'
         {({ handleSubmit }) =>  (
           <Form>
                <ComboboxField
-                renderOption={(option) => 
-                    <ComboboxOption value={option} />
-                }
                 name="favoriteFruit"
                 options={[
                 'Apple',
