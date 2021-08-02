@@ -52,6 +52,7 @@ export function ComboboxPopover({
 export interface ComboboxInputProps extends ReachComboboxInputProps {
   className?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
 }
 
 export function ComboboxInput({
