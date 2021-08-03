@@ -7,13 +7,14 @@
     "@hashicorp/nextjs-scripts": "^19.0.3",
     "@hashicorp/sentinel-embedded": "^0.0.9",
     "classnames": "^2.2.6",
+    "formik": "^2.2.9",
     "next": "^10.0.6",
     "next-remote-watch": "^0.3.0",
     "node-cache": "^5.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "semver": "^7.3.5",
-    "swingset": "^0.9.0"
+    "swingset": "^0.10.0"
   },
   "devDependencies": {
     "@hashicorp/platform-cli": "0.1.0",
@@ -40,7 +41,7 @@
     "typescript": "^4.3.2"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap -- --no-optional",
     "bs": "npm run bootstrap",
     "hard-reset": "rm -rf node_modules && rm -rf .next && lerna clean -y && npm i && npm run bs",
     "lint": "next-hashicorp lint",
