@@ -28,7 +28,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^13.1.1",
-    "@types/react": "^17.0.3",
+    "@types/react": "^16.13.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.25.0",
     "identity-obj-proxy": "^3.0.0",
@@ -37,6 +37,7 @@
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
+    "simple-git-hooks": "^2.5.1",
     "typescript": "^4.3.2"
   },
   "scripts": {
@@ -54,13 +55,12 @@
     "test:ci": "jest --runInBand",
     "test:watch": "jest --watch",
     "upgrade:base-deps": "npm add @hashicorp/{mktg-{logos,global-styles},nextjs-scripts}@latest",
-    "vercel-build": "npm run bootstrap && next build"
+    "vercel-build": "npm run bootstrap && next build",
+    "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "npx next-hashicorp precommit"
   },
-  "workspaces": [
-    "./packages/*"
-  ],
+  "workspaces": ["./packages/*"],
   "private": true
 }
