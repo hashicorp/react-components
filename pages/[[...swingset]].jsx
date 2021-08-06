@@ -10,6 +10,7 @@ import ComboboxField from '../packages/combobox/field'
 import { Tab } from '../packages/tabs'
 import codeMdxComponents from '../packages/code-block/mdx'
 import UsageDetails from '../swingset-extensions/usage-details'
+import tableStyleWrapper from '../packages/content/styles/table.module.css'
 
 function Logo() {
   return (
@@ -48,12 +49,64 @@ function Index() {
   )
 }
 
-const { code, pre, CodeBlockConfig, CodeTabs } = codeMdxComponents({
+const { pre, CodeBlockConfig, CodeTabs } = codeMdxComponents({
   theme: 'light',
 })
 
+const mdxHeadings = {
+  h1: function h1({ children, ...p }) {
+    return (
+      <h1 className="g-type-display-1" {...p}>
+        {children}
+      </h1>
+    )
+  },
+  h2: function h2({ children, ...p }) {
+    return (
+      <h2 className="g-type-display-2" {...p}>
+        {children}
+      </h2>
+    )
+  },
+  h3: function h3({ children, ...p }) {
+    return (
+      <h3 className="g-type-display-3" {...p}>
+        {children}
+      </h3>
+    )
+  },
+  h4: function h4({ children, ...p }) {
+    return (
+      <h4 className="g-type-display-4" {...p}>
+        {children}
+      </h4>
+    )
+  },
+  h5: function h5({ children, ...p }) {
+    return (
+      <h5 className="g-type-display-5" {...p}>
+        {children}
+      </h5>
+    )
+  },
+  h6: function h6({ children, ...p }) {
+    return (
+      <h6 className="g-type-display-6" {...p}>
+        {children}
+      </h6>
+    )
+  },
+}
+
+function table(props) {
+  return (
+    <div className={tableStyleWrapper.table}>
+      <table {...props} />
+    </div>
+  )
+}
+
 const components = {
-  code,
   CodeBlockConfig,
   CodeTabs,
   Head,
@@ -62,6 +115,8 @@ const components = {
   SearchProvider,
   UsageDetails,
   Tab,
+  table,
+  ...mdxHeadings,
   Formik,
   Form,
   Field,
