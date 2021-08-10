@@ -42,16 +42,22 @@
     "oscript"
   ],
   "c": [],
+  "cfscript": [
+    "cfc"
+  ],
+  "chaiscript": [],
   "cil": [],
   "clike": [],
   "clojure": [],
   "cmake": [],
+  "cobol": [],
   "coffeescript": [
     "coffee"
   ],
   "concurnas": [
     "conc"
   ],
+  "coq": [],
   "cpp": [],
   "crystal": [],
   "csharp": [
@@ -60,6 +66,7 @@
   ],
   "csp": [],
   "css": [],
+  "csv": [],
   "cypher": [],
   "d": [],
   "dart": [],
@@ -75,6 +82,9 @@
   ],
   "docker": [
     "dockerfile"
+  ],
+  "dot": [
+    "gv"
   ],
   "ebnf": [],
   "editorconfig": [],
@@ -92,6 +102,7 @@
     "xlsx"
   ],
   "factor": [],
+  "false": [],
   "firestore-security-rules": [],
   "flow": [],
   "fortran": [],
@@ -110,7 +121,9 @@
   "graphql": [],
   "groovy": [],
   "haml": [],
-  "handlebars": [],
+  "handlebars": [
+    "hbs"
+  ],
   "haskell": [
     "hs"
   ],
@@ -122,6 +135,10 @@
   "http": [],
   "ichigojam": [],
   "icon": [],
+  "icu-message-format": [],
+  "idris": [
+    "idr"
+  ],
   "iecst": [],
   "ignore": [
     "gitignore",
@@ -139,6 +156,7 @@
     "js"
   ],
   "javastacktrace": [],
+  "jexl": [],
   "jolie": [],
   "jq": [],
   "jsdoc": [],
@@ -154,6 +172,9 @@
   "kotlin": [
     "kt",
     "kts"
+  ],
+  "kumir": [
+    "kum"
   ],
   "latex": [
     "context",
@@ -172,6 +193,7 @@
   ],
   "livescript": [],
   "llvm": [],
+  "log": [],
   "lolcode": [],
   "lua": [],
   "makefile": [],
@@ -206,6 +228,7 @@
   ],
   "nasm": [],
   "neon": [],
+  "nevod": [],
   "nginx": [],
   "nim": [],
   "nix": [],
@@ -215,6 +238,9 @@
   ],
   "ocaml": [],
   "opencl": [],
+  "openqasm": [
+    "qasm"
+  ],
   "oz": [],
   "parigp": [],
   "parser": [],
@@ -242,6 +268,7 @@
   "promql": [],
   "properties": [],
   "protobuf": [],
+  "psl": [],
   "pug": [],
   "puppet": [],
   "pure": [],
@@ -257,12 +284,16 @@
   "q": [],
   "qml": [],
   "qore": [],
+  "qsharp": [
+    "qs"
+  ],
   "r": [],
   "racket": [
     "rkt"
   ],
   "reason": [],
   "regex": [],
+  "rego": [],
   "renpy": [
     "rpy"
   ],
@@ -304,6 +335,7 @@
   "splunk-spl": [],
   "sqf": [],
   "sql": [],
+  "squirrel": [],
   "stan": [],
   "stylus": [],
   "swift": [],
@@ -332,6 +364,10 @@
     "uc",
     "uscript"
   ],
+  "uri": [
+    "url"
+  ],
+  "v": [],
   "vala": [],
   "vbnet": [],
   "velocity": [],
@@ -345,6 +381,11 @@
   "warpscript": [],
   "wasm": [],
   "wiki": [],
+  "wolfram": [
+    "mathematica",
+    "nb",
+    "wl"
+  ],
   "xeora": [
     "xeoracube"
   ],

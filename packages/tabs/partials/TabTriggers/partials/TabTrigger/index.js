@@ -34,7 +34,6 @@ const TabTrigger = (props) => {
             arrow={true}
             placement="top"
             hideOnClick={false}
-            visible={true}
           >
             <span
               data-testid="tooltip-icon"

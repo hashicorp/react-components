@@ -74,9 +74,7 @@ class LogoGrid extends Component {
         theme="light"
         hideOnClick={true}
         interactive={true}
-        flipOnUpdate={false}
         ignoreAttributes={true}
-        multiple={false}
         onShow={(tip) => {
           // save a reference to the currently open instance so it can be closed by the "X"
           inst = tip
