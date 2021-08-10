@@ -3,10 +3,11 @@
   "description": "basic full page hero with a lot of customization options",
   "version": "7.3.3",
   "author": "HashiCorp",
-  "contributors": ["Jeff Escalante"],
+  "contributors": [
+    "Jeff Escalante"
+  ],
   "dependencies": {
     "@hashicorp/js-utils": "^1.0.10",
-    "@hashicorp/localstorage-polyfill": "^1.0.14",
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-alert": "^5.0.1",
     "@hashicorp/react-button": "^5.2.1",
