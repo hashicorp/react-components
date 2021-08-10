@@ -2,6 +2,7 @@
 @import './variant-secondary.css';
 @import './variant-tertiary.css';
 @import './variant-tertiary-neutral.css';
+@import './variant-ghost.css';
 
 .g-btn {
   position: relative;
