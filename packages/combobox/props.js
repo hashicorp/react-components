@@ -18,6 +18,10 @@ module.exports = {
     type: 'function',
     description: 'A change handler for the input',
   },
+  onInputBlur: {
+    type: 'function',
+    description: 'An `onBlur` handler for the input',
+  },
   openOnFocus: {
     type: 'boolean',
     description: 'Controls whether the dropdown opens on focus of the input',

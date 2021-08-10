@@ -19,6 +19,7 @@ export interface ComboboxProps {
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
   onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onInputBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   invalidInputValue?: boolean
 }
 
@@ -31,6 +32,7 @@ export default function Combobox({
   options,
   openOnFocus = true,
   onInputChange,
+  onInputBlur,
   renderOption,
   invalidInputValue,
 }: ComboboxProps) {
@@ -53,6 +55,7 @@ export default function Combobox({
       <ComboboxButton label={buttonLabel} />
       <ComboboxInput
         onChange={handleInputValueChange}
+        onBlur={onInputBlur}
         data-has-error={invalidInputValue ?? false}
       />
       {results?.length > 0 ? (
