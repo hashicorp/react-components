@@ -15,6 +15,9 @@ workflows:
   test:
     jobs:
       - node/test:
+          executor:
+            name: node/default
+            tag: '15.14.0'
           name: test
           run-command: test:ci
       - lint
