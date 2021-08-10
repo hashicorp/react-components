@@ -16,5 +16,5 @@ workflows:
     jobs:
       - node/test:
           name: test
-          run-command: bootstrap && npm run test:ci
+          run-command: npm run test:ci
       - lint
