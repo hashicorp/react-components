@@ -1,7 +1,6 @@
 import Head from 'next/head'
 
 export default function HashiHead(props: HashiHeadProps): React.ReactElement {
-  console.log(Head)
   return (
     <Head>
       {whenString(props.title, <title>{props.title}</title>)}

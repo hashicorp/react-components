@@ -1,7 +1,6 @@
 require('dotenv').config()
-// import 'regenerator-runtime/runtime'
+import HashiHead from '@hashicorp/react-head'
 import { render, screen } from '@testing-library/react'
-// import expectThrow from '../../__test-helpers/expect-throw'
 import DocsPage from './'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
@@ -9,16 +8,8 @@ import renderPageMdx from './render-page-mdx'
 
 const defaultProps = getTestValues(props)
 
-// Mocking next/head makes it easier to confirm
-// that we're passing stuff to <HashiHead />
-jest.mock('next/head', () => {
-  return {
-    default: function HeadMock({ children }) {
-      console.log(children)
-      return <>{children}</>
-    },
-  }
-})
+// Mocking HashiHead as it's already unit tested itself
+jest.mock('@hashicorp/react-head', () => jest.fn(() => null))
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(() => ({
@@ -29,27 +20,18 @@ jest.mock('next/router', () => ({
 describe('<DocsPage />', () => {
   it('passes `title`, `description`, and `siteName` correctly to <HashiHead>', () => {
     const container = render(<DocsPage {...defaultProps} />)
-    // container.debug()
-    // title renders correctly
-    expect(document.title).toBe(`Test Page | Terraform by HashiCorp`)
-    // description renders correctly
-    const description = Array.prototype.slice
-      .call(document.getElementsByTagName('meta'))
-      .filter((tag) => tag.getAttribute('name') === 'description')[0]
-      .getAttribute('content')
-    expect(description).toBe(`Test description`)
-    // siteName renders correctly
-    const site_name = Array.prototype.slice
-      .call(document.getElementsByTagName('meta'))
-      .filter((tag) => tag.getAttribute('property') === 'og:site_name')[0]
-      .getAttribute('content')
-    expect(site_name).toBe(`Terraform by HashiCorp`)
+    expect(HashiHead).toHaveBeenCalledWith(
+      {
+        description: 'Test description',
+        siteName: 'Terraform by HashiCorp',
+        title: 'Test Page | Terraform by HashiCorp',
+      },
+      expect.anything()
+    )
   })
 
   it('passes props correctly to <DocsSidenav>', () => {
     render(<DocsPage {...defaultProps} />)
-    // Confirm `product` is passed via document title
-    expect(document.title).toBe(`Test Page | Terraform by HashiCorp`)
     // Confirm `baseRoute` and `navData` by checking for a rendered link
     const activeLeaf = screen.getByText('AWS').closest('a')
     expect(activeLeaf.getAttribute('href')).toBe(
