@@ -13,8 +13,8 @@ const defaultProps = getTestValues(props)
 // that we're passing stuff to <HashiHead />
 jest.mock('next/head', () => {
   return {
-    __esModule: true,
     default: function HeadMock({ children }) {
+      console.log(children)
       return <>{children}</>
     },
   }
@@ -28,7 +28,8 @@ jest.mock('next/router', () => ({
 
 describe('<DocsPage />', () => {
   it('passes `title`, `description`, and `siteName` correctly to <HashiHead>', () => {
-    render(<DocsPage {...defaultProps} />)
+    const container = render(<DocsPage {...defaultProps} />)
+    // container.debug()
     // title renders correctly
     expect(document.title).toBe(`Test Page | Terraform by HashiCorp`)
     // description renders correctly

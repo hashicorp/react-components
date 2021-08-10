@@ -1,4 +1,5 @@
 import { render, waitFor } from '@testing-library/react'
+import { setImmediate } from 'timers'
 import SentinelEmbedded from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
