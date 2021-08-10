@@ -1,4 +1,4 @@
 module.exports = {
-  ...require('@hashicorp/platform-cli/config/.stylelintrc.js'),
+  ...require('@hashicorp/platform-cli/config/stylelint.config.js'),
   /* Specify overrides here */
 }
