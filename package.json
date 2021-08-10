@@ -58,7 +58,6 @@
     "test:ci": "jest",
     "test:watch": "jest --watch",
     "upgrade:base-deps": "npm add @hashicorp/{mktg-{logos,global-styles},nextjs-scripts}@latest",
-    "vercel-build": "npm run bootstrap && next build",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
