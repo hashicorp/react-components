@@ -13,7 +13,9 @@ import moize from 'moize'
 import { normalizeVersion } from '@hashicorp/versioned-docs/client'
 import renderPageMdx from './render-page-mdx'
 
-const cachedLoadVersionNavData = moize(loadVersionedNavData)
+const cachedLoadVersionNavData = moize(loadVersionedNavData, {
+  maxSize: moize.infinite,
+})
 
 // So far, we have a pattern of using a common value for
 // docs catchall route parameters: route/[[...page]].jsx.

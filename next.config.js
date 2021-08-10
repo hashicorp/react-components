@@ -17,11 +17,13 @@ fs.readdirSync(workspaceRoot).forEach((dir) => {
   )
 })
 
+console.log([...new Set(hashicorpPackagesInWorkspaces)])
+
 module.exports = withHashicorp({
   transpileModules: [
     'swingset',
     '@hashicorp/sentinel-embedded',
-    ...hashicorpPackagesInWorkspaces,
+    ...[...new Set(hashicorpPackagesInWorkspaces)],
   ],
 })(
   withSwingset({

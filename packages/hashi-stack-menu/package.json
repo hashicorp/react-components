@@ -3,12 +3,10 @@
   "description": "A menu for displaying the entire HashiCorp stack",
   "version": "2.0.6",
   "author": "HashiCorp",
-  "contributors": [
-    "Jimmy Merritello"
-  ],
+  "contributors": ["Jimmy Merritello"],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^6.0.1",
-    "slugify": "1.5.0"
+    "slugify": "1.6.0"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
