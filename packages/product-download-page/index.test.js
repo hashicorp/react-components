@@ -19,7 +19,7 @@ describe('<ProductDownloadsPage />', () => {
       setup()
 
       expect(screen.getByText('Package Manager')).toBeInTheDocument()
-      expect(screen.getByText('Binary Download')).toBeInTheDocument()
+      expect(screen.getByText('macOS Binary Download')).toBeInTheDocument()
     })
 
     it('should switch to a different OS when clicking a tab', () => {
