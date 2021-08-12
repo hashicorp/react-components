@@ -1,6 +1,6 @@
 .root {
   /* Base typography */
-  composes: g-type-body-long from global;
+  composes: g-type-long-body from global;
 
   /* Include all content base styles */
   composes: a from './styles/a.module.css';
