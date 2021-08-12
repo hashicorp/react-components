@@ -27,6 +27,7 @@ export default function ProductDownloadsPage({
   className,
   packageManagerOverrides = [],
   enterpriseMode = false,
+  pageTitle, // optional, will default to title constructed from useProductMeta name
   // these props are piped in from `generateStaticProps`
   product,
   latestVersion,
@@ -114,8 +115,9 @@ export default function ProductDownloadsPage({
       <HashiHead title={`Downloads | ${name} by HashiCorp`} />
       <div className={`${styles.root} ${themeClass || ''} ${className || ''}`}>
         <h1 className={styles.pageTitle}>
-          Download {name}
-          {enterpriseMode ? ' Enterprise' : ''}
+          {pageTitle ||
+            `Download ${name}
+          ${enterpriseMode ? ' Enterprise' : ''}`}
         </h1>
         <DownloadCards
           defaultTabIdx={osIndex}

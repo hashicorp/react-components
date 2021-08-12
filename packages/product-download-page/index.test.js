@@ -164,6 +164,23 @@ describe('<ProductDownloadsPage />', () => {
       expect(screen.getByText('Containers')).toBeInTheDocument()
     })
   })
+
+  describe('Page Settings', () => {
+    it('should render a generated page title if no pageTitle prop is provided', () => {
+      setup()
+      const expectedTitle = screen.getByText('Download Waypoint')
+      expect(expectedTitle).toBeInTheDocument()
+      expect(expectedTitle.tagName).toBe('H1')
+    })
+
+    it('should allow the pageTitle prop to override the generated page title', () => {
+      const pageTitle = 'My Special Custom Title'
+      setup({ pageTitle })
+      const expectedTitle = screen.getByText(pageTitle)
+      expect(expectedTitle).toBeInTheDocument()
+      expect(expectedTitle.tagName).toBe('H1')
+    })
+  })
 })
 
 // Fixture Data
