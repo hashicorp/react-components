@@ -1,6 +1,11 @@
 const baseProps = require('../../props.js')
 
 module.exports = {
+  pageTitle: {
+    type: 'string',
+    description:
+      "Override the default constructed page title. Useful if the download page is for a non-product release asset, such as Vagrant's vmware utility.",
+  },
   releases: {
     type: 'object',
     description: 'API response from releases endpoint',

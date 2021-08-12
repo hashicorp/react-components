@@ -1,7 +1,5 @@
 .root {
-  composes: .g-grid-container from global;
-  margin-top: 72px;
-  margin-bottom: 72px;
+  padding-top: 72px;
 
   & a {
     text-decoration: underline;
@@ -26,11 +24,12 @@
 
 .gettingStarted {
   max-width: 680px;
-  margin: 40px auto 64px;
+  margin: 0 auto;
+  padding: 40px 0 64px 0;
   text-align: center;
 
   @media (--medium-up) {
-    margin: 88px auto 128px;
+    padding: 88px 0 128px 0;
   }
 }
 
