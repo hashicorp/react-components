@@ -173,6 +173,7 @@ interface ProductDownloadsPageProps {
   changelog?: string
   className?: string
   packageManagerOverrides?: PackageManagerConfig[]
+  pageTitle?: string
   enterpriseMode: boolean
   product: HashiCorpProduct
   latestVersion: string
