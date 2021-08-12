@@ -27,7 +27,7 @@ export default function ProductDownloadsPage({
   className,
   packageManagerOverrides = [],
   enterpriseMode = false,
-  pageTitle, // optional, will default to title constructed from useProductMeta name
+  pageTitle,
   // these props are piped in from `generateStaticProps`
   product,
   latestVersion,
