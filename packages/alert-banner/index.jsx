@@ -67,6 +67,7 @@ function AlertBanner({
         { [s.isShown]: isShown },
         { [s.hideOnMobile]: hideOnMobile }
       )}
+      data-test-is-shown={String(isShown)}
     >
       <a
         href={url}
@@ -74,11 +75,10 @@ function AlertBanner({
         onClick={() => analytics.trackClick({ linkText, product, tag, text })}
       >
         <span className={s.textContainer}>
-          <span className={s.tag}>{tag}</span>
+          <span className={s.tag}>{tag} </span>
           <span className={s.text}>
             {text}
-            {linkText ? ' ' : null}
-            {linkText ? <span className={s.linkText}>{linkText}</span> : null}
+            {linkText ? <span className={s.linkText}> {linkText}</span> : null}
           </span>
         </span>
       </a>
