@@ -1,5 +1,123 @@
-.hideOnMobile {
-  @media (--small) {
-    display: none !important;
+.root {
+  display: none;
+  overflow: hidden;
+  position: relative;
+  transition: height 0.3s ease-out;
+
+  &.show {
+    display: block;
   }
+
+  &.hideOnMobile {
+    @media (--small) {
+      display: none !important;
+    }
+  }
+}
+
+.linkElem {
+  display: block;
+  position: relative;
+  color: var(--black);
+  background: var(--vagrant-secondary); /* Corporate default */
+
+  &.themed {
+    background: var(--brand-secondary);
+  }
+}
+
+.textContainer {
+  composes: g-grid-container from global;
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  justify-content: center;
+
+  &.hasLargeTag {
+    @media (max-width: 575px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.tag {
+  composes: g-type-body-small-x-strong from global;
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  margin-right: 11px;
+
+  &::after {
+    content: '';
+    height: 16px;
+    background: black;
+    width: 1px;
+    display: block;
+    margin-left: 11px;
+  }
+}
+
+.text {
+  composes: g-type-body-small from global;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  margin-right: 48px;
+
+  &.hasLargeTag {
+    @media (max-width: 575px) {
+      margin-right: 0;
+      margin-top: 8px;
+    }
+  }
+}
+
+.linkText {
+  composes: g-type-body-small-x-strong from global;
+  display: none;
+
+  @media (min-width: 992px) {
+    display: block;
+    margin-left: 8px;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  right: 24px;
+  top: 16px;
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+
+  & > svg {
+    display: block;
+    & [stroke] {
+      stroke: var(--black);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+}
+
+.visuallyHidden {
+  /* .visually-hidden courtesy of https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/ */
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

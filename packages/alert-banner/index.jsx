@@ -22,36 +22,45 @@ class AlertBanner extends Component {
     const { show } = this.state
     const { url, tag, product, text, linkText, hideOnMobile } = this.props
 
-    const tagClass = tag.length > 3 ? 'has-large-tag' : ''
+    const hasLargeTag = tag.length > 3
+    // const tagClass =  ? 'has-large-tag' : ''
 
     return (
       <div
         className={classNames(
           'g-alert-banner',
+          s.root,
           product.themeClass,
           { [s.hideOnMobile]: hideOnMobile },
-          { show },
-          { themed: !!product.themeClass }
+          { [s.show]: show }
         )}
         ref={this.banner}
       >
-        <a href={url} className="link" onClick={() => this.trackEvent('click')}>
-          <span className={`g-grid-container ${tagClass}`}>
-            <span className="tag g-type-body-small-x-strong">{tag}</span>
-            <span className={`text g-type-body-small ${tagClass}`}>
+        <a
+          href={url}
+          className={classNames(s.linkElem, {
+            [s.themed]: !!product.themeClass,
+          })}
+          onClick={() => this.trackEvent('click')}
+        >
+          <span
+            className={classNames(s.textContainer, {
+              [s.hasLargeTag]: hasLargeTag,
+            })}
+          >
+            <span className={s.tag}>{tag}</span>
+            <span
+              className={classNames(s.text, { [s.hasLargeTag]: hasLargeTag })}
+            >
               {text}
               {linkText ? ' ' : null}
-              {linkText ? (
-                <span className="link-text g-type-body-small-x-strong">
-                  {linkText}
-                </span>
-              ) : null}
+              {linkText ? <span className={s.linkText}>{linkText}</span> : null}
             </span>
           </span>
         </a>
-        <button className="close" onClick={() => this.onClose()}>
+        <button className={s.closeButton} onClick={() => this.onClose()}>
           <InlineSvg src={CloseIcon} />
-          <span className="visually-hidden">Dismiss alert</span>
+          <span className={s.visuallyHidden}>Dismiss alert</span>
         </button>
       </div>
     )
