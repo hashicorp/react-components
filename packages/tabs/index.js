@@ -3,15 +3,13 @@ import classNames from 'classnames'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
-function Tabs({ defaultTabIdx, centered, fullWidthBorder, children }) {
-  if (!children) {
-    process.env.NODE_ENV !== 'production' &&
-      console.warn(
-        '@hashicorp/react-tabs: There are no `Tab` children for the `Tabs` component to render.'
-      )
-    return null
-  }
-
+function Tabs({
+  defaultTabIdx,
+  centered,
+  fullWidthBorder,
+  children,
+  onChange,
+}) {
   // Ensures a single child object converts to an array
   children = Array.prototype.concat(children)
 
@@ -27,6 +25,7 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, children }) {
 
   function setActiveTab(targetIdx, groupId) {
     setActiveTabIdx(targetIdx)
+    if (onChange) onChange(targetIdx, groupId)
     if (groupCtx) groupCtx.setActiveTabGroup(groupId)
   }
 
@@ -42,6 +41,14 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, children }) {
       )
     }
   }, [])
+
+  if (!children) {
+    process.env.NODE_ENV !== 'production' &&
+      console.warn(
+        '@hashicorp/react-tabs: There are no `Tab` children for the `Tabs` component to render.'
+      )
+    return null
+  }
 
   return (
     <section

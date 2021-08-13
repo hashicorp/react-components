@@ -1,7 +1,6 @@
 .root {
   background-color: var(--gray-6);
-  padding: 42px 0;
-  margin: 42px 0;
+  padding: 48px 0 128px 0;
   color: var(--gray-2);
 
   & p {
