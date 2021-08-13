@@ -1,119 +1,95 @@
-import { Component, createRef } from 'react'
+import { useEffect, useState } from 'react'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
 import classNames from 'classnames'
-import { withProductMeta } from '@hashicorp/platform-product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import CloseIcon from './img/close-icon.svg?include'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
+import analytics from './analytics'
 
-class AlertBanner extends Component {
-  constructor(props) {
-    super(props)
+/**
+ * AlertBanner renders a full-width link container.
+ * Intended for use at the very top of a page,
+ * above the navigation.
+ *
+ * @param {props} object
+ * @param {props.expirationDate}
+ * @param {props.hideOnMobile}
+ * @param {props.linkText}
+ * @param {props.name}
+ * @param {props.product}
+ * @param {props.tag}
+ * @param {props.text}
+ * @param {props.url}
+ * @returns
+ */
+function AlertBanner({
+  expirationDate,
+  hideOnMobile,
+  linkText,
+  name,
+  product = 'vagrant', // override useProductMeta's default "hashicorp", as it would result in a dull gray background
+  tag,
+  text,
+  url,
+}) {
+  const dismissalCookieId = `banner_${name || slugify(text, { lower: true })}`
+  const [isShown, setIsShown] = useState(true)
+  const { themeClass } = useProductMeta(product)
 
-    this.expirationDate = props.expirationDate
-    this.name = props.name || slugify(props.text, { lower: true })
-    this.state = { show: true }
-    this.banner = createRef()
+  /**
+   * On mount, hide the banner if it is expired or
+   * if a cookie indicates it was previously closed
+   */
+  useEffect(() => {
+    const hasBeenDismissed = cookie.get(dismissalCookieId)
+    const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
+    if (hasBeenDismissed || hasExpired) setIsShown(false)
+  }, [])
+
+  /**
+   * Dismiss the banner, and set a cookie
+   * to remember the dismissal of this banner
+   */
+  function closeBanner() {
+    cookie.set(dismissalCookieId, 1)
+    setIsShown(false)
+    analytics.trackClose({ linkText, product, tag, text })
   }
 
-  render() {
-    const { show } = this.state
-    const { url, tag, product, text, linkText, hideOnMobile } = this.props
-
-    const hasLargeTag = tag.length > 3
-    // const tagClass =  ? 'has-large-tag' : ''
-
-    return (
-      <div
-        className={classNames(
-          'g-alert-banner',
-          s.root,
-          product.themeClass,
-          { [s.hideOnMobile]: hideOnMobile },
-          { [s.show]: show }
-        )}
-        ref={this.banner}
+  return (
+    <div
+      className={classNames(
+        s.root,
+        themeClass,
+        { [s.isShown]: isShown },
+        { [s.hideOnMobile]: hideOnMobile }
+      )}
+    >
+      <a
+        href={url}
+        className={s.linkElem}
+        onClick={() => analytics.trackClick({ linkText, product, tag, text })}
       >
-        <a
-          href={url}
-          className={classNames(s.linkElem, {
-            [s.themed]: !!product.themeClass,
-          })}
-          onClick={() => this.trackEvent('click')}
-        >
-          <span
-            className={classNames(s.textContainer, {
-              [s.hasLargeTag]: hasLargeTag,
-            })}
-          >
-            <span className={s.tag}>{tag}</span>
-            <span
-              className={classNames(s.text, { [s.hasLargeTag]: hasLargeTag })}
-            >
-              {text}
-              {linkText ? ' ' : null}
-              {linkText ? <span className={s.linkText}>{linkText}</span> : null}
-            </span>
+        <span className={s.textContainer}>
+          <span className={s.tag}>{tag}</span>
+          <span className={s.text}>
+            {text}
+            {linkText ? ' ' : null}
+            {linkText ? <span className={s.linkText}>{linkText}</span> : null}
           </span>
-        </a>
-        <button className={s.closeButton} onClick={() => this.onClose()}>
-          <InlineSvg src={CloseIcon} />
-          <span className={s.visuallyHidden}>Dismiss alert</span>
-        </button>
-      </div>
-    )
-  }
-
-  componentDidMount() {
-    const isCookieSet = cookie.get(`banner_${this.name}`)
-    const hasExpired =
-      this.expirationDate && Date.now() > Date.parse(this.expirationDate)
-
-    // if cookie isn't set, show the component
-    if (!isCookieSet) {
-      this.setState({ show: true })
-    }
-
-    // if past expiration date, don't show the component
-    if (hasExpired) {
-      this.setState({ show: false })
-    }
-  }
-
-  onClose() {
-    // animate closed by setting height so
-    // it's not 'auto' and then set to zero
-    this.banner.current.style.height = `${this.banner.scrollHeight}px`
-    window.setTimeout(() => {
-      this.banner.current.style.height = '0'
-    }, 1)
-
-    // set the cookie so this banner doesn't show up anymore
-    const name = `banner_${this.name}`
-    cookie.set(name, 1)
-
-    this.setState({ show: false })
-    this.trackEvent('close')
-  }
-
-  trackEvent(type) {
-    if (window.analytics) {
-      const { tag, product, text, linkText } = this.props
-
-      window.analytics.track(type.charAt(0).toUpperCase() + type.slice(1), {
-        category: 'Alert Banner',
-        label: `${text} - ${linkText} | ${type}`,
-        tag: tag,
-        theme: product,
-      })
-    }
-  }
+        </span>
+      </a>
+      <button className={s.closeButton} onClick={closeBanner}>
+        <InlineSvg src={CloseIcon} />
+        <span className={s.visuallyHidden}>Dismiss alert</span>
+      </button>
+    </div>
+  )
 }
 
-const AlertBannerWithProductMeta = withProductMeta(AlertBanner)
+AlertBanner.fragmentSpec = { fragment }
 
-AlertBannerWithProductMeta.fragmentSpec = { fragment }
-
-export default AlertBannerWithProductMeta
+export default AlertBanner

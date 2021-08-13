@@ -4,51 +4,49 @@
   position: relative;
   transition: height 0.3s ease-out;
 
-  &.show {
+  &.isShown {
     display: block;
   }
 
+  /* Even if isShown is set,
+  should hide on mobile */
   &.hideOnMobile {
     @media (--small) {
-      display: none !important;
+      display: none;
     }
   }
 }
 
 .linkElem {
+  background: var(--brand-secondary);
+  color: var(--black);
   display: block;
   position: relative;
-  color: var(--black);
-  background: var(--vagrant-secondary); /* Corporate default */
-
-  &.themed {
-    background: var(--brand-secondary);
-  }
 }
 
 .textContainer {
   composes: g-grid-container from global;
-  display: flex;
   align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-bottom: 15px;
   padding-top: 15px;
-  justify-content: center;
 
-  &.hasLargeTag {
-    @media (max-width: 575px) {
-      flex-direction: column;
-    }
+  @media (min-width: 576px) {
+    flex-direction: row;
   }
 }
 
 .tag {
+  align-items: center;
   composes: g-type-body-small-x-strong from global;
+  display: flex;
+  margin-right: 11px;
   position: relative;
   white-space: nowrap;
-  display: flex;
-  align-items: center;
-  margin-right: 11px;
 
+  /* Vertical divider using ::after pseudo class */
   &::after {
     content: '';
     height: 16px;
@@ -64,13 +62,12 @@
   align-items: flex-start;
   display: flex;
   justify-content: center;
-  margin-right: 48px;
+  margin-right: 0px;
+  margin-top: 8px;
 
-  &.hasLargeTag {
-    @media (max-width: 575px) {
-      margin-right: 0;
-      margin-top: 8px;
-    }
+  @media (min-width: 576px) {
+    margin-right: 48px;
+    margin-top: 0;
   }
 }
 
@@ -87,16 +84,16 @@
 }
 
 .closeButton {
+  background: none;
+  border: none;
+  margin: 0;
+  opacity: 0.75;
+  padding: 0;
   position: absolute;
   right: 24px;
   top: 16px;
-  border: none;
-  background: none;
-  margin: 0;
-  padding: 0;
-  z-index: 2;
-  opacity: 0.75;
   transition: opacity 0.15s;
+  z-index: 2;
 
   & > svg {
     display: block;
