@@ -8,22 +8,47 @@ import CloseIcon from './img/close-icon.svg?include'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 import analytics from './analytics'
+import { HashiCorpProduct } from '../../types'
+
+interface AlertBannerProps {
+  /**
+   * The text contained inside the tag to the left
+   */
+  tag: string
+  /**
+   * The text in the main area
+   */
+  text: string
+  /**
+   * Where to link to when clicked
+   */
+  url: string
+  /**
+   * A datetime string that, when set, controls if the alert banner should appear.
+   */
+  expirationDate?: string
+  /**
+   * If true, the alert banner will be forcefully hidden on mobile.
+   */
+  hideOnMobile?: boolean
+  /**
+   * The text contained inside the tag to the left
+   */
+  linkText?: string
+  /**
+   * String used for cookie name. Defaults to slugified `text` prop.
+   */
+  name?: string
+  /**
+   * A lower-case product identifier, used to theme the AlertBanner.
+   */
+  product?: HashiCorpProduct
+}
 
 /**
- * AlertBanner renders a full-width link container.
- * Intended for use at the very top of a page,
- * above the navigation.
- *
- * @param {props} object
- * @param {props.expirationDate}
- * @param {props.hideOnMobile}
- * @param {props.linkText}
- * @param {props.name}
- * @param {props.product}
- * @param {props.tag}
- * @param {props.text}
- * @param {props.url}
- * @returns
+ * AlertBanner is a component used widely across HashiCorp websites to
+ * draw attention to an important release, event, etc. It appears in
+ * bold colors at the top of the website, and can be dismissed.
  */
 function AlertBanner({
   expirationDate,
@@ -34,7 +59,7 @@ function AlertBanner({
   tag,
   text,
   url,
-}) {
+}: AlertBannerProps): React.ReactElement {
   const dismissalCookieId = `banner_${name || slugify(text, { lower: true })}`
   const [isShown, setIsShown] = useState(true)
   const { themeClass } = useProductMeta(product)
@@ -46,8 +71,9 @@ function AlertBanner({
   useEffect(() => {
     const hasBeenDismissed = cookie.get(dismissalCookieId)
     const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
-    if (hasBeenDismissed || hasExpired) setIsShown(false)
-  }, [])
+    const shouldBeShown = !hasBeenDismissed && !hasExpired
+    if (isShown !== shouldBeShown) setIsShown(shouldBeShown)
+  }, [expirationDate])
 
   /**
    * Dismiss the banner, and set a cookie
