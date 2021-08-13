@@ -1,6 +1,3 @@
-const path = require('path')
-const fs = require('fs')
-
 const withHashicorp = require('@hashicorp/platform-nextjs-plugin')
 const withSwingset = require('swingset')
 

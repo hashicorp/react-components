@@ -6,8 +6,8 @@ import CheckSquare from './icons/check-square.svg?include'
 function CheckboxList({ items, theme, product }) {
   const validItems = items && items.filter((l) => l !== '')
   const hasItems = validItems && validItems.length > 0
-  if (!hasItems) return null
   const { themeClass } = useProductMeta(product) // overrides base --brand with product colors
+  if (!hasItems) return null
   return (
     <ul
       className={className('checkbox-list', themeClass)}

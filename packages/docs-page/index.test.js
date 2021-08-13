@@ -19,7 +19,7 @@ jest.mock('next/router', () => ({
 
 describe('<DocsPage />', () => {
   it('passes `title`, `description`, and `siteName` correctly to <HashiHead>', () => {
-    const container = render(<DocsPage {...defaultProps} />)
+    render(<DocsPage {...defaultProps} />)
     expect(HashiHead).toHaveBeenCalledWith(
       {
         description: 'Test description',
