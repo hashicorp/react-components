@@ -24,7 +24,7 @@ General purpose tabs component. Used heavily across all websites, but especially
 
 ### Examples
 
-A bunch of tabs:
+#### A bunch of tabs
 
 <LiveComponent>{`<Tabs>
   <Tab heading="First Tab" />
@@ -36,7 +36,7 @@ A bunch of tabs:
   <Tab heading="Seventh tab with an even longer name than the second tab" />
 </Tabs>`}</LiveComponent>
 
-With tooltips!
+#### With tooltips!
 
 <LiveComponent>{`<Tabs>
   <Tab heading="First Tab" />
@@ -47,7 +47,18 @@ With tooltips!
   <Tab heading="Sixth Tab" tooltip="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.'"/>
 </Tabs>`}</LiveComponent>
 
-With Tab Groups:
+#### With an onChange handler
+
+<LiveComponent>{`<Tabs onChange={console.log}>
+  <Tab heading="First Tab" />
+  <Tab heading="Second tab with long name" tooltip="What a useful tip!" />
+  <Tab heading="Third long name tab" />
+  <Tab heading="Fourth tab lots of tabs" tooltip="How neat is that?" />
+  <Tab heading="Fifth Tab" />
+  <Tab heading="Sixth Tab" tooltip="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a ex et nulla aliquam placerat. Phasellus euismod posuere porttitor. Praesent quis mollis nibh, eget imperdiet velit. Nunc pulvinar ultrices metus quis dapibus.'"/>
+</Tabs>`}</LiveComponent>
+
+#### With Tab Groups
 
 First, second and third tabs should be actively synced based on their matching `group` property. _Note_ the `TabProvider` must wrap the page where this component is used for 'groups' to function properly.
 
