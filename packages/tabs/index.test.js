@@ -18,9 +18,9 @@ const baseProps = [
   },
 ]
 
-function BaseTabs({ tabs, defaultTabIdx = 0 }) {
+function BaseTabs({ tabs, defaultTabIdx = 0, onChange }) {
   return (
-    <Tabs defaultTabIdx={defaultTabIdx}>
+    <Tabs defaultTabIdx={defaultTabIdx} onChange={onChange}>
       {tabs.map(({ heading, tooltip, group, content }) => {
         return (
           <Tab key={heading} heading={heading} tooltip={tooltip} group={group}>
@@ -136,6 +136,18 @@ describe('<Tabs />', () => {
     }
     const { getByText } = render(<SingleTab tab={baseProps[0]} />)
     expect(getByText('Tab 1 Content')).toBeInTheDocument()
+  })
+
+  it('should accept and call an onChange prop when a new tab is clicked', () => {
+    const onChange = jest.fn()
+    const { getByText } = render(
+      <BaseTabs tabs={baseProps} onChange={onChange} />
+    )
+
+    const { heading } = baseProps[0]
+    const targetTab = getByText(heading)
+    fireEvent.click(targetTab)
+    expect(onChange).toHaveBeenCalled()
   })
 })
 
