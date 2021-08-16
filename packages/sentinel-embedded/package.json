@@ -1,9 +1,11 @@
 {
   "name": "@hashicorp/react-sentinel-embedded",
   "description": "Embed the Sentinel playground into an MDX page.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "HashiCorp",
-  "contributors": ["Cameron Stitt"],
+  "contributors": [
+    "Cameron Stitt"
+  ],
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

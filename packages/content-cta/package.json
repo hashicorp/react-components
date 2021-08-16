@@ -1,12 +1,14 @@
 {
   "name": "@hashicorp/react-content-cta",
   "description": "alert style content callout with product theming",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "author": "HashiCorp",
-  "contributors": ["Nicole Forrester"],
+  "contributors": [
+    "Nicole Forrester"
+  ],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-button": "^5.3.0",
+    "@hashicorp/react-button": "^5.3.1",
     "classnames": "^2.2.6"
   },
   "license": "MPL-2.0",

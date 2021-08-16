@@ -1,12 +1,14 @@
 {
   "name": "@hashicorp/react-tabbed-accordion",
   "description": "Tabs with accordions nested inside",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "author": "HashiCorp",
-  "contributors": ["Zach Shilton"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "dependencies": {
-    "@hashicorp/react-accordion": "^2.0.2",
-    "@hashicorp/react-tabs": "^6.1.0"
+    "@hashicorp/react-accordion": "^2.0.3",
+    "@hashicorp/react-tabs": "^6.1.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x"

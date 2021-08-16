@@ -1,9 +1,12 @@
 {
   "name": "@hashicorp/react-combobox",
   "description": "Combobox component with base functionality and styles built for composability",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "HashiCorp",
-  "contributors": ["Jimmy Merritello", "Kendall Strautman"],
+  "contributors": [
+    "Jimmy Merritello",
+    "Kendall Strautman"
+  ],
   "license": "MPL-2.0",
   "dependencies": {
     "@reach/combobox": "0.15.1",
