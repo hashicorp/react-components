@@ -1,36 +1,45 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import cookie from 'js-cookie'
+import slugify from 'slugify'
 import AlertBanner from './'
 
+/**
+ * @TODO If we configured Jest to load CSS, we could convert some of these
+ * tests to use jest-dom's .toBeVisible() assertions in a meaningful way,
+ * eg by using getByText and asserting visibility rather than using a test attr.
+ * jest-dom .toBeVisible: https://github.com/testing-library/jest-dom#tobevisible
+ * Asana task: https://app.asana.com/0/1100423001970639/1200616367938010/f
+ */
+
 describe('<AlertBanner />', () => {
-  it('should render a <AlertBanner />', () => {
-    const { container } = render(<AlertBanner text="text" tag="tag" />)
+  it('should render a link that contains the tag, text, and linkText', () => {
+    const tag = 'Newish'
+    const text = 'This is a cool banner'
+    const linkText = 'Check it out'
+    const url = 'https://hashicorp.com/my-link'
+    render(<AlertBanner tag={tag} text={text} linkText={linkText} url={url} />)
+    const textElem = screen.getByText(text)
+    const linkElem = textElem.closest('a')
+    expect(linkElem).toBeInTheDocument()
+    expect(linkElem.textContent).toBe(`${tag} ${text} ${linkText}`)
+    expect(linkElem.href).toBe(url)
+  })
+
+  it('should allow closing the banner, and set a cookie to remember', () => {
+    const tag = 'Newish'
+    const text = 'This is a cool banner'
+    const linkText = 'Check it out'
+    const { container } = render(
+      <AlertBanner tag={tag} text={text} linkText={linkText} />
+    )
     const rootElem = container.firstChild
-    expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-alert-banner')
-  })
+    const closeButton = screen.getByText('Dismiss alert')
+    expect(rootElem).toHaveClass('isShown')
+    fireEvent.click(closeButton)
+    expect(rootElem).not.toHaveClass('isShown')
 
-  it('should render the right tag string', () => {
-    const { container } = render(<AlertBanner text="text" tag="tag" />)
-    expect(container.querySelector('.tag').textContent).toBe('tag')
-  })
-
-  it('should render the right link string', () => {
-    const { container } = render(
-      <AlertBanner text="text" tag="tag" linkText="https://hashicorp.com/" />
-    )
-    expect(container.querySelector('.link-text').textContent).toBe(
-      'https://hashicorp.com/'
-    )
-  })
-
-  it('should close when clicking on close', () => {
-    const { container } = render(
-      <AlertBanner text="text" tag="tag" linkText="https://hashicorp.com/" />
-    )
-    const banner = container.querySelector('.g-alert-banner')
-    expect(banner.classList.contains('show')).toEqual(true)
-    container.querySelector('.close').click()
-    expect(banner.classList.contains('show')).toEqual(false)
+    const dismissalCookieId = `banner_${slugify(text, { lower: true })}`
+    expect(cookie.get(dismissalCookieId)).toBe('1')
   })
 
   describe('with an expiration date set', () => {
@@ -44,20 +53,22 @@ describe('<AlertBanner />', () => {
       Date.now.mockRestore()
     })
 
-    it('should show the banner when the current date has not surpassed the expiration date', () => {
+    it('should show the banner before the expiration date', () => {
       const expirationDate = '2020-10-30T12:00:00-07:00'
       const { container } = render(
         <AlertBanner text="text" tag="tag" expirationDate={expirationDate} />
       )
-      expect(container.firstChild).toHaveClass('show')
+      const rootElem = container.firstChild
+      expect(rootElem).toHaveClass('isShown')
     })
 
-    it('should NOT show the banner when the current date has surpassed the expiration date', () => {
+    it('should hide the banner after the expiration date', () => {
       const expirationDate = '2020-10-01T12:00:00-07:00'
       const { container } = render(
         <AlertBanner text="text" tag="tag" expirationDate={expirationDate} />
       )
-      expect(container.firstChild).not.toHaveClass('show')
+      const rootElem = container.firstChild
+      expect(rootElem).not.toHaveClass('isShown')
     })
   })
 })
