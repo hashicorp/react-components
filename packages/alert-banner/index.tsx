@@ -72,7 +72,6 @@ function AlertBanner({
         { [s.isShown]: isShown },
         { [s.hideOnMobile]: hideOnMobile }
       )}
-      data-test-is-shown={String(isShown)}
     >
       <a
         href={url}

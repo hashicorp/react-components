@@ -34,9 +34,10 @@ describe('<AlertBanner />', () => {
     )
     const rootElem = container.firstChild
     const closeButton = screen.getByText('Dismiss alert')
-    expect(rootElem.getAttribute('data-test-is-shown')).toBe('true')
+    expect(rootElem).toHaveClass('isShown')
     fireEvent.click(closeButton)
-    expect(rootElem.getAttribute('data-test-is-shown')).toBe('false')
+    expect(rootElem).not.toHaveClass('isShown')
+
     const dismissalCookieId = `banner_${slugify(text, { lower: true })}`
     expect(cookie.get(dismissalCookieId)).toBe('1')
   })
@@ -58,7 +59,7 @@ describe('<AlertBanner />', () => {
         <AlertBanner text="text" tag="tag" expirationDate={expirationDate} />
       )
       const rootElem = container.firstChild
-      expect(rootElem.getAttribute('data-test-is-shown')).toBe('true')
+      expect(rootElem).toHaveClass('isShown')
     })
 
     it('should hide the banner after the expiration date', () => {
@@ -67,7 +68,7 @@ describe('<AlertBanner />', () => {
         <AlertBanner text="text" tag="tag" expirationDate={expirationDate} />
       )
       const rootElem = container.firstChild
-      expect(rootElem.getAttribute('data-test-is-shown')).toBe('false')
+      expect(rootElem).not.toHaveClass('isShown')
     })
   })
 })
