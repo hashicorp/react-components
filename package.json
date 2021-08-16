@@ -47,9 +47,7 @@
     "react-dom": "17.0.2"
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap -- --no-optional",
-    "bs": "npm run bootstrap",
-    "hard-reset": "rm -rf node_modules && rm -rf .next && lerna clean -y && npm i && npm run bs",
+    "hard-reset": "rm -rf node_modules && rm -rf .next && lerna clean -y && npm i",
     "lint": "next-hashicorp lint",
     "release": "npm run release:check-branch && npm run release:check-auth && lerna publish",
     "release:canary": "npm run release:check-auth && lerna publish --dist-tag=next --canary",
