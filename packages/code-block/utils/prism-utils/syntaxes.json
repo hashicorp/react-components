@@ -30,21 +30,15 @@
   "bro": [],
   "bsl": ["oscript"],
   "c": [],
-  "cfscript": [
-    "cfc"
-  ],
+  "cfscript": ["cfc"],
   "chaiscript": [],
   "cil": [],
   "clike": [],
   "clojure": [],
   "cmake": [],
   "cobol": [],
-  "coffeescript": [
-    "coffee"
-  ],
-  "concurnas": [
-    "conc"
-  ],
+  "coffeescript": ["coffee"],
+  "concurnas": ["conc"],
   "coq": [],
   "cpp": [],
   "crystal": [],
@@ -59,18 +53,10 @@
   "dax": [],
   "dhall": [],
   "diff": [],
-  "django": [
-    "jinja2"
-  ],
-  "dns-zone-file": [
-    "dns-zone"
-  ],
-  "docker": [
-    "dockerfile"
-  ],
-  "dot": [
-    "gv"
-  ],
+  "django": ["jinja2"],
+  "dns-zone-file": ["dns-zone"],
+  "docker": ["dockerfile"],
+  "dot": ["gv"],
   "ebnf": [],
   "editorconfig": [],
   "eiffel": [],
@@ -99,17 +85,8 @@
   "graphql": [],
   "groovy": [],
   "haml": [],
-<<<<<<< HEAD
-  "handlebars": [
-    "hbs"
-  ],
-  "haskell": [
-    "hs"
-  ],
-=======
-  "handlebars": [],
+  "handlebars": ["hbs"],
   "haskell": ["hs"],
->>>>>>> main
   "haxe": [],
   "hcl": [],
   "hlsl": [],
@@ -119,9 +96,7 @@
   "ichigojam": [],
   "icon": [],
   "icu-message-format": [],
-  "idris": [
-    "idr"
-  ],
+  "idris": ["idr"],
   "iecst": [],
   "ignore": ["gitignore", "hgignore", "npmignore"],
   "inform7": [],
@@ -144,22 +119,9 @@
   "jsx": [],
   "julia": [],
   "keyman": [],
-<<<<<<< HEAD
-  "kotlin": [
-    "kt",
-    "kts"
-  ],
-  "kumir": [
-    "kum"
-  ],
-  "latex": [
-    "context",
-    "tex"
-  ],
-=======
   "kotlin": ["kt", "kts"],
+  "kumir": ["kum"],
   "latex": ["context", "tex"],
->>>>>>> main
   "latte": [],
   "less": [],
   "lilypond": ["ly"],
@@ -194,9 +156,7 @@
   "objectivec": ["objc"],
   "ocaml": [],
   "opencl": [],
-  "openqasm": [
-    "qasm"
-  ],
+  "openqasm": ["qasm"],
   "oz": [],
   "parigp": [],
   "parser": [],
@@ -225,21 +185,13 @@
   "q": [],
   "qml": [],
   "qore": [],
-  "qsharp": [
-    "qs"
-  ],
+  "qsharp": ["qs"],
   "r": [],
   "racket": ["rkt"],
   "reason": [],
   "regex": [],
-<<<<<<< HEAD
   "rego": [],
-  "renpy": [
-    "rpy"
-  ],
-=======
   "renpy": ["rpy"],
->>>>>>> main
   "rest": [],
   "rip": [],
   "roboconf": [],
@@ -278,26 +230,11 @@
   "tt2": [],
   "turtle": ["trig"],
   "twig": [],
-<<<<<<< HEAD
-  "typescript": [
-    "ts"
-  ],
-  "typoscript": [
-    "tsconfig"
-  ],
-  "unrealscript": [
-    "uc",
-    "uscript"
-  ],
-  "uri": [
-    "url"
-  ],
-  "v": [],
-=======
   "typescript": ["ts"],
   "typoscript": ["tsconfig"],
   "unrealscript": ["uc", "uscript"],
->>>>>>> main
+  "uri": ["url"],
+  "v": [],
   "vala": [],
   "vbnet": [],
   "velocity": [],
@@ -308,18 +245,8 @@
   "warpscript": [],
   "wasm": [],
   "wiki": [],
-<<<<<<< HEAD
-  "wolfram": [
-    "mathematica",
-    "nb",
-    "wl"
-  ],
-  "xeora": [
-    "xeoracube"
-  ],
-=======
+  "wolfram": ["mathematica", "nb", "wl"],
   "xeora": ["xeoracube"],
->>>>>>> main
   "xojo": [],
   "xquery": [],
   "yaml": ["yml"],
