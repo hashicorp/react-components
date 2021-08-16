@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-toggle",
   "description": "a simple toggle",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "author": "HashiCorp",
   "contributors": ["Jennifer Yip", "Jeff Escalante"],
   "license": "MPL-2.0",

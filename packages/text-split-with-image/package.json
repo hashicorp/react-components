@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-text-split-with-image",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "description": "Display an image alongside a title, description, and links.",
   "author": "HashiCorp",
   "contributors": ["Brandon Romano"],
@@ -9,8 +9,8 @@
   },
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/react-image": "^4.0.1",
-    "@hashicorp/react-text-split": "^3.2.3"
+    "@hashicorp/react-image": "^4.0.3",
+    "@hashicorp/react-text-split": "^3.2.4"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

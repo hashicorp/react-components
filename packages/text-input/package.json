@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-text-input",
   "description": "Text field input to be used in formik forms",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "author": "HashiCorp",
   "contributors": ["Zach Shilton"],
   "dependencies": {
