@@ -11,37 +11,13 @@ import analytics from './analytics'
 import { HashiCorpProduct } from '../../types'
 
 interface AlertBannerProps {
-  /**
-   * The text contained inside the tag to the left
-   */
   tag: string
-  /**
-   * The text in the main area
-   */
   text: string
-  /**
-   * Where to link to when clicked
-   */
   url: string
-  /**
-   * A datetime string that, when set, controls if the alert banner should appear.
-   */
   expirationDate?: string
-  /**
-   * If true, the alert banner will be forcefully hidden on mobile.
-   */
   hideOnMobile?: boolean
-  /**
-   * The text contained inside the tag to the left
-   */
   linkText?: string
-  /**
-   * String used for cookie name. Defaults to slugified `text` prop.
-   */
   name?: string
-  /**
-   * A lower-case product identifier, used to theme the AlertBanner.
-   */
   product?: HashiCorpProduct
 }
 
