@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
 import classNames from 'classnames'
+import VisuallyHidden from '@reach/visually-hidden'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import CloseIcon from './img/close-icon.svg?include'
@@ -86,7 +87,7 @@ function AlertBanner({
       </a>
       <button className={s.closeButton} onClick={closeBanner}>
         <InlineSvg src={CloseIcon} />
-        <span className={s.visuallyHidden}>Dismiss alert</span>
+        <VisuallyHidden>Dismiss alert</VisuallyHidden>
       </button>
     </div>
   )
