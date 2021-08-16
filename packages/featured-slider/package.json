@@ -3,9 +3,7 @@
   "description": "featured slider for case studies",
   "version": "4.1.3",
   "author": "HashiCorp",
-  "contributors": [
-    "Nicole Forrester"
-  ],
+  "contributors": ["Nicole Forrester"],
   "main": "index.js",
   "license": "MPL-2.0",
   "dependencies": {

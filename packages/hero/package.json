@@ -3,9 +3,7 @@
   "description": "basic full page hero with a lot of customization options",
   "version": "7.3.4",
   "author": "HashiCorp",
-  "contributors": [
-    "Jeff Escalante"
-  ],
+  "contributors": ["Jeff Escalante"],
   "dependencies": {
     "@hashicorp/js-utils": "^1.0.10",
     "@hashicorp/platform-product-meta": "^0.1.0",

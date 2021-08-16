@@ -5,9 +5,7 @@
   "ada": [],
   "agda": [],
   "al": [],
-  "antlr4": [
-    "g4"
-  ],
+  "antlr4": ["g4"],
   "apacheconf": [],
   "apex": [],
   "apl": [],
@@ -15,32 +13,22 @@
   "aql": [],
   "arduino": [],
   "arff": [],
-  "asciidoc": [
-    "adoc"
-  ],
+  "asciidoc": ["adoc"],
   "asm6502": [],
   "aspnet": [],
   "autohotkey": [],
   "autoit": [],
-  "bash": [
-    "shell"
-  ],
+  "bash": ["shell"],
   "basic": [],
   "batch": [],
-  "bbcode": [
-    "shortcode"
-  ],
+  "bbcode": ["shortcode"],
   "birb": [],
   "bison": [],
-  "bnf": [
-    "rbnf"
-  ],
+  "bnf": ["rbnf"],
   "brainfuck": [],
   "brightscript": [],
   "bro": [],
-  "bsl": [
-    "oscript"
-  ],
+  "bsl": ["oscript"],
   "c": [],
   "cfscript": [
     "cfc"
@@ -60,10 +48,7 @@
   "coq": [],
   "cpp": [],
   "crystal": [],
-  "csharp": [
-    "cs",
-    "dotnet"
-  ],
+  "csharp": ["cs", "dotnet"],
   "csp": [],
   "css": [],
   "csv": [],
@@ -89,18 +74,13 @@
   "ebnf": [],
   "editorconfig": [],
   "eiffel": [],
-  "ejs": [
-    "eta"
-  ],
+  "ejs": ["eta"],
   "elixir": [],
   "elm": [],
   "erb": [],
   "erlang": [],
   "etlua": [],
-  "excel-formula": [
-    "xls",
-    "xlsx"
-  ],
+  "excel-formula": ["xls", "xlsx"],
   "factor": [],
   "false": [],
   "firestore-security-rules": [],
@@ -114,19 +94,22 @@
   "gherkin": [],
   "git": [],
   "glsl": [],
-  "gml": [
-    "gamemakerlanguage"
-  ],
+  "gml": ["gamemakerlanguage"],
   "go": [],
   "graphql": [],
   "groovy": [],
   "haml": [],
+<<<<<<< HEAD
   "handlebars": [
     "hbs"
   ],
   "haskell": [
     "hs"
   ],
+=======
+  "handlebars": [],
+  "haskell": ["hs"],
+>>>>>>> main
   "haxe": [],
   "hcl": [],
   "hlsl": [],
@@ -140,11 +123,7 @@
     "idr"
   ],
   "iecst": [],
-  "ignore": [
-    "gitignore",
-    "hgignore",
-    "npmignore"
-  ],
+  "ignore": ["gitignore", "hgignore", "npmignore"],
   "inform7": [],
   "ini": [],
   "io": [],
@@ -152,23 +131,20 @@
   "java": [],
   "javadoc": [],
   "javadoclike": [],
-  "javascript": [
-    "js"
-  ],
+  "javascript": ["js"],
   "javastacktrace": [],
   "jexl": [],
   "jolie": [],
   "jq": [],
   "jsdoc": [],
-  "json": [
-    "webmanifest"
-  ],
+  "json": ["webmanifest"],
   "json5": [],
   "jsonp": [],
   "jsstacktrace": [],
   "jsx": [],
   "julia": [],
   "keyman": [],
+<<<<<<< HEAD
   "kotlin": [
     "kt",
     "kts"
@@ -180,52 +156,34 @@
     "context",
     "tex"
   ],
+=======
+  "kotlin": ["kt", "kts"],
+  "latex": ["context", "tex"],
+>>>>>>> main
   "latte": [],
   "less": [],
-  "lilypond": [
-    "ly"
-  ],
+  "lilypond": ["ly"],
   "liquid": [],
-  "lisp": [
-    "elisp",
-    "emacs",
-    "emacs-lisp"
-  ],
+  "lisp": ["elisp", "emacs", "emacs-lisp"],
   "livescript": [],
   "llvm": [],
   "log": [],
   "lolcode": [],
   "lua": [],
   "makefile": [],
-  "markdown": [
-    "md"
-  ],
-  "markup": [
-    "atom",
-    "html",
-    "mathml",
-    "rss",
-    "ssml",
-    "svg",
-    "xml"
-  ],
+  "markdown": ["md"],
+  "markup": ["atom", "html", "mathml", "rss", "ssml", "svg", "xml"],
   "markup-templating": [],
   "matlab": [],
   "mel": [],
   "mizar": [],
   "mongodb": [],
   "monkey": [],
-  "moonscript": [
-    "moon"
-  ],
+  "moonscript": ["moon"],
   "n1ql": [],
-  "n4js": [
-    "n4jsd"
-  ],
+  "n4js": ["n4jsd"],
   "nand2tetris-hdl": [],
-  "naniscript": [
-    "nani"
-  ],
+  "naniscript": ["nani"],
   "nasm": [],
   "neon": [],
   "nevod": [],
@@ -233,9 +191,7 @@
   "nim": [],
   "nix": [],
   "nsis": [],
-  "objectivec": [
-    "objc"
-  ],
+  "objectivec": ["objc"],
   "ocaml": [],
   "opencl": [],
   "openqasm": [
@@ -244,24 +200,15 @@
   "oz": [],
   "parigp": [],
   "parser": [],
-  "pascal": [
-    "objectpascal"
-  ],
+  "pascal": ["objectpascal"],
   "pascaligo": [],
-  "pcaxis": [
-    "px"
-  ],
-  "peoplecode": [
-    "pcode"
-  ],
+  "pcaxis": ["px"],
+  "peoplecode": ["pcode"],
   "perl": [],
   "php": [],
   "phpdoc": [],
   "plsql": [],
-  "powerquery": [
-    "mscript",
-    "pq"
-  ],
+  "powerquery": ["mscript", "pq"],
   "powershell": [],
   "processing": [],
   "prolog": [],
@@ -272,15 +219,9 @@
   "pug": [],
   "puppet": [],
   "pure": [],
-  "purebasic": [
-    "pbfasm"
-  ],
-  "purescript": [
-    "purs"
-  ],
-  "python": [
-    "py"
-  ],
+  "purebasic": ["pbfasm"],
+  "purescript": ["purs"],
+  "python": ["py"],
   "q": [],
   "qml": [],
   "qore": [],
@@ -288,50 +229,37 @@
     "qs"
   ],
   "r": [],
-  "racket": [
-    "rkt"
-  ],
+  "racket": ["rkt"],
   "reason": [],
   "regex": [],
+<<<<<<< HEAD
   "rego": [],
   "renpy": [
     "rpy"
   ],
+=======
+  "renpy": ["rpy"],
+>>>>>>> main
   "rest": [],
   "rip": [],
   "roboconf": [],
-  "robotframework": [
-    "robot"
-  ],
-  "ruby": [
-    "rb"
-  ],
+  "robotframework": ["robot"],
+  "ruby": ["rb"],
   "rust": [],
   "sas": [],
   "sass": [],
   "scala": [],
   "scheme": [],
   "scss": [],
-  "shell-session": [
-    "sh-session",
-    "shellsession"
-  ],
+  "shell-session": ["sh-session", "shellsession"],
   "smali": [],
   "smalltalk": [],
   "smarty": [],
-  "sml": [
-    "smlnj"
-  ],
-  "solidity": [
-    "sol"
-  ],
-  "solution-file": [
-    "sln"
-  ],
+  "sml": ["smlnj"],
+  "solidity": ["sol"],
+  "solution-file": ["sln"],
   "soy": [],
-  "sparql": [
-    "rq"
-  ],
+  "sparql": ["rq"],
   "splunk-spl": [],
   "sqf": [],
   "sql": [],
@@ -339,9 +267,7 @@
   "stan": [],
   "stylus": [],
   "swift": [],
-  "t4-cs": [
-    "t4"
-  ],
+  "t4-cs": ["t4"],
   "t4-templating": [],
   "t4-vb": [],
   "tap": [],
@@ -350,10 +276,9 @@
   "toml": [],
   "tsx": [],
   "tt2": [],
-  "turtle": [
-    "trig"
-  ],
+  "turtle": ["trig"],
   "twig": [],
+<<<<<<< HEAD
   "typescript": [
     "ts"
   ],
@@ -368,19 +293,22 @@
     "url"
   ],
   "v": [],
+=======
+  "typescript": ["ts"],
+  "typoscript": ["tsconfig"],
+  "unrealscript": ["uc", "uscript"],
+>>>>>>> main
   "vala": [],
   "vbnet": [],
   "velocity": [],
   "verilog": [],
   "vhdl": [],
   "vim": [],
-  "visual-basic": [
-    "vb",
-    "vba"
-  ],
+  "visual-basic": ["vb", "vba"],
   "warpscript": [],
   "wasm": [],
   "wiki": [],
+<<<<<<< HEAD
   "wolfram": [
     "mathematica",
     "nb",
@@ -389,11 +317,12 @@
   "xeora": [
     "xeoracube"
   ],
+=======
+  "xeora": ["xeoracube"],
+>>>>>>> main
   "xojo": [],
   "xquery": [],
-  "yaml": [
-    "yml"
-  ],
+  "yaml": ["yml"],
   "yang": [],
   "zig": []
 }

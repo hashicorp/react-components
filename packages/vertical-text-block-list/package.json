@@ -3,10 +3,7 @@
   "description": "Vertical block list of links",
   "version": "6.0.3",
   "author": "HashiCorp",
-  "contributors": [
-    "Mike Wickett",
-    "Jeff Escalante"
-  ],
+  "contributors": ["Mike Wickett", "Jeff Escalante"],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-image": "^4.0.1",

@@ -67,5 +67,8 @@
     "pre-commit": "npx next-hashicorp precommit"
   },
   "workspaces": ["./packages/*"],
-  "private": true
+  "private": true,
+  "lint-staged": {
+    "*.+(js|jsx|ts|tsx)": ["next-hashicorp format", "next-hashicorp lint"]
+  }
 }

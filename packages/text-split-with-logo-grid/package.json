@@ -3,9 +3,7 @@
   "version": "5.1.3",
   "description": "Display a grid of logos alongside a title, description, and links.",
   "author": "HashiCorp",
-  "contributors": [
-    "Brandon Romato"
-  ],
+  "contributors": ["Brandon Romato"],
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"

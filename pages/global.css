@@ -3,7 +3,6 @@
 /* global component css imports */
 
 /* these should be moved to css modules */
-@import '../packages/alert/style.css';
 @import '../packages/button/styles/index.css';
 @import '../packages/callouts/styles/index.css';
 @import '../packages/checkbox-input/style.css';
@@ -11,7 +10,6 @@
 @import '../packages/subnav/style.css';
 @import '../packages/call-to-action/style.css';
 @import '../packages/product-features-list/style.css';
-@import '../packages/alert-banner/style.css';
 @import '../packages/enterprise-alert/style.css';
 @import '../packages/featured-slider/style.css';
 @import '../packages/content-cta/style.css';
