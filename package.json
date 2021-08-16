@@ -63,6 +63,9 @@
     }
   },
   "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": ["next-hashicorp format", "next-hashicorp lint"]
+    "*.+(js|jsx|ts|tsx)": [
+      "next-hashicorp format",
+      "next-hashicorp lint"
+    ]
   }
 }
