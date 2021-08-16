@@ -49,7 +49,9 @@ function AlertBanner({
     const hasBeenDismissed = cookie.get(dismissalCookieId)
     const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
     const shouldBeShown = !hasBeenDismissed && !hasExpired
-    if (isShown !== shouldBeShown) setIsShown(shouldBeShown)
+    setIsShown((current) =>
+      current !== shouldBeShown ? shouldBeShown : current
+    )
   }, [expirationDate])
 
   /**
