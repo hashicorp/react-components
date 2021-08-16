@@ -40,7 +40,11 @@ function MenuItemsDefault(props) {
 }
 
 function VerticalDivider() {
-  return <span className="vertical-divider" />
+  return (
+    <li>
+      <span className="vertical-divider" />
+    </li>
+  )
 }
 
 function NavLink(props) {

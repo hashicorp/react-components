@@ -1,9 +1,7 @@
 import classNames from 'classnames'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import Image from '@hashicorp/react-image'
-import useProductMeta, {
-  Products,
-} from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
 
 interface VerticalTextBlockListProps {
   data: TextBlock[]

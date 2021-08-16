@@ -1,5 +1,4 @@
 import React from 'react'
-import marked from 'marked'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Image from '@hashicorp/react-image'
 import Arrow from './img/arrow.svg?include'
@@ -39,7 +38,7 @@ function UseCases({ items }) {
               <div
                 className="description g-type-body"
                 dangerouslySetInnerHTML={{
-                  __html: item.description ? marked(item.description) : '',
+                  __html: item.description ? item.description : '',
                 }}
                 data-testid={`description-${item.title}`}
               />

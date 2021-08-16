@@ -1,15 +1,12 @@
 {
   "name": "@hashicorp/react-head",
   "description": "Create a Hashicorp branded <head> in NextJS projects.",
-  "version": "3.0.2",
+  "version": "3.1.1",
   "author": "HashiCorp",
-  "contributors": [
-    "Jonathan Neal"
-  ],
+  "contributors": ["Jonathan Neal"],
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   },
   "publishConfig": {

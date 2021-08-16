@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import useNavRef from './helpers/useNavRef'
 
 import MenuItemsOverflow from './partials/MenuItemsOverflow/index.js'
@@ -7,6 +7,7 @@ import TitleLink from './partials/TitleLink/index.js'
 import MenuItemsDefault from './partials/MenuItemsDefault/index.js'
 import CtaLinks from './partials/CtaLinks/index.js'
 import traverse, { isObject } from './helpers/traverse/index.js'
+import { areBasePathsMatching } from './helpers/areBasePathsMatching'
 
 const productAllowList = {
   consul: 'consul',
@@ -24,6 +25,7 @@ const productAllowList = {
 function SubnavInner({
   hasOverflow,
   titleLink,
+  product,
   ctaLinks = [],
   hideGithubStars,
   menuItems,
@@ -31,14 +33,17 @@ function SubnavInner({
   constrainWidth,
   currentPath,
   Link,
+  matchOnBasePath = false,
 }) {
-  // Set the brand theme automatically based on the nav's title
-  const product = productAllowList[titleLink.text.toLowerCase()] || 'hashicorp'
   const { themeClass } = useProductMeta(product) // overrides --brand css vars
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
   const menuItemsWithActive = traverse(menuItems, (_key, value) => {
     const hasUrl = isObject(value) && value.url
-    if (hasUrl) value._isActiveUrl = value.url === currentPath
+    if (hasUrl) {
+      value._isActiveUrl = matchOnBasePath
+        ? areBasePathsMatching(value.url, currentPath)
+        : value.url === currentPath
+    }
     return value
   })
 
@@ -92,6 +97,9 @@ function SubnavInner({
 
 function Subnav(props) {
   const [isSticky, hasOverflow, wrapperRef] = useNavRef()
+  // Set the brand theme automatically based on the nav's title
+  const product =
+    productAllowList[props.titleLink.text.toLowerCase()] || 'hashicorp'
 
   return (
     <nav
@@ -99,8 +107,14 @@ function Subnav(props) {
       className={classNames('g-subnav', {
         'is-sticky': isSticky,
       })}
+      aria-label={`${product} website navigation`}
     >
-      <SubnavInner {...props} hasOverflow={hasOverflow} isSticky={isSticky} />
+      <SubnavInner
+        {...props}
+        product={product}
+        hasOverflow={hasOverflow}
+        isSticky={isSticky}
+      />
     </nav>
   )
 }

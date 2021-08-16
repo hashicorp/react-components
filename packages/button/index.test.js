@@ -83,7 +83,7 @@ describe('<Button />', () => {
     it(`should render an icon for ${linkType} links`, () => {
       const props = { title: 'Button', linkType, url: '#' }
       render(<Button {...props} />)
-      const svgElem = screen.getByRole('img')
+      const svgElem = screen.getByRole('presentation')
       expect(svgElem).toBeVisible()
       expect(svgElem.tagName).toBe('svg')
     })

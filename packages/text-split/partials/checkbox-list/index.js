@@ -1,5 +1,5 @@
 import className from 'classnames'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import CheckSquare from './icons/check-square.svg?include'
 

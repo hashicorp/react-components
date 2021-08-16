@@ -1,0 +1,8 @@
+.hr {
+  & hr:not([class]) {
+    height: 1px;
+    border: none;
+    color: var(--gray-5);
+    background-color: var(--gray-5);
+  }
+}

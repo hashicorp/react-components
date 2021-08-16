@@ -32,11 +32,19 @@ it('should copy a single-line shell snippet with output as expected', () => {
 })
 
 it('should copy a multi-line shell snippet as expected', () => {
-  const snippet = `$ vault kv put kv-v1/dev/config/mongodb url=foo.example.com:35533 \
-    db_name=users \
+  const snippet = `$ vault kv put kv-v1/dev/config/mongodb url=foo.example.com:35533 \\
+    db_name=users \\
     username=admin password=passw0rd`
-  const expected = `vault kv put kv-v1/dev/config/mongodb url=foo.example.com:35533 \
-    db_name=users \
+  const expected = `vault kv put kv-v1/dev/config/mongodb url=foo.example.com:35533 \\
+    db_name=users \\
     username=admin password=passw0rd`
+  expect(processSnippet(snippet)).toBe(expected)
+})
+
+it('should copy a multi-line shell snippet with quotes as expected', () => {
+  const snippet = `$ boundary roles create -scope-id=$ORG_ID -name="read-only" \\
+  -description="Role with read-only permission"`
+  const expected = `boundary roles create -scope-id=$ORG_ID -name="read-only" \\
+  -description="Role with read-only permission"`
   expect(processSnippet(snippet)).toBe(expected)
 })

@@ -19,7 +19,7 @@ describe('<ProductDownloadsPage />', () => {
       setup()
 
       expect(screen.getByText('Package Manager')).toBeInTheDocument()
-      expect(screen.getByText('Binary Download')).toBeInTheDocument()
+      expect(screen.getByText('macOS Binary Download')).toBeInTheDocument()
     })
 
     it('should switch to a different OS when clicking a tab', () => {
@@ -126,7 +126,7 @@ describe('<ProductDownloadsPage />', () => {
     })
 
     it('should only show enterprise releases if enterpriseMode is true', () => {
-      setup({ enterpriseMode: true, latestVersion: '0.1.0+ent' })
+      setup({ enterpriseMode: true, latestVersion: '0.1.0' })
       fireEvent.click(screen.getByTestId('version-dropdown'))
       expect(screen.getByText('0.1.0+ent')).toBeInTheDocument()
       expect(screen.queryByText('1.0.0')).not.toBeInTheDocument()
@@ -162,6 +162,23 @@ describe('<ProductDownloadsPage />', () => {
       })
       expect(screen.getByText('Container #1')).toBeInTheDocument()
       expect(screen.getByText('Containers')).toBeInTheDocument()
+    })
+  })
+
+  describe('Page Settings', () => {
+    it('should render a generated page title if no pageTitle prop is provided', () => {
+      setup()
+      const expectedTitle = screen.getByText('Download Waypoint')
+      expect(expectedTitle).toBeInTheDocument()
+      expect(expectedTitle.tagName).toBe('H1')
+    })
+
+    it('should allow the pageTitle prop to override the generated page title', () => {
+      const pageTitle = 'My Special Custom Title'
+      setup({ pageTitle })
+      const expectedTitle = screen.getByText(pageTitle)
+      expect(expectedTitle).toBeInTheDocument()
+      expect(expectedTitle.tagName).toBe('H1')
     })
   })
 })

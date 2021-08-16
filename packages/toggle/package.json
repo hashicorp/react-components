@@ -1,16 +1,12 @@
 {
   "name": "@hashicorp/react-toggle",
   "description": "a simple toggle",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "HashiCorp",
-  "contributors": [
-    "Jennifer Yip",
-    "Jeff Escalante"
-  ],
+  "contributors": ["Jennifer Yip", "Jeff Escalante"],
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   },
   "publishConfig": {

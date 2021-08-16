@@ -1,15 +1,14 @@
 .root {
-  composes: .g-container from global;
-  margin-top: 72px;
-  margin-bottom: 72px;
+  padding-top: 72px;
 
   & a {
     text-decoration: underline;
   }
+}
 
-  & h1 {
-    text-align: center;
-  }
+.pageTitle {
+  composes: g-type-display-1 from global;
+  text-align: center;
 }
 
 .logo {
@@ -25,36 +24,33 @@
 
 .gettingStarted {
   max-width: 680px;
-  margin: 40px auto 64px;
+  margin: 0 auto;
+  padding: 40px 0 64px 0;
   text-align: center;
 
-  & p {
-    color: var(--gray-2);
-  }
-
-  & a {
-    color: var(--black);
-  }
-
-  & h2 {
-    text-align: center;
-    margin: 16px 0;
-  }
-
   @media (--medium-up) {
-    margin: 88px auto 128px;
+    padding: 88px 0 128px 0;
   }
+}
+
+.gettingStartedTitle {
+  composes: g-type-display-2 from global;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.gettingStartedDescription {
+  composes: g-type-body from global;
+  color: var(--gray-2);
 }
 
 .links {
   margin-top: 32px;
-  & a {
-    text-align: center;
-    display: block;
-    margin: 8px 0;
-  }
 }
 
-.signUpButton {
-  margin-left: 26px;
+.link {
+  color: var(--black);
+  text-align: center;
+  display: block;
+  margin: 8px 0;
 }

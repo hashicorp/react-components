@@ -1,11 +1,9 @@
 {
   "name": "@hashicorp/react-tabs",
   "description": "Display content in a tabbed interface",
-  "version": "6.0.1",
+  "version": "6.1.0",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^1.0.2",
     "@tippy.js/react": "^3.1.1"

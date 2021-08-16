@@ -1,0 +1,59 @@
+.headings {
+  /* Set font basics */
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-kerning: normal;
+    color: var(--black);
+  }
+
+  /* Headings */
+  & h1 {
+    margin-top: 56px;
+    margin-bottom: 24px;
+  }
+
+  & h2 {
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+
+  & h3 {
+    margin-top: 40px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gray-5);
+  }
+
+  & h4 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+
+  & h5 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    /* Use s more reasonable default size
+    if no typography class is present */
+    &:not([class]) {
+      font-size: 1rem;
+      line-height: 1.556em;
+    }
+  }
+
+  & h6 {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    /* Use s more reasonable default size
+    if no typography class is present */
+    &:not([class]) {
+      font-size: 0.875rem;
+      line-height: 1.5em;
+    }
+  }
+}

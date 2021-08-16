@@ -2,6 +2,7 @@
 @import './variant-secondary.css';
 @import './variant-tertiary.css';
 @import './variant-tertiary-neutral.css';
+@import './variant-ghost.css';
 
 .g-btn {
   position: relative;
@@ -9,6 +10,10 @@
   text-align: center;
   border-radius: 1px;
   border: none;
+  /* we might expect line-height: 100% to be set in normalize.css,
+  but it's not - we seem to have a forked or modified version of normalize.
+  for details: https://app.asana.com/0/1100423001970639/1160160189208209/f */
+  line-height: 100%;
   transition: transform 0.4s, color 0.2s, background 0.2s, border-color 0.2s;
   text-decoration: none;
   -webkit-appearance: none;
@@ -45,9 +50,6 @@
       &[data-animation='inbound'] {
         transform: translate3d(0, 0, 0);
       }
-      &[data-animation='anchor'] {
-        transform: translate3d(0, 0, 0);
-      }
       &[data-animation='outbound'] [data-animation-target] {
         transition: transform 0.2s;
         transform: translate3d(0, 0, 0);
@@ -77,9 +79,6 @@
     & .icon.is-animated {
       &[data-animation='inbound'] {
         transform: translate3d(2px, 0, 0);
-      }
-      &[data-animation='anchor'] {
-        transform: translate3d(0, 2px, 0);
       }
       &[data-animation='outbound'] [data-animation-target] {
         transform: translate3d(2px, -2px, 0);

@@ -1,0 +1,11 @@
+.blockquote {
+  & blockquote {
+    margin: 2em 0;
+    padding-left: 2em;
+    font-style: italic;
+    border-left: 6px solid var(--gray-6);
+    & em {
+      font-style: normal;
+    }
+  }
+}

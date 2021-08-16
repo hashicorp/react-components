@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 // @hashicorp imports
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import LinkWrap, { isAbsoluteURL } from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'
 // local utilities
@@ -14,6 +14,7 @@ import svgMenuIcon from './icons/menu.svg?include'
 import svgChevron from './icons/chevron.svg?include'
 import svgBullet from './icons/bullet.svg?include'
 import svgExternalLink from './icons/external-link.svg?include'
+import svgSearchIcon from './icons/search.svg?include'
 // styles
 import s from './style.module.css'
 
@@ -23,6 +24,8 @@ export default function DocsSidenav({
   product,
   navData,
   disableFilter = false,
+  versionSelect,
+  search,
 }) {
   const router = useRouter()
   // splitting on ? to drop query parameters if they exist
@@ -42,6 +45,9 @@ export default function DocsSidenav({
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   // isMobileFullyHidden reflects if the menu is fully transitioned to a hidden state
   const [isMenuFullyHidden, setIsMenuFullyHidden] = useState(true)
+
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+
   // We want to avoid exposing links to keyboard navigation
   // when the menu is hidden on mobile. But we don't want our
   // menu to flash when hide and shown. To meet both needs,
@@ -93,14 +99,39 @@ export default function DocsSidenav({
 
   return (
     <div className={`g-docs-sidenav ${s.root} ${themeClass || ''}`}>
-      <button
-        className={s.mobileMenuToggle}
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-      >
-        <span>
-          <InlineSvg src={svgMenuIcon} /> Documentation Menu
-        </span>
-      </button>
+      {!isSearchOpen ? (
+        <>
+          <button
+            className={`${s.mobileMenuToggle} g-type-body-small-strong`}
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+          >
+            <span>
+              <InlineSvg src={svgMenuIcon} /> Documentation Menu
+            </span>
+          </button>
+          {search ? (
+            <button
+              type="button"
+              aria-label="Show Search Bar"
+              className={s.searchToggle}
+              onClick={() => setIsSearchOpen(true)}
+            >
+              <InlineSvg src={svgSearchIcon} />
+            </button>
+          ) : null}
+        </>
+      ) : (
+        <>
+          {search}
+          <button
+            type="button"
+            className={`${s.searchClose} g-type-body-small-strong`}
+            onClick={() => setIsSearchOpen(false)}
+          >
+            Cancel
+          </button>
+        </>
+      )}
       <ul
         className={s.rootList}
         ref={menuRef}
@@ -113,6 +144,7 @@ export default function DocsSidenav({
         >
           &times;
         </button>
+        {versionSelect}
         {!disableFilter && (
           <input
             className={s.filterInput}

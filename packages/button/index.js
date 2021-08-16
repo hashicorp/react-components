@@ -1,17 +1,17 @@
 import slugify from 'slugify'
 import fragment from './fragment.graphql'
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import svgArrowRight from './icons/arrow-right.svg.js'
-import svgExternalLink from './icons/external-link.svg.js'
-import svgChevronDown from './icons/chevron-down.svg.js'
-import svgDownload from './icons/download.svg.js'
+import svgArrowRight from './icons/arrow-right.svg?include'
+import svgExternalLink from './icons/external-link.svg?include'
+import svgCornerRightDown from './icons/corner-right-down.svg?include'
+import svgDownload from './icons/download.svg?include'
 
 const linkTypeToIcon = {
   inbound: svgArrowRight,
   outbound: svgExternalLink,
-  anchor: svgChevronDown,
+  anchor: svgCornerRightDown,
   download: svgDownload,
 }
 
@@ -20,6 +20,7 @@ import normalizeButtonTheme from './helpers/normalizeButtonTheme.js'
 function Button({
   title,
   url,
+  label,
   external,
   theme,
   ga_prefix,
@@ -64,6 +65,7 @@ function Button({
       target={isExternal ? '_blank' : undefined}
       onClick={onClick}
       disabled={disabled}
+      aria-label={label}
       {...attrs}
     >
       {hasLeftIcon && <ButtonIcon icon={parsedIcon} />}

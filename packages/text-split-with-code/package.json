@@ -1,19 +1,16 @@
 {
   "name": "@hashicorp/react-text-split-with-code",
   "description": "Display a title, description, and links alongside a code block",
-  "version": "3.1.1",
+  "version": "3.3.6",
   "author": "HashiCorp",
-  "contributors": [
-    "Brandon Romano"
-  ],
+  "contributors": ["Brandon Romano"],
   "dependencies": {
-    "@hashicorp/react-code-block": "^4.0.1",
-    "@hashicorp/react-text-split": "^3.1.1"
+    "@hashicorp/react-code-block": "^4.1.4",
+    "@hashicorp/react-text-split": "^3.2.3"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   },
   "publishConfig": {

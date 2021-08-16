@@ -1,16 +1,18 @@
 module.exports = {
-  is: {
-    type: 'React.Element',
-    description: 'Pass in an instance of `next/head` here',
-  },
   title: {
     type: 'string',
     description:
       'Sets page name used by the browser. It may include branding such as the site name.',
   },
+  description: { type: 'string', description: 'The page description.' },
   image: {
     type: 'string',
     description: 'Sets the share image',
+  },
+  twitterCard: {
+    type: 'string',
+    description:
+      "Either 'summary_large_image' or 'summary'. Defaults to 'summary_large_image.",
   },
   pageName: {
     type: 'string',

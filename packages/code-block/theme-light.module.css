@@ -1,0 +1,86 @@
+/* Light theme */
+
+.base {
+  /* Text colors */
+  --text-color-base: var(--gray-2);
+  --text-color-faded: var(--gray-3);
+  --text-color-success: var(--success-d1);
+  /* Foreground colors */
+  --file-icon-color: var(--gray-3);
+  --chrome-dot-color: #c5c6c8;
+  --divider-line-color: var(--gray-5);
+  /* Background colors */
+  --background-base: #f6f8fa;
+  --background-tabs: #ebeef0;
+  --background-hovered-tab-item: #dce1e5;
+  --background-highlighted-line: #ebeef0;
+  /* Scrollbar colors */
+  --scrollbar-background: var(--background-base);
+  --scrollbar-foreground: #adaeb1;
+}
+
+/* Prism theme, converted for use with CSS modules.
+   CSS below controls color of syntax highlighting only. */
+
+/**
+ * Based on "Coy without shadows"
+ * https://github.com/PrismJS/prism-themes/blob/master/themes/prism-coy-without-shadows.css
+ */
+
+.syntax :global(.token) {
+  &:global(.comment),
+  &:global(.block-comment),
+  &:global(.prolog),
+  &:global(.doctype),
+  &:global(.cdata) {
+    color: #7d8b99;
+  }
+
+  &:global(.punctuation) {
+    color: #5f6364;
+  }
+
+  &:global(.property),
+  &:global(.tag),
+  &:global(.boolean),
+  &:global(.number),
+  &:global(.function-name),
+  &:global(.constant),
+  &:global(.symbol),
+  &:global(.deleted) {
+    color: #c92c2c;
+  }
+
+  &:global(.selector),
+  &:global(.attr-name),
+  &:global(.string),
+  &:global(.char),
+  &:global(.function),
+  &:global(.builtin),
+  &:global(.inserted) {
+    color: #2f9c0a;
+  }
+
+  &:global(.operator),
+  &:global(.entity),
+  &:global(.url),
+  &:global(.variable) {
+    color: #a67f59;
+  }
+
+  &:global(.atrule),
+  &:global(.attr-value),
+  &:global(.keyword),
+  &:global(.class-name) {
+    color: #1990b8;
+  }
+
+  &:global(.regex),
+  &:global(.important) {
+    color: #f25a92;
+  }
+
+  &:global(.namespace) {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,84 @@
+/* Dark theme */
+
+.base {
+  /* Text colors */
+  --text-color-base: #efeff0;
+  --text-color-faded: var(--gray-4);
+  --text-color-success: var(--success);
+  /* Foreground colors */
+  --file-icon-color: var(--gray-3);
+  --chrome-dot-color: #565d77;
+  --divider-line-color: #3e445c;
+  /* Background colors */
+  --background-base: #252937;
+  --background-tabs: #3b3e4b;
+  --background-hovered-tab-item: #2e313f;
+  --background-highlighted-line: #353b4f;
+  /* Scrollbar colors */
+  --scrollbar-background: var(--background-base);
+  --scrollbar-foreground: var(--gray-4);
+}
+
+/* Prism theme, converted for use with CSS modules
+   CSS below controls color of syntax highlighting only. */
+
+/**
+* xonokai theme for JavaScript, CSS and HTML
+* based on: https://github.com/MoOx/sass-prism-theme-base by Maxime Thirouin ~ MoOx --> http://moox.fr/ , which is Loosely based on Monokai textmate theme by http://www.monokai.nl/
+* license: MIT; http://moox.mit-license.org/
+* slightly modified by Jeff Escalante
+*/
+
+.syntax :global(.token) {
+  &:global(.namespace) {
+    opacity: 0.7;
+  }
+
+  &:global(.comment),
+  &:global(.prolog),
+  &:global(.doctype),
+  &:global(.cdata) {
+    color: #6f705e;
+  }
+
+  &:global(.operator),
+  &:global(.boolean),
+  &:global(.number) {
+    color: #a77afe;
+  }
+
+  &:global(.attr-name),
+  &:global(.string),
+  &:global(.entity),
+  &:global(.url) {
+    color: #e6d06c;
+  }
+
+  &:global(.selector),
+  &:global(.inserted) {
+    color: #a6e22d;
+  }
+
+  &:global(.atrule),
+  &:global(.attr-value),
+  &:global(.keyword),
+  &:global(.important),
+  &:global(.property),
+  &:global(.deleted) {
+    color: #ef3b7d;
+  }
+
+  &:global(.regex),
+  &:global(.statement) {
+    color: #76d9e6;
+  }
+
+  &:global(.placeholder),
+  &:global(.variable) {
+    color: #fff;
+  }
+
+  &:global(.punctuation) {
+    color: #bebec5;
+  }
+}

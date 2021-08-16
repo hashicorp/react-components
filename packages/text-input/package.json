@@ -2,14 +2,11 @@
   "name": "@hashicorp/react-text-input",
   "description": "Text field input to be used in formik forms",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
-  "version": "4.0.1",
+  "contributors": ["Zach Shilton"],
+  "version": "4.0.2",
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   },
   "publishConfig": {

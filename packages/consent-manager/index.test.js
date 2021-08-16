@@ -49,7 +49,6 @@ const defaultProps = {
     },
   ],
   container: '#consent-manager',
-  forceShow: true,
 }
 
 test('shows the banner if the forceShow prop is true', () => {
@@ -57,34 +56,12 @@ test('shows the banner if the forceShow prop is true', () => {
   expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
 })
 
-test('shows the banner if in EU', async () => {
-  await runWithMockedImport(
-    '@segment/in-eu',
-    () => true,
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={false} />)
-      expect(screen.queryByTestId('consent-banner')).toBeInTheDocument()
-    }
-  )
-})
-
-test('does not show the banner if not in EU', async () => {
-  await runWithMockedImport(
-    '@segment/in-eu',
-    () => false,
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={false} />)
-      expect(screen.queryByTestId('consent-banner')).not.toBeInTheDocument()
-    }
-  )
-})
-
 test('sets existing preferences and does not show the banner if preferences are already set', async () => {
   await runWithMockedImport(
-    './cookies',
+    './partials/cookies',
     {
       loadPreferences: () => {
-        return { All: false, 'Segment.io': false }
+        return { loadAll: false, segment: false, version: 0 }
       },
       savePreferences: () => {},
     },
@@ -97,40 +74,25 @@ test('sets existing preferences and does not show the banner if preferences are 
 
 test('shows the banner if preferences are set but version has increased', async () => {
   await runWithMockedImport(
-    './cookies',
+    './partials/cookies',
     {
       loadPreferences: () => {
-        return { All: false, 'Segment.io': false, version: 1 }
+        return { loadAll: false, segment: false, version: 1 }
       },
       savePreferences: () => {},
     },
     (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} version={2} />)
+      render(
+        <MockedConsentManager {...defaultProps} forceShow={false} version={2} />
+      )
       expect(screen.queryByTestId('consent-banner')).toBeInTheDocument()
     }
   )
 })
 
-test('automatically opts in to all if not in EU', async () => {
-  let prefs
-  await runWithMockedImport(
-    './cookies',
-    {
-      loadPreferences: () => {},
-      savePreferences: (preferences) => {
-        prefs = preferences
-      },
-    },
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={false} />)
-    }
-  )
-  expect(prefs.loadAll).toBe(true)
-})
-
 test('if the manage preferences button is clicked, opens the dialog and makes body un-scrollable', async () => {
   await runWithMockedImport(
-    './dialog',
+    './partials/dialog',
     () => {
       return <p data-testid="mocked-dialog">test</p>
     },
@@ -145,7 +107,7 @@ test('if the manage preferences button is clicked, opens the dialog and makes bo
 
 test('opens the dialog when the open function is called', async () => {
   await runWithMockedImport(
-    './dialog',
+    './partials/dialog',
     () => {
       return <p data-testid="mocked-dialog">test</p>
     },
@@ -161,7 +123,7 @@ test('opens the dialog when the open function is called', async () => {
 test('if accept all button is clicked, any open dialogs are closed and all analytics are loaded', async () => {
   let prefs
   await runWithMockedImport(
-    './cookies',
+    './partials/cookies',
     {
       loadPreferences: () => {},
       savePreferences: (preferences) => {

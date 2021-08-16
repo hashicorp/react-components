@@ -1,7 +1,5 @@
 import classNames from 'classnames'
-import useProductMeta, {
-  Products,
-} from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 

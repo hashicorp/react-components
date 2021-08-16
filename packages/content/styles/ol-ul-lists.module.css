@@ -1,0 +1,70 @@
+.olUlLists {
+  /* Lists */
+  & ul:not([class]),
+  & ol:not([class]) {
+    counter-reset: li;
+    padding-left: 32px;
+    list-style: none;
+
+    & li {
+      position: relative;
+
+      /* Vertical margins for single-paragraph content, multi-paragraph content
+      renders as <p> within <li>, resulting in larger vertical margins */
+      margin-top: 12px;
+      margin-bottom: 12px;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--gray-3);
+        margin-left: calc(-1 * 1.3rem);
+        width: 1.3rem;
+      }
+    }
+  }
+
+  /* List - unordered bullets */
+  & ul:not([class]) {
+    & li::before {
+      content: '\2022';
+    }
+    & ul li::before {
+      content: '\25AB';
+    }
+    & ul li ul li::before {
+      content: '\203A';
+    }
+    & ul li ul li ul li::before {
+      content: '\2013';
+    }
+    & ul li ul li ul li ul li::before {
+      content: '\2022';
+    }
+  }
+
+  /* List - ordered bullets */
+  & ol:not([class]) {
+    & li {
+      counter-increment: li;
+      &::before {
+        top: 0.125rem;
+        font-size: 0.9375rem;
+        line-height: 1.8;
+        content: counter(li);
+      }
+    }
+    & ol li::before {
+      content: counter(li, lower-roman);
+    }
+    & ol li ol li::before {
+      content: counter(li, lower-latin);
+    }
+    & ol li ol li ol li::before {
+      content: counter(li, upper-roman);
+    }
+    & ol li ol li ol li ol li::before {
+      content: counter(li);
+    }
+  }
+}

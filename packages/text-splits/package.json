@@ -1,23 +1,20 @@
 {
   "name": "@hashicorp/react-text-splits",
   "description": "Renders an array of text-split components",
-  "version": "2.1.1",
+  "version": "3.2.6",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@hashicorp/react-text-split-with-code": "^3.1.1",
-    "@hashicorp/react-text-split-with-image": "^4.1.1",
-    "@hashicorp/react-text-split-with-logo-grid": "^4.1.1"
+    "@hashicorp/react-text-split-with-code": "^3.3.6",
+    "@hashicorp/react-text-split-with-image": "^4.2.3",
+    "@hashicorp/react-text-split-with-logo-grid": "^5.1.3"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   }
 }

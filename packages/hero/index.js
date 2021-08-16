@@ -3,7 +3,7 @@ import Image from '@hashicorp/react-image'
 import Alert from '@hashicorp/react-alert'
 import Button from '@hashicorp/react-button'
 import { eliminateOrphans } from '@hashicorp/js-utils'
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import VideoCarousel from './carousel'
 import ArrowIcon from './arrow-icon'
 import HeroLeadForm from './heroLeadForm'
@@ -40,7 +40,7 @@ function Hero({ data, centered, gaPrefix }) {
       )}
     >
       {backgroundImage && <Image className="bg" {...backgroundImage} />}
-      <div className="g-container">
+      <div className="g-grid-container">
         <div className="headline">
           {smallTextTag && <div className="tag">{smallTextTag}</div>}
           {titleLogo && <Image className="logo" {...titleLogo} />}

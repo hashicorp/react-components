@@ -28,8 +28,7 @@ We have a lot of docs sites, all of which render content in exactly the same way
   // pass in the results of executing the 'generateStaticProps' function from '@hashicorp/react-docs-page/server'
   staticProps={staticPropsResult}
 >
-  <h1 className='g-type-display-2'>Example Page</h1>
-  <p>This is a cool docs page!</p>
+ <h2 class="g-type-display-3"><a class="__permalink-h" href="#agent" aria-label="agent permalink">»</a><a class="__target-h" id="agent" aria-hidden=""></a>Agent</h2><p>An agent is the long running daemon on every member of the Consul cluster. It is started by running <code>consul agent</code>. The agent is able to run in either <em>client</em> or <em>server</em> mode. Since all nodes must be running an agent, it is simpler to refer to the node as being either a client or server, but there are other instances of the agent. All agents can run the DNS or HTTP interfaces, and are responsible for running checks and keeping services in sync.</p><h2 class="g-type-display-3"><a class="__permalink-h" href="#client" aria-label="client permalink">»</a><a class="__target-h" id="client" aria-hidden=""></a>Client</h2><p>A client is an agent that forwards all RPCs to a server. The client is relatively stateless. The only background activity a client performs is taking part in the LAN gossip pool. This has a minimal resource overhead and consumes only a small amount of network bandwidth.</p>
 </DocsPage>`}</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />

@@ -11,7 +11,8 @@ module.exports = {
       },
       description: {
         type: 'string',
-        description: 'Markdown-enabled short description',
+        description:
+          'Short description. Both HTML and plain text are supported.',
       },
       link: {
         type: 'object',

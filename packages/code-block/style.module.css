@@ -1,0 +1,33 @@
+.root {
+  position: relative;
+  background: var(--background-base);
+  color: var(--text-color-base);
+  border-radius: 4px;
+
+  &.hasBarAbove {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+}
+
+.linesContainer {
+  position: relative;
+}
+
+.copyButtonContainer {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+}
+
+.copyButtonBackground {
+  position: relative;
+  background: var(--background-base);
+  border-radius: 2px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}

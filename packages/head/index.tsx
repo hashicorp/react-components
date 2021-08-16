@@ -18,6 +18,7 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
         content={props.twitterCard || 'summary_large_image'}
         key="twitter:card"
       />
+      <meta name="theme-color" content="#000" key="themeColor" />
       {whenString(
         props.description,
         <meta

@@ -1,0 +1,5 @@
+.hideOnMobile {
+  @media (--small) {
+    display: none !important;
+  }
+}

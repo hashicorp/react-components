@@ -3,7 +3,13 @@ import classNames from 'classnames'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
 
-function Tabs({ defaultTabIdx, centered, fullWidthBorder, children }) {
+function Tabs({
+  defaultTabIdx,
+  centered,
+  fullWidthBorder,
+  children,
+  onChange,
+}) {
   if (!children) {
     process.env.NODE_ENV !== 'production' &&
       console.warn(
@@ -27,6 +33,7 @@ function Tabs({ defaultTabIdx, centered, fullWidthBorder, children }) {
 
   function setActiveTab(targetIdx, groupId) {
     setActiveTabIdx(targetIdx)
+    if (onChange) onChange(targetIdx, groupId)
     if (groupCtx) groupCtx.setActiveTabGroup(groupId)
   }
 

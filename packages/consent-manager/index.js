@@ -1,10 +1,9 @@
 import { Component } from 'react'
 import EventEmitter from 'events'
-import inEU from '@segment/in-eu'
-import ConsentBanner from './banner'
-import ConsentPreferences from './dialog'
-import { loadPreferences, savePreferences } from './cookies'
-import loadAnalytics from './load'
+import ConsentBanner from './partials/banner'
+import ConsentPreferences from './partials/dialog'
+import { loadPreferences, savePreferences } from './partials/cookies'
+import loadAnalytics from './partials/load'
 
 const emitter = new EventEmitter()
 
@@ -27,7 +26,7 @@ export default class ConsentManager extends Component {
 
   saveAndLoadAnalytics(preferences) {
     if (typeof preferences === 'undefined') {
-      preferences = { All: false, 'Segment.io': false }
+      preferences = { loadAll: false, segment: false }
     }
     savePreferences(preferences, this.props.version)
 
@@ -47,9 +46,13 @@ export default class ConsentManager extends Component {
   }
 
   shouldRequireConsent() {
-    // 1. Check cookies
+    // 1. If prop override is set, always show the consent bar.
+    if (this.props.forceShow) {
+      return true
+    }
+    // 2. Check cookies and apply existing consent preferences if they've already been set.
     if (
-      this.state.preferences &&
+      Object.keys(this.state.preferences).length !== 0 &&
       this.state.preferences.version === this.props.version
     ) {
       // Load segment and custom integrations
@@ -59,14 +62,9 @@ export default class ConsentManager extends Component {
         this.props.additionalServices
       )
       return false
-    }
-    // 2. Check inEU. If in-eu, show consent. If not, show nothing. Load all.
-    if (inEU() || this.props.forceShow) {
-      return true
     } else {
-      // Load all analytics
-      this.saveAndLoadAnalytics({ loadAll: true })
-      return false
+      // 3. Always show the consent bar if we don't have a response stored.
+      return true
     }
   }
 
@@ -87,6 +85,7 @@ export default class ConsentManager extends Component {
         {this.state.showBanner && (
           <ConsentBanner
             privacyPolicyLink={this.props.privacyPolicyLink}
+            cookiePolicyLink={this.props.cookiePolicyLink}
             onManagePreferences={this.openDialog}
             onAccept={() => {
               this.saveAndLoadAnalytics({ loadAll: true })
@@ -104,6 +103,7 @@ export default class ConsentManager extends Component {
             preferences={this.state.preferences}
             categories={this.props.categories}
             privacyPolicyLink={this.props.privacyPolicyLink}
+            cookiePolicyLink={this.props.cookiePolicyLink}
             saveAndLoadAnalytics={this.saveAndLoadAnalytics}
           />
         )}

@@ -1,22 +1,19 @@
 {
   "name": "@hashicorp/react-text-split-with-image",
-  "version": "4.1.1",
+  "version": "4.2.3",
   "description": "Display an image alongside a title, description, and links.",
   "author": "HashiCorp",
-  "contributors": [
-    "Brandon Romano"
-  ],
+  "contributors": ["Brandon Romano"],
   "publishConfig": {
     "access": "public"
   },
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/react-image": "^2.0.3",
-    "@hashicorp/react-text-split": "^3.1.1"
+    "@hashicorp/react-text-split": "^3.2.3"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   }
 }

@@ -1,21 +1,18 @@
 {
   "name": "@hashicorp/react-product-downloads-page",
   "description": "The page where you go to download HashiCorp products",
-  "version": "2.0.2",
+  "version": "2.4.1",
   "author": "HashiCorp",
-  "contributors": [
-    "Zack Tanner",
-    "Jeff Escalante"
-  ],
+  "contributors": ["Zack Tanner", "Jeff Escalante"],
   "dependencies": {
-    "@hashicorp/react-button": "^5.0.1",
-    "@hashicorp/react-head": "^3.0.2",
-    "@hashicorp/react-tabs": "^6.0.1",
+    "@hashicorp/platform-product-meta": "^0.1.0",
+    "@hashicorp/react-button": "^5.3.0",
+    "@hashicorp/react-head": "^3.1.1",
+    "@hashicorp/react-tabs": "^6.1.0",
     "semver": "^7.3.2"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x"
+    "@hashicorp/mktg-global-styles": ">=3.x"
   },
   "license": "MPL-2.0",
   "publishConfig": {

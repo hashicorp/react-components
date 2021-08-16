@@ -1,12 +1,9 @@
 {
   "name": "@hashicorp/react-search",
   "description": "Algolia-powered search component",
-  "version": "5.0.2",
+  "version": "5.1.2",
   "author": "HashiCorp",
-  "contributors": [
-    "Kevin Pruett",
-    "Jimmy Merritello"
-  ],
+  "contributors": ["Kevin Pruett", "Jimmy Merritello"],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^1.0.2",
     "@hashicorp/remark-plugins": "^3.0.0",
@@ -22,7 +19,6 @@
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/nextjs-scripts": ">=17.x",
     "react": ">=16.x"
   },
   "publishConfig": {

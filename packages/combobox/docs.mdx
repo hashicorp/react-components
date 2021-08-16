@@ -1,0 +1,103 @@
+---
+componentName: 'Combobox'
+---
+
+### Default, batteries-included typeahead combobox
+
+<LiveComponent>
+  {`
+    <Combobox 
+      onSelect={(e) => console.log(e)} 
+      options={[
+      'Apple',
+      'Orange', 
+      'Banana',
+      'Pineapple',
+      'Kiwi'
+      ]}
+      />
+      `}
+</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+## Other Examples
+
+### With custom option component
+
+<LiveComponent>
+  {`
+    <Combobox 
+      onSelect={(e) => console.log(e)} 
+      renderOption={opt => <span style={{ color: 'var(--consul)'}}>{opt}</span>}
+      options={[
+      'Apple',
+      'Orange', 
+      'Banana',
+      'Pineapple',
+      'Kiwi'
+      ]}
+      />
+      `}
+</LiveComponent>
+
+### With composition of components
+
+<LiveComponent>
+  {`
+      <ComboboxBase onSelect={() => console.log('foo')}>
+        <ComboboxInput aria-labelledby="demo" />
+        <ComboboxPopover>
+          <ComboboxList aria-labelledby="demo">
+            <ComboboxOption value="Apple" />
+            <ComboboxOption value="Banana" />
+            <ComboboxOption value="Orange" />
+            <ComboboxOption value="Pineapple" />
+            <ComboboxOption value="Kiwi" />
+          </ComboboxList>
+      </ComboboxPopover>
+      </ComboboxBase>
+      `}
+</LiveComponent>
+
+### Example Form
+
+<LiveComponent>{`
+        <Formik
+          initialValues={{ favoriteFruit: '' }}
+          onSubmit={(values) => alert(JSON.stringify(values))}
+          validateOnBlur
+          validate={values => {
+            const errors = {};
+            const fruits = [
+                'Apple',
+                'Orange',
+                'Banana',
+                'Pineapple',
+                'Kiwi'
+                ]
+            if (!fruits.includes(values.favoriteFruit)) {
+              errors.favoriteFruit = 'Please select a value from the list';
+            }
+            return errors;
+          }}
+        >
+        {({ handleSubmit }) =>  (
+          <Form>
+               <ComboboxField
+                name="favoriteFruit"
+                options={[
+                'Apple',
+                'Orange',
+                'Banana',
+                'Pineapple',
+                'Kiwi'
+                ]}
+                />
+                <button onClick={handleSubmit}>Submit!</button>
+            <FormikStateViewer />
+          </Form>
+        )}
+        </Formik>`}</LiveComponent>

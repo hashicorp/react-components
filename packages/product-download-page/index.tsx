@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import useProductMeta, {
   ProductMetaProvider,
-} from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+} from '@hashicorp/platform-product-meta'
 import HashiHead from '@hashicorp/react-head'
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'
@@ -27,13 +27,20 @@ export default function ProductDownloadsPage({
   className,
   packageManagerOverrides = [],
   enterpriseMode = false,
+  pageTitle,
   // these props are piped in from `generateStaticProps`
   product,
   latestVersion,
   releases,
 }: ProductDownloadsPageProps): React.ReactElement {
   const { name, slug, themeClass } = useProductMeta(product)
-  const currentRelease = releases.versions[latestVersion]
+  const _latestVersion = `${latestVersion}${enterpriseMode ? '+ent' : ''}`
+  const currentRelease = releases.versions[_latestVersion]
+
+  if (!currentRelease)
+    throw new Error(
+      `We went looking for version "${_latestVersion}" but could not find it in the release data. Please make sure that the "latestVersion" prop matches the version name of an existing release.`
+    )
 
   const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
     currentRelease,
@@ -46,7 +53,7 @@ export default function ProductDownloadsPage({
   const sortedReleases = latestReleases
     // remove enterprise releases unless enterpriseMode is active
     .filter((releaseVersion) => {
-      const isEnterpriseVersion = !!releaseVersion.match(/\+ent(?:-.*?)*$/)
+      const isEnterpriseVersion = !!releaseVersion.match(/\+ent(?:.*?)*$/)
       if (enterpriseMode) return isEnterpriseVersion
       return !isEnterpriseVersion
     })
@@ -61,7 +68,12 @@ export default function ProductDownloadsPage({
   // - if not, it just gets pushed in
   // This allows for flexible behavior on changing or adding new package manager configs on
   // a per-product basis if necessary.
-  let packageManagers = generateDefaultPackageManagers(slug)
+  //
+  // NOTE: enterprise releases do not currently work with package managers. according to rel-eng,
+  // this feature will be added in august 2021
+  let packageManagers = enterpriseMode
+    ? []
+    : generateDefaultPackageManagers(slug)
   const overrides = [...packageManagerOverrides]
   if (overrides) {
     packageManagers = packageManagers
@@ -102,24 +114,30 @@ export default function ProductDownloadsPage({
     <ProductMetaProvider product={product}>
       <HashiHead title={`Downloads | ${name} by HashiCorp`} />
       <div className={`${styles.root} ${themeClass || ''} ${className || ''}`}>
-        <h1>Download {name}</h1>
+        <h1 className={styles.pageTitle}>
+          {pageTitle ||
+            `Download ${name}
+          ${enterpriseMode ? ' Enterprise' : ''}`}
+        </h1>
         <DownloadCards
           defaultTabIdx={osIndex}
           tabData={tabData}
           downloads={sortedDownloads}
-          version={latestVersion}
+          version={_latestVersion}
           logo={logo}
           tutorialLink={tutorialLink}
           merchandisingSlot={merchandisingSlot}
         />
         {
-          <div className="g-container">
+          <div className="g-grid-container">
             <div className={styles.gettingStarted}>
-              <h2>Get Started</h2>
-              <p>{getStartedDescription}</p>
+              <h2 className={styles.gettingStartedTitle}>Get Started</h2>
+              <p className={styles.gettingStartedDescription}>
+                {getStartedDescription}
+              </p>
               <div className={styles.links}>
                 {getStartedLinks?.map((link) => (
-                  <a href={link.href} key={link.href}>
+                  <a className={styles.link} href={link.href} key={link.href}>
                     {link.label}
                   </a>
                 ))}
@@ -130,7 +148,7 @@ export default function ProductDownloadsPage({
 
         <ReleaseInformation
           releases={sortedReleases}
-          latestVersion={latestVersion}
+          latestVersion={_latestVersion}
           containers={containers}
           tutorials={tutorials}
           changelog={changelog}
@@ -155,6 +173,7 @@ interface ProductDownloadsPageProps {
   changelog?: string
   className?: string
   packageManagerOverrides?: PackageManagerConfig[]
+  pageTitle?: string
   enterpriseMode: boolean
   product: HashiCorpProduct
   latestVersion: string

@@ -91,7 +91,9 @@ function Cards({
           </div>
         )}
         <div className={hasPackageManager ? styles.card : styles.soloCard}>
-          <span className={styles.cardTitle}>Binary Download</span>
+          <span className={styles.cardTitle}>
+            {prettyOs(os)} Binary Download
+          </span>
           <div>
             <div className={styles.logoWrapper}>
               {logo}

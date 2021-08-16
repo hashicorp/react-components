@@ -1,4 +1,4 @@
-import useProductMeta from '@hashicorp/nextjs-scripts/lib/providers/product-meta'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import CalloutItem from './partials/callout-item/index.js'
 
 function Callouts({

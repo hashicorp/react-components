@@ -4,13 +4,16 @@ import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
 import {
-  loadVersionListFromManifest,
+  loadVersionList,
   loadVersionedDocument,
   loadVersionedNavData,
   getVersionFromPath,
 } from '@hashicorp/versioned-docs/server'
+import moize from 'moize'
 import { normalizeVersion } from '@hashicorp/versioned-docs/client'
 import renderPageMdx from './render-page-mdx'
+
+const cachedLoadVersionNavData = moize(loadVersionedNavData)
 
 // So far, we have a pattern of using a common value for
 // docs catchall route parameters: route/[[...page]].jsx.
@@ -35,7 +38,7 @@ async function generateStaticPaths({
   ) {
     // Fetch and parse navigation data
     navData = (
-      await loadVersionedNavData(
+      await cachedLoadVersionNavData(
         product.slug,
         basePath,
         normalizeVersion(currentVersion)
@@ -89,24 +92,27 @@ async function generateStaticProps({
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
 
+  let versions = []
+
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (process.env.ENABLE_VERSIONED_DOCS) {
     const versionFromPath = getVersionFromPath(params[paramId])
 
+    const currentVersionNormalized = normalizeVersion(currentVersion)
+
+    versions = await loadVersionList(product.slug)
+
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
     if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
-      const currentVersionNormalized = normalizeVersion(currentVersion)
-
-      const versions = await loadVersionListFromManifest(
-        currentVersionNormalized
+      // remove trailing index to ensure we fetch the right document from the DB
+      const paramsNoIndex = (params[paramId] ?? []).filter(
+        (param, idx) =>
+          !(param === 'index' && idx === params[paramId].length - 1)
       )
-
       const pagePathToLoad = versionFromPath
-        ? [basePath, ...(params[paramId] ?? [])].join('/')
-        : [basePath, currentVersionNormalized, ...(params[paramId] ?? [])].join(
-            '/'
-          )
+        ? [basePath, ...paramsNoIndex].join('/')
+        : [basePath, currentVersionNormalized, ...paramsNoIndex].join('/')
 
       let doc
       const [{ mdxSource }, navData] = await Promise.all([
@@ -116,7 +122,7 @@ async function generateStaticProps({
             return mdxRenderer(docResult.markdownSource)
           }
         ),
-        loadVersionedNavData(
+        cachedLoadVersionNavData(
           product.slug,
           basePath,
           versionFromPath ?? currentVersionNormalized
@@ -155,6 +161,7 @@ async function generateStaticProps({
     githubFileUrl,
     mdxSource,
     navData,
+    versions,
   }
 }
 

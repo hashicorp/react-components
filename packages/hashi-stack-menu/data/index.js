@@ -117,5 +117,4 @@ export default [
     title: 'Browse Products',
     sections: DEFAULT_MENU_SECTIONS,
   },
-  { title: 'About HashiCorp', linkUrl: 'https://www.hashicorp.com/about' },
 ]
