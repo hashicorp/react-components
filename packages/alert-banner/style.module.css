@@ -1,5 +1,109 @@
-.hideOnMobile {
-  @media (--small) {
-    display: none !important;
+.root {
+  display: none;
+  overflow: hidden;
+  position: relative;
+  transition: height 0.3s ease-out;
+
+  &.isShown {
+    display: block;
+  }
+
+  /* Even if isShown is set,
+  should hide on mobile */
+  &.hideOnMobile {
+    @media (--small) {
+      display: none;
+    }
+  }
+}
+
+.linkElem {
+  background: var(--brand-secondary);
+  color: var(--black);
+  display: block;
+  position: relative;
+}
+
+.textContainer {
+  composes: g-grid-container from global;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+  }
+}
+
+.tag {
+  align-items: center;
+  composes: g-type-body-small-x-strong from global;
+  display: flex;
+  margin-right: 11px;
+  position: relative;
+  white-space: nowrap;
+
+  /* Vertical divider using ::after pseudo class */
+  &::after {
+    content: '';
+    height: 16px;
+    background: black;
+    width: 1px;
+    display: block;
+    margin-left: 11px;
+  }
+}
+
+.text {
+  composes: g-type-body-small from global;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  margin-right: 0px;
+  margin-top: 8px;
+
+  @media (min-width: 576px) {
+    margin-right: 48px;
+    margin-top: 0;
+  }
+}
+
+.linkText {
+  composes: g-type-body-small-x-strong from global;
+  display: none;
+
+  @media (min-width: 992px) {
+    display: block;
+    margin-left: 8px;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  margin: 0;
+  opacity: 0.75;
+  padding: 0;
+  position: absolute;
+  right: 24px;
+  top: 16px;
+  transition: opacity 0.15s;
+  z-index: 2;
+
+  & > svg {
+    display: block;
+    & [stroke] {
+      stroke: var(--black);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
   }
 }
