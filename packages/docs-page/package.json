@@ -3,9 +3,7 @@
   "description": "Create a Hashicorp branded docs page in NextJS projects.",
   "version": "14.0.1",
   "author": "HashiCorp",
-  "contributors": [
-    "Jeff Escalante"
-  ],
+  "contributors": ["Jeff Escalante"],
   "dependencies": {
     "@hashicorp/platform-docs-mdx": "^0.1.0",
     "@hashicorp/platform-markdown-utils": "^0.1.0",

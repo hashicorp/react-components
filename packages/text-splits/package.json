@@ -3,9 +3,7 @@
   "description": "Renders an array of text-split components",
   "version": "3.2.6",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"

@@ -1,13 +1,28 @@
 import classNames from 'classnames'
-import useProductMeta from '@hashicorp/platform-product-meta'
+import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
 import fragment from './fragment.graphql'
+import s from './style.module.css'
 
-function Alert({ product, url, tag, text, state, textColor }) {
+function Alert({
+  product,
+  url,
+  tag,
+  text,
+  state,
+  textColor,
+  className,
+}: AlertProps): React.ReactElement {
   const { themeClass } = useProductMeta(product)
   return (
     <a
       href={url}
-      className={classNames('g-alert', themeClass, state, textColor)}
+      className={classNames(
+        s.alertRoot,
+        themeClass,
+        state ? s[state] : false,
+        textColor ? s[textColor] : false,
+        className
+      )}
     >
       <span className="g-type-tag-label" data-testid="tag">
         {tag}
@@ -48,3 +63,13 @@ function ArrowIcon() {
 Alert.fragmentSpec = { fragment }
 
 export default Alert
+
+interface AlertProps {
+  product: Products
+  url: string
+  tag: string
+  text: string
+  state: 'success' | 'warning' | 'error'
+  textColor: 'dark' | 'light'
+  className?: string
+}

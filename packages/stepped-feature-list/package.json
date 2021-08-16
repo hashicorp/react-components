@@ -3,9 +3,7 @@
   "description": "Renders a list of features for a product",
   "version": "4.0.2",
   "author": "HashiCorp",
-  "contributors": [
-    "Zack Tanner"
-  ],
+  "contributors": ["Zack Tanner"],
   "dependencies": {
     "nuka-carousel": "^4.7.2"
   },

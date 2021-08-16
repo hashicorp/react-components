@@ -3,9 +3,7 @@
   "description": "Displays a navigation bar, with links and a call-to-action.",
   "version": "8.4.1",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "dependencies": {
     "@hashicorp/mktg-logos": "^1.0.1",
     "@hashicorp/platform-product-meta": "^0.1.0",
@@ -18,11 +16,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x"
   },
-  "keywords": [
-    "component",
-    "navigation",
-    "react"
-  ],
+  "keywords": ["component", "navigation", "react"],
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"

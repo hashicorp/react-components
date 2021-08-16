@@ -3,10 +3,7 @@
   "description": "Algolia-powered search component",
   "version": "5.1.2",
   "author": "HashiCorp",
-  "contributors": [
-    "Kevin Pruett",
-    "Jimmy Merritello"
-  ],
+  "contributors": ["Kevin Pruett", "Jimmy Merritello"],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^1.0.2",
     "@hashicorp/remark-plugins": "^3.0.0",

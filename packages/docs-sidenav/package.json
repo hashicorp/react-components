@@ -3,9 +3,7 @@
   "description": "Sidebar used for navigation HashiCorp docs",
   "version": "8.2.3",
   "author": "HashiCorp",
-  "contributors": [
-    "Jeff Escalante"
-  ],
+  "contributors": ["Jeff Escalante"],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-link-wrap": "^3.0.2",

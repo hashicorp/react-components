@@ -3,10 +3,7 @@
   "description": "The page where you go to download HashiCorp products",
   "version": "2.4.1",
   "author": "HashiCorp",
-  "contributors": [
-    "Zack Tanner",
-    "Jeff Escalante"
-  ],
+  "contributors": ["Zack Tanner", "Jeff Escalante"],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-button": "^5.3.0",
