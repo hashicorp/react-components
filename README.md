@@ -1,6 +1,6 @@
 # HashiCorp React Components
 
-This project is a [lerna](https://github.com/lerna/lerna) monorepo containing a library of react components that are shared between multiple HashiCorp web properties. It also includes a component playground that uses [swingset](https://github.com/hashicorp/swingset) to create a space where component authors and contributors can experiment with and quickly iterate on component design and functionality.
+This project is a monorepo containing a library of react components that are shared between multiple HashiCorp web properties. It also includes a component playground that uses [swingset](https://github.com/hashicorp/swingset) to create a space where component authors and contributors can experiment with and quickly iterate on component design and functionality.
 
 ## Usage
 
