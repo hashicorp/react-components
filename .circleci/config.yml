@@ -1,10 +1,10 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@4.5.0
 jobs:
   lint:
     docker:
-      - image: cimg/node:13.11.0
+      - image: cimg/node:15.14.0
     steps:
       - checkout
       - node/install-packages
@@ -15,6 +15,7 @@ workflows:
   test:
     jobs:
       - node/test:
+          version: 15.14.0
           name: test
-          run-command: bootstrap && npm run test:ci
+          run-command: test:ci
       - lint

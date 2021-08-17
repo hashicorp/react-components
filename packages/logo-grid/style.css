@@ -1,4 +1,4 @@
-@import '~tippy.js/themes/light.css';
+@import '~@tippyjs/react/node_modules/tippy.js/dist/tippy.css';
 
 .g-logo-grid {
   list-style: none;
@@ -6,6 +6,7 @@
   margin: -15px;
   display: flex;
   flex-wrap: wrap;
+
   &.medium {
     @media (max-width: 650px) {
       margin: -10px;
@@ -120,8 +121,9 @@
 }
 
 /* TODO: this needs to be dealt with */
-.tippy-tooltip {
+.tippy-content {
   & .logo-grid-tooltip.details {
+    display: block;
     max-width: 500px;
     text-align: left;
     padding: 30px;

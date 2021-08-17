@@ -3,9 +3,7 @@
   "description": "A set of three horizontally-aligned callout boxes containing an icon, a short title, and descriptive text, and a link.",
   "version": "4.0.2",
   "author": "HashiCorp",
-  "contributors": [
-    "RJ Spiker"
-  ],
+  "contributors": ["RJ Spiker"],
   "dependencies": {
     "@hashicorp/react-image": "^4.0.3",
     "@hashicorp/react-inline-svg": "^6.0.3"

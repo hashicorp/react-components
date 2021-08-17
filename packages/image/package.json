@@ -3,12 +3,10 @@
   "description": "super optimized image element, pulls from dato and formats for 7 screen sizes in two formats. Skips optimization for SVGs.",
   "version": "4.0.3",
   "author": "Hashicorp",
-  "contributors": [
-    "Jeff Escalante"
-  ],
+  "contributors": ["Jeff Escalante"],
   "dependencies": {
-    "object-assign": "4.1.1",
-    "query-string": "5.1.1"
+    "object-assign": "^4.1.1",
+    "query-string": "^5.1.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
@@ -17,6 +15,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "c47c50a8419f6278073505ebbe25c9fbe4faab07"
+  }
 }

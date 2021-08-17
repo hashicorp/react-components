@@ -4,9 +4,7 @@
   "version": "6.0.0",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert%22",
-  "contributors": [
-    "Jeff Escalante"
-  ],
+  "contributors": ["Jeff Escalante"],
   "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/alert",
   "license": "MPL-2.0",
   "main": "index.jsx",
@@ -21,9 +19,10 @@
   "style": "style.css",
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "classnames": "^2.2.6"
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
   }
 }

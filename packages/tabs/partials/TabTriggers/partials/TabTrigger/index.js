@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import Tippy from '@tippy.js/react'
+import Tippy from '@tippyjs/react'
 import TooltipIcon from './icons/tooltip.svg.js'
 import { useTabGroups } from '../../../../provider.js'
 

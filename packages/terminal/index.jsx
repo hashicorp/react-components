@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
-import styles from './Terminal.module.css'
+import s from './style.module.css'
 
 export default function CommandLineTerminal({
   lines,
@@ -12,24 +12,22 @@ export default function CommandLineTerminal({
   const { themeClass } = useProductMeta(product)
   return (
     <div
-      className={`${styles.terminal} ${themeClass || ''}`}
+      className={`${s.terminal} ${themeClass || ''}`}
       data-testid="terminal-root"
     >
-      <div className={styles.titleBar}>
-        <ul className={styles.windowControls}>
+      <div className={s.titleBar}>
+        <ul className={s.windowControls}>
           <li></li>
           <li></li>
           <li></li>
         </ul>
-        {title && <div className={styles.title}>{title}</div>}
+        {title && <div className={s.title}>{title}</div>}
       </div>
-      <div className={styles.content}>
+      <div className={s.content}>
         <div
-          className={
-            noScroll ? styles.noScrollOverflowWrapper : styles.overflowWrapper
-          }
+          className={noScroll ? s.noScrollOverflowWrapper : s.overflowWrapper}
         >
-          <div className={styles.codeWrapper}>
+          <div className={s.codeWrapper}>
             {lines &&
               lines.map((line, index) => (
                 // This array is stable, so we can use index as key
@@ -37,10 +35,10 @@ export default function CommandLineTerminal({
                 <Fragment key={index}>
                   <pre
                     className={classNames({
-                      [styles.short]: line.short,
-                      [styles.navy]: line.color === 'navy',
-                      [styles.gray]: line.color === 'gray',
-                      [styles.white]: line.color === 'white',
+                      [s.short]: line.short,
+                      [s.navy]: line.color === 'navy',
+                      [s.gray]: line.color === 'gray',
+                      [s.white]: line.color === 'white',
                     })}
                   >
                     {line.code}

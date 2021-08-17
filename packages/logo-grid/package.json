@@ -3,13 +3,11 @@
   "description": "a grid showcasing company logos",
   "version": "4.1.4",
   "author": "HashiCorp",
-  "contributors": [
-    "Jeff Escalante"
-  ],
+  "contributors": ["Jeff Escalante"],
   "dependencies": {
     "@hashicorp/react-button": "^5.3.1",
-    "@hashicorp/react-image": "^2.0.3",
-    "@tippy.js/react": "^2.1.2"
+    "@hashicorp/react-image": "^4.0.1",
+    "@tippyjs/react": "^4.2.5"
   },
   "license": "MPL-2.0",
   "peerDependencies": {

@@ -3,11 +3,9 @@
   "description": "A block that displays a set of title + content items, with content collapsed by default, but expandable to view. Also includes an optional heading for the block.",
   "version": "2.0.3",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "dependencies": {
-    "@hashicorp/react-inline-svg": "^1.0.2"
+    "@hashicorp/react-inline-svg": "^6.0.2"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
@@ -16,6 +14,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "c47c50a8419f6278073505ebbe25c9fbe4faab07"
+  }
 }

@@ -12,7 +12,6 @@ function HeroLeadForm(props) {
 
   //  On mount only, try to retrieve a stored email
   useEffect(() => {
-    require('@hashicorp/localstorage-polyfill/dist')
     let retrievedEmail = window.localStorage.getItem(EMAIL_STORAGE_KEY)
     if (retrievedEmail !== null) setStoredEmail(retrievedEmail)
   }, [])

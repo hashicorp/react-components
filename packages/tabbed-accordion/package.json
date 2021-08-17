@@ -3,15 +3,14 @@
   "description": "Tabs with accordions nested inside",
   "version": "4.0.4",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "dependencies": {
     "@hashicorp/react-accordion": "^2.0.3",
     "@hashicorp/react-tabs": "^6.1.1"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x"
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
   },
   "keywords": [],
   "license": "MPL-2.0",

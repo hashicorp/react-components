@@ -4,7 +4,7 @@ This project is a [lerna](https://github.com/lerna/lerna) monorepo containing a 
 
 ## Usage
 
-- **Getting Started:** Run `npm i` to install base-level dependencies, then follow with `npm run bootstrap` to install dependencies for each component in the `packages` directory.
+- **Getting Started:** Run `npm i` to install dependencies.
 - **Running the Playground:** Run `npm start` - it will start a dev server which can be viewed at `http://localhost:3000`.
 - **Running Tests:**: Run `npm t` to execute the tests. To run watch mode on tests, `npm run test:watch` - this is helpful during development.
 

@@ -17,9 +17,10 @@ module.exports = {
     '\\.svg$': 'jest-raw-loader',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!(@hashicorp/mktg-logos|@hashicorp/react-|@hashicorp/sentinel-embedded|@hashicorp/nextjs-scripts|@hashicorp/platform-))',
+    '/node_modules/(?!(@hashicorp/mktg-logos|@hashicorp/react-|@hashicorp/sentinel-embedded|@hashicorp/nextjs-scripts|@hashicorp/platform-|unist-))',
     '\\.pnp\\.[^\\/]+$',
   ],
   verbose: true,
   setupFilesAfterEnv: ['<rootDir>/__test-helpers/extend-expect.js'],
+  testEnvironment: 'jsdom',
 }

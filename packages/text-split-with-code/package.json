@@ -3,9 +3,7 @@
   "description": "Display a title, description, and links alongside a code block",
   "version": "3.3.7",
   "author": "HashiCorp",
-  "contributors": [
-    "Brandon Romano"
-  ],
+  "contributors": ["Brandon Romano"],
   "dependencies": {
     "@hashicorp/react-code-block": "^4.1.5",
     "@hashicorp/react-text-split": "^3.2.4"

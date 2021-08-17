@@ -2,6 +2,7 @@
   "lerna": "3.22.1",
   "packages": ["packages/*"],
   "version": "independent",
+  "useWorkspaces": true,
   "command": {
     "publish": {
       "ignoreChanges": [

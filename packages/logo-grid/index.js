@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Tippy from '@tippy.js/react'
+import Tippy from '@tippyjs/react'
 import Image from '@hashicorp/react-image'
 import Button from '@hashicorp/react-button'
 import fragment from './fragment.graphql'
@@ -74,9 +74,7 @@ class LogoGrid extends Component {
         theme="light"
         hideOnClick={true}
         interactive={true}
-        flipOnUpdate={false}
         ignoreAttributes={true}
-        multiple={false}
         onShow={(tip) => {
           // save a reference to the currently open instance so it can be closed by the "X"
           inst = tip
