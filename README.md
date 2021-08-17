@@ -24,74 +24,35 @@ A few of the elements in our playground rely on environment variables in order t
 - `SOURCEGRAPH_URL`
   - Used in `UsageDetails` to build links out to [our SourceGraph instance](https://sourcegraph.hashi-mktg.com)
 
-## Publishing Packages
+## Publishing
 
-We manage and distribute packages to [`npm`](https://www.npmjs.com/) using [Lerna](https://lerna.js.org/). Each component is independently published and versioned.
+Publishing is handled through the [`changesets` library](https://github.com/atlassian/changesets). Publishing is done in CI if changes are found. For more information on how to work with changesets, see [this document](https://github.com/atlassian/changesets/blob/main/docs/adding-a-changeset.md).
 
-### Prerequisites
+### Adding a changeset
 
-In order to publish packages, you must:
-
-1. Be added to the HashiCorp organization on `npm`
-2. [Enable 2-factor authentication](https://docs.npmjs.com/configuring-two-factor-authentication) on your npm account
-3. Log into to `npm` in your CLI with [`npm login`](https://docs.npmjs.com/cli/adduser)
-
-If you have not done any of these steps, the publish script will fail.
-
-### Publishing `--canary` releases
-
-Canary releases allow us to publish and test in-progress changes to components.
+Run the following command and follow the prompt:
 
 ```
-npm run release:canary
+npx changeset
 ```
 
-You can consume pre-releases with something like `npm install @hashicorp/react-package-name@next`. Canary releases should only be used in staging contexts, not production.
+To make any adjustments to your changeset, just edit the file!
 
-By default, `npm run release:canary` will publish a pre-patch canary release. If you're working on feature changes or breaking changes, you'll likely want to run the appropriate versioning command within the package folder before running `npm run release:canary`. This also helps signal the versioning intent to reviewers.
+### Releases
 
-**Further details**: `npm run release:canary` will publish any changed packages and their dependencies. It tags the release with the `@next` dist-tag. It also uses [Lerna's `--canary` option](https://github.com/lerna/lerna/tree/master/commands/publish#--canary) to avoid version collisions across branches.
+The release process is handled mostly automatically via the changesets GitHub action. When changeset files get merged to `main`, a Pull Request is opened which will, upon merge, release all pending changesets and remove the changeset files. We should not need to publish manually with this flow. See the `changesets/action`(https://github.com/changesets/action) repo for more information.
 
-### Publishing Production Releases
+### Prereleases
 
-Production releases should only be published off of `main`.
+Prereleases are also handled through a process integrated into `changesets`. The full flow is outlined in [this document](https://github.com/atlassian/changesets/blob/main/docs/prereleases.md). To enter a prerelease mode for the `canary` tag, we would do something like this:
 
-```sh
-npm run release
+```
+npx changeset pre enter canary
+GITHUB_TOKEN=<your token> npx changeset version
+GITHUB_TOKEN=<your token> npx changeset publish
 ```
 
-Any production releases should be **immediately followed up by bumping the updated package** in any consuming projects.
-
-For most web-components packages, this means checking the `hashicorp-www-next` repo for Dependabot PRs to bump the package in question. You can view open Dependabot PRs on `hashicorp-www-next` using [the PR view with the `author:app/dependabot-preview` filter applied](https://github.com/hashicorp/hashicorp-www-next/pulls/app%2Fdependabot-preview).
-
-### Oh no! I got a 401 and now my packages are like half-published
-
-The current workaround is not ideal, but should completely fix the issue. Definitely reach out if you need assistance, as almost everyone on the team has run into this:
-
-1. **Remove the "Publish" commit**. The "Publish" commit will most likely be your most recent commit, in which case the command below can be used. **These commands rewrite git history, so use caution!**
-
-   ```sh
-   git reset --hard HEAD^ # reset the previous commit
-   git push origin main --force-with-lease # push new history
-   ```
-
-1. **Delete the tags** that point to the deleted publish commit
-
-   ```sh
-   git tag --delete {tagname} # delete the local tag
-   git push --delete origin {tagname} # delete the remote tag
-   ```
-
-   For example:
-
-   ```sh
-   git tag --delete @hashicorp/react-secondary-nav@2.1.0
-   git push --delete origin @hashicorp/react-secondary-nav@2.1.0
-   ```
-
-   If multiple packages were published, you'll need to delete tags for each individual package.
-
-Now everything should be reset to its state prior to the publish failure.
+To continue publishing preleases, use the `npx changeset` command like normal and use the `version` and `publish` commands as appropriate.
 
 ## Batch Release Notes
 
