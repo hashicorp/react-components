@@ -3,7 +3,6 @@
 /* global component css imports */
 
 /* these should be moved to css modules */
-@import '../packages/button/styles/index.css';
 @import '../packages/callouts/styles/index.css';
 @import '../packages/checkbox-input/style.css';
 @import '../packages/accordion/style.css';
