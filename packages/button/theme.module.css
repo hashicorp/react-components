@@ -1,0 +1,252 @@
+/* 
+Note: the .brand-neutral "brand" class  is an exception that
+sits outside of our usual useProductMeta use.
+
+We could consider making this the default prop value,
+falling back to this appearance if no "theme.brand"
+is provided. However, this would be a breaking change,
+and disrupt many current uses, requiring brand=hashicorp
+to be set explicitly.
+*/
+
+/*
+ * Primary variant
+ */
+.variant-primary {
+  /* the primary variant does make use of the scrim */
+  --scrim-opacity-hovered: 1;
+  --scrim-opacity-active: 1;
+  --padding-small: 7px 20px 8px 20px;
+  --padding-medium: 12px 20px;
+
+  /* On most backgrounds, for all brands */
+  --icon-color: var(--brand-text-on-primary);
+  --text-color: var(--brand-text-on-primary);
+  --border-color: var(--brand);
+  --border-color-hovered: var(--brand);
+  --background-color: var(--brand);
+  --scrim-color: rgba(0, 0, 0, 0.1);
+  --scrim-color-active: rgba(0, 0, 0, 0.2);
+
+  &.background-brand {
+    --icon-color: var(--black);
+    --text-color: var(--black);
+    --border-color: var(--white);
+    --border-color-hovered: var(--white);
+    --background-color: var(--white);
+    --scrim-color: var(--brand-secondary);
+    --scrim-color-active: var(--brand-secondary);
+  }
+
+  &.brand-neutral {
+    &.background-dark,
+    &.background-brand {
+      --icon-color: var(--black);
+      --text-color: var(--black);
+      --border-color: var(--white);
+      --border-color-hovered: var(--white);
+      --background-color: var(--white);
+      --scrim-color: rgba(0, 0, 0, 0.1);
+      --scrim-color-active: rgba(0, 0, 0, 0.2);
+    }
+    &.background-light,
+    &.background-brand-secondary {
+      --icon-color: var(--white);
+      --text-color: var(--white);
+      --border-color: var(--black);
+      --border-color-hovered: var(--black);
+      --background-color: var(--black);
+      --scrim-color: rgba(255, 255, 255, 0.15);
+      --scrim-color-active: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &[disabled] {
+    &.background-light,
+    &.background-brand-secondary {
+      --border-color: transparent;
+      --border-color-hovered: transparent;
+      --background-color: rgba(0, 0, 0, 0.14);
+      --text-color: var(--brand-text-on-primary);
+      --icon-color: var(--brand-text-on-primary);
+    }
+    &.background-brand,
+    &.background-dark {
+      --border-color: transparent;
+      --border-color-hovered: transparent;
+      --background-color: rgba(255, 255, 255, 0.16);
+      --text-color: rgba(255, 255, 255, 0.24);
+      --icon-color: rgba(255, 255, 255, 0.24);
+    }
+  }
+}
+
+/*
+ * Secondary variant
+ */
+.variant-secondary {
+  --scrim-opacity-hovered: 0.1;
+  --scrim-opacity-active: 0.16;
+  --padding-small: 7px 20px 8px 20px;
+  --padding-medium: 12px 20px;
+  --text-color: var(--black);
+  --icon-color: var(--black);
+  --border-color: rgba(29, 30, 35, 0.2);
+  --border-color-hovered: transparent;
+  --background-color: transparent;
+  --scrim-color: var(--black);
+  --scrim-color-active: var(--black);
+
+  &.background-brand-secondary {
+    --scrim-color: var(--brand);
+    --scrim-color-active: var(--brand);
+  }
+
+  &.background-dark,
+  &.background-brand {
+    --scrim-opacity-hovered: 0.14;
+    --scrim-opacity-active: 0.08;
+    --text-color: var(--white);
+    --icon-color: var(--white);
+    --border-color: rgba(255, 255, 255, 0.24);
+    --border-color-hovered: transparent;
+  }
+
+  &.brand-neutral {
+    &.background-brand-secondary {
+      --scrim-color: var(--black);
+      --scrim-color-active: var(--black);
+    }
+  }
+
+  &[disabled] {
+    &.background-light,
+    &.background-brand-secondary {
+      --text-color: rgba(0, 0, 0, 0.3);
+      --icon-color: rgba(0, 0, 0, 0.3);
+    }
+    &.background-brand,
+    &.background-dark {
+      --text-color: rgba(255, 255, 255, 0.3);
+      --icon-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+/*
+ * Tertiary variant
+ */
+.variant-tertiary {
+  --scrim-opacity-hovered: 0;
+  --scrim-opacity-active: 0;
+  --padding-small: 0;
+  --padding-medium: 0;
+  --text-color: var(--brand-link);
+  --icon-color: var(--brand-link);
+  --background-color: transparent;
+  --border-color: transparent;
+  --border-color-hovered: transparent;
+
+  &.background-dark {
+    --text-color: var(--brand-link-on-dark);
+    --icon-color: var(--brand-link-on-dark);
+  }
+
+  &.background-brand {
+    --text-color: var(--white);
+    --icon-color: var(--white);
+  }
+
+  &.brand-neutral {
+    &.background-light,
+    &.background-brand-secondary {
+      --scrim-color: var(--black);
+      --scrim-color-active: var(--black);
+    }
+    &.background-dark {
+      --text-color: var(--white);
+      --icon-color: var(--white);
+    }
+  }
+
+  &[disabled] {
+    &.background-light,
+    &.background-brand-secondary {
+      --text-color: rgba(0, 0, 0, 0.3);
+      --icon-color: rgba(0, 0, 0, 0.3);
+    }
+    &.background-brand,
+    &.background-dark {
+      --text-color: rgba(255, 255, 255, 0.3);
+      --icon-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+/*
+ * Tertiary neutral variant
+ */
+.variant-tertiary-neutral {
+  --scrim-opacity-hovered: 0;
+  --scrim-opacity-active: 0;
+  --padding-small: 0;
+  --padding-medium: 0;
+  --text-color: var(--black);
+  --icon-color: var(--black);
+  --border-color: transparent;
+  --border-color-hovered: transparent;
+  --background-color: transparent;
+
+  &.background-dark,
+  &.background-brand {
+    --text-color: var(--white);
+    --icon-color: var(--white);
+  }
+
+  &[disabled] {
+    &.background-light,
+    &.background-brand-secondary {
+      --text-color: rgba(0, 0, 0, 0.3);
+      --icon-color: rgba(0, 0, 0, 0.3);
+    }
+    &.background-brand,
+    &.background-dark {
+      --text-color: rgba(255, 255, 255, 0.3);
+      --icon-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+/*
+ * Ghost variant
+ */
+.variant-ghost {
+  --scrim-opacity-hovered: 1;
+  --scrim-opacity-active: 1;
+  --padding-small: 0;
+  --padding-medium: 0;
+  --text-color: var(--gray-3);
+  --icon-color: var(--gray-3);
+  --border-color: transparent;
+  --border-color-hovered: transparent;
+  --background-color: transparent;
+
+  &.background-dark,
+  &.background-brand {
+    --text-color: var(--white);
+    --icon-color: var(--white);
+  }
+
+  &[disabled] {
+    &.background-light,
+    &.background-brand-secondary {
+      --text-color: rgba(114, 114, 116, 0.3);
+      --icon-color: rgba(114, 114, 116, 0.3);
+    }
+    &.background-brand,
+    &.background-dark {
+      --text-color: rgba(255, 255, 255, 0.3);
+      --icon-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
