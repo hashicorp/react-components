@@ -3,6 +3,9 @@ import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 
+/**
+ * The `<Alert>` component renders a small alert banner with a link to another page. It is often used to redirect users to a new release or announcement.
+ */
 function Alert({
   product,
   url,

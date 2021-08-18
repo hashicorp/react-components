@@ -16,6 +16,7 @@
     "swingset": "^0.10.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
     "@hashicorp/platform-cli": "^1.1.0",
     "@hashicorp/platform-cms": "^0.1.0",
     "@hashicorp/platform-code-highlighting": "0.1.1",
@@ -24,10 +25,15 @@
     "@hashicorp/platform-types": "^0.1.0",
     "@hashicorp/platform-util": "0.1.0",
     "@octokit/core": "^3.5.1",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/react": "^6.3.7",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
     "@types/react": "^17.0.16",
+    "babel-loader": "^8.2.2",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "identity-obj-proxy": "^3.0.0",
@@ -59,7 +65,9 @@
     "test:ci": "jest --runInBand",
     "test:watch": "jest --watch",
     "upgrade:base-deps": "npm add @hashicorp/{mktg-{logos,global-styles},nextjs-scripts}@latest",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "simple-git-hooks": {
     "pre-commit": "npx next-hashicorp precommit"
