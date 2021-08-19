@@ -7,8 +7,12 @@ import useProductMeta from '@hashicorp/platform-product-meta'
 import VideoCarousel from './carousel'
 import ArrowIcon from './arrow-icon'
 import HeroLeadForm from './heroLeadForm'
+import s from './style.module.css'
 import fragment from './fragment.graphql'
 
+/**
+ * A flexible hero component used as the primary content at the top of many HashiCorp pages.
+ */
 function Hero({ data, centered, gaPrefix }) {
   const {
     alert,
@@ -32,30 +36,32 @@ function Hero({ data, centered, gaPrefix }) {
   return (
     <div
       className={classNames(
-        'g-hero',
+        s.root,
         themeClass,
         backgroundTheme,
         { centered: centered || data.centered },
         { 'has-videos': hasVideos }
       )}
     >
-      {backgroundImage && <Image className="bg" {...backgroundImage} />}
-      <div className="g-grid-container">
-        <div className="headline">
+      {backgroundImage && (
+        <Image className={s.background} {...backgroundImage} />
+      )}
+      <div className={s.container}>
+        <div className={s.headline}>
           {smallTextTag && <div className="tag">{smallTextTag}</div>}
-          {titleLogo && <Image className="logo" {...titleLogo} />}
+          {titleLogo && <Image className={s.headlineLogo} {...titleLogo} />}
           {alert && (
             <Alert
               url={alert.url}
               tag={alert.tag}
-              tagColor={alert.tagColor}
               text={alert.text}
-              className="alert"
+              textColor="light"
+              className={s.headlineAlert}
             />
           )}
           {title && (
             <h1
-              className="g-type-display-1"
+              className={s.headlineTitle}
               dangerouslySetInnerHTML={{
                 __html: eliminateOrphans(title, h1OrphanCount),
               }}
@@ -63,14 +69,14 @@ function Hero({ data, centered, gaPrefix }) {
           )}
           {description && (
             <div
-              className="description g-type-body-large"
+              className={s.headlineDescription}
               dangerouslySetInnerHTML={{
                 __html: eliminateOrphans(description.trim()),
               }}
             />
           )}
-          {formLeadInput && (
-            <div className="form-lead">
+          {formLeadInput ? (
+            <div className={s.headlineFormLead}>
               <HeroLeadForm
                 submitRedirectUrl={formLeadInput.destinationUrl}
                 buttonText={formLeadInput.buttonText}
@@ -81,14 +87,20 @@ function Hero({ data, centered, gaPrefix }) {
                 }}
               />
             </div>
-          )}
-          {!formLeadInput && buttons && buttons.length > 0 && (
-            <div className="buttons">
+          ) : buttons && buttons.length ? (
+            <div className={s.headlineButtons}>
               {buttons.map((button, idx) => {
                 if (gaPrefix) button.gaPrefix = gaPrefix
+                const isNotPadded =
+                  button.theme?.variant === 'tertiary' ||
+                  button.theme?.variant === 'tertiary-neutral' ||
+                  button.theme?.variant === 'ghost'
                 return (
                   <Button
                     key={button.title}
+                    className={classNames(s.headlineButtonOverride, {
+                      [s.isNotPadded]: isNotPadded,
+                    })}
                     {...button}
                     className="g-btn"
                     theme={{
@@ -106,20 +118,21 @@ function Hero({ data, centered, gaPrefix }) {
                 )
               })}
             </div>
-          )}
+          ) : null}
           {helpText && (
-            <div className="help-text g-type-buttons-and-standalone-links">
+            <div className={s.headlineHelpText}>
               <div dangerouslySetInnerHTML={{ __html: helpText.trim() }} />
               <ArrowIcon />
             </div>
           )}
         </div>
-        {image && (
-          <div className="image">
+        {image ? (
+          <div className={s.image}>
             <Image {...image} />
           </div>
-        )}
-        {!image && hasVideos && <VideoCarousel videos={videos} />}
+        ) : hasVideos ? (
+          <VideoCarousel videos={videos} />
+        ) : null}
       </div>
     </div>
   )
