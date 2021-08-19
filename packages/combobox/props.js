@@ -14,13 +14,23 @@ module.exports = {
     description:
       'A handler called when a new option is selected, takes the newly selected option value as its only parameter',
   },
-  onInputChange: {
-    type: 'function',
-    description: 'A change handler for the input',
-  },
-  onInputBlur: {
-    type: 'function',
-    description: 'An `onBlur` handler for the input',
+  inputProps: {
+    type: 'object',
+
+    description:
+      "Props passed to the combobox input, props listed below are not an exhaustive list, conforms to React's InputHTMLAttributes",
+    properties: {
+      onChange: {
+        type: 'function',
+        required: false,
+        description: 'A `onChange` handler for the input',
+      },
+      onBlur: {
+        type: 'function',
+        required: false,
+        description: 'An `onBlur` handler for the input',
+      },
+    },
   },
   openOnFocus: {
     type: 'boolean',
