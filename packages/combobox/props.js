@@ -16,7 +16,6 @@ module.exports = {
   },
   inputProps: {
     type: 'object',
-
     description:
       "Props passed to the combobox input, props listed below are not an exhaustive list, conforms to React's InputHTMLAttributes",
     properties: {
