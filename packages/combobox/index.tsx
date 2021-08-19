@@ -35,14 +35,14 @@ export default function Combobox({
   renderOption,
   invalidInputValue,
 }: ComboboxProps) {
-  const { onChange: onInputChange, onBlur: onInputBlur } = inputProps
+  const { onChange: onInputChange, onBlur: onInputBlur } = inputProps || {}
 
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
   const handleInputValueChange = useCallback(
     (e) => {
       setTerm(e.currentTarget.value)
-      if (onInputChange) return onInputChange(e)
+      if (typeof onInputChange === 'function') return onInputChange(e)
     },
     [onInputChange]
   )
