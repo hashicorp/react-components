@@ -6,9 +6,6 @@ import AlertBanner from '../../../packages/alert-banner'
 export default {
   title: 'Components/AlertBanner',
   component: AlertBanner,
-  parameters: {
-    layout: 'fullscreen',
-  },
   args: {
     tag: 'New',
     text: 'Alert banner text',

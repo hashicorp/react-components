@@ -3,6 +3,7 @@ const defaultRuleRegex = /\.(mjs|tsx?|jsx?)$/
 const transpileList = [
   '@hashicorp/platform-product-meta',
   '@hashicorp/platform-util',
+  '@hashicorp/react-inline-svg',
 ]
 
 module.exports = {

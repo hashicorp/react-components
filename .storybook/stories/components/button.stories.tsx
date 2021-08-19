@@ -7,9 +7,6 @@ import { Theme as ButtonTheme } from '../../../packages/button/types'
 export default {
   title: 'Components/Button',
   component: Button,
-  parameters: {
-    layout: 'fullscreen',
-  },
   args: {
     title: 'Button Test',
     url: 'https://www.hashicorp.com',
