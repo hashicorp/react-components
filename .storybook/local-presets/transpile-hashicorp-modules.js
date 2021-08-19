@@ -4,6 +4,8 @@ const transpileList = [
   '@hashicorp/platform-product-meta',
   '@hashicorp/platform-util',
   '@hashicorp/react-inline-svg',
+  '@hashicorp/react-button',
+  '@hashicorp/react-toggle',
 ]
 
 module.exports = {
