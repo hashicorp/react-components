@@ -1,0 +1,137 @@
+.searchBox {
+  display: flex;
+
+  & form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.searchInput {
+  composes: g-type-body-strong from global;
+  width: 100%;
+  color: var(--gray-3);
+  border: 1px solid var(--gray-6);
+  background: var(--gray-6);
+  padding: 0 8px 0 40px;
+  height: var(--search-bar-height);
+  transition: width 0.2s ease-in-out;
+  cursor: text;
+
+  &:placeholder-shown,
+  &::placeholder {
+    opacity: 1;
+  }
+
+  &:focus,
+  &:active,
+  &:focus-visible {
+    color: var(--black);
+    border-color: var(--black);
+    outline: 3px solid var(--search-bar-focus-outline);
+    box-shadow: 0 0 3pt 2pt var(--search-bar-focus-outline);
+  }
+
+  &.hasQuery {
+    color: var(--black);
+    border-color: var(--black);
+    outline: 3px solid var(--search-bar-focus-outline);
+    box-shadow: 0 0 3pt 2pt var(--search-bar-focus-outline);
+  }
+}
+
+.submitButton {
+  position: absolute;
+  left: 0;
+  background: transparent;
+  border: 0;
+  height: 100%;
+  width: 40px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > svg {
+    width: 18px;
+
+    /* Nudge */
+    position: relative;
+    top: 1px;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 1px dotted var(--black);
+  }
+
+  &.hasQuery {
+    & svg path {
+      stroke: var(--black);
+    }
+  }
+}
+
+.resetButton {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+
+  & > svg {
+    width: 10px;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 1px dotted var(--black);
+  }
+
+  &.hasQuery {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.iconLoading {
+  position: absolute;
+  right: 40px;
+  display: none;
+  justify-content: center;
+
+  &.hasQuery {
+    display: flex;
+  }
+}
+
+.iconSlash {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  height: 60%;
+  pointer-events: none;
+  display: none;
+  margin: 0; /* reset for generic styles applied to all img */
+
+  @media (--medium-up) {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  &.hasQuery {
+    opacity: 0;
+  }
+}
