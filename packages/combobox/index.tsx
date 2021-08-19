@@ -19,9 +19,11 @@ export interface ComboboxProps {
   renderOption?: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
-  inputProps: ComboboxInputProps
+  inputProps: Optional<ComboboxInputProps, 'onChange'>
   invalidInputValue?: boolean
 }
+
+type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>
 
 type ComboboxOptionValue = string
 
