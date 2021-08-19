@@ -1,0 +1,31 @@
+.root {
+  --search-bar-height: 40px;
+  --search-bar-focus-outline: rgba(220, 221, 224, 0.45);
+  --legend-height: 40px; /* set in js if `showSearchLegend` provided */
+  --results-max-height: 350px;
+  --callout-height: 0; /* set in js if `renderCalloutCta` provided */
+  --callout-max-height: 48px;
+  --mobile-margin: 24px;
+  --mobile-margin-negative: -24px;
+  --nav-height: 64px;
+
+  width: 100%;
+  position: relative;
+
+  @media (min-width: 768px) and (max-width: 939px) {
+    margin: 0 0.5rem;
+  }
+
+  /* Remove non-standard clear `X` buttons */
+  & input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  /* Ensure iOS does not round corners */
+  & input,
+  & [type='search'],
+  & input[type='search'] {
+    border-radius: 2px !important;
+    -webkit-appearance: none !important;
+  }
+}
