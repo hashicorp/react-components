@@ -110,6 +110,7 @@ to be set explicitly.
     --icon-color: var(--white);
     --border-color: rgba(255, 255, 255, 0.24);
     --border-color-hovered: transparent;
+    --scrim-color: var(--white);
   }
 
   &.brand-neutral {
