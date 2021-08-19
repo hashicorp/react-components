@@ -1,7 +1,24 @@
 import Button from '@hashicorp/react-button'
+import classNames from 'classnames'
+import variantCentered from './styles/variant-centered.module.css'
+import variantCompact from './styles/variant-compact.module.css'
+import variantLinks from './styles/variant-links.module.css'
 
-function CallToAction(props) {
-  const { heading, content, links, variant, product, theme } = props
+const stylesDict = {
+  centered: variantCentered,
+  compact: variantCompact,
+  links: variantLinks,
+}
+
+function CallToAction({
+  heading,
+  content,
+  links,
+  variant = 'centered',
+  product,
+  theme = 'light',
+}) {
+  const s = stylesDict[variant]
   if (!heading && !content) {
     throw new Error('<CallToAction /> requires either heading or content')
   }
@@ -10,21 +27,24 @@ function CallToAction(props) {
     throw new Error('<CallToAction /> `links` must have both a title and a URL')
   }
   return (
-    <div className={`g-call-to-action variant-${variant} theme-${theme}`}>
-      <div className="g-grid-container">
+    <div className={classNames(s.root, s[`theme-${theme}`])}>
+      <div className={s.container}>
         {heading && (
-          <h2 data-testid="heading" className="g-type-display-2">
+          <h2 className={s.heading} data-testid="heading">
             {heading}
           </h2>
         )}
-        <div className="content-and-links">
+        <div className={s.contentAndLinks}>
           {content && (
-            <p data-testid="content" className="g-type-body-large">
+            <p
+              className={classNames(s.content, { [s.hasHeading]: heading })}
+              data-testid="content"
+            >
               {content}
             </p>
           )}
           {links && (
-            <div data-testid="links" className="links">
+            <div data-testid="links" className={s.links}>
               {links.map((link, stableIdx) => {
                 const buttonVariant =
                   variant === 'links'
@@ -38,6 +58,7 @@ function CallToAction(props) {
                   <Button
                     // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
+                    className={s.button}
                     linkType={linkType}
                     theme={{
                       variant: buttonVariant,
@@ -55,11 +76,6 @@ function CallToAction(props) {
       </div>
     </div>
   )
-}
-
-CallToAction.defaultProps = {
-  theme: 'light',
-  variant: 'centered',
 }
 
 export default CallToAction
