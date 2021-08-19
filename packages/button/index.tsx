@@ -1,3 +1,4 @@
+import React from 'react'
 import slugify from 'slugify'
 import fragment from './fragment.graphql'
 import classNames from 'classnames'
@@ -10,6 +11,8 @@ import svgDownload from './icons/download.svg?include'
 import s from './style.module.css'
 import sTheme from './theme.module.css'
 import useHover from './hooks/use-hover'
+import normalizeButtonTheme from './helpers/normalizeButtonTheme.js'
+import { Size, LinkType, IconObject, Theme, IconProps } from './types'
 
 const linkTypeToIcon = {
   inbound: svgArrowRight,
@@ -18,23 +21,41 @@ const linkTypeToIcon = {
   download: svgDownload,
 }
 
-import normalizeButtonTheme from './helpers/normalizeButtonTheme.js'
+interface ButtonProps {
+  title: string
+  url?: string
+  label?: string
+  external?: boolean
+  theme?: Theme
+  ga_prefix?: string
+  onClick?: React.MouseEventHandler<HTMLAnchorElement> &
+    React.MouseEventHandler<HTMLButtonElement>
+  disabled?: boolean
+  className?: string
+  linkType?: LinkType
+  icon?: IconObject
+  size?: Size
+}
 
 function Button({
   title,
   url,
   label,
   external,
-  theme,
+  theme = {
+    variant: 'primary',
+    brand: 'hashicorp',
+    background: 'light',
+  },
   ga_prefix,
   onClick,
   disabled,
   className,
   linkType,
   icon,
-  size,
+  size = 'medium',
   ...attrs
-}) {
+}: ButtonProps): React.ReactElement {
   const [hoverRef, isHovered] = useHover()
   const themeObj = normalizeButtonTheme(theme)
   const { themeClass } = useProductMeta(themeObj.brand)
@@ -42,15 +63,15 @@ function Button({
   const isExternal = url && (linkType === 'outbound' || external)
   const Elem = url ? 'a' : 'button'
   const iconProps = linkTypeToIcon[linkType]
-    ? {
+    ? ({
         svg: linkTypeToIcon[linkType],
         position: icon ? icon.position : 'right',
         animationId: linkType,
         isAnimated: icon ? icon.isAnimated : true,
         isHovered,
         size,
-      }
-    : { ...icon, size, isHovered }
+      } as IconProps)
+    : ({ ...icon, size, isHovered } as IconProps)
   const hasIcon = iconProps && iconProps.svg
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'
@@ -68,7 +89,10 @@ function Button({
       )}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
       href={url}
-      ref={hoverRef}
+      ref={
+        hoverRef as React.LegacyRef<HTMLAnchorElement> &
+          React.LegacyRef<HTMLButtonElement>
+      }
       rel={isExternal ? 'noopener' : undefined}
       target={isExternal ? '_blank' : undefined}
       onClick={onClick}
@@ -76,21 +100,21 @@ function Button({
       aria-label={label}
       {...attrs}
     >
-      {hasLeftIcon && <ButtonIcon {...iconProps} />}
+      {hasLeftIcon && <Icon {...iconProps} />}
       <span className={s.text}>{title}</span>
-      {hasRightIcon && <ButtonIcon {...iconProps} />}
+      {hasRightIcon && <Icon {...iconProps} />}
     </Elem>
   )
 }
 
-function ButtonIcon({
+function Icon({
   svg,
   position,
   animationId,
   isAnimated,
   isHovered,
   size,
-}) {
+}: IconProps) {
   return (
     <InlineSvg
       className={classNames(
@@ -103,12 +127,6 @@ function ButtonIcon({
       src={svg}
     />
   )
-}
-
-Button.defaultProps = {
-  className: '',
-  theme: { variant: 'primary', brand: 'hashicorp', background: 'light' },
-  size: 'medium',
 }
 
 Button.fragmentSpec = { fragment }

@@ -51,11 +51,14 @@ theme.module.css file.
     transition: opacity 0.25s ease, background 0.25s ease;
 
     /*
-    will-change fixes an annoying Safari issue
+    -webkit-transform fixes an annoying Safari issue
     where the icon would have 1px transform jank on hover
-    due to the opacity transition.
+    due to the opacity transition. We could use will-change
+    here, but we only want to target Safari since we'd rather
+    avoid the performance penalty in browsers where the
+    animation already works.
     */
-    will-change: opacity, background;
+    -webkit-transform: translateZ(0);
     z-index: 0;
     opacity: 0;
     background: var(--scrim-color);
