@@ -13,9 +13,12 @@ export default function ComboboxField({ name, ...props }: ComboboxFieldProps) {
 
   return (
     <Combobox
-      onInputChange={(e) => {
-        handleTouched() // Set touched if the input value changes at all
-        return helpers.setValue(e.currentTarget.value, true)
+      inputProps={{
+        onChange: (e) => {
+          handleTouched() // Set touched if the input value changes at all
+          return helpers.setValue(e.currentTarget.value, true)
+        },
+        name,
       }}
       onSelect={(value) => {
         handleTouched() // Set touched if the selected value changes at all

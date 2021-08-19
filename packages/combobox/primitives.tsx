@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, InputHTMLAttributes } from 'react'
 import {
   Combobox as ReachCombobox,
   ComboboxButton as ReachComboboxButton,
@@ -49,7 +49,9 @@ export function ComboboxPopover({
   )
 }
 
-export interface ComboboxInputProps extends ReachComboboxInputProps {
+type InputProps = InputHTMLAttributes<HTMLInputElement> &
+  ReachComboboxInputProps
+export interface ComboboxInputProps extends InputProps {
   className?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void

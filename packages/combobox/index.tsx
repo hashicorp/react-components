@@ -7,6 +7,7 @@ import {
   ComboboxOptionText,
   ComboboxBase,
   ComboboxButton,
+  ComboboxInputProps,
 } from './primitives'
 import { ComboboxOption as ReachComboboxOption } from '@reach/combobox'
 import filterOptions from './utils/filter-options'
@@ -18,8 +19,7 @@ export interface ComboboxProps {
   renderOption?: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
-  onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onInputBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
+  inputProps: ComboboxInputProps
   invalidInputValue?: boolean
 }
 
@@ -31,11 +31,12 @@ export default function Combobox({
   onSelect,
   options,
   openOnFocus = true,
-  onInputChange,
-  onInputBlur,
+  inputProps,
   renderOption,
   invalidInputValue,
 }: ComboboxProps) {
+  const { onChange: onInputChange, onBlur: onInputBlur } = inputProps
+
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
   const handleInputValueChange = useCallback(
@@ -54,6 +55,7 @@ export default function Combobox({
     >
       <ComboboxButton label={buttonLabel} />
       <ComboboxInput
+        {...inputProps}
         onChange={handleInputValueChange}
         onBlur={onInputBlur}
         data-has-error={invalidInputValue ?? false}
@@ -96,4 +98,5 @@ export {
   ComboboxOption,
   ComboboxOptionText,
   ComboboxBase,
+  ComboboxButton,
 }

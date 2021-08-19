@@ -19,6 +19,8 @@
       box-shadow: var(--select-shadow);
       background: var(--white);
       border-radius: 2px;
+      max-height: var(--combobox-list-max-height, 40vh);
+      overflow: scroll;
     }
 
     & [data-reach-combobox-option] {
@@ -88,7 +90,6 @@
 }
 
 .button {
-  --icon-frame: min-content;
   position: absolute;
   background: none;
   border: none;
