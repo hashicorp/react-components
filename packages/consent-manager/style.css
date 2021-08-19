@@ -35,23 +35,30 @@
     & a {
       color: var(--brand-link);
       text-decoration: underline;
+    }
 
+    & button {
       &.manage-link {
+        border: none;
+        background: none;
+        line-height: inherit;
         font-size: 0.8rem;
+        font-family: inherit;
         color: var(--gray-1);
-        font-weight: var(--font-weight-bold);
+        font-weight: bold;
         transition: color 200 ease-out;
         text-decoration: none;
 
         &:hover {
+          cursor: pointer;
           color: var(--brand-link);
         }
       }
-    }
 
-    & button {
+    &:not(.manage-link) {
       border: 0;
       font-weight: var(--font-weight-bold);
+      font-family: inherit;
       padding: 10px 20px;
       border-radius: 2px;
       transform: translate3d(0, 0, 0);
@@ -70,6 +77,7 @@
       @media (max-width: 1200px) {
         margin-top: 6px;
       }
+    }
     }
   }
 
