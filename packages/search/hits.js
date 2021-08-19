@@ -7,6 +7,8 @@ import SearchLegend from './legend'
 import { useSearch } from './provider'
 import IconReturn from './img/return.svg.js'
 import { SEARCH_BOX_LABEL_ID, SEARCH_RESULTS_ID } from '.'
+import classNames from 'classnames'
+import s from './hits.module.css'
 
 function Hits({
   /* Props provided from connector */
@@ -87,11 +89,11 @@ function Hits({
   }
 
   return (
-    <div className="c-hits">
+    <div className={s.hitsRoot}>
       {hits.length === 0 ? (
-        <div className="no-hits">
-          <span className="title">{`No results for ${query}...`}</span>
-          <span className="message">
+        <div className={s.noHits}>
+          <span className={s.noHitsTitle}>{`No results for ${query}...`}</span>
+          <span className={s.noHitsMessage}>
             Search tips: some terms require an exact match. Try typing the
             entire term, or use a different word or phrase.
           </span>
@@ -100,29 +102,30 @@ function Hits({
         <>
           {showSearchLegend && <SearchLegend />}
           <ul
-            className="hits-list"
+            className={s.hitsList}
             id={SEARCH_RESULTS_ID}
             role="listbox"
             aria-labelledby={SEARCH_BOX_LABEL_ID}
           >
-            {hits.map((hit) => (
-              <Hit
-                key={hit.objectID}
-                closeSearchResults={() => setCancelled(true)}
-                hit={hit}
-                renderHitContent={renderHitContent}
-                resolveHitLink={resolveHitLink}
-                {...(hitsTabIndex === hit.__position && {
-                  className: 'active',
-                  ref: selectedHit,
-                })}
-              />
-            ))}
+            {hits.map((hit) => {
+              const isActive = hitsTabIndex === hit.__position
+              return (
+                <Hit
+                  key={hit.objectID}
+                  closeSearchResults={() => setCancelled(true)}
+                  hit={hit}
+                  renderHitContent={renderHitContent}
+                  resolveHitLink={resolveHitLink}
+                  ref={isActive ? selectedHit : undefined}
+                  isActive={isActive}
+                />
+              )
+            })}
           </ul>
         </>
       )}
       {renderCalloutCta && (
-        <div className="callout-cta">{renderCalloutCta()}</div>
+        <div className={s.calloutCta}>{renderCalloutCta()}</div>
       )}
     </div>
   )
@@ -145,13 +148,7 @@ const LinkWithClick = forwardRef(({ children, ...props }, ref) => (
 
 const Hit = forwardRef(
   (
-    {
-      className = '',
-      closeSearchResults,
-      hit,
-      renderHitContent,
-      resolveHitLink,
-    },
+    { isActive, closeSearchResults, hit, renderHitContent, resolveHitLink },
     ref
   ) => {
     const { logClick, setQuery } = useSearch()
@@ -184,18 +181,18 @@ const Hit = forwardRef(
     }
 
     return (
-      <li className="hit-item" id={`hit-${hit.__position}`}>
+      <li className={s.hitItem} id={`hit-${hit.__position}`}>
         <Link {...hitLink} passHref>
           <LinkWithClick
             ref={ref}
-            className={`hit-link-wrapper ${className}`}
+            className={classNames(s.hitLinkWrapper, { [s.isActive]: isActive })}
             onClick={handleClick}
           >
-            <div className="hit">
-              <div className="hit-content">
+            <div className={s.hit}>
+              <div className={s.hitContent}>
                 {renderHitContent({ hit, Highlight })}
               </div>
-              <InlineSvg className={`icon-return`} src={IconReturn} />
+              <InlineSvg className={s.iconReturn} src={IconReturn} />
             </div>
           </LinkWithClick>
         </Link>

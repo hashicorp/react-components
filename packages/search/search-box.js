@@ -2,8 +2,9 @@ import { useEffect, useRef } from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
 import IconMagGlass from './img/search.svg.js'
 import IconX from './img/search-x.svg.js'
-import IconSlash from './img/slash-search-toggle.js'
 import { SEARCH_BOX_ID, SEARCH_RESULTS_ID } from './'
+import s from './search-box.module.css'
+import classNames from 'classnames'
 
 function SearchBox({
   /* Props provided from connector */
@@ -64,12 +65,16 @@ function SearchBox({
     setQuery('')
   }
 
+  const hasQuery = Boolean(query)
+
   return (
-    <div className="c-search-box">
+    <div className={s.searchBox}>
       <form noValidate action="" role="search" onSubmit={onSubmit}>
         <input
           id={SEARCH_BOX_ID}
-          className="g-type-body-strong"
+          className={classNames(s.searchInput, {
+            [s.hasQuery]: hasQuery,
+          })}
           ref={searchBoxRef}
           type="search"
           placeholder={placeholder}
@@ -90,7 +95,9 @@ function SearchBox({
         <button
           type="submit"
           title="Submit your search query."
-          className="btn-submit"
+          className={classNames(s.submitButton, {
+            [s.hasQuery]: hasQuery,
+          })}
           dangerouslySetInnerHTML={{
             __html: IconMagGlass,
           }}
@@ -98,7 +105,9 @@ function SearchBox({
         <button
           type="reset"
           title="Clear the search query."
-          className="btn-reset"
+          className={classNames(s.resetButton, {
+            [s.hasQuery]: hasQuery,
+          })}
           onClick={onReset}
           dangerouslySetInnerHTML={{
             __html: IconX,
@@ -109,7 +118,11 @@ function SearchBox({
          * Configurable: https://www.algolia.com/doc/api-reference/widgets/instantsearch/react/#widget-param-stalledsearchdelay
          */}
         {isSearchStalled && (
-          <div className="icon-loading">
+          <div
+            className={classNames(s.iconLoading, {
+              [s.hasQuery]: hasQuery,
+            })}
+          >
             <svg
               width="18"
               height="18"
@@ -139,7 +152,28 @@ function SearchBox({
           </div>
         )}
         {/* Visual indicator to user of '/' focus shortcut  */}
-        <IconSlash />
+        <svg
+          className={classNames(s.iconSlash, {
+            [s.hasQuery]: hasQuery,
+          })}
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+        >
+          <title>{"Type '/' to Search"}</title>
+          <rect
+            x=".5"
+            y=".5"
+            width="23"
+            height="23"
+            rx=".5"
+            stroke="var(--gray-3)"
+          />
+          <path d="M9 18l6-12" stroke="var(--gray-3)" strokeWidth="1.5" />
+        </svg>
       </form>
     </div>
   )

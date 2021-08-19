@@ -3,6 +3,8 @@ import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import Hits from './hits'
 import SearchBox, { SearchBoxElement } from './search-box'
 import SearchProvider, { useSearch } from './provider'
+import VisuallyHidden from '@reach/visually-hidden'
+import s from './style.module.css'
 
 //  HTML `id`s used for aria attributes
 export const SEARCH_BOX_LABEL_ID = 'search-box-label'
@@ -57,16 +59,16 @@ function Search({
     cssVars['--callout-height'] = 'var(--callout-max-height)'
 
   return (
-    <div className="g-search" style={cssVars}>
+    <div className={s.root} style={cssVars}>
       <InstantSearch indexName={indexName} searchClient={client} refresh>
         <Configure distinct={1} hitsPerPage={25} clickAnalytics />
-        <label
+        <VisuallyHidden
+          as="label"
           id={SEARCH_BOX_LABEL_ID}
           htmlFor={SEARCH_BOX_ID}
-          className="visually-hidden"
         >
           {placeholder}
-        </label>
+        </VisuallyHidden>
         <SearchBox
           {...{
             handleEscape,
