@@ -67,7 +67,7 @@
     "upgrade:base-deps": "npm add @hashicorp/{mktg-{logos,global-styles},nextjs-scripts}@latest",
     "prepare": "simple-git-hooks",
     "storybook": "start-storybook -p 6006",
-    "build": "build-storybook -o ./.next"
+    "build-storybook": "build-storybook"
   },
   "simple-git-hooks": {
     "pre-commit": "npx next-hashicorp precommit"
