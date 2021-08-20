@@ -5,7 +5,10 @@ import useProductMeta, {
 import HashiHead from '@hashicorp/react-head'
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'
-import generateDefaultPackageManagers from './package-managers'
+import {
+  generateDefaultPackageManagers,
+  generateEnterprisePackageManagers,
+} from './package-managers'
 import {
   sortPlatforms,
   sortAndFilterReleases,
@@ -72,7 +75,7 @@ export default function ProductDownloadsPage({
   // NOTE: enterprise releases do not currently work with package managers. according to rel-eng,
   // this feature will be added in august 2021
   let packageManagers = enterpriseMode
-    ? []
+    ? generateEnterprisePackageManagers(slug)
     : generateDefaultPackageManagers(slug)
   const overrides = [...packageManagerOverrides]
   if (overrides) {
