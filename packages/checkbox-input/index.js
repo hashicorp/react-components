@@ -1,43 +1,47 @@
 import React from 'react'
 import { v1 as uuidv1 } from 'uuid'
+import s from './style.module.css'
+import classNames from 'classnames'
 
-function CheckboxInput(props) {
-  //  `field` and `form` props come from Formik
+/**
+ * A basic checkbox and label that allow the user to
+ * control a `<input type="checkbox" />` element.
+ */
+function CheckboxInput({
+  label,
+  theme = { background: 'light' },
+  field,
+  form,
+}) {
+  //  `field` and `form` props typically ome from Formik,
+  // though you can also provide them without Formik.
   //  https://jaredpalmer.com/formik/docs/api/field
-  const { label, theme, field, form } = props
   const error = form.touched[field.name] && form.errors[field.name]
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = 'u' + uuidv1()
+
   return (
-    <div className="g-checkbox-input" data-theme-bg={theme.background}>
-      <div className="wrapper">
-        <span className="checkbox">
+    <div
+      className={classNames(s.root, s[`background-${theme.background}`], {
+        [s.hasError]: Boolean(error),
+      })}
+    >
+      <div className={s.wrapper}>
+        <span className={s.checkbox}>
           {field.value && <SvgrCheckmark />}
-          <input
-            id={inputId}
-            type="checkbox"
-            data-has-error={(!!error).toString()}
-            {...field}
-          />
+          <input id={inputId} type="checkbox" {...field} />
         </span>
 
         {label && (
-          <label htmlFor={inputId}>
-            <span
-              className="g-type-body-small"
-              dangerouslySetInnerHTML={{ __html: label }}
-            />
+          <label htmlFor={inputId} className={s.label}>
+            <span dangerouslySetInnerHTML={{ __html: label }} />
           </label>
         )}
       </div>
-      {error && <div className="g-type-body-small error">{error}</div>}
+      {error && <div className={s.errorText}>{error}</div>}
     </div>
   )
-}
-
-CheckboxInput.defaultProps = {
-  theme: { background: 'light' },
 }
 
 const SvgrCheckmark = (props) => (

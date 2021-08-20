@@ -1,0 +1,96 @@
+.root {
+  --checkbox-border-color: var(--gray-5);
+  --checkbox-border-hover: var(--brand);
+  --checkbox-border-checked: var(--brand);
+  --checkbox-background: var(--white);
+  --error-text-color: var(--danger);
+  --label-text-color: var(--gray-2);
+  --label-link-color: var(--brand-link);
+  --label-link-decoration: none;
+
+  &.background-dark {
+    --checkbox-border-color: var(--gray-1);
+    --checkbox-background: var(--gray-2);
+    --label-text-color: var(--gray-5);
+    --label-link-color: var(--brand-link-on-dark);
+  }
+
+  &.background-brand {
+    --checkbox-border-hover: var(--gray-5);
+    --checkbox-border-checked: rgba(255, 255, 255, 0.25);
+    --label-text-color: var(--brand-secondary);
+    --label-link-color: var(--white);
+    --label-link-decoration: underline;
+    --error-text-color: var(--danger-l1);
+  }
+
+  &.hasError {
+    --checkbox-border-color: var(--danger);
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.checkbox {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+  margin-right: 12px;
+
+  & input[type='checkbox'] {
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    border: 1px solid;
+    border-color: var(--checkbox-border-color);
+    background: var(--checkbox-background);
+    border-radius: 2px;
+    transition: border 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--checkbox-border-hover);
+    }
+
+    &:checked {
+      border-color: var(--checkbox-border-checked);
+      background-color: var(--brand);
+    }
+  }
+
+  & svg {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    pointer-events: none;
+    width: 12px;
+    height: 12px;
+    & path {
+      fill: var(--white);
+    }
+  }
+}
+
+.label {
+  composes: g-type-body-small from global;
+  margin-top: -4px;
+  color: var(--label-text-color);
+  cursor: pointer;
+  & a {
+    color: var(--label-link-color);
+    text-decoration: var(--label-link-decoration);
+  }
+}
+
+.errorText {
+  composes: g-type-body-small from global;
+  color: var(--error-text-color);
+  line-height: 1.4;
+  margin-top: 4px;
+}
