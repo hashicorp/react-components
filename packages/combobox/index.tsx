@@ -19,11 +19,9 @@ export interface ComboboxProps {
   renderOption?: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
-  inputProps: Optional<ComboboxInputProps, 'onChange'>
+  inputProps: ComboboxInputProps
   invalidInputValue?: boolean
 }
-
-type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>
 
 type ComboboxOptionValue = string
 
@@ -37,7 +35,7 @@ export default function Combobox({
   renderOption,
   invalidInputValue,
 }: ComboboxProps) {
-  const { onChange: onInputChange, onBlur: onInputBlur } = inputProps || {}
+  const { onChange: onInputChange } = inputProps || {}
 
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
@@ -59,7 +57,6 @@ export default function Combobox({
       <ComboboxInput
         {...inputProps}
         onChange={handleInputValueChange}
-        onBlur={onInputBlur}
         data-has-error={invalidInputValue ?? false}
       />
       {results?.length > 0 ? (
@@ -87,9 +84,10 @@ export interface OptionMatchParam {
 }
 
 export function useOptionMatch({ term, options }: OptionMatchParam) {
-  const filteredOptions = useMemo(() => filterOptions({ term, options }), [
-    term,
-  ])
+  const filteredOptions = useMemo(
+    () => filterOptions({ term, options }),
+    [term]
+  )
   return filteredOptions.length !== 0 ? filteredOptions : options // Return all options if the filtered list is still empty
 }
 

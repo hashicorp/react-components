@@ -53,7 +53,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
   ReachComboboxInputProps
 export interface ComboboxInputProps extends InputProps {
   className?: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
 }
 

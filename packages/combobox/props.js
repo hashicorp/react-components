@@ -17,7 +17,7 @@ module.exports = {
   inputProps: {
     type: 'object',
     description:
-      "Props passed to the combobox input, props listed below are not an exhaustive list, conforms to React's InputHTMLAttributes",
+      'Props passed to the combobox input, props listed below are not an exhaustive list, conforms to <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts" target="_blank"  rel="noopener noreferrer">React\'s InputHTMLAttributes</a>',
     properties: {
       onChange: {
         type: 'function',
