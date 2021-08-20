@@ -4,6 +4,8 @@ import StatusBar from './StatusBar'
 import Button from '@hashicorp/react-button'
 import Image from '@hashicorp/react-image'
 import fragment from './fragment.graphql'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 class CaseStudySlider extends Component {
   constructor(props) {
@@ -141,16 +143,16 @@ class CaseStudySlider extends Component {
     return (
       <div className="g-case-study-slider">
         {!single && (
-          <div
-            className={`logo-bar-container${numFrames === 2 ? ' double' : ''}`}
-          >
+          <div className={s.logoBarContainer}>
             {caseStudies.map(({ company }, i) => (
               <div
-                className="logo-bar"
+                className={classNames(s.logoBar, {
+                  [s.double]: numFrames === 2,
+                })}
                 onClick={() => this.handleClick(i)}
                 key={company.monochromeLogo.url}
               >
-                <div className="logo-container">
+                <div className={s.logoContainer}>
                   <Logo dark={dark} image={company} />
                 </div>
                 <StatusBar dark={dark} active={active === i} timing={timing} />
@@ -158,55 +160,58 @@ class CaseStudySlider extends Component {
             ))}
           </div>
         )}
-        <div className="case-study-container">
-          <div className="slider-container" style={containerStyle}>
+        <div className={s.caseStudyContainer}>
+          <div className={s.sliderContainer} style={containerStyle}>
             {/* React pushes a null ref the first time, so we're filtering those out. */}
             {/* see https://reactjs.org/docs/refs-and-the-dom.html#caveats-with-callback-refs */}
             {caseStudies.map((caseStudy) => {
               const caseStudyLink =
                 caseStudy.caseStudyLink ||
                 `/resources/${caseStudy.caseStudyResource.slug}`
+              const caseStudyImage =
+                caseStudy.caseStudyImage || caseStudy.caseStudyResource.image
               return (
                 <div
-                  className={`slider-frame${single ? ' single' : ''}`}
                   style={frameStyle}
                   ref={(el) => el && this.frames.push(el)}
                   key={caseStudy.headline}
                 >
-                  <div className="case-study">
-                    <div className="feature-image">
+                  <div
+                    className={classNames(s.caseStudy, { [s.single]: single })}
+                  >
+                    <div className={s.featureImage}>
                       <a href={caseStudyLink}>
                         <Image
-                          {...(caseStudy.caseStudyImage ||
-                            caseStudy.caseStudyResource.image)}
+                          {...caseStudyImage}
+                          alt={caseStudyImage.alt || ''}
                           aspectRatio={single ? [16, 10, 500] : [16, 9, 500]}
                         />
                       </a>
                     </div>
-                    <div
-                      className={`feature-content g-type-body ${
-                        dark ? 'dark' : 'light'
-                      }`}
-                    >
+                    <div className={s.featureContent}>
                       {single && (
-                        <div className="single-logo">
+                        <div className={s.singleLogo}>
                           <Logo dark={dark} image={caseStudy.company} />
                         </div>
                       )}
                       <h3
-                        className="g-type-display-4"
+                        className={classNames(s.contentHeading, {
+                          [s.dark]: dark,
+                        })}
                         dangerouslySetInnerHTML={{
                           __html: caseStudy.headline,
                         }}
                       />
                       <p
-                        className="g-type-body"
+                        className={classNames(s.contentBody, {
+                          [s.dark]: dark,
+                        })}
                         dangerouslySetInnerHTML={{
                           __html: caseStudy.description,
                         }}
                       />
                       <Button
-                        className="g-btn"
+                        className={s.button}
                         theme={{
                           variant: 'secondary',
                           background: dark ? 'dark' : 'light',
