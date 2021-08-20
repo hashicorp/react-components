@@ -8,7 +8,6 @@ function BgColor({ color }) {
         right: 0,
         bottom: 0,
         background: color,
-        zIndex: -1,
       }}
     />
   )

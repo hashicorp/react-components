@@ -11,7 +11,7 @@ export default {
     (Story, { args }) => (
       <div style={{ position: 'relative' }}>
         <BgColor color={args.dark ? 'black' : 'white'} />
-        {Story()}
+        <div style={{ position: 'relative' }}>{Story()}</div>
       </div>
     ),
   ],

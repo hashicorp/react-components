@@ -44,36 +44,38 @@ export const Themes: ComponentStory<typeof Button> = (args) => {
     <>
       {backgrounds.map((background) => {
         return (
-          <div
-            style={{
-              display: 'grid',
-              gap: '1rem',
-              gridTemplateColumns: 'repeat(5, max-content)',
-              position: 'relative',
-              padding: '1rem',
-            }}
-          >
+          <div style={{ position: 'relative' }}>
             <BgColor color={background === 'light' ? 'white' : 'black'} />
-            {products.map((product) => {
-              return (
-                <>
-                  {variants.map((variant) => {
-                    return (
-                      <Button
-                        {...args}
-                        theme={
-                          {
-                            brand: product,
-                            background,
-                            variant,
-                          } as ButtonTheme
-                        }
-                      />
-                    )
-                  })}
-                </>
-              )
-            })}
+            <div
+              style={{
+                display: 'grid',
+                gap: '1rem',
+                gridTemplateColumns: 'repeat(5, max-content)',
+                position: 'relative',
+                padding: '1rem',
+              }}
+            >
+              {products.map((product) => {
+                return (
+                  <>
+                    {variants.map((variant) => {
+                      return (
+                        <Button
+                          {...args}
+                          theme={
+                            {
+                              brand: product,
+                              background,
+                              variant,
+                            } as ButtonTheme
+                          }
+                        />
+                      )
+                    })}
+                  </>
+                )
+              })}
+            </div>
           </div>
         )
       })}

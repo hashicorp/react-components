@@ -37,7 +37,7 @@ Basic.decorators = [
   (Story, { args }) => (
     <div style={{ position: 'relative', padding: '1rem' }}>
       <BgColor color={args.textColor === 'dark' ? 'white' : 'black'} />
-      {Story()}
+      <div style={{ position: 'relative' }}>{Story()}</div>
     </div>
   ),
 ]
@@ -54,7 +54,7 @@ export const States: ComponentStory<typeof Alert> = (args) => {
             <BgColor color={textColor === 'dark' ? 'white' : 'black'} />
             {states.map((state) => {
               return (
-                <div>
+                <div style={{ position: 'relative' }}>
                   <Alert
                     {...args}
                     textColor={textColor as 'dark' | 'light'}
@@ -97,7 +97,7 @@ export const Products: ComponentStory<typeof Alert> = (args) => {
             <BgColor color={textColor === 'dark' ? 'white' : 'black'} />
             {products.map((product) => {
               return (
-                <div>
+                <div style={{ position: 'relative' }}>
                   <Alert
                     {...args}
                     textColor={textColor as 'dark' | 'light'}

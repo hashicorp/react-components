@@ -109,7 +109,10 @@ export const StickerSheet: ComponentStory<typeof CheckboxInput> = (args) => {
                 variedArgs.field?.checked
               )
               return (
-                <div key={idx} style={{ margin: '1rem 0' }}>
+                <div
+                  key={idx}
+                  style={{ position: 'relative', margin: '1rem 0' }}
+                >
                   <CheckboxInput
                     {...args}
                     {...variedArgs}
