@@ -1,6 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Callouts from '../../../packages/callouts'
+import fixtures from './callouts-fixtures'
 
 export default {
   title: 'Components/Callouts',
@@ -11,18 +12,29 @@ const Template: ComponentStory<typeof Callouts> = (args) => {
   return <Callouts {...args} />
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
-  heading: 'Example Main Heading',
-  layout: 'two-up',
-  items: [
-    {
-      heading: 'Example Item Heading',
-      content: 'Sed posuere consectetur est at lobortis.',
-    },
-    {
-      heading: 'Example Item Heading 2',
-      content: 'Sed posuere consectetur est at lobortis.',
-    },
-  ],
-}
+export const TwoUp = Template.bind({})
+TwoUp.args = fixtures.TwoUp
+
+export const TwoUpPlainIcons = Template.bind({})
+TwoUpPlainIcons.args = fixtures.TwoUpPlainIcons
+
+export const ThreeUp = Template.bind({})
+ThreeUp.args = fixtures.ThreeUp
+
+export const ThreeUpWithHeading = Template.bind({})
+ThreeUpWithHeading.args = fixtures.ThreeUpWithHeading
+
+export const ThreeUpDarkIcons = Template.bind({})
+ThreeUpDarkIcons.args = fixtures.ThreeUpDarkIcons
+
+export const ThreeUpDarkText = Template.bind({})
+ThreeUpDarkText.args = fixtures.ThreeUpDarkText
+
+export const FourUp = Template.bind({})
+FourUp.args = fixtures.FourUp
+
+export const SixUp = Template.bind({})
+SixUp.args = fixtures.SixUp
+
+export const WithCustomContent = Template.bind({})
+WithCustomContent.args = fixtures.WithCustomContent
