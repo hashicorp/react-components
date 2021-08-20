@@ -28,6 +28,6 @@ Please remove `onInputChange` and `onInputBlur` and use `inputProps` as an objec
 +         onChange: handleInputChange,
 +         onBlur: validate,
 +         name: 'country',
-        }}
++       }}
         options={COUNTRY_OPTIONS}
 ```
