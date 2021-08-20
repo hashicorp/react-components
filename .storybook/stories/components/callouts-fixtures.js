@@ -213,7 +213,7 @@ const ThreeUpWithHeading = {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'var(--brand-l3)',
+            background: 'var(--vagrant-secondary)',
           }}
           dangerouslySetInnerHTML={{
             __html:
@@ -239,7 +239,7 @@ const ThreeUpWithHeading = {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'var(--brand-l3)',
+            background: 'var(--vagrant-secondary)',
           }}
           dangerouslySetInnerHTML={{
             __html:
@@ -265,7 +265,7 @@ const ThreeUpWithHeading = {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'var(--brand-l3)',
+            background: 'var(--vagrant-secondary)',
           }}
           dangerouslySetInnerHTML={{
             __html:
