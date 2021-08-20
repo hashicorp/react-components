@@ -1,3 +1,5 @@
+import s from './banner.module.css'
+
 export default function ConsentBanner({
   privacyPolicyLink,
   cookiePolicyLink,
@@ -5,15 +7,13 @@ export default function ConsentBanner({
   onAccept,
 }) {
   return (
-    <div
-      className="g-consent-manager-banner flex-centered-row"
-      data-testid="consent-banner"
-    >
+    <div className={s.root} data-testid="consent-banner">
       <span>
         We use cookies & other similar technology to collect data to improve
         your experience on our site, as described in our{' '}
         <a
           href={privacyPolicyLink}
+          className={s.link}
           target="_blank"
           rel="noopener noreferrer"
           data-testid="privacy-policy"
@@ -23,6 +23,7 @@ export default function ConsentBanner({
         and{' '}
         <a
           href={cookiePolicyLink}
+          className={s.link}
           target="_blank"
           rel="noopener noreferrer"
           data-testid="cookie-policy"
@@ -33,13 +34,17 @@ export default function ConsentBanner({
       </span>
       <div>
         <button
-          className="manage-link"
+          className={s.manageButton}
           onClick={onManagePreferences}
           data-testid="manage-preferences"
         >
           Manage Preferences
         </button>
-        <button onClick={onAccept} data-testid="accept">
+        <button
+          className={s.acceptButton}
+          onClick={onAccept}
+          data-testid="accept"
+        >
           Accept
         </button>
       </div>
