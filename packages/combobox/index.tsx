@@ -7,6 +7,7 @@ import {
   ComboboxOptionText,
   ComboboxBase,
   ComboboxButton,
+  ComboboxInputProps,
 } from './primitives'
 import { ComboboxOption as ReachComboboxOption } from '@reach/combobox'
 import filterOptions from './utils/filter-options'
@@ -18,8 +19,7 @@ export interface ComboboxProps {
   renderOption?: (option: ComboboxOptionValue) => ReactNode
   options: ComboboxOptionValue[]
   openOnFocus?: boolean
-  onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onInputBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
+  inputProps: ComboboxInputProps
   invalidInputValue?: boolean
 }
 
@@ -31,17 +31,18 @@ export default function Combobox({
   onSelect,
   options,
   openOnFocus = true,
-  onInputChange,
-  onInputBlur,
+  inputProps,
   renderOption,
   invalidInputValue,
 }: ComboboxProps) {
+  const { onChange: onInputChange } = inputProps || {}
+
   const [term, setTerm] = useState('')
   const results = useOptionMatch({ term, options })
   const handleInputValueChange = useCallback(
     (e) => {
       setTerm(e.currentTarget.value)
-      if (onInputChange) return onInputChange(e)
+      if (typeof onInputChange === 'function') return onInputChange(e)
     },
     [onInputChange]
   )
@@ -54,8 +55,8 @@ export default function Combobox({
     >
       <ComboboxButton label={buttonLabel} />
       <ComboboxInput
+        {...inputProps}
         onChange={handleInputValueChange}
-        onBlur={onInputBlur}
         data-has-error={invalidInputValue ?? false}
       />
       {results?.length > 0 ? (
@@ -83,9 +84,10 @@ export interface OptionMatchParam {
 }
 
 export function useOptionMatch({ term, options }: OptionMatchParam) {
-  const filteredOptions = useMemo(() => filterOptions({ term, options }), [
-    term,
-  ])
+  const filteredOptions = useMemo(
+    () => filterOptions({ term, options }),
+    [term]
+  )
   return filteredOptions.length !== 0 ? filteredOptions : options // Return all options if the filtered list is still empty
 }
 
@@ -96,4 +98,5 @@ export {
   ComboboxOption,
   ComboboxOptionText,
   ComboboxBase,
+  ComboboxButton,
 }
