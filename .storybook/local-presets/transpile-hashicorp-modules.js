@@ -6,6 +6,7 @@ const transpileList = [
   '@hashicorp/react-inline-svg',
   '@hashicorp/react-button',
   '@hashicorp/react-toggle',
+  '@hashicorp/react-image',
 ]
 
 module.exports = {
