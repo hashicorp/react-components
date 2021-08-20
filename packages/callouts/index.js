@@ -1,5 +1,7 @@
 import useProductMeta from '@hashicorp/platform-product-meta'
 import CalloutItem from './partials/callout-item/index.js'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 function Callouts({
   heading,
@@ -15,35 +17,41 @@ function Callouts({
 
   const { slug } = useProductMeta(product)
   return (
-    <section className={`g-callouts theme-${theme}`}>
+    <section className={classNames(s.root, s[`theme-${theme}`])}>
       <div className="g-grid-container">
         {(heading || subheading) && (
-          <div className="headings" data-testid="headings">
+          <div className={s.headings} data-testid="headings">
             {heading && (
               <h2
-                className={`g-type-display-2 theme-${theme} ${
-                  centerHeading ? 'centered' : ''
-                }`}
+                className={classNames(s.heading, s[`theme-${theme}`], {
+                  [s.centerHeading]: centerHeading,
+                })}
               >
                 {heading}
               </h2>
             )}
             {subheading && (
               <p
-                className={`g-type-body-large theme-${theme} ${
-                  centerHeading ? 'centered' : ''
-                }`}
+                className={classNames(s.subHeading, s[`theme-${theme}`], {
+                  [s.centerHeading]: centerHeading,
+                })}
               >
                 {subheading}
               </p>
             )}
           </div>
         )}
-        <div className={`items layout-${layout}`}>
+        <div className={classNames(s.items, s[`layout-${layout}`])}>
           {items.map((item, stableIdx) => {
             return (
-              // eslint-disable-next-line react/no-array-index-key
-              <div key={stableIdx} className="callout-item-wrapper">
+              <div
+                // eslint-disable-next-line react/no-array-index-key
+                key={stableIdx}
+                className={classNames(
+                  s.calloutItemWrapper,
+                  s[`layout-${layout}`]
+                )}
+              >
                 <CalloutItem
                   icon={item.icon}
                   heading={item.heading}
