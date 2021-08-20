@@ -1,6 +1,7 @@
 import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
+import s from './style.module.css'
 
 export default function ContentCta({
   heading,
@@ -21,26 +22,27 @@ export default function ContentCta({
 
   return (
     <div
-      className={classNames('g-content-cta', themeClass, {
-        hasTheme: themeClass,
+      className={classNames(s.root, themeClass, {
+        [s.hasTheme]: themeClass,
       })}
     >
-      <h4 data-testid="heading" className="g-type-display-4">
+      <h4 data-testid="heading" className={s.heading}>
         {heading}
       </h4>
 
       {isContentString ? (
-        <p data-testid="content" className="g-type-body">
+        <p data-testid="content" className={s.content}>
           {content}
         </p>
       ) : isContentRenderProp ? (
         content()
       ) : null}
       {hasLinks && (
-        <div data-testid="links" className="links">
+        <div data-testid="links" className={s.links}>
           {links.map(({ title, url }, i) => (
             <Button
               key={title}
+              className={i === 0 ? s.firstLink : ''}
               title={title}
               url={url}
               theme={{
