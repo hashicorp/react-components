@@ -1,5 +1,7 @@
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Button from '@hashicorp/react-button'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 export default function CalloutItem({
   icon,
@@ -24,17 +26,26 @@ export default function CalloutItem({
       ? () => <InlineSvg src={icon} />
       : false
   return (
-    <div className={`callout-item layout-${layout} theme-${theme}`}>
+    <div
+      className={classNames(s.root, s[`layout-${layout}`], s[`theme-${theme}`])}
+    >
       {renderIcon && (
-        <div data-testid="icon" className={`icon layout-${layout}`}>
+        <div
+          data-testid="icon"
+          className={classNames(s.icon, s[`layout-${layout}`])}
+        >
           {renderIcon({ theme, product })}
         </div>
       )}
 
-      <div className="text-and-links">
+      <div>
         {heading && (
           <h3
-            className={`heading g-type-display-5 layout-${layout} theme-${theme}`}
+            className={classNames(
+              s.heading,
+              s[`layout-${layout}`],
+              s[`theme-${theme}`]
+            )}
             data-testid="heading"
           >
             {heading}
@@ -42,7 +53,7 @@ export default function CalloutItem({
         )}
         {isContentString ? (
           <p
-            className={`content g-type-body theme-${theme}`}
+            className={classNames(s.content, s[`theme-${theme}`])}
             data-testid="content"
           >
             {content}
@@ -52,7 +63,7 @@ export default function CalloutItem({
         ) : null}
 
         {link && (
-          <div className="links" data-testid="links">
+          <div className={s.links} data-testid="links">
             <Button
               title={link.text}
               url={link.url}
