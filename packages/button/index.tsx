@@ -35,6 +35,7 @@ interface ButtonProps {
   linkType?: LinkType
   icon?: IconObject
   size?: Size
+  [x: string]: any
 }
 
 function Button({
