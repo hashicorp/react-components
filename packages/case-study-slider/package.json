@@ -5,9 +5,8 @@
   "author": "HashiCorp",
   "contributors": ["Mike Wickett"],
   "dependencies": {
-    "@hashicorp/react-button": "^5.3.1",
-    "@hashicorp/react-image": "^4.0.1",
-    "classnames": "^2.3.1"
+    "@hashicorp/react-featured-slider": "^4.1.4",
+    "@hashicorp/react-image": "^4.0.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
