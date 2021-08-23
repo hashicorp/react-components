@@ -1,21 +1,28 @@
 import useProductMeta from '@hashicorp/platform-product-meta'
 import Button from '@hashicorp/react-button'
+import s from './style.module.css'
+import classNames from 'classnames'
 
-export default function LearnCallout({ headline, product, background, items }) {
+export default function LearnCallout({
+  className,
+  headline,
+  product,
+  background,
+  items,
+}) {
   const { themeClass, slug } = useProductMeta(product)
   return (
     <div
-      className={`g-learn-callout ${themeClass || 'brand-neutral'}`}
+      className={classNames(s.root, className, themeClass || 'brand-neutral')}
       style={{ backgroundImage: background ? `url('${background}')` : 'none' }}
     >
-      <div className="g-grid-container learn-container">
-        <div className="column-container">
-          {/* need this wrapper to flex center the .column-content */}
-          <div>
-            <div className="column-content">
-              <h2 className="g-type-display-2">{headline}</h2>
+      <div className={s.learnContainer}>
+        <div className={s.columnContainer}>
+          <div className={s.columnFlexCenterWrapper}>
+            <div>
+              <h2 className={s.headline}>{headline}</h2>
               <Button
-                className="desktop-button"
+                className={s.desktopButton}
                 title="Explore HashiCorp Learn"
                 url={`https://learn.hashicorp.com/${slug}`}
                 linkType="outbound"
@@ -26,22 +33,21 @@ export default function LearnCallout({ headline, product, background, items }) {
           {items.map((item) => {
             return (
               <a
+                className={s.itemLink}
                 key={item.title}
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="course">
-                  <div className="image">
-                    <div className="g-type-label-strong time">{item.time}</div>
+                <div className={s.course}>
+                  <div className={s.courseImage}>
+                    <div className={s.courseTime}>{item.time}</div>
                     <img src={item.image} alt={item.title} />
                   </div>
-                  <div className="content">
+                  <div className={s.courseContent}>
                     <div>
-                      <label className="g-type-label-strong category">
-                        {item.category}
-                      </label>
-                      <h4 className="g-type-display-4">{item.title}</h4>
+                      <label className={s.courseLabel}>{item.category}</label>
+                      <h4 className={s.courseHeading}>{item.title}</h4>
                     </div>
                   </div>
                 </div>
@@ -50,7 +56,7 @@ export default function LearnCallout({ headline, product, background, items }) {
           })}
         </div>
         <Button
-          className="mobile-button"
+          className={s.mobileButton}
           title="Explore HashiCorp Learn"
           url={`https://learn.hashicorp.com/${slug}`}
           linkType="outbound"
