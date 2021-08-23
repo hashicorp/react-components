@@ -1,7 +1,9 @@
 import { Component } from 'react'
-import StatusBar from './StatusBar'
+import LogoBar from './partials/logo-bar'
 import Button from '@hashicorp/react-button'
 import Image from '@hashicorp/react-image'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 class FeaturedSlider extends Component {
   constructor(props) {
@@ -112,7 +114,7 @@ class FeaturedSlider extends Component {
   render() {
     // Clear our frames array so we don't keep old refs around
     this.frames = []
-    const { heading, theme, features } = this.props
+    const { className, theme, features } = this.props
     const { measure, active, timing, numFrames, containerWidth } = this.state
 
     const single = numFrames === 1
@@ -133,99 +135,90 @@ class FeaturedSlider extends Component {
       measure || single ? {} : { float: 'left', width: `${100 / numFrames}%` }
 
     return (
-      <section
-        className={`g-featured-slider-section theme-${theme ? theme : 'dark'}`}
-      >
-        <div className="g-grid-container">
-          <h2 className="g-type-display-2">{heading}</h2>
-
-          <div className="g-featured-slider">
-            {!single && (
+      <div className={className}>
+        {!single && (
+          <LogoBar
+            features={features}
+            numFrames={numFrames}
+            handleClick={this.handleClick}
+            dark={theme === 'dark'}
+            active={active}
+            timing={timing}
+          />
+        )}
+        <div className={s.featureContainer}>
+          <div className={s.sliderContainer} style={containerStyle}>
+            {/* React pushes a null ref the first time, so we're filtering those out. */}
+            {/* see https://reactjs.org/docs/refs-and-the-dom.html#caveats-with-callback-refs */}
+            {features.map((feature) => (
               <div
-                className={`logo-bar-container${
-                  numFrames === 2 ? ' double' : ''
-                }`}
+                style={frameStyle}
+                ref={(el) => el && this.frames.push(el)}
+                key={feature.heading}
               >
-                {features.map((feature, i) => (
-                  <div
-                    className="logo-bar"
-                    onClick={() => this.handleClick(i)}
-                    key={feature.logo.url}
-                  >
-                    <div className="logo-container">
-                      <Image url={feature.logo.url} alt={feature.logo.alt} />
-                    </div>
-                    <StatusBar
-                      theme={theme}
-                      active={active === i}
-                      timing={timing}
+                <div className={classNames(s.feature, { [s.single]: single })}>
+                  <div className={s.featureImage}>
+                    <a href={feature.link.url}>
+                      <Image
+                        url={feature.image.url}
+                        alt={feature.image.alt}
+                        aspectRatio={single ? [16, 10, 500] : [16, 9, 500]}
+                      />
+                    </a>
+                  </div>
+                  <div className={s.featureContent}>
+                    {single && (
+                      <div className={s.singleLogo}>
+                        <Image url={feature.logo.url} alt={feature.logo.alt} />
+                      </div>
+                    )}
+                    <h3
+                      className={classNames(s.contentHeading, {
+                        [s.dark]: theme === 'dark',
+                      })}
+                      dangerouslySetInnerHTML={{
+                        __html: feature.heading,
+                      }}
+                    />
+                    <p
+                      className={classNames(s.contentBody, {
+                        [s.dark]: theme === 'dark',
+                      })}
+                      dangerouslySetInnerHTML={{
+                        __html: feature.content,
+                      }}
+                    />
+                    <Button
+                      className={s.button}
+                      theme={{
+                        variant: 'secondary',
+                        background: theme,
+                      }}
+                      linkType={feature.link.type}
+                      title={feature.link.text}
+                      url={feature.link.url}
                     />
                   </div>
-                ))}
+                </div>
               </div>
-            )}
-            <div className="feature-container">
-              <div className="slider-container" style={containerStyle}>
-                {/* React pushes a null ref the first time, so we're filtering those out. */}
-                {/* see https://reactjs.org/docs/refs-and-the-dom.html#caveats-with-callback-refs */}
-                {features.map((feature) => (
-                  <div
-                    className={`slider-frame${single ? ' single' : ''}`}
-                    style={frameStyle}
-                    ref={(el) => el && this.frames.push(el)}
-                    key={feature.heading}
-                  >
-                    <div className="feature">
-                      <div className="feature-image">
-                        <a href={feature.link.url}>
-                          <Image
-                            url={feature.image.url}
-                            alt={feature.image.alt}
-                            aspectRatio={single ? [16, 10, 500] : [16, 9, 500]}
-                          />
-                        </a>
-                      </div>
-                      <div className="feature-content g-type-body">
-                        {single && (
-                          <div className="single-logo">
-                            <Image
-                              url={feature.logo.url}
-                              alt={feature.logo.alt}
-                            />
-                          </div>
-                        )}
-                        <h3
-                          className="g-type-display-4"
-                          dangerouslySetInnerHTML={{
-                            __html: feature.heading,
-                          }}
-                        />
-                        <p
-                          className="g-type-body"
-                          dangerouslySetInnerHTML={{
-                            __html: feature.content,
-                          }}
-                        />
-                        <Button
-                          theme={{
-                            variant: 'secondary',
-                            background: theme,
-                          }}
-                          linkType={feature.link.type}
-                          title={feature.link.text}
-                          url={feature.link.url}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
     )
   }
 }
 
-export default FeaturedSlider
+function FeaturedSliderSection({ theme, heading, className, ...restProps }) {
+  return (
+    <section className={classNames(s.sectionRoot, className, s[theme])}>
+      {heading ? (
+        <h2 className={classNames(s.sectionHeading, s[theme])}>{heading}</h2>
+      ) : null}
+      <FeaturedSlider theme={theme} {...restProps} />
+    </section>
+  )
+}
+
+export { FeaturedSlider }
+export default FeaturedSliderSection
