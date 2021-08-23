@@ -15,7 +15,6 @@ export default {
       </div>
     ),
   ],
-  args: fixtures.TwoUp,
 } as ComponentMeta<typeof CaseStudySlider>
 
 const Template: ComponentStory<typeof CaseStudySlider> = (args) => {
@@ -23,12 +22,14 @@ const Template: ComponentStory<typeof CaseStudySlider> = (args) => {
 }
 
 export const LightTheme = Template.bind({})
+LightTheme.args = fixtures.TwoUp
 
 export const DarkTheme = Template.bind({})
-DarkTheme.args = { dark: true }
+DarkTheme.args = { ...fixtures.TwoUp, dark: true }
 
 export const SingleLight = Template.bind({})
 SingleLight.args = {
+  ...fixtures.TwoUp,
   data: {
     caseStudies: [fixtures.TwoUp.data.caseStudies[1]],
   },
@@ -36,8 +37,15 @@ SingleLight.args = {
 
 export const SingleDark = Template.bind({})
 SingleDark.args = {
+  ...fixtures.TwoUp,
   dark: true,
   data: {
     caseStudies: [fixtures.TwoUp.data.caseStudies[1]],
   },
 }
+
+export const ThreeUp = Template.bind({})
+ThreeUp.args = fixtures.ThreeUp
+
+export const ThreeUpDark = Template.bind({})
+ThreeUpDark.args = { ...fixtures.ThreeUp, dark: true }

@@ -49,6 +49,48 @@ const TwoUp = {
   },
 }
 
+const ThreeUp = {
+  data: {
+    caseStudies: [
+      TwoUp.data.caseStudies[0],
+      TwoUp.data.caseStudies[1],
+      {
+        company: {
+          monochromeLogo: {
+            url: 'https://www.datocms-assets.com/2885/1535495419-black.png',
+            alt: 'Logo dark',
+            format: 'png',
+          },
+          whiteLogo: {
+            url: 'https://www.datocms-assets.com/2885/1535495424-white.png',
+            alt: 'Logo white',
+            format: 'png',
+          },
+        },
+        headline: 'This is the third case study',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut arcu justo, et convallis lectus. Sed commodo massa eget risus feugiat suscipit. Nulla velit lectus.',
+        caseStudyResource: {
+          slug: 'https://www.hashicorp.com',
+          image: {
+            url:
+              'https://www.datocms-assets.com/2885/1535120026-36755049704aeaabe64ddk.jpg',
+            alt: 'Test image',
+            format: 'jpg',
+          },
+        },
+        caseStudyImage: {
+          url:
+            'https://www.datocms-assets.com/2885/1535120026-36755049704aeaabe64ddk.jpg',
+          alt: 'Case Study image override',
+          format: 'jpg',
+        },
+      },
+    ],
+  },
+}
+
 export default {
   TwoUp,
+  ThreeUp,
 }
