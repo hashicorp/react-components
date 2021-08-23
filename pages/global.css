@@ -3,7 +3,6 @@
 /* global component css imports */
 
 /* these should be moved to css modules */
-@import '../packages/enterprise-alert/style.css';
 @import '../packages/featured-slider/style.css';
 @import '../packages/learn-callout/style.css';
 @import '../packages/logo-grid/style.css';
