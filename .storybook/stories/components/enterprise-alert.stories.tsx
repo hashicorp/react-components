@@ -13,4 +13,17 @@ const Template: ComponentStory<typeof EnterpriseAlert> = (args) => {
 }
 
 export const Basic = Template.bind({})
-Basic.args = fixtures.Basic
+Basic.args = {
+  product: 'terraform',
+}
+
+export const Inline = Template.bind({})
+Inline.args = {
+  product: 'consul',
+  inline: true,
+}
+
+export const CustomContent = Template.bind({})
+CustomContent.args = {
+  children: 'Custom message content',
+}
