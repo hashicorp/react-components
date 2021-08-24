@@ -32,8 +32,8 @@ const Template: ComponentStory<typeof LogoGrid> = (args) => {
 export const Basic = Template.bind({})
 Basic.args = fixtures.Basic
 
-export const WithDetails = Template.bind({})
-WithDetails.args = { ...fixtures.Basic, details: true }
+export const NoDetails = Template.bind({})
+NoDetails.args = { ...fixtures.Basic, details: false }
 
 export const DarkTheme = Template.bind({})
 DarkTheme.args = { ...fixtures.Basic, color: 'white' }

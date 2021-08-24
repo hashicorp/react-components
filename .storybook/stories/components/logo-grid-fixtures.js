@@ -1,4 +1,6 @@
 const Basic = {
+  hashUrl: true,
+  details: true,
   data: [
     {
       name: 'Solo.io',
