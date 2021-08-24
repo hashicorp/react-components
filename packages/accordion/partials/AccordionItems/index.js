@@ -25,11 +25,15 @@ function AccordionItem({ heading, children, isCollapsed, toggleCollapsed }) {
   )
 }
 
-function AccordionItems({ items }) {
+function AccordionItems({ items, className, withTopBorder = true }) {
   const [expandedIdx, setExpandedIdx] = useState(null)
 
   return (
-    <div className={s.root}>
+    <div
+      className={classnames(s.root, className, {
+        [s.withTopBorder]: withTopBorder,
+      })}
+    >
       {items.map((item, stableIdx) => {
         const isCollapsed = stableIdx !== expandedIdx
 
