@@ -125,6 +125,8 @@ function TabTriggers({
             </div>
           </div>
         </div>
+        {/* TODO: Move arrow scrims within a g-grid-container,
+        to ensure they mask the area where tab overflow is happening. */}
         <div
           className={classNames(s.arrow, s.prevArrow, {
             [s.hasOverflow]: hasOverflow,
