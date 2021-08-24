@@ -1,0 +1,80 @@
+.root {
+  --inner-text-color: var(--gray-3);
+  --inner-border-color: transparent;
+  --inner-decoration: none;
+
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (--medium-up) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
+
+    /* With overflow, add
+    a bit of space to ensure tooltips
+    are still easily hover-able */
+    &.hasOverflow {
+      padding-right: 24px;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    --inner-text-color: var(--black);
+  }
+
+  &:focus {
+    --inner-text-color: var(--black);
+    --inner-decoration: underline;
+  }
+
+  &.isActiveTab {
+    --inner-border-color: var(--black);
+    --inner-text-color: var(--black);
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  padding-top: 19px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid;
+  border-color: var(--inner-border-color);
+  color: var(--inner-text-color);
+  transition: color 0.2s;
+  white-space: nowrap;
+  text-decoration: var(--inner-decoration);
+}
+
+.tooltipTrigger {
+  margin-left: 0.5rem;
+  margin-top: 1px;
+  width: 1.125rem;
+
+  & svg {
+    width: 100%;
+  }
+}
+
+.tooltipContent {
+  max-width: 75vw !important;
+  @media (min-width: 380px) {
+    max-width: 350px !important;
+  }
+}

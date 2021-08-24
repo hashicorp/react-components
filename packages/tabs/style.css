@@ -1,29 +1,2 @@
 @import '~@tippyjs/react/node_modules/tippy.js/dist/tippy.css';
 @import '~@tippyjs/react/node_modules/tippy.js/themes/light.css';
-@import './partials/TabTriggers/style.css';
-
-.g-tabs {
-  & .g-tab-triggers .active .inner {
-    border-bottom-color: var(--black);
-  }
-
-  & .content {
-    color: var(--gray-2);
-  }
-}
-
-.g-tabs-full-border {
-  & .g-tab-triggers {
-    border-bottom: 1px solid var(--gray-5);
-
-    & .bottom-border {
-      display: none;
-    }
-  }
-}
-
-.g-tabs-centered {
-  & .tooltip-space-overflow {
-    justify-content: center;
-  }
-}

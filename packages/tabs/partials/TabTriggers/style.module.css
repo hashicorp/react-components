@@ -1,0 +1,169 @@
+.root {
+  background: var(--white);
+  position: relative;
+
+  &.fullWidthBorder {
+    border-bottom: 1px solid var(--gray-5);
+  }
+}
+
+.bottomBorder {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 0;
+  border-bottom: 1px solid var(--gray-5);
+
+  &.forDefault {
+    display: block;
+    &.hasOverflow {
+      display: none;
+    }
+  }
+
+  &.forOverflow {
+    display: none;
+    &.hasOverflow {
+      display: block;
+    }
+  }
+
+  /* If we're using a full-width border,
+     hide this elements border no matter what */
+  &.fullWidthBorder {
+    display: none;
+
+    &.hasOverflow {
+      display: none;
+    }
+  }
+}
+
+.tooltipSpaceOverflow {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-top: -100vw;
+  padding: 100vw 0;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  &.centered {
+    justify-content: center;
+  }
+
+  &.hasOverflow {
+    justify-content: unset;
+  }
+}
+
+.innerWrapper {
+  position: relative;
+  margin-bottom: -1px;
+  z-index: 1;
+}
+
+.inner {
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  min-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  /* Restrict tooltip space overflow */
+  height: 65px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.contentContainer {
+  composes: g-grid-container from global;
+  position: static;
+  flex-grow: 1;
+
+  &.hasOverflow {
+    max-width: none;
+    padding-left: 48px;
+    padding-right: 60px;
+    width: auto;
+  }
+}
+
+.arrow {
+  align-items: center;
+  bottom: 3px;
+  display: none;
+  justify-content: center;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.6s;
+  user-select: none;
+  width: 56px;
+
+  &.hasOverflow {
+    display: flex;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  & svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    & [fill] {
+      fill: var(--gray-3);
+    }
+    & [stroke] {
+      stroke: var(--gray-3);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    & svg {
+      & [fill] {
+        fill: var(--gray-1);
+      }
+      & [stroke] {
+        stroke: var(--gray-1);
+      }
+    }
+  }
+}
+
+.prevArrow {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 45.83%,
+    rgba(255, 255, 255, 0.855769) 59.37%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  & svg {
+    transform: rotate(180deg);
+    margin-right: 20px;
+  }
+}
+
+.nextArrow {
+  right: 0;
+  background: linear-gradient(
+    -90deg,
+    rgba(255, 255, 255, 1) 45.83%,
+    rgba(255, 255, 255, 0.855769) 59.37%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  & svg {
+    margin-left: 20px;
+  }
+}

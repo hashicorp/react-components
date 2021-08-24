@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import classNames from 'classnames'
 import TabTriggers from './partials/TabTriggers/index.js'
 import TabProvider, { useTabGroups } from './provider'
-
+import s from './style.module.css'
 function Tabs({
+  className,
   defaultTabIdx,
   centered,
   fullWidthBorder,
@@ -40,7 +40,7 @@ function Tabs({
         '@hashicorp/react-tabs: The `TabProvider` cannot be accessed. Make sure it wraps the `Tabs` components so Tab Groups can work properly.'
       )
     }
-  }, [])
+  }, [children, groupCtx])
 
   if (!children) {
     process.env.NODE_ENV !== 'production' &&
@@ -51,15 +51,7 @@ function Tabs({
   }
 
   return (
-    <section
-      className={classNames(
-        'g-tabs',
-        {
-          'g-tabs-centered': centered,
-        },
-        { 'g-tabs-full-border': fullWidthBorder }
-      )}
-    >
+    <section className={className}>
       <TabTriggers
         tabs={children.map((tab, index) => {
           const { heading, group, tooltip } = tab.props
@@ -70,12 +62,12 @@ function Tabs({
             tooltip,
           }
         })}
+        centered={centered}
+        fullWidthBorder={fullWidthBorder}
         activeTabIdx={activeTabIdx}
         setActiveTab={setActiveTab}
       />
-      <div className="g-grid-container content">
-        {children[activeTabIdx].props.children}
-      </div>
+      <div className={s.content}>{children[activeTabIdx].props.children}</div>
     </section>
   )
 }
