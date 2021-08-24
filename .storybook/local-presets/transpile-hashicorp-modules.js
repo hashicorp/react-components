@@ -7,6 +7,7 @@ const transpileList = [
   '@hashicorp/react-button',
   '@hashicorp/react-toggle',
   '@hashicorp/react-image',
+  '@hashicorp/react-link-wrap',
 ]
 
 module.exports = {

@@ -14,3 +14,18 @@ const Template: ComponentStory<typeof Subnav> = (args) => {
 
 export const Basic = Template.bind({})
 Basic.args = fixtures.Basic
+
+export const WithProductLogo = Template.bind({})
+WithProductLogo.args = fixtures.WithProductLogo
+
+export const AlignRight = Template.bind({})
+AlignRight.args = fixtures.AlignRight
+
+export const WithFailingStarCount = Template.bind({})
+WithFailingStarCount.args = fixtures.WithFailingStarCount
+
+export const WithHiddenStarCount = Template.bind({})
+WithHiddenStarCount.args = fixtures.WithHiddenStarCount
+
+export const WithTitle = Template.bind({})
+WithTitle.args = fixtures.WithTitle
