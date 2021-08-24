@@ -1,6 +1,9 @@
 .root {
   margin-top: 64px;
-  border-top: 1px solid var(--gray-5);
+
+  &.withTopBorder {
+    border-top: 1px solid var(--gray-5);
+  }
 }
 
 .accordionItem {
