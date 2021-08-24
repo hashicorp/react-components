@@ -21,8 +21,6 @@ https://reach.tech/tooltip */
 @import '../packages/tabs/style.css';
 
 /* these should be moved to css modules */
-@import '../packages/text-split/styles/index.css';
-@import '../packages/toggle/style.css';
 @import '../packages/use-cases/style.css';
 @import '../packages/vertical-text-block-list/style.css';
 
