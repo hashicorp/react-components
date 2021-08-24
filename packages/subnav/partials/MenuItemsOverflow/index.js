@@ -2,7 +2,8 @@ import React from 'react'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import CtaLinks from '../CtaLinks/index.js'
 import DropdownTrigger from '../DropdownTrigger/index.js'
-
+import s from './style.module.css'
+import classNames from 'classnames'
 class MenuItemsOverflow extends React.Component {
   constructor(props) {
     super(props)
@@ -37,7 +38,7 @@ class MenuItemsOverflow extends React.Component {
     const { menuItems, ctaLinks, product, Link, hideGithubStars } = this.props
     const { isCollapsed } = this.state
     return (
-      <div className="menu-items-overflow" ref={this.parentRef}>
+      <div className={s.root} ref={this.parentRef}>
         <DropdownTrigger
           isCollapsed={isCollapsed}
           onClick={this.toggleCollapsed}
@@ -45,11 +46,9 @@ class MenuItemsOverflow extends React.Component {
           product={product}
         />
         <div
-          className={`dropdown style-dropdown ${
-            isCollapsed ? 'is-collapsed' : ''
-          }`}
+          className={classNames(s.dropdown, { [s.isCollapsed]: isCollapsed })}
         >
-          <ul>
+          <ul className={s.ulElem}>
             {menuItems.map((menuItem, stableIdx) => {
               if (menuItem === 'divider') return null
               const { text, url, submenu } = menuItem
@@ -58,8 +57,8 @@ class MenuItemsOverflow extends React.Component {
                 return (
                   // eslint-disable-next-line react/no-array-index-key
                   <div key={stableIdx}>
-                    <div className="submenu-title g-type-label">{text}</div>
-                    <hr className="divider" />
+                    <div className={s.submenuTitle}>{text}</div>
+                    <hr className={s.divider} />
                     {submenu.map((subItem, subStableIdx) => (
                       <SubmenuItem
                         // eslint-disable-next-line react/no-array-index-key
@@ -70,7 +69,7 @@ class MenuItemsOverflow extends React.Component {
                         Link={Link}
                       />
                     ))}
-                    <hr className="divider" />
+                    <hr className={s.divider} />
                   </div>
                 )
               } else {
@@ -99,17 +98,11 @@ class MenuItemsOverflow extends React.Component {
   }
 }
 
-function SubmenuItem(props) {
-  const { url, text, product, Link } = props
+function SubmenuItem({ url, text, Link }) {
   return (
     <li>
-      <LinkWrap
-        Link={Link}
-        className="submenu-item g-type-body-small-strong style-menu-item"
-        href={url}
-        title={text}
-      >
-        <span className={`text brand-${product}`}>{text}</span>
+      <LinkWrap Link={Link} className={s.submenuItem} href={url} title={text}>
+        {text}
       </LinkWrap>
     </li>
   )

@@ -9,7 +9,6 @@ it fell outside my desired timebox. */
 @import '../packages/logo-grid/style.css';
 
 /* these should be moved to css modules */
-@import '../packages/subnav/style.css';
 @import '../packages/tabbed-accordion/style.css';
 @import '../packages/tabs/style.css';
 @import '../packages/text-input/style.css';

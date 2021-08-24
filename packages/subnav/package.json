@@ -10,6 +10,7 @@
     "@hashicorp/react-button": "^5.3.1",
     "@hashicorp/react-inline-svg": "^6.0.3",
     "@hashicorp/react-link-wrap": "^3.0.3",
+    "@reach/visually-hidden": "^0.16.0",
     "classnames": "^2.3.1",
     "isomorphic-unfetch": "^3.1.0"
   },

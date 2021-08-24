@@ -4,6 +4,8 @@ import formatStarCount from './formatStarCount/index.js'
 import parseGithubUrl from './parseGithubUrl/index.js'
 import StarIcon from '../icons/star'
 import GithubIcon from '../icons/github-logo'
+import VisuallyHidden from '@reach/visually-hidden'
+import s from './style.module.css'
 
 function GithubStarsButton(props) {
   const { url, hideGithubStars } = props
@@ -51,13 +53,13 @@ function GithubStarsButton(props) {
   const showStarcount =
     !hideGithubStars && (isLoadingStarcount || !isFailedStarcount)
   return (
-    <a href={url} className="github-button">
-      <span className="github">
+    <a href={url} className={s.root}>
+      <span className={s.github}>
         <GithubIcon />
-        <span className="hidden-text">GitHub</span>
+        <VisuallyHidden>GitHub</VisuallyHidden>
       </span>
       {showStarcount && (
-        <span className="stars">
+        <span className={s.stars}>
           <StarIcon />
           <span className="g-type-body-small-strong" data-testid="github-stars">
             {formatStarCount(starCount) || <span>&mdash;</span>}
