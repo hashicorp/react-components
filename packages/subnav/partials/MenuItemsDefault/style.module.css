@@ -1,0 +1,96 @@
+.root {
+  display: flex;
+  padding: 0 32px;
+  margin: 0 auto;
+  align-items: center;
+  list-style: none;
+
+  &.alignRight {
+    margin-right: 0;
+    padding-right: 16px;
+  }
+}
+
+.listItem {
+  position: relative;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  composes: g-type-body-small-strong from global;
+  position: relative;
+  padding-left: 16px;
+  padding-right: 16px;
+  line-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.submenuItem {
+  composes: g-type-body-small-strong from global;
+  color: var(--black);
+}
+
+/*
+Note: duplicated in MenuItemsDefault
+*/
+.navItemText {
+  color: var(--black);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--black);
+    opacity: 0;
+  }
+
+  &.isActive::after {
+    opacity: 1;
+  }
+}
+
+.submenuModal {
+  border-radius: 4px;
+  box-shadow: 0 8px 12px rgba(37, 38, 45, 0.08);
+  background: var(--white);
+  z-index: 1;
+  display: block;
+  position: absolute;
+  top: 100%;
+  margin: 8px 0 0 0;
+  padding: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  list-style: none;
+
+  & li {
+    & a:hover .text {
+      text-decoration: underline;
+    }
+
+    & + li {
+      margin-top: 6px;
+    }
+  }
+
+  &.isCollapsed {
+    display: none;
+  }
+}
+
+.verticalDivider {
+  background: var(--gray-5);
+  height: 1.75rem;
+  width: 1px;
+  margin-left: 8px;
+  margin-right: 8px;
+  display: block;
+}

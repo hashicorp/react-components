@@ -1,0 +1,31 @@
+.root {
+  --gray-6-transparent: rgba(174, 176, 183, 0.45);
+
+  position: sticky;
+  top: -1px;
+  z-index: 900;
+  background: var(--white);
+  border-top: 1px solid var(--gray-6-transparent);
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.8s;
+
+  &.isSticky {
+    border-bottom-color: var(--gray-6-transparent);
+  }
+}
+
+.subnavInner {
+  display: flex;
+  align-items: center;
+  height: 62px;
+
+  &.notConstrained {
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @media (--medium-up) {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+}
