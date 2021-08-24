@@ -1,4 +1,6 @@
+import classNames from 'classnames'
 import { v1 as uuidv1 } from 'uuid'
+import s from './style.module.css'
 
 function TextInput(props) {
   //  `field` and `form` props come from Formik
@@ -10,24 +12,24 @@ function TextInput(props) {
   const inputId = 'u' + uuidv1()
   return (
     <div
-      className={`g-text-input ${className ? className : ''}`}
-      hidden={type === 'hidden'}
-      data-theme-bg={theme.background}
+      className={classNames(s.root, className, s[`theme-${theme.background}`], {
+        [s.hidden]: type === 'hidden',
+      })}
     >
       {label && (
-        <label htmlFor={inputId}>
-          <span className="g-type-label">{label}</span>
+        <label htmlFor={inputId} className={s.label}>
+          {label}
         </label>
       )}
       <input
         id={inputId}
         type={type}
-        data-has-error={(!!error).toString()}
+        className={classNames(s.input, { [s.hasError]: error })}
         placeholder={placeholder}
         aria-label={!label && field.name}
         {...field}
       />
-      {error && <div className="g-type-body-small error">{error}</div>}
+      {error && <div className={s.error}>{error}</div>}
     </div>
   )
 }
