@@ -1,6 +1,4 @@
-@import './github-stars-link/style.css';
-
-.g-subnav .cta-links {
+.root {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -11,7 +9,7 @@
     margin-left: 16px;
   }
 
-  &.is-in-dropdown {
+  &.isInDropdown {
     /* Allows consecutive buttons to wrap */
     flex-wrap: wrap;
     white-space: wrap;
