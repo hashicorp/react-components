@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 export default function Toggle({ enabled, onChange = () => {} }) {
   const [enabledState, setEnabledState] = useState(enabled || false)
@@ -19,16 +21,16 @@ export default function Toggle({ enabled, onChange = () => {} }) {
   }
 
   return (
-    <label className="switch-label">
+    <label className={s.switchLabel}>
       <input
         type="checkbox"
         role="switch"
         checked={enabledState}
         onChange={handleChange}
-        className="switch-input"
+        className={s.switchInput}
         data-testid="react-toggle"
       />
-      <span className={`switch ${enabledState ? 'on' : ''}`} />
+      <span className={classNames(s.switch, { [s.on]: enabledState })} />
     </label>
   )
 }
