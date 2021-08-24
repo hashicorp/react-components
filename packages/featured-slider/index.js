@@ -5,7 +5,7 @@ import Image from '@hashicorp/react-image'
 import classNames from 'classnames'
 import s from './style.module.css'
 
-class FeaturedSlider extends Component {
+class FeaturedSliderInner extends Component {
   constructor(props) {
     super(props)
     const timing = this.props.timing ? parseInt(this.props.timing) : 10
@@ -209,16 +209,16 @@ class FeaturedSlider extends Component {
   }
 }
 
-function FeaturedSliderSection({ theme, heading, className, ...restProps }) {
+function FeaturedSlider({ theme, heading, className, ...restProps }) {
   return (
     <section className={classNames(s.sectionRoot, className, s[theme])}>
       {heading ? (
         <h2 className={classNames(s.sectionHeading, s[theme])}>{heading}</h2>
       ) : null}
-      <FeaturedSlider theme={theme} {...restProps} />
+      <FeaturedSliderInner theme={theme} {...restProps} />
     </section>
   )
 }
 
-export { FeaturedSlider }
-export default FeaturedSliderSection
+export { FeaturedSliderInner }
+export default FeaturedSlider
