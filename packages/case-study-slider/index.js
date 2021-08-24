@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from '@hashicorp/react-image'
 import fragment from './fragment.graphql'
-import { FeaturedSlider } from '@hashicorp/react-featured-slider'
+import { FeaturedSliderInner } from '@hashicorp/react-featured-slider'
 
 function CaseStudySlider({ data, dark }) {
   const features = data.caseStudies.map((caseStudy) => {
@@ -28,7 +28,7 @@ function CaseStudySlider({ data, dark }) {
     return { heading, content, image, link, logo }
   })
   return (
-    <FeaturedSlider
+    <FeaturedSliderInner
       theme={dark === true ? 'dark' : 'light'}
       features={features}
     />
