@@ -2,8 +2,13 @@
 
 /* global component css imports */
 
-/* these should be moved to css modules */
+/* Note: logo-grid is hanging on because we
+still need to import globally scoped styles for Tippy.js.
+Took a crack at replacing Tippy, but with the funky arrow behaviour,
+it fell outside my desired timebox. */
 @import '../packages/logo-grid/style.css';
+
+/* these should be moved to css modules */
 @import '../packages/product-features-list/style.css';
 @import '../packages/subnav/style.css';
 @import '../packages/tabbed-accordion/style.css';
