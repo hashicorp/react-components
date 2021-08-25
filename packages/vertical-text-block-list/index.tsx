@@ -26,7 +26,7 @@ export default function VerticalTextBlockList({
   product = 'hashicorp',
   centerText = false,
   Link,
-}: VerticalTextBlockListProps) {
+}: VerticalTextBlockListProps): React.ReactElement {
   const { themeClass } = useProductMeta(product)
   return (
     <div className={themeClass} data-testid="root">
@@ -43,7 +43,11 @@ export default function VerticalTextBlockList({
             >
               <div className={s.header} data-testid={`header-${item.header}`}>
                 {item.logo ? (
-                  <Image {...item.logo} data-testid="img" />
+                  <Image
+                    {...item.logo}
+                    alt={item.logo.alt || ''}
+                    data-testid="img"
+                  />
                 ) : (
                   <h6 className="g-type-display-4" data-testid="text">
                     {item.header}
@@ -67,7 +71,8 @@ export default function VerticalTextBlockList({
 
 // TODO: use `LinkWrap` interface once its in TS
 interface MaybeLinkProps {
-  children: React.ReactNode
+  children?: React.ReactNode
+  className?: string
   link?: string
   LinkComponent?: React.FC
 }
@@ -77,7 +82,7 @@ function MaybeLink({
   link,
   LinkComponent,
   children,
-}: MaybeLinkProps) {
+}: MaybeLinkProps): React.ReactElement {
   return link ? (
     <LinkWrap
       Link={LinkComponent}
