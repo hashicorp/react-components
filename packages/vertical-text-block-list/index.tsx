@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import Image from '@hashicorp/react-image'
 import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
+import s from './style.module.css'
 
 interface VerticalTextBlockListProps {
   data: TextBlock[]
@@ -28,18 +29,19 @@ export default function VerticalTextBlockList({
 }: VerticalTextBlockListProps) {
   const { themeClass } = useProductMeta(product)
   return (
-    <div
-      className={classNames('g-vertical-text-block-list', themeClass)}
-      data-testid="root"
-    >
+    <div className={themeClass} data-testid="root">
       <ul
-        className={classNames('list', { 'centered-text': centerText })}
+        className={classNames(s.list, { [s.centeredText]: centerText })}
         data-testid="item-list"
       >
         {data.map((item) => (
-          <li key={item.body}>
-            <MaybeLink link={item.linkUrl} LinkComponent={Link}>
-              <div className="header" data-testid={`header-${item.header}`}>
+          <li key={item.body} className={s.listItem}>
+            <MaybeLink
+              className={s.maybeLink}
+              link={item.linkUrl}
+              LinkComponent={Link}
+            >
+              <div className={s.header} data-testid={`header-${item.header}`}>
                 {item.logo ? (
                   <Image {...item.logo} data-testid="img" />
                 ) : (
@@ -49,7 +51,7 @@ export default function VerticalTextBlockList({
                 )}
               </div>
               <div
-                className="body-text g-type-body-large"
+                className={s.bodyText}
                 dangerouslySetInnerHTML={{
                   __html: item.body,
                 }}
@@ -70,18 +72,23 @@ interface MaybeLinkProps {
   LinkComponent?: React.FC
 }
 
-function MaybeLink({ link, LinkComponent, children }: MaybeLinkProps) {
+function MaybeLink({
+  className,
+  link,
+  LinkComponent,
+  children,
+}: MaybeLinkProps) {
   return link ? (
     <LinkWrap
       Link={LinkComponent}
       href={link}
-      className="wrapper"
+      className={className}
       data-testid="link"
     >
       {children}
     </LinkWrap>
   ) : (
-    <div className="wrapper" data-testid="div">
+    <div className={className} data-testid="div">
       {children}
     </div>
   )

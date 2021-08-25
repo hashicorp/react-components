@@ -20,9 +20,6 @@ Ideally, would love to replace with:
 https://reach.tech/tooltip */
 @import '../packages/tabs/style.css';
 
-/* these should be moved to css modules */
-@import '../packages/vertical-text-block-list/style.css';
-
 .swingset-logo {
   margin: 1rem 1rem 0.25rem 2rem;
   height: 32px;
