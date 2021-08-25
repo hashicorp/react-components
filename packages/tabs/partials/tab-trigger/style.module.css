@@ -8,13 +8,10 @@
   background: none;
   border: none;
   outline: none;
-  padding: 0;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 0 16px;
 
   @media (--medium-up) {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 0 24px;
   }
 
   &:first-of-type {
@@ -52,8 +49,7 @@
 .inner {
   display: flex;
   align-items: center;
-  padding-top: 19px;
-  padding-bottom: 16px;
+  padding: 18px 0 15px 0;
   border-bottom: 3px solid;
   border-color: var(--inner-border-color);
   color: var(--inner-text-color);
@@ -69,12 +65,5 @@
 
   & svg {
     width: 100%;
-  }
-}
-
-.tooltipContent {
-  max-width: 75vw !important;
-  @media (min-width: 380px) {
-    max-width: 350px !important;
   }
 }

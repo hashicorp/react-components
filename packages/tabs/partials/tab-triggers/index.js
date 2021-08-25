@@ -61,9 +61,9 @@ function TabTriggers({
     updateScrollOffset(activeTabIdx)
   }, [hasOverflow, activeTabIdx, updateScrollOffset, scrollRef])
 
-  /* allow smooth scrolling to the active tab.
-  used both when the activeTabIdx updates, and
-  when the next or previous arrow is clicked but
+  /* smooth scroll to the active tab.
+  this is done both when the activeTabIdx updates,
+  and when the next or previous arrow is clicked but
   does not cause an activeTabIdx update */
   const updateScrollOffset = useCallback(
     (targetTabIdx) => {
@@ -98,9 +98,23 @@ function TabTriggers({
      Its width is used to determine when to use [data-overflow='true']  */}
         <div ref={sizeReferenceRef}></div>
       </div>
-      <div className={s.innerWrapper}>
+      <div className={s.borderAdjuster}>
         <div className={s.inner}>
-          <div className={s.contentContainer}>
+          <div className={s.tabsContainer}>
+            <div className={s.scrimContainer}>
+              <div
+                className={classNames(s.prevArrowScrim, {
+                  [s.hasOverflow]: hasOverflow,
+                  [s.hidden]: hiddenArrows.prev,
+                })}
+              />
+              <div
+                className={classNames(s.nextArrowScrim, {
+                  [s.hasOverflow]: hasOverflow,
+                  [s.hidden]: hiddenArrows.next,
+                })}
+              />
+            </div>
             <div
               className={classNames(s.tooltipSpaceOverflow, {
                 [s.centered]: centered,
@@ -125,10 +139,8 @@ function TabTriggers({
             </div>
           </div>
         </div>
-        {/* TODO: Move arrow scrims within a g-grid-container,
-        to ensure they mask the area where tab overflow is happening. */}
         <div
-          className={classNames(s.arrow, s.prevArrow, {
+          className={classNames(s.prevArrow, {
             [s.hasOverflow]: hasOverflow,
             [s.hidden]: hiddenArrows.prev,
           })}
@@ -143,7 +155,7 @@ function TabTriggers({
           <InlineSvg src={SvgChevronRight} />
         </div>
         <div
-          className={classNames(s.arrow, s.nextArrow, {
+          className={classNames(s.nextArrow, {
             [s.hasOverflow]: hasOverflow,
             [s.hidden]: hiddenArrows.next,
           })}

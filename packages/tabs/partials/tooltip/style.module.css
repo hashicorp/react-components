@@ -33,6 +33,6 @@ nicely since .arrow is rendered into a Portal. */
   position: absolute;
   z-index: 1;
   border-radius: 3px;
-  max-width: 80vw;
-  max-width: min(80vw, 25em);
+  max-width: 75vw;
+  max-width: min(75vw, 20em);
 }
