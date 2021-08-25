@@ -5,7 +5,26 @@ import { useTabGroups } from '../../provider.js'
 import s from './style.module.css'
 import classNames from 'classnames'
 
-function TabTrigger({ tab, hasOverflow, activeTabIdx, setActiveTab }) {
+export interface TabTriggerType {
+  index: number
+  group: string
+  heading: string
+  tooltip?: string
+}
+
+interface TabTriggerProps {
+  tab: TabTriggerType
+  hasOverflow: boolean
+  activeTabIdx: number
+  setActiveTab: (tabIndex: number, tabGroup?: string) => void
+}
+
+function TabTrigger({
+  tab,
+  hasOverflow,
+  activeTabIdx,
+  setActiveTab,
+}: TabTriggerProps): React.ReactElement {
   const groupCtx = useTabGroups()
   const activeGroup = groupCtx?.activeTabGroup
   const isInActiveGroup = groupCtx && tab.group && tab.group === activeGroup

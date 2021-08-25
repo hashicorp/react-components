@@ -2,19 +2,15 @@ import { useState, useEffect, useRef } from 'react'
 
 export default function useScroll() {
   const scrollRef = useRef()
-  const [scrollData, setScrollData] = useState({
-    scrollLeft: undefined,
-  })
+  const [scrollLeft, setScrollLeft] = useState()
 
   useEffect(() => {
     const scrollElem = scrollRef.current
-    // Handler to call when scroll data may be affected
+    // Handler to call when scrollLeft may be affected
     function handleScroll() {
       if (!scrollRef.current) return null
       // Set scroll data to state
-      setScrollData({
-        scrollLeft: scrollRef.current.scrollLeft,
-      })
+      setScrollLeft(scrollRef.current.scrollLeft)
     }
     // Add event listener
     scrollElem.addEventListener('scroll', handleScroll)
@@ -24,10 +20,5 @@ export default function useScroll() {
     return () => scrollElem.removeEventListener('scroll', handleScroll)
   }, [scrollRef])
 
-  // function smoothScrollTo() {
-  //   if (!scrollRef.current) return null
-  //   scrollRef.current.scrollLeft = 0
-  // }
-
-  return [scrollRef, scrollData]
+  return [scrollRef, scrollLeft]
 }

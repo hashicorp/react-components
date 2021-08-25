@@ -15,7 +15,7 @@
  * @param {*} window Window element
  * @param {*} elem target elem to scroll to (HTML Element)
  * @param {object} targetPosnInput {x: number, y: number}
- * @param {object} optionsIn {speedPxPerSecond: number, minDuration: number}
+ * @param {object} [optionsIn] {speedPxPerSecond: number, minDuration: number}
  */
 function smoothScroll(window, elem, targetPosnInput, optionsIn) {
   const elemIsWindow = elem.toString() === '[object Window]'

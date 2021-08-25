@@ -1,16 +1,46 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import TabTriggers from './partials/tab-triggers'
 import TabProvider, { useTabGroups } from './provider'
 import s from './style.module.css'
 
+interface TabChildProps {
+  /** Renders the tab contents. */
+  children: React.ReactElement
+  /** Plain text used for the tab heading. */
+  heading: string
+  /** Accepts a string such that, when the tab is active, other Tab elements outside the instance with a matching `group` value will automatically be shown. Note that `TabProvider` is required in order for this feature to function.v */
+  group?: string
+  /** Plain text displayed in a tooltip beside the tab heading. */
+  tooltip?: string
+}
+
+function Tab({ children }: TabChildProps): React.ReactElement {
+  return <>{children}</>
+}
+
+interface TabsProps {
+  /** Children to be displayed as tabs. Each child accepts the props `{ children: ReactElement, heading: string, tooltip?: string, group?: string }` */
+  children: Array<React.ReactElement<TabChildProps>>
+  /** If set to true, the tabs are centered in their container. Default is left-aligned. */
+  centered?: boolean
+  /** Optional className to add to the root element. */
+  className?: string
+  /** Set the default tab by its index. If not set, or if out of range, will default to the first tab, at index 0. */
+  defaultTabIdx?: number
+  /** If set to true, the bottom border underneath the tabs will fill the available width. Default border fills the constrained `.g-grid-container`. */
+  fullWidthBorder?: boolean
+  /** Optional callback which is executed when a new tab is selected. */
+  onChange?: (targetTabIdx: number, targetTabGroup?: string) => void
+}
+
 function Tabs({
+  children,
   className,
   defaultTabIdx = 0,
-  centered,
-  fullWidthBorder,
-  children,
+  centered = false,
+  fullWidthBorder = false,
   onChange,
-}) {
+}: TabsProps): React.ReactElement {
   // Ensures a single child object converts to an array
   children = Array.prototype.concat(children)
 
@@ -56,12 +86,7 @@ function Tabs({
       <TabTriggers
         tabs={children.map((tab, index) => {
           const { heading, group, tooltip } = tab.props
-          return {
-            index,
-            heading,
-            group,
-            tooltip,
-          }
+          return { index, heading, group, tooltip }
         })}
         centered={centered}
         fullWidthBorder={fullWidthBorder}
@@ -71,10 +96,6 @@ function Tabs({
       <div className={s.content}>{children[activeTabIdx].props.children}</div>
     </section>
   )
-}
-
-function Tab({ children }) {
-  return <>{children}</>
 }
 
 export default Tabs
