@@ -12,14 +12,6 @@ https://reach.tech/tooltip (latter seems to be hover-only, though?)
 */
 @import '../packages/logo-grid/style.css';
 
-/* Note: tabs is hanging on because we
-still need to import globally scoped styles for Tippy.js.
-Took a crack at replacing Tippy, but with the funky arrow behaviour,
-it fell outside my desired timebox.
-Ideally, would love to replace with:
-https://reach.tech/tooltip */
-@import '../packages/tabs/style.css';
-
 .swingset-logo {
   margin: 1rem 1rem 0.25rem 2rem;
   height: 32px;

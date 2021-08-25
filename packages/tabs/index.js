@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import TabTriggers from './partials/TabTriggers/index.js'
+import TabTriggers from './partials/tab-triggers'
 import TabProvider, { useTabGroups } from './provider'
 import s from './style.module.css'
+
 function Tabs({
   className,
-  defaultTabIdx,
+  defaultTabIdx = 0,
   centered,
   fullWidthBorder,
   children,
@@ -70,10 +71,6 @@ function Tabs({
       <div className={s.content}>{children[activeTabIdx].props.children}</div>
     </section>
   )
-}
-
-Tabs.defaultProps = {
-  defaultTabIdx: 0,
 }
 
 function Tab({ children }) {

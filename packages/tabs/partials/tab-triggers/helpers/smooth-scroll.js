@@ -1,19 +1,22 @@
-//  Given:
-//  - window (Window)
-//  - elem (target elem to scroll) (HTML Element)
-//  - targetPosition {x: number, y: number}
-//  - options {speedPxPerSecond: number, minDuration: number}
-//  Animate scroll on provided `elem` as follows:
-//  1. Determine target distance change, using current and target positions passed
-//     Determine target duration of scroll animation, using minDuration and speedPxPerSecond
-//  2. Set startTime of animation using current millis.
-//  3. Request animation frame for step update
-//  4. On step update, calculate elapsed time (t) - currentMillis - startTime
-//     Plug t, startPosn, distance, and duration into easeFunction to determine current position.
-//     Update scroll position of target element (X and Y)
-//     Request another animation frame
-//     Repeat step 3 & 4 until animation is complete
-
+/**
+ * Animate a smooth scroll to the target element.
+ *
+ * Process:
+ * 1. Determine target distance change, using current and target positions passed
+ *    Determine target duration of scroll animation, using minDuration and speedPxPerSecond
+ * 2. Set startTime of animation using current millis.
+ * 3. Request animation frame for step update
+ * 4. On step update, calculate elapsed time (t) - currentMillis - startTime
+ *    Plug t, startPosn, distance, and duration into easeFunction to determine current position.
+ *    Update scroll position of target element (X and Y)
+ *    Request another animation frame
+ *    Repeat step 3 & 4 until animation is complete
+ *
+ * @param {*} window Window element
+ * @param {*} elem target elem to scroll to (HTML Element)
+ * @param {object} targetPosnInput {x: number, y: number}
+ * @param {object} optionsIn {speedPxPerSecond: number, minDuration: number}
+ */
 function smoothScroll(window, elem, targetPosnInput, optionsIn) {
   const elemIsWindow = elem.toString() === '[object Window]'
 
@@ -67,8 +70,16 @@ function smoothScroll(window, elem, targetPosnInput, optionsIn) {
   window.requestAnimationFrame(smoothScrollStep)
 }
 
-//  From https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
-//  t: current time, b: begInnIng value, c: change In value, d: duration
+/**
+ * Quadratic easing function
+ * From https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
+ *
+ * @param {number} t current time
+ * @param {number} b beginning value
+ * @param {number} c change in value
+ * @param {number} d duration
+ * @returns {number} eased value
+ */
 const easeInOutQuad = function (t, b, c, d) {
   if ((t /= d / 2) < 1) return (c / 2) * t * t + b
   return (-c / 2) * (--t * (t - 2) - 1) + b
