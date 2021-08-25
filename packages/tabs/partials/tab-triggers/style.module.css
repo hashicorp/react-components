@@ -1,5 +1,5 @@
 .root {
-  --height: 63px;
+  --height: 64px;
 
   background: var(--white);
   position: relative;
@@ -43,13 +43,13 @@
 
 .borderAdjuster {
   position: relative;
-
-  /* margin-bottom: -1px; */
+  margin-bottom: -1px;
   z-index: 1;
 }
 
 .inner {
   display: flex;
+  overflow: hidden;
   min-width: 100%;
 
   /* Restrict tooltip space overflow */
