@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
-import Tippy from '@tippyjs/react'
-import TooltipIcon from './icons/tooltip.svg.js'
-import { useTabGroups } from '../../../../provider.js'
+import React, { useEffect } from 'react'
+import TooltipIcon from '../../icons/tooltip.svg?include'
+import Tooltip from '../tooltip'
+import { useTabGroups } from '../../provider.js'
 import s from './style.module.css'
 import classNames from 'classnames'
 
@@ -31,20 +31,13 @@ function TabTrigger({ tab, hasOverflow, activeTabIdx, setActiveTab }) {
       <span className={s.inner}>
         <span className="g-type-body-strong">{tab.heading}</span>
         {tab.tooltip && (
-          <Tippy
-            className={s.tooltipContent}
-            content={tab.tooltip}
-            animation="fade"
-            arrow={true}
-            placement="top"
-            hideOnClick={false}
-          >
+          <Tooltip label={tab.tooltip} aria-label={tab.tooltip}>
             <span
               data-testid="tooltip-icon"
               className={s.tooltipTrigger}
               dangerouslySetInnerHTML={{ __html: TooltipIcon }}
             />
-          </Tippy>
+          </Tooltip>
         )}
       </span>
     </button>
