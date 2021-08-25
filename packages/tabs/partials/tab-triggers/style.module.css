@@ -1,4 +1,6 @@
 .root {
+  --height: 63px;
+
   background: var(--white);
   position: relative;
 
@@ -39,50 +41,23 @@
   }
 }
 
-.tooltipSpaceOverflow {
-  display: flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  margin-top: -100vw;
-  padding: 100vw 0;
-  width: 100%;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-
-  &.centered {
-    justify-content: center;
-  }
-
-  &.hasOverflow {
-    justify-content: unset;
-  }
-}
-
-.innerWrapper {
+.borderAdjuster {
   position: relative;
-  margin-bottom: -1px;
+
+  /* margin-bottom: -1px; */
   z-index: 1;
 }
 
 .inner {
   display: flex;
-  overflow: hidden;
-  overflow-x: scroll;
   min-width: 100%;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
 
   /* Restrict tooltip space overflow */
-  height: 65px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  height: var(--height);
 }
 
-.contentContainer {
+.tabsContainer {
   composes: g-grid-container from global;
-  position: static;
   flex-grow: 1;
 
   &.hasOverflow {
@@ -93,7 +68,33 @@
   }
 }
 
+.tooltipSpaceOverflow {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-top: -100vw;
+  padding: 100vw 0;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.centered {
+    justify-content: center;
+  }
+
+  &.hasOverflow {
+    justify-content: unset;
+  }
+}
+
 .arrow {
+  --icon-color: var(--gray-3);
+
   align-items: center;
   bottom: 3px;
   display: none;
@@ -118,35 +119,23 @@
     width: 20px;
     height: 20px;
     & [fill] {
-      fill: var(--gray-3);
+      fill: var(--icon-color);
     }
     & [stroke] {
-      stroke: var(--gray-3);
+      stroke: var(--icon-color);
     }
   }
 
   &:hover {
-    cursor: pointer;
+    --icon-color: var(--gray-1);
 
-    & svg {
-      & [fill] {
-        fill: var(--gray-1);
-      }
-      & [stroke] {
-        stroke: var(--gray-1);
-      }
-    }
+    cursor: pointer;
   }
 }
 
 .prevArrow {
+  composes: arrow;
   left: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 45.83%,
-    rgba(255, 255, 255, 0.855769) 59.37%,
-    rgba(255, 255, 255, 0) 100%
-  );
 
   & svg {
     transform: rotate(180deg);
@@ -155,15 +144,57 @@
 }
 
 .nextArrow {
+  composes: arrow;
   right: 0;
-  background: linear-gradient(
-    -90deg,
-    rgba(255, 255, 255, 1) 45.83%,
-    rgba(255, 255, 255, 0.855769) 59.37%,
-    rgba(255, 255, 255, 0) 100%
-  );
 
   & svg {
     margin-left: 20px;
   }
+}
+
+.scrimContainer {
+  position: relative;
+}
+
+.arrowScrim {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  background: blue;
+  transition: opacity 0.6s;
+  height: calc(var(--height) - 3px);
+  width: 56px;
+  display: none;
+  opacity: 1;
+  user-select: none;
+
+  &.hasOverflow {
+    display: flex;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.prevArrowScrim {
+  composes: arrowScrim;
+  left: -1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, 0.85) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.nextArrowScrim {
+  composes: arrowScrim;
+  right: -1px;
+  background: linear-gradient(
+    -90deg,
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, 0.85) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
