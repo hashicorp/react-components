@@ -132,6 +132,11 @@ describe('<ProductDownloadsPage />', () => {
       expect(screen.queryByText('1.0.0')).not.toBeInTheDocument()
     })
 
+    it('should hide all package managers if showPackageManagers is set to false', () => {
+      setup({ showPackageManagers: false })
+      expect(screen.queryByText('Package Manager')).not.toBeInTheDocument()
+    })
+
     it('should render the default changelog', () => {
       setup()
       expect(screen.getByText('Changelog')).toHaveAttribute(

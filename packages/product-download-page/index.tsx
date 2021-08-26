@@ -5,7 +5,10 @@ import useProductMeta, {
 import HashiHead from '@hashicorp/react-head'
 import DownloadCards from './partials/download-cards'
 import ReleaseInformation from './partials/release-information'
-import generateDefaultPackageManagers from './package-managers'
+import {
+  generateDefaultPackageManagers,
+  generateEnterprisePackageManagers,
+} from './package-managers'
 import {
   sortPlatforms,
   sortAndFilterReleases,
@@ -26,6 +29,7 @@ export default function ProductDownloadsPage({
   changelog,
   className,
   packageManagerOverrides = [],
+  showPackageManagers = true,
   enterpriseMode = false,
   pageTitle,
   // these props are piped in from `generateStaticProps`
@@ -72,7 +76,7 @@ export default function ProductDownloadsPage({
   // NOTE: enterprise releases do not currently work with package managers. according to rel-eng,
   // this feature will be added in august 2021
   let packageManagers = enterpriseMode
-    ? []
+    ? generateEnterprisePackageManagers(slug)
     : generateDefaultPackageManagers(slug)
   const overrides = [...packageManagerOverrides]
   if (overrides) {
@@ -96,6 +100,7 @@ export default function ProductDownloadsPage({
       }, [])
       .concat(overrides)
   }
+  if (!showPackageManagers) packageManagers = []
 
   const tabData = Object.keys(sortedDownloads).map((osKey) => ({
     os: osKey,
@@ -173,6 +178,7 @@ interface ProductDownloadsPageProps {
   changelog?: string
   className?: string
   packageManagerOverrides?: PackageManagerConfig[]
+  showPackageManagers?: boolean
   pageTitle?: string
   enterpriseMode: boolean
   product: HashiCorpProduct

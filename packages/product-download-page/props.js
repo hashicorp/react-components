@@ -51,6 +51,12 @@ module.exports = {
       },
     ],
   },
+  showPackageManagers: {
+    type: 'boolean',
+    description:
+      'defaults to `true`, if set to `false` it will hide all package manager information',
+    default: true,
+  },
   product: {
     ...baseProps.product,
     testValue: 'waypoint',
