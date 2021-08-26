@@ -29,6 +29,7 @@ export default function ProductDownloadsPage({
   changelog,
   className,
   packageManagerOverrides = [],
+  showPackageManagers = true,
   enterpriseMode = false,
   pageTitle,
   // these props are piped in from `generateStaticProps`
@@ -99,6 +100,7 @@ export default function ProductDownloadsPage({
       }, [])
       .concat(overrides)
   }
+  if (!showPackageManagers) packageManagers = []
 
   const tabData = Object.keys(sortedDownloads).map((osKey) => ({
     os: osKey,
