@@ -47,34 +47,9 @@
   z-index: 1;
 }
 
-.inner {
-  display: flex;
-  overflow: hidden;
-  min-width: 100%;
-
-  /* Restrict tooltip space overflow */
-  height: var(--height);
-}
-
-.tabsContainer {
+.scrollContainer {
   composes: g-grid-container from global;
-  flex-grow: 1;
-
-  &.hasOverflow {
-    max-width: none;
-    padding-left: 48px;
-    padding-right: 60px;
-    width: auto;
-  }
-}
-
-.tooltipSpaceOverflow {
-  display: flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  margin-top: -100vw;
-  padding: 100vw 0;
-  width: 100%;
+  overflow: scroll;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -82,16 +57,23 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.tabsWidthContainer {
+  display: flex;
+  min-width: max-content;
 
   &.centered {
     justify-content: center;
   }
-
-  &.hasOverflow {
-    justify-content: unset;
-  }
 }
 
+/*
+Arrows are positioned based on 
+on the tab container, so they always
+appear by the container edge if
+there is overflow.
+*/
 .arrow {
   --icon-color: var(--gray-3);
 
@@ -152,21 +134,31 @@
   }
 }
 
+/*
+Scrims are positioned based on 
+g-grid-container, to align with 
+the edge of the scrolling container.
+*/
 .scrimContainer {
-  position: relative;
+  composes: g-grid-container from global;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 3px;
+  right: 0;
 }
 
 .arrowScrim {
   position: absolute;
   top: 0;
   pointer-events: none;
-  background: blue;
   transition: opacity 0.6s;
-  height: calc(var(--height) - 3px);
+  bottom: 0;
   width: 56px;
   display: none;
   opacity: 1;
   user-select: none;
+  z-index: 1;
 
   &.hasOverflow {
     display: flex;

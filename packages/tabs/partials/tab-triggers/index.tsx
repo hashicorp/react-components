@@ -1,13 +1,12 @@
-import React, { useCallback, useRef, useState } from 'react'
-import InlineSvg from '@hashicorp/react-inline-svg'
-import TabTrigger, { TabTriggerType } from '../tab-trigger/index'
-import SvgChevronRight from '../../icons/chevron-right.svg?include'
-import smoothScroll from './helpers/smooth-scroll.js'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import s from './style.module.css'
+import InlineSvg from '@hashicorp/react-inline-svg'
+import TabTrigger, { TabTriggerType } from '../tab-trigger'
+import SvgChevronRight from '../../icons/chevron-right.svg?include'
+import smoothScroll from '../../utils/smooth-scroll.js'
 import useWindowSize from '../../hooks/use-window-size'
 import useScrollLeft from '../../hooks/use-scroll-left'
-import { useEffect } from 'react'
+import s from './style.module.css'
 
 interface TabTriggersProps {
   tabs: TabTriggerType[]
@@ -24,10 +23,9 @@ function TabTriggers({
   centered,
   fullWidthBorder,
 }: TabTriggersProps): React.ReactElement {
-  // const tabTriggerParentRef = useRef()
-  const sizeReferenceRef = useRef()
+  const overflowBaseRef = useRef()
+  const overflowContentRef = useRef()
   const parentRef = useRef()
-  // const scrollRef = useRef()
   const windowSize = useWindowSize()
   const [scrollRef, scrollLeft] = useScrollLeft()
   const [hiddenArrows, setHiddenArrows] = useState({
@@ -41,19 +39,13 @@ function TabTriggers({
    */
   useEffect(() => {
     // Ensure refs are defined
-    const scrollElem = scrollRef.current || null
-    const sizeReferenceElem = parentRef.current || null
-    if (!scrollElem || !sizeReferenceElem) return null
-    //  Determine combined width of contained tabs
-    let contentWidth = 0
-    const tabTriggers = scrollElem.children
-    tabTriggers.forEach((t) => (contentWidth += t.offsetWidth))
-    //  Determine width of available space
-    //  using the .g-grid-container .size-reference element
+    const sizeReferenceElem = overflowBaseRef.current || null
+    const sizeCompareElem = overflowContentRef.current || null
+    if (!sizeReferenceElem || !sizeCompareElem) return null
+    //  If content width exceeds available space,
+    //  set to overflow-friendly styling
+    const contentWidth = sizeCompareElem.offsetWidth
     const availableSpace = sizeReferenceElem.offsetWidth
-    //  If more content width than available space, set to overflow-friendly styling
-    //  (note: overflow-friendly styling may not immediately cause actual overflow / scrolling,
-    //  as it increases space for nav links slightly)
     setHasOverflow(contentWidth > availableSpace)
   }, [scrollRef, windowSize])
 
@@ -66,13 +58,12 @@ function TabTriggers({
     const scrollElem = scrollRef.current || null
     const parentElem = parentRef.current || null
     if (!scrollElem || !parentElem) return null
-    setHiddenArrows({
-      prev: scrollElem.scrollLeft === 0,
-      next:
-        scrollElem.scrollLeft + parentElem.offsetWidth >=
-        scrollElem.scrollWidth,
-    })
-  }, [scrollLeft, scrollRef])
+    // Determine which arrows to show
+    const { scrollLeft, scrollWidth } = scrollElem
+    const hidePrev = scrollLeft === 0
+    const hideNext = scrollLeft + parentElem.offsetWidth >= scrollWidth
+    setHiddenArrows({ prev: hidePrev, next: hideNext })
+  }, [scrollLeft, scrollRef, windowSize])
 
   /**
    * smooth scroll to the active tab.
@@ -120,48 +111,61 @@ function TabTriggers({
       ref={parentRef}
     >
       <div className="g-grid-container">
-        {/* Note: the sizeReference element has zero height, but is still "visible".
+        {/* Note: the overflowBaseRef element has zero height, but is still "visible".
             It is used to determine when tabs are overflowing, and updates hasOverflow */}
-        <div ref={sizeReferenceRef}></div>
+        <div ref={overflowBaseRef}></div>
       </div>
       <div className={s.borderAdjuster}>
-        <div className={s.inner}>
-          <div className={s.tabsContainer}>
-            <NextPrevScrims
-              hasOverflow={hasOverflow}
-              hiddenArrows={hiddenArrows}
-            />
-            <div
-              className={classNames(s.tooltipSpaceOverflow, {
-                [s.centered]: centered,
-                [s.hasOverflow]: hasOverflow,
-              })}
-              ref={scrollRef}
-            >
-              {tabs.map((tab, stableIdx) => (
-                <TabTrigger
-                  // This array is stable, so we can use index as key
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={stableIdx}
-                  hasOverflow={hasOverflow}
-                  activeTabIdx={activeTabIdx}
-                  setActiveTab={(targetIdx, groupId) => {
-                    setActiveTab(targetIdx, groupId)
-                    updateScrollOffset(targetIdx)
-                  }}
-                  tab={tab}
-                />
-              ))}
-            </div>
+        <NextPrevScrims hasOverflow={hasOverflow} hiddenArrows={hiddenArrows} />
+        <div
+          className={classNames(s.scrollContainer, {
+            [s.centered]: centered,
+            [s.hasOverflow]: hasOverflow,
+          })}
+          ref={scrollRef}
+        >
+          <div
+            className={classNames(s.tabsWidthContainer, {
+              [s.centered]: centered,
+              [s.hasOverflow]: hasOverflow,
+            })}
+            ref={overflowContentRef}
+          >
+            {tabs.map((tab, stableIdx) => (
+              <TabTrigger
+                // This array is stable, so we can use index as key
+                // eslint-disable-next-line react/no-array-index-key
+                key={stableIdx}
+                hasOverflow={hasOverflow}
+                activeTabIdx={activeTabIdx}
+                setActiveTab={(targetIdx, groupId) => {
+                  setActiveTab(targetIdx, groupId)
+                  updateScrollOffset(targetIdx)
+                }}
+                tab={tab}
+              />
+            ))}
           </div>
         </div>
         <NextPrevArrows
-          tabs={tabs}
           hasOverflow={hasOverflow}
           hiddenArrows={hiddenArrows}
-          activeTabIdx={activeTabIdx}
-          setActiveTab={setActiveTab}
-          updateScrollOffset={updateScrollOffset}
+          onPrev={() => {
+            const target = activeTabIdx - 1
+            if (target >= 0) {
+              setActiveTab(target, tabs[target].group)
+            } else {
+              updateScrollOffset(activeTabIdx)
+            }
+          }}
+          onNext={() => {
+            const target = activeTabIdx + 1
+            if (target < tabs.length) {
+              setActiveTab(target, tabs[target].group)
+            } else {
+              updateScrollOffset(activeTabIdx)
+            }
+          }}
         />
       </div>
       <BottomBorder
@@ -191,14 +195,7 @@ function NextPrevScrims({ hasOverflow, hiddenArrows }) {
   )
 }
 
-function NextPrevArrows({
-  tabs,
-  hasOverflow,
-  hiddenArrows,
-  activeTabIdx,
-  setActiveTab,
-  updateScrollOffset,
-}) {
+function NextPrevArrows({ hasOverflow, hiddenArrows, onPrev, onNext }) {
   return (
     <>
       <div
@@ -206,13 +203,7 @@ function NextPrevArrows({
           [s.hasOverflow]: hasOverflow,
           [s.hidden]: hiddenArrows.prev,
         })}
-        onClick={() => {
-          if (activeTabIdx > 0) {
-            setActiveTab(activeTabIdx - 1, tabs[activeTabIdx - 1].group)
-          } else {
-            updateScrollOffset(activeTabIdx)
-          }
-        }}
+        onClick={onPrev}
       >
         <InlineSvg src={SvgChevronRight} />
       </div>
@@ -221,13 +212,7 @@ function NextPrevArrows({
           [s.hasOverflow]: hasOverflow,
           [s.hidden]: hiddenArrows.next,
         })}
-        onClick={() => {
-          if (activeTabIdx < tabs.length - 1) {
-            setActiveTab(activeTabIdx + 1, tabs[activeTabIdx + 1].group)
-          } else {
-            updateScrollOffset(activeTabIdx)
-          }
-        }}
+        onClick={onNext}
       >
         <InlineSvg src={SvgChevronRight} />
       </div>
