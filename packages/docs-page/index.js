@@ -44,12 +44,6 @@ export function DocsPageWrapper({
     return temporary_injectJumpToSection(node)
   }, [children])
 
-  const search = (
-    <SearchProvider>
-      <SearchBar product={name} />
-    </SearchProvider>
-  )
-
   const versionSelect = process.env.ENABLE_VERSIONED_DOCS ? (
     <div className={s.versionSelect}>
       <VersionSelect versions={versions} />
@@ -86,7 +80,11 @@ export function DocsPageWrapper({
               currentPath={currentPath}
               navData={navData}
               versionSelect={versionSelect}
-              search={search}
+              search={
+                <SearchProvider>
+                  <SearchBar product={name} className={s.mobileSearchRoot} />
+                </SearchProvider>
+              }
             />
           </div>
         </div>
@@ -104,7 +102,11 @@ export function DocsPageWrapper({
             product={slug}
             content={
               <>
-                {isMobile ? null : search}
+                {isMobile ? null : (
+                  <SearchProvider>
+                    <SearchBar product={name} />
+                  </SearchProvider>
+                )}
                 {children}
               </>
             }

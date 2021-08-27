@@ -13,11 +13,6 @@
     padding: 0 24px;
     height: 52px;
   }
-
-  & :global(.g-search) {
-    padding: 12px 0;
-    margin-right: 12px;
-  }
 }
 
 .rootList {
