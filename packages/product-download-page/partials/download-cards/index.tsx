@@ -17,7 +17,6 @@ export default function DownloadTabs({
       key={defaultTabIdx}
       centered
       fullWidthBorder
-      className={styles.tabs}
       defaultTabIdx={defaultTabIdx}
     >
       {tabData.map(({ os, packageManagers }) => (
@@ -65,7 +64,7 @@ function Cards({
           <div className={styles.packageManagers}>
             <span className={styles.cardTitle}>Package Manager</span>
             {hasMultiplePackageManagers ? (
-              <Tabs>
+              <Tabs className={styles.packageManagerTabs}>
                 {packageManagers.map(({ label, commands }) => (
                   <Tab key={label} heading={label}>
                     <div className={styles.install}>
