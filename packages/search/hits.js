@@ -181,7 +181,11 @@ const Hit = forwardRef(
     }
 
     return (
-      <li className={s.hitItem} id={`hit-${hit.__position}`}>
+      <li
+        className={s.hitItem}
+        id={`hit-${hit.__position}`}
+        data-testid="hit-item"
+      >
         <Link {...hitLink} passHref>
           <LinkWithClick
             ref={ref}
