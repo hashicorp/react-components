@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-export default function useScroll() {
+export default function useScrollLeft() {
   const scrollRef = useRef()
   const [scrollLeft, setScrollLeft] = useState()
 
