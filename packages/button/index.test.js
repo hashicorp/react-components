@@ -3,10 +3,18 @@ import slugify from 'slugify'
 import Button from './'
 
 describe('<Button />', () => {
-  it('should render a `.g-btn` <button/> when no url is passed', () => {
+  it('should render a className if provided', () => {
+    const className = 'my-special-button'
+    const { container } = render(
+      <Button title="No URL here" className={className} />
+    )
+    const rootElem = container.firstChild
+    expect(rootElem).toHaveClass(className)
+  })
+
+  it('should render a <button/> when no url is passed', () => {
     const { container } = render(<Button title="No URL here" />)
     const rootElem = container.firstChild
-    expect(rootElem).toHaveClass('g-btn')
     expect(rootElem.tagName).toBe('BUTTON')
   })
 
@@ -14,7 +22,6 @@ describe('<Button />', () => {
     const url = 'https://www.hashicorp.com'
     const { container } = render(<Button title="Linked Button" url={url} />)
     const rootElem = container.firstChild
-    expect(rootElem).toHaveClass('g-btn')
     expect(rootElem.tagName).toBe('A')
     expect(rootElem.getAttribute('href')).toBe(url)
   })
