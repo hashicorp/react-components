@@ -207,6 +207,7 @@ class FeaturedSlider extends Component {
                           }}
                         />
                         <Button
+                          className="g-btn"
                           theme={{
                             variant: 'secondary',
                             background: theme,

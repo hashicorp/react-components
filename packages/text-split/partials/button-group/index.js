@@ -22,6 +22,7 @@ function ButtonGroup({ product, links, linkStyle, theme }) {
           <Button
             // eslint-disable-next-line react/no-array-index-key
             key={stableIdx}
+            className="g-btn"
             theme={{
               variant: buttonVariant,
               brand: product,
