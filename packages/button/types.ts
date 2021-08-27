@@ -17,10 +17,21 @@ export interface IconObject {
   isAnimated?: boolean
 }
 
+/* 
+Note: the .brand-neutral "brand" class  is an exception that
+sits outside of our usual useProductMeta use.
+
+We could consider making this the default prop value,
+falling back to this appearance if no "theme.brand"
+is provided. However, this would be a breaking change,
+and disrupt many current uses, requiring brand=hashicorp
+to be set explicitly.
+*/
 export interface Theme {
   variant: ThemeVariant
   background: ThemeBackground
-  brand: HashiCorpProduct
+
+  brand: HashiCorpProduct | 'neutral'
 }
 
 export interface IconProps {
