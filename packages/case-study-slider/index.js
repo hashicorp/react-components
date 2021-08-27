@@ -206,6 +206,7 @@ class CaseStudySlider extends Component {
                         }}
                       />
                       <Button
+                        className="g-btn"
                         theme={{
                           variant: 'secondary',
                           background: dark ? 'dark' : 'light',
