@@ -108,10 +108,10 @@ theme.module.css file.
     }
 
     & [fill] {
-      fill: var(--icon-color);
+      fill: var(--text-color);
     }
     & [stroke] {
-      stroke: var(--icon-color);
+      stroke: var(--text-color);
     }
   }
 
