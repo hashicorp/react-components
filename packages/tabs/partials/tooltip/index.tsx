@@ -14,7 +14,7 @@ interface TooltipProps {
   collisionBuffer?: number
 }
 
-function TriangleTooltip({
+function Tooltip({
   children,
   label,
   collisionBuffer = 8,
@@ -109,4 +109,4 @@ function Arrow({ triggerRect, collisionBuffer }) {
   )
 }
 
-export default TriangleTooltip
+export default Tooltip
