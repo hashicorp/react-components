@@ -1,5 +1,5 @@
 ---
-'@hashicorp/react-button': minor
+'@hashicorp/react-button': major
 ---
 
 Converts Button to CSS modules.
