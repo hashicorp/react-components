@@ -35,7 +35,7 @@ function TabTriggers({
   const [hasOverflow, setHasOverflow] = useState(false)
 
   /**
-   * handle resize and other changes
+   * update hasOverflow when window is resized
    */
   useEffect(() => {
     // Ensure refs are defined
@@ -50,8 +50,15 @@ function TabTriggers({
   }, [scrollRef, windowSize])
 
   /**
-   * hide next / prev arrows as needed if
-   * fully scrolled to one end or the other
+   * update visibility of next & prev arrows.
+   *
+   * depends on both scroll position, as
+   * fully scrolling to one end should hide
+   * the arrow at that end of the container,
+   *
+   * and depends on window size, as
+   * window size changes can affect both
+   * overflow and scroll position
    */
   useEffect(() => {
     // Ensure refs are defined
