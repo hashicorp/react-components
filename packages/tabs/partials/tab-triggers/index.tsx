@@ -98,7 +98,7 @@ function TabTriggers({
    * the active tab in the scroll-able area
    */
   useEffect(() => {
-    if (!hasOverflow) return null
+    if (!hasOverflow) return
     updateScrollOffset(activeTabIdx)
   }, [hasOverflow, activeTabIdx, updateScrollOffset, scrollRef])
 
