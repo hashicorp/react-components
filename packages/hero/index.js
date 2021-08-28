@@ -90,7 +90,7 @@ function Hero({ data, centered, gaPrefix }) {
                   <Button
                     key={button.title}
                     {...button}
-                    className={'g-btn'}
+                    className="g-btn"
                     theme={{
                       brand: idx === 0 ? product : 'neutral',
                       variant: idx === 0 ? 'primary' : 'secondary',
