@@ -95,10 +95,7 @@ function Button({
       )}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
       href={url}
-      ref={
-        hoverRef as React.LegacyRef<HTMLAnchorElement> &
-          React.LegacyRef<HTMLButtonElement>
-      }
+      ref={hoverRef}
       rel={isExternal ? 'noopener' : undefined}
       target={isExternal ? '_blank' : undefined}
       onClick={onClick}
