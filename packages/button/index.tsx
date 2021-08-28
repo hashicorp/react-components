@@ -77,7 +77,7 @@ function Button({
         isHovered,
         size,
       } as IconProps)
-    : { ...icon, size, isHovered }
+    : ({ ...icon, size, isHovered } as IconProps)
   const hasIcon = iconProps && iconProps.svg
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'
