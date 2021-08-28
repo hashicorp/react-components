@@ -28,9 +28,8 @@ interface ButtonProps {
   external?: boolean
   theme?: Theme
   ga_prefix?: string
-  onClick?:
-    | React.MouseEventHandler<HTMLAnchorElement>
-    | React.MouseEventHandler<HTMLButtonElement>
+  onClick?: React.MouseEventHandler<HTMLAnchorElement> &
+    React.MouseEventHandler<HTMLButtonElement>
   disabled?: boolean
   className?: string
   linkType?: LinkType
@@ -78,7 +77,7 @@ function Button({
         isHovered,
         size,
       } as IconProps)
-    : ({ ...icon, size, isHovered } as IconProps)
+    : { ...icon, size, isHovered }
   const hasIcon = iconProps && iconProps.svg
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'
