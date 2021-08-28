@@ -71,13 +71,13 @@ function Button({
   const iconProps = linkTypeToIcon[linkType]
     ? ({
         svg: linkTypeToIcon[linkType],
-        position: icon ? icon.position : 'right',
+        position: icon?.position || 'right',
         animationId: linkType,
-        isAnimated: icon ? icon.isAnimated : true,
+        isAnimated: icon?.isAnimated || true,
         isHovered,
         size,
       } as IconProps)
-    : ({ ...icon, size, isHovered } as IconProps)
+    : { ...icon, position: icon?.position || 'right', size, isHovered }
   const hasIcon = iconProps && iconProps.svg
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'

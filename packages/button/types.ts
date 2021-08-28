@@ -37,8 +37,8 @@ export interface Theme {
 export interface IconProps {
   svg: string
   position: IconPosition
-  animationId: LinkType
-  isAnimated: boolean
+  animationId?: LinkType
+  isAnimated?: boolean
   isHovered: boolean
   size: Size
 }

@@ -1,6 +1,9 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, MutableRefObject } from 'react'
 
-function useHover() {
+function useHover(): [
+  hoverRef: MutableRefObject<$TSFixMe>,
+  isHovered: boolean
+] {
   const [value, setValue] = useState(false)
 
   const ref = useRef(null)
