@@ -1,7 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, MutableRefObject } from 'react'
 
-export default function useScrollLeft() {
-  const scrollRef = useRef()
+export default function useScrollLeft(): [
+  scrollRef: MutableRefObject<$TSFixMe>,
+  scrollLeft: number
+] {
+  const scrollRef = useRef(null)
   const [scrollLeft, setScrollLeft] = useState()
 
   useEffect(() => {

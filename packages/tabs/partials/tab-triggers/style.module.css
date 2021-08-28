@@ -87,6 +87,7 @@ there is overflow.
   transition: opacity 0.6s;
   user-select: none;
   width: 56px;
+  z-index: 1;
 
   &.hasOverflow {
     display: flex;

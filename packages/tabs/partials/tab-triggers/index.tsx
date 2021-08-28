@@ -23,9 +23,8 @@ function TabTriggers({
   centered,
   fullWidthBorder,
 }: TabTriggersProps): React.ReactElement {
-  const overflowBaseRef = useRef()
-  const overflowContentRef = useRef()
-  const parentRef = useRef()
+  const overflowBaseRef = useRef(null)
+  const overflowContentRef = useRef(null)
   const windowSize = useWindowSize()
   const [scrollRef, scrollLeft] = useScrollLeft()
   const [hiddenArrows, setHiddenArrows] = useState({
@@ -38,14 +37,10 @@ function TabTriggers({
    * update hasOverflow when window is resized
    */
   useEffect(() => {
-    // Ensure refs are defined
-    const sizeReferenceElem = overflowBaseRef.current || null
-    const sizeCompareElem = overflowContentRef.current || null
-    if (!sizeReferenceElem || !sizeCompareElem) return null
     //  If content width exceeds available space,
     //  set to overflow-friendly styling
-    const contentWidth = sizeCompareElem.offsetWidth
-    const availableSpace = sizeReferenceElem.offsetWidth
+    const contentWidth = overflowContentRef.current.offsetWidth
+    const availableSpace = overflowBaseRef.current.offsetWidth
     setHasOverflow(contentWidth > availableSpace)
   }, [scrollRef, windowSize])
 
@@ -61,14 +56,11 @@ function TabTriggers({
    * overflow and scroll position
    */
   useEffect(() => {
-    // Ensure refs are defined
-    const scrollElem = scrollRef.current || null
-    const parentElem = parentRef.current || null
-    if (!scrollElem || !parentElem) return null
     // Determine which arrows to show
-    const { scrollLeft, scrollWidth } = scrollElem
+    const { scrollLeft, scrollWidth, offsetWidth } = scrollRef.current
+    const maxScrollLeft = scrollWidth - offsetWidth
     const hidePrev = scrollLeft === 0
-    const hideNext = scrollLeft + parentElem.offsetWidth >= scrollWidth
+    const hideNext = scrollLeft >= maxScrollLeft
     setHiddenArrows({ prev: hidePrev, next: hideNext })
   }, [scrollLeft, scrollRef, windowSize])
 
@@ -80,9 +72,7 @@ function TabTriggers({
    */
   const updateScrollOffset = useCallback(
     (targetTabIdx) => {
-      // Ensure refs are defined
-      const scrollElem = scrollRef.current || null
-      if (!scrollElem) return null
+      const scrollElem = scrollRef.current
       // Determine where to scroll to
       let newScrollLeft
       if (targetTabIdx === 0) {
@@ -115,7 +105,6 @@ function TabTriggers({
   return (
     <div
       className={classNames(s.root, { [s.fullWidthBorder]: fullWidthBorder })}
-      ref={parentRef}
     >
       <div className="g-grid-container">
         {/* Note: the overflowBaseRef element has zero height, but is still "visible".
