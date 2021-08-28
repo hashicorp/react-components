@@ -28,14 +28,20 @@ interface ButtonProps {
   external?: boolean
   theme?: Theme
   ga_prefix?: string
-  onClick?: React.MouseEventHandler<HTMLAnchorElement> &
-    React.MouseEventHandler<HTMLButtonElement>
+  onClick?:
+    | React.MouseEventHandler<HTMLAnchorElement>
+    | React.MouseEventHandler<HTMLButtonElement>
   disabled?: boolean
   className?: string
   linkType?: LinkType
   icon?: IconObject
   size?: Size
-  [x: string]: any
+  /* Note: Removing this TS "any" seems like it'll be quite a task.
+  One path forward might be to fully separate our
+  "ButtonButton" and "AnchorButton", and ask the consumer
+  to choose the correct component based on whether they need
+  a <a> or <button>. */
+  [attr: string]: $TSFixMe
 }
 
 function Button({
