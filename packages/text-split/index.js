@@ -1,5 +1,7 @@
 import ButtonGroup from './partials/button-group/index.js'
 import CheckboxList from './partials/checkbox-list/index.js'
+import classNames from 'classnames'
+import s from './style.module.css'
 function TextSplit({
   heading,
   content,
@@ -19,15 +21,12 @@ function TextSplit({
   const hasReactContent = content && !hasStringContent
 
   return (
-    <div className={`g-text-split background-${theme}`}>
-      <div className={`g-grid-container text-at-${textSide}`}>
-        <div className="children">{children}</div>
-        <div className="text">
+    <div className={classNames(s.root, s[`background-${theme}`])}>
+      <div className={classNames(s.container, s[`text-at-${textSide}`])}>
+        <div className={s.childrenSide}>{children}</div>
+        <div className={s.contentSide}>
           {heading && (
-            <h2
-              data-testid="heading"
-              className={`heading g-type-display-3 theme-${theme}`}
-            >
+            <h2 data-testid="heading" className={s.heading}>
               {heading}
             </h2>
           )}
@@ -50,7 +49,7 @@ function TextSplit({
   )
 }
 
-function ContentString({ contentString, theme }) {
+function ContentString({ contentString }) {
   const paragraphs = contentString.split('\n')
   return (
     <div data-testid="content">
@@ -60,7 +59,7 @@ function ContentString({ contentString, theme }) {
         return (
           // This array is stable, so we can use index as key
           // eslint-disable-next-line react/no-array-index-key
-          <p key={stableIdx} className={`g-type-body theme-${theme}`}>
+          <p key={stableIdx} className={s.bodyParagraph}>
             {paragraph}
           </p>
         )
