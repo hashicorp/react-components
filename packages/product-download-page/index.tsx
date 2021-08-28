@@ -14,7 +14,7 @@ import {
   sortAndFilterReleases,
   detectOs,
 } from './utils/downloader'
-import { HashiCorpProduct } from '../../types'
+import { Products as HashiCorpProduct } from '@hashicorp/platform-product-meta'
 
 import styles from './style.module.css'
 

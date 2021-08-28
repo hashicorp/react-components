@@ -3,13 +3,14 @@ import cookie from 'js-cookie'
 import slugify from 'slugify'
 import classNames from 'classnames'
 import VisuallyHidden from '@reach/visually-hidden'
-import useProductMeta from '@hashicorp/platform-product-meta'
+import useProductMeta, {
+  Products as HashiCorpProduct,
+} from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import CloseIcon from './img/close-icon.svg?include'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 import analytics from './analytics'
-import { HashiCorpProduct } from '../../types'
 
 interface AlertBannerProps {
   tag: string

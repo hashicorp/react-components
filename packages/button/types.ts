@@ -1,4 +1,4 @@
-import { HashiCorpProduct } from '../../types'
+import { Products as HashiCorpProduct } from '@hashicorp/platform-product-meta'
 
 export type Size = 'medium' | 'small'
 export type LinkType = 'inbound' | 'outbound' | 'anchor' | 'download'
