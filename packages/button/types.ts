@@ -28,10 +28,9 @@ and disrupt many current uses, requiring brand=hashicorp
 to be set explicitly.
 */
 export interface Theme {
-  variant: ThemeVariant
-  background: ThemeBackground
-
-  brand: HashiCorpProduct | 'neutral'
+  variant?: ThemeVariant
+  background?: ThemeBackground
+  brand?: HashiCorpProduct | 'neutral'
 }
 
 export interface IconProps {
