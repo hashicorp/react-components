@@ -112,30 +112,3 @@
     border: none;
   }
 }
-
-.tooltipDetails {
-  display: block;
-  max-width: 500px;
-  text-align: left;
-  padding: 30px;
-  position: relative;
-}
-
-.detailsClose {
-  color: var(--gray-3);
-  position: absolute;
-  top: 15px;
-  right: 10px;
-  font-size: 2rem;
-  line-height: 1rem;
-  cursor: pointer;
-}
-
-.detailsHeading {
-  composes: g-type-display-5 from global;
-  margin: 0 0 1rem 0;
-}
-
-.detailsButton {
-  margin-top: 1.5rem;
-}

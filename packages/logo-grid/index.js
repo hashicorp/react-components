@@ -1,9 +1,9 @@
-import React, { forwardRef, useState } from 'react'
-import Tippy from '@tippyjs/react'
+import React, { useRef, useState } from 'react'
 import Image from '@hashicorp/react-image'
-import Button from '@hashicorp/react-button'
 import fragment from './fragment.graphql'
 import classNames from 'classnames'
+import InfoModal from './partials/info-modal'
+import { useRect } from '@reach/rect'
 import s from './style.module.css'
 
 function LogoGrid({
@@ -20,7 +20,7 @@ function LogoGrid({
       {data.map((c) => {
         if (c.description && details) {
           return (
-            <TileWithTooltip
+            <Tile
               details={details}
               hashUrl={hashUrl}
               company={c}
@@ -32,7 +32,7 @@ function LogoGrid({
           )
         } else {
           return (
-            <TileForwardRef
+            <Tile
               details={details}
               hashUrl={hashUrl}
               company={c}
@@ -48,44 +48,7 @@ function LogoGrid({
   )
 }
 
-const TileForwardRef = forwardRef(function Tile(
-  {
-    color,
-    company,
-    details,
-    hashUrl,
-    integrationLink,
-    size,
-    removeBorders,
-    handleClick,
-  },
-  ref
-) {
-  const hasLink = integrationLink && company && company.integrationPage
-  const hasLinkOrTooltip = hasLink || (company.description && details)
-  return (
-    <li
-      ref={ref}
-      key={company.name}
-      id={hashUrl ? slug(company.name) : ''}
-      className={classNames(s.gridItem, s[size], {
-        [s.noBorder]: removeBorders,
-        [s.hasLinkOrTooltip]: hasLinkOrTooltip,
-      })}
-      onClick={handleClick}
-    >
-      {hasLink ? (
-        <a href={`/integrations/${company.integrationPage.slug}`}>
-          <TileImage company={company} color={color} size={size} />
-        </a>
-      ) : (
-        <TileImage company={company} color={color} size={size} />
-      )}
-    </li>
-  )
-})
-
-function TileWithTooltip({
+function Tile({
   color,
   company,
   details,
@@ -94,74 +57,39 @@ function TileWithTooltip({
   size,
   removeBorders,
 }) {
-  // We need to hold on to a tippy ref so we can use our custom close icon
-  const [visible, setVisible] = useState(false)
+  const [showDialog, setShowDialog] = useState(false)
+  const triggerRef = useRef(null)
+  const triggerRect = useRect(triggerRef)
 
-  function handleClick() {
-    // Hide the tooltip
-    setVisible(false)
-    // Then, if we are hashing the url, we clear the hash since it has closed
-    if (hashUrl) {
-      history.pushState(
-        '',
-        document.title,
-        window.location.pathname + window.location.search
-      )
-    }
-  }
-
-  // This is the markup for the actual tooltip
+  const hasLink = integrationLink && company && company.integrationPage
+  const hasLinkOrTooltip = hasLink || (company.description && details)
   return (
-    <Tippy
-      key={company.link}
-      content={<TooltipContent company={company} closeTooltip={handleClick} />}
-      arrow={true}
-      visible={visible}
-      onClickOutside={() => setVisible(false)}
-      placement="top"
-      theme="light"
-      interactive={true}
-      ignoreAttributes={true}
-      onShow={() => {
-        // if we're hashing the url, add the hash now, since it is open
-        if (hashUrl) {
-          history.pushState(null, null, `#${company.name}`)
-        }
-      }}
-    >
-      <TileForwardRef
-        color={color}
+    <>
+      <li
+        ref={triggerRef}
+        key={company.name}
+        id={hashUrl ? slug(company.name) : ''}
+        className={classNames(s.gridItem, s[size], {
+          [s.noBorder]: removeBorders,
+          [s.hasLinkOrTooltip]: hasLinkOrTooltip,
+        })}
+        onClick={() => setShowDialog(true)}
+      >
+        {hasLink ? (
+          <a href={`/integrations/${company.integrationPage.slug}`}>
+            <TileImage company={company} color={color} size={size} />
+          </a>
+        ) : (
+          <TileImage company={company} color={color} size={size} />
+        )}
+      </li>
+      <InfoModal
+        shown={showDialog}
+        setIsShown={setShowDialog}
+        triggerRect={triggerRect}
         company={company}
-        details={details}
-        hashUrl={hashUrl}
-        size={size}
-        integrationLink={integrationLink}
-        removeBorders={removeBorders}
-        handleClick={() => setVisible(!visible)}
       />
-    </Tippy>
-  )
-}
-
-function TooltipContent({ company, closeTooltip }) {
-  return (
-    <div className={s.tooltipDetails}>
-      <div className={s.detailsClose} onClick={closeTooltip}>
-        &times;
-      </div>
-      <h5 className={s.detailsHeading}>{company.name}</h5>
-      <div>{company.description}</div>
-      {company.link && (
-        <Button
-          className={s.detailsButton}
-          title={`${company.name} Website`}
-          url={company.link}
-          theme={{ variant: 'secondary' }}
-          linkType="outbound"
-          external={true}
-        />
-      )}
-    </div>
+    </>
   )
 }
 

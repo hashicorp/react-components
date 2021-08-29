@@ -1,0 +1,19 @@
+.theme {
+  --background-color: var(--white);
+  --foreground-color: var(--white);
+}
+
+.root {
+  composes: theme;
+  position: fixed;
+
+  /* --top and --left are set in JS, to allow
+    for dynamic, collision-free positioning. */
+  top: var(--top);
+  left: var(--left);
+  width: 0;
+  height: 0;
+  border-left: var(--arrow-size) solid transparent;
+  border-right: var(--arrow-size) solid transparent;
+  border-bottom: var(--arrow-size) solid var(--background-color);
+}

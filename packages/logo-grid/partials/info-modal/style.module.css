@@ -1,0 +1,50 @@
+.exampleTrigger {
+  border: 1px solid orange;
+  width: 200px;
+  height: 100px;
+}
+
+.dialogOverlay {
+  background: rgba(255, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.dialogContent {
+  position: fixed;
+  border-radius: 2px;
+  background: white;
+  max-width: 500px;
+  width: 500px;
+  text-align: left;
+  padding: 30px;
+  top: var(--top);
+  left: var(--left);
+  outline: none;
+  box-shadow: 0 10px 50px hsla(0, 0%, 0%, 0.33);
+}
+
+.detailsClose {
+  color: var(--gray-3);
+  background: none;
+  border: none;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  font-size: 2rem;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.detailsHeading {
+  composes: g-type-display-5 from global;
+  margin: 0 0 1rem 0;
+}
+
+.detailsButton {
+  margin-top: 1.5rem;
+}
