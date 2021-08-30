@@ -29,14 +29,19 @@ usual since .dialogArrow is rendered into a Portal. */
 }
 
 .dialogContent {
+  /* --collision-buffer is set in JS, as it is
+  used for dynamic positioning calculations */
+  --max-width-collision: calc(100vw - calc(var(--collision-buffer) * 2));
+
   composes: theme;
   position: fixed;
   border-radius: 2px;
   background: var(--background-color);
-  max-width: 500px;
-  width: 500px;
+  max-width: min(26rem, var(--max-width-collision));
   text-align: left;
-  padding: 24px;
+
+  /* More right padding accounts for "close" button */
+  padding: 20px 40px 20px 20px;
   top: var(--top);
   left: var(--left);
   outline: none;
@@ -66,8 +71,8 @@ usual since .dialogArrow is rendered into a Portal. */
   background: none;
   border: none;
   position: absolute;
-  top: 15px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   font-size: 2rem;
   line-height: 1rem;
   cursor: pointer;

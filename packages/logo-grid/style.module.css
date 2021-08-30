@@ -85,6 +85,8 @@
   height: 100%;
   border: 1px solid var(--tile-border-color);
   display: flex;
+  margin: 0;
+  padding: 0;
   align-items: center;
   justify-content: center;
   background: transparent;
@@ -127,12 +129,10 @@
   composes: g-type-display-5 from global;
   margin: 0;
 
-  /* Light theme, for logo color prop "color" or "monochrome" */
   &.light {
     color: var(--black);
   }
 
-  /* Dark theme, for logo color prop "white" */
   &.dark {
     color: var(--white);
   }
@@ -142,12 +142,10 @@
   composes: g-type-body-small from global;
   margin: 1rem 0 0 0;
 
-  /* Light theme, for logo color prop "color" or "monochrome" */
   &.light {
     color: var(--gray-3);
   }
 
-  /* Dark theme, for logo color prop "white" */
   &.dark {
     color: var(--gray-5);
   }

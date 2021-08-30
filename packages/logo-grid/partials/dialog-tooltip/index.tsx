@@ -9,12 +9,19 @@ import svgX from '../../icons/x.svg?include'
 import classNames from 'classnames'
 
 interface DialogTooltipProps {
+  /** Elements to render in the content area of the dialog. */
   children: React.ReactNode
+  /** Function to set the shown state of the dialog. Necessary for close functionality. */
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>
+  /** Whether to show the dialog or not. */
   shown: boolean
+  /** DOMRect of the element that triggered the dialog. */
   triggerRect: DOMRect
+  /** */
   arrowSize?: number
+  /** Minimum distance in pixels that the dialog should be from the viewport edge.  */
   collisionBuffer?: number
+  /** Color scheme appearance of the component. Works best in contexts with a matching theme. */
   theme?: 'light' | 'dark'
 }
 
@@ -27,8 +34,7 @@ function DialogTooltip({
   collisionBuffer = 8,
   theme = 'light',
 }: DialogTooltipProps): React.ReactElement {
-  /* Forces update, need to fix, see useEffect
-  comment below */
+  /* Forces update, need to fix, see useEffect comment below */
   const [, setDate] = useState(0)
   const setNow = () => setDate(Date.now())
 
@@ -42,11 +48,12 @@ function DialogTooltip({
     arrowSize
   )
 
-  /* Dumb hot-fix for issue with useRect, where
+  /* Odd fix for possible issue with useRect, where
   tooltipRect did not seem to be set as expected.
   I think this works because it forces a re-render
-  when shown changes, which is exactly when we need
+  when "shown" changes, which is exactly when we need
   to look at the tooltipRef again and re-measure.
+  Without this, tooltipRect seems to always be null.
   Not actually sure why this works. Need to investigate. */
   useEffect(setNow, [shown])
 
@@ -57,10 +64,8 @@ function DialogTooltip({
         isOpen={shown}
         onDismiss={() => setIsShown(false)}
         /* We don't want scroll lock, as this is more of a tooltip than a dialog.
-        We might want to automatically closing the dialog if it is scrolled
-        out of view. We could achieve this by monitoring the "bottom" of the 
-        DOMRect of the dialog content. Perhaps something we'll already want
-        to monitor to achieve the desired positioning. */
+        Due to our tooltip-like positioning, when scroll lock is enabled, the
+        tooltip can become locked in an offscreen position. */
         dangerouslyBypassScrollLock={true}
       >
         <DialogContent
@@ -71,6 +76,7 @@ function DialogTooltip({
             {
               '--left': position.left + 'px',
               '--top': position.top + 'px',
+              '--collision-buffer': collisionBuffer + 'px',
             } as React.CSSProperties
           }
         >
@@ -106,10 +112,15 @@ function DialogTooltip({
  * viewport.
  */
 function calcDialogPosition(
-  triggerRect,
-  tooltipRect,
-  collisionBuffer,
-  arrowSize
+  /** DOMRect of the element that triggered the dialog */
+  triggerRect: DOMRect,
+  /** DOMRect of the dialog element itself */
+  tooltipRect: DOMRect,
+  /** Minimum distance in pixels that the dialog should be from the viewport edge  */
+  collisionBuffer: number,
+  /** Size in pixels of the "arrow" triangle tip of the dialog.
+   * This needs to be accounted for to achieve accurate vertical positioning.  */
+  arrowSize: number
 ) {
   if (!triggerRect || !tooltipRect) return { left: 0, top: 0 }
   const triggerCenter = triggerRect.left + triggerRect.width / 2
@@ -145,7 +156,7 @@ function DialogArrow({
   shown: boolean
   /** DOMRect of the target element, for positioning the arrow */
   triggerRect: DOMRect
-  /** Distance in pixels that the arrow should always be from the viewport edge  */
+  /** Minimum distance in pixels that the arrow should be from the viewport edge  */
   collisionBuffer: number
   /** Size in pixels of the arrow */
   arrowSize: number

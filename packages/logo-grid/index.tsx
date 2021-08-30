@@ -7,12 +7,47 @@ import DialogTooltip from './partials/dialog-tooltip'
 import { useRect } from '@reach/rect'
 import s from './style.module.css'
 
+interface CompanyLogo {
+  /** url of the image */
+  url: string
+  /** format of the image, like "jpg" or "svg" */
+  format: string
+  /** alt text for the image. defaults to company name. */
+  alt?: string
+}
+
+interface Company {
+  /** Company name */
+  name: string
+  /** Short description of what the company offers */
+  description: string
+  /** Optional integration page to link to. */
+  integrationPage?: {
+    /** Slug to link to, to be constructed into a `.com/integrations/{slug}` url. */
+    slug: string
+  }
+  /** Company website address. */
+  link?: string
+  /** Color logo image. */
+  logo?: CompanyLogo
+  /** Monochrome black logo image. */
+  monochromeLogo?: CompanyLogo
+  /** Monochrome white logo image. */
+  whiteLogo?: CompanyLogo
+}
+
 interface LogoGridProps {
-  data: $TSFixMe
+  /** Array of company objects to render as grid items. */
+  data: Array<Company>
+  /** Color scheme for company logos. Ensure all logos have the specified color available. "color" and "monochrome" should be used on light backgrounds. "white" should be used on dark backgrounds. */
   color?: 'color' | 'white' | 'monochrome'
+  /** If true, when a logo with a company.description is clicked, a tooltip-style dialog  that links to the company website will be shown. */
   details?: boolean
+  /** If true, links to integration pages are enabled. If an item has a valid `data.integrationPage` property, the logo grid item will be linked. If grid items have both a link and a tooltip, only the link will be used. */
   integrationLink?: boolean
+  /** If true, borders around logo items will be removed. */
   removeBorders?: boolean
+  /** Display size of the logos within the grid. */
   size?: 'small' | 'medium' | 'large'
 }
 
@@ -32,7 +67,7 @@ function LogoGrid({
         // What we wrap the TileImage in within the tile
         // varies on whether we need a link or tooltip
         const hasLink = integrationLink && company.integrationPage
-        const hasTooltip = company.description && details
+        const hasTooltip = details && company.description
         // Configure the company logo for clarity in conditional rendering
         function TileImage() {
           return <CompanyLogo company={company} color={color} size={size} />
