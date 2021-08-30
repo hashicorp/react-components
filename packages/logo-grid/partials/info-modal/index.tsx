@@ -64,7 +64,7 @@ function InfoModal({
         out of view. We could achieve this by monitoring the "bottom" of the 
         DOMRect of the dialog content. Perhaps something we'll already want
         to monitor to achieve the desired positioning. */
-        // dangerouslyBypassScrollLock={true}
+        dangerouslyBypassScrollLock={true}
       >
         <DialogContent
           className={s.dialogContent}
