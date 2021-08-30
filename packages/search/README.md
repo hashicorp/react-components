@@ -234,5 +234,12 @@ In order for this component to work at all, you will need to configure an algoli
               - stable-website
   ```
 
-- Also make sure to grab the Algolia API key, which is sensitive and should not be public, and add it to the environment variables in circleci.
+Next, you'll want to setup two API keys for (1) searching and (2) indexing. The ACL for the keys should be configured as follows:
+| **Index** | **ACL**                                                                                    | **Example Descrption**              |
+|-----------|--------------------------------------------------------------------------------------------|-------------------------------------|
+| search    | `search`, `browse`, `listIndexes`                                                          | `{product/project name}: search UI` |
+| index     | `addObject`, `deleteObject`, `search`, `browse`, `listIndexes`, `settings`, `editSettings` | `{product/project name}: write key` |
+
+- Grab the `index` API key, which is sensitive and should not be public, and add it to the environment variables in circleci as `ALGOLIA_API_KEY`.
+- Grab the `search` API key, which is public, and add it to the `.env` file in the project: `NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY=xxxx`.
 - With this in place, you should be all set! Run the index script once locally, manually setting the algolia API key (like `ALGOLIA_API_KEY=xxxx node scripts/index_search_content.js`) to seed the index and make sure that the component is fully functional locally, then everything should be set!
