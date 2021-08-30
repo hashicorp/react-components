@@ -35,11 +35,14 @@ interface ButtonProps {
   linkType?: LinkType
   icon?: IconObject
   size?: Size
-  /* Note: Removing this TS "any" seems like it'll be quite a task.
-  One path forward might be to fully separate our
-  "ButtonButton" and "AnchorButton", and ask the consumer
-  to choose the correct component based on whether they need
-  a <a> or <button>. */
+  /**
+   * Note: Removing this TS "any" seems like it'll be quite a task.
+   * One path forward might be to fully separate our
+   * "ButtonButton" and "AnchorButton", and ask the consumer
+   * to choose the correct component based on whether they need
+   * a <a> or <button>.
+   * Task ref: https://app.asana.com/0/1100423001970639/1200880473915564/f
+   */
   [attr: string]: $TSFixMe
 }
 
