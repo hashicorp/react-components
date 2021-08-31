@@ -1,0 +1,42 @@
+.root {
+  & :global(.name) {
+    font-size: 15px;
+    font-weight: var(--font-weight-bold);
+    padding-right: 0.5rem;
+  }
+
+  & :global(.category) {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  & :global(.description) {
+    color: var(--gray-2);
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  & :global(.badge-group) {
+    display: flex;
+    padding: 0;
+    margin: 5px 0;
+    justify-content: flex-start;
+  }
+
+  & :global(.badge) {
+    font-size: 0.65rem;
+    display: block;
+    padding: 0 0.5rem;
+    border-radius: 2px;
+    margin-right: 0.25rem;
+    border: 1px solid var(--gray-5);
+    color: var(--gray-3);
+  }
+
+  & :global(.product-name) {
+    margin-right: 0.5rem;
+    position: relative;
+    color: var(--gray-2);
+  }
+}

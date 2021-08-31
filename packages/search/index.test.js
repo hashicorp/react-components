@@ -35,13 +35,14 @@ describe('<Search />', () => {
   afterAll(teardownEnv)
   beforeEach(setDummyVars)
 
-  it('should render a `.g-search` <div> root element', () => {
+  it('should pass className to the root element', () => {
+    const className = 'special-class-name'
     const { container } = renderWithProvider(
-      <Search renderHitContent={() => {}} />
+      <Search className={className} renderHitContent={() => {}} />
     )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-search')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should render an empty input by default', () => {
@@ -80,7 +81,8 @@ describe('<Hits />', () => {
 
     const resultsEl = screen.getByRole('listbox')
     expect(resultsEl).toHaveAttribute('id', SEARCH_RESULTS_ID)
-    expect(Array.from(resultsEl.querySelectorAll('.hit-item')).length).toBe(2)
+    const hitItems = screen.getAllByTestId('hit-item')
+    expect(hitItems.length).toBe(2)
   })
 })
 
@@ -150,7 +152,7 @@ describe('search tools', () => {
     }
   })
 
-  it('should index content', async () => {
+  it.skip('should index content', async () => {
     //  double check we're using the right index
     expect(process.env.NEXT_PUBLIC_ALGOLIA_INDEX).toBe('react-components_TEST')
 

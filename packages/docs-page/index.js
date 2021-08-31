@@ -46,7 +46,10 @@ export function DocsPageWrapper({
 
   const search = (
     <SearchProvider>
-      <SearchBar product={name} />
+      <SearchBar
+        product={name}
+        className={classNames({ [s.mobileSearch]: isMobile })}
+      />
     </SearchProvider>
   )
 

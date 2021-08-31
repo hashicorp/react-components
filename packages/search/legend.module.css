@@ -1,0 +1,34 @@
+.searchLegend {
+  display: none;
+  width: 100%;
+  height: var(--legend-height);
+  margin: 0;
+  padding: 0 1rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-5);
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (--medium-up) {
+    display: flex;
+  }
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: var(--legend-height);
+
+  & svg {
+    display: block;
+  }
+}
+
+.legendLabel {
+  composes: g-type-tag-label from global;
+  font-size: 13px;
+  color: var(--gray-3);
+  padding-left: 8px;
+}
