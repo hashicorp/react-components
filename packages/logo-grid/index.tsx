@@ -49,6 +49,8 @@ interface LogoGridProps {
   removeBorders?: boolean
   /** Display size of the logos within the grid. */
   size?: 'small' | 'medium' | 'large'
+  /** Optional className to render on the root element */
+  className?: string
 }
 
 function LogoGrid({
@@ -58,11 +60,12 @@ function LogoGrid({
   integrationLink,
   removeBorders,
   size = 'small',
+  className,
 }: LogoGridProps): React.ReactElement {
   const theme = color == 'white' ? 'dark' : 'light'
 
   return (
-    <ul className={classNames(s.root, s[size], s[theme])}>
+    <ul className={classNames(s.root, s[size], s[theme], className)}>
       {data.map((company) => {
         // What we wrap the TileImage in within the tile
         // varies on whether we need a link or tooltip
