@@ -63,6 +63,7 @@ function HeroLeadForm(props) {
               />
             </div>
             <Button
+              className="g-btn"
               type="submit"
               onClick={formikProps.submitForm}
               disabled={formikProps.isSubmitting}

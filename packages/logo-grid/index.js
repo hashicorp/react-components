@@ -56,6 +56,7 @@ class LogoGrid extends Component {
         <div className="g-text">{c.description}</div>
         {c.link && (
           <Button
+            className="g-btn"
             title={`${c.name} Website`}
             url={c.link}
             theme={{ variant: 'secondary' }}

@@ -38,6 +38,7 @@ function CallToAction(props) {
                   <Button
                     // eslint-disable-next-line react/no-array-index-key
                     key={stableIdx}
+                    className="g-btn"
                     linkType={linkType}
                     theme={{
                       variant: buttonVariant,
