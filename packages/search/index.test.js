@@ -152,7 +152,7 @@ describe('search tools', () => {
     }
   })
 
-  it('should index content', async () => {
+  it.skip('should index content', async () => {
     //  double check we're using the right index
     expect(process.env.NEXT_PUBLIC_ALGOLIA_INDEX).toBe('react-components_TEST')
 
