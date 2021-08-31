@@ -66,7 +66,7 @@ temporary approach, this should likely be split into its own file.
 
 /* Styles the mobile search bar,
 which is rendered into docs-sidenav */
-.mobileSearchRoot {
+.mobileSearch {
   padding: 12px 0;
   margin-right: 12px;
 }
