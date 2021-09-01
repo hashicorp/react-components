@@ -1,0 +1,22 @@
+.root {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}
+
+.list {
+  padding-inline-start: 0;
+
+  & li {
+    list-style-type: none;
+
+    &.activeSection {
+      font-weight: bold;
+    }
+  }
+}
+
+.heading {
+  composes: g-type-display-5 from global;
+  margin: 0;
+}

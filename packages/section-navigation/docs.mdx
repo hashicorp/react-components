@@ -1,0 +1,59 @@
+---
+componentName: 'SectionNavigation'
+---
+
+Use `<SectionNavigation />` to render a tiered navigation list for headings on a page.
+
+<LiveComponent>{`
+<SectionNavigation sections={[
+  { "level": 1, "text": "Services", "slug": "services" },
+  { "level": 2, "text": "Service Definition", "slug": "service-definition" },
+  { "level": 3, "text": "service", "slug": "service" },
+  { "level": 3, "text": "Adding Meta Data", "slug": "adding-meta-data" },
+  {
+    "level": 3,
+    "text": "Security Configurations",
+    "slug": "security-configurations"
+  },
+  { "level": 3, "text": "Health Checks", "slug": "health-checks" },
+  { "level": 3, "text": "Proxy", "slug": "proxy" },
+  { "level": 3, "text": "Connect", "slug": "connect" },
+  {
+    "level": 4,
+    "text": "Deprecated parameters",
+    "slug": "deprecated-parameters"
+  },
+  { "level": 3, "text": "DNS SRV Weights", "slug": "dns-srv-weights" },
+  { "level": 4, "text": "weights", "slug": "weights" },
+  {
+    "level": 3,
+    "text": "Enable Tag Override and Anti-Entropy",
+    "slug": "enable-tag-override-and-anti-entropy"
+  },
+  { "level": 3, "text": "Tagged Addresses", "slug": "tagged-addresses" },
+  { "level": 4, "text": "LAN tags", "slug": "lan-tags" },
+  { "level": 4, "text": "Virtual tags", "slug": "virtual-tags" },
+  { "level": 4, "text": "WAN tags", "slug": "wan-tags" },
+  {
+    "level": 2,
+    "text": "Multiple Service Definitions",
+    "slug": "multiple-service-definitions"
+  },
+  {
+    "level": 2,
+    "text": "Service and Tag Names with DNS",
+    "slug": "service-and-tag-names-with-dns"
+  },
+  {
+    "level": 2,
+    "text": "Service Definition Parameter Case",
+    "slug": "service-definition-parameter-case"
+  }
+]} />
+`}</LiveComponent>
+
+<UsageDetails packageJson={packageJson} />
+
+### Props
+
+<PropsTable props={componentProps} />
