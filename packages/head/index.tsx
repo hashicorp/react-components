@@ -3,6 +3,7 @@ import Head from 'next/head'
 export default function HashiHead(props: HashiHeadProps): React.ReactElement {
   return (
     <Head>
+      {whenString(props.lang, <html lang={props.lang} />)}
       {whenString(props.title, <title>{props.title}</title>)}
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta property="og:locale" content="en_US" key="og:locale" />
@@ -75,6 +76,7 @@ const whenString = (value, returnValue) =>
 // -----
 
 interface HashiHeadProps {
+  lang?: string
   canonicalUrl?: string
   children?: React.ReactNode
   description?: string
