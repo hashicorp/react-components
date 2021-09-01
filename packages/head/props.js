@@ -1,4 +1,8 @@
 module.exports = {
+  lang: {
+    type: 'string',
+    description: 'Set the lang attribute on the HTML element.',
+  },
   title: {
     type: 'string',
     description:
