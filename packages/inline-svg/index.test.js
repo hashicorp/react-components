@@ -48,7 +48,7 @@ describe('<InlineSvg />', () => {
     expect(rootElem.childNodes.length).toBe(0)
   })
 
-  fit('should render custom wrapper element', () => {
+  it('should render custom wrapper element', () => {
     const props = {
       wrapper: 'span',
       src:
