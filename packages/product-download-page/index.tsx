@@ -117,7 +117,13 @@ export default function ProductDownloadsPage({
 
   return (
     <ProductMetaProvider product={product}>
-      <HashiHead title={`Downloads | ${name} by HashiCorp`} />
+      <HashiHead title={`Downloads | ${name} by HashiCorp`}>
+        {/* Legal has requested that we make the enterprise downloads page public but not search
+      engine indexable */}
+        {enterpriseMode ? (
+          <meta name="robots" key="robots" content="noindex, nofollow" />
+        ) : null}
+      </HashiHead>
       <div className={`${styles.root} ${themeClass || ''} ${className || ''}`}>
         <h1 className={styles.pageTitle}>
           {pageTitle ||
