@@ -1,0 +1,67 @@
+name: Canary Release
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+
+jobs:
+  release-canary:
+    name: Release Canary
+    runs-on: ubuntu-latest
+    if: contains( github.event.pull_request.labels.*.name, 'release:canary')
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Setup Node.js 15.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 15.x
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Version
+        run: npx changeset version --snapshot canary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Canary Packages
+        id: changesets
+        uses: changesets/action@master
+        with:
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: npm run release:canary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Compute new packages info
+        id: packagesData
+        if: success() && steps.changesets.outputs.published == 'true'
+        # We're using the special GH Actions syntax to add step outputs (ref: https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter)
+        # for count: use jq to determine the length of the array
+        # for packageList: use jq reduce to build up a string of markdown (ref: https://stedolan.github.io/jq/manual/#Reduce)
+        run: |
+          echo "::set-output name=count::$(echo ${{toJson(steps.changesets.outputs.publishedPackages)}} | jq '. | length')"
+          echo "::set-output name=packageList::$(echo ${{toJson(steps.changesets.outputs.publishedPackages)}} | jq 'reduce .[] as $item (""; . + "#### \($item.name)@\($item.version)\n```\nnpm install \($item.name)@canary\n```\n")')"
+
+      - name: Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: success() && steps.changesets.outputs.published == 'true'
+        with:
+          header: 'canary-release'
+          message: |
+            ### :package: Canary Packages Published
+
+            Latest commit: ${{ github.event.pull_request.head.sha }}
+
+            <details><summary>Published ${{ steps.packagesData.outputs.count }} packages</summary>
+
+            ${{ fromJSON(steps.packagesData.outputs.packageList) }}
+
+            </details>
