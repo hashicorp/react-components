@@ -5,6 +5,10 @@ module.exports = {
       'the text for the `<h2>` that precedes your expandable elements',
     required: false,
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   items: {
     type: 'Array',
     description: 'an array of your expandable `<AccordionElement>` items',

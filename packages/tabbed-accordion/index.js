@@ -1,10 +1,11 @@
 import { AccordionItems } from '@hashicorp/react-accordion'
 import Tabs, { Tab } from '@hashicorp/react-tabs'
+import classNames from 'classnames'
 import s from './style.module.css'
 
-function TabbedAccordion({ heading, tabs }) {
+function TabbedAccordion({ heading, tabs, className }) {
   return (
-    <section className={s.root}>
+    <section className={classNames(s.root, className)}>
       {heading && (
         <div data-testid="heading" className={s.headingContainer}>
           <h2 className={s.heading}>{heading}</h2>
