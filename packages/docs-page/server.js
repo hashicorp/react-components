@@ -3,15 +3,26 @@ import path from 'path'
 import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
-import {
-  loadVersionList,
-  loadVersionedDocument,
-  loadVersionedNavData,
-  getVersionFromPath,
-} from '@hashicorp/versioned-docs/server'
+import { loadVersionedNavData } from '@hashicorp/versioned-docs/server'
 import moize from 'moize'
 import { normalizeVersion } from '@hashicorp/versioned-docs/client'
 import renderPageMdx from './render-page-mdx'
+
+async function loadDocument({ product, type, version = 'latest', path }) {
+  console.log('fetching document: ', type, version, path)
+  const result = await fetch(
+    `${process.env.CONTENT_API_BASE_URL}/content/${product}/${type}/${version}/${path}`,
+    {
+      headers: {
+        authorization: `Bearer ${process.env.CONTENT_API_TOKEN}`,
+      },
+    }
+  )
+
+  if (result.ok) {
+    return (await result.json()).result
+  }
+}
 
 const cachedLoadVersionNavData = moize(loadVersionedNavData, {
   maxSize: moize.infinite,
@@ -32,22 +43,44 @@ async function generateStaticPaths({
   currentVersion,
 }) {
   let navData
+  let strategy = 'fs'
 
-  // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
+  if (process.env.ENABLE_REMOTE_CONTENT) strategy = 'remote'
+
   if (
     process.env.ENABLE_VERSIONED_DOCS &&
     process.env.VERCEL_ENV === 'production'
   ) {
-    // Fetch and parse navigation data
-    navData = (
-      await cachedLoadVersionNavData(
-        product.slug,
-        basePath,
-        normalizeVersion(currentVersion)
-      )
-    ).navData
-  } else {
-    navData = await resolveNavData(navDataFile, localContentDir)
+    strategy = 'versioned'
+  }
+
+  switch (strategy) {
+    case 'remote': {
+      const res = await loadDocument({
+        product: product.slug,
+        type: 'nav-data',
+        path: basePath,
+      })
+      navData = res.navData
+      break
+    }
+    case 'versioned': {
+      // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
+      // Fetch and parse navigation data
+      navData = (
+        await cachedLoadVersionNavData(
+          product.slug,
+          basePath,
+          normalizeVersion(currentVersion)
+        )
+      ).navData
+      break
+    }
+    default:
+    case 'fs': {
+      navData = await resolveNavData(navDataFile, localContentDir)
+      break
+    }
   }
 
   return getPathsFromNavData(navData, paramId)
@@ -84,6 +117,10 @@ async function generateStaticProps({
   basePath,
   currentVersion,
 }) {
+  let strategy = 'fs'
+
+  if (process.env.ENABLE_REMOTE_CONTENT) strategy = 'remote'
+
   const mdxRenderer = (mdx) =>
     renderPageMdx(mdx, {
       productName: product.name,
@@ -95,76 +132,117 @@ async function generateStaticProps({
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
 
   let versions = []
+  let props = {}
 
-  // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
-  if (process.env.ENABLE_VERSIONED_DOCS) {
-    const versionFromPath = getVersionFromPath(params[paramId])
-
-    const currentVersionNormalized = normalizeVersion(currentVersion)
-
-    versions = await loadVersionList(product.slug)
-
-    // Only load docs content from the DB if we're in production or there's an explicit version in the path
-    // Preview and dev environments will read the "latest" content from the filesystem
-    if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
+  switch (strategy) {
+    case 'remote': {
+      let doc
       // remove trailing index to ensure we fetch the right document from the DB
       const paramsNoIndex = (params[paramId] ?? []).filter(
         (param, idx) =>
           !(param === 'index' && idx === params[paramId].length - 1)
       )
-      const pagePathToLoad = versionFromPath
-        ? [basePath, ...paramsNoIndex].join('/')
-        : [basePath, currentVersionNormalized, ...paramsNoIndex].join('/')
 
-      let doc
-      const [{ mdxSource }, navData] = await Promise.all([
-        loadVersionedDocument(product.slug, pagePathToLoad).then(
-          (docResult) => {
-            doc = docResult
-            return mdxRenderer(docResult.markdownSource)
-          }
-        ),
-        cachedLoadVersionNavData(
-          product.slug,
-          basePath,
-          versionFromPath ?? currentVersionNormalized
-        ),
+      const [{ mdxSource }, { navData }] = await Promise.all([
+        loadDocument({
+          product: product.slug,
+          type: 'doc',
+          path: [basePath, ...paramsNoIndex].join('/'),
+        }).then((docResult) => {
+          doc = docResult
+          return mdxRenderer(docResult.markdownSource)
+        }),
+        loadDocument({
+          product: product.slug,
+          type: 'nav-data',
+          path: basePath,
+        }),
       ])
 
-      // Construct the githubFileUrl, used for "Edit this page" link
-      const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
-
-      return {
-        versions,
+      props = {
         currentPath,
         frontMatter: doc.metadata,
+        mdxSource,
+        navData,
+        versions,
+      }
+      break
+    }
+    case 'fs':
+    default: {
+      //  Read in the nav data, and resolve local filePaths
+      const navData = await resolveNavData(navDataFile, localContentDir)
+      //  Get the navNode that matches this path
+      const navNode = getNodeFromPath(currentPath, navData, localContentDir)
+      //  Read in and process MDX content from the navNode's filePath
+      const mdxFile = path.join(process.cwd(), navNode.filePath)
+      const mdxString = fs.readFileSync(mdxFile, 'utf8')
+      const { mdxSource, frontMatter } = await mdxRenderer(mdxString)
+
+      // Construct the githubFileUrl, used for "Edit this page" link
+      const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
+      // Return all the props
+      props = {
+        currentPath,
+        frontMatter,
         githubFileUrl,
         mdxSource,
-        navData: navData.navData,
+        navData,
+        versions,
       }
     }
   }
 
-  //  Read in the nav data, and resolve local filePaths
-  const navData = await resolveNavData(navDataFile, localContentDir)
-  //  Get the navNode that matches this path
-  const navNode = getNodeFromPath(currentPath, navData, localContentDir)
-  //  Read in and process MDX content from the navNode's filePath
-  const mdxFile = path.join(process.cwd(), navNode.filePath)
-  const mdxString = fs.readFileSync(mdxFile, 'utf8')
-  const { mdxSource, frontMatter } = await mdxRenderer(mdxString)
+  return props
 
-  // Construct the githubFileUrl, used for "Edit this page" link
-  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
-  // Return all the props
-  return {
-    currentPath,
-    frontMatter,
-    githubFileUrl,
-    mdxSource,
-    navData,
-    versions,
-  }
+  // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
+  // if (process.env.ENABLE_VERSIONED_DOCS) {
+  //   const versionFromPath = getVersionFromPath(params[paramId])
+
+  //   const currentVersionNormalized = normalizeVersion(currentVersion)
+
+  //   versions = await loadVersionList(product.slug)
+
+  //   // Only load docs content from the DB if we're in production or there's an explicit version in the path
+  //   // Preview and dev environments will read the "latest" content from the filesystem
+  //   if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
+  //     // remove trailing index to ensure we fetch the right document from the DB
+  //     const paramsNoIndex = (params[paramId] ?? []).filter(
+  //       (param, idx) =>
+  //         !(param === 'index' && idx === params[paramId].length - 1)
+  //     )
+  //     const pagePathToLoad = versionFromPath
+  //       ? [basePath, ...paramsNoIndex].join('/')
+  //       : [basePath, currentVersionNormalized, ...paramsNoIndex].join('/')
+
+  //     let doc
+  //     const [{ mdxSource }, navData] = await Promise.all([
+  //       loadVersionedDocument(product.slug, pagePathToLoad).then(
+  //         (docResult) => {
+  //           doc = docResult
+  //           return mdxRenderer(docResult.markdownSource)
+  //         }
+  //       ),
+  //       cachedLoadVersionNavData(
+  //         product.slug,
+  //         basePath,
+  //         versionFromPath ?? currentVersionNormalized
+  //       ),
+  //     ])
+
+  //     // Construct the githubFileUrl, used for "Edit this page" link
+  //     const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
+
+  //     return {
+  //       versions,
+  //       currentPath,
+  //       frontMatter: doc.metadata,
+  //       githubFileUrl,
+  //       mdxSource,
+  //       navData: navData.navData,
+  //     }
+  //   }
+  // }
 }
 
 async function validateNavData(navData, localContentDir) {
