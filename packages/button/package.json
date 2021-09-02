@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-button",
   "description": "A clickable text box that allows a user to take an action.",
-  "version": "5.3.1",
+  "version": "6.0.0",
   "author": "HashiCorp",
   "contributors": ["Jeff Escalante"],
   "dependencies": {

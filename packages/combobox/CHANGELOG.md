@@ -1,5 +1,11 @@
 # @hashicorp/react-combobox
 
+## 1.0.1
+
+### Patch Changes
+
+- [#293](https://github.com/hashicorp/react-components/pull/293) [`0162bbf`](https://github.com/hashicorp/react-components/commit/0162bbf6ceccab1962c6e6e5947856d2ea8d5739) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Ensure the scroll bar only shows on the y axis when the list size exceeds the default 40vh max height.
+
 ## 1.0.0
 
 ### Major Changes
