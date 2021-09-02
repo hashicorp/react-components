@@ -7,6 +7,7 @@ function Callouts({
   heading,
   subheading,
   centerHeading,
+  className,
   layout,
   theme = 'light',
   product = 'hashicorp',
@@ -17,7 +18,7 @@ function Callouts({
 
   const { slug } = useProductMeta(product)
   return (
-    <section className={classNames(s.root, s[`theme-${theme}`])}>
+    <section className={classNames(s.root, s[`theme-${theme}`], className)}>
       <div className="g-grid-container">
         {(heading || subheading) && (
           <div className={s.headings} data-testid="headings">
