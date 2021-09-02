@@ -3,7 +3,7 @@
 ---
 
 - 💥✨ BREAKING CHANGE: Converts to CSS modules.
-  - Consumers will need to remove any `@hashicorp/react-logo-grid` imports.
+  - Consumers will need to remove any `@hashicorp/react-logo-grid` css imports.
   - No longer renders a `g-logo-grid` className. Does however accept a `className` prop, so that we can continue to meet override use cases.
 - 🔨 Replaces Tippy with ReachUI Dialog
   - This changes the behavior of the dialog somewhat, but not in a breaking way.
