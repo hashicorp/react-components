@@ -2,4 +2,7 @@
 '@hashicorp/react-hero': major
 ---
 
-Updates to use CSS modules. Removes g-hero className on root element, adds support for className prop.
+- 💥✨ BREAKING CHANGE: Refactored to CSS modules.
+  - Consumers will need to remove any `@hashicorp/react-hero/style.css` imports.
+- 💥 No longer renders a `g-hero` className on the root element
+  - Now accepts a `className` prop, so that we can continue to meet override use cases.
