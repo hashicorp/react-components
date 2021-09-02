@@ -67,8 +67,8 @@ function HeroLeadForm(props) {
               />
             </div>
             <Button
-              type="submit"
               className={s.buttonOverride}
+              type="submit"
               onClick={formikProps.submitForm}
               disabled={formikProps.isSubmitting}
               title={buttonText}
