@@ -226,6 +226,10 @@ module.exports = {
     description: 'Whether or not to center the hero content',
     testValue: false,
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element.',
+  },
   gaPrefix: {
     type: 'string',
     description: 'prefix override for CTA custom events',

@@ -67,7 +67,6 @@ function HeroLeadForm(props) {
               />
             </div>
             <Button
-              className="g-btn"
               type="submit"
               className={s.buttonOverride}
               onClick={formikProps.submitForm}

@@ -13,7 +13,7 @@ import fragment from './fragment.graphql'
 /**
  * A flexible hero component used as the primary content at the top of many HashiCorp pages.
  */
-function Hero({ data, centered, gaPrefix }) {
+function Hero({ data, centered, gaPrefix, className }) {
   const {
     alert,
     backgroundImage,
@@ -40,16 +40,28 @@ function Hero({ data, centered, gaPrefix }) {
         themeClass,
         backgroundTheme,
         { centered: centered || data.centered },
-        { 'has-videos': hasVideos }
+        /* Note: has-videos is only used in Percy on www-next. Should likely be removed */
+        { 'has-videos': hasVideos },
+        className
       )}
     >
       {backgroundImage && (
-        <Image className={s.background} {...backgroundImage} />
+        <Image
+          className={s.background}
+          alt={backgroundImage.alt}
+          {...backgroundImage}
+        />
       )}
       <div className={s.container}>
         <div className={s.headline}>
           {smallTextTag && <div className="tag">{smallTextTag}</div>}
-          {titleLogo && <Image className={s.headlineLogo} {...titleLogo} />}
+          {titleLogo && (
+            <Image
+              className={s.headlineLogo}
+              alt={titleLogo.alt}
+              {...titleLogo}
+            />
+          )}
           {alert && (
             <Alert
               url={alert.url}
@@ -102,7 +114,6 @@ function Hero({ data, centered, gaPrefix }) {
                       [s.isNotPadded]: isNotPadded,
                     })}
                     {...button}
-                    className="g-btn"
                     theme={{
                       brand: idx === 0 ? product : 'neutral',
                       variant: idx === 0 ? 'primary' : 'secondary',
