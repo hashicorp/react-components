@@ -3,7 +3,10 @@ import s from './status-bar.module.css'
 
 export default function StatusBar({ dark, active, timing }) {
   return (
-    <div className={classNames(s.root, { [s.dark]: dark })}>
+    <div
+      className={classNames(s.root, { [s.dark]: dark })}
+      data-testid="progress-bar"
+    >
       <span
         className={classNames(s.bar, { [s.active]: active })}
         style={

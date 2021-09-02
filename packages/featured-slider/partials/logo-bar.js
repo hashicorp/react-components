@@ -14,6 +14,7 @@ function LogoBar({ features, numFrames, dark, active, timing, handleClick }) {
             })}
             onClick={() => handleClick(i)}
             key={feature.logo.url}
+            data-testid="logo-bar"
           >
             <div className={s.logoContainer}>
               <Image url={feature.logo.url} alt={feature.logo.alt} />

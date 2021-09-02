@@ -155,6 +155,7 @@ class FeaturedSliderInner extends Component {
                 style={frameStyle}
                 ref={(el) => el && this.frames.push(el)}
                 key={feature.heading}
+                data-testid="slider-frame"
               >
                 <div className={classNames(s.feature, { [s.single]: single })}>
                   <div className={s.featureImage}>
@@ -190,6 +191,7 @@ class FeaturedSliderInner extends Component {
                     />
                     <Button
                       className={s.button}
+                      data-testid="button"
                       theme={{
                         variant: 'secondary',
                         background: theme,

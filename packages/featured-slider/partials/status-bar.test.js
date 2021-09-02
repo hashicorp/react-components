@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import StatusBar from './'
+import StatusBar from './status-bar'
 
 describe('<StatusBar />', () => {
   test('should add the dark class when needed', () => {
