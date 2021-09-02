@@ -1,5 +1,6 @@
 .combobox {
   --reach-combobox: 1;
+
   position: relative;
 }
 
@@ -20,7 +21,7 @@
       background: var(--white);
       border-radius: 2px;
       max-height: var(--combobox-list-max-height, 40vh);
-      overflow: scroll;
+      overflow-y: auto;
     }
 
     & [data-reach-combobox-option] {
@@ -58,6 +59,7 @@
   }
 
   /* possible data-states: "idle" | "suggesting" | "navigating" | "interacting"  */
+
   /* &[data-reach-combobox-input][data-state='idle'] {
   } */
 
@@ -72,17 +74,23 @@
   font-size: 16px;
   padding: 8px;
   color: var(--gray-2);
+
   /* Note: consider how the following selectors render in <ComboboxOptionText />  */
+
   /* [data-reach-combobox-option-text] {
-  } 
+  }
   /* the matching segments of text */
   & [data-user-value] {
     font-weight: var(--font-weight-bold);
   }
+
   /* the unmatching segments */
+
   /* [data-suggested-value] {
   } */
+
   /* Customize with: https://reach.tech/combobox/#comboboxoptiontext-css-selectors */
+
   /*
   & [data-highlighted] {
     font-weight: 400;
@@ -105,6 +113,7 @@
 
 .dropdownCaretIcon {
   --darken-on-active: brightness(10%);
+
   width: 20px;
   height: auto;
   transition: 0.3s transform;

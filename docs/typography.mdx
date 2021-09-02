@@ -1,0 +1,156 @@
+---
+name: 'Typography'
+---
+
+<!-- workaround to drop swingset's styling of first h1 -->
+
+<h1 />
+
+# Typography
+
+## Typefaces
+
+The typefaces we currently use are:
+
+- Display typeface: [Gilmer](https://www.youworkforthem.com/font/T9758/gilmer)
+- Body typeface: [Metro Sans](https://www.youworkforthem.com/font/T8497/metro-sans)
+- Monospace typeface: [DejaVu Sans Mono](https://dejavu-fonts.github.io/)
+
+Font files for each of these typefaces should be available from our [Brand Downloads Page](https://www.hashicorp.com/brand/downloads).
+
+### Font faces
+
+<>
+  {(() => {
+    function Typeface({ name, fontFamily, weights }) {
+      return (
+        <div style={{ margin: '1rem 0' }}>
+          <p style={{ marginBottom: '0.5rem' }}>
+            {name} — <code>{fontFamily}</code>
+          </p>
+          <div style={{ border: '1px solid var(--gray-5)', padding: '1rem' }}>
+            {weights.map((weight) => {
+              const [fontName, fontWeight] = weight
+              return (
+                <p
+                  style={{
+                    margin: '1rem',
+                    fontSize: '1.5rem',
+                    lineHeight: 1.4,
+                    fontFamily: fontFamily,
+                    fontWeight,
+                  }}
+                >
+                  {name} {fontName}
+                  <br />
+                  Quick brown foxes jumped swiftly
+                </p>
+              )
+            })}
+          </div>
+        </div>
+      )
+    }
+    return (
+      <>
+        <Typeface
+          name="Gilmer"
+          fontFamily="var(--font-display)"
+          weights={[
+            ['Light', 300],
+            ['Regular', 400],
+            ['Medium', 500],
+            ['Bold', 700],
+          ]}
+        />
+        <Typeface
+          name="Metro Sans"
+          fontFamily="var(--font-body)"
+          weights={[
+            ['Book', 300],
+            ['Regular', 400],
+            ['Semi-Bold', 600],
+            ['Bold', 700],
+          ]}
+        />
+        <Typeface
+          name="DejaVu Sans Mono"
+          fontFamily="var(--font-monospace)"
+          weights={[['Regular', 400]]}
+        />
+      </>
+    )
+  })()}
+</>
+
+## Type Styles
+
+The source of truth for our current type styles is the Figma file [Visual Guidelines 2.0 Figma file](https://www.figma.com/file/nvwWoCUzdY34qBXt7L9MWs/01-Visual-Guidelines-v2.0?node-id=4969%3A5501).
+
+### Using Type Styles in Figma
+
+Designers can access these type styles in Figma through the type styles in the _Properties_ panel. Figma maintains [documentation on applying type styles](https://help.figma.com/article/188-styles-applying-styles).
+
+**Note** that the _Visual Guidelines 2.0_ file must be [enabled as a library file](https://help.figma.com/article/315-enabling-team-libraries) in your working document in order to access our shared type styles. You should also enable the _Type Styles - Klavika + Open Sans_ as a library file if you need to use our recently deprecated type styles.
+
+### Using Type Styles in Development
+
+Type styles are applied in development through global `g-type-*` classes, where the `*` represents a slugified string of any of the type styles available in Figma. These styles are managed in the [mktg-global-styles](https://github.com/hashicorp/mktg-global-styles) repository.
+
+You can browse these styles below. Each style is labelled by its name, followed by the `className` used to apply the type style to an element.
+
+### `g-type-*` global utility classes
+
+<>
+  {(() => {
+    const typeStyleClasses = [
+      'g-type-display-1',
+      'g-type-display-2',
+      'g-type-display-3',
+      'g-type-display-4',
+      'g-type-display-5',
+      'g-type-display-6',
+      'g-type-body',
+      'g-type-body-strong',
+      'g-type-body-x-strong',
+      'g-type-body-italic',
+      'g-type-body-small',
+      'g-type-body-small-strong',
+      'g-type-body-small-x-strong',
+      'g-type-body-small-italic',
+      'g-type-long-body',
+      'g-type-long-body-strong',
+      'g-type-long-body-italic',
+      'g-type-buttons-and-standalone-links',
+      'g-type-header-nav',
+      'g-type-label',
+      'g-type-label-strong',
+      'g-type-label-small',
+      'g-type-label-small-strong',
+      'g-type-tag-label',
+      'g-type-code',
+    ]
+    return (
+      <table style={{ borderCollapse: 'collapse' }}>
+        {typeStyleClasses.map((className) => {
+          const cellStyle = {
+            border: '1px solid var(--gray-5)',
+            padding: '0.5rem',
+          }
+          return (
+            <tr>
+              <td style={cellStyle}>
+                <code className="g-type-code">.{className}</code>
+              </td>
+              <td style={cellStyle}>
+                <span className={className}>
+                  Quick Brown Foxes Jumped Lazily
+                </span>
+              </td>
+            </tr>
+          )
+        })}
+      </table>
+    )
+  })()}
+</>
