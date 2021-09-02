@@ -38,7 +38,7 @@ interface Company {
 
 interface LogoGridProps {
   /** Array of company objects to render as grid items. */
-  data: Array<Company>
+  data: Company[]
   /** Color scheme for company logos. Ensure all logos have the specified color available. "color" and "monochrome" should be used on light backgrounds. "white" should be used on dark backgrounds. */
   color?: 'color' | 'white' | 'monochrome'
   /** If true, when a logo with a company.description is clicked, a tooltip-style dialog  that links to the company website will be shown. */
