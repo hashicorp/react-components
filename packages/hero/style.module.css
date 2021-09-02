@@ -126,7 +126,7 @@
   }
 }
 
-.headlineButtonOverride {
+.headlineButton {
   margin: 16px 8px 0;
 
   @media (max-width: 1119px) {
@@ -134,7 +134,7 @@
     margin-right: 12px;
   }
 
-  &.isNotPadded {
+  &.hasZeroPadding {
     margin-left: 24px;
     margin-right: 24px;
 

@@ -103,15 +103,15 @@ function Hero({ data, centered, gaPrefix, className }) {
             <div className={s.headlineButtons}>
               {buttons.map((button, idx) => {
                 if (gaPrefix) button.gaPrefix = gaPrefix
-                const isNotPadded =
+                const hasZeroPadding =
                   button.theme?.variant === 'tertiary' ||
                   button.theme?.variant === 'tertiary-neutral' ||
                   button.theme?.variant === 'ghost'
                 return (
                   <Button
                     key={button.title}
-                    className={classNames(s.headlineButtonOverride, {
-                      [s.isNotPadded]: isNotPadded,
+                    className={classNames(s.headlineButton, {
+                      [s.hasZeroPadding]: hasZeroPadding,
                     })}
                     {...button}
                     theme={{
