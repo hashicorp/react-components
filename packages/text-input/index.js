@@ -1,4 +1,5 @@
 import { v1 as uuidv1 } from 'uuid'
+import classNames from 'classnames'
 
 function TextInput(props) {
   //  `field` and `form` props come from Formik
@@ -10,7 +11,7 @@ function TextInput(props) {
   const inputId = 'u' + uuidv1()
   return (
     <div
-      className={`g-text-input ${className ? className : ''}`}
+      className={classNames('g-text-input', className)}
       hidden={type === 'hidden'}
       data-theme-bg={theme.background}
     >
