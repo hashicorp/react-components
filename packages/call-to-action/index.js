@@ -17,6 +17,7 @@ function CallToAction({
   variant = 'centered',
   product,
   theme = 'light',
+  className,
 }) {
   const s = stylesDict[variant]
   if (!heading && !content) {
@@ -27,7 +28,7 @@ function CallToAction({
     throw new Error('<CallToAction /> `links` must have both a title and a URL')
   }
   return (
-    <div className={classNames(s.root, s[`theme-${theme}`])}>
+    <div className={classNames(s.root, s[`theme-${theme}`], className)}>
       <div className={s.container}>
         {heading && (
           <h2 className={s.heading} data-testid="heading">
