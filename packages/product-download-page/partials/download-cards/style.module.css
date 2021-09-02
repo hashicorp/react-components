@@ -80,15 +80,13 @@
   & a {
     color: var(--brand-link);
   }
+}
 
-  & :global {
-    & .g-tabs {
-      width: 100%;
+.packageManagerTabs {
+  width: 100%;
 
-      @media (--medium-up) {
-        width: initial;
-      }
-    }
+  @media (--medium-up) {
+    width: initial;
   }
 }
 

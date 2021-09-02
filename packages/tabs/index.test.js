@@ -18,9 +18,9 @@ const baseProps = [
   },
 ]
 
-function BaseTabs({ tabs, defaultTabIdx = 0, onChange }) {
+function BaseTabs({ tabs, ...restProps }) {
   return (
-    <Tabs defaultTabIdx={defaultTabIdx} onChange={onChange}>
+    <Tabs {...restProps}>
       {tabs.map(({ heading, tooltip, group, content }) => {
         return (
           <Tab key={heading} heading={heading} tooltip={tooltip} group={group}>
@@ -37,11 +37,14 @@ const renderWithProvider = (ui) => {
 }
 
 describe('<Tabs />', () => {
-  it('should render a `.g-tabs` <div> root element', () => {
-    const { container } = render(<BaseTabs tabs={baseProps} />)
+  it('should render a passed className onto the root element', () => {
+    const testClassName = 'super-special-tabs-classname'
+    const { container } = render(
+      <BaseTabs tabs={baseProps} className={testClassName} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('SECTION')
-    expect(rootElem).toHaveClass('g-tabs')
+    expect(rootElem).toHaveClass(testClassName)
   })
 
   it("should render each tab's heading", () => {
@@ -54,13 +57,30 @@ describe('<Tabs />', () => {
   it('should optionally render a tooltip if provided as a prop', () => {
     render(<BaseTabs tabs={baseProps} />)
     const tabsWithTips = baseProps.filter((tab) => tab.tooltip)
+    // Make sure tooltips aren't removed from the baseProps
+    expect(tabsWithTips.length).toBe(2)
     //  Ensure the tooltip icons are rendering
     const tooltips = screen.getAllByTestId('tooltip-icon')
-    expect(tooltips.length).toBe(2)
+    expect(tooltips.length).toBe(tabsWithTips.length)
+    // Ensure each tab's tooltip works as expected
     tabsWithTips.forEach((tab, i) => {
       //  Focus the tooltip icon, and expect to see content
-      fireEvent.focus(tooltips[i])
-      expect(screen.getByText(tab.tooltip)).toBeInTheDocument()
+      const iconElement = tooltips[i]
+      fireEvent.focus(iconElement)
+      // Expect separate visible and screen reader elements
+      const tooltipElements = screen.getAllByText(tab.tooltip)
+      expect(tooltipElements.length).toBe(2)
+      const [visibleElement, screenReaderElement] = tooltipElements
+      // Assert on the visible element
+      expect(visibleElement).toBeInTheDocument()
+      expect(visibleElement).toHaveTextContent(tab.tooltip)
+      // Assert on the screen reader element
+      expect(screenReaderElement).toBeInTheDocument()
+      expect(screenReaderElement).toHaveTextContent(tab.tooltip)
+      const tooltipId = iconElement.getAttribute('aria-describedby')
+      expect(screenReaderElement.id).toBe(tooltipId)
+      // Blur the tooltip to prepare to focus the next one
+      fireEvent.blur(iconElement)
     })
   })
 

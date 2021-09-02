@@ -12,7 +12,7 @@ function TabbedAccordion({ heading, tabs }) {
           <h2 className="g-type-display-2">{heading}</h2>
         </div>
       )}
-      <Tabs>
+      <Tabs className="g-tabs">
         {tabs.map((tab, stableIdx) => (
           // eslint-disable-next-line react/no-array-index-key
           <Tab key={stableIdx} heading={tab.heading}>
