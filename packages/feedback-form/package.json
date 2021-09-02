@@ -1,11 +1,11 @@
 {
   "name": "@hashicorp/react-feedback-form",
   "description": "Create a feedback form to solicit feedback from users",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "HashiCorp",
   "contributors": ["Bryce Kalow"],
   "dependencies": {
-    "@hashicorp/react-button": "^5.3.1",
+    "@hashicorp/react-button": "^6.0.0",
     "shortid": "^2.2.16"
   },
   "license": "MPL-2.0",
