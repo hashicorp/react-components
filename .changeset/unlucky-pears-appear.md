@@ -8,3 +8,4 @@
     - For example, consumers can pass `className="g-hero` to retain existing overrides.
 - ✨ Hides `progress-bar` from Percy using `@media only percy`
   - This avoids the need for reach-in styles in consuming projects
+  - Consumers who targeted the `.has-videos` class can remove related styles
