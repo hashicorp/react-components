@@ -8,6 +8,7 @@ export default function ContentCta({
   content,
   product = 'hashicorp',
   links,
+  className,
 }) {
   if (!heading || !content) {
     throw new Error('<ContentCTA /> requires heading & content props')
@@ -22,9 +23,14 @@ export default function ContentCta({
 
   return (
     <div
-      className={classNames(s.root, themeClass, {
-        [s.hasTheme]: themeClass,
-      })}
+      className={classNames(
+        s.root,
+        themeClass,
+        {
+          [s.hasTheme]: themeClass,
+        },
+        className
+      )}
     >
       <h4 data-testid="heading" className={s.heading}>
         {heading}
