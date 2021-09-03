@@ -12,6 +12,7 @@ function CheckboxInput({
   theme = { background: 'light' },
   field,
   form,
+  className,
 }) {
   //  `field` and `form` props typically ome from Formik,
   // though you can also provide them without Formik.
@@ -23,9 +24,14 @@ function CheckboxInput({
 
   return (
     <div
-      className={classNames(s.root, s[`background-${theme.background}`], {
-        [s.hasError]: Boolean(error),
-      })}
+      className={classNames(
+        s.root,
+        s[`background-${theme.background}`],
+        {
+          [s.hasError]: Boolean(error),
+        },
+        className
+      )}
     >
       <div className={s.wrapper}>
         <span className={s.checkbox}>
