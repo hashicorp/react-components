@@ -40,8 +40,6 @@ function Hero({ data, centered, gaPrefix, className }) {
         themeClass,
         backgroundTheme,
         { centered: centered || data.centered },
-        /* Note: has-videos is only used in Percy on www-next. Should likely be removed */
-        { 'has-videos': hasVideos },
         className
       )}
     >
