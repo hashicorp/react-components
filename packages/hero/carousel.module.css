@@ -31,10 +31,13 @@
   position: relative;
   transform: translateX(-60px);
   line-height: 0;
-  box-shadow: 0 14.3254px 14.3254px rgba(37, 41, 55, 0.16);
+  box-shadow: 0 14px 14px rgba(37, 41, 55, 0.16);
 
   &.isActive {
     opacity: 1;
+
+    /* This padding ensures there is space for a video,
+       which is expected to be ~ 1150 × 660 px */
     padding-top: calc((100% * 0.63569) + 28px);
     transform: translateX(0);
     transition: opacity 0.5s, transform 0.5s;
@@ -50,6 +53,9 @@
 
 .bar {
   align-items: center;
+
+  /* Almost --black, but aligns with 
+     colors in video clip UIs, so making an exception */
   background: #0e1016;
   border-radius: 4px 4px 0 0;
   display: flex;
@@ -61,6 +67,8 @@
   width: 100%;
 
   & span {
+    /* Almost --gray-1, but matches coloration
+       of video clips, so making an exception */
     background: #252937;
     border-radius: 50%;
     display: block;

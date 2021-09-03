@@ -116,7 +116,7 @@ module.exports = {
       videos: {
         type: 'array',
         description:
-          'One or more videos to play to the right of the text and buttons',
+          'One or more videos to play to the right of the text and buttons. Videos should have an aspect ratio of about 5:9. Typically dimensions are 1150 px wide by 660 px tall. ',
         properties: [
           {
             type: 'object',
