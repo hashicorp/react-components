@@ -2,7 +2,9 @@
 '@hashicorp/react-hero': major
 ---
 
-- 💥✨ BREAKING CHANGE: Refactored to CSS modules.
+- 💥 BREAKING CHANGE: Converts to CSS modules.
   - Consumers will need to remove any `@hashicorp/react-hero/style.css` imports.
-- 💥 No longer renders a `g-hero` className on the root element
-  - Now accepts a `className` prop, so that we can continue to meet override use cases.
+  - ✨ To support overrides in projects, consumers can use the `className` prop.
+    - For example, consumers can pass `className="g-hero` to retain existing overrides.
+- ✨ Hides `progress-bar` from Percy using `@media only percy`
+  - This avoids the need for reach-in styles in consuming projects
