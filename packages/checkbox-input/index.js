@@ -14,7 +14,7 @@ function CheckboxInput({
   form,
   className,
 }) {
-  //  `field` and `form` props typically ome from Formik,
+  //  `field` and `form` props typically come from Formik,
   // though you can also provide them without Formik.
   //  https://jaredpalmer.com/formik/docs/api/field
   const error = form.touched[field.name] && form.errors[field.name]
