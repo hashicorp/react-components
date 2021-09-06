@@ -7,10 +7,11 @@ const defaultProps = getTestValues(props)
 
 describe('<VerticalTextBlockList />', () => {
   it('should render correctly with default props', () => {
-    render(<VerticalTextBlockList {...defaultProps} />)
-    expect(screen.getByTestId('root').className).toContain(
-      'g-vertical-text-block-list'
+    const className = 'my-text-block-list'
+    const { container } = render(
+      <VerticalTextBlockList {...defaultProps} className={className} />
     )
+    expect(container.firstChild).toHaveClass(className)
 
     // all items in the data list render
     expect(screen.getByTestId('item-list').children.length).toBe(
@@ -42,7 +43,7 @@ describe('<VerticalTextBlockList />', () => {
 
   it('should have a class with the "centerText" prop active', () => {
     render(<VerticalTextBlockList {...defaultProps} centerText={true} />)
-    expect(screen.getByTestId('item-list')).toHaveClass('centered-text')
+    expect(screen.getByTestId('item-list')).toHaveClass('centeredText')
   })
 
   it('should render links correctly when a "Link" prop is passed', () => {

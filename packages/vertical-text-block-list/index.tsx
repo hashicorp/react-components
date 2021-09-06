@@ -19,6 +19,7 @@ type TextBlock = {
     url: string
     alt: string
   }
+  className?: string
 }
 
 export default function VerticalTextBlockList({
@@ -26,10 +27,11 @@ export default function VerticalTextBlockList({
   product = 'hashicorp',
   centerText = false,
   Link,
+  className,
 }: VerticalTextBlockListProps): React.ReactElement {
   const { themeClass } = useProductMeta(product)
   return (
-    <div className={themeClass} data-testid="root">
+    <div className={classNames(className, themeClass)}>
       <ul
         className={classNames(s.list, { [s.centeredText]: centerText })}
         data-testid="item-list"
