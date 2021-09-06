@@ -106,22 +106,22 @@ function SubnavInner({
   )
 }
 
-function Subnav(props) {
+function Subnav({ className, ...restProps }) {
   const [isSticky, hasOverflow, wrapperRef] = useNavRef()
   // Set the brand theme automatically based on the nav's title
   const product =
-    productAllowList[props.titleLink.text.toLowerCase()] || 'hashicorp'
+    productAllowList[restProps.titleLink.text.toLowerCase()] || 'hashicorp'
 
   return (
     <nav
       ref={wrapperRef}
-      className={classNames(s.root, {
+      className={classNames(s.root, className, {
         [s.isSticky]: isSticky,
       })}
       aria-label={`${product} website navigation`}
     >
       <SubnavInner
-        {...props}
+        {...restProps}
         product={product}
         hasOverflow={hasOverflow}
         isSticky={isSticky}

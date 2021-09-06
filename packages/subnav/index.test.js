@@ -57,12 +57,15 @@ const baseProps = {
 }
 
 describe('<Subnav />', () => {
-  it('should render a `.g-subnav` <nav> root element', async () => {
-    const { container } = render(<Subnav {...baseProps} />)
+  it('should pass a provided className to the root element', async () => {
+    const className = 'my-special-subnav'
+    const { container } = render(
+      <Subnav {...baseProps} className={className} />
+    )
     await waitForGithubStarsUpdate()
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('NAV')
-    expect(rootElem).toHaveClass('g-subnav')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should render all top-level menuItems as expected', async () => {
