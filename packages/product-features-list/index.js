@@ -1,9 +1,10 @@
 import Button from '@hashicorp/react-button'
+import classNames from 'classnames'
 import s from './style.module.css'
 
-export default function ProductFeaturesList({ heading, features }) {
+export default function ProductFeaturesList({ heading, features, className }) {
   return (
-    <div className={s.root}>
+    <div className={classNames(s.root, className)}>
       <h2 className={s.heading}>{heading}</h2>
       <div className={s.featuresContainer}>
         {features.map(({ title, content, icon, link }) => (
