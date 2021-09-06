@@ -2,11 +2,11 @@ import useProductMeta from '@hashicorp/platform-product-meta'
 import s from './style.module.css'
 import classNames from 'classnames'
 
-function EnterpriseAlert({ product, inline, children }) {
+function EnterpriseAlert({ product, inline, children, className }) {
   const { name, slug, themeClass } = useProductMeta(product)
   return (
     <div
-      className={classNames(s.root, themeClass, {
+      className={classNames(s.root, themeClass, className, {
         [s.themed]: themeClass,
         [s.inline]: inline,
       })}
