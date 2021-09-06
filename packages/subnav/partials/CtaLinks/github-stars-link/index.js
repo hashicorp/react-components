@@ -9,20 +9,20 @@ import s from './style.module.css'
 
 function GithubStarsButton(props) {
   const { url, hideGithubStars } = props
-  const [starCount, setStarcount] = useState(-1)
+  const [starCount, setStarCount] = useState(-1)
 
   useEffect(() => {
-    if (hideGithubStars) return setStarcount(0)
+    if (hideGithubStars) return setStarCount(0)
     const { org, repo } = parseGithubUrl(url)
-    if (!org || !repo) return setStarcount(0)
+    if (!org || !repo) return setStarCount(0)
     const githubApiUrl = `https://api.github.com/repos/${org}/${repo}`
     fetch(githubApiUrl)
       .then((response) => {
         response.json().then((data) => {
           // Github's rate limit for unauthenticated requests is 60 per hour
           // When the limit is hit, data.stargazers_count is undefined,
-          // and setStarcount falls back to not showing the star count
-          setStarcount(data.stargazers_count)
+          // and setStarCount falls back to not showing the star count
+          setStarCount(data.stargazers_count)
           // Warn if this limit is hit, to avoid otherwise confusing behavior
           //  We're still using the response to provide a documentation link
           if (!data.stargazers_count) {
@@ -43,27 +43,28 @@ function GithubStarsButton(props) {
         })
       })
       .catch((err) => {
-        setStarcount(0)
+        setStarCount(0)
         console.warn(JSON.stringify(err, null, 2))
       })
-  }, [url])
+  }, [hideGithubStars, url])
 
-  const isLoadingStarcount = starCount === -1
-  const isFailedStarcount = formatStarCount(starCount) === false
-  const showStarcount =
-    !hideGithubStars && (isLoadingStarcount || !isFailedStarcount)
+  const isLoadingStarCount = starCount === -1
+  const isFailedStarCount = formatStarCount(starCount) === false
+  const showStarCount =
+    !hideGithubStars && (isLoadingStarCount || !isFailedStarCount)
   return (
     <a href={url} className={s.root}>
       <span className={s.github}>
         <GithubIcon />
         <VisuallyHidden>GitHub</VisuallyHidden>
       </span>
-      {showStarcount && (
+      {showStarCount && (
         <span className={s.stars}>
           <StarIcon />
           <span className="g-type-body-small-strong" data-testid="github-stars">
             {formatStarCount(starCount) || <span>&mdash;</span>}
           </span>
+          <VisuallyHidden>Stars on GitHub</VisuallyHidden>
         </span>
       )}
     </a>
