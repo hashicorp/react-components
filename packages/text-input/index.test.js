@@ -6,16 +6,19 @@ import { getTestValues } from 'swingset/testing'
 const defaultProps = getTestValues(props)
 
 describe('<TextInput />', () => {
-  it('should render a `.g-text-input` <div> root element', () => {
-    const { container } = render(<TextInput {...defaultProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-text-input'
+    const { container } = render(
+      <TextInput {...defaultProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-text-input')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should hide the root element when `type` is set to `hidden`', () => {
     const { container } = render(<TextInput {...defaultProps} type="hidden" />)
-    expect(container.firstChild).not.toBeVisible()
+    expect(container.firstChild).toHaveClass('hidden')
   })
 
   it('should reflect the email `type` on the input', () => {

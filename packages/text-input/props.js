@@ -62,4 +62,8 @@ module.exports = {
       options: ['light', 'dark', 'brand'],
     },
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
 }
