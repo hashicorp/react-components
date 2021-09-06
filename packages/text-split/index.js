@@ -12,6 +12,7 @@ function TextSplit({
   linkStyle,
   textSide,
   children,
+  className,
 }) {
   if (!heading && !content) {
     throw new Error('<TextSplit /> requires either heading or content')
@@ -21,7 +22,7 @@ function TextSplit({
   const hasReactContent = content && !hasStringContent
 
   return (
-    <div className={classNames(s.root, s[`background-${theme}`])}>
+    <div className={classNames(s.root, className, s[`background-${theme}`])}>
       <div className={classNames(s.container, s[`text-at-${textSide}`])}>
         <div className={s.childrenSide}>{children}</div>
         <div className={s.contentSide}>
