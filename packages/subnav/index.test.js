@@ -92,8 +92,7 @@ describe('<Subnav />', () => {
     })[0]
     const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
     expect(menuItemTextElem).toBeVisible()
-    const linkElem = menuItemTextElem.parentNode
-    expect(linkElem.classList.contains('is-active')).toBe(true)
+    expect(menuItemTextElem).toHaveClass('isActive')
   })
 
   it('should highlight the active link', async () => {
@@ -104,8 +103,7 @@ describe('<Subnav />', () => {
     })[0]
     const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
     expect(menuItemTextElem).toBeVisible()
-    const linkElem = menuItemTextElem.parentNode
-    expect(linkElem.classList.contains('is-active')).toBe(true)
+    expect(menuItemTextElem).toHaveClass('isActive')
   })
 
   it('should highlight the dropdown that contains the active link', async () => {
@@ -123,8 +121,8 @@ describe('<Subnav />', () => {
     })[0]
     const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
     expect(menuItemTextElem).toBeVisible()
-    const linkElem = menuItemTextElem.parentNode
-    expect(linkElem.classList.contains('is-active')).toBe(true)
+    // const linkElem = menuItemTextElem.parentNode
+    expect(menuItemTextElem).toHaveClass('isActive')
   })
 
   it('should use a provided Link component to render all links', async () => {
