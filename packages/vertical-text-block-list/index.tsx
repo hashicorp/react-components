@@ -9,6 +9,7 @@ interface VerticalTextBlockListProps {
   product?: Products
   centerText?: boolean
   Link?: React.FC
+  className?: string
 }
 
 type TextBlock = {
@@ -19,7 +20,6 @@ type TextBlock = {
     url: string
     alt: string
   }
-  className?: string
 }
 
 export default function VerticalTextBlockList({
