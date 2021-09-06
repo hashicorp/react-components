@@ -6,7 +6,8 @@
   "contributors": ["RJ Spiker"],
   "dependencies": {
     "@hashicorp/react-image": "^4.0.3",
-    "@hashicorp/react-inline-svg": "^6.0.3"
+    "@hashicorp/react-inline-svg": "^6.0.3",
+    "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {

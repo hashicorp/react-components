@@ -4,10 +4,11 @@ import Image from '@hashicorp/react-image'
 import Arrow from './img/arrow.svg?include'
 import s from './style.module.css'
 import fragment from './fragment.graphql'
+import classNames from 'classnames'
 
-function UseCases({ items }) {
+function UseCases({ items, className }) {
   return (
-    <div className={s.root} data-testid="root">
+    <div className={classNames(s.root, className)}>
       {items.map((item) => (
         <a
           className={s.useCase}
