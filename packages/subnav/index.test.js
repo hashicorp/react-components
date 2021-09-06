@@ -121,7 +121,6 @@ describe('<Subnav />', () => {
     })[0]
     const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
     expect(menuItemTextElem).toBeVisible()
-    // const linkElem = menuItemTextElem.parentNode
     expect(menuItemTextElem).toHaveClass('isActive')
   })
 
