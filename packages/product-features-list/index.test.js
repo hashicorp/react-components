@@ -44,10 +44,13 @@ const propsBase = {
 }
 
 describe('<ProductFeaturesList />', () => {
-  it('should render a `.g-product-features-list` root element', () => {
-    const { container } = render(<ProductFeaturesList {...propsBase} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-special-features-list'
+    const { container } = render(
+      <ProductFeaturesList {...propsBase} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-product-features-list')
+    expect(rootElem).toHaveClass(className)
   })
 })

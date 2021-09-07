@@ -1,11 +1,13 @@
 import Button from '@hashicorp/react-button'
 import svgGithub from './icons/github.svg.js'
 import GithubStarsLink from './github-stars-link/index.js'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 function CtaLinks(props) {
   const { links, product, isInDropdown, hideGithubStars } = props
   return (
-    <div className={`cta-links ${isInDropdown ? 'is-in-dropdown' : ''}`}>
+    <div className={classNames(s.root, { [s.isInDropdown]: isInDropdown })}>
       {links.map((link, stableIdx) => {
         const textKey = link.text.toLowerCase()
         const isDownload = textKey === 'download'

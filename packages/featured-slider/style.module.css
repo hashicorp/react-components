@@ -1,0 +1,124 @@
+.sectionRoot {
+  composes: g-grid-container from global;
+  padding-top: 128px;
+  padding-bottom: 128px;
+
+  &.light {
+    background: var(--white);
+  }
+
+  &.dark {
+    background: var(--black);
+  }
+}
+
+.sectionHeading {
+  composes: g-type-display-2 from global;
+  margin-top: 0;
+  text-align: center;
+
+  &.light {
+    color: var(--black);
+  }
+
+  &.dark {
+    color: var(--white);
+  }
+}
+
+.featureContainer {
+  overflow: hidden;
+}
+
+.sliderContainer {
+  transition: transform 400ms ease-out;
+}
+
+.feature {
+  &.dark {
+    & h3 {
+      color: white;
+    }
+    & p {
+      color: var(--gray-5);
+    }
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &.single {
+    align-items: flex-start;
+  }
+}
+
+.featureImage {
+  margin-bottom: 2rem;
+
+  & img,
+  & picture {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+    flex-basis: 60%;
+    margin-right: 64px;
+  }
+}
+
+.featureContent {
+  text-align: center;
+
+  @media (min-width: 768px) {
+    flex-basis: 40%;
+    text-align: left;
+  }
+}
+
+.contentHeading {
+  composes: g-type-display-4 from global;
+  margin: 0 0 8px;
+  color: var(--black);
+
+  &.dark {
+    color: var(--white);
+  }
+}
+
+.contentBody {
+  composes: g-type-body from global;
+  color: var(--gray-2);
+
+  &.dark {
+    color: var(--gray-5);
+  }
+
+  @media (min-width: 768px) {
+    margin: 0;
+    & + p {
+      margin-top: 1em;
+    }
+  }
+}
+
+.singleLogo {
+  margin-bottom: 32px;
+  width: 100%;
+  height: 65px;
+
+  & picture,
+  & img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.button {
+  margin-top: 32px;
+}

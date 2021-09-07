@@ -8,6 +8,8 @@ import getIntegrations from './integrations'
 import CloseButton from '../img/icn_close'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
+import classNames from 'classnames'
+import s from './dialog.module.css'
 
 export default class ConsentPreferences extends Component {
   constructor(props) {
@@ -102,11 +104,11 @@ export default class ConsentPreferences extends Component {
   buildCategory(items, name) {
     const categoryItems = items.map((item) => {
       return (
-        <div className="category-item flex-column" key={item.name}>
-          <div className="item-title">{item.name}</div>
-          <div className="flex-centered-row">
-            <div className="item-description">{item.description}</div>
-            <div className="consent-toggle">
+        <div className={s.categoryItem} key={item.name}>
+          <div className={s.itemTitle}>{item.name}</div>
+          <div className={s.flexCenteredRow}>
+            <div className={s.itemDescription}>{item.description}</div>
+            <div className={s.consentToggle}>
               <Toggle
                 onChange={this.handleToggle.bind(this, item.name, item.origin)}
                 enabled={Boolean(
@@ -123,13 +125,13 @@ export default class ConsentPreferences extends Component {
     })
 
     return (
-      <div className="category" key={name}>
-        <div className="category-title">{name}</div>
-        <div className="flex-centered-row">
-          <div className="category-description">
+      <div className={s.category} key={name}>
+        <div className={s.categoryTitle}>{name}</div>
+        <div className={s.flexCenteredRow}>
+          <div className={s.categoryDescription}>
             {this.state.categories[name]}
           </div>
-          <div className="consent-toggle">
+          <div className={s.consentToggle}>
             {!this.state.showCategories[name] && (
               <Toggle
                 onChange={this.handleToggle.bind(this, name, 'categories')}
@@ -140,32 +142,28 @@ export default class ConsentPreferences extends Component {
             )}
           </div>
         </div>
-        <div className="category-fold">
-          {/* TODO: this should most likely be a button (https://app.asana.com/0/1100423001970639/1199667739287943/f) */}
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a
+        <div className={s.categoryFold}>
+          <button
+            className={classNames(s.categoryFoldTrigger, {
+              [s.shown]: this.state.showCategories[name],
+            })}
             onClick={() => {
               this.handleFold(name)
             }}
           >
             {!this.state.showCategories[name] && 'See more'}
             {this.state.showCategories[name] && 'See less'}
-            <svg
-              width="14"
-              height="8"
-              xmlns="http://www.w3.org/2000/svg"
-              className={!this.state.showCategories[name] ? 'down' : 'up'}
-            >
+            <svg width="14" height="8" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M12.293.293L7 5.586 1.707.293A1 1 0 1 0 .293 1.707l6 6a.997.997 0 0 0 1.414 0l6-6A1 1 0 0 0 12.293.293"
                 fill="var(--brand)"
                 fillRule="evenodd"
               />
             </svg>
-          </a>
+          </button>
         </div>
         {this.state.showCategories[name] && (
-          <div className="category-items flex-column">{categoryItems}</div>
+          <div className={s.categoryItems}>{categoryItems}</div>
         )}
       </div>
     )
@@ -181,14 +179,14 @@ export default class ConsentPreferences extends Component {
     })
 
     return (
-      <div className="g-consent-dialog" data-testid="consent-mgr-dialog">
+      <div className={s.root} data-testid="consent-mgr-dialog">
         {/* Manage preferences dialog */}
         {!this.state.showConfirmationDialog && (
-          <div className="g-consent-visible-dialog flex-column">
-            <div className="dialog-title flex-centered-row">
+          <div className={s.visibleDialog}>
+            <div className={s.dialogTitle}>
               <span>Data Collection Preferences</span>
               <div
-                className="clickable flex-centered-row"
+                className={s.closeButton}
                 onClick={() => {
                   this.setState({ showConfirmationDialog: true })
                 }}
@@ -196,7 +194,7 @@ export default class ConsentPreferences extends Component {
                 <CloseButton />
               </div>
             </div>
-            <div className="dialog-body">
+            <div className={s.dialogBody}>
               <p>
                 HashiCorp uses data collected by cookies and JavaScript
                 libraries to improve your browsing experience, analyze site
@@ -228,10 +226,9 @@ export default class ConsentPreferences extends Component {
               </p>
               <div id="outline">{categories}</div>
             </div>
-            <div className="dialog-footer">
+            <div className={s.dialogFooter}>
               <Button
                 title="Cancel"
-                className="button-cancel"
                 theme={{
                   variant: 'secondary',
                   brand: 'neutral',
@@ -242,7 +239,7 @@ export default class ConsentPreferences extends Component {
                 }}
               />
               <Button
-                className="button-save"
+                className={s.saveButton}
                 title="Save Preferences"
                 onClick={() => {
                   this.props.saveAndLoadAnalytics(this.state.consent)
@@ -253,11 +250,11 @@ export default class ConsentPreferences extends Component {
         )}
         {/* Cancellation confirmation dialog */}
         {this.state.showConfirmationDialog && (
-          <div className="g-consent-visible-dialog">
-            <div className="dialog-title flex-centered-row">
+          <div className={s.visibleDialog}>
+            <div className={s.dialogTitle}>
               <span>Are you sure?</span>
             </div>
-            <div className="dialog-body">
+            <div className={s.dialogBody}>
               <p>
                 Your preferences have not been saved. To continue using our
                 website, you must either set individual preferences or agree to{' '}
@@ -271,7 +268,7 @@ export default class ConsentPreferences extends Component {
                 .
               </p>
             </div>
-            <div className="dialog-footer">
+            <div className={s.dialogFooter}>
               <Button
                 title="Back to Preferences"
                 theme={{
@@ -279,14 +276,13 @@ export default class ConsentPreferences extends Component {
                   brand: 'neutral',
                   background: 'light',
                 }}
-                className="button-cancel"
                 onClick={() => {
                   this.setState({ showConfirmationDialog: false })
                 }}
               />
               <Button
                 title="Agree & Close"
-                className="button-save"
+                className={s.saveButton}
                 onClick={() => {
                   this.props.saveAndLoadAnalytics({ loadAll: true })
                 }}
