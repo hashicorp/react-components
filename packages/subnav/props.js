@@ -103,4 +103,8 @@ module.exports = {
     description:
       'Whether or not to highlight items if the base path matches the current URL. Defaults to `false`, requiring a full URL  match.',
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
 }
