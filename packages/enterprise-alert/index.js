@@ -1,16 +1,19 @@
 import useProductMeta from '@hashicorp/platform-product-meta'
+import s from './style.module.css'
+import classNames from 'classnames'
 
-export default function EnterpriseAlert({ product, inline, children }) {
+function EnterpriseAlert({ product, inline, children, className }) {
   const { name, slug, themeClass } = useProductMeta(product)
   return (
     <div
-      className={`g-enterprise-alert ${themeClass || ''} ${
-        themeClass ? 'themed' : ''
-      } ${inline ? 'inline' : ''}`}
+      className={classNames(s.root, themeClass, className, {
+        [s.themed]: themeClass,
+        [s.inline]: inline,
+      })}
     >
-      <span className="tag g-type-tag-label">Enterprise</span>
+      <span className={s.tag}>Enterprise</span>
       {!inline && (
-        <p className="g-type-body">
+        <p className={s.text}>
           {children ? (
             children
           ) : (
@@ -31,3 +34,5 @@ export default function EnterpriseAlert({ product, inline, children }) {
     </div>
   )
 }
+
+export default EnterpriseAlert

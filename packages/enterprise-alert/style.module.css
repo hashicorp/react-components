@@ -1,0 +1,40 @@
+.root {
+  --tag-background: var(--black);
+  --tag-margin: 12px;
+  --link-color: var(--black);
+
+  background: var(--gray-6);
+  display: flex;
+  align-items: center;
+  padding: 13px 18px;
+  border-radius: 3px;
+
+  &.inline {
+    background: none;
+    padding: 0 7px;
+    display: inline-flex;
+
+    --tag-background: var(--gray-2);
+    --tag-margin: 0;
+  }
+
+  &.themed {
+    --tag-background: var(--brand);
+    --link-color: var(--brand-link);
+  }
+}
+
+.text {
+  composes: g-type-body from global;
+  margin: 0;
+}
+
+.tag {
+  composes: g-type-tag-label from global;
+  background: var(--tag-background);
+  color: var(--brand-text-on-primary);
+  border-radius: 3px;
+  text-transform: uppercase;
+  padding: 6px 8px;
+  margin-right: var(--tag-margin);
+}

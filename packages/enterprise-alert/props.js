@@ -16,4 +16,8 @@ module.exports = {
     type: 'string',
     control: { type: 'textarea' },
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
 }
