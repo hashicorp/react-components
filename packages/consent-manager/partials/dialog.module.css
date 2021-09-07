@@ -1,0 +1,160 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.flexCenteredRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visibleDialog {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 830px;
+  background-color: var(--brand-secondary);
+  color: var(--black);
+  border-radius: 4px;
+  overflow: hidden; /* IE */
+  max-height: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 1000px) {
+    width: 85%;
+  }
+
+  @media (max-width: 700px) {
+    width: 90%;
+  }
+}
+
+.dialogTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--brand);
+  padding: 15px 25px;
+  flex-shrink: 0;
+  -ms-flex-negative: 0; /* IE */
+  border-radius: 4px 4px 0 0;
+
+  & span {
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    color: var(--white);
+  }
+}
+
+.closeButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dialogBody {
+  padding: 5px 25px;
+  flex-grow: 1;
+  overflow-y: scroll;
+  color: var(--black);
+  font-size: 0.95rem;
+  max-height: 500px; /* IE */
+}
+
+.outline {
+  padding: 0 20px;
+}
+
+.category {
+  margin-bottom: 20px;
+}
+
+.categoryItems {
+  padding: 25px 0 0 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.consentToggle {
+  margin-left: 60px;
+  min-width: 55px;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.itemTitle {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.itemDescription {
+  margin-right: 25px;
+  font-size: 0.9rem;
+}
+
+.categoryTitle {
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 8px;
+}
+
+.categoryDescription {
+  margin-right: 5px;
+  font-size: 0.95rem;
+}
+
+.categoryFold {
+  margin-top: 8px;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
+  font-size: 0.9em;
+}
+
+.categoryFoldTrigger {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--brand-link);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.875rem;
+  font-family: inherit;
+  font-weight: var(--font-weight-bold);
+  margin-top: 8px;
+  text-transform: uppercase;
+
+  & svg {
+    margin-left: 10px;
+    transform: rotate(0deg);
+  }
+
+  &.shown svg {
+    transform: rotate(180deg);
+  }
+}
+
+.dialogFooter {
+  margin: 25px 20px;
+  text-align: right;
+  display: flex;
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.saveButton {
+  margin-left: 15px;
+}

@@ -1,0 +1,51 @@
+.root {
+  position: relative;
+  margin-left: auto;
+}
+
+.dropdown {
+  background: var(--white);
+  border-radius: 4px;
+  box-shadow: 0 8px 12px rgba(37, 38, 45, 0.08);
+  margin-top: 8px;
+  max-height: calc(100vh - 300%);
+  overflow-y: auto;
+  padding: 12px 24px 0 24px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 256px;
+  z-index: 1;
+
+  &.isCollapsed {
+    display: none;
+  }
+}
+
+.ulElem {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.submenuTitle {
+  composes: g-type-label from global;
+  margin: 12px 0 8px 0;
+  color: var(--gray-3);
+}
+
+.divider {
+  margin: 12px 0;
+  border: 0;
+  padding: 0;
+  height: 1px;
+  background: var(--gray-5);
+}
+
+.submenuItem {
+  composes: g-type-body-small-strong from global;
+  display: block;
+  padding: 4px 0;
+  line-height: 1.6em;
+  color: var(--black);
+}

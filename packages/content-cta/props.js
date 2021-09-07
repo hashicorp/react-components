@@ -12,6 +12,10 @@ module.exports = {
   product: {
     ...baseProps.product,
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   links: {
     type: 'array',
     properties: [

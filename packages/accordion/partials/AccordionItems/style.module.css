@@ -1,0 +1,117 @@
+.root {
+  margin-top: 64px;
+
+  &.withTopBorder {
+    border-top: 1px solid var(--gray-5);
+  }
+}
+
+.accordionItem {
+  border-bottom: 1px solid var(--gray-5);
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.trigger {
+  --icon-color: var(--black);
+  --icon-transform: rotate(180deg);
+
+  composes: g-type-body-strong from global;
+  color: var(--gray-1);
+  cursor: pointer;
+  text-align: left;
+  margin: 0;
+  border: none;
+  background: none;
+  padding: 24px 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  &.isCollapsed {
+    --icon-color: var(--gray-4);
+    --icon-transform: rotate(0deg);
+  }
+
+  &:focus {
+    outline: none;
+    color: var(--brand);
+    text-decoration: underline;
+
+    --icon-color: var(--brand);
+  }
+}
+
+.triggerText {
+  margin-right: 16px;
+}
+
+.triggerIcon {
+  user-select: none;
+  margin-left: auto;
+  margin-top: 1px;
+  transition: transform 0.4s;
+  transform: var(--icon-transform);
+
+  & svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    & [fill] {
+      fill: var(--icon-color);
+    }
+    & [stroke] {
+      stroke: var(--icon-color);
+    }
+  }
+}
+
+.content {
+  padding-top: 0;
+  padding-bottom: 24px;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.htmlContent {
+  composes: g-type-long-body from global;
+  max-width: 45em;
+  color: var(--gray-2);
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  & p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  & h6 {
+    color: var(--gray-1);
+    margin-top: 24px;
+    margin-bottom: 16px;
+
+    /* Ideally, we would compose g-type-label-strong here,
+       unfortunately this is not currently possible with
+       nested selectors */
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    line-height: 1.5em;
+    text-transform: uppercase;
+  }
+}
