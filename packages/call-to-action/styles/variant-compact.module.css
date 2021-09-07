@@ -1,0 +1,80 @@
+.root {
+  --background: var(--white);
+  --text-color-display: var(--gray-1);
+  --text-color-body: var(--gray-2);
+
+  background: var(--background);
+  padding: 48px 0;
+
+  @media (--medium) {
+    padding: 64px 0;
+  }
+  @media (--large) {
+    padding: 88px 0;
+  }
+
+  &.theme-gray {
+    --background: var(--gray-6);
+  }
+
+  &.theme-dark {
+    --background: var(--black);
+    --text-color-display: var(--white);
+    --text-color-body: var(--gray-5);
+  }
+}
+
+.container {
+  composes: g-grid-container from global;
+
+  @media (--medium-up) {
+    display: flex;
+  }
+}
+
+.heading {
+  composes: g-type-display-2 from global;
+  color: var(--text-color-display);
+  margin: 0;
+
+  @media (--medium-up) {
+    flex-basis: 33.3%;
+    padding-right: 32px;
+  }
+}
+
+.contentAndLinks {
+  @media (--medium-up) {
+    flex-basis: 66.6%;
+    margin-left: 32px;
+  }
+}
+
+.content {
+  composes: g-type-body-large from global;
+  color: var(--text-color-body);
+  margin: 0;
+  max-width: 35em;
+
+  &.hasHeading {
+    margin-top: 16px;
+
+    @media (--medium-up) {
+      margin: 0;
+    }
+  }
+}
+
+.links {
+  margin-top: 32px;
+  margin-bottom: -16px;
+
+  @media (--large) {
+    margin-top: 40px;
+  }
+}
+
+.button {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}

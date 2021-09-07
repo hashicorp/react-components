@@ -1,0 +1,74 @@
+.root {
+  --background: var(--white);
+  --text-color-display: var(--gray-1);
+  --text-color-body: var(--gray-2);
+
+  background: var(--background);
+  padding: 64px 0;
+
+  @media (--medium) {
+    padding: 88px 0;
+  }
+  @media (--large) {
+    padding: 128px 0;
+  }
+
+  &.theme-gray {
+    --background: var(--gray-6);
+  }
+
+  &.theme-dark {
+    --background: var(--black);
+    --text-color-display: var(--white);
+    --text-color-body: var(--gray-5);
+  }
+}
+
+.container {
+  composes: g-grid-container from global;
+}
+
+.heading {
+  composes: g-type-display-2 from global;
+  color: var(--text-color-display);
+  margin: 0;
+}
+
+.content {
+  composes: g-type-body-large from global;
+  color: var(--text-color-body);
+  margin: 0;
+  max-width: 30em;
+
+  &.hasHeading {
+    margin-top: 16px;
+
+    @media (--large) {
+      margin-top: 24px;
+    }
+  }
+}
+
+.links {
+  margin-top: 32px;
+
+  @media (--large) {
+    margin-top: 40px;
+  }
+
+  &::after {
+    display: block;
+    float: none;
+    content: '';
+    clear: both;
+  }
+}
+
+.button {
+  display: block;
+  float: left;
+  clear: both;
+  & + .g-btn {
+    margin-top: 8px;
+  }
+}
