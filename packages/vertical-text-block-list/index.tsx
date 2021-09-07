@@ -2,12 +2,14 @@ import classNames from 'classnames'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import Image from '@hashicorp/react-image'
 import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
+import s from './style.module.css'
 
 interface VerticalTextBlockListProps {
   data: TextBlock[]
   product?: Products
   centerText?: boolean
   Link?: React.FC
+  className?: string
 }
 
 type TextBlock = {
@@ -25,23 +27,29 @@ export default function VerticalTextBlockList({
   product = 'hashicorp',
   centerText = false,
   Link,
-}: VerticalTextBlockListProps) {
+  className,
+}: VerticalTextBlockListProps): React.ReactElement {
   const { themeClass } = useProductMeta(product)
   return (
-    <div
-      className={classNames('g-vertical-text-block-list', themeClass)}
-      data-testid="root"
-    >
+    <div className={classNames(className, themeClass)}>
       <ul
-        className={classNames('list', { 'centered-text': centerText })}
+        className={classNames(s.list, { [s.centeredText]: centerText })}
         data-testid="item-list"
       >
         {data.map((item) => (
-          <li key={item.body}>
-            <MaybeLink link={item.linkUrl} LinkComponent={Link}>
-              <div className="header" data-testid={`header-${item.header}`}>
+          <li key={item.body} className={s.listItem}>
+            <MaybeLink
+              className={s.maybeLink}
+              link={item.linkUrl}
+              LinkComponent={Link}
+            >
+              <div className={s.header} data-testid={`header-${item.header}`}>
                 {item.logo ? (
-                  <Image {...item.logo} data-testid="img" />
+                  <Image
+                    {...item.logo}
+                    alt={item.logo.alt || ''}
+                    data-testid="img"
+                  />
                 ) : (
                   <h6 className="g-type-display-4" data-testid="text">
                     {item.header}
@@ -49,7 +57,7 @@ export default function VerticalTextBlockList({
                 )}
               </div>
               <div
-                className="body-text g-type-body-large"
+                className={s.bodyText}
                 dangerouslySetInnerHTML={{
                   __html: item.body,
                 }}
@@ -65,23 +73,29 @@ export default function VerticalTextBlockList({
 
 // TODO: use `LinkWrap` interface once its in TS
 interface MaybeLinkProps {
-  children: React.ReactNode
+  children?: React.ReactNode
+  className?: string
   link?: string
   LinkComponent?: React.FC
 }
 
-function MaybeLink({ link, LinkComponent, children }: MaybeLinkProps) {
+function MaybeLink({
+  className,
+  link,
+  LinkComponent,
+  children,
+}: MaybeLinkProps): React.ReactElement {
   return link ? (
     <LinkWrap
       Link={LinkComponent}
       href={link}
-      className="wrapper"
+      className={className}
       data-testid="link"
     >
       {children}
     </LinkWrap>
   ) : (
-    <div className="wrapper" data-testid="div">
+    <div className={className} data-testid="div">
       {children}
     </div>
   )

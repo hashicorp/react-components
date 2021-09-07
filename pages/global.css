@@ -4,7 +4,6 @@
 
 /* these should be moved to css modules */
 @import '../packages/logo-grid/style.css';
-@import '../packages/vertical-text-block-list/style.css';
 
 .swingset-logo {
   margin: 1rem 1rem 0.25rem 2rem;
