@@ -48,9 +48,12 @@ const defaultProps = {
 }
 
 describe('<UseCases />', () => {
-  it('should render', () => {
-    render(<UseCases {...defaultProps} />)
-    expect(screen.getByTestId('root').className).toContain('g-use-cases')
+  it('should render and add a provided className to the root element', () => {
+    const className = 'my-use-cases'
+    const { container } = render(
+      <UseCases {...defaultProps} className={className} />
+    )
+    expect(container.firstChild).toHaveClass(className)
   })
 
   it('should render all props correctly', () => {
