@@ -3,6 +3,10 @@ module.exports = {
     type: 'string',
     description: 'headline above the accordion',
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   tabs: {
     type: 'array',
     description: "information about each of the accordion's top level tabs",

@@ -17,11 +17,14 @@ const baseProps = {
 }
 
 describe('<Accordion />', () => {
-  it('should render a `.g-accordion` <section> root element', () => {
-    const { container } = render(<Accordion {...baseProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-excellent-class-name'
+    const { container } = render(
+      <Accordion {...baseProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('SECTION')
-    expect(rootElem).toHaveClass('g-accordion')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should render items into AccordionItems, verifiable by item headings', () => {

@@ -5,7 +5,6 @@
 /* these should be moved to css modules */
 @import '../packages/callouts/styles/index.css';
 @import '../packages/checkbox-input/style.css';
-@import '../packages/accordion/style.css';
 @import '../packages/subnav/style.css';
 @import '../packages/call-to-action/style.css';
 @import '../packages/product-features-list/style.css';
@@ -17,7 +16,6 @@
 @import '../packages/text-input/style.css';
 @import '../packages/logo-grid/style.css';
 @import '../packages/vertical-text-block-list/style.css';
-@import '../packages/tabbed-accordion/style.css';
 @import '../packages/text-split/styles/index.css';
 @import '../packages/case-study-slider/style.css';
 @import '../packages/learn-callout/style.css';
