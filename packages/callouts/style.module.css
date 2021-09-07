@@ -1,0 +1,193 @@
+.root {
+  /* Spacing */
+  padding-top: 88px;
+  padding-bottom: 88px;
+
+  /* Theming */
+  &.theme-light {
+    background: var(--white);
+  }
+  &.theme-gray {
+    background: var(--gray-6);
+  }
+  &.theme-dark {
+    background: var(--black);
+  }
+}
+
+.headings {
+  margin-bottom: 48px;
+  text-align: left;
+
+  @media (--medium) {
+    margin-bottom: 56px;
+  }
+
+  @media (--large) {
+    margin-bottom: 64px;
+  }
+}
+
+.heading {
+  composes: g-type-display-2 from global;
+  margin: 0;
+  max-width: 38em;
+
+  &.theme-light,
+  &.theme-gray {
+    color: var(--gray-1);
+  }
+
+  &.theme-dark {
+    color: var(--white);
+  }
+
+  &.centerHeading {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.subHeading {
+  composes: g-type-body-large from global;
+  margin: 16px 0 0 0;
+  max-width: 38em;
+
+  @media (--large) {
+    margin-top: 24px;
+  }
+
+  &.theme-light,
+  &.theme-gray {
+    color: var(--gray-2);
+  }
+  &.theme-dark {
+    color: var(--gray-5);
+  }
+  &.centerHeading {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*
+
+Note: previously we avoided using CSS grid,
+as we were aiming to support IE11.
+With IE11 support now dropped, we can and should
+replace the below layout styles with an equivalent
+layout using CSS grid.
+Task: https://app.asana.com/0/1100423001970639/1200933695189575/f
+
+---
+
+The styles below create a grid layout with flexbox (because CSS grid is no good on IE11)
+Each "wrapper" flex item (.callout-item-wrapper) holds a "grid item" (.callout-item),
+and creates the grid-gap with its padding + its siblings' padding
+(left & right padding for column-gap, top & bottom for row-gap)
+while the flex "container" (.items) uses a negative margin to compensate
+for the extraneous padding at the edges of the grid.
+---
+Hopefully this helps explain how we arrive at the styles below, given the desired grid gaps from design side:
+- .layout-two-up   : 32px gap                       =>  -16px margin & 16px padding
+- .layout-three-up : 48px row gap, 64px column gap  =>  -24px -32px margin & 24px 32px padding
+- .layout-four-up  : 48px row gap, 64px column gap  =>  -24px -32px margin & 24px 32px padding
+---
+With this approach in place, we can also change the number of
+"grid columns" bymodifying the % width of the "wrapper" items
+The columns vary per layout and viewport size.
+50% = 2 colums, 33.33% = 3 columns, 25% = 4 columns, etc
+*/
+
+.items {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  &.layout-two-up {
+    margin: -10px;
+
+    @media (--medium) {
+      margin: -12px;
+    }
+
+    @media (--large) {
+      margin: -16px;
+    }
+  }
+
+  &.layout-three-up {
+    margin: -24px;
+
+    @media (--medium) {
+      margin: -20px;
+    }
+
+    @media (--large) {
+      margin: -32px;
+    }
+  }
+
+  &.layout-four-up {
+    margin: -24px;
+
+    @media (--medium) {
+      margin: -16px;
+    }
+
+    @media (--large) {
+      margin: -24px;
+    }
+  }
+}
+
+.calloutItemWrapper {
+  display: flex;
+  width: 100%;
+
+  &.layout-two-up {
+    padding: 10px;
+
+    @media (--medium) {
+      padding: 12px;
+    }
+
+    @media (--large) {
+      padding: 16px;
+      width: 50%;
+    }
+  }
+
+  &.layout-three-up {
+    padding: 24px;
+
+    @media (--medium) {
+      padding: 20px;
+      width: 33.33%;
+    }
+
+    @media (--large) {
+      padding: 32px;
+      width: 33.33%;
+    }
+  }
+
+  &.layout-four-up {
+    padding: 24px;
+
+    @media (min-width: 640px) {
+      width: 50%;
+    }
+
+    @media (--medium) {
+      padding: 16px;
+    }
+
+    @media (--large) {
+      padding: 24px;
+      width: 25%;
+    }
+  }
+}
