@@ -59,4 +59,8 @@ module.exports = {
     description:
       'Children are displayed opposite the text block and can be any arbitrary react code. If using a code example, image, or logo grid, we recommend using the pre-set components for that seen below.',
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
 }

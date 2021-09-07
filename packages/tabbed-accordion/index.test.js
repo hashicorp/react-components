@@ -3,11 +3,14 @@ import TabbedAccordion from './'
 import baseProps from './fixtures/base.json'
 
 describe('<TabbedAccordion />', () => {
-  it('should render a `.g-tabbed-accordion` <section> root element', () => {
-    const { container } = render(<TabbedAccordion {...baseProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-great-class-name'
+    const { container } = render(
+      <TabbedAccordion {...baseProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('SECTION')
-    expect(rootElem).toHaveClass('g-tabbed-accordion')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should display the heading in an <h2> tag', () => {

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import CaseStudySlider from './'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
@@ -7,50 +7,43 @@ const defaultProps = getTestValues(props)
 
 describe('<CaseStudySlider />', () => {
   test('renders properly', () => {
-    const { container } = render(<CaseStudySlider {...defaultProps} />)
+    const className = 'g-case-study-slider'
+    const { container } = render(
+      <CaseStudySlider {...defaultProps} className={className} />
+    )
     const rootElem = container.firstChild
-    expect(rootElem).toHaveClass('g-case-study-slider')
+    expect(rootElem).toHaveClass(className)
   })
 
   test('should render the appropriate number of frames and logos', () => {
-    const { container } = render(<CaseStudySlider {...defaultProps} />)
-    const rootElem = container.firstChild
+    render(<CaseStudySlider {...defaultProps} />)
     const numStudies = defaultProps.data.caseStudies.length
-
-    expect(rootElem.querySelectorAll('.slider-frame').length).toEqual(
-      numStudies
-    )
+    expect(screen.getAllByTestId('slider-frame').length).toEqual(numStudies)
     if (numStudies > 1) {
-      expect(rootElem.querySelectorAll('.progress-bar').length).toEqual(
-        numStudies
-      )
+      expect(screen.getAllByTestId('progress-bar').length).toEqual(numStudies)
     } else {
-      expect(rootElem.querySelector('.progress-bar').exists()).toEqual(false)
+      expect(screen.getAllByTestId('progress-bar').length).toEqual(false)
     }
   })
 
-  test('should adapt the button to the theme', () => {
-    const darkElem = render(<CaseStudySlider {...defaultProps} dark={true} />)
-      .container.firstChild
-    expect(darkElem.querySelector('.g-btn')).toHaveClass('background-dark')
+  test('should adapt the button to a dark theme', () => {
+    render(<CaseStudySlider {...defaultProps} dark={true} />)
+    expect(screen.getAllByTestId('button')[0]).toHaveClass('background-dark')
+  })
 
-    const lightElem = render(<CaseStudySlider {...defaultProps} dark={false} />)
-      .container.firstChild
-    expect(lightElem.querySelector('.g-btn')).toHaveClass('background-light')
+  test('should adapt the button to a light theme', () => {
+    render(<CaseStudySlider {...defaultProps} dark={false} />)
+    expect(screen.getAllByTestId('button')[0]).toHaveClass('background-light')
   })
 
   test('should use provided custom button label', () => {
-    const { container } = render(<CaseStudySlider {...defaultProps} />)
-    const rootElem = container.firstChild
-
-    expect(rootElem.querySelector('.g-btn')).toHaveTextContent('Custom Label')
-    expect(rootElem.querySelectorAll('.g-btn')[1]).toHaveTextContent(
-      'Read Case Study'
-    )
+    render(<CaseStudySlider {...defaultProps} />)
+    expect(screen.getAllByText('Custom Label')[0]).toBeInTheDocument()
+    expect(screen.getAllByText('Read Case Study')[0]).toBeInTheDocument()
   })
 
   test('should add class `single` to `slider-frame` when there is only 1 frame', () => {
-    const { container } = render(
+    render(
       <CaseStudySlider
         {...defaultProps}
         data={{
@@ -59,14 +52,13 @@ describe('<CaseStudySlider />', () => {
         }}
       />
     )
-
-    const rootElem = container.firstChild
-
-    expect(rootElem.querySelector('.slider-frame')).toHaveClass('single')
+    expect(screen.getAllByTestId('slider-frame')[0].firstChild).toHaveClass(
+      'single'
+    )
   })
 
   test('should add class `double` to `logo-bar-container` when there are only 2 frames', () => {
-    const { container } = render(
+    render(
       <CaseStudySlider
         {...defaultProps}
         data={{
@@ -75,9 +67,7 @@ describe('<CaseStudySlider />', () => {
         }}
       />
     )
-
-    const rootElem = container.firstChild
-    expect(rootElem.querySelector('.logo-bar-container')).toHaveClass('double')
+    expect(screen.getAllByTestId('logo-bar')[0]).toHaveClass('double')
   })
 })
 

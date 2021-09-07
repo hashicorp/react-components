@@ -1,0 +1,36 @@
+.root {
+  --foreground-color: var(--black);
+
+  width: 100%;
+  height: 2px;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.15);
+
+  &.dark {
+    --foreground-color: var(--white);
+
+    background-color: var(--gray-2);
+  }
+}
+
+.bar {
+  width: 0;
+  height: 100%;
+  display: block;
+  animation-duration: 10s;
+  background-color: var(--foreground-color);
+
+  &.active {
+    animation-name: case-study-bar;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes case-study-bar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

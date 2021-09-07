@@ -1,7 +1,8 @@
-import className from 'classnames'
+import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import CheckSquare from './icons/check-square.svg?include'
+import s from './style.module.css'
 
 function CheckboxList({ items, theme, product }) {
   const validItems = items && items.filter((l) => l !== '')
@@ -10,7 +11,7 @@ function CheckboxList({ items, theme, product }) {
   if (!hasItems) return null
   return (
     <ul
-      className={className('checkbox-list', themeClass)}
+      className={classNames(s.checkboxList, themeClass)}
       data-testid="checkbox-list"
     >
       {items.map((i, stableIdx) => (
@@ -23,9 +24,9 @@ function CheckboxList({ items, theme, product }) {
 
 function CheckboxItem({ text, theme }) {
   return (
-    <li className={`checkbox-item theme-${theme} `}>
-      <InlineSvg className={`check-icon theme-${theme}`} src={CheckSquare} />
-      <span className={`text g-type-body theme-${theme}`}>{text}</span>
+    <li className={classNames(s.checkboxItem, s[`theme-${theme}`])}>
+      <InlineSvg className={s.checkIcon} src={CheckSquare} />
+      <span className={s.text}>{text}</span>
     </li>
   )
 }
