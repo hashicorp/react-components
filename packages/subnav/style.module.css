@@ -20,12 +20,10 @@
   height: 62px;
 
   &.notConstrained {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 0 24px;
 
     @media (--medium-up) {
-      padding-left: 32px;
-      padding-right: 32px;
+      padding: 0 32px;
     }
   }
 }
