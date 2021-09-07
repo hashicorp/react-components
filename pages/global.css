@@ -9,7 +9,6 @@
 @import '../packages/call-to-action/style.css';
 @import '../packages/product-features-list/style.css';
 @import '../packages/enterprise-alert/style.css';
-@import '../packages/featured-slider/style.css';
 @import '../packages/content-cta/style.css';
 @import '../packages/consent-manager/style.css';
 @import '../packages/toggle/style.css';
@@ -17,7 +16,6 @@
 @import '../packages/logo-grid/style.css';
 @import '../packages/vertical-text-block-list/style.css';
 @import '../packages/text-split/styles/index.css';
-@import '../packages/case-study-slider/style.css';
 @import '../packages/learn-callout/style.css';
 @import '../packages/use-cases/style.css';
 
