@@ -50,10 +50,13 @@ const propsBase = {
 }
 
 describe('<FeaturedSlider />', () => {
-  it('should render a `.g-featured-slider-section` root element', () => {
-    const { container } = render(<FeaturedSlider {...propsBase} />)
+  it('should add a provided className to root element', () => {
+    const className = 'my-featured-slider'
+    const { container } = render(
+      <FeaturedSlider {...propsBase} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('SECTION')
-    expect(rootElem).toHaveClass('g-featured-slider-section')
+    expect(rootElem).toHaveClass(className)
   })
 })

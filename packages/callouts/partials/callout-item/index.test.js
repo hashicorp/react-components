@@ -3,12 +3,6 @@ import propsDefault from './fixtures/default.json'
 import CalloutItem from './index.js'
 
 describe('<CalloutItem />', () => {
-  it('should render a `.callout-item` root element', () => {
-    const { container } = render(<CalloutItem {...propsDefault} />)
-    const rootElem = container.firstChild
-    expect(rootElem).toHaveClass('callout-item')
-  })
-
   it('should render an icon when an SVG is given', () => {
     const testSvgTitle = 'A short title of the string SVG'
     render(

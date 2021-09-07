@@ -3,6 +3,7 @@ import TextSplitWithLogoGrid from './'
 
 const propsBase = {
   textSplit: {
+    className: 'g-text-split',
     heading: 'Open and Extensible',
     content:
       'Terraform works with over 160 different providers for a broad set of common infrastructure. Providers leverage infrastructure-specific APIs to deliver unique capabilities for Terraform users.\n\nOur provider SDK makes it simple to create new and custom providers.',
@@ -48,7 +49,7 @@ describe('<TextSplitWithLogoGrid />', () => {
     const { container } = render(<TextSplitWithLogoGrid {...propsBase} />)
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-text-split')
+    expect(rootElem).toHaveClass(propsBase.textSplit.className)
   })
 
   it('should render a custom image', () => {

@@ -51,6 +51,10 @@ module.exports = {
     description: 'Placeholder text for the field',
     testValue: 'My placeholder',
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   theme: {
     type: 'object',
     description:
@@ -61,9 +65,5 @@ module.exports = {
       type: 'string',
       options: ['light', 'dark', 'brand'],
     },
-  },
-  className: {
-    type: 'string',
-    description: 'Optional className to add to the root element',
   },
 }

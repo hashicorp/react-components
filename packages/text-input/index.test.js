@@ -16,6 +16,14 @@ describe('<TextInput />', () => {
     expect(rootElem).toHaveClass(className)
   })
 
+  it('should add a provided className to the root element', () => {
+    const className = 'my-special-class-name'
+    const { container } = render(
+      <TextInput {...defaultProps} className={className} />
+    )
+    expect(container.firstChild).toHaveClass(className)
+  })
+
   it('should hide the root element when `type` is set to `hidden`', () => {
     const { container } = render(<TextInput {...defaultProps} type="hidden" />)
     expect(container.firstChild).toHaveClass('hidden')
