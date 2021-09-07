@@ -2,14 +2,16 @@ import React from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Image from '@hashicorp/react-image'
 import Arrow from './img/arrow.svg?include'
+import s from './style.module.css'
 import fragment from './fragment.graphql'
+import classNames from 'classnames'
 
-function UseCases({ items }) {
+function UseCases({ items, className }) {
   return (
-    <div className="g-use-cases" data-testid="root">
+    <div className={classNames(s.root, className)}>
       {items.map((item) => (
         <a
-          className="use-case"
+          className={s.useCase}
           href={item.link.url}
           {...(item.link.external && {
             rel: 'noopener',
@@ -18,9 +20,9 @@ function UseCases({ items }) {
           key={item.title}
           data-testid={`anchor-${item.title}`}
         >
-          <div className="content">
+          <div className={s.content}>
             {item.image && (
-              <div className="icon">
+              <div className={s.icon}>
                 <Image
                   alt=""
                   data-testid={`image-${item.title}`}
@@ -28,15 +30,12 @@ function UseCases({ items }) {
                 />
               </div>
             )}
-            <div className="text">
-              <h3
-                className="title g-type-display-4"
-                data-testid={`title-${item.title}`}
-              >
+            <div className={s.text}>
+              <h3 className={s.title} data-testid={`title-${item.title}`}>
                 {item.title}
               </h3>
               <div
-                className="description g-type-body"
+                className="g-type-body"
                 dangerouslySetInnerHTML={{
                   __html: item.description ? item.description : '',
                 }}
@@ -44,12 +43,9 @@ function UseCases({ items }) {
               />
             </div>
           </div>
-          <div
-            className="faux-link g-type-buttons-and-standalone-links"
-            data-testid={`faux-link-${item.title}`}
-          >
+          <div className={s.fauxLink} data-testid={`faux-link-${item.title}`}>
             {item.link.title}
-            <InlineSvg className="arrow" src={Arrow} />
+            <InlineSvg className={s.fauxLinkArrow} src={Arrow} />
           </div>
         </a>
       ))}
