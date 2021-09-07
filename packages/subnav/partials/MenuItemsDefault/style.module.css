@@ -33,29 +33,6 @@
   color: var(--black);
 }
 
-/*
-Note: duplicated in MenuItemsDefault
-*/
-.navItemText {
-  color: var(--black);
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background: var(--black);
-    opacity: 0;
-  }
-
-  &.isActive::after {
-    opacity: 1;
-  }
-}
-
 .submenuModal {
   border-radius: 4px;
   box-shadow: 0 8px 12px rgba(37, 38, 45, 0.08);

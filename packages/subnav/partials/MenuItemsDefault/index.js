@@ -1,5 +1,6 @@
 import React from 'react'
 import LinkWrap from '@hashicorp/react-link-wrap'
+import NavItemText from '../nav-item-text'
 import DropdownTrigger from '../DropdownTrigger/index.js'
 import s from './style.module.css'
 import classNames from 'classnames'
@@ -58,9 +59,7 @@ function NavLink(props) {
   return (
     <li className={s.listItem}>
       <LinkWrap Link={Link} className={s.navLink} href={url}>
-        <span className={classNames(s.navItemText, { [s.isActive]: isActive })}>
-          {text}
-        </span>
+        <NavItemText isActive={isActive} text={text} />
       </LinkWrap>
     </li>
   )

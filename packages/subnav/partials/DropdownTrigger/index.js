@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import SvgChevronDown from './icons/chevron-down.svg?include'
+import NavItemText from '../nav-item-text'
 import s from './style.module.css'
 
 function DropdownTrigger(props) {
@@ -11,9 +12,7 @@ function DropdownTrigger(props) {
       onMouseDown={(e) => e.preventDefault()}
       onClick={onClick}
     >
-      <span className={classNames(s.navItemText, { [s.isActive]: isActive })}>
-        {text}
-      </span>
+      <NavItemText isActive={isActive} text={text} />
       <InlineSvg src={SvgChevronDown} />
     </button>
   )
