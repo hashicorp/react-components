@@ -1,19 +1,25 @@
-.g-text-split > .g-grid-container > .text > .links {
+.buttonGroup {
+  margin-top: 32px;
+
+  @media (--large) {
+    margin-top: 40px;
+  }
+
   &.as-buttons {
     margin-bottom: -16px;
 
-    & .g-btn {
+    & .button {
       margin-right: 16px;
       margin-bottom: 16px;
     }
   }
 
   &.as-links {
-    & .g-btn {
+    & .button {
       display: block;
       float: left;
       clear: both;
-      & + .g-btn {
+      & + .button {
         margin-top: 8px;
       }
     }
