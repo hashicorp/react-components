@@ -3,7 +3,6 @@
 /* global component css imports */
 
 /* these should be moved to css modules */
-@import '../packages/checkbox-input/style.css';
 @import '../packages/enterprise-alert/style.css';
 @import '../packages/toggle/style.css';
 @import '../packages/logo-grid/style.css';

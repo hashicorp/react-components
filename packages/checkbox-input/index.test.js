@@ -9,11 +9,14 @@ const defaultProps = getTestValues(props)
 defaultProps.field.onChange = () => null
 
 describe('<CheckboxInput />', () => {
-  it('should render a `.g-checkbox-input` <div> root element', () => {
-    const { container } = render(<CheckboxInput {...defaultProps} />)
+  it('should pass a provided className to the root element', () => {
+    const className = 'my-special-checkbox'
+    const { container } = render(
+      <CheckboxInput {...defaultProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-checkbox-input')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should render a simple `label` string as a <label> for the input', () => {
