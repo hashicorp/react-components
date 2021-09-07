@@ -82,11 +82,9 @@
 }
 
 .htmlContent {
+  composes: g-type-long-body from global;
   max-width: 45em;
   color: var(--gray-2);
-  font-size: 1.063rem;
-  letter-spacing: 0.01em;
-  line-height: 1.765em;
 
   & > *:first-child {
     margin-top: 0;
@@ -103,13 +101,17 @@
 
   & h6 {
     color: var(--gray-1);
+    margin-top: 24px;
+    margin-bottom: 16px;
+
+    /* Ideally, we would compose g-type-label-strong here,
+       unfortunately this is not currently possible with
+       nested selectors */
     font-family: var(--font-display);
     font-weight: var(--font-weight-bold);
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     line-height: 1.5em;
     text-transform: uppercase;
-    margin-top: 24px;
-    margin-bottom: 16px;
   }
 }
