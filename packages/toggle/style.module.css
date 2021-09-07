@@ -5,19 +5,7 @@
   border-radius: 18px;
   display: inline-block;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-
-  &.disabled {
-    cursor: not-allowed;
-  }
-
-  &.on {
-    background: var(--brand);
-
-    &::after {
-      left: 25px;
-      border-color: #104fd2;
-    }
-  }
+  cursor: pointer;
 
   &::after {
     content: '';
@@ -32,16 +20,26 @@
     background: white;
     position: relative;
     transition: left 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  &.on {
+    background: var(--brand);
+
+    &::after {
+      left: 25px;
+      border-color: #104fd2;
+    }
   }
 }
 
-.switch-label {
+.switchLabel {
   position: relative;
   height: 30px;
   display: inline-block;
 }
 
-.switch-input {
+.switchInput {
   margin: 0;
   padding: 0;
   position: absolute;
@@ -49,9 +47,10 @@
   width: 100%;
   height: 100%;
   opacity: 0.0001;
-  cursor: default;
+  cursor: pointer;
 
-  &:focus + .switch {
+  /* targets the adjacent .switch element */
+  &:focus + span {
     outline: 1px auto;
     outline-color: -webkit-focus-ring-color;
     outline-offset: 1px;

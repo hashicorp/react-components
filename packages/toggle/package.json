@@ -11,5 +11,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
   }
 }
