@@ -18,11 +18,14 @@ const baseProps = {
 }
 
 describe('<CallToAction />', () => {
-  it('should render a `.g-call-to-action` <div> root element', () => {
-    const { container } = render(<CallToAction {...baseProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-call-to-action'
+    const { container } = render(
+      <CallToAction {...baseProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-call-to-action')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should display simple heading and content strings and links', () => {

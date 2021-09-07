@@ -2,10 +2,16 @@ import { render } from '@testing-library/react'
 import EnterpriseAlert from './'
 
 describe('<EnterpriseAlert />', () => {
-  test('renders correctly', () => {
+  test('passes a provided className to the root element', () => {
+    const className = 'my-enterprise-alert'
+    const { container } = render(<EnterpriseAlert className={className} />)
+    const rootElem = container.firstChild
+    expect(rootElem).toHaveClass(className)
+  })
+
+  test('renders product theming and messaging as expected ', () => {
     const { container } = render(<EnterpriseAlert product="consul" />)
     const rootElem = container.firstChild
-    expect(rootElem).toHaveClass('g-enterprise-alert')
     expect(rootElem).toHaveClass(`consul`)
     expect(rootElem).not.toHaveClass(`inline`)
     expect(rootElem.querySelector('a')).toHaveAttribute(
@@ -22,7 +28,6 @@ describe('<EnterpriseAlert />', () => {
       <EnterpriseAlert product="nomad" inline={true} />
     )
     const rootElem = container.firstChild
-    expect(rootElem).toHaveClass('g-enterprise-alert')
     expect(rootElem).toHaveClass(`nomad`)
     expect(rootElem).toHaveClass(`inline`)
     expect(rootElem.querySelector('a')).toBe(null)
@@ -34,7 +39,6 @@ describe('<EnterpriseAlert />', () => {
       <EnterpriseAlert product="consul">Hello, World!</EnterpriseAlert>
     )
     const rootElem = container.firstChild
-    expect(rootElem).toHaveClass('g-enterprise-alert')
     expect(rootElem).toHaveClass(`consul`)
     expect(rootElem).not.toHaveClass(`inline`)
     expect(rootElem.querySelector('p')).toHaveTextContent(`Hello, World!`)

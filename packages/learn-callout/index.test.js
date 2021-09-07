@@ -27,12 +27,14 @@ const baseProps = {
 }
 
 describe('<LearnCallout />', () => {
-  it('should render a root <div> with class `.g-learn-callout`', () => {
-    const { container } = render(<LearnCallout {...baseProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-special-class'
+    const { container } = render(
+      <LearnCallout {...baseProps} className={className} />
+    )
     const root = container.firstChild
-
     expect(root.tagName).toBe('DIV')
-    expect(root).toHaveClass('g-learn-callout')
+    expect(root).toHaveClass(className)
   })
 
   it('should render provided callouts', () => {

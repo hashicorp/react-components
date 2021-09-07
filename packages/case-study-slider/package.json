@@ -3,9 +3,11 @@
   "description": "displays up to three case studies",
   "version": "6.1.5",
   "author": "HashiCorp",
-  "contributors": ["Mike Wickett"],
+  "contributors": [
+    "Mike Wickett"
+  ],
   "dependencies": {
-    "@hashicorp/react-button": "^6.0.0",
+    "@hashicorp/react-featured-slider": "^4.1.4",
     "@hashicorp/react-image": "^4.0.1"
   },
   "peerDependencies": {

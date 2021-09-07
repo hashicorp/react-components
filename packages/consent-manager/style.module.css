@@ -1,0 +1,5 @@
+.root {
+  @media only percy {
+    display: none;
+  }
+}

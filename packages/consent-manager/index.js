@@ -4,6 +4,8 @@ import ConsentBanner from './partials/banner'
 import ConsentPreferences from './partials/dialog'
 import { loadPreferences, savePreferences } from './partials/cookies'
 import loadAnalytics from './partials/load'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 const emitter = new EventEmitter()
 
@@ -80,7 +82,7 @@ export default class ConsentManager extends Component {
 
   render() {
     return (
-      <div id="g-consent-manager">
+      <div className={classNames(s.root, this.props.className)}>
         {/*  Consent banner at the bottom */}
         {this.state.showBanner && (
           <ConsentBanner

@@ -21,11 +21,14 @@ const propsBase = {
 }
 
 describe('<TextSplit />', () => {
-  it('should render a `.g-text-split` <div> root element', () => {
-    const { container } = render(<TextSplit {...propsBase} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-nice-text-split'
+    const { container } = render(
+      <TextSplit {...propsBase} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-text-split')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should display simple heading and content strings', () => {
