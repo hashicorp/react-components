@@ -1,16 +1,17 @@
 import { v1 as uuidv1 } from 'uuid'
+import classNames from 'classnames'
 
 function TextInput(props) {
   //  `field` and `form` props come from Formik
   //  https://jaredpalmer.com/formik/docs/api/field
-  const { field, form, type, label, placeholder, theme } = props
+  const { className, field, form, type, label, placeholder, theme } = props
   const error = form.touched[field.name] && form.errors[field.name]
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = 'u' + uuidv1()
   return (
     <div
-      className="g-text-input"
+      className={classNames('g-text-input', className)}
       hidden={type === 'hidden'}
       data-theme-bg={theme.background}
     >

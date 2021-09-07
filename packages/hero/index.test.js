@@ -1,4 +1,23 @@
-// import Hero from './'
+import { render } from '@testing-library/react'
+import Hero from '.'
+import props from './props'
+import { getTestValues } from 'swingset/testing'
+
+const defaultProps = getTestValues(props)
+
+it('should add a provided className to the root element', () => {
+  //  Suppress console.error for this test, we expect an error,
+  //  as Jest will print a noisy warning that HTMLMediaElement.prototype.play
+  //  is not yet implemented
+  jest.spyOn(console, 'error')
+  global.console.error.mockImplementation(() => {})
+  // Run the className test
+  const className = 'my-special-class-name'
+  const { container } = render(<Hero {...defaultProps} className={className} />)
+  expect(container.firstChild).toHaveClass(className)
+  //  Restore console.error for further tests
+  global.console.error.mockRestore()
+})
 
 test.todo(
   'renders the `title` and `description` props correctly, without orphans'
