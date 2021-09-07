@@ -21,8 +21,7 @@
 .navLink {
   composes: g-type-body-small-strong from global;
   position: relative;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 0 16px;
   line-height: 2.5rem;
   display: flex;
   align-items: center;
