@@ -1,0 +1,10 @@
+.root {
+  background: var(--white);
+  padding-top: 128px;
+  padding-bottom: 128px;
+}
+
+.heading {
+  composes: g-type-display-2 from global;
+  margin: 0;
+}

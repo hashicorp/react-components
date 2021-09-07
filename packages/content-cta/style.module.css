@@ -1,0 +1,44 @@
+.root {
+  padding: 28px;
+
+  &.hasTheme {
+    --link-color: var(--brand-link);
+
+    background: var(--brand-secondary);
+  }
+}
+
+.heading {
+  composes: g-type-display-4 from global;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.content {
+  composes: g-type-body from global;
+
+  & p {
+    margin: 0;
+    max-width: 30em;
+    color: var(--gray-2);
+
+    & a {
+      color: var(--link-color);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.links {
+  margin-top: 28px;
+}
+
+.firstLink {
+  margin-right: 16px;
+
+  @media (max-width: 468px) {
+    margin-bottom: 16px;
+  }
+}

@@ -19,6 +19,10 @@ module.exports = {
     description: 'text displayed in the primary heading',
     control: { type: 'text' },
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   theme: {
     type: 'string',
     description:

@@ -1,11 +1,18 @@
 import React from 'react'
 import LinkWrap from '@hashicorp/react-link-wrap'
+import NavItemText from '../nav-item-text'
 import DropdownTrigger from '../DropdownTrigger/index.js'
+import s from './style.module.css'
+import classNames from 'classnames'
 
 function MenuItemsDefault(props) {
   const { menuItems, product, Link, menuItemsAlign } = props
   return (
-    <ul className={`menu-items-default menu-items-align-${menuItemsAlign}`}>
+    <ul
+      className={classNames(s.root, {
+        [s.alignRight]: menuItemsAlign === 'right',
+      })}
+    >
       {menuItems.map((menuItem, stableIdx) => {
         if (menuItem === 'divider') {
           // eslint-disable-next-line react/no-array-index-key
@@ -42,23 +49,17 @@ function MenuItemsDefault(props) {
 function VerticalDivider() {
   return (
     <li>
-      <span className="vertical-divider" />
+      <span className={s.verticalDivider} />
     </li>
   )
 }
 
 function NavLink(props) {
-  const { text, url, product, isActive, Link } = props
+  const { text, url, isActive, Link } = props
   return (
-    <li>
-      <LinkWrap
-        Link={Link}
-        className={`nav-link g-type-body-small-strong style-menu-item ${
-          isActive ? 'is-active' : ''
-        }`}
-        href={url}
-      >
-        <span className={`text brand-${product} `}>{text}</span>
+    <li className={s.listItem}>
+      <LinkWrap Link={Link} className={s.navLink} href={url}>
+        <NavItemText isActive={isActive} text={text} />
       </LinkWrap>
     </li>
   )
@@ -101,7 +102,7 @@ class NavLinkWithDropdown extends React.Component {
       return s._isActiveUrl || acc
     }, false)
     return (
-      <li ref={this.parentRef}>
+      <li ref={this.parentRef} className={s.listItem}>
         <DropdownTrigger
           onClick={this.toggleCollapsed}
           isCollapsed={isCollapsed}
@@ -110,21 +111,17 @@ class NavLinkWithDropdown extends React.Component {
           isActive={hasActiveChild}
         />
         <ul
-          className={`submenu-modal style-dropdown ${
-            isCollapsed ? 'is-collapsed' : ''
-          }`}
+          className={classNames(s.submenuModal, {
+            [s.isCollapsed]: isCollapsed,
+          })}
         >
           {submenu.map((submenuItem, stableIdx) => {
             const { text, url } = submenuItem
             return (
               // eslint-disable-next-line react/no-array-index-key
               <li key={stableIdx}>
-                <LinkWrap
-                  Link={Link}
-                  className="g-type-body-small-strong style-menu-item"
-                  href={url}
-                >
-                  <span className={`text brand-${product}`}>{text}</span>
+                <LinkWrap Link={Link} className={s.submenuItem} href={url}>
+                  {text}
                 </LinkWrap>
               </li>
             )

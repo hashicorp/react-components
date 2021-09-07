@@ -57,12 +57,15 @@ const baseProps = {
 }
 
 describe('<Subnav />', () => {
-  it('should render a `.g-subnav` <nav> root element', async () => {
-    const { container } = render(<Subnav {...baseProps} />)
+  it('should pass a provided className to the root element', async () => {
+    const className = 'my-special-subnav'
+    const { container } = render(
+      <Subnav {...baseProps} className={className} />
+    )
     await waitForGithubStarsUpdate()
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('NAV')
-    expect(rootElem).toHaveClass('g-subnav')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should render all top-level menuItems as expected', async () => {
@@ -89,8 +92,7 @@ describe('<Subnav />', () => {
     })[0]
     const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
     expect(menuItemTextElem).toBeVisible()
-    const linkElem = menuItemTextElem.parentNode
-    expect(linkElem.classList.contains('is-active')).toBe(true)
+    expect(menuItemTextElem).toHaveClass('isActive')
   })
 
   it('should highlight the active link', async () => {
@@ -101,8 +103,7 @@ describe('<Subnav />', () => {
     })[0]
     const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
     expect(menuItemTextElem).toBeVisible()
-    const linkElem = menuItemTextElem.parentNode
-    expect(linkElem.classList.contains('is-active')).toBe(true)
+    expect(menuItemTextElem).toHaveClass('isActive')
   })
 
   it('should highlight the dropdown that contains the active link', async () => {
@@ -120,8 +121,7 @@ describe('<Subnav />', () => {
     })[0]
     const menuItemTextElem = screen.getAllByText(activeMenuItem.text)[0]
     expect(menuItemTextElem).toBeVisible()
-    const linkElem = menuItemTextElem.parentNode
-    expect(linkElem.classList.contains('is-active')).toBe(true)
+    expect(menuItemTextElem).toHaveClass('isActive')
   })
 
   it('should use a provided Link component to render all links', async () => {
