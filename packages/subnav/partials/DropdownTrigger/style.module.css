@@ -1,0 +1,30 @@
+.root {
+  composes: g-type-body-small-strong from global;
+  border: none;
+  background: none;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  line-height: 2.5rem;
+  padding-left: 16px;
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+
+  & svg {
+    margin-top: 1px;
+    margin-bottom: -1px;
+    margin-left: 6px;
+    width: 12px;
+    height: 12px;
+    transition: transform 0.3s;
+    transform: rotate(-180deg);
+    & [stroke] {
+      stroke-width: 2.5;
+    }
+  }
+
+  &.isCollapsed svg {
+    transform: rotate(0deg);
+  }
+}

@@ -19,11 +19,14 @@ const baseProps = {
 }
 
 describe('<ContentCta />', () => {
-  it('should render a `.g-content-cta` <div> root element', () => {
-    const { container } = render(<ContentCta {...baseProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-content-cta'
+    const { container } = render(
+      <ContentCta {...baseProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-content-cta')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should display simple heading and content strings and links', () => {

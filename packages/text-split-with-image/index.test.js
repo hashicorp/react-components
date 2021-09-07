@@ -3,6 +3,7 @@ import TextSplitWithImage from './'
 
 const propsBase = {
   textSplit: {
+    className: 'g-text-split',
     heading: 'My WithImage Heading',
     content:
       'Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.\nEtiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.',
@@ -31,7 +32,7 @@ describe('<TextSplitWithImageWithImage />', () => {
     const { container } = render(<TextSplitWithImage {...propsBase} />)
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-text-split')
+    expect(rootElem).toHaveClass(propsBase.textSplit.className)
   })
 
   it('should render the passed image, verifiable by alt text', () => {

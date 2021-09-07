@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import useNavRef from './helpers/useNavRef'
+import s from './style.module.css'
 
 import MenuItemsOverflow from './partials/MenuItemsOverflow/index.js'
 import TitleLink from './partials/TitleLink/index.js'
@@ -47,15 +48,25 @@ function SubnavInner({
     return value
   })
 
+  /**
+   * Note on constrainWidth & g-grid-container
+   *
+   * TEMPORARY: this is a temporary patch
+   * to constrain the width of the subnav.
+   * We want to settle on fully consistent subnav
+   * max-width and alignment behavior at some point
+   * Related Asana task:
+   * https://app.asana.com/0/1126477231080283/1162972875950505/f
+   */
   return (
     <div
-      className={classNames('constrain-width-wrapper ', {
+      className={classNames({
         'g-grid-container': constrainWidth,
       })}
     >
       <div
-        className={classNames('g-subnav-inner', themeClass, {
-          'is-constrained': constrainWidth,
+        className={classNames(s.subnavInner, themeClass, {
+          [s.notConstrained]: !constrainWidth,
         })}
         data-overflow-target
       >
@@ -95,22 +106,22 @@ function SubnavInner({
   )
 }
 
-function Subnav(props) {
+function Subnav({ className, ...restProps }) {
   const [isSticky, hasOverflow, wrapperRef] = useNavRef()
   // Set the brand theme automatically based on the nav's title
   const product =
-    productAllowList[props.titleLink.text.toLowerCase()] || 'hashicorp'
+    productAllowList[restProps.titleLink.text.toLowerCase()] || 'hashicorp'
 
   return (
     <nav
       ref={wrapperRef}
-      className={classNames('g-subnav', {
-        'is-sticky': isSticky,
+      className={classNames(s.root, className, {
+        [s.isSticky]: isSticky,
       })}
       aria-label={`${product} website navigation`}
     >
       <SubnavInner
-        {...props}
+        {...restProps}
         product={product}
         hasOverflow={hasOverflow}
         isSticky={isSticky}
