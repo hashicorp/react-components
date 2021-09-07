@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react'
+import s from './style.module.css'
 
 /*
   Collapsible content block, receives children and a `isCollapsed` prop,
@@ -18,8 +19,8 @@ function Collapsible({ isCollapsed, children }) {
   }, [isCollapsed])
 
   return (
-    <div className="g-collapsible" ref={parentElem}>
-      <div className="inner" data-is-collapsed={isCollapsed}>
+    <div className={s.root} ref={parentElem}>
+      <div className={s.inner} data-is-collapsed={isCollapsed}>
         {children}
       </div>
     </div>

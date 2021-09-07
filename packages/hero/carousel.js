@@ -1,5 +1,6 @@
 import { Component } from 'react'
-
+import classnames from 'classnames'
+import s from './carousel.module.css'
 export default class HeroCarousel extends Component {
   constructor(props) {
     super(props)
@@ -85,22 +86,23 @@ export default class HeroCarousel extends Component {
     this.progressBars = []
 
     return (
-      <div className="carousel">
-        <div className="videos">
+      <div className={s.root}>
+        <div className={s.videos}>
           {videos.map((video, i) => (
             <div
               key={video.name}
-              className={`video-wrapper${
-                this.state.active === i ? ' is-active' : ''
-              }${this.state.deactivating === i ? ' is-deactivating' : ''}`}
+              className={classnames(s.videoWrapper, {
+                [s.isActive]: this.state.active === i,
+                [s.isDeactivating]: this.state.deactivating === i,
+              })}
               ref={(el) => el !== null && this.videoWrappers.push(el)}
             >
-              <div className="bar">
+              <div className={s.bar}>
                 <span />
                 <span />
                 <span />
               </div>
-              <div className={`video ${video.name.toLowerCase()}`}>
+              <div className={classnames(s.video, video.name.toLowerCase())}>
                 <video
                   muted
                   playsInline
@@ -128,18 +130,18 @@ export default class HeroCarousel extends Component {
             </div>
           ))}
         </div>
-        <div className="controls g-type-buttons-and-standalone-links">
+        <div className={s.controls}>
           {videos.map((control, index) => (
             <div
-              className="control"
+              className={s.control}
               key={control.name || index}
               onClick={() => {
                 this.switchToVideo(index)
               }}
             >
-              <div className="control-hover">
+              <div className={s.controlHover}>
                 {control.name ? control.name : ''}
-                <div className="progress-bar">
+                <div className={s.progressBar}>
                   <span
                     ref={(el) => el !== null && this.progressBars.push(el)}
                   />

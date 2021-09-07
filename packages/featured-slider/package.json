@@ -3,12 +3,15 @@
   "description": "featured slider for case studies",
   "version": "4.1.5",
   "author": "HashiCorp",
-  "contributors": ["Nicole Forrester"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "main": "index.js",
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/react-button": "^6.0.0",
-    "@hashicorp/react-image": "^4.0.1"
+    "@hashicorp/react-image": "^4.0.1",
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

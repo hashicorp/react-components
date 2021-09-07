@@ -1,4 +1,6 @@
 import Button from '@hashicorp/react-button'
+import classNames from 'classnames'
+import s from './style.module.css'
 
 function ButtonGroup({ product, links, linkStyle, theme }) {
   const hasLinks = links && links.length > 0
@@ -9,7 +11,10 @@ function ButtonGroup({ product, links, linkStyle, theme }) {
   }
   if (!hasLinks) return null
   return (
-    <div data-testid="links" className={`links as-${linkStyle}`}>
+    <div
+      data-testid="links"
+      className={classNames(s.buttonGroup, s[`as-${linkStyle}`])}
+    >
       {links.map((link, stableIdx) => {
         const buttonVariant =
           linkStyle === 'buttons'
@@ -22,7 +27,7 @@ function ButtonGroup({ product, links, linkStyle, theme }) {
           <Button
             // eslint-disable-next-line react/no-array-index-key
             key={stableIdx}
-            className="g-btn"
+            className={s.button}
             theme={{
               variant: buttonVariant,
               brand: product,

@@ -7,13 +7,6 @@ import Collapsible from './'
 afterEach(cleanup)
 
 describe('<Collapsible />', () => {
-  it('should render a `.g-collapsible` <div> root element', () => {
-    const { container } = render(<Collapsible>Hello world</Collapsible>)
-    const rootElem = container.firstChild
-    expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-collapsible')
-  })
-
   it('should render text children', () => {
     const someText = 'This is some test text for this test'
     const { getByText } = render(<Collapsible>{someText}</Collapsible>)

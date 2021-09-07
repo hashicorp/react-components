@@ -1,0 +1,47 @@
+.checkboxList {
+  list-style: none;
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.checkboxItem {
+  --checkbox-border: var(--black);
+  --checkbox-fill: var(--brand-secondary);
+  --text-color: var(--gray-2);
+
+  display: flex;
+  align-items: center;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+
+  &.theme-dark {
+    --checkbox-border: var(--brand-secondary);
+    --checkbox-fill: var(--gray-1);
+    --text-color: var(--gray-5);
+  }
+}
+
+.checkIcon {
+  display: flex;
+  margin-right: 16px;
+
+  & svg {
+    width: 1.5em;
+    height: 1.5em;
+
+    & path {
+      stroke: var(--checkbox-border);
+    }
+
+    & rect {
+      fill: var(--checkbox-fill);
+    }
+  }
+}
+
+.text {
+  composes: g-type-body from global;
+  margin-top: 0;
+  color: var(--text-color);
+}
