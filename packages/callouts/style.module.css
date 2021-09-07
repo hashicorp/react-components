@@ -73,21 +73,33 @@
 }
 
 /*
-    LAYOUT STYLES
 
-    The styles below create a grid layout with flexbox (because CSS grid is no good on IE11)
-    Each "wrapper" flex item (.callout-item-wrapper) holds a "grid item" (.callout-item),
-    and creates the grid-gap with its padding + its siblings' padding (left & right padding for column-gap, top & bottom for row-gap)
-    while the flex "container" (.items) uses a negative margin to compensate for the extraneous padding at the edges of the grid
-    ---
-    Hopefully this helps explain how we arrive at the styles below, given the desired grid gaps from design side:
-    - .layout-two-up   : 32px gap                       =>  -16px margin & 16px padding
-    - .layout-three-up : 48px row gap, 64px column gap  =>  -24px -32px margin & 24px 32px padding
-    - .layout-four-up  : 48px row gap, 64px column gap  =>  -24px -32px margin & 24px 32px padding
-    ---
-    With this approach in place, we can also change the number of "grid columns" by modifying the % width of the "wrapper" items
-    The columns vary per layout and viewport size. 50% = 2 colums, 33.33% = 3 columns, 25% = 4 columns, etc
-    */
+Note: previously we avoided using CSS grid,
+as we were aiming to support IE11.
+With IE11 support now dropped, we can and should
+replace the below layout styles with an equivalent
+layout using CSS grid.
+Task: https://app.asana.com/0/1100423001970639/1200933695189575/f
+
+---
+
+The styles below create a grid layout with flexbox (because CSS grid is no good on IE11)
+Each "wrapper" flex item (.callout-item-wrapper) holds a "grid item" (.callout-item),
+and creates the grid-gap with its padding + its siblings' padding
+(left & right padding for column-gap, top & bottom for row-gap)
+while the flex "container" (.items) uses a negative margin to compensate
+for the extraneous padding at the edges of the grid.
+---
+Hopefully this helps explain how we arrive at the styles below, given the desired grid gaps from design side:
+- .layout-two-up   : 32px gap                       =>  -16px margin & 16px padding
+- .layout-three-up : 48px row gap, 64px column gap  =>  -24px -32px margin & 24px 32px padding
+- .layout-four-up  : 48px row gap, 64px column gap  =>  -24px -32px margin & 24px 32px padding
+---
+With this approach in place, we can also change the number of
+"grid columns" bymodifying the % width of the "wrapper" items
+The columns vary per layout and viewport size.
+50% = 2 colums, 33.33% = 3 columns, 25% = 4 columns, etc
+*/
 
 .items {
   position: relative;
