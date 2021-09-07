@@ -1,0 +1,35 @@
+.root {
+  background: white;
+  padding: 64px 0;
+
+  @media (--medium) {
+    padding: 88px 0;
+  }
+  @media (--large) {
+    padding: 128px 0;
+  }
+
+  & .tabsAfterHeading {
+    margin-top: 48px;
+    @media (--medium) {
+      margin-top: 56px;
+    }
+    @media (--large) {
+      margin-top: 64px;
+    }
+  }
+
+  & .accordionItems {
+    margin-top: 40px;
+  }
+}
+
+.headingContainer {
+  composes: g-grid-container from global;
+  text-align: center;
+}
+
+.heading {
+  composes: g-type-display-2 from global;
+  margin: 0;
+}

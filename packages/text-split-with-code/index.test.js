@@ -3,6 +3,7 @@ import TextSplitWithCode from './'
 
 const baseProps = {
   textSplit: {
+    className: 'g-text-split',
     heading: 'Some Code Heading',
     content:
       'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla.',
@@ -18,7 +19,7 @@ describe('<TextSplitWithCode />', () => {
     const { container } = render(<TextSplitWithCode {...baseProps} />)
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-text-split')
+    expect(rootElem).toHaveClass(baseProps.textSplit.className)
   })
 
   it('should pass the headline and content to the text-split component', () => {

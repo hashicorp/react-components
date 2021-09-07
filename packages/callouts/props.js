@@ -28,6 +28,10 @@ module.exports = {
     testValue: 'light',
     options: ['light', 'dark'],
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   product: {
     type: 'string',
     description: 'Product name for color theming',

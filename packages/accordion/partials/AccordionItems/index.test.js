@@ -8,11 +8,14 @@ import defaultProps from './fixtures/default.json'
 afterEach(cleanup)
 
 describe('<AccordionItems />', () => {
-  it('should render a `.g-accordion-items` <div> root element', () => {
-    const { container } = render(<AccordionItems {...defaultProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-items-class-name'
+    const { container } = render(
+      <AccordionItems {...defaultProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
-    expect(rootElem).toHaveClass('g-accordion-items')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should render the item titles into buttons', () => {

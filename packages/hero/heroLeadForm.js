@@ -3,6 +3,7 @@ import { Formik, Field } from 'formik'
 import Button from '@hashicorp/react-button'
 import TextInput from '@hashicorp/react-text-input'
 import queryString from 'query-string'
+import s from './hero-lead-form.module.css'
 
 const EMAIL_STORAGE_KEY = 'prevVal_emailValue'
 
@@ -48,22 +49,25 @@ function HeroLeadForm(props) {
     >
       {(formikProps) => (
         <form
+          className={s.root}
           onSubmit={formikProps.handleSubmit}
           data-submitting={(!!formikProps.isSubmitting).toString()}
           data-submitted={(!!submitStatus).toString()}
         >
-          <div className="form-elements">
-            <div className="inputs">
+          <div className={s.formElements}>
+            <div className={s.formInputs}>
               <Field
                 type="email"
                 name="email"
-                component={TextInput}
+                component={(p) => (
+                  <TextInput {...p} className={s.textInputOverride} />
+                )}
                 placeholder={placeholder}
                 theme={theme}
               />
             </div>
             <Button
-              className="g-btn"
+              className={s.buttonOverride}
               type="submit"
               onClick={formikProps.submitForm}
               disabled={formikProps.isSubmitting}
