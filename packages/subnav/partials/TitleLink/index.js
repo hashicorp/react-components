@@ -1,5 +1,6 @@
 import LinkWrap from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'
+import s from './style.module.css'
 
 import ConsulLogo from '@hashicorp/mktg-logos/product/consul/primary/color.svg?include'
 import HCPLogo from '@hashicorp/mktg-logos/product/hcp/primary/black.svg?include'
@@ -11,6 +12,7 @@ import VaultLogo from '@hashicorp/mktg-logos/product/vault/primary/color.svg?inc
 import BoundaryLogo from '@hashicorp/mktg-logos/product/boundary/primary/color.svg?include'
 import WaypointLogo from '@hashicorp/mktg-logos/product/waypoint/primary/color.svg?include'
 import TerraformCloudLogo from '@hashicorp/mktg-logos/product/terraform-cloud/primary/color.svg?include'
+import classNames from 'classnames'
 
 const logoDict = {
   boundary: BoundaryLogo,
@@ -31,7 +33,7 @@ function TitleLink(props) {
   return (
     <LinkWrap
       Link={Link}
-      className={`title-link brand-${product} ${!Logo ? 'is-text' : ''}`}
+      className={classNames(s.root, s[`brand-${product}`])}
       href={url}
       title={text}
     >

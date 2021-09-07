@@ -3,24 +3,8 @@
 /* global component css imports */
 
 /* these should be moved to css modules */
-@import '../packages/callouts/styles/index.css';
-@import '../packages/checkbox-input/style.css';
-@import '../packages/accordion/style.css';
-@import '../packages/subnav/style.css';
-@import '../packages/call-to-action/style.css';
-@import '../packages/product-features-list/style.css';
-@import '../packages/enterprise-alert/style.css';
-@import '../packages/featured-slider/style.css';
-@import '../packages/content-cta/style.css';
-@import '../packages/consent-manager/style.css';
-@import '../packages/text-input/style.css';
-@import '../packages/hero/style.css';
 @import '../packages/logo-grid/style.css';
 @import '../packages/vertical-text-block-list/style.css';
-@import '../packages/tabbed-accordion/style.css';
-@import '../packages/text-split/styles/index.css';
-@import '../packages/case-study-slider/style.css';
-@import '../packages/learn-callout/style.css';
 @import '../packages/use-cases/style.css';
 
 .swingset-logo {

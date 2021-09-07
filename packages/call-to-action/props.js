@@ -21,6 +21,10 @@ module.exports = {
       'Color of background the CTA is on top of, default is `light`.',
     options: ['light', 'gray', 'dark'],
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   product: {
     type: 'string',
     description:

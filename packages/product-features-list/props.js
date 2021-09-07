@@ -3,6 +3,10 @@ module.exports = {
     type: 'string',
     description: 'Header for the list',
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
   features: {
     type: 'array',
     description:

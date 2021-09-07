@@ -6,7 +6,8 @@
   "contributors": ["Zach Shilton"],
   "dependencies": {
     "@hashicorp/react-accordion": "^2.0.3",
-    "@hashicorp/react-tabs": "^6.1.1"
+    "@hashicorp/react-tabs": "^6.1.1",
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

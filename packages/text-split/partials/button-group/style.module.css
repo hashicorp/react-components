@@ -1,0 +1,34 @@
+.buttonGroup {
+  margin-top: 32px;
+
+  @media (--large) {
+    margin-top: 40px;
+  }
+
+  &.as-buttons {
+    margin-bottom: -16px;
+
+    & .button {
+      margin-right: 16px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &.as-links {
+    & .button {
+      display: block;
+      float: left;
+      clear: both;
+      & + .button {
+        margin-top: 8px;
+      }
+    }
+
+    &::after {
+      display: block;
+      float: none;
+      content: '';
+      clear: both;
+    }
+  }
+}

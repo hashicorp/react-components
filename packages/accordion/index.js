@@ -1,12 +1,14 @@
 import React from 'react'
 import AccordionItems, { AccordionItem } from './partials/AccordionItems'
+import classNames from 'classnames'
+import s from './style.module.css'
 
-function Accordion({ heading, items }) {
+function Accordion({ heading, items, className }) {
   return (
-    <section className="g-accordion">
+    <section className={classNames(s.root, className)}>
       <div className="g-grid-container">
         {heading && (
-          <h2 className="g-type-display-2" data-testid="heading">
+          <h2 className={s.heading} data-testid="heading">
             {heading}
           </h2>
         )}

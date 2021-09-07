@@ -51,11 +51,14 @@ const baseProps = {
 }
 
 describe('<Callouts />', () => {
-  it('should render a `.g-callouts` <section> root element', () => {
-    const { container } = render(<Callouts {...baseProps} />)
+  it('should add a provided className to the root element', () => {
+    const className = 'my-special-callouts'
+    const { container } = render(
+      <Callouts {...baseProps} className={className} />
+    )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('SECTION')
-    expect(rootElem).toHaveClass('g-callouts')
+    expect(rootElem).toHaveClass(className)
   })
 
   it('should throw an error if no layout is provided', () => {
