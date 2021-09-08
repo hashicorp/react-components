@@ -15,8 +15,8 @@ interface DialogTooltipProps {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>
   /** Whether to show the dialog or not. */
   shown: boolean
-  /** DOMRect of the element that triggered the dialog. */
-  triggerRect: DOMRect
+  /** Ref of the element that triggered the dialog. */
+  triggerRef: React.Ref<HTMLButtonElement>
   /** */
   arrowSize?: number
   /** Minimum distance in pixels that the dialog should be from the viewport edge.  */
@@ -29,7 +29,7 @@ function DialogTooltip({
   children,
   setIsShown,
   shown,
-  triggerRect,
+  triggerRef,
   arrowSize = 10,
   collisionBuffer = 8,
   theme = 'light',
@@ -37,8 +37,9 @@ function DialogTooltip({
   /* Forces update, need to fix, see useEffect comment below */
   const [, setDate] = useState(0)
   const setNow = () => setDate(Date.now())
-
   const tooltipRef = useRef(null)
+
+  const triggerRect = useRect(triggerRef)
   const tooltipRect = useRect(tooltipRef, { observe: true })
 
   const position = calcDialogPosition(

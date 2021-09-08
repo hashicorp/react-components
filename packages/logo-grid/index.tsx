@@ -3,8 +3,7 @@ import Image from '@hashicorp/react-image'
 import Button from '@hashicorp/react-button'
 import fragment from './fragment.graphql'
 import classNames from 'classnames'
-import DialogTooltip from './partials/dialog-tooltip'
-import { useRect } from '@reach/rect'
+import PopoverTooltip from './partials/popover-tooltip'
 import s from './style.module.css'
 
 interface CompanyLogo {
@@ -113,18 +112,18 @@ function LogoGrid({
 function TileWithTooltip({ children, company, theme }) {
   const [showDialog, setShowDialog] = useState(false)
   const triggerRef = useRef(null)
-  const triggerRect = useRect(triggerRef)
+
   return (
     <>
       <button
         className={classNames(s.tileClickable, { [s.showDialog]: showDialog })}
         ref={triggerRef}
-        onClick={() => setShowDialog(true)}
+        onClick={() => setShowDialog(!showDialog)}
       >
         {children}
       </button>
-      <DialogTooltip
-        triggerRect={triggerRect}
+      <PopoverTooltip
+        triggerRef={triggerRef}
         shown={showDialog}
         setIsShown={setShowDialog}
         theme={theme}
@@ -143,7 +142,7 @@ function TileWithTooltip({ children, company, theme }) {
             external={true}
           />
         )}
-      </DialogTooltip>
+      </PopoverTooltip>
     </>
   )
 }
