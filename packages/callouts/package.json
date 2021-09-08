@@ -1,11 +1,9 @@
 {
   "name": "@hashicorp/react-callouts",
   "description": "Display a set of items, each with a title, description, option links, and an optional icon.",
-  "version": "7.1.5",
+  "version": "8.0.0",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-button": "^6.0.0",

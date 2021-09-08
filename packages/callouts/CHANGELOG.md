@@ -1,5 +1,14 @@
 # @hashicorp/react-callouts
 
+## 8.0.0
+
+### Major Changes
+
+- [#302](https://github.com/hashicorp/react-components/pull/302) [`b839fc3`](https://github.com/hashicorp/react-components/commit/b839fc35cd5d5542150a08ae90f9300d7ec76f14) Thanks [@zchsh](https://github.com/zchsh)! - - 💥✨ BREAKING CHANGE: Converts to CSS modules.
+  - Consumers will need to remove any `@hashicorp/react-callouts/style.css` imports.
+  - To support overrides in projects, consumers can use the `className` prop.
+    - For example, you can pass `className="g-callouts` to retain existing overrides.
+
 ## 7.1.5
 
 ### Patch Changes

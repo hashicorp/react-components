@@ -1,11 +1,9 @@
 {
   "name": "@hashicorp/react-featured-slider",
   "description": "featured slider for case studies",
-  "version": "4.1.5",
+  "version": "5.0.0",
   "author": "HashiCorp",
-  "contributors": [
-    "Zach Shilton"
-  ],
+  "contributors": ["Zach Shilton"],
   "main": "index.js",
   "license": "MPL-2.0",
   "dependencies": {
