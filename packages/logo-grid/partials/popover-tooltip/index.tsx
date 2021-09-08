@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, MutableRefObject } from 'react'
 import { useRect } from '@reach/rect'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Portal from '@reach/portal'
@@ -17,8 +17,8 @@ interface PopoverTooltipProps {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>
   /** Whether to show the popover or not. */
   shown: boolean
-  /** Ref (for DOMRect of the element that triggered the popover). */
-  triggerRef: React.Ref<HTMLButtonElement>
+  /** Ref that points to the element that triggered the dialog. */
+  triggerRef: MutableRefObject<$TSFixMe>
   /** */
   arrowSize?: number
   /** Minimum distance in pixels that the popover should be from the viewport edge.  */

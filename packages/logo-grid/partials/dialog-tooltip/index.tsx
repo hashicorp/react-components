@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { MutableRefObject, useState, useRef, useEffect } from 'react'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import VisuallyHidden from '@reach/visually-hidden'
 import { useRect } from '@reach/rect'
@@ -15,8 +15,8 @@ interface DialogTooltipProps {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>
   /** Whether to show the dialog or not. */
   shown: boolean
-  /** Ref of the element that triggered the dialog. */
-  triggerRef: React.Ref<HTMLButtonElement>
+  /** Ref that points to the element that triggered the dialog. */
+  triggerRef: MutableRefObject<$TSFixMe>
   /** */
   arrowSize?: number
   /** Minimum distance in pixels that the dialog should be from the viewport edge.  */
