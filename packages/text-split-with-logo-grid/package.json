@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-text-split-with-logo-grid",
-  "version": "5.1.4",
+  "version": "5.1.5",
   "description": "Display a grid of logos alongside a title, description, and links.",
   "author": "HashiCorp",
   "contributors": ["Brandon Romato"],
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@hashicorp/react-image": "^4.0.3",
-    "@hashicorp/react-text-split": "^3.2.4"
+    "@hashicorp/react-text-split": "^4.0.0"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

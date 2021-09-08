@@ -1,5 +1,17 @@
 # @hashicorp/react-featured-slider
 
+## 5.0.0
+
+### Major Changes
+
+- [#303](https://github.com/hashicorp/react-components/pull/303) [`d8f4d4a`](https://github.com/hashicorp/react-components/commit/d8f4d4ae7d8f12f2f8929dd91887bb903b07a66b) Thanks [@zchsh](https://github.com/zchsh)! - - 💥 BREAKING CHANGE: Converts to CSS modules.
+  - Consumers will need to remove any `@hashicorp/react-featured-slider/style.css` imports.
+  - To support overrides in projects, consumers can use the `className` prop.
+    - For example, you can pass `className="g-featured-slider` to retain existing overrides.
+  - ✨ Adds named `FeaturedSlideInner` export
+    - Allows component to be used without external margin
+    - Supports reconciling duplicative code in `case-study-slider`
+
 ## 4.1.5
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.5.2
+
+### Patch Changes
+
+- [#296](https://github.com/hashicorp/react-components/pull/296) [`c6b7a4d`](https://github.com/hashicorp/react-components/commit/c6b7a4dc80319d92f694773517d822f0566b229a) Thanks [@zchsh](https://github.com/zchsh)! - Fixes to account for underlying changes in Tabs
+
+- Updated dependencies [[`c6b7a4d`](https://github.com/hashicorp/react-components/commit/c6b7a4dc80319d92f694773517d822f0566b229a)]:
+  - @hashicorp/react-tabs@7.0.0
+
 ## 2.5.1
 
 ### Patch Changes

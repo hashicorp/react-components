@@ -1,13 +1,11 @@
 {
   "name": "@hashicorp/react-case-study-slider",
   "description": "displays up to three case studies",
-  "version": "6.1.5",
+  "version": "7.0.0",
   "author": "HashiCorp",
-  "contributors": [
-    "Mike Wickett"
-  ],
+  "contributors": ["Mike Wickett"],
   "dependencies": {
-    "@hashicorp/react-featured-slider": "^4.1.4",
+    "@hashicorp/react-featured-slider": "^5.0.0",
     "@hashicorp/react-image": "^4.0.1"
   },
   "peerDependencies": {

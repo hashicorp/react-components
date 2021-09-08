@@ -1,5 +1,14 @@
 # @hashicorp/react-subnav
 
+## 9.0.0
+
+### Major Changes
+
+- [#311](https://github.com/hashicorp/react-components/pull/311) [`2e43e7c`](https://github.com/hashicorp/react-components/commit/2e43e7c716b8889f942e8dfcd1b2e553a72d0fa6) Thanks [@zchsh](https://github.com/zchsh)! - - 💥✨ BREAKING CHANGE: Converts to CSS modules.
+  - Consumers will need to remove any `@hashicorp/react-subnav/style.css` imports.
+  - To support overrides in projects, consumers can use the `className` prop.
+    - For example, consumers can pass `className="g-subnav` to retain existing overrides.
+
 ## 8.4.3
 
 ### Patch Changes

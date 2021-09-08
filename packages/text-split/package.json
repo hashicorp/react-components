@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-text-split",
   "description": "Display a title, description, and links alongside arbitrary content",
-  "version": "3.2.5",
+  "version": "4.0.0",
   "author": "HashiCorp",
   "contributors": ["Zach Shilton"],
   "dependencies": {

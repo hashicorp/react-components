@@ -1,12 +1,12 @@
 {
   "name": "@hashicorp/react-consent-manager",
   "description": "A GDPR-compliant Consent Manager",
-  "version": "6.0.3",
+  "version": "7.0.0",
   "author": "HashiCorp",
   "contributors": ["Jennifer Yip", "Jeff Escalante"],
   "dependencies": {
     "@hashicorp/react-button": "^6.0.0",
-    "@hashicorp/react-toggle": "^3.0.3",
+    "@hashicorp/react-toggle": "^4.0.0",
     "classnames": "^2.3.1",
     "js-cookie": "^2.2.1"
   },
