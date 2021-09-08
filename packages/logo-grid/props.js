@@ -317,4 +317,8 @@ module.exports = {
       'If true, creates a popup with company details when a logo is clicked',
     control: { type: 'checkbox', value: false },
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to render on the root element',
+  },
 }

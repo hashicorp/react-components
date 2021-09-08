@@ -1,0 +1,156 @@
+.root {
+  list-style: none;
+  padding: 0;
+  margin: -15px;
+  display: flex;
+  flex-wrap: wrap;
+
+  &.medium {
+    @media (max-width: 650px) {
+      margin: -10px;
+    }
+  }
+
+  /* Light theme, for logo color prop "color" or "monochrome" */
+  &.light {
+    --tile-border-color: var(--gray-5);
+    --tile-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Dark theme, for logo color prop "white" */
+  &.dark {
+    --tile-border-color: var(--gray-2);
+    --tile-box-shadow: 0 8px 12px rgba(255, 255, 255, 0.1);
+  }
+
+  /* removeBorders overrides either theme */
+  &.removeBorders {
+    --tile-border-color: var(--transparent);
+  }
+}
+
+.listItem {
+  position: relative;
+  margin: 15px;
+
+  &.large {
+    width: calc(33.333333% - 30px);
+    height: 230px;
+
+    @media (max-width: 900px) {
+      height: 190px;
+    }
+
+    @media (max-width: 700px) {
+      width: calc(50% - 30px);
+      height: 210px;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  &.medium {
+    width: calc(25% - 30px);
+    height: 170px;
+
+    @media (max-width: 900px) {
+      height: 130px;
+    }
+
+    @media (max-width: 650px) {
+      width: calc(50% - 20px);
+      margin: 10px;
+    }
+  }
+
+  &.small {
+    width: calc(16.66666666666% - 30px);
+    height: 125px;
+
+    @media (max-width: 1000px) and (min-width: 500px) {
+      width: calc(33.33333333333% - 30px);
+    }
+
+    @media (max-width: 500px) {
+      width: calc(50% - 20px);
+      margin: 10px;
+    }
+  }
+}
+
+.tilePlain {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--tile-border-color);
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+
+  & picture {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & img {
+      margin: 0 auto;
+    }
+  }
+
+  & img {
+    display: block;
+    max-height: 70%;
+    max-width: 70%;
+  }
+}
+
+.tileClickable {
+  composes: tilePlain;
+  cursor: pointer;
+  transition: 0.25s ease;
+  transition-property: border, box-shadow, transform;
+
+  &:hover,
+  &.showDialog {
+    box-shadow: var(--tile-box-shadow);
+    transform: translateY(-4px);
+  }
+}
+
+/* Tooltip content */
+
+.companyName {
+  composes: g-type-display-5 from global;
+  margin: 0;
+
+  &.light {
+    color: var(--black);
+  }
+
+  &.dark {
+    color: var(--white);
+  }
+}
+
+.companyDescription {
+  composes: g-type-body-small from global;
+  margin: 1rem 0 0 0;
+
+  &.light {
+    color: var(--gray-3);
+  }
+
+  &.dark {
+    color: var(--gray-5);
+  }
+}
+
+.companyLinkButton {
+  margin-top: 1.5rem;
+}

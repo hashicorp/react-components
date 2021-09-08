@@ -1,10 +1,5 @@
 @import '~@hashicorp/mktg-global-styles/style.css';
 
-/* global component css imports */
-
-/* these should be moved to css modules */
-@import '../packages/logo-grid/style.css';
-
 .swingset-logo {
   margin: 1rem 1rem 0.25rem 2rem;
   height: 32px;
