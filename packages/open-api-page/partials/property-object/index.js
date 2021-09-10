@@ -1,0 +1,96 @@
+import { useState } from 'react'
+import classNames from 'classnames'
+import InlineSvg from '@hashicorp/react-inline-svg'
+import Collapsible from '../collapsible'
+import svgChevronDown from '../../icons/chevron-down.svg?include'
+import s from './style.module.css'
+
+function PropertyObject({
+  name,
+  data,
+  isFirstItem,
+  isLastItem,
+  arrayDepth = 0,
+}) {
+  const [isCollapsed, setIsCollapsed] = useState(true)
+  if (data.type === 'array')
+    return (
+      <PropertyObject
+        name={name}
+        data={data.items}
+        arrayDepth={arrayDepth + 1}
+        isFirstItem={isFirstItem}
+        isLastItem={isLastItem}
+      />
+    )
+  const hasProperties = data.type === 'object' && Boolean(data.properties)
+
+  const typeArraySuffix =
+    arrayDepth > 0 ? arrayFrom(arrayDepth, '[]').join('') : ''
+  const typeString = `${data.type}${typeArraySuffix}`
+  return (
+    <div
+      className={classNames(s.root, {
+        [s.isFirstItem]: isFirstItem,
+        [s.isLastItem]: isLastItem,
+      })}
+    >
+      <code className={`${s.name} g-type-code`}>{name}</code>{' '}
+      <code className={`${s.typeString} g-type-code`}>{typeString}</code>{' '}
+      {data.required ? (
+        <span className={`${s.requiredFlag} g-type-label-strong`}>
+          Required
+        </span>
+      ) : null}
+      {data.title && (
+        <p className={`${s.title} g-type-body-small`}>{data.title}</p>
+      )}
+      {data.description ? (
+        <p className={`${s.description} g-type-body-small`}>
+          {data.description}
+        </p>
+      ) : null}
+      {hasProperties && (
+        <div>
+          <button
+            className={`${s.toggleButton} g-type-body-small`}
+            onClick={() => setIsCollapsed(!isCollapsed)}
+          >
+            <InlineSvg
+              className={classNames(s.toggleIcon, {
+                [s.isCollapsed]: isCollapsed,
+              })}
+              src={svgChevronDown}
+            />
+            {isCollapsed ? 'Show properties' : 'Hide properties'}
+          </button>
+          <Collapsible isCollapsed={isCollapsed}>
+            <div className={s.propertiesContainer}>
+              {Object.keys(data.properties).map((propertyKey, idx) => {
+                return (
+                  <PropertyObject
+                    key={propertyKey}
+                    name={propertyKey}
+                    data={data.properties[propertyKey]}
+                    isFirstItem={idx === 0}
+                    isLastItem={idx === Object.keys(data.properties).length - 1}
+                  />
+                )
+              })}
+            </div>
+          </Collapsible>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function arrayFrom(length, value = null) {
+  let array = []
+  for (var i = 0; i < length; i++) {
+    array.push(value)
+  }
+  return array
+}
+
+export default PropertyObject
