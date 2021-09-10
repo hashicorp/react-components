@@ -12,7 +12,7 @@
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/builds/{build_id}": {
       "get": {
         "summary": "TODO: make it possible to query by iteration.incremental_version, not just ULID",
-        "operationId": "BuildService_GetBuild",
+        "operationId": "GetBuild",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -67,7 +67,7 @@
         "tags": ["PackerService"]
       },
       "delete": {
-        "operationId": "BuildService_DeleteBuild",
+        "operationId": "DeleteBuild",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -122,7 +122,7 @@
         "tags": ["PackerService"]
       },
       "patch": {
-        "operationId": "BuildService_UpdateBuild",
+        "operationId": "UpdateBuild",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -173,7 +173,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images": {
       "get": {
-        "operationId": "BucketService_ListBuckets",
+        "operationId": "ListBuckets",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -255,7 +255,7 @@
       },
       "put": {
         "summary": "Operations realted to images\n-------------------------------------------------------------------------",
-        "operationId": "BucketService_CreateBucket",
+        "operationId": "CreateBucket",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -299,7 +299,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}": {
       "get": {
-        "operationId": "BucketService_GetBucket",
+        "operationId": "GetBucket",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -359,7 +359,7 @@
         "tags": ["PackerService"]
       },
       "delete": {
-        "operationId": "BucketService_DeleteBucket",
+        "operationId": "DeleteBucket",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -413,7 +413,7 @@
         "tags": ["PackerService"]
       },
       "patch": {
-        "operationId": "BucketService_UpdateBucket",
+        "operationId": "UpdateBucket",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -464,7 +464,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/channels": {
       "get": {
-        "operationId": "ChannelService_ListChannels",
+        "operationId": "ListChannels",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -520,7 +520,7 @@
       },
       "post": {
         "summary": "Operations related to channels (mutable aliases/pointers for an image iteration)\n-------------------------------------------------------------------------",
-        "operationId": "ChannelService_CreateChannel",
+        "operationId": "CreateChannel",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -571,7 +571,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/channels/{slug}": {
       "get": {
-        "operationId": "ChannelService_GetChannel",
+        "operationId": "GetChannel",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -633,7 +633,7 @@
         "tags": ["PackerService"]
       },
       "delete": {
-        "operationId": "ChannelService_DeleteChannel",
+        "operationId": "DeleteChannel",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -702,7 +702,7 @@
         "tags": ["PackerService"]
       },
       "patch": {
-        "operationId": "ChannelService_UpdateChannel",
+        "operationId": "UpdateChannel",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -762,7 +762,7 @@
       "get": {
         "summary": "GetIteration allows to get an iteration by\n * iteration_id\n * incremental_version\n * fingerprint\nThese are supplied as a query parameter: e.g.:",
         "description": "images/mybucket/iteration?iteration_id=fingerprint\n\nbucket_slug must always be set because it is possible for iterations to\nhave the same incremental_version or fingerprint across buckets",
-        "operationId": "IterationService_GetIteration",
+        "operationId": "GetIteration",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -837,7 +837,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/iterations": {
       "get": {
-        "operationId": "IterationService_ListIterations",
+        "operationId": "ListIterations",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -931,7 +931,7 @@
       },
       "post": {
         "summary": "Operations related to image iterations\n-------------------------------------------------------------------------",
-        "operationId": "IterationService_CreateIteration",
+        "operationId": "CreateIteration",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -981,7 +981,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/iterations/{build.iteration_id}": {
       "post": {
-        "operationId": "BuildService_CreateBuild",
+        "operationId": "CreateBuild",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1040,7 +1040,7 @@
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/iterations/{incremental_version}/ancestors": {
       "get": {
         "summary": "API Endpoints to ease UI implementation",
-        "operationId": "BucketService_GetAncestorImages",
+        "operationId": "GetAncestorImages",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1104,7 +1104,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/iterations/{incremental_version}/children": {
       "get": {
-        "operationId": "BucketService_GetChildImages",
+        "operationId": "GetChildImages",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1168,7 +1168,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/iterations/{iteration_id}/builds": {
       "get": {
-        "operationId": "BuildService_ListBuilds",
+        "operationId": "ListBuilds",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1265,7 +1265,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/iterations/{iteration_id}": {
       "delete": {
-        "operationId": "IterationService_DeleteIteration",
+        "operationId": "DeleteIteration",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1327,7 +1327,7 @@
       },
       "patch": {
         "summary": "Only used to set incremental_version once all builds are complete.\nOtherwise, UpdateBuild is used for specific build updates.",
-        "operationId": "IterationService_UpdateIteration",
+        "operationId": "UpdateIteration",
         "responses": {
           "200": {
             "description": "A successful response.",
