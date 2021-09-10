@@ -17,13 +17,13 @@ The `packages` directory contains all the individual components. Let's talk abou
 
 ## Adding package dependencies
 
-We use [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces/) to manage dependencies for all packages. With this in mind, all new dependencies should be added from the project root, using the `--workspace` argument.
-
-For example, to add the [`classnames`](https://www.npmjs.com/package/classnames) package to our `button` component, you would run:
+We use [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces/) to manage dependencies for all packages. With this in mind, all new dependencies should be added from the project root, using the `--workspace` argument. For example, to add the [`classnames`](https://www.npmjs.com/package/classnames) package to our `button` component, you would run:
 
 ```
 npm i classnames --workspace=@hashicorp/react-button
 ```
+
+> Note: with this in mind, package folders, such as `packages/button`, should not contain `package-lock.json` files. If you accidentally install a dependency from within a package folder, please ensure you 1) remove the `package-lock.json` file, and 2) re-run `npm i` from the project root to ensure the root `package-lock.json` is up to date.
 
 ## Environment Variables
 
