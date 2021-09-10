@@ -4,6 +4,9 @@
   "author": "HashiCorp",
   "version": "2.0.0",
   "license": "MPL-2.0",
+  "scripts": {
+    "refresh-generated-fixtures": "node ./fixtures/refresh-generated-fixtures.js"
+  },
   "publishConfig": {
     "access": "public"
   },
