@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-learn-callout",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A split view of CTA to the learn platform and tutorial links.",
   "author": "Hashicorp",
   "license": "MPL-2.0",

@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-featured-slider",
   "description": "featured slider for case studies",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "HashiCorp",
   "contributors": ["Zach Shilton"],
   "main": "index.js",
