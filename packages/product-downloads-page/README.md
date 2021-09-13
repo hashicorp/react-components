@@ -14,7 +14,7 @@ Below is a full example of how the component can be implemented, including all p
 
 ```jsx
 import ProductDownloadsPage from '@hashicorp/react-product-downloads-page'
-import { generateStaticProps } from '@hashicorp/react-product-download-page/server'
+import { generateStaticProps } from '@hashicorp/react-product-downloads-page/server'
 
 export default function DownloadsPage(staticProps) {
   return (
