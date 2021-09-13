@@ -1,0 +1,22 @@
+---
+componentName: VersionSelect
+---
+
+<p>{packageJson.description}</p>
+
+_Note:_ `VersionSelect` uses `next/router`. Interacting with it in **this playground**
+will navigate you to non-existant pages.
+
+<LiveComponent>{`<VersionSelect
+  versions={[
+      { name: "latest", label: "latest" },
+      { name: "v0.5.1", label: "v0.5.1" },
+      { name: "v0.4.0", label: "v0.4.0" },
+  ]}
+/>`}</LiveComponent>
+
+<UsageDetails packageJson={packageJson} />
+
+### Props
+
+<PropsTable props={componentProps} />
