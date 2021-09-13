@@ -1,5 +1,14 @@
 # @hashicorp/react-case-study-slider
 
+## 7.0.1
+
+### Patch Changes
+
+- [#330](https://github.com/hashicorp/react-components/pull/330) [`44a0e60`](https://github.com/hashicorp/react-components/commit/44a0e60b577a36978275ef1b0efa0e351a9802c6) Thanks [@zchsh](https://github.com/zchsh)! - Removes package-lock.json
+
+- Updated dependencies [[`44a0e60`](https://github.com/hashicorp/react-components/commit/44a0e60b577a36978275ef1b0efa0e351a9802c6)]:
+  - @hashicorp/react-featured-slider@5.0.1
+
 ## 7.0.0
 
 ### Major Changes
