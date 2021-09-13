@@ -127,10 +127,13 @@ const components = {
 }
 
 const swingsetConfig = {
-  customMeta({ slug }) {
+  customMeta({ data }) {
+    const dashCaseSlug = data.componentName
+      .replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())
+      .slice(1)
     return {
-      github: `https://github.com/hashicorp/react-components/tree/main/packages/${slug}`,
-      npm: `https://npmjs.com/package/@hashicorp/react-${slug}`,
+      github: `https://github.com/hashicorp/react-components/tree/main/packages/${dashCaseSlug}`,
+      npm: `https://npmjs.com/package/@hashicorp/react-${dashCaseSlug}`,
     }
   },
 }
