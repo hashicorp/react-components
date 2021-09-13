@@ -12,25 +12,25 @@ interface Props {
  * Component which accepts a list of versions and renders a select component. Navigates to the new version on select
  */
 const VersionSelect: React.ComponentType<Props> = ({ versions }) => {
-  const router = useRouter()
-  const versionInPath = getVersionFromPath(router.asPath)
+  const { asPath, push } = useRouter()
+  const pathParts = asPath.split('/')
+
+  const version = getVersionFromPath(asPath)
 
   const onVersionSelect = (newVersion: string) => {
-    const remove = versionInPath ? 1 : 0
+    const remove = version ? 1 : 0
 
-    const pathParts = router.asPath.split('/')
-
-    if (newVersion === 'latest' && versionInPath) {
+    if (newVersion === 'latest' && version) {
       pathParts.splice(2, remove)
     } else {
       pathParts.splice(2, remove, newVersion)
     }
 
-    router.push(pathParts.join('/'))
+    push(pathParts.join('/'))
   }
 
   const selectedVersion =
-    versions.find((ver) => ver.name === versionInPath) || versions[0]
+    versions.find((ver) => ver.name === version) || versions[0]
 
   return (
     <SelectInput
