@@ -34,6 +34,8 @@ export interface LogoGridCompany {
   whiteLogo?: CompanyLogo
 }
 
+export type LogoGridSize = 'small' | 'medium' | 'large'
+
 interface LogoGridProps {
   /** Array of company objects to render as grid items. */
   data: LogoGridCompany[]
@@ -46,7 +48,7 @@ interface LogoGridProps {
   /** If true, borders around logo items will be removed. */
   removeBorders?: boolean
   /** Display size of the logos within the grid. */
-  size?: 'small' | 'medium' | 'large'
+  size?: LogoGridSize
   /** Optional className to render on the root element */
   className?: string
 }
