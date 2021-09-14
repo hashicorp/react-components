@@ -1,6 +1,6 @@
 import React from 'react'
-import s from './style.module.css'
 import classNames from 'classnames'
+import s from './style.module.css'
 
 interface Min100LayoutProps {
   /** Render prop for the page area. All visible elements on the page, except for the footer, should be rendered as children of Min100Layout. */
