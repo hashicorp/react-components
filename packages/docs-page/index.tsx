@@ -4,8 +4,9 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Content from '@hashicorp/react-content'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
+import { NavData } from '@hashicorp/react-docs-sidenav/types'
 import HashiHead from '@hashicorp/react-head'
-import { MDXRemote } from 'next-mdx-remote'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
 import {
   VersionSelect,
@@ -20,8 +21,6 @@ import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
-
-import { NavData } from './types'
 
 interface DocsPageWrapperProps {
   canonicalUrl: string
@@ -151,7 +150,7 @@ export interface DocsPageProps {
   showEditPage: boolean
   additionalComponents: MDXProviderComponentsProp
   staticProps: {
-    mdxSource: any // TODO: import { MDXRemoteProps } from "next-mdx-remote"
+    mdxSource: MDXRemoteSerializeResult
     frontMatter: {
       canonical_url: string
       description: string

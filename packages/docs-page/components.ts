@@ -4,7 +4,7 @@ import { MDXProviderComponentsProp } from '@mdx-js/react'
 export default function generateComponents(
   productName: string,
   additionalComponents: MDXProviderComponentsProp = {}
-): MDXProviderComponentsProp {
+): Record<string, string> {
   return defaultMdxComponents({
     product: productName,
     additionalComponents,
