@@ -3,7 +3,7 @@ import BoundarySwagger from './generated/boundary.swagger.json'
 import { getPropsForPage } from '../utils/routing-utils'
 
 const Packer = {
-  ...getPropsForPage(PackerSwagger, { page: ['build-service'] }),
+  ...getPropsForPage(PackerSwagger, { page: ['iteration-service'] }),
   productSlug: 'packer',
   massageOperationPathFn: (path) =>
     path.replace(

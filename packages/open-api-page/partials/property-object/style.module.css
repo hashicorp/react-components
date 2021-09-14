@@ -31,8 +31,7 @@
     margin-left: 4px;
   }
 
-  & .title,
-  & .description {
+  & .title {
     color: var(--gray-2);
     margin: 8px 0 0 0;
   }
@@ -82,4 +81,45 @@
     padding-left: 16px;
     border-left: 1px solid var(--gray-5);
   }
+}
+
+/* .description { */
+
+/* composes: g-type-body-small from global; */
+
+/* color: var(--gray-2); */
+
+/* } */
+
+.description {
+  /* Base typography */
+  composes: g-type-body-small from global;
+
+  /* Include all content base styles */
+  composes: a from '~@hashicorp/react-content/styles/a.module.css';
+  composes: alert from '~@hashicorp/react-content/styles/alert.module.css';
+  composes: aPermalinks from '~@hashicorp/react-content/styles/a-permalinks.module.css';
+  composes: blockquote from '~@hashicorp/react-content/styles/blockquote.module.css';
+  composes: codeInline from '~@hashicorp/react-content/styles/code-inline.module.css';
+  composes: headings from '~@hashicorp/react-content/styles/headings.module.css';
+  composes: hr from '~@hashicorp/react-content/styles/hr.module.css';
+  composes: img from '~@hashicorp/react-content/styles/img.module.css';
+  composes: olUlLists from '~@hashicorp/react-content/styles/ol-ul-lists.module.css';
+  composes: p from '~@hashicorp/react-content/styles/p.module.css';
+  composes: pre from '~@hashicorp/react-content/styles/pre.module.css';
+  composes: strong from '~@hashicorp/react-content/styles/strong.module.css';
+  composes: table from '~@hashicorp/react-content/styles/table.module.css';
+
+  /* Default text color */
+  color: var(--gray-2);
+
+  /* Remove the top margin from any first item */
+  & > *:first-child {
+    margin-top: 0;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  margin: 8px 0 0 0;
 }

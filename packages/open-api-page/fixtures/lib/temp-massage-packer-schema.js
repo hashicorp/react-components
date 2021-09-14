@@ -1,4 +1,4 @@
-const traverse = require('./traverse')
+const traverse = require('../../utils/traverse')
 
 /**
  *

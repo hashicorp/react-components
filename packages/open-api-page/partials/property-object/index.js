@@ -46,9 +46,10 @@ function PropertyObject({
         <p className={`${s.title} g-type-body-small`}>{data.title}</p>
       )}
       {data.description ? (
-        <p className={`${s.description} g-type-body-small`}>
-          {data.description}
-        </p>
+        <div
+          className={s.description}
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        />
       ) : null}
       {hasProperties && (
         <div>
