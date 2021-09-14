@@ -1,7 +1,8 @@
-require('dotenv').config()
+import { config } from 'dotenv'
+config()
 import HashiHead from '@hashicorp/react-head'
 import { render, screen } from '@testing-library/react'
-import DocsPage from './'
+import DocsPage from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 import renderPageMdx from './render-page-mdx'
