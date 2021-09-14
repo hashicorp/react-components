@@ -9,9 +9,9 @@ async function dereferenceSchema(schemaJson) {
 
 async function processSchema(schemaJson) {
   const withMarkdownAsHtml = await traverse(schemaJson, async (key, value) => {
-    // If this isn't a description, do nothing.
-    if (key !== 'description') return value
-    // If it is a description, process it as markdown, and output HTML
+    // If this isn't a description or summary, do nothing.
+    if (key !== 'description' && key !== 'summary') return value
+    // If it is a description or summary, process it as markdown, and output HTML
     return await markdownToHtml(value)
   })
   return await dereferenceSchema(withMarkdownAsHtml)

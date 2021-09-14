@@ -114,11 +114,6 @@
 .details {
   padding-bottom: 80px;
 
-  & .summary {
-    color: var(--gray-2);
-    margin: 8px 0 24px 0;
-  }
-
   & .columnHeading {
     margin: 0 0 1em 0;
     font-weight: bold;
@@ -130,6 +125,21 @@
     border-bottom: 1px solid var(--gray-5);
     color: var(--gray-3);
   }
+}
+
+.summary {
+  /* Base typography */
+  composes: g-type-body from global;
+
+  /* Remove the top margin from any first item */
+  & > *:first-child {
+    margin-top: 0;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  margin: 8px 0 24px 0;
 }
 
 .twoColumnLayout {

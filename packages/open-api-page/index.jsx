@@ -17,6 +17,7 @@ function OpenApiPage({
   currentPath,
   pathFromRoot,
   massageOperationPathFn = (path) => path,
+  renderOperationIntro,
 }) {
   const operationsRef = useRef(null)
   const [expandedOperations, setExpandedOperations] = useState([])
@@ -46,7 +47,7 @@ function OpenApiPage({
         navData={navData}
       />
       <Content
-        className="g-content"
+        className={styles.contentContainer}
         product={productSlug}
         content={
           operationCategory ? (
@@ -68,6 +69,7 @@ function OpenApiPage({
                       path={massageOperationPathFn(op.__path)}
                       type={op.__type}
                       data={op}
+                      renderOperationIntro={renderOperationIntro}
                       isCollapsed={!isExpanded}
                       setIsCollapsed={(isCollapsed) =>
                         setOperationState(op.operationId, !isCollapsed)

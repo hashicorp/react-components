@@ -11,7 +11,7 @@
   "paths": {
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/builds/{build_id}": {
       "get": {
-        "summary": "TODO: make it possible to query by iteration.incremental_version, not just ULID",
+        "summary": "<p>TODO: make it possible to query by iteration.incremental_version, not just ULID</p>",
         "operationId": "BuildService_GetBuild",
         "responses": {
           "200": {
@@ -847,7 +847,7 @@
         "tags": ["PackerService"]
       },
       "put": {
-        "summary": "Operations realted to images\n-------------------------------------------------------------------------",
+        "summary": "<h2>Operations realted to images</h2>",
         "operationId": "BucketService_CreateBucket",
         "responses": {
           "200": {
@@ -2134,7 +2134,7 @@
         "tags": ["PackerService"]
       },
       "post": {
-        "summary": "Operations related to channels (mutable aliases/pointers for an image iteration)\n-------------------------------------------------------------------------",
+        "summary": "<h2>Operations related to channels (mutable aliases/pointers for an image iteration)</h2>",
         "operationId": "ChannelService_CreateChannel",
         "responses": {
           "200": {
@@ -3127,7 +3127,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/iteration": {
       "get": {
-        "summary": "GetIteration allows to get an iteration by\n * iteration_id\n * incremental_version\n * fingerprint\nThese are supplied as a query parameter: e.g.:",
+        "summary": "<p>GetIteration allows to get an iteration by</p>\n<ul>\n<li>iteration_id</li>\n<li>incremental_version</li>\n<li>fingerprint\nThese are supplied as a query parameter: e.g.:</li>\n</ul>",
         "description": "<p>images/mybucket/iteration?iteration_id=fingerprint</p>\n<p>bucket_slug must always be set because it is possible for iterations to\nhave the same incremental_version or fingerprint across buckets</p>",
         "operationId": "IterationService_GetIteration",
         "responses": {
@@ -3547,7 +3547,7 @@
         "tags": ["PackerService"]
       },
       "post": {
-        "summary": "Operations related to image iterations\n-------------------------------------------------------------------------",
+        "summary": "<h2>Operations related to image iterations</h2>",
         "operationId": "IterationService_CreateIteration",
         "responses": {
           "200": {
@@ -4076,7 +4076,7 @@
     },
     "/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}/images/{bucket_slug}/iterations/{incremental_version}/ancestors": {
       "get": {
-        "summary": "API Endpoints to ease UI implementation",
+        "summary": "<p>API Endpoints to ease UI implementation</p>",
         "operationId": "BucketService_GetAncestorImages",
         "responses": {
           "200": {
@@ -4867,7 +4867,7 @@
         "tags": ["PackerService"]
       },
       "patch": {
-        "summary": "Only used to set incremental_version once all builds are complete.\nOtherwise, UpdateBuild is used for specific build updates.",
+        "summary": "<p>Only used to set incremental_version once all builds are complete.\nOtherwise, UpdateBuild is used for specific build updates.</p>",
         "operationId": "IterationService_UpdateIteration",
         "responses": {
           "200": {

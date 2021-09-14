@@ -15,6 +15,7 @@ function OperationObject({
   isHighlighted,
   isCollapsed,
   setIsCollapsed,
+  renderOperationIntro,
 }) {
   const [headerRef, isHeaderHovered] = useHover()
 
@@ -65,7 +66,11 @@ function OperationObject({
       </div>
       <Collapsible isCollapsed={isCollapsed}>
         <div className={s.details}>
-          <p className={s.summary}>{summary}</p>
+          {renderOperationIntro ? renderOperationIntro({ data }) : null}
+          <div
+            className={s.summary}
+            dangerouslySetInnerHTML={{ __html: summary }}
+          />
           <TwoColumnLayout
             columnOne={
               <div>

@@ -57,7 +57,7 @@
   "paths": {
     "/v1/accounts": {
       "get": {
-        "summary": "Lists all Accounts in a specific Auth Method.",
+        "summary": "<p>Lists all Accounts in a specific Auth Method.</p>",
         "operationId": "AccountService_ListAccounts",
         "responses": {
           "200": {
@@ -178,7 +178,7 @@
         "tags": ["controller.api.services.v1.AccountService"]
       },
       "post": {
-        "summary": "Creates a single Account in the provided Auth Method.",
+        "summary": "<p>Creates a single Account in the provided Auth Method.</p>",
         "operationId": "AccountService_CreateAccount",
         "responses": {
           "200": {
@@ -375,7 +375,7 @@
     },
     "/v1/accounts/{id}": {
       "get": {
-        "summary": "Gets a single Account.",
+        "summary": "<p>Gets a single Account.</p>",
         "operationId": "AccountService_GetAccount",
         "responses": {
           "200": {
@@ -482,7 +482,7 @@
         "tags": ["controller.api.services.v1.AccountService"]
       },
       "delete": {
-        "summary": "Deletes an Account.",
+        "summary": "<p>Deletes an Account.</p>",
         "operationId": "AccountService_DeleteAccount",
         "responses": {
           "200": {
@@ -503,7 +503,7 @@
         "tags": ["controller.api.services.v1.AccountService"]
       },
       "patch": {
-        "summary": "Updates an Account.",
+        "summary": "<p>Updates an Account.</p>",
         "operationId": "AccountService_UpdateAccount",
         "responses": {
           "200": {
@@ -712,7 +712,7 @@
     },
     "/v1/accounts/{id}:change-password": {
       "post": {
-        "summary": "Sets the password for the provided Account.",
+        "summary": "<p>Sets the password for the provided Account.</p>",
         "operationId": "AccountService_ChangePassword",
         "responses": {
           "200": {
@@ -845,7 +845,7 @@
     },
     "/v1/accounts/{id}:set-password": {
       "post": {
-        "summary": "Sets the password for the provided Account.",
+        "summary": "<p>Sets the password for the provided Account.</p>",
         "operationId": "AccountService_SetPassword",
         "responses": {
           "200": {
@@ -975,7 +975,7 @@
     },
     "/v1/auth-methods": {
       "get": {
-        "summary": "Lists all Auth Methods.",
+        "summary": "<p>Lists all Auth Methods.</p>",
         "operationId": "AuthMethodService_ListAuthMethods",
         "responses": {
           "200": {
@@ -1110,7 +1110,7 @@
         "tags": ["controller.api.services.v1.AuthMethodService"]
       },
       "post": {
-        "summary": "Creates a single Auth Method.",
+        "summary": "<p>Creates a single Auth Method.</p>",
         "operationId": "AuthMethodService_CreateAuthMethod",
         "responses": {
           "200": {
@@ -1323,7 +1323,7 @@
     },
     "/v1/auth-methods/{auth_method_id}:authenticate": {
       "post": {
-        "summary": "Authenticate a user to an scope and retrieve an authentication token.",
+        "summary": "<p>Authenticate a user to an scope and retrieve an authentication token.</p>",
         "operationId": "AuthMethodService_Authenticate",
         "responses": {
           "200": {
@@ -1387,7 +1387,7 @@
     },
     "/v1/auth-methods/{auth_method_id}:authenticate:login": {
       "post": {
-        "summary": "Deprecated: Use Authenticate instead",
+        "summary": "<p>Deprecated: Use Authenticate instead</p>",
         "operationId": "AuthMethodService_AuthenticateLogin",
         "responses": {
           "200": {
@@ -1525,7 +1525,7 @@
     },
     "/v1/auth-methods/{id}": {
       "get": {
-        "summary": "Gets a single Auth Method.",
+        "summary": "<p>Gets a single Auth Method.</p>",
         "operationId": "AuthMethodService_GetAuthMethod",
         "responses": {
           "200": {
@@ -1640,7 +1640,7 @@
         "tags": ["controller.api.services.v1.AuthMethodService"]
       },
       "delete": {
-        "summary": "Deletes an AuthMethod",
+        "summary": "<p>Deletes an AuthMethod</p>",
         "operationId": "AuthMethodService_DeleteAuthMethod",
         "responses": {
           "200": {
@@ -1661,7 +1661,7 @@
         "tags": ["controller.api.services.v1.AuthMethodService"]
       },
       "patch": {
-        "summary": "Updates an Auth Method.",
+        "summary": "<p>Updates an Auth Method.</p>",
         "operationId": "AuthMethodService_UpdateAuthMethod",
         "responses": {
           "200": {
@@ -1886,7 +1886,7 @@
     },
     "/v1/auth-methods/{id}:change-state": {
       "post": {
-        "summary": "Changes the state of an OIDC AuthMethod",
+        "summary": "<p>Changes the state of an OIDC AuthMethod</p>",
         "operationId": "AuthMethodService_ChangeState",
         "responses": {
           "200": {
@@ -2025,7 +2025,7 @@
     },
     "/v1/auth-tokens": {
       "get": {
-        "summary": "Lists all Auth Tokens.",
+        "summary": "<p>Lists all Auth Tokens.</p>",
         "operationId": "AuthTokenService_ListAuthTokens",
         "responses": {
           "200": {
@@ -2160,7 +2160,7 @@
     },
     "/v1/auth-tokens/{id}": {
       "get": {
-        "summary": "Gets a single Auth Token.",
+        "summary": "<p>Gets a single Auth Token.</p>",
         "operationId": "AuthTokenService_GetAuthToken",
         "responses": {
           "200": {
@@ -2273,7 +2273,7 @@
         "tags": ["controller.api.services.v1.AuthTokenService"]
       },
       "delete": {
-        "summary": "Deletes an Auth Token.",
+        "summary": "<p>Deletes an Auth Token.</p>",
         "operationId": "AuthTokenService_DeleteAuthToken",
         "responses": {
           "200": {
@@ -2296,7 +2296,7 @@
     },
     "/v1/credential-libraries": {
       "get": {
-        "summary": "Lists all Credential Library.",
+        "summary": "<p>Lists all Credential Library.</p>",
         "operationId": "CredentialLibraryService_ListCredentialLibraries",
         "responses": {
           "200": {
@@ -2409,7 +2409,7 @@
         "tags": ["controller.api.services.v1.CredentialLibraryService"]
       },
       "post": {
-        "summary": "Creates a single Credential Library.",
+        "summary": "<p>Creates a single Credential Library.</p>",
         "operationId": "CredentialLibraryService_CreateCredentialLibrary",
         "responses": {
           "200": {
@@ -2590,7 +2590,7 @@
     },
     "/v1/credential-libraries/{id}": {
       "get": {
-        "summary": "Gets a single Credential Library.",
+        "summary": "<p>Gets a single Credential Library.</p>",
         "operationId": "CredentialLibraryService_GetCredentialLibrary",
         "responses": {
           "200": {
@@ -2689,7 +2689,7 @@
         "tags": ["controller.api.services.v1.CredentialLibraryService"]
       },
       "delete": {
-        "summary": "Deletes a Credential Library",
+        "summary": "<p>Deletes a Credential Library</p>",
         "operationId": "CredentialLibraryService_DeleteCredentialLibrary",
         "responses": {
           "200": {
@@ -2710,7 +2710,7 @@
         "tags": ["controller.api.services.v1.CredentialLibraryService"]
       },
       "patch": {
-        "summary": "Updates a Credential Library.",
+        "summary": "<p>Updates a Credential Library.</p>",
         "operationId": "CredentialLibraryService_UpdateCredentialLibrary",
         "responses": {
           "200": {
@@ -2903,7 +2903,7 @@
     },
     "/v1/credential-stores": {
       "get": {
-        "summary": "Lists all Credential Stores.",
+        "summary": "<p>Lists all Credential Stores.</p>",
         "operationId": "CredentialStoreService_ListCredentialStores",
         "responses": {
           "200": {
@@ -3033,7 +3033,7 @@
         "tags": ["controller.api.services.v1.CredentialStoreService"]
       },
       "post": {
-        "summary": "Creates a single Credential Store.",
+        "summary": "<p>Creates a single Credential Store.</p>",
         "operationId": "CredentialStoreService_CreateCredentialStore",
         "responses": {
           "200": {
@@ -3236,7 +3236,7 @@
     },
     "/v1/credential-stores/{id}": {
       "get": {
-        "summary": "Gets a single Credential Store.",
+        "summary": "<p>Gets a single Credential Store.</p>",
         "operationId": "CredentialStoreService_GetCredentialStore",
         "responses": {
           "200": {
@@ -3346,7 +3346,7 @@
         "tags": ["controller.api.services.v1.CredentialStoreService"]
       },
       "delete": {
-        "summary": "Deletes a CredentialStore",
+        "summary": "<p>Deletes a CredentialStore</p>",
         "operationId": "CredentialStoreService_DeleteCredentialStore",
         "responses": {
           "200": {
@@ -3367,7 +3367,7 @@
         "tags": ["controller.api.services.v1.CredentialStoreService"]
       },
       "patch": {
-        "summary": "Updates a Credential Store.",
+        "summary": "<p>Updates a Credential Store.</p>",
         "operationId": "CredentialStoreService_UpdateCredentialStore",
         "responses": {
           "200": {
@@ -3582,7 +3582,7 @@
     },
     "/v1/groups": {
       "get": {
-        "summary": "Lists all Groups.",
+        "summary": "<p>Lists all Groups.</p>",
         "operationId": "GroupService_ListGroups",
         "responses": {
           "200": {
@@ -3721,7 +3721,7 @@
         "tags": ["controller.api.services.v1.GroupService"]
       },
       "post": {
-        "summary": "Creates a single Group.",
+        "summary": "<p>Creates a single Group.</p>",
         "operationId": "GroupService_CreateGroup",
         "responses": {
           "200": {
@@ -3942,7 +3942,7 @@
     },
     "/v1/groups/{id}": {
       "get": {
-        "summary": "Gets a single Group.",
+        "summary": "<p>Gets a single Group.</p>",
         "operationId": "GroupService_GetGroup",
         "responses": {
           "200": {
@@ -4061,7 +4061,7 @@
         "tags": ["controller.api.services.v1.GroupService"]
       },
       "delete": {
-        "summary": "Deletes a Group.",
+        "summary": "<p>Deletes a Group.</p>",
         "operationId": "GroupService_DeleteGroup",
         "responses": {
           "200": {
@@ -4082,7 +4082,7 @@
         "tags": ["controller.api.services.v1.GroupService"]
       },
       "patch": {
-        "summary": "Updates a Group.",
+        "summary": "<p>Updates a Group.</p>",
         "operationId": "GroupService_UpdateGroup",
         "responses": {
           "200": {
@@ -4315,7 +4315,7 @@
     },
     "/v1/groups/{id}:add-members": {
       "post": {
-        "summary": "Adds members to a Group.",
+        "summary": "<p>Adds members to a Group.</p>",
         "operationId": "GroupService_AddGroupMembers",
         "responses": {
           "200": {
@@ -4460,7 +4460,7 @@
     },
     "/v1/groups/{id}:remove-members": {
       "post": {
-        "summary": "Removes the specified members from a Group.",
+        "summary": "<p>Removes the specified members from a Group.</p>",
         "operationId": "GroupService_RemoveGroupMembers",
         "responses": {
           "200": {
@@ -4605,7 +4605,7 @@
     },
     "/v1/groups/{id}:set-members": {
       "post": {
-        "summary": "Set a Group's members to exactly the list of provided in the request, removing any members that are not specified.",
+        "summary": "<p>Set a Group's members to exactly the list of provided in the request, removing any members that are not specified.</p>",
         "operationId": "GroupService_SetGroupMembers",
         "responses": {
           "200": {
@@ -4750,7 +4750,7 @@
     },
     "/v1/host-catalogs": {
       "get": {
-        "summary": "Gets a list of Host Catalogs.",
+        "summary": "<p>Gets a list of Host Catalogs.</p>",
         "operationId": "HostCatalogService_ListHostCatalogs",
         "responses": {
           "200": {
@@ -4880,7 +4880,7 @@
         "tags": ["controller.api.services.v1.HostCatalogService"]
       },
       "post": {
-        "summary": "Creates a Host Catalog",
+        "summary": "<p>Creates a Host Catalog</p>",
         "operationId": "HostCatalogService_CreateHostCatalog",
         "responses": {
           "200": {
@@ -5083,7 +5083,7 @@
     },
     "/v1/host-catalogs/{id}": {
       "get": {
-        "summary": "Gets a single Host Catalog.",
+        "summary": "<p>Gets a single Host Catalog.</p>",
         "operationId": "HostCatalogService_GetHostCatalog",
         "responses": {
           "200": {
@@ -5193,7 +5193,7 @@
         "tags": ["controller.api.services.v1.HostCatalogService"]
       },
       "delete": {
-        "summary": "Deletes a Host Catalog",
+        "summary": "<p>Deletes a Host Catalog</p>",
         "operationId": "HostCatalogService_DeleteHostCatalog",
         "responses": {
           "200": {
@@ -5214,7 +5214,7 @@
         "tags": ["controller.api.services.v1.HostCatalogService"]
       },
       "patch": {
-        "summary": "Updates a Host Catalog",
+        "summary": "<p>Updates a Host Catalog</p>",
         "operationId": "HostCatalogService_UpdateHostCatalog",
         "responses": {
           "200": {
@@ -5429,7 +5429,7 @@
     },
     "/v1/host-sets": {
       "get": {
-        "summary": "List all Host Sets under the specific Catalog.",
+        "summary": "<p>List all Host Sets under the specific Catalog.</p>",
         "operationId": "HostSetService_ListHostSets",
         "responses": {
           "200": {
@@ -5550,7 +5550,7 @@
         "tags": ["controller.api.services.v1.HostSetService"]
       },
       "post": {
-        "summary": "Create a Host Set.",
+        "summary": "<p>Create a Host Set.</p>",
         "operationId": "HostSetService_CreateHostSet",
         "responses": {
           "200": {
@@ -5747,7 +5747,7 @@
     },
     "/v1/host-sets/{id}": {
       "get": {
-        "summary": "Get a single Host Set.",
+        "summary": "<p>Get a single Host Set.</p>",
         "operationId": "HostSetService_GetHostSet",
         "responses": {
           "200": {
@@ -5854,7 +5854,7 @@
         "tags": ["controller.api.services.v1.HostSetService"]
       },
       "delete": {
-        "summary": "Delete a Host Set.",
+        "summary": "<p>Delete a Host Set.</p>",
         "operationId": "HostSetService_DeleteHostSet",
         "responses": {
           "200": {
@@ -5875,7 +5875,7 @@
         "tags": ["controller.api.services.v1.HostSetService"]
       },
       "patch": {
-        "summary": "Update a Host Set.",
+        "summary": "<p>Update a Host Set.</p>",
         "operationId": "HostSetService_UpdateHostSet",
         "responses": {
           "200": {
@@ -6084,7 +6084,7 @@
     },
     "/v1/host-sets/{id}:add-hosts": {
       "post": {
-        "summary": "Adds existing Hosts to a Host Set.",
+        "summary": "<p>Adds existing Hosts to a Host Set.</p>",
         "operationId": "HostSetService_AddHostSetHosts",
         "responses": {
           "200": {
@@ -6218,7 +6218,7 @@
     },
     "/v1/host-sets/{id}:remove-hosts": {
       "post": {
-        "summary": "Removes Hosts from the Host Set.",
+        "summary": "<p>Removes Hosts from the Host Set.</p>",
         "operationId": "HostSetService_RemoveHostSetHosts",
         "responses": {
           "200": {
@@ -6352,7 +6352,7 @@
     },
     "/v1/host-sets/{id}:set-hosts": {
       "post": {
-        "summary": "Sets the Hosts on the Host Set.",
+        "summary": "<p>Sets the Hosts on the Host Set.</p>",
         "operationId": "HostSetService_SetHostSetHosts",
         "responses": {
           "200": {
@@ -6486,7 +6486,7 @@
     },
     "/v1/hosts": {
       "get": {
-        "summary": "List all Hosts for the specified Catalog.",
+        "summary": "<p>List all Hosts for the specified Catalog.</p>",
         "operationId": "HostService_ListHosts",
         "responses": {
           "200": {
@@ -6607,7 +6607,7 @@
         "tags": ["controller.api.services.v1.HostService"]
       },
       "post": {
-        "summary": "Create a single Host.",
+        "summary": "<p>Create a single Host.</p>",
         "operationId": "HostService_CreateHost",
         "responses": {
           "200": {
@@ -6804,7 +6804,7 @@
     },
     "/v1/hosts/{id}": {
       "get": {
-        "summary": "Gets a single Host.",
+        "summary": "<p>Gets a single Host.</p>",
         "operationId": "HostService_GetHost",
         "responses": {
           "200": {
@@ -6911,7 +6911,7 @@
         "tags": ["controller.api.services.v1.HostService"]
       },
       "delete": {
-        "summary": "Delete a Host.",
+        "summary": "<p>Delete a Host.</p>",
         "operationId": "HostService_DeleteHost",
         "responses": {
           "200": {
@@ -6932,7 +6932,7 @@
         "tags": ["controller.api.services.v1.HostService"]
       },
       "patch": {
-        "summary": "Update a Host.",
+        "summary": "<p>Update a Host.</p>",
         "operationId": "HostService_UpdateHost",
         "responses": {
           "200": {
@@ -7141,7 +7141,7 @@
     },
     "/v1/managed-groups": {
       "get": {
-        "summary": "Lists all ManagedGroups in a specific Auth Method.",
+        "summary": "<p>Lists all ManagedGroups in a specific Auth Method.</p>",
         "operationId": "ManagedGroupService_ListManagedGroups",
         "responses": {
           "200": {
@@ -7262,7 +7262,7 @@
         "tags": ["controller.api.services.v1.ManagedGroupService"]
       },
       "post": {
-        "summary": "Creates a single ManagedGroup in the provided Auth Method.",
+        "summary": "<p>Creates a single ManagedGroup in the provided Auth Method.</p>",
         "operationId": "ManagedGroupService_CreateManagedGroup",
         "responses": {
           "200": {
@@ -7459,7 +7459,7 @@
     },
     "/v1/managed-groups/{id}": {
       "get": {
-        "summary": "Gets a single ManagedGroup.",
+        "summary": "<p>Gets a single ManagedGroup.</p>",
         "operationId": "ManagedGroupService_GetManagedGroup",
         "responses": {
           "200": {
@@ -7566,7 +7566,7 @@
         "tags": ["controller.api.services.v1.ManagedGroupService"]
       },
       "delete": {
-        "summary": "Deletes a ManagedGroup.",
+        "summary": "<p>Deletes a ManagedGroup.</p>",
         "operationId": "ManagedGroupService_DeleteManagedGroup",
         "responses": {
           "200": {
@@ -7587,7 +7587,7 @@
         "tags": ["controller.api.services.v1.ManagedGroupService"]
       },
       "patch": {
-        "summary": "Updates a ManagedGroup.",
+        "summary": "<p>Updates a ManagedGroup.</p>",
         "operationId": "ManagedGroupService_UpdateManagedGroup",
         "responses": {
           "200": {
@@ -7796,7 +7796,7 @@
     },
     "/v1/roles": {
       "get": {
-        "summary": "Lists all Roles.",
+        "summary": "<p>Lists all Roles.</p>",
         "operationId": "RoleService_ListRoles",
         "responses": {
           "200": {
@@ -7997,7 +7997,7 @@
         "tags": ["controller.api.services.v1.RoleService"]
       },
       "post": {
-        "summary": "Creates a single Role.",
+        "summary": "<p>Creates a single Role.</p>",
         "operationId": "RoleService_CreateRole",
         "responses": {
           "200": {
@@ -8342,7 +8342,7 @@
     },
     "/v1/roles/{id}": {
       "get": {
-        "summary": "Gets a single Role.",
+        "summary": "<p>Gets a single Role.</p>",
         "operationId": "RoleService_GetRole",
         "responses": {
           "200": {
@@ -8523,7 +8523,7 @@
         "tags": ["controller.api.services.v1.RoleService"]
       },
       "delete": {
-        "summary": "Deletes a Role.",
+        "summary": "<p>Deletes a Role.</p>",
         "operationId": "RoleService_DeleteRole",
         "responses": {
           "200": {
@@ -8544,7 +8544,7 @@
         "tags": ["controller.api.services.v1.RoleService"]
       },
       "patch": {
-        "summary": "Updates a Role.",
+        "summary": "<p>Updates a Role.</p>",
         "operationId": "RoleService_UpdateRole",
         "responses": {
           "200": {
@@ -8901,7 +8901,7 @@
     },
     "/v1/roles/{id}:add-grants": {
       "post": {
-        "summary": "Adds grants to a Role",
+        "summary": "<p>Adds grants to a Role</p>",
         "operationId": "RoleService_AddRoleGrants",
         "responses": {
           "200": {
@@ -9108,7 +9108,7 @@
     },
     "/v1/roles/{id}:add-principals": {
       "post": {
-        "summary": "Adds Users and/or Groups to a Role.",
+        "summary": "<p>Adds Users and/or Groups to a Role.</p>",
         "operationId": "RoleService_AddRolePrincipals",
         "responses": {
           "200": {
@@ -9315,7 +9315,7 @@
     },
     "/v1/roles/{id}:remove-grants": {
       "post": {
-        "summary": "Removes grants from a Role.",
+        "summary": "<p>Removes grants from a Role.</p>",
         "operationId": "RoleService_RemoveRoleGrants",
         "responses": {
           "200": {
@@ -9522,7 +9522,7 @@
     },
     "/v1/roles/{id}:remove-principals": {
       "post": {
-        "summary": "Removes the specified Users and/or Groups from a Role.",
+        "summary": "<p>Removes the specified Users and/or Groups from a Role.</p>",
         "operationId": "RoleService_RemoveRolePrincipals",
         "responses": {
           "200": {
@@ -9729,7 +9729,7 @@
     },
     "/v1/roles/{id}:set-grants": {
       "post": {
-        "summary": "Set grants for a Role, removing any grants that are not specified in the request.",
+        "summary": "<p>Set grants for a Role, removing any grants that are not specified in the request.</p>",
         "operationId": "RoleService_SetRoleGrants",
         "responses": {
           "200": {
@@ -9936,7 +9936,7 @@
     },
     "/v1/roles/{id}:set-principals": {
       "post": {
-        "summary": "Set Users and/or Groups to a Role, removing any principals that are not specified in the request.",
+        "summary": "<p>Set Users and/or Groups to a Role, removing any principals that are not specified in the request.</p>",
         "operationId": "RoleService_SetRolePrincipals",
         "responses": {
           "200": {
@@ -10143,7 +10143,7 @@
     },
     "/v1/scopes": {
       "get": {
-        "summary": "Lists all Scopes within the Scope provided in the request.",
+        "summary": "<p>Lists all Scopes within the Scope provided in the request.</p>",
         "operationId": "ScopeService_ListScopes",
         "responses": {
           "200": {
@@ -10273,7 +10273,7 @@
         "tags": ["controller.api.services.v1.ScopeService"]
       },
       "post": {
-        "summary": "Creates a single Scope.",
+        "summary": "<p>Creates a single Scope.</p>",
         "operationId": "ScopeService_CreateScope",
         "responses": {
           "200": {
@@ -10488,7 +10488,7 @@
     },
     "/v1/scopes/{id}": {
       "get": {
-        "summary": "Gets a single Scope.",
+        "summary": "<p>Gets a single Scope.</p>",
         "operationId": "ScopeService_GetScope",
         "responses": {
           "200": {
@@ -10598,7 +10598,7 @@
         "tags": ["controller.api.services.v1.ScopeService"]
       },
       "delete": {
-        "summary": "Deletes a Scope.",
+        "summary": "<p>Deletes a Scope.</p>",
         "operationId": "ScopeService_DeleteScope",
         "responses": {
           "200": {
@@ -10619,7 +10619,7 @@
         "tags": ["controller.api.services.v1.ScopeService"]
       },
       "patch": {
-        "summary": "Updates a Scope.",
+        "summary": "<p>Updates a Scope.</p>",
         "operationId": "ScopeService_UpdateScope",
         "responses": {
           "200": {
@@ -10834,7 +10834,7 @@
     },
     "/v1/sessions": {
       "get": {
-        "summary": "Lists all Sessions.",
+        "summary": "<p>Lists all Sessions.</p>",
         "operationId": "SessionService_ListSessions",
         "responses": {
           "200": {
@@ -11040,7 +11040,7 @@
     },
     "/v1/sessions/{id}": {
       "get": {
-        "summary": "Gets a single Session.",
+        "summary": "<p>Gets a single Session.</p>",
         "operationId": "SessionService_GetSession",
         "responses": {
           "200": {
@@ -11226,7 +11226,7 @@
     },
     "/v1/sessions/{id}:cancel": {
       "post": {
-        "summary": "Cancels a Session.",
+        "summary": "<p>Cancels a Session.</p>",
         "operationId": "SessionService_CancelSession",
         "responses": {
           "200": {
@@ -11429,7 +11429,7 @@
     },
     "/v1/targets": {
       "get": {
-        "summary": "Lists all Targets.",
+        "summary": "<p>Lists all Targets.</p>",
         "operationId": "TargetService_ListTargets",
         "responses": {
           "200": {
@@ -11690,7 +11690,7 @@
         "tags": ["controller.api.services.v1.TargetService"]
       },
       "post": {
-        "summary": "Creates a single Target.",
+        "summary": "<p>Creates a single Target.</p>",
         "operationId": "TargetService_CreateTarget",
         "responses": {
           "200": {
@@ -12155,7 +12155,7 @@
     },
     "/v1/targets/{id}": {
       "get": {
-        "summary": "Gets a single Target.",
+        "summary": "<p>Gets a single Target.</p>",
         "operationId": "TargetService_GetTarget",
         "responses": {
           "200": {
@@ -12396,7 +12396,7 @@
         "tags": ["controller.api.services.v1.TargetService"]
       },
       "delete": {
-        "summary": "Deletes a Target.",
+        "summary": "<p>Deletes a Target.</p>",
         "operationId": "TargetService_DeleteTarget",
         "responses": {
           "200": {
@@ -12417,7 +12417,7 @@
         "tags": ["controller.api.services.v1.TargetService"]
       },
       "patch": {
-        "summary": "Updates a Target.",
+        "summary": "<p>Updates a Target.</p>",
         "operationId": "TargetService_UpdateTarget",
         "responses": {
           "200": {
@@ -12894,7 +12894,7 @@
     },
     "/v1/targets/{id}:add-credential-libraries": {
       "post": {
-        "summary": "Deprecated: use AddTargetCredentialSources instead.",
+        "summary": "<p>Deprecated: use AddTargetCredentialSources instead.</p>",
         "operationId": "TargetService_AddTargetCredentialLibraries",
         "responses": {
           "200": {
@@ -13161,7 +13161,7 @@
     },
     "/v1/targets/{id}:add-credential-sources": {
       "post": {
-        "summary": "Adds existing Credential Sources to a Target.",
+        "summary": "<p>Adds existing Credential Sources to a Target.</p>",
         "operationId": "TargetService_AddTargetCredentialSources",
         "responses": {
           "200": {
@@ -13428,7 +13428,7 @@
     },
     "/v1/targets/{id}:add-host-sets": {
       "post": {
-        "summary": "Adds existing Host Sets to a Target.",
+        "summary": "<p>Adds existing Host Sets to a Target.</p>",
         "operationId": "TargetService_AddTargetHostSets",
         "responses": {
           "200": {
@@ -13695,7 +13695,7 @@
     },
     "/v1/targets/{id}:add-host-sources": {
       "post": {
-        "summary": "Adds existing Host Sources to a Target.",
+        "summary": "<p>Adds existing Host Sources to a Target.</p>",
         "operationId": "TargetService_AddTargetHostSources",
         "responses": {
           "200": {
@@ -13962,7 +13962,7 @@
     },
     "/v1/targets/{id}:authorize-session": {
       "post": {
-        "summary": "Authorizes a Session.",
+        "summary": "<p>Authorizes a Session.</p>",
         "operationId": "TargetService_AuthorizeSession",
         "responses": {
           "200": {
@@ -14175,7 +14175,7 @@
     },
     "/v1/targets/{id}:remove-credential-libraries": {
       "post": {
-        "summary": "Deprecated: use RemoveTargetCredentialSources instead.",
+        "summary": "<p>Deprecated: use RemoveTargetCredentialSources instead.</p>",
         "operationId": "TargetService_RemoveTargetCredentialLibraries",
         "responses": {
           "200": {
@@ -14442,7 +14442,7 @@
     },
     "/v1/targets/{id}:remove-credential-sources": {
       "post": {
-        "summary": "Removes Credential Sources from the Target.",
+        "summary": "<p>Removes Credential Sources from the Target.</p>",
         "operationId": "TargetService_RemoveTargetCredentialSources",
         "responses": {
           "200": {
@@ -14709,7 +14709,7 @@
     },
     "/v1/targets/{id}:remove-host-sets": {
       "post": {
-        "summary": "Removes Host Sets from the Target.",
+        "summary": "<p>Removes Host Sets from the Target.</p>",
         "operationId": "TargetService_RemoveTargetHostSets",
         "responses": {
           "200": {
@@ -14976,7 +14976,7 @@
     },
     "/v1/targets/{id}:remove-host-sources": {
       "post": {
-        "summary": "Removes Host Sources from the Target.",
+        "summary": "<p>Removes Host Sources from the Target.</p>",
         "operationId": "TargetService_RemoveTargetHostSources",
         "responses": {
           "200": {
@@ -15243,7 +15243,7 @@
     },
     "/v1/targets/{id}:set-credential-libraries": {
       "post": {
-        "summary": "Deprecated: use SetTargetCredentialSources instead.",
+        "summary": "<p>Deprecated: use SetTargetCredentialSources instead.</p>",
         "operationId": "TargetService_SetTargetCredentialLibraries",
         "responses": {
           "200": {
@@ -15511,7 +15511,7 @@
     },
     "/v1/targets/{id}:set-credential-sources": {
       "post": {
-        "summary": "Sets the Credential Sources on the Target.",
+        "summary": "<p>Sets the Credential Sources on the Target.</p>",
         "operationId": "TargetService_SetTargetCredentialSources",
         "responses": {
           "200": {
@@ -15779,7 +15779,7 @@
     },
     "/v1/targets/{id}:set-host-sets": {
       "post": {
-        "summary": "Sets the Host Sets on the Target.",
+        "summary": "<p>Sets the Host Sets on the Target.</p>",
         "operationId": "TargetService_SetTargetHostSets",
         "responses": {
           "200": {
@@ -16046,7 +16046,7 @@
     },
     "/v1/targets/{id}:set-host-sources": {
       "post": {
-        "summary": "Sources the Host Sources on the Target.",
+        "summary": "<p>Sources the Host Sources on the Target.</p>",
         "operationId": "TargetService_SetTargetHostSources",
         "responses": {
           "200": {
@@ -16313,7 +16313,7 @@
     },
     "/v1/users": {
       "get": {
-        "summary": "Lists all Users.",
+        "summary": "<p>Lists all Users.</p>",
         "operationId": "UserService_ListUsers",
         "responses": {
           "200": {
@@ -16472,7 +16472,7 @@
         "tags": ["controller.api.services.v1.UserService"]
       },
       "post": {
-        "summary": "Creates a single User.",
+        "summary": "<p>Creates a single User.</p>",
         "operationId": "UserService_CreateUser",
         "responses": {
           "200": {
@@ -16733,7 +16733,7 @@
     },
     "/v1/users/{id}": {
       "get": {
-        "summary": "Gets a single User.",
+        "summary": "<p>Gets a single User.</p>",
         "operationId": "UserService_GetUser",
         "responses": {
           "200": {
@@ -16872,7 +16872,7 @@
         "tags": ["controller.api.services.v1.UserService"]
       },
       "delete": {
-        "summary": "Deletes a User.",
+        "summary": "<p>Deletes a User.</p>",
         "operationId": "UserService_DeleteUser",
         "responses": {
           "200": {
@@ -16893,7 +16893,7 @@
         "tags": ["controller.api.services.v1.UserService"]
       },
       "patch": {
-        "summary": "Updates a User.",
+        "summary": "<p>Updates a User.</p>",
         "operationId": "UserService_UpdateUser",
         "responses": {
           "200": {
@@ -17166,7 +17166,7 @@
     },
     "/v1/users/{id}:add-accounts": {
       "post": {
-        "summary": "Associates an Account to a User.",
+        "summary": "<p>Associates an Account to a User.</p>",
         "operationId": "UserService_AddUserAccounts",
         "responses": {
           "200": {
@@ -17331,7 +17331,7 @@
     },
     "/v1/users/{id}:remove-accounts": {
       "post": {
-        "summary": "Removes the specified Accounts from being associated with the provided User.",
+        "summary": "<p>Removes the specified Accounts from being associated with the provided User.</p>",
         "operationId": "UserService_RemoveUserAccounts",
         "responses": {
           "200": {
@@ -17496,7 +17496,7 @@
     },
     "/v1/users/{id}:set-accounts": {
       "post": {
-        "summary": "Set the Accounts associated to the User to exactly the list of provided in the request, removing any Accounts that are not specified.",
+        "summary": "<p>Set the Accounts associated to the User to exactly the list of provided in the request, removing any Accounts that are not specified.</p>",
         "operationId": "UserService_SetUserAccounts",
         "responses": {
           "200": {

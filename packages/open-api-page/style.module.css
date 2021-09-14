@@ -19,30 +19,18 @@
   & .categoryHeading {
     margin: 32px 0 16px 0;
   }
+}
 
-  & :global(.g-content) {
+.contentContainer {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 64px 0 0 0;
+
+  @media (min-width: 940px) {
     padding-left: 0;
     padding-right: 0;
     margin: 0;
-
-    @media (max-width: 939px) {
-      padding-left: 0;
-      padding-right: 0;
-      margin-top: 64px;
-    }
-
-    & > h1:first-child {
-      margin-top: 0;
-    }
-  }
-
-  & :global(.g-section-header) {
-    margin-bottom: 100px;
-  }
-
-  /* TODO: this should be applied in global styles, temporary override here */
-  & pre,
-  & code {
-    font-size: 0.875rem;
+    width: 0;
+    flex-grow: 1;
   }
 }
