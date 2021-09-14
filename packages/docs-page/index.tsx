@@ -152,7 +152,11 @@ export interface DocsPageProps {
   additionalComponents: MDXProviderComponentsProp
   staticProps: {
     mdxSource: any // TODO: import { MDXRemoteProps } from "next-mdx-remote"
-    frontMatter: any // TODO
+    frontMatter: {
+      canonical_url: string
+      description: string
+      page_title: string
+    }
     currentPath: string
     navData: NavData
     githubFileUrl: string
