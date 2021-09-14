@@ -1,4 +1,4 @@
-# Min100Layout
+# Aside
 
 The `<Aside />` component is used to render a highlighted box of content. It is intended for use in long form content areas.
 
