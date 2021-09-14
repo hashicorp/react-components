@@ -2,6 +2,7 @@ import PackerSwagger from './generated/packer.swagger.json'
 import BoundarySwagger from './generated/boundary.swagger.json'
 import { getPropsForPage } from '../utils/routing-utils'
 import Aside from '../../aside'
+import CodeBlock from '../../code-block'
 
 const Packer = {
   ...getPropsForPage(PackerSwagger, { page: ['iteration-service'] }),
@@ -14,10 +15,13 @@ const Packer = {
         <code
           style={{ wordBreak: 'break-all' }}
         >{`/packer/2021-04-30/organizations/{location.organization_id}/projects/{location.project_id}`}</code>
-        . The full path to this operation is:{' '}
-        <pre>
-          <code>{data.__path}</code>
-        </pre>
+        . The full path to this operation is:
+        <div style={{ marginBottom: '1rem' }} />
+        <CodeBlock
+          code={data.__path}
+          theme="dark"
+          options={{ showClipboard: true }}
+        />
       </Aside>
     )
   },

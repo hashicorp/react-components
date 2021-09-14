@@ -90,14 +90,14 @@ function OperationObject({
               <div>
                 <p className={s.columnHeading}>Response</p>
                 {successResponse ? (
-                  <div>
+                  <>
                     <p
                       className={`${s.columnSectionHeading} g-type-label-strong`}
                     >
                       Successful Response
                     </p>
                     <ResponseObject data={successResponse} />
-                  </div>
+                  </>
                 ) : (
                   <p>No response has been defined.</p>
                 )}
@@ -141,7 +141,7 @@ function TwoColumnLayout({ columnOne, columnTwo }) {
 
 function Parameters({ title, params }) {
   return (
-    <div>
+    <>
       <p className={`${s.columnSectionHeading} g-type-label-strong`}>{title}</p>
       {params.map((parameter, idx) => {
         return (
@@ -154,7 +154,7 @@ function Parameters({ title, params }) {
           />
         )
       })}
-    </div>
+    </>
   )
 }
 

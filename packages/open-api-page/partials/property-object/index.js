@@ -29,13 +29,8 @@ function PropertyObject({
     arrayDepth > 0 ? arrayFrom(arrayDepth, '[]').join('') : ''
   const typeString = `${data.type}${typeArraySuffix}`
   return (
-    <div
-      className={classNames(s.root, {
-        [s.isFirstItem]: isFirstItem,
-        [s.isLastItem]: isLastItem,
-      })}
-    >
-      <code className={`${s.name} g-type-code`}>{name}</code>{' '}
+    <div className={s.root}>
+      <code className={s.name}>{name}</code>{' '}
       <code className={`${s.typeString} g-type-code`}>{typeString}</code>{' '}
       {data.required ? (
         <span className={`${s.requiredFlag} g-type-label-strong`}>
@@ -43,11 +38,14 @@ function PropertyObject({
         </span>
       ) : null}
       {data.title && (
-        <p className={`${s.title} g-type-body-small`}>{data.title}</p>
+        <div
+          className={s.descriptiveText}
+          dangerouslySetInnerHTML={{ __html: data.title }}
+        />
       )}
       {data.description ? (
         <div
-          className={s.description}
+          className={s.descriptiveText}
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
       ) : null}
