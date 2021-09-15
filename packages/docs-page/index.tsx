@@ -175,7 +175,7 @@ export default function DocsPage({
     githubFileUrl,
     versions,
   },
-}: DocsPageProps): JSX.Element {
+}: DocsPageProps): ReactElement {
   const router = useRouter()
 
   // This component is written to work with next-mdx-remote -- here it hydrates the content
