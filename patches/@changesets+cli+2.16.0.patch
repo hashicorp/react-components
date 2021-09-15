@@ -1,0 +1,23 @@
+diff --git a/node_modules/@changesets/cli/dist/cli.cjs.dev.js b/node_modules/@changesets/cli/dist/cli.cjs.dev.js
+index f771824..074731e 100644
+--- a/node_modules/@changesets/cli/dist/cli.cjs.dev.js
++++ b/node_modules/@changesets/cli/dist/cli.cjs.dev.js
+@@ -727,7 +727,8 @@ async function internalPublish(pkgName, opts, twoFactorState) {
+     npm_config_registry: getCorrectRegistry()
+   };
+   let {
+-    stdout
++    stdout,
++    stderr
+   } = await spawn__default['default'](publishTool.name, ["publish", opts.cwd, "--json", ...publishFlags], {
+     env: Object.assign({}, process.env, envOverride)
+   }); // New error handling. NPM's --json option is included alongside the `prepublish and
+@@ -735,6 +736,8 @@ async function internalPublish(pkgName, opts, twoFactorState) {
+   // some struggles
+   // Note that both pre and post publish hooks are printed before the json out, so this works.
+ 
++  console.log('stderr', stderr.toString());
++
+   let json = jsonParse(stdout.toString().replace(/[^{]*/, ""));
+ 
+   if (json.error) {
