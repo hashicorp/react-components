@@ -1,11 +1,12 @@
 import Search from '@hashicorp/react-search'
 import useIsMobile from '../../use-is-mobile'
 
-export default function SearchBar({ product }) {
+export default function SearchBar({ product, className }) {
   const isMobile = useIsMobile()
 
   return (
     <Search
+      className={className}
       renderHitContent={({ hit, Highlight }) => (
         <>
           <span className="name">

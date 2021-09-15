@@ -1,4 +1,4 @@
-import { useEffect, ComponentType } from 'react'
+import { useEffect, FunctionComponent, ReactElement } from 'react'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -35,7 +35,7 @@ interface DocsPageWrapperProps {
   versions: { name: string; label: string }[]
 }
 
-const DocsPageWrapper: ComponentType<DocsPageWrapperProps> = ({
+const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   canonicalUrl,
   children,
   description,
@@ -64,8 +64,7 @@ const DocsPageWrapper: ComponentType<DocsPageWrapperProps> = ({
     <SearchProvider>
       <SearchBar
         product={name}
-        // TODO; SearchBar doesn't accept `className`
-        // className={classNames({ [s.mobileSearch]: isMobile })}
+        className={classNames({ [s.mobileSearch]: isMobile })}
       />
     </SearchProvider>
   )
@@ -163,7 +162,7 @@ export interface DocsPageProps {
   }
 }
 
-const DocsPage: ComponentType<DocsPageProps> = ({
+export default function DocsPage({
   product,
   baseRoute,
   showEditPage = true,
@@ -176,7 +175,7 @@ const DocsPage: ComponentType<DocsPageProps> = ({
     githubFileUrl,
     versions,
   },
-}) => {
+}: DocsPageProps): JSX.Element {
   const router = useRouter()
 
   // This component is written to work with next-mdx-remote -- here it hydrates the content
@@ -206,5 +205,3 @@ const DocsPage: ComponentType<DocsPageProps> = ({
     </DocsPageWrapper>
   )
 }
-
-export default DocsPage
