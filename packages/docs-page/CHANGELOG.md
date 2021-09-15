@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.1.0
+
+### Minor Changes
+
+- [#337](https://github.com/hashicorp/react-components/pull/337) [`40afe45`](https://github.com/hashicorp/react-components/commit/40afe45a59c8c7d6fcdc097dcf67b382e6b2543b) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This converts DocsPage to TypeScript. There are no new changes to the component API!
+
 ## 14.0.3
 
 ### Patch Changes
