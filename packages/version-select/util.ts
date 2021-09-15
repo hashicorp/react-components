@@ -10,3 +10,19 @@ export function getVersionFromPath(path: string): string | undefined {
 
   return version
 }
+
+/**
+ * Removes a semver string from a path, and returns the new path.
+ * Returns the original string if no semver is present.
+ */
+export function removeVersionFromPath(path: string): string {
+  const pathSegments = path.split('/')
+
+  const i = pathSegments.findIndex((el) => SEMVER_REGEX.test(el))
+
+  if (i > -1) {
+    return [...pathSegments.slice(0, i), ...pathSegments.slice(i + 1)].join('/')
+  } else {
+    return path
+  }
+}
