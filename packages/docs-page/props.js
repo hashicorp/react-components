@@ -31,6 +31,12 @@ module.exports = {
       'If `true`, an `Edit this page` link will appear on the bottom right of each page.',
     default: true,
   },
+  showVersionedDocs: {
+    type: 'boolean',
+    description:
+      'If `true`, a version select option will be displayed. Defaults to `process.env.ENABLE_VERSIONED_DOCS`',
+    default: null,
+  },
   additionalComponents: {
     type: 'object',
     description:

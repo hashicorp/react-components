@@ -1,24 +1,38 @@
 import { config } from 'dotenv'
 config()
 import HashiHead from '@hashicorp/react-head'
+import Head from 'next/head'
 import { render, screen } from '@testing-library/react'
 import DocsPage from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 import renderPageMdx from './render-page-mdx'
 
+import { mocked } from 'ts-jest/utils'
+import { useRouter, Router } from 'next/router'
+
 const defaultProps = getTestValues(props)
 
 // Mocking HashiHead as it's already unit tested itself
 jest.mock('@hashicorp/react-head', () => jest.fn(() => null))
 
-jest.mock('next/router', () => ({
-  useRouter: jest.fn(() => ({
-    asPath: '/docs/overview',
-  })),
-}))
+const useRouterMock = mocked(useRouter)
+const headMock = mocked(Head)
+
+jest.mock('next/router')
+jest.mock('next/head')
 
 describe('<DocsPage />', () => {
+  const routerMock = ({
+    asPath: '/docs/overview',
+  } as unknown) as Router
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+    useRouterMock.mockImplementation(() => routerMock)
+    headMock.mockImplementation(({ children }) => children)
+  })
+
   it('passes `title`, `description`, and `siteName` correctly to <HashiHead>', () => {
     render(<DocsPage {...defaultProps} />)
     expect(HashiHead).toHaveBeenCalledWith(
@@ -118,5 +132,57 @@ describe('<DocsPage />', () => {
     )
     const jumpToSectionElem = screen.getByText('Jump to Section')
     expect(jumpToSectionElem.tagName).toBe('SPAN')
+  })
+
+  describe('when versioned docs is enabled', () => {
+    it('should allow crawlers to index latest pages', () => {
+      useRouterMock.mockImplementation(() => {
+        return ({
+          asPath: '/docs',
+        } as unknown) as Router
+      })
+
+      render(
+        <DocsPage
+          {...defaultProps}
+          showVersionSelect={true}
+          staticProps={{
+            ...defaultProps.staticProps,
+            versions: [
+              { name: 'latest', label: 'latest' },
+              { name: 'v0.5.1', label: 'v0.5.1' },
+            ],
+          }}
+        />
+      )
+
+      expect(
+        document.querySelector('meta[name=robots]')
+      ).not.toBeInTheDocument()
+    })
+
+    it('should tell crawlers to not index versioned pages', () => {
+      useRouterMock.mockImplementation(() => {
+        return ({
+          asPath: '/docs/v0.5.1',
+        } as unknown) as Router
+      })
+
+      render(
+        <DocsPage
+          {...defaultProps}
+          showVersionSelect={true}
+          staticProps={{
+            ...defaultProps.staticProps,
+            versions: [
+              { name: 'latest', label: 'latest' },
+              { name: 'v0.5.1', label: 'v0.5.1' },
+            ],
+          }}
+        />
+      )
+
+      expect(document.querySelector('meta[name=robots]')).toBeInTheDocument()
+    })
   })
 })
