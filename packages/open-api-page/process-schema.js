@@ -8,17 +8,14 @@ async function dereferenceSchema(schemaJson) {
 }
 
 async function processPropertyOrParameter(value) {
-  const markdownTitle = value.title
-    ? await markdownToHtml(value.title)
-    : undefined
-  const markdownDescription = value.description
-    ? await markdownToHtml(value.description)
-    : undefined
-  return {
-    ...value,
-    title: markdownTitle,
-    description: markdownDescription,
+  const clonedValue = { ...value }
+  if (value.title) {
+    clonedValue.title = await markdownToHtml(value.title)
   }
+  if (value.description) {
+    clonedValue.description = await markdownToHtml(value.description)
+  }
+  return clonedValue
 }
 
 async function processSchema(schemaJson) {
@@ -30,10 +27,11 @@ async function processSchema(schemaJson) {
     // Otherwise, process markdown as needed
     if (isOperationObject) {
       // Operation objects have "summary" values which may contain markdown
-      const markdownSummary = value.summary
-        ? await markdownToHtml(value.summary)
-        : undefined
-      return { ...value, summary: markdownSummary }
+      const clonedValue = { ...value }
+      if (value.summary) {
+        clonedValue.summary = await markdownToHtml(value.summary)
+      }
+      return clonedValue
     } else if (isPropertiesObject) {
       // Various objects have "properties" which have
       // "title" and "description" values which may contain markdown
