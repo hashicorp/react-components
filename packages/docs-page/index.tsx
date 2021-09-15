@@ -8,10 +8,9 @@ import { NavData } from '@hashicorp/react-docs-sidenav/types'
 import HashiHead from '@hashicorp/react-head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
-import {
-  VersionSelect,
-  getVersionFromPath,
-} from '@hashicorp/versioned-docs/client'
+
+import VersionSelect from '@hashicorp/version-select'
+import { getVersionFromPath } from '@hashicorp/version-select/util'
 import { MDXProviderComponentsProp } from '@mdx-js/react'
 
 import SearchBar from './components/search-bar'
@@ -32,6 +31,7 @@ interface DocsPageWrapperProps {
   githubFileUrl: string
   product: { name: string; slug: string }
   showEditPage: boolean
+  showVersionSelect: boolean
   versions: { name: string; label: string }[]
 }
 
@@ -46,6 +46,7 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   githubFileUrl,
   product: { name, slug },
   showEditPage = true,
+  showVersionSelect = process.env.ENABLE_VERSIONED_DOCS,
   versions,
 }) => {
   const isMobile = useIsMobile()
@@ -69,13 +70,13 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
     </SearchProvider>
   )
 
-  const versionSelect = process.env.ENABLE_VERSIONED_DOCS ? (
+  const versionSelect = showVersionSelect ? (
     <div className={s.versionSelect}>
       <VersionSelect versions={versions} />
     </div>
   ) : null
 
-  const versionAlert = process.env.ENABLE_VERSIONED_DOCS ? (
+  const versionAlert = showVersionSelect ? (
     <VersionAlert product={name} />
   ) : null
 
@@ -88,7 +89,7 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
         siteName={`${name} by HashiCorp`}
         title={`${pageTitle} | ${name} by HashiCorp`}
       />
-      {process.env.ENABLE_VERSIONED_DOCS && versionInPath ? (
+      {showVersionSelect && versionInPath ? (
         <Head>
           <meta name="robots" content="noindex" key="robots" />
         </Head>
@@ -147,6 +148,7 @@ export interface DocsPageProps {
   product: { name: string; slug: string }
   baseRoute: string
   showEditPage: boolean
+  showVersionSelect: boolean
   additionalComponents: MDXProviderComponentsProp
   staticProps: {
     mdxSource: MDXRemoteSerializeResult
@@ -166,6 +168,7 @@ export default function DocsPage({
   product,
   baseRoute,
   showEditPage = true,
+  showVersionSelect = false,
   additionalComponents,
   staticProps: {
     mdxSource,
@@ -198,6 +201,7 @@ export default function DocsPage({
       pageTitle={frontMatter.page_title}
       product={product}
       showEditPage={showEditPage}
+      showVersionSelect={showVersionSelect}
       baseRoute={baseRoute}
       versions={versions}
     >
