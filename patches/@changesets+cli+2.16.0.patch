@@ -16,7 +16,7 @@ index f771824..074731e 100644
    // some struggles
    // Note that both pre and post publish hooks are printed before the json out, so this works.
  
-+  console.log('stderr', stderr);
++  console.log('stderr', stderr.toString());
 +
    let json = jsonParse(stdout.toString().replace(/[^{]*/, ""));
  
