@@ -1,4 +1,5 @@
 const docsSidenavProps = require('../docs-sidenav/props')
+const versionSelectProps = require('../version-select/props')
 const sharedProps = require('../../props')
 
 module.exports = {
@@ -174,6 +175,7 @@ module.exports = {
       },
       currentPath: docsSidenavProps.currentPath,
       navData: docsSidenavProps.navData,
+      versions: versionSelectProps.versions,
     },
     testValue: {},
   },
