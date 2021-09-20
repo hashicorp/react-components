@@ -141,7 +141,7 @@ export default class HeroCarousel extends Component {
             >
               <div className={s.controlHover}>
                 {control.name ? control.name : ''}
-                <div className={s.progressBar}>
+                <div className={classnames(s.progressBar, s[this.props.theme])}>
                   <span
                     ref={(el) => el !== null && this.progressBars.push(el)}
                   />

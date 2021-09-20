@@ -146,4 +146,12 @@
       display: none;
     }
   }
+
+  &.light {
+    background-color: rgba(0, 0, 0, 0.15);
+
+    & span {
+      background-color: var(--black);
+    }
+  }
 }

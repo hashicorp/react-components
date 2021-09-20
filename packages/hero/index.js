@@ -37,8 +37,8 @@ function Hero({ data, centered, gaPrefix, className }) {
     <div
       className={classNames(
         s.root,
+        s[backgroundTheme],
         themeClass,
-        backgroundTheme,
         { centered: centered || data.centered },
         className
       )}
@@ -65,13 +65,13 @@ function Hero({ data, centered, gaPrefix, className }) {
               url={alert.url}
               tag={alert.tag}
               text={alert.text}
-              textColor="light"
+              textColor={backgroundTheme}
               className={s.headlineAlert}
             />
           )}
           {title && (
             <h1
-              className={s.headlineTitle}
+              className={classNames(s.headlineTitle, s[backgroundTheme])}
               dangerouslySetInnerHTML={{
                 __html: eliminateOrphans(title, h1OrphanCount),
               }}
@@ -79,7 +79,7 @@ function Hero({ data, centered, gaPrefix, className }) {
           )}
           {description && (
             <div
-              className={s.headlineDescription}
+              className={classNames(s.headlineDescription, s[backgroundTheme])}
               dangerouslySetInnerHTML={{
                 __html: eliminateOrphans(description.trim()),
               }}
@@ -129,7 +129,7 @@ function Hero({ data, centered, gaPrefix, className }) {
             </div>
           ) : null}
           {helpText && (
-            <div className={s.headlineHelpText}>
+            <div className={classNames(s.headlineHelpText, s[backgroundTheme])}>
               <div dangerouslySetInnerHTML={{ __html: helpText.trim() }} />
               <ArrowIcon />
             </div>
@@ -140,7 +140,7 @@ function Hero({ data, centered, gaPrefix, className }) {
             <Image {...image} />
           </div>
         ) : hasVideos ? (
-          <VideoCarousel videos={videos} />
+          <VideoCarousel videos={videos} theme={backgroundTheme} />
         ) : null}
       </div>
     </div>
