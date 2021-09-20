@@ -148,7 +148,7 @@
   }
 }
 
-.root:global(.light) {
+:global(.light) .root {
   color: var(--black);
 
   & .progressBar {
