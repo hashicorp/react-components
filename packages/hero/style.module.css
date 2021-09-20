@@ -227,29 +227,3 @@
     }
   }
 }
-
-.root:global(.light) {
-  background: var(--white);
-  color: var(--black);
-
-  & .headline {
-    & .headlineAlert {
-      & p,
-      & span {
-        color: var(--gray-1);
-      }
-    }
-
-    & h1 {
-      color: var(--black);
-    }
-
-    & .headlineDescription {
-      color: var(--gray-2);
-    }
-
-    & .headlineHelpText {
-      color: #252937;
-    }
-  }
-}
