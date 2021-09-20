@@ -1,4 +1,4 @@
-# @hashicorp/version-select
+# @hashicorp/react-version-select
 
 ## 0.2.0
 

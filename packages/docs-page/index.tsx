@@ -9,8 +9,8 @@ import HashiHead from '@hashicorp/react-head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
 
-import VersionSelect from '@hashicorp/version-select'
-import { getVersionFromPath } from '@hashicorp/version-select/util'
+import VersionSelect from '@hashicorp/react-version-select'
+import { getVersionFromPath } from '@hashicorp/react-version-select/util'
 import { MDXProviderComponentsProp } from '@mdx-js/react'
 
 import SearchBar from './components/search-bar'
