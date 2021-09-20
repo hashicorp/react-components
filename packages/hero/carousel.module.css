@@ -147,3 +147,15 @@
     }
   }
 }
+
+.root:global(.light) {
+  color: var(--black);
+
+  & .progressBar {
+    background-color: rgba(0, 0, 0, 0.15);
+
+    & span {
+      background-color: var(--black);
+    }
+  }
+}
