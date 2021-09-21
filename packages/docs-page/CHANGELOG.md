@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.2.1
+
+### Patch Changes
+
+- [#346](https://github.com/hashicorp/react-components/pull/346) [`14f7b1f`](https://github.com/hashicorp/react-components/commit/14f7b1f9818f33d1cbaadafea97a889cb7218dae) Thanks [@BRKalow](https://github.com/BRKalow)! - Update docs-page to depend on @hashicorp/react-version-select instead of @hashicorp/version-select
+
 ## 14.2.0
 
 ### Minor Changes
