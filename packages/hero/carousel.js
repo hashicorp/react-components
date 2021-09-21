@@ -79,7 +79,7 @@ export default class HeroCarousel extends Component {
   }
 
   render() {
-    const { videos, videoControlsFirst, theme } = this.props
+    const { videos, videoControlsTop, theme } = this.props
 
     this.videoWrappers = []
     this.videos = []
@@ -93,7 +93,7 @@ export default class HeroCarousel extends Component {
     return (
       <div
         className={classnames(s.root, {
-          [s.videoControlsFirst]: videoControlsFirst,
+          [s.videoControlsTop]: videoControlsTop,
         })}
       >
         <div className={s.videos}>
@@ -143,7 +143,7 @@ export default class HeroCarousel extends Component {
         </div>
         <div
           className={classnames(s.controls, {
-            [s.videoControlsFirst]: this.props.videoControlsFirst,
+            [s.videoControlsTop]: this.props.videoControlsTop,
           })}
         >
           {videos.map((control, index) => (

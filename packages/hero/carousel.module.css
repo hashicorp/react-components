@@ -19,7 +19,7 @@
     padding-right: 0;
   }
 
-  &.videoControlsFirst {
+  &.videoControlsTop {
     display: flex;
     flex-direction: column-reverse;
   }
@@ -118,7 +118,7 @@
     padding: 37px 0 0;
   }
 
-  &.videoControlsFirst {
+  &.videoControlsTop {
     padding-top: 0;
     margin-bottom: 32px;
   }
