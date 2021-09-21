@@ -126,6 +126,21 @@ const components = {
   ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
 }
 
+const swingsetConfig = {
+  customMeta({ data }) {
+    const dashCaseSlug = data.componentName
+      .replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())
+      .slice(1)
+    return {
+      github: `https://github.com/hashicorp/react-components/tree/main/packages/${dashCaseSlug}`,
+      npm: `https://npmjs.com/package/@hashicorp/react-${dashCaseSlug}`,
+    }
+  },
+}
+
 export default createPage({ components, logo: <Logo />, index: <Index /> })
-export const getStaticPaths = createStaticPaths()
-export const getStaticProps = createStaticProps({ components })
+export const getStaticPaths = createStaticPaths(swingsetConfig)
+export const getStaticProps = createStaticProps({
+  components,
+  ...swingsetConfig,
+})
