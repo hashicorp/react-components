@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.2.2
+
+### Patch Changes
+
+- [#348](https://github.com/hashicorp/react-components/pull/348) [`4ac0276`](https://github.com/hashicorp/react-components/commit/4ac0276c28b767272fabe64ef69e2faeb83957f6) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds back @hashicorp/versioned-docs dependency to docs-page as it is still used
+
 ## 14.2.1
 
 ### Patch Changes
