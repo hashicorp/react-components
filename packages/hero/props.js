@@ -226,6 +226,12 @@ module.exports = {
     description: 'Whether or not to center the hero content',
     testValue: false,
   },
+  videoControlsFirst: {
+    type: 'boolean',
+    description:
+      'If true, video controls will be shown above videos, rather than below.',
+    testValue: false,
+  },
   className: {
     type: 'string',
     description: 'Optional className to add to the root element.',

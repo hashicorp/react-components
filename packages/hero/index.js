@@ -13,7 +13,7 @@ import fragment from './fragment.graphql'
 /**
  * A flexible hero component used as the primary content at the top of many HashiCorp pages.
  */
-function Hero({ data, centered, gaPrefix, className }) {
+function Hero({ data, centered, gaPrefix, className, videoControlsFirst }) {
   const {
     alert,
     backgroundImage,
@@ -140,7 +140,11 @@ function Hero({ data, centered, gaPrefix, className }) {
             <Image {...image} />
           </div>
         ) : hasVideos ? (
-          <VideoCarousel videos={videos} theme={backgroundTheme} />
+          <VideoCarousel
+            videos={videos}
+            theme={backgroundTheme}
+            videoControlsFirst={videoControlsFirst}
+          />
         ) : null}
       </div>
     </div>
