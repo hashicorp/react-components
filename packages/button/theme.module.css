@@ -132,7 +132,10 @@
   }
 
   &.brand-neutral {
-    &.background-dark {
+    --text-color: var(--black);
+
+    &.background-dark,
+    &.background-brand {
       --text-color: var(--white);
     }
   }

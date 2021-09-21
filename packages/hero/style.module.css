@@ -12,6 +12,11 @@
   @media (max-width: 767px) {
     padding: 56px 0 80px;
   }
+
+  &.light {
+    background: var(--white);
+    color: var(--black);
+  }
 }
 
 .background {
@@ -103,6 +108,10 @@
       }
     }
   }
+
+  &.light {
+    color: var(--gray-2);
+  }
 }
 
 .headlineFormLead {
@@ -148,7 +157,6 @@
 .headlineHelpText {
   composes: g-type-buttons-and-standalone-links from global;
   text-decoration: none;
-  color: white;
   margin-top: 32px;
   display: inline-block;
   transition: 0.25s ease;
