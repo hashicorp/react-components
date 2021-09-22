@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.2.3
+
+### Patch Changes
+
+- [#351](https://github.com/hashicorp/react-components/pull/351) [`a3358e6`](https://github.com/hashicorp/react-components/commit/a3358e665ca2711012697f7138df572e9629699b) Thanks [@BRKalow](https://github.com/BRKalow)! - - Updates @hashicorp/platform-docs-mdx package to one that relies on the latest versions of our components
+
 ## 14.2.2
 
 ### Patch Changes
