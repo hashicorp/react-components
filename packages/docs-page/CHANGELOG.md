@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.2.4
+
+### Patch Changes
+
+- [#353](https://github.com/hashicorp/react-components/pull/353) [`8a83473`](https://github.com/hashicorp/react-components/commit/8a8347301747a36216338ec6c25ebf56db79b9cd) Thanks [@zchsh](https://github.com/zchsh)! - Patches an issue in @hashicorp/platform-docs-mdx related to Tabs styling.
+
 ## 14.2.3
 
 ### Patch Changes
