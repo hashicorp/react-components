@@ -179,7 +179,10 @@ async function generateStaticProps({
       const _product = product.slug
 
       const [{ mdxSource }, navData] = await Promise.all([
-        fetch(`${MKTG_CONTENT_API}/api/content/${_product}/${_fullPath}`)
+        fetch(
+          `${MKTG_CONTENT_API}/api/content/${_product}/${_fullPath}`,
+          DEFAULT_HEADERS
+        )
           .then((res) => res.json())
           .then((json) => {
             doc = json.result
