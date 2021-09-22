@@ -4,14 +4,50 @@ import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
 import {
-  loadVersionList,
-  loadVersionedDocument,
-  loadVersionedNavData,
+  // loadVersionList,
+  // loadVersionedDocument,
+  // loadVersionedNavData,
   getVersionFromPath,
 } from '@hashicorp/versioned-docs/server'
 import moize from 'moize'
-import { normalizeVersion } from '@hashicorp/versioned-docs/client'
+// import { normalizeVersion } from '@hashicorp/versioned-docs/client'
 import renderPageMdx from './render-page-mdx'
+
+/**
+ * - https://mktg-content-api.vercel.app
+ * - http://localhost:3001
+ */
+const MKTG_CONTENT_API = process.env.MKTG_CONTENT_API
+const MKTG_CONTENT_API_TOKEN = process.env.MKTG_CONTENT_API_TOKEN
+
+const ENABLE_VERSIONED_DOCS = process.env.ENABLE_VERSIONED_DOCS
+const VERCEL_ENV = process.env.VERCEL_ENV
+
+const DEFAULT_HEADERS = {
+  headers: {
+    Authorization: `Bearer ${MKTG_CONTENT_API_TOKEN}`,
+  },
+}
+
+const normalizeVersion = (version) => {
+  if (version === 'latest') return version
+  return version.startsWith('v') ? version : `v${version}`
+}
+
+async function loadVersionedNavData(
+  product, //: string, // waypoint
+  basePath, //: string, // commands | docs | plugins
+  version //: string // v0.5.x
+) {
+  // /api/content/:product/:fullPath?partial=true
+  const res = await fetch(
+    `${MKTG_CONTENT_API}/api/content/${product}/nav-data/${version}/${basePath}`,
+    DEFAULT_HEADERS
+  )
+  const json = await res.json()
+
+  return json.result
+}
 
 const cachedLoadVersionNavData = moize(loadVersionedNavData, {
   maxSize: moize.infinite,
@@ -34,16 +70,15 @@ async function generateStaticPaths({
   let navData
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
-  if (
-    process.env.ENABLE_VERSIONED_DOCS &&
-    process.env.VERCEL_ENV === 'production'
-  ) {
+  if (ENABLE_VERSIONED_DOCS && VERCEL_ENV === 'production') {
+    const currentVersionNormalized = normalizeVersion(currentVersion)
+
     // Fetch and parse navigation data
     navData = (
       await cachedLoadVersionNavData(
         product.slug,
         basePath,
-        normalizeVersion(currentVersion)
+        currentVersionNormalized
       )
     ).navData
   } else {
@@ -90,6 +125,7 @@ async function generateStaticProps({
       remarkPlugins,
       scope,
     })
+  const currentVersionNormalized = normalizeVersion(currentVersion)
 
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
@@ -97,33 +133,53 @@ async function generateStaticProps({
   let versions = []
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
-  if (process.env.ENABLE_VERSIONED_DOCS) {
+  if (ENABLE_VERSIONED_DOCS) {
     const versionFromPath = getVersionFromPath(params[paramId])
 
-    const currentVersionNormalized = normalizeVersion(currentVersion)
+    const versionJson = await fetch(
+      `${MKTG_CONTENT_API}/api/content${product.slug}/version-metadata?partial=true`,
+      DEFAULT_HEADERS
+    ).then((res) => res.json())
 
-    versions = await loadVersionList(product.slug)
+    versions = versionJson.result.map((e) => {
+      const { isLatest, version } = e
+
+      return {
+        name: isLatest ? 'latest' : version,
+        label: isLatest ? `${version} (latest)` : version,
+      }
+    })
 
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
     if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
       // remove trailing index to ensure we fetch the right document from the DB
+      // const REGEX =
+      //   /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/i
       const paramsNoIndex = (params[paramId] ?? []).filter(
         (param, idx) =>
           !(param === 'index' && idx === params[paramId].length - 1)
       )
+
       const pagePathToLoad = versionFromPath
-        ? [basePath, ...paramsNoIndex].join('/')
-        : [basePath, currentVersionNormalized, ...paramsNoIndex].join('/')
+        ? ['doc', currentVersionNormalized, basePath, ...paramsNoIndex].join(
+            '/'
+          )
+        : ['doc', currentVersionNormalized, basePath, ...paramsNoIndex].join(
+            '/'
+          )
 
       let doc
+
+      const _product = product.slug
+      const _fullPath = pagePathToLoad
       const [{ mdxSource }, navData] = await Promise.all([
-        loadVersionedDocument(product.slug, pagePathToLoad).then(
-          (docResult) => {
-            doc = docResult
-            return mdxRenderer(docResult.markdownSource)
-          }
-        ),
+        fetch(`${MKTG_CONTENT_API}/api/content/${_product}/${_fullPath}`)
+          .then((res) => res.json())
+          .then((json) => {
+            doc = json.result
+            return mdxRenderer(doc.markdownSource)
+          }),
         cachedLoadVersionNavData(
           product.slug,
           basePath,
