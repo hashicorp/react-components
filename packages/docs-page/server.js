@@ -153,26 +153,31 @@ async function generateStaticProps({
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
     if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
-      // remove trailing index to ensure we fetch the right document from the DB
-      // const REGEX =
-      //   /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/i
-      const paramsNoIndex = (params[paramId] ?? []).filter(
-        (param, idx) =>
-          !(param === 'index' && idx === params[paramId].length - 1)
-      )
+      // 1. remove trailing index to ensure we fetch the right document from the DB
+      // 2. remove version from params too
+      const REGEX = /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/i
+      const pathParamsNoIndexOrVersion = (params[paramId] ?? [])
+        .filter(
+          (param, idx) =>
+            !(param === 'index' && idx === params[paramId].length - 1)
+        )
+        .filter((e) => !REGEX.test(e))
 
-      const pagePathToLoad = versionFromPath
-        ? ['doc', currentVersionNormalized, basePath, ...paramsNoIndex].join(
-            '/'
-          )
-        : ['doc', currentVersionNormalized, basePath, ...paramsNoIndex].join(
-            '/'
-          )
+      // doc/latest/commands
+      // doc/latest/commands/build
+      // doc/v0.5.x/commands
+      // doc/v0.5.x/commands/build
+      const _fullPath = [
+        'doc',
+        currentVersionNormalized,
+        basePath,
+        ...pathParamsNoIndexOrVersion,
+      ].join('/')
 
       let doc
 
       const _product = product.slug
-      const _fullPath = pagePathToLoad
+
       const [{ mdxSource }, navData] = await Promise.all([
         fetch(`${MKTG_CONTENT_API}/api/content/${_product}/${_fullPath}`)
           .then((res) => res.json())
