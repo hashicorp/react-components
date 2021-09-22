@@ -3,51 +3,16 @@ import path from 'path'
 import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
-import {
-  // loadVersionList,
-  // loadVersionedDocument,
-  // loadVersionedNavData,
-  getVersionFromPath,
-} from '@hashicorp/versioned-docs/server'
 import moize from 'moize'
-// import { normalizeVersion } from '@hashicorp/versioned-docs/client'
-import renderPageMdx from './render-page-mdx'
 
-/**
- * - https://mktg-content-api.vercel.app
- * - http://localhost:3001
- */
-const MKTG_CONTENT_API = process.env.MKTG_CONTENT_API
-const MKTG_CONTENT_API_TOKEN = process.env.MKTG_CONTENT_API_TOKEN
+import renderPageMdx from './render-page-mdx'
+import { stripVersionFromPathParams, normalizeVersion } from './util'
+import { fetchNavData, fetchDocument, fetchVersionMetadataList } from './rpc'
 
 const ENABLE_VERSIONED_DOCS = process.env.ENABLE_VERSIONED_DOCS
 const VERCEL_ENV = process.env.VERCEL_ENV
 
-const DEFAULT_HEADERS = {
-  headers: {
-    Authorization: `Bearer ${MKTG_CONTENT_API_TOKEN}`,
-  },
-}
-
-const normalizeVersion = (version) => {
-  if (version === 'latest') return version
-  return version.startsWith('v') ? version : `v${version}`
-}
-
-async function loadVersionedNavData(
-  product, //: string, // waypoint
-  basePath, //: string, // commands | docs | plugins
-  version //: string // v0.5.x
-) {
-  // /api/content/:product/:fullPath*
-  const response = await fetch(
-    `${MKTG_CONTENT_API}/api/content/${product}/nav-data/${version}/${basePath}`,
-    DEFAULT_HEADERS
-  ).then((res) => res.json())
-  return response.result
-}
-
-const cachedLoadVersionNavData = moize(loadVersionedNavData, {
+const cachedFetchNavData = moize(fetchNavData, {
   maxSize: moize.infinite,
 })
 
@@ -63,7 +28,7 @@ async function generateStaticPaths({
   paramId = DEFAULT_PARAM_ID,
   product,
   basePath,
-  currentVersion,
+  currentVersion = 'latest',
 }) {
   let navData
 
@@ -73,11 +38,7 @@ async function generateStaticPaths({
 
     // Fetch and parse navigation data
     navData = (
-      await cachedLoadVersionNavData(
-        product.slug,
-        basePath,
-        currentVersionNormalized
-      )
+      await cachedFetchNavData(product.slug, basePath, currentVersionNormalized)
     ).navData
   } else {
     navData = await resolveNavData(navDataFile, localContentDir)
@@ -108,22 +69,20 @@ async function getPathsFromNavData(
 async function generateStaticProps({
   navDataFile,
   localContentDir,
-  params,
-  product,
+  params, // ["destroy"] | ["v0.5.x", "destroy"]
+  product: { name: productName, slug: productSlug },
   mainBranch = 'main',
   remarkPlugins = [],
   scope, // optional, I think?
   paramId = DEFAULT_PARAM_ID,
   basePath,
-  currentVersion,
 }) {
   const mdxRenderer = (mdx) =>
     renderPageMdx(mdx, {
-      productName: product.name,
+      productName,
       remarkPlugins,
       scope,
     })
-  const currentVersionNormalized = normalizeVersion(currentVersion)
 
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
@@ -132,16 +91,14 @@ async function generateStaticProps({
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (ENABLE_VERSIONED_DOCS) {
-    const versionFromPath = getVersionFromPath(params[paramId])
+    const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
+      params[paramId]
+    )
+    const currentVersionNormalized = normalizeVersion(versionFromPath)
 
-    const response = await fetch(
-      `${MKTG_CONTENT_API}/api/content/${product.slug}/version-metadata?partial=true`,
-      DEFAULT_HEADERS
-    ).then((res) => res.json())
-
-    versions = response.result.map((e) => {
+    const versionMetadataList = await fetchVersionMetadataList(productSlug)
+    versions = versionMetadataList.map((e) => {
       const { isLatest, version } = e
-
       return {
         name: isLatest ? 'latest' : version,
         label: isLatest ? `${version} (latest)` : version,
@@ -151,55 +108,46 @@ async function generateStaticProps({
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
     if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
-      // 1. remove trailing index to ensure we fetch the right document from the DB
-      // 2. remove version from params too
-      const REGEX = /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/i
-      const pathParamsNoIndexOrVersion = (params[paramId] ?? [])
-        .filter(
-          (param, idx) =>
-            !(param === 'index' && idx === params[paramId].length - 1)
-        )
-        .filter((e) => !REGEX.test(e))
+      // remove trailing index to ensure we fetch the right document from the DB
+      const pathParamsNoIndex = paramsNoVersion.filter(
+        (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
+      )
 
-      // doc/latest/commands
-      // doc/latest/commands/build
-      // doc/v0.5.x/commands
-      // doc/v0.5.x/commands/build
       const _fullPath = [
         'doc',
         currentVersionNormalized,
         basePath,
-        ...pathParamsNoIndexOrVersion,
+        ...pathParamsNoIndex,
       ].join('/')
 
-      let doc
+      const documentPromise = fetchDocument(productSlug, _fullPath)
+      const navDataPromise = cachedFetchNavData(
+        productSlug,
+        basePath,
+        currentVersionNormalized
+      )
 
-      const _product = product.slug
-
-      const [{ mdxSource }, navData] = await Promise.all([
-        fetch(
-          `${MKTG_CONTENT_API}/api/content/${_product}/${_fullPath}`,
-          DEFAULT_HEADERS
-        )
-          .then((res) => res.json())
-          .then((json) => {
-            doc = json.result
-            return mdxRenderer(doc.markdownSource)
-          }),
-        cachedLoadVersionNavData(
-          product.slug,
-          basePath,
-          versionFromPath ?? currentVersionNormalized
-        ),
+      const [document, navData] = await Promise.all([
+        documentPromise,
+        navDataPromise,
       ])
 
+      const mdxSource = mdxRenderer(document.markdownSource)
+      const frontMatter = document.metadata
+
       // Construct the githubFileUrl, used for "Edit this page" link
-      const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
+      // https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx
+      // https://github.com/hashicorp/waypoint/blob/e591452/website/content/commands/index.mdx
+      // https://github.com/hashicorp/waypoint/blob/e591452e6f9a155a038d45158e05d904ba006d37/website/content/commands/index.mdx
+      // const githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${document.sha}/website/content/${doc.filePath}`
+
+      // UNSUPPORTED?
+      const githubFileUrl = undefined
 
       return {
         versions,
         currentPath,
-        frontMatter: doc.metadata,
+        frontMatter,
         githubFileUrl,
         mdxSource,
         navData: navData.navData,
@@ -217,7 +165,7 @@ async function generateStaticProps({
   const { mdxSource, frontMatter } = await mdxRenderer(mdxString)
 
   // Construct the githubFileUrl, used for "Edit this page" link
-  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
+  const githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${mainBranch}/website/${navNode.filePath}`
   // Return all the props
   return {
     currentPath,
@@ -322,5 +270,5 @@ export {
   getPathsFromNavData,
   validateNavData,
   validateFilePaths,
-  getVersionFromPath,
+  stripVersionFromPathParams,
 }
