@@ -39,14 +39,12 @@ async function loadVersionedNavData(
   basePath, //: string, // commands | docs | plugins
   version //: string // v0.5.x
 ) {
-  // /api/content/:product/:fullPath?partial=true
-  const res = await fetch(
+  // /api/content/:product/:fullPath*
+  const response = await fetch(
     `${MKTG_CONTENT_API}/api/content/${product}/nav-data/${version}/${basePath}`,
     DEFAULT_HEADERS
-  )
-  const json = await res.json()
-
-  return json.result
+  ).then((res) => res.json())
+  return response.result
 }
 
 const cachedLoadVersionNavData = moize(loadVersionedNavData, {
@@ -136,12 +134,12 @@ async function generateStaticProps({
   if (ENABLE_VERSIONED_DOCS) {
     const versionFromPath = getVersionFromPath(params[paramId])
 
-    const versionJson = await fetch(
+    const response = await fetch(
       `${MKTG_CONTENT_API}/api/content/${product.slug}/version-metadata?partial=true`,
       DEFAULT_HEADERS
     ).then((res) => res.json())
 
-    versions = versionJson.result.map((e) => {
+    versions = response.result.map((e) => {
       const { isLatest, version } = e
 
       return {
@@ -324,4 +322,5 @@ export {
   getPathsFromNavData,
   validateNavData,
   validateFilePaths,
+  getVersionFromPath,
 }
