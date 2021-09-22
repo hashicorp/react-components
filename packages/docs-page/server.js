@@ -137,7 +137,7 @@ async function generateStaticProps({
     const versionFromPath = getVersionFromPath(params[paramId])
 
     const versionJson = await fetch(
-      `${MKTG_CONTENT_API}/api/content${product.slug}/version-metadata?partial=true`,
+      `${MKTG_CONTENT_API}/api/content/${product.slug}/version-metadata?partial=true`,
       DEFAULT_HEADERS
     ).then((res) => res.json())
 
