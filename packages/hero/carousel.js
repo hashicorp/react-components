@@ -79,14 +79,23 @@ export default class HeroCarousel extends Component {
   }
 
   render() {
-    const videos = this.props.videos
+    const { videos, videoControlsTop, theme } = this.props
 
     this.videoWrappers = []
     this.videos = []
     this.progressBars = []
 
+    const defaultAspectRatio = 0.6359
+    const tallestAspectRatio = videos.reduce((acc, { aspectRatio }) => {
+      return aspectRatio && aspectRatio > acc ? aspectRatio : acc
+    }, defaultAspectRatio)
+
     return (
-      <div className={s.root}>
+      <div
+        className={classnames(s.root, {
+          [s.videoControlsTop]: videoControlsTop,
+        })}
+      >
         <div className={s.videos}>
           {videos.map((video, i) => (
             <div
@@ -95,6 +104,10 @@ export default class HeroCarousel extends Component {
                 [s.isActive]: this.state.active === i,
                 [s.isDeactivating]: this.state.deactivating === i,
               })}
+              style={{
+                '--video-aspect-ratio': video.aspectRatio || defaultAspectRatio,
+                '--tallest-aspect-ratio': tallestAspectRatio,
+              }}
               ref={(el) => el !== null && this.videoWrappers.push(el)}
             >
               <div className={s.bar}>
@@ -109,9 +122,7 @@ export default class HeroCarousel extends Component {
                   ref={(el) => el !== null && this.videos.push(el)}
                   loop={videos.length === 1}
                   onEnded={() => {
-                    this.switchToVideo(
-                      i < this.props.videos.length - 1 ? i + 1 : 0
-                    )
+                    this.switchToVideo(i < videos.length - 1 ? i + 1 : 0)
                   }}
                 >
                   {video.src.map(
@@ -130,7 +141,11 @@ export default class HeroCarousel extends Component {
             </div>
           ))}
         </div>
-        <div className={s.controls}>
+        <div
+          className={classnames(s.controls, {
+            [s.videoControlsTop]: this.props.videoControlsTop,
+          })}
+        >
           {videos.map((control, index) => (
             <div
               className={s.control}
@@ -141,7 +156,7 @@ export default class HeroCarousel extends Component {
             >
               <div className={s.controlHover}>
                 {control.name ? control.name : ''}
-                <div className={s.progressBar}>
+                <div className={classnames(s.progressBar, s[theme])}>
                   <span
                     ref={(el) => el !== null && this.progressBars.push(el)}
                   />

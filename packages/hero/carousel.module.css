@@ -18,6 +18,11 @@
     padding-left: 0;
     padding-right: 0;
   }
+
+  &.videoControlsTop {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .videos {
@@ -25,6 +30,12 @@
 }
 
 .videoWrapper {
+  /* --tallest-aspect-ratio: set in JS, largest of all video aspect ratios */
+
+  /* --video-aspect-ratio: set in JS, defaults to 0.63695 */
+  --tallest-video-height: calc(100% * var(--tallest-aspect-ratio));
+  --video-height: calc(100% * var(--video-aspect-ratio));
+
   height: 0;
   opacity: 0;
   overflow: hidden;
@@ -37,8 +48,13 @@
     opacity: 1;
 
     /* This padding ensures there is space for a video,
-       which is expected to be ~ 1150 × 660 px */
-    padding-top: calc((100% * 0.63569) + 28px);
+       plus 28px for the fake window ".bar" at the top */
+    padding-top: calc(var(--video-height) + 28px);
+
+    /* Bottom margin accounts for potential differences
+       between videos of varying aspect ratios, so that
+       we avoid layout shift when moving between them. */
+    margin-bottom: calc(var(--tallest-video-height) - var(--video-height));
     transform: translateX(0);
     transition: opacity 0.5s, transform 0.5s;
     transition-timing-function: ease-out;
@@ -101,6 +117,11 @@
   @media (max-width: 1119px) {
     padding: 37px 0 0;
   }
+
+  &.videoControlsTop {
+    padding-top: 0;
+    margin-bottom: 32px;
+  }
 }
 
 .control {
@@ -144,6 +165,14 @@
        it creates too much visual diff noise */
     @media only percy {
       display: none;
+    }
+  }
+
+  &.light {
+    background-color: rgba(0, 0, 0, 0.15);
+
+    & span {
+      background-color: var(--black);
     }
   }
 }
