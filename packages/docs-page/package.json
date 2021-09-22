@@ -14,7 +14,6 @@
     "@hashicorp/react-placeholder": "^0.1.0",
     "@hashicorp/react-search": "^6.0.0",
     "@hashicorp/react-version-select": "^0.2.0",
-    "@hashicorp/versioned-docs": "^0.0.22",
     "classnames": "^2.3.1",
     "fs-exists-sync": "^0.1.0",
     "gray-matter": "^4.0.3",
