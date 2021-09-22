@@ -13,7 +13,7 @@ export default function ProductFeaturesList({ heading, features, className }) {
               <img src={icon} alt={title} />
             </div>
             <div>
-              <h4 className={s.featureHeading}>{title}</h4>
+              <h3 className={s.featureHeading}>{title}</h3>
               <p className={s.featureContent}>{content}</p>
               {link && (
                 <Button
