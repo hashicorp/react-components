@@ -142,7 +142,8 @@ async function generateStaticProps({
       // const githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${document.sha}/website/content/${doc.filePath}`
 
       // UNSUPPORTED?
-      const githubFileUrl = undefined
+      // Must be serializeable
+      const githubFileUrl = null
 
       return {
         versions,
