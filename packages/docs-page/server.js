@@ -14,9 +14,11 @@ const VERCEL_ENV = process.env.VERCEL_ENV
 
 const cachedFetchNavData = moize(fetchNavData, {
   maxSize: moize.infinite,
+  isPromise: true,
 })
 const cachedFetchVersionMetadataList = moize(fetchVersionMetadataList, {
   maxSize: moize.infinite,
+  isPromise: true,
 })
 
 // So far, we have a pattern of using a common value for
@@ -37,15 +39,17 @@ async function generateStaticPaths({
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (ENABLE_VERSIONED_DOCS && VERCEL_ENV === 'production') {
-    console.log('Fetching remote nav data...')
+    console.log(`Fetching remote nav data [${product.slug}]...`)
 
     // Fetch version metadata to get "latest"
-    const versionMetadataList = await cachedFetchVersionMetadataList()
+    const versionMetadataList = await cachedFetchVersionMetadataList(
+      product.slug
+    )
     const latest = versionMetadataList.find((e) => e.isLatest).version
     // Fetch and parse navigation data
     navData = (await cachedFetchNavData(product.slug, basePath, latest)).navData
   } else {
-    console.log('Resolving local nav data...')
+    console.log(`Resolving local nav data [${product.slug}]...`)
     navData = await resolveNavData(navDataFile, localContentDir)
   }
 
