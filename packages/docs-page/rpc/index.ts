@@ -13,11 +13,12 @@ export async function fetchNavData(
   version: string //: string // v0.5.x
 ): Promise<any> {
   const fullPath = `nav-data/${version}/${basePath}`
-  const response = await fetch(
-    `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`,
-    DEFAULT_HEADERS
-  ).then((res) => res.json())
+  const url = `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`
+  const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
 
+  if (response.status_code !== 200) {
+    throw new Error(`Failed to fetch: ${url} | ${response.status_code}`)
+  }
   return response.result
 }
 
@@ -25,19 +26,21 @@ export async function fetchDocument(
   product: string,
   fullPath: string
 ): Promise<any> {
-  const response = await fetch(
-    `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`,
-    DEFAULT_HEADERS
-  ).then((res) => res.json())
+  const url = `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`
+  const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
 
+  if (response.status_code !== 200) {
+    throw new Error(`Failed to fetch: ${url} | ${response.status_code}`)
+  }
   return response.result
 }
 
 export async function fetchVersionMetadataList(product: string) {
-  const response = await fetch(
-    `${MKTG_CONTENT_API}/api/content/${product}/version-metadata?partial=true`,
-    DEFAULT_HEADERS
-  ).then((res) => res.json())
+  const url = `${MKTG_CONTENT_API}/api/content/${product}/version-metadata?partial=true`
+  const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
 
+  if (response.status_code !== 200) {
+    throw new Error(`Failed to fetch: ${url} | ${response.status_code}`)
+  }
   return response.result
 }
