@@ -16,8 +16,10 @@ export async function fetchNavData(
   const url = `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`
   const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
 
-  if (response.status_code !== 200) {
-    throw new Error(`Failed to fetch: ${url} | ${response.status_code}`)
+  if (response.meta.status_code !== 200) {
+    throw new Error(
+      `Failed to fetch: ${url} | ${JSON.stringify(response, null, 2)}`
+    )
   }
   return response.result
 }
@@ -29,8 +31,10 @@ export async function fetchDocument(
   const url = `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`
   const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
 
-  if (response.status_code !== 200) {
-    throw new Error(`Failed to fetch: ${url} | ${response.status_code}`)
+  if (response.meta.status_code !== 200) {
+    throw new Error(
+      `Failed to fetch: ${url} | ${JSON.stringify(response, null, 2)}`
+    )
   }
   return response.result
 }
@@ -39,8 +43,10 @@ export async function fetchVersionMetadataList(product: string) {
   const url = `${MKTG_CONTENT_API}/api/content/${product}/version-metadata?partial=true`
   const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
 
-  if (response.status_code !== 200) {
-    throw new Error(`Failed to fetch: ${url} | ${response.status_code}`)
+  if (response.meta.status_code !== 200) {
+    throw new Error(
+      `Failed to fetch: ${url} | ${JSON.stringify(response, null, 2)}`
+    )
   }
   return response.result
 }
