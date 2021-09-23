@@ -97,17 +97,23 @@ async function generateStaticProps({
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
 
   let versions = []
+  let latestVersion = null
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (ENABLE_VERSIONED_DOCS) {
+    // given: v0.5.x (latest), v0.4.x, v0.3.x
     const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
       params[paramId]
     )
-    const currentVersionNormalized = normalizeVersion(versionFromPath)
+    // versionFromPath should realistically only ever be "latest" | "v0.4.x" | "v0.3.x"
+    // It could be v0.5.x if a use navigates directly to it.
 
     const versionMetadataList = await fetchVersionMetadataList(productSlug)
     versions = versionMetadataList.map((e) => {
       const { isLatest, version } = e
+      if (isLatest) {
+        latestVersion = version
+      }
       return {
         name: isLatest ? 'latest' : version,
         label: isLatest ? `${version} (latest)` : version,
@@ -116,11 +122,16 @@ async function generateStaticProps({
 
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
-    if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
+    if (
+      process.env.VERCEL_ENV === 'production' &&
+      versionFromPath !== 'latest'
+    ) {
       // remove trailing index to ensure we fetch the right document from the DB
       const pathParamsNoIndex = paramsNoVersion.filter(
         (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
       )
+
+      const currentVersionNormalized = normalizeVersion(versionFromPath)
 
       const _fullPath = [
         'doc',
@@ -184,6 +195,7 @@ async function generateStaticProps({
     mdxSource,
     navData,
     versions,
+    latestVersion,
   }
 }
 
