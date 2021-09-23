@@ -3,17 +3,16 @@ import path from 'path'
 import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
-import {
-  loadVersionList,
-  loadVersionedDocument,
-  loadVersionedNavData,
-  getVersionFromPath,
-} from '@hashicorp/versioned-docs/server'
 import moize from 'moize'
-import { normalizeVersion } from '@hashicorp/versioned-docs/client'
-import renderPageMdx from './render-page-mdx'
 
-const cachedLoadVersionNavData = moize(loadVersionedNavData, {
+import renderPageMdx from './render-page-mdx'
+import { stripVersionFromPathParams, normalizeVersion } from './util'
+import { fetchNavData, fetchDocument, fetchVersionMetadataList } from './rpc'
+
+const ENABLE_VERSIONED_DOCS = process.env.ENABLE_VERSIONED_DOCS
+const VERCEL_ENV = process.env.VERCEL_ENV
+
+const cachedFetchNavData = moize(fetchNavData, {
   maxSize: moize.infinite,
 })
 
@@ -29,22 +28,17 @@ async function generateStaticPaths({
   paramId = DEFAULT_PARAM_ID,
   product,
   basePath,
-  currentVersion,
+  currentVersion = 'latest',
 }) {
   let navData
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
-  if (
-    process.env.ENABLE_VERSIONED_DOCS &&
-    process.env.VERCEL_ENV === 'production'
-  ) {
+  if (ENABLE_VERSIONED_DOCS && VERCEL_ENV === 'production') {
+    const currentVersionNormalized = normalizeVersion(currentVersion)
+
     // Fetch and parse navigation data
     navData = (
-      await cachedLoadVersionNavData(
-        product.slug,
-        basePath,
-        normalizeVersion(currentVersion)
-      )
+      await cachedFetchNavData(product.slug, basePath, currentVersionNormalized)
     ).navData
   } else {
     navData = await resolveNavData(navDataFile, localContentDir)
@@ -75,18 +69,17 @@ async function getPathsFromNavData(
 async function generateStaticProps({
   navDataFile,
   localContentDir,
-  params,
-  product,
+  params, // ["destroy"] | ["v0.5.x", "destroy"]
+  product: { name: productName, slug: productSlug },
   mainBranch = 'main',
   remarkPlugins = [],
   scope, // optional, I think?
   paramId = DEFAULT_PARAM_ID,
   basePath,
-  currentVersion,
 }) {
   const mdxRenderer = (mdx) =>
     renderPageMdx(mdx, {
-      productName: product.name,
+      productName,
       remarkPlugins,
       scope,
     })
@@ -97,47 +90,65 @@ async function generateStaticProps({
   let versions = []
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
-  if (process.env.ENABLE_VERSIONED_DOCS) {
-    const versionFromPath = getVersionFromPath(params[paramId])
+  if (ENABLE_VERSIONED_DOCS) {
+    const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
+      params[paramId]
+    )
+    const currentVersionNormalized = normalizeVersion(versionFromPath)
 
-    const currentVersionNormalized = normalizeVersion(currentVersion)
-
-    versions = await loadVersionList(product.slug)
+    const versionMetadataList = await fetchVersionMetadataList(productSlug)
+    versions = versionMetadataList.map((e) => {
+      const { isLatest, version } = e
+      return {
+        name: isLatest ? 'latest' : version,
+        label: isLatest ? `${version} (latest)` : version,
+      }
+    })
 
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
     if (process.env.VERCEL_ENV === 'production' || versionFromPath) {
       // remove trailing index to ensure we fetch the right document from the DB
-      const paramsNoIndex = (params[paramId] ?? []).filter(
-        (param, idx) =>
-          !(param === 'index' && idx === params[paramId].length - 1)
+      const pathParamsNoIndex = paramsNoVersion.filter(
+        (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
       )
-      const pagePathToLoad = versionFromPath
-        ? [basePath, ...paramsNoIndex].join('/')
-        : [basePath, currentVersionNormalized, ...paramsNoIndex].join('/')
 
-      let doc
-      const [{ mdxSource }, navData] = await Promise.all([
-        loadVersionedDocument(product.slug, pagePathToLoad).then(
-          (docResult) => {
-            doc = docResult
-            return mdxRenderer(docResult.markdownSource)
-          }
-        ),
-        cachedLoadVersionNavData(
-          product.slug,
-          basePath,
-          versionFromPath ?? currentVersionNormalized
-        ),
+      const _fullPath = [
+        'doc',
+        currentVersionNormalized,
+        basePath,
+        ...pathParamsNoIndex,
+      ].join('/')
+
+      const documentPromise = fetchDocument(productSlug, _fullPath)
+      const navDataPromise = cachedFetchNavData(
+        productSlug,
+        basePath,
+        currentVersionNormalized
+      )
+
+      const [document, navData] = await Promise.all([
+        documentPromise,
+        navDataPromise,
       ])
 
+      const mdxSource = mdxRenderer(document.markdownSource)
+      const frontMatter = document.metadata
+
       // Construct the githubFileUrl, used for "Edit this page" link
-      const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${doc.gitRef}/website/content/${doc.filePath}`
+      // https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx
+      // https://github.com/hashicorp/waypoint/blob/e591452/website/content/commands/index.mdx
+      // https://github.com/hashicorp/waypoint/blob/e591452e6f9a155a038d45158e05d904ba006d37/website/content/commands/index.mdx
+      // const githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${document.sha}/website/content/${doc.filePath}`
+
+      // UNSUPPORTED?
+      // Must be serializeable
+      const githubFileUrl = null
 
       return {
         versions,
         currentPath,
-        frontMatter: doc.metadata,
+        frontMatter,
         githubFileUrl,
         mdxSource,
         navData: navData.navData,
@@ -155,7 +166,7 @@ async function generateStaticProps({
   const { mdxSource, frontMatter } = await mdxRenderer(mdxString)
 
   // Construct the githubFileUrl, used for "Edit this page" link
-  const githubFileUrl = `https://github.com/hashicorp/${product.slug}/blob/${mainBranch}/website/${navNode.filePath}`
+  const githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${mainBranch}/website/${navNode.filePath}`
   // Return all the props
   return {
     currentPath,
@@ -260,4 +271,5 @@ export {
   getPathsFromNavData,
   validateNavData,
   validateFilePaths,
+  stripVersionFromPathParams,
 }
