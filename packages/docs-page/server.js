@@ -15,6 +15,9 @@ const VERCEL_ENV = process.env.VERCEL_ENV
 const cachedFetchNavData = moize(fetchNavData, {
   maxSize: moize.infinite,
 })
+const cachedFetchVersionMetadataList = moize(fetchVersionMetadataList, {
+  maxSize: moize.infinite,
+})
 
 // So far, we have a pattern of using a common value for
 // docs catchall route parameters: route/[[...page]].jsx.
@@ -28,19 +31,21 @@ async function generateStaticPaths({
   paramId = DEFAULT_PARAM_ID,
   product,
   basePath,
-  currentVersion = 'latest',
+  // currentVersion = 'latest',
 }) {
   let navData
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (ENABLE_VERSIONED_DOCS && VERCEL_ENV === 'production') {
-    const currentVersionNormalized = normalizeVersion(currentVersion)
+    console.log('Fetching remote nav data...')
 
+    // Fetch version metadata to get "latest"
+    const versionMetadataList = await cachedFetchVersionMetadataList()
+    const latest = versionMetadataList.find((e) => e.isLatest).version
     // Fetch and parse navigation data
-    navData = (
-      await cachedFetchNavData(product.slug, basePath, currentVersionNormalized)
-    ).navData
+    navData = (await cachedFetchNavData(product.slug, basePath, latest)).navData
   } else {
+    console.log('Resolving local nav data...')
     navData = await resolveNavData(navDataFile, localContentDir)
   }
 
