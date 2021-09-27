@@ -37,7 +37,6 @@ async function generateStaticPaths({
   paramId = DEFAULT_PARAM_ID,
   product,
   basePath,
-  // currentVersion = 'latest',
 }) {
   let navData
 
