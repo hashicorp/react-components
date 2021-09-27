@@ -14,4 +14,9 @@ module.exports = {
     required: true,
     properties: imageProps,
   },
+  className: {
+    type: 'string',
+    description:
+      'Optional className to add to the root element of the TextSplit.',
+  },
 }

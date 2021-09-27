@@ -69,7 +69,7 @@ interface AlertProps {
   url: string
   tag: string
   text: string
-  state: 'success' | 'warning' | 'error'
+  state?: 'success' | 'warning' | 'error'
   textColor: 'dark' | 'light'
   className?: string
 }
