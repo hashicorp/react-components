@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@hashicorp/react-image": "^4.0.3",
-    "@hashicorp/react-text-split": "^4.0.0"
+    "@hashicorp/react-text-split": "^4.0.0",
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
