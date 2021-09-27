@@ -7,7 +7,11 @@ import moize from 'moize'
 
 import renderPageMdx from './render-page-mdx'
 import { stripVersionFromPathParams, normalizeVersion } from './util'
-import { fetchNavData, fetchDocument, fetchVersionMetadataList } from './rpc'
+import {
+  fetchNavData,
+  fetchDocument,
+  fetchVersionMetadataList,
+} from './content-api'
 
 const ENABLE_VERSIONED_DOCS = process.env.ENABLE_VERSIONED_DOCS
 const VERCEL_ENV = process.env.VERCEL_ENV
@@ -108,7 +112,9 @@ async function generateStaticProps({
     // versionFromPath should realistically only ever be "latest" | "v0.4.x" | "v0.3.x"
     // It could be v0.5.x if a use navigates directly to it.
 
-    const versionMetadataList = await cachedFetchVersionMetadataList(productSlug)
+    const versionMetadataList = await cachedFetchVersionMetadataList(
+      productSlug
+    )
     versions = versionMetadataList.map((e) => {
       const { isLatest, version } = e
       if (isLatest) {
