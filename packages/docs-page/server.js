@@ -163,6 +163,7 @@ async function generateStaticProps({
 
       // Construct the githubFileUrl, used for "Edit this page" link
       // https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx
+      // https://github.com/hashicorp/waypoint/blob/v0.5.2/website/content/commands/index.mdx
       // https://github.com/hashicorp/waypoint/blob/e591452/website/content/commands/index.mdx
       // https://github.com/hashicorp/waypoint/blob/e591452e6f9a155a038d45158e05d904ba006d37/website/content/commands/index.mdx
       // const githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${document.sha}/website/content/${doc.filePath}`
@@ -298,5 +299,4 @@ export {
   getPathsFromNavData,
   validateNavData,
   validateFilePaths,
-  stripVersionFromPathParams,
 }
