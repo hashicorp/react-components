@@ -44,7 +44,7 @@ function addIsActiveToNode(navNode, currentPath, pathname) {
   }
   // If it's a node with a path value,
   // return true if the path is a match
-  if (navNode.path) {
+  if (typeof navNode.path == 'string') {
     const isActive = navNode.path === currentPath
     return { ...navNode, __isActive: isActive }
   }
