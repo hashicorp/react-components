@@ -115,13 +115,16 @@ async function generateStaticProps({
       productSlug
     )
     versions = versionMetadataList.map((e) => {
-      const { isLatest, version } = e
+      const { isLatest, version, display } = e
       if (isLatest) {
         latestVersion = version
       }
+
+      const displayValue = display ?? version
+
       return {
-        name: isLatest ? 'latest' : version,
-        label: isLatest ? `${version} (latest)` : version,
+        name: isLatest ? 'latest' : displayValue,
+        label: isLatest ? `${displayValue} (latest)` : displayValue,
       }
     })
 
