@@ -1,6 +1,18 @@
+import { NavData } from '@hashicorp/react-docs-sidenav/types'
 import path from 'path'
 
-export function getNodeFromPath(pathToMatch, navData, localContentDir) {
+export function flattenRoutes(nodes: NavData) {
+  return nodes.reduce((acc, n) => {
+    if (!('routes' in n)) return acc.concat(n)
+    return acc.concat(flattenRoutes(n.routes))
+  }, [])
+}
+
+export function getNodeFromPath(
+  pathToMatch: string,
+  navData: NavData,
+  localContentDir: string
+) {
   // If there is no path array, we return a
   // constructed "home page" node. This is just to
   // provide authoring convenience to not have to define
@@ -16,12 +28,7 @@ export function getNodeFromPath(pathToMatch, navData, localContentDir) {
   //  If it's not a landing page, then we search
   // through our navData to find the node with a path
   // that matches the pathArray we're looking for.
-  function flattenRoutes(nodes) {
-    return nodes.reduce((acc, n) => {
-      if (!n.routes) return acc.concat(n)
-      return acc.concat(flattenRoutes(n.routes))
-    }, [])
-  }
+
   const allNodes = flattenRoutes(navData)
   const matches = allNodes.filter((n) => n.path === pathToMatch)
   // Throw an error for missing files - if this happens,

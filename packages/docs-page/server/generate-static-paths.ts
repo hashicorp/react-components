@@ -14,13 +14,30 @@ const cachedFetchVersionMetadataList = moize(
   moizeOpts
 )
 
+export interface GenerateStaticPathsContext {
+  /** @example 'data/docs-nav-data.json' */
+  navDataFile: string
+  /** @example 'content/docs' */
+  localContentDir: string
+  /**
+   * @default 'page'
+   */
+  paramId?: string
+  /**
+   * @example { name: 'Waypoint', slug: 'waypoint' }
+   */
+  product: { name: string; slug: string }
+  /** @example 'docs' */
+  basePath: string
+}
+
 export async function generateStaticPaths({
   navDataFile,
   localContentDir,
   paramId = DEFAULT_PARAM_ID,
   product,
   basePath,
-}) {
+}: GenerateStaticPathsContext) {
   let navData
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var

@@ -1,3 +1,5 @@
+import path from 'path'
+import fs from 'fs'
 import moize, { Options } from 'moize'
 
 import {
@@ -12,6 +14,7 @@ import renderPageMdx from '../render-page-mdx'
 import { stripVersionFromPathParams, normalizeVersion } from '../util'
 
 import { resolveNavData } from './resolve-nav-data'
+import { getNodeFromPath } from './get-node-from-path'
 
 const moiseOpts: Options = { isPromise: true, maxSize: Infinity }
 const cachedFetchNavData = moize(fetchNavData, moiseOpts)
@@ -20,20 +23,31 @@ const cachedFetchVersionMetadataList = moize(
   moiseOpts
 )
 
+export interface GenerateStaticPropsContext {
+  navDataFile: string
+  localContentDir: string
+  params: Record<string, string[]> // {} | { page: ["destroy"] }
+  product: { name: string; slug: string }
+  mainBranch?: string // = 'main',
+  remarkPlugins?: any[]
+  scope?: any // optional, I think?
+  paramId?: string
+  basePath: string // 'docs'
+}
+
 export async function generateStaticProps({
   navDataFile,
   localContentDir,
-  params, // ["destroy"] | ["v0.5.x", "destroy"]
+  params,
   product: { name: productName, slug: productSlug },
   mainBranch = 'main',
   remarkPlugins = [],
-  scope, // optional, I think?
+  scope,
   paramId = DEFAULT_PARAM_ID,
   basePath,
-}) {
+}: GenerateStaticPropsContext) {
   const mdxRenderer = (mdx) =>
     renderPageMdx(mdx, {
-      productName,
       remarkPlugins,
       scope,
     })
