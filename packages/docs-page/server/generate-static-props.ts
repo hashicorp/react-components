@@ -16,11 +16,11 @@ import { stripVersionFromPathParams, normalizeVersion } from '../util'
 import { resolveNavData } from './resolve-nav-data'
 import { getNodeFromPath } from './get-node-from-path'
 
-const moiseOpts: Options = { isPromise: true, maxSize: Infinity }
-const cachedFetchNavData = moize(fetchNavData, moiseOpts)
+const moizeOpts: Options = { isPromise: true, maxSize: Infinity }
+const cachedFetchNavData = moize(fetchNavData, moizeOpts)
 const cachedFetchVersionMetadataList = moize(
   fetchVersionMetadataList,
-  moiseOpts
+  moizeOpts
 )
 
 export interface GenerateStaticPropsContext {
