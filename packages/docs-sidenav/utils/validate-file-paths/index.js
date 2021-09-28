@@ -17,7 +17,7 @@ async function validateNode(navNode, localDir) {
   // for Packer plugin documentation)
   if (navNode.remoteFile) return navNode
   // Handle local leaf nodes
-  if (navNode.path) {
+  if (typeof navNode.path == 'string') {
     const indexFilePath = path.join(navNode.path, 'index.mdx')
     const namedFilePath = `${navNode.path}.mdx`
     const hasIndexFile = fs.existsSync(

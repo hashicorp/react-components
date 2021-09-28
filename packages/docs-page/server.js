@@ -66,9 +66,12 @@ async function getPathsFromNavData(
 ) {
   //  Transform navigation data into path arrays
   const pagePathArrays = getPathArraysFromNodes(navDataResolved)
-  // Include an empty array for the "/" index page path
-  const allPathArrays = [[]].concat(pagePathArrays)
-  const paths = allPathArrays.map((p) => ({ params: { [paramId]: p } }))
+  // Ensure we include an empty array for the "/" index page path
+  // (may be included in nav-data, eg for Terraform, or may not, eg for all other sites)
+  const hasIndexPage = pagePathArrays.filter((p) => p == []).length > 0
+  if (!hasIndexPage) pagePathArrays.unshift([])
+  // Return the array of all page paths
+  const paths = pagePathArrays.map((p) => ({ params: { [paramId]: p } }))
   return paths
 }
 

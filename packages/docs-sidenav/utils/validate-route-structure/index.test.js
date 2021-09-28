@@ -1,19 +1,6 @@
 import validateRouteStructure from './'
 
 describe('<DocsSidenav /> - validate-file-paths', () => {
-  it("throws an error if a NavLeaf's path is an empty string", () => {
-    const navData = [
-      {
-        title: 'Whoops I Left The Path Empty',
-        path: '',
-      },
-    ]
-    const emptyPathError = `Empty path value on NavLeaf. Path values must be non-empty strings. Node: ${JSON.stringify(
-      navData[0]
-    )}.`
-    expect(() => validateRouteStructure(navData)).toThrow(emptyPathError)
-  })
-
   it("throws an error if a NavLeaf's path is nested at the wrong depth", () => {
     const navData = [
       {
