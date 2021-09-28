@@ -1,0 +1,418 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`contentApi fetchDocument should return the requested document 1`] = `
+Object {
+  "created_at": "Thu Sep 23 2021 05:12:48 GMT+0000 (Coordinated Universal Time)",
+  "fullPath": "doc/v0.5.x/commands/k8s-bootstrap",
+  "markdownSource": "# Waypoint K8s bootstrap
+
+Command: \`waypoint k8s bootstrap\`
+
+Post-Helm-install bootstrapping
+
+## Usage
+
+Usage: \`waypoint k8s bootstrap [options]\`
+
+Bootstrap a Waypoint installation from the Waypoint Helm chart.
+This is an internal command and not expected to be manually executed.
+This command only works with in-cluster Kubernetes authentication and
+will not work with out-of-cluster kubectl configuration.
+
+This command will do a number of things:
+
+1.  Equivalent of \\"waypoint server bootstrap\\"
+2.  Write a bootstrap token to the given Kubernetes secret
+3.  Create a token for a static runner and write it to the configured
+    Kubernetes secret.
+4.  Configure Kubernetes on-demand runners.
+
+This command will only run if the server hasn't already been bootstrapped.
+If the server is bootstrapped, this will not run again. This doesn't handle
+partial failures well: if the server bootstrap succeeds but writing the
+secret fails, then the Waypoint installation should be fully uninstalled
+and then reinstalled. This is only use for fresh installations so there
+should be no concern of data loss in the event of a bootstrap failure.
+
+#### Global Options
+
+-   \`-plain\` - Plain output: no colors, no animation.
+-   \`-app=<string>\` - App to target. Certain commands require a single app target for Waypoint configurations with multiple apps. If you have a single app, then this can be ignored.
+-   \`-workspace=<string>\` - Workspace to operate in.
+
+#### Connection Options
+
+-   \`-server-addr=<string>\` - Address for the server.
+-   \`-server-tls\` - True if the server should be connected to via TLS.
+-   \`-server-tls-skip-verify\` - True to skip verification of the TLS certificate advertised by the server.
+
+#### Command Options
+
+-   \`-root-token-secret=<string>\` - The name of the Kubernetes secret to write the root token to.
+-   \`-runner-token-secret=<string>\` - The name of the Kubernetes secret to write the runner token to.
+-   \`-odr-image=<string>\` - The name and label of the container image to use for ODR.
+-   \`-odr-service-account=<string>\` - The name of the Kubernetes service account to use for ODR.
+-   \`-odr-image-pull-policy=<string>\` - The pull policy to use for the container image.
+-   \`-advertise-service=<string>\` - The name of the service to advertise.
+-   \`-advertise-tls\` - True if the advertise addr supports TLS.
+-   \`-advertise-tls-skip-verify\` - True if the advertise addr TLS shouldn't be verified.
+",
+  "mdxTransforms": Array [
+    "extract-frontmatter",
+    "include-partials",
+    "paragraph-custom-alerts",
+  ],
+  "metadata": Object {
+    "description": "Post-Helm-install bootstrapping",
+    "layout": "commands",
+    "page_title": "Commands: K8s bootstrap",
+    "sidebar_title": "k8s bootstrap",
+  },
+  "product": "waypoint",
+  "sha": "bf16748cdeac6915a65442086a347ad56488b55f",
+  "subpath": "commands",
+  "version": "v0.5.x",
+}
+`;
+
+exports[`contentApi fetchDocument should throw if a document is not found 1`] = `
+"Failed to fetch: http://localhost:3001/api/content/waypoint/doc/latest/commands/k8s-bootstrap | {
+  \\"meta\\": {
+    \\"status_code\\": 404,
+    \\"status_text\\": \\"Not Found\\"
+  }
+}"
+`;
+
+exports[`contentApi fetchNavData should return the requested navdata 1`] = `
+Object {
+  "created_at": "Thu Sep 23 2021 07:56:42 GMT+0000 (Coordinated Universal Time)",
+  "fullPath": "nav-data/v0.5.x/commands",
+  "navData": Array [
+    Object {
+      "path": "build",
+      "title": "build",
+    },
+    Object {
+      "path": "deploy",
+      "title": "deploy",
+    },
+    Object {
+      "path": "context",
+      "title": "context",
+    },
+    Object {
+      "path": "context-inspect",
+      "title": "context-inspect",
+    },
+    Object {
+      "path": "destroy",
+      "title": "destroy",
+    },
+    Object {
+      "path": "exec",
+      "title": "exec",
+    },
+    Object {
+      "path": "init",
+      "title": "init",
+    },
+    Object {
+      "path": "install",
+      "title": "install",
+    },
+    Object {
+      "path": "login",
+      "title": "login",
+    },
+    Object {
+      "path": "logs",
+      "title": "logs",
+    },
+    Object {
+      "path": "project-apply",
+      "title": "project apply",
+    },
+    Object {
+      "path": "release",
+      "title": "release",
+    },
+    Object {
+      "path": "ui",
+      "title": "ui",
+    },
+    Object {
+      "path": "up",
+      "title": "up",
+    },
+    Object {
+      "divider": true,
+    },
+    Object {
+      "path": "artifact-build",
+      "title": "artifact build",
+    },
+    Object {
+      "path": "artifact-list-builds",
+      "title": "artifact list-builds",
+    },
+    Object {
+      "path": "artifact-list",
+      "title": "artifact list",
+    },
+    Object {
+      "path": "artifact-push",
+      "title": "artifact push",
+    },
+    Object {
+      "path": "auth-method-list",
+      "title": "auth-method list",
+    },
+    Object {
+      "path": "auth-method-inspect",
+      "title": "auth-method inspect",
+    },
+    Object {
+      "path": "auth-method-set-oidc",
+      "title": "auth-method set oidc",
+    },
+    Object {
+      "path": "auth-method-delete",
+      "title": "auth-method delete",
+    },
+    Object {
+      "path": "config-get",
+      "title": "config get",
+    },
+    Object {
+      "path": "config-set",
+      "title": "config set",
+    },
+    Object {
+      "path": "config-source-get",
+      "title": "config source-get",
+    },
+    Object {
+      "path": "config-source-set",
+      "title": "config source-set",
+    },
+    Object {
+      "path": "config-sync",
+      "title": "config sync",
+    },
+    Object {
+      "path": "context-clear",
+      "title": "context clear",
+    },
+    Object {
+      "path": "context-create",
+      "title": "context create",
+    },
+    Object {
+      "path": "context-delete",
+      "title": "context delete",
+    },
+    Object {
+      "path": "context-list",
+      "title": "context list",
+    },
+    Object {
+      "path": "context-rename",
+      "title": "context rename",
+    },
+    Object {
+      "path": "context-use",
+      "title": "context use",
+    },
+    Object {
+      "path": "context-verify",
+      "title": "context verify",
+    },
+    Object {
+      "path": "deployment-deploy",
+      "title": "deployment deploy",
+    },
+    Object {
+      "path": "deployment-destroy",
+      "title": "deployment destroy",
+    },
+    Object {
+      "path": "deployment-list",
+      "title": "deployment list",
+    },
+    Object {
+      "path": "docs",
+      "title": "docs",
+    },
+    Object {
+      "path": "fmt",
+      "title": "fmt",
+    },
+    Object {
+      "path": "hostname-delete",
+      "title": "hostname delete",
+    },
+    Object {
+      "path": "hostname-list",
+      "title": "hostname list",
+    },
+    Object {
+      "path": "hostname-register",
+      "title": "hostname register",
+    },
+    Object {
+      "path": "plugin",
+      "title": "plugin",
+    },
+    Object {
+      "path": "project-inspect",
+      "title": "project inspect",
+    },
+    Object {
+      "path": "project-list",
+      "title": "project list",
+    },
+    Object {
+      "path": "release-list",
+      "title": "release list",
+    },
+    Object {
+      "path": "runner-agent",
+      "title": "runner agent",
+    },
+    Object {
+      "path": "runner-list",
+      "title": "runner list",
+    },
+    Object {
+      "path": "runner-on-demand-inspect",
+      "title": "runner on-demand inspect",
+    },
+    Object {
+      "path": "runner-on-demand-set",
+      "title": "runner on-demand set",
+    },
+    Object {
+      "path": "server-bootstrap",
+      "title": "server bootstrap",
+    },
+    Object {
+      "path": "server-config-set",
+      "title": "server config-set",
+    },
+    Object {
+      "path": "server-install",
+      "title": "server install",
+    },
+    Object {
+      "path": "server-restore",
+      "title": "server restore",
+    },
+    Object {
+      "path": "server-run",
+      "title": "server run",
+    },
+    Object {
+      "path": "server-snapshot",
+      "title": "server snapshot",
+    },
+    Object {
+      "path": "server-uninstall",
+      "title": "server uninstall",
+    },
+    Object {
+      "path": "server-upgrade",
+      "title": "server upgrade",
+    },
+    Object {
+      "path": "status",
+      "title": "status",
+    },
+    Object {
+      "path": "user-inspect",
+      "title": "user inspect",
+    },
+    Object {
+      "path": "user-invite",
+      "title": "user invite",
+    },
+    Object {
+      "path": "user-modify",
+      "title": "user modify",
+    },
+    Object {
+      "path": "user-token",
+      "title": "user token",
+    },
+    Object {
+      "path": "version",
+      "title": "version",
+    },
+    Object {
+      "divider": true,
+    },
+    Object {
+      "path": "k8s-bootstrap",
+      "title": "k8s bootstrap",
+    },
+    Object {
+      "path": "token-exchange",
+      "title": "token exchange",
+    },
+    Object {
+      "path": "token-invite",
+      "title": "token invite",
+    },
+    Object {
+      "path": "token-new",
+      "title": "token new",
+    },
+  ],
+  "product": "waypoint",
+  "sha": "214900057317f9fd63eae31f3414a0ba383faa9e",
+  "subpath": "commands",
+  "version": "v0.5.x",
+}
+`;
+
+exports[`contentApi fetchNavData should throw if a navData is not found 1`] = `
+"Failed to fetch: http://localhost:3001/api/content/waypoint/nav-data/v0.9000.x/commands | {
+  \\"meta\\": {
+    \\"status_code\\": 404,
+    \\"status_text\\": \\"Not Found\\"
+  }
+}"
+`;
+
+exports[`contentApi fetchVersionMetadataList should return an empty list for invalid product name 1`] = `Array []`;
+
+exports[`contentApi fetchVersionMetadataList should return the requested version metadata list 1`] = `
+Array [
+  Object {
+    "created_at": "Thu Sep 23 2021 07:56:45 GMT+0000 (Coordinated Universal Time)",
+    "display": "v0.5.2",
+    "fullPath": "version-metadata/v0.5.x",
+    "isLatest": true,
+    "product": "waypoint",
+    "ref": "kevin/versioned-docs",
+    "sha": "214900057317f9fd63eae31f3414a0ba383faa9e",
+    "version": "v0.5.x",
+  },
+  Object {
+    "created_at": "Tue Sep 21 2021 21:05:43 GMT+0000 (Coordinated Universal Time)",
+    "fullPath": "version-metadata/v0.4.x",
+    "product": "waypoint",
+    "ref": "release/0.4.x",
+    "sha": "c6cd81e10f30d339c113772b5f978d2f96cd1a2e",
+    "version": "v0.4.x",
+  },
+  Object {
+    "created_at": "Wed Sep 22 2021 17:40:36 GMT+0000 (Coordinated Universal Time)",
+    "fullPath": "version-metadata/v0.3.x",
+    "product": "waypoint",
+    "ref": "refs/heads/release/0.3.x",
+    "sha": "61a1d140146321a8d03859ba8b336bd5baa55f67",
+    "version": "v0.3.x",
+  },
+]
+`;
