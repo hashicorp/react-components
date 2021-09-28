@@ -16,14 +16,10 @@ import {
 const ENABLE_VERSIONED_DOCS = process.env.ENABLE_VERSIONED_DOCS
 const VERCEL_ENV = process.env.VERCEL_ENV
 
-const cachedFetchNavData = moize(fetchNavData, {
-  maxSize: moize.infinite,
-  isPromise: true,
-})
-const cachedFetchVersionMetadataList = moize(fetchVersionMetadataList, {
-  maxSize: moize.infinite,
-  isPromise: true,
-})
+const cachedFetchNavData = moize.infinite.promise(fetchNavData)
+const cachedFetchVersionMetadataList = moize.infinite.promise(
+  fetchVersionMetadataList
+)
 
 // So far, we have a pattern of using a common value for
 // docs catchall route parameters: route/[[...page]].jsx.
