@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import SelectInput from '@hashicorp/react-select-input'
 
-import { getVersionFromPath } from './util'
+import { getVersionFromPath, removeVersionFromPath } from './util'
 
 interface Props {
   versions: { label: string; name: string }[]
@@ -18,14 +18,21 @@ const VersionSelect: React.ComponentType<Props> = ({ versions }) => {
   const version = getVersionFromPath(asPath)
 
   const onVersionSelect = (newVersion: string) => {
-    const remove = version ? 1 : 0
-
-    if (newVersion === 'latest' && version) {
-      pathParts.splice(2, remove)
-    } else {
-      pathParts.splice(2, remove, newVersion)
+    // If selecting version same as current version, noop
+    if (newVersion === version) return
+    // If selecting latest...
+    if (newVersion === 'latest') {
+      if (!version) {
+        // If route is latest, noop
+        return
+      } else {
+        // Else, remove version from path; Navigate to latest
+        return push(removeVersionFromPath(asPath))
+      }
     }
 
+    // If selecting version different than current version
+    pathParts.splice(2, 0, newVersion)
     push(pathParts.join('/'))
   }
 
