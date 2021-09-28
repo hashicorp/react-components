@@ -1,4 +1,4 @@
-import { generateStaticPaths, generateStaticProps } from './server'
+import { generateStaticPaths, generateStaticProps } from './'
 
 const NAV_DATA_FILE = 'data/commands-nav-data.json'
 const CONTENT_DIR = 'content/commands'
