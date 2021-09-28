@@ -131,7 +131,7 @@ async function generateStaticProps({
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
     if (
-      process.env.VERCEL_ENV === 'production' &&
+      process.env.VERCEL_ENV === 'production' ||
       versionFromPath !== 'latest'
     ) {
       // remove trailing index to ensure we fetch the right document from the DB
@@ -139,7 +139,10 @@ async function generateStaticProps({
         (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
       )
 
-      const currentVersionNormalized = normalizeVersion(versionFromPath)
+      const currentVersionNormalized =
+        versionFromPath === 'latest'
+          ? latestVersion
+          : normalizeVersion(versionFromPath)
 
       const _fullPath = [
         'doc',
