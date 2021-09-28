@@ -183,7 +183,7 @@ function NavTree({ baseRoute, content }) {
       )
     }
     // Individual pages (leaf nodes)
-    if (item.path) {
+    if (typeof item.path == 'string') {
       return (
         <NavLeaf
           key={item.path}
