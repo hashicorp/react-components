@@ -117,7 +117,9 @@ function validateBranchRoutes(navNodes, depth = 0) {
   // that don't share the same parent path.
   if (uniqueParents.length > 1) {
     throw new Error(
-      `Found mismatched paths at depth ${depth}: ${JSON.stringify(
+      `Found mismatched paths at depth ${depth}, with paths: ${JSON.stringify(
+        routePaths
+      )}. Implies mismatched parent directories: ${JSON.stringify(
         uniqueParents
       )}.`
     )
