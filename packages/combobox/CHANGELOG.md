@@ -1,5 +1,11 @@
 # @hashicorp/react-combobox
 
+## 1.0.2
+
+### Patch Changes
+
+- [#344](https://github.com/hashicorp/react-components/pull/344) [`41261db`](https://github.com/hashicorp/react-components/commit/41261dbf5a438bb9ce8d6b74f3985f1598b4c46f) Thanks [@jmfury](https://github.com/jmfury)! - Move formik to peerDependencies
+
 ## 1.0.1
 
 ### Patch Changes
