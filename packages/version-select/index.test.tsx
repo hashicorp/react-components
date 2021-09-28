@@ -13,9 +13,9 @@ const useRouterMock = mocked(useRouter)
 const mockPush = jest.fn()
 
 const VERSIONS = [
-  { name: 'latest', label: 'latest' },
-  { name: 'v0.5.1', label: 'v0.5.1' },
-  { name: 'v0.4.0', label: 'v0.4.0' },
+  { name: 'latest', label: 'v0.5.x (latest)' },
+  { name: 'v0.4.x', label: 'v0.4.x' },
+  { name: 'v0.3.x', label: 'v0.3.x' },
 ]
 
 const defaultProps = {
@@ -66,14 +66,14 @@ describe('<VersionSelect />', () => {
       return ({
         route: '/docs/[[...page]]',
         pathname: '/docs/[[...page]]',
-        asPath: '/docs/v0.5.1/some/nested/article',
+        asPath: '/docs/v0.4.x/some/nested/article',
         push: mockPush,
       } as unknown) as Router
     })
     const { getByRole } = render(<VersionSelect {...defaultProps} />)
 
     const button = getByRole('button')
-    expect(button).toHaveTextContent('v0.5.1')
+    expect(button).toHaveTextContent('v0.4.x')
   })
 
   it('should navigate to a selected version', () => {
@@ -97,7 +97,7 @@ describe('<VersionSelect />', () => {
     const options = getAllByRole('option')
     userEvent.click(options[index])
 
-    expect(mockPush).toHaveBeenNthCalledWith(1, '/commands/v0.5.1')
+    expect(mockPush).toHaveBeenNthCalledWith(1, '/commands/v0.4.x')
   })
 
   it('should navigate to the latest version', () => {
@@ -105,7 +105,7 @@ describe('<VersionSelect />', () => {
       return ({
         route: '/commands/[[...page]]',
         pathname: '/commands/[[...page]]',
-        asPath: '/commands/v0.5.1',
+        asPath: '/commands/v0.4.x',
         push: mockPush,
       } as unknown) as Router
     })
@@ -150,7 +150,7 @@ describe('<VersionSelect />', () => {
 
     expect(mockPush).toHaveBeenNthCalledWith(
       1,
-      '/docs/v0.4.0/some/nested/article'
+      '/docs/v0.3.x/some/nested/article'
     )
   })
 
@@ -160,9 +160,9 @@ describe('<VersionSelect />', () => {
         route: '/docs/[[...page]]',
         pathname: '/docs/[[...page]]',
         query: {
-          page: ['v0.4.0', 'some', 'nested', 'article'],
+          page: ['v0.4.x', 'some', 'nested', 'article'],
         },
-        asPath: '/docs/v0.4.0/some/nested/article',
+        asPath: '/docs/v0.4.x/some/nested/article',
         push: mockPush,
       } as unknown) as Router
     })
@@ -179,5 +179,61 @@ describe('<VersionSelect />', () => {
     userEvent.click(options[index])
 
     expect(mockPush).toHaveBeenNthCalledWith(1, '/docs/some/nested/article')
+  })
+
+  it('should noop if selecting latest, while on latest', () => {
+    useRouterMock.mockImplementation(() => {
+      return ({
+        route: '/docs/[[...page]]',
+        pathname: '/docs/[[...page]]',
+        query: {
+          page: ['some', 'nested', 'article'],
+        },
+        asPath: '/docs/some/nested/article',
+        push: mockPush,
+      } as unknown) as Router
+    })
+
+    const { getByRole, getAllByRole } = render(
+      <VersionSelect {...defaultProps} />
+    )
+    const index = 0
+
+    const combobox = getByRole('combobox')
+    userEvent.click(combobox)
+
+    const options = getAllByRole('option')
+    userEvent.click(options[index])
+
+    expect(mockPush).not.toHaveBeenCalled()
+  })
+
+  it('should noop if selecting a version, while on the same version', () => {
+    const currentVersion = 'v0.4.x'
+
+    useRouterMock.mockImplementation(() => {
+      return ({
+        route: '/docs/[[...page]]',
+        pathname: '/docs/[[...page]]',
+        query: {
+          page: ['some', 'nested', 'article'],
+        },
+        asPath: `/docs/${currentVersion}/some/nested/article`,
+        push: mockPush,
+      } as unknown) as Router
+    })
+
+    const { getByRole, getAllByRole } = render(
+      <VersionSelect {...defaultProps} />
+    )
+    const index = VERSIONS.findIndex((v) => v.name === currentVersion)
+
+    const combobox = getByRole('combobox')
+    userEvent.click(combobox)
+
+    const options = getAllByRole('option')
+    userEvent.click(options[index])
+
+    expect(mockPush).not.toHaveBeenCalled()
   })
 })
