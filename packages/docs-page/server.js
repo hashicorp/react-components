@@ -123,7 +123,7 @@ async function generateStaticProps({
       const displayValue = display ?? version
 
       return {
-        name: isLatest ? 'latest' : displayValue,
+        name: isLatest ? 'latest' : version,
         label: isLatest ? `${displayValue} (latest)` : displayValue,
       }
     })
