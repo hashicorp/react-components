@@ -100,14 +100,14 @@ export async function generateStaticProps({
           ? latestVersion
           : normalizeVersion(versionFromPath)
 
-      const _fullPath = [
+      const fullPath = [
         'doc',
         currentVersionNormalized,
         basePath,
         ...pathParamsNoIndex,
       ].join('/')
 
-      const documentPromise = fetchDocument(productSlug, _fullPath)
+      const documentPromise = fetchDocument(productSlug, fullPath)
       const navDataPromise = cachedFetchNavData(
         productSlug,
         basePath,
