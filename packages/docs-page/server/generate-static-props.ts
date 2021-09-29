@@ -35,6 +35,46 @@ export interface GenerateStaticPropsContext {
   basePath: string // 'docs'
 }
 
+/**
+ * TODO: export this from future content-api client
+ * @see https://app.asana.com/0/1100423001970639/1201071725174928/f
+ */
+interface VersionMetadataItem {
+  product: string
+  ref: string
+  version: string
+  created_at: string
+  display?: string
+  sha: string
+  isLatest?: boolean
+  fullPath: string
+}
+
+interface VersionSelectItem {
+  name: string
+  label: string
+}
+/**
+ * formats a list of version-metadata to
+ * be passed to `<VersionSelect versions=[...] />`
+ */
+export function mapVersionList(
+  list: VersionMetadataItem[]
+): VersionSelectItem[] {
+  const versions = list.map((e) => {
+    const { isLatest, version, display } = e
+
+    const displayValue = display ?? version
+
+    return {
+      name: isLatest ? 'latest' : version,
+      label: isLatest ? `${displayValue} (latest)` : displayValue,
+    }
+  })
+
+  return versions
+}
+
 export async function generateStaticProps({
   navDataFile,
   localContentDir,
@@ -55,9 +95,6 @@ export async function generateStaticProps({
   // Build the currentPath from page parameters
   const currentPath = params[paramId] ? params[paramId].join('/') : ''
 
-  let versions = []
-  let latestVersion = null
-
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (ENABLE_VERSIONED_DOCS) {
     // given: v0.5.x (latest), v0.4.x, v0.3.x
@@ -67,22 +104,9 @@ export async function generateStaticProps({
     // versionFromPath should realistically only ever be "latest" | "v0.4.x" | "v0.3.x"
     // It could be v0.5.x if a use navigates directly to it.
 
-    const versionMetadataList = await cachedFetchVersionMetadataList(
+    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
       productSlug
     )
-    versions = versionMetadataList.map((e) => {
-      const { isLatest, version, display } = e
-      if (isLatest) {
-        latestVersion = version
-      }
-
-      const displayValue = display ?? version
-
-      return {
-        name: isLatest ? 'latest' : version,
-        label: isLatest ? `${displayValue} (latest)` : displayValue,
-      }
-    })
 
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
@@ -95,14 +119,16 @@ export async function generateStaticProps({
         (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
       )
 
-      const currentVersionNormalized =
+      const latestVersion = versionMetadataList.find((e) => e.isLatest)?.version
+
+      const versionToFetch =
         versionFromPath === 'latest'
           ? latestVersion
           : normalizeVersion(versionFromPath)
 
       const fullPath = [
         'doc',
-        currentVersionNormalized,
+        versionToFetch,
         basePath,
         ...pathParamsNoIndex,
       ].join('/')
@@ -111,7 +137,7 @@ export async function generateStaticProps({
       const navDataPromise = cachedFetchNavData(
         productSlug,
         basePath,
-        currentVersionNormalized
+        versionToFetch
       )
 
       const [document, navData] = await Promise.all([
@@ -134,7 +160,7 @@ export async function generateStaticProps({
       const githubFileUrl = null
 
       return {
-        versions,
+        versions: mapVersionList(versionMetadataList),
         currentPath,
         frontMatter,
         githubFileUrl,
@@ -162,7 +188,6 @@ export async function generateStaticProps({
     githubFileUrl,
     mdxSource,
     navData,
-    versions,
-    latestVersion,
+    versions: [],
   }
 }
