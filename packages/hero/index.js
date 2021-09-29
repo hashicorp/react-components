@@ -65,7 +65,7 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
               url={alert.url}
               tag={alert.tag}
               text={alert.text}
-              textColor={backgroundTheme}
+              textColor={backgroundTheme === 'light' ? 'dark' : 'light'}
               className={s.headlineAlert}
             />
           )}
