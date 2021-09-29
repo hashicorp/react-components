@@ -147,9 +147,9 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
 export interface DocsPageProps {
   product: { name: string; slug: string }
   baseRoute: string
-  showEditPage: boolean
-  showVersionSelect: boolean
-  additionalComponents: MDXProviderComponentsProp
+  showEditPage?: boolean
+  showVersionSelect?: boolean
+  additionalComponents?: MDXProviderComponentsProp
   staticProps: {
     mdxSource: MDXRemoteSerializeResult
     frontMatter: {
