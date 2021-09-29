@@ -1,5 +1,5 @@
 .root {
-  --background: var(--white);
+  --background: var(--gray-6);
   --text-color-display: var(--gray-1);
   --text-color-body: var(--gray-2);
 
@@ -19,6 +19,12 @@
 
   &.theme-dark {
     --background: var(--black);
+    --text-color-display: var(--white);
+    --text-color-body: var(--gray-5);
+  }
+
+  &.theme-brand {
+    --background: var(--brand);
     --text-color-display: var(--white);
     --text-color-body: var(--gray-5);
   }
