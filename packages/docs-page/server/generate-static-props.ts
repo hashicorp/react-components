@@ -7,7 +7,7 @@ import {
   fetchDocument,
   fetchVersionMetadataList,
 } from '../content-api'
-import { ENABLE_VERSIONED_DOCS, DEFAULT_PARAM_ID } from './consts'
+import { DEFAULT_PARAM_ID } from './consts'
 
 import renderPageMdx from '../render-page-mdx'
 
@@ -75,17 +75,25 @@ export function mapVersionList(
   return versions
 }
 
-export async function generateStaticProps({
-  navDataFile,
-  localContentDir,
-  params,
-  product: { name: productName, slug: productSlug },
-  mainBranch = 'main',
-  remarkPlugins = [],
-  scope,
-  paramId = DEFAULT_PARAM_ID,
-  basePath,
-}: GenerateStaticPropsContext) {
+const defaultOptions = {
+  VERCEL_ENV: process.env.VERCEL_ENV,
+  ENABLE_VERSIONED_DOCS: process.env.ENABLE_VERSIONED_DOCS,
+}
+
+export async function generateStaticProps(
+  {
+    navDataFile,
+    localContentDir,
+    params,
+    product: { name: productName, slug: productSlug },
+    mainBranch = 'main',
+    remarkPlugins = [],
+    scope,
+    paramId = DEFAULT_PARAM_ID,
+    basePath,
+  }: GenerateStaticPropsContext,
+  { VERCEL_ENV, ENABLE_VERSIONED_DOCS } = defaultOptions
+) {
   const mdxRenderer = (mdx) =>
     renderPageMdx(mdx, {
       remarkPlugins,
@@ -110,10 +118,7 @@ export async function generateStaticProps({
 
     // Only load docs content from the DB if we're in production or there's an explicit version in the path
     // Preview and dev environments will read the "latest" content from the filesystem
-    if (
-      process.env.VERCEL_ENV === 'production' ||
-      versionFromPath !== 'latest'
-    ) {
+    if (VERCEL_ENV === 'production' || versionFromPath !== 'latest') {
       // remove trailing index to ensure we fetch the right document from the DB
       const pathParamsNoIndex = paramsNoVersion.filter(
         (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)

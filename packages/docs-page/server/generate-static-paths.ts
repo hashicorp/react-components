@@ -5,7 +5,7 @@ import { fetchNavData, fetchVersionMetadataList } from '../content-api'
 import { getPathsFromNavData } from './get-paths-from-nav-data'
 import { resolveNavData } from './resolve-nav-data'
 
-import { ENABLE_VERSIONED_DOCS, VERCEL_ENV, DEFAULT_PARAM_ID } from './consts'
+import { DEFAULT_PARAM_ID } from './consts'
 
 const moizeOpts: Options = { isPromise: true, maxSize: Infinity }
 const cachedFetchNavData = moize(fetchNavData, moizeOpts)
@@ -31,13 +31,21 @@ export interface GenerateStaticPathsContext {
   basePath: string
 }
 
-export async function generateStaticPaths({
-  navDataFile,
-  localContentDir,
-  paramId = DEFAULT_PARAM_ID,
-  product,
-  basePath,
-}: GenerateStaticPathsContext) {
+const defaultOptions = {
+  VERCEL_ENV: process.env.VERCEL_ENV,
+  ENABLE_VERSIONED_DOCS: process.env.ENABLE_VERSIONED_DOCS,
+}
+
+export async function generateStaticPaths(
+  {
+    navDataFile,
+    localContentDir,
+    paramId = DEFAULT_PARAM_ID,
+    product,
+    basePath,
+  }: GenerateStaticPathsContext,
+  { ENABLE_VERSIONED_DOCS, VERCEL_ENV } = defaultOptions
+) {
   let navData
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
