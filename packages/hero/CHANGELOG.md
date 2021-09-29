@@ -1,5 +1,11 @@
 # @hashicorp/react-hero
 
+## 8.0.2
+
+### Patch Changes
+
+- [#363](https://github.com/hashicorp/react-components/pull/363) [`375b439`](https://github.com/hashicorp/react-components/commit/375b4394b4bc6fe8e376064f6201e5c6c1cc8e7a) Thanks [@BRKalow](https://github.com/BRKalow)! - Adjust nested alert text color in hero to be the opposite of the backgroundTheme
+
 ## 8.0.1
 
 ### Patch Changes

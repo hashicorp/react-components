@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.2.5
+
+### Patch Changes
+
+- [#362](https://github.com/hashicorp/react-components/pull/362) [`77e5712`](https://github.com/hashicorp/react-components/commit/77e5712336ebe5303ba9cdd0363fd13a7e7cb14f) Thanks [@BRKalow](https://github.com/BRKalow)! - Adjust prop interface to make showVersionSelect, additionalComponents, and showEditPage optional
+
 ## 14.2.4
 
 ### Patch Changes
