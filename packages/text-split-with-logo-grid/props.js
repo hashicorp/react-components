@@ -34,4 +34,9 @@ module.exports = {
       },
     ],
   },
+  className: {
+    type: 'string',
+    description:
+      'Optional className to add to the root element of the TextSplit.',
+  },
 }
