@@ -23,7 +23,7 @@ export function getPropsForPage(schema, params) {
           const name = capitalCase(serviceId)
           const slug = getServiceSlug(serviceId)
           const operations = operationObjects.filter(
-            (o) => getServiceId(o.operationId) === serviceId
+            (o) => getServiceId(o) === serviceId
           )
           return { name, slug, operations }
         })[0]
@@ -62,16 +62,28 @@ function getServiceSlug(serviceId) {
 }
 
 /* Given an operationId, return the "serviceId" */
-function getServiceId(operationId) {
+function getServiceId(operation) {
   // We expect operationIds to have two parts, separated by an underscore
   // The "serviceId" is the first part of the value
-  return operationId.split('_')[0]
+  //
+  // Previous operationId-based approach:
+  // return operation.operationId.split('_')[0]
+  //
+  // Revised tag-based approach:
+  const { tags } = operation
+  if (!tags || tags.length == 0 || typeof tags[0] !== 'string') {
+    throw new Error(
+      `Error in .swagger.json file: all operation objects must have at least one valid 'tag' string, to be used to group operations by service. Operation with 'operationId' '${operation.operationId}' appears to have empty tags.`
+    )
+  }
+  const tagParts = tags[0].split('.')
+  return tagParts[tagParts.length - 1]
 }
 
 /* Given a schema, return an array of unique operation "category" strings */
 export function getServiceIds(operationObjects) {
   const operationIdCategories = operationObjects
-    .map((o) => getServiceId(o.operationId))
+    .map((o) => getServiceId(o))
     .sort()
   // Several related operationIds may have the same "category" part,
   // so we filter for unique values before returning
