@@ -1,5 +1,11 @@
 # @hashicorp/react-version-select
 
+## 0.2.2
+
+### Patch Changes
+
+- [#368](https://github.com/hashicorp/react-components/pull/368) [`4e65bce`](https://github.com/hashicorp/react-components/commit/4e65bcef5e570f8634e14d46439a5e50bc84796f) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Fix a bug where navigating from v0.4.x to v0.3.x would splice the path incorrectly
+
 ## 0.2.1
 
 ### Patch Changes
