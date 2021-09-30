@@ -1,4 +1,6 @@
 .pre {
+  /* Note: only targets <pre> without className,
+     to avoid conflicts with our code-block component */
   & pre:not([class]) {
     background-color: var(--code-dark);
     border-radius: 3px;
