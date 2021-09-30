@@ -124,6 +124,30 @@ describe('<VersionSelect />', () => {
     expect(mockPush).toHaveBeenNthCalledWith(1, '/commands')
   })
 
+  it('should navigate from a version to another version', () => {
+    useRouterMock.mockImplementation(() => {
+      return ({
+        route: '/commands/[[...page]]',
+        pathname: '/commands/[[...page]]',
+        asPath: '/commands/v0.4.x',
+        push: mockPush,
+      } as unknown) as Router
+    })
+
+    const { getByRole, getAllByRole } = render(
+      <VersionSelect {...defaultProps} />
+    )
+    const index = 2
+
+    const combobox = getByRole('combobox')
+    userEvent.click(combobox)
+
+    const options = getAllByRole('option')
+    userEvent.click(options[index])
+
+    expect(mockPush).toHaveBeenNthCalledWith(1, '/commands/v0.3.x')
+  })
+
   it('should navigate to a selected version while retaining the sub path', () => {
     useRouterMock.mockImplementation(() => {
       return ({

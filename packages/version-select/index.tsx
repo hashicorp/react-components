@@ -18,22 +18,33 @@ const VersionSelect: React.ComponentType<Props> = ({ versions }) => {
   const version = getVersionFromPath(asPath)
 
   const onVersionSelect = (newVersion: string) => {
-    // If selecting version same as current version, noop
+    // If selecting a version same as current version, noop
     if (newVersion === version) return
+
     // If selecting latest...
     if (newVersion === 'latest') {
       if (!version) {
-        // If route is latest, noop
+        // While on latest, noop
         return
       } else {
-        // Else, remove version from path; Navigate to latest
+        // While on version X,
+        // Remove version from path; Navigate to latest
         return push(removeVersionFromPath(asPath))
       }
     }
 
-    // If selecting version different than current version
-    pathParts.splice(2, 0, newVersion)
-    push(pathParts.join('/'))
+    // If selecting a version...
+    if (!version) {
+      // While on latest,
+      // Splice version in to path; Navigate
+      pathParts.splice(2, 0, newVersion)
+      return push(pathParts.join('/'))
+    } else {
+      // While on a different version,
+      // Replace prev version with next version; Navigate
+      pathParts.splice(2, 1, newVersion)
+      return push(pathParts.join('/'))
+    }
   }
 
   const selectedVersion =
