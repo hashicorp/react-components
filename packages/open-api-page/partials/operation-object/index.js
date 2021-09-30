@@ -22,7 +22,7 @@ function OperationObject({
   // const [isCollapsed, setIsCollapsed] = useState(true)
   const { operationId, parameters, responses, summary } = data
   const successResponse = responses['200']
-  const title = capitalCase(operationId.split('_').slice(1).join())
+  const title = capitalCase(operationId.split('_').pop())
 
   // Group parameter properties by type
   const pathParams = parameters.filter((p) => p.in === 'path')
