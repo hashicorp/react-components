@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "status_code": 200,
+    "status_text": "OK"
+  },
+  "result": {
+    "product": "waypoint",
+    "metadata": {
+      "layout": "commands",
+      "description": "Post-Helm-install bootstrapping",
+      "page_title": "Commands: K8s bootstrap",
+      "sidebar_title": "k8s bootstrap"
+    },
+    "version": "v0.5.x",
+    "created_at": "Thu Sep 23 2021 05:12:48 GMT+0000 (Coordinated Universal Time)",
+    "markdownSource": "# Waypoint K8s bootstrap\n\nCommand: `waypoint k8s bootstrap`\n\nPost-Helm-install bootstrapping\n\n## Usage\n\nUsage: `waypoint k8s bootstrap [options]`\n\nBootstrap a Waypoint installation from the Waypoint Helm chart.\nThis is an internal command and not expected to be manually executed.\nThis command only works with in-cluster Kubernetes authentication and\nwill not work with out-of-cluster kubectl configuration.\n\nThis command will do a number of things:\n\n1.  Equivalent of \"waypoint server bootstrap\"\n2.  Write a bootstrap token to the given Kubernetes secret\n3.  Create a token for a static runner and write it to the configured\n    Kubernetes secret.\n4.  Configure Kubernetes on-demand runners.\n\nThis command will only run if the server hasn't already been bootstrapped.\nIf the server is bootstrapped, this will not run again. This doesn't handle\npartial failures well: if the server bootstrap succeeds but writing the\nsecret fails, then the Waypoint installation should be fully uninstalled\nand then reinstalled. This is only use for fresh installations so there\nshould be no concern of data loss in the event of a bootstrap failure.\n\n#### Global Options\n\n-   `-plain` - Plain output: no colors, no animation.\n-   `-app=<string>` - App to target. Certain commands require a single app target for Waypoint configurations with multiple apps. If you have a single app, then this can be ignored.\n-   `-workspace=<string>` - Workspace to operate in.\n\n#### Connection Options\n\n-   `-server-addr=<string>` - Address for the server.\n-   `-server-tls` - True if the server should be connected to via TLS.\n-   `-server-tls-skip-verify` - True to skip verification of the TLS certificate advertised by the server.\n\n#### Command Options\n\n-   `-root-token-secret=<string>` - The name of the Kubernetes secret to write the root token to.\n-   `-runner-token-secret=<string>` - The name of the Kubernetes secret to write the runner token to.\n-   `-odr-image=<string>` - The name and label of the container image to use for ODR.\n-   `-odr-service-account=<string>` - The name of the Kubernetes service account to use for ODR.\n-   `-odr-image-pull-policy=<string>` - The pull policy to use for the container image.\n-   `-advertise-service=<string>` - The name of the service to advertise.\n-   `-advertise-tls` - True if the advertise addr supports TLS.\n-   `-advertise-tls-skip-verify` - True if the advertise addr TLS shouldn't be verified.\n",
+    "mdxTransforms": [
+      "extract-frontmatter",
+      "include-partials",
+      "paragraph-custom-alerts"
+    ],
+    "sha": "bf16748cdeac6915a65442086a347ad56488b55f",
+    "subpath": "commands",
+    "fullPath": "doc/v0.5.x/commands/k8s-bootstrap"
+  }
+}
