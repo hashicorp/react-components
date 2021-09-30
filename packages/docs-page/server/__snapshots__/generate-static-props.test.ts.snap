@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateStaticProps should generate static props 1`] = `
+Object {
+  "currentPath": "",
+  "frontMatter": Object {
+    "description": "Welcome to the intro guide to Vault! This guide is the best place to start with Vault. We cover what Vault is, what problems it can solve, how it compares to existing software, and contains a quick start for using Vault.",
+    "page_title": "Introduction",
+  },
+  "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/packages/docs-page/server/__fixtures__/index.mdx",
+  "mdxSource": Object {
+    "compiledSource": "var u=Object.defineProperty,d=Object.defineProperties;var m=Object.getOwnPropertyDescriptors;var r=Object.getOwnPropertySymbols;var o=Object.prototype.hasOwnProperty,i=Object.prototype.propertyIsEnumerable;var l=(a,t,s)=>t in a?u(a,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):a[t]=s,e=(a,t)=>{for(var s in t||(t={}))o.call(t,s)&&l(a,s,t[s]);if(r)for(var s of r(t))i.call(t,s)&&l(a,s,t[s]);return a},c=(a,t)=>d(a,m(t));var p=(a,t)=>{var s={};for(var n in a)o.call(a,n)&&t.indexOf(n)<0&&(s[n]=a[n]);if(a!=null&&r)for(var n of r(a))t.indexOf(n)<0&&i.call(a,n)&&(s[n]=a[n]);return s};const layoutProps={},MDXLayout=\\"wrapper\\";function MDXContent(s){var n=s,{components:a}=n,t=p(n,[\\"components\\"]);return mdx(MDXLayout,c(e(e({},layoutProps),t),{components:a,mdxType:\\"MDXLayout\\"}),mdx(\\"h1\\",e({},{className:\\"g-type-display-2\\"}),mdx(\\"a\\",e({parentName:\\"h1\\"},{className:\\"__permalink-h\\",href:\\"#introduction-to-vault\\",\\"aria-label\\":\\"introduction to vault permalink\\"}),\\"\\\\xBB\\"),mdx(\\"a\\",e({parentName:\\"h1\\"},{className:\\"__target-h\\",id:\\"introduction-to-vault\\",\\"aria-hidden\\":\\"\\"})),\\"Introduction to Vault\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`Welcome to the introduction guide to HashiCorp Vault! This guide is the best
+place to get started with Vault. This guide covers what Vault is, what problems
+it can solve, how it compares to existing software, and contains a quick start
+for using Vault.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`If you are already familiar with the basics of Vault, the
+\`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"/docs\\"}),\\"documentation\\"),\` provides a better reference guide for all
+available features as well as internals.\`),mdx(\\"h2\\",e({},{className:\\"g-type-display-3\\"}),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__permalink-h\\",href:\\"#what-is-vault\\",\\"aria-label\\":\\"what is vault permalink\\"}),\\"\\\\xBB\\"),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__target-h\\",id:\\"what-is-vault\\",\\"aria-hidden\\":\\"\\"})),\\"What is Vault?\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"Vault is a tool for securely accessing \\",mdx(\\"em\\",{parentName:\\"p\\"},\\"secrets\\"),\`. A secret is anything that you
+want to tightly control access to, such as API keys, passwords, or certificates.
+Vault provides a unified interface to any secret, while providing tight access
+control and recording a detailed audit log.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`A modern system requires access to a multitude of secrets: database credentials,
+API keys for external services, credentials for service-oriented architecture
+communication, etc. Understanding who is accessing what secrets is already very
+difficult and platform-specific. Adding on key rolling, secure storage, and
+detailed audit logs is almost impossible without a custom solution. This is
+where Vault steps in.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`Examples work best to showcase Vault. Please see the
+\`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"/docs/use-cases\\"}),\\"use cases\\"),\\".\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"The key features of Vault are:\\"),mdx(\\"ul\\",null,mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Secure Secret Storage\\"),\`: Arbitrary key/value secrets can be stored
+in Vault. Vault encrypts these secrets prior to writing them to persistent
+storage, so gaining access to the raw storage isn't enough to access
+your secrets. Vault can write to disk, \`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"https://www.consul.io\\"}),\\"Consul\\"),\`,
+and more.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Dynamic Secrets\\"),\`: Vault can generate secrets on-demand for some
+systems, such as AWS or SQL databases. For example, when an application
+needs to access an S3 bucket, it asks Vault for credentials, and Vault
+will generate an AWS keypair with valid permissions on demand. After
+creating these dynamic secrets, Vault will also automatically revoke them
+after the lease is up.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Data Encryption\\"),\`: Vault can encrypt and decrypt data without storing
+it. This allows security teams to define encryption parameters and
+developers to store encrypted data in a location such as SQL without
+having to design their own encryption methods.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Leasing and Renewal\\"),\\": All secrets in Vault have a \\",mdx(\\"em\\",{parentName:\\"p\\"},\\"lease\\"),\` associated
+with them. At the end of the lease, Vault will automatically revoke that
+secret. Clients are able to renew leases via built-in renew APIs.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Revocation\\"),\`: Vault has built-in support for secret revocation. Vault
+can revoke not only single secrets, but a tree of secrets, for example
+all secrets read by a specific user, or all secrets of a particular type.
+Revocation assists in key rolling as well as locking down systems in the
+case of an intrusion.\`))),mdx(\\"h2\\",e({},{className:\\"g-type-display-3\\"}),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__permalink-h\\",href:\\"#next-steps\\",\\"aria-label\\":\\"next steps permalink\\"}),\\"\\\\xBB\\"),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__target-h\\",id:\\"next-steps\\",\\"aria-hidden\\":\\"\\"})),\\"Next Steps\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"See the page on \\",mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"/docs/use-cases\\"}),\\"Vault use cases\\"),\` to see the multiple ways
+Vault can be used. Then, continue onwards with the \`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"https://learn.hashicorp.com/vault/getting-started/install\\"}),\`getting started
+guide\`),\` to use Vault
+to read, write, and create real secrets and see how it works in practice.\`))}MDXContent.isMDXComponent=!0;
+",
+    "scope": Object {},
+  },
+  "navData": Array [
+    Object {
+      "path": "extending-waypoint",
+      "title": "Overview",
+    },
+    Object {
+      "routes": Array [
+        Object {
+          "path": "extending-waypoint/creating-plugins",
+          "title": "Overview",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/main",
+          "title": "Registering Plugin Components",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/configuration",
+          "title": "Handling Configuration",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/build-interface",
+          "title": "Implementing the Builder Interface",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/compiling",
+          "title": "Compiling the Plugin",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/example-application",
+          "title": "Creating an Example Application",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/testing",
+          "title": "Testing the Plugin",
+        },
+      ],
+      "title": "Creating a Waypoint Plugin",
+    },
+    Object {
+      "path": "extending-waypoint/main-func",
+      "title": "Initializing the SDK",
+    },
+    Object {
+      "path": "extending-waypoint/passing-values",
+      "title": "Passing Values Between Components",
+    },
+    Object {
+      "routes": Array [
+        Object {
+          "path": "extending-waypoint/plugin-interfaces",
+          "title": "Overview",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/authenticator",
+          "title": "Authenticator",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/configurable",
+          "title": "Configurable",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/configurable-notify",
+          "title": "ConfigurableNotify",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/builder",
+          "title": "Builder",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/registry",
+          "title": "Registry",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/platform",
+          "title": "Platform",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/release-manager",
+          "title": "ReleaseManager",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/destroy",
+          "title": "Destroy",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/default-parameters",
+          "title": "Default Parameters",
+        },
+      ],
+      "title": "Plugin Interfaces",
+    },
+  ],
+  "versions": Array [],
+}
+`;

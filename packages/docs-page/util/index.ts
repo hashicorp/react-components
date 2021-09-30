@@ -7,7 +7,9 @@ const REGEX = /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z
  * @param {string[]} pathParams
  * @returns {[string, string[]]} [version, strippedParams]
  */
-export const stripVersionFromPathParams = (pathParams = []) => {
+export const stripVersionFromPathParams = (
+  pathParams = []
+): [string, string[]] => {
   const index = pathParams.findIndex((e) => REGEX.test(e))
   let version = 'latest'
   let params = [...pathParams]
