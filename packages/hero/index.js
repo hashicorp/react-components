@@ -7,8 +7,8 @@ import useProductMeta from '@hashicorp/platform-product-meta'
 import VideoCarousel from './carousel'
 import ArrowIcon from './arrow-icon'
 import HeroLeadForm from './heroLeadForm'
-import s from './style.module.css'
 import fragment from './fragment.graphql'
+import s from './style.module.css'
 
 /**
  * A flexible hero component used as the primary content at the top of many HashiCorp pages.
