@@ -54,53 +54,39 @@ describe('<VersionSelect />', () => {
     expect(options).toHaveLength(VERSIONS.length)
   })
 
-  it('should display the latest version', () => {
-    const { getByRole } = render(<VersionSelect {...defaultProps} />)
-
-    const button = getByRole('button')
-    expect(button).toHaveTextContent('v0.5.x (latest)')
-  })
-
-  it('should display version from the URL', () => {
+  it('should display the correct version after router events', () => {
+    // initial, latest
     useRouterMock.mockImplementation(() => {
       return ({
-        route: '/docs/[[...page]]',
-        pathname: '/docs/[[...page]]',
-        asPath: '/docs/v0.4.x/some/nested/article',
-        push: mockPush,
-      } as unknown) as Router
-    })
-    const { getByRole } = render(<VersionSelect {...defaultProps} />)
-
-    const button = getByRole('button')
-    expect(button).toHaveTextContent('v0.4.x')
-  })
-
-  it('should display the correct version after browser-back', () => {
-    useRouterMock.mockImplementation(() => {
-      return ({
-        route: '/commands/[[...page]]',
-        pathname: '/commands/[[...page]]',
         asPath: '/commands',
         push: mockPush,
       } as unknown) as Router
     })
 
-    const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
-    )
-    const index = 1
+    const { getByRole, rerender } = render(<VersionSelect {...defaultProps} />)
+    expect(getByRole('button')).toHaveTextContent('v0.5.x (latest)')
 
-    const combobox = getByRole('combobox')
-    userEvent.click(combobox)
+    // simulate navigation to v0.4.x
+    useRouterMock.mockImplementation(() => {
+      return ({
+        asPath: '/commands/v0.4.x',
+        push: mockPush,
+      } as unknown) as Router
+    })
 
-    const options = getAllByRole('option')
-    userEvent.click(options[index])
+    rerender(<VersionSelect {...defaultProps} />)
+    expect(getByRole('button')).toHaveTextContent('v0.4.x')
 
-    history.back()
+    // simulate browser-back to latest
+    useRouterMock.mockImplementation(() => {
+      return ({
+        asPath: '/commands/',
+        push: mockPush,
+      } as unknown) as Router
+    })
 
-    const button = getByRole('button')
-    expect(button).toHaveTextContent('v0.5.x (latest)')
+    rerender(<VersionSelect {...defaultProps} />)
+    expect(getByRole('button')).toHaveTextContent('v0.5.x (latest)')
   })
 
   it('should navigate to a selected version', () => {
