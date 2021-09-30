@@ -8,7 +8,9 @@ import s from './style.module.css'
  * @prop {String} name - input name attribute
  * @prop {String} label - text to display above the input
  * @prop {String} defaultLabel - text to act as placeholder label
- * @prop {String} value - set the value via prop
+ * @prop {Object} value - set the value via prop
+ * @prop {String} value.name - item name
+ * @prop {String} value.label - item label
  * @prop {Array} options - array of option objects within the select
  * @prop {String} options[].name - option name
  * @prop {String} options[].label - option label
@@ -28,7 +30,7 @@ export default function SelectInput({
   // Changes to the value prop will re-render this component by updating the key value.
   return (
     <Downshift
-      key={value}
+      key={value.name}
       initialSelectedItem={value}
       itemToString={(item) => item && item.name}
       onChange={(item) => {
