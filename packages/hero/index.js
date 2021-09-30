@@ -32,6 +32,7 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
   const hasVideos = videos && videos.length > 0
   const { themeClass } = useProductMeta(product)
   const h1OrphanCount = 9
+  const isCentered = centered || data.centered
 
   return (
     <div
@@ -39,7 +40,7 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
         s.root,
         s[backgroundTheme],
         themeClass,
-        { centered: centered || data.centered },
+        { [s.centered]: isCentered },
         className
       )}
     >
@@ -50,12 +51,18 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
           {...backgroundImage}
         />
       )}
-      <div className={s.container}>
+      <div
+        className={classNames(s.container, {
+          [s.centered]: isCentered,
+        })}
+      >
         <div className={s.headline}>
           {smallTextTag && <div className="tag">{smallTextTag}</div>}
           {titleLogo && (
             <Image
-              className={s.headlineLogo}
+              className={classNames(s.headlineLogo, {
+                [s.centered]: isCentered,
+              })}
               alt={titleLogo.alt}
               {...titleLogo}
             />
@@ -98,7 +105,11 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
               />
             </div>
           ) : buttons && buttons.length ? (
-            <div className={s.headlineButtons}>
+            <div
+              className={classNames(s.headlineButtons, {
+                [s.centered]: isCentered,
+              })}
+            >
               {buttons.map((button, idx) => {
                 if (gaPrefix) button.gaPrefix = gaPrefix
                 const hasZeroPadding =
@@ -110,6 +121,7 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
                     key={button.title}
                     className={classNames(s.headlineButton, {
                       [s.hasZeroPadding]: hasZeroPadding,
+                      [s.centered]: isCentered,
                     })}
                     {...button}
                     theme={{
@@ -129,7 +141,11 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
             </div>
           ) : null}
           {helpText && (
-            <div className={classNames(s.headlineHelpText, s[backgroundTheme])}>
+            <div
+              className={classNames(s.headlineHelpText, s[backgroundTheme], {
+                [s.centered]: isCentered,
+              })}
+            >
               <div dangerouslySetInnerHTML={{ __html: helpText.trim() }} />
               <ArrowIcon />
             </div>
