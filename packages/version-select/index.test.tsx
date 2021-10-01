@@ -54,7 +54,7 @@ describe('<VersionSelect />', () => {
     expect(options).toHaveLength(VERSIONS.length)
   })
 
-  it('should display the correct version after router events', () => {
+  it('should display the correct version from the URL', () => {
     // initial, latest
     useRouterMock.mockImplementation(() => {
       return ({
