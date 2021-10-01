@@ -21,6 +21,11 @@
     transform: rotate(-180deg);
     & [stroke] {
       stroke-width: 2.5;
+      stroke: var(--dropdown-icon-color);
+    }
+
+    & [fill] {
+      fill: var(--dropdown-icon-color);
     }
   }
 

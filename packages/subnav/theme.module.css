@@ -1,0 +1,35 @@
+/* Theme settings. Note: also consumed in /partials */
+
+.light {
+  --gray-6-transparent: rgba(174, 176, 183, 0.45);
+
+  /* main */
+  --background-color: var(--white);
+  --title-text-color: var(--gray-1);
+  --border-color: var(--gray-6-transparent);
+
+  /* github-stars-link */
+  --gh-stars-icon-color: var(--black);
+  --gh-stars-scrim-color: var(--black);
+  --gh-stars-border-color: rgba(29, 30, 35, 0.2);
+
+  /* dropdown-trigger */
+  --dropdown-icon-color: var(--black);
+}
+
+.dark {
+  /* --gray-6-transparent: rgba(174, 176, 183, 0.45); */
+
+  /* main */
+  --background-color: var(--black);
+  --title-text-color: var(--white);
+  --border-color: red;
+
+  /* github-stars-link */
+  --gh-stars-icon-color: var(--white);
+  --gh-stars-scrim-color: var(--white);
+  --gh-stars-border-color: rgba(255, 255, 255, 0.2);
+
+  /* dropdown-trigger */
+  --dropdown-icon-color: var(--white);
+}

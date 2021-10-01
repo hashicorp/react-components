@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import useNavRef from './helpers/useNavRef'
 import s from './style.module.css'
+import themeStyles from './theme.module.css'
 
 import MenuItemsOverflow from './partials/MenuItemsOverflow/index.js'
 import TitleLink from './partials/TitleLink/index.js'
@@ -106,7 +107,7 @@ function SubnavInner({
   )
 }
 
-function Subnav({ className, ...restProps }) {
+function Subnav({ className, theme = 'light', ...restProps }) {
   const [isSticky, hasOverflow, wrapperRef] = useNavRef()
   // Set the brand theme automatically based on the nav's title
   const product =
@@ -115,7 +116,7 @@ function Subnav({ className, ...restProps }) {
   return (
     <nav
       ref={wrapperRef}
-      className={classNames(s.root, className, {
+      className={classNames(s.root, themeStyles[theme], className, {
         [s.isSticky]: isSticky,
       })}
       aria-label={`${product} website navigation`}

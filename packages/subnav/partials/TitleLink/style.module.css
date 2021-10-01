@@ -2,7 +2,7 @@
   position: relative;
   white-space: nowrap;
   font-weight: var(--font-weight-bold);
-  color: var(--gray-1);
+  color: var(--title-text-color); /* from theme.module.css */
   font-size: 1.25rem;
   line-height: 2.5rem;
 
