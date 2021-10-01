@@ -1,5 +1,5 @@
 ---
-'@hashicorp/react-docs-page': patch
+'@hashicorp/react-docs-page': minor
 ---
 
 `react-docs-page` now makes api-calls to the mktg-content-workflows' content api
