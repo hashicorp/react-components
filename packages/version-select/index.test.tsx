@@ -54,26 +54,39 @@ describe('<VersionSelect />', () => {
     expect(options).toHaveLength(VERSIONS.length)
   })
 
-  it('should display the latest version', () => {
-    const { getByRole } = render(<VersionSelect {...defaultProps} />)
-
-    const button = getByRole('button')
-    expect(button).toHaveTextContent('latest')
-  })
-
-  it('should display version from the URL', () => {
+  it('should display the correct version from the URL', () => {
+    // initial, latest
     useRouterMock.mockImplementation(() => {
       return ({
-        route: '/docs/[[...page]]',
-        pathname: '/docs/[[...page]]',
-        asPath: '/docs/v0.4.x/some/nested/article',
+        asPath: '/commands',
         push: mockPush,
       } as unknown) as Router
     })
-    const { getByRole } = render(<VersionSelect {...defaultProps} />)
 
-    const button = getByRole('button')
-    expect(button).toHaveTextContent('v0.4.x')
+    const { getByRole, rerender } = render(<VersionSelect {...defaultProps} />)
+    expect(getByRole('button')).toHaveTextContent('v0.5.x (latest)')
+
+    // simulate navigation to v0.4.x
+    useRouterMock.mockImplementation(() => {
+      return ({
+        asPath: '/commands/v0.4.x',
+        push: mockPush,
+      } as unknown) as Router
+    })
+
+    rerender(<VersionSelect {...defaultProps} />)
+    expect(getByRole('button')).toHaveTextContent('v0.4.x')
+
+    // simulate browser-back to latest
+    useRouterMock.mockImplementation(() => {
+      return ({
+        asPath: '/commands/',
+        push: mockPush,
+      } as unknown) as Router
+    })
+
+    rerender(<VersionSelect {...defaultProps} />)
+    expect(getByRole('button')).toHaveTextContent('v0.5.x (latest)')
   })
 
   it('should navigate to a selected version', () => {
@@ -203,6 +216,36 @@ describe('<VersionSelect />', () => {
     userEvent.click(options[index])
 
     expect(mockPush).toHaveBeenNthCalledWith(1, '/docs/some/nested/article')
+  })
+
+  it('should navigate from a version to another version while retaining the sub path', () => {
+    useRouterMock.mockImplementation(() => {
+      return ({
+        route: '/docs/[[...page]]',
+        pathname: '/docs/[[...page]]',
+        query: {
+          page: ['v0.4.x', 'some', 'nested', 'article'],
+        },
+        asPath: '/docs/v0.4.x/some/nested/article',
+        push: mockPush,
+      } as unknown) as Router
+    })
+
+    const { getByRole, getAllByRole } = render(
+      <VersionSelect {...defaultProps} />
+    )
+    const index = 2
+
+    const combobox = getByRole('combobox')
+    userEvent.click(combobox)
+
+    const options = getAllByRole('option')
+    userEvent.click(options[index])
+
+    expect(mockPush).toHaveBeenNthCalledWith(
+      1,
+      '/docs/v0.3.x/some/nested/article'
+    )
   })
 
   it('should noop if selecting latest, while on latest', () => {
