@@ -1,5 +1,7 @@
 import { useCallback, useState } from 'react'
 
+const IntersectionObserver =
+  (typeof window !== 'undefined' && window.IntersectionObserver) || null
 const intersectionOpts = { threshold: [1] }
 
 /*
@@ -25,18 +27,17 @@ export default function useStuckRef(deps) {
   const [isStuck, setStuck] = useState(false)
 
   const stuckRef = useCallback((target) => {
-    if (!target) return
-    const viewport = target.ownerDocument.defaultView
-    const IntersectionObserver =
-      (typeof viewport !== 'undefined' && viewport.IntersectionObserver) || null
-    if (!IntersectionObserver) return
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      const nowIsStuck = entry.intersectionRatio < 1
+    if (target && IntersectionObserver) {
+      const intersectionObserver = new IntersectionObserver(([entry]) => {
+        const nowIsStuck = entry.intersectionRatio < 1
 
-      if (isStuck !== nowIsStuck) setStuck(nowIsStuck)
-    }, intersectionOpts)
-    intersectionObserver.observe(target)
-    return intersectionObserver.disconnect.bind(intersectionObserver)
+        if (isStuck !== nowIsStuck) setStuck(nowIsStuck)
+      }, intersectionOpts)
+
+      intersectionObserver.observe(target)
+
+      return intersectionObserver.disconnect.bind(intersectionObserver)
+    }
   }, deps)
 
   return [isStuck, stuckRef]
