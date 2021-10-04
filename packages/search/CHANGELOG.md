@@ -1,5 +1,11 @@
 # @hashicorp/react-search
 
+## 6.0.2
+
+### Patch Changes
+
+- [#377](https://github.com/hashicorp/react-components/pull/377) [`fe1fe69`](https://github.com/hashicorp/react-components/commit/fe1fe696e981bd93c5bcf34329eb81b571f798c9) Thanks [@BRKalow](https://github.com/BRKalow)! - Revert version of `unist-util-visit` so that the script can be run in a cjs node environment
+
 ## 6.0.1
 
 ### Patch Changes

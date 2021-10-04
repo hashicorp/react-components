@@ -1,5 +1,19 @@
 # @hashicorp/react-docs-page
 
+## 14.4.0
+
+### Minor Changes
+
+- [#373](https://github.com/hashicorp/react-components/pull/373) [`4a5204b`](https://github.com/hashicorp/react-components/commit/4a5204b089e103da6e307ceba830c2356b2a930b) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - construct githubFileUrl to be used w/ **Edit this page**
+
+  - This links to the `main` branch file while on the latest version
+  - This is hidden for non-latest versions
+
+### Patch Changes
+
+- Updated dependencies [[`fe1fe69`](https://github.com/hashicorp/react-components/commit/fe1fe696e981bd93c5bcf34329eb81b571f798c9)]:
+  - @hashicorp/react-search@6.0.2
+
 ## 14.3.1
 
 ### Patch Changes
