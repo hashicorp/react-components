@@ -164,8 +164,6 @@ export async function generateStaticProps(
         ).ref
         // GitHub only allows you to modify a file if you are on a branch, not a commit
         githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${branch}/${document.githubFile}`
-        // Read only: https://github.com/hashicorp/waypoint/blob/313ab9c05d6ca2933831f49494782d9fa856df27/website/content/commands/index.mdx
-        // Editable:  https://github.com/hashicorp/waypoint/blob/release/0.3.x/website/content/commands/index.mdx
       }
 
       return {
