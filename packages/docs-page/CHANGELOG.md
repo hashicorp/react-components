@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.3.1
+
+### Patch Changes
+
+- [#375](https://github.com/hashicorp/react-components/pull/375) [`0124e48`](https://github.com/hashicorp/react-components/commit/0124e48c025bea16d16f7d5cbb89c39f21aa88f6) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This removes a log statement that was breaking minor updates
+
 ## 14.3.0
 
 ### Minor Changes
