@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-sidenav
 
+## 8.3.1
+
+### Patch Changes
+
+- [#379](https://github.com/hashicorp/react-components/pull/379) [`9274b62`](https://github.com/hashicorp/react-components/commit/9274b625692cf4fccef4cc31f7aeba188d21bd13) Thanks [@jescalan](https://github.com/jescalan)! - fix a small bug with validation for heading nodes
+
 ## 8.3.0
 
 ### Minor Changes
