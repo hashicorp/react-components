@@ -30,7 +30,7 @@ We have a lot of docs sites, all of which render content in exactly the same way
 >{`<DocsPage
   product={{ name: 'Nomad', slug: 'nomad' }}
   baseRoute='docs'
-  showVersionSelect={false /*process.env.ENABLE_VERSIONED_DOCS*/}
+  showVersionSelect={false /* process.env.ENABLE_VERSIONED_DOCS === "true" */}
   // pass in the results of executing the 'generateStaticProps' function from '@hashicorp/react-docs-page/server'
   staticProps={staticPropsResult}
 >
