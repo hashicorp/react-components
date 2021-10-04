@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-docs-page",
   "description": "Create a Hashicorp branded docs page in NextJS projects.",
-  "version": "14.3.1",
+  "version": "14.4.0",
   "author": "HashiCorp",
   "contributors": ["Jeff Escalante", "Kevin Wang"],
   "dependencies": {
@@ -12,7 +12,7 @@
     "@hashicorp/react-docs-sidenav": "^8.3.0",
     "@hashicorp/react-head": "^3.1.2",
     "@hashicorp/react-placeholder": "^0.1.0",
-    "@hashicorp/react-search": "^6.0.0",
+    "@hashicorp/react-search": "^6.0.2",
     "@hashicorp/react-version-select": "^0.2.0",
     "classnames": "^2.3.1",
     "fs-exists-sync": "^0.1.0",
