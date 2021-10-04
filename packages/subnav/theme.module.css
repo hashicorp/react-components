@@ -19,8 +19,6 @@
   --menu-item-text-color: var(--black);
   --menu-item-underline-color: var(--black);
   --menu-item-heading-text-color: var(--gray-3);
-
-  /* --border-color: var(--gray-5); */
 }
 
 .dark {
@@ -42,6 +40,4 @@
   --menu-item-text-color: var(--white);
   --menu-item-underline-color: var(--gray-5);
   --menu-item-heading-text-color: var(--gray-4);
-
-  /* --border-color: var(--gray-3); */
 }
