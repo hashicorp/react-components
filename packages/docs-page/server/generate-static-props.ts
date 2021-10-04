@@ -158,7 +158,6 @@ export async function generateStaticProps(
       // Must be serializeable
       let githubFileUrl = null
       if (document.githubFile) {
-        // const sha = document.sha
         const branch = versionMetadataList.find(
           (e) => e.version === document.version
         ).ref
