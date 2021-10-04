@@ -1,5 +1,5 @@
 .root {
-  color: var(--black);
+  color: var(--menu-item-text-color); /* from theme.module.css */
   position: relative;
 
   &::after {
@@ -9,7 +9,7 @@
     right: 0;
     bottom: 0;
     height: 2px;
-    background: var(--black);
+    background: var(--menu-item-underline-color); /* from theme.module.css */
     opacity: 0;
   }
 

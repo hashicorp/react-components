@@ -10,6 +10,10 @@
     height: 34px;
     width: auto;
     display: block;
+
+    & [fill='black'] {
+      fill: var(--logo-text-color);
+    }
   }
 
   &.brand-hcp svg {

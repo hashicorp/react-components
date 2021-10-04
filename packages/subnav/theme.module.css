@@ -1,35 +1,47 @@
 /* Theme settings. Note: also consumed in /partials */
 
 .light {
-  --gray-6-transparent: rgba(174, 176, 183, 0.45);
-
   /* main */
   --background-color: var(--white);
+  --border-color: var(--gray-5);
+  --dropdown-background-color: var(--white);
+  --dropdown-box-shadow: 0 8px 12px rgba(37, 38, 45, 0.08);
+
+  /* title or logo link */
   --title-text-color: var(--gray-1);
-  --border-color: var(--gray-6-transparent);
+  --logo-text-color: var(--black);
 
   /* github-stars-link */
   --gh-stars-icon-color: var(--black);
-  --gh-stars-scrim-color: var(--black);
-  --gh-stars-border-color: rgba(29, 30, 35, 0.2);
+  --gh-stars-scrim-color: rgba(0, 0, 0, 0.1);
 
-  /* dropdown-trigger */
-  --dropdown-icon-color: var(--black);
+  /* menu items */
+  --menu-item-text-color: var(--black);
+  --menu-item-underline-color: var(--black);
+  --menu-item-heading-text-color: var(--gray-3);
+
+  /* --border-color: var(--gray-5); */
 }
 
 .dark {
-  /* --gray-6-transparent: rgba(174, 176, 183, 0.45); */
-
   /* main */
   --background-color: var(--black);
+  --border-color: var(--gray-2);
+  --dropdown-background-color: var(--gray-1);
+  --dropdown-box-shadow: none;
+
+  /* title or logo link */
   --title-text-color: var(--white);
-  --border-color: red;
+  --logo-text-color: var(--white);
 
   /* github-stars-link */
   --gh-stars-icon-color: var(--white);
-  --gh-stars-scrim-color: var(--white);
-  --gh-stars-border-color: rgba(255, 255, 255, 0.2);
+  --gh-stars-scrim-color: rgba(255, 255, 255, 0.15);
 
-  /* dropdown-trigger */
-  --dropdown-icon-color: var(--white);
+  /* menu items */
+  --menu-item-text-color: var(--white);
+  --menu-item-underline-color: var(--gray-5);
+  --menu-item-heading-text-color: var(--gray-4);
+
+  /* --border-color: var(--gray-3); */
 }

@@ -36,6 +36,7 @@ function SubnavInner({
   currentPath,
   Link,
   matchOnBasePath = false,
+  theme,
 }) {
   const { themeClass } = useProductMeta(product) // overrides --brand css vars
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
@@ -91,6 +92,7 @@ function SubnavInner({
             product={product}
             Link={Link}
             hideGithubStars={hideGithubStars}
+            theme={theme}
           />
         )}
         {hasOverflow && (
@@ -100,6 +102,7 @@ function SubnavInner({
             hideGithubStars={hideGithubStars}
             product={product}
             Link={Link}
+            theme={theme}
           />
         )}
       </div>
@@ -126,6 +129,7 @@ function Subnav({ className, theme = 'light', ...restProps }) {
         product={product}
         hasOverflow={hasOverflow}
         isSticky={isSticky}
+        theme={theme}
       />
     </nav>
   )

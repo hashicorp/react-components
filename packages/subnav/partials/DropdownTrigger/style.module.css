@@ -21,11 +21,11 @@
     transform: rotate(-180deg);
     & [stroke] {
       stroke-width: 2.5;
-      stroke: var(--dropdown-icon-color);
+      stroke: var(--menu-item-text-color); /* from theme.module.css */
     }
 
     & [fill] {
-      fill: var(--dropdown-icon-color);
+      fill: var(--menu-item-text-color); /* from theme.module.css */
     }
   }
 
