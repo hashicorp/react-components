@@ -2,7 +2,12 @@
 export type NavData = NavNode[]
 
 // A NavNode can be any of these types
-export type NavNode = NavLeaf | NavDirectLink | NavDivider | NavBranch
+export type NavNode =
+  | NavLeaf
+  | NavDirectLink
+  | NavDivider
+  | NavHeading
+  | NavBranch
 
 // A NavLeaf represents a page with content.
 //
@@ -36,6 +41,10 @@ interface NavDirectLink {
 // A NavDivider represents a divider line
 interface NavDivider {
   divider: true
+}
+
+interface NavHeading {
+  heading: string
 }
 
 // A NavBranch represents nested navigation data.
