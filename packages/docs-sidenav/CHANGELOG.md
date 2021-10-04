@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-sidenav
 
+## 8.3.0
+
+### Minor Changes
+
+- [#336](https://github.com/hashicorp/react-components/pull/336) [`9b190b0`](https://github.com/hashicorp/react-components/commit/9b190b0b13beb1045825ee2b1eb560b84215c265) Thanks [@jescalan](https://github.com/jescalan)! - Add "headline" option which can be used to inject a headline at any point in the navigation
+
 ## 8.2.5
 
 ### Patch Changes

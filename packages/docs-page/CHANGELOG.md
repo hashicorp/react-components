@@ -1,5 +1,18 @@
 # @hashicorp/react-docs-page
 
+## 14.3.0
+
+### Minor Changes
+
+- [#354](https://github.com/hashicorp/react-components/pull/354) [`929b9b4`](https://github.com/hashicorp/react-components/commit/929b9b408387c78030e5e570c3fcb9807ce862e0) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - `react-docs-page` now makes api-calls to the mktg-content-workflows' content api
+
+  https://github.com/hashicorp/react-components/pull/360 refactored server code to TypeScript
+
+### Patch Changes
+
+- Updated dependencies [[`9b190b0`](https://github.com/hashicorp/react-components/commit/9b190b0b13beb1045825ee2b1eb560b84215c265)]:
+  - @hashicorp/react-docs-sidenav@8.3.0
+
 ## 14.2.5
 
 ### Patch Changes
