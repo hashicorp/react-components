@@ -1,0 +1,40 @@
+{
+  "titleLink": {
+    "text": "hcp",
+    "url": "/"
+  },
+  "menuItems": [
+    {
+      "text": "Pricing",
+      "url": "/pricing"
+    },
+    {
+      "text": "Tutorials",
+      "url": "https://learn.hashicorp.com/cloud?utm_source=cloud_landing&utm_content=top_nav"
+    },
+    {
+      "text": "Documentation",
+      "url": "/docs/hcp"
+    },
+    {
+      "text": "Community",
+      "url": "https://discuss.hashicorp.com/c/hcp/54"
+    },
+    {
+      "text": "Free trial",
+      "url": "https://portal.cloud.hashicorp.com/?utm_source=cloud_landing&utm_content=top_nav"
+    }
+  ],
+  "menuItemsAlign": "right",
+  "constrainWidth": true,
+  "ctaLinks": [
+    {
+      "text": "Sign In",
+      "url": "https://portal.cloud.hashicorp.com/?utm_source=cloud_landing&utm_content=top_nav",
+      "theme": {
+        "variant": "secondary"
+      }
+    }
+  ],
+  "currentPath": "/"
+}

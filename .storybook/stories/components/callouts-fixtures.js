@@ -1,0 +1,534 @@
+const TwoUp = {
+  heading: "Ensure Your Team's Success",
+  layout: 'two-up',
+  centerHeading: true,
+  items: [
+    {
+      icon: ({ brand }) => (
+        <div
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: `var(--${
+              brand && brand != 'hashicorp' ? brand : 'brand'
+            })`,
+          }}
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M2 12H22" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2V2Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          }}
+        />
+      ),
+      heading: 'Worldwide Support',
+      content:
+        'With HashiCorp Worldwide Support, you can get assistance when you need it from anywhere in the world with our ready-to-serve ticketing system and expert support team.',
+      link: {
+        text: 'Compare Plans',
+        url: '#',
+        linkType: 'anchor',
+      },
+    },
+    {
+      icon: ({ brand }) => (
+        <div
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: `var(--${
+              brand && brand != 'hashicorp' ? brand : 'brand'
+            })`,
+          }}
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 9C2 7.89543 2.89543 7 4 7H20C21.1046 7 22 7.89543 22 9V19C22 20.1046 21.1046 21 20 21H4C2.89543 21 2 20.1046 2 19V9Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          }}
+        />
+      ),
+      heading: 'Technical Account Management',
+      content:
+        'From best practice advice to regular cadences and quarterly business reviews, our Technical Account Managers (TAMs) will be your advocate, ensuring your teams are set up for long term success with HashiCorp every step of the way.',
+      link: {
+        text: 'Learn More',
+        url: '#',
+        linkType: 'inbound',
+      },
+    },
+    {
+      icon: ({ brand }) => (
+        <div
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: `var(--${
+              brand && brand != 'hashicorp' ? brand : 'brand'
+            })`,
+          }}
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V15C22 16.1046 21.1046 17 20 17H4C2.89543 17 2 16.1046 2 15V5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21H16" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17V21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          }}
+        />
+      ),
+      heading: 'Implementation Services',
+      content:
+        'Let highly skilled product domain experts help you achieve success by simplifying and accelerating the adoption of our cloud solutions starting at the implementation phase.',
+      link: {
+        text: 'Learn More',
+        url: '#',
+        linkType: 'inbound',
+      },
+    },
+    {
+      icon: ({ brand }) => (
+        <div
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: `var(--${
+              brand && brand != 'hashicorp' ? brand : 'brand'
+            })`,
+          }}
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 6V22L8 18L16 22L23 18V2L16 6L8 2L1 6Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 2V18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 6V22" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          }}
+        />
+      ),
+      heading: 'Enterprise Architecture',
+      content:
+        "Large-scale systems and services can become complex to design and manage. Our Enterprise Architects can lay the foundation for your success through design consultation and architecture review using HashiCorp's recommended patterns.",
+      link: {
+        text: 'Learn More',
+        url: '#',
+        linkType: 'inbound',
+      },
+    },
+  ],
+}
+
+const TwoUpPlainIcons = {
+  heading: 'Engagement Model',
+  centerHeading: true,
+  layout: 'two-up',
+  items: [
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 14a3 3 0 01-3 3h20a3 3 0 01-3-3V9A7 7 0 105 9v5zM13.73 21a2 2 0 01-3.46 0" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Prescriptive Project Plan Guidance',
+      content:
+        'Product blueprint-driven guidance provided by TAMs on a continuous basis.',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.66V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5.34" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6l-4-4L8 12v4h4L22 6z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Customer Journey Management',
+      content:
+        'Four phase journey - onboarding, adoption, expansion, and renewal - is prescribed for all customers.',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 6h13M8 12h13M8 18h13M4 6H3M4 12H3M4 18H3" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Architecture Workshops',
+      content:
+        'For qualified accounts, TAMs will coordinate architecture and design workshops.',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M12 13a3 3 0 100-6 3 3 0 000 6z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Customer Business Reviews',
+      content:
+        'Frequent customer touch meetings to promote customer satisfaction, review product roadmaps, and drive product utilization.',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M2 12l19-9-9 19-2-8-8-2z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Escalation & Risk Management',
+      content:
+        'TAMs provide escalation management along with proactive alerts on security and other critical product updates.',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.51 9a9 9 0 0114.85-3.36L23 10m0 0V4m0 6h-6M1 14l4.64 4.36A9 9 0 0020.49 15M1 14h6m-6 0v6" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Regional Engagement',
+      content:
+        'Regional across the United States, Europe and the Middle East, Africa, and Asia-Pacific.',
+    },
+  ],
+}
+
+const ThreeUp = {
+  layout: 'three-up',
+  items: [
+    {
+      icon:
+        '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="#66A2FF"/><path opacity="0.8" fill-rule="evenodd" clip-rule="evenodd" d="M24 24C30.0751 24 35 21.3137 35 18V24V25H34.8479C33.9751 27.8377 29.4505 30 24 30C18.5495 30 14.0249 27.8377 13.1521 25H13V24V18C13 21.3137 17.9249 24 24 24Z" fill="url(#paint0_linear)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M24 30C30.0751 30 35 27.3137 35 24V30V31H34.8479C33.9751 33.8377 29.4505 36 24 36C18.5495 36 14.0249 33.8377 13.1521 31H13V30V24C13 27.3137 17.9249 30 24 30Z" fill="url(#paint1_linear)"/><ellipse cx="24" cy="18" rx="11" ry="6" fill="url(#paint2_linear)"/><defs><linearGradient id="paint0_linear" x1="38.5" y1="21" x2="11.5" y2="27" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.11"/><stop offset="1" stop-color="white"/></linearGradient><linearGradient id="paint1_linear" x1="38.5" y1="27" x2="15.5" y2="33.5" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.11"/><stop offset="1" stop-color="white"/></linearGradient><linearGradient id="paint2_linear" x1="30.5" y1="9.5" x2="20" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.11"/><stop offset="1" stop-color="white"/></linearGradient></defs></svg>',
+      heading: 'Infrastructure as code',
+      content:
+        'Use infrastructure as code to provision infrastructure. Codification enables version control and automation, reducing human error and increasing productivity.',
+    },
+    {
+      icon:
+        '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.8" width="48" height="48" rx="12" fill="#1563FF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25 21V12L13 28H24L24 37L36 21L25 21Z" fill="url(#paint0_linear)"/><defs><linearGradient id="paint0_linear" x1="15.4643" y1="39.381" x2="37.4581" y2="24.3509" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.11"/><stop offset="1" stop-color="white"/></linearGradient></defs></svg>',
+      heading: 'Self service',
+      content:
+        'Enable users to easily provision infrastructure on-demand with a library of approved infrastructure.',
+    },
+    {
+      icon:
+        '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="#1563FF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M33 22.5C33 23.3752 32.8677 24.2195 32.6221 25.0141C32.7468 25.0047 32.8729 25 33 25C35.7614 25 38 27.2386 38 30C38 32.7614 35.7614 35 33 35H15.5H15V34.9776C12.1967 34.725 10 32.369 10 29.5C10 26.4624 12.4624 24 15.5 24C15.716 24 15.9291 24.0125 16.1385 24.0367C16.0475 23.5383 16 23.0247 16 22.5C16 17.8056 19.8056 14 24.5 14C29.1944 14 33 17.8056 33 22.5Z" fill="url(#paint0_linear)"/><circle cx="15.5" cy="29.5" r="5.5" fill="url(#paint1_linear)"/><defs><linearGradient id="paint0_linear" x1="13" y1="37" x2="32.829" y2="17.3613" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.11"/><stop offset="1" stop-color="white"/></linearGradient><linearGradient id="paint1_linear" x1="20.5" y1="32" x2="18.2748" y2="19.5567" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0"/><stop offset="1" stop-color="white"/></linearGradient></defs></svg>',
+      heading: 'Multi-cloud',
+      content:
+        'Provision and manage public cloud, private infrastructure, and cloud services with one workflow to learn, secure, govern, and audit.',
+    },
+  ],
+}
+
+const ThreeUpWithHeading = {
+  heading: 'A Supportive Community For All',
+  layout: 'three-up',
+  items: [
+    {
+      icon: () => (
+        <div
+          style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'var(--vagrant-secondary)',
+          }}
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.417 4.38a1.022 1.022 0 00-.834 0L2.49 8.415c-.47.209-.69.695-.69 1.13 0 .436.22.923.69 1.13l1.855.825c-.428.639-.824 1.525-.961 2.721a1.146 1.146 0 00-.335 2.015c.024.106.038.278.016.507a2.807 2.807 0 01-.21.821c-.24.558-.58.829-.957.829v1.267c.841 0 1.432-.474 1.813-1.032l.079.095c.412.48 1.067.986 1.879.986v-1.267c-.277 0-.612-.188-.918-.543a2.366 2.366 0 01-.334-.508 1.31 1.31 0 01-.078-.2c-.014-.047-.016-.07-.016-.075h-.03a3.288 3.288 0 00.04-.829 1.145 1.145 0 00-.006-1.95c.128-1.122.514-1.91.902-2.445l.43.19-.03.965v2.88a.63.63 0 00.136.392c.16.357.443.646.758.876.384.28.872.511 1.418.697 1.094.372 2.511.59 4.042.59 1.53 0 2.948-.218 4.042-.59.546-.186 1.033-.418 1.418-.697.314-.23.597-.52.758-.876a.63.63 0 00.136-.392v-3.842l3.173-1.41c.47-.207.69-.694.69-1.13 0-.435-.22-.921-.69-1.13L12.417 4.38zm-.44 3.82l-5.63 2.803L12 13.513l8.933-3.966L12 5.58 3.067 9.546l2.152.957 6.334-3.154.424.85zm5.093 4.448l-4.653 2.066a1.022 1.022 0 01-.834 0L6.91 12.639l-.013.438v2.652a.549.549 0 01.008.027c.023.08.11.23.365.416.25.181.611.362 1.08.522.936.319 2.21.522 3.634.522 1.423 0 2.698-.204 3.633-.522.47-.16.831-.34 1.08-.522.256-.187.343-.336.366-.416a.51.51 0 01.008-.027v-3.08z" fill="#000"/></svg>',
+          }}
+        />
+      ),
+      heading: 'HashiCorp Learn',
+      content:
+        'Walk through our getting started and operational tracks that take you through every step to provision, secure, connect, and run any infrastructure for any of your applications.',
+      link: {
+        text: 'Get Started',
+        url: '#',
+      },
+    },
+    {
+      icon: () => (
+        <div
+          style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'var(--vagrant-secondary)',
+          }}
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          }}
+        />
+      ),
+      heading: 'Forum',
+      content:
+        'Through knowledge sharing you can find answers to the most common questions concerning our products. Search questions from the community or ask a question of your own.',
+      link: {
+        text: 'Explore the Forum',
+        url: '#',
+      },
+    },
+    {
+      icon: () => (
+        <div
+          style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'var(--vagrant-secondary)',
+          }}
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M9 11a4 4 0 100-8 4 4 0 000 8z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          }}
+        />
+      ),
+      heading: 'Community',
+      content:
+        'Build relationships through knowledge sharing. Join our forum or a user group and interact with the broader community.',
+      link: {
+        text: 'Join Our Community',
+        url: '#',
+      },
+    },
+  ],
+}
+
+const ThreeUpDarkIcons = {
+  theme: 'dark',
+  layout: 'three-up',
+  items: [
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.51 9a9 9 0 0114.85-3.36L23 10m0 0V4m0 6h-6M1 14l4.64 4.36A9 9 0 0020.49 15M1 14h6m-6 0v6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Application Deployment',
+      content:
+        'Use infrastructure as code to provision infrastructure. Codification enables version control and automation, reducing human error and increasing productivity.',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Workload Flexibility',
+      content:
+        'Integrate Nomad into existing workflows with first-class support for both Docker and non-containerized applications. Deploy and manage microservices and run high-throughput batch/analytical workloads on the same cluster.',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M18 3h4v18h-4V3zM10 8h4v13h-4V8zM2 13h4v8H2v-8z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Easy Operation and Scalability',
+      content:
+        'Simplify operations and enable easy, elastic scalability with Nomad’s lightweight architecture. Easily deploy Nomad across regions and cloud providers with built-in federation capabilities.',
+    },
+  ],
+}
+
+const ThreeUpDarkText = {
+  theme: 'dark',
+  layout: 'three-up',
+  items: [
+    {
+      heading: 'Collaboration',
+      content:
+        'Enable multiple teams or projects to safely use a single, unified multi-region Nomad deployment.',
+    },
+    {
+      heading: 'Operations',
+      content:
+        'Simplify operations, increase performance, and add greater resilience.',
+    },
+    {
+      heading: 'Governance',
+      content:
+        'Limit resource consumption across teams. Enforce fine-grained policies on job submission with HashiCorp Sentinel.',
+    },
+  ],
+}
+
+const FourUp = {
+  heading: 'Features',
+  layout: 'four-up',
+  items: [
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9998 12C17.5686 12 22.0831 9.53757 22.0831 6.5L22.0834 12C22.0834 15.0376 17.569 17.5 12.0001 17.5C6.43121 17.5 1.91675 15.0376 1.91675 12V6.54466C1.96074 9.56167 6.4582 12 11.9998 12Z" fill="url(#infrastructure0_linear)"/><path d="M11.9998 17.5C17.5686 17.5 22.0831 15.0376 22.0831 12L22.0834 17.5C22.0834 20.5376 17.569 23 12.0001 23C6.43121 23 1.91675 20.5376 1.91675 17.5V12.0447C1.96074 15.0617 6.4582 17.5 11.9998 17.5Z" fill="url(#infrastructure1_linear)"/><ellipse cx="12.0001" cy="6.5" rx="10.0833" ry="5.5" fill="url(#infrastructure2_linear)"/><defs><linearGradient id="infrastructure0_linear" x1="23.4584" y1="9.70833" x2="2.50922" y2="16.896" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0"/><stop offset="1" stop-color="#1563FF" stop-opacity="0.75"/></linearGradient><linearGradient id="infrastructure1_linear" x1="26.2084" y1="14.75" x2="2.63237" y2="22.78" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0.05"/><stop offset="1" stop-color="#1563FF"/></linearGradient><linearGradient id="infrastructure2_linear" x1="22.0834" y1="0.999999" x2="6.40889" y2="12.9165" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0"/><stop offset="1" stop-color="#1563FF"/></linearGradient></defs></svg>',
+      heading: 'Infrastructure',
+      content:
+        'Automate provisioning, compliance and management of cloud infrastructure using a common workflow',
+      link: {
+        text: 'Learn More',
+        url: '#',
+      },
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="10" width="18" height="13" rx="2" fill="url(#security0_linear)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C9.23858 2 7 4.23858 7 7V10H5V7C5 3.13401 8.13401 0 12 0C15.866 0 19 3.13401 19 7V10H17V7C17 4.23858 14.7614 2 12 2Z" fill="url(#security1_linear)"/><defs><linearGradient id="security0_linear" x1="4" y1="23.5" x2="21.6069" y2="11.3236" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0"/><stop offset="1" stop-color="#1563FF"/></linearGradient><linearGradient id="security1_linear" x1="5.5" y1="-0.5" x2="15.1203" y2="15.0861" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0"/><stop offset="1" stop-color="#1563FF"/></linearGradient></defs></svg>',
+      heading: 'Security',
+      content:
+        'Manage secrets and protect sensitive data based on user and workload identity.',
+      link: {
+        text: 'Learn More',
+        url: '#',
+      },
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.8534 8.61246V0L1.36987 15.3114H11.8964L11.8964 23.9238L23.38 8.61246L12.8534 8.61246Z" fill="url(#networking0_linear)"/><defs><linearGradient id="networking0_linear" x1="3.7281" y1="26.2023" x2="24.7752" y2="11.8191" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0"/><stop offset="1" stop-color="#1563FF"/></linearGradient></defs></svg>',
+      heading: 'Networking',
+      content:
+        'Accelerate application delivery by automating the network, including physical devices, virtual appliances, and distributed service mesh.',
+      link: {
+        text: 'Learn More',
+        url: '#',
+      },
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.7143 9.91071C19.7143 10.6609 19.6009 11.3846 19.3903 12.0656C19.4973 12.0576 19.6053 12.0536 19.7143 12.0536C22.0812 12.0536 24 13.9724 24 16.3393C24 18.7062 22.0812 20.625 19.7143 20.625H4.28571V20.6058C1.88293 20.3893 0 18.3699 0 15.9107C0 13.3071 2.11066 11.1964 4.71429 11.1964C4.89941 11.1964 5.08205 11.2071 5.26161 11.2279C5.18361 10.8007 5.14286 10.3604 5.14286 9.91071C5.14286 5.88693 8.40478 2.625 12.4286 2.625C16.4524 2.625 19.7143 5.88693 19.7143 9.91071Z" fill="url(#application0_linear)"/><circle cx="4.71429" cy="15.9116" r="4.71429" fill="url(#application1_linear)"/><defs><linearGradient id="application0_linear" x1="2" y1="19.5" x2="19.0527" y2="7.39068" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0.1"/><stop offset="1" stop-color="#1563FF"/></linearGradient><linearGradient id="application1_linear" x1="9" y1="18.0544" x2="7.09266" y2="7.38873" gradientUnits="userSpaceOnUse"><stop stop-color="#1563FF" stop-opacity="0"/><stop offset="1" stop-color="#1563FF"/></linearGradient></defs></svg>',
+      heading: 'Application',
+      content:
+        'Deploy any application and iterate safely with progressive delivery, failover strategies, and integrated security and network.',
+      link: {
+        text: 'Learn More',
+        url: '#',
+      },
+    },
+  ],
+}
+
+const SixUp = {
+  heading: 'Key Benefits',
+  layout: 'three-up',
+  items: [
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Accelerated Onboarding',
+      content:
+        "HashiCorp's implementation programs are designed to expedite the customer along the success journey, imparting best practices and resilient deployments of HashiCorp software",
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Comprehensive Planning',
+      content:
+        "Our project plans and work product are flexible and adaptive to customer DevOps lifecycles; the team maps customer discovery, design, build and validation phases to the organization's needs",
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 15a7 7 0 100-14 7 7 0 000 14z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Certified Product Experts',
+      content:
+        'Implementation engineers have a wealth of tactical and practical experience with the HashiCorp tooling and can serve as a trusted advisor during implementation',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-1.415 3.417 2 2 0 01-1.415-.587l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-3.417-1.415 2 2 0 01.587-1.415l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Product Engineering Access',
+      content:
+        'Our practice is tightly aligned with our product management organization, giving the customer direct proximity to multi-cloud innovation',
+    },
+    {
+      icon:
+        '<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 16l-4-4-4 4M13 12v9" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.39 18.39A5 5 0 0019 9h-1.26A8 8 0 104 16.3" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 16l-4-4-4 4" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Experienced Deployment Specialists',
+      content:
+        'By teaming with us on a project, the customer taps into a deep and wide-ranging skills network to help align business goals to realized cloud initiatives',
+    },
+    {
+      icon:
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M13 19l9-7-9-7v14z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 5l9 7-9 7V5z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      heading: 'Long-Term Satisfaction',
+      content:
+        'By committing to a project with our team, the customer gains confidence in deployment and adoption of our solutions that map to the lifetime value of the software journey',
+    },
+  ],
+}
+
+const MyCustomContent = ({ eyebrow, heading, content, label }) => (
+  <div>
+    <h3
+      className="g-type-display-5"
+      style={{ margin: '-0.25em 0 0 0', padding: '0' }}
+    >
+      {eyebrow && (
+        <span style={{ fontWeight: '400' }}>
+          {eyebrow}
+          <br />
+        </span>
+      )}
+      {heading}
+    </h3>
+    <p
+      className="g-type-body"
+      style={{ margin: '16px 0 0 0', color: 'var(--gray-2)' }}
+    >
+      {content}
+    </p>
+    {label && (
+      <p
+        className="g-type-label"
+        style={{ margin: '16px 0 0 0', color: 'var(--gray-4)' }}
+      >
+        {label}
+      </p>
+    )}
+  </div>
+)
+
+const WithCustomContent = {
+  heading: 'Engagement Model',
+  subheading:
+    'Meet your business goals with our end-to-end services. Our expert engineers  leverage reference architectures and proven best practices to deliver complete design, build, validation and go-live project phases.',
+  centerHeading: true,
+  layout: 'two-up',
+  items: [
+    {
+      icon:
+        '<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M35.254 28.428h3.156v-3.156h-3.156v3.156zm-.028-4.734h3.156v-3.156h-3.156v3.156zM30.52 18.96h3.157v-3.157h-3.157v3.157zm0 4.734h3.157v-3.156h-3.157v3.156zm0 4.733h3.157V25.27h-3.157v3.156zm0 4.734h3.157v-3.156h-3.157v3.156zM25.786 18.96h3.156v-3.157h-3.157v3.157zm0 4.734h3.156v-3.156h-3.157v3.156zm0 4.733h3.156V25.27h-3.157v3.156zm9.44-9.467h3.156v-3.157h-3.156v3.157zM4.878 4.878l27.121 54.44 27.318-54.44H4.877z" fill="#000"/></svg>',
+      content: ({ brand, theme }) => (
+        <MyCustomContent
+          eyebrow="Vault Enterprise"
+          heading="Deployment and Configuration"
+          content="Deployment and configuration of highly available Vault clusters, modified to suit your organization’s needs. Adoption tasks focus on use cases involving secret engines, authentication methods, and application integration."
+          label="Core, 20 Day  |  Advanced, 30-40 Day"
+        />
+      ),
+    },
+    {
+      icon:
+        '<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M41.044 23.25v16.806l14.717-8.403v-16.81L41.044 23.25z" fill="#4040B2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M24.717 50.302l14.715 8.406v-16.81l-14.715-8.404v16.808zM8.39 22.27l14.715 8.406V13.867L8.39 5.463V22.27zm16.327-7.425v16.81l14.715 8.403V23.248l-14.715-8.405z" fill="#5F43E9"/></svg>',
+      content: ({ brand, theme }) => (
+        <MyCustomContent
+          eyebrow="Terraform Enterprise"
+          heading="Deployment and Configuration"
+          content="Deployment and configuration of private Terraform Enterprise, following best practices for resiliency and security. Includes integration of version control systems, role based access control setup, and workspace organization."
+          label="Core, 15 Day"
+        />
+      ),
+    },
+    {
+      icon:
+        '<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M41.044 23.25v16.806l14.717-8.403v-16.81L41.044 23.25z" fill="#4040B2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M24.717 50.302l14.715 8.406v-16.81l-14.715-8.404v16.808zM8.39 22.27l14.715 8.406V13.867L8.39 5.463V22.27zm16.327-7.425v16.81l14.715 8.403V23.248l-14.715-8.405z" fill="#5F43E9"/></svg>',
+      content: ({ brand, theme }) => (
+        <MyCustomContent
+          eyebrow="Terraform Enterprise"
+          heading="Workflow Integration"
+          content="Integration of platforms and workflows with Terraform Enterprise. The adoption scope may include integrations such as version control systems, multi-cloud management schemes, infrastructure as code adoption strategies, and prescriptive guidance on best practices."
+          label="Advanced, 20 Day"
+        />
+      ),
+    },
+    {
+      icon:
+        '<svg width="24" height="24" style="margin: 4px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M8.5 11a4 4 0 100-8 4 4 0 000 8z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 8v6M23 11h-6" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      content: ({ brand, theme }) => (
+        <MyCustomContent
+          heading="Training and Advisory Program"
+          content="Prepare your organization to move into production with system critical apps managed by Terraform, Vault and Consul. Designed to suit your organization, this in-depth training program can be delivered through an on-premise or virtual private class room."
+        />
+      ),
+    },
+  ],
+}
+
+export default {
+  TwoUp,
+  TwoUpPlainIcons,
+  ThreeUp,
+  ThreeUpWithHeading,
+  ThreeUpDarkIcons,
+  ThreeUpDarkText,
+  FourUp,
+  SixUp,
+  WithCustomContent,
+}

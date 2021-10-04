@@ -1,0 +1,27 @@
+{
+  "currentPath": "/technical-account-management",
+  "titleLink": {
+    "text": "Support",
+    "url": "/customer-success"
+  },
+  "menuItems": [
+    {
+      "text": "Technical Account Management",
+      "url": "/technical-account-management"
+    },
+    {
+      "text": "Implementation Services",
+      "url": "/implementation-services"
+    },
+    {
+      "text": "Enterprise Architecture",
+      "url": "/enterprise-architecture"
+    }
+  ],
+  "ctaLinks": [
+    {
+      "text": "Get Support",
+      "url": "/"
+    }
+  ]
+}

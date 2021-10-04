@@ -1,0 +1,32 @@
+import {
+  ArgsTable,
+  Canvas,
+  Description,
+  PRIMARY_STORY,
+  Primary,
+  Stories,
+  Story,
+  Subtitle,
+  Title,
+} from '@storybook/addon-docs'
+import Alert from '../../../packages/alert'
+import storyConfig from './alert.stories.tsx'
+
+<Title />
+<Subtitle />
+<Description />
+
+### Props
+
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+
+### Brand Color
+
+<Story id="components-alert--products" />
+
+### Overriding Brand Color
+
+If you need to override the brand color with a special _state_ (error, warning, success):
+
+<Story id="components-alert--states" />

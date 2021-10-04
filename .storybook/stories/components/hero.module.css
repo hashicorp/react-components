@@ -1,0 +1,8 @@
+.boundaryBackground {
+  &.boundaryBackground {
+    background-color: var(--boundary-secondary);
+    background-image: url('https://www.boundaryproject.io/img/hero-pattern.svg');
+    background-position: bottom 0 right -130px;
+    background-repeat: no-repeat;
+  }
+}

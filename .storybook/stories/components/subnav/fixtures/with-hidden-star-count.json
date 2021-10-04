@@ -1,0 +1,54 @@
+{
+  "currentPath": "/enterprise",
+  "titleLink": {
+    "text": "terraform",
+    "url": "/"
+  },
+  "ctaLinks": [
+    {
+      "text": "GitHub",
+      "url": "https://www.github.com/hashicorp/will-probably-never-make-a-repo-with-this-name-that-has-any-stars"
+    },
+    {
+      "text": "Download",
+      "url": "/download"
+    }
+  ],
+  "hideGithubStars": true,
+  "menuItems": [
+    {
+      "text": "Overview",
+      "url": "/"
+    },
+    {
+      "text": "Use Cases",
+      "submenu": [
+        {
+          "text": "Infrastructure as Code",
+          "url": "/use-cases/infrastructure-as-code"
+        },
+        {
+          "text": "Multi-Cloud Compliance and Management",
+          "url": "/use-cases/multi-cloud-compliance-and-management"
+        },
+        {
+          "text": "Self-Service Infrastructure",
+          "url": "/use-cases/self-service-infrastructure"
+        }
+      ]
+    },
+    {
+      "text": "Enterprise",
+      "url": "/enterprise"
+    },
+    "divider",
+    {
+      "text": "Whitepaper",
+      "url": "/whitepaper"
+    },
+    {
+      "text": "Docs",
+      "url": "/docs"
+    }
+  ]
+}
