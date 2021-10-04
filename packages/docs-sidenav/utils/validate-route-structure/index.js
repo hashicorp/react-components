@@ -58,9 +58,9 @@ function validateBranchRoutes(navNodes, depth = 0) {
     }
     // Ensure the only other node type is
     // a divider node, if not, throw an error
-    if (!navNode.divider) {
+    if (!(navNode.divider || navNode.heading)) {
       throw new Error(
-        `Unrecognized nav-data node. Please ensure all nav-data nodes are either NavLeaf, NavBranch, NavDirectLink, or NavDivider types. Invalid node: ${JSON.stringify(
+        `Unrecognized nav-data node. Please ensure all nav-data nodes are either NavLeaf, NavBranch, NavDirectLink, NavHeading, or NavDivider types. Invalid node: ${JSON.stringify(
           navNode
         )}.`
       )
