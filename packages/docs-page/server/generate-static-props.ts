@@ -16,6 +16,9 @@ import { stripVersionFromPathParams, normalizeVersion } from '../util'
 import { resolveNavData } from './resolve-nav-data'
 import { getNodeFromPath } from './get-node-from-path'
 
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { NavData } from '@hashicorp/react-docs-sidenav/types'
+
 const moizeOpts: Options = { isPromise: true, maxSize: Infinity }
 const cachedFetchNavData = moize(fetchNavData, moizeOpts)
 const cachedFetchVersionMetadataList = moize(
@@ -54,6 +57,16 @@ interface VersionSelectItem {
   name: string
   label: string
 }
+
+export interface GenerateStaticPropsResult {
+  mdxSource: MDXRemoteSerializeResult
+  frontMatter: { [key: string]: any }
+  currentPath: string
+  navData: NavData
+  githubFileUrl: string
+  versions: { name: string; label: string }[]
+}
+
 /**
  * formats a list of version-metadata to
  * be passed to `<VersionSelect versions=[...] />`
@@ -85,7 +98,7 @@ export async function generateStaticProps(
     navDataFile,
     localContentDir,
     params,
-    product: { name: productName, slug: productSlug },
+    product: { slug: productSlug },
     mainBranch = 'main',
     remarkPlugins = [],
     scope,
@@ -93,7 +106,7 @@ export async function generateStaticProps(
     basePath,
   }: GenerateStaticPropsContext,
   { VERCEL_ENV, ENABLE_VERSIONED_DOCS } = defaultOptions
-) {
+): Promise<GenerateStaticPropsResult> {
   const mdxRenderer = (mdx) =>
     renderPageMdx(mdx, {
       remarkPlugins,

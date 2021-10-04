@@ -6,7 +6,7 @@ import Content from '@hashicorp/react-content'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import { NavData } from '@hashicorp/react-docs-sidenav/types'
 import HashiHead from '@hashicorp/react-head'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
 
 import VersionSelect from '@hashicorp/react-version-select'
@@ -20,6 +20,7 @@ import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
+import { GenerateStaticPropsResult } from './server/generate-static-props'
 
 interface DocsPageWrapperProps {
   canonicalUrl: string
@@ -150,18 +151,7 @@ export interface DocsPageProps {
   showEditPage?: boolean
   showVersionSelect?: boolean
   additionalComponents?: MDXProviderComponentsProp
-  staticProps: {
-    mdxSource: MDXRemoteSerializeResult
-    frontMatter: {
-      canonical_url: string
-      description: string
-      page_title: string
-    }
-    currentPath: string
-    navData: NavData
-    githubFileUrl: string
-    versions: { name: string; label: string }[]
-  }
+  staticProps: GenerateStaticPropsResult
 }
 
 export default function DocsPage({
