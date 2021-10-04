@@ -154,15 +154,21 @@ export async function generateStaticProps(
       const frontMatter = document.metadata
 
       // Construct the githubFileUrl, used for "Edit this page" link
-      // https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx
-      // https://github.com/hashicorp/waypoint/blob/v0.5.2/website/content/commands/index.mdx
-      // https://github.com/hashicorp/waypoint/blob/e591452/website/content/commands/index.mdx
-      // https://github.com/hashicorp/waypoint/blob/e591452e6f9a155a038d45158e05d904ba006d37/website/content/commands/index.mdx
-      // const githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${document.sha}/website/content/${doc.filePath}`
 
-      // Todo: https://app.asana.com/0/1100423001970639/1201024261811837/f
       // Must be serializeable
-      const githubFileUrl = null
+      let githubFileUrl = null
+
+      if (document.githubFile) {
+        // Link latest version to `main`
+        // Hide link on older versions
+        const isLatest = versionMetadataList.find(
+          (e) => e.version === document.version
+        ).isLatest
+        if (isLatest) {
+          // GitHub only allows you to modify a file if you are on a branch, not a commit
+          githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${mainBranch}/${document.githubFile}`
+        }
+      }
 
       return {
         versions: mapVersionList(versionMetadataList),
