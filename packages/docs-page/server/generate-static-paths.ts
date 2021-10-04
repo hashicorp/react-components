@@ -26,9 +26,9 @@ export interface GenerateStaticPathsContext {
   /**
    * @example { name: 'Waypoint', slug: 'waypoint' }
    */
-  product: { name: string; slug: string }
+  product?: { name: string; slug: string }
   /** @example 'docs' */
-  basePath: string
+  basePath?: string
 }
 
 const defaultOptions = {
@@ -50,8 +50,6 @@ export async function generateStaticPaths(
 
   // This code path handles versioned docs integration, which is currently gated behind the ENABLE_VERSIONED_DOCS env var
   if (ENABLE_VERSIONED_DOCS && VERCEL_ENV === 'production') {
-    console.log(`Fetching remote nav data [${product.slug}]...`)
-
     // Fetch version metadata to get "latest"
     const versionMetadataList = await cachedFetchVersionMetadataList(
       product.slug
@@ -60,7 +58,6 @@ export async function generateStaticPaths(
     // Fetch and parse navigation data
     navData = (await cachedFetchNavData(product.slug, basePath, latest)).navData
   } else {
-    console.log(`Resolving local nav data [${product.slug}]...`)
     navData = await resolveNavData(navDataFile, localContentDir)
   }
 
