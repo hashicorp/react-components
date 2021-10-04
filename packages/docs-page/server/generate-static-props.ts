@@ -157,12 +157,17 @@ export async function generateStaticProps(
 
       // Must be serializeable
       let githubFileUrl = null
+
       if (document.githubFile) {
-        const branch = versionMetadataList.find(
+        // Link latest version to `main`
+        // Hide link on older versions
+        const isLatest = versionMetadataList.find(
           (e) => e.version === document.version
-        ).ref
-        // GitHub only allows you to modify a file if you are on a branch, not a commit
-        githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${branch}/${document.githubFile}`
+        ).isLatest
+        if (isLatest) {
+          // GitHub only allows you to modify a file if you are on a branch, not a commit
+          githubFileUrl = `https://github.com/hashicorp/${productSlug}/blob/${mainBranch}/${document.githubFile}`
+        }
       }
 
       return {
