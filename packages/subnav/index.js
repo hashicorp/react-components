@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import useNavRef from './helpers/useNavRef'
 import s from './style.module.css'
+import themeStyles from './theme.module.css'
 
 import MenuItemsOverflow from './partials/MenuItemsOverflow/index.js'
 import TitleLink from './partials/TitleLink/index.js'
@@ -35,6 +36,7 @@ function SubnavInner({
   currentPath,
   Link,
   matchOnBasePath = false,
+  theme,
 }) {
   const { themeClass } = useProductMeta(product) // overrides --brand css vars
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
@@ -75,6 +77,7 @@ function SubnavInner({
           url={titleLink.url}
           product={product}
           Link={Link}
+          theme={theme}
         />
         {!hasOverflow && (
           <MenuItemsDefault
@@ -90,6 +93,7 @@ function SubnavInner({
             product={product}
             Link={Link}
             hideGithubStars={hideGithubStars}
+            theme={theme}
           />
         )}
         {hasOverflow && (
@@ -99,6 +103,7 @@ function SubnavInner({
             hideGithubStars={hideGithubStars}
             product={product}
             Link={Link}
+            theme={theme}
           />
         )}
       </div>
@@ -106,7 +111,7 @@ function SubnavInner({
   )
 }
 
-function Subnav({ className, ...restProps }) {
+function Subnav({ className, theme = 'light', ...restProps }) {
   const [isSticky, hasOverflow, wrapperRef] = useNavRef()
   // Set the brand theme automatically based on the nav's title
   const product =
@@ -115,7 +120,7 @@ function Subnav({ className, ...restProps }) {
   return (
     <nav
       ref={wrapperRef}
-      className={classNames(s.root, className, {
+      className={classNames(s.root, themeStyles[theme], className, {
         [s.isSticky]: isSticky,
       })}
       aria-label={`${product} website navigation`}
@@ -125,6 +130,7 @@ function Subnav({ className, ...restProps }) {
         product={product}
         hasOverflow={hasOverflow}
         isSticky={isSticky}
+        theme={theme}
       />
     </nav>
   )
