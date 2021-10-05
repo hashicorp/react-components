@@ -1,6 +1,6 @@
 import validateRouteStructure from './'
 
-describe('<DocsSidenav /> - validate-file-paths', () => {
+describe('<DocsSidenav /> - validate-route-structure', () => {
   it("throws an error if a NavLeaf's path is nested at the wrong depth", () => {
     const navData = [
       {
@@ -61,7 +61,7 @@ describe('<DocsSidenav /> - validate-file-paths', () => {
         ],
       },
     ]
-    const siblingError = `Found mismatched paths at depth 1: ["directory","another-directory"].`
+    const siblingError = `Found mismatched paths at depth 1, with paths: ["directory","directory/some-file","another-directory/another-file"]. Implies mismatched parent directories: ["directory","another-directory"].`
     expect(() => validateRouteStructure(navData)).toThrow(siblingError)
   })
 
