@@ -68,8 +68,11 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         ],
       },
     ]
-    const siblingError = `Found mismatched paths at depth 1, with paths: ["directory","directory/some-file","another-directory/another-file"]. Implies mismatched parent directories: ["directory","another-directory"].`
-    expect(() => validateRouteStructure(navData)).toThrow(siblingError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Found mismatched paths at depth 1, with paths: [\\"directory\\",\\"directory/some-file\\",\\"another-directory/another-file\\"]. Implies mismatched parent directories: [\\"directory\\",\\"another-directory\\"]."`
+    )
   })
 
   it('throws an error if there are duplicate routes', () => {
