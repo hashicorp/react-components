@@ -21,13 +21,17 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         ],
       },
     ]
-    const depthError = `Invalid path depth. At depth 1, found path "directory/some-nested-dir/some-file". Please move this path to the correct depth of 2.`
-    expect(() => validateRouteStructure(navData)).toThrow(depthError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Invalid path depth. At depth 1, found path \\"directory/some-nested-dir/some-file\\". Please move this path to the correct depth of 2."`
+    )
   })
 
   it('throws an error if an empty array is passed', () => {
-    const emptyRoutesError = `Found empty array of navNodes at depth 0. There must be more than one route.`
-    expect(() => validateRouteStructure([])).toThrow(emptyRoutesError)
+    expect(() => validateRouteStructure([])).toThrowErrorMatchingInlineSnapshot(
+      `"Found empty array of navNodes at depth 0. There must be more than one route."`
+    )
   })
 
   it('throws an error if a NavBranch has has an empty array of routes', () => {
@@ -37,8 +41,11 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         routes: [],
       },
     ]
-    const emptyRoutesError = `Found empty array of navNodes at depth 1. There must be more than one route.`
-    expect(() => validateRouteStructure(navData)).toThrow(emptyRoutesError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Found empty array of navNodes at depth 1. There must be more than one route."`
+    )
   })
 
   it('throws an error if sibling routes have different parent routes', () => {
@@ -85,8 +92,11 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         ],
       },
     ]
-    const duplicateError = `Duplicate routes found for "directory". Please resolve duplicates.`
-    expect(() => validateRouteStructure(navData)).toThrow(duplicateError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Duplicate routes found for \\"directory\\". Please resolve duplicates."`
+    )
   })
 
   it('throws an error if a NavLeaf has a missing title', () => {
@@ -115,8 +125,11 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         ],
       },
     ]
-    const noTitleError = `Missing nav-data title on NavBranch. Please add a title to the node with the inferred path "some-directory".`
-    expect(() => validateRouteStructure(navData)).toThrow(noTitleError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Missing nav-data title on NavBranch. Please add a title to the node with the inferred path \\"some-directory\\"."`
+    )
   })
 
   it('throws an error if a NavDirectLink has a missing title', () => {
@@ -125,8 +138,11 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         href: '/some-direct-link',
       },
     ]
-    const noTitleError = `Missing nav-data title on NavDirectLink. Please add a title to the node with href "/some-direct-link".`
-    expect(() => validateRouteStructure(navData)).toThrow(noTitleError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Missing nav-data title on NavDirectLink. Please add a title to the node with href \\"/some-direct-link\\"."`
+    )
   })
 
   it('throws an error if a NavDirectLink has an empty href', () => {
@@ -136,10 +152,11 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         href: '',
       },
     ]
-    const emptyHrefError = `Empty href value on NavDirectLink. href values must be non-empty strings. Node: ${JSON.stringify(
-      navData[0]
-    )}.`
-    expect(() => validateRouteStructure(navData)).toThrow(emptyHrefError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Empty href value on NavDirectLink. href values must be non-empty strings. Node: {\\"title\\":\\"Empty Href Link\\",\\"href\\":\\"\\"}."`
+    )
   })
 
   it('throws an error for unrecognized nodes', () => {
@@ -148,10 +165,11 @@ describe('<DocsSidenav /> - validate-route-structure', () => {
         foo: 'bar',
       },
     ]
-    const emptyHrefError = `Unrecognized nav-data node. Please ensure all nav-data nodes are either NavLeaf, NavBranch, NavDirectLink, or NavDivider types. Invalid node: ${JSON.stringify(
-      navData[0]
-    )}.`
-    expect(() => validateRouteStructure(navData)).toThrow(emptyHrefError)
+    expect(() =>
+      validateRouteStructure(navData)
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Unrecognized nav-data node. Please ensure all nav-data nodes are either NavLeaf, NavBranch, NavDirectLink, NavHeading, or NavDivider types. Invalid node: {\\"foo\\":\\"bar\\"}."`
+    )
   })
 
   it('does not throw an error for a valid nav-data tree with a direct-links-only branch', () => {

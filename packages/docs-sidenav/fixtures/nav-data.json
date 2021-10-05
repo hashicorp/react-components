@@ -7,6 +7,7 @@
     "title": "What is Vault?",
     "path": "what-is-vault"
   },
+  { "heading": "Test Headline" },
   {
     "title": "Vault Agent",
     "routes": [

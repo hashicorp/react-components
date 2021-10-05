@@ -1,5 +1,44 @@
 # @hashicorp/react-docs-page
 
+## 14.4.0
+
+### Minor Changes
+
+- [#373](https://github.com/hashicorp/react-components/pull/373) [`4a5204b`](https://github.com/hashicorp/react-components/commit/4a5204b089e103da6e307ceba830c2356b2a930b) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - construct githubFileUrl to be used w/ **Edit this page**
+
+  - This links to the `main` branch file while on the latest version
+  - This is hidden for non-latest versions
+
+### Patch Changes
+
+- Updated dependencies [[`fe1fe69`](https://github.com/hashicorp/react-components/commit/fe1fe696e981bd93c5bcf34329eb81b571f798c9)]:
+  - @hashicorp/react-search@6.0.2
+
+## 14.3.1
+
+### Patch Changes
+
+- [#375](https://github.com/hashicorp/react-components/pull/375) [`0124e48`](https://github.com/hashicorp/react-components/commit/0124e48c025bea16d16f7d5cbb89c39f21aa88f6) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This removes a log statement that was breaking minor updates
+
+## 14.3.0
+
+### Minor Changes
+
+- [#354](https://github.com/hashicorp/react-components/pull/354) [`929b9b4`](https://github.com/hashicorp/react-components/commit/929b9b408387c78030e5e570c3fcb9807ce862e0) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - `react-docs-page` now makes api-calls to the mktg-content-workflows' content api
+
+  https://github.com/hashicorp/react-components/pull/360 refactored server code to TypeScript
+
+### Patch Changes
+
+- Updated dependencies [[`9b190b0`](https://github.com/hashicorp/react-components/commit/9b190b0b13beb1045825ee2b1eb560b84215c265)]:
+  - @hashicorp/react-docs-sidenav@8.3.0
+
+## 14.2.5
+
+### Patch Changes
+
+- [#362](https://github.com/hashicorp/react-components/pull/362) [`77e5712`](https://github.com/hashicorp/react-components/commit/77e5712336ebe5303ba9cdd0363fd13a7e7cb14f) Thanks [@BRKalow](https://github.com/BRKalow)! - Adjust prop interface to make showVersionSelect, additionalComponents, and showEditPage optional
+
 ## 14.2.4
 
 ### Patch Changes

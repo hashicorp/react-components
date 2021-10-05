@@ -6,7 +6,7 @@ function filterContent(content, searchValue) {
   // Otherwise we reduce the content array to only matching content
   return content.reduce((acc, item) => {
     // if this is a divider node, don't show it in filtered results
-    if (item.divider) return acc
+    if (item.divider || item.heading) return acc
     // all other nodes have a title, use it to check if the item is a direct match
     const isTitleMatch = fuzzysearch(
       searchValue.toLowerCase(),

@@ -1,0 +1,497 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateStaticProps should generate static props 1`] = `
+Object {
+  "currentPath": "",
+  "frontMatter": Object {
+    "description": "Welcome to the intro guide to Vault! This guide is the best place to start with Vault. We cover what Vault is, what problems it can solve, how it compares to existing software, and contains a quick start for using Vault.",
+    "page_title": "Introduction",
+  },
+  "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/packages/docs-page/server/__fixtures__/index.mdx",
+  "mdxSource": Object {
+    "compiledSource": "var u=Object.defineProperty,d=Object.defineProperties;var m=Object.getOwnPropertyDescriptors;var r=Object.getOwnPropertySymbols;var o=Object.prototype.hasOwnProperty,i=Object.prototype.propertyIsEnumerable;var l=(a,t,s)=>t in a?u(a,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):a[t]=s,e=(a,t)=>{for(var s in t||(t={}))o.call(t,s)&&l(a,s,t[s]);if(r)for(var s of r(t))i.call(t,s)&&l(a,s,t[s]);return a},c=(a,t)=>d(a,m(t));var p=(a,t)=>{var s={};for(var n in a)o.call(a,n)&&t.indexOf(n)<0&&(s[n]=a[n]);if(a!=null&&r)for(var n of r(a))t.indexOf(n)<0&&i.call(a,n)&&(s[n]=a[n]);return s};const layoutProps={},MDXLayout=\\"wrapper\\";function MDXContent(s){var n=s,{components:a}=n,t=p(n,[\\"components\\"]);return mdx(MDXLayout,c(e(e({},layoutProps),t),{components:a,mdxType:\\"MDXLayout\\"}),mdx(\\"h1\\",e({},{className:\\"g-type-display-2\\"}),mdx(\\"a\\",e({parentName:\\"h1\\"},{className:\\"__permalink-h\\",href:\\"#introduction-to-vault\\",\\"aria-label\\":\\"introduction to vault permalink\\"}),\\"\\\\xBB\\"),mdx(\\"a\\",e({parentName:\\"h1\\"},{className:\\"__target-h\\",id:\\"introduction-to-vault\\",\\"aria-hidden\\":\\"\\"})),\\"Introduction to Vault\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`Welcome to the introduction guide to HashiCorp Vault! This guide is the best
+place to get started with Vault. This guide covers what Vault is, what problems
+it can solve, how it compares to existing software, and contains a quick start
+for using Vault.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`If you are already familiar with the basics of Vault, the
+\`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"/docs\\"}),\\"documentation\\"),\` provides a better reference guide for all
+available features as well as internals.\`),mdx(\\"h2\\",e({},{className:\\"g-type-display-3\\"}),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__permalink-h\\",href:\\"#what-is-vault\\",\\"aria-label\\":\\"what is vault permalink\\"}),\\"\\\\xBB\\"),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__target-h\\",id:\\"what-is-vault\\",\\"aria-hidden\\":\\"\\"})),\\"What is Vault?\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"Vault is a tool for securely accessing \\",mdx(\\"em\\",{parentName:\\"p\\"},\\"secrets\\"),\`. A secret is anything that you
+want to tightly control access to, such as API keys, passwords, or certificates.
+Vault provides a unified interface to any secret, while providing tight access
+control and recording a detailed audit log.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`A modern system requires access to a multitude of secrets: database credentials,
+API keys for external services, credentials for service-oriented architecture
+communication, etc. Understanding who is accessing what secrets is already very
+difficult and platform-specific. Adding on key rolling, secure storage, and
+detailed audit logs is almost impossible without a custom solution. This is
+where Vault steps in.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`Examples work best to showcase Vault. Please see the
+\`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"/docs/use-cases\\"}),\\"use cases\\"),\\".\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"The key features of Vault are:\\"),mdx(\\"ul\\",null,mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Secure Secret Storage\\"),\`: Arbitrary key/value secrets can be stored
+in Vault. Vault encrypts these secrets prior to writing them to persistent
+storage, so gaining access to the raw storage isn't enough to access
+your secrets. Vault can write to disk, \`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"https://www.consul.io\\"}),\\"Consul\\"),\`,
+and more.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Dynamic Secrets\\"),\`: Vault can generate secrets on-demand for some
+systems, such as AWS or SQL databases. For example, when an application
+needs to access an S3 bucket, it asks Vault for credentials, and Vault
+will generate an AWS keypair with valid permissions on demand. After
+creating these dynamic secrets, Vault will also automatically revoke them
+after the lease is up.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Data Encryption\\"),\`: Vault can encrypt and decrypt data without storing
+it. This allows security teams to define encryption parameters and
+developers to store encrypted data in a location such as SQL without
+having to design their own encryption methods.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Leasing and Renewal\\"),\\": All secrets in Vault have a \\",mdx(\\"em\\",{parentName:\\"p\\"},\\"lease\\"),\` associated
+with them. At the end of the lease, Vault will automatically revoke that
+secret. Clients are able to renew leases via built-in renew APIs.\`)),mdx(\\"li\\",e({parentName:\\"ul\\"},{className:\\"g-type-long-body\\"}),mdx(\\"p\\",e({parentName:\\"li\\"},{className:\\"g-type-long-body\\"}),mdx(\\"strong\\",{parentName:\\"p\\"},\\"Revocation\\"),\`: Vault has built-in support for secret revocation. Vault
+can revoke not only single secrets, but a tree of secrets, for example
+all secrets read by a specific user, or all secrets of a particular type.
+Revocation assists in key rolling as well as locking down systems in the
+case of an intrusion.\`))),mdx(\\"h2\\",e({},{className:\\"g-type-display-3\\"}),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__permalink-h\\",href:\\"#next-steps\\",\\"aria-label\\":\\"next steps permalink\\"}),\\"\\\\xBB\\"),mdx(\\"a\\",e({parentName:\\"h2\\"},{className:\\"__target-h\\",id:\\"next-steps\\",\\"aria-hidden\\":\\"\\"})),\\"Next Steps\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"See the page on \\",mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"/docs/use-cases\\"}),\\"Vault use cases\\"),\` to see the multiple ways
+Vault can be used. Then, continue onwards with the \`,mdx(\\"a\\",e({parentName:\\"p\\"},{href:\\"https://learn.hashicorp.com/vault/getting-started/install\\"}),\`getting started
+guide\`),\` to use Vault
+to read, write, and create real secrets and see how it works in practice.\`))}MDXContent.isMDXComponent=!0;
+",
+    "scope": Object {},
+  },
+  "navData": Array [
+    Object {
+      "path": "extending-waypoint",
+      "title": "Overview",
+    },
+    Object {
+      "routes": Array [
+        Object {
+          "path": "extending-waypoint/creating-plugins",
+          "title": "Overview",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/main",
+          "title": "Registering Plugin Components",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/configuration",
+          "title": "Handling Configuration",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/build-interface",
+          "title": "Implementing the Builder Interface",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/compiling",
+          "title": "Compiling the Plugin",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/example-application",
+          "title": "Creating an Example Application",
+        },
+        Object {
+          "path": "extending-waypoint/creating-plugins/testing",
+          "title": "Testing the Plugin",
+        },
+      ],
+      "title": "Creating a Waypoint Plugin",
+    },
+    Object {
+      "path": "extending-waypoint/main-func",
+      "title": "Initializing the SDK",
+    },
+    Object {
+      "path": "extending-waypoint/passing-values",
+      "title": "Passing Values Between Components",
+    },
+    Object {
+      "routes": Array [
+        Object {
+          "path": "extending-waypoint/plugin-interfaces",
+          "title": "Overview",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/authenticator",
+          "title": "Authenticator",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/configurable",
+          "title": "Configurable",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/configurable-notify",
+          "title": "ConfigurableNotify",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/builder",
+          "title": "Builder",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/registry",
+          "title": "Registry",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/platform",
+          "title": "Platform",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/release-manager",
+          "title": "ReleaseManager",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/destroy",
+          "title": "Destroy",
+        },
+        Object {
+          "path": "extending-waypoint/plugin-interfaces/default-parameters",
+          "title": "Default Parameters",
+        },
+      ],
+      "title": "Plugin Interfaces",
+    },
+  ],
+  "versions": Array [],
+}
+`;
+
+exports[`generateStaticProps when versioned docs is enabled should generate static props 1`] = `
+Object {
+  "currentPath": "v0.5.x",
+  "frontMatter": Object {
+    "layout": "commands",
+    "page_title": "Waypoint Commands (CLI)",
+  },
+  "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx",
+  "mdxSource": Object {
+    "compiledSource": "var r=Object.defineProperty,u=Object.defineProperties;var d=Object.getOwnPropertyDescriptors;var s=Object.getOwnPropertySymbols;var p=Object.prototype.hasOwnProperty,m=Object.prototype.propertyIsEnumerable;var l=(a,n,t)=>n in a?r(a,n,{enumerable:!0,configurable:!0,writable:!0,value:t}):a[n]=t,e=(a,n)=>{for(var t in n||(n={}))p.call(n,t)&&l(a,t,n[t]);if(s)for(var t of s(n))m.call(n,t)&&l(a,t,n[t]);return a},c=(a,n)=>u(a,d(n));var i=(a,n)=>{var t={};for(var o in a)p.call(a,o)&&n.indexOf(o)<0&&(t[o]=a[o]);if(a!=null&&s)for(var o of s(a))n.indexOf(o)<0&&m.call(a,o)&&(t[o]=a[o]);return t};const layoutProps={},MDXLayout=\\"wrapper\\";function MDXContent(t){var o=t,{components:a}=o,n=i(o,[\\"components\\"]);return mdx(MDXLayout,c(e(e({},layoutProps),n),{components:a,mdxType:\\"MDXLayout\\"}),mdx(\\"h1\\",e({},{className:\\"g-type-display-2\\"}),mdx(\\"a\\",e({parentName:\\"h1\\"},{className:\\"__permalink-h\\",href:\\"#waypoint-commands-cli\\",\\"aria-label\\":\\"waypoint commands cli permalink\\"}),\\"\\\\xBB\\"),mdx(\\"a\\",e({parentName:\\"h1\\"},{className:\\"__target-h\\",id:\\"waypoint-commands-cli\\",\\"aria-hidden\\":\\"\\"})),\\"Waypoint Commands (CLI)\\"),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`Waypoint is controlled via a very easy to use command-line interface (CLI). Waypoint
+is only a single command-line application: \`,mdx(\\"inlineCode\\",{parentName:\\"p\\"},\\"waypoint\\"),\`. This application then takes a
+subcommand such as \`,mdx(\\"inlineCode\\",{parentName:\\"p\\"},\\"artifact\\"),\\" or \\",mdx(\\"inlineCode\\",{parentName:\\"p\\"},\\"deployment\\"),\`. The complete list of subcommands is in
+the navigation to the left.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`The waypoint CLI is a well-behaved command line application. In erroneous cases, a
+non-zero exit status will be returned. It also responds to -h and --help as you'd most
+likely expect.\`),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"To view a list of the available commands at any time, just run waypoint with no arguments:\\"),mdx(\\"pre\\",e({},{className:\\"language-shell-session\\"}),mdx(\\"code\\",e({parentName:\\"pre\\"},{className:\\"language-shell-session\\"}),mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token command\\"}),mdx(\\"span\\",e({parentName:\\"span\\"},{className:\\"token shell-symbol important\\"}),\\"$\\"),\\" \\",mdx(\\"span\\",e({parentName:\\"span\\"},{className:\\"token bash language-bash\\"}),\\"waypoint\\")),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"Usage: waypoint [-version] [-help] [-autocomplete-(un)install] <command> [args]\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"Common commands:\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    build        Build a new versioned artifact from source\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    deploy       Deploy a pushed artifact\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    release      Release a deployment\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    up           Perform the build, deploy, and release steps for the app\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"Other commands:\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    artifact        Artifact and build management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    auth-method     Auth method management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    config          Application configuration management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    context         Server access configurations\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    deployment      Deployment creation and management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    destroy         Delete all the resources created for an app\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    docs            Show documentation for components\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    exec            Execute a command in the context of a running application instance\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    fmt             Rewrite waypoint.hcl configuration to a canonical format\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    hostname        Application URLs\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    init            Initialize and validate a project\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    install         Install the Waypoint server to Kubernetes, Nomad, or Docker\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    logs            Show log output from the current application deployment\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    project         Project management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    runner          Runner management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    server          Server management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    ui              Open the web UI\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    user            User information and management\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"    version         Prints the version of this Waypoint CLI\\"),\`
+\`)),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\`To get help for any specific command, pass the -h flag to the relevant subcommand.
+For example, to see help about the up subcommand:\`),mdx(\\"pre\\",e({},{className:\\"language-shell-session\\"}),mdx(\\"code\\",e({parentName:\\"pre\\"},{className:\\"language-shell-session\\"}),mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token command\\"}),mdx(\\"span\\",e({parentName:\\"span\\"},{className:\\"token shell-symbol important\\"}),\\"$\\"),\\" \\",mdx(\\"span\\",e({parentName:\\"span\\"},{className:\\"token bash language-bash\\"}),\\"waypoint up -h\\")),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"Usage: waypoint up [options]\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"  Perform the build, deploy, and release steps for the app.\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"Global Options:\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"  -workspace=<string>\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"      Workspace to operate in. Defaults to 'default'. The default is default.\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"Operation Options:\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"  -label=<key=value>\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"      Labels to set for this operation. Can be specified multiple times.\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"  -remote\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"      True to use a remote runner to execute. This defaults to false unless\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"      'runner.default' is set in your configuration. The default is false.\\"),\`
+\`,\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"  -remote-source=<key=value>\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"      Override configurations for how remote runners source data. This is\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"      specified to the data source type being used in your configuration. This\\"),\`
+\`,mdx(\\"span\\",e({parentName:\\"code\\"},{className:\\"token output\\"}),\\"      is used for example to set a specific Git ref to run against.\\"),\`
+\`)),mdx(\\"p\\",e({},{className:\\"g-type-long-body\\"}),\\"Running \\",mdx(\\"inlineCode\\",{parentName:\\"p\\"},\\"waypoint -autocomplete-install\\"),\` will add the waypoint autocomplete capability
+so you can do \`,mdx(\\"inlineCode\\",{parentName:\\"p\\"},\\"waypoint <tab>\\"),\\" on commands. Running \\",mdx(\\"inlineCode\\",{parentName:\\"p\\"},\\"waypoint -autocomplete-uninstall\\"),\`
+will remove it. Please note that this will modify your shell init script, so you will
+need to reload your shell.\`))}MDXContent.isMDXComponent=!0;
+",
+    "scope": Object {},
+  },
+  "navData": Array [
+    Object {
+      "path": "build",
+      "title": "build",
+    },
+    Object {
+      "path": "deploy",
+      "title": "deploy",
+    },
+    Object {
+      "path": "context",
+      "title": "context",
+    },
+    Object {
+      "path": "context-inspect",
+      "title": "context-inspect",
+    },
+    Object {
+      "path": "destroy",
+      "title": "destroy",
+    },
+    Object {
+      "path": "exec",
+      "title": "exec",
+    },
+    Object {
+      "path": "init",
+      "title": "init",
+    },
+    Object {
+      "path": "install",
+      "title": "install",
+    },
+    Object {
+      "path": "login",
+      "title": "login",
+    },
+    Object {
+      "path": "logs",
+      "title": "logs",
+    },
+    Object {
+      "path": "project-apply",
+      "title": "project apply",
+    },
+    Object {
+      "path": "release",
+      "title": "release",
+    },
+    Object {
+      "path": "ui",
+      "title": "ui",
+    },
+    Object {
+      "path": "up",
+      "title": "up",
+    },
+    Object {
+      "divider": true,
+    },
+    Object {
+      "path": "artifact-build",
+      "title": "artifact build",
+    },
+    Object {
+      "path": "artifact-list-builds",
+      "title": "artifact list-builds",
+    },
+    Object {
+      "path": "artifact-list",
+      "title": "artifact list",
+    },
+    Object {
+      "path": "artifact-push",
+      "title": "artifact push",
+    },
+    Object {
+      "path": "auth-method-list",
+      "title": "auth-method list",
+    },
+    Object {
+      "path": "auth-method-inspect",
+      "title": "auth-method inspect",
+    },
+    Object {
+      "path": "auth-method-set-oidc",
+      "title": "auth-method set oidc",
+    },
+    Object {
+      "path": "auth-method-delete",
+      "title": "auth-method delete",
+    },
+    Object {
+      "path": "config-get",
+      "title": "config get",
+    },
+    Object {
+      "path": "config-set",
+      "title": "config set",
+    },
+    Object {
+      "path": "config-source-get",
+      "title": "config source-get",
+    },
+    Object {
+      "path": "config-source-set",
+      "title": "config source-set",
+    },
+    Object {
+      "path": "config-sync",
+      "title": "config sync",
+    },
+    Object {
+      "path": "context-clear",
+      "title": "context clear",
+    },
+    Object {
+      "path": "context-create",
+      "title": "context create",
+    },
+    Object {
+      "path": "context-delete",
+      "title": "context delete",
+    },
+    Object {
+      "path": "context-list",
+      "title": "context list",
+    },
+    Object {
+      "path": "context-rename",
+      "title": "context rename",
+    },
+    Object {
+      "path": "context-use",
+      "title": "context use",
+    },
+    Object {
+      "path": "context-verify",
+      "title": "context verify",
+    },
+    Object {
+      "path": "deployment-deploy",
+      "title": "deployment deploy",
+    },
+    Object {
+      "path": "deployment-destroy",
+      "title": "deployment destroy",
+    },
+    Object {
+      "path": "deployment-list",
+      "title": "deployment list",
+    },
+    Object {
+      "path": "docs",
+      "title": "docs",
+    },
+    Object {
+      "path": "fmt",
+      "title": "fmt",
+    },
+    Object {
+      "path": "hostname-delete",
+      "title": "hostname delete",
+    },
+    Object {
+      "path": "hostname-list",
+      "title": "hostname list",
+    },
+    Object {
+      "path": "hostname-register",
+      "title": "hostname register",
+    },
+    Object {
+      "path": "plugin",
+      "title": "plugin",
+    },
+    Object {
+      "path": "project-inspect",
+      "title": "project inspect",
+    },
+    Object {
+      "path": "project-list",
+      "title": "project list",
+    },
+    Object {
+      "path": "release-list",
+      "title": "release list",
+    },
+    Object {
+      "path": "runner-agent",
+      "title": "runner agent",
+    },
+    Object {
+      "path": "server-bootstrap",
+      "title": "server bootstrap",
+    },
+    Object {
+      "path": "server-config-set",
+      "title": "server config-set",
+    },
+    Object {
+      "path": "server-install",
+      "title": "server install",
+    },
+    Object {
+      "path": "server-restore",
+      "title": "server restore",
+    },
+    Object {
+      "path": "server-run",
+      "title": "server run",
+    },
+    Object {
+      "path": "server-snapshot",
+      "title": "server snapshot",
+    },
+    Object {
+      "path": "server-uninstall",
+      "title": "server uninstall",
+    },
+    Object {
+      "path": "server-upgrade",
+      "title": "server upgrade",
+    },
+    Object {
+      "path": "status",
+      "title": "status",
+    },
+    Object {
+      "path": "token-exchange",
+      "title": "token exchange",
+    },
+    Object {
+      "path": "token-invite",
+      "title": "token invite",
+    },
+    Object {
+      "path": "token-new",
+      "title": "token new",
+    },
+    Object {
+      "path": "user-inspect",
+      "title": "user inspect",
+    },
+    Object {
+      "path": "user-invite",
+      "title": "user invite",
+    },
+    Object {
+      "path": "user-modify",
+      "title": "user modify",
+    },
+    Object {
+      "path": "user-token",
+      "title": "user token",
+    },
+    Object {
+      "path": "version",
+      "title": "version",
+    },
+  ],
+  "versions": Array [
+    Object {
+      "label": "v0.5.2 (latest)",
+      "name": "latest",
+    },
+    Object {
+      "label": "v0.4.x",
+      "name": "v0.4.x",
+    },
+    Object {
+      "label": "v0.3.x",
+      "name": "v0.3.x",
+    },
+  ],
+}
+`;
