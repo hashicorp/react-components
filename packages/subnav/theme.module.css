@@ -13,7 +13,6 @@ including in /partials.
 
   /* title or logo link */
   --title-text-color: var(--gray-1);
-  --logo-text-color: var(--black);
 
   /* github-stars-link */
   --gh-stars-icon-color: var(--black);
@@ -34,7 +33,6 @@ including in /partials.
 
   /* title or logo link */
   --title-text-color: var(--white);
-  --logo-text-color: var(--white);
 
   /* github-stars-link */
   --gh-stars-icon-color: var(--white);
