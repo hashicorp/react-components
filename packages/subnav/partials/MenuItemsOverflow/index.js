@@ -35,7 +35,14 @@ class MenuItemsOverflow extends React.Component {
   }
 
   render() {
-    const { menuItems, ctaLinks, product, Link, hideGithubStars } = this.props
+    const {
+      menuItems,
+      ctaLinks,
+      product,
+      Link,
+      hideGithubStars,
+      theme,
+    } = this.props
     const { isCollapsed } = this.state
     return (
       <div className={s.root} ref={this.parentRef}>
@@ -91,6 +98,7 @@ class MenuItemsOverflow extends React.Component {
             isInDropdown={true}
             product={product}
             hideGithubStars={hideGithubStars}
+            theme={theme}
           />
         </div>
       </div>

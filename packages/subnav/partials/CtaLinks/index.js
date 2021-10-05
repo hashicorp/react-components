@@ -4,8 +4,7 @@ import GithubStarsLink from './github-stars-link/index.js'
 import classNames from 'classnames'
 import s from './style.module.css'
 
-function CtaLinks(props) {
-  const { links, product, isInDropdown, hideGithubStars } = props
+function CtaLinks({ links, product, isInDropdown, hideGithubStars, theme }) {
   return (
     <div className={classNames(s.root, { [s.isInDropdown]: isInDropdown })}>
       {links.map((link, stableIdx) => {
@@ -41,6 +40,8 @@ function CtaLinks(props) {
             theme={{
               brand: product,
               variant: isLastButton ? 'primary' : 'secondary',
+              background: theme,
+              ...link.theme /* allow theme overrides via the ctaLinks array */,
             }}
             linkType={isDownload ? 'download' : undefined}
           />
