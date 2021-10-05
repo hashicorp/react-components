@@ -29,8 +29,7 @@ async function processSchemaString(jsonString) {
 }
 
 async function processSchemaFile(filePath) {
-  const jsonString = fs.readFileSync(filePath)
-  return await processSchemaString(jsonString)
+  return await processSchemaString(fs.readFileSync(filePath))
 }
 
 export default processSchema
