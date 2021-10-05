@@ -29,6 +29,11 @@ module.exports = {
         properties: {
           text: { type: 'string' },
           url: { type: 'string' },
+          theme: {
+            type: 'object',
+            description:
+              'An optional theme object, which will be passed to the Button element for this link, and will override and default settings in the component.',
+          },
         },
       },
     ],

@@ -1,10 +1,12 @@
+/* Note: consumes from theme.module.css, as marked */
+
 .root {
-  --stars-border-color: rgba(29, 30, 35, 0.2);
-  --scrim-opacity: 0;
+  --local-scrim-color: transparent;
+  --local-divider-color: var(--border-color); /* from theme.module.css */
 
   position: relative;
-  color: var(--black);
-  border: 1px solid rgba(29, 30, 35, 0.2);
+  color: var(--gh-stars-icon-color); /* from theme.module.css */
+  border: 1px solid var(--local-divider-color); /* from theme.module.css */
   background: none;
   transition: background 0.2s, border-color 0.2s;
   display: flex;
@@ -19,24 +21,17 @@
     right: -1px;
     bottom: -1px;
     border-radius: 1px;
-    transition: opacity 0.25s ease, background 0.25s ease;
+    transition: background 0.25s ease;
     z-index: 0;
-    opacity: var(--scrim-opacity);
-    background-color: var(--black);
+    background-color: var(--local-scrim-color);
   }
 
-  &:hover {
-    --stars-border-color: transparent;
-    --scrim-opacity: 0.1;
-
-    border-color: transparent;
-  }
-
+  &:hover,
   &:active {
-    --stars-border-color: transparent;
-    --scrim-opacity: 0.16;
-
-    border-color: transparent;
+    --local-divider-color: transparent;
+    --local-scrim-color: var(
+      --gh-stars-scrim-color
+    ); /* from theme.module.css */
   }
 }
 
@@ -47,6 +42,14 @@
   & > svg {
     width: 20px;
     height: 20px;
+
+    & [fill] {
+      fill: currentColor;
+    }
+
+    & [stroke] {
+      stroke: currentColor;
+    }
   }
 }
 
@@ -55,7 +58,7 @@
   align-items: center;
   height: 100%;
   border-left: 1px solid;
-  border-color: var(--stars-border-color);
+  border-color: var(--local-divider-color);
   padding: 6px 12px 7px 10px;
   transition: border-color 0.2s;
   z-index: 1;
@@ -64,5 +67,13 @@
     height: 16px;
     margin-right: 4px;
     margin-top: 1px;
+
+    & [fill] {
+      fill: currentColor;
+    }
+
+    & [stroke] {
+      stroke: currentColor;
+    }
   }
 }

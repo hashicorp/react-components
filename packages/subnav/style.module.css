@@ -1,16 +1,16 @@
-.root {
-  --gray-6-transparent: rgba(174, 176, 183, 0.45);
+/* Note: consumes from theme.module.css, as marked */
 
+.root {
   position: sticky;
   top: -1px;
   z-index: 900;
-  background: var(--white);
-  border-top: 1px solid var(--gray-6-transparent);
+  background: var(--background-color); /* from theme.module.css */
+  border-top: 1px solid var(--border-color); /* from theme.module.css */
   border-bottom: 1px solid transparent;
   transition: border-bottom-color 0.8s;
 
   &.isSticky {
-    border-bottom-color: var(--gray-6-transparent);
+    border-bottom-color: var(--border-color); /* from theme.module.css */
   }
 }
 
