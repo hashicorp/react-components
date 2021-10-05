@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.1.0
+
+### Minor Changes
+
+- [#381](https://github.com/hashicorp/react-components/pull/381) [`ba93441`](https://github.com/hashicorp/react-components/commit/ba934415dd7d2ad56360c769f609c5ab9057ddd1) Thanks [@zchsh](https://github.com/zchsh)! - Add support for dark theme, via new theme prop.
+
 ## 9.0.1
 
 ### Patch Changes
