@@ -36,7 +36,7 @@ including in /partials.
 .dark {
   /* tab triggers */
   --background-color: var(--black);
-  --border-color: var(--gray-2);
+  --border-color: var(--gray-3);
   --text-color: var(--gray-4);
   --text-color-hover: var(--white);
   --active-tab-color: var(--white);
