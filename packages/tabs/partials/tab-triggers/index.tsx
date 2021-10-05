@@ -10,10 +10,12 @@ import s from './style.module.css'
 
 interface TabTriggersProps {
   tabs: TabTriggerType[]
+  className?: string
   activeTabIdx: number
   setActiveTab: (tabIndex: number, tabGroup?: string) => void
   centered: boolean
   fullWidthBorder: boolean
+  theme: 'light' | 'dark'
 }
 
 function TabTriggers({
@@ -22,6 +24,8 @@ function TabTriggers({
   setActiveTab,
   centered,
   fullWidthBorder,
+  className,
+  theme = 'light',
 }: TabTriggersProps): React.ReactElement {
   const overflowBaseRef = useRef(null)
   const overflowContentRef = useRef(null)
@@ -104,7 +108,9 @@ function TabTriggers({
 
   return (
     <div
-      className={classNames(s.root, { [s.fullWidthBorder]: fullWidthBorder })}
+      className={classNames(s.root, className, {
+        [s.fullWidthBorder]: fullWidthBorder,
+      })}
     >
       <div className="g-grid-container">
         {/* Note: the overflowBaseRef element has zero height, but is still "visible".
@@ -139,6 +145,7 @@ function TabTriggers({
                   updateScrollOffset(targetIdx)
                 }}
                 tab={tab}
+                theme={theme}
               />
             ))}
           </div>

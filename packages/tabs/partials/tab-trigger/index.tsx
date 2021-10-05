@@ -17,6 +17,7 @@ interface TabTriggerProps {
   hasOverflow: boolean
   activeTabIdx: number
   setActiveTab: (tabIndex: number, tabGroup?: string) => void
+  theme?: 'light' | 'dark'
 }
 
 function TabTrigger({
@@ -24,6 +25,7 @@ function TabTrigger({
   hasOverflow,
   activeTabIdx,
   setActiveTab,
+  theme = 'light',
 }: TabTriggerProps): React.ReactElement {
   const groupCtx = useTabGroups()
   const activeGroup = groupCtx?.activeTabGroup
@@ -50,7 +52,7 @@ function TabTrigger({
       <span className={s.inner}>
         <span className="g-type-body-strong">{tab.heading}</span>
         {tab.tooltip && (
-          <Tooltip label={tab.tooltip} aria-label={tab.tooltip}>
+          <Tooltip label={tab.tooltip} aria-label={tab.tooltip} theme={theme}>
             <span
               data-testid="tooltip-icon"
               className={s.tooltipTrigger}
