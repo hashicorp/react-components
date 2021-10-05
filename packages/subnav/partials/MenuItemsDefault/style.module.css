@@ -1,3 +1,5 @@
+/* Note: consumes from theme.module.css, as marked */
+
 .root {
   display: flex;
   padding: 0 32px;
@@ -30,13 +32,13 @@
 
 .submenuItem {
   composes: g-type-body-small-strong from global;
-  color: var(--black);
+  color: var(--menu-item-text-color); /* from theme.module.css */
 }
 
 .submenuModal {
   border-radius: 4px;
-  box-shadow: 0 8px 12px rgba(37, 38, 45, 0.08);
-  background: var(--white);
+  box-shadow: var(--dropdown-box-shadow); /* from theme.module.css */
+  background: var(--dropdown-background-color); /* from theme.module.css */
   z-index: 1;
   display: block;
   position: absolute;
@@ -63,7 +65,7 @@
 }
 
 .verticalDivider {
-  background: var(--gray-5);
+  background: var(--border-color); /* from theme.module.css */
   height: 1.75rem;
   width: 1px;
   margin: 0 8px;
