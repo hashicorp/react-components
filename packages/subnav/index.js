@@ -77,6 +77,7 @@ function SubnavInner({
           url={titleLink.url}
           product={product}
           Link={Link}
+          theme={theme}
         />
         {!hasOverflow && (
           <MenuItemsDefault
