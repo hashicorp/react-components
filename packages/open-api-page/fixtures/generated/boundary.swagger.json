@@ -61,7 +61,7 @@
         "operationId": "AccountService_ListAccounts",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -161,7 +161,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "Account contains all fields related to an Account resource"
+                    "title": "<p>Account contains all fields related to an Account resource</p>"
                   }
                 }
               }
@@ -284,7 +284,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Account contains all fields related to an Account resource"
+              "title": "<p>Account contains all fields related to an Account resource</p>"
             }
           }
         },
@@ -387,7 +387,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Account contains all fields related to an Account resource"
+              "title": "<p>Account contains all fields related to an Account resource</p>"
             }
           }
         ],
@@ -495,7 +495,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Account contains all fields related to an Account resource"
+              "title": "<p>Account contains all fields related to an Account resource</p>"
             }
           }
         },
@@ -514,7 +514,7 @@
         "operationId": "AccountService_DeleteAccount",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -630,7 +630,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Account contains all fields related to an Account resource"
+              "title": "<p>Account contains all fields related to an Account resource</p>"
             }
           }
         },
@@ -739,7 +739,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Account contains all fields related to an Account resource"
+              "title": "<p>Account contains all fields related to an Account resource</p>"
             }
           },
           {
@@ -853,7 +853,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Account contains all fields related to an Account resource"
+              "title": "<p>Account contains all fields related to an Account resource</p>"
             }
           }
         },
@@ -993,7 +993,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Account contains all fields related to an Account resource"
+              "title": "<p>Account contains all fields related to an Account resource</p>"
             }
           }
         },
@@ -1035,7 +1035,7 @@
         "operationId": "AuthMethodService_ListAuthMethods",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -1143,7 +1143,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "AuthMethod contains all fields related to an Auth Method resource"
+                    "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
                   }
                 }
               }
@@ -1280,7 +1280,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthMethod contains all fields related to an Auth Method resource"
+              "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
             }
           }
         },
@@ -1391,7 +1391,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthMethod contains all fields related to an Auth Method resource"
+              "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
             }
           }
         ],
@@ -1404,7 +1404,7 @@
         "operationId": "AuthMethodService_Authenticate",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -1566,7 +1566,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthToken contains all fields related to an Auth Token resource"
+              "title": "<p>AuthToken contains all fields related to an Auth Token resource</p>"
             }
           }
         },
@@ -1713,7 +1713,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthMethod contains all fields related to an Auth Method resource"
+              "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
             }
           }
         },
@@ -1732,7 +1732,7 @@
         "operationId": "AuthMethodService_DeleteAuthMethod",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -1856,7 +1856,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthMethod contains all fields related to an Auth Method resource"
+              "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
             }
           }
         },
@@ -1973,7 +1973,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthMethod contains all fields related to an Auth Method resource"
+              "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
             }
           },
           {
@@ -2095,7 +2095,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthMethod contains all fields related to an Auth Method resource"
+              "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
             }
           }
         },
@@ -2138,7 +2138,7 @@
         "operationId": "AuthTokenService_ListAuthTokens",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -2241,7 +2241,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "AuthToken contains all fields related to an Auth Token resource"
+                    "title": "<p>AuthToken contains all fields related to an Auth Token resource</p>"
                   }
                 }
               }
@@ -2375,7 +2375,7 @@
                   "readOnly": true
                 }
               },
-              "title": "AuthToken contains all fields related to an Auth Token resource"
+              "title": "<p>AuthToken contains all fields related to an Auth Token resource</p>"
             }
           }
         },
@@ -2394,7 +2394,7 @@
         "operationId": "AuthTokenService_DeleteAuthToken",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -2417,7 +2417,7 @@
         "operationId": "CredentialLibraryService_ListCredentialLibraries",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -2509,7 +2509,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+                    "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
                   }
                 }
               }
@@ -2624,7 +2624,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+              "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
             }
           }
         },
@@ -2719,7 +2719,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+              "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
             }
           }
         ],
@@ -2819,7 +2819,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+              "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
             }
           }
         },
@@ -2838,7 +2838,7 @@
         "operationId": "CredentialLibraryService_DeleteCredentialLibrary",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -2946,7 +2946,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+              "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
             }
           }
         },
@@ -3047,7 +3047,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+              "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
             }
           },
           {
@@ -3066,7 +3066,7 @@
         "operationId": "CredentialStoreService_ListCredentialStores",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -3169,7 +3169,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "CredentialStore contains all fields related to an Credential Store resource"
+                    "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
                   }
                 }
               }
@@ -3301,7 +3301,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialStore contains all fields related to an Credential Store resource"
+              "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
             }
           }
         },
@@ -3407,7 +3407,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialStore contains all fields related to an Credential Store resource"
+              "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
             }
           }
         ],
@@ -3518,7 +3518,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialStore contains all fields related to an Credential Store resource"
+              "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
             }
           }
         },
@@ -3537,7 +3537,7 @@
         "operationId": "CredentialStoreService_DeleteCredentialStore",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -3656,7 +3656,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialStore contains all fields related to an Credential Store resource"
+              "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
             }
           }
         },
@@ -3768,7 +3768,7 @@
                   "readOnly": true
                 }
               },
-              "title": "CredentialStore contains all fields related to an Credential Store resource"
+              "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
             }
           },
           {
@@ -3787,7 +3787,7 @@
         "operationId": "GroupService_ListGroups",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -3899,7 +3899,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "Group contains all fields related to a Group resource"
+                    "title": "<p>Group contains all fields related to a Group resource</p>"
                   }
                 }
               }
@@ -4040,7 +4040,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           }
         },
@@ -4155,7 +4155,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           }
         ],
@@ -4275,7 +4275,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           }
         },
@@ -4294,7 +4294,7 @@
         "operationId": "GroupService_DeleteGroup",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -4422,7 +4422,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           }
         },
@@ -4543,7 +4543,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           },
           {
@@ -4669,7 +4669,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           }
         },
@@ -4821,7 +4821,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           }
         },
@@ -4973,7 +4973,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Group contains all fields related to a Group resource"
+              "title": "<p>Group contains all fields related to a Group resource</p>"
             }
           }
         },
@@ -5018,7 +5018,7 @@
         "operationId": "HostCatalogService_ListHostCatalogs",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -5121,7 +5121,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "HostCatalog manages Hosts and Host Sets"
+                    "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
                   }
                 }
               }
@@ -5253,7 +5253,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostCatalog manages Hosts and Host Sets"
+              "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
             }
           }
         },
@@ -5359,7 +5359,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostCatalog manages Hosts and Host Sets"
+              "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
             }
           }
         ],
@@ -5470,7 +5470,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostCatalog manages Hosts and Host Sets"
+              "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
             }
           }
         },
@@ -5489,7 +5489,7 @@
         "operationId": "HostCatalogService_DeleteHostCatalog",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -5608,7 +5608,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostCatalog manages Hosts and Host Sets"
+              "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
             }
           }
         },
@@ -5720,7 +5720,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostCatalog manages Hosts and Host Sets"
+              "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
             }
           },
           {
@@ -5739,7 +5739,7 @@
         "operationId": "HostSetService_ListHostSets",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -5839,7 +5839,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+                    "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
                   }
                 }
               }
@@ -5962,7 +5962,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           }
         },
@@ -6065,7 +6065,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           }
         ],
@@ -6173,7 +6173,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           }
         },
@@ -6192,7 +6192,7 @@
         "operationId": "HostSetService_DeleteHostSet",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -6308,7 +6308,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           }
         },
@@ -6417,7 +6417,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           },
           {
@@ -6531,7 +6531,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           }
         },
@@ -6672,7 +6672,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           }
         },
@@ -6813,7 +6813,7 @@
                   "readOnly": true
                 }
               },
-              "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+              "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
             }
           }
         },
@@ -6859,7 +6859,7 @@
         "operationId": "HostService_ListHosts",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -6959,7 +6959,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "Host contains all fields related to a Host resource"
+                    "title": "<p>Host contains all fields related to a Host resource</p>"
                   }
                 }
               }
@@ -7082,7 +7082,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Host contains all fields related to a Host resource"
+              "title": "<p>Host contains all fields related to a Host resource</p>"
             }
           }
         },
@@ -7185,7 +7185,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Host contains all fields related to a Host resource"
+              "title": "<p>Host contains all fields related to a Host resource</p>"
             }
           }
         ],
@@ -7293,7 +7293,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Host contains all fields related to a Host resource"
+              "title": "<p>Host contains all fields related to a Host resource</p>"
             }
           }
         },
@@ -7312,7 +7312,7 @@
         "operationId": "HostService_DeleteHost",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -7428,7 +7428,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Host contains all fields related to a Host resource"
+              "title": "<p>Host contains all fields related to a Host resource</p>"
             }
           }
         },
@@ -7537,7 +7537,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Host contains all fields related to a Host resource"
+              "title": "<p>Host contains all fields related to a Host resource</p>"
             }
           },
           {
@@ -7556,7 +7556,7 @@
         "operationId": "ManagedGroupService_ListManagedGroups",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -7656,7 +7656,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+                    "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
                   }
                 }
               }
@@ -7779,7 +7779,7 @@
                   "readOnly": true
                 }
               },
-              "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+              "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
             }
           }
         },
@@ -7882,7 +7882,7 @@
                   "readOnly": true
                 }
               },
-              "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+              "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
             }
           }
         ],
@@ -7990,7 +7990,7 @@
                   "readOnly": true
                 }
               },
-              "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+              "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
             }
           }
         },
@@ -8009,7 +8009,7 @@
         "operationId": "ManagedGroupService_DeleteManagedGroup",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -8125,7 +8125,7 @@
                   "readOnly": true
                 }
               },
-              "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+              "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
             }
           }
         },
@@ -8234,7 +8234,7 @@
                   "readOnly": true
                 }
               },
-              "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+              "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
             }
           },
           {
@@ -8253,7 +8253,7 @@
         "operationId": "RoleService_ListRoles",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -8427,7 +8427,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "Role contains all fields related to a Role resource"
+                    "title": "<p>Role contains all fields related to a Role resource</p>"
                   }
                 }
               }
@@ -8630,7 +8630,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -8807,7 +8807,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         ],
@@ -8989,7 +8989,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -9008,7 +9008,7 @@
         "operationId": "RoleService_DeleteRole",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -9198,7 +9198,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -9381,7 +9381,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           },
           {
@@ -9569,7 +9569,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -9783,7 +9783,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -9997,7 +9997,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -10211,7 +10211,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -10425,7 +10425,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -10639,7 +10639,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Role contains all fields related to a Role resource"
+              "title": "<p>Role contains all fields related to a Role resource</p>"
             }
           }
         },
@@ -10684,7 +10684,7 @@
         "operationId": "ScopeService_ListScopes",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -10787,7 +10787,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "Scope contains all fields related to a Scope resource"
+                    "title": "<p>Scope contains all fields related to a Scope resource</p>"
                   }
                 }
               }
@@ -10919,7 +10919,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Scope contains all fields related to a Scope resource"
+              "title": "<p>Scope contains all fields related to a Scope resource</p>"
             }
           }
         },
@@ -11025,7 +11025,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Scope contains all fields related to a Scope resource"
+              "title": "<p>Scope contains all fields related to a Scope resource</p>"
             }
           },
           {
@@ -11148,7 +11148,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Scope contains all fields related to a Scope resource"
+              "title": "<p>Scope contains all fields related to a Scope resource</p>"
             }
           }
         },
@@ -11167,7 +11167,7 @@
         "operationId": "ScopeService_DeleteScope",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -11286,7 +11286,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Scope contains all fields related to a Scope resource"
+              "title": "<p>Scope contains all fields related to a Scope resource</p>"
             }
           }
         },
@@ -11398,7 +11398,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Scope contains all fields related to a Scope resource"
+              "title": "<p>Scope contains all fields related to a Scope resource</p>"
             }
           },
           {
@@ -11417,7 +11417,7 @@
         "operationId": "SessionService_ListSessions",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -11591,7 +11591,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "Session contains all fields related to a Session resource"
+                    "title": "<p>Session contains all fields related to a Session resource</p>"
                   }
                 }
               }
@@ -11796,7 +11796,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Session contains all fields related to a Session resource"
+              "title": "<p>Session contains all fields related to a Session resource</p>"
             }
           }
         },
@@ -11986,7 +11986,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Session contains all fields related to a Session resource"
+              "title": "<p>Session contains all fields related to a Session resource</p>"
             }
           }
         },
@@ -12024,7 +12024,7 @@
         "operationId": "TargetService_ListTargets",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -12266,7 +12266,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "Target contains all fields related to a Target resource"
+                    "title": "<p>Target contains all fields related to a Target resource</p>"
                   }
                 }
               }
@@ -12537,7 +12537,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -12782,7 +12782,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         ],
@@ -13032,7 +13032,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -13051,7 +13051,7 @@
         "operationId": "TargetService_DeleteTarget",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -13309,7 +13309,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -13560,7 +13560,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           },
           {
@@ -13816,7 +13816,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -14098,7 +14098,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -14380,7 +14380,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -14662,7 +14662,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -14874,13 +14874,13 @@
                         }
                       }
                     },
-                    "description": "Credential information for a session."
+                    "description": "<p>Credential information for a session.</p>"
                   },
                   "description": "<p>Output only. The credentials for this session.</p>",
                   "readOnly": true
                 }
               },
-              "description": "SessionAuthorization contains all fields related to authorization for a Session. It's in the Targets package because it's returned by a Target's authorize action."
+              "description": "<p>SessionAuthorization contains all fields related to authorization for a Session. It's in the Targets package because it's returned by a Target's authorize action.</p>"
             }
           }
         },
@@ -15169,7 +15169,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -15451,7 +15451,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -15733,7 +15733,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -16015,7 +16015,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -16297,7 +16297,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -16330,7 +16330,7 @@
                   }
                 }
               },
-              "description": "Sets the values for application_credential_library_ids.  If any\ncredential_library_id field that is not set in the request will result in\nthose fields being cleared."
+              "description": "<p>Sets the values for application_credential_library_ids.  If any\ncredential_library_id field that is not set in the request will result in\nthose fields being cleared.</p>"
             }
           }
         ],
@@ -16580,7 +16580,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -16613,7 +16613,7 @@
                   }
                 }
               },
-              "description": "Sets the values for application_credential_source_ids.  If any\ncredential_source_id field that is not set in the request will result in\nthose fields being cleared."
+              "description": "<p>Sets the values for application_credential_source_ids.  If any\ncredential_source_id field that is not set in the request will result in\nthose fields being cleared.</p>"
             }
           }
         ],
@@ -16863,7 +16863,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -17145,7 +17145,7 @@
                   "readOnly": true
                 }
               },
-              "title": "Target contains all fields related to a Target resource"
+              "title": "<p>Target contains all fields related to a Target resource</p>"
             }
           }
         },
@@ -17190,7 +17190,7 @@
         "operationId": "UserService_ListUsers",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object",
               "properties": {
@@ -17322,7 +17322,7 @@
                         "readOnly": true
                       }
                     },
-                    "title": "User contains all fields related to a User resource"
+                    "title": "<p>User contains all fields related to a User resource</p>"
                   }
                 }
               }
@@ -17483,7 +17483,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           }
         },
@@ -17618,7 +17618,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           }
         ],
@@ -17758,7 +17758,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           }
         },
@@ -17777,7 +17777,7 @@
         "operationId": "UserService_DeleteUser",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "<p>A successful response.</p>",
             "schema": {
               "type": "object"
             }
@@ -17925,7 +17925,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           }
         },
@@ -18066,7 +18066,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           },
           {
@@ -18212,7 +18212,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           }
         },
@@ -18384,7 +18384,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           }
         },
@@ -18556,7 +18556,7 @@
                   "readOnly": true
                 }
               },
-              "title": "User contains all fields related to a User resource"
+              "title": "<p>User contains all fields related to a User resource</p>"
             }
           }
         },
@@ -18691,7 +18691,7 @@
           "readOnly": true
         }
       },
-      "title": "Account contains all fields related to an Account resource"
+      "title": "<p>Account contains all fields related to an Account resource</p>"
     },
     "controller.api.resources.authmethods.v1.AuthMethod": {
       "type": "object",
@@ -18795,7 +18795,7 @@
           "readOnly": true
         }
       },
-      "title": "AuthMethod contains all fields related to an Auth Method resource"
+      "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
     },
     "controller.api.resources.authtokens.v1.AuthToken": {
       "type": "object",
@@ -18894,7 +18894,7 @@
           "readOnly": true
         }
       },
-      "title": "AuthToken contains all fields related to an Auth Token resource"
+      "title": "<p>AuthToken contains all fields related to an Auth Token resource</p>"
     },
     "controller.api.resources.credentiallibraries.v1.CredentialLibrary": {
       "type": "object",
@@ -18982,7 +18982,7 @@
           "readOnly": true
         }
       },
-      "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+      "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
     },
     "controller.api.resources.credentialstores.v1.CredentialStore": {
       "type": "object",
@@ -19081,7 +19081,7 @@
           "readOnly": true
         }
       },
-      "title": "CredentialStore contains all fields related to an Credential Store resource"
+      "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
     },
     "controller.api.resources.groups.v1.Group": {
       "type": "object",
@@ -19189,7 +19189,7 @@
           "readOnly": true
         }
       },
-      "title": "Group contains all fields related to a Group resource"
+      "title": "<p>Group contains all fields related to a Group resource</p>"
     },
     "controller.api.resources.groups.v1.Member": {
       "type": "object",
@@ -19303,7 +19303,7 @@
           "readOnly": true
         }
       },
-      "title": "HostCatalog manages Hosts and Host Sets"
+      "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
     },
     "controller.api.resources.hosts.v1.Host": {
       "type": "object",
@@ -19399,7 +19399,7 @@
           "readOnly": true
         }
       },
-      "title": "Host contains all fields related to a Host resource"
+      "title": "<p>Host contains all fields related to a Host resource</p>"
     },
     "controller.api.resources.hostsets.v1.HostSet": {
       "type": "object",
@@ -19495,7 +19495,7 @@
           "readOnly": true
         }
       },
-      "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+      "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
     },
     "controller.api.resources.managedgroups.v1.ManagedGroup": {
       "type": "object",
@@ -19591,7 +19591,7 @@
           "readOnly": true
         }
       },
-      "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+      "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
     },
     "controller.api.resources.roles.v1.Grant": {
       "type": "object",
@@ -19844,7 +19844,7 @@
           "readOnly": true
         }
       },
-      "title": "Role contains all fields related to a Role resource"
+      "title": "<p>Role contains all fields related to a Role resource</p>"
     },
     "controller.api.resources.scopes.v1.Scope": {
       "type": "object",
@@ -19943,7 +19943,7 @@
           "readOnly": true
         }
       },
-      "title": "Scope contains all fields related to a Scope resource"
+      "title": "<p>Scope contains all fields related to a Scope resource</p>"
     },
     "controller.api.resources.scopes.v1.ScopeInfo": {
       "type": "object",
@@ -20143,7 +20143,7 @@
           "readOnly": true
         }
       },
-      "title": "Session contains all fields related to a Session resource"
+      "title": "<p>Session contains all fields related to a Session resource</p>"
     },
     "controller.api.resources.sessions.v1.SessionState": {
       "type": "object",
@@ -20429,13 +20429,13 @@
                 }
               }
             },
-            "description": "Credential information for a session."
+            "description": "<p>Credential information for a session.</p>"
           },
           "description": "<p>Output only. The credentials for this session.</p>",
           "readOnly": true
         }
       },
-      "description": "SessionAuthorization contains all fields related to authorization for a Session. It's in the Targets package because it's returned by a Target's authorize action."
+      "description": "<p>SessionAuthorization contains all fields related to authorization for a Session. It's in the Targets package because it's returned by a Target's authorize action.</p>"
     },
     "controller.api.resources.targets.v1.SessionCredential": {
       "type": "object",
@@ -20520,7 +20520,7 @@
           }
         }
       },
-      "description": "Credential information for a session."
+      "description": "<p>Credential information for a session.</p>"
     },
     "controller.api.resources.targets.v1.SessionSecret": {
       "type": "object",
@@ -20536,7 +20536,7 @@
           "readOnly": true
         }
       },
-      "description": "The actual secret for a session credential."
+      "description": "<p>The actual secret for a session credential.</p>"
     },
     "controller.api.resources.targets.v1.Target": {
       "type": "object",
@@ -20774,7 +20774,7 @@
           "readOnly": true
         }
       },
-      "title": "Target contains all fields related to a Target resource"
+      "title": "<p>Target contains all fields related to a Target resource</p>"
     },
     "controller.api.resources.users.v1.Account": {
       "type": "object",
@@ -20917,7 +20917,7 @@
           "readOnly": true
         }
       },
-      "title": "User contains all fields related to a User resource"
+      "title": "<p>User contains all fields related to a User resource</p>"
     },
     "controller.api.services.v1.AddGroupMembersRequest": {
       "type": "object",
@@ -21047,7 +21047,7 @@
               "readOnly": true
             }
           },
-          "title": "Group contains all fields related to a Group resource"
+          "title": "<p>Group contains all fields related to a Group resource</p>"
         }
       }
     },
@@ -21168,7 +21168,7 @@
               "readOnly": true
             }
           },
-          "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+          "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
         }
       }
     },
@@ -21362,7 +21362,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -21556,7 +21556,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -21818,7 +21818,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -22080,7 +22080,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -22342,7 +22342,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -22604,7 +22604,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -22756,7 +22756,7 @@
               "readOnly": true
             }
           },
-          "title": "User contains all fields related to a User resource"
+          "title": "<p>User contains all fields related to a User resource</p>"
         }
       }
     },
@@ -22877,7 +22877,7 @@
               "readOnly": true
             }
           },
-          "title": "AuthToken contains all fields related to an Auth Token resource"
+          "title": "<p>AuthToken contains all fields related to an Auth Token resource</p>"
         },
         "token_type": {
           "type": "string"
@@ -23116,13 +23116,13 @@
                     }
                   }
                 },
-                "description": "Credential information for a session."
+                "description": "<p>Credential information for a session.</p>"
               },
               "description": "<p>Output only. The credentials for this session.</p>",
               "readOnly": true
             }
           },
-          "description": "SessionAuthorization contains all fields related to authorization for a Session. It's in the Targets package because it's returned by a Target's authorize action."
+          "description": "<p>SessionAuthorization contains all fields related to authorization for a Session. It's in the Targets package because it's returned by a Target's authorize action.</p>"
         }
       }
     },
@@ -23309,7 +23309,7 @@
               "readOnly": true
             }
           },
-          "title": "Session contains all fields related to a Session resource"
+          "title": "<p>Session contains all fields related to a Session resource</p>"
         }
       }
     },
@@ -23429,7 +23429,7 @@
               "readOnly": true
             }
           },
-          "title": "Account contains all fields related to an Account resource"
+          "title": "<p>Account contains all fields related to an Account resource</p>"
         }
       }
     },
@@ -23555,7 +23555,7 @@
               "readOnly": true
             }
           },
-          "title": "AuthMethod contains all fields related to an Auth Method resource"
+          "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
         }
       }
     },
@@ -23659,7 +23659,7 @@
               "readOnly": true
             }
           },
-          "title": "Account contains all fields related to an Account resource"
+          "title": "<p>Account contains all fields related to an Account resource</p>"
         }
       }
     },
@@ -23771,7 +23771,7 @@
               "readOnly": true
             }
           },
-          "title": "AuthMethod contains all fields related to an Auth Method resource"
+          "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
         }
       }
     },
@@ -23867,7 +23867,7 @@
               "readOnly": true
             }
           },
-          "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+          "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
         }
       }
     },
@@ -23974,7 +23974,7 @@
               "readOnly": true
             }
           },
-          "title": "CredentialStore contains all fields related to an Credential Store resource"
+          "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
         }
       }
     },
@@ -24090,7 +24090,7 @@
               "readOnly": true
             }
           },
-          "title": "Group contains all fields related to a Group resource"
+          "title": "<p>Group contains all fields related to a Group resource</p>"
         }
       }
     },
@@ -24197,7 +24197,7 @@
               "readOnly": true
             }
           },
-          "title": "HostCatalog manages Hosts and Host Sets"
+          "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
         }
       }
     },
@@ -24301,7 +24301,7 @@
               "readOnly": true
             }
           },
-          "title": "Host contains all fields related to a Host resource"
+          "title": "<p>Host contains all fields related to a Host resource</p>"
         }
       }
     },
@@ -24405,7 +24405,7 @@
               "readOnly": true
             }
           },
-          "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+          "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
         }
       }
     },
@@ -24509,7 +24509,7 @@
               "readOnly": true
             }
           },
-          "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+          "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
         }
       }
     },
@@ -24687,7 +24687,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -24794,7 +24794,7 @@
               "readOnly": true
             }
           },
-          "title": "Scope contains all fields related to a Scope resource"
+          "title": "<p>Scope contains all fields related to a Scope resource</p>"
         }
       }
     },
@@ -25040,7 +25040,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -25176,7 +25176,7 @@
               "readOnly": true
             }
           },
-          "title": "User contains all fields related to a User resource"
+          "title": "<p>User contains all fields related to a User resource</p>"
         }
       }
     },
@@ -25319,7 +25319,7 @@
               "readOnly": true
             }
           },
-          "title": "Account contains all fields related to an Account resource"
+          "title": "<p>Account contains all fields related to an Account resource</p>"
         }
       }
     },
@@ -25428,7 +25428,7 @@
               "readOnly": true
             }
           },
-          "title": "AuthMethod contains all fields related to an Auth Method resource"
+          "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
         }
       }
     },
@@ -25532,7 +25532,7 @@
               "readOnly": true
             }
           },
-          "title": "AuthToken contains all fields related to an Auth Token resource"
+          "title": "<p>AuthToken contains all fields related to an Auth Token resource</p>"
         }
       }
     },
@@ -25625,7 +25625,7 @@
               "readOnly": true
             }
           },
-          "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+          "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
         }
       }
     },
@@ -25729,7 +25729,7 @@
               "readOnly": true
             }
           },
-          "title": "CredentialStore contains all fields related to an Credential Store resource"
+          "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
         }
       }
     },
@@ -25842,7 +25842,7 @@
               "readOnly": true
             }
           },
-          "title": "Group contains all fields related to a Group resource"
+          "title": "<p>Group contains all fields related to a Group resource</p>"
         }
       }
     },
@@ -25946,7 +25946,7 @@
               "readOnly": true
             }
           },
-          "title": "HostCatalog manages Hosts and Host Sets"
+          "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
         }
       }
     },
@@ -26047,7 +26047,7 @@
               "readOnly": true
             }
           },
-          "title": "Host contains all fields related to a Host resource"
+          "title": "<p>Host contains all fields related to a Host resource</p>"
         }
       }
     },
@@ -26148,7 +26148,7 @@
               "readOnly": true
             }
           },
-          "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+          "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
         }
       }
     },
@@ -26249,7 +26249,7 @@
               "readOnly": true
             }
           },
-          "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+          "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
         }
       }
     },
@@ -26424,7 +26424,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -26528,7 +26528,7 @@
               "readOnly": true
             }
           },
-          "title": "Scope contains all fields related to a Scope resource"
+          "title": "<p>Scope contains all fields related to a Scope resource</p>"
         }
       }
     },
@@ -26703,7 +26703,7 @@
               "readOnly": true
             }
           },
-          "title": "Session contains all fields related to a Session resource"
+          "title": "<p>Session contains all fields related to a Session resource</p>"
         }
       }
     },
@@ -26946,7 +26946,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -27079,7 +27079,7 @@
               "readOnly": true
             }
           },
-          "title": "User contains all fields related to a User resource"
+          "title": "<p>User contains all fields related to a User resource</p>"
         }
       }
     },
@@ -27182,7 +27182,7 @@
                 "readOnly": true
               }
             },
-            "title": "Account contains all fields related to an Account resource"
+            "title": "<p>Account contains all fields related to an Account resource</p>"
           }
         }
       }
@@ -27294,7 +27294,7 @@
                 "readOnly": true
               }
             },
-            "title": "AuthMethod contains all fields related to an Auth Method resource"
+            "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
           }
         }
       }
@@ -27401,7 +27401,7 @@
                 "readOnly": true
               }
             },
-            "title": "AuthToken contains all fields related to an Auth Token resource"
+            "title": "<p>AuthToken contains all fields related to an Auth Token resource</p>"
           }
         }
       }
@@ -27497,7 +27497,7 @@
                 "readOnly": true
               }
             },
-            "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+            "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
           }
         }
       }
@@ -27604,7 +27604,7 @@
                 "readOnly": true
               }
             },
-            "title": "CredentialStore contains all fields related to an Credential Store resource"
+            "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
           }
         }
       }
@@ -27720,7 +27720,7 @@
                 "readOnly": true
               }
             },
-            "title": "Group contains all fields related to a Group resource"
+            "title": "<p>Group contains all fields related to a Group resource</p>"
           }
         }
       }
@@ -27827,7 +27827,7 @@
                 "readOnly": true
               }
             },
-            "title": "HostCatalog manages Hosts and Host Sets"
+            "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
           }
         }
       }
@@ -27931,7 +27931,7 @@
                 "readOnly": true
               }
             },
-            "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+            "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
           }
         }
       }
@@ -28035,7 +28035,7 @@
                 "readOnly": true
               }
             },
-            "title": "Host contains all fields related to a Host resource"
+            "title": "<p>Host contains all fields related to a Host resource</p>"
           }
         }
       }
@@ -28139,7 +28139,7 @@
                 "readOnly": true
               }
             },
-            "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+            "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
           }
         }
       }
@@ -28317,7 +28317,7 @@
                 "readOnly": true
               }
             },
-            "title": "Role contains all fields related to a Role resource"
+            "title": "<p>Role contains all fields related to a Role resource</p>"
           }
         }
       }
@@ -28424,7 +28424,7 @@
                 "readOnly": true
               }
             },
-            "title": "Scope contains all fields related to a Scope resource"
+            "title": "<p>Scope contains all fields related to a Scope resource</p>"
           }
         }
       }
@@ -28602,7 +28602,7 @@
                 "readOnly": true
               }
             },
-            "title": "Session contains all fields related to a Session resource"
+            "title": "<p>Session contains all fields related to a Session resource</p>"
           }
         }
       }
@@ -28848,7 +28848,7 @@
                 "readOnly": true
               }
             },
-            "title": "Target contains all fields related to a Target resource"
+            "title": "<p>Target contains all fields related to a Target resource</p>"
           }
         }
       }
@@ -28984,7 +28984,7 @@
                 "readOnly": true
               }
             },
-            "title": "User contains all fields related to a User resource"
+            "title": "<p>User contains all fields related to a User resource</p>"
           }
         }
       }
@@ -29117,7 +29117,7 @@
               "readOnly": true
             }
           },
-          "title": "Group contains all fields related to a Group resource"
+          "title": "<p>Group contains all fields related to a Group resource</p>"
         }
       }
     },
@@ -29238,7 +29238,7 @@
               "readOnly": true
             }
           },
-          "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+          "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
         }
       }
     },
@@ -29432,7 +29432,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -29626,7 +29626,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -29888,7 +29888,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -30150,7 +30150,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -30412,7 +30412,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -30674,7 +30674,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -30826,7 +30826,7 @@
               "readOnly": true
             }
           },
-          "title": "User contains all fields related to a User resource"
+          "title": "<p>User contains all fields related to a User resource</p>"
         }
       }
     },
@@ -30958,7 +30958,7 @@
               "readOnly": true
             }
           },
-          "title": "Group contains all fields related to a Group resource"
+          "title": "<p>Group contains all fields related to a Group resource</p>"
         }
       }
     },
@@ -31079,7 +31079,7 @@
               "readOnly": true
             }
           },
-          "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+          "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
         }
       }
     },
@@ -31196,7 +31196,7 @@
               "readOnly": true
             }
           },
-          "title": "Account contains all fields related to an Account resource"
+          "title": "<p>Account contains all fields related to an Account resource</p>"
         }
       }
     },
@@ -31390,7 +31390,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -31584,7 +31584,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -31606,7 +31606,7 @@
           }
         }
       },
-      "description": "Sets the values for application_credential_library_ids.  If any\ncredential_library_id field that is not set in the request will result in\nthose fields being cleared."
+      "description": "<p>Sets the values for application_credential_library_ids.  If any\ncredential_library_id field that is not set in the request will result in\nthose fields being cleared.</p>"
     },
     "controller.api.services.v1.SetTargetCredentialLibrariesResponse": {
       "type": "object",
@@ -31847,7 +31847,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -31869,7 +31869,7 @@
           }
         }
       },
-      "description": "Sets the values for application_credential_source_ids.  If any\ncredential_source_id field that is not set in the request will result in\nthose fields being cleared."
+      "description": "<p>Sets the values for application_credential_source_ids.  If any\ncredential_source_id field that is not set in the request will result in\nthose fields being cleared.</p>"
     },
     "controller.api.services.v1.SetTargetCredentialSourcesResponse": {
       "type": "object",
@@ -32110,7 +32110,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -32372,7 +32372,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -32634,7 +32634,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -32786,7 +32786,7 @@
               "readOnly": true
             }
           },
-          "title": "User contains all fields related to a User resource"
+          "title": "<p>User contains all fields related to a User resource</p>"
         }
       }
     },
@@ -32887,7 +32887,7 @@
               "readOnly": true
             }
           },
-          "title": "Account contains all fields related to an Account resource"
+          "title": "<p>Account contains all fields related to an Account resource</p>"
         }
       }
     },
@@ -32996,7 +32996,7 @@
               "readOnly": true
             }
           },
-          "title": "AuthMethod contains all fields related to an Auth Method resource"
+          "title": "<p>AuthMethod contains all fields related to an Auth Method resource</p>"
         }
       }
     },
@@ -33089,7 +33089,7 @@
               "readOnly": true
             }
           },
-          "title": "CredentialLibrary contains all fields related to an Credential Library resource"
+          "title": "<p>CredentialLibrary contains all fields related to an Credential Library resource</p>"
         }
       }
     },
@@ -33193,7 +33193,7 @@
               "readOnly": true
             }
           },
-          "title": "CredentialStore contains all fields related to an Credential Store resource"
+          "title": "<p>CredentialStore contains all fields related to an Credential Store resource</p>"
         }
       }
     },
@@ -33306,7 +33306,7 @@
               "readOnly": true
             }
           },
-          "title": "Group contains all fields related to a Group resource"
+          "title": "<p>Group contains all fields related to a Group resource</p>"
         }
       }
     },
@@ -33410,7 +33410,7 @@
               "readOnly": true
             }
           },
-          "title": "HostCatalog manages Hosts and Host Sets"
+          "title": "<p>HostCatalog manages Hosts and Host Sets</p>"
         }
       }
     },
@@ -33511,7 +33511,7 @@
               "readOnly": true
             }
           },
-          "title": "Host contains all fields related to a Host resource"
+          "title": "<p>Host contains all fields related to a Host resource</p>"
         }
       }
     },
@@ -33612,7 +33612,7 @@
               "readOnly": true
             }
           },
-          "title": "HostSet is a collection of Hosts created and managed by a Host Catalog"
+          "title": "<p>HostSet is a collection of Hosts created and managed by a Host Catalog</p>"
         }
       }
     },
@@ -33713,7 +33713,7 @@
               "readOnly": true
             }
           },
-          "title": "ManagedGroup contains all fields related to an ManagedGroup resource"
+          "title": "<p>ManagedGroup contains all fields related to an ManagedGroup resource</p>"
         }
       }
     },
@@ -33888,7 +33888,7 @@
               "readOnly": true
             }
           },
-          "title": "Role contains all fields related to a Role resource"
+          "title": "<p>Role contains all fields related to a Role resource</p>"
         }
       }
     },
@@ -33992,7 +33992,7 @@
               "readOnly": true
             }
           },
-          "title": "Scope contains all fields related to a Scope resource"
+          "title": "<p>Scope contains all fields related to a Scope resource</p>"
         }
       }
     },
@@ -34235,7 +34235,7 @@
               "readOnly": true
             }
           },
-          "title": "Target contains all fields related to a Target resource"
+          "title": "<p>Target contains all fields related to a Target resource</p>"
         }
       }
     },
@@ -34368,7 +34368,7 @@
               "readOnly": true
             }
           },
-          "title": "User contains all fields related to a User resource"
+          "title": "<p>User contains all fields related to a User resource</p>"
         }
       }
     },
@@ -34376,7 +34376,7 @@
       "type": "string",
       "enum": ["NULL_VALUE"],
       "default": "NULL_VALUE",
-      "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
+      "description": "<p><code>NullValue</code> is a singleton enumeration to represent the null value for the\n<code>Value</code> type union.</p>\n<p>The JSON representation for <code>NullValue</code> is JSON <code>null</code>.</p>\n<ul>\n<li>NULL_VALUE: Null value.</li>\n</ul>"
     }
   }
 }
