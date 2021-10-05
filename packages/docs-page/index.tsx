@@ -47,7 +47,7 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   githubFileUrl,
   product: { name, slug },
   showEditPage = true,
-  showVersionSelect = process.env.ENABLE_VERSIONED_DOCS,
+  showVersionSelect = process.env.ENABLE_VERSIONED_DOCS === 'true',
   versions,
 }) => {
   const isMobile = useIsMobile()
@@ -117,7 +117,8 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
           id="inner"
           role="main"
           className={classNames(s.inner, s.tempJumpToSectionParent, {
-            [s.versionedDocsOffset]: process.env.ENABLE_VERSIONED_DOCS,
+            [s.versionedDocsOffset]:
+              process.env.ENABLE_VERSIONED_DOCS === 'true',
           })}
         >
           <Content

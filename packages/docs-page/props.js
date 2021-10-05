@@ -35,7 +35,7 @@ module.exports = {
   showVersionedDocs: {
     type: 'boolean',
     description:
-      'If `true`, a version select option will be displayed. Defaults to `process.env.ENABLE_VERSIONED_DOCS`',
+      'If `true`, a version select option will be displayed. Defaults to `process.env.ENABLE_VERSIONED_DOCS === "true"`',
     default: null,
   },
   additionalComponents: {

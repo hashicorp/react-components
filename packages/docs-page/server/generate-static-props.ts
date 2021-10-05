@@ -77,7 +77,7 @@ export function mapVersionList(
 
 const defaultOptions = {
   VERCEL_ENV: process.env.VERCEL_ENV,
-  ENABLE_VERSIONED_DOCS: process.env.ENABLE_VERSIONED_DOCS,
+  ENABLE_VERSIONED_DOCS: process.env.ENABLE_VERSIONED_DOCS === 'true',
 }
 
 export async function generateStaticProps(
