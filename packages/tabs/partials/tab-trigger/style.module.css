@@ -1,5 +1,5 @@
 .root {
-  --inner-text-color: var(--gray-3);
+  --inner-text-color: var(--text-color); /* from theme.module.css */
   --inner-border-color: transparent;
   --inner-decoration: none;
 
@@ -32,17 +32,17 @@
   &:hover {
     cursor: pointer;
 
-    --inner-text-color: var(--black);
+    --inner-text-color: var(--text-color-hover); /* from theme.module.css */
   }
 
   &:focus {
-    --inner-text-color: var(--black);
+    --inner-text-color: var(--text-color-hover); /* from theme.module.css */
     --inner-decoration: underline;
   }
 
   &.isActiveTab {
-    --inner-border-color: var(--black);
-    --inner-text-color: var(--black);
+    --inner-border-color: var(--active-tab-color); /* from theme.module.css */
+    --inner-text-color: var(--text-color-hover); /* from theme.module.css */
   }
 }
 
@@ -65,5 +65,13 @@
 
   & svg {
     width: 100%;
+
+    & [fill] {
+      fill: var(--tooltip-icon-color); /* from theme.module.css */
+    }
+
+    & [stroke] {
+      stroke: var(--tooltip-icon-color); /* from theme.module.css */
+    }
   }
 }

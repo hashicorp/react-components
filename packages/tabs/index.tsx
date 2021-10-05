@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import TabTriggers from './partials/tab-triggers'
 import TabProvider, { useTabGroups } from './provider'
 import s from './style.module.css'
+import classNames from 'classnames'
+import themeStyle from './theme.module.css'
 
 interface TabChildProps {
   /** Renders the tab contents. */
@@ -25,20 +27,26 @@ interface TabsProps {
   centered?: boolean
   /** Optional className to add to the root element. */
   className?: string
+  /** Optional className to add to the tabs bar container. Useful for sticky positioning. */
+  classNameTabBar?: string
   /** Set the default tab by its index. If not set, or if out of range, will default to the first tab, at index 0. */
   defaultTabIdx?: number
   /** If set to true, the bottom border underneath the tabs will fill the available width. Default border fills the constrained `.g-grid-container`. */
   fullWidthBorder?: boolean
   /** Optional callback which is executed when a new tab is selected. */
   onChange?: (targetTabIdx: number, targetTabGroup?: string) => void
+  /** Visual theme, for alignment with surrounding components or user preference. */
+  theme?: 'light' | 'dark'
 }
 
 function Tabs({
   children,
   className,
+  classNameTabBar,
   defaultTabIdx = 0,
   centered = false,
   fullWidthBorder = false,
+  theme = 'light',
   onChange,
 }: TabsProps): React.ReactElement {
   // Ensures a single child object converts to an array
@@ -82,8 +90,9 @@ function Tabs({
   }
 
   return (
-    <section className={className}>
+    <section className={classNames(className, themeStyle[theme])}>
       <TabTriggers
+        className={classNameTabBar}
         tabs={children.map((tab, index) => {
           const { heading, group, tooltip } = tab.props
           return { index, heading, group, tooltip }
@@ -92,6 +101,7 @@ function Tabs({
         fullWidthBorder={fullWidthBorder}
         activeTabIdx={activeTabIdx}
         setActiveTab={setActiveTab}
+        theme={theme}
       />
       <div className={s.content}>{children[activeTabIdx].props.children}</div>
     </section>
