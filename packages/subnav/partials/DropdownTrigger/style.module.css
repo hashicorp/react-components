@@ -1,3 +1,5 @@
+/* Note: consumes from theme.module.css, as marked */
+
 .root {
   composes: g-type-body-small-strong from global;
   border: none;
@@ -21,6 +23,11 @@
     transform: rotate(-180deg);
     & [stroke] {
       stroke-width: 2.5;
+      stroke: var(--menu-item-text-color); /* from theme.module.css */
+    }
+
+    & [fill] {
+      fill: var(--menu-item-text-color); /* from theme.module.css */
     }
   }
 

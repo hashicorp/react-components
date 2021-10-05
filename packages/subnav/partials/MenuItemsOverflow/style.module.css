@@ -1,12 +1,14 @@
+/* Note: consumes from theme.module.css, as marked */
+
 .root {
   position: relative;
   margin-left: auto;
 }
 
 .dropdown {
-  background: var(--white);
+  background: var(--dropdown-background-color); /* from theme.module.css */
   border-radius: 4px;
-  box-shadow: 0 8px 12px rgba(37, 38, 45, 0.08);
+  box-shadow: var(--dropdown-box-shadow); /* from theme.module.css */
   margin-top: 8px;
   max-height: calc(100vh - 300%);
   overflow-y: auto;
@@ -31,7 +33,7 @@
 .submenuTitle {
   composes: g-type-label from global;
   margin: 12px 0 8px 0;
-  color: var(--gray-3);
+  color: var(--menu-item-heading-text-color); /* from theme.module.css */
 }
 
 .divider {
@@ -39,7 +41,7 @@
   border: 0;
   padding: 0;
   height: 1px;
-  background: var(--gray-5);
+  background: var(--border-color); /* from theme.module.css */
 }
 
 .submenuItem {
@@ -47,5 +49,5 @@
   display: block;
   padding: 4px 0;
   line-height: 1.6em;
-  color: var(--black);
+  color: var(--menu-item-text-color); /* from theme.module.css */
 }
