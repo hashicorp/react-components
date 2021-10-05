@@ -1,20 +1,16 @@
-/*
-Note: consumes from theme.module.css:
---background-color
---border-color
-*/
+/* Note: consumes from theme.module.css, as marked */
 
 .root {
   position: sticky;
   top: -1px;
   z-index: 900;
-  background: var(--background-color);
-  border-top: 1px solid var(--border-color);
+  background: var(--background-color); /* from theme.module.css */
+  border-top: 1px solid var(--border-color); /* from theme.module.css */
   border-bottom: 1px solid transparent;
   transition: border-bottom-color 0.8s;
 
   &.isSticky {
-    border-bottom-color: var(--border-color);
+    border-bottom-color: var(--border-color); /* from theme.module.css */
   }
 }
 

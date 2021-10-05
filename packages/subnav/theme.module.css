@@ -1,4 +1,8 @@
-/* Theme settings. Note: also consumed in /partials */
+/*
+Theme settings.
+Consumed in nearly all CSS files in this component,
+including in /partials.
+*/
 
 .light {
   /* main */

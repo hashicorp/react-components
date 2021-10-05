@@ -1,3 +1,5 @@
+/* Note: consumes from theme.module.css, as marked */
+
 .root {
   --local-scrim-color: transparent;
   --local-divider-color: var(--border-color); /* from theme.module.css */

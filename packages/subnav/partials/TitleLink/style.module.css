@@ -1,3 +1,5 @@
+/* Note: consumes from theme.module.css, as marked */
+
 .root {
   position: relative;
   white-space: nowrap;
@@ -12,7 +14,7 @@
     display: block;
 
     & [fill='black'] {
-      fill: var(--logo-text-color);
+      fill: var(--logo-text-color); /* from theme.module.css */
     }
   }
 
