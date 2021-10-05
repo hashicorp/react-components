@@ -2,7 +2,7 @@ import { NavNode } from '@hashicorp/react-docs-sidenav/types'
 
 import { DEFAULT_PARAM_ID } from './consts'
 
-export function getPathArraysFromNodes(navNodes: NavNode[]) {
+export function getPathArraysFromNodes(navNodes: NavNode[]): string[][] {
   const slugs: string[][] = navNodes.reduce((acc, navNode) => {
     // Individual items have a path, these should be added
     if ('path' in navNode) return acc.concat([navNode.path.split('/')])
@@ -18,7 +18,9 @@ export function getPathArraysFromNodes(navNodes: NavNode[]) {
 export function getPathsFromNavData(
   navDataResolved: NavNode[],
   paramId: string = DEFAULT_PARAM_ID
-) {
+): {
+  params: Record<string, string[]>
+}[] {
   //  Transform navigation data into path arrays
   const pagePathArrays = getPathArraysFromNodes(navDataResolved)
   // Ensure we include an empty array for the "/" index page path
@@ -27,7 +29,5 @@ export function getPathsFromNavData(
   if (!hasIndexPage) pagePathArrays.unshift([])
   // Return the array of all page paths
   const paths = pagePathArrays.map((p) => ({ params: { [paramId]: p } }))
-  return paths as {
-    params: Record<string, string[]>
-  }[]
+  return paths
 }
