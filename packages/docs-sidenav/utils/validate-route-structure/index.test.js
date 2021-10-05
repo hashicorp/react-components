@@ -1,20 +1,6 @@
 import validateRouteStructure from './'
 
-describe('<DocsSidenav /> - validate-file-paths', () => {
-  it("throws an error if a NavLeaf's path is an empty string", () => {
-    const navData = [
-      {
-        title: 'Whoops I Left The Path Empty',
-        path: '',
-      },
-    ]
-    expect(() =>
-      validateRouteStructure(navData)
-    ).toThrowErrorMatchingInlineSnapshot(
-      `"Empty path value on NavLeaf. Path values must be non-empty strings. Node: {\\"title\\":\\"Whoops I Left The Path Empty\\",\\"path\\":\\"\\"}."`
-    )
-  })
-
+describe('<DocsSidenav /> - validate-route-structure', () => {
   it("throws an error if a NavLeaf's path is nested at the wrong depth", () => {
     const navData = [
       {
@@ -85,7 +71,7 @@ describe('<DocsSidenav /> - validate-file-paths', () => {
     expect(() =>
       validateRouteStructure(navData)
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Found mismatched paths at depth 1: [\\"directory\\",\\"another-directory\\"]."`
+      `"Found mismatched paths at depth 1, with paths: [\\"directory\\",\\"directory/some-file\\",\\"another-directory/another-file\\"]. Implies mismatched parent directories: [\\"directory\\",\\"another-directory\\"]."`
     )
   })
 
