@@ -1,6 +1,7 @@
 import React from 'react'
 import Portal from '@reach/portal'
 import { useTooltip, TooltipPopup } from '@reach/tooltip'
+import classNames from 'classnames'
 import s from './style.module.css'
 
 interface TooltipProps {
@@ -12,6 +13,8 @@ interface TooltipProps {
   'aria-label'?: string
   /** Minimum spacing from viewport edge */
   collisionBuffer?: number
+  /** Theme for light or dark mode */
+  theme: 'light' | 'dark'
 }
 
 function Tooltip({
@@ -19,6 +22,7 @@ function Tooltip({
   label,
   collisionBuffer = 8,
   'aria-label': ariaLabel,
+  theme = 'light',
 }: TooltipProps): React.ReactElement {
   const [trigger, tooltip] = useTooltip()
   const { isVisible, triggerRect } = tooltip
@@ -28,12 +32,16 @@ function Tooltip({
       {React.cloneElement(children, trigger)}
       {isVisible && (
         <Portal>
-          <Arrow triggerRect={triggerRect} collisionBuffer={collisionBuffer} />
+          <Arrow
+            triggerRect={triggerRect}
+            collisionBuffer={collisionBuffer}
+            theme={theme}
+          />
         </Portal>
       )}
       <TooltipPopup
         {...tooltip}
-        className={s.box}
+        className={classNames(s.box, s[`theme-${theme}`])}
         label={label}
         aria-label={ariaLabel}
         position={(triggerRect, tooltipRect) =>
@@ -80,7 +88,7 @@ function centeringFunction(triggerRect, tooltipRect, collisionBuffer) {
  * than have it perfectly centered but
  * disconnected from the popup.
  */
-function Arrow({ triggerRect, collisionBuffer }) {
+function Arrow({ triggerRect, collisionBuffer, theme }) {
   const arrowThickness = 10
   const arrowLeft = triggerRect
     ? `${Math.min(
@@ -98,7 +106,7 @@ function Arrow({ triggerRect, collisionBuffer }) {
 
   return (
     <div
-      className={s.arrow}
+      className={classNames(s.arrow, s[`theme-${theme}`])}
       style={
         {
           '--left': arrowLeft,
