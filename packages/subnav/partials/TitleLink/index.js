@@ -27,8 +27,7 @@ const logoDict = {
   waypoint: WaypointLogo,
 }
 
-function TitleLink(props) {
-  const { text, url, product, Link } = props
+function TitleLink({ text, url, product, Link }) {
   const Logo = logoDict[text.toLowerCase()]
   return (
     <LinkWrap
