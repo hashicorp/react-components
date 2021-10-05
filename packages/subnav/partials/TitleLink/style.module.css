@@ -13,7 +13,9 @@
     width: auto;
     display: block;
 
-    & [fill='black'] {
+    & [fill='black'],
+    & [fill='#000'] {
+    & [fill='#000000'] {
       fill: var(--logo-text-color); /* from theme.module.css */
     }
   }
@@ -25,4 +27,5 @@
       height: 29px;
     }
   }
+}
 }
