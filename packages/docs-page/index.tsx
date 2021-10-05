@@ -30,6 +30,7 @@ interface DocsPageWrapperProps {
   baseRoute: string
   githubFileUrl: string
   product: { name: string; slug: string }
+  /** @deprecated */
   showEditPage: boolean
   showVersionSelect: boolean
   versions: { name: string; label: string }[]
@@ -132,7 +133,7 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
         </div>
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
-      {showEditPage && (
+      {showEditPage && githubFileUrl && (
         <div className={s.editThisPage}>
           <a href={githubFileUrl}>
             <img src={require('./img/github-logo.svg')} alt="github logo" />

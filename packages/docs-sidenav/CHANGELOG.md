@@ -1,5 +1,17 @@
 # @hashicorp/react-docs-sidenav
 
+## 8.3.1
+
+### Patch Changes
+
+- [#379](https://github.com/hashicorp/react-components/pull/379) [`9274b62`](https://github.com/hashicorp/react-components/commit/9274b625692cf4fccef4cc31f7aeba188d21bd13) Thanks [@jescalan](https://github.com/jescalan)! - fix a small bug with validation for heading nodes
+
+## 8.3.0
+
+### Minor Changes
+
+- [#336](https://github.com/hashicorp/react-components/pull/336) [`9b190b0`](https://github.com/hashicorp/react-components/commit/9b190b0b13beb1045825ee2b1eb560b84215c265) Thanks [@jescalan](https://github.com/jescalan)! - Add "headline" option which can be used to inject a headline at any point in the navigation
+
 ## 8.2.5
 
 ### Patch Changes

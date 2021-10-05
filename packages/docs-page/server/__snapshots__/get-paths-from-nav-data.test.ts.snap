@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getPathArraysFromNodes should return an array of "path arrays" 1`] = `
+Array [
+  Array [
+    "extending-waypoint",
+  ],
+  Array [
+    "extending-waypoint",
+    "creating-plugins",
+  ],
+  Array [
+    "extending-waypoint",
+    "creating-plugins",
+    "main",
+  ],
+  Array [
+    "extending-waypoint",
+    "creating-plugins",
+    "configuration",
+  ],
+  Array [
+    "extending-waypoint",
+    "creating-plugins",
+    "build-interface",
+  ],
+  Array [
+    "extending-waypoint",
+    "creating-plugins",
+    "compiling",
+  ],
+  Array [
+    "extending-waypoint",
+    "creating-plugins",
+    "example-application",
+  ],
+  Array [
+    "extending-waypoint",
+    "creating-plugins",
+    "testing",
+  ],
+  Array [
+    "extending-waypoint",
+    "main-func",
+  ],
+  Array [
+    "extending-waypoint",
+    "passing-values",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "authenticator",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "configurable",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "configurable-notify",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "builder",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "registry",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "platform",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "release-manager",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "destroy",
+  ],
+  Array [
+    "extending-waypoint",
+    "plugin-interfaces",
+    "default-parameters",
+  ],
+]
+`;
+
+exports[`getPathsFromNavData should return an array of Next.js paths 1`] = `
+Array [
+  Object {
+    "params": Object {
+      "page": Array [],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "creating-plugins",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "creating-plugins",
+        "main",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "creating-plugins",
+        "configuration",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "creating-plugins",
+        "build-interface",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "creating-plugins",
+        "compiling",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "creating-plugins",
+        "example-application",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "creating-plugins",
+        "testing",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "main-func",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "passing-values",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "authenticator",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "configurable",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "configurable-notify",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "builder",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "registry",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "platform",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "release-manager",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "destroy",
+      ],
+    },
+  },
+  Object {
+    "params": Object {
+      "page": Array [
+        "extending-waypoint",
+        "plugin-interfaces",
+        "default-parameters",
+      ],
+    },
+  },
+]
+`;

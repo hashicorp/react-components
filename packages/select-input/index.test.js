@@ -12,3 +12,5 @@ test.todo('displays an alternate placeholder if `defaultLabel` is specified')
 test.todo('displays a custom label if `label` is specified')
 test.todo('uses the `name` if specified for the input')
 test.todo('sets the `value` is one is provided via prop')
+
+test.todo('displays correct value when the value is programmatically updated')
