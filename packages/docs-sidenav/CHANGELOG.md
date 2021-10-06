@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-sidenav
 
+## 8.4.0
+
+### Minor Changes
+
+- [#358](https://github.com/hashicorp/react-components/pull/358) [`ef6333f`](https://github.com/hashicorp/react-components/commit/ef6333fb7276a636daab9fe5d6d1289d2945169d) Thanks [@zchsh](https://github.com/zchsh)! - Support empty paths for index pages.
+
 ## 8.3.1
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @hashicorp/react-docs-page
 
+## 14.4.1
+
+### Patch Changes
+
+- [#358](https://github.com/hashicorp/react-components/pull/358) [`ef6333f`](https://github.com/hashicorp/react-components/commit/ef6333fb7276a636daab9fe5d6d1289d2945169d) Thanks [@zchsh](https://github.com/zchsh)! - Support possibility of index page being included in nav-data.
+
+* [#382](https://github.com/hashicorp/react-components/pull/382) [`cc46ed6`](https://github.com/hashicorp/react-components/commit/cc46ed6e66c49e7ed777621f4b4c6b978c182e86) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This updates logic to check `process.env.ENABLE_VERSIONED_DOCS === 'true'` since environment variables are _always strings_.
+
+  This should prevent some unintended behavior if ENABLE_VERSIONED_DOCS is parsed as a string `"false"`, but unintentionally evaluating to `truthy`
+
+* Updated dependencies [[`ef6333f`](https://github.com/hashicorp/react-components/commit/ef6333fb7276a636daab9fe5d6d1289d2945169d)]:
+  - @hashicorp/react-docs-sidenav@8.4.0
+
 ## 14.4.0
 
 ### Minor Changes
