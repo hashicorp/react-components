@@ -2,6 +2,7 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
+    "@hashicorp/flight-icons": "^1.1.0",
     "@hashicorp/mktg-global-styles": "^4.0.0",
     "@hashicorp/mktg-logos": "^1.2.0",
     "@hashicorp/sentinel-embedded": "^0.0.14",

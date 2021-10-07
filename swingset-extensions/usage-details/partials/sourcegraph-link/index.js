@@ -23,9 +23,10 @@ function SourcegraphLink({ packageName }) {
         className={styles.sourcegraphLogo}
         src={require('../../svg/sourcegraph-logo.svg?include')}
       />
+      {/* viewbox is 20, go with 16 or 24? */}
       <InlineSvg
         className={styles.externalIcon}
-        src={require('../../svg/external-link.svg?include')}
+        src={require('@hashicorp/flight-icons/svg/external-link-16.svg?include')}
         data-hovered={isHovered}
       />
     </a>
