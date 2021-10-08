@@ -22,13 +22,20 @@ async function indexDocsContent({
   filesPattern = '**/*.mdx',
   globOptions = { ignore: path.join(projectRoot, 'content', 'partials/**/*') },
   frontmatterKeys = DEFAULT_FRONTMATTER_KEYS,
+  transformObjectId = (id) => id,
 } = {}) {
-  const searchObjects = await getDocsSearchObjects({
+  let searchObjects = await getDocsSearchObjects({
     contentDir,
     filesPattern,
     globOptions,
     frontmatterKeys,
   })
+
+  searchObjects = searchObjects.map((e) => ({
+    ...e,
+    objectID: transformObjectId(e.objectID),
+  }))
+
   try {
     await indexSearchContent({
       algoliaConfig,
