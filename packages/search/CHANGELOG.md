@@ -1,5 +1,11 @@
 # @hashicorp/react-search
 
+## 6.1.0
+
+### Minor Changes
+
+- [#386](https://github.com/hashicorp/react-components/pull/386) [`53ac9b9`](https://github.com/hashicorp/react-components/commit/53ac9b901b7413682c531ff9dcc45f7596ddf4c5) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - expose optional `transformObjectId` function
+
 ## 6.0.2
 
 ### Patch Changes
