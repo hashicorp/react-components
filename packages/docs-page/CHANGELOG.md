@@ -1,5 +1,14 @@
 # @hashicorp/react-docs-page
 
+## 14.4.2
+
+### Patch Changes
+
+- [#388](https://github.com/hashicorp/react-components/pull/388) [`a906a8d`](https://github.com/hashicorp/react-components/commit/a906a8d0056bd85e2f875d397f104ea83cf66014) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds styles for search hits and adds units to a variable so that it works in calc()
+
+- Updated dependencies [[`a906a8d`](https://github.com/hashicorp/react-components/commit/a906a8d0056bd85e2f875d397f104ea83cf66014)]:
+  - @hashicorp/react-search@6.1.1
+
 ## 14.4.1
 
 ### Patch Changes
