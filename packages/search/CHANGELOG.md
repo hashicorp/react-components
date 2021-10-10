@@ -1,5 +1,11 @@
 # @hashicorp/react-search
 
+## 6.1.1
+
+### Patch Changes
+
+- [#388](https://github.com/hashicorp/react-components/pull/388) [`a906a8d`](https://github.com/hashicorp/react-components/commit/a906a8d0056bd85e2f875d397f104ea83cf66014) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds styles for search hits and adds units to a variable so that it works in calc()
+
 ## 6.1.0
 
 ### Minor Changes
