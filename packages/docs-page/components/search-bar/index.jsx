@@ -1,4 +1,6 @@
+import classNames from 'classnames'
 import Search from '@hashicorp/react-search'
+import searchHitStyles from '@hashicorp/react-search/hit-content-styles.module.css'
 import useIsMobile from '../../use-is-mobile'
 
 export default function SearchBar({ product, className }) {
@@ -6,7 +8,7 @@ export default function SearchBar({ product, className }) {
 
   return (
     <Search
-      className={className}
+      className={classNames(className, searchHitStyles.root)}
       renderHitContent={({ hit, Highlight }) => (
         <>
           <span className="name">
