@@ -80,7 +80,7 @@ export default class RemoteContentLoader implements DataLoader {
 
     if (typeof this.opts.enabledVersionedDocs === 'undefined')
       this.opts.enabledVersionedDocs =
-        process.env.ENABLE_VERSIONED_DOCS === 'true'
+        process.env.ENABLE_VERSIONED_DOCS.toString() === 'true'
 
     if (!this.opts.paramId) this.opts.paramId = DEFAULT_PARAM_ID
   }

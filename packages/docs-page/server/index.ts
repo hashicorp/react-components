@@ -71,3 +71,75 @@ export function getStaticGenerationFunctions(
     },
   }
 }
+
+export interface GenerateStaticPathsContext {
+  /** @example 'data/docs-nav-data.json' */
+  navDataFile: string
+  /** @example 'content/docs' */
+  localContentDir: string
+  /**
+   * @default 'page'
+   */
+  paramId?: string
+  /**
+   * @example { name: 'Waypoint', slug: 'waypoint' }
+   */
+  product?: { name: string; slug: string }
+  /** @example 'docs' */
+  basePath?: string
+}
+
+/**
+ * @deprecated Use getStaticGenerationFunctions instead
+ */
+export function generateStaticPaths({
+  navDataFile,
+  localContentDir,
+  paramId,
+  product,
+  basePath,
+}: GenerateStaticPathsContext) {
+  const loader = new FileSystemLoader({
+    navDataFile,
+    localContentDir,
+    product: product.slug,
+    paramId,
+  })
+
+  return loader.loadStaticPaths()
+}
+
+export interface GenerateStaticPropsContext {
+  navDataFile: string
+  localContentDir: string
+  params: Record<string, string[]> // {} | { page: ["destroy"] }
+  product: { name: string; slug: string }
+  mainBranch?: string // = 'main',
+  remarkPlugins?: any[]
+  scope?: any // optional, I think?
+  paramId?: string
+  basePath: string // 'docs'
+}
+
+/**
+ * @deprecated Use getStaticGenerationFunctions instead
+ */
+export function generateStaticProps({
+  navDataFile,
+  localContentDir,
+  paramId,
+  product,
+  params,
+  remarkPlugins,
+  scope,
+  mainBranch,
+}: GenerateStaticPropsContext) {
+  const loader = new FileSystemLoader({
+    navDataFile,
+    localContentDir,
+    product: product.slug,
+    paramId,
+  })
+
+  return loader.loadStaticProps({ params, remarkPlugins, scope, mainBranch })
+}
