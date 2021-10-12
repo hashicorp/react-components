@@ -24,7 +24,7 @@ interface BaseOpts {
 export function getStaticGenerationFunctions(
   opts:
     | ({
-        basePath: string
+        basePath?: string
         strategy: 'remote'
       } & BaseOpts)
     | ({
@@ -47,7 +47,12 @@ export function getStaticGenerationFunctions(
     }
     case 'remote': {
       const { strategy, ...restOpts } = opts
-      loader = new RemoteContentLoader({ ...restOpts })
+
+      loader = new RemoteContentLoader({
+        // derive basePath from __dirname, example: .next/server/pages/waypoint/docs
+        basePath: __dirname.split('/').slice(-1)[0],
+        ...restOpts,
+      })
     }
   }
 
@@ -55,17 +60,15 @@ export function getStaticGenerationFunctions(
     getStaticPaths: async (ctx) => {
       const paths = await loader.loadStaticPaths(ctx)
       return {
-        // TODO: make this configurable
-        fallback: 'blocking',
+        fallback: opts.fallback ?? 'blocking',
         paths,
       }
     },
     getStaticProps: async (ctx) => {
-      console.log(__dirname)
       const props = await loader.loadStaticProps(ctx)
       return {
-        // TODO: make revalidate configurable
         props,
+        revalidate: opts.revalidate,
       }
     },
   }
