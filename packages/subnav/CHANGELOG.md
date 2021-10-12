@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.1.1
+
+### Patch Changes
+
+- [#391](https://github.com/hashicorp/react-components/pull/391) [`f0b43a7`](https://github.com/hashicorp/react-components/commit/f0b43a7910f8a76e102afb18b38e22b19348d2cb) Thanks [@jescalan](https://github.com/jescalan)! - Add permalink spacing when subnav is in sticky mode so headlines do not disappear underneath it
+
 ## 9.1.0
 
 ### Minor Changes
