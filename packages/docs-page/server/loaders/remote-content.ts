@@ -5,7 +5,7 @@ import {
   fetchVersionMetadataList,
   fetchDocument,
 } from '../../content-api'
-import { stripVersionFromPathParams } from '../../util'
+import { normalizeVersion, stripVersionFromPathParams } from '../../util'
 
 import { DEFAULT_PARAM_ID } from '../consts'
 
@@ -21,6 +21,7 @@ export interface RemoteContentLoaderContext {
 
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
+  enabledVersionedDocs?: boolean
 }
 
 /**
@@ -77,6 +78,10 @@ export default class RemoteContentLoader implements DataLoader {
   constructor(opts: RemoteContentLoaderOpts) {
     this.opts = opts
 
+    if (typeof this.opts.enabledVersionedDocs === 'undefined')
+      this.opts.enabledVersionedDocs =
+        process.env.ENABLE_VERSIONED_DOCS === 'true'
+
     if (!this.opts.paramId) this.opts.paramId = DEFAULT_PARAM_ID
   }
 
@@ -112,7 +117,7 @@ export default class RemoteContentLoader implements DataLoader {
       })
 
     // given: v0.5.x (latest), v0.4.x, v0.3.x
-    const [, paramsNoVersion] = stripVersionFromPathParams(
+    const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
       params[this.opts.paramId]
     )
 
@@ -126,7 +131,14 @@ export default class RemoteContentLoader implements DataLoader {
 
     const latestVersion = versionMetadataList.find((e) => e.isLatest)?.version
 
-    const versionToFetch = latestVersion
+    let versionToFetch = latestVersion
+
+    if (this.opts.enabledVersionedDocs) {
+      versionToFetch =
+        versionFromPath === 'latest'
+          ? latestVersion
+          : normalizeVersion(versionFromPath)
+    }
 
     const fullPath = [
       'doc',

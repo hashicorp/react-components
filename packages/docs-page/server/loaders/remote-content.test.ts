@@ -98,4 +98,30 @@ describe('RemoteContentLoader', () => {
     `
     )
   })
+
+  test('should return a null github file url for non-latest versions', async () => {
+    scope
+      .get('/api/content/waypoint/version-metadata')
+      .query({ partial: 'true' })
+      .reply(200, versionMetadata_200)
+    scope
+      .get('/api/content/waypoint/doc/v0.4.x/commands')
+      .reply(200, document_v4)
+    scope
+      .get('/api/content/waypoint/nav-data/v0.4.x/commands')
+      .reply(200, navData_v4)
+
+    const versionedDocsLoader = new RemoteContentLoader({
+      ...loader.opts,
+      enabledVersionedDocs: true,
+    })
+
+    const props = await versionedDocsLoader.loadStaticProps({
+      params: {
+        page: ['v0.4.x'],
+      },
+    })
+
+    expect(props.githubFileUrl).toBeNull()
+  })
 })
