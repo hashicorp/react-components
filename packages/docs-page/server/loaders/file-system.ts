@@ -21,7 +21,6 @@ export interface FileSystemLoaderContext {
   mainBranch?: string // = 'main',
   remarkPlugins?: $TSFixMe[]
   scope?: Record<string, $TSFixMe> // optional, I think?
-  basePath: string // 'docs'
 }
 
 export default class FileSystemLoader implements DataLoader {
