@@ -45,7 +45,7 @@ function CallToAction({
             </div>
           )}
           {links && (
-            <div data-testid="links" className={s.links}>
+            <div className={s.links} data-testid="links">
               {links.map((link, stableIdx) => {
                 const buttonVariant =
                   variant === 'links'
