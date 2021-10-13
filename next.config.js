@@ -17,5 +17,17 @@ module.exports = withHashicorp({
     publicRuntimeConfig: {
       SOURCEGRAPH_URL: process.env.SOURCEGRAPH_URL,
     },
+    headers: () => [
+      {
+        source: '/:path*{/}?', // https://github.com/vercel/next.js/issues/14930
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value:
+              "frame-ancestors 'self' https://design-system-website.vercel.app",
+          },
+        ],
+      },
+    ],
   })
 )
