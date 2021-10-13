@@ -35,14 +35,14 @@ function CallToAction({
             {heading}
           </h2>
         )}
-        <div className={s.contentAndLinks}>
+        <div>
           {content && (
-            <p
+            <div
               className={classNames(s.content, { [s.hasHeading]: heading })}
               data-testid="content"
             >
               {content}
-            </p>
+            </div>
           )}
           {links && (
             <div data-testid="links" className={s.links}>
