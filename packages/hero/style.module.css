@@ -17,6 +17,10 @@
     background: var(--white);
     color: var(--black);
   }
+
+  &.centered {
+    text-align: center;
+  }
 }
 
 .background {
@@ -38,6 +42,17 @@
   @media (max-width: 1119px) {
     display: block;
     text-align: center;
+  }
+
+  &.centered {
+    align-items: center;
+    flex-direction: column;
+
+    /* targets the image or video, whatever is rendered */
+    & > div:nth-child(2) {
+      margin-top: 48px;
+      width: 100%;
+    }
   }
 }
 
@@ -70,6 +85,11 @@
   display: block;
 
   @media (max-width: 1119px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.centered {
     margin-left: auto;
     margin-right: auto;
   }
@@ -133,6 +153,11 @@
   @media (max-width: 767px) {
     margin-top: 16px;
   }
+
+  &.centered {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .headlineButton {
@@ -150,6 +175,12 @@
     @media (max-width: 1119px) {
       margin-left: 32px;
       margin-right: 32px;
+    }
+  }
+
+  &.centered {
+    @media (max-width: 600px) {
+      align-self: center;
     }
   }
 }
@@ -197,6 +228,11 @@
     @media (max-width: 1119px) {
       margin-left: 6px;
     }
+  }
+
+  &.centered {
+    justify-content: center;
+    margin-right: 0;
   }
 }
 
