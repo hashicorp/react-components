@@ -22,7 +22,7 @@ interface BaseOpts {
 export function getStaticGenerationFunctions(
   opts:
     | ({
-        basePath?: string
+        basePath: string
         strategy: 'remote'
       } & BaseOpts)
     | ({
@@ -47,8 +47,6 @@ export function getStaticGenerationFunctions(
       const { strategy, ...restOpts } = opts
 
       loader = new RemoteContentLoader({
-        // derive basePath from __dirname, example: .next/server/pages/waypoint/docs
-        basePath: __dirname.split('/').slice(-1)[0],
         ...restOpts,
       })
     }
