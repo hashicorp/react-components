@@ -17,7 +17,7 @@ module.exports = withHashicorp({
     publicRuntimeConfig: {
       SOURCEGRAPH_URL: process.env.SOURCEGRAPH_URL,
     },
-    headers: () => [
+    headers: async () => [
       {
         source: '/:path*{/}?', // https://github.com/vercel/next.js/issues/14930
         headers: [
