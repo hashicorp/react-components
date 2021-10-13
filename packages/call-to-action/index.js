@@ -35,7 +35,7 @@ function CallToAction({
             {heading}
           </h2>
         )}
-        <div>
+        <div className={s.contentAndLinks}>
           {content && (
             <div
               className={classNames(s.content, { [s.hasHeading]: heading })}
