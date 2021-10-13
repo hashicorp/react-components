@@ -22,6 +22,12 @@
     --text-color-display: var(--white);
     --text-color-body: var(--gray-5);
   }
+
+  &.theme-brand {
+    --background: var(--brand);
+    --text-color-display: var(--white);
+    --text-color-body: var(--gray-6);
+  }
 }
 
 .container {
