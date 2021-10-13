@@ -47,7 +47,7 @@ const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   githubFileUrl,
   product: { name, slug },
   showEditPage = true,
-  showVersionSelect = process.env.ENABLE_VERSIONED_DOCS === 'true',
+  showVersionSelect = process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true',
   versions,
 }) => {
   const isMobile = useIsMobile()
