@@ -1,9 +1,9 @@
 import TextSplit from '@hashicorp/react-text-split'
 import CodeBlock from '@hashicorp/react-code-block'
 
-function TextSplitWithCode({ textSplit, codeBlock }) {
+function TextSplitWithCode({ className, textSplit, codeBlock }) {
   return (
-    <TextSplit {...textSplit}>
+    <TextSplit className={className} {...textSplit}>
       <CodeBlock {...codeBlock} />
     </TextSplit>
   )
