@@ -3,7 +3,7 @@ import CodeBlock from '@hashicorp/react-code-block'
 
 function TextSplitWithCode({ className, textSplit, codeBlock }) {
   return (
-    <TextSplit {...textSplit} className={className}>
+    <TextSplit className={className} {...textSplit}>
       <CodeBlock {...codeBlock} />
     </TextSplit>
   )

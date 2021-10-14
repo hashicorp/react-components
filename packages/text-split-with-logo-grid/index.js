@@ -1,6 +1,5 @@
 import TextSplit from '@hashicorp/react-text-split'
 import Image from '@hashicorp/react-image'
-import classNames from 'classnames'
 import styles from './styles/text-split-with-logo-grid.module.css'
 
 function parseLogoGridItems(items) {
@@ -14,7 +13,7 @@ function parseLogoGridItems(items) {
   })
 }
 
-function LogoGrid({ className, items, theme }) {
+function LogoGrid({ items, theme }) {
   const parsedItems = parseLogoGridItems(items)
   const imgCount = parsedItems.length
   const isBrokenLayout = imgCount % 3 !== 0 || imgCount > 9
@@ -25,7 +24,7 @@ function LogoGrid({ className, items, theme }) {
     throw new Error(err)
   }
   return (
-    <div className={classNames(styles.textSplitWithLogoGrid, className)}>
+    <div className={styles.textSplitWithLogoGrid}>
       {parsedItems.map((logoGridItem, stableIdx) => {
         const { linkUrl, GridItem } = logoGridItem
         const ItemWrapper = linkUrl ? 'a' : 'div'

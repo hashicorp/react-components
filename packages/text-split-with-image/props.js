@@ -17,6 +17,6 @@ module.exports = {
   className: {
     type: 'string',
     description:
-      'Optional className to add to the root element of the TextSplit.',
+      'Optional className to add to the root element of the TextSplit. If textSplit.className is provided, it will override this prop.',
   },
 }
