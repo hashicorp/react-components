@@ -1,14 +1,14 @@
 {
   "name": "@hashicorp/react-hero",
   "description": "basic full page hero with a lot of customization options",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "author": "HashiCorp",
   "contributors": ["Jeff Escalante"],
   "dependencies": {
     "@hashicorp/js-utils": "^1.0.10",
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-alert": "^6.0.0",
-    "@hashicorp/react-button": "^6.0.1",
+    "@hashicorp/react-alert": "^6.0.2",
+    "@hashicorp/react-button": "^6.0.2",
     "@hashicorp/react-image": "^4.0.2",
     "@hashicorp/react-text-input": "^5.0.0",
     "classnames": "^2.3.1",

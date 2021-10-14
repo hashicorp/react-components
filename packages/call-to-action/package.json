@@ -1,11 +1,11 @@
 {
   "name": "@hashicorp/react-call-to-action",
   "description": "Display a title, content, and links in a call-to-action format",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "author": "HashiCorp",
   "contributors": ["Zach Shilton"],
   "dependencies": {
-    "@hashicorp/react-button": "^6.0.0"
+    "@hashicorp/react-button": "^6.0.2"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

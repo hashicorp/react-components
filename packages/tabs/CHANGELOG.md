@@ -1,5 +1,11 @@
 # @hashicorp/react-tabs
 
+## 7.1.0
+
+### Minor Changes
+
+- [#384](https://github.com/hashicorp/react-components/pull/384) [`732ff93`](https://github.com/hashicorp/react-components/commit/732ff93b3f9da1da5abe0a9343421e272d26eee9) Thanks [@zchsh](https://github.com/zchsh)! - Add support for theme="dark".
+
 ## 7.0.1
 
 ### Patch Changes
