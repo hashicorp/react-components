@@ -38,4 +38,13 @@ module.exports = {
       },
     },
   },
+  className: {
+    type: 'string',
+    description: 'Optional className to add to the root element',
+  },
+  classNameTabBar: {
+    type: 'string',
+    description:
+      'Optional className to add to the tabs bar container. Useful for sticky positioning.',
+  },
 }
