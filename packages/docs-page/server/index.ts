@@ -61,10 +61,17 @@ export function getStaticGenerationFunctions(
       }
     },
     getStaticProps: async (ctx) => {
-      const props = await loader.loadStaticProps(ctx)
-      return {
-        props,
-        revalidate: opts.revalidate,
+      try {
+        const props = await loader.loadStaticProps(ctx)
+        return {
+          props,
+          revalidate: opts.revalidate,
+        }
+      } catch (err) {
+        console.error(err)
+        return {
+          notFound: true,
+        }
       }
     },
   }
