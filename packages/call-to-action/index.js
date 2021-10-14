@@ -37,15 +37,15 @@ function CallToAction({
         )}
         <div className={s.contentAndLinks}>
           {content && (
-            <p
+            <div
               className={classNames(s.content, { [s.hasHeading]: heading })}
               data-testid="content"
             >
               {content}
-            </p>
+            </div>
           )}
           {links && (
-            <div data-testid="links" className={s.links}>
+            <div className={s.links} data-testid="links">
               {links.map((link, stableIdx) => {
                 const buttonVariant =
                   variant === 'links'
