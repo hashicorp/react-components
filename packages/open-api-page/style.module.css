@@ -4,11 +4,11 @@
   flex-direction: column;
   flex: 1 0 auto;
   position: relative;
+  margin-bottom: 128px;
   width: 100%;
 
   @media (min-width: 940px) {
     flex-direction: row;
-    margin-bottom: 24px;
     margin-top: 72px;
   }
 
