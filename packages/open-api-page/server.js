@@ -12,9 +12,10 @@ import {
  *
  * @param {*} schema
  * @param {*} params
+ * @param {*} options
  * @returns
  */
-function getPropsForPage(schema, params) {
+function getPropsForPage(schema, params, options = {}) {
   // parse the data we'll show to the user from the schema
   const operationObjects = getOperationObjects(schema)
   const serviceIds = getServiceIds(operationObjects)
@@ -27,7 +28,7 @@ function getPropsForPage(schema, params) {
       path: getServicePathSlug(serviceId),
     }
   })
-  const isSingleService = navData.length == 1
+  const isSingleService = navData.length == 1 && !options.forceSidebar
   // If there's no "page" param, then this is the landing page
   const isLanding = !params || !params.page || params.page.length == 0
 
@@ -57,14 +58,15 @@ function getPropsForPage(schema, params) {
  * return all the paths we'll render for our openapi generated docs
  *
  * @param {*} schema
+ * @param {*} options
  * @returns
  */
-function getPathsFromSchema(schema) {
+function getPathsFromSchema(schema, options) {
   // Assign each operation category to a URL using its slug-ified ID
   const operationObjects = getOperationObjects(schema)
   const slugs = getServiceIds(operationObjects).map(getServicePathSlug)
   // If this is a single service, just return an index page
-  const isSingleService = slugs.length === 1
+  const isSingleService = slugs.length === 1 && !options.forceSidebar
   if (isSingleService) return [{ params: { page: [] } }]
   // Otherwise, return path entries for each service, as well
   // as well as an index path entry
