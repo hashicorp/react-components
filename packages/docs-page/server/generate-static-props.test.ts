@@ -119,6 +119,52 @@ describe('mapVersionList', () => {
     expect(versionList[0].label.endsWith('(latest)')).toBe(true)
   })
 
+  it('should sort by semver descending', () => {
+    const list = [
+      { version: 'v0.11.x' },
+      { version: 'v0.9.x' },
+      { version: 'v0.10.x' },
+      { version: 'v1.9.x' },
+      { version: 'v1.1.x' },
+      { version: 'v1.10.x' },
+      { version: 'v2.11.x' },
+    ]
+    const versionList = mapVersionList(list as any)
+
+    expect(versionList).toMatchInlineSnapshot(`
+Array [
+  Object {
+    "label": "v2.11.x",
+    "name": "v2.11.x",
+  },
+  Object {
+    "label": "v1.10.x",
+    "name": "v1.10.x",
+  },
+  Object {
+    "label": "v1.9.x",
+    "name": "v1.9.x",
+  },
+  Object {
+    "label": "v1.1.x",
+    "name": "v1.1.x",
+  },
+  Object {
+    "label": "v0.11.x",
+    "name": "v0.11.x",
+  },
+  Object {
+    "label": "v0.10.x",
+    "name": "v0.10.x",
+  },
+  Object {
+    "label": "v0.9.x",
+    "name": "v0.9.x",
+  },
+]
+`)
+  })
+
   it('should map a list of version-metadata to a format for <VersionSelect/>', () => {
     expect(versionList).toMatchInlineSnapshot(`
       Array [

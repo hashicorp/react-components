@@ -20,7 +20,8 @@
     "js-yaml": "^4.1.0",
     "line-reader": "^0.4.0",
     "moize": "^6.0.3",
-    "readdirp": "^3.6.0"
+    "readdirp": "^3.6.0",
+    "semver": "^7.3.5"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
@@ -32,6 +33,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/mdx-js__react": "^1.5.4"
+    "@types/mdx-js__react": "^1.5.4",
+    "@types/semver": "^7.3.8"
   }
 }
