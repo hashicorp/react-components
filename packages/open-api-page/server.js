@@ -38,18 +38,19 @@ function getPropsForPage(schema, params, options = {}) {
   const targetServiceId = isSingleService
     ? getServicePathSlug(serviceIds[0])
     : params.page[0]
-  const operationCategory = isLanding
-    ? false
-    : serviceIds
-        .filter((id) => getServicePathSlug(id) === targetServiceId)
-        .map((serviceId) => {
-          const name = capitalCase(serviceId)
-          const slug = getServicePathSlug(serviceId)
-          const operations = operationObjects.filter(
-            (o) => getServiceId(o) === serviceId
-          )
-          return { name, slug, operations }
-        })[0]
+  const operationCategory =
+    isLanding && !isSingleService
+      ? false
+      : serviceIds
+          .filter((id) => getServicePathSlug(id) === targetServiceId)
+          .map((serviceId) => {
+            const name = capitalCase(serviceId)
+            const slug = getServicePathSlug(serviceId)
+            const operations = operationObjects.filter(
+              (o) => getServiceId(o) === serviceId
+            )
+            return { name, slug, operations }
+          })[0]
   return { info, navData, isSingleService, operationCategory, currentPath }
 }
 
