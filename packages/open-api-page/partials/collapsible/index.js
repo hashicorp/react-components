@@ -1,12 +1,15 @@
 import React, { useRef, useEffect } from 'react'
 import s from './style.module.css'
 
-/*
-  Collapsible content block, receives children and a `isCollapsed` prop,
-  smoothly animates from collapsed (height 0) to expanded (height auto)
-  when its incoming `isCollapsed` prop is changed
-*/
-
+/**
+ * Collapsible content block, receives children and a `isCollapsed` prop,
+ * smoothly animates from collapsed (height 0) to expanded (height auto)
+ * when its incoming `isCollapsed` prop is changed
+ * @param {*} props
+ * @param {boolean} props.isCollapsed if true, the collapsible area with occupy zero height. automatically animates between states.
+ * @param {*} props.children React children to render in the collapsible area
+ * @returns
+ */
 function Collapsible({ isCollapsed, children }) {
   const parentElem = useRef(null)
 

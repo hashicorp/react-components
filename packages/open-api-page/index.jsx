@@ -4,14 +4,16 @@ import OperationObject from './partials/operation-object'
 import HashiHead from '@hashicorp/react-head'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import Content from '@hashicorp/react-content'
-import { getPathsFromSchema, getPropsForPage } from './utils/routing-utils'
+import { getPathsFromSchema, getPropsForPage } from './server'
 import styles from './style.module.css'
 import useOnClickOutside from './hooks/use-on-click-outside'
+import classNames from 'classnames'
 
 function OpenApiPage({
   info,
   operationCategory,
   navData,
+  isSingleService,
   productName,
   productSlug,
   currentPath,
@@ -38,16 +40,20 @@ function OpenApiPage({
         description={info.description}
         siteName={`${productName} by HashiCorp`}
       />
-      <DocsSidenav
-        product={productSlug}
-        Link={Link}
-        currentPath={currentPath}
-        baseRoute={pathFromRoot}
-        disableFilter={true}
-        navData={navData}
-      />
+      {!isSingleService ? (
+        <DocsSidenav
+          product={productSlug}
+          Link={Link}
+          currentPath={currentPath}
+          baseRoute={pathFromRoot}
+          disableFilter={true}
+          navData={navData}
+        />
+      ) : null}
       <Content
-        className={styles.contentContainer}
+        className={classNames(styles.contentContainer, {
+          [styles.isSingleService]: isSingleService,
+        })}
         product={productSlug}
         content={
           operationCategory ? (
