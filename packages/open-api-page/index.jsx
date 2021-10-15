@@ -4,9 +4,8 @@ import OperationObject from './partials/operation-object'
 import HashiHead from '@hashicorp/react-head'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import Content from '@hashicorp/react-content'
-import { getPathsFromSchema, getPropsForPage } from './server'
-import styles from './style.module.css'
 import useOnClickOutside from './hooks/use-on-click-outside'
+import s from './style.module.css'
 
 function OpenApiPage({
   info,
@@ -33,7 +32,7 @@ function OpenApiPage({
   const pageTitle = operationCategory ? operationCategory.name : info.title
 
   return (
-    <div className={styles.root} data-theme={productSlug}>
+    <div className={s.root}>
       <HashiHead
         title={`${pageTitle} | ${productName} by HashiCorp`}
         description={info.description}
@@ -48,17 +47,13 @@ function OpenApiPage({
         navData={navData}
       />
       <Content
-        className={styles.contentContainer}
+        className={s.contentContainer}
         product={productSlug}
         content={
           operationCategory ? (
             <>
-              <p className={`${styles.pageHeading} g-type-display-2`}>
-                {info.title}
-              </p>
-              <h1 className={`${styles.categoryHeading} g-type-display-4`}>
-                {operationCategory.name}
-              </h1>
+              <p className={s.pageHeading}>{info.title}</p>
+              <h1 className={s.categoryHeading}>{operationCategory.name}</h1>
               <div ref={operationsRef}>
                 {operationCategory.operations.map((op) => {
                   const isExpanded =
@@ -82,10 +77,8 @@ function OpenApiPage({
             </>
           ) : (
             <>
-              <h1 className={`${styles.pageHeading} g-type-display-2`}>
-                {info.title}
-              </h1>
-              <p className={`${styles.landingPlaceholder} g-type-body-long`}>
+              <h1 className={s.pageHeading}>{info.title}</h1>
+              <p className={s.sidebarPrompt}>
                 Select a service from the sidebar.
               </p>
             </>
@@ -96,5 +89,4 @@ function OpenApiPage({
   )
 }
 
-export { getPathsFromSchema, getPropsForPage }
 export default OpenApiPage
