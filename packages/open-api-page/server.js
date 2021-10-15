@@ -61,7 +61,7 @@ function getPropsForPage(schema, params, options = {}) {
  * @param {*} options
  * @returns
  */
-function getPathsFromSchema(schema, options) {
+function getPathsFromSchema(schema, options = {}) {
   // Assign each operation category to a URL using its slug-ified ID
   const operationObjects = getOperationObjects(schema)
   const slugs = getServiceIds(operationObjects).map(getServicePathSlug)
