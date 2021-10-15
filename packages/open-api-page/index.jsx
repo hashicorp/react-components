@@ -7,7 +7,6 @@ import Content from '@hashicorp/react-content'
 import { getPathsFromSchema, getPropsForPage } from './server'
 import styles from './style.module.css'
 import useOnClickOutside from './hooks/use-on-click-outside'
-import classNames from 'classnames'
 
 function OpenApiPage({
   info,
@@ -40,20 +39,16 @@ function OpenApiPage({
         description={info.description}
         siteName={`${productName} by HashiCorp`}
       />
-      {!isSingleService ? (
-        <DocsSidenav
-          product={productSlug}
-          Link={Link}
-          currentPath={currentPath}
-          baseRoute={pathFromRoot}
-          disableFilter={true}
-          navData={navData}
-        />
-      ) : null}
+      <DocsSidenav
+        product={productSlug}
+        Link={Link}
+        currentPath={isSingleService ? navData[0].path : currentPath}
+        baseRoute={pathFromRoot}
+        disableFilter={true}
+        navData={navData}
+      />
       <Content
-        className={classNames(styles.contentContainer, {
-          [styles.isSingleService]: isSingleService,
-        })}
+        className={styles.contentContainer}
         product={productSlug}
         content={
           operationCategory ? (
