@@ -1,5 +1,7 @@
 .pre {
-  & pre {
+  /* Note: only targets <pre> without className,
+     to avoid conflicts with our code-block component */
+  & pre:not([class]) {
     background-color: var(--code-dark);
     border-radius: 3px;
     margin: 1.5rem 0;
@@ -11,7 +13,7 @@
     font-size: 0.844rem;
     line-height: 1.63em;
 
-    & code {
+    & > code {
       font: inherit;
       line-height: inherit;
       color: inherit;
