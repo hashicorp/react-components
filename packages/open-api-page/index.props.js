@@ -12,7 +12,7 @@ OpenAPIPageProps.propTypes = {
     description: PropTypes.string,
     version: PropTypes.string,
   }),
-  /** The name of the associated HashiCopr product, used in page metadata */
+  /** The name of the associated HashiCorp product, used in page metadata */
   productName: PropTypes.string,
   /** The slug of the associated HashiCorp product, used for theming. Only supports "boundary" or a default theme at present.*/
   productSlug: PropTypes.oneOf(['boundary', 'packer']),

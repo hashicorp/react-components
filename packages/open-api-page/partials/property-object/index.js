@@ -2,7 +2,7 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Collapsible from '../collapsible'
-import svgChevronDown from '../../icons/chevron-down.svg?include'
+import svgChevronDown from '@hashicorp/flight-icons/svg/chevron-down-16.svg?include'
 import s from './style.module.css'
 
 function PropertyObject({
