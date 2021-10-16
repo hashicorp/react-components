@@ -2,9 +2,16 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
+    "@babel/core": "^7.15.8",
     "@hashicorp/mktg-global-styles": "^4.0.0",
     "@hashicorp/mktg-logos": "^1.2.0",
     "@hashicorp/sentinel-embedded": "^0.0.14",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-docs": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "babel-loader": "^8.2.2",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
     "next": "^11.1.0",
@@ -61,7 +68,9 @@
     "test:ci": "jest --runInBand",
     "test:watch": "jest --watch",
     "upgrade:base-deps": "npm add @hashicorp/{mktg-{logos,global-styles},nextjs-scripts}@latest",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "simple-git-hooks": {
     "pre-commit": "npx next-hashicorp precommit"
