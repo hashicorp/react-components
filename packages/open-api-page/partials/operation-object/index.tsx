@@ -1,6 +1,6 @@
 import Collapsible from '../collapsible'
 import ResponseObject from '../response-object'
-import PropertyObject from '../property-object'
+import Parameter from '../parameter'
 import { capitalCase } from 'change-case'
 import useHover from '../../hooks/use-hover'
 import InlineSvg from '@hashicorp/react-inline-svg'
@@ -9,16 +9,16 @@ import TwoColumnLayout from '../two-column-layout'
 import getBodyParamProps from './get-body-param-props'
 import classNames from 'classnames'
 import s from './style.module.css'
-import { OperationObjectType } from './types'
+import { OperationObjectType } from '../../types'
 import { LegacyRef } from 'react'
 
 function Parameters({ title, params }) {
   return (
     <>
-      <p className={`${s.columnSectionHeading} g-type-label-strong`}>{title}</p>
+      <p className={s.columnSectionHeading}>{title}</p>
       {params.map((parameter, idx) => {
         return (
-          <PropertyObject
+          <Parameter
             key={parameter.name}
             name={parameter.name}
             data={parameter}
@@ -44,7 +44,9 @@ export interface OperationObjectProps {
   /** Function that accepts a single argument, true or false, and updates the isCollapsed prop accordingly*/
   setIsCollapsed: (isCollapsed: boolean) => void
   /** React node to render at the top of the collapsible area of the operation object */
-  renderOperationIntro?: ($TSFixMe) => React.ReactNode
+  renderOperationIntro?: (
+    props: Record<'data', OperationObjectType>
+  ) => React.ReactNode
 }
 
 function OperationObject({
@@ -121,9 +123,7 @@ function OperationObject({
                 <p className={s.columnHeading}>Response</p>
                 {successResponse ? (
                   <>
-                    <p
-                      className={`${s.columnSectionHeading} g-type-label-strong`}
-                    >
+                    <p className={s.columnSectionHeading}>
                       Successful Response
                     </p>
                     <ResponseObject data={successResponse} />

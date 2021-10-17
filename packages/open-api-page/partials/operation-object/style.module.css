@@ -92,21 +92,22 @@
 
 .details {
   padding-bottom: 80px;
+}
 
-  & .columnHeading {
-    margin: 0 0 1em 0;
-    font-weight: bold;
-  }
+.columnHeading {
+  margin: 0 0 1em 0;
+  font-weight: bold;
+}
 
-  & .columnSectionHeading {
-    margin: 24px 0 8px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--gray-5);
-    color: var(--gray-2);
+.columnSectionHeading {
+  composes: g-type-label-strong from global;
+  margin: 24px 0 8px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gray-5);
+  color: var(--gray-2);
 
-    &:nth-child(2) {
-      margin-top: 0;
-    }
+  &:nth-child(2) {
+    margin-top: 0;
   }
 }
 
