@@ -5,17 +5,11 @@ import Collapsible from '../collapsible'
 import svgChevronDown from '@hashicorp/flight-icons/svg/chevron-down-16.svg?include'
 import s from './style.module.css'
 
-function PropertyObject({
-  name,
-  data,
-  isFirstItem,
-  isLastItem,
-  arrayDepth = 0,
-}) {
+function Parameter({ name, data, isFirstItem, isLastItem, arrayDepth = 0 }) {
   const [isCollapsed, setIsCollapsed] = useState(true)
   if (data.type === 'array')
     return (
-      <PropertyObject
+      <Parameter
         name={name}
         data={data.items}
         arrayDepth={arrayDepth + 1}
@@ -67,7 +61,7 @@ function PropertyObject({
             <div className={s.propertiesContainer}>
               {Object.keys(data.properties).map((propertyKey, idx) => {
                 return (
-                  <PropertyObject
+                  <Parameter
                     key={propertyKey}
                     name={propertyKey}
                     data={data.properties[propertyKey]}
@@ -92,4 +86,4 @@ function arrayFrom(length, value = null) {
   return array
 }
 
-export default PropertyObject
+export default Parameter

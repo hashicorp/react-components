@@ -1,9 +1,5 @@
-import PropertyObject from '../property-object'
-
-interface SchemaType {
-  /** A [Schema Object](https://swagger.io/specification/v2/#schema-object) that describes the response. Note that we currently only support objects (with schema.properties) responses in the UI. */
-  properties: Record<string, unknown>[]
-}
+import Parameter from '../parameter'
+import { SchemaType } from '../../types'
 
 interface ResponseObjectProps {
   /** [Response Object](https://swagger.io/specification/v2/#response-object) data. */
@@ -21,7 +17,7 @@ function ResponseObject({ data }: ResponseObjectProps): React.ReactElement {
     <div>
       {Object.keys(data.schema.properties).map((propertyKey, idx) => {
         return (
-          <PropertyObject
+          <Parameter
             key={propertyKey}
             name={propertyKey}
             data={data.schema.properties[propertyKey]}
