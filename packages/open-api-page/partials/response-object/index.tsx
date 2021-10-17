@@ -1,6 +1,16 @@
 import PropertyObject from '../property-object'
 
-function ResponseObject({ data }) {
+interface SchemaType {
+  /** A [Schema Object](https://swagger.io/specification/v2/#schema-object) that describes the response. Note that we currently only support objects (with schema.properties) responses in the UI. */
+  properties: Record<string, unknown>[]
+}
+
+interface ResponseObjectProps {
+  /** [Response Object](https://swagger.io/specification/v2/#response-object) data. */
+  data?: Record<'schema', SchemaType>
+}
+
+function ResponseObject({ data }: ResponseObjectProps): React.ReactElement {
   // `schema` can be empty, which means the response does not return content
   //  We currently only support object responses (ie those that have schema.properties) in the UI
   // Ref: https://swagger.io/specification/v2/#response-object
