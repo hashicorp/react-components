@@ -1,0 +1,10 @@
+{
+  "titleLink": { "text": "Title", "url": "#" },
+  "menuItems": [
+    { "text": "Link One", "url": "/link-one" },
+    { "text": "Link Two", "url": "/link-two" },
+    { "text": "Link Three", "url": "/link-three" }
+  ],
+  "ctaLinks": [{ "text": "CTA Button", "url": "#" }],
+  "currentPath": "/link-one"
+}

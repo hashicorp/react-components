@@ -1,0 +1,28 @@
+.root {
+  padding: 1em;
+  border-radius: 3px;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  &.type-info {
+    background-color: var(--info-l2);
+  }
+
+  &.type-success {
+    background-color: var(--success-l2);
+  }
+
+  &.type-warning {
+    background-color: var(--warning-l2);
+  }
+
+  &.type-danger {
+    background-color: var(--danger-l2);
+  }
+}

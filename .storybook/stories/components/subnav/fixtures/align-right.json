@@ -1,0 +1,62 @@
+{
+  "titleLink": {
+    "text": "nomad",
+    "url": "/"
+  },
+  "currentPath": "/",
+  "menuItemsAlign": "right",
+  "menuItems": [
+    {
+      "text": "Overview",
+      "url": "/"
+    },
+    {
+      "text": "Use Cases",
+      "submenu": [
+        {
+          "text": "Infrastructure as Code",
+          "url": "/use-cases/infrastructure-as-code"
+        },
+        {
+          "text": "Multi-Cloud Compliance and Management",
+          "url": "/use-cases/multi-cloud-compliance-and-management"
+        },
+        {
+          "text": "Self-Service Infrastructure",
+          "url": "/use-cases/self-service-infrastructure"
+        }
+      ]
+    },
+    {
+      "text": "Enterprise",
+      "url": "/enterprise"
+    },
+    "divider",
+    {
+      "text": "Whitepaper",
+      "url": "/whitepaper"
+    },
+    {
+      "text": "Docs",
+      "url": "/docs"
+    },
+    {
+      "text": "API",
+      "url": "/api"
+    },
+    {
+      "text": "Community",
+      "url": "/community"
+    }
+  ],
+  "ctaLinks": [
+    {
+      "text": "GitHub",
+      "url": "https://www.github.com/hashicorp/nomad"
+    },
+    {
+      "text": "Download",
+      "url": "/download"
+    }
+  ]
+}

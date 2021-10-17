@@ -1,0 +1,13 @@
+{
+  "name": "@hashicorp/react-aside",
+  "description": "The Aside component is used to render a highlighted box of content. It is intended for use in long form content areas.",
+  "author": "HashiCorp",
+  "version": "0.0.0",
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
+  }
+}

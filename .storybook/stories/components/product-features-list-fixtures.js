@@ -1,0 +1,19 @@
+const Basic = {
+  heading: 'Why Nomad?',
+  features: [
+    {
+      title: 'Simple and Lightweight',
+      content:
+        'Single 35MB binary that integrates into existing infrastructure.  Easy to operate on-prem or in the cloud with minimal overhead.',
+      icon: 'http://www.hashicorp.com/img/icons/home-solution-nomad.svg',
+    },
+    {
+      title: 'Flexible Workload Support',
+      content:
+        'Orchestrate applications of any type - not just containers. First class support for Docker, Windows, Java, VMs, and more.',
+      icon: 'http://www.hashicorp.com/img/icons/home-solution-nomad.svg',
+    },
+  ],
+}
+
+export default { Basic }
