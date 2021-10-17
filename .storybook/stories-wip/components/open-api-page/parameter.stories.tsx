@@ -1,14 +1,14 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import PropertyObject from '../../../../packages/open-api-page/partials/property-object'
+import Parameter from '../../../../packages/open-api-page/partials/parameter'
 
 export default {
-  title: 'Components/OpenApiPage/PropertyObject',
-  component: PropertyObject,
-} as ComponentMeta<typeof PropertyObject>
+  title: 'Components/OpenApiPage/Parameter',
+  component: Parameter,
+} as ComponentMeta<typeof Parameter>
 
-const Template: ComponentStory<typeof PropertyObject> = (args) => {
-  return <PropertyObject {...args} />
+const Template: ComponentStory<typeof Parameter> = (args) => {
+  return <Parameter {...args} />
 }
 
 /* Basic Example */
