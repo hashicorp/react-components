@@ -2,6 +2,7 @@ import fs from 'fs'
 import packerRawSwagger from './raw-schemas/packer.swagger.json'
 import boundaryRawSwagger from './raw-schemas/boundary.swagger.json'
 import processSchema from '../process-schema'
+import { getPropsForPage } from '../../../../packages/open-api-page/server'
 
 main()
 
@@ -15,10 +16,24 @@ async function main() {
     './fixtures/generated/boundary.swagger.json',
     JSON.stringify(boundarySwagger, null, 2)
   )
+  const boundaryPageProps = getPropsForPage(boundarySwagger, {
+    page: ['account-service'],
+  })
+  fs.writeFileSync(
+    './fixtures/generated/boundary-page-props.json',
+    JSON.stringify(boundaryPageProps, null, 2)
+  )
   // Generate de-referenced Packer swagger file
   const packerSwagger = await processSchema(packerRawSwagger)
   fs.writeFileSync(
     './fixtures/generated/packer.swagger.json',
     JSON.stringify(packerSwagger, null, 2)
+  )
+  const packerPageProps = getPropsForPage(packerSwagger, {
+    page: [],
+  })
+  fs.writeFileSync(
+    './fixtures/generated/packer-page-props.json',
+    JSON.stringify(packerPageProps, null, 2)
   )
 }
