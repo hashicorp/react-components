@@ -6,7 +6,7 @@
   --border-color-hovered: var(--brand);
   --border-color: var(--brand);
   --padding-medium: 12px 20px;
-  --padding-small: 7px 20px 8px 20px;
+  --padding-small: 7px 20px 7px 20px;
   --scrim-color-active: rgba(0, 0, 0, 0.2);
   --scrim-color: rgba(0, 0, 0, 0.1);
   --scrim-opacity-active: 1;
@@ -69,7 +69,7 @@
   --border-color-hovered: transparent;
   --border-color: rgba(29, 30, 35, 0.2);
   --padding-medium: 12px 20px;
-  --padding-small: 7px 20px 8px 20px;
+  --padding-small: 7px 20px 7px 20px;
   --scrim-color-active: var(--black);
   --scrim-color: var(--black);
   --scrim-opacity-active: 0.16;
