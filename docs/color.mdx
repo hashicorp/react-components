@@ -8,6 +8,13 @@ name: 'Color'
 
 # Color
 
+<pre style={{ fontSize: '0.75rem', color: 'var(--gray-3)' }}>
+  Colors tokens provided by @hashicorp/mktg-global-styles:<br/>
+  <a style={{ color: 'inherit', textDecoration: 'underline' }} href="https://github.com/hashicorp/mktg-global-styles/blob/main/custom-properties/color.css">https://github.com/hashicorp/mktg-global-styles/blob/main/custom-properties/color.css</a>
+</pre>
+
+## Brand/Products
+
 <span style={{ fontSize: '1.25rem', color: 'var(--gray-3)' }}>
   Colors associated with HashiCorp's brand and products.
 </span>
@@ -15,13 +22,13 @@ name: 'Color'
 <>
   {[
     'brand',
-    'vagrant',
+    'boundary',
+    'consul',
+    'nomad',
     'packer',
     'terraform',
-    'consul',
-    'boundary',
+    'vagrant',
     'vault',
-    'nomad',
     'waypoint',
   ].map((b) => (
     <div
@@ -33,28 +40,161 @@ name: 'Color'
       }}
     >
       <h3>{b}</h3>
-      {['', '-secondary', '-gradient'].map((suffix) => (
+      {['', '-secondary', '-logomark', '-accent', '-link', '-link-on-dark', '-gradient'].map((suffix) => (
         <div
+          key={suffix}
           style={{
             width: '100%',
             background: `var(--${b}${suffix})`,
-            height: '100px',
+            height: '50px',
+            boxShadow: 'inset 0px 0px 1px rgba(0,0,0,0.5)',
             position: 'relative',
           }}
         >
           <code
             style={{
               position: 'absolute',
-              right: '16px',
-              bottom: '16px',
+              top: '5px',
+              right: '5px',
               background: 'rgba(255,255,255,0.2)',
               padding: '0.25rem 0.5rem',
+              fontSize: '0.75rem',
             }}
           >
             var(--{`${b}${suffix}`})
           </code>
         </div>
       ))}
+    </div>
+  ))}
+</>
+
+## Grays
+
+<>
+  {[
+    'white',
+    'black',
+    'gray-6',
+    'gray-5',
+    'gray-4',
+    'gray-3',
+    'gray-2',
+    'gray-1',
+  ].map((g) => (
+    <div
+      key={g}
+      style={{
+        width: '100%',
+        background: `var(--${g})`,
+        height: '50px',
+        boxShadow: 'inset 0px 0px 1px rgba(0,0,0,0.5)',
+        position: 'relative',
+      }}
+    >
+      <code
+        style={{
+          position: 'absolute',
+          top: '5px',
+          right: '5px',
+          background: 'rgba(255,255,255,0.2)',
+          padding: '0.25rem 0.5rem',
+          fontSize: '0.75rem',
+        }}
+      >
+        var(--{`${g}`})
+      </code>
+    </div>
+  ))}
+</>
+
+
+## Feedback
+
+<>
+  {[
+    'info',
+    'warning',
+    'danger',
+    'success',
+  ].map((f) => (
+    <div
+      key={f}
+      style={{
+        marginBottom: '32px',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <h3>{f}</h3>
+      {['-l2', '-l1', '', '-d1'].map((suffix) => (
+        <div
+          key={suffix}
+          style={{
+            width: '100%',
+            background: `var(--${f}${suffix})`,
+            height: '50px',
+            boxShadow: 'inset 0px 0px 1px rgba(0,0,0,0.5)',
+            position: 'relative',
+          }}
+        >
+          <code
+            style={{
+              position: 'absolute',
+              top: '5px',
+              right: '5px',
+              background: 'rgba(255,255,255,0.2)',
+              padding: '0.25rem 0.5rem',
+              fontSize: '0.75rem',
+            }}
+          >
+            var(--{`${f}${suffix}`})
+          </code>
+        </div>
+      ))}
+    </div>
+  ))}
+</>
+
+## Code
+
+**Please note**: `code-` colour tokens are not generally in use, code syntax coloration has been (mostly) localized to the `@hashicorp/react-code-block` package. We have [a pending task](https://app.asana.com/0/1100423001970639/1201195132678861/f) to finish cleaning these up.
+
+
+<>
+  {[
+    'dark',
+    'light',
+    'light-transparent',
+    'comments',
+    'strings',
+    'numbers',
+    'operators',
+    'properties',
+    'control',
+  ].map((c) => (
+    <div
+      key={c}
+      style={{
+        width: '100%',
+        background: `var(--code-${c})`,
+        height: '50px',
+        boxShadow: 'inset 0px 0px 1px rgba(0,0,0,0.5)',
+        position: 'relative',
+      }}
+    >
+      <code
+        style={{
+          position: 'absolute',
+          top: '5px',
+          right: '5px',
+          background: 'rgba(255,255,255,0.2)',
+          padding: '0.25rem 0.5rem',
+          fontSize: '0.75rem',
+        }}
+      >
+        var(--{`code-${c}`})
+      </code>
     </div>
   ))}
 </>
