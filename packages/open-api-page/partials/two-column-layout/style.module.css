@@ -1,0 +1,13 @@
+.twoColumnLayout {
+  display: flex;
+
+  & > div:nth-child(1),
+  & > div:nth-child(3) {
+    position: relative;
+    width: calc(50% - 16px);
+  }
+
+  & > div:nth-child(2) {
+    width: 32px;
+  }
+}
