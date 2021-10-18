@@ -6,6 +6,10 @@ import { getPropsForPage } from '../server'
 
 main()
 
+/**
+ * This is a dev-targeted utility function for
+ * generating processed fixtures that are easy to import into Swingset.
+ */
 async function main() {
   if (!fs.existsSync('./fixtures/generated')) {
     fs.mkdirSync('./fixtures/generated')
