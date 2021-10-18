@@ -1,13 +1,19 @@
 module.exports = {
   children: {
     type: 'function',
-    description:
-      'Render prop for the page area. All visible elements on the page, except for the footer, should be rendered as children of Min100Layout.',
+    description: 'Children to render into the Alert block.',
     required: true,
+  },
+  type: {
+    type: 'string',
+    description:
+      'The type of message being displayed, which mainly affects coloration. Defaults to "info".',
+    control: { type: 'select' },
+    options: ['info', 'success', 'warning', 'danger'],
+    required: false,
   },
   className: {
     type: 'function',
-    description:
-      'Optional className to pass to the root element. The root element always has a height of 100vh or greater. Styling such as page background coloration likely belongs on the root element.',
+    description: 'Optional className to add to the root element.',
   },
 }
