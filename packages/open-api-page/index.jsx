@@ -12,10 +12,10 @@ function OpenApiPage({
   operationCategory,
   navData,
   isSingleService,
-  productName,
+  siteName,
   productSlug,
   currentPath,
-  pathFromRoot,
+  baseRoute,
   massageOperationPathFn = (path) => path,
   renderOperationIntro,
 }) {
@@ -34,15 +34,14 @@ function OpenApiPage({
   return (
     <div className={s.root}>
       <HashiHead
-        title={`${pageTitle} | ${productName} by HashiCorp`}
+        title={`${pageTitle}${siteName ? ` | ${siteName}` : ''}`}
         description={info.description}
-        siteName={`${productName} by HashiCorp`}
       />
       <DocsSidenav
         product={productSlug}
         Link={Link}
         currentPath={isSingleService ? navData[0].path : currentPath}
-        baseRoute={pathFromRoot}
+        baseRoute={baseRoute}
         disableFilter={true}
         navData={navData}
       />
