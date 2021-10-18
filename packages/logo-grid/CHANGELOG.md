@@ -1,5 +1,14 @@
 # @hashicorp/react-logo-grid
 
+## 5.0.2
+
+### Patch Changes
+
+- [#335](https://github.com/hashicorp/react-components/pull/335) [`8012b33`](https://github.com/hashicorp/react-components/commit/8012b33fa39d62b3227b3ad00e4e0cab683ffead) Thanks [@zchsh](https://github.com/zchsh)! - - ✨ Exports `LogoGridCompany` type to help avoid TypeScript errors in consuming projects.
+  - ✨ Exports `LogoGridSize` type to help avoid TypeScript errors in consuming projects.
+- Updated dependencies [[`8012b33`](https://github.com/hashicorp/react-components/commit/8012b33fa39d62b3227b3ad00e4e0cab683ffead)]:
+  - @hashicorp/react-button@6.0.2
+
 ## 5.0.1
 
 ### Patch Changes

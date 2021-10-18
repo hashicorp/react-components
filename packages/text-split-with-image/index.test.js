@@ -27,7 +27,7 @@ const propsBase = {
   },
 }
 
-describe('<TextSplitWithImageWithImage />', () => {
+describe('<TextSplitWithImage />', () => {
   it('should render a `.g-text-split` <div> root element', () => {
     const { container } = render(<TextSplitWithImage {...propsBase} />)
     const rootElem = container.firstChild

@@ -1,0 +1,63 @@
+/*
+Theme settings.
+Consumed in nearly all CSS files in this component,
+including in /partials.
+*/
+
+.light {
+  /* tab triggers */
+  --background-color: var(--white);
+  --border-color: var(--gray-5);
+  --text-color: var(--gray-3);
+  --text-color-hover: var(--black);
+  --active-tab-color: var(--black);
+  --tooltip-icon-color: var(--gray-4);
+
+  /* arrows and scrims */
+  --arrow-icon-color: var(--gray-3);
+  --arrow-icon-color-hover: var(--gray-1);
+  --arrow-scrim-prev: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, 0.85) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --arrow-scrim-next: linear-gradient(
+    -90deg,
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, 0.85) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  /* content area */
+  --content-default-color: var(--gray-2);
+}
+
+.dark {
+  /* tab triggers */
+  --background-color: var(--black);
+  --border-color: var(--gray-3);
+  --text-color: var(--gray-4);
+  --text-color-hover: var(--white);
+  --active-tab-color: var(--white);
+  --tooltip-icon-color: var(--gray-3);
+
+  /* arrows and scrims */
+  --arrow-icon-color: var(--gray-3);
+  --arrow-icon-color-hover: var(--gray-5);
+  --arrow-scrim-prev: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.85) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  --arrow-scrim-next: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.85) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  /* content area */
+  --content-default-color: var(--gray-5);
+}

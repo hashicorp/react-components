@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { SearchProvider } from '../packages/search'
 import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
 import FormikStateViewer from '../swingset-extensions/formik-state-viewer'
+import NextRouterDebugger from '../swingset-extensions/next-router-debugger'
 import ComboboxField from '../packages/combobox/field'
 
 import { Tab } from '../packages/tabs'
@@ -123,6 +124,7 @@ const components = {
   FieldArray,
   ErrorMessage,
   FormikStateViewer,
+  NextRouterDebugger,
   ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
 }
 

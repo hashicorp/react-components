@@ -1,11 +1,11 @@
 .root {
   --height: 64px;
 
-  background: var(--white);
+  background: var(--background-color); /* from theme.module.css */
   position: relative;
 
   &.fullWidthBorder {
-    border-bottom: 1px solid var(--gray-5);
+    border-bottom: 1px solid var(--border-color); /* from theme.module.css */
   }
 }
 
@@ -14,7 +14,7 @@
   display: block;
   position: relative;
   z-index: 0;
-  border-bottom: 1px solid var(--gray-5);
+  border-bottom: 1px solid var(--border-color); /* from theme.module.css */
 
   &.forDefault {
     display: block;
@@ -75,7 +75,7 @@ appear by the container edge if
 there is overflow.
 */
 .arrow {
-  --icon-color: var(--gray-3);
+  --icon-color: var(--arrow-icon-color); /* from theme.module.css */
 
   align-items: center;
   bottom: 3px;
@@ -102,15 +102,15 @@ there is overflow.
     width: 20px;
     height: 20px;
     & [fill] {
-      fill: var(--icon-color);
+      fill: var(--icon-color); /* from theme.module.css */
     }
     & [stroke] {
-      stroke: var(--icon-color);
+      stroke: var(--icon-color); /* from theme.module.css */
     }
   }
 
   &:hover {
-    --icon-color: var(--gray-1);
+    --icon-color: var(--arrow-icon-color-hover); /* from theme.module.css */
 
     cursor: pointer;
   }
@@ -173,21 +173,11 @@ the edge of the scrolling container.
 .prevArrowScrim {
   composes: arrowScrim;
   left: -1px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 30%,
-    rgba(255, 255, 255, 0.85) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: var(--arrow-scrim-prev);
 }
 
 .nextArrowScrim {
   composes: arrowScrim;
   right: -1px;
-  background: linear-gradient(
-    -90deg,
-    rgba(255, 255, 255, 1) 30%,
-    rgba(255, 255, 255, 0.85) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: var(--arrow-scrim-next);
 }

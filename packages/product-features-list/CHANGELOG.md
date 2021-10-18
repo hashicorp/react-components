@@ -1,5 +1,14 @@
 # @hashicorp/react-product-features-list
 
+## 5.0.1
+
+### Patch Changes
+
+- [#356](https://github.com/hashicorp/react-components/pull/356) [`7f76a90`](https://github.com/hashicorp/react-components/commit/7f76a90057aa92fa8483a6b71983e4e7bc1c2f14) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - A11y fix to ensure sequential order of headings h2 -> h3 instead of h2 -> h4
+
+- Updated dependencies [[`edcaf4f`](https://github.com/hashicorp/react-components/commit/edcaf4f3bf7df33932efae3b7885c908a541ce1a)]:
+  - @hashicorp/react-button@6.0.3
+
 ## 5.0.0
 
 ### Major Changes

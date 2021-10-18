@@ -1,4 +1,5 @@
 import moize, { Options } from 'moize'
+import semver from 'semver'
 import renderPageMdx from '../../render-page-mdx'
 import {
   fetchNavData,
@@ -52,22 +53,27 @@ const cachedFetchVersionMetadataList = moize(
 )
 
 /**
- * formats a list of version-metadata to
- * be passed to `<VersionSelect versions=[...] />`
+ * Formats a list of version-metadata to,
+ * be passed to `<VersionSelect versions={[...]} />`.
+ * - Sorts by semver, descending
  */
 export function mapVersionList(
   list: VersionMetadataItem[]
 ): VersionSelectItem[] {
-  const versions = list.map((e) => {
-    const { isLatest, version, display } = e
+  const versions = list
+    .sort((a, b) =>
+      semver.compare(semver.coerce(b.version), semver.coerce(a.version))
+    )
+    .map((e) => {
+      const { isLatest, version, display } = e
 
-    const displayValue = display ?? version
+      const displayValue = display ?? version
 
-    return {
-      name: isLatest ? 'latest' : version,
-      label: isLatest ? `${displayValue} (latest)` : displayValue,
-    }
-  })
+      return {
+        name: isLatest ? 'latest' : version,
+        label: isLatest ? `${displayValue} (latest)` : displayValue,
+      }
+    })
 
   return versions
 }

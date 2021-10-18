@@ -1,13 +1,26 @@
-/* Additional composition is helpful here,
-as .arrow and .root can't use CSS custom properties
-nicely since .arrow is rendered into a Portal. */
-.theme {
-  --background-color: var(--gray-2);
-  --foreground-color: var(--white);
+/*
+Additional composition is helpful here.
+Note that .arrow and .root can't use CSS custom properties
+nicely since .arrow is rendered into a Portal.
+
+This also means that, unlike in other /partials,
+we can't reliably pull CSS custom properties from a
+theme.module.css class at the component root.
+*/
+
+.theme-light {
+  --background: var(--gray-2);
+  --foreground: var(--white);
+  --box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.1);
+}
+
+.theme-dark {
+  --background: var(--gray-1);
+  --foreground: var(--white);
+  --box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.1);
 }
 
 .arrow {
-  composes: theme;
   position: absolute;
 
   /* --top and --left are set in JS, to allow
@@ -18,16 +31,15 @@ nicely since .arrow is rendered into a Portal. */
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid var(--background-color);
+  border-bottom: 10px solid var(--background);
 }
 
 .box {
-  composes: theme;
   composes: g-type-body-small from global;
   font-size: 0.875rem;
-  background: var(--background-color);
-  box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.1);
-  color: var(--foreground-color);
+  background: var(--background);
+  box-shadow: var(--tooltip-box-shadow);
+  color: var(--foreground);
   padding: 0.5em 1em;
   pointer-events: none;
   position: absolute;

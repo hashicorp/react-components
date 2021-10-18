@@ -1,5 +1,20 @@
 # @hashicorp/react-subnav
 
+## 9.1.2
+
+### Patch Changes
+
+- [#397](https://github.com/hashicorp/react-components/pull/397) [`edcaf4f`](https://github.com/hashicorp/react-components/commit/edcaf4f3bf7df33932efae3b7885c908a541ce1a) Thanks [@zchsh](https://github.com/zchsh)! - Bump button dependency. Explicit changset added to enable canary pre-release.
+
+- Updated dependencies [[`edcaf4f`](https://github.com/hashicorp/react-components/commit/edcaf4f3bf7df33932efae3b7885c908a541ce1a)]:
+  - @hashicorp/react-button@6.0.3
+
+## 9.1.1
+
+### Patch Changes
+
+- [#391](https://github.com/hashicorp/react-components/pull/391) [`f0b43a7`](https://github.com/hashicorp/react-components/commit/f0b43a7910f8a76e102afb18b38e22b19348d2cb) Thanks [@jescalan](https://github.com/jescalan)! - Add permalink spacing when subnav is in sticky mode so headlines do not disappear underneath it
+
 ## 9.1.0
 
 ### Minor Changes

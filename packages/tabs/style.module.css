@@ -1,4 +1,4 @@
 .content {
   composes: g-grid-container from global;
-  color: var(--gray-2);
+  color: var(--content-default-color);
 }
