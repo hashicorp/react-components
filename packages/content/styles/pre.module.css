@@ -1,5 +1,7 @@
 .pre {
-  & pre {
+  /* Note: only targets <pre> without className,
+     to avoid conflicts with @hashicorp/react-code-block */
+  & pre:not([class]) {
     background-color: var(--code-dark);
     border-radius: 3px;
     margin: 1.5rem 0;
