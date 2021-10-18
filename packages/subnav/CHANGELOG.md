@@ -1,5 +1,14 @@
 # @hashicorp/react-subnav
 
+## 9.1.2
+
+### Patch Changes
+
+- [#397](https://github.com/hashicorp/react-components/pull/397) [`edcaf4f`](https://github.com/hashicorp/react-components/commit/edcaf4f3bf7df33932efae3b7885c908a541ce1a) Thanks [@zchsh](https://github.com/zchsh)! - Bump button dependency. Explicit changset added to enable canary pre-release.
+
+- Updated dependencies [[`edcaf4f`](https://github.com/hashicorp/react-components/commit/edcaf4f3bf7df33932efae3b7885c908a541ce1a)]:
+  - @hashicorp/react-button@6.0.3
+
 ## 9.1.1
 
 ### Patch Changes
