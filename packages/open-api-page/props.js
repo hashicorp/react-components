@@ -1,4 +1,6 @@
 const baseProps = require('../../props.js')
+const boundaryPageProps = require('./fixtures/generated/boundary-page-props.json')
+const packerPageProps = require('./fixtures/generated/packer-page-props.json')
 
 module.exports = {
   siteName: {
@@ -10,37 +12,62 @@ module.exports = {
   productSlug: {
     ...baseProps.product,
   },
-  info: {
-    type: 'object',
-    description:
-      'Object with properties `{ title, description }`. `info.title` is used as the page title, both visibly and in the meta `<title />` on the index page. `info.description` is used for page meta `<description />`. ',
-    required: true,
-  },
-  operationCategory: {
-    type: 'object',
-    description:
-      "Optional object with properties `{ name, operations }`, provided where the page will display operations. `name` is a pretty name to display as the page and meta `<title />` on the category page. `operations` is an array of OperationObjects to render on the category's page.",
-  },
   className: {
     type: 'function',
     description: 'Optional className to add to the root element.',
+  },
+  info: {
+    type: 'object',
+    description:
+      "Generated using this component's `server.js` utilities. Object with properties `{ title, description }`. `info.title` is used as the page title, both visibly and in the meta `<title />` on the index page. `info.description` is used for page meta `<description />`.",
+    required: true,
+    defaultValue: boundaryPageProps.info,
+    fixtureValues: {
+      boundary: boundaryPageProps.info,
+      packer: packerPageProps.info,
+    },
   },
   navData: {
     type: 'array',
     description:
       "Generated using this component's `server.js` utilities. Data to be passed to the `DocsSidenav` component that this page renders.",
     required: true,
+    defaultValue: boundaryPageProps.navData,
+    fixtureValues: {
+      boundary: boundaryPageProps.navData,
+      packer: packerPageProps.navData,
+    },
+  },
+  operationCategory: {
+    type: 'object',
+    description:
+      "Generated using this component's `server.js` utilities. Optional object with properties `{ name, operations }`, provided where the page will display operations. `name` is a pretty name to display as the page and meta `<title />` on the category page. `operations` is an array of OperationObjects to render on the category's page.",
+    defaultValue: boundaryPageProps.operationCategory,
+    fixtureValues: {
+      boundary: boundaryPageProps.operationCategory,
+      packer: packerPageProps.operationCategory,
+    },
   },
   isSingleService: {
     type: 'boolean',
     description:
       "Generated using this component's `server.js` utilities. If the OpenAPI specification contains only a single service (aka operation category), this flag will be set to true, and only a single index route will be rendered, showing the single service.",
+    defaultValue: boundaryPageProps.isSingleService,
+    fixtureValues: {
+      boundary: boundaryPageProps.isSingleService,
+      packer: packerPageProps.isSingleService,
+    },
   },
   currentPath: {
     type: 'string',
     description:
-      'Path for the current page starting from the dynamic route where the OpenAPI page is being rendered, joined by a `/` character.',
+      "Generated using this component's `server.js` utilities. Path for the current page starting from the dynamic route where the OpenAPI page is being rendered, joined by a `/` character.",
     required: true,
+    defaultValue: boundaryPageProps.currentPath,
+    fixtureValues: {
+      boundary: boundaryPageProps.currentPath,
+      packer: packerPageProps.currentPath,
+    },
   },
   baseRoute: {
     type: 'string',
