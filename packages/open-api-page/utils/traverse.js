@@ -35,6 +35,5 @@ async function traverse(valueIn, handleNode = (k, v) => v) {
   return await visitProperty(false, valueIn, handleNode)
 }
 
-module.exports = traverse
-module.exports.isObject = isObject
-module.exports.isArray = isArray
+export default traverse
+export { isObject, isArray }
