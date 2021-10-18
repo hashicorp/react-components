@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Aside from '.'
 
 describe('<Aside />', () => {
@@ -9,5 +9,18 @@ describe('<Aside />', () => {
     )
     const rootElem = container.firstChild
     expect(rootElem).toHaveClass(className)
+  })
+
+  it('should render the provided React children', () => {
+    const linkText = 'Special Link Text'
+    const linkUrl = 'https://www.example.com'
+    render(
+      <Aside>
+        <a href={linkUrl}>{linkText}</a>
+      </Aside>
+    )
+    const linkElement = screen.getByText(linkText)
+    expect(linkElement).toBeInTheDocument()
+    expect(linkElement).toHaveAttribute('href', linkUrl)
   })
 })
