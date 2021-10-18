@@ -1,31 +1,9 @@
 .twoColumnLayout {
-  --column-basis: 100%;
-  --column-width: calc(
-    var(--column-basis) - (var(--space-between-horizontal) / 2)
-  );
-  --space-between-vertical: 32px;
-  --space-between-horizontal: 0;
-
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 32px;
 
   @media (--large) {
-    --column-basis: 50%;
-    --space-between-vertical: 0;
-    --space-between-horizontal: 32px;
-  }
-
-  & .firstColumn {
-    position: relative;
-    width: calc(var(--column-basis) - (var(--space-between-horizontal) / 2));
-    margin-bottom: var(--space-between-vertical);
-    margin-right: var(--space-between-horizontal);
-    flex-grow: 1;
-  }
-
-  & .secondColumn {
-    position: relative;
-    width: calc(var(--column-basis) - (var(--space-between-horizontal) / 2));
-    flex-grow: 1;
+    grid-template-columns: 1fr 1fr;
   }
 }
