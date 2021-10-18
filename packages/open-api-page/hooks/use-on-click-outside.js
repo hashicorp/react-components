@@ -16,7 +16,7 @@ function useOnClickOutside(ref, callbackFn) {
       // Unbind the event listener on clean up
       document.removeEventListener('mousedown', handleClick)
     }
-  }, [callbackFn, ref])
+  }, [callbackFn])
 }
 
 export default useOnClickOutside
