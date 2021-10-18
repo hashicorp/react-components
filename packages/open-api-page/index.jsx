@@ -24,7 +24,7 @@ function OpenApiPage({
 
   useOnClickOutside(
     operationsRef,
-    useCallback(() => setExpandedOperations([]), [setExpandedOperations])
+    useCallback(() => setExpandedOperations([]), [])
   )
 
   function setOperationState(slug, isExpanded) {
