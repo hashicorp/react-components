@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useCallback, useState, useRef } from 'react'
 import Link from 'next/link'
 import OperationObject from './partials/operation-object'
 import HashiHead from '@hashicorp/react-head'
@@ -21,7 +21,11 @@ function OpenApiPage({
 }) {
   const operationsRef = useRef(null)
   const [expandedOperations, setExpandedOperations] = useState([])
-  useOnClickOutside(operationsRef, () => setExpandedOperations([]))
+
+  useOnClickOutside(
+    operationsRef,
+    useCallback(() => setExpandedOperations([]), [setExpandedOperations])
+  )
 
   function setOperationState(slug, isExpanded) {
     const newStates = expandedOperations.filter((s) => s !== slug)
