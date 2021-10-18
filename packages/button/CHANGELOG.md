@@ -1,5 +1,11 @@
 # @hashicorp/react-button
 
+## 6.0.3
+
+### Patch Changes
+
+- [#397](https://github.com/hashicorp/react-components/pull/397) [`edcaf4f`](https://github.com/hashicorp/react-components/commit/edcaf4f3bf7df33932efae3b7885c908a541ce1a) Thanks [@zchsh](https://github.com/zchsh)! - Fixes a off-by-1px issue where small-size buttons were not the correct height. Targets specific alignment issue in react-subnav.
+
 ## 6.0.2
 
 ### Patch Changes

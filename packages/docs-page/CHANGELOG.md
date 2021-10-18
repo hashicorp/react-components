@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.4.4
+
+### Patch Changes
+
+- [#398](https://github.com/hashicorp/react-components/pull/398) [`9d70e6b`](https://github.com/hashicorp/react-components/commit/9d70e6b93a5669fb0d85945cb3f861f657f1dfc4) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This fixes docs-page to sort versions my descending semver
+
 ## 14.4.3
 
 ### Patch Changes
