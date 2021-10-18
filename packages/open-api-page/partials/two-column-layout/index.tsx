@@ -12,9 +12,8 @@ function TwoColumnLayout({
 }): React.ReactElement {
   return (
     <div className={s.twoColumnLayout}>
-      <div>{columnOne}</div>
-      <div></div>
-      <div>{columnTwo}</div>
+      <div className={s.firstColumn}>{columnOne}</div>
+      <div className={s.secondColumn}>{columnTwo}</div>
     </div>
   )
 }

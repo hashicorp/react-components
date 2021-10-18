@@ -1,13 +1,31 @@
 .twoColumnLayout {
-  display: flex;
+  --column-basis: 100%;
+  --column-width: calc(
+    var(--column-basis) - (var(--space-between-horizontal) / 2)
+  );
+  --space-between-vertical: 32px;
+  --space-between-horizontal: 0;
 
-  & > div:nth-child(1),
-  & > div:nth-child(3) {
-    position: relative;
-    width: calc(50% - 16px);
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (--large) {
+    --column-basis: 50%;
+    --space-between-vertical: 0;
+    --space-between-horizontal: 32px;
   }
 
-  & > div:nth-child(2) {
-    width: 32px;
+  & .firstColumn {
+    position: relative;
+    width: calc(var(--column-basis) - (var(--space-between-horizontal) / 2));
+    margin-bottom: var(--space-between-vertical);
+    margin-right: var(--space-between-horizontal);
+    flex-grow: 1;
+  }
+
+  & .secondColumn {
+    position: relative;
+    width: calc(var(--column-basis) - (var(--space-between-horizontal) / 2));
+    flex-grow: 1;
   }
 }
