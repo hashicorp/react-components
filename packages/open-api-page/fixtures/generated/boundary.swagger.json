@@ -34376,7 +34376,7 @@
       "type": "string",
       "enum": ["NULL_VALUE"],
       "default": "NULL_VALUE",
-      "description": "<p><code>NullValue</code> is a singleton enumeration to represent the null value for the\n<code>Value</code> type union.</p>\n<p>The JSON representation for <code>NullValue</code> is JSON <code>null</code>.</p>\n<ul>\n<li>NULL_VALUE: Null value.</li>\n</ul>"
+      "description": "<p><code>NullValue</code> is a singleton enumeration to represent the null value for the\n<code>Value</code> type union.</p>\n<p> The JSON representation for <code>NullValue</code> is JSON <code>null</code>.</p>\n<ul>\n<li>NULL_VALUE: Null value.</li>\n</ul>"
     }
   }
 }
