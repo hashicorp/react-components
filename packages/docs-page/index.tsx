@@ -36,7 +36,7 @@ interface DocsPageWrapperProps {
   versions: { name: string; label: string }[]
 }
 
-const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
+export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   canonicalUrl,
   children,
   description,
