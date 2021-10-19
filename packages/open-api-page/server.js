@@ -41,6 +41,8 @@ function getPropsForPage(schema, params) {
   // Otherwise, we should have an operationCategory that matches the slug-ified ID from the URL path
   const targetServiceId = isSingleService
     ? getServicePathSlug(serviceIds[0])
+    : isLanding
+    ? null
     : params.page[0]
   const operationCategory =
     isLanding && !isSingleService
