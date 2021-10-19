@@ -11,7 +11,6 @@ function OpenApiPage({
   info,
   operationCategory,
   navData,
-  isSingleService,
   siteName,
   productSlug,
   currentPath,
@@ -44,7 +43,7 @@ function OpenApiPage({
       <DocsSidenav
         product={productSlug}
         Link={Link}
-        currentPath={isSingleService ? navData[0].path : currentPath}
+        currentPath={currentPath}
         baseRoute={baseRoute}
         disableFilter={true}
         navData={navData}
