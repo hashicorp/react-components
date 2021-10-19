@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.0.2
+
+### Patch Changes
+
+- [#406](https://github.com/hashicorp/react-components/pull/406) [`605ae1a`](https://github.com/hashicorp/react-components/commit/605ae1a3179855cf861b1bd86c7b7c9414761d3f) Thanks [@zchsh](https://github.com/zchsh)! - Hide in print media.
+
 ## 7.0.1
 
 ### Patch Changes

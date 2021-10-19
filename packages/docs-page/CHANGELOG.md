@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.4.5
+
+### Patch Changes
+
+- [#402](https://github.com/hashicorp/react-components/pull/402) [`2f9b9c6`](https://github.com/hashicorp/react-components/commit/2f9b9c6e16d720fd51b45bce6deb47aef1128783) Thanks [@zchsh](https://github.com/zchsh)! - Patches issue where DocsPageWrapper was not exported. Without this export, GlossaryPage can cause Vercel builds of react-components to fail.
+
 ## 14.4.4
 
 ### Patch Changes
