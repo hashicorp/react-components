@@ -29,6 +29,10 @@
       scroll-margin-top: calc(64px + 0.5em);
     }
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 .subnavInner {
