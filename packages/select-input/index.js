@@ -30,7 +30,7 @@ export default function SelectInput({
   // Changes to the value prop will re-render this component by updating the key value.
   return (
     <Downshift
-      key={value.name}
+      key={value?.name}
       initialSelectedItem={value}
       itemToString={(item) => item && item.name}
       onChange={(item) => {
