@@ -10,7 +10,7 @@
 import cookies from 'js-cookie'
 import assign from 'object-assign'
 export const COOKIE_KEY = 'hashi-consent-preferences'
-export const COOKIE_EXPIRES = 365
+export const COOKIE_EXPIRES = 183
 
 export function getDomain() {
   const host = window.location.hostname
