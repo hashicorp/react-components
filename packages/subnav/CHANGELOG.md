@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.1.3
+
+### Patch Changes
+
+- [#406](https://github.com/hashicorp/react-components/pull/406) [`605ae1a`](https://github.com/hashicorp/react-components/commit/605ae1a3179855cf861b1bd86c7b7c9414761d3f) Thanks [@zchsh](https://github.com/zchsh)! - Hide in print media.
+
 ## 9.1.2
 
 ### Patch Changes

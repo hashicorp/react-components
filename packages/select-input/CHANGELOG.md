@@ -1,5 +1,11 @@
 # @hashicorp/react-select-input
 
+## 4.0.5
+
+### Patch Changes
+
+- [#405](https://github.com/hashicorp/react-components/pull/405) [`aa4fd98`](https://github.com/hashicorp/react-components/commit/aa4fd98b88ed93036372119c9ddd8800362d9cd1) Thanks [@BRKalow](https://github.com/BRKalow)! - Safely access value for Downshift's key to fix cases where value is undefined.
+
 ## 4.0.4
 
 ### Patch Changes
