@@ -46,7 +46,7 @@ function getPropsForPage(schema, params) {
     : params.page[0]
   const operationCategory =
     isLanding && !isSingleService
-      ? false
+      ? null
       : serviceIds
           .filter((id) => getServicePathSlug(id) === targetServiceId)
           .map((serviceId) => {
