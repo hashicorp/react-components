@@ -35,26 +35,25 @@ function getPropsForPage(schema, params) {
   // rather than a specific operation-slug-based path as it would otherwise
   if (isSingleService) navData[0].path = ''
   // If there's no "page" param, then this is the landing page
-  const isLanding = !params || !params.page || params.page.length == 0
   const currentPath = params && params.page ? params.page.join('/') : ''
-
+  const isLanding = !params || !params.page || currentPath == ''
+  // For landing pages, we don't need to return operationCategory data,
+  // so we return early
+  if (isLanding && !isSingleService) return { info, navData, currentPath }
   // Otherwise, we should have an operationCategory that matches the slug-ified ID from the URL path
   const targetServiceId = isSingleService
     ? getServicePathSlug(serviceIds[0])
     : params.page[0]
-  const operationCategory =
-    isLanding && !isSingleService
-      ? false
-      : serviceIds
-          .filter((id) => getServicePathSlug(id) === targetServiceId)
-          .map((serviceId) => {
-            const name = capitalCase(serviceId)
-            const slug = getServicePathSlug(serviceId)
-            const operations = operationObjects.filter(
-              (o) => getServiceId(o) === serviceId
-            )
-            return { name, slug, operations }
-          })[0]
+  const operationCategory = serviceIds
+    .filter((id) => getServicePathSlug(id) === targetServiceId)
+    .map((serviceId) => {
+      const name = capitalCase(serviceId)
+      const slug = getServicePathSlug(serviceId)
+      const operations = operationObjects.filter(
+        (o) => getServiceId(o) === serviceId
+      )
+      return { name, slug, operations }
+    })[0]
   return { info, navData, operationCategory, currentPath }
 }
 
