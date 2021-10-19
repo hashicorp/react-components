@@ -27,10 +27,15 @@ function getPropsForPage(schema, params) {
       path: getServicePathSlug(serviceId),
     }
   })
+  // If there is only a single service,
+  // we'll display that service on the landing page
   const isSingleService = navData.length == 1
+  // For the single service use case,
+  // we also ensure the single sidenav link points to the landing page
+  // rather than a specific operation-slug-based path as it would otherwise
+  if (isSingleService) navData[0].path = ''
   // If there's no "page" param, then this is the landing page
   const isLanding = !params || !params.page || params.page.length == 0
-
   const currentPath = params && params.page ? params.page.join('/') : ''
 
   // Otherwise, we should have an operationCategory that matches the slug-ified ID from the URL path
@@ -50,7 +55,7 @@ function getPropsForPage(schema, params) {
             )
             return { name, slug, operations }
           })[0]
-  return { info, navData, isSingleService, operationCategory, currentPath }
+  return { info, navData, operationCategory, currentPath }
 }
 
 /**
