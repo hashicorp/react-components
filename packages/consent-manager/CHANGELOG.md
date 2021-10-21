@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.0.3
+
+### Patch Changes
+
+- [#407](https://github.com/hashicorp/react-components/pull/407) [`7674ae9`](https://github.com/hashicorp/react-components/commit/7674ae9432a4bbc93fde9302c8408f8f76605eb8) Thanks [@mwickett](https://github.com/mwickett)! - Change cookie expiry to six months (183 days)
+
 ## 7.0.2
 
 ### Patch Changes
