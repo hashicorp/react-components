@@ -3,6 +3,11 @@
   "description": "featured slider for case studies",
   "version": "5.0.1",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/featured-slider"
+  },
   "contributors": ["Zach Shilton"],
   "main": "index.js",
   "license": "MPL-2.0",

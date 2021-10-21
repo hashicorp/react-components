@@ -3,6 +3,11 @@
   "description": "Display a title, content, and links in a call-to-action format",
   "version": "4.1.0",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/call-to-action"
+  },
   "contributors": ["Zach Shilton"],
   "dependencies": {
     "@hashicorp/react-button": "^6.0.2"

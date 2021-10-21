@@ -3,6 +3,11 @@
   "description": "super optimized image element, pulls from dato and formats for 7 screen sizes in two formats. Skips optimization for SVGs.",
   "version": "4.0.3",
   "author": "Hashicorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/image"
+  },
   "contributors": ["Jeff Escalante"],
   "dependencies": {
     "object-assign": "^4.1.1",

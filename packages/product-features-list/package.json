@@ -3,6 +3,11 @@
   "description": "list for product features",
   "version": "5.0.1",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/product-features-list"
+  },
   "contributors": ["Nicole Forrester"],
   "dependencies": {
     "@hashicorp/react-button": "^6.0.3",

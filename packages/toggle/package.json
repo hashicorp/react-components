@@ -3,6 +3,11 @@
   "description": "a simple toggle",
   "version": "4.0.1",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/toggle"
+  },
   "contributors": ["Jennifer Yip", "Jeff Escalante"],
   "license": "MPL-2.0",
   "peerDependencies": {

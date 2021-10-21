@@ -3,6 +3,11 @@
   "description": "A menu for displaying the entire HashiCorp stack",
   "version": "2.0.7",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/hashi-stack-menu"
+  },
   "contributors": ["Jimmy Merritello"],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^6.0.1",

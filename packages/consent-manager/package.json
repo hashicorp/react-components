@@ -3,6 +3,11 @@
   "description": "A GDPR-compliant Consent Manager",
   "version": "7.0.2",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/consent-manager"
+  },
   "contributors": ["Jennifer Yip", "Jeff Escalante"],
   "dependencies": {
     "@hashicorp/react-button": "^6.0.0",

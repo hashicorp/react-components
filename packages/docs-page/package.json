@@ -3,6 +3,11 @@
   "description": "Create a Hashicorp branded docs page in NextJS projects.",
   "version": "14.4.5",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/docs-page"
+  },
   "contributors": ["Jeff Escalante", "Kevin Wang"],
   "dependencies": {
     "@hashicorp/platform-docs-mdx": "^0.1.3",

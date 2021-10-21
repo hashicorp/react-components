@@ -3,6 +3,11 @@
   "description": "Create a Hashicorp branded <head> in NextJS projects.",
   "version": "3.1.2",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/head"
+  },
   "contributors": ["Jonathan Neal"],
   "license": "MPL-2.0",
   "peerDependencies": {

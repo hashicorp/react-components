@@ -3,6 +3,11 @@
   "version": "4.3.0",
   "description": "Display an image alongside a title, description, and links.",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/text-split-with-image"
+  },
   "contributors": ["Brandon Romano"],
   "publishConfig": {
     "access": "public"

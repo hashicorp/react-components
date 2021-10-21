@@ -3,6 +3,11 @@
   "description": "very simple headline & subheading for a section of a page",
   "version": "5.0.4",
   "author": "HashiCorp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/section-header"
+  },
   "contributors": ["Jeff Escalante"],
   "dependencies": {
     "@hashicorp/js-utils": "^1.0.10"
