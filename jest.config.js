@@ -16,6 +16,7 @@ module.exports = {
       {
         jsx: true,
         react: { runtime: 'automatic' },
+        minify: false,
       },
     ],
     // Load .svg imports as raw strings.
