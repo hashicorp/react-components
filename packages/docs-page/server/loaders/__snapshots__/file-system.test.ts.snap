@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generateStaticPaths should generate static paths 1`] = `
+exports[`FileSystemLoader generates path from nav data 1`] = `
 Array [
   Object {
     "params": Object {

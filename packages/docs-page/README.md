@@ -9,10 +9,7 @@ This component is intended to be used on an [optional catch-all route](https://n
 ```jsx
 import DocsPage from '@hashicorp/react-docs-page'
 // Imports below are only used server-side
-import {
-  generateStaticPaths,
-  generateStaticProps,
-} from '@hashicorp/react-docs-page/server'
+import { getStaticGenerationFunctions } from '@hashicorp/react-docs-page/server'
 
 //  Set up DocsPage settings
 const BASE_ROUTE = 'docs'
@@ -29,23 +26,14 @@ function DocsLayout(props) {
   )
 }
 
-export async function getStaticPaths() {
-  const paths = await generateStaticPaths({
-    navDataFile: NAV_DATA,
-    localContentDir: CONTENT_DIR,
-  })
-  return { paths, fallback: false }
-}
+const { getStaticPaths, getStaticProps } = getStaticGenerationFunctions({
+  strategy: 'fs',
+  navDataFile: NAV_DATA,
+  localContentDir: CONTENT_DIR,
+  product: PRODUCT.slug,
+})
 
-export async function getStaticProps({ params }) {
-  const props = await generateStaticProps({
-    navDataFile: NAV_DATA,
-    localContentDir: CONTENT_DIR,
-    params,
-    product: PRODUCT,
-  })
-  return { props }
-}
+export { getStaticPaths, getStaticProps }
 
 export default DocsLayout
 ```
