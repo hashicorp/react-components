@@ -9,6 +9,10 @@ import {
   ConsentManagerService,
 } from '../types'
 
+const VERSION = 4
+const COMPANY_NAME = 'HashiCorp'
+const PRIVACY_LINK = 'https://www.hashicorp.com/privacy'
+
 export default function createConsentManager({
   segmentWriteKey = process.env.SEGMENT_WRITE_KEY,
   preset,
@@ -54,9 +58,9 @@ export default function createConsentManager({
 
   // next we build the config objct, kicking it off with the default values
   let config: ConsentManagerProps = {
-    version: 4,
-    companyName: 'HashiCorp',
-    privacyPolicyLink: 'https://www.hashicorp.com/privacy',
+    version: VERSION,
+    companyName: COMPANY_NAME,
+    privacyPolicyLink: PRIVACY_LINK,
     segmentWriteKey: segmentKey,
     utilServerRoot: utilityServerRoot,
     categories: defaultCategories,
