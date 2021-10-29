@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import EventEmitter from 'events'
 import classNames from 'classnames'
-import { loadPreferences, savePreferences } from './partials/cookies'
-import ConsentBanner from './partials/banner'
-import ConsentPreferences from './partials/dialog'
+import { loadPreferences, savePreferences } from './util/cookies'
+import ConsentBanner from './components/banner'
+import ConsentPreferences from './components/dialog'
 import SegmentScript from './scripts/segment'
 import CustomScripts from './scripts/custom'
 import s from './style.module.css'
@@ -59,7 +59,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
     document.body.classList.remove('g-noscroll')
     setShowDialog(false)
     setShowBanner(false)
-    setPreferences(loadPreferences())
+    setPreferences(loadPreferences() ?? {})
   }
 
   const openDialog = useCallback(() => {

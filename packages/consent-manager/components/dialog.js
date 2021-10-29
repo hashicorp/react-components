@@ -4,7 +4,7 @@
 */
 
 import { Component } from 'react'
-import getIntegrations from './integrations'
+import getIntegrations from '../util/integrations'
 import CloseButton from '../img/icn_close'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
