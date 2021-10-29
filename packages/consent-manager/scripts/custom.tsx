@@ -12,7 +12,12 @@ function CustomScript({ service }: { service: ConsentManagerService }) {
     service.strategy ?? service.async ? 'afterInteractive' : 'beforeInteractive'
 
   return (
-    <Script src={service.url} strategy={strategy} {...dataAttrs}>
+    <Script
+      src={service.url}
+      strategy={strategy}
+      id={service.name}
+      {...dataAttrs}
+    >
       {service.body ? service.body : null}
     </Script>
   )
