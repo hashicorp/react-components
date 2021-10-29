@@ -17,14 +17,17 @@ export interface ConsentManagerCategory {
   name: string
 }
 
-export interface ConsentManagerConfig {
-  version: number
-  companyName: string
-  privacyPolicyLink: string
-  segmentWriteKey?: string
-  utilServerRoot: string
-  categories: ConsentManagerCategory[]
-  forceShow: boolean
-  segmentServices?: ConsentManagerService[]
+export interface ConsentManagerProps {
   additionalServices?: ConsentManagerService[]
+  categories?: ConsentManagerCategory[]
+  className?: string
+  companyName?: string
+  cookiePolicyLink?: string
+  forceShow?: boolean
+  privacyPolicyLink?: string
+  segmentServices?: ConsentManagerService[]
+  segmentWriteKey?: string
+  showDialog?: boolean
+  utilServerRoot?: string
+  version?: number
 }

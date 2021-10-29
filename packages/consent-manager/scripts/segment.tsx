@@ -19,7 +19,7 @@ const segmentReadyCb = function passSegmentKeysToHeap() {
       window.heap.addUserProperties({
         'Segment Cross Origin ID': JSON.parse(xId),
       })
-      localStorage.setItem('seg_heap_xid', Date.now())
+      localStorage.setItem('seg_heap_xid', Date.now().toString())
     }
   }
 
@@ -31,7 +31,7 @@ const segmentReadyCb = function passSegmentKeysToHeap() {
       window.heap.addUserProperties({
         'Segment Dotcom Anonymous ID': JSON.parse(anonId),
       })
-      localStorage.setItem('seg_heap_anonymous_id', Date.now())
+      localStorage.setItem('seg_heap_anonymous_id', Date.now().toString())
     }
   }
 }

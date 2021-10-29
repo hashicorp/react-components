@@ -1,21 +1,22 @@
 import { useState, useEffect, useCallback } from 'react'
 import EventEmitter from 'events'
+import classNames from 'classnames'
 import { loadPreferences, savePreferences } from './partials/cookies'
 import ConsentBanner from './partials/banner'
 import ConsentPreferences from './partials/dialog'
 import SegmentScript from './scripts/segment'
 import CustomScripts from './scripts/custom'
-import classNames from 'classnames'
 import s from './style.module.css'
+import { ConsentManagerCategory, ConsentManagerService } from './types'
 
 interface ConsentManagerProps {
-  additionalServices?: $TSFixMe
-  categories?: $TSFixMe
+  additionalServices?: ConsentManagerService[]
+  categories?: ConsentManagerCategory[]
   className?: string
   cookiePolicyLink?: string
   forceShow?: boolean
   privacyPolicyLink?: string
-  segmentServices?: $TSFixMe
+  segmentServices?: ConsentManagerService[]
   segmentWriteKey?: string
   showDialog?: boolean
   utilServerRoot?: string
@@ -48,6 +49,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
 
     // If analytics have already been added to page, it's likely you're updating your preferences
     // We reload the page to re-initiate the script with the updated integrations
+    // @ts-expect-error -- initialized doesn't exist on the segment type?
     if (window.analytics && window.analytics.initialized) {
       window.location.reload()
       return
