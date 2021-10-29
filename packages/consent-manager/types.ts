@@ -1,10 +1,13 @@
+import { ScriptProps } from 'next/script'
 export interface ConsentManagerService {
   async?: boolean
+  strategy?: Pick<ScriptProps, 'strategy'>
   body?: string
   category: string
   description: string
   name: string
   url?: string
+  dataAttrs?: { name: string; value: string }[]
 }
 
 export interface ConsentManagerPreset {

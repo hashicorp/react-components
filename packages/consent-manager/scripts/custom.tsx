@@ -1,18 +1,19 @@
 import Script from 'next/script'
+import { ConsentManagerService } from '../types'
 
-function CustomScript({ service }) {
+function CustomScript({ service }: { service: ConsentManagerService }) {
   const dataAttrs = service.dataAttrs
     ? Object.fromEntries(
         service.dataAttrs.map((attr) => [`data-${attr.name}`, attr.value])
       )
     : {}
 
-  // TODO: support lazyOnLoad
-  const strategy = service.async ? 'afterInteractive' : 'beforeInteractive'
+  const strategy =
+    service.strategy ?? service.async ? 'afterInteractive' : 'beforeInteractive'
 
   return (
     <Script src={service.url} strategy={strategy} {...dataAttrs}>
-      {service.text ? service.text : null}
+      {service.body ? service.body : null}
     </Script>
   )
 }
