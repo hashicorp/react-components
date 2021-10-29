@@ -1,7 +1,16 @@
 import Script from 'next/script'
-import { ConsentManagerService } from '../types'
+import { ConsentManagerService, ConsentManagerPreferences } from '../types'
 
-function CustomScript({ service }: { service: ConsentManagerService }) {
+interface CustomScriptProps {
+  service: ConsentManagerService
+}
+
+interface CustomScriptsProps {
+  preferences: ConsentManagerPreferences
+  services: ConsentManagerService[]
+}
+
+function CustomScript({ service }: CustomScriptProps) {
   const dataAttrs = service.dataAttrs
     ? Object.fromEntries(
         service.dataAttrs.map((attr) => [`data-${attr.name}`, attr.value])
@@ -23,7 +32,10 @@ function CustomScript({ service }: { service: ConsentManagerService }) {
   )
 }
 
-export default function CustomScripts({ preferences, services = [] }) {
+export default function CustomScripts({
+  preferences,
+  services = [],
+}: CustomScriptsProps) {
   if (!preferences.loadAll && services?.length === 0) return null
 
   let servicesToInject = []

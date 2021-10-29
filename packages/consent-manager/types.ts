@@ -34,3 +34,9 @@ export interface ConsentManagerProps {
   utilServerRoot?: string
   version?: number
 }
+
+export interface ConsentManagerPreferences {
+  loadAll?: boolean
+  segment?: Record<string, boolean>
+  custom?: Record<string, boolean>
+}
