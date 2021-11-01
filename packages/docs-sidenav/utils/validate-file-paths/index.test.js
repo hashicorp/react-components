@@ -43,7 +43,10 @@ describe('<DocsSidenav /> - validate-file-paths', () => {
       },
     ]
     await expect(validateFilePaths(navData, CONTENT_DIR)).rejects.toThrow(
-      'Could not find file to match path "this-file-should-not-exist". Neither "this-file-should-not-exist.mdx" or "this-file-should-not-exist/index.mdx" could be found.'
+      `Could not find file to match path "this-file-should-not-exist". Neither "this-file-should-not-exist.mdx" or "${path.join(
+        'this-file-should-not-exist',
+        'index.mdx'
+      )}" could be found.`
     )
   })
 
@@ -55,7 +58,10 @@ describe('<DocsSidenav /> - validate-file-paths', () => {
       },
     ]
     await expect(validateFilePaths(navData, CONTENT_DIR)).rejects.toThrow(
-      `Ambiguous path "ambiguous". Both "ambiguous.mdx" and "ambiguous/index.mdx" exist. Please delete one of these files.`
+      `Ambiguous path "ambiguous". Both "ambiguous.mdx" and "${path.join(
+        'ambiguous',
+        'index.mdx'
+      )}" exist. Please delete one of these files.`
     )
   })
 })

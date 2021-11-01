@@ -1,3 +1,4 @@
+import path from 'path'
 import { flattenRoutes, getNodeFromPath } from './get-node-from-path'
 
 import navData from './__fixtures__/navData.json'
@@ -27,7 +28,7 @@ Object {
     expect(getNodeFromPath(pathToMatch, navData, CONTENT_DIR))
       .toMatchInlineSnapshot(`
 Object {
-  "filePath": "content/commands/index.mdx",
+  "filePath": ${JSON.stringify(path.join('content', 'commands', 'index.mdx'))},
 }
 `)
   })

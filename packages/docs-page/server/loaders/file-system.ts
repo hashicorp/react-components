@@ -72,7 +72,10 @@ export default class FileSystemLoader implements DataLoader {
     const { mdxSource, frontMatter } = await mdxRenderer(mdxString)
 
     // Construct the githubFileUrl, used for "Edit this page" link
-    const githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${mainBranch}/website/${navNode.filePath}`
+    const normalizedFilePath = navNode.filePath
+      .split(path.sep)
+      .join(path.posix.sep)
+    const githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${mainBranch}/website/${normalizedFilePath}`
     // Return all the props
     return {
       currentPath,

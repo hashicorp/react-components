@@ -33,7 +33,7 @@ async function validateUnlinkedContent(navData, contentDir) {
       // Remove extensions, these will not be in routes
       const pathNoExt = relativePath.replace(/\.mdx$/, '')
       // Resolve /index routes, these will not have /index in their path
-      const routePath = pathNoExt.replace(/\/?index$/, '')
+      const routePath = pathNoExt.replace(/[\\/]?index$/, '')
       return routePath
     })
     // Determine if there is a match in nav-data.
@@ -44,7 +44,9 @@ async function validateUnlinkedContent(navData, contentDir) {
       const isIndexPage = pathToMatch === ''
       if (isIndexPage) return false
       // Otherwise, needs a path match in nav-data
-      const matches = navDataFlat.filter(({ path }) => path == pathToMatch)
+      // But first, rewrite all filesystem paths to POSIX paths
+      const normalizedPath = pathToMatch.split(path.sep).join(path.posix.sep)
+      const matches = navDataFlat.filter(({ path }) => path == normalizedPath)
       return matches.length == 0
     })
   return missingPages
