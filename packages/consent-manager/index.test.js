@@ -39,6 +39,18 @@ const defaultProps = {
         },
       ],
     },
+    {
+      name: 'Name of the service 3',
+      category: 'Example Category',
+      description: 'A script with additional elements to be injected',
+      body: 'window.foo = "bar"',
+      dataAttrs: [
+        {
+          name: 'test',
+          value: 'foobar',
+        },
+      ],
+    },
   ],
   categories: [
     {
@@ -164,6 +176,9 @@ test('loads segment and additional services if loadAll is passed', async () => {
       expect(html).toMatch(
         /src="http:\/\/www.an-optional-url-for-a-script-to-add-to-the-page\.com"/
       )
+
+      // custom inline script
+      expect(html).toMatch(/window\.foo = "bar"/)
     }
   )
 })
