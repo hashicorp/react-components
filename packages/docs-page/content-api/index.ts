@@ -12,9 +12,11 @@ const checkEnvVarsInDev = () => {
   if (process.env.NODE_ENV === 'development') {
     if (!MKTG_CONTENT_API || !MKTG_CONTENT_API_TOKEN) {
       const message = [
-        'You might be missing the following environment variables:',
-        '`MKTG_CONTENT_API`, `MKTG_CONTENT_API_TOKEN`',
-      ].join(' ')
+        'Missing environment variables required to fetch remote content:',
+        MKTG_CONTENT_API ? '\t- `MKTG_CONTENT_API`' : false, 
+        MKTG_CONTENT_API_TOKEN ? '\t- `MKTG_CONTENT_API_TOKEN`' : false,
+        'Reach out to #team-web-platform to get the proper values.'
+      ].filter(Boolean).join('\n')
       throw new Error(message)
     }
   }
