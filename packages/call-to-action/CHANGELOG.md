@@ -1,5 +1,11 @@
 # @hashicorp/react-call-to-action
 
+## 4.1.1
+
+### Patch Changes
+
+- [#410](https://github.com/hashicorp/react-components/pull/410) [`4868449`](https://github.com/hashicorp/react-components/commit/4868449099eb1d59eb3d7384d125d7d7afd79ea0) Thanks [@zchsh](https://github.com/zchsh)! - Patch light theme background issue.
+
 ## 4.1.0
 
 ### Minor Changes
