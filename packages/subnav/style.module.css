@@ -11,8 +11,9 @@
 
   &.isSticky {
     border-bottom-color: var(--border-color); /* from theme.module.css */
+  }
 
-    /*
+  /*
     * About this selector:
     * `& ~ *` finds all elements after the navigation.
     * `:target` finds the active permalink on the page.
@@ -25,9 +26,8 @@
     * See: https://developer.mozilla.org/en-US/docs/Web/CSS/:target
     * See: https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top
     */
-    & ~ * :target {
-      scroll-margin-top: calc(64px + 0.5em);
-    }
+  & ~ * :target {
+    scroll-margin-top: calc(64px + 0.5em);
   }
 
   @media print {
