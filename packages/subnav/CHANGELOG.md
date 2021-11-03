@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.1.4
+
+### Patch Changes
+
+- [#417](https://github.com/hashicorp/react-components/pull/417) [`123c23b`](https://github.com/hashicorp/react-components/commit/123c23b46757c0b2fb0de8bf0d022081ed346ccf) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - adjust `scroll-margin-top` style
+
 ## 9.1.3
 
 ### Patch Changes
