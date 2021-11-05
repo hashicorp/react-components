@@ -1,3 +1,4 @@
+import path from 'path'
 import validateUnlinkedContent from './'
 
 // We have a fixture folder with unlinked content set up
@@ -16,7 +17,11 @@ describe('<DocsSidenav /> - validate-unlinked-content', () => {
         path: 'hello',
       },
     ]
-    const expectedMissing = ['agent', 'nested', 'nested/another-file']
+    const expectedMissing = [
+      'agent',
+      'nested',
+      path.join('nested', 'another-file'),
+    ]
     const result = await validateUnlinkedContent(navData, CONTENT_DIR)
     expect(result.sort()).toEqual(expectedMissing.sort())
   })
