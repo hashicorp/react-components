@@ -118,6 +118,11 @@ module.exports = {
             description:
               'If defining a script using `body` or `url`, setting this prop to `true` will add the `async` attribute to the script tag.',
           },
+          strategy: {
+            type: 'string',
+            description:
+              'Loading strategy to use for the script, see https://nextjs.org/docs/basic-features/script',
+          },
           addToBody: {
             type: 'boolean',
             description:

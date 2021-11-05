@@ -1,13 +1,17 @@
 import React from 'react'
-import ConsentManager, { open } from '../'
+import ConsentManagerComponent, { open } from '../'
 import defaultCategories from './categories'
 import ossPreset from './presets/oss'
 import enterprisePreset from './presets/enterprise'
 import {
   ConsentManagerCategory,
-  ConsentManagerConfig,
+  ConsentManagerProps,
   ConsentManagerService,
-} from './types'
+} from '../types'
+
+const VERSION = 4
+const COMPANY_NAME = 'HashiCorp'
+const PRIVACY_LINK = 'https://www.hashicorp.com/privacy'
 
 export default function createConsentManager({
   segmentWriteKey = process.env.SEGMENT_WRITE_KEY,
@@ -23,7 +27,10 @@ export default function createConsentManager({
   otherServices?: ConsentManagerService[]
   categories?: ConsentManagerCategory[]
   forceShow?: boolean
-}): { ConsentManager: React.ComponentType; openConsentManager: () => void } {
+}): {
+  ConsentManager: typeof ConsentManagerComponent
+  openConsentManager: () => void
+} {
   // if hashi env is present, check against it. if not, fall back to checking node env
   const isProd = process.env.HASHI_ENV
     ? process.env.HASHI_ENV === 'production'
@@ -50,10 +57,10 @@ export default function createConsentManager({
   }
 
   // next we build the config objct, kicking it off with the default values
-  let config: ConsentManagerConfig = {
-    version: 4,
-    companyName: 'HashiCorp',
-    privacyPolicyLink: 'https://www.hashicorp.com/privacy',
+  let config: ConsentManagerProps = {
+    version: VERSION,
+    companyName: COMPANY_NAME,
+    privacyPolicyLink: PRIVACY_LINK,
     segmentWriteKey: segmentKey,
     utilServerRoot: utilityServerRoot,
     categories: defaultCategories,
@@ -78,7 +85,7 @@ export default function createConsentManager({
   // finally, we return a HOC that will render the fully configured consent manager
   return {
     ConsentManager: function ConsentManagerWrapper() {
-      return <ConsentManager {...config} />
+      return <ConsentManagerComponent {...config} />
     },
     openConsentManager: open,
   }

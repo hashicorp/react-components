@@ -9,3 +9,14 @@ afterAll(() => {
   nock.cleanAll()
   nock.restore()
 })
+
+// Address an issue with mocking and clearing the module cache when dealing with components, ensures only one instance of react gets loaded
+// ref: https://github.com/facebook/jest/issues/8987#issuecomment-584898030
+let mockActualReact
+
+jest.doMock('react', () => {
+  if (!mockActualReact) {
+    mockActualReact = jest.requireActual('react')
+  }
+  return mockActualReact
+})
