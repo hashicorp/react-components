@@ -1,4 +1,3 @@
-import React from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Image from '@hashicorp/react-image'
 import Arrow from './img/arrow.svg?include'

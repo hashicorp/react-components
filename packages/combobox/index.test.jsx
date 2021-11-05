@@ -1,4 +1,4 @@
-import Combobox from './'
+import Combobox from '.'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 
 afterEach(cleanup)

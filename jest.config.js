@@ -11,7 +11,14 @@ module.exports = {
   transform: {
     // Note: babel-jest transform is from Jest's defaults for `transform`
     // ref: https://jestjs.io/docs/next/configuration
-    '\\.[jt]sx?$': 'babel-jest',
+    '\\.[jt]sx?$': [
+      '@swc-node/jest',
+      {
+        jsx: true,
+        react: { runtime: 'automatic' },
+        minify: false,
+      },
+    ],
     // Load .svg imports as raw strings.
     // Our mapping above means this only targets .svg?include imports.
     '\\.svg$': 'jest-raw-loader',
