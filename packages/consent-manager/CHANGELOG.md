@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.1.0
+
+### Minor Changes
+
+- [#414](https://github.com/hashicorp/react-components/pull/414) [`68e0d7f`](https://github.com/hashicorp/react-components/commit/68e0d7ffa02653c74ba38e50485528b4df310d03) Thanks [@BRKalow](https://github.com/BRKalow)! - Refactor ConsentManager to use next/script under the hood and add support for a strategy attribute for each service to leverage `next/script`'s underlying loading strategies.
+
 ## 7.0.3
 
 ### Patch Changes
