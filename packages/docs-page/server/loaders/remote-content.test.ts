@@ -20,11 +20,7 @@ describe('RemoteContentLoader', () => {
 
     nock.disableNetConnect()
 
-    scope = nock(process.env.MKTG_CONTENT_API, {
-      reqheaders: {
-        authorization: `Bearer ${process.env.MKTG_CONTENT_API_TOKEN}`,
-      },
-    })
+    scope = nock(process.env.MKTG_CONTENT_API)
   })
 
   afterAll(() => {

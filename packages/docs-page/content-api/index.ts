@@ -1,24 +1,23 @@
 const MKTG_CONTENT_API = process.env.MKTG_CONTENT_API
-const MKTG_CONTENT_API_TOKEN = process.env.MKTG_CONTENT_API_TOKEN
-
-const DEFAULT_HEADERS = {
-  headers: {
-    Authorization: `Bearer ${MKTG_CONTENT_API_TOKEN}`,
-  },
-}
 
 // Courtesy helper for warning about missing env vars during development
 const checkEnvVarsInDev = () => {
   if (process.env.NODE_ENV === 'development') {
-    if (!MKTG_CONTENT_API || !MKTG_CONTENT_API_TOKEN) {
+    if (!MKTG_CONTENT_API) {
       const message = [
-        'Missing environment variables required to fetch remote content:',
-        !MKTG_CONTENT_API ? '  - `MKTG_CONTENT_API`' : false, 
-        !MKTG_CONTENT_API_TOKEN ? '  - `MKTG_CONTENT_API_TOKEN`' : false,
-        'Reach out to #team-web-platform to get the proper values.'
-      ].filter(Boolean).join('\n')
+        'Missing environment variable required to fetch remote content:',
+        '  - `MKTG_CONTENT_API`',
+        'Reach out to #team-web-platform to get the proper value.',
+      ].join('\n')
       throw new Error(message)
     }
+  }
+}
+
+export class ContentApiError extends Error {
+  name = 'ContentApiError' as const
+  constructor(message: string, public status: number) {
+    super(message)
   }
 }
 
@@ -31,14 +30,15 @@ export async function fetchNavData(
 
   const fullPath = `nav-data/${version}/${basePath}`
   const url = `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`
-  const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
 
-  if (response.meta.status_code !== 200) {
-    throw new Error(
-      `Failed to fetch: ${url} | ${JSON.stringify(response, null, 2)}`
-    )
+  const response = await fetch(url)
+
+  if (response.status !== 200) {
+    throw new ContentApiError(`Failed to fetch: ${url}`, response.status)
   }
-  return response.result
+
+  const { result } = await response.json()
+  return result
 }
 
 export async function fetchDocument(
@@ -48,26 +48,26 @@ export async function fetchDocument(
   checkEnvVarsInDev()
 
   const url = `${MKTG_CONTENT_API}/api/content/${product}/${fullPath}`
-  const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
+  const response = await fetch(url)
 
-  if (response.meta.status_code !== 200) {
-    throw new Error(
-      `Failed to fetch: ${url} | ${JSON.stringify(response, null, 2)}`
-    )
+  if (response.status !== 200) {
+    throw new ContentApiError(`Failed to fetch: ${url}`, response.status)
   }
-  return response.result
+
+  const { result } = await response.json()
+  return result
 }
 
 export async function fetchVersionMetadataList(product: string) {
   checkEnvVarsInDev()
 
   const url = `${MKTG_CONTENT_API}/api/content/${product}/version-metadata?partial=true`
-  const response = await fetch(url, DEFAULT_HEADERS).then((res) => res.json())
+  const response = await fetch(url)
 
-  if (response.meta.status_code !== 200) {
-    throw new Error(
-      `Failed to fetch: ${url} | ${JSON.stringify(response, null, 2)}`
-    )
+  if (response.status !== 200) {
+    throw new ContentApiError(`Failed to fetch: ${url}`, response.status)
   }
-  return response.result
+
+  const { result } = await response.json()
+  return result
 }
