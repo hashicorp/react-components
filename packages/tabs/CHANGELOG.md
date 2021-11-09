@@ -1,5 +1,11 @@
 # @hashicorp/react-tabs
 
+## 7.1.1
+
+### Patch Changes
+
+- [#421](https://github.com/hashicorp/react-components/pull/421) [`d1556f4`](https://github.com/hashicorp/react-components/commit/d1556f456ad87b5624b9c25e14a0f8ae324643d0) Thanks [@kendallstrautman](https://github.com/kendallstrautman)! - Adds heap data tracking attribute to tab trigger button.
+
 ## 7.1.0
 
 ### Minor Changes
