@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.6.0
+
+### Minor Changes
+
+- [#420](https://github.com/hashicorp/react-components/pull/420) [`523f802`](https://github.com/hashicorp/react-components/commit/523f8024e8bc1d419c09b856af99f49e28c81552) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Throw when getStaticProps errors
+
 ## 14.5.0
 
 ### Minor Changes
