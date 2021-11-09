@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPathsResult } from 'next'
+import { ContentApiError } from '../content-api'
 import FileSystemLoader from './loaders/file-system'
 import RemoteContentLoader from './loaders/remote-content'
 import { DataLoader } from './loaders/types'
@@ -66,6 +67,14 @@ export function getStaticGenerationFunctions(
         }
       } catch (err) {
         console.error(`Failed to generate static props:`, err)
+
+        if (err instanceof ContentApiError) {
+          if (err.status === 404) {
+            return {
+              notFound: true,
+            }
+          }
+        }
         throw err
       }
     },
