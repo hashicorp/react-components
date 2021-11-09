@@ -45,10 +45,7 @@ export function getStaticGenerationFunctions(
     }
     case 'remote': {
       const { strategy, ...restOpts } = opts
-
-      loader = new RemoteContentLoader({
-        ...restOpts,
-      })
+      loader = new RemoteContentLoader({ ...restOpts })
     }
   }
 
@@ -68,10 +65,8 @@ export function getStaticGenerationFunctions(
           revalidate: opts.revalidate,
         }
       } catch (err) {
-        console.error(err)
-        return {
-          notFound: true,
-        }
+        console.error(`Failed to generate static props:`, err)
+        throw err
       }
     },
   }
