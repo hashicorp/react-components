@@ -45,6 +45,7 @@ function TabTrigger({
         [s.isActiveTab]: isActiveTab,
         [s.hasOverflow]: hasOverflow,
       })}
+      data-heap-track="TabClick"
       data-tabindex={tab.index}
       onMouseDown={(e) => e.preventDefault()}
       onClick={() => setActiveTab(tab.index, tab.group)}
