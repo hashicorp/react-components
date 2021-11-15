@@ -34,6 +34,7 @@ interface DocsPageWrapperProps {
   showEditPage: boolean
   showVersionSelect: boolean
   versions: { name: string; label: string }[]
+  headings: $TSFixMe[]
 }
 
 export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
@@ -49,6 +50,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   showEditPage = true,
   showVersionSelect = process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true',
   versions,
+  headings,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -163,6 +165,7 @@ export interface DocsPageProps {
     navData: NavData
     githubFileUrl: string
     versions: { name: string; label: string }[]
+    headings: $TSFixMe[]
   }
 }
 
@@ -179,6 +182,7 @@ export default function DocsPage({
     navData,
     githubFileUrl,
     versions,
+    headings,
   },
 }: DocsPageProps): ReactElement {
   const router = useRouter()
@@ -206,6 +210,7 @@ export default function DocsPage({
       showVersionSelect={showVersionSelect}
       baseRoute={baseRoute}
       versions={versions}
+      headings={headings}
     >
       {content}
     </DocsPageWrapper>
