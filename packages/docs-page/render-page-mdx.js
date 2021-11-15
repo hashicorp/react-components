@@ -1,7 +1,6 @@
 import path from 'path'
 import { serialize } from 'next-mdx-remote/serialize'
 import markdownDefaults from '@hashicorp/platform-markdown-utils'
-import { anchorLinks } from '@hashicorp/remark-plugins'
 import grayMatter from 'gray-matter'
 
 async function renderPageMdx(
@@ -14,8 +13,9 @@ async function renderPageMdx(
   const content = mdxContentHook(rawContent)
   const mdxSource = await serialize(content, {
     mdxOptions: markdownDefaults({
+      pluginOptions: { anchorLinks: { headings } },
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
-      addRemarkPlugins: [...remarkPlugins, [anchorLinks, { headings }]],
+      addRemarkPlugins: remarkPlugins,
     }),
     scope,
   })
