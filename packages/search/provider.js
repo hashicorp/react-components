@@ -17,7 +17,7 @@ export default function SearchProvider({
   const [query, setQuery] = useState('')
   const [isCancelled, setCancelled] = useState(false)
 
-  if (algoliaAppId || algoliaSearchOnlyApiKey || algoliaIndex) {
+  if (!algoliaAppId || !algoliaSearchOnlyApiKey || !algoliaIndex) {
     throw new Error(`Missing required Algolia arguments or .env variables for SearchProvider. If using environment variables, ensure the following are present in your environment:
 - NEXT_PUBLIC_ALGOLIA_APP_ID
 - NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY
