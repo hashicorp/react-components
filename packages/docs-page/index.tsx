@@ -129,7 +129,6 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
             content={
               <>
                 {isMobile ? null : search}
-                <span classNae="jump-to-section">How about here</span>
                 {children}
               </>
             }
