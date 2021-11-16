@@ -71,7 +71,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   }, [children])
 
   const search = (
-    <SearchProvider {...(algoliaConfig || {})}>
+    <SearchProvider algoliaConfig={algoliaConfig}>
       <SearchBar
         product={name}
         className={classNames({ [s.mobileSearch]: isMobile })}
