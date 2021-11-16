@@ -22,13 +22,13 @@ function setupEnv() {
   process.env = { ...originalEnv } //  copy original environment
 }
 
-function restoreEnv() {
+function teardownEnv() {
   process.env = originalEnv //  restore original environment
 }
 
 describe('<Search />', () => {
   beforeAll(setupEnv)
-  afterAll(restoreEnv)
+  afterAll(teardownEnv)
   beforeEach(setDummyVars)
 
   it('should pass className to the root element', () => {
@@ -58,7 +58,7 @@ describe('<Search />', () => {
 
 describe('<Hits />', () => {
   beforeAll(setupEnv)
-  afterAll(restoreEnv)
+  afterAll(teardownEnv)
   beforeEach(setDummyVars)
 
   it('should display no results with invalid input', () => {
@@ -129,7 +129,7 @@ describe('<SearchProvider /> configuration', () => {
     //  Restore console.error for further tests
     global.console.error.mockRestore()
     // Restore the original .env for further tests
-    restoreEnv()
+    teardownEnv()
   })
 
   it('should allow mixed use of Algolia config props and .env', () => {
@@ -153,13 +153,13 @@ describe('<SearchProvider /> configuration', () => {
     expect(screen.getByText(testIndexName)).toBeInTheDocument()
 
     // Restore the original .env for further tests
-    restoreEnv()
+    teardownEnv()
   })
 })
 
 describe('<SearchProvider /> context', () => {
   beforeAll(setupEnv)
-  afterAll(restoreEnv)
+  afterAll(teardownEnv)
   beforeEach(setDummyVars)
 
   it('should provide a context object', () => {
@@ -207,7 +207,7 @@ describe('<SearchProvider /> context', () => {
 
 describe('search tools', () => {
   beforeAll(setupEnv)
-  afterAll(restoreEnv)
+  afterAll(teardownEnv)
 
   let algoliaConfig = {}
 
