@@ -21,6 +21,12 @@ import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
 
+interface AlgoliaConfigObject {
+  appId?: string
+  indexName?: string
+  searchOnlyApiKey?: string
+}
+
 interface DocsPageWrapperProps {
   canonicalUrl: string
   description: string
@@ -34,6 +40,7 @@ interface DocsPageWrapperProps {
   showEditPage: boolean
   showVersionSelect: boolean
   versions: { name: string; label: string }[]
+  algoliaConfig?: AlgoliaConfigObject
 }
 
 export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
@@ -49,6 +56,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   showEditPage = true,
   showVersionSelect = process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true',
   versions,
+  algoliaConfig,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -63,7 +71,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   }, [children])
 
   const search = (
-    <SearchProvider>
+    <SearchProvider algoliaConfig={algoliaConfig}>
       <SearchBar
         product={name}
         className={classNames({ [s.mobileSearch]: isMobile })}
@@ -152,6 +160,7 @@ export interface DocsPageProps {
   showEditPage?: boolean
   showVersionSelect?: boolean
   additionalComponents?: MDXProviderComponentsProp
+  algoliaConfig?: AlgoliaConfigObject
   staticProps: {
     mdxSource: MDXRemoteSerializeResult
     frontMatter: {
@@ -172,6 +181,7 @@ export default function DocsPage({
   showEditPage = true,
   showVersionSelect = false,
   additionalComponents,
+  algoliaConfig,
   staticProps: {
     mdxSource,
     frontMatter,
@@ -206,6 +216,7 @@ export default function DocsPage({
       showVersionSelect={showVersionSelect}
       baseRoute={baseRoute}
       versions={versions}
+      algoliaConfig={algoliaConfig}
     >
       {content}
     </DocsPageWrapper>
