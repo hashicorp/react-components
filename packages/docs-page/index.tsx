@@ -8,6 +8,7 @@ import { NavData } from '@hashicorp/react-docs-sidenav/types'
 import HashiHead from '@hashicorp/react-head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
+import { AlgoliaConfigObject } from '@hashicorp/react-search/types'
 
 import VersionSelect from '@hashicorp/react-version-select'
 import { getVersionFromPath } from '@hashicorp/react-version-select/util'
@@ -34,6 +35,7 @@ interface DocsPageWrapperProps {
   showEditPage: boolean
   showVersionSelect: boolean
   versions: { name: string; label: string }[]
+  algoliaConfig?: AlgoliaConfigObject
 }
 
 export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
@@ -49,6 +51,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   showEditPage = true,
   showVersionSelect = process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true',
   versions,
+  algoliaConfig,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -63,7 +66,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   }, [children])
 
   const search = (
-    <SearchProvider>
+    <SearchProvider algoliaConfig={algoliaConfig}>
       <SearchBar
         product={name}
         className={classNames({ [s.mobileSearch]: isMobile })}
@@ -152,6 +155,7 @@ export interface DocsPageProps {
   showEditPage?: boolean
   showVersionSelect?: boolean
   additionalComponents?: MDXProviderComponentsProp
+  algoliaConfig?: AlgoliaConfigObject
   staticProps: {
     mdxSource: MDXRemoteSerializeResult
     frontMatter: {
@@ -172,6 +176,7 @@ export default function DocsPage({
   showEditPage = true,
   showVersionSelect = false,
   additionalComponents,
+  algoliaConfig,
   staticProps: {
     mdxSource,
     frontMatter,
@@ -206,6 +211,7 @@ export default function DocsPage({
       showVersionSelect={showVersionSelect}
       baseRoute={baseRoute}
       versions={versions}
+      algoliaConfig={algoliaConfig}
     >
       {content}
     </DocsPageWrapper>
