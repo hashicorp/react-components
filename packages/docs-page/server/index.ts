@@ -111,7 +111,7 @@ export function generateStaticPaths({
   const loader = new FileSystemLoader({
     navDataFile,
     localContentDir,
-    product: product.slug,
+    product: product?.slug,
     paramId,
   })
 
