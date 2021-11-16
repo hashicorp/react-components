@@ -8,31 +8,33 @@ export function useSearch() {
   return useContext(SearchContext)
 }
 
-export default function SearchProvider({
-  children,
-  algoliaAppId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-  algoliaIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX,
-  algoliaSearchOnlyApiKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY,
-}) {
+export default function SearchProvider({ children, algoliaConfig = {} }) {
   const [query, setQuery] = useState('')
   const [isCancelled, setCancelled] = useState(false)
 
-  if (!algoliaAppId || !algoliaSearchOnlyApiKey || !algoliaIndex) {
+  const [appId, indexName, apiKey] = [
+    algoliaConfig.appId || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+    algoliaConfig.indexName || process.env.NEXT_PUBLIC_ALGOLIA_INDEX,
+    algoliaConfig.searchOnlyApiKey ||
+      process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY,
+  ]
+
+  if (!appId || !apiKey || !indexName) {
     throw new Error(`Missing required Algolia arguments or .env variables for SearchProvider. If using environment variables, ensure the following are present in your environment:
 - NEXT_PUBLIC_ALGOLIA_APP_ID
 - NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY
 - NEXT_PUBLIC_ALGOLIA_INDEX
-If passing arguments to SearchProvider, ensure the following are passed:
-- algoliaAppId
-- algoliaIndex
-- algoliaSearchOnlyApiKey
+If passing the algoliaConfig prop to SearchProvider, ensure the following keys are defined:
+- appId
+- indexName
+- searchOnlyApiKey
 `)
   }
 
-  const algoliaClient = useMemo(
-    () => algoliaSearch(algoliaAppId, algoliaSearchOnlyApiKey),
-    [algoliaAppId, algoliaSearchOnlyApiKey]
-  )
+  const algoliaClient = useMemo(() => algoliaSearch(appId, apiKey), [
+    appId,
+    apiKey,
+  ])
 
   const client = {
     search(requests) {
@@ -51,16 +53,13 @@ If passing arguments to SearchProvider, ensure the following are passed:
   }
 
   function initAlgoliaInsights() {
-    searchInsights('init', {
-      appId: algoliaAppId,
-      apiKey: algoliaSearchOnlyApiKey,
-    })
+    searchInsights('init', { appId, apiKey })
   }
 
   function logClick(hit) {
     return searchInsights('clickedObjectIDsAfterSearch', {
       eventName: 'CLICK_HIT',
-      index: algoliaIndex,
+      index: indexName,
       queryID: hit.__queryID,
       objectIDs: [hit.objectID],
       positions: [hit.__position],
@@ -71,7 +70,7 @@ If passing arguments to SearchProvider, ensure the following are passed:
     <SearchContext.Provider
       value={{
         client,
-        indexName: algoliaIndex,
+        indexName,
         initAlgoliaInsights,
         isCancelled,
         logClick,
