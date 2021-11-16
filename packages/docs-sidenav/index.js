@@ -174,7 +174,8 @@ function NavTree({ baseRoute, content }) {
 
     // Headings
     if (item.heading) {
-      return <h3>{item.heading}</h3>
+      // eslint-disable-next-line react/no-array-index-key
+      return <h3 key={idx}>{item.heading}</h3>
     }
 
     // Direct links
