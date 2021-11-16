@@ -8,6 +8,7 @@ import { NavData } from '@hashicorp/react-docs-sidenav/types'
 import HashiHead from '@hashicorp/react-head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
+import { AlgoliaConfigObject } from '@hashicorp/react-search/types'
 
 import VersionSelect from '@hashicorp/react-version-select'
 import { getVersionFromPath } from '@hashicorp/react-version-select/util'
@@ -20,12 +21,6 @@ import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
-
-interface AlgoliaConfigObject {
-  appId?: string
-  indexName?: string
-  searchOnlyApiKey?: string
-}
 
 interface DocsPageWrapperProps {
   canonicalUrl: string

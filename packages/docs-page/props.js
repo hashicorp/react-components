@@ -186,16 +186,16 @@ module.exports = {
     properties: {
       appId: {
         type: 'string',
-        description:
-          'The Algolia application ID. In many setups, this ID is consistent across indices.',
+        description: 'The ID of the target Algolia application.',
       },
       indexName: {
         type: 'string',
-        description: 'The name of the index to use.',
+        description: 'The name of the index to search.',
       },
       searchOnlyApiKey: {
         type: 'string',
-        description: 'A publishable search-only API key.',
+        description:
+          'A publishable search-only API key that can access the provided application and index.',
       },
     },
   },

@@ -1,14 +1,32 @@
-import { useMemo, useState, createContext, useContext } from 'react'
-import algoliaSearch from 'algoliasearch'
+import React, { useMemo, useState, createContext, useContext } from 'react'
+import algoliaSearch, { SearchClient } from 'algoliasearch'
 import searchInsights from 'search-insights'
+import { AlgoliaConfigObject } from './types'
 
-const SearchContext = createContext()
+const SearchContext = createContext(null)
 
-export function useSearch() {
+interface SearchContextObject {
+  client: SearchClient
+  indexName: string
+  initAlgoliaInsights: () => void
+  isCancelled: boolean
+  logClick: () => void
+  query: string
+  setCancelled: () => void
+  setQuery: () => void
+}
+
+export function useSearch(): SearchContextObject {
   return useContext(SearchContext)
 }
 
-export default function SearchProvider({ children, algoliaConfig = {} }) {
+export default function SearchProvider({
+  children,
+  algoliaConfig = {},
+}: {
+  children: React.ReactNode
+  algoliaConfig: AlgoliaConfigObject
+}): React.ReactElement {
   const [query, setQuery] = useState('')
   const [isCancelled, setCancelled] = useState(false)
 
@@ -57,6 +75,18 @@ If passing the algoliaConfig prop to SearchProvider, ensure the following keys a
   }
 
   function logClick(hit) {
+    // --------------
+    // TODO: I was unable to resolve the TypeScript error here.
+    // It seems to be related to "overloads",
+    // which I understand as "the function has many arg signatures",
+    // but I'm not familiar enough with Typescript to understand
+    // how to correctly resolve this issue.
+    // (Note: this file was converted to TypeScript. Prior to
+    // conversion, the searchInsights call was identical and
+    // functioned as expected)
+    // --------------
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return searchInsights('clickedObjectIDsAfterSearch', {
       eventName: 'CLICK_HIT',
       index: indexName,

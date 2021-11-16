@@ -30,7 +30,7 @@ describe('<DocsPage />', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     useRouterMock.mockImplementation(() => routerMock)
-    headMock.mockImplementation(({ children }) => children)
+    headMock.mockImplementation(({ children }) => <>{children}</>)
   })
 
   it('passes `title`, `description`, and `siteName` correctly to <HashiHead>', () => {
