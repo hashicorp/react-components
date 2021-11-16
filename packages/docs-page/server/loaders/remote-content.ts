@@ -165,7 +165,7 @@ export default class RemoteContentLoader implements DataLoader {
       navDataPromise,
     ])
 
-    const { mdxSource } = await mdxRenderer(document.markdownSource)
+    const { mdxSource, headings } = await mdxRenderer(document.markdownSource)
     const frontMatter = document.metadata
 
     // Construct the githubFileUrl, used for "Edit this page" link
@@ -192,6 +192,7 @@ export default class RemoteContentLoader implements DataLoader {
       githubFileUrl,
       mdxSource,
       navData: navData.navData,
+      headings,
     }
   }
 }
