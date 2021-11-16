@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.2.0
+
+### Minor Changes
+
+- [#426](https://github.com/hashicorp/react-components/pull/426) [`7a04f76`](https://github.com/hashicorp/react-components/commit/7a04f76a3ac20bc65ead0f8e4915d0ad18dfc94b) Thanks [@dstaley](https://github.com/dstaley)! - Automatically dismiss open navigation dropdown menus when the user clicks on an anchor element.
+
 ## 9.1.4
 
 ### Patch Changes
