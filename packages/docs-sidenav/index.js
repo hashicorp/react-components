@@ -174,7 +174,7 @@ function NavTree({ baseRoute, content }) {
 
     // Headings
     if (item.heading) {
-      return <h3>{item.heading}</h3>
+      return <h3 key={item.heading + idx}>{item.heading}</h3>
     }
 
     // Direct links
