@@ -22,9 +22,9 @@ import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
 
 interface AlgoliaConfigObject {
-  algoliaAppId?: string
-  algoliaIndex?: string
-  algoliaSearchOnlyApiKey?: string
+  appId?: string
+  indexName?: string
+  searchOnlyApiKey?: string
 }
 
 interface DocsPageWrapperProps {
