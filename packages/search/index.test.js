@@ -9,10 +9,6 @@ import Search, {
 import { HitsComponent } from './hits'
 import { indexContent } from './tools'
 
-const renderWithProvider = (ui) => {
-  return render(<SearchProvider>{ui}</SearchProvider>)
-}
-
 const originalEnv = process.env
 
 const setDummyVars = () => {
@@ -37,8 +33,10 @@ describe('<Search />', () => {
 
   it('should pass className to the root element', () => {
     const className = 'special-class-name'
-    const { container } = renderWithProvider(
-      <Search className={className} renderHitContent={() => {}} />
+    const { container } = render(
+      <SearchProvider>
+        <Search className={className} renderHitContent={() => {}} />
+      </SearchProvider>
     )
     const rootElem = container.firstChild
     expect(rootElem.tagName).toBe('DIV')
@@ -46,10 +44,11 @@ describe('<Search />', () => {
   })
 
   it('should render an empty input by default', () => {
-    const { container } = renderWithProvider(
-      <Search renderHitContent={() => {}} />
+    const { container } = render(
+      <SearchProvider>
+        <Search renderHitContent={() => {}} />
+      </SearchProvider>
     )
-
     const input = screen.getByRole('searchbox')
     expect(input).toHaveAttribute('id', SEARCH_BOX_ID)
     expect(input).toHaveAttribute('aria-activedescendant', '')
@@ -63,8 +62,11 @@ describe('<Hits />', () => {
   beforeEach(setDummyVars)
 
   it('should display no results with invalid input', () => {
-    renderWithProvider(<HitsComponent hits={[]} renderHitContent={() => {}} />)
-
+    render(
+      <SearchProvider>
+        <HitsComponent hits={[]} renderHitContent={() => {}} />
+      </SearchProvider>
+    )
     expect(screen.queryByRole('listbox')).toBeNull()
     expect(
       screen.queryByText('No results for undefined...')
@@ -72,13 +74,14 @@ describe('<Hits />', () => {
   })
 
   it('should render results when given valid input', () => {
-    renderWithProvider(
-      <HitsComponent
-        hits={[{ objectID: 'foo' }, { objectID: 'bar' }]}
-        renderHitContent={({ objectID }) => <span>{objectID}</span>}
-      />
+    render(
+      <SearchProvider>
+        <HitsComponent
+          hits={[{ objectID: 'foo' }, { objectID: 'bar' }]}
+          renderHitContent={({ objectID }) => <span>{objectID}</span>}
+        />
+      </SearchProvider>
     )
-
     const resultsEl = screen.getByRole('listbox')
     expect(resultsEl).toHaveAttribute('id', SEARCH_RESULTS_ID)
     const hitItems = screen.getAllByTestId('hit-item')
@@ -86,7 +89,75 @@ describe('<Hits />', () => {
   })
 })
 
-describe('<SearchProvider />', () => {
+describe('<SearchProvider /> configuration', () => {
+  it('should throw an error if no Algolia config is accessible', () => {
+    //  Suppress console.error for this test, we expect errors
+    jest.spyOn(console, 'error')
+    global.console.error.mockImplementation(() => {})
+    // Set up a function to render the provider, we'll re-use this
+    function renderProvider() {
+      render(
+        <SearchProvider>
+          <p>Hi</p>
+        </SearchProvider>
+      )
+    }
+    // Test that when .env is present, we don't throw an error
+    expect(renderProvider).not.toThrowError()
+    // Test each .env var individually, if any are missing,
+    // an error should be thrown
+    const {
+      NEXT_PUBLIC_ALGOLIA_APP_ID,
+      NEXT_PUBLIC_ALGOLIA_INDEX,
+      NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY,
+    } = originalEnv
+    // APP_ID missing
+    process.env = {
+      NEXT_PUBLIC_ALGOLIA_INDEX,
+      NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY,
+    }
+    expect(renderProvider).toThrowError()
+    // INDEX missing
+    process.env = {
+      NEXT_PUBLIC_ALGOLIA_APP_ID,
+      NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY,
+    }
+    expect(renderProvider).toThrowError()
+    // SEARCH_ONLY_API_KEY missing
+    process.env = { NEXT_PUBLIC_ALGOLIA_INDEX, NEXT_PUBLIC_ALGOLIA_APP_ID }
+    expect(renderProvider).toThrowError()
+    //  Restore console.error for further tests
+    global.console.error.mockRestore()
+    // Restore the original .env for further tests
+    teardownEnv()
+  })
+
+  it('should allow mixed use of Algolia config props and .env', () => {
+    // Set search-only API key and App ID in .env
+    process.env = {
+      NEXT_PUBLIC_ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+      NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY:
+        process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY,
+    }
+    // Render the provider, and a consumer to log out the index name
+    const testIndexName = 'my-very-special-index'
+    function IndexConsumer() {
+      const context = useSearch()
+      return <div>{context.indexName}</div>
+    }
+    render(
+      <SearchProvider algoliaConfig={{ indexName: testIndexName }}>
+        <IndexConsumer />
+      </SearchProvider>
+    )
+    expect(screen.getByText(testIndexName)).toBeInTheDocument()
+
+    // Restore the original .env for further tests
+    teardownEnv()
+  })
+})
+
+describe('<SearchProvider /> context', () => {
   beforeAll(setupEnv)
   afterAll(teardownEnv)
   beforeEach(setDummyVars)
@@ -96,7 +167,11 @@ describe('<SearchProvider />', () => {
       const context = useSearch()
       return <div>{typeof context}</div>
     }
-    renderWithProvider(<Consumer />)
+    render(
+      <SearchProvider>
+        <Consumer />
+      </SearchProvider>
+    )
     expect(screen.getByText('object')).toBeInTheDocument()
   })
 
@@ -113,7 +188,11 @@ describe('<SearchProvider />', () => {
       )
     }
 
-    const { container } = renderWithProvider(<SearchButton />)
+    const { container } = render(
+      <SearchProvider>
+        <SearchButton />
+      </SearchProvider>
+    )
 
     //  empty string by default
     expect(screen.getByText('query is')).toBeDefined()

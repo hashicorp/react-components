@@ -30,7 +30,7 @@ describe('<DocsPage />', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     useRouterMock.mockImplementation(() => routerMock)
-    headMock.mockImplementation(({ children }) => children)
+    headMock.mockImplementation(({ children }) => <>{children}</>)
   })
 
   it('passes `title`, `description`, and `siteName` correctly to <HashiHead>', () => {
@@ -87,12 +87,8 @@ describe('<DocsPage />', () => {
       return <strong>Text in custom component</strong>
     }
     const additionalComponents = { CustomComponent }
-    const {
-      mdxSource,
-      frontMatter,
-    } = await renderPageMdx(
-      "## Heading Two\n\nHere's a paragraph of content.\n\n<CustomComponent />",
-      { productName: 'Terraform', additionalComponents }
+    const { mdxSource, frontMatter } = await renderPageMdx(
+      "## Heading Two\n\nHere's a paragraph of content.\n\n<CustomComponent />"
     )
     render(
       <DocsPage
@@ -112,12 +108,8 @@ describe('<DocsPage />', () => {
   })
 
   it('initializes jump to section UI if there is an h1 and two or more h2s', async () => {
-    const {
-      mdxSource,
-      frontMatter,
-    } = await renderPageMdx(
-      "---\n\npage_title: Test Title\ndescription: Test description\n---\n\n# Heading One\n\nAn intro paragraph.\n\n## Heading Two\n\nHere's a paragraph of content.\n\n## Here a second heading\n\nAnd another paragraph.",
-      { productName: 'Terraform' }
+    const { mdxSource, frontMatter } = await renderPageMdx(
+      "---\n\npage_title: Test Title\ndescription: Test description\n---\n\n# Heading One\n\nAn intro paragraph.\n\n## Heading Two\n\nHere's a paragraph of content.\n\n## Here a second heading\n\nAnd another paragraph."
     )
     render(
       <DocsPage
