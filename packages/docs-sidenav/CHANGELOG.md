@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-sidenav
 
+## 8.4.1
+
+### Patch Changes
+
+- [#427](https://github.com/hashicorp/react-components/pull/427) [`203e96d`](https://github.com/hashicorp/react-components/commit/203e96db848856973f9a1eadedb834b5ff3836d7) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Add missing `key` prop in `docs-sidenav` - `NavTree`
+
 ## 8.4.0
 
 ### Minor Changes
