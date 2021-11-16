@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.6.1
+
+### Patch Changes
+
+- [#430](https://github.com/hashicorp/react-components/pull/430) [`e4a169f`](https://github.com/hashicorp/react-components/commit/e4a169f7331b8f92c5c9bfdd9b28b1dbdc88f140) Thanks [@BRKalow](https://github.com/BRKalow)! - Update generateStaticPaths so that product is not required
+
 ## 14.6.0
 
 ### Minor Changes
