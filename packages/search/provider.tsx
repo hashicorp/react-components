@@ -75,18 +75,8 @@ If passing the algoliaConfig prop to SearchProvider, ensure the following keys a
   }
 
   function logClick(hit) {
-    // --------------
-    // TODO: I was unable to resolve the TypeScript error here.
-    // It seems to be related to "overloads",
-    // which I understand as "the function has many arg signatures",
-    // but I'm not familiar enough with Typescript to understand
-    // how to correctly resolve this issue.
-    // (Note: this file was converted to TypeScript. Prior to
-    // conversion, the searchInsights call was identical and
-    // functioned as expected)
-    // --------------
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error - the type for this event is wrong, ref: https://github.com/algolia/search-insights.js/issues/271
+    // Fixed in 2.1.0 (cur 1.8.0)
     return searchInsights('clickedObjectIDsAfterSearch', {
       eventName: 'CLICK_HIT',
       index: indexName,
