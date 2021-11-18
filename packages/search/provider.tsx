@@ -92,21 +92,33 @@ If passing the algoliaConfig prop to SearchProvider, ensure the following keys a
     }
   }, [apiKey, appId, indexName])
 
+  // Memo-ize the full context value,
+  // if this is not done then the `value` object would
+  // change referentially, likely causing unnecessary re-renders
+  const contextValue = useMemo(() => {
+    return {
+      client,
+      initAlgoliaInsights,
+      logClick,
+      indexName,
+      query,
+      setQuery,
+      isCancelled,
+      setCancelled,
+    }
+  }, [
+    client,
+    initAlgoliaInsights,
+    logClick,
+    indexName,
+    query,
+    setQuery,
+    isCancelled,
+    setCancelled,
+  ])
+
   return (
-    <SearchContext.Provider
-      value={{
-        // Client
-        client,
-        indexName,
-        initAlgoliaInsights,
-        logClick,
-        // State
-        query,
-        setQuery,
-        isCancelled,
-        setCancelled,
-      }}
-    >
+    <SearchContext.Provider value={contextValue}>
       {children}
     </SearchContext.Provider>
   )
