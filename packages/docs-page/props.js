@@ -179,4 +179,24 @@ module.exports = {
     },
     testValue: {},
   },
+  algoliaConfig: {
+    type: 'object',
+    description:
+      'Optional Algolia configuration to pass to the react-search component. If omitted, will default to .env variables. Any of the properties can be omitted, and will fall back to .env variables.',
+    properties: {
+      appId: {
+        type: 'string',
+        description: 'The ID of the target Algolia application.',
+      },
+      indexName: {
+        type: 'string',
+        description: 'The name of the index to search.',
+      },
+      searchOnlyApiKey: {
+        type: 'string',
+        description:
+          'A publishable search-only API key that can access the provided application and index.',
+      },
+    },
+  },
 }
