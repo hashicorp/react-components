@@ -6,14 +6,22 @@ import { AlgoliaConfigObject } from './types'
 const SearchContext = createContext(null)
 
 interface SearchContextObject {
+  /** The algoliasearch client, initialized with provided config */
   client: SearchClient
+  /** Reflects the indexName provided in either the algoliaConfig prop, or in the ALGOLIA_INDEX .env variable. */
   indexName: string
+  /** Initializes the Algolia client, using the config prop provided to SearchProvider, or .env variables. */
   initAlgoliaInsights: () => void
-  isCancelled: boolean
-  logClick: () => void
+  /** Registers a click on a specific search hit object. */
+  logClick: ({ __position, __queryID, objectID }) => void
+  /** The string currently being searched against */
   query: string
-  setCancelled: () => void
-  setQuery: () => void
+  /** A function to update the string to search against */
+  setQuery: (query: string) => void
+  /** Whether the current search has been cancelled  */
+  isCancelled: boolean
+  /** A function to update whether the current search has been cancelled. */
+  setCancelled: (isCancelled: boolean) => void
 }
 
 export function useSearch(): SearchContextObject {
@@ -49,54 +57,54 @@ If passing the algoliaConfig prop to SearchProvider, ensure the following keys a
 `)
   }
 
-  const algoliaClient = useMemo(() => algoliaSearch(appId, apiKey), [
-    appId,
-    apiKey,
-  ])
-
-  const client = {
-    search(requests) {
-      return algoliaClient.search(
-        requests.map((request) => {
-          //  instantsearch fires an empty query on page load to ensure results are immediately available
-          //  we exclude that result from our analytics to keep our clickthrough rate clean
-          //  ref: https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/out-of-the-box-analytics/how-to/how-to-remove-empty-search-from-analytics/
-          if (!request.params.query || request.params.query.length === 0) {
-            request.params.analytics = false
-          }
-          return request
+  // Memo-ize client context values, as these should only
+  // change and cause re-renders when Algolia configuration changes
+  const { client, initAlgoliaInsights, logClick } = useMemo(() => {
+    const algoliaClient = algoliaSearch(appId, apiKey)
+    return {
+      client: {
+        search(requests) {
+          return algoliaClient.search(
+            requests.map((request) => {
+              //  instant search fires an empty query on page load to ensure results are immediately available.
+              //  we exclude that result from our analytics to keep our click through rate clean
+              //  ref: https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/out-of-the-box-analytics/how-to/how-to-remove-empty-search-from-analytics/
+              if (!request.params.query || request.params.query.length === 0) {
+                request.params.analytics = false
+              }
+              return request
+            })
+          )
+        },
+      },
+      initAlgoliaInsights: () => searchInsights('init', { appId, apiKey }),
+      logClick: (hit) => {
+        // @ts-expect-error - the type for this event is wrong, ref: https://github.com/algolia/search-insights.js/issues/271
+        // Fixed in 2.1.0 (cur 1.8.0)
+        return searchInsights('clickedObjectIDsAfterSearch', {
+          eventName: 'CLICK_HIT',
+          index: indexName,
+          queryID: hit.__queryID,
+          objectIDs: [hit.objectID],
+          positions: [hit.__position],
         })
-      )
-    },
-  }
-
-  function initAlgoliaInsights() {
-    searchInsights('init', { appId, apiKey })
-  }
-
-  function logClick(hit) {
-    // @ts-expect-error - the type for this event is wrong, ref: https://github.com/algolia/search-insights.js/issues/271
-    // Fixed in 2.1.0 (cur 1.8.0)
-    return searchInsights('clickedObjectIDsAfterSearch', {
-      eventName: 'CLICK_HIT',
-      index: indexName,
-      queryID: hit.__queryID,
-      objectIDs: [hit.objectID],
-      positions: [hit.__position],
-    })
-  }
+      },
+    }
+  }, [apiKey, appId, indexName])
 
   return (
     <SearchContext.Provider
       value={{
+        // Client
         client,
         indexName,
         initAlgoliaInsights,
-        isCancelled,
         logClick,
+        // State
         query,
-        setCancelled,
         setQuery,
+        isCancelled,
+        setCancelled,
       }}
     >
       {children}
