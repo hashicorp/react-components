@@ -1,5 +1,16 @@
 # @hashicorp/react-docs-page
 
+## 14.7.0
+
+### Minor Changes
+
+- [#424](https://github.com/hashicorp/react-components/pull/424) [`02428a8`](https://github.com/hashicorp/react-components/commit/02428a811c9a2c508a90c9eedd71e89d94a0cf70) Thanks [@zchsh](https://github.com/zchsh)! - Add support for Algolia config, through an optional algoliaConfig prop, which is passed to react-search. This prop can be omitted, or provided with incomplete properties, and react-search will fall back to environment variables.
+
+### Patch Changes
+
+- Updated dependencies [[`02428a8`](https://github.com/hashicorp/react-components/commit/02428a811c9a2c508a90c9eedd71e89d94a0cf70)]:
+  - @hashicorp/react-search@6.2.0
+
 ## 14.6.1
 
 ### Patch Changes
