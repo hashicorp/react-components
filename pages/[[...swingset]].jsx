@@ -12,7 +12,7 @@ import ComboboxField from '../packages/combobox/field'
 import { Tab } from '../packages/tabs'
 import codeMdxComponents from '../packages/code-block/mdx'
 import UsageDetails from '../swingset-extensions/usage-details'
-import loadSampleMdx from '../swingset-extensions/load-sample-mdx'
+import loadSampleMdxForDocsPage from '../swingset-extensions/load-sample-mdx-for-docs-page'
 import tableStyleWrapper from '../packages/content/styles/table.module.css'
 
 function Logo() {
@@ -137,6 +137,6 @@ export default function SwingsetPage(props) {
 export const getStaticPaths = createStaticPaths()
 export const getStaticProps = async (ctx) => {
   let staticProps = await createStaticProps({ components })(ctx)
-  staticProps = loadSampleMdx(ctx, staticProps)
+  staticProps = loadSampleMdxForDocsPage(ctx, staticProps)
   return staticProps
 }

@@ -7,7 +7,10 @@ import jumpToSection from '@hashicorp/platform-remark-plugins/plugins/jump-to-se
 
 import { GetStaticPropsContext } from 'next'
 
-const loadSampleMdx = async (ctx: GetStaticPropsContext, staticProps) => {
+const loadSampleMdxForDocsPage = async (
+  ctx: GetStaticPropsContext,
+  staticProps
+) => {
   if (ctx.params.swingset?.includes('docspage')) {
     const sampleMdxSource = fs.readFileSync(
       path.join(process.cwd(), 'packages/docs-page/__fixtures__/sample.mdx'),
@@ -33,4 +36,4 @@ const loadSampleMdx = async (ctx: GetStaticPropsContext, staticProps) => {
   return staticProps
 }
 
-export default loadSampleMdx
+export default loadSampleMdxForDocsPage
