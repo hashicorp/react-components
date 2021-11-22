@@ -4,8 +4,6 @@
   "dependencies": {
     "@hashicorp/mktg-global-styles": "^4.0.0",
     "@hashicorp/mktg-logos": "^1.2.0",
-    "@hashicorp/platform-markdown-utils": "file:.yalc/@hashicorp/platform-markdown-utils",
-    "@hashicorp/platform-remark-plugins": "file:.yalc/@hashicorp/platform-remark-plugins",
     "@hashicorp/sentinel-embedded": "^0.0.14",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
@@ -24,7 +22,7 @@
     "@hashicorp/platform-cli": "^1.1.0",
     "@hashicorp/platform-cms": "^0.1.0",
     "@hashicorp/platform-code-highlighting": "0.1.1",
-    "@hashicorp/platform-docs-mdx": "file:.yalc/@hashicorp/platform-docs-mdx",
+    "@hashicorp/platform-docs-mdx": "0.1.1",
     "@hashicorp/platform-nextjs-plugin": "0.2.0",
     "@hashicorp/platform-types": "^0.1.0",
     "@hashicorp/platform-util": "0.1.0",
