@@ -2,8 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import { serialize } from 'next-mdx-remote/serialize'
-import { anchorLinks } from '@hashicorp/platform-remark-plugins'
-import jumpToSection from '@hashicorp/platform-remark-plugins/plugins/jump-to-section'
+import { anchorLinks, jumpToSection } from '@hashicorp/platform-remark-plugins'
 
 import { GetStaticPropsContext } from 'next'
 
