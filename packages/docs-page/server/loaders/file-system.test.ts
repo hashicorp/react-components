@@ -47,6 +47,29 @@ describe('FileSystemLoader', () => {
           "page_title": "Introduction",
         },
         "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/packages/docs-page/server/__fixtures__/index.mdx",
+        "headings": Array [
+          Object {
+            "aliases": Array [],
+            "level": 1,
+            "permalinkSlug": "introduction-to-vault",
+            "slug": "introduction-to-vault",
+            "title": "Introduction to Vault",
+          },
+          Object {
+            "aliases": Array [],
+            "level": 2,
+            "permalinkSlug": "what-is-vault",
+            "slug": "what-is-vault",
+            "title": "What is Vault?",
+          },
+          Object {
+            "aliases": Array [],
+            "level": 2,
+            "permalinkSlug": "next-steps",
+            "slug": "next-steps",
+            "title": "Next Steps",
+          },
+        ],
         "mdxSource": Object {
           "compiledSource": Any<String>,
           "scope": Object {},
