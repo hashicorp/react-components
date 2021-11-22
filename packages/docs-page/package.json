@@ -6,7 +6,7 @@
   "contributors": ["Jeff Escalante", "Kevin Wang"],
   "dependencies": {
     "@hashicorp/platform-docs-mdx": "^0.1.3",
-    "@hashicorp/platform-markdown-utils": "^0.2.0",
+    "@hashicorp/platform-markdown-utils": "^0.3.0-canary-20211022155852",
     "@hashicorp/react-alert": "^6.0.2",
     "@hashicorp/react-content": "^8.0.2",
     "@hashicorp/react-docs-sidenav": "^8.4.1",
