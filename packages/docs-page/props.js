@@ -60,90 +60,10 @@ module.exports = {
         description:
           "Data returned from running `next-mdx-remote/serialize` on the page's `.mdx` file contents.",
         required: true,
+        // In `react-components`, this overwritten in [[...swingset]].jsx
         testValue: {
-          compiledSource:
-            '"use strict";\n' +
-            '\n' +
-            'function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n' +
-            '\n' +
-            'function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n' +
-            '\n' +
-            'function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\n' +
-            '\n' +
-            '/* @jsxRuntime classic */\n' +
-            '\n' +
-            '/* @jsx mdx */\n' +
-            'var layoutProps = {};\n' +
-            'var MDXLayout = "wrapper";\n' +
-            '\n' +
-            `function MDXContent(_ref) {
-              var components = _ref.components,
-                props = _objectWithoutProperties(_ref, ["components"]);
-              return mdx(
-                MDXLayout,
-                _extends({}, layoutProps, props, {
-                  components: components,
-                  mdxType: "MDXLayout",
-                }),
-                mdx("h1", { className: "g-type-display-2" }, "Example Page"),
-                mdx("p", null, "This is a cool docs page!"),
-                mdx(
-                  "h2",
-                  { className: "g-type-display-3" },
-                  mdx(
-                    "a",
-                    { className: "__permalink-h", href: "#second-heading" },
-                    "»"
-                  ),
-                  mdx(
-                    "a",
-                    { className: "__target-h", id: "second-heading", "aria-hidden": true },
-                    ""
-                  ),
-                  "Second heading"
-                ),
-                mdx("p", null, "This is a cool docs page!"),
-                mdx(
-                  "h2",
-                  { className: "g-type-display-3" },
-                  mdx(
-                    "a",
-                    { className: "__permalink-h", href: "#third-heading" },
-                    "»"
-                  ),
-                  mdx(
-                    "a",
-                    { className: "__target-h", id: "third-heading", "aria-hidden": true },
-                    ""
-                  ),
-                  "Third heading"
-                ),
-                mdx("p", null, "This is a cool docs page!"),
-                mdx(
-                  "h2",
-                  { className: "g-type-display-3" },
-                  mdx(
-                    "a",
-                    { className: "__permalink-h", href: "#fourth-heading" },
-                    "»"
-                  ),
-                  mdx(
-                    "a",
-                    { className: "__target-h", id: "fourth-heading", "aria-hidden": true },
-                    ""
-                  ),
-                  "Fourth heading"
-                ),
-                mdx("p", null, "This is a cool docs page!")
-              );
-            }
-            \n` +
-            '\n' +
-            ';\n' +
-            'MDXContent.isMDXComponent = true;',
-          renderedOutput:
-            '<h1 className="g-type-display-2">Example Page</h1><p>This is a cool docs page!</p><h2 className="g-type-display-3">Second Heading</h2><p>This is a cool docs page!</p><h2 className="g-type-display-3">Third Heading</h2><p>This is a cool docs page!</p><h2 className="g-type-display-3">Fourth Heading</h2><p>This is a cool docs page!</p>',
-          scope: {},
+          compiledSource: null,
+          scope: null,
         },
       },
       frontMatter: {

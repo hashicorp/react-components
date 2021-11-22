@@ -1,69 +1,6 @@
 @custom-media --mobile-viewports (max-width: 939px);
 @custom-media --desktop-viewports (min-width: 940px);
 
-/*
-Note: class has been created as a CSS-modules-friendly
-stopgap to align with the _temporary_jump-to-section approach
-for rendering the jump links menu. Once we have a less
-temporary approach, this should likely be split into its own file.
-*/
-.tempJumpToSectionParent {
-  /*
-  adjusts the h1 bottom margin when the jump
-  menu is present. co-ordinated with JS classname addition
-  */
-  & :global(.has-jts) {
-    margin-bottom: 10px;
-  }
-
-  & :global(.jump-to-section) {
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 20px;
-    position: relative;
-    user-select: none;
-    z-index: 3;
-
-    @media (--mobile-viewports) {
-      margin-left: 1rem;
-    }
-
-    & :global(.trigger) {
-      align-items: center;
-      display: flex;
-    }
-
-    & svg {
-      margin-left: 5px;
-    }
-
-    & :global(.dropdown) {
-      background: white;
-      border-radius: 3px;
-      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-      display: none;
-      margin: 10px 0 0 0;
-      padding: 4px 16px;
-      position: absolute;
-      z-index: 2;
-      width: 500px;
-      list-style: none;
-
-      @media (--mobile-viewports) {
-        width: 345px;
-      }
-
-      & li {
-        margin: 12px 0;
-      }
-
-      &:global(.active) {
-        display: block;
-      }
-    }
-  }
-}
-
 /* Styles the mobile search bar,
 which is rendered into docs-sidenav */
 .mobileSearch {
