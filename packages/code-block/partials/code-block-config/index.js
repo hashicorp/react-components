@@ -23,9 +23,8 @@ function CodeBlockConfig({
   }
   // Validate that the first child is a code block
   const onlyChild = validChildren[0]
-  // TODO: more reliable way to validate childType, not sure how it'll work in production mode with minifying
-  const childType = onlyChild.props.mdxType || onlyChild.type.name
-  if (childType !== 'pre' && childType !== 'themedPre') {
+  const childType = onlyChild.props.mdxType || onlyChild.type
+  if (childType !== 'pre') {
     throw new Error(
       `In CodeBlockConfig, found a child with type "${childType}". Please ensure a fenced code block, which corresponds to the MDX type "pre", is passed to CodeBlockConfig instead. In JSX, please use CodeBlock directly rather than CodeBlockConfig.`
     )
