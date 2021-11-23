@@ -5,7 +5,12 @@ import grayMatter from 'gray-matter'
 
 async function renderPageMdx(
   mdxFileString,
-  { mdxContentHook = (c) => c, remarkPlugins = [], scope } = {}
+  {
+    mdxContentHook = (c) => c,
+    remarkPlugins = [],
+    rehypePlugins = [],
+    scope,
+  } = {}
 ) {
   const { data: frontMatter, content: rawContent } = grayMatter(mdxFileString)
   const content = mdxContentHook(rawContent)
@@ -13,6 +18,7 @@ async function renderPageMdx(
     mdxOptions: markdownDefaults({
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
       addRemarkPlugins: remarkPlugins,
+      addRehypePlugins: rehypePlugins,
     }),
     scope,
   })
