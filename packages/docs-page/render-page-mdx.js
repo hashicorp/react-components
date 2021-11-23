@@ -1,22 +1,27 @@
 import path from 'path'
 import { serialize } from 'next-mdx-remote/serialize'
 import markdownDefaults from '@hashicorp/platform-markdown-utils'
-import grayMatter from 'gray-matter'
 
 async function renderPageMdx(
   mdxFileString,
-  { mdxContentHook = (c) => c, remarkPlugins = [], scope } = {}
+  {
+    mdxContentHook = (c) => c,
+    remarkPlugins = [],
+    rehypePlugins = [],
+    scope,
+  } = {}
 ) {
-  const { data: frontMatter, content: rawContent } = grayMatter(mdxFileString)
-  const content = mdxContentHook(rawContent)
+  const content = mdxContentHook(mdxFileString)
   const mdxSource = await serialize(content, {
     mdxOptions: markdownDefaults({
       resolveIncludes: path.join(process.cwd(), 'content/partials'),
       addRemarkPlugins: remarkPlugins,
+      addRehypePlugins: rehypePlugins,
     }),
     scope,
+    parseFrontmatter: true,
   })
-  return { mdxSource, frontMatter }
+  return { mdxSource, frontMatter: mdxSource.frontmatter }
 }
 
 export default renderPageMdx
