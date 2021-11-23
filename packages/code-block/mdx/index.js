@@ -26,7 +26,7 @@ export function pre({
   }
   // Assert that the one valid child is a <code> element
   const codeChild = childArray[0]
-  if (codeChild.props.mdxType !== 'code') {
+  if ((codeChild.props.mdxType || codeChild.type) !== 'code') {
     throw new Error(
       `Found <pre> element in MDX with more non-<code> child: ${JSON.stringify(
         codeChild
