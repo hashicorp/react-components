@@ -20,6 +20,7 @@ export interface FileSystemLoaderContext {
   params: Record<string, string[]> // {} | { page: ["destroy"] }
   mainBranch?: string // = 'main',
   remarkPlugins?: $TSFixMe[]
+  rehypePlugins?: $TSFixMe[]
   scope?: Record<string, $TSFixMe> // optional, I think?
 }
 
@@ -43,12 +44,14 @@ export default class FileSystemLoader implements DataLoader {
   loadStaticProps = async ({
     params,
     remarkPlugins = [],
+    rehypePlugins = [],
     scope,
     mainBranch = 'main',
   }: FileSystemLoaderContext): Promise<$TSFixMe> => {
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
         remarkPlugins,
+        rehypePlugins,
         scope,
       })
     // Build the currentPath from page parameters
