@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.8.0
+
+### Minor Changes
+
+- [#437](https://github.com/hashicorp/react-components/pull/437) [`4feba18`](https://github.com/hashicorp/react-components/commit/4feba18a84c3cd7916faba01fc47891b4c98418c) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Refactor internal data loader code. Pass `scope` option to MDX renderer
+
 ## 14.7.0
 
 ### Minor Changes
