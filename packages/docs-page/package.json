@@ -5,8 +5,8 @@
   "author": "HashiCorp",
   "contributors": ["Jeff Escalante", "Kevin Wang"],
   "dependencies": {
-    "@hashicorp/platform-docs-mdx": "^0.2.0-canary-20211024163138",
-    "@hashicorp/platform-markdown-utils": "^0.3.0-canary-20211024163138",
+    "@hashicorp/platform-docs-mdx": "^0.2.0-canary-20211029153246",
+    "@hashicorp/platform-markdown-utils": "^0.3.0-canary-20211029153246",
     "@hashicorp/react-alert": "^6.0.2",
     "@hashicorp/react-content": "^8.0.2",
     "@hashicorp/react-docs-sidenav": "^8.4.0",
