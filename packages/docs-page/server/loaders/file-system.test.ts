@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import { mocked } from 'ts-jest/utils'
 import FileSystemLoader from './file-system'
 import { resolveNavData } from '../resolve-nav-data'

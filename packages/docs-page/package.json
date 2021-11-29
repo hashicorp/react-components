@@ -5,8 +5,8 @@
   "author": "HashiCorp",
   "contributors": ["Jeff Escalante", "Kevin Wang"],
   "dependencies": {
-    "@hashicorp/platform-docs-mdx": "^0.1.3",
-    "@hashicorp/platform-markdown-utils": "^0.1.4",
+    "@hashicorp/platform-docs-mdx": "^0.2.0-canary-20211029153246",
+    "@hashicorp/platform-markdown-utils": "^0.3.0-canary-20211029153246",
     "@hashicorp/react-alert": "^6.0.2",
     "@hashicorp/react-content": "^8.0.2",
     "@hashicorp/react-docs-sidenav": "^8.4.0",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.4",
-    "@types/semver": "^7.3.8"
+    "@types/semver": "^7.3.8",
+    "next-mdx-remote": "4.0.0-alpha.2"
   }
 }
