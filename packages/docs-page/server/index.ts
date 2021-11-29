@@ -18,6 +18,7 @@ interface BaseOpts {
   fallback?: GetStaticPathsResult['fallback']
   revalidate?: number
   product: string
+  scope?: Record<string, $TSFixMe>
 }
 
 export function getStaticGenerationFunctions(

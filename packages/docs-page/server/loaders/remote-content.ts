@@ -1,5 +1,6 @@
 import moize, { Options } from 'moize'
 import semver from 'semver'
+import { GetStaticPropsContext } from 'next'
 import renderPageMdx from '../../render-page-mdx'
 import {
   fetchNavData,
@@ -13,16 +14,12 @@ import { DEFAULT_PARAM_ID } from '../consts'
 import { DataLoader, DataLoaderOpts } from './types'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
 
-export interface RemoteContentLoaderContext {
-  params: Record<string, string[]> // {} | { page: ["destroy"] }
-  mainBranch?: string // = 'main',
-  remarkPlugins?: $TSFixMe[]
-  scope?: Record<string, $TSFixMe> // optional, I think?
-}
-
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
   enabledVersionedDocs?: boolean
+  remarkPlugins?: $TSFixMe[]
+  mainBranch?: string // = 'main',
+  scope?: Record<string, $TSFixMe>
 }
 
 /**
@@ -79,16 +76,15 @@ export function mapVersionList(
 }
 
 export default class RemoteContentLoader implements DataLoader {
-  opts: RemoteContentLoaderOpts
-
-  constructor(opts: RemoteContentLoaderOpts) {
-    this.opts = opts
-
+  constructor(public opts: RemoteContentLoaderOpts) {
     if (typeof this.opts.enabledVersionedDocs === 'undefined')
       this.opts.enabledVersionedDocs =
         process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true'
 
     if (!this.opts.paramId) this.opts.paramId = DEFAULT_PARAM_ID
+    if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
+    if (!this.opts.scope) this.opts.scope = {}
+    if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -107,24 +103,21 @@ export default class RemoteContentLoader implements DataLoader {
 
   loadStaticProps = async ({
     params,
-    mainBranch = 'main', // we should pull this from config
-    remarkPlugins = [], // do we really need this?
-    scope, // only used once: https://sourcegraph.hashi-mktg.com/search?q=scope:+lang:javascript+file:website*&patternType=literal this can also be passed to the component
-  }: RemoteContentLoaderContext): Promise<$TSFixMe> => {
+  }: GetStaticPropsContext): Promise<$TSFixMe> => {
     // Build the currentPath from page parameters
     const currentPath = params[this.opts.paramId]
-      ? params[this.opts.paramId].join('/')
+      ? (params[this.opts.paramId] as string[]).join('/')
       : ''
 
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
-        remarkPlugins,
-        scope,
+        remarkPlugins: this.opts.remarkPlugins,
+        scope: this.opts.scope,
       })
 
     // given: v0.5.x (latest), v0.4.x, v0.3.x
     const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
-      params[this.opts.paramId]
+      params[this.opts.paramId] as string[]
     )
 
     const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
@@ -181,7 +174,7 @@ export default class RemoteContentLoader implements DataLoader {
       ).isLatest
       if (isLatest) {
         // GitHub only allows you to modify a file if you are on a branch, not a commit
-        githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${mainBranch}/${document.githubFile}`
+        githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/${document.githubFile}`
       }
     }
 
