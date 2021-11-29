@@ -33,7 +33,13 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
       type = tabChild.props.mdxType
     return type
   })
-  const validTypes = ['CodeBlock', 'CodeBlockConfig', 'pre']
+  const validTypes = [
+    'CodeBlock',
+    'CodeBlockConfig',
+    'pre',
+    'themedCodeBlockConfig',
+    'themedPre',
+  ]
   const unexpectedChildren = childTypes.filter((type) => {
     const isInvalidType = validTypes.indexOf(type) === -1
     return isInvalidType
