@@ -24,7 +24,7 @@
   }
 
   @media (--medium-up) {
-    margin: 64px 0;
+    margin: 48px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 48px;
