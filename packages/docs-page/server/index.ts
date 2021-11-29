@@ -18,6 +18,7 @@ interface BaseOpts {
   fallback?: GetStaticPathsResult['fallback']
   revalidate?: number
   product: string
+  scope?: Record<string, $TSFixMe>
 }
 
 export function getStaticGenerationFunctions(
@@ -148,7 +149,10 @@ export function generateStaticProps({
     localContentDir,
     product: product.slug,
     paramId,
+    scope,
+    remarkPlugins,
+    mainBranch,
   })
 
-  return loader.loadStaticProps({ params, remarkPlugins, scope, mainBranch })
+  return loader.loadStaticProps({ params })
 }

@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs'
+import { GetStaticPropsContext } from 'next'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
 import { resolveNavData } from '../resolve-nav-data'
 
@@ -14,22 +15,17 @@ import { DataLoader, DataLoaderOpts } from './types'
 interface FileSystemLoaderOpts extends DataLoaderOpts {
   navDataFile: string
   localContentDir: string
-}
-
-export interface FileSystemLoaderContext {
-  params: Record<string, string[]> // {} | { page: ["destroy"] }
   mainBranch?: string // = 'main',
   remarkPlugins?: $TSFixMe[]
-  scope?: Record<string, $TSFixMe> // optional, I think?
+  scope?: Record<string, $TSFixMe>
 }
 
 export default class FileSystemLoader implements DataLoader {
-  opts: FileSystemLoaderOpts
-
-  constructor(opts: FileSystemLoaderOpts) {
-    this.opts = opts
-
+  constructor(public opts: FileSystemLoaderOpts) {
     if (!this.opts.paramId) this.opts.paramId = DEFAULT_PARAM_ID
+    if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
+    if (!this.opts.scope) this.opts.scope = {}
+    if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -42,18 +38,15 @@ export default class FileSystemLoader implements DataLoader {
 
   loadStaticProps = async ({
     params,
-    remarkPlugins = [],
-    scope,
-    mainBranch = 'main',
-  }: FileSystemLoaderContext): Promise<$TSFixMe> => {
+  }: GetStaticPropsContext): Promise<$TSFixMe> => {
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
-        remarkPlugins,
-        scope,
+        remarkPlugins: this.opts.remarkPlugins,
+        scope: this.opts.scope,
       })
     // Build the currentPath from page parameters
     const currentPath = params[this.opts.paramId]
-      ? params[this.opts.paramId].join('/')
+      ? (params[this.opts.paramId] as string[]).join('/')
       : ''
     //  Read in the nav data, and resolve local filePaths
     const navData = await resolveNavData(
@@ -75,7 +68,7 @@ export default class FileSystemLoader implements DataLoader {
     const normalizedFilePath = navNode.filePath
       .split(path.sep)
       .join(path.posix.sep)
-    const githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${mainBranch}/website/${normalizedFilePath}`
+    const githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/website/${normalizedFilePath}`
     // Return all the props
     return {
       currentPath,
