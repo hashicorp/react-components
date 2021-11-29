@@ -149,7 +149,10 @@ export function generateStaticProps({
     localContentDir,
     product: product.slug,
     paramId,
+    scope,
+    remarkPlugins,
+    mainBranch,
   })
 
-  return loader.loadStaticProps({ params, remarkPlugins, scope, mainBranch })
+  return loader.loadStaticProps({ params })
 }
