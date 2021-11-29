@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-code-block",
   "description": "A simple code block with clipboard functionality",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "author": "HashiCorp",
   "dependencies": {
     "@hashicorp/react-inline-svg": "^6.0.3",
