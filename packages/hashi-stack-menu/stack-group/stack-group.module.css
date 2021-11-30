@@ -21,6 +21,12 @@
   color: var(--gray-2);
 }
 
+.stackGroupDescription {
+  composes: g-type-body-small from global;
+  white-space: pre-wrap;
+  color: var(--gray-3);
+}
+
 .stackGroupLinkList {
   padding: 1.25rem 0;
   margin: 0;

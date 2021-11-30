@@ -11,7 +11,13 @@ export default function StackMenuSection({ groups, visiblyNewSection }) {
       }
     >
       {groups.map((g) => (
-        <StackGroup key={g.title} heading={g.title} items={g.items} />
+        <StackGroup
+          key={g.title}
+          heading={g.title}
+          description={g.description}
+          items={g.items}
+          cta={g.cta}
+        />
       ))}
     </menu>
   )
