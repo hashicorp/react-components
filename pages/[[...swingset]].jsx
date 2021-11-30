@@ -2,6 +2,7 @@ import createPage from 'swingset/page'
 import { createStaticProps, createStaticPaths } from 'swingset/server'
 import Head from 'next/head'
 import Link from 'next/link'
+
 import { SearchProvider } from '../packages/search'
 import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
 import FormikStateViewer from '../swingset-extensions/formik-state-viewer'
@@ -11,6 +12,7 @@ import ComboboxField from '../packages/combobox/field'
 import { Tab } from '../packages/tabs'
 import codeMdxComponents from '../packages/code-block/mdx'
 import UsageDetails from '../swingset-extensions/usage-details'
+import loadSampleMdxForDocsPage from '../swingset-extensions/load-sample-mdx-for-docs-page'
 import tableStyleWrapper from '../packages/content/styles/table.module.css'
 
 function Logo() {
@@ -128,6 +130,13 @@ const components = {
   ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
 }
 
-export default createPage({ components, logo: <Logo />, index: <Index /> })
+export default function SwingsetPage(props) {
+  return createPage({ components, logo: <Logo />, index: <Index /> })(props)
+}
+
 export const getStaticPaths = createStaticPaths()
-export const getStaticProps = createStaticProps({ components })
+export const getStaticProps = async (ctx) => {
+  let staticProps = await createStaticProps({ components })(ctx)
+  staticProps = loadSampleMdxForDocsPage(ctx, staticProps)
+  return staticProps
+}

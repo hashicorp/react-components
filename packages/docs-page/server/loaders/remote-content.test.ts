@@ -71,6 +71,15 @@ describe('RemoteContentLoader', () => {
           "page_title": "Waypoint Commands (CLI)",
         },
         "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx",
+        "headings": Array [
+          Object {
+            "aliases": Array [],
+            "level": 1,
+            "permalinkSlug": "waypoint-commands-cli",
+            "slug": "waypoint-commands-cli",
+            "title": "Waypoint Commands (CLI)",
+          },
+        ],
         "mdxSource": Object {
           "compiledSource": Any<String>,
           "scope": Object {},
@@ -144,37 +153,37 @@ describe('mapVersionList', () => {
     const versionList = mapVersionList(list as any)
 
     expect(versionList).toMatchInlineSnapshot(`
-Array [
-  Object {
-    "label": "v2.11.x",
-    "name": "v2.11.x",
-  },
-  Object {
-    "label": "v1.10.x",
-    "name": "v1.10.x",
-  },
-  Object {
-    "label": "v1.9.x",
-    "name": "v1.9.x",
-  },
-  Object {
-    "label": "v1.1.x",
-    "name": "v1.1.x",
-  },
-  Object {
-    "label": "v0.11.x",
-    "name": "v0.11.x",
-  },
-  Object {
-    "label": "v0.10.x",
-    "name": "v0.10.x",
-  },
-  Object {
-    "label": "v0.9.x",
-    "name": "v0.9.x",
-  },
-]
-`)
+      Array [
+        Object {
+          "label": "v2.11.x",
+          "name": "v2.11.x",
+        },
+        Object {
+          "label": "v1.10.x",
+          "name": "v1.10.x",
+        },
+        Object {
+          "label": "v1.9.x",
+          "name": "v1.9.x",
+        },
+        Object {
+          "label": "v1.1.x",
+          "name": "v1.1.x",
+        },
+        Object {
+          "label": "v0.11.x",
+          "name": "v0.11.x",
+        },
+        Object {
+          "label": "v0.10.x",
+          "name": "v0.10.x",
+        },
+        Object {
+          "label": "v0.9.x",
+          "name": "v0.9.x",
+        },
+      ]
+    `)
   })
 
   test('should map a list of version-metadata to a format for <VersionSelect/>', () => {

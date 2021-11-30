@@ -1,4 +1,4 @@
-import { useEffect, FunctionComponent, ReactElement } from 'react'
+import { FunctionComponent, ReactElement } from 'react'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -17,8 +17,8 @@ import { MDXProviderComponentsProp } from '@mdx-js/react'
 import SearchBar from './components/search-bar'
 import VersionAlert from './components/version-alert'
 import generateComponents from './components'
-import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
+import JumpToSection from './components/jump-to-section'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
 
@@ -56,14 +56,6 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
   const versionInPath = getVersionFromPath(asPath)
-
-  // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
-  // activates the "jump to section" feature
-  useEffect(() => {
-    const node = document.querySelector('#inner')
-    if (!node) return
-    return temporary_injectJumpToSection(node)
-  }, [children])
 
   const search = (
     <SearchProvider algoliaConfig={algoliaConfig}>
@@ -117,9 +109,8 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
         {isMobile ? versionAlert : null}
         {/* render the markdown content */}
         <div
-          id="inner"
           role="main"
-          className={classNames(s.inner, s.tempJumpToSectionParent, {
+          className={classNames(s.inner, {
             [s.versionedDocsOffset]:
               process.env.ENABLE_VERSIONED_DOCS === 'true',
           })}
@@ -192,7 +183,10 @@ export default function DocsPage({
   const content = (
     <MDXRemote
       {...mdxSource}
-      components={generateComponents(product.name, additionalComponents)}
+      components={{
+        JumpToSection, // Will be removed when "side-car" component is rolled out
+        ...generateComponents(product.name, additionalComponents),
+      }}
     />
   )
 

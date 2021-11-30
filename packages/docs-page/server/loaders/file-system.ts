@@ -62,7 +62,8 @@ export default class FileSystemLoader implements DataLoader {
     //  Read in and process MDX content from the navNode's filePath
     const mdxFile = path.join(process.cwd(), navNode.filePath)
     const mdxString = await fs.promises.readFile(mdxFile, 'utf8')
-    const { mdxSource, frontMatter } = await mdxRenderer(mdxString)
+
+    const { mdxSource, frontMatter, headings } = await mdxRenderer(mdxString)
 
     // Construct the githubFileUrl, used for "Edit this page" link
     const normalizedFilePath = navNode.filePath
@@ -77,6 +78,7 @@ export default class FileSystemLoader implements DataLoader {
       mdxSource,
       navData,
       versions: [],
+      headings,
     }
   }
 }
