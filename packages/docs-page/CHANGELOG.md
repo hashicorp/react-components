@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.8.1
+
+### Patch Changes
+
+- [#441](https://github.com/hashicorp/react-components/pull/441) [`f795232`](https://github.com/hashicorp/react-components/commit/f79523298b6d0b7e57d31219c6300538c1fb7b97) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Fix displayValue
+
 ## 14.8.0
 
 ### Minor Changes
