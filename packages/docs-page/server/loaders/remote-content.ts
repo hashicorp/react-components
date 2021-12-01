@@ -64,7 +64,7 @@ export function mapVersionList(
     .map((e) => {
       const { isLatest, version, display } = e
 
-      const displayValue = display ?? version
+      const displayValue = display || version
 
       return {
         name: isLatest ? 'latest' : version,
