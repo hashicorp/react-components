@@ -1,4 +1,6 @@
 import styles from './stack-group.module.css'
+import InlineSvg from '../../inline-svg'
+import LinkWrap from '../../link-wrap'
 import StackItem from '../stack-item'
 
 export default function StackGroup({ heading, description, items, cta }) {
@@ -14,8 +16,12 @@ export default function StackGroup({ heading, description, items, cta }) {
           <StackItem key={stableIdx} item={item} />
         ))}
       </ul>
-      {/* // TODO Finish markup for this link */}
-      {cta && <a href={cta.url}>{cta.text}</a>}
+      {cta && (
+        <LinkWrap href={cta.url} className={styles.stackGroupCta}>
+          {cta.text}
+          <InlineSvg src={require('../assets/icon-arrow.svg?include')} />
+        </LinkWrap>
+      )}
     </li>
   )
 }

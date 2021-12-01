@@ -33,3 +33,19 @@
   width: 100%;
   height: 100%;
 }
+
+.stackGroupCta {
+  composes: g-type-body-small-strong from global;
+  display: flex;
+  align-items: center;
+  color: var(--gray-1);
+
+  & svg {
+    margin: 2px 0 0 8px;
+    transition: transform 0.35s;
+  }
+
+  &:hover svg {
+    transform: translateX(2px);
+  }
+}
