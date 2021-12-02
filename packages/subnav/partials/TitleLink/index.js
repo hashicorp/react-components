@@ -10,6 +10,7 @@ import PackerLogo from '@hashicorp/mktg-logos/product/packer/primary/color.svg?i
 import TerraformLogo from '@hashicorp/mktg-logos/product/terraform/primary/color.svg?include'
 import VagrantLogo from '@hashicorp/mktg-logos/product/vagrant/primary/color.svg?include'
 import VaultLogo from '@hashicorp/mktg-logos/product/vault/primary/color.svg?include'
+import VaultLogoAttr from '@hashicorp/mktg-logos/product/vault/primary/attributed_color.svg?include'
 import BoundaryLogo from '@hashicorp/mktg-logos/product/boundary/primary/color.svg?include'
 import WaypointLogo from '@hashicorp/mktg-logos/product/waypoint/primary/color.svg?include'
 import TerraformCloudLogo from '@hashicorp/mktg-logos/product/terraform-cloud/primary/color.svg?include'
@@ -21,6 +22,7 @@ import PackerLogoWhite from '@hashicorp/mktg-logos/product/packer/primary/colorw
 import TerraformLogoWhite from '@hashicorp/mktg-logos/product/terraform/primary/colorwhite.svg?include'
 import VagrantLogoWhite from '@hashicorp/mktg-logos/product/vagrant/primary/colorwhite.svg?include'
 import VaultLogoWhite from '@hashicorp/mktg-logos/product/vault/primary/colorwhite.svg?include'
+import VaultLogoAttrWhite from '@hashicorp/mktg-logos/product/vault/primary/attributed_colorwhite.svg?include'
 import BoundaryLogoWhite from '@hashicorp/mktg-logos/product/boundary/primary/colorwhite.svg?include'
 import WaypointLogoWhite from '@hashicorp/mktg-logos/product/waypoint/primary/colorwhite.svg?include'
 import TerraformCloudLogoWhite from '@hashicorp/mktg-logos/product/terraform-cloud/primary/colorwhite.svg?include'
@@ -36,6 +38,7 @@ const logoDict = {
     tfc: TerraformCloudLogo,
     vagrant: VagrantLogo,
     vault: VaultLogo,
+    hashicorpvault: VaultLogoAttr,
     waypoint: WaypointLogo,
   },
   dark: {
@@ -48,12 +51,13 @@ const logoDict = {
     tfc: TerraformCloudLogoWhite,
     vagrant: VagrantLogoWhite,
     vault: VaultLogoWhite,
+    hashicorpvault: VaultLogoAttrWhite,
     waypoint: WaypointLogoWhite,
   },
 }
 
 function TitleLink({ text, url, product, Link, theme }) {
-  const Logo = logoDict[theme][text.toLowerCase()]
+  const Logo = logoDict[theme][text.replaceAll(/\s/g, '').toLowerCase()]
   return (
     <LinkWrap
       Link={Link}
