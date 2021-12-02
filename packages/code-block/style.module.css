@@ -5,8 +5,8 @@
   border-radius: 4px;
 
   &.hasBarAbove {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }
 
@@ -16,11 +16,15 @@
 
 .copyButtonContainer {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   display: flex;
   align-items: center;
   min-height: 58px;
+
+  @media print {
+    display: none;
+  }
 }
 
 .copyButtonBackground {

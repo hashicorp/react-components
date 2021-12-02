@@ -28,6 +28,10 @@ temporary approach, this should likely be split into its own file.
       margin-left: 1rem;
     }
 
+    @media print {
+      display: none;
+    }
+
     & :global(.trigger) {
       align-items: center;
       display: flex;
@@ -126,6 +130,10 @@ which is rendered into docs-sidenav */
   display: flex;
   justify-content: flex-end;
   margin-bottom: 48px;
+
+  @media print {
+    display: none;
+  }
 
   & a {
     align-items: center;
