@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.2.1
+
+### Patch Changes
+
+- [#443](https://github.com/hashicorp/react-components/pull/443) [`eee683b`](https://github.com/hashicorp/react-components/commit/eee683bb09f866befb16ab8af66178d355181398) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adds vault and consul attributed logos to logo dictionary
+
 ## 9.2.0
 
 ### Minor Changes
