@@ -54,7 +54,6 @@ to be present.
 
 .filename {
   composes: g-type-code from global;
-
   font-size: 0.8125rem;
   align-items: center;
   color: var(--text-color-base);
@@ -86,7 +85,6 @@ to be present.
 
 .heading {
   composes: g-type-body-small-strong from global;
-
   align-items: center;
   color: var(--text-color-base);
   display: flex;
@@ -101,4 +99,8 @@ to be present.
   align-items: center;
   display: flex;
   min-height: var(--base-height);
+
+  @media print {
+    display: none;
+  }
 }

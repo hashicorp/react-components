@@ -2,6 +2,10 @@
   width: 100%;
   background: var(--white);
   height: 56px;
+
+  @media print {
+    display: none;
+  }
 }
 
 .nav {
