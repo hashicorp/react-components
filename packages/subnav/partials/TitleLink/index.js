@@ -1,9 +1,11 @@
+import { camelCase } from 'camel-case'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import s from './style.module.css'
 import classNames from 'classnames'
 /* main logos, for light theme */
 import ConsulLogo from '@hashicorp/mktg-logos/product/consul/primary/color.svg?include'
+import ConsulLogoAttr from '@hashicorp/mktg-logos/product/consul/primary/attributed_color.svg?include'
 import HCPLogo from '@hashicorp/mktg-logos/product/hcp/primary/black.svg?include'
 import NomadLogo from '@hashicorp/mktg-logos/product/nomad/primary/color.svg?include'
 import PackerLogo from '@hashicorp/mktg-logos/product/packer/primary/color.svg?include'
@@ -16,6 +18,7 @@ import WaypointLogo from '@hashicorp/mktg-logos/product/waypoint/primary/color.s
 import TerraformCloudLogo from '@hashicorp/mktg-logos/product/terraform-cloud/primary/color.svg?include'
 /* white logos, for dark theme */
 import ConsulLogoWhite from '@hashicorp/mktg-logos/product/consul/primary/colorwhite.svg?include'
+import ConsulLogoWhiteAttr from '@hashicorp/mktg-logos/product/consul/primary/attributed_colorwhite.svg?include'
 import HCPLogoWhite from '@hashicorp/mktg-logos/product/hcp/primary/white.svg?include'
 import NomadLogoWhite from '@hashicorp/mktg-logos/product/nomad/primary/colorwhite.svg?include'
 import PackerLogoWhite from '@hashicorp/mktg-logos/product/packer/primary/colorwhite.svg?include'
@@ -31,6 +34,7 @@ const logoDict = {
   light: {
     boundary: BoundaryLogo,
     consul: ConsulLogo,
+    hashiCorpConsul: ConsulLogoAttr,
     hcp: HCPLogo,
     nomad: NomadLogo,
     packer: PackerLogo,
@@ -38,12 +42,13 @@ const logoDict = {
     tfc: TerraformCloudLogo,
     vagrant: VagrantLogo,
     vault: VaultLogo,
-    hashicorpvault: VaultLogoAttr,
+    hashiCorpVault: VaultLogoAttr,
     waypoint: WaypointLogo,
   },
   dark: {
     boundary: BoundaryLogoWhite,
     consul: ConsulLogoWhite,
+    hashiCorpConsul: ConsulLogoWhiteAttr,
     hcp: HCPLogoWhite,
     nomad: NomadLogoWhite,
     packer: PackerLogoWhite,
@@ -51,13 +56,13 @@ const logoDict = {
     tfc: TerraformCloudLogoWhite,
     vagrant: VagrantLogoWhite,
     vault: VaultLogoWhite,
-    hashicorpvault: VaultLogoAttrWhite,
+    hashiCorpVault: VaultLogoAttrWhite,
     waypoint: WaypointLogoWhite,
   },
 }
 
 function TitleLink({ text, url, product, Link, theme }) {
-  const Logo = logoDict[theme][text.replaceAll(/\s/g, '').toLowerCase()]
+  const Logo = logoDict[theme][camelCase(text)]
   return (
     <LinkWrap
       Link={Link}
