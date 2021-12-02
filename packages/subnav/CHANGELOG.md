@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.2.2
+
+### Patch Changes
+
+- [#445](https://github.com/hashicorp/react-components/pull/445) [`0e40ee3`](https://github.com/hashicorp/react-components/commit/0e40ee35397663da70d73e9fd4414b5576e7b557) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Fixes camel_case package inclusion
+
 ## 9.2.1
 
 ### Patch Changes
