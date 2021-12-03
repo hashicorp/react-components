@@ -152,9 +152,12 @@ export default class RemoteContentLoader implements DataLoader {
     ].join('/')
 
     const documentPromise = fetchDocument(this.opts.product, fullPath)
+
+    const navDataPath = this.opts.navDataPath || this.opts.basePath
+
     const navDataPromise = cachedFetchNavData(
       this.opts.product,
-      this.opts.basePath,
+      navDataPath,
       versionToFetch
     )
 
