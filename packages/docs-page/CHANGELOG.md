@@ -1,5 +1,16 @@
 # @hashicorp/react-docs-page
 
+## 14.9.0
+
+### Minor Changes
+
+- [#447](https://github.com/hashicorp/react-components/pull/447) [`68ab860`](https://github.com/hashicorp/react-components/commit/68ab860ae59f6df3b81a57eee953f6c33af3a75b) Thanks [@dstaley](https://github.com/dstaley)! - Hide UI elements that aren't useful when printing
+
+### Patch Changes
+
+- Updated dependencies [[`68ab860`](https://github.com/hashicorp/react-components/commit/68ab860ae59f6df3b81a57eee953f6c33af3a75b)]:
+  - @hashicorp/react-search@6.3.0
+
 ## 14.8.1
 
 ### Patch Changes

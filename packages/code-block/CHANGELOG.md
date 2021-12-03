@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 4.4.0
+
+### Minor Changes
+
+- [#447](https://github.com/hashicorp/react-components/pull/447) [`68ab860`](https://github.com/hashicorp/react-components/commit/68ab860ae59f6df3b81a57eee953f6c33af3a75b) Thanks [@dstaley](https://github.com/dstaley)! - Hide UI elements that aren't useful when printing
+
 ## 4.3.0
 
 ### Minor Changes
