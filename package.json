@@ -22,7 +22,7 @@
     "@hashicorp/platform-cms": "^0.1.0",
     "@hashicorp/platform-code-highlighting": "0.1.1",
     "@hashicorp/platform-docs-mdx": "0.1.1",
-    "@hashicorp/platform-nextjs-plugin": "0.2.0",
+    "@hashicorp/platform-nextjs-plugin": "1.0.1",
     "@hashicorp/platform-types": "^0.1.0",
     "@hashicorp/platform-util": "0.1.0",
     "@octokit/core": "^3.5.1",
@@ -67,9 +67,14 @@
   "simple-git-hooks": {
     "pre-commit": "npx next-hashicorp precommit"
   },
-  "workspaces": ["./packages/*"],
+  "workspaces": [
+    "./packages/*"
+  ],
   "private": true,
   "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": ["next-hashicorp format", "next-hashicorp lint"]
+    "*.+(js|jsx|ts|tsx)": [
+      "next-hashicorp format",
+      "next-hashicorp lint"
+    ]
   }
 }
