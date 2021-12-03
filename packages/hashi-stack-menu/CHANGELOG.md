@@ -1,5 +1,11 @@
 # @hashicorp/react-hashi-stack-menu
 
+## 2.1.1
+
+### Patch Changes
+
+- [#450](https://github.com/hashicorp/react-components/pull/450) [`d7dd95b`](https://github.com/hashicorp/react-components/commit/d7dd95bef67a28f15be95d81a94db10eb36ffa7c) Thanks [@EnMod](https://github.com/EnMod)! - Fixes imports in the `<StackGroup />` component
+
 ## 2.1.0
 
 ### Minor Changes
