@@ -24,13 +24,15 @@ interface BaseOpts {
 export function getStaticGenerationFunctions(
   opts:
     | ({
-        basePath: string
         strategy: 'remote'
+        basePath: string
+        /** An optional override when `basePath` doesn't match the nav-data file prefix */
+        navDataPath?: string
       } & BaseOpts)
     | ({
+        strategy: 'fs'
         localContentDir: string
         navDataFile: string
-        strategy: 'fs'
       } & BaseOpts)
 ): {
   getStaticPaths: GetStaticPaths

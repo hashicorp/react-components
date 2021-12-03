@@ -16,6 +16,8 @@ import { getPathsFromNavData } from '../get-paths-from-nav-data'
 
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
+  /** An optional override when `basePath` doesn't match the nav-data file prefix */
+  navDataPath?: string
   enabledVersionedDocs?: boolean
   remarkPlugins?: $TSFixMe[]
   mainBranch?: string // = 'main',
@@ -93,9 +95,12 @@ export default class RemoteContentLoader implements DataLoader {
       this.opts.product
     )
     const latest = versionMetadataList.find((e) => e.isLatest).version
+
+    const navDataPath = this.opts.navDataPath || this.opts.basePath
+
     // Fetch and parse navigation data
     return getPathsFromNavData(
-      (await cachedFetchNavData(this.opts.product, this.opts.basePath, latest))
+      (await cachedFetchNavData(this.opts.product, navDataPath, latest))
         .navData,
       this.opts.paramId
     )
@@ -147,9 +152,12 @@ export default class RemoteContentLoader implements DataLoader {
     ].join('/')
 
     const documentPromise = fetchDocument(this.opts.product, fullPath)
+
+    const navDataPath = this.opts.navDataPath || this.opts.basePath
+
     const navDataPromise = cachedFetchNavData(
       this.opts.product,
-      this.opts.basePath,
+      navDataPath,
       versionToFetch
     )
 
