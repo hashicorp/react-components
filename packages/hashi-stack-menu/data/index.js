@@ -101,7 +101,7 @@ export const DEFAULT_MENU_SECTIONS = [
           },
           {
             product: 'packer',
-            url: 'https://www.packer.io',
+            url: 'https://cloud.hashicorp.com/products/packer',
             iconSrc: require('@hashicorp/mktg-logos/product/packer/logomark/color.svg?include'),
             badge: 'beta',
           },
