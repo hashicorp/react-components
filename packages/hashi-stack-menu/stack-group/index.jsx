@@ -1,6 +1,6 @@
 import styles from './stack-group.module.css'
-import InlineSvg from '../../inline-svg'
-import LinkWrap from '../../link-wrap'
+import InlineSvg from '@hashicorp/react-inline-svg'
+import LinkWrap from '@hashicorp/react-link-wrap'
 import StackItem from '../stack-item'
 
 export default function StackGroup({ heading, description, items, cta }) {
