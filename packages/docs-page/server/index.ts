@@ -31,6 +31,11 @@ export function getStaticGenerationFunctions(
         localContentDir: string
         navDataFile: string
         strategy: 'fs'
+        /** Optional location of the partials directory
+         * relative to process.cwd().
+         * Passed to our resolveIncludes plugin.
+         * Defaults to "content/partials". */
+        localPartialsDir?: string
       } & BaseOpts)
 ): {
   getStaticPaths: GetStaticPaths
