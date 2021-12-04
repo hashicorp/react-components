@@ -18,8 +18,7 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   mainBranch?: string // = 'main',
   remarkPlugins?: $TSFixMe[]
   scope?: Record<string, $TSFixMe>
-  /** Location of partials relative to the cwd. Passed to our resolveIncludes plugin.  */
-  pathToPartials?: string // = 'content/partials'
+  pathToPartials?: string
 }
 
 export default class FileSystemLoader implements DataLoader {
