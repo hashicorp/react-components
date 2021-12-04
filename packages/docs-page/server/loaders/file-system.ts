@@ -18,6 +18,8 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   mainBranch?: string // = 'main',
   remarkPlugins?: $TSFixMe[]
   scope?: Record<string, $TSFixMe>
+  /** Location of partials relative to the cwd. Passed to our resolveIncludes plugin.  */
+  pathToPartials?: string // = 'content/partials'
 }
 
 export default class FileSystemLoader implements DataLoader {
@@ -43,6 +45,7 @@ export default class FileSystemLoader implements DataLoader {
       renderPageMdx(mdx, {
         remarkPlugins: this.opts.remarkPlugins,
         scope: this.opts.scope,
+        pathToPartials: this.opts.pathToPartials,
       })
     // Build the currentPath from page parameters
     const currentPath = params[this.opts.paramId]
