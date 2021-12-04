@@ -19,6 +19,8 @@ interface BaseOpts {
   revalidate?: number
   product: string
   scope?: Record<string, $TSFixMe>
+  /** Location of partials relative to the cwd. Passed to our resolveIncludes plugin.  */
+  pathToPartials?: string // = 'content/partials'
 }
 
 export function getStaticGenerationFunctions(
