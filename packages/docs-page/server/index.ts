@@ -35,7 +35,7 @@ export function getStaticGenerationFunctions(
          * relative to process.cwd().
          * Passed to our resolveIncludes plugin.
          * Defaults to "content/partials". */
-        pathToPartials?: string
+        localPartialsDir?: string
       } & BaseOpts)
 ): {
   getStaticPaths: GetStaticPaths

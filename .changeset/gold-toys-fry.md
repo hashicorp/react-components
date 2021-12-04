@@ -2,4 +2,4 @@
 '@hashicorp/react-docs-page': minor
 ---
 
-Exposes new, optional pathToPartials option for the filesystem loader.
+Exposes new, optional localPartialsDir option for the filesystem loader.

@@ -9,14 +9,14 @@ async function renderPageMdx(
     mdxContentHook = (c) => c,
     remarkPlugins = [],
     scope,
-    pathToPartials = 'content/partials',
+    localPartialsDir = 'content/partials',
   } = {}
 ) {
   const { data: frontMatter, content: rawContent } = grayMatter(mdxFileString)
   const content = mdxContentHook(rawContent)
   const mdxSource = await serialize(content, {
     mdxOptions: markdownDefaults({
-      resolveIncludes: path.join(process.cwd(), pathToPartials),
+      resolveIncludes: path.join(process.cwd(), localPartialsDir),
       addRemarkPlugins: remarkPlugins,
     }),
     scope,
