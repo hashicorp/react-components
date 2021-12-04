@@ -19,8 +19,6 @@ interface BaseOpts {
   revalidate?: number
   product: string
   scope?: Record<string, $TSFixMe>
-  /** Location of partials relative to the cwd. Passed to our resolveIncludes plugin.  */
-  pathToPartials?: string // = 'content/partials'
 }
 
 export function getStaticGenerationFunctions(
@@ -33,6 +31,8 @@ export function getStaticGenerationFunctions(
         localContentDir: string
         navDataFile: string
         strategy: 'fs'
+        /** Location of partials relative to the cwd. Passed to our resolveIncludes plugin.  */
+        pathToPartials?: string // = 'content/partials'
       } & BaseOpts)
 ): {
   getStaticPaths: GetStaticPaths
