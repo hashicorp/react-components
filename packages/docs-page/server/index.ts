@@ -31,6 +31,8 @@ export function getStaticGenerationFunctions(
         localContentDir: string
         navDataFile: string
         strategy: 'fs'
+        /** Location of partials relative to the cwd. Passed to our resolveIncludes plugin.  */
+        pathToPartials?: string // = 'content/partials'
       } & BaseOpts)
 ): {
   getStaticPaths: GetStaticPaths
