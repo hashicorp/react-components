@@ -3,6 +3,7 @@ const withSwingset = require('swingset')
 
 module.exports = withHashicorp({
   transpileModules: ['swingset', '@hashicorp/sentinel-embedded'],
+  nextOptimizedImages: true,
 })(
   withSwingset({
     componentsRoot: 'packages/*',
