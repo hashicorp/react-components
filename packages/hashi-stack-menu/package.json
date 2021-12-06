@@ -6,6 +6,7 @@
   "contributors": ["Jimmy Merritello"],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^6.0.1",
+    "@hashicorp/react-link-wrap": "^3.0.3",
     "slugify": "1.6.0"
   },
   "peerDependencies": {
