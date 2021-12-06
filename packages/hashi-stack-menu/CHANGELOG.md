@@ -1,5 +1,11 @@
 # @hashicorp/react-hashi-stack-menu
 
+## 2.1.2
+
+### Patch Changes
+
+- [#452](https://github.com/hashicorp/react-components/pull/452) [`d3f3d6c`](https://github.com/hashicorp/react-components/commit/d3f3d6c7f4ba739979109694fd18f1ad3101eee9) Thanks [@EnMod](https://github.com/EnMod)! - Add `react-link-wrap` as an explicit dep
+
 ## 2.1.1
 
 ### Patch Changes
