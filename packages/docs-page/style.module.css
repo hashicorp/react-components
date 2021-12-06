@@ -104,7 +104,9 @@ which is rendered into docs-sidenav */
   padding: 0 1rem;
 
   @media (--desktop-viewports) {
-    flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
     margin: 0;
     padding-left: 2rem;
     padding-right: 0;
