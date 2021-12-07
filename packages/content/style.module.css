@@ -10,6 +10,7 @@
   composes: codeInline from './styles/code-inline.module.css';
   composes: headings from './styles/headings.module.css';
   composes: hr from './styles/hr.module.css';
+  composes: iframe from './styles/iframe.module.css';
   composes: img from './styles/img.module.css';
   composes: olUlLists from './styles/ol-ul-lists.module.css';
   composes: p from './styles/p.module.css';

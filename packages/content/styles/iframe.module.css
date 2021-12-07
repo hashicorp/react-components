@@ -1,0 +1,6 @@
+.iframe {
+  & iframe:not([class]) {
+    margin: 1rem auto;
+    max-width: 100%;
+  }
+}
