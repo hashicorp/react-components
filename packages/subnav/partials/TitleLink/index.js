@@ -66,7 +66,7 @@ function TitleLink({ text, url, product, Link, theme }) {
   return (
     <LinkWrap
       Link={Link}
-      className={classNames(s.root, s[`brand-${product}`])}
+      className={classNames(s.root, s[`brand-${product}`], s[camelCase(text)])}
       href={url}
       title={text}
     >
