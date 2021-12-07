@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.10.0
+
+### Minor Changes
+
+- [#453](https://github.com/hashicorp/react-components/pull/453) [`eabad4b`](https://github.com/hashicorp/react-components/commit/eabad4bbbd1b1164d2d83c4bb2b9b56d6be5aaf3) Thanks [@zchsh](https://github.com/zchsh)! - Exposes new, optional localPartialsDir option for the filesystem loader.
+
 ## 14.9.0
 
 ### Minor Changes
