@@ -51,7 +51,7 @@ describe('<Search />', () => {
     )
     const input = screen.getByRole('searchbox')
     expect(input).toHaveAttribute('id', SEARCH_BOX_ID)
-    expect(input).toHaveAttribute('aria-activedescendant', '')
+    expect(input).not.toHaveAttribute('aria-activedescendant')
     expect(container.querySelector('.c-hits')).toBeNull()
   })
 })
