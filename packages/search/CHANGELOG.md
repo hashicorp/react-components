@@ -1,5 +1,11 @@
 # @hashicorp/react-search
 
+## 6.3.1
+
+### Patch Changes
+
+- [#462](https://github.com/hashicorp/react-components/pull/462) [`03d83a6`](https://github.com/hashicorp/react-components/commit/03d83a6552cb3120320ddb51d85a7bdb2121d286) Thanks [@dstaley](https://github.com/dstaley)! - Fix usage of aria-activedescendant property
+
 ## 6.3.0
 
 ### Minor Changes

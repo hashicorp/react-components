@@ -1,5 +1,16 @@
 # @hashicorp/react-markdown-page
 
+## 1.5.0
+
+### Minor Changes
+
+- [#461](https://github.com/hashicorp/react-components/pull/461) [`4270c8a`](https://github.com/hashicorp/react-components/commit/4270c8a67f73657094efd9efccd24122ba5a9c74) Thanks [@dstaley](https://github.com/dstaley)! - Update to latest version of @hashicorp/platform-markdown-utils
+
+### Patch Changes
+
+- Updated dependencies [[`e545db4`](https://github.com/hashicorp/react-components/commit/e545db419eb93597e576256c079ef971291f4786)]:
+  - @hashicorp/react-content@8.1.0
+
 ## 1.4.4
 
 ### Patch Changes
