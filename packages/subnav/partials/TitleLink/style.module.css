@@ -21,4 +21,11 @@
       height: 29px;
     }
   }
+
+  &.hashiCorpVault,
+  &.hashiCorpConsul {
+    & svg {
+      height: 40px;
+    }
+  }
 }
