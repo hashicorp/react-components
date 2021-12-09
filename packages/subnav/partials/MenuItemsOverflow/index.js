@@ -23,7 +23,13 @@ class MenuItemsOverflow extends React.Component {
     //  If we're not collapsed, and the click is outside the component,
     //  we should ensure that the modal closes
     const isClickOutside = !this.parentRef.current.contains(event.target)
-    if (isClickOutside) this.setState({ isCollapsed: true })
+    //  If we're not collapsed, and the click is on an anchor element with an
+    //  href attribute, we're likely performing a navigation, and should ensure
+    //  that the modal closes
+    const isClickNavigation = event.target.tagName === 'A' && event.target.href
+    if (isClickOutside || isClickNavigation) {
+      this.setState({ isCollapsed: true })
+    }
   }
 
   componentDidMount() {
