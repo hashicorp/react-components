@@ -1,5 +1,17 @@
 # @hashicorp/react-docs-page
 
+## 14.11.0
+
+### Minor Changes
+
+- [#461](https://github.com/hashicorp/react-components/pull/461) [`4270c8a`](https://github.com/hashicorp/react-components/commit/4270c8a67f73657094efd9efccd24122ba5a9c74) Thanks [@dstaley](https://github.com/dstaley)! - Update to latest version of @hashicorp/platform-markdown-utils
+
+### Patch Changes
+
+- Updated dependencies [[`03d83a6`](https://github.com/hashicorp/react-components/commit/03d83a6552cb3120320ddb51d85a7bdb2121d286), [`e545db4`](https://github.com/hashicorp/react-components/commit/e545db419eb93597e576256c079ef971291f4786)]:
+  - @hashicorp/react-search@6.3.1
+  - @hashicorp/react-content@8.1.0
+
 ## 14.10.0
 
 ### Minor Changes

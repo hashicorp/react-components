@@ -1,5 +1,15 @@
 # @hashicorp/react-subnav
 
+## 9.3.0
+
+### Minor Changes
+
+- [#460](https://github.com/hashicorp/react-components/pull/460) [`77b4b71`](https://github.com/hashicorp/react-components/commit/77b4b71c54ae54c621f3bc7e41e5ad580509670f) Thanks [@dstaley](https://github.com/dstaley)! - Automatically dismiss open overflow navigation dropdown menus when the user clicks on an anchor element
+
+### Patch Changes
+
+- [#457](https://github.com/hashicorp/react-components/pull/457) [`6590d66`](https://github.com/hashicorp/react-components/commit/6590d6617c0ffc695c3e3a10be6257c0a6b0a38a) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Increases attr logo sizing
+
 ## 9.2.2
 
 ### Patch Changes
