@@ -25,7 +25,7 @@ function CallToAction({
   }
   const hasLinks = links && links.length > 0
   if (hasLinks && links.filter((l) => !l.text || !l.url).length > 0) {
-    throw new Error('<CallToAction /> `links` must have both a title and a URL')
+    throw new Error('<CallToAction /> `links` must have both a "text" and a "url" prop')
   }
   return (
     <div className={classNames(s.root, s[`theme-${theme}`], className)}>
