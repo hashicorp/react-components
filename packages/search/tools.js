@@ -20,7 +20,10 @@ async function indexDocsContent({
   },
   contentDir = path.join(projectRoot, 'content'),
   filesPattern = '**/*.mdx',
-  globOptions = { ignore: path.join(projectRoot, 'content', 'partials/**/*') },
+  globOptions = {
+    ignore: path.join(projectRoot, 'content', 'partials/**/*'),
+    follow: true,
+  },
   frontmatterKeys = DEFAULT_FRONTMATTER_KEYS,
   transformObjectId = (id) => id,
 } = {}) {
