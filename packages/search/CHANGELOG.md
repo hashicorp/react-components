@@ -1,5 +1,11 @@
 # @hashicorp/react-search
 
+## 6.4.0
+
+### Minor Changes
+
+- [#463](https://github.com/hashicorp/react-components/pull/463) [`dee020a`](https://github.com/hashicorp/react-components/commit/dee020a3b9305e5b4bb59a4381d3c3dfa7c244e1) Thanks [@dstaley](https://github.com/dstaley)! - Follow symlinks when generating search objects
+
 ## 6.3.1
 
 ### Patch Changes
