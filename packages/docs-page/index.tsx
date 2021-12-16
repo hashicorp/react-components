@@ -49,7 +49,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   githubFileUrl,
   product: { name, slug },
   showEditPage = true,
-  showVersionSelect = process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true',
+  showVersionSelect,
   versions,
   algoliaConfig,
 }) => {
@@ -174,7 +174,7 @@ export default function DocsPage({
   product,
   baseRoute,
   showEditPage = true,
-  showVersionSelect = false,
+  showVersionSelect = process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true',
   additionalComponents,
   algoliaConfig,
   staticProps: {
