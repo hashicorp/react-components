@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.12.0
+
+### Minor Changes
+
+- [#465](https://github.com/hashicorp/react-components/pull/465) [`b19d478`](https://github.com/hashicorp/react-components/commit/b19d47823a4dee52a740469bfc0328ddd0898127) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - move `showVersionSelect` default value
+
 ## 14.11.0
 
 ### Minor Changes
