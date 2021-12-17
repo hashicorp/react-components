@@ -134,6 +134,7 @@ export interface GenerateStaticPropsContext {
   scope?: any // optional, I think?
   paramId?: string
   basePath: string // 'docs'
+  githubFileUrl?: (path: string) => string
 }
 
 /**
@@ -148,6 +149,7 @@ export function generateStaticProps({
   remarkPlugins,
   scope,
   mainBranch,
+  githubFileUrl,
 }: GenerateStaticPropsContext) {
   const loader = new FileSystemLoader({
     navDataFile,
@@ -157,6 +159,7 @@ export function generateStaticProps({
     scope,
     remarkPlugins,
     mainBranch,
+    githubFileUrl,
   })
 
   return loader.loadStaticProps({ params })
