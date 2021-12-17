@@ -33,6 +33,10 @@
 .submenuItem {
   composes: g-type-body-small-strong from global;
   color: var(--menu-item-text-color); /* from theme.module.css */
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .submenuModal {
