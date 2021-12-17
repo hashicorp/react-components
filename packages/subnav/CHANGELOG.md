@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.3.1
+
+### Patch Changes
+
+- [#467](https://github.com/hashicorp/react-components/pull/467) [`a3b8726`](https://github.com/hashicorp/react-components/commit/a3b87263b36b1887b0c915354b973ae1a52a0ac9) Thanks [@EnMod](https://github.com/EnMod)! - Adds an underline to elements with the `submenuItem` class on hover.
+
 ## 9.3.0
 
 ### Minor Changes
