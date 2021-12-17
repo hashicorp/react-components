@@ -1,5 +1,11 @@
 # @hashicorp/react-version-select
 
+## 0.3.0
+
+### Minor Changes
+
+- [#468](https://github.com/hashicorp/react-components/pull/468) [`22a02a4`](https://github.com/hashicorp/react-components/commit/22a02a47f5dcac983e98f0f3096cf0a785447f7d) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Update `version-select` to handle multipart basePath's, such as `sentinel/intro`
+
 ## 0.2.2
 
 ### Patch Changes

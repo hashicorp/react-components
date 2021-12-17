@@ -1,5 +1,18 @@
 # @hashicorp/react-docs-page
 
+## 14.13.0
+
+### Minor Changes
+
+- [#468](https://github.com/hashicorp/react-components/pull/468) [`22a02a4`](https://github.com/hashicorp/react-components/commit/22a02a47f5dcac983e98f0f3096cf0a785447f7d) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Update `version-select` to handle multipart basePath's, such as `sentinel/intro`
+
+* [#469](https://github.com/hashicorp/react-components/pull/469) [`e0dadee`](https://github.com/hashicorp/react-components/commit/e0dadeed30e0d10290041d0229a726e5cb036b32) Thanks [@dstaley](https://github.com/dstaley)! - Allow caller to override githubFileUrl generation
+
+### Patch Changes
+
+- Updated dependencies [[`22a02a4`](https://github.com/hashicorp/react-components/commit/22a02a47f5dcac983e98f0f3096cf0a785447f7d)]:
+  - @hashicorp/react-version-select@0.3.0
+
 ## 14.12.0
 
 ### Minor Changes
