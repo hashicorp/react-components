@@ -23,7 +23,6 @@ const NextRouterDebugger = ({ children }) => {
     } as any,
     asPath: asPath,
     push(url) {
-      // console.log(url)
       setAsPath(url as string)
       return Promise.resolve(true)
     },
