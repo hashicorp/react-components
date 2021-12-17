@@ -46,5 +46,5 @@ export function getTargetPath({
     .replace(VERSION_REGEXP, '') // strip version
     .replace(LEADING_TRAILING_SLASHES_REGEXP, '') // strip leading and trailing slashes
 
-  return '/' + basePath + '/' + version + '/' + rest
+  return '/' + basePath + '/' + version + (rest ? `/${rest}` : '')
 }
