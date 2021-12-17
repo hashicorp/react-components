@@ -2,19 +2,22 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import SelectInput from '@hashicorp/react-select-input'
 
-import { getVersionFromPath, removeVersionFromPath } from './util'
+import {
+  getVersionFromPath,
+  removeVersionFromPath,
+  getTargetPath,
+} from './util'
 
 interface Props {
   versions: { label: string; name: string }[]
+  basePath: string
 }
 
 /**
  * Component which accepts a list of versions and renders a select component. Navigates to the new version on select
  */
-const VersionSelect: React.ComponentType<Props> = ({ versions }) => {
+const VersionSelect: React.ComponentType<Props> = ({ versions, basePath }) => {
   const { asPath, push } = useRouter()
-  const pathParts = asPath.split('/')
-
   const version = getVersionFromPath(asPath)
 
   const onVersionSelect = (newVersion: string) => {
@@ -36,14 +39,12 @@ const VersionSelect: React.ComponentType<Props> = ({ versions }) => {
     // If selecting a version...
     if (!version) {
       // While on latest,
-      // Splice version in to path; Navigate
-      pathParts.splice(2, 0, newVersion)
-      return push(pathParts.join('/'))
+      const target = getTargetPath({ basePath, asPath, version: newVersion })
+      return push(target)
     } else {
       // While on a different version,
-      // Replace prev version with next version; Navigate
-      pathParts.splice(2, 1, newVersion)
-      return push(pathParts.join('/'))
+      const target = getTargetPath({ basePath, asPath, version: newVersion })
+      return push(target)
     }
   }
 
