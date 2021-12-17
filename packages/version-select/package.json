@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-version-select",
   "description": "A component to handle selecting a version of docs to navigate to.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": "HashiCorp",
   "contributors": ["Kevin Wang", "Bryce Kalow"],
   "dependencies": {
