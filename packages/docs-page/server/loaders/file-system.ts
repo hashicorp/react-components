@@ -19,6 +19,7 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   remarkPlugins?: $TSFixMe[]
   scope?: Record<string, $TSFixMe>
   localPartialsDir?: string
+  githubFileUrl?: (path: string) => string
 }
 
 export default class FileSystemLoader implements DataLoader {
@@ -70,7 +71,9 @@ export default class FileSystemLoader implements DataLoader {
     const normalizedFilePath = navNode.filePath
       .split(path.sep)
       .join(path.posix.sep)
-    const githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/website/${normalizedFilePath}`
+    const githubFileUrl = this.opts.githubFileUrl
+      ? this.opts.githubFileUrl(normalizedFilePath)
+      : `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/website/${normalizedFilePath}`
     // Return all the props
     return {
       currentPath,

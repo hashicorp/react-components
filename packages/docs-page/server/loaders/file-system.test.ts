@@ -57,4 +57,39 @@ describe('FileSystemLoader', () => {
     `
     )
   })
+
+  test('uses provided githubFileUrl if provided', async () => {
+    const l = new FileSystemLoader({
+      navDataFile: 'test',
+      localContentDir: CONTENT_DIR,
+      product: 'waypoint',
+      githubFileUrl(p) {
+        return `https://hashicorp.com/${p}`
+      },
+    })
+    const props = await l.loadStaticProps({ params: {} })
+
+    expect(props).toMatchInlineSnapshot(
+      {
+        mdxSource: { compiledSource: expect.any(String) },
+        navData: expect.any(Array),
+      },
+      `
+      Object {
+        "currentPath": "",
+        "frontMatter": Object {
+          "description": "Welcome to the intro guide to Vault! This guide is the best place to start with Vault. We cover what Vault is, what problems it can solve, how it compares to existing software, and contains a quick start for using Vault.",
+          "page_title": "Introduction",
+        },
+        "githubFileUrl": "https://hashicorp.com/packages/docs-page/server/__fixtures__/index.mdx",
+        "mdxSource": Object {
+          "compiledSource": Any<String>,
+          "scope": Object {},
+        },
+        "navData": Any<Array>,
+        "versions": Array [],
+      }
+    `
+    )
+  })
 })
