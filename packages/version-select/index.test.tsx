@@ -36,7 +36,9 @@ describe('<VersionSelect />', () => {
   })
 
   it('should render a combobox', () => {
-    const { getByRole } = render(<VersionSelect {...defaultProps} />)
+    const { getByRole } = render(
+      <VersionSelect {...defaultProps} basePath={'docs'} />
+    )
     const combobox = getByRole('combobox')
 
     expect(combobox).toBeInTheDocument()
@@ -44,7 +46,7 @@ describe('<VersionSelect />', () => {
 
   it('should render options', () => {
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'docs'} />
     )
 
     const combobox = getByRole('combobox')
@@ -63,7 +65,9 @@ describe('<VersionSelect />', () => {
       } as unknown) as Router
     })
 
-    const { getByRole, rerender } = render(<VersionSelect {...defaultProps} />)
+    const { getByRole, rerender } = render(
+      <VersionSelect {...defaultProps} basePath={'docs'} />
+    )
     expect(getByRole('button')).toHaveTextContent('v0.5.x (latest)')
 
     // simulate navigation to v0.4.x
@@ -74,7 +78,7 @@ describe('<VersionSelect />', () => {
       } as unknown) as Router
     })
 
-    rerender(<VersionSelect {...defaultProps} />)
+    rerender(<VersionSelect {...defaultProps} basePath={'docs'} />)
     expect(getByRole('button')).toHaveTextContent('v0.4.x')
 
     // simulate browser-back to latest
@@ -85,7 +89,7 @@ describe('<VersionSelect />', () => {
       } as unknown) as Router
     })
 
-    rerender(<VersionSelect {...defaultProps} />)
+    rerender(<VersionSelect {...defaultProps} basePath={'docs'} />)
     expect(getByRole('button')).toHaveTextContent('v0.5.x (latest)')
   })
 
@@ -100,7 +104,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'commands'} />
     )
     const index = 1
 
@@ -124,7 +128,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'docs'} />
     )
     const index = 0
 
@@ -148,7 +152,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'commands'} />
     )
     const index = 2
 
@@ -175,7 +179,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'docs'} />
     )
     const index = 2
 
@@ -205,7 +209,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'docs'} />
     )
     const index = 0
 
@@ -232,7 +236,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'docs'} />
     )
     const index = 2
 
@@ -262,7 +266,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'docs'} />
     )
     const index = 0
 
@@ -291,7 +295,7 @@ describe('<VersionSelect />', () => {
     })
 
     const { getByRole, getAllByRole } = render(
-      <VersionSelect {...defaultProps} />
+      <VersionSelect {...defaultProps} basePath={'docs'} />
     )
     const index = VERSIONS.findIndex((v) => v.name === currentVersion)
 

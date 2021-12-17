@@ -14,16 +14,15 @@ const StateViewer = () => {
 }
 
 const NextRouterDebugger = ({ children }) => {
-  const [asPath, setAsPath] = useState('/docs/some/nested/article')
+  const [asPath, setAsPath] = useState('/sentinel/intro/some/nested/article')
   const r = {
-    route: '/docs/[[...page]]',
-    pathname: '/docs/[[...page]]',
+    route: '/sentinel/intro[[...page]]',
+    pathname: '/sentinel/intro[[...page]]',
     query: {
       page: ['some', 'nested', 'article'],
     } as any,
     asPath: asPath,
     push(url) {
-      console.log(url)
       setAsPath(url as string)
       return Promise.resolve(true)
     },

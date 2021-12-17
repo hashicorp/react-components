@@ -76,7 +76,7 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
 
   const versionSelect = showVersionSelect ? (
     <div className={s.versionSelect}>
-      <VersionSelect versions={versions} />
+      <VersionSelect versions={versions} basePath={baseRoute} />
     </div>
   ) : null
 

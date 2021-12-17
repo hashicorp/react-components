@@ -1,13 +1,17 @@
-import { getVersionFromPath, removeVersionFromPath } from './util'
+import {
+  getVersionFromPath,
+  removeVersionFromPath,
+  getTargetPath,
+} from './util'
 
 describe('getVersionFromPath', () => {
   it('should return the version if it is present', () => {
     {
       const path =
-        'https://waypointproject.io/docs/v10.2.4-canary.6/waypoint-hcl/variables/deploy'
+        'https://waypointproject.io/docs/v10.2.x/waypoint-hcl/variables/deploy'
 
       const version = getVersionFromPath(path)
-      expect(version).toEqual('v10.2.4-canary.6')
+      expect(version).toEqual('v10.2.x')
     }
 
     {
@@ -54,7 +58,7 @@ describe('removeVersionFromPath', () => {
   it('should return a cleaned path', () => {
     {
       const path =
-        'https://waypointproject.io/docs/v10.2.4-canary.6/waypoint-hcl/variables/deploy'
+        'https://waypointproject.io/docs/v10.2.x/waypoint-hcl/variables/deploy'
 
       const cleanedPath = removeVersionFromPath(path)
       expect(cleanedPath).toEqual(
@@ -87,5 +91,59 @@ describe('removeVersionFromPath', () => {
     expect(cleanedPath).toEqual(
       'https://waypointproject.io/docs/waypoint-hcl/variables/deploy'
     )
+  })
+})
+
+describe('getTargetPath', () => {
+  describe('with a nested path', () => {
+    it('should return a target path while on "latest"', () => {
+      {
+        const input = {
+          basePath: 'sentinel/intro',
+          asPath: '/sentinel/intro/some/nested/article',
+          version: 'v1.10.x',
+        }
+        const target = getTargetPath(input)
+        expect(target).toEqual('/sentinel/intro/v1.10.x/some/nested/article')
+      }
+    })
+
+    it('should return a target path while on an older version', () => {
+      {
+        const input = {
+          basePath: 'sentinel/intro',
+          asPath: '/sentinel/intro/v1.8.x/some/nested/article',
+          version: 'v1.10.x',
+        }
+        const target = getTargetPath(input)
+        expect(target).toEqual('/sentinel/intro/v1.10.x/some/nested/article')
+      }
+    })
+  })
+
+  describe('with a non-nested path', () => {
+    it('should return a target path while on "latest"', () => {
+      {
+        const input = {
+          basePath: 'sentinel/intro',
+          asPath: '/sentinel/intro',
+          version: 'v1.10.x',
+        }
+        const target = getTargetPath(input)
+        expect(target).toEqual('/sentinel/intro/v1.10.x')
+      }
+    })
+
+    it('should return a target path while on an older version', () => {
+      {
+        const input = {
+          basePath: 'sentinel/intro',
+          asPath: '/sentinel/intro/v1.8.x',
+          version: 'v1.10.x',
+        }
+        const target = getTargetPath(input)
+        expect(target).toEqual('/sentinel/intro/v1.10.x')
+      }
+    })
   })
 })
