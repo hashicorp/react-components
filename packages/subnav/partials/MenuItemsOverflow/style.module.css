@@ -50,4 +50,8 @@
   padding: 4px 0;
   line-height: 1.6em;
   color: var(--menu-item-text-color); /* from theme.module.css */
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
