@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.5.3
+
+### Patch Changes
+
+- [#439](https://github.com/hashicorp/react-components/pull/439) [`da6398a`](https://github.com/hashicorp/react-components/commit/da6398a83ff33556d34bca71341a237bb579b836) Thanks [@EnMod](https://github.com/EnMod)! - Reduce margin below the download cards partial
+
 ## 2.5.2
 
 ### Patch Changes

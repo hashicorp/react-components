@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.3.2
+
+### Patch Changes
+
+- [#472](https://github.com/hashicorp/react-components/pull/472) [`1ec3708`](https://github.com/hashicorp/react-components/commit/1ec3708858aac94f3083d1d00663de7e7de27541) Thanks [@EnMod](https://github.com/EnMod)! - Add support for adding the HashiCorp primary logo in TitleLink via the 'hashicorp' string, similarly to other products.
+
 ## 9.3.1
 
 ### Patch Changes
