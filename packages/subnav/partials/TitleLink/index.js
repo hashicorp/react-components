@@ -6,6 +6,7 @@ import classNames from 'classnames'
 /* main logos, for light theme */
 import ConsulLogo from '@hashicorp/mktg-logos/product/consul/primary/color.svg?include'
 import ConsulLogoAttr from '@hashicorp/mktg-logos/product/consul/primary/attributed_color.svg?include'
+import HashiCorpLogo from '@hashicorp/mktg-logos/corporate/hashicorp/primary/black.svg?include'
 import HCPLogo from '@hashicorp/mktg-logos/product/hcp/primary/black.svg?include'
 import NomadLogo from '@hashicorp/mktg-logos/product/nomad/primary/color.svg?include'
 import PackerLogo from '@hashicorp/mktg-logos/product/packer/primary/color.svg?include'
@@ -19,6 +20,7 @@ import TerraformCloudLogo from '@hashicorp/mktg-logos/product/terraform-cloud/pr
 /* white logos, for dark theme */
 import ConsulLogoWhite from '@hashicorp/mktg-logos/product/consul/primary/colorwhite.svg?include'
 import ConsulLogoWhiteAttr from '@hashicorp/mktg-logos/product/consul/primary/attributed_colorwhite.svg?include'
+import HashiCorpLogoWhite from '@hashicorp/mktg-logos/corporate/hashicorp/primary/white.svg?include'
 import HCPLogoWhite from '@hashicorp/mktg-logos/product/hcp/primary/white.svg?include'
 import NomadLogoWhite from '@hashicorp/mktg-logos/product/nomad/primary/colorwhite.svg?include'
 import PackerLogoWhite from '@hashicorp/mktg-logos/product/packer/primary/colorwhite.svg?include'
@@ -35,6 +37,7 @@ const logoDict = {
     boundary: BoundaryLogo,
     consul: ConsulLogo,
     hashiCorpConsul: ConsulLogoAttr,
+    hashicorp: HashiCorpLogo,
     hcp: HCPLogo,
     nomad: NomadLogo,
     packer: PackerLogo,
@@ -48,6 +51,7 @@ const logoDict = {
   dark: {
     boundary: BoundaryLogoWhite,
     consul: ConsulLogoWhite,
+    hashicorp: HashiCorpLogoWhite,
     hashiCorpConsul: ConsulLogoWhiteAttr,
     hcp: HCPLogoWhite,
     nomad: NomadLogoWhite,
