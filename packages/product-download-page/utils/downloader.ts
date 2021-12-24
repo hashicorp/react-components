@@ -27,11 +27,9 @@ export function prettyArch(arch: string): string {
     case 'i386':
     case '686':
     case '386':
-      return '32-bit'
     case 'x86_64':
     case '86_64':
     case 'amd64':
-      return '64-bit'
     default:
       if (/-/.test(arch)) {
         const parts = arch.split(/-(.+)/)
