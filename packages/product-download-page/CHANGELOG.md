@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.6.0
+
+### Minor Changes
+
+- [#474](https://github.com/hashicorp/react-components/pull/474) [`b05a1a5`](https://github.com/hashicorp/react-components/commit/b05a1a5b9cd3e2acd20d0fd784e4f83a69a193f4) Thanks [@jescalan](https://github.com/jescalan)! - change wording on 32 and 64 bit downloads
+
 ## 2.5.3
 
 ### Patch Changes
