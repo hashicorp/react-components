@@ -1,15 +1,21 @@
 import { GetStaticPropsResult } from 'next'
 import { ReleasesAPIResponse } from '.'
+import { makeFetchWithRetry } from './utils/fetch-with-retry'
+
+const fetchWithRetry = makeFetchWithRetry(fetch, { retries: 3, delay: 1000 })
 
 export function generateStaticProps({
   product,
   latestVersion,
 }: Props): Promise<GetStaticPropsResult<{ releases: ReleasesAPIResponse }>> {
-  return fetch(`https://releases.hashicorp.com/${product}/index.json`, {
-    headers: {
-      'Cache-Control': 'no-cache',
-    },
-  })
+  return fetchWithRetry(
+    `https://releases.hashicorp.com/${product}/index.json`,
+    {
+      headers: {
+        'Cache-Control': 'no-cache',
+      },
+    }
+  )
     .then((res) => res.json())
     .then((result) => {
       return {
