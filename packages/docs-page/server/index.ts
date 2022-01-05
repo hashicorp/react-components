@@ -99,7 +99,7 @@ export interface GenerateStaticPathsContext {
   /**
    * @example { name: 'Waypoint', slug: 'waypoint' }
    */
-  product?: { name: string; slug: string }
+  product: { name: string; slug: string }
   /** @example 'docs' */
   basePath?: string
 }
@@ -117,7 +117,7 @@ export function generateStaticPaths({
   const loader = new FileSystemLoader({
     navDataFile,
     localContentDir,
-    product: product?.slug ?? '',
+    product: product.slug,
     paramId,
   })
 
