@@ -2,6 +2,9 @@ function sleep(delay: number) {
   return new Promise((resolve) => setTimeout(resolve, delay))
 }
 
+/**
+ * Creates a wrapped fetch implementation with retries and (optional) retry delays baked-in.
+ */
 export function makeFetchWithRetry(
   wrappedFetch: typeof fetch,
   { retries, delay }: { retries: number; delay?: number }
