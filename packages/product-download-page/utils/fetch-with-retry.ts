@@ -30,5 +30,8 @@ export function makeFetchWithRetry(
       const result = await tryFetch()
       if (result) return result
     }
+
+    // should never actually be returned, but is required to satisfy TS
+    return new Response()
   }
 }
