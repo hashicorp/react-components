@@ -59,7 +59,7 @@ export function mapVersionList(
 ): VersionSelectItem[] {
   const versions = list
     .sort((a, b) =>
-      semver.compare(semver.coerce(b.version), semver.coerce(a.version))
+      semver.compare(semver.coerce(b.version)!, semver.coerce(a.version)!)
     )
     .map((e) => {
       const { isLatest, version, display } = e
@@ -105,9 +105,10 @@ export default class RemoteContentLoader implements DataLoader {
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
     // Build the currentPath from page parameters
-    const currentPath = params[this.opts.paramId]
-      ? (params[this.opts.paramId] as string[]).join('/')
-      : ''
+    const currentPath =
+      params && this.opts.paramId && params[this.opts.paramId]
+        ? (params[this.opts.paramId] as string[]).join('/')
+        : ''
 
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
@@ -117,18 +118,17 @@ export default class RemoteContentLoader implements DataLoader {
 
     // given: v0.5.x (latest), v0.4.x, v0.3.x
     const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
-      params[this.opts.paramId] as string[]
+      params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
-    )
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
     )
 
-    const latestVersion = versionMetadataList.find((e) => e.isLatest)?.version
+    const latestVersion = versionMetadataList.find((e) => e.isLatest)!.version
 
     let versionToFetch = latestVersion
 
@@ -164,14 +164,14 @@ export default class RemoteContentLoader implements DataLoader {
     // Construct the githubFileUrl, used for "Edit this page" link
 
     // Must be serializeable
-    let githubFileUrl = null
+    let githubFileUrl: string | null = null
 
     if (document.githubFile) {
       // Link latest version to `main`
       // Hide link on older versions
       const isLatest = versionMetadataList.find(
         (e) => e.version === document.version
-      ).isLatest
+      )!.isLatest
       if (isLatest) {
         // GitHub only allows you to modify a file if you are on a branch, not a commit
         githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/${document.githubFile}`

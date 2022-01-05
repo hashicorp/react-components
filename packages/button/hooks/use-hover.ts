@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect, MutableRefObject } from 'react'
 
-function useHover(): [
-  hoverRef: MutableRefObject<$TSFixMe>,
+function useHover<T extends HTMLElement>(): [
+  hoverRef: MutableRefObject<T | null>,
   isHovered: boolean
 ] {
   const [value, setValue] = useState(false)
 
-  const ref = useRef(null)
+  const ref = useRef<T>(null)
   const handleMouseOver = () => setValue(true)
   const handleMouseOut = () => setValue(false)
 

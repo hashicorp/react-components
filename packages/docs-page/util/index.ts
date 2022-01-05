@@ -1,4 +1,5 @@
-const REGEX = /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/i
+const REGEX =
+  /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/i
 
 /**
  * Given an array of strings, returns a tuple of
@@ -8,7 +9,7 @@ const REGEX = /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z
  * @returns {[string, string[]]} [version, strippedParams]
  */
 export const stripVersionFromPathParams = (
-  pathParams = []
+  pathParams: string[] = []
 ): [string, string[]] => {
   const index = pathParams.findIndex((e) => REGEX.test(e))
   let version = 'latest'

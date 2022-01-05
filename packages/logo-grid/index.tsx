@@ -88,7 +88,7 @@ function LogoGrid({
               // the hashicorp-www-next project. We should likely clarify this.
               <a
                 className={s.tileClickable}
-                href={`/integrations/${company.integrationPage.slug}`}
+                href={`/integrations/${company.integrationPage!.slug}`}
               >
                 <TileImage />
               </a>
@@ -112,7 +112,7 @@ function LogoGrid({
 
 function TileWithTooltip({ children, company, theme }) {
   const [showDialog, setShowDialog] = useState(false)
-  const triggerRef = useRef(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
 
   return (
     <>

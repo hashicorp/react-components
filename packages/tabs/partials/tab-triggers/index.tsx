@@ -27,10 +27,10 @@ function TabTriggers({
   className,
   theme = 'light',
 }: TabTriggersProps): React.ReactElement {
-  const overflowBaseRef = useRef(null)
-  const overflowContentRef = useRef(null)
+  const overflowBaseRef = useRef<HTMLDivElement>(null)
+  const overflowContentRef = useRef<HTMLDivElement>(null)
   const windowSize = useWindowSize()
-  const [scrollRef, scrollLeft] = useScrollLeft()
+  const [scrollRef, scrollLeft] = useScrollLeft<HTMLDivElement>()
   const [hiddenArrows, setHiddenArrows] = useState({
     prev: true,
     next: true,
@@ -43,9 +43,11 @@ function TabTriggers({
   useEffect(() => {
     //  If content width exceeds available space,
     //  set to overflow-friendly styling
-    const contentWidth = overflowContentRef.current.offsetWidth
-    const availableSpace = overflowBaseRef.current.offsetWidth
-    setHasOverflow(contentWidth > availableSpace)
+    if (overflowContentRef.current && overflowBaseRef.current) {
+      const contentWidth = overflowContentRef.current.offsetWidth
+      const availableSpace = overflowBaseRef.current.offsetWidth
+      setHasOverflow(contentWidth > availableSpace)
+    }
   }, [scrollRef, windowSize])
 
   /**
@@ -61,7 +63,7 @@ function TabTriggers({
    */
   useEffect(() => {
     // Determine which arrows to show
-    const { scrollLeft, scrollWidth, offsetWidth } = scrollRef.current
+    const { scrollLeft, scrollWidth, offsetWidth } = scrollRef.current!
     const maxScrollLeft = scrollWidth - offsetWidth
     const hidePrev = scrollLeft === 0
     const hideNext = scrollLeft >= maxScrollLeft
@@ -77,22 +79,29 @@ function TabTriggers({
   const updateScrollOffset = useCallback(
     (targetTabIdx) => {
       const scrollElem = scrollRef.current
-      // Determine where to scroll to
-      let newScrollLeft
-      if (targetTabIdx === 0) {
-        // If first tab, scroll to start of container
-        newScrollLeft = -1
-      } else {
-        // Otherwise, calculate the midpoint of the active tab trigger
-        const targetSelector = `[data-tabindex='${targetTabIdx}']`
-        const targetElem = scrollElem.querySelector(targetSelector)
-        const targetMidpoint =
-          targetElem.offsetLeft + targetElem.offsetWidth / 2
-        newScrollLeft = targetMidpoint - scrollElem.offsetWidth / 2
+      if (scrollElem) {
+        // Determine where to scroll to
+        let newScrollLeft
+        if (targetTabIdx === 0) {
+          // If first tab, scroll to start of container
+          newScrollLeft = -1
+        } else {
+          // Otherwise, calculate the midpoint of the active tab trigger
+          const targetSelector = `[data-tabindex='${targetTabIdx}']`
+          const targetElem = scrollElem.querySelector(
+            targetSelector
+          ) as HTMLElement | null
+          if (targetElem) {
+            const targetMidpoint =
+              targetElem.offsetLeft + targetElem.offsetWidth / 2
+            newScrollLeft = targetMidpoint - scrollElem.offsetWidth / 2
+          }
+        }
+        // Update the scroll position
+        const windowElem = (scrollElem.closest('html')!.parentNode! as Document)
+          .defaultView
+        smoothScroll(windowElem, scrollElem, { x: newScrollLeft })
       }
-      // Update the scroll position
-      const windowElem = scrollElem.closest('html').parentNode.defaultView
-      smoothScroll(windowElem, scrollElem, { x: newScrollLeft })
     },
     [scrollRef]
   )

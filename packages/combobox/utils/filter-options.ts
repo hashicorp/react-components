@@ -9,5 +9,5 @@ export default function filterOptions({ term, options }: OptionMatchParam) {
     const isValueMatch = fuzzysearch(term.toLowerCase(), item.toLowerCase())
     if (isValueMatch) return acc.concat(item)
     return acc
-  }, [])
+  }, [] as string[])
 }

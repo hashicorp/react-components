@@ -48,9 +48,10 @@ export default class FileSystemLoader implements DataLoader {
         localPartialsDir: this.opts.localPartialsDir,
       })
     // Build the currentPath from page parameters
-    const currentPath = params[this.opts.paramId]
-      ? (params[this.opts.paramId] as string[]).join('/')
-      : ''
+    const currentPath =
+      params && this.opts.paramId && params[this.opts.paramId]
+        ? (params[this.opts.paramId] as string[]).join('/')
+        : ''
     //  Read in the nav data, and resolve local filePaths
     const navData = await resolveNavData(
       this.opts.navDataFile,

@@ -1,4 +1,4 @@
-import React, { useRef, MutableRefObject } from 'react'
+import React, { useRef, RefObject } from 'react'
 import { useRect } from '@reach/rect'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Portal from '@reach/portal'
@@ -18,7 +18,7 @@ interface PopoverTooltipProps {
   /** Whether to show the popover or not. */
   shown: boolean
   /** Ref that points to the element that triggered the dialog. */
-  triggerRef: MutableRefObject<$TSFixMe>
+  triggerRef: RefObject<HTMLElement>
   /** */
   arrowSize?: number
   /** Minimum distance in pixels that the popover should be from the viewport edge.  */
@@ -37,7 +37,7 @@ function PopoverTooltip({
   setIsShown,
 }: PopoverTooltipProps): React.ReactElement {
   const triggerRect = useRect(triggerRef, { observe: true })
-  const popoverRef = useRef()
+  const popoverRef = useRef<HTMLDivElement | null>(null)
   useOnClickOutside([triggerRef, popoverRef], () => setIsShown(false))
   useOnFocusOutside(popoverRef, () => setIsShown(false))
 
@@ -66,7 +66,7 @@ function PopoverTooltip({
           </Popover>
           <DialogArrow
             shown={true}
-            triggerRect={triggerRect}
+            triggerRect={triggerRect!}
             collisionBuffer={collisionBuffer}
             arrowSize={arrowSize}
             theme={theme}
@@ -130,7 +130,7 @@ function DialogArrow({
   arrowSize: number
   /** Arrow coloration  */
   theme: 'light' | 'dark'
-}): React.ReactElement {
+}): React.ReactElement | null {
   if (!shown) return null
   const arrowLeft = triggerRect
     ? `${Math.min(

@@ -65,22 +65,25 @@ function Button({
   size = 'medium',
   ...attrs
 }: ButtonProps): React.ReactElement {
-  const [hoverRef, isHovered] = useHover()
+  const [hoverRef, isHovered] = useHover<
+    HTMLAnchorElement & HTMLButtonElement
+  >()
   const themeObj = normalizeButtonTheme(theme)
   const { themeClass } = useProductMeta(themeObj.brand)
   const gaSlug = slugify(title, { lower: true })
   const isExternal = url && (linkType === 'outbound' || external)
   const Elem = url ? 'a' : 'button'
-  const iconProps = linkTypeToIcon[linkType]
-    ? ({
-        svg: linkTypeToIcon[linkType],
-        position: icon?.position || 'right',
-        animationId: linkType,
-        isAnimated: icon?.isAnimated || true,
-        isHovered,
-        size,
-      } as IconProps)
-    : { ...icon, position: icon?.position || 'right', size, isHovered }
+  const iconProps =
+    linkType && linkTypeToIcon[linkType]
+      ? ({
+          svg: linkTypeToIcon[linkType],
+          position: icon?.position || 'right',
+          animationId: linkType,
+          isAnimated: icon?.isAnimated || true,
+          isHovered,
+          size,
+        } as IconProps)
+      : { ...icon, position: icon?.position || 'right', size, isHovered }
   const hasIcon = iconProps && iconProps.svg
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'
@@ -106,9 +109,9 @@ function Button({
       aria-label={label}
       {...attrs}
     >
-      {hasLeftIcon && <Icon {...iconProps} />}
+      {hasLeftIcon && <Icon {...iconProps} svg={iconProps.svg!} />}
       <span className={s.text}>{title}</span>
-      {hasRightIcon && <Icon {...iconProps} />}
+      {hasRightIcon && <Icon {...iconProps} svg={iconProps.svg!} />}
     </Elem>
   )
 }
