@@ -1,13 +1,13 @@
 .table {
   & table {
     display: block;
-    max-width: fit-content;
     overflow-x: auto;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
     border-right: 0;
     background-color: transparent;
+    max-width: 100%;
     width: 100%;
     margin-bottom: 20px;
 
