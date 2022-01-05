@@ -23,7 +23,14 @@
   }
 
   &.hashiCorpVault,
-  &.hashiCorpConsul {
+  &.hashiCorpConsul,
+  &.hashiCorpNomad,
+  &.hashiCorpPacker,
+  &.hashiCorpTerraform,
+  &.hashiCorpVagrant,
+  &.hashiCorpBoundary,
+  &.hashiCorpWaypoint,
+  &.hashiCorpTfc {
     & svg {
       height: 40px;
     }
