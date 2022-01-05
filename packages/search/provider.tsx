@@ -3,11 +3,16 @@ import algoliaSearch, { SearchClient } from 'algoliasearch'
 import searchInsights from 'search-insights'
 import { AlgoliaConfigObject } from './types'
 
-const SearchContext = createContext(null)
+const SearchContext = createContext<SearchContextObject | null>(null)
 
+type Writeable<T> = { -readonly [P in keyof T]: T[P] }
 interface SearchContextObject {
   /** The algoliasearch client, initialized with provided config */
-  client: SearchClient
+  client: {
+    search(
+      requests: Writeable<Parameters<SearchClient['search']>[0]>
+    ): ReturnType<SearchClient['search']>
+  }
   /** Reflects the indexName provided in either the algoliaConfig prop, or in the ALGOLIA_INDEX .env variable. */
   indexName: string
   /** Initializes the Algolia client, using the config prop provided to SearchProvider, or .env variables. */
@@ -24,7 +29,7 @@ interface SearchContextObject {
   setCancelled: (isCancelled: boolean) => void
 }
 
-export function useSearch(): SearchContextObject {
+export function useSearch(): SearchContextObject | null {
   return useContext(SearchContext)
 }
 
@@ -63,14 +68,19 @@ If passing the algoliaConfig prop to SearchProvider, ensure the following keys a
     const algoliaClient = algoliaSearch(appId, apiKey)
     return {
       client: {
-        search(requests) {
+        search(requests: Writeable<Parameters<SearchClient['search']>[0]>) {
           return algoliaClient.search(
             requests.map((request) => {
               //  instant search fires an empty query on page load to ensure results are immediately available.
               //  we exclude that result from our analytics to keep our click through rate clean
               //  ref: https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/out-of-the-box-analytics/how-to/how-to-remove-empty-search-from-analytics/
-              if (!request.params.query || request.params.query.length === 0) {
-                request.params.analytics = false
+              if (
+                request.params &&
+                (!request.params.query || request.params.query.length === 0)
+              ) {
+                // The `params` property is marked as readonly, so we manually
+                // cast it to a mutable object.
+                ;(request.params as { analytics: boolean }).analytics = false
               }
               return request
             })

@@ -120,12 +120,17 @@ export default function FeedbackForm({
     FeedbackFormStatus.inProgress
   )
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [responses, setResponses] = useState([])
+  const [responses, setResponses] = useState<
+    {
+      id: string
+      value: string
+    }[]
+  >([])
   const [activeQuestion, setActiveQuestion] = useState(questions[0].id)
-  const sessionId = useRef()
+  const sessionId = useRef<string | undefined>()
 
   const getSessionId = () => {
-    if (!sessionId.current) sessionId.current = shortid.generate()
+    if (!sessionId.current) sessionId.current = shortid.generate() as string
     return sessionId.current
   }
 

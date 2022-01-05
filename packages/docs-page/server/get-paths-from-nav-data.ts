@@ -11,7 +11,7 @@ export function getPathArraysFromNodes(navNodes: NavNode[]): string[][] {
       return acc.concat(getPathArraysFromNodes(navNode.routes))
     // All other node types (dividers, external links) can be ignored
     return acc
-  }, [])
+  }, [] as string[][])
   return slugs
 }
 

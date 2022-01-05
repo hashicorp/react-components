@@ -16,7 +16,8 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "noImplicitAny": false,
     "target": "es5"
   },
   "exclude": [

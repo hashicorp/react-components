@@ -13,7 +13,7 @@ describe('contentApi', () => {
   let scope: nock.Scope
 
   beforeEach(() => {
-    scope = nock(process.env.MKTG_CONTENT_API)
+    scope = nock(process.env.MKTG_CONTENT_API!)
   })
 
   describe('fetchDocument', () => {

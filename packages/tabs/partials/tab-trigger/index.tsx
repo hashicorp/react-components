@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 export interface TabTriggerType {
   index: number
-  group: string
+  group?: string
   heading: string
   tooltip?: string
 }

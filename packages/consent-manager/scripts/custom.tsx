@@ -7,7 +7,7 @@ interface CustomScriptProps {
 
 interface CustomScriptsProps {
   preferences: ConsentManagerPreferences
-  services: ConsentManagerService[]
+  services?: ConsentManagerService[]
 }
 
 function CustomScript({ service }: CustomScriptProps) {
@@ -38,7 +38,7 @@ export default function CustomScripts({
 }: CustomScriptsProps) {
   if (!preferences.loadAll && services?.length === 0) return null
 
-  let servicesToInject = []
+  let servicesToInject: ConsentManagerService[] = []
 
   if (preferences.loadAll) {
     servicesToInject = services

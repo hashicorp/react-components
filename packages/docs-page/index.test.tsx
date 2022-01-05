@@ -23,9 +23,9 @@ jest.mock('next/router')
 jest.mock('next/head')
 
 describe('<DocsPage />', () => {
-  const routerMock = ({
+  const routerMock = {
     asPath: '/docs/overview',
-  } as unknown) as Router
+  } as unknown as Router
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -48,7 +48,7 @@ describe('<DocsPage />', () => {
   it('passes props correctly to <DocsSidenav>', () => {
     render(<DocsPage {...defaultProps} />)
     // Confirm `baseRoute` and `navData` by checking for a rendered link
-    const activeLeaf = screen.getByText('AWS').closest('a')
+    const activeLeaf = screen.getByText('AWS').closest('a')!
     expect(activeLeaf.getAttribute('href')).toBe(
       '/docs/agent/autoauth/methods/aws'
     )
@@ -64,7 +64,7 @@ describe('<DocsPage />', () => {
     const contentParagraph = contentParagraphs[0]
     expect(contentParagraph.tagName).toBe('P')
     // Confirm `product` is passed via class
-    const contentContainer = contentParagraph.closest('article')
+    const contentContainer = contentParagraph.closest('article')!
     expect(contentContainer.className).toContain('terraform')
   })
 
@@ -72,7 +72,7 @@ describe('<DocsPage />', () => {
     render(<DocsPage {...defaultProps} />)
     const expectedHref =
       'https://github.com/hashicorp/vault/blob/master/website/content/docs/agent/autoauth/methods/aws.mdx'
-    const editPageLink = screen.getByText('Edit this page').closest('a')
+    const editPageLink = screen.getByText('Edit this page').closest('a')!
     expect(editPageLink.getAttribute('href')).toBe(expectedHref)
   })
 
@@ -129,9 +129,9 @@ describe('<DocsPage />', () => {
   describe('when versioned docs is enabled', () => {
     it('should allow crawlers to index latest pages', () => {
       useRouterMock.mockImplementation(() => {
-        return ({
+        return {
           asPath: '/docs',
-        } as unknown) as Router
+        } as unknown as Router
       })
 
       render(
@@ -155,9 +155,9 @@ describe('<DocsPage />', () => {
 
     it('should tell crawlers to not index versioned pages', () => {
       useRouterMock.mockImplementation(() => {
-        return ({
+        return {
           asPath: '/docs/v0.5.1',
-        } as unknown) as Router
+        } as unknown as Router
       })
 
       render(

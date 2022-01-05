@@ -60,7 +60,7 @@ function OperationObject({
   const [headerRef, isHeaderHovered] = useHover()
   const { operationId, parameters, responses, summary } = data
   const successResponse = responses['200']
-  const title = capitalCase(operationId.split('_').pop())
+  const title = capitalCase(operationId.split('_').pop()!)
 
   // Group parameter properties by type
   const pathParams = parameters.filter((p) => p.in === 'path')
@@ -101,7 +101,7 @@ function OperationObject({
           {renderOperationIntro ? renderOperationIntro({ data }) : null}
           <div
             className={s.summary}
-            dangerouslySetInnerHTML={{ __html: summary }}
+            dangerouslySetInnerHTML={{ __html: summary ?? '' }}
           />
           <TwoColumnLayout
             columnOne={

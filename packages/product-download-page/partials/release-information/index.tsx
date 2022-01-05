@@ -19,8 +19,9 @@ export default function ReleaseInformation({
   changelog,
 }: ReleaseInformationProps): React.ReactElement {
   const [selectedVersionId, setSelectedVersionId] = useState(latestVersion)
-  const { version, ...selectedVersion } =
-    releases.find((release) => release.version === selectedVersionId) || {}
+  const { version, ...selectedVersion } = releases.find(
+    (release) => release.version === selectedVersionId
+  )!
   const { name, slug } = useProductMeta()
 
   return (
@@ -100,7 +101,7 @@ export default function ReleaseInformation({
             </p>
           </div>
 
-          {containers?.length > 0 && (
+          {containers && containers.length > 0 && (
             <>
               <div className={styles.heading}>Containers</div>
               <div className={styles.links}>
@@ -113,7 +114,7 @@ export default function ReleaseInformation({
             </>
           )}
 
-          {tutorials?.length > 0 && (
+          {tutorials && tutorials.length > 0 && (
             <>
               <div className={styles.heading}>Tutorials</div>
               <div className={styles.links}>
@@ -136,7 +137,7 @@ export default function ReleaseInformation({
 interface ReleaseInformationProps {
   releases: (SortedReleases & { version: string })[]
   latestVersion: string
-  containers: Link[]
-  tutorials: Link[]
-  changelog: string
+  containers?: Link[]
+  tutorials?: Link[]
+  changelog?: string
 }

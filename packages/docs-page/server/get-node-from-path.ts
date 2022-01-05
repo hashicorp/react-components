@@ -5,7 +5,7 @@ export function flattenRoutes(nodes: NavData) {
   return nodes.reduce((acc, n) => {
     if (!('routes' in n)) return acc.concat(n)
     return acc.concat(flattenRoutes(n.routes))
-  }, [])
+  }, [] as NavData)
 }
 
 export function getNodeFromPath(

@@ -1,7 +1,8 @@
 import { useField } from 'formik'
 import Combobox, { ComboboxProps } from '../'
 
-type ComboboxFieldProps = { name: string } & Omit<ComboboxProps, 'onSelect'>
+type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+type ComboboxFieldProps = { name: string } & Omit<Optional<ComboboxProps, 'inputProps'>, 'onSelect'>
 
 export default function ComboboxField({ name, ...props }: ComboboxFieldProps) {
   const [_, meta, helpers] = useField(name) // https://formik.org/docs/api/useField#reference

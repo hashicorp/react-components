@@ -3,7 +3,7 @@ import s from './style.module.css'
 
 // This component is a simple helper to see the current state of Formik values & errors as you develop a form
 export default function FormikStateViewer() {
-  const { values, errors, touched } = useFormikContext()
+  const { values, errors, touched } = useFormikContext<Record<string, unknown>>()
   return (
     <div className={s.formikStateViewer}>
       <h3 className={s.heading}>Formik State</h3>

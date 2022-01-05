@@ -80,7 +80,7 @@ export default function createConsentManager({
     if (!config.additionalServices) config.additionalServices = []
     config.additionalServices.push(...otherServices)
   }
-  if (categories) config.categories.push(...categories)
+  if (categories) config.categories!.push(...categories)
 
   // finally, we return a HOC that will render the fully configured consent manager
   return {

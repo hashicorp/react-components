@@ -48,7 +48,7 @@ function Tabs({
   fullWidthBorder = false,
   theme = 'light',
   onChange,
-}: TabsProps): React.ReactElement {
+}: TabsProps): React.ReactElement | null {
   // Ensures a single child object converts to an array
   children = Array.prototype.concat(children)
 

@@ -44,6 +44,8 @@ export function prettyArch(arch: string): string {
         }
       }
   }
+
+  return ''
 }
 
 export function detectOs(platform: string): string | null {
