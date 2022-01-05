@@ -62,7 +62,8 @@
     "test:ci": "jest --runInBand",
     "test:watch": "jest --watch",
     "upgrade:base-deps": "npm add @hashicorp/{mktg-{logos,global-styles},nextjs-scripts}@latest",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "typecheck": "tsc -p ."
   },
   "simple-git-hooks": {
     "pre-commit": "npx next-hashicorp precommit"
