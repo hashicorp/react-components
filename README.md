@@ -32,7 +32,7 @@ A few of the elements in our playground rely on environment variables in order t
 - `GITHUB_API_TOKEN`
   - Used in `UsageDetails` to fetch `package.json`s from each of our projects
 - `SOURCEGRAPH_URL`
-  - Used in `UsageDetails` to build links out to [our SourceGraph instance](https://sourcegraph.hashi-mktg.com)
+  - Used in `UsageDetails` to build links out to [our SourceGraph instance](https://hashicorp-mktg.sourcegraph.com)
 
 ## Publishing
 
