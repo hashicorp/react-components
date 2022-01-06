@@ -8,7 +8,7 @@ const PROJECT_LIST = [
   'hashicorp/hashiconf-next',
   'hashicorp/cloud.hashicorp.com',
   'hashicorp/learn',
-  ['hashicorp/nextjs-scripts', '/packages/docs-mdx'],
+  ['hashicorp/web-platform-packages', '/packages/docs-mdx'],
   'hashicorp/terraform-website-next',
   'hashicorp/how-hashicorp-works',
   ['hashicorp/waypoint', '/website'],
