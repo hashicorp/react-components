@@ -39,7 +39,14 @@ function AlertBanner({
   url,
 }: AlertBannerProps): React.ReactElement {
   const dismissalCookieId = `banner_${name || slugify(text, { lower: true })}`
-  const [isShown, setIsShown] = useState(true)
+  // Set isShown to true/false based on the expirationDate initially. This
+  // ensures that the banner gets the correct CSS classes during SSR, which
+  // prevents CLS caused by rendering the banner, determining that it should be
+  // hidden, and then hiding it. This is necessary because Next.js doesn't run
+  // useEffect hooks during SSR.
+  const [isShown, setIsShown] = useState(
+    !(expirationDate && Date.now() > Date.parse(expirationDate))
+  )
   const { themeClass } = useProductMeta(product)
 
   /**
