@@ -23,9 +23,9 @@ jest.mock('next/router')
 jest.mock('next/head')
 
 describe('<DocsPage />', () => {
-  const routerMock = {
+  const routerMock = ({
     asPath: '/docs/overview',
-  } as unknown as Router
+  } as unknown) as Router
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -127,11 +127,20 @@ describe('<DocsPage />', () => {
   })
 
   describe('when versioned docs is enabled', () => {
+    const versions = [
+      { name: 'latest', label: 'v0.6.x (latest)' },
+      { name: 'v0.5.x', label: 'v0.5.x' },
+      { name: 'v0.4.x', label: 'v0.4.x' },
+      { name: 'v0.3.x', label: 'v0.3.x' },
+      { name: 'v0.2.x', label: 'v0.2.x' },
+      { name: 'v0.1.x', label: 'v0.1.x' },
+    ]
+
     it('should allow crawlers to index latest pages', () => {
       useRouterMock.mockImplementation(() => {
-        return {
+        return ({
           asPath: '/docs',
-        } as unknown as Router
+        } as unknown) as Router
       })
 
       render(
@@ -140,10 +149,7 @@ describe('<DocsPage />', () => {
           showVersionSelect={true}
           staticProps={{
             ...defaultProps.staticProps,
-            versions: [
-              { name: 'latest', label: 'latest' },
-              { name: 'v0.5.1', label: 'v0.5.1' },
-            ],
+            versions,
           }}
         />
       )
@@ -155,9 +161,9 @@ describe('<DocsPage />', () => {
 
     it('should tell crawlers to not index versioned pages', () => {
       useRouterMock.mockImplementation(() => {
-        return {
+        return ({
           asPath: '/docs/v0.5.1',
-        } as unknown as Router
+        } as unknown) as Router
       })
 
       render(
@@ -166,15 +172,76 @@ describe('<DocsPage />', () => {
           showVersionSelect={true}
           staticProps={{
             ...defaultProps.staticProps,
-            versions: [
-              { name: 'latest', label: 'latest' },
-              { name: 'v0.5.1', label: 'v0.5.1' },
-            ],
+            versions,
           }}
         />
       )
 
       expect(document.querySelector('meta[name=robots]')).toBeInTheDocument()
+    })
+
+    describe('the VersionAlert', () => {
+      it('should not show if there is no version in the path', () => {
+        useRouterMock.mockImplementation(() => {
+          return ({
+            asPath: '/docs/intro',
+          } as unknown) as Router
+        })
+
+        const { queryByTestId } = render(
+          <DocsPage
+            {...defaultProps}
+            showVersionSelect={true}
+            staticProps={{
+              ...defaultProps.staticProps,
+              versions,
+            }}
+          />
+        )
+        expect(queryByTestId('tag')).toBeFalsy()
+      })
+
+      it('should not show if the latest version is in the path', () => {
+        useRouterMock.mockImplementation(() => {
+          return ({
+            asPath: '/docs/v0.6.x/intro',
+          } as unknown) as Router
+        })
+
+        const { queryByTestId } = render(
+          <DocsPage
+            {...defaultProps}
+            showVersionSelect={true}
+            staticProps={{
+              ...defaultProps.staticProps,
+              versions,
+            }}
+          />
+        )
+
+        expect(queryByTestId('tag')).toBeFalsy()
+      })
+
+      it('should show if an older version is in the path', () => {
+        useRouterMock.mockImplementation(() => {
+          return ({
+            asPath: '/docs/v0.5.x/intro',
+          } as unknown) as Router
+        })
+
+        const { queryByTestId } = render(
+          <DocsPage
+            {...defaultProps}
+            showVersionSelect={true}
+            staticProps={{
+              ...defaultProps.staticProps,
+              versions,
+            }}
+          />
+        )
+
+        expect(queryByTestId('tag')).toHaveTextContent('old version')
+      })
     })
   })
 })

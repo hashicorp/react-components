@@ -22,7 +22,7 @@ import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
 
-interface DocsPageWrapperProps {
+interface DocsPageInnerProps {
   canonicalUrl: string
   description: string
   navData: NavData
@@ -38,7 +38,7 @@ interface DocsPageWrapperProps {
   algoliaConfig?: AlgoliaConfigObject
 }
 
-export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
+export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   canonicalUrl,
   children,
   description,
@@ -56,6 +56,9 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
   const versionInPath = getVersionFromPath(asPath)
+
+  const versionIsLatest =
+    versionInPath && versions?.[0]?.label.includes(versionInPath)
 
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -80,9 +83,10 @@ export const DocsPageWrapper: FunctionComponent<DocsPageWrapperProps> = ({
     </div>
   ) : null
 
-  const versionAlert = showVersionSelect ? (
-    <VersionAlert product={name} />
-  ) : null
+  const versionAlert =
+    !versionIsLatest && showVersionSelect ? (
+      <VersionAlert product={name} />
+    ) : null
 
   return (
     <div id="p-docs">
@@ -199,7 +203,7 @@ export default function DocsPage({
   if (router.isFallback) return <LoadingSkeleton />
 
   return (
-    <DocsPageWrapper
+    <DocsPageInner
       canonicalUrl={frontMatter.canonical_url}
       description={frontMatter.description}
       githubFileUrl={githubFileUrl}
@@ -214,6 +218,6 @@ export default function DocsPage({
       algoliaConfig={algoliaConfig}
     >
       {content}
-    </DocsPageWrapper>
+    </DocsPageInner>
   )
 }

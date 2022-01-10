@@ -1,5 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote'
-import { DocsPageWrapper } from '@hashicorp/react-docs-page'
+import { DocsPageInner } from '@hashicorp/react-docs-page'
 import generateComponents from '@hashicorp/react-docs-page/components'
 import s from './style.module.css'
 
@@ -22,7 +22,7 @@ export default function GlossaryPage({
   staticProps: { mdxSource, terms, navData, githubFileUrl },
 }) {
   return (
-    <DocsPageWrapper
+    <DocsPageInner
       navData={navData}
       description="Glossary"
       filePath="glossary"
@@ -47,6 +47,6 @@ export default function GlossaryPage({
           components={generateComponents(product.name, additionalComponents)}
         />
       </>
-    </DocsPageWrapper>
+    </DocsPageInner>
   )
 }
