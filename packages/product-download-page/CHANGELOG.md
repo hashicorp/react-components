@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.7.0
+
+### Minor Changes
+
+- [#479](https://github.com/hashicorp/react-components/pull/479) [`460153e`](https://github.com/hashicorp/react-components/commit/460153e6fe92f3c45e1a97710832603bd200d62e) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds fetch retry with delay to releases data fetching.
+
 ## 2.6.0
 
 ### Minor Changes

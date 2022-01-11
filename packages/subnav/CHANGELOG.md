@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.3.3
+
+### Patch Changes
+
+- [#477](https://github.com/hashicorp/react-components/pull/477) [`5b957ce`](https://github.com/hashicorp/react-components/commit/5b957ce637f92958804311f1295aaa181558568b) Thanks [@EnMod](https://github.com/EnMod)! - Adds remaining attributed logo options to the `<TitleLink />` logo dictionary.
+
 ## 9.3.2
 
 ### Patch Changes
