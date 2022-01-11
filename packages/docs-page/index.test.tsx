@@ -128,12 +128,17 @@ describe('<DocsPage />', () => {
 
   describe('when versioned docs is enabled', () => {
     const versions = [
-      { name: 'latest', label: 'v0.6.x (latest)' },
-      { name: 'v0.5.x', label: 'v0.5.x' },
-      { name: 'v0.4.x', label: 'v0.4.x' },
-      { name: 'v0.3.x', label: 'v0.3.x' },
-      { name: 'v0.2.x', label: 'v0.2.x' },
-      { name: 'v0.1.x', label: 'v0.1.x' },
+      {
+        name: 'latest',
+        label: 'v0.6.x (latest)',
+        isLatest: true,
+        version: 'v0.6.x',
+      },
+      { name: 'v0.5.x', label: 'v0.5.x', isLatest: false, version: 'v0.5.x' },
+      { name: 'v0.4.x', label: 'v0.4.x', isLatest: false, version: 'v0.4.x' },
+      { name: 'v0.3.x', label: 'v0.3.x', isLatest: false, version: 'v0.3.x' },
+      { name: 'v0.2.x', label: 'v0.2.x', isLatest: false, version: 'v0.2.x' },
+      { name: 'v0.1.x', label: 'v0.1.x', isLatest: false, version: 'v0.1.x' },
     ]
 
     it('should allow crawlers to index latest pages', () => {

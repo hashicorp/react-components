@@ -64,34 +64,40 @@ describe('RemoteContentLoader', () => {
         navData: expect.any(Array),
       },
       `
-      Object {
-        "currentPath": "",
-        "frontMatter": Object {
-          "layout": "commands",
-          "page_title": "Waypoint Commands (CLI)",
-        },
-        "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx",
-        "mdxSource": Object {
-          "compiledSource": Any<String>,
-          "scope": Object {},
-        },
-        "navData": Any<Array>,
-        "versions": Array [
-          Object {
-            "label": "v0.5.2 (latest)",
-            "name": "latest",
-          },
-          Object {
-            "label": "v0.4.x",
-            "name": "v0.4.x",
-          },
-          Object {
-            "label": "v0.3.x",
-            "name": "v0.3.x",
-          },
-        ],
-      }
-    `
+Object {
+  "currentPath": "",
+  "frontMatter": Object {
+    "layout": "commands",
+    "page_title": "Waypoint Commands (CLI)",
+  },
+  "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx",
+  "mdxSource": Object {
+    "compiledSource": Any<String>,
+    "scope": Object {},
+  },
+  "navData": Any<Array>,
+  "versions": Array [
+    Object {
+      "isLatest": true,
+      "label": "v0.5.2 (latest)",
+      "name": "latest",
+      "version": "v0.5.x",
+    },
+    Object {
+      "isLatest": false,
+      "label": "v0.4.x",
+      "name": "v0.4.x",
+      "version": "v0.4.x",
+    },
+    Object {
+      "isLatest": false,
+      "label": "v0.3.x",
+      "name": "v0.3.x",
+      "version": "v0.3.x",
+    },
+  ],
+}
+`
     )
   })
 
@@ -146,32 +152,46 @@ describe('mapVersionList', () => {
     expect(versionList).toMatchInlineSnapshot(`
 Array [
   Object {
+    "isLatest": false,
     "label": "v2.11.x",
     "name": "v2.11.x",
+    "version": "v2.11.x",
   },
   Object {
+    "isLatest": false,
     "label": "v1.10.x",
     "name": "v1.10.x",
+    "version": "v1.10.x",
   },
   Object {
+    "isLatest": false,
     "label": "v1.9.x",
     "name": "v1.9.x",
+    "version": "v1.9.x",
   },
   Object {
+    "isLatest": false,
     "label": "v1.1.x",
     "name": "v1.1.x",
+    "version": "v1.1.x",
   },
   Object {
+    "isLatest": false,
     "label": "v0.11.x",
     "name": "v0.11.x",
+    "version": "v0.11.x",
   },
   Object {
+    "isLatest": false,
     "label": "v0.10.x",
     "name": "v0.10.x",
+    "version": "v0.10.x",
   },
   Object {
+    "isLatest": false,
     "label": "v0.9.x",
     "name": "v0.9.x",
+    "version": "v0.9.x",
   },
 ]
 `)
@@ -179,20 +199,26 @@ Array [
 
   test('should map a list of version-metadata to a format for <VersionSelect/>', () => {
     expect(versionList).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "label": "v0.5.2 (latest)",
-          "name": "latest",
-        },
-        Object {
-          "label": "v0.4.x",
-          "name": "v0.4.x",
-        },
-        Object {
-          "label": "v0.3.x",
-          "name": "v0.3.x",
-        },
-      ]
-    `)
+Array [
+  Object {
+    "isLatest": true,
+    "label": "v0.5.2 (latest)",
+    "name": "latest",
+    "version": "v0.5.x",
+  },
+  Object {
+    "isLatest": false,
+    "label": "v0.4.x",
+    "name": "v0.4.x",
+    "version": "v0.4.x",
+  },
+  Object {
+    "isLatest": false,
+    "label": "v0.3.x",
+    "name": "v0.3.x",
+    "version": "v0.3.x",
+  },
+]
+`)
   })
 })

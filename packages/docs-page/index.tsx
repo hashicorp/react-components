@@ -21,6 +21,7 @@ import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
+import type { VersionSelectItem } from './server/loaders/remote-content'
 
 interface DocsPageInnerProps {
   canonicalUrl: string
@@ -34,7 +35,7 @@ interface DocsPageInnerProps {
   /** @deprecated */
   showEditPage: boolean
   showVersionSelect: boolean
-  versions: { name: string; label: string }[]
+  versions: VersionSelectItem[]
   algoliaConfig?: AlgoliaConfigObject
 }
 
@@ -57,8 +58,10 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   const { asPath } = useRouter()
   const versionInPath = getVersionFromPath(asPath)
 
+  // Future: Account for `tip` version
   const versionIsLatest =
-    versionInPath && versions?.[0]?.label.includes(versionInPath)
+    versionInPath &&
+    versions?.find((v) => v.isLatest)?.version === versionInPath
 
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -170,7 +173,7 @@ export interface DocsPageProps {
     currentPath: string
     navData: NavData
     githubFileUrl: string
-    versions: { name: string; label: string }[]
+    versions: VersionSelectItem[]
   }
 }
 
