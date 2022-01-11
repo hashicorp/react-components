@@ -37,9 +37,11 @@ interface VersionMetadataItem {
   fullPath: string
 }
 
-interface VersionSelectItem {
+export interface VersionSelectItem {
   name: string
   label: string
+  version: string
+  isLatest: boolean
 }
 
 const moizeOpts: Options = { isPromise: true, maxSize: Infinity }
@@ -69,6 +71,8 @@ export function mapVersionList(
       return {
         name: isLatest ? 'latest' : version,
         label: isLatest ? `${displayValue} (latest)` : displayValue,
+        isLatest: isLatest || false,
+        version,
       }
     })
 
@@ -121,8 +125,9 @@ export default class RemoteContentLoader implements DataLoader {
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] =
-      await cachedFetchVersionMetadataList(this.opts.product)
+    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
+      this.opts.product
+    )
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
