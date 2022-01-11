@@ -1,5 +1,23 @@
 # @hashicorp/react-docs-page
 
+## 14.14.0
+
+### Minor Changes
+
+- [#484](https://github.com/hashicorp/react-components/pull/484) [`5d9f538`](https://github.com/hashicorp/react-components/commit/5d9f538a4910e0799236a75157b674f4630b8916) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - DocsPage
+
+  - Rename `DocsPageWrapper` to `DocsPageInner`
+  - Hide `VersionAlert` if version in path is "latest"
+
+  GlossaryPage
+
+  - Update internal import
+
+### Patch Changes
+
+- Updated dependencies [[`a6a6ba4`](https://github.com/hashicorp/react-components/commit/a6a6ba4c1fde8c9a10c725d6c50f9e9c1091de65)]:
+  - @hashicorp/react-content@8.1.1
+
 ## 14.13.0
 
 ### Minor Changes

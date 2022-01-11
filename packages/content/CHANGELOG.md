@@ -1,5 +1,11 @@
 # @hashicorp/react-content
 
+## 8.1.1
+
+### Patch Changes
+
+- [#478](https://github.com/hashicorp/react-components/pull/478) [`a6a6ba4`](https://github.com/hashicorp/react-components/commit/a6a6ba4c1fde8c9a10c725d6c50f9e9c1091de65) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix: content table overflow
+
 ## 8.1.0
 
 ### Minor Changes
