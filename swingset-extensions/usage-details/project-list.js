@@ -9,7 +9,7 @@ const PROJECT_LIST = [
   'hashicorp/cloud.hashicorp.com',
   'hashicorp/learn',
   ['hashicorp/web-platform-packages', '/packages/docs-mdx'],
-  'hashicorp/terraform-website-next',
+  'hashicorp/terraform-website',
   'hashicorp/how-hashicorp-works',
   ['hashicorp/waypoint', '/website'],
   ['hashicorp/boundary', '/website'],
