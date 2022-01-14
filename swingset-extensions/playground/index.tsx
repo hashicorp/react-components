@@ -36,7 +36,7 @@ function debounce(fn, ms) {
   return (...args) => {
     clearTimeout(timer)
     timer = setTimeout(() => {
-      fn.apply(this, args)
+      fn.apply(this as any, args)
     }, ms)
   }
 }
