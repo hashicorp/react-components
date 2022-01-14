@@ -31,12 +31,13 @@ function getComponent(source) {
   return exports.default
 }
 
-function debounce(fn, ms) {
+function debounce(fn: (...args: any[]) => void, ms) {
   let timer
   return (...args) => {
     clearTimeout(timer)
     timer = setTimeout(() => {
-      fn.apply(this as any, args)
+      // @ts-expect-error -- strange this error
+      fn.apply(this, args)
     }, ms)
   }
 }
@@ -45,7 +46,7 @@ const Playground = ({ children, title }) => {
   const [code, setCode] = useState(
     () => Children.only(children).props.children.props.children
   )
-  const [error, setError] = useState()
+  const [error, setError] = useState<Error>()
   const [Component, setComponent] = useState(() => () => null)
   const worker = useRef<Worker>()
 
@@ -71,12 +72,12 @@ const Playground = ({ children, title }) => {
       if (data.error) {
         setError(() => data.error)
       } else {
-        setError(null)
+        setError(undefined)
         try {
           const newComponent = getComponent(data.code)
           setComponent(() => newComponent)
         } catch (err) {
-          setError(err)
+          setError(err as Error)
         }
       }
     }
