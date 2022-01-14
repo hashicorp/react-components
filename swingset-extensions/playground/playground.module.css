@@ -1,0 +1,46 @@
+.root {
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+
+  & :global(.sp-cm) {
+    font-size: 14px;
+    flex-basis: 50%;
+    flex-grow: 0;
+    overflow: auto;
+  }
+
+  & :global(.cm-scroller) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace;
+    padding: 1rem 0;
+    overflow: auto;
+  }
+
+  & :global(.cm-gutter) {
+    margin-right: 1rem;
+  }
+
+  & :global(.cm-activeLine) {
+    background-color: inherit;
+  }
+}
+
+.header {
+  background-color: #f6f8fa;
+  border-bottom: 1px solid lightgray;
+  padding: 12px 16px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.previewStage {
+  padding: 1rem;
+  flex-basis: 50%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow: auto;
+}

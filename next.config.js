@@ -30,5 +30,15 @@ module.exports = withHashicorp({
         ],
       },
     ],
+    webpack(config) {
+      config.module.rules.push({
+        test: /\.wasm$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'static/wasm/[modulehash].wasm',
+        },
+      })
+      return config
+    },
   })
 )
