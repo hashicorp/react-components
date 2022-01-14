@@ -1,9 +1,20 @@
-import { useEffect, useRef, useCallback, useState, Children } from 'react'
+import { useEffect, useRef, useState, Children, FC } from 'react'
 import * as jsxRuntime from 'react/jsx-runtime'
 import { ErrorBoundary } from 'react-error-boundary'
-import { SandpackProvider, CodeEditor } from '@codesandbox/sandpack-react'
+import classNames from 'classnames'
+import {
+  FileTabs,
+  SandpackProvider,
+  useSandpack,
+} from '@codesandbox/sandpack-react'
 import s from './playground.module.css'
 import { components } from 'swingset/__swingset_data'
+import PlaygroundEditor from './code-editor'
+
+interface PlaygroundProps {
+  title?: string
+  layout: 'horizontal' | 'vertical'
+}
 
 const componentDeps = Object.fromEntries(
   Object.values(components).map((component) => {
@@ -19,83 +30,67 @@ const dependencies = {
   ...componentDeps,
 }
 
-function getComponent(source) {
+function getComponent(source, cssExports) {
   const exports = { default: () => null }
   const require = (mod) => {
     if (dependencies[mod]) return dependencies[mod]
-
-    throw new Error('module not found')
+    if (mod == 'style.module.css') return cssExports
   }
   const fn = new Function('exports', 'require', source)
   fn(exports, require)
   return exports.default
 }
 
-function debounce(fn: (...args: any[]) => void, ms) {
-  let timer
-  return (...args) => {
-    clearTimeout(timer)
-    timer = setTimeout(() => {
-      // @ts-expect-error -- strange this error
-      fn.apply(this, args)
-    }, ms)
-  }
-}
+const PlaygroundInner = ({ layout }) => {
+  const { sandpack } = useSandpack()
+  const { files, activePath } = sandpack
 
-const Playground = ({ children, title }) => {
-  const [code, setCode] = useState(
-    () => Children.only(children).props.children.props.children
-  )
+  const styles = files['style.module.css']?.code
+  const code = files['index.tsx'].code
+
   const [error, setError] = useState<Error>()
   const [Component, setComponent] = useState(() => () => null)
   const worker = useRef<Worker>()
+  const styleRef = useRef<HTMLStyleElement>(null)
 
-  const handleCodeUpdate = useCallback(
-    debounce((code) => {
-      setCode(code)
-    }, 500),
-    []
-  )
-
-  const language = Children.only(
-    children
-  ).props.children.props.className.replace('language-', '')
+  const language = activePath === 'index.tsx' ? 'tsx' : 'css'
 
   useEffect(() => {
     if (!worker.current) {
       worker.current = new Worker(new URL('./transpile.ts', import.meta.url))
     }
 
-    worker.current.postMessage(code)
+    worker.current.postMessage({ code, css: styles })
 
     worker.current.onmessage = ({ data }) => {
-      if (data.error) {
-        setError(() => data.error)
+      if (data.code.error) {
+        setError(() => data.code.error)
       } else {
         setError(undefined)
         try {
-          const newComponent = getComponent(data.code)
+          const newComponent = getComponent(data.code.code, data?.css?.exports)
           setComponent(() => newComponent)
+
+          if (styleRef.current && data.css) {
+            styleRef.current.innerHTML = data.css.code
+          }
         } catch (err) {
           setError(err as Error)
         }
       }
     }
-  }, [code])
+  }, [code, styles])
 
   return (
-    <div className={s.root}>
-      <div className={s.header}>{title}</div>
-      <div className={s.layout}>
-        <SandpackProvider>
-          <CodeEditor
-            code={code}
-            initMode="lazy"
-            fileType={language}
-            showLineNumbers
-            onCodeUpdate={handleCodeUpdate}
-          />
-        </SandpackProvider>
+    <>
+      <style ref={styleRef} />
+      <div
+        className={classNames(s.layout, layout === 'vertical' && s.vertical)}
+      >
+        <div className={s.editorStage}>
+          <FileTabs />
+          <PlaygroundEditor language={language} />
+        </div>
         <div className={s.previewStage}>
           <ErrorBoundary
             fallbackRender={({ error }) => {
@@ -114,7 +109,47 @@ const Playground = ({ children, title }) => {
           </ErrorBoundary>
         </div>
       </div>
-      {error ? <div style={{ color: 'red' }}>{error.message}</div> : null}
+      {error ? (
+        <pre style={{ color: 'red' }}>{error.message ?? error}</pre>
+      ) : null}
+    </>
+  )
+}
+
+const Playground: FC<PlaygroundProps> = ({ children, title, layout }) => {
+  const [codeChild, styleChild] = Children.toArray(children)
+
+  // @ts-expect-error -- gotta figure out how to infer proper types here
+  const initialCode = codeChild.props.children.props.children
+  const initialStyle = styleChild
+    ? // @ts-expect-error -- gotta figure out how to infer proper types here
+      styleChild.props.children.props.children
+    : null
+
+  const files = {
+    'index.tsx': {
+      code: initialCode,
+      active: true,
+    },
+    ...(initialStyle ? { 'style.module.css': { code: initialStyle } } : {}),
+  }
+
+  // const language = codeChild.props.children.props.className.replace(
+  //   'language-',
+  //   ''
+  // )
+
+  return (
+    <div className={s.root}>
+      <div className={s.header}>{title}</div>
+      <SandpackProvider
+        customSetup={{
+          files,
+          entry: 'index.tsx',
+        }}
+      >
+        <PlaygroundInner layout={layout} />
+      </SandpackProvider>
     </div>
   )
 }

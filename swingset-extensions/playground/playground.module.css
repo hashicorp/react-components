@@ -15,6 +15,7 @@
       'Liberation Mono', 'Courier New', monospace;
     padding: 1rem 0;
     overflow: auto;
+    height: 20rem;
   }
 
   & :global(.cm-gutter) {
@@ -23,6 +24,27 @@
 
   & :global(.cm-activeLine) {
     background-color: inherit;
+  }
+
+  & :global(.sp-tabs-scrollable-container) {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: no-wrap;
+    overflow: auto;
+  }
+
+  & :global(.sp-tab-button) {
+    height: 40px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    padding: 0 8px;
+
+    &[data-active='true'] {
+      border-top: 2px solid var(--brand);
+      background-color: #f6f8fa;
+      color: var(--brand);
+    }
   }
 }
 
@@ -35,6 +57,10 @@
 .layout {
   display: flex;
   flex-direction: row;
+
+  &.vertical {
+    flex-direction: column-reverse;
+  }
 }
 
 .previewStage {

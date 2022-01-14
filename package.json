@@ -6,6 +6,7 @@
     "@hashicorp/mktg-global-styles": "^4.0.0",
     "@hashicorp/mktg-logos": "^1.2.0",
     "@hashicorp/sentinel-embedded": "^0.0.14",
+    "@parcel/css-wasm": "^1.0.2",
     "@swc/wasm-web": "^1.2.129",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",

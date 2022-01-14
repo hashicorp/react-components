@@ -1,4 +1,11 @@
 import initSwc, { transformSync } from '@swc/wasm-web'
+import initParcelCSS, {
+  transform as transformCSS,
+  TransformResult,
+} from '@parcel/css-wasm'
+
+const enc = new TextEncoder()
+const dec = new TextDecoder()
 
 let isInitialized = false
 
@@ -27,15 +34,49 @@ function compileCode(code: string) {
   }
 }
 
-ctx.onmessage = ({ data }) => {
+function compileCSS(css?: string) {
+  if (!css) return null
+  return transformCSS({
+    filename: 'stlye.css',
+    code: enc.encode(css),
+    cssModules: true,
+    drafts: {
+      nesting: true,
+    },
+    minify: true,
+  })
+}
+
+function formatCSSExports(exports: TransformResult['exports']) {
+  if (!exports) return {}
+  return Object.fromEntries(
+    Object.entries(exports).map(([key, { name }]) => [key, name])
+  )
+}
+
+function sendMessage(compiledCode, compiledCSS) {
+  const { error, code } = compiledCode
+  const css = compiledCSS
+    ? {
+        code: dec.decode(compiledCSS.code),
+        exports: formatCSSExports(compiledCSS.exports),
+      }
+    : null
+
+  ctx.postMessage({ code: { error, code }, css })
+}
+
+ctx.onmessage = ({ data: { code, css } }) => {
   if (!isInitialized) {
-    initSwc().then(() => {
+    Promise.all([initSwc(), initParcelCSS()]).then(() => {
       isInitialized = true
-      const compiled = compileCode(data)
-      ctx.postMessage(compiled)
+      const compiledCode = compileCode(code)
+      const compiledCSS = compileCSS(css)
+      sendMessage(compiledCode, compiledCSS)
     })
   } else {
-    const compiled = compileCode(data)
-    ctx.postMessage(compiled)
+    const compiledCode = compileCode(code)
+    const compiledCSS = compileCSS(css)
+    sendMessage(compiledCode, compiledCSS)
   }
 }

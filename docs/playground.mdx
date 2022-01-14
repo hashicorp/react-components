@@ -4,21 +4,31 @@ name: 'Playground'
 
 # `<Playground />`
 
-<Playground title="Alert: simple">
+<Playground title="Alert: simple" layout="vertical">
 
 ```tsx
 import Alert from 'alert'
+import s from 'style.module.css'
 
 export default function Example() {
   return (
-    <Alert
-      url="#"
-      tag="New"
-      product="terraform"
-      text="Terraform Collaboration for Everyone"
-      textColor="dark"
-    />
+    <>
+      <Alert
+        url="#"
+        tag="New"
+        product="terraform"
+        text="Terraform Collaboration for Everyone"
+        textColor="dark"
+        className={s.yellow}
+      />
+    </>
   )
+}
+```
+
+```css
+.yellow {
+  background: yellow;
 }
 ```
 
