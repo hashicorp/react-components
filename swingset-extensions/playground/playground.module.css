@@ -5,8 +5,6 @@
 
   & :global(.sp-cm) {
     font-size: 14px;
-    flex-basis: 50%;
-    flex-grow: 0;
     overflow: auto;
   }
 
@@ -31,6 +29,7 @@
     align-items: stretch;
     flex-wrap: no-wrap;
     overflow: auto;
+    background-color: var(--gray-6);
   }
 
   & :global(.sp-tab-button) {
@@ -61,6 +60,13 @@
   &.vertical {
     flex-direction: column-reverse;
   }
+}
+
+.editorStage {
+  flex-basis: 50%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow: auto;
 }
 
 .previewStage {
