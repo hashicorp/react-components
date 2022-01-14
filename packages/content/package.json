@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-content",
   "description": "Styled prose content",
-  "version": "8.1.1",
+  "version": "8.1.2",
   "author": "HashiCorp",
   "contributors": ["Mike Wickett", "Zach Shilton"],
   "license": "MPL-2.0",
