@@ -112,4 +112,20 @@ describe('<Button />', () => {
     expect(svgElem).toBeVisible()
     expect(svgElem.tagName).toBe('svg')
   })
+
+  it('should use provided Link prop', () => {
+    const Link = ({ href, children }) => {
+      return (
+        <div data-href={href}>{children}</div>
+      )
+    }
+    const url = 'https://www.hashicorp.com'
+
+    const { container } = render(<Button title={"Title"} Link={Link} url={url} />)
+    const elem = container.firstChild
+    expect(elem.tagName).toBe('DIV')
+    expect(elem.getAttribute('data-href')).toBe(url)
+    const child = elem.firstChild
+    expect(child.tagName).toBe('A')
+  })
 })
