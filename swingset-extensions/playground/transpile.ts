@@ -2,6 +2,8 @@ import initSwc, { transformSync } from '@swc/wasm-web'
 
 let isInitialized = false
 
+const ctx: Worker = self as any
+
 function compileCode(code: string) {
   try {
     return transformSync(`${code}`, {
@@ -25,15 +27,15 @@ function compileCode(code: string) {
   }
 }
 
-self.onmessage = ({ data }) => {
+ctx.onmessage = ({ data }) => {
   if (!isInitialized) {
     initSwc().then(() => {
       isInitialized = true
       const compiled = compileCode(data)
-      self.postMessage(compiled)
+      ctx.postMessage(compiled)
     })
   } else {
     const compiled = compileCode(data)
-    self.postMessage(compiled)
+    ctx.postMessage(compiled)
   }
 }
