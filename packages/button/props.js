@@ -124,4 +124,8 @@ module.exports = {
       control: { type: 'text' },
     },
   },
+  Link: {
+    type: 'React.Element',
+    description: `A React Element used to wrap the anchor tag (typically the Link component from 'next/link').`
+  }
 }

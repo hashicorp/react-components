@@ -35,6 +35,7 @@ interface ButtonProps {
   linkType?: LinkType
   icon?: IconObject
   size?: Size
+  Link?: React.ElementType<{ href: string }>
   /**
    * Note: Removing this TS "any" seems like it'll be quite a task.
    * One path forward might be to fully separate our
@@ -63,6 +64,7 @@ function Button({
   linkType,
   icon,
   size = 'medium',
+  Link,
   ...attrs
 }: ButtonProps): React.ReactElement {
   const [hoverRef, isHovered] = useHover<
@@ -88,7 +90,7 @@ function Button({
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'
 
-  return (
+  const content = (
     <Elem
       className={classNames(
         s.root,
@@ -114,6 +116,8 @@ function Button({
       {hasRightIcon && <Icon {...iconProps} svg={iconProps.svg!} />}
     </Elem>
   )
+
+  return Link && url ? <Link href={url}>{content}</Link> : content
 }
 
 function Icon({
