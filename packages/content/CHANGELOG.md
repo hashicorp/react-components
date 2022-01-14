@@ -1,5 +1,11 @@
 # @hashicorp/react-content
 
+## 8.1.2
+
+### Patch Changes
+
+- [#488](https://github.com/hashicorp/react-components/pull/488) [`bd8a16d`](https://github.com/hashicorp/react-components/commit/bd8a16de91c139bd15acfe93b7a5c41b1362892b) Thanks [@BRKalow](https://github.com/BRKalow)! - Update table styles so that the top-level table width and child table element widths do not get mismatched, while still retaining the max-width and x-axis scroll.
+
 ## 8.1.1
 
 ### Patch Changes
