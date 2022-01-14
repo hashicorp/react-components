@@ -1,15 +1,13 @@
 .table {
   & table {
-    display: block;
+    display: inline-block;
     overflow-x: auto;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
     border-right: 0;
     background-color: transparent;
-    width: 100%;
     max-width: 100%;
-    margin-bottom: 20px;
 
     & th {
       text-align: left;
