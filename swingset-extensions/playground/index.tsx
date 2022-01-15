@@ -38,20 +38,29 @@ const PlaygroundInner = ({ layout }) => {
   const [Component, setComponent] = useState<ElementType>(() => () => null)
   const styleRef = useRef<HTMLStyleElement>(null)
 
-  useCompiler(code, styles, ({ data }) => {
-    if (data.code.error) {
-      setError(() => data.code.error)
-    } else {
-      setError(undefined)
-      try {
-        const newComponent = evalComponent(data.code.code, data?.css?.exports)
-        setComponent(() => newComponent)
+  useCompiler(code, styles, (data) => {
+    switch (data.type) {
+      case 'compile_ok': {
+        setError(undefined)
+        try {
+          const newComponent = evalComponent(data.code.code, data?.css?.exports)
+          setComponent(() => newComponent)
 
-        if (styleRef.current && data.css) {
-          styleRef.current.innerHTML = data.css.code
+          if (styleRef.current && data.css) {
+            styleRef.current.innerHTML = data.css.code
+          }
+        } catch (err) {
+          setError(err as Error)
         }
-      } catch (err) {
-        setError(err as Error)
+        break
+      }
+      case 'compile_error': {
+        setError(() => data.code.error)
+        break
+      }
+      default: {
+        console.log(data)
+        throw new Error(`received unknown event type: ${data.type}`)
       }
     }
   })

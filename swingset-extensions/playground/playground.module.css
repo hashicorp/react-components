@@ -2,6 +2,7 @@
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 2rem;
+  box-shadow: rgb(0 0 0 / 8%) 0 2px 4px 0;
 
   & :global(.sp-cm) {
     font-size: 14px;

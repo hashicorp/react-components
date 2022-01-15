@@ -8,6 +8,7 @@ const enc = new TextEncoder()
 const dec = new TextDecoder()
 
 let isInitialized = false
+let initPromise: Promise<any[]>
 
 const ctx: Worker = self as any
 
@@ -56,7 +57,7 @@ function formatCSSExports(exports: TransformResult['exports']) {
 }
 
 // TODO: send different message types, will make for easier handling
-function sendMessage(compiledCode, compiledCSS) {
+function sendMessage(instance, compiledCode, compiledCSS) {
   const { error, code } = compiledCode
   const css = compiledCSS
     ? {
@@ -65,20 +66,33 @@ function sendMessage(compiledCode, compiledCSS) {
       }
     : null
 
-  ctx.postMessage({ code: { error, code }, css })
+  if (error) {
+    ctx.postMessage({ type: 'compile_error', instance, error })
+  } else {
+    ctx.postMessage({
+      type: 'compile_ok',
+      instance,
+      code: { error, code },
+      css,
+    })
+  }
 }
 
-ctx.onmessage = ({ data: { code, css } }) => {
+ctx.onmessage = ({ data: { type, instance, code, css } }) => {
   if (!isInitialized) {
-    Promise.all([initSwc(), initParcelCSS()]).then(() => {
+    // ensure we only call the initialization once, to prevent unnecessary additional requests
+    // for the wasm files
+    if (!initPromise) initPromise = Promise.all([initSwc(), initParcelCSS()])
+
+    initPromise.then(() => {
       isInitialized = true
       const compiledCode = compileCode(code)
       const compiledCSS = compileCSS(css)
-      sendMessage(compiledCode, compiledCSS)
+      sendMessage(instance, compiledCode, compiledCSS)
     })
   } else {
     const compiledCode = compileCode(code)
     const compiledCSS = compileCSS(css)
-    sendMessage(compiledCode, compiledCSS)
+    sendMessage(instance, compiledCode, compiledCSS)
   }
 }
