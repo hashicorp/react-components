@@ -47,6 +47,7 @@ function compileCSS(css?: string) {
   })
 }
 
+// TODO: handle composes
 function formatCSSExports(exports: TransformResult['exports']) {
   if (!exports) return {}
   return Object.fromEntries(
@@ -54,6 +55,7 @@ function formatCSSExports(exports: TransformResult['exports']) {
   )
 }
 
+// TODO: send different message types, will make for easier handling
 function sendMessage(compiledCode, compiledCSS) {
   const { error, code } = compiledCode
   const css = compiledCSS
