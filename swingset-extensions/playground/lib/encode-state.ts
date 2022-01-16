@@ -29,5 +29,9 @@ export function addStateToURL(playgroundState: PlaygroundState): URL {
 export function getStateFromURL(url?: URL): PlaygroundState {
   if (!url) return { code: null, style: null }
 
-  return decode(url.hash.slice(1))
+  try {
+    return decode(url.hash.slice(1))
+  } catch (error) {
+    return { code: null, style: null }
+  }
 }
