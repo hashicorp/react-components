@@ -65,6 +65,25 @@
   &.vertical {
     flex-direction: column-reverse;
   }
+
+  &.fullscreen {
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+
+    & :global(.sp-cm) {
+      /* max height - toolbar */
+      height: calc(100% - 40px);
+    }
+
+    & :global(.cm-scroller) {
+      height: auto;
+    }
+  }
 }
 
 .editorStage {
@@ -80,4 +99,21 @@
   flex-grow: 0;
   flex-shrink: 0;
   overflow: auto;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gray-6);
+  height: 40px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: 1rem;
 }

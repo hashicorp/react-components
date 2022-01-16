@@ -32,6 +32,7 @@ export function getStateFromURL(url?: URL): PlaygroundState {
   try {
     return decode(url.hash.slice(1))
   } catch (error) {
+    console.log(error)
     return { code: null, style: null }
   }
 }

@@ -4,19 +4,32 @@ componentName: 'Accordion'
 
 Display a list of titled items with expandable content.
 
-<LiveComponent>{`<Accordion
-  heading="My test accordion heading"
-  items={[
-    {
-      heading: 'My Accordion Item',
-      content: 'This is some default text in the collapsable area.',
-    },
-    {
-      heading: 'Another Accordion Item',
-      content: 'This is some text content with some <strong>strong text</strong>',
-    },
-  ]}
-/>`}</LiveComponent>
+<Playground>
+
+```tsx
+import Accordion from 'accordion'
+
+export default function Example() {
+  return (
+    <Accordion
+      heading="My test accordion heading"
+      items={[
+        {
+          heading: 'My Accordion Item',
+          content: 'This is some default text in the collapsable area.',
+        },
+        {
+          heading: 'Another Accordion Item',
+          content:
+            'This is some text content with some <strong>strong text</strong>',
+        },
+      ]}
+    />
+  )
+}
+```
+
+</Playground>
 
 <UsageDetails packageJson={packageJson} />
 

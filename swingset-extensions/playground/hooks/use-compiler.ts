@@ -29,7 +29,7 @@ function getWorker() {
 
     worker.onmessage = ({ data }) => {
       const cb = listeners.get(data.instance)
-      if (cb.current) cb.current(data)
+      if (cb?.current) cb.current(data)
     }
   }
 

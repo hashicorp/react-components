@@ -5,12 +5,14 @@ import {
   FC,
   ElementType,
   ReactElement,
+  useEffect,
 } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import classNames from 'classnames'
 import {
   FileTabs,
   SandpackProvider,
+  useActiveCode,
   useSandpack,
 } from '@codesandbox/sandpack-react'
 import s from './playground.module.css'
@@ -20,6 +22,12 @@ import { evalComponent } from './lib/eval-component'
 import { getCodeFromChildPre } from './lib/get-code-from-child-pre'
 import { addStateToURL, getStateFromURL } from './lib/encode-state'
 import { useRouter } from 'next/router'
+import { ButtonWithIcon } from './components/button-with-icon'
+import { IconRefresh } from './components/icon-refresh'
+import copyToClipboard from 'copy-to-clipboard'
+import { IconCopy } from './components/icon-copy'
+import { IconMaximize } from './components/icon-maximize'
+import { IconMinimize } from './components/icon-minimize'
 
 interface PlaygroundProps {
   /**
@@ -44,14 +52,31 @@ interface PlaygroundProps {
 const PlaygroundInner = ({ layout, persistStateToUrl }) => {
   const router = useRouter()
   const { sandpack } = useSandpack()
-  const { files, activePath } = sandpack
+  const { code: activeCode } = useActiveCode()
+  const { files, activePath, resetAllFiles } = sandpack
 
   const styles = files['style.module.css']?.code
   const code = files['index.tsx'].code
 
+  // TODO: handle accessibility in this scenario
+  const [fullscreen, setFullscreen] = useState(false)
   const [error, setError] = useState<Error>()
   const [Component, setComponent] = useState<ElementType>(() => () => null)
   const styleRef = useRef<HTMLStyleElement>(null)
+
+  const hasCompiled = useRef(false)
+  useEffect(() => {
+    if (!hasCompiled.current) {
+      return
+    }
+
+    if (persistStateToUrl) {
+      router.replace(addStateToURL({ code, style: styles }), undefined, {
+        shallow: true,
+        scroll: false,
+      })
+    }
+  }, [code, styles])
 
   useCompiler(code, styles, (data) => {
     switch (data.type) {
@@ -65,12 +90,7 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
             styleRef.current.innerHTML = data.css.code
           }
 
-          if (persistStateToUrl) {
-            router.replace(addStateToURL({ code, style: styles }), undefined, {
-              shallow: true,
-              scroll: false,
-            })
-          }
+          hasCompiled.current = true
         } catch (err) {
           setError(err as Error)
         }
@@ -93,10 +113,40 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
     <>
       <style ref={styleRef} />
       <div
-        className={classNames(s.layout, layout === 'vertical' && s.vertical)}
+        className={classNames(
+          s.layout,
+          layout === 'vertical' && s.vertical,
+          fullscreen && s.fullscreen
+        )}
       >
         <div className={s.editorStage}>
-          <FileTabs />
+          <div className={s.toolbar}>
+            {styles ? <FileTabs /> : null}
+            <div className={s.controls}>
+              <ButtonWithIcon
+                title="Reset to original snippet"
+                onClick={() => resetAllFiles()}
+              >
+                <IconRefresh width={16} height={16} />
+              </ButtonWithIcon>
+              <ButtonWithIcon
+                title="Copy to clipboard"
+                onClick={() => copyToClipboard(activeCode)}
+              >
+                <IconCopy width={16} height={16} />
+              </ButtonWithIcon>
+              <ButtonWithIcon
+                title="Fullscreen"
+                onClick={() => setFullscreen((cur) => !cur)}
+              >
+                {fullscreen ? (
+                  <IconMinimize width={16} height={16} />
+                ) : (
+                  <IconMaximize width={16} height={16} />
+                )}
+              </ButtonWithIcon>
+            </div>
+          </div>
           <PlaygroundEditor language={language} />
         </div>
         <div className={s.previewStage}>
@@ -132,16 +182,21 @@ const Playground: FC<PlaygroundProps> = ({
 }) => {
   const [codeChild, styleChild] = Children.toArray(children)
 
-  const initialCode = getCodeFromChildPre(codeChild as ReactElement)
+  const initialCode =
+    typeof children === 'string'
+      ? children
+      : getCodeFromChildPre(codeChild as ReactElement)
   const initialStyle = getCodeFromChildPre(styleChild as ReactElement)
 
-  const stateFromURL = persistStateToUrl
-    ? getStateFromURL(
-        typeof window !== 'undefined'
-          ? new URL(window.location.href)
-          : undefined
-      )
-    : { code: null, style: null }
+  const [stateFromURL] = useState(
+    persistStateToUrl
+      ? getStateFromURL(
+          typeof window !== 'undefined'
+            ? new URL(window.location.href)
+            : undefined
+        )
+      : { code: null, style: null }
+  )
 
   const files = {
     'index.tsx': {
