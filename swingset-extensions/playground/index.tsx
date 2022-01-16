@@ -77,7 +77,7 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
         break
       }
       case 'compile_error': {
-        setError(() => data.code.error)
+        setError(() => data.error)
         break
       }
       default: {
