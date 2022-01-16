@@ -18,16 +18,31 @@ import PlaygroundEditor from './code-editor'
 import { useCompiler } from './hooks/use-compiler'
 import { evalComponent } from './lib/eval-component'
 import { getCodeFromChildPre } from './lib/get-code-from-child-pre'
+import { addStateToURL, getStateFromURL } from './lib/encode-state'
+import { useRouter } from 'next/router'
 
 interface PlaygroundProps {
+  /**
+   * Optional title which is rendered above the playground element
+   */
   title?: string
+  /**
+   * Playground layout, determines how the editor and preview stage are oriented
+   */
   layout: 'horizontal' | 'vertical'
+  /**
+   * Whether or not the editor state should be persisted to the URL. Defaults to false.
+   *
+   * WARNING: only one Playground per page can have its state persisted to the URL
+   */
+  persistStateToUrl?: boolean
 }
 
 /**
  * Placing an abstraction at this level to gain access to the Sandpack provider
  */
-const PlaygroundInner = ({ layout }) => {
+const PlaygroundInner = ({ layout, persistStateToUrl }) => {
+  const router = useRouter()
   const { sandpack } = useSandpack()
   const { files, activePath } = sandpack
 
@@ -48,6 +63,13 @@ const PlaygroundInner = ({ layout }) => {
 
           if (styleRef.current && data.css) {
             styleRef.current.innerHTML = data.css.code
+          }
+
+          if (persistStateToUrl) {
+            router.replace(addStateToURL({ code, style: styles }), undefined, {
+              shallow: true,
+              scroll: false,
+            })
           }
         } catch (err) {
           setError(err as Error)
@@ -102,18 +124,33 @@ const PlaygroundInner = ({ layout }) => {
   )
 }
 
-const Playground: FC<PlaygroundProps> = ({ children, title, layout }) => {
+const Playground: FC<PlaygroundProps> = ({
+  children,
+  title,
+  layout,
+  persistStateToUrl,
+}) => {
   const [codeChild, styleChild] = Children.toArray(children)
 
   const initialCode = getCodeFromChildPre(codeChild as ReactElement)
   const initialStyle = getCodeFromChildPre(styleChild as ReactElement)
 
+  const stateFromURL = persistStateToUrl
+    ? getStateFromURL(
+        typeof window !== 'undefined'
+          ? new URL(window.location.href)
+          : undefined
+      )
+    : { code: null, style: null }
+
   const files = {
     'index.tsx': {
-      code: initialCode,
+      code: stateFromURL?.code ?? initialCode,
       active: true,
     },
-    ...(initialStyle ? { 'style.module.css': { code: initialStyle } } : {}),
+    ...(initialStyle
+      ? { 'style.module.css': { code: stateFromURL?.style ?? initialStyle } }
+      : {}),
   }
 
   return (
@@ -125,7 +162,10 @@ const Playground: FC<PlaygroundProps> = ({ children, title, layout }) => {
           entry: 'index.tsx',
         }}
       >
-        <PlaygroundInner layout={layout} />
+        <PlaygroundInner
+          layout={layout}
+          persistStateToUrl={persistStateToUrl}
+        />
       </SandpackProvider>
     </div>
   )
