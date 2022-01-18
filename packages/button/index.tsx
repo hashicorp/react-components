@@ -1,5 +1,6 @@
 import React from 'react'
 import slugify from 'slugify'
+import Link from 'next/link'
 import fragment from './fragment.graphql'
 import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'
@@ -88,7 +89,7 @@ function Button({
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'
 
-  return (
+  const content = (
     <Elem
       className={classNames(
         s.root,
@@ -114,6 +115,8 @@ function Button({
       {hasRightIcon && <Icon {...iconProps} svg={iconProps.svg!} />}
     </Elem>
   )
+
+  return url ? <Link href={url}>{content}</Link> : content
 }
 
 function Icon({
