@@ -1,5 +1,11 @@
 # @hashicorp/react-content
 
+## 8.2.0
+
+### Minor Changes
+
+- [#490](https://github.com/hashicorp/react-components/pull/490) [`d545b9d`](https://github.com/hashicorp/react-components/commit/d545b9dcb42c7538273cecc0e99e9adc25dced82) Thanks [@dstaley](https://github.com/dstaley)! - Remove enforced left-alignment for table headers
+
 ## 8.1.2
 
 ### Patch Changes
