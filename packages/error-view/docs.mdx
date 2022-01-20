@@ -21,6 +21,7 @@ This hook is intended for use cases where the opinionated, `g-grid-container`-ba
  * eg 404.tsx or 500.tsx
  * ref: https://nextjs.org/docs/advanced-features/custom-error-page
  */
+import { useErrorPageAnalytics } from '@hashicorp/react-error-view'
 import s from './custom-styles.module.css'
 
 export default function CustomFourOhFourPage(): React.ReactElement {
