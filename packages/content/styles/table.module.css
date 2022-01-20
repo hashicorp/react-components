@@ -7,13 +7,9 @@
     border: 1px solid #ddd;
     border-right: 0;
     background-color: transparent;
-    width: 100%;
+    width: max-content;
     max-width: 100%;
     margin-bottom: 20px;
-
-    & th {
-      text-align: left;
-    }
 
     & td,
     & th {

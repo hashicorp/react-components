@@ -1,5 +1,23 @@
 # @hashicorp/react-content
 
+## 8.2.0
+
+### Minor Changes
+
+- [#490](https://github.com/hashicorp/react-components/pull/490) [`d545b9d`](https://github.com/hashicorp/react-components/commit/d545b9dcb42c7538273cecc0e99e9adc25dced82) Thanks [@dstaley](https://github.com/dstaley)! - Remove enforced left-alignment for table headers
+
+## 8.1.2
+
+### Patch Changes
+
+- [#488](https://github.com/hashicorp/react-components/pull/488) [`bd8a16d`](https://github.com/hashicorp/react-components/commit/bd8a16de91c139bd15acfe93b7a5c41b1362892b) Thanks [@BRKalow](https://github.com/BRKalow)! - Update table styles so that the top-level table width and child table element widths do not get mismatched, while still retaining the max-width and x-axis scroll.
+
+## 8.1.1
+
+### Patch Changes
+
+- [#478](https://github.com/hashicorp/react-components/pull/478) [`a6a6ba4`](https://github.com/hashicorp/react-components/commit/a6a6ba4c1fde8c9a10c725d6c50f9e9c1091de65) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix: content table overflow
+
 ## 8.1.0
 
 ### Minor Changes
