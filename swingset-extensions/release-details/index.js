@@ -28,18 +28,19 @@ function ReleaseDetails({ packageJson = {} }) {
       const [error, registryData] = await response.json()
       if (error) {
         let msg = `Error fetching registry data for ${name}. `
-        msg += `Full error: ${JSON.stringify(error)}`
+        msg += `error.toString(): ${JSON.stringify(error)}`
         console.error(msg)
         dataToSet.error = error
       } else {
         // Sort stable versions in descending order
-        const sortedStableVersions = semverSort(
-          Object.keys(registryData.versions)
-        ).filter((v) => {
-          const z = v.match(/(\d+)\.(\d+)\.(.+)$/)[3]
-          const isStable = parseInt(z).toString() === z
-          return isStable
-        })
+        const versions = registryData.versions || {}
+        const sortedStableVersions = semverSort(Object.keys(versions)).filter(
+          (v) => {
+            const z = v.match(/(\d+)\.(\d+)\.(.+)$/)[3]
+            const isStable = parseInt(z).toString() === z
+            return isStable
+          }
+        )
         dataToSet.versions = sortedStableVersions
       }
       //  Avoid trying to setData if the component is not mounted
@@ -111,7 +112,7 @@ function VersionSection({ label, versions, isLoading, name, error }) {
             {isLoading
               ? `Loading ${label} releases...`
               : error
-              ? 'Error fetching registry data. Check the console.'
+              ? error
               : `No matching versions found for ${label}.`}
           </span>
         </div>
