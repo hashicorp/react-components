@@ -11,6 +11,12 @@
     max-width: 100%;
     margin-bottom: 20px;
 
+    /**
+      we're setting this here so that th elements are not left-aligned by default (default UA styling),
+      and we're still able to use the markdown table alignment shorthand
+    **/
+    text-align: inherit;
+
     & td,
     & th {
       border-right: 1px solid #ddd;
