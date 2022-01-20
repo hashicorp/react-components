@@ -1,0 +1,57 @@
+---
+componentName: 'ErrorView'
+---
+
+A component used to display an error view, within layouts that use `g-grid-container`.
+
+<LiveComponent>{`
+<ErrorView statusCode={404} />
+`}</LiveComponent>
+
+### `useErrorPageAnalytics`
+
+This component leverages a `useErrorPageAnalytics` hook internally, which reports the page error using `window.location.track()`.
+
+> Note that `window.location.track()` is initialized in `ConsentManager`.
+
+This hook is intended for use cases where the opinionated, `g-grid-container`-based styles of the default `ErrorView` component are not suited to a project.
+
+```jsx
+/**
+ * eg 404.tsx or 500.tsx
+ * ref: https://nextjs.org/docs/advanced-features/custom-error-page
+ */
+import { useErrorPageAnalytics } from '@hashicorp/react-error-view'
+import s from './custom-styles.module.css'
+
+export default function CustomFourOhFourPage(): React.ReactElement {
+  useErrorPageAnalytics(404)
+
+  return (
+    <p>
+      Oops, something went wrong! We logged an error. Please enjoy this "Back to
+      Home" link.
+    </p>
+  )
+}
+```
+
+<UsageDetails packageJson={packageJson} />
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+`statusCode={404}`
+
+<LiveComponent>{`
+<ErrorView statusCode={404} />
+`}</LiveComponent>
+
+Fallback (for `500` pages, and any non-`404` statusCode)
+
+<LiveComponent>{`
+<ErrorView statusCode={500} />
+`}</LiveComponent>
