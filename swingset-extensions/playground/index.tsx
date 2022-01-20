@@ -59,6 +59,7 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
   const code = files['index.tsx'].code
 
   // TODO: handle accessibility in this scenario
+  // TODO: disable body scrolling
   const [fullscreen, setFullscreen] = useState(false)
   const [error, setError] = useState<Error>()
   const [Component, setComponent] = useState<ElementType>(() => () => null)
