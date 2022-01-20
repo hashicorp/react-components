@@ -1,6 +1,6 @@
 # Error View
 
-A component used to display an error view, within layouts that use `g-grid-container`.
+A component used to display an error view. For further details on this component, see [docs.mdx][./docs.mdx] file. These docs can also be viewed through our [Swingset instance](https://react-components.vercel.app).
 
 ## `useErrorPageAnalytics`
 
