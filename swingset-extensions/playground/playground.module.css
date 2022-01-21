@@ -36,7 +36,6 @@
   & :global(.sp-tab-button) {
     height: 40px;
     border: 0;
-    outline: none;
     background: transparent;
     padding: 0 8px;
 

@@ -28,6 +28,7 @@ import copyToClipboard from 'copy-to-clipboard'
 import { IconCopy } from './components/icon-copy'
 import { IconMaximize } from './components/icon-maximize'
 import { IconMinimize } from './components/icon-minimize'
+import { useSafeLayoutEffect } from './hooks/use-safe-layout-effect'
 
 interface PlaygroundProps {
   /**
@@ -59,11 +60,24 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
   const code = files['index.tsx'].code
 
   // TODO: handle accessibility in this scenario
-  // TODO: disable body scrolling
-  const [fullscreen, setFullscreen] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const scrollPosRef = useRef(-1)
   const [error, setError] = useState<Error>()
   const [Component, setComponent] = useState<ElementType>(() => () => null)
   const styleRef = useRef<HTMLStyleElement>(null)
+
+  useSafeLayoutEffect(() => {
+    if (isFullscreen) {
+      window.scroll(0, 0)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+      if (scrollPosRef.current > 0) {
+        window.scroll(0, scrollPosRef.current)
+        scrollPosRef.current = 0
+      }
+    }
+  }, [isFullscreen])
 
   const hasCompiled = useRef(false)
   useEffect(() => {
@@ -72,12 +86,12 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
     }
 
     if (persistStateToUrl) {
-      router.replace(addStateToURL({ code, style: styles }), undefined, {
+      router.replace(addStateToURL(files), undefined, {
         shallow: true,
         scroll: false,
       })
     }
-  }, [code, styles])
+  }, [files])
 
   useCompiler(code, styles, (data) => {
     switch (data.type) {
@@ -117,7 +131,7 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
         className={classNames(
           s.layout,
           layout === 'vertical' && s.vertical,
-          fullscreen && s.fullscreen
+          isFullscreen && s.fullscreen
         )}
       >
         <div className={s.editorStage}>
@@ -138,9 +152,12 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
               </ButtonWithIcon>
               <ButtonWithIcon
                 title="Fullscreen"
-                onClick={() => setFullscreen((cur) => !cur)}
+                onClick={() => {
+                  if (!isFullscreen) scrollPosRef.current = window.scrollY
+                  setIsFullscreen((cur) => !cur)
+                }}
               >
-                {fullscreen ? (
+                {isFullscreen ? (
                   <IconMinimize width={16} height={16} />
                 ) : (
                   <IconMaximize width={16} height={16} />
@@ -196,17 +213,16 @@ const Playground: FC<PlaygroundProps> = ({
             ? new URL(window.location.href)
             : undefined
         )
-      : { code: null, style: null }
+      : {}
   )
 
   const files = {
     'index.tsx': {
-      code: stateFromURL?.code ?? initialCode,
+      code: initialCode,
       active: true,
     },
-    ...(initialStyle
-      ? { 'style.module.css': { code: stateFromURL?.style ?? initialStyle } }
-      : {}),
+    ...(initialStyle ? { 'style.module.css': { code: initialStyle } } : {}),
+    ...stateFromURL,
   }
 
   return (

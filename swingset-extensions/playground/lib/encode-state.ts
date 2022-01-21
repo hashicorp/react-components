@@ -1,10 +1,8 @@
 import lzString from 'lz-string'
+import { SandpackFiles } from '@codesandbox/sandpack-react'
 
 // TODO: put this somewhere else
-interface PlaygroundState {
-  code: string | null
-  style: string | null
-}
+type PlaygroundState = SandpackFiles
 
 export function encode(playgroundState: PlaygroundState): string {
   const stringified = JSON.stringify(playgroundState)
@@ -27,12 +25,12 @@ export function addStateToURL(playgroundState: PlaygroundState): URL {
 }
 
 export function getStateFromURL(url?: URL): PlaygroundState {
-  if (!url) return { code: null, style: null }
+  if (!url) return {}
 
   try {
     return decode(url.hash.slice(1))
   } catch (error) {
     console.log(error)
-    return { code: null, style: null }
+    return {}
   }
 }
