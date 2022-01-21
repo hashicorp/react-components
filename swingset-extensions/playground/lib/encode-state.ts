@@ -5,6 +5,8 @@ import { SandpackFiles } from '@codesandbox/sandpack-react'
 type PlaygroundState = SandpackFiles
 
 export function encode(playgroundState: PlaygroundState): string {
+  if (playgroundState['/package.json']) delete playgroundState['/package.json']
+
   const stringified = JSON.stringify(playgroundState)
   return lzString.compressToEncodedURIComponent(stringified)
 }
