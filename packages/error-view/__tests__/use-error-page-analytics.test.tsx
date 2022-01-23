@@ -10,6 +10,8 @@ describe('useErrorPageAnalytics', () => {
   it('calls window.analytics.track with the provided error code', async () => {
     // Mock window.analytics
     const forMockRestore = window.analytics
+    // $TSFixMe loosens window.analytics type to diverge from Segment type
+    // defined in @hashicorp/platform-types
     window.analytics = { track: jest.fn() } as $TSFixMe
     // Render and assert
     render(<HookTestComponent statusCode={404} />)
