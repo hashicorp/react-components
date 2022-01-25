@@ -2,12 +2,12 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import useErrorPageAnalytics from './use-error-page-analytics'
-import ErrorPage from '.'
+import ErrorPage, { ErrorPageProps } from '.'
 import s from './style.module.css'
 
 const versionPattern = /\/(?<version>v\d+[.]\d+[.](\d+|x))/
 
-function VersionNotFound({ version }): React.ReactElement {
+function VersionNotFound({ version }: { version: string }): React.ReactElement {
   const { asPath } = useRouter()
   useErrorPageAnalytics(404)
 
@@ -35,7 +35,21 @@ function VersionNotFound({ version }): React.ReactElement {
   )
 }
 
-function VersionedErrorPage({ statusCode, versions }): React.ReactElement {
+/**
+ * A Standalone error page component intended to be used on sites with versioned docs support.
+ * Exports a full, custom implementation of an pages/_error.tsx component.
+ *
+ * Example:
+ *
+ * ```tsx
+ * import { VersionedErrorPage } from '@hashicorp/react-error-view/versioned-view'
+ *
+ * export default VersionedErrorPage
+ * ```
+ */
+function VersionedErrorPage({
+  statusCode,
+}: ErrorPageProps): React.ReactElement {
   const { asPath } = useRouter()
 
   const versionMatches = versionPattern.exec(asPath)
@@ -43,7 +57,7 @@ function VersionedErrorPage({ statusCode, versions }): React.ReactElement {
   const versionInPath = versionMatches?.groups?.version
 
   return versionInPath && statusCode === 404 ? (
-    <VersionNotFound version={versionInPath} versions={versions} />
+    <VersionNotFound version={versionInPath} />
   ) : (
     <ErrorPage statusCode={statusCode} />
   )
