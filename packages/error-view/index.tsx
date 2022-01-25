@@ -1,6 +1,7 @@
-import s from './style.module.css'
+import React from 'react'
 import Link from 'next/link'
 import useErrorPageAnalytics from './use-error-page-analytics'
+import s from './style.module.css'
 
 interface ErrorPageProps {
   /** Error code to be recorded via window.analytics.track.  */
