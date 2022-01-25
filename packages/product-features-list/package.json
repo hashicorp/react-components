@@ -3,10 +3,12 @@
   "description": "list for product features",
   "version": "5.0.1",
   "author": "HashiCorp",
-  "contributors": ["Nicole Forrester"],
+  "contributors": [
+    "Nicole Forrester"
+  ],
   "dependencies": {
     "@hashicorp/react-button": "^6.0.3",
-    "@hashicorp/react-image": "^4.0.1",
+    "@hashicorp/react-image": "^4.0.3",
     "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",

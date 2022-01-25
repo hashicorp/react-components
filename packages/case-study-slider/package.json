@@ -3,10 +3,12 @@
   "description": "displays up to three case studies",
   "version": "7.0.1",
   "author": "HashiCorp",
-  "contributors": ["Mike Wickett"],
+  "contributors": [
+    "Mike Wickett"
+  ],
   "dependencies": {
     "@hashicorp/react-featured-slider": "^5.0.1",
-    "@hashicorp/react-image": "^4.0.1"
+    "@hashicorp/react-image": "^4.0.3"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

@@ -3,12 +3,14 @@
   "description": "featured slider for case studies",
   "version": "5.0.1",
   "author": "HashiCorp",
-  "contributors": ["Zach Shilton"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "main": "index.js",
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/react-button": "^6.0.0",
-    "@hashicorp/react-image": "^4.0.1",
+    "@hashicorp/react-button": "^6.0.3",
+    "@hashicorp/react-image": "^4.0.3",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {

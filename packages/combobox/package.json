@@ -3,11 +3,14 @@
   "description": "Combobox component with base functionality and styles built for composability",
   "version": "1.0.2",
   "author": "HashiCorp",
-  "contributors": ["Jimmy Merritello", "Kendall Strautman"],
+  "contributors": [
+    "Jimmy Merritello",
+    "Kendall Strautman"
+  ],
   "license": "MPL-2.0",
   "dependencies": {
-    "@reach/combobox": "0.15.1",
-    "@reach/visually-hidden": "^0.15.0",
+    "@reach/combobox": "0.16.5",
+    "@reach/visually-hidden": "^0.16.0",
     "classnames": "^2.3.1",
     "fuzzysearch": "1.0.3"
   },

@@ -3,12 +3,15 @@
   "description": "The page where you go to download HashiCorp products",
   "version": "2.7.0",
   "author": "HashiCorp",
-  "contributors": ["Zack Tanner", "Jeff Escalante"],
+  "contributors": [
+    "Zack Tanner",
+    "Jeff Escalante"
+  ],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-button": "^6.0.0",
+    "@hashicorp/react-button": "^6.0.3",
     "@hashicorp/react-head": "^3.1.2",
-    "@hashicorp/react-tabs": "^7.0.0",
+    "@hashicorp/react-tabs": "^7.1.1",
     "semver": "^7.3.5"
   },
   "peerDependencies": {

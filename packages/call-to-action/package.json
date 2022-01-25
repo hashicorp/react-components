@@ -3,15 +3,21 @@
   "description": "Display a title, content, and links in a call-to-action format",
   "version": "4.1.1",
   "author": "HashiCorp",
-  "contributors": ["Zach Shilton"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "dependencies": {
-    "@hashicorp/react-button": "^6.0.2"
+    "@hashicorp/react-button": "^6.0.3"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "react": ">=16.x"
   },
-  "keywords": ["call to action", "component", "react"],
+  "keywords": [
+    "call to action",
+    "component",
+    "react"
+  ],
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"
