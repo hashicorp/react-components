@@ -16,6 +16,13 @@ export default function HashiStackMenu({ onPanelChange }) {
     }
   }, [activePanelKey])
 
+  // Redirect to the branding page when someone right-clicks on the
+  // HashiCorp logo
+  const logoOnContextMenu = (e) => {
+    e.preventDefault()
+    window.location.href = 'https://www.hashicorp.com/brand'
+  }
+
   return (
     <header className={styles.hashiStackMenu}>
       <nav
@@ -26,6 +33,7 @@ export default function HashiStackMenu({ onPanelChange }) {
           aria-label="To main HashiCorp website"
           href="https://www.hashicorp.com/"
           className={styles.logoLink}
+          onContextMenu={logoOnContextMenu}
         >
           <Logo />
         </a>
