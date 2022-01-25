@@ -5,15 +5,18 @@
   --text-color-base: #efeff0;
   --text-color-faded: var(--gray-4);
   --text-color-success: var(--success);
+
   /* Foreground colors */
   --file-icon-color: var(--gray-3);
   --chrome-dot-color: #565d77;
   --divider-line-color: #3e445c;
+
   /* Background colors */
   --background-base: #252937;
   --background-tabs: #3b3e4b;
   --background-hovered-tab-item: #2e313f;
   --background-highlighted-line: #353b4f;
+
   /* Scrollbar colors */
   --scrollbar-background: var(--background-base);
   --scrollbar-foreground: var(--gray-4);

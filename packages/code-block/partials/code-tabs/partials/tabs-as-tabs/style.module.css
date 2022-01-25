@@ -12,7 +12,6 @@ to be present.
 
 .tabControl {
   composes: g-type-body-small-strong from global;
-
   background: none;
   border: none;
   color: var(--text-color-faded);

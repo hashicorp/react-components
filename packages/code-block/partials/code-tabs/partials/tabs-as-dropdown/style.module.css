@@ -18,7 +18,6 @@ to be present.
 
 .listboxButton {
   composes: g-type-body-small-strong from global;
-
   color: var(--text-color-faded);
   min-height: var(--base-height);
   padding: 0 16px;
@@ -38,10 +37,10 @@ to be present.
   & svg {
     display: block;
     & [fill] {
-      fill: currentcolor;
+      fill: currentColor;
     }
     & [stroke] {
-      stroke: currentcolor;
+      stroke: currentColor;
     }
   }
 }
@@ -75,6 +74,7 @@ to be present.
     box-shadow: none;
     outline: none;
   }
+
   /*
   The styles below are required to override
   globally scoped g-content styles. They should 
@@ -120,7 +120,7 @@ to be present.
   */
   margin: 0 !important;
   padding: 4px 8px !important;
-  &:before {
+  &::before {
     display: none;
   }
 }

@@ -38,6 +38,7 @@
   & h5 {
     margin-top: 24px;
     margin-bottom: 16px;
+
     /* Use s more reasonable default size
     if no typography class is present */
     &:not([class]) {
@@ -49,6 +50,7 @@
   & h6 {
     margin-top: 20px;
     margin-bottom: 16px;
+
     /* Use s more reasonable default size
     if no typography class is present */
     &:not([class]) {
