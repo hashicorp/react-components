@@ -1,5 +1,11 @@
 # @hashicorp/react-case-study-slider
 
+## 7.0.2
+
+### Patch Changes
+
+- [#500](https://github.com/hashicorp/react-components/pull/500) [`b7e0c0e`](https://github.com/hashicorp/react-components/commit/b7e0c0e400419e66ff1d19560afbca6aaa122e4e) Thanks [@jmfury](https://github.com/jmfury)! - Fixes regression on links from a Case Study resource item
+
 ## 7.0.1
 
 ### Patch Changes
