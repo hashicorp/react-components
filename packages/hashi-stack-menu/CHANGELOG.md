@@ -1,5 +1,11 @@
 # @hashicorp/react-hashi-stack-menu
 
+## 2.2.0
+
+### Minor Changes
+
+- [#496](https://github.com/hashicorp/react-components/pull/496) [`1f9633b`](https://github.com/hashicorp/react-components/commit/1f9633bef6b7d9237adc901efb5a2175e32e3efb) Thanks [@dstaley](https://github.com/dstaley)! - Redirect to brand page when right-clicking HashiCorp logo
+
 ## 2.1.2
 
 ### Patch Changes

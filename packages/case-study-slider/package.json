@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-case-study-slider",
   "description": "displays up to three case studies",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "author": "HashiCorp",
   "contributors": ["Mike Wickett"],
   "dependencies": {
