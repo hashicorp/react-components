@@ -13,11 +13,11 @@ function CaseStudySlider({ data, dark, className }) {
       alt: logoImage.alt,
     }
     const caseStudyLink =
-      caseStudy.caseStudyLink ||
+      caseStudy.caseStudyLink?.url ||
       `/resources/${caseStudy.caseStudyResource.slug}`
     const link = {
       text: caseStudy.buttonLabel || 'Read Case Study',
-      url: caseStudyLink.url,
+      url: caseStudyLink,
     }
     const caseStudyImage =
       caseStudy.caseStudyImage || caseStudy.caseStudyResource.image
