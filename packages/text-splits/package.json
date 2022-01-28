@@ -3,15 +3,17 @@
   "description": "Renders an array of text-split components",
   "version": "3.2.7",
   "author": "HashiCorp",
-  "contributors": ["Zach Shilton"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@hashicorp/react-text-split-with-code": "^3.3.7",
-    "@hashicorp/react-text-split-with-image": "^4.2.4",
-    "@hashicorp/react-text-split-with-logo-grid": "^5.1.4"
+    "@hashicorp/react-text-split-with-code": "^3.4.0",
+    "@hashicorp/react-text-split-with-image": "^4.3.0",
+    "@hashicorp/react-text-split-with-logo-grid": "^5.1.5"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",

@@ -3,10 +3,12 @@
   "description": "Create a Hashicorp branded glossary page in NextJS projects.",
   "version": "2.5.5",
   "author": "HashiCorp",
-  "contributors": ["Bryce Kalow"],
+  "contributors": [
+    "Bryce Kalow"
+  ],
   "dependencies": {
     "@hashicorp/react-docs-page": "^14.14.0",
-    "@hashicorp/remark-plugins": "^3.1.1"
+    "@hashicorp/remark-plugins": "^3.3.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {

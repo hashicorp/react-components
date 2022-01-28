@@ -62,7 +62,7 @@
   align-items: flex-start;
   display: flex;
   justify-content: center;
-  margin-right: 0px;
+  margin-right: 0;
   margin-top: 8px;
 
   @media (min-width: 576px) {

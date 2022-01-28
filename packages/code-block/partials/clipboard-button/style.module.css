@@ -35,7 +35,7 @@ to be present.
     height: 16px;
 
     & [fill] {
-      fill: currentcolor;
+      fill: currentColor;
       transition: fill 0.2s ease-in-out;
     }
   }

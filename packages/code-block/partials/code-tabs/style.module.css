@@ -20,7 +20,6 @@ to be present.
 
 .heading {
   composes: g-type-body-small-strong from global;
-
   align-items: center;
   color: var(--text-color-base);
   display: flex;

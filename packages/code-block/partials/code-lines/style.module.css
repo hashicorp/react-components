@@ -24,6 +24,7 @@ pre.pre {
   display: block;
   flex-grow: 1;
   padding: var(--code-padding) 0;
+
   /*
   
   Ran into weird issues in Safari with overflow here.
@@ -47,6 +48,7 @@ pre.pre {
   /* web standard Firefox */
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-foreground) transparent;
+
   /* webkit prefixed Safari, Chrome, chromium-based browsers */
   &::-webkit-scrollbar {
     width: 11px;
