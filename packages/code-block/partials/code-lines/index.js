@@ -59,7 +59,8 @@ function CodeLines({
                   isNotHighlighted={isNotHighlighted}
                   hasFloatingCopyButton={hasFloatingCopyButton}
                 >
-                  {lineChildren == '' ? '\n' : lineChildren}
+                  {lineChildren}
+                  {'\n'}
                 </LineOfCode>
               )
             })}
