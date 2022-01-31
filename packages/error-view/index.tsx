@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import useErrorPageAnalytics from './use-error-page-analytics'
+import use404Redirects from './use-404-redirects'
 import s from './style.module.css'
 
 export interface ErrorPageProps {
@@ -37,5 +38,5 @@ function ErrorPage({ statusCode }: ErrorPageProps): React.ReactElement {
   )
 }
 
-export { useErrorPageAnalytics }
+export { useErrorPageAnalytics, use404Redirects }
 export default ErrorPage
