@@ -1,14 +1,14 @@
 {
   "name": "@hashicorp/react-product-features-list",
   "description": "list for product features",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "author": "HashiCorp",
   "contributors": [
     "Nicole Forrester"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^6.0.3",
-    "@hashicorp/react-image": "^4.0.3",
+    "@hashicorp/react-button": "^6.0.4",
+    "@hashicorp/react-image": "^4.0.4",
     "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",
