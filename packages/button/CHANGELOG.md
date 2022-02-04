@@ -1,5 +1,11 @@
 # @hashicorp/react-button
 
+## 6.1.0
+
+### Minor Changes
+
+- [#495](https://github.com/hashicorp/react-components/pull/495) [`cdab7ec`](https://github.com/hashicorp/react-components/commit/cdab7ec618621bbfe6b828bdfbb023bf6f2ef57d) Thanks [@dstaley](https://github.com/dstaley)! - Render all links with `next/link`. Due to edge cases that may arise as a result of performing client-side navigations to redirected pages, it is recommended that you also use the [`use404Redirects`](https://github.com/hashicorp/react-components/tree/main/packages/error-view#use404redirects) hook from `@hashicorp/error-view` in your `_404.jsx` template.
+
 ## 6.0.4
 
 ### Patch Changes
