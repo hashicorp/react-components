@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 4.4.2
+
+### Patch Changes
+
+- [#503](https://github.com/hashicorp/react-components/pull/503) [`ce0ddaf`](https://github.com/hashicorp/react-components/commit/ce0ddafd0555d133a48531aefd1e614432d2d593) Thanks [@zchsh](https://github.com/zchsh)! - Fixes a Firefox-specific issue where manually selected and then copied code does not contain the newlines it should.
+
 ## 4.4.1
 
 ### Patch Changes
