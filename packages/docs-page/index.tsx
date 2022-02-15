@@ -12,6 +12,7 @@ import { AlgoliaConfigObject } from '@hashicorp/react-search/types'
 
 import VersionSelect from '@hashicorp/react-version-select'
 import { getVersionFromPath } from '@hashicorp/react-version-select/util'
+import CodeTabsProvider from '@hashicorp/react-code-block/provider'
 import { MDXProviderComponentsProp } from '@mdx-js/react'
 
 import SearchBar from './components/search-bar'
@@ -131,16 +132,18 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
               process.env.ENABLE_VERSIONED_DOCS === 'true',
           })}
         >
-          <Content
-            className="g-content" // used in temporary_injectJumpToSection
-            product={slug}
-            content={
-              <>
-                {isMobile ? null : search}
-                {children}
-              </>
-            }
-          />
+          <CodeTabsProvider>
+            <Content
+              className="g-content" // used in temporary_injectJumpToSection
+              product={slug}
+              content={
+                <>
+                  {isMobile ? null : search}
+                  {children}
+                </>
+              }
+            />
+          </CodeTabsProvider>
         </div>
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
