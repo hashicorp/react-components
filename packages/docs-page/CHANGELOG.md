@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.14.2
+
+### Patch Changes
+
+- [#508](https://github.com/hashicorp/react-components/pull/508) [`f0bfe27`](https://github.com/hashicorp/react-components/commit/f0bfe27d58f74c3dbc8049899d6bef7758782572) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds CodeTabsProvider to DocsPage, which is necessary for syncing language selection across multiple CodeTabs instances.
+
 ## 14.14.1
 
 ### Patch Changes
