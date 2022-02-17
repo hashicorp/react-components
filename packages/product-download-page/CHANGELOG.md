@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.7.2
+
+### Patch Changes
+
+- [#510](https://github.com/hashicorp/react-components/pull/510) [`963d39a`](https://github.com/hashicorp/react-components/commit/963d39ac51d63ff45a8a85ab078c7130502c972d) Thanks [@dstaley](https://github.com/dstaley)! - Adjust human-readable CPU architecture labels
+
 ## 2.7.1
 
 ### Patch Changes
