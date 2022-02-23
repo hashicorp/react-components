@@ -1,0 +1,130 @@
+.badge {
+  background-color: var(--background-color, var(--black));
+  color: var(--color, var(--white));
+  border-radius: 4px;
+  display: block;
+  composes: g-type-label from global;
+  padding: 0 8px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: max-content;
+  height: 24px;
+  line-height: 24px;
+}
+
+.consul {
+  &.primary {
+    --background-color: var(--consul);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--consul-secondary);
+    --color: var(--black);
+  }
+}
+
+.nomad {
+  &.primary {
+    --background-color: var(--nomad);
+    --color: var(--black);
+  }
+  &.secondary {
+    --background-color: var(--nomad-secondary);
+    --color: var(--black);
+  }
+}
+
+.terraform {
+  &.primary {
+    --background-color: var(--terraform);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--terraform-secondary);
+    --color: var(--black);
+  }
+}
+
+.boundary {
+  &.primary {
+    --background-color: var(--boundary);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--boundary-secondary);
+    --color: var(--black);
+  }
+}
+
+.waypoint {
+  &.primary {
+    --background-color: var(--waypoint);
+    --color: var(--black);
+  }
+  &.secondary {
+    --background-color: var(--waypoint-secondary);
+    --color: var(--black);
+  }
+}
+
+.vault {
+  &.primary {
+    --background-color: var(--vault);
+    --color: var(--black);
+  }
+  &.secondary {
+    --background-color: var(--vault-secondary);
+    --color: var(--black);
+  }
+}
+
+.packer {
+  &.primary {
+    --background-color: var(--packer);
+    --color: var(--black);
+  }
+  &.secondary {
+    --background-color: var(--packer-secondary);
+    --color: var(--black);
+  }
+}
+
+.vagrant {
+  &.primary {
+    --background-color: var(--vagrant);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--vagrant-secondary);
+    --color: var(--black);
+  }
+}
+
+.neutral,
+.hashicorp {
+  &.primary {
+    --background-color: var(--brand);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--gray-6);
+    --color: var(--black);
+  }
+}
+
+.black {
+  &.primary,
+  &.secondary {
+    --background-color: var(--black);
+    --color: var(--white);
+  }
+}
+
+.white {
+  &.primary,
+  &.secondary {
+    --background-color: var(--white);
+    --color: var(--black);
+  }
+}
