@@ -8,7 +8,7 @@
     "Kevin Wang"
   ],
   "dependencies": {
-    "@hashicorp/platform-docs-mdx": "0.1.4-canary-2022028214714",
+    "@hashicorp/platform-docs-mdx": "0.1.4-canary-2022123212239",
     "@hashicorp/platform-markdown-utils": "^0.2.0",
     "@hashicorp/react-alert": "^6.0.2",
     "@hashicorp/react-content": "^8.2.0",
