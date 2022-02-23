@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.14.3
+
+### Patch Changes
+
+- [#504](https://github.com/hashicorp/react-components/pull/504) [`25d353c`](https://github.com/hashicorp/react-components/commit/25d353c045437889f01e473f1ca5d8d14308809d) Thanks [@zchsh](https://github.com/zchsh)! - Bumps platform-docs-mdx to fix a manual copy issue in code-block
+
 ## 14.14.2
 
 ### Patch Changes
