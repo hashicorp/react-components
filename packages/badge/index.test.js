@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Badge from '.'
 
-fdescribe('<Badge />', () => {
+describe('<Badge />', () => {
   it('should render the provided React children', () => {
     const badgeText = 'New'
     render(<Badge>{badgeText}</Badge>)
