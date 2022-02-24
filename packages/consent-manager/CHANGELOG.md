@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.1.2
+
+### Patch Changes
+
+- [#514](https://github.com/hashicorp/react-components/pull/514) [`072f32c9`](https://github.com/hashicorp/react-components/commit/072f32c9b5473ec5282973d9746bcf350a0cd966) Thanks [@zchsh](https://github.com/zchsh)! - Adds missing events dependency to avoid webpack > 5 errors.
+
 ## 7.1.1
 
 ### Patch Changes
