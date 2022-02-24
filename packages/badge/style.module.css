@@ -114,17 +114,23 @@
 }
 
 .black {
-  &.primary,
-  &.secondary {
+  &.primary {
     --background-color: var(--black);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--gray-3);
     --color: var(--white);
   }
 }
 
 .white {
-  &.primary,
-  &.secondary {
+  &.primary {
     --background-color: var(--white);
     --color: var(--black);
+  }
+  &.secondary {
+    --background-color: var(--white);
+    --color: var(--gray-3);
   }
 }
