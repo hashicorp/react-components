@@ -1,0 +1,41 @@
+---
+componentName: 'Badge'
+---
+
+Badges are non-interactive labels highlighting metadata such as status or categorization.
+
+<LiveComponent>
+  {`
+<>
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+    <Badge theme="vault">New</Badge>
+    <Badge theme="consul">New</Badge>
+    <Badge theme="nomad">New</Badge>
+    <Badge theme="terraform">New</Badge>
+    <Badge theme="waypoint">New</Badge>
+    <Badge theme="boundary">New</Badge>
+    <Badge theme="packer">New</Badge>
+    <Badge theme="vagrant">New</Badge>
+    <Badge theme="neutral">New</Badge>
+    <Badge theme="black">New</Badge>
+    <Badge theme="white">New</Badge>
+  </div>
+
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginTop: 32 }}>
+    <Badge theme="vault" variant="secondary">New</Badge>
+    <Badge theme="consul" variant="secondary">New</Badge>
+    <Badge theme="nomad" variant="secondary">New</Badge>
+    <Badge theme="terraform" variant="secondary">New</Badge>
+    <Badge theme="waypoint" variant="secondary">New</Badge>
+    <Badge theme="boundary" variant="secondary">New</Badge>
+    <Badge theme="packer" variant="secondary">New</Badge>
+    <Badge theme="vagrant" variant="secondary">New</Badge>
+    <Badge theme="neutral" variant="secondary">New</Badge>
+    <Badge theme="black" variant="secondary">New</Badge>
+    <Badge theme="white" variant="secondary">New</Badge>
+  </div>
+</>
+`}
+</LiveComponent>
+
+<PropsTable props={componentProps} />
