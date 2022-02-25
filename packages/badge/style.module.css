@@ -1,9 +1,9 @@
 .badge {
+  composes: g-type-label from global;
   background-color: var(--background-color, var(--black));
   color: var(--color, var(--white));
   border-radius: 4px;
   display: block;
-  composes: g-type-label from global;
   padding: 0 8px;
   text-align: center;
   white-space: nowrap;
