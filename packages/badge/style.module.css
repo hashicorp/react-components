@@ -6,7 +6,6 @@
   composes: g-type-label from global;
   padding: 0 8px;
   text-align: center;
-  text-transform: uppercase;
   white-space: nowrap;
   width: max-content;
   height: 24px;
