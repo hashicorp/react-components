@@ -1,4 +1,4 @@
-import { Products } from '@hashicorp/platform-product-meta'
+import type { Products } from '@hashicorp/platform-product-meta'
 import classnames from 'classnames'
 import s from './style.module.css'
 
