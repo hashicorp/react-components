@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     description: 'Styles the badge background and text color.',
     type: 'string',
-    required: true,
+    required: false,
     options: [
       'neutral',
       'white',
@@ -27,6 +27,7 @@ module.exports = {
   variant: {
     description: '',
     type: 'string',
+    required: false,
     options: ['primary', 'secondary'],
   },
 }
