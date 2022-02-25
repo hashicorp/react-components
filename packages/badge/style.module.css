@@ -12,91 +12,14 @@
   line-height: 24px;
 }
 
-.consul {
+.product {
   &.primary {
-    --background-color: var(--consul);
-    --color: var(--white);
+    background-color: var(--brand);
+    color: var(--brand-text-on-primary);
   }
   &.secondary {
-    --background-color: var(--consul-secondary);
-    --color: var(--black);
-  }
-}
-
-.nomad {
-  &.primary {
-    --background-color: var(--nomad);
-    --color: var(--black);
-  }
-  &.secondary {
-    --background-color: var(--nomad-secondary);
-    --color: var(--black);
-  }
-}
-
-.terraform {
-  &.primary {
-    --background-color: var(--terraform);
-    --color: var(--white);
-  }
-  &.secondary {
-    --background-color: var(--terraform-secondary);
-    --color: var(--black);
-  }
-}
-
-.boundary {
-  &.primary {
-    --background-color: var(--boundary);
-    --color: var(--white);
-  }
-  &.secondary {
-    --background-color: var(--boundary-secondary);
-    --color: var(--black);
-  }
-}
-
-.waypoint {
-  &.primary {
-    --background-color: var(--waypoint);
-    --color: var(--black);
-  }
-  &.secondary {
-    --background-color: var(--waypoint-secondary);
-    --color: var(--black);
-  }
-}
-
-.vault {
-  &.primary {
-    --background-color: var(--vault);
-    --color: var(--black);
-  }
-  &.secondary {
-    --background-color: var(--vault-secondary);
-    --color: var(--black);
-  }
-}
-
-.packer {
-  &.primary {
-    --background-color: var(--packer);
-    --color: var(--black);
-  }
-  &.secondary {
-    --background-color: var(--packer-secondary);
-    --color: var(--black);
-  }
-}
-
-.vagrant {
-  &.primary {
-    --background-color: var(--vagrant);
-    --color: var(--white);
-  }
-  &.secondary {
-    --background-color: var(--vagrant-secondary);
-    --color: var(--black);
+    background-color: var(--brand-secondary);
+    color: var(--black);
   }
 }
 
