@@ -25,7 +25,7 @@ module.exports = {
     ],
   },
   variant: {
-    description: '',
+    description: 'Variant styling based upon choosen theme.',
     type: 'string',
     required: false,
     options: ['primary', 'secondary'],
