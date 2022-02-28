@@ -30,7 +30,7 @@
     --color: var(--white);
   }
   &.secondary {
-    --background-color: var(--gray-6);
+    --background-color: var(--vagrant-secondary);
     --color: var(--black);
   }
 }
@@ -41,8 +41,8 @@
     --color: var(--white);
   }
   &.secondary {
-    --background-color: var(--gray-3);
-    --color: var(--white);
+    --background-color: var(--gray-6);
+    --color: var(--black);
   }
 }
 
