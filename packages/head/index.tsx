@@ -1,4 +1,7 @@
 import Head from 'next/head'
+import { renderMetaTags } from './seo'
+
+export { renderMetaTags }
 
 export default function HashiHead(props: HashiHeadProps): React.ReactElement {
   return (
