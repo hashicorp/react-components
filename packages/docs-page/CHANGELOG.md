@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.14.4
+
+### Patch Changes
+
+- [#516](https://github.com/hashicorp/react-components/pull/516) [`ceb89b24`](https://github.com/hashicorp/react-components/commit/ceb89b24b0086a77421f59ed560c09d7eb6c28e0) Thanks [@dstaley](https://github.com/dstaley)! - Ignore non-jump-to-section tagged H2 elements within the content of a DocsPage
+
 ## 14.14.3
 
 ### Patch Changes
