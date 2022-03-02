@@ -1,9 +1,8 @@
 import InlineSvg from '@hashicorp/react-inline-svg'
 import Image from '@hashicorp/react-image'
 import Arrow from './img/arrow.svg?include'
-import s from './style.module.css'
-import fragment from './fragment.graphql'
 import classNames from 'classnames'
+import s from './style.module.css'
 
 function UseCases({ items, className }) {
   return (
@@ -51,7 +50,5 @@ function UseCases({ items, className }) {
     </div>
   )
 }
-
-UseCases.fragmentSpec = { fragment, dependencies: [Image] }
 
 export default UseCases
