@@ -7,7 +7,7 @@
     "Bryce Kalow"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "^6.0.4",
+    "@hashicorp/react-button": "6.2.0-canary-20220303141349",
     "shortid": "^2.2.16"
   },
   "license": "MPL-2.0",
