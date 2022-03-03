@@ -1,3 +1,4 @@
+import type { ParsedUrlQuery } from 'querystring'
 import moize, { Options } from 'moize'
 import semver from 'semver'
 import { GetStaticPropsContext } from 'next'
@@ -17,7 +18,7 @@ import { getPathsFromNavData } from '../get-paths-from-nav-data'
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
   enabledVersionedDocs?: boolean
-  remarkPlugins?: $TSFixMe[]
+  remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
   mainBranch?: string // = 'main',
   scope?: Record<string, $TSFixMe>
 }
@@ -114,9 +115,16 @@ export default class RemoteContentLoader implements DataLoader {
         ? (params[this.opts.paramId] as string[]).join('/')
         : ''
 
+    let remarkPlugins: $TSFixMe[] = []
+
+    // We support passing in a function to remarkPlugins, which gets the parameters of the current page
+    if (typeof this.opts.remarkPlugins === 'function') {
+      remarkPlugins = this.opts.remarkPlugins(params)
+    }
+
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
-        remarkPlugins: this.opts.remarkPlugins,
+        remarkPlugins,
         scope: this.opts.scope,
       })
 

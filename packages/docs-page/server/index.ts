@@ -26,7 +26,8 @@ export function getStaticGenerationFunctions(
     | ({
         basePath: string
         strategy: 'remote'
-      } & BaseOpts)
+      } & BaseOpts &
+        Partial<ConstructorParameters<typeof RemoteContentLoader>[0]>)
     | ({
         localContentDir: string
         navDataFile: string
@@ -36,7 +37,8 @@ export function getStaticGenerationFunctions(
          * Passed to our resolveIncludes plugin.
          * Defaults to "content/partials". */
         localPartialsDir?: string
-      } & BaseOpts)
+      } & BaseOpts &
+        Partial<ConstructorParameters<typeof FileSystemLoader>[0]>)
 ): {
   getStaticPaths: GetStaticPaths
   getStaticProps: GetStaticProps
