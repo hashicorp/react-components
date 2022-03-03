@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import EventEmitter from 'events'
+import { EventEmitter } from 'events'
 import classNames from 'classnames'
 import { loadPreferences, savePreferences } from './util/cookies'
 import ConsentBanner from './components/banner'
