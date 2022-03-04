@@ -46,10 +46,9 @@ export default function ProductDownloadsPage({
       `We went looking for version "${_latestVersion}" but could not find it in the release data. Please make sure that the "latestVersion" prop matches the version name of an existing release.`
     )
 
-  const sortedDownloads = useMemo(
-    () => sortPlatforms(currentRelease),
-    [currentRelease]
-  )
+  const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
+    currentRelease,
+  ])
   const osKeys = Object.keys(sortedDownloads)
   const [osIndex, setSelectedOsIndex] = useState(0)
 
@@ -179,7 +178,7 @@ export default function ProductDownloadsPage({
 
 interface ProductDownloadsPageProps {
   tutorialLink: Link
-  merchandisingSlot: React.ReactElement
+  merchandisingSlot?: React.ReactElement
   logo: React.ReactElement
   getStartedLinks: Link[]
   getStartedDescription: string
@@ -190,7 +189,7 @@ interface ProductDownloadsPageProps {
   packageManagerOverrides?: PackageManagerConfig[]
   showPackageManagers?: boolean
   pageTitle?: string
-  enterpriseMode: boolean
+  enterpriseMode?: boolean
   product: HashiCorpProduct
   latestVersion: string
   releases: ReleasesAPIResponse

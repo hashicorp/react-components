@@ -8,7 +8,7 @@ export default function DownloadTabs({
   tabData,
   downloads,
   version,
-  merchandisingSlot,
+  merchandisingSlot = null,
   logo,
   tutorialLink,
 }: DownloadTabsProps): React.ReactElement {
@@ -124,7 +124,7 @@ interface DownloadTabsProps {
   }[]
   downloads: SortedReleases
   version: string
-  merchandisingSlot: React.ReactElement
+  merchandisingSlot?: React.ReactElement
   logo: React.ReactElement
   tutorialLink: Link
 }
