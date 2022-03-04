@@ -8,7 +8,7 @@ export default function DownloadTabs({
   tabData,
   downloads,
   version,
-  merchandisingSlot = null,
+  merchandisingSlot,
   logo,
   tutorialLink,
 }: DownloadTabsProps): React.ReactElement {
@@ -30,7 +30,7 @@ export default function DownloadTabs({
               logo={logo}
               tutorialLink={tutorialLink}
             />
-            {merchandisingSlot}
+            {merchandisingSlot ? merchandisingSlot : null}
           </div>
         </Tab>
       ))}
