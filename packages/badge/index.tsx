@@ -1,13 +1,7 @@
-import type { Products } from '@hashicorp/platform-product-meta'
+import type { BadgeProps } from './types'
 import productStyles from '@hashicorp/platform-product-meta/style.module.css'
 import classNames from 'classnames'
 import s from './style.module.css'
-
-interface BadgeProps {
-  children: string
-  theme?: Products | 'neutral' | 'white' | 'black'
-  variant?: 'primary' | 'secondary'
-}
 
 export default function Badge({
   children,
