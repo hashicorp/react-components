@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.8.0
+
+### Minor Changes
+
+- [#526](https://github.com/hashicorp/react-components/pull/526) [`390ec6d3`](https://github.com/hashicorp/react-components/commit/390ec6d3aa2473a6a5959cdbb2a88225b7f2dd22) Thanks [@zchsh](https://github.com/zchsh)! - Fixes an issue where props that could be optional were required.
+
 ## 2.7.2
 
 ### Patch Changes
