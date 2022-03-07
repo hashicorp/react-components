@@ -30,7 +30,7 @@ export default function DownloadTabs({
               logo={logo}
               tutorialLink={tutorialLink}
             />
-            {merchandisingSlot}
+            {merchandisingSlot ? merchandisingSlot : null}
           </div>
         </Tab>
       ))}
@@ -124,7 +124,7 @@ interface DownloadTabsProps {
   }[]
   downloads: SortedReleases
   version: string
-  merchandisingSlot: React.ReactElement
+  merchandisingSlot?: React.ReactElement
   logo: React.ReactElement
   tutorialLink: Link
 }
