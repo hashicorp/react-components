@@ -1,4 +1,9 @@
-import React, { Children } from 'react'
+import React, {
+  Children,
+  isValidElement,
+  PropsWithChildren,
+  ReactElement,
+} from 'react'
 import classNames from 'classnames'
 import resolveTabData from '../../utils/resolve-tab-data'
 import useIndexedTabs from '../../provider/use-indexed-tabs'
@@ -10,28 +15,53 @@ import themeLight from '../../theme-light.module.css'
 import s from './style.module.css'
 import analytics from '../../analytics'
 
-function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
-  const validChildren = Children.toArray(children)
+type TabObject =
+  | string
+  | {
+      label: string
+      group?: string
+    }
+
+interface CodeTabsProps {
+  heading?: string
+  className?: string
+  tabs: TabObject[]
+  theme: 'light' | 'dark'
+}
+
+function CodeTabs({
+  children,
+  heading,
+  className,
+  tabs,
+  theme = 'dark',
+}: PropsWithChildren<CodeTabsProps>): ReactElement {
+  const allChildren = Children.toArray(children)
   // Throw an error if the tabs prop is defined, but does not
   // match the number of valid children
-  if (tabs !== undefined && tabs.length !== validChildren.length) {
+  if (tabs !== undefined && tabs.length !== allChildren.length) {
     throw new Error(
-      `In CodeTabs, the tabs array length must match the number of children. Found mismatched tabs length ${tabs.length} and children length ${validChildren.length}. Please adjust the tabs prop or the number of children to resolve this issue.`
+      `In CodeTabs, the tabs array length must match the number of children. Found mismatched tabs length ${tabs.length} and children length ${allChildren.length}. Please adjust the tabs prop or the number of children to resolve this issue.`
     )
   }
   // Throw an error if any individual child has a type other than
   // the expected CodeBlock, CodeBlockConfig, or pre
-  const childTypes = validChildren.map((tabChild) => {
-    let type
-    // For JSX primitives, the type of captured by the type property
-    if (typeof tabChild.type == 'string') type = tabChild.type
-    // For function components in JSX, ie CodeBlock and CodeBlockConfig,
-    // tabChild.type is a function whose name we need
-    if (typeof tabChild.type == 'function') type = tabChild.type.name
-    // In MDX contexts, the component type is captured in mdxType
-    if (typeof tabChild.props.mdxType === 'string')
-      type = tabChild.props.mdxType
-    return type
+  const childTypes = allChildren.map((tabChild) => {
+    if (!isValidElement(tabChild)) {
+      return typeof tabChild
+    } else if (typeof tabChild['type'] == 'string') {
+      // For JSX primitives, the type of captured by the type property
+      return tabChild['type']
+    } else if (typeof tabChild['type'] == 'function') {
+      // For function components in JSX, ie CodeBlock and CodeBlockConfig,
+      // tabChild.type is a function whose name we need
+      return tabChild['type'].name
+    } else if (typeof tabChild['props']?.mdxType == 'string') {
+      // In MDX contexts, the component type is captured in mdxType
+      return tabChild['props'].mdxType
+    } else {
+      return 'unknown'
+    }
   })
   const validTypes = [
     'CodeBlock',
@@ -53,7 +83,7 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   }
   // Parse tab labels and groupIds, using data from the tabs prop
   // where available, or falling back to generating labels and group IDs
-  const parsedTabs = resolveTabData(validChildren, tabs)
+  const parsedTabs = resolveTabData(allChildren, tabs)
   // Use index-to-group syncing utility
   const tabGroupIds = parsedTabs.map((t) => t.group)
   const [activeTabIdx, setActiveTabIdx] = useIndexedTabs(tabGroupIds)
@@ -77,7 +107,7 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
         theme == 'dark' ? themeDark.base : themeLight.base
       )}
     >
-      <OverflowDetector
+      <OverflowDetector<HTMLDivElement>
         render={({ hasOverflow }, overflowRef) => {
           return (
             <div ref={overflowRef} className={classNames(s.topBar)}>
@@ -110,9 +140,9 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
         }}
       />
       <div>
-        {validChildren.map((tabChild, idx) => {
+        {allChildren.filter(isValidElement).map((tabChild, idx) => {
           const isActive = idx == activeTabIdx
-          const clonedChild = React.cloneElement(tabChild, {
+          const clonedChild = React.cloneElement(tabChild as ReactElement, {
             // Note: wipes any custom classNames on the tabChild.
             // This is intentional, for example, it removes
             // any margin set in MDX custom components
