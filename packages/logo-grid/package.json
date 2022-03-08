@@ -7,7 +7,7 @@
     "Jeff Escalante"
   ],
   "dependencies": {
-    "@hashicorp/react-button": "6.2.0-canary-20220303141349",
+    "@hashicorp/react-button": "^6.0.4",
     "@hashicorp/react-image": "^4.0.4",
     "@hashicorp/react-inline-svg": "^6.0.3",
     "@reach/popover": "^0.16.2",
