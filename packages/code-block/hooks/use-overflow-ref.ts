@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { MutableRefObject, useEffect, useRef, useState } from 'react'
 import useWindowSize from './use-window-size'
 
 /**
@@ -17,14 +17,22 @@ import useWindowSize from './use-window-size'
  * hook to a shared hooks package of some sort.
  * Asana task: https://app.asana.com/0/1100423001970639/1200437064424402/f
  */
-function useOverflowRef() {
+function useOverflowRef<T extends HTMLElement>(): [
+  boolean,
+  MutableRefObject<T | null>
+] {
   const [hasOverflow, setHasOverflow] = useState(true)
   const { width: windowWidth } = useWindowSize()
-  const overflowRef = useRef()
+  const overflowRef = useRef<T>(null)
 
   useEffect(() => {
-    if (!overflowRef.current) return
+    if (!overflowRef.current) {
+      return
+    }
     const { scrollWidth, offsetWidth } = overflowRef.current
+    if (typeof scrollWidth !== 'number' || typeof offsetWidth !== 'number') {
+      return
+    }
     const nowHasOverflow = scrollWidth > offsetWidth
     if (hasOverflow !== nowHasOverflow) setHasOverflow(nowHasOverflow)
   }, [windowWidth])

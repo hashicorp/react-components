@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import useOverflowRef from '../../../../hooks/use-overflow-ref'
 
 /**
@@ -21,8 +21,15 @@ import useOverflowRef from '../../../../hooks/use-overflow-ref'
  * @param {function} props.render Render function that accepts ({ hasOverflow }, overflowRef as args)
  * @returns
  */
-function OverflowDetector({ render }) {
-  const [hasOverflow, overflowRef] = useOverflowRef()
+function OverflowDetector<T extends HTMLElement>({
+  render,
+}: {
+  render: (
+    { hasOverflow: boolean },
+    overflowRef?: MutableRefObject<T | null>
+  ) => React.ReactElement
+}) {
+  const [hasOverflow, overflowRef] = useOverflowRef<T>()
   return (
     <>
       <div
