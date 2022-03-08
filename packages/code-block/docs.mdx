@@ -275,17 +275,41 @@ function hello() {
 
 The `CodeTabs` component, which is available in Learn and Docs MDX contexts, allows authors to create multi-snippet tabbed code blocks. `<CodeTabs>` is a wrapper component around child code blocks. Each child must be either a fenced code block, or must be a `<CodeBlockConfig>` which wraps a fenced code block.
 
+By default, the tab options are shown at the left of the component. When space is limited, tabs will automatically collapse into a dropdown menu. When a `heading` is provided to `CodeTabs`, the heading will be shown at left, and the tabs (or dropdown menu) will be shown at right.
+
+#### `CodeTabs` Playground
+
+<LiveComponent>{`
+<CodeTabs theme="dark">
+
+<CodeBlock
+  options={{ showClipboard: true, filename: 'hello-world.js' }}
+  language="javascript"
+  code={\`<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span>\`}
+/>
+
+<CodeBlock
+  options={{ showClipboard: true }}
+  language="go"
+  code={\`<span class="token keyword">package</span> main<!-- -->
+<!-- -->
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+<!-- -->
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<!-- -->  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>\`}
+/>
+
+</CodeTabs>
+`}</ LiveComponent>
+
 #### When to use `CodeTabs`
 
-Tabs should only be used when switching between similar content types such as:
+Tabs should only be used when switching between equivalent approaches to a particular task or workflow. Common examples include alternate configuration type, programming, languages, or operating systems:
 
 - Windows / macOS / Linux
 - HCL / JSON
 - JavaScript / BASH
-
-Essentially either similar languages or OSs, or more broadly, equivalent approaches to a particular task or workflow.
-
-Where space is limited, tabs will automatically collapse into a dropdown menu on the right side.
 
 #### With fenced code child tabs
 
