@@ -5,14 +5,22 @@ import {
   ListboxList,
   ListboxOption,
 } from '@reach/listbox'
+import classNames from 'classnames'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import svgChevronDown from './chevron-down.svg?include'
 import s from './style.module.css'
 
-function TabsAsDropdown({ tabLabels, activeTabIdx, setActiveTabIdx }) {
+function TabsAsDropdown({
+  tabLabels,
+  activeTabIdx,
+  setActiveTabIdx,
+  hasHeading,
+}) {
   const activeLabel = tabLabels.filter((_l, idx) => idx == activeTabIdx)[0]
   return (
-    <div className={s.tabsAsDropdown}>
+    <div
+      className={classNames(s.tabsAsDropdown, { [s.hasHeading]: hasHeading })}
+    >
       <ListboxInput className={s.listboxInput} onChange={setActiveTabIdx}>
         <ListboxButton className={s.listboxButton}>
           {activeLabel}

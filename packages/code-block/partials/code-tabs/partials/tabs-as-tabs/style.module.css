@@ -6,8 +6,11 @@ to be present.
 
 .tabsAsTabs {
   display: flex;
-  margin-left: auto;
   justify-content: flex-end;
+
+  &.hasHeading {
+    margin-left: auto;
+  }
 }
 
 .tabControl {
@@ -19,8 +22,16 @@ to be present.
   min-height: var(--base-height);
   padding: 0 16px;
 
-  &:last-child {
-    border-top-right-radius: 4px;
+  &:not(.hasHeading) {
+    &:first-child {
+      border-top-left-radius: 4px;
+    }
+  }
+
+  &.hasHeading {
+    &:last-child {
+      border-top-right-radius: 4px;
+    }
   }
 
   &:hover {

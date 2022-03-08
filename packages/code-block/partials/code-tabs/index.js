@@ -66,6 +66,9 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   // gather labels
   const tabLabels = parsedTabs.map((t) => t.label)
 
+  // if we have a heading, we align tabs right (and make some style tweaks)
+  const hasHeading = Boolean(heading)
+
   return (
     <div
       className={classNames(
@@ -78,7 +81,7 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
         render={({ hasOverflow }, overflowRef) => {
           return (
             <div ref={overflowRef} className={classNames(s.topBar)}>
-              {heading ? (
+              {hasHeading ? (
                 <div
                   className={classNames(s.heading, {
                     [s.hasOverflow]: hasOverflow,
@@ -92,12 +95,14 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
                   tabLabels={tabLabels}
                   activeTabIdx={activeTabIdx}
                   setActiveTabIdx={setActiveTabWithEvent}
+                  hasHeading={hasHeading}
                 />
               ) : (
                 <TabsAsTabs
                   tabLabels={tabLabels}
                   activeTabIdx={activeTabIdx}
                   setActiveTabIdx={setActiveTabWithEvent}
+                  hasHeading={hasHeading}
                 />
               )}
             </div>
