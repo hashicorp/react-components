@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import CodeTabs from './'
 import CodeBlock from '../../'
+import CodeBlockConfig from '../code-block-config'
 import CodeTabsProvider from '../../provider'
 
 // getAllByText is needed, as we sometimes render dummy elements
@@ -8,7 +9,7 @@ import CodeTabsProvider from '../../provider'
 // and for simpler copy-to-clipboard logic
 function getSecondByText(text) {
   /* eslint-disable-next-line no-unused-vars */
-  const [firstElem, secondElem] = screen.getAllByText(text)
+  const [, secondElem] = screen.getAllByText(text)
   return secondElem
 }
 
@@ -23,6 +24,37 @@ it('should accept a className prop, and place it on the root element', () => {
     </CodeTabsProvider>
   )
   expect(container.firstChild.className).toContain(customClassName)
+})
+
+it('should accept CodeBlockConfig or pre elements as children', () => {
+  // Note: we suppress console.error for this test.
+  // We expect a warning that React does not recognize the `hasBarAbove`
+  // prop on the first `pre` element. In MDX this is a non-issue since
+  // `pre` would be mapped to our `CodeBlock` component,
+  // via @hashicorp/react-code-block/mdx.
+  jest.spyOn(console, 'error')
+  global.console.error.mockImplementation(() => {})
+  expect(() => {
+    render(
+      <CodeTabsProvider>
+        <CodeTabs>
+          <pre>
+            <code>Hello world!</code>
+          </pre>
+          <CodeBlockConfig>
+            {/* Note: do not use mdxType in JSX, this is here to mock what
+            would happen, without having to run the MDX processing chain */}
+            <pre mdxType="pre">
+              <code>Hello world!</code>
+            </pre>
+          </CodeBlockConfig>
+          <CodeBlock language="go" code="fmt.Println('Hello world!')" />
+        </CodeTabs>
+      </CodeTabsProvider>
+    )
+  }).not.toThrowError()
+  //  Restore console.error for further tests
+  global.console.error.mockRestore()
 })
 
 it('should render the heading prop', () => {
