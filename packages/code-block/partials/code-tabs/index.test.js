@@ -42,6 +42,8 @@ it('should accept CodeBlockConfig or pre elements as children', () => {
             <code>Hello world!</code>
           </pre>
           <CodeBlockConfig>
+            {/* Note: do not use mdxType in JSX, this is here to mock what
+            would happen, without having to run the MDX processing chain */}
             <pre mdxType="pre">
               <code>Hello world!</code>
             </pre>
