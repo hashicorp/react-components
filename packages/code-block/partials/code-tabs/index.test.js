@@ -9,7 +9,7 @@ import CodeTabsProvider from '../../provider'
 // and for simpler copy-to-clipboard logic
 function getSecondByText(text) {
   /* eslint-disable-next-line no-unused-vars */
-  const [_firstElem, secondElem] = screen.getAllByText(text)
+  const [, secondElem] = screen.getAllByText(text)
   return secondElem
 }
 
