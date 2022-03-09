@@ -4,6 +4,8 @@ import resolveTabData from '../../utils/resolve-tab-data'
 import useIndexedTabs from '../../provider/use-indexed-tabs'
 import TabsAsDropdown from './partials/tabs-as-dropdown'
 import TabsAsTabs from './partials/tabs-as-tabs'
+import CodeBlock from '../../'
+import CodeBlockConfig from '../code-block-config'
 import OverflowDetector from './partials/overflow-detector'
 import themeDark from '../../theme-dark.module.css'
 import themeLight from '../../theme-light.module.css'
@@ -23,14 +25,31 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   // the expected CodeBlock, CodeBlockConfig, or pre
   const childTypes = validChildren.map((tabChild) => {
     let type
-    // For JSX primitives, the type of captured by the type property
-    if (typeof tabChild.type == 'string') type = tabChild.type
-    // For function components in JSX, ie CodeBlock and CodeBlockConfig,
-    // tabChild.type is a function whose name we need
-    if (typeof tabChild.type == 'function') type = tabChild.type.name
-    // In MDX contexts, the component type is captured in mdxType
-    if (typeof tabChild.props.mdxType === 'string')
+    // For JSX primitives, the type is captured by the type property
+    if (typeof tabChild.type == 'string' || typeof tabChild.type == 'number') {
+      type = tabChild.type
+      // For function components, accept CodeBlock or CodeBlockConfig.
+    } else if (typeof tabChild.type === 'function') {
+      // Note that function names may be minified, we repeat them here
+      // so that error messages are more helpful.
+      const validComponents = [
+        { component: CodeBlock, name: 'CodeBlock' },
+        { component: CodeBlockConfig, name: 'CodeBlockConfig' },
+      ]
+      const matchIdx = validComponents
+        .map((c) => c.component)
+        .indexOf(tabChild.type)
+      if (matchIdx >= 0) {
+        type = validComponents[matchIdx].name
+      } else {
+        type = 'Unrecognized component'
+      }
+    }
+    // In MDX contexts, the component type is captured in mdxType,
+    // and this should override any previously derived type.
+    if (typeof tabChild.props?.mdxType === 'string') {
       type = tabChild.props.mdxType
+    }
     return type
   })
   const validTypes = [
@@ -66,6 +85,9 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   // gather labels
   const tabLabels = parsedTabs.map((t) => t.label)
 
+  // if we have a heading, we align tabs right (and make some style tweaks)
+  const hasHeading = Boolean(heading)
+
   return (
     <div
       className={classNames(
@@ -78,7 +100,7 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
         render={({ hasOverflow }, overflowRef) => {
           return (
             <div ref={overflowRef} className={classNames(s.topBar)}>
-              {heading ? (
+              {hasHeading ? (
                 <div
                   className={classNames(s.heading, {
                     [s.hasOverflow]: hasOverflow,
@@ -92,12 +114,14 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
                   tabLabels={tabLabels}
                   activeTabIdx={activeTabIdx}
                   setActiveTabIdx={setActiveTabWithEvent}
+                  hasHeading={hasHeading}
                 />
               ) : (
                 <TabsAsTabs
                   tabLabels={tabLabels}
                   activeTabIdx={activeTabIdx}
                   setActiveTabIdx={setActiveTabWithEvent}
+                  hasHeading={hasHeading}
                 />
               )}
             </div>
