@@ -6,9 +6,12 @@ to be present.
 
 .tabsAsDropdown {
   display: flex;
-  margin-left: auto;
   justify-content: flex-end;
   flex-wrap: wrap;
+
+  &.hasHeading {
+    margin-left: auto;
+  }
 }
 
 .listboxInput {
