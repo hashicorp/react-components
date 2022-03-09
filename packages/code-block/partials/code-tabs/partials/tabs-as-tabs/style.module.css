@@ -22,6 +22,9 @@ to be present.
   min-height: var(--base-height);
   padding: 0 16px;
 
+  /* note that the parent `topBar` has corner rounding,
+  we need to round either the first or last tab depending on alignment.
+  without a heading, we're left-aligned, with heading, we're right-aligned. */
   &:not(.hasHeading) {
     &:first-child {
       border-top-left-radius: 4px;
