@@ -1,5 +1,11 @@
 # @hashicorp/react-button
 
+## 6.2.0
+
+### Minor Changes
+
+- [#521](https://github.com/hashicorp/react-components/pull/521) [`cb0a3eaf`](https://github.com/hashicorp/react-components/commit/cb0a3eaf8fe9be30dc72b1b3e87ad6ed2e2e2b07) Thanks [@rayelder](https://github.com/rayelder)! - Align <Button /> border-radius and height to Figma component
+
 ## 6.1.0
 
 ### Minor Changes

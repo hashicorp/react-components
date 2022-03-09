@@ -1,5 +1,14 @@
 # @hashicorp/react-consent-manager
 
+## 7.1.3
+
+### Patch Changes
+
+- [#521](https://github.com/hashicorp/react-components/pull/521) [`cbcf167c`](https://github.com/hashicorp/react-components/commit/cbcf167cec21da83482c13effac2e44c6d2a54eb) Thanks [@rayelder](https://github.com/rayelder)! - Adjust accept button border radius
+
+- Updated dependencies [[`cb0a3eaf`](https://github.com/hashicorp/react-components/commit/cb0a3eaf8fe9be30dc72b1b3e87ad6ed2e2e2b07)]:
+  - @hashicorp/react-button@6.2.0
+
 ## 7.1.2
 
 ### Patch Changes

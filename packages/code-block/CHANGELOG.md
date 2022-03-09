@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 4.5.0
+
+### Minor Changes
+
+- [#532](https://github.com/hashicorp/react-components/pull/532) [`fb69b94d`](https://github.com/hashicorp/react-components/commit/fb69b94d205f4f264a66648888495a5401a17e0f) Thanks [@zchsh](https://github.com/zchsh)! - Changes alignment of CodeTabs tab elements from right-aligned to left-aligned. Note that if the heading prop is used, then tab elements remained right-aligned, matching previous behaviour. This release also fixes a bug in CodeTabs, where valid CodeBlock children would sometimes be incorrectly flagged as invalid.
+
 ## 4.4.2
 
 ### Patch Changes
