@@ -101,6 +101,17 @@ function Search({
               role="listbox"
               aria-labelledby={SEARCH_BOX_LABEL_ID}
             >
+              <p
+                // TODO: remove after testing
+                style={{
+                  margin: 0,
+                  border: '1px solid green',
+                  background: 'lightgreen',
+                  textAlign: 'center',
+                }}
+              >
+                {indexName}
+              </p>
               <Hits
                 {...{
                   handleEscape,
@@ -115,6 +126,17 @@ function Search({
               />
               {additionalIndexes.map((index) => (
                 <Index key={index} indexName={index}>
+                  <p
+                    // TODO: remove after testing
+                    style={{
+                      margin: 0,
+                      border: '1px solid red',
+                      background: 'pink',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {index}
+                  </p>
                   <Hits
                     {...{
                       handleEscape,
