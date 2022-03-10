@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react'
-import { Configure, InstantSearch } from 'react-instantsearch-dom'
+import {
+  Configure,
+  InstantSearch,
+  Index,
+  connectHits,
+} from 'react-instantsearch-dom'
 import Hits from './hits'
 import SearchBox, { SearchBoxElement } from './search-box'
 import SearchProvider, { useSearch } from './provider'
 import VisuallyHidden from '@reach/visually-hidden'
 import s from './style.module.css'
+import h from './hits.module.css'
 import classNames from 'classnames'
+import SearchLegend from './legend'
 
 //  HTML `id`s used for aria attributes
 export const SEARCH_BOX_LABEL_ID = 'search-box-label'
@@ -23,6 +30,7 @@ function Search({
   },
   showSearchLegend = true,
   heapId = 'SearchBox',
+  additionalIndexes = [],
 }) {
   if (!renderHitContent) {
     throw new Error(
@@ -84,18 +92,47 @@ function Search({
           activeHit={hitIndex}
         />
         {query && !isCancelled && (
-          <Hits
-            {...{
-              handleEscape,
-              query,
-              renderHitContent,
-              resolveHitLink,
-              setCancelled,
-              showSearchLegend,
-              renderCalloutCta,
-            }}
-            onSetActiveHit={setHitIndex}
-          />
+          <div className={h.hitsRoot}>
+            <HelpMessage query={query} />
+            {showSearchLegend && <SearchLegend />}
+            <ul
+              className={h.hitsList}
+              id={SEARCH_RESULTS_ID}
+              role="listbox"
+              aria-labelledby={SEARCH_BOX_LABEL_ID}
+            >
+              <Hits
+                {...{
+                  handleEscape,
+                  query,
+                  renderHitContent,
+                  resolveHitLink,
+                  setCancelled,
+                  showSearchLegend,
+                  renderCalloutCta,
+                }}
+                onSetActiveHit={setHitIndex}
+              />
+              {additionalIndexes.map((index) => (
+                <Index key={index} indexName={index}>
+                  <Hits
+                    {...{
+                      handleEscape,
+                      query,
+                      renderHitContent,
+                      resolveHitLink,
+                      setCancelled,
+                      // showSearchLegend,
+                    }}
+                    onSetActiveHit={setHitIndex}
+                  />
+                </Index>
+              ))}
+            </ul>
+            {renderCalloutCta && (
+              <div className={h.calloutCta}>{renderCalloutCta()}</div>
+            )}
+          </div>
         )}
       </InstantSearch>
     </div>
@@ -104,3 +141,15 @@ function Search({
 
 export default Search
 export { SearchProvider, useSearch, SearchBoxElement }
+
+const HelpMessage = connectHits(({ hits, query }) => {
+  return hits.length === 0 ? (
+    <div className={h.noHits}>
+      <span className={h.noHitsTitle}>{`No results for ${query}...`}</span>
+      <span className={h.noHitsMessage}>
+        Search tips: some terms require an exact match. Try typing the entire
+        term, or use a different word or phrase.
+      </span>
+    </div>
+  ) : null
+})

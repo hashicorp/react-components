@@ -21,8 +21,10 @@ function Hits({
   query,
   setCancelled,
   showSearchLegend,
-  onSetActiveHit = () => {},
+  onSetActiveHit = () => { },
 }) {
+
+  console.log({ hits })
   const selectedHit = useRef(null)
   const [hitsTabIndex, setHitsTabIndex] = useState(null)
   useEffect(() => {
@@ -89,45 +91,22 @@ function Hits({
   }
 
   return (
-    <div className={s.hitsRoot}>
-      {hits.length === 0 ? (
-        <div className={s.noHits}>
-          <span className={s.noHitsTitle}>{`No results for ${query}...`}</span>
-          <span className={s.noHitsMessage}>
-            Search tips: some terms require an exact match. Try typing the
-            entire term, or use a different word or phrase.
-          </span>
-        </div>
-      ) : (
-        <>
-          {showSearchLegend && <SearchLegend />}
-          <ul
-            className={s.hitsList}
-            id={SEARCH_RESULTS_ID}
-            role="listbox"
-            aria-labelledby={SEARCH_BOX_LABEL_ID}
-          >
-            {hits.map((hit) => {
-              const isActive = hitsTabIndex === hit.__position
-              return (
-                <Hit
-                  key={hit.objectID}
-                  closeSearchResults={() => setCancelled(true)}
-                  hit={hit}
-                  renderHitContent={renderHitContent}
-                  resolveHitLink={resolveHitLink}
-                  ref={isActive ? selectedHit : undefined}
-                  isActive={isActive}
-                />
-              )
-            })}
-          </ul>
-        </>
-      )}
-      {renderCalloutCta && (
-        <div className={s.calloutCta}>{renderCalloutCta()}</div>
-      )}
-    </div>
+    <>
+      {hits.map((hit) => {
+        const isActive = hitsTabIndex === hit.__position
+        return (
+          <Hit
+            key={hit.objectID}
+            closeSearchResults={() => setCancelled(true)}
+            hit={hit}
+            renderHitContent={renderHitContent}
+            resolveHitLink={resolveHitLink}
+            ref={isActive ? selectedHit : undefined}
+            isActive={isActive}
+          />
+        )
+      })}
+    </>
   )
 }
 
