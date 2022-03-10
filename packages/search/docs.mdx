@@ -4,17 +4,33 @@ componentName: Search
 
 A search box and results based on Algolia. Used primarily on documentation websites and learn.
 
-<LiveComponent>{`<SearchProvider>
+<LiveComponent>{`
+<SearchProvider algoliaConfig={{
+appId: "YY0FFNI7MF",
+searchOnlyApiKey: "dfb8c30ab350f8485fbe69186a1c805c",
+indexName: "product_TERRAFORM"
+}}>
   <Search
-    renderHitContent={({ hit, Highlight }) => <div><p>{hit.description}</p></div>}
+      renderHitContent={({ hit, Highlight }) => (
+        <>
+          <div className="name">
+            <Highlight attribute="page_title" hit={hit} tagName="span" />
+          </div>
+          <div className="description">
+            <Highlight attribute="description" hit={hit} tagName="span" />
+          </div>
+        </>
+      )}
     resolveHitLink={(hit) => ({ href: { pathname: '/' + hit.objectID, query: { id: hit.__queryID} } })}
     placeholder="Search documentation"
+    additionalIndexes={["product_WAYPOINT", "product_BOUNDARY", "product_VAULT"]}
   />
 </SearchProvider>`}</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
 ## Props
+
 <PropsTable props={componentProps} />
 
 ## More Details on Function Props
@@ -199,12 +215,12 @@ It's preferable to configure the index this way rather with the web UI because i
 Ex:
 
 ```js
-  await indexContent({
-    algoliaConfig,
-    getSearchObjects,
-    settings: {
-      searchableAttributes: ['name'],
-      attributesForFaceting: ['category'],
-    },
-  })
+await indexContent({
+  algoliaConfig,
+  getSearchObjects,
+  settings: {
+    searchableAttributes: ['name'],
+    attributesForFaceting: ['category'],
+  },
+})
 ```
