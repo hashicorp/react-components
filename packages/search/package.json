@@ -16,7 +16,8 @@
     "dotenv": "^14.3.1",
     "glob": "^7.2.0",
     "gray-matter": "^4.0.3",
-    "react-instantsearch-dom": "^6.21.1",
+    "react-instantsearch-core": "^6.22.0",
+    "react-instantsearch-dom": "^6.22.0",
     "remark": "^13.0.0",
     "search-insights": "^1.7.1",
     "unist-util-visit": "^2.0.3"
