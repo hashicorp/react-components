@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
+import { instantSearchContext } from 'react-instantsearch-core'
 import {
   Configure,
   InstantSearch,
@@ -18,6 +19,8 @@ import SearchLegend from './legend'
 export const SEARCH_BOX_LABEL_ID = 'search-box-label'
 export const SEARCH_BOX_ID = 'search-box'
 export const SEARCH_RESULTS_ID = 'search-results'
+
+const useInstantSearch = () => useContext(instantSearchContext)
 
 function Search({
   className,
@@ -39,7 +42,7 @@ function Search({
   }
 
   const {
-    client,
+    // client,
     indexName,
     initAlgoliaInsights,
     isCancelled,
@@ -48,16 +51,30 @@ function Search({
     setQuery,
   } = useSearch()
 
+  const indexes = [indexName, ...additionalIndexes]
+
+  // This is a list of keys in the format of `indexName::objectID`
+  // ex. `product_TERRAFORM::plugin/sdkv2/testing/testing-patterns`
+  let items = []
+
+  const ctx = useInstantSearch()
+  const results = ctx.store.getState().results || {}
+
+  // if results are using multiple indexes, it will contain nested results
+  // keyed by indexName
+  const isMultiIndex = indexName in results
+  if (isMultiIndex) {
+    indexes.forEach((index) => {
+      results[index]?.hits.forEach((hit) => {
+        items.push(`${index}::${hit.objectID}`)
+      })
+    })
+  } else {
+    results.hits?.forEach((hit) => items.push(`${indexName}::${hit.objectID}`))
+  }
+  console.log(items)
+
   useEffect(initAlgoliaInsights, [])
-
-  //  keep track of the currently selected result for accessible labeling
-  const [hitIndex, setHitIndex] = useState(-1)
-
-  useEffect(() => {
-    if (query === '' || isCancelled) {
-      setHitIndex(-1)
-    }
-  }, [query, isCancelled])
 
   function handleEscape() {
     setCancelled(true)
@@ -68,100 +85,138 @@ function Search({
   if (renderCalloutCta)
     cssVars['--callout-height'] = 'var(--callout-max-height)'
 
+  const selectedHit = useRef(null)
+  const [hitsTabIndex, setHitsTabIndex] = useState(null)
+
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [hitsTabIndex])
+  console.log({ hitsTabIndex })
+
+  useEffect(() => {
+    if (selectedHit?.current) {
+      scrollToActive(selectedHit.current)
+    }
+  }, [hitsTabIndex])
+
+  function onKeyDown(e) {
+    switch ([e.ctrlKey, e.keyCode].join(',')) {
+      // [Escape]
+      case 'false,27':
+        setHitsTabIndex(null)
+        return handleEscape()
+      // [ArrowDown]
+      // [Ctrl-n]
+      case 'false,40':
+      case 'true,78':
+        e.preventDefault()
+        if (!hitsTabIndex) {
+          setHitsTabIndex(0)
+          scrollToActive()
+        }
+        return incrementTabIndex()
+      // [ArrowUp]
+      // [Ctrl-p]
+      case 'false,38':
+      case 'true,80':
+        e.preventDefault()
+        return decrementTabIndex()
+    }
+  }
+
+  function incrementTabIndex() {
+    let startIndex = hitsTabIndex || 0
+    const nextIndex = startIndex + 1
+    if (nextIndex >= items.length) return setHitsTabIndex(0)
+    setHitsTabIndex(nextIndex)
+  }
+
+  function decrementTabIndex() {
+    let startIndex = hitsTabIndex || 0
+    const nextIndex = startIndex - 1
+    if (nextIndex < 0) return setHitsTabIndex(items.length - 1)
+    setHitsTabIndex(nextIndex)
+  }
+
+  function scrollToActive(el) {
+    if (!el) return
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    })
+    el.focus({
+      preventScroll: true,
+    })
+  }
+
   return (
     <div className={classNames(s.root, className)} style={cssVars}>
-      <InstantSearch indexName={indexName} searchClient={client} refresh>
-        <Configure distinct={1} hitsPerPage={25} clickAnalytics />
-        <VisuallyHidden
-          as="label"
-          id={SEARCH_BOX_LABEL_ID}
-          htmlFor={SEARCH_BOX_ID}
-        >
-          {placeholder}
-        </VisuallyHidden>
-        <SearchBox
-          {...{
-            handleEscape,
-            placeholder,
-            query,
-            setCancelled,
-            setQuery,
-            onSubmit,
-            heapId,
-          }}
-          activeHit={hitIndex}
-        />
-        {query && !isCancelled && (
-          <div className={h.hitsRoot}>
-            <HelpMessage query={query} />
-            {showSearchLegend && <SearchLegend />}
-            <ul
-              className={h.hitsList}
-              id={SEARCH_RESULTS_ID}
-              role="listbox"
-              aria-labelledby={SEARCH_BOX_LABEL_ID}
-            >
-              <p
-                // TODO: remove after testing
-                style={{
-                  margin: 0,
-                  border: '1px solid green',
-                  background: 'lightgreen',
-                  textAlign: 'center',
-                }}
-              >
-                {indexName}
-              </p>
-              <Hits
-                {...{
-                  handleEscape,
-                  query,
-                  renderHitContent,
-                  resolveHitLink,
-                  setCancelled,
-                  showSearchLegend,
-                  renderCalloutCta,
-                }}
-                onSetActiveHit={setHitIndex}
-              />
-              {additionalIndexes.map((index) => (
-                <Index key={index} indexName={index}>
-                  <p
-                    // TODO: remove after testing
-                    style={{
-                      margin: 0,
-                      border: '1px solid red',
-                      background: 'pink',
-                      textAlign: 'center',
-                    }}
-                  >
-                    {index}
-                  </p>
-                  <Hits
-                    {...{
-                      handleEscape,
-                      query,
-                      renderHitContent,
-                      resolveHitLink,
-                      setCancelled,
-                      // showSearchLegend,
-                    }}
-                    onSetActiveHit={setHitIndex}
-                  />
-                </Index>
-              ))}
-            </ul>
-            {renderCalloutCta && (
-              <div className={h.calloutCta}>{renderCalloutCta()}</div>
-            )}
-          </div>
-        )}
-      </InstantSearch>
+      <Configure distinct={1} hitsPerPage={10} clickAnalytics />
+      <VisuallyHidden
+        as="label"
+        id={SEARCH_BOX_LABEL_ID}
+        htmlFor={SEARCH_BOX_ID}
+      >
+        {placeholder}
+      </VisuallyHidden>
+      <SearchBox
+        {...{
+          handleEscape,
+          placeholder,
+          query,
+          setCancelled,
+          setQuery,
+          onSubmit,
+          heapId,
+        }}
+        activeHit={items[hitsTabIndex]}
+      />
+      {query && !isCancelled && (
+        <div className={h.hitsRoot}>
+          <HelpMessage query={query} />
+          {showSearchLegend && <SearchLegend />}
+          <ul
+            className={h.hitsList}
+            id={SEARCH_RESULTS_ID}
+            role="listbox"
+            aria-labelledby={SEARCH_BOX_LABEL_ID}
+          >
+            {indexes.map((index) => (
+              <Index key={index} indexName={index}>
+                <Hits
+                  {...{
+                    handleEscape,
+                    query,
+                    renderHitContent,
+                    resolveHitLink,
+                    setCancelled,
+                    selectedHit,
+                    hitsTabIndex,
+                    activeHit: items[hitsTabIndex],
+                  }}
+                />
+              </Index>
+            ))}
+          </ul>
+          {renderCalloutCta && (
+            <div className={h.calloutCta}>{renderCalloutCta()}</div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
 
-export default Search
+export default function SearchWrapper(props) {
+  const { indexName, client } = useSearch()
+  return (
+    <InstantSearch indexName={indexName} searchClient={client} refresh>
+      <Search {...props} />
+    </InstantSearch>
+  )
+}
 export { SearchProvider, useSearch, SearchBoxElement }
 
 const HelpMessage = connectHits(({ hits, query }) => {

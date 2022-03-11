@@ -1,101 +1,49 @@
-import { forwardRef, useEffect, useRef, useState } from 'react'
+import { forwardRef } from 'react'
 import Link from 'next/link'
 import { Highlight, connectHits } from 'react-instantsearch-dom'
 import generateSlug from '@hashicorp/remark-plugins/generate_slug'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import SearchLegend from './legend'
+// import SearchLegend from './legend'
 import { useSearch } from './provider'
 import IconReturn from './img/return.svg.js'
-import { SEARCH_BOX_LABEL_ID, SEARCH_RESULTS_ID } from '.'
+// import { SEARCH_BOX_LABEL_ID, SEARCH_RESULTS_ID } from '.'
 import classNames from 'classnames'
 import s from './hits.module.css'
 
 function Hits({
   /* Props provided from connector */
   hits,
+  indexContextValue,
   /* Props passed explicity */
-  handleEscape,
+  // handleEscape,
   renderHitContent,
-  renderCalloutCta,
+  // renderCalloutCta,
   resolveHitLink,
-  query,
+  // query,
   setCancelled,
-  showSearchLegend,
-  onSetActiveHit = () => { },
+  // showSearchLegend,
+  // onSetActiveHit = () => { },
+  activeHit,
+  selectedHit,
 }) {
-
-  console.log({ hits })
-  const selectedHit = useRef(null)
-  const [hitsTabIndex, setHitsTabIndex] = useState(null)
-  useEffect(() => {
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [hitsTabIndex])
-
-  useEffect(() => {
-    if (selectedHit?.current) {
-      scrollToActive(selectedHit.current)
-    }
-    onSetActiveHit(hitsTabIndex)
-  }, [hitsTabIndex])
-
-  function onKeyDown(e) {
-    switch ([e.ctrlKey, e.keyCode].join(',')) {
-      // [Escape]
-      case 'false,27':
-        setHitsTabIndex(null)
-        return handleEscape()
-      // [ArrowDown]
-      // [Ctrl-n]
-      case 'false,40':
-      case 'true,78':
-        e.preventDefault()
-        if (!hitsTabIndex) {
-          setHitsTabIndex(0)
-          scrollToActive()
-        }
-        return incrementTabIndex()
-      // [ArrowUp]
-      // [Ctrl-p]
-      case 'false,38':
-      case 'true,80':
-        e.preventDefault()
-        return decrementTabIndex()
-    }
-  }
-
-  function incrementTabIndex() {
-    let startIndex = hitsTabIndex || 0
-    const nextIndex = startIndex + 1
-    if (nextIndex > hits.length) return setHitsTabIndex(1)
-    setHitsTabIndex(nextIndex)
-  }
-
-  function decrementTabIndex() {
-    let startIndex = hitsTabIndex || 0
-    const nextIndex = startIndex - 1
-    if (nextIndex < 1) return setHitsTabIndex(hits.length)
-    setHitsTabIndex(nextIndex)
-  }
-
-  function scrollToActive(el) {
-    if (!el) return
-    el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    })
-    el.focus({
-      preventScroll: true,
-    })
-  }
-
   return (
     <>
+      {/* <p
+        style={{
+          margin: 0,
+          border: '1px solid red',
+          background: 'pink',
+          textAlign: 'center',
+        }}
+      >
+        {indexContextValue?.targetedIndex}
+      </p> */}
       {hits.map((hit) => {
-        const isActive = hitsTabIndex === hit.__position
+        const isActive =
+          activeHit === `${indexContextValue?.targetedIndex}::${hit.objectID}`
         return (
           <Hit
+            indexName={indexContextValue?.targetedIndex}
             key={hit.objectID}
             closeSearchResults={() => setCancelled(true)}
             hit={hit}
@@ -127,7 +75,14 @@ const LinkWithClick = forwardRef(({ children, ...props }, ref) => (
 
 const Hit = forwardRef(
   (
-    { isActive, closeSearchResults, hit, renderHitContent, resolveHitLink },
+    {
+      isActive,
+      closeSearchResults,
+      hit,
+      renderHitContent,
+      resolveHitLink,
+      indexName,
+    },
     ref
   ) => {
     const { logClick, setQuery } = useSearch()
@@ -162,7 +117,7 @@ const Hit = forwardRef(
     return (
       <li
         className={s.hitItem}
-        id={`hit-${hit.__position}`}
+        id={`hit-${indexName}::${hit.objectID}`}
         data-testid="hit-item"
       >
         <Link {...hitLink} passHref>
