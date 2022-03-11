@@ -12,7 +12,7 @@ export function getVersionLabel(
 }
 
 export function sortAndFilterReleases(releases: string[]): string[] {
-  const validReleases = releases.filter(semverValid)
+  const validReleases = releases.filter((rel) => semverValid(rel))
   // descending sort on releases, while filtering out pre-releases
   return semverRSort(validReleases).filter(
     (version) => !semverPrerelease(version)
