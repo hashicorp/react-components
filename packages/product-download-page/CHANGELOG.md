@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.8.1
+
+### Patch Changes
+
+- [#536](https://github.com/hashicorp/react-components/pull/536) [`d6eba797`](https://github.com/hashicorp/react-components/commit/d6eba7971bbbf7c58cf3cc110f5b7b423e3cd27c) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Install `@types/semver`; Fix incorrect `semverValid` usage
+
 ## 2.8.0
 
 ### Minor Changes
