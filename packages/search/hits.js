@@ -3,48 +3,31 @@ import Link from 'next/link'
 import { Highlight, connectHits } from 'react-instantsearch-dom'
 import generateSlug from '@hashicorp/remark-plugins/generate_slug'
 import InlineSvg from '@hashicorp/react-inline-svg'
-// import SearchLegend from './legend'
 import { useSearch } from './provider'
 import IconReturn from './img/return.svg.js'
-// import { SEARCH_BOX_LABEL_ID, SEARCH_RESULTS_ID } from '.'
 import classNames from 'classnames'
 import s from './hits.module.css'
 
 function Hits({
-  /* Props provided from connector */
+  /* props injected by connectHits */
   hits,
   indexContextValue,
   /* Props passed explicity */
-  // handleEscape,
   renderHitContent,
-  // renderCalloutCta,
   resolveHitLink,
-  // query,
   setCancelled,
-  // showSearchLegend,
-  // onSetActiveHit = () => { },
   activeHit,
   selectedHit,
 }) {
   return (
     <>
-      {/* <p
-        style={{
-          margin: 0,
-          border: '1px solid red',
-          background: 'pink',
-          textAlign: 'center',
-        }}
-      >
-        {indexContextValue?.targetedIndex}
-      </p> */}
       {hits.map((hit) => {
-        const isActive =
-          activeHit === `${indexContextValue?.targetedIndex}::${hit.objectID}`
+        const key = `${indexContextValue?.targetedIndex}::${hit.objectID}`
+        const isActive = activeHit === key
         return (
           <Hit
             indexName={indexContextValue?.targetedIndex}
-            key={hit.objectID}
+            key={key}
             closeSearchResults={() => setCancelled(true)}
             hit={hit}
             renderHitContent={renderHitContent}
@@ -114,12 +97,9 @@ const Hit = forwardRef(
       setQuery('')
     }
 
+    const id = `hit-${indexName}::${hit.objectID}`
     return (
-      <li
-        className={s.hitItem}
-        id={`hit-${indexName}::${hit.objectID}`}
-        data-testid="hit-item"
-      >
+      <li className={s.hitItem} id={id} data-testid="hit-item">
         <Link {...hitLink} passHref>
           <LinkWithClick
             ref={ref}
