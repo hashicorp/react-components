@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.14.5
+
+### Patch Changes
+
+- [#541](https://github.com/hashicorp/react-components/pull/541) [`d68f7db0`](https://github.com/hashicorp/react-components/commit/d68f7db026a5af4cce012841fbbf9bf17154ca20) Thanks [@dstaley](https://github.com/dstaley)! - Update TypeScript types to allow `null` as a value for `canonicalUrl`
+
 ## 14.14.4
 
 ### Patch Changes
