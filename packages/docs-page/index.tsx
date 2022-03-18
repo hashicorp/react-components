@@ -36,7 +36,7 @@ interface DocsPageInnerProps {
   /** @deprecated */
   showEditPage: boolean
   showVersionSelect: boolean
-  versions: VersionSelectItem[]
+  versions?: VersionSelectItem[]
   algoliaConfig?: AlgoliaConfigObject
 }
 
@@ -83,7 +83,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 
   const versionSelect = showVersionSelect ? (
     <div className={s.versionSelect}>
-      <VersionSelect versions={versions} basePath={baseRoute} />
+      <VersionSelect versions={versions ?? []} basePath={baseRoute} />
     </div>
   ) : null
 
@@ -176,7 +176,7 @@ export interface DocsPageProps {
     currentPath: string
     navData: NavData
     githubFileUrl: string
-    versions: VersionSelectItem[]
+    versions?: VersionSelectItem[]
   }
 }
 
