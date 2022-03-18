@@ -25,7 +25,7 @@ import s from './style.module.css'
 import type { VersionSelectItem } from './server/loaders/remote-content'
 
 interface DocsPageInnerProps {
-  canonicalUrl: string
+  canonicalUrl: string | null
   description: string
   navData: NavData
   currentPath: string
@@ -96,7 +96,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
     <div id="p-docs">
       {/* render the page's data to the document head */}
       <HashiHead
-        canonicalUrl={canonicalUrl}
+        canonicalUrl={canonicalUrl ?? undefined}
         description={description}
         siteName={`${name} by HashiCorp`}
         title={`${pageTitle} | ${name} by HashiCorp`}
@@ -169,7 +169,7 @@ export interface DocsPageProps {
   staticProps: {
     mdxSource: MDXRemoteSerializeResult
     frontMatter: {
-      canonical_url: string
+      canonical_url: string | null
       description: string
       page_title: string
     }
