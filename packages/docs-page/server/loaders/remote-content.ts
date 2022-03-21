@@ -1,6 +1,8 @@
 import moize, { Options } from 'moize'
 import semver from 'semver'
 import { GetStaticPropsContext } from 'next'
+import debug from 'debug'
+
 import renderPageMdx from '../../render-page-mdx'
 import {
   fetchNavData,
@@ -13,6 +15,8 @@ import { DEFAULT_PARAM_ID } from '../consts'
 
 import { DataLoader, DataLoaderOpts } from './types'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
+
+const log = debug('@hashicorp/react-docs-page')
 
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
@@ -81,6 +85,7 @@ export function mapVersionList(
 
 export default class RemoteContentLoader implements DataLoader {
   constructor(public opts: RemoteContentLoaderOpts) {
+    log('RemoteContentLoader', 'constructor', 'opts', opts)
     if (typeof this.opts.enabledVersionedDocs === 'undefined')
       this.opts.enabledVersionedDocs =
         process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true'
@@ -92,22 +97,44 @@ export default class RemoteContentLoader implements DataLoader {
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
+    log('RemoteContentLoader', 'loadStaticPaths')
+    log(
+      'RemoteContentLoader',
+      'loadStaticPaths',
+      'fetching version metadata...'
+    )
+
     // Fetch version metadata to get "latest"
     const versionMetadataList = await cachedFetchVersionMetadataList(
       this.opts.product
     )
+
+    log(
+      'RemoteContentLoader',
+      'loadStaticPaths',
+      'fetched version metadata',
+      versionMetadataList
+    )
+
     const latest = versionMetadataList.find((e) => e.isLatest).version
     // Fetch and parse navigation data
-    return getPathsFromNavData(
-      (await cachedFetchNavData(this.opts.product, this.opts.basePath, latest))
-        .navData,
-      this.opts.paramId
-    )
+
+    log('RemoteContentLoader', 'loadStaticPaths', 'fetching nav data...')
+    const navData = (
+      await cachedFetchNavData(this.opts.product, this.opts.basePath, latest)
+    ).navData
+    log('RemoteContentLoader', 'loadStaticPaths', 'fetched nav data', navData)
+
+    const paths = getPathsFromNavData(navData, this.opts.paramId)
+
+    return paths
   }
 
   loadStaticProps = async ({
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
+    log('RemoteContentLoader', 'loadStaticProps', 'params', params)
+
     // Build the currentPath from page parameters
     const currentPath =
       params && this.opts.paramId && params[this.opts.paramId]
@@ -125,9 +152,20 @@ export default class RemoteContentLoader implements DataLoader {
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
+    log(
+      'RemoteContentLoader',
+      'loadStaticProps',
+      'fetching version metadata...'
     )
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
+    log(
+      'RemoteContentLoader',
+      'loadStaticProps',
+      'fetched version metadata',
+      versionMetadataList
+    )
+
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
@@ -151,7 +189,16 @@ export default class RemoteContentLoader implements DataLoader {
       ...pathParamsNoIndex,
     ].join('/')
 
+    log('RemoteContentLoader', 'loadStaticProps', 'fetching document...', {
+      product: this.opts.product,
+      fullPath,
+    })
     const documentPromise = fetchDocument(this.opts.product, fullPath)
+    log('RemoteContentLoader', 'loadStaticProps', 'fetching nav data...', {
+      product: this.opts.product,
+      basePath: this.opts.basePath,
+      versionToFetch,
+    })
     const navDataPromise = cachedFetchNavData(
       this.opts.product,
       this.opts.basePath,
@@ -162,6 +209,11 @@ export default class RemoteContentLoader implements DataLoader {
       documentPromise,
       navDataPromise,
     ])
+    log(
+      'RemoteContentLoader',
+      'loadStaticProps',
+      'document and nav data promised resolved'
+    )
 
     const { mdxSource } = await mdxRenderer(document.markdownSource)
     const frontMatter = document.metadata
