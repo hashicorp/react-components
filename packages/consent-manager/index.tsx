@@ -39,8 +39,6 @@ export default function ConsentManager(props: ConsentManagerProps) {
     if (props.forceShow) return true
   })
 
-  const { onAcceptAll = () => {}, onManagePreferences = () => {} } = props
-
   const hasEmptyPreferencesOrVersionMismatch =
     Object.keys(preferences).length === 0 ||
     preferences.version !== props.version
@@ -95,11 +93,15 @@ export default function ConsentManager(props: ConsentManagerProps) {
           cookiePolicyLink={props.cookiePolicyLink}
           onManagePreferences={() => {
             openDialog()
-            onManagePreferences()
+            if (props.onManagePreferences) {
+              props.onManagePreferences()
+            }
           }}
           onAccept={() => {
             saveAndLoadAnalytics({ loadAll: true })
-            onAcceptAll()
+            if (props.onAcceptAll) {
+              props.onAcceptAll()
+            }
           }}
         />
       )}
