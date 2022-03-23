@@ -1,4 +1,6 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPathsResult } from 'next'
+import debug from 'debug'
+
 import { ContentApiError } from '../content-api'
 import FileSystemLoader from './loaders/file-system'
 import RemoteContentLoader from './loaders/remote-content'
@@ -13,6 +15,8 @@ export { getNodeFromPath } from './get-node-from-path'
 export { getPathsFromNavData } from './get-paths-from-nav-data'
 export { validateNavData } from './validate-nav-data'
 export { validateFilePaths } from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
+
+const log = debug('@hashicorp/react-docs-page')
 
 interface BaseOpts {
   fallback?: GetStaticPathsResult['fallback']
@@ -41,6 +45,7 @@ export function getStaticGenerationFunctions(
   getStaticPaths: GetStaticPaths
   getStaticProps: GetStaticProps
 } {
+  log(`getStaticGenerationFunctions`, opts)
   let loader: DataLoader
 
   switch (opts.strategy) {
@@ -58,6 +63,7 @@ export function getStaticGenerationFunctions(
 
   return {
     getStaticPaths: async (ctx) => {
+      log(`getStaticPaths`, ctx)
       const paths = await loader.loadStaticPaths(ctx)
       return {
         fallback: opts.fallback ?? 'blocking',
@@ -65,13 +71,17 @@ export function getStaticGenerationFunctions(
       }
     },
     getStaticProps: async (ctx) => {
+      log(`getStaticProps`, 'ctx', ctx)
       try {
+        log('getStaticProps', 'fetching props...')
         const props = await loader.loadStaticProps(ctx)
+        log('getStaticProps', 'fetched props', props)
         return {
           props,
           revalidate: opts.revalidate,
         }
       } catch (err) {
+        log('getStaticProps', 'failed to fetch props', err)
         console.error(`Failed to generate static props:`, err)
 
         if (err instanceof ContentApiError) {

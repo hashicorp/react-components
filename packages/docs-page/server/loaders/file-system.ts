@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { GetStaticPropsContext } from 'next'
+import _debug from 'debug'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
 import { resolveNavData } from '../resolve-nav-data'
 
@@ -22,8 +23,11 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   githubFileUrl?: (path: string) => string
 }
 
+const debug = _debug('FileSystemLoader')
+
 export default class FileSystemLoader implements DataLoader {
   constructor(public opts: FileSystemLoaderOpts) {
+    debug('constructor', opts)
     if (!this.opts.paramId) this.opts.paramId = DEFAULT_PARAM_ID
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
@@ -31,6 +35,7 @@ export default class FileSystemLoader implements DataLoader {
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
+    debug('loadStaticPaths')
     const navData = await resolveNavData(
       this.opts.navDataFile,
       this.opts.localContentDir
@@ -41,6 +46,7 @@ export default class FileSystemLoader implements DataLoader {
   loadStaticProps = async ({
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
+    debug('loadStaticProps')
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
         remarkPlugins: this.opts.remarkPlugins,
