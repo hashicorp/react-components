@@ -1,4 +1,6 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPathsResult } from 'next'
+import debug from 'debug'
+
 import { ContentApiError } from '../content-api'
 import FileSystemLoader from './loaders/file-system'
 import RemoteContentLoader from './loaders/remote-content'
@@ -13,6 +15,8 @@ export { getNodeFromPath } from './get-node-from-path'
 export { getPathsFromNavData } from './get-paths-from-nav-data'
 export { validateNavData } from './validate-nav-data'
 export { validateFilePaths } from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
+
+const log = debug('@hashicorp/react-docs-page')
 
 interface BaseOpts {
   fallback?: GetStaticPathsResult['fallback']
@@ -41,37 +45,51 @@ export function getStaticGenerationFunctions(
   getStaticPaths: GetStaticPaths
   getStaticProps: GetStaticProps
 } {
+  const logger = log.extend('getStaticGenerationFunctions')
+  logger(`opts %O`, opts)
+
   let loader: DataLoader
 
   switch (opts.strategy) {
     default:
     case 'fs': {
+      logger("Using 'fs' loader")
       const { strategy, ...restOpts } = opts
-      loader = new FileSystemLoader({ ...restOpts })
+      loader = new FileSystemLoader({ ...restOpts }, logger)
       break
     }
     case 'remote': {
+      logger("Using 'remote' loader")
       const { strategy, ...restOpts } = opts
-      loader = new RemoteContentLoader({ ...restOpts })
+      loader = new RemoteContentLoader({ ...restOpts }, logger)
     }
   }
 
   return {
     getStaticPaths: async (ctx) => {
+      const pathslogger = log.extend('getStaticPaths')
+      pathslogger(`ctx %O`, ctx)
       const paths = await loader.loadStaticPaths(ctx)
-      return {
+      const result = {
         fallback: opts.fallback ?? 'blocking',
         paths,
       }
+      pathslogger(`result %O`, result)
+      return result
     },
     getStaticProps: async (ctx) => {
+      const propslogger = log.extend('getStaticProps')
+      propslogger(`ctx %O`, ctx)
       try {
         const props = await loader.loadStaticProps(ctx)
-        return {
+        const result = {
           props,
           revalidate: opts.revalidate,
         }
+        propslogger(`result %O`, result)
+        return result
       } catch (err) {
+        propslogger('error %O', err)
         console.error(`Failed to generate static props:`, err)
 
         if (err instanceof ContentApiError) {
