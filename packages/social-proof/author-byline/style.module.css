@@ -1,0 +1,32 @@
+.authorByline {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  --size: 52px;
+
+  display: block;
+  flex-shrink: 0;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.author {
+  margin: 0;
+}
+
+.name {
+  margin: 0;
+  composes: g-type-body-x-strong from global;
+  display: block;
+}
+
+.role {
+  margin: 0;
+  composes: g-type-label-strong from global;
+  color: var(--gray-3);
+}

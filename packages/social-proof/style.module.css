@@ -1,0 +1,39 @@
+.socialProof {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  column-gap: var(--column-gap);
+  row-gap: 32px;
+  align-items: center;
+
+  @media (--small) {
+    --columns: 4;
+    --column-gap: 16px;
+  }
+
+  @media (--medium) {
+    --columns: 12;
+    --column-gap: 24px;
+  }
+
+  @media (--large) {
+    --columns: 12;
+    --column-gap: 32px;
+  }
+}
+
+.one {
+  grid-column: 1 / -1;
+
+  @media (--medium-up) {
+    grid-column: 1 / 6;
+  }
+}
+
+.two {
+  grid-column: 1 / -1;
+
+  @media (--medium-up) {
+    grid-column: 7 / -1;
+  }
+}

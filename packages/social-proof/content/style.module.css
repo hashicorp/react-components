@@ -1,0 +1,20 @@
+.content {
+  position: relative;
+}
+
+.eyebrow {
+  margin: 0 0 16;
+  composes: g-type-label from global;
+  color: var(--gray-2);
+}
+
+.heading {
+  margin: 0;
+  composes: g-type-display-3 from global;
+}
+
+.description {
+  margin: 16px 0 0;
+  composes: g-type-body from global;
+  color: var(--gray-2);
+}

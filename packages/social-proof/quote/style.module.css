@@ -1,0 +1,16 @@
+.quote {
+  margin: 0;
+}
+
+.text {
+  margin: 0;
+  composes: g-type-display-4 from global;
+
+  & > p {
+    margin: 16px 00;
+  }
+}
+
+.caption {
+  margin-top: 32px;
+}

@@ -1,0 +1,25 @@
+.logoGrid {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  max-width: max-content;
+
+  @media (--medium-up) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.bordered {
+    background-color: var(--gray-5);
+  }
+}
+
+.logoGridItem {
+  padding: 12px;
+  display: grid;
+  place-items: center;
+  background-color: var(--white);
+}

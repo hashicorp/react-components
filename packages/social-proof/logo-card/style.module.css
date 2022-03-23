@@ -1,0 +1,10 @@
+.logoCard {
+  display: grid;
+  place-items: center;
+  width: 144px;
+  height: 144px;
+}
+
+.logo {
+  border-radius: 2px;
+}
