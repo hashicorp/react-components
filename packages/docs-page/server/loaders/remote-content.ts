@@ -1,6 +1,7 @@
 import moize, { Options } from 'moize'
 import semver from 'semver'
 import { GetStaticPropsContext } from 'next'
+import { Debugger } from 'debug'
 import renderPageMdx from '../../render-page-mdx'
 import {
   fetchNavData,
@@ -80,7 +81,9 @@ export function mapVersionList(
 }
 
 export default class RemoteContentLoader implements DataLoader {
-  constructor(public opts: RemoteContentLoaderOpts) {
+  debug?: Debugger
+
+  constructor(public opts: RemoteContentLoaderOpts, logger?: Debugger) {
     if (typeof this.opts.enabledVersionedDocs === 'undefined')
       this.opts.enabledVersionedDocs =
         process.env.ENABLE_VERSIONED_DOCS?.toString() === 'true'
@@ -89,30 +92,46 @@ export default class RemoteContentLoader implements DataLoader {
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
+
+    if (logger) this.debug = logger.extend('RemoteContentLoader')
+    this.debug?.(`opts %O`, this.opts)
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
+    const logger = this.debug?.extend('loadStaticPaths')
+
     // Fetch version metadata to get "latest"
     const versionMetadataList = await cachedFetchVersionMetadataList(
       this.opts.product
     )
+    logger?.('versionMetadataList %O', { versionMetadataList })
+
     const latest = versionMetadataList.find((e) => e.isLatest).version
+    logger?.('latest %O', { latest })
+
     // Fetch and parse navigation data
-    return getPathsFromNavData(
-      (await cachedFetchNavData(this.opts.product, this.opts.basePath, latest))
-        .navData,
-      this.opts.paramId
-    )
+    const navData = (
+      await cachedFetchNavData(this.opts.product, this.opts.basePath, latest)
+    ).navData
+    logger?.('navData %O', { navData })
+
+    const paths = getPathsFromNavData(navData, this.opts.paramId)
+    logger?.('paths %O', { paths })
+
+    return paths
   }
 
   loadStaticProps = async ({
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
+    const logger = this.debug?.extend('loadStaticProps')
+
     // Build the currentPath from page parameters
     const currentPath =
       params && this.opts.paramId && params[this.opts.paramId]
         ? (params[this.opts.paramId] as string[]).join('/')
         : ''
+    logger?.('currentPath %O', { currentPath })
 
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
@@ -124,16 +143,21 @@ export default class RemoteContentLoader implements DataLoader {
     const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
       params![this.opts.paramId!] as string[]
     )
+    logger?.('versionFromPath %O', { versionFromPath })
+    logger?.('paramsNoVersion %O', { paramsNoVersion })
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
-    )
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
+    logger?.('versionMetadataList %O', { versionMetadataList })
+
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
     )
+    logger?.('pathParamsNoIndex %O', { pathParamsNoIndex })
 
     const latestVersion = versionMetadataList.find((e) => e.isLatest)!.version
+    logger?.('latestVersion %O', { latestVersion })
 
     let versionToFetch = latestVersion
 
@@ -143,6 +167,7 @@ export default class RemoteContentLoader implements DataLoader {
           ? latestVersion
           : normalizeVersion(versionFromPath)
     }
+    logger?.(`versionToFetch %O`, { versionToFetch })
 
     const fullPath = [
       'doc',
@@ -150,6 +175,7 @@ export default class RemoteContentLoader implements DataLoader {
       this.opts.basePath,
       ...pathParamsNoIndex,
     ].join('/')
+    logger?.('fullPath %O', { fullPath })
 
     const documentPromise = fetchDocument(this.opts.product, fullPath)
     const navDataPromise = cachedFetchNavData(
@@ -182,6 +208,7 @@ export default class RemoteContentLoader implements DataLoader {
         githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/${document.githubFile}`
       }
     }
+    logger?.('githubFileUrl %O', { githubFileUrl })
 
     return {
       versions: mapVersionList(versionMetadataList),
