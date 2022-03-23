@@ -18,3 +18,7 @@
   composes: g-type-body from global;
   color: var(--gray-2);
 }
+
+.actions {
+  margin-top: 32px;
+}

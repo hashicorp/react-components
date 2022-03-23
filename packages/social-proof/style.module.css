@@ -1,4 +1,7 @@
 .socialProof {
+  --padding-y: 44px;
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
   position: relative;
   display: grid;
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
@@ -14,6 +17,10 @@
   @media (--medium) {
     --columns: 12;
     --column-gap: 24px;
+  }
+
+  @media (--medium-up) {
+    --padding-y: 88px;
   }
 
   @media (--large) {

@@ -1,7 +1,12 @@
+import * as React from 'react'
 import Image from 'next/image'
 import s from './style.module.css'
 
-export default function AuthorByline({ avatar, name, role }) {
+export default function AuthorByline({
+  avatar,
+  name,
+  role,
+}): React.ReactElement {
   return (
     <div className={s.authorByline}>
       <span className={s.avatar}>

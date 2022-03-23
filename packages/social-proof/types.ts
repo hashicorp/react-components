@@ -15,12 +15,22 @@ interface SocialProofBaseProps {
 }
 
 interface SocialProofQuoteProps extends SocialProofBaseProps {
-  quote: any
+  quote: {
+    text: string
+    avatar: string
+    name: string
+    role: string
+  }
   content?: never
 }
 
 interface SocialProofContentProps extends SocialProofBaseProps {
-  content: any
+  content: {
+    eyebrow: string
+    heading: string
+    description: string
+    ctas: Array<any>
+  }
   quote?: never
 }
 

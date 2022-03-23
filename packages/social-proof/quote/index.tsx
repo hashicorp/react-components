@@ -1,7 +1,13 @@
+import * as React from 'react'
 import AuthorByline from '../author-byline'
 import s from './style.module.css'
 
-export default function Quote({ text, avatar, name, role }) {
+export default function Quote({
+  text,
+  avatar,
+  name,
+  role,
+}): React.ReactElement {
   return (
     <figure className={s.quote}>
       <blockquote className={s.text}>

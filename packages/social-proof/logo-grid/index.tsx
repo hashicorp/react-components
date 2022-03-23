@@ -1,9 +1,13 @@
+import * as React from 'react'
 import classNames from 'classnames'
 import LogoCard from '../logo-card'
 import type { LogoGridProps } from './types'
 import s from './style.module.css'
 
-export default function LogoGrid({ logos, bordered = true }: LogoGridProps) {
+export default function LogoGrid({
+  logos,
+  bordered = true,
+}: LogoGridProps): React.ReactElement {
   return (
     <ul className={classNames(s.logoGrid, bordered && s.bordered)}>
       {logos.map((logo, index) => {
