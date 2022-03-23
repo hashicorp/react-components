@@ -21,8 +21,8 @@ interface ConsentManagerProps {
   showDialog?: boolean
   utilServerRoot?: string
   version?: number
-  onManagePreferences: () => void
-  onAcceptAll: () => void
+  onManagePreferences?: () => void
+  onAcceptAll?: () => void
 }
 
 const emitter = new EventEmitter()
