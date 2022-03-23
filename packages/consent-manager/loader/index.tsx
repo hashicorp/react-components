@@ -20,6 +20,8 @@ export default function createConsentManager({
   otherServices,
   categories,
   forceShow = false,
+  onAcceptAll,
+  onManagePreferences,
 }: {
   segmentWriteKey?: string
   preset?: 'oss' | 'enterprise'
@@ -27,6 +29,8 @@ export default function createConsentManager({
   otherServices?: ConsentManagerService[]
   categories?: ConsentManagerCategory[]
   forceShow?: boolean
+  onAcceptAll?: () => void
+  onManagePreferences?: () => void
 }): {
   ConsentManager: typeof ConsentManagerComponent
   openConsentManager: () => void
@@ -65,6 +69,8 @@ export default function createConsentManager({
     utilServerRoot: utilityServerRoot,
     categories: defaultCategories,
     forceShow,
+    onAcceptAll,
+    onManagePreferences,
   }
 
   // add preset values if present
