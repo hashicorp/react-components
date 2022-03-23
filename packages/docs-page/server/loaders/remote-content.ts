@@ -98,11 +98,14 @@ export default class RemoteContentLoader implements DataLoader {
     )
     const latest = versionMetadataList.find((e) => e.isLatest).version
     // Fetch and parse navigation data
-    return getPathsFromNavData(
-      (await cachedFetchNavData(this.opts.product, this.opts.basePath, latest))
-        .navData,
-      this.opts.paramId
-    )
+
+    const navData = (
+      await cachedFetchNavData(this.opts.product, this.opts.basePath, latest)
+    ).navData
+
+    const paths = getPathsFromNavData(navData, this.opts.paramId)
+
+    return paths
   }
 
   loadStaticProps = async ({
@@ -125,9 +128,9 @@ export default class RemoteContentLoader implements DataLoader {
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
-    )
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
+
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)

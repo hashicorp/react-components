@@ -18,6 +18,7 @@
     "@hashicorp/react-search": "^6.4.1",
     "@hashicorp/react-version-select": "^0.3.0",
     "classnames": "^2.3.1",
+    "debug": "^4.3.4",
     "fs-exists-sync": "^0.1.0",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
@@ -36,6 +37,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.7",
     "@types/mdx-js__react": "^1.5.5",
     "@types/semver": "^7.3.9"
   }
