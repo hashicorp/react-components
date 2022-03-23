@@ -33,6 +33,8 @@ export interface ConsentManagerProps {
   showDialog?: boolean
   utilServerRoot?: string
   version?: number
+  onManagePreferences?: () => void
+  onAcceptAll?: () => void
 }
 
 export interface ConsentManagerPreferences {
