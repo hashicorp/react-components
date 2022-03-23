@@ -21,6 +21,8 @@ interface ConsentManagerProps {
   showDialog?: boolean
   utilServerRoot?: string
   version?: number
+  onManagePreferences: () => void
+  onAcceptAll: () => void
 }
 
 const emitter = new EventEmitter()
@@ -36,6 +38,8 @@ export default function ConsentManager(props: ConsentManagerProps) {
     // 1. If prop override is set, always show the consent bar.
     if (props.forceShow) return true
   })
+
+  const { onAcceptAll = () => {}, onManagePreferences = () => {} } = props
 
   const hasEmptyPreferencesOrVersionMismatch =
     Object.keys(preferences).length === 0 ||
@@ -89,9 +93,13 @@ export default function ConsentManager(props: ConsentManagerProps) {
         <ConsentBanner
           privacyPolicyLink={props.privacyPolicyLink}
           cookiePolicyLink={props.cookiePolicyLink}
-          onManagePreferences={openDialog}
+          onManagePreferences={() => {
+            openDialog()
+            onManagePreferences()
+          }}
           onAccept={() => {
             saveAndLoadAnalytics({ loadAll: true })
+            onAcceptAll()
           }}
         />
       )}
