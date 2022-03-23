@@ -21,6 +21,8 @@ interface ConsentManagerProps {
   showDialog?: boolean
   utilServerRoot?: string
   version?: number
+  onManagePreferences?: () => void
+  onAcceptAll?: () => void
 }
 
 const emitter = new EventEmitter()
@@ -89,9 +91,17 @@ export default function ConsentManager(props: ConsentManagerProps) {
         <ConsentBanner
           privacyPolicyLink={props.privacyPolicyLink}
           cookiePolicyLink={props.cookiePolicyLink}
-          onManagePreferences={openDialog}
+          onManagePreferences={() => {
+            openDialog()
+            if (props.onManagePreferences) {
+              props.onManagePreferences()
+            }
+          }}
           onAccept={() => {
             saveAndLoadAnalytics({ loadAll: true })
+            if (props.onAcceptAll) {
+              props.onAcceptAll()
+            }
           }}
         />
       )}
