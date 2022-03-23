@@ -155,11 +155,10 @@ module.exports = {
   onManagePreferences: {
     type: 'function',
     description:
-      'Optional callback event that happens when users selects Manage Preferences',
+      'Optional callback event that fires when users clicks Manage Preferences',
   },
   onAcceptAll: {
     type: 'function',
-    description:
-      'Optional callback event that happens when users selects Accept.',
+    description: 'Optional callback event that fires when users clicks Accept.',
   },
 }
