@@ -152,4 +152,13 @@ module.exports = {
     type: 'string',
     description: 'Optional className to add to the root element',
   },
+  onManagePreferences: {
+    type: 'function',
+    description:
+      'Optional callback event that fires when users clicks Manage Preferences',
+  },
+  onAcceptAll: {
+    type: 'function',
+    description: 'Optional callback event that fires when users clicks Accept.',
+  },
 }
