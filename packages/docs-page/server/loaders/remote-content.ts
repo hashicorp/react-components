@@ -120,6 +120,11 @@ export default class RemoteContentLoader implements DataLoader {
     // We support passing in a function to remarkPlugins, which gets the parameters of the current page
     if (typeof this.opts.remarkPlugins === 'function') {
       remarkPlugins = this.opts.remarkPlugins(params)
+      if (!Array.isArray(remarkPlugins)) {
+        throw new Error(
+          '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
+        )
+      }
     }
 
     const mdxRenderer = (mdx) =>
@@ -133,9 +138,8 @@ export default class RemoteContentLoader implements DataLoader {
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
-    )
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
