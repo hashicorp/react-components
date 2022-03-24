@@ -1,3 +1,4 @@
+import type { ParsedUrlQuery } from 'querystring'
 import moize, { Options } from 'moize'
 import semver from 'semver'
 import { GetStaticPropsContext } from 'next'
@@ -17,7 +18,7 @@ import { getPathsFromNavData } from '../get-paths-from-nav-data'
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
   enabledVersionedDocs?: boolean
-  remarkPlugins?: $TSFixMe[]
+  remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
   mainBranch?: string // = 'main',
   scope?: Record<string, $TSFixMe>
 }
@@ -114,9 +115,21 @@ export default class RemoteContentLoader implements DataLoader {
         ? (params[this.opts.paramId] as string[]).join('/')
         : ''
 
+    let remarkPlugins: $TSFixMe[] = []
+
+    // We support passing in a function to remarkPlugins, which gets the parameters of the current page
+    if (typeof this.opts.remarkPlugins === 'function') {
+      remarkPlugins = this.opts.remarkPlugins(params)
+      if (!Array.isArray(remarkPlugins)) {
+        throw new Error(
+          '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
+        )
+      }
+    }
+
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
-        remarkPlugins: this.opts.remarkPlugins,
+        remarkPlugins,
         scope: this.opts.scope,
       })
 
@@ -125,9 +138,8 @@ export default class RemoteContentLoader implements DataLoader {
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
-    )
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)

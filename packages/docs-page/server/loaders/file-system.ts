@@ -1,3 +1,4 @@
+import type { ParsedUrlQuery } from 'querystring'
 import path from 'path'
 import fs from 'fs'
 import { GetStaticPropsContext } from 'next'
@@ -16,7 +17,7 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   navDataFile: string
   localContentDir: string
   mainBranch?: string // = 'main',
-  remarkPlugins?: $TSFixMe[]
+  remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
   scope?: Record<string, $TSFixMe>
   localPartialsDir?: string
   githubFileUrl?: (path: string) => string
@@ -41,9 +42,21 @@ export default class FileSystemLoader implements DataLoader {
   loadStaticProps = async ({
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
+    let remarkPlugins: $TSFixMe[] = []
+
+    // We support passing in a function to remarkPlugins, which gets the parameters of the current page
+    if (typeof this.opts.remarkPlugins === 'function') {
+      remarkPlugins = this.opts.remarkPlugins(params)
+      if (!Array.isArray(remarkPlugins)) {
+        throw new Error(
+          '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
+        )
+      }
+    }
+
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
-        remarkPlugins: this.opts.remarkPlugins,
+        remarkPlugins,
         scope: this.opts.scope,
         localPartialsDir: this.opts.localPartialsDir,
       })
