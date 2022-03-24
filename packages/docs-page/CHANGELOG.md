@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.15.0
+
+### Minor Changes
+
+- [#524](https://github.com/hashicorp/react-components/pull/524) [`657f44b3`](https://github.com/hashicorp/react-components/commit/657f44b3d61a026aca5781297aaf679b76341e40) Thanks [@BRKalow](https://github.com/BRKalow)! - Support passing a function for remarkPlugins, which accepts the params for the current page being rendered.
+
 ## 14.14.5
 
 ### Patch Changes
