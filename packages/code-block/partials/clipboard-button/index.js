@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
-import InlineSvg from '@hashicorp/react-inline-svg'
+import { IconDuplicate16 } from '@hashicorp/flight-icons/svg-react/duplicate-16'
 import copyToClipboard from './copy-to-clipboard'
-import svgCopyAction from './svg/copy-action.svg?include'
-import svgCopySuccess from './svg/copy-success.svg?include'
-import s from './style.module.css'
 import analytics, { heapAttributes } from '../../analytics'
+import s from './style.module.css'
 
 function ClipboardButton({ className, getText }) {
   // copiedState can be null (initial), true (success), or false (failure)
@@ -54,6 +52,12 @@ function ClipboardButton({ className, getText }) {
     return () => clearTimeout(resetTimeout)
   }, [copiedState])
 
+  let buttonText = 'Copy'
+  if (copiedState === true) {
+    buttonText = 'Copied'
+  } else if (copiedState === false) {
+    buttonText = 'Failed'
+  }
   return (
     <button
       className={classnames(s.button, className, {
@@ -63,15 +67,8 @@ function ClipboardButton({ className, getText }) {
       onClick={onClick}
       type="button"
     >
-      {copiedState == true
-        ? 'Copied'
-        : copiedState == false
-        ? 'Failed'
-        : 'Copy'}
-      <InlineSvg
-        className={s.svg}
-        src={copiedState == true ? svgCopySuccess : svgCopyAction}
-      />
+      {buttonText}
+      <IconDuplicate16 className={s.svg} />
     </button>
   )
 }
