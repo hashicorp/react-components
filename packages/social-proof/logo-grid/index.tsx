@@ -6,10 +6,11 @@ import s from './style.module.css'
 
 export default function LogoGrid({
   logos,
+  layout = 'grid',
   bordered = true,
 }: LogoGridProps): React.ReactElement {
   return (
-    <ul className={classNames(s.logoGrid, bordered && s.bordered)}>
+    <ul className={classNames(s.logoGrid, s[layout], bordered && s.bordered)}>
       {logos.map((logo, index) => {
         return (
           <li className={s.logoGridItem} key={index}>

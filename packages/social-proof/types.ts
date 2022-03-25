@@ -21,11 +21,11 @@ interface SocialProofQuoteProps extends SocialProofBaseProps {
     name: string
     role: string
   }
-  content?: never
+  intro?: never
 }
 
-interface SocialProofContentProps extends SocialProofBaseProps {
-  content: {
+interface SocialProofIntroProps extends SocialProofBaseProps {
+  intro: {
     eyebrow: string
     heading: string
     description: string
@@ -34,4 +34,4 @@ interface SocialProofContentProps extends SocialProofBaseProps {
   quote?: never
 }
 
-export type SocialProofProps = SocialProofQuoteProps | SocialProofContentProps
+export type SocialProofProps = SocialProofQuoteProps | SocialProofIntroProps

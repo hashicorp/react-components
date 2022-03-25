@@ -1,8 +1,13 @@
 .socialProof {
   --padding-y: 44px;
+
   padding-top: var(--padding-y);
   padding-bottom: var(--padding-y);
   position: relative;
+}
+
+.container {
+  composes: g-grid-container from global;
   display: grid;
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   column-gap: var(--column-gap);
@@ -29,18 +34,34 @@
   }
 }
 
-.one {
-  grid-column: 1 / -1;
+/* Layouts */
+.default {
+  & .one {
+    grid-column: span 5;
+  }
 
-  @media (--medium-up) {
-    grid-column: 1 / 6;
+  & .two {
+    grid-column: 7 / span 6;
   }
 }
 
-.two {
-  grid-column: 1 / -1;
+.stacked {
+  & .one {
+    grid-column: 4 / 10;
+  }
 
-  @media (--medium-up) {
-    grid-column: 7 / -1;
+  & .two {
+    grid-column: 1 / -1;
+  }
+}
+
+.reversed {
+  & .one {
+    grid-column: 8 / span 6;
+  }
+
+  & .two {
+    grid-column: span 6;
+    grid-row: 1;
   }
 }
