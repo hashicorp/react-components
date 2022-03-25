@@ -2,7 +2,11 @@ const withHashicorp = require('@hashicorp/platform-nextjs-plugin')
 const withSwingset = require('swingset')
 
 module.exports = withHashicorp({
-  transpileModules: ['swingset', '@hashicorp/sentinel-embedded'],
+  transpileModules: [
+    'swingset',
+    '@hashicorp/sentinel-embedded',
+    '@hashicorp/flight-icons',
+  ],
   nextOptimizedImages: true,
 })(
   withSwingset({
