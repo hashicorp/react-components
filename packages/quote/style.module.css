@@ -1,0 +1,24 @@
+.quote {
+  --color: var(--black);
+
+  margin: 0;
+
+  &.dark {
+    --color: var(--white);
+  }
+}
+
+.text {
+  margin: 0;
+  composes: g-type-display-4 from global;
+  color: var(--color);
+
+  & > p {
+    margin: 16px 0 0;
+    color: inherit;
+  }
+}
+
+.caption {
+  margin-top: 32px;
+}
