@@ -1,4 +1,4 @@
-import type { AuthorBylineProps } from '@hashicorp/author-byline/types'
+import type { AuthorBylineProps } from '@hashicorp/react-author-byline/types'
 
 export interface QuoteProps extends AuthorBylineProps {
   /**
