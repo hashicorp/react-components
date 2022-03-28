@@ -21,7 +21,7 @@ module.exports = {
   },
   ctas: {
     type: 'object',
-    description: '',
+    description: 'Array of CTAs',
     properties: {
       title: {
         type: 'string',
