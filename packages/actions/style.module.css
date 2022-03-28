@@ -1,0 +1,11 @@
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 18px;
+
+  &.stacked {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
