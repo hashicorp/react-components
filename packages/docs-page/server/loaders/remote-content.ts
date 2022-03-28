@@ -132,6 +132,9 @@ export default class RemoteContentLoader implements DataLoader {
           '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
         )
       }
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we default this in the constructor, so it must be defined
+      remarkPlugins = this.opts.remarkPlugins!
     }
 
     const mdxRenderer = (mdx) =>
@@ -196,9 +199,10 @@ export default class RemoteContentLoader implements DataLoader {
     if (document.githubFile) {
       // Link latest version to `main`
       // Hide link on older versions
-      const isLatest = versionMetadataList.find(
-        (e) => e.version === document.version
-      )!.isLatest
+      const isLatest =
+        Boolean(this.opts.latestVersionRef) ??
+        versionMetadataList.find((e) => e.version === document.version)!
+          .isLatest
       if (isLatest) {
         // GitHub only allows you to modify a file if you are on a branch, not a commit
         githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/${document.githubFile}`
