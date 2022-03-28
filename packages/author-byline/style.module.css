@@ -1,0 +1,41 @@
+.authorByline {
+  --name-color: var(--black);
+  --role-color: var(--gray-3);
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &.dark {
+    --name-color: var(--white);
+    --role-color: var(--white);
+  }
+}
+
+.avatar {
+  --size: 52px;
+
+  display: block;
+  flex-shrink: 0;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.author {
+  margin: 0;
+}
+
+.name {
+  margin: 0;
+  composes: g-type-body-x-strong from global;
+  display: block;
+  color: var(--name-color);
+}
+
+.role {
+  margin: 0;
+  composes: g-type-label-strong from global;
+  color: var(--role-color);
+}
