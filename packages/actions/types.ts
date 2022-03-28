@@ -19,6 +19,9 @@ interface CtaProps {
   onClick?: () => void
 }
 
+type SingleCta = [CtaProps]
+type DuoCta = [CtaProps, CtaProps]
+
 export interface ActionsProps {
   /**
    * Initial
@@ -32,5 +35,5 @@ export interface ActionsProps {
    * Array of CTAs
    * @see CtaProps
    */
-  ctas: Array<CtaProps>
+  ctas: SingleCta | DuoCta
 }

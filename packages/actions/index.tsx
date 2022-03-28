@@ -6,7 +6,7 @@ import s from './style.module.css'
 export default function Actions({
   layout = 'inline',
   brand = 'hashicorp',
-  ctas = [],
+  ctas,
 }: ActionsProps) {
   return (
     <div className={classNames(s.actions, s[layout])} data-testid="actions">
