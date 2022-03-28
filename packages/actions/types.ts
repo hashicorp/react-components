@@ -24,7 +24,7 @@ type DuoCta = [CtaProps, CtaProps]
 
 export interface ActionsProps {
   /**
-   * Initial
+   * Display buttons inline or stacked by default.
    */
   layout?: 'inline' | 'stacked'
   /**

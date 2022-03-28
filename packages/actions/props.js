@@ -1,12 +1,12 @@
 module.exports = {
   layout: {
     type: 'string',
-    description: '',
+    description: 'Display buttons inline or stacked by default.',
     options: ['inline', 'stacked'],
   },
   brand: {
     type: 'string',
-    description: '',
+    description: 'Render primary variant button with product color.',
     options: [
       'hashicorp',
       'nomad',
