@@ -200,7 +200,7 @@ export default class RemoteContentLoader implements DataLoader {
       // Link latest version to `main`
       // Hide link on older versions
       const isLatest =
-        Boolean(this.opts.latestVersionRef) ??
+        (versionFromPath === 'latest' && Boolean(this.opts.latestVersionRef)) ||
         versionMetadataList.find((e) => e.version === document.version)!
           .isLatest
       if (isLatest) {
