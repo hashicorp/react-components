@@ -1,8 +1,11 @@
 .intro {
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &.center {
     text-align: center;
+    align-items: center;
   }
 }
 
