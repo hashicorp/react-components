@@ -21,6 +21,11 @@ interface RemoteContentLoaderOpts extends DataLoaderOpts {
   remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
   mainBranch?: string // = 'main',
   scope?: Record<string, $TSFixMe>
+  /**
+   * Allows us to override the default ref from which we fetch the latest content.
+   * e.g. when no version exists in the path, and latestVersionRef was 'my-stable-branch', we would fetch content for `my-stable-branch`
+   */
+  latestVersionRef?: string
 }
 
 /**
@@ -97,7 +102,9 @@ export default class RemoteContentLoader implements DataLoader {
     const versionMetadataList = await cachedFetchVersionMetadataList(
       this.opts.product
     )
-    const latest = versionMetadataList.find((e) => e.isLatest).version
+    const latest =
+      this.opts.latestVersionRef ??
+      versionMetadataList.find((e) => e.isLatest).version
     // Fetch and parse navigation data
     return getPathsFromNavData(
       (await cachedFetchNavData(this.opts.product, this.opts.basePath, latest))
@@ -125,6 +132,9 @@ export default class RemoteContentLoader implements DataLoader {
           '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
         )
       }
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we default this in the constructor, so it must be defined
+      remarkPlugins = this.opts.remarkPlugins!
     }
 
     const mdxRenderer = (mdx) =>
@@ -138,14 +148,17 @@ export default class RemoteContentLoader implements DataLoader {
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] =
-      await cachedFetchVersionMetadataList(this.opts.product)
+    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
+      this.opts.product
+    )
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
     )
 
-    const latestVersion = versionMetadataList.find((e) => e.isLatest)!.version
+    const latestVersion =
+      this.opts.latestVersionRef ??
+      versionMetadataList.find((e) => e.isLatest)!.version
 
     let versionToFetch = latestVersion
 
@@ -186,9 +199,10 @@ export default class RemoteContentLoader implements DataLoader {
     if (document.githubFile) {
       // Link latest version to `main`
       // Hide link on older versions
-      const isLatest = versionMetadataList.find(
-        (e) => e.version === document.version
-      )!.isLatest
+      const isLatest =
+        (versionFromPath === 'latest' && Boolean(this.opts.latestVersionRef)) ||
+        versionMetadataList.find((e) => e.version === document.version)!
+          .isLatest
       if (isLatest) {
         // GitHub only allows you to modify a file if you are on a branch, not a commit
         githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/${document.githubFile}`
