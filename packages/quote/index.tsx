@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import AuthorByline from '@hashicorp/author-byline'
+import AuthorByline from '@hashicorp/react-author-byline'
 import type { QuoteProps } from './types'
 import s from './style.module.css'
 

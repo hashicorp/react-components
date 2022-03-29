@@ -1,12 +1,13 @@
 {
-  "name": "@hashicorp/react-quote",
-  "version": "0.1.0",
+  "name": "@hashicorp/react-actions",
+  "version": "0.1.1",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "classnames": "^2.3.1",
-    "@hashicorp/react-author-byline": "^0.1.0"
+    "@hashicorp/platform-product-meta": "^0.1.0",
+    "@hashicorp/react-button": "^6.2.0",
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
