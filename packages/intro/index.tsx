@@ -18,7 +18,7 @@ export default function Intro({
     : 'g-type-body'
   const renderActions = actions && actions.ctas?.length > 0
   return (
-    <div className={classNames(s.intro, s[textAlignment])}>
+    <div className={classNames(s.intro, s[textAlignment])} data-testid="intro">
       {eyebrow ? <p className={s.eyebrow}>{eyebrow}</p> : null}
       <HeadingElement className={classNames(s.heading, headingSizeClassname)}>
         {heading}
