@@ -32,7 +32,11 @@ export interface ActionsProps {
    */
   brand?: Products
   /**
-   * Array of CTAs
+   * Determines CTA button sizing.
+   */
+  size?: 'small' | 'medium'
+  /**
+   * Array of CTAs. Minimum of one, max of two.
    * @see CtaProps
    */
   ctas: SingleCta | DuoCta

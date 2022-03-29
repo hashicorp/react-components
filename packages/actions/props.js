@@ -19,9 +19,14 @@ module.exports = {
       'boundary',
     ],
   },
+  size: {
+    type: 'string',
+    description: 'Determines CTA button sizing.',
+    options: ['small', 'medium'],
+  },
   ctas: {
     type: 'object',
-    description: 'Array of CTAs',
+    description: 'Array of CTAs. Minimum of one, max of two.',
     properties: {
       title: {
         type: 'string',
