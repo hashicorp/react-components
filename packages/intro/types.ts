@@ -1,3 +1,4 @@
+import type { ActionsProps } from '@hashicorp/react-actions/types'
 export interface IntroProps {
   /**
    * Controls the text alignment rendering.
@@ -23,4 +24,8 @@ export interface IntroProps {
    * Text following the heading element.
    */
   description: string
+  /**
+   * Render CTAs following the description element.
+   */
+  actions?: ActionsProps
 }

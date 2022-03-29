@@ -21,3 +21,7 @@
   margin: 16px 0 0;
   color: var(--gray-2);
 }
+
+.actions {
+  margin-top: 32px;
+}
