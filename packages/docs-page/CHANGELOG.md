@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.16.0
+
+### Minor Changes
+
+- [#552](https://github.com/hashicorp/react-components/pull/552) [`6cc916be`](https://github.com/hashicorp/react-components/commit/6cc916bee5b10f4beb136a70e43955b69bb27bcf) Thanks [@BRKalow](https://github.com/BRKalow)! - Add latestVersionRef option to RemoteContentLoader
+
 ## 14.15.0
 
 ### Minor Changes
