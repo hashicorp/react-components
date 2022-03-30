@@ -37,4 +37,34 @@ describe('<RadioInput />', () => {
     fireEvent.click(radio)
     expect(mockOnChange).toHaveBeenCalled()
   })
+
+  it('should render a disabled radio option', () => {
+    render(
+      <RadioInput
+        name="location"
+        label="California"
+        value="california"
+        checked={false}
+        disabled={true}
+        onChange={() => {}}
+      />
+    )
+    const input = screen.getByLabelText('California')
+    expect(input).toBeDisabled()
+  })
+
+  it('should render variants', () => {
+    render(
+      <RadioInput
+        variant="dark"
+        name="location"
+        label="California"
+        value="california"
+        checked={false}
+        onChange={() => {}}
+      />
+    )
+    const radio = screen.getByTestId('radio-input')
+    expect(radio).toHaveClass('dark')
+  })
 })
