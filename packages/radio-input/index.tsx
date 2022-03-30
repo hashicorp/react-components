@@ -14,7 +14,11 @@ export default function RadioInput({
 }: RadioInputProps) {
   const id = useId()
   return (
-    <label className={classNames(s.radioInput, s[variant])}>
+    <label
+      className={classNames(s.radioInput, s[variant])}
+      htmlFor={id}
+      data-testid="radio-input"
+    >
       <input
         className={s.input}
         type="radio"
