@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import InlineSvg from '@hashicorp/react-inline-svg'
 import RadioInput from '@hashicorp/react-radio-input'
 import { IconAlertTriangleFill16 } from '@hashicorp/flight-icons/svg-react/alert-triangle-fill-16'
 import type { RadioGroupProps } from './types'
