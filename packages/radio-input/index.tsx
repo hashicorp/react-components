@@ -9,6 +9,7 @@ export default function RadioInput({
   name,
   value,
   checked,
+  disabled = false,
   onChange,
 }: RadioInputProps) {
   const id = useId()
@@ -21,6 +22,7 @@ export default function RadioInput({
         name={name}
         value={value}
         checked={checked}
+        disabled={disabled}
         onChange={onChange}
       />
       <span className={s.label}>{label}</span>

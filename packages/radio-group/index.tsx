@@ -16,7 +16,7 @@ export default function RadioGroup({
   return (
     <fieldset className={classNames(s.radioGroup, s[variant])}>
       <legend className={s.label}>{label}</legend>
-      {helpText ? <span className={s.helpText}>{helpText}</span> : null}
+      {helpText ? <p className={s.helpText}>{helpText}</p> : null}
       <div className={classNames(s.radios, s[layout])}>
         {options.map((option, index) => {
           return (
@@ -27,6 +27,7 @@ export default function RadioGroup({
               name={name}
               value={option.value}
               checked={option.value === value}
+              disabled={option.disabled}
               onChange={(e) => onChange(e.target.value)}
             />
           )
