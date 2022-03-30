@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import RadioInput from '.'
 
 describe('<RadioInput />', () => {
-  it('should render', () => {
+  it('should render a RadioInput', () => {
     render(
       <RadioInput
         name="location"
