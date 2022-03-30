@@ -14,7 +14,10 @@ export default function RadioGroup({
   options,
 }: RadioGroupProps) {
   return (
-    <fieldset className={classNames(s.radioGroup, s[variant])}>
+    <fieldset
+      className={classNames(s.radioGroup, s[variant])}
+      data-testid="radio-group"
+    >
       <legend className={s.label}>{label}</legend>
       {helpText ? <p className={s.helpText}>{helpText}</p> : null}
       <div className={classNames(s.radios, s[layout])}>
