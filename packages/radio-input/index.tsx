@@ -1,4 +1,4 @@
-import slugify from 'slugify'
+import { useId } from '@react-aria/utils'
 import type { RadioInputProps } from './types'
 import classNames from 'classnames'
 import s from './style.module.css'
@@ -10,15 +10,15 @@ export default function RadioInput({
   value,
   checked,
   onChange,
-}) {
-  const id = slugify(`${name}-${value}`)
 }: RadioInputProps) {
+  const id = useId()
   return (
     <label className={classNames(s.radioInput, s[variant])}>
       <input
         className={s.input}
         type="radio"
         id={id}
+        name={name}
         value={value}
         checked={checked}
         onChange={onChange}
