@@ -12,6 +12,7 @@ module.exports = {
   label: {
     type: 'string',
     description: 'A label that describes the radio options.',
+    required: true,
   },
   helpText: {
     type: 'string',
@@ -21,15 +22,18 @@ module.exports = {
     type: 'string',
     description:
       'The name attribute that will be applied to the group of radio inputs.',
+    required: true,
   },
   value: {
     type: 'string',
     description: 'The currently selected value.',
+    required: true,
   },
   onChange: {
     type: 'function',
     description:
       'A function that will be called when the button is clicked. Returns the radio options value.',
+    required: true,
   },
   options: {
     type: 'object',
@@ -37,10 +41,12 @@ module.exports = {
       label: {
         type: 'string',
         description: 'The label associated with the radio option.',
+        required: true,
       },
       value: {
         type: 'string',
         description: 'The value associated with the radio option.',
+        required: true,
       },
       disabled: {
         type: 'boolean',
