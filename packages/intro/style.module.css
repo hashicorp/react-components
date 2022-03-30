@@ -1,0 +1,30 @@
+.intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &.center {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.eyebrow {
+  composes: g-type-label-strong from global;
+  margin: 0 0 16px;
+  color: var(--gray-2);
+}
+
+.heading {
+  margin: 0;
+  color: var(--black);
+}
+
+.description {
+  margin: 16px 0 0;
+  color: var(--gray-2);
+}
+
+.actions {
+  margin-top: 32px;
+}
