@@ -1,5 +1,7 @@
 import classNames from 'classnames'
+import InlineSvg from '@hashicorp/react-inline-svg'
 import RadioInput from '@hashicorp/react-radio-input'
+import { IconAlertTriangleFill16 } from '@hashicorp/flight-icons/svg-react/alert-triangle-fill-16'
 import type { RadioGroupProps } from './types'
 import s from './style.module.css'
 
@@ -12,13 +14,25 @@ export default function RadioGroup({
   value,
   onChange,
   options,
+  errors,
+  touched,
 }: RadioGroupProps) {
+  //  `errors` and `touched` props typically come from Formik,
+  // though you can also provide them without Formik.
+  //  https://jaredpalmer.com/formik/docs/api/field
+  const error = touched && touched[name] && errors && errors[name]
   return (
     <fieldset
       className={classNames(s.radioGroup, s[variant])}
       data-testid="radio-group"
     >
       <legend className={s.label}>{label}</legend>
+      {error ? (
+        <p className={s.error}>
+          <IconAlertTriangleFill16 className={s.icon} />
+          {error}
+        </p>
+      ) : null}
       {helpText ? <p className={s.helpText}>{helpText}</p> : null}
       <div className={classNames(s.radios, s[layout])}>
         {options.map((option, index) => {

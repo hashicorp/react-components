@@ -35,6 +35,14 @@ module.exports = {
       'A function that will be called when the button is clicked. Returns the radio options value.',
     required: true,
   },
+  errors: {
+    type: 'object',
+    description: 'Supplied by formik',
+  },
+  touched: {
+    type: 'object',
+    description: 'Supplied by formik',
+  },
   options: {
     type: 'object',
     properties: {

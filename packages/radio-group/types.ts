@@ -29,6 +29,14 @@ export interface RadioGroupProps {
    */
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => string
   /**
+   * Supplied by formik
+   */
+  errors?: Record<string, string>
+  /**
+   * Supplied by formik
+   */
+  touched?: Record<string, boolean>
+  /**
    * Array of radio options.
    */
   options: Array<{

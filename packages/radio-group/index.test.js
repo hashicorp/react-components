@@ -57,6 +57,27 @@ describe('<RadioGroup />', () => {
     expect(mockOnChange).toHaveReturned()
   })
 
+  it('should display an error when field is `touched` and has `error`', () => {
+    const errorText = 'This is an example error.'
+    render(
+      <RadioGroup
+        label="Locations"
+        name="location"
+        value={null}
+        onChange={() => {}}
+        errors={{ location: errorText }}
+        touched={{ location: true }}
+        options={[
+          {
+            label: 'One',
+            value: 'one',
+          },
+        ]}
+      />
+    )
+    expect(screen.getByText(errorText)).toBeInTheDocument()
+  })
+
   it('should render variants', () => {
     render(
       <RadioGroup

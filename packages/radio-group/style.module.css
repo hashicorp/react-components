@@ -18,12 +18,24 @@
   }
 }
 
+.error {
+  composes: g-type-body-small from global;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--danger);
+}
+
+.icon {
+  display: flex;
+}
+
 .helpText {
   --color: var(--gray-3);
 
   composes: g-type-body-small-strong from global;
-  margin-top: 4px;
-  margin-bottom: 0;
+  margin: 0;
   color: var(--color);
 
   @nest .dark & {
