@@ -1,4 +1,5 @@
 import slugify from 'slugify'
+import type { RadioInputProps } from './types'
 import classNames from 'classnames'
 import s from './style.module.css'
 
@@ -11,6 +12,7 @@ export default function RadioInput({
   onChange,
 }) {
   const id = slugify(`${name}-${value}`)
+}: RadioInputProps) {
   return (
     <label className={classNames(s.radioInput, s[variant])}>
       <input

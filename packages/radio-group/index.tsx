@@ -1,6 +1,6 @@
-import RadioInput from '@hashicorp/react-radio-input'
-import slugify from 'slugify'
 import classNames from 'classnames'
+import RadioInput from '@hashicorp/react-radio-input'
+import type { RadioGroupProps } from './types'
 import s from './style.module.css'
 
 export default function RadioGroup({
@@ -12,7 +12,7 @@ export default function RadioGroup({
   value,
   onChange,
   options,
-}) {
+}: RadioGroupProps) {
   return (
     <fieldset className={classNames(s.radioGroup, s[variant])}>
       <legend className={s.label}>{label}</legend>
