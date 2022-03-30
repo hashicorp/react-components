@@ -37,14 +37,6 @@ export interface RadioGroupProps {
    */
   touched?: Record<string, boolean>
   /**
-   * Supplied by formik
-   */
-  errors?: Record<string, string>
-  /**
-   * Supplied by formik
-   */
-  touched?: Record<string, boolean>
-  /**
    * Array of radio options.
    */
   options: Array<{
