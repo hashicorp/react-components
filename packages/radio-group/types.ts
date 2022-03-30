@@ -27,7 +27,7 @@ export interface RadioGroupProps {
   /**
    * A function that will be called when a radio option is clicked. Returns the radio options value.
    */
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => string
+  onChange: (value: string) => string
   /**
    * Supplied by formik
    */
