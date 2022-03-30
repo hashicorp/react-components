@@ -2,36 +2,51 @@ import { render, screen } from '@testing-library/react'
 import Intro from '.'
 
 describe('<Intro />', () => {
-  it('should render', () => {
+  it('should render default elements', () => {
+    const eyebrow = 'Eyebrow'
+    const heading = 'Heading'
+    const description = 'Description'
     render(
-      <Intro eyebrow="Eyebrow" heading="Heading" description="Description" />
+      <Intro eyebrow={eyebrow} heading={heading} description={description} />
     )
     const element = screen.getByTestId('intro')
     expect(element).toBeInTheDocument()
-    expect(element).toHaveTextContent('Eyebrow')
-    expect(element).toHaveTextContent('Heading')
-    expect(element).toHaveTextContent('Description')
+    expect(element).toHaveTextContent(eyebrow)
+    expect(element).toHaveTextContent(heading)
+    expect(element).toHaveTextContent(description)
   })
 
   it('should render actions', () => {
     render(
       <Intro
-        eyebrow="Eyebrow"
         heading="Heading"
         description="Description"
         actions={{
           ctas: [
             { title: 'One', url: '/one' },
-            { title: 'Two', url: '/one' },
+            { title: 'Two', url: '/two' },
           ],
         }}
       />
     )
-    const intro = screen.getByTestId('intro')
     const actions = screen.getByTestId('actions')
-    expect(intro).toBeInTheDocument()
+    const ctaOne = screen.getByText('One')
+    const ctaTwo = screen.getByText('Two')
     expect(actions).toBeInTheDocument()
-    expect(actions).toHaveTextContent('One')
-    expect(actions).toHaveTextContent('Two')
+    expect(ctaOne.closest('a').getAttribute('href')).toBe('/one')
+    expect(ctaTwo.closest('a').getAttribute('href')).toBe('/two')
+  })
+
+  it('should center text', () => {
+    render(
+      <Intro
+        textAlignment="center"
+        eyebrow="Eyebrow"
+        heading="Heading"
+        description="Description"
+      />
+    )
+    const intro = screen.getByTestId('intro')
+    expect(intro).toHaveClass('center')
   })
 })
