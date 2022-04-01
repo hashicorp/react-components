@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import RadioInput from '@hashicorp/react-radio-input'
+import RadioInput from './radio-input'
 import { IconAlertTriangleFill16 } from '@hashicorp/flight-icons/svg-react/alert-triangle-fill-16'
 import type { RadioGroupProps } from './types'
-import s from './style.module.css'
+import s from './radio-group.module.css'
 
 export default function RadioGroup({
   layout = 'stacked',

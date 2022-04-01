@@ -1,7 +1,7 @@
 import { useId } from '@react-aria/utils'
 import type { RadioInputProps } from './types'
 import classNames from 'classnames'
-import s from './style.module.css'
+import s from './radio-input.module.css'
 
 export default function RadioInput({
   variant = 'light',
