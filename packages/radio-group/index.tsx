@@ -13,13 +13,8 @@ export default function RadioGroup({
   value,
   onChange,
   options,
-  errors,
-  touched,
+  error,
 }: RadioGroupProps) {
-  //  `errors` and `touched` props typically come from Formik,
-  // though you can also provide them without Formik.
-  //  https://jaredpalmer.com/formik/docs/api/field
-  const error = touched && touched[name] && errors && errors[name]
   return (
     <fieldset
       className={classNames(s.radioGroup, s[variant])}

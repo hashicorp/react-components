@@ -65,8 +65,7 @@ describe('<RadioGroup />', () => {
         name="location"
         value={null}
         onChange={() => {}}
-        errors={{ location: errorText }}
-        touched={{ location: true }}
+        error="This is an example error."
         options={[
           {
             label: 'One',

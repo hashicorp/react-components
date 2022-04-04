@@ -29,13 +29,9 @@ export interface RadioGroupProps {
    */
   onChange: (value: string) => string
   /**
-   * Supplied by formik
+   * If true, renders an error message.
    */
-  errors?: Record<string, string>
-  /**
-   * Supplied by formik
-   */
-  touched?: Record<string, boolean>
+  error?: string
   /**
    * Array of radio options.
    */
