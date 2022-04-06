@@ -21,6 +21,7 @@ export interface ComboboxProps {
   openOnFocus?: boolean
   inputProps: ComboboxInputProps
   invalidInputValue?: boolean
+  portal?: boolean
 }
 
 type ComboboxOptionValue = string
@@ -34,6 +35,7 @@ export default function Combobox({
   inputProps,
   renderOption,
   invalidInputValue,
+  portal,
 }: ComboboxProps) {
   const { onChange: onInputChange } = inputProps || {}
 
@@ -60,7 +62,7 @@ export default function Combobox({
         data-has-error={invalidInputValue ?? false}
       />
       {results?.length > 0 ? (
-        <ComboboxPopover>
+        <ComboboxPopover portal={portal}>
           <ComboboxList>
             {results.map((option) =>
               !!renderOption ? (
