@@ -2,11 +2,11 @@ export interface RadioGroupProps {
   /**
    * Render radios inline or stacked.
    */
-  layout: 'stacked' | 'inline'
+  layout?: 'stacked' | 'inline'
   /**
    * Render on light or dark backgrounds.
    */
-  variant: 'light' | 'dark'
+  variant?: 'light' | 'dark'
   /**
    * A label that describes the radio options.
    */
