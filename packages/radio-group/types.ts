@@ -27,7 +27,7 @@ export interface RadioGroupProps {
   /**
    * A function that will be called when a radio option is clicked. Returns the radio options value.
    */
-  onChange: (value: string) => string
+  onChange: (value: string) => void
   /**
    * If true, renders an error message.
    */
