@@ -11,6 +11,10 @@
     max-width: 100%;
     margin-bottom: 20px;
 
+    & th:not([align]) {
+      text-align: left;
+    }
+
     & td,
     & th {
       border-right: 1px solid #ddd;
