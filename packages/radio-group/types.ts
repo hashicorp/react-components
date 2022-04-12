@@ -2,11 +2,11 @@ export interface RadioGroupProps {
   /**
    * Render radios inline or stacked.
    */
-  layout: 'stacked' | 'inline'
+  layout?: 'stacked' | 'inline'
   /**
    * Render on light or dark backgrounds.
    */
-  variant: 'light' | 'dark'
+  variant?: 'light' | 'dark'
   /**
    * A label that describes the radio options.
    */
@@ -27,7 +27,7 @@ export interface RadioGroupProps {
   /**
    * A function that will be called when a radio option is clicked. Returns the radio options value.
    */
-  onChange: (value: string) => string
+  onChange: (value: string) => void
   /**
    * If true, renders an error message.
    */
