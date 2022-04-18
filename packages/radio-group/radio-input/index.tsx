@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import s from './style.module.css'
 
 export default function RadioInput({
-  variant = 'light',
+  appearance = 'light',
   label,
   name,
   value,
@@ -15,7 +15,7 @@ export default function RadioInput({
   const id = useId()
   return (
     <label
-      className={classNames(s.radioInput, s[variant])}
+      className={classNames(s.radioInput, s[appearance])}
       htmlFor={id}
       data-testid="radio-input"
     >

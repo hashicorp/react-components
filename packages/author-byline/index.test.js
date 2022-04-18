@@ -16,10 +16,10 @@ describe('<AuthorByline />', () => {
     expect(screen.getByAltText('Name avatar')).toBeInTheDocument()
   })
 
-  it('should render variant', () => {
+  it('should render dark appearance', () => {
     render(
       <AuthorByline
-        variant="dark"
+        appearance="dark"
         avatar="https://www.datocms-assets.com/2885/1560891392-cropped0000armon.jpg"
         name="Name"
         role="Company, Role"

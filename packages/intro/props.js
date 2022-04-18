@@ -1,4 +1,9 @@
 module.exports = {
+  appearance: {
+    type: 'string',
+    description: 'Display intro on light or dark backgrounds.',
+    options: ['light', 'dark'],
+  },
   textAlignment: {
     type: 'string',
     description: 'Controls the text alignment rendering.',

@@ -1,4 +1,9 @@
 module.exports = {
+  appearance: {
+    type: 'string',
+    description: 'Display actions on light or dark background.',
+    options: ['light', 'dark'],
+  },
   layout: {
     type: 'string',
     description: 'Display buttons inline or stacked by default.',

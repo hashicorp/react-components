@@ -6,7 +6,7 @@ export interface RadioGroupProps {
   /**
    * Render on light or dark backgrounds.
    */
-  variant?: 'light' | 'dark'
+  appearance?: 'light' | 'dark'
   /**
    * A label that describes the radio options.
    */

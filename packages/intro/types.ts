@@ -1,6 +1,10 @@
 import type { ActionsProps } from '@hashicorp/react-actions/types'
 export interface IntroProps {
   /**
+   * Display intro on light or dark backgrounds.
+   */
+  appearance?: 'light' | 'dark'
+  /**
    * Controls the text alignment rendering.
    */
   textAlignment?: 'left' | 'center'

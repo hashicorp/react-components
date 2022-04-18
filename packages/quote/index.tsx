@@ -8,10 +8,10 @@ export default function Quote({
   avatar,
   name,
   role,
-  variant = 'light',
+  appearance = 'light',
 }: QuoteProps) {
   return (
-    <figure className={classNames(s.quote, s[variant])} data-testid="quote">
+    <figure className={classNames(s.quote, s[appearance])} data-testid="quote">
       <blockquote className={s.text}>
         <p>{text}</p>
       </blockquote>
@@ -20,7 +20,7 @@ export default function Quote({
           avatar={avatar}
           name={name}
           role={role}
-          variant={variant}
+          appearance={appearance}
         />
       </figcaption>
     </figure>

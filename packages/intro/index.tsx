@@ -4,6 +4,7 @@ import type { IntroProps } from './types'
 import s from './style.module.css'
 
 export default function Intro({
+  appearance = 'light',
   textAlignment = 'left',
   eyebrow,
   heading,
@@ -18,7 +19,10 @@ export default function Intro({
     : 'g-type-body'
   const renderActions = actions && actions.ctas?.length > 0
   return (
-    <div className={classNames(s.intro, s[textAlignment])} data-testid="intro">
+    <div
+      className={classNames(s.intro, s[appearance], s[textAlignment])}
+      data-testid="intro"
+    >
       {eyebrow ? <p className={s.eyebrow}>{eyebrow}</p> : null}
       <HeadingElement className={classNames(s.heading, headingSizeClassname)}>
         {heading}
@@ -28,7 +32,7 @@ export default function Intro({
       </p>
       {renderActions ? (
         <div className={s.actions}>
-          <Actions {...actions} />
+          <Actions appearance={appearance} {...actions} />
         </div>
       ) : null}
     </div>

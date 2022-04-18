@@ -77,10 +77,10 @@ describe('<RadioGroup />', () => {
     expect(screen.getByText(errorText)).toBeInTheDocument()
   })
 
-  it('should render variants', () => {
+  it('should render dark appearance', () => {
     render(
       <RadioGroup
-        variant="dark"
+        appearance="dark"
         label="Locations"
         name="location"
         value={null}

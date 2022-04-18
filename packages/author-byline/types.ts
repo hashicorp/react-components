@@ -14,5 +14,5 @@ export interface AuthorBylineProps {
   /**
    * Render on light or dark backgrounds
    */
-  variant?: 'light' | 'dark'
+  appearance?: 'light' | 'dark'
 }

@@ -2,7 +2,7 @@ export interface RadioInputProps {
   /**
    * Render on light or dark backgrounds.
    */
-  variant?: 'light' | 'dark'
+  appearance?: 'light' | 'dark'
   /**
    * The name attribute that will be applied to the radio option.
    */
