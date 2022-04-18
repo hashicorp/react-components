@@ -34,7 +34,7 @@ export interface ActionsProps {
   /**
    * Render primary button with product color.
    */
-  brand?: Products
+  theme?: Products
   /**
    * Determines CTA button sizing.
    */
