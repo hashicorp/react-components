@@ -1,10 +1,12 @@
 .nextSteps {
-  position: relative;
-  padding-top: 88px;
-  padding-bottom: 88px;
+  --padding-y: 64px;
 
-  &.dark {
-    background-color: var(--gray-1);
+  position: relative;
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
+
+  @media (--medium-up) {
+    --padding-y: 88px;
   }
 }
 
@@ -131,7 +133,8 @@
 
 .tileCta {
   composes: g-type-buttons-and-standalone-links from global;
-  margin-top: 24px;
+  margin-top: auto;
+  padding-top: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
