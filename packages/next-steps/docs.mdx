@@ -1,0 +1,135 @@
+---
+componentName: 'NextSteps'
+---
+
+<LiveComponent>
+  {`
+<>
+  <NextSteps
+    heading="Next steps"
+    description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
+    ctas={[
+      {
+        title: 'Action link',
+        url: '/'
+      },
+      {
+        title: 'Action link',
+        url: '/'
+      }
+    ]}
+    steps={[
+      {
+        heading: 'Heading',
+        description: 'Sub-heading',
+        cta: {
+          title: 'Step link',
+          url: '/'
+        }
+      },
+      {
+        heading: 'Heading',
+        description: 'Sub-heading',
+        cta: {
+          title: 'Step link',
+          url: '/'
+        }
+      },
+      {
+        heading: 'Heading',
+        description: 'Sub-heading',
+        cta: {
+          title: 'Step link',
+          url: '/'
+        }
+      },
+    ]}
+  />
+</>
+`}
+</LiveComponent>
+
+## Examples
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Light theme
+</h3>
+
+<div style={{border: "1px solid var(--gray-6)"}}>
+
+<NextSteps
+  heading="Next steps"
+  description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
+  ctas={[
+    {
+      title: 'Action link',
+      url: '/',
+    },
+    {
+      title: 'Action link',
+      url: '/',
+    },
+  ]}
+  steps={[
+    {
+      heading: 'Heading',
+      description: 'Sub-heading',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+    {
+      heading: 'Heading',
+      description: 'Sub-heading',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+  ]}
+/>
+
+</div>
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Dark theme
+</h3>
+
+<div style={{marginBottom: 24, background: "black"}}>
+
+<NextSteps
+  appearance="dark"
+  theme="consul"
+  heading="Next steps"
+  description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
+  ctas={[
+    {
+      title: 'Action link',
+      url: '/',
+    },
+  ]}
+  steps={[
+    {
+      heading: 'Heading',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+    {
+      heading: 'Heading',
+      description: 'Sub-heading',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+  ]}
+/>
+
+</div>
+
+## Props
+
+<PropsTable props={componentProps} />
