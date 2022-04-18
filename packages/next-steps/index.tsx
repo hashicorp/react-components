@@ -15,13 +15,6 @@ export default function NextSteps({
   steps,
 }: NextStepsProps) {
   const { themeClass } = useProductMeta(theme)
-  const _actions =
-    actions?.map((action) => {
-      return {
-        ...action,
-        variant: 'tertiary-neutral',
-      }
-    }) || null
   return (
     <section className={classNames(s.nextSteps, themeClass, s[appearance])}>
       <div className={s.container}>
@@ -31,7 +24,12 @@ export default function NextSteps({
           {actions && actions.length > 0 ? (
             <div className={s.actions}>
               <Actions
-                ctas={_actions}
+                ctas={actions.map((action) => {
+                  return {
+                    ...action,
+                    variant: 'tertiary-neutral',
+                  }
+                })}
                 layout="stacked"
                 appearance={appearance}
               />
