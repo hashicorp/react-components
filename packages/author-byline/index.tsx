@@ -8,12 +8,11 @@ export default function AuthorByline({
   avatar,
   name,
   role,
-  variant = 'light',
   appearance = 'light',
 }: AuthorBylineProps): React.ReactElement {
   return (
     <div
-      className={classNames(s.authorByline, s[variant], s[appearance])}
+      className={classNames(s.authorByline, s[appearance])}
       data-testid="author-byline"
     >
       {avatar ? (
