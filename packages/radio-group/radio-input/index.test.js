@@ -53,10 +53,10 @@ describe('<RadioInput />', () => {
     expect(input).toBeDisabled()
   })
 
-  it('should render variants', () => {
+  it('should render dark appearance', () => {
     render(
       <RadioInput
-        variant="dark"
+        appearance="dark"
         name="location"
         label="California"
         value="california"

@@ -17,7 +17,7 @@ module.exports = {
     required: true,
     description: 'Renders as the second line of the byline',
   },
-  variant: {
+  appearance: {
     type: 'string',
     options: ['light', 'dark'],
     description: 'Render on light or dark backgrounds',

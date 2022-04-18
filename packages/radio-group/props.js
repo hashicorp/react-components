@@ -4,7 +4,7 @@ module.exports = {
     descrition: 'Render radios inline or stacked.',
     options: ['stacked', 'inline'],
   },
-  variant: {
+  appearance: {
     type: 'string',
     description: 'Render on light or dark backgrounds.',
     options: ['light', 'dark'],

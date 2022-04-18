@@ -18,4 +18,9 @@ module.exports = {
     options: ['light', 'dark'],
     description: 'Render on light or dark backgrounds',
   },
+  appearance: {
+    type: 'string',
+    options: ['light', 'dark'],
+    description: 'Render on light or dark backgrounds',
+  },
 }

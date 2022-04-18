@@ -18,10 +18,10 @@ describe('<Quote />', () => {
     expect(element).toHaveTextContent(text)
   })
 
-  it('should render variant', () => {
+  it('should render dark appearance', () => {
     render(
       <Quote
-        variant="dark"
+        appearance="dark"
         text="Sample quote text"
         avatar="https://www.datocms-assets.com/2885/1560891392-cropped0000armon.jpg"
         name="Name"

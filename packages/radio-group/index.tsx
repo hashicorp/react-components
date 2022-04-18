@@ -6,7 +6,7 @@ import s from './style.module.css'
 
 export default function RadioGroup({
   layout = 'stacked',
-  variant = 'light',
+  appearance = 'light',
   label,
   helpText,
   name,
@@ -17,7 +17,7 @@ export default function RadioGroup({
 }: RadioGroupProps) {
   return (
     <fieldset
-      className={classNames(s.radioGroup, s[variant])}
+      className={classNames(s.radioGroup, s[appearance])}
       data-testid="radio-group"
     >
       <legend className={s.label}>{label}</legend>
@@ -32,8 +32,8 @@ export default function RadioGroup({
         {options.map((option, index) => {
           return (
             <RadioInput
-              variant={variant}
               key={index}
+              appearance={appearance}
               label={option.label}
               name={name}
               value={option.value}
