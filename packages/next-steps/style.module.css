@@ -1,0 +1,120 @@
+.nextSteps {
+  position: relative;
+  padding-top: 88px;
+  padding-bottom: 88px;
+
+  &.dark {
+    background-color: var(--gray-1);
+  }
+}
+
+.container {
+  composes: g-grid-container from global;
+  composes: g-grid from global;
+  align-items: flex-start;
+}
+
+.content {
+  grid-column: 1 / 6;
+}
+
+.heading {
+  --color: var(--black);
+
+  composes: g-type-display-2 from global;
+  margin: 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--white);
+  }
+}
+
+.description {
+  --color: var(--gray-3);
+
+  composes: g-type-body-large from global;
+  margin: 24px 0 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--gray-5);
+  }
+}
+
+.actions {
+  margin-top: 32px;
+}
+
+.stepsList {
+  grid-column: 7 / -1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.stepsListItem {
+  display: flex;
+  width: 100%;
+
+  &.stepsListItemFeature {
+    grid-column: span 2;
+  }
+}
+
+.tile {
+  --background-color: transparent;
+  --border-color: var(--gray-4);
+  --color: var(--black);
+
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 32px;
+  background-color: var(--background-color);
+  color: var(--color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  &.primary {
+    --background-color: var(--brand);
+    --border-color: transparent;
+    --color: var(--brand-text-on-primary);
+  }
+
+  @nest .dark &:not(.primary) {
+    --background-color: var(--gray-3);
+    --border-color: transparent;
+    --color: var(--white);
+  }
+}
+
+.tileHeading {
+  composes: g-type-display-5 from global;
+  margin: 0;
+}
+
+.tileDescription {
+  composes: g-type-display-6 from global;
+  margin: 8px 0 0;
+  opacity: 0.8;
+}
+
+.tileCta {
+  composes: g-type-buttons-and-standalone-links from global;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & svg {
+    transition: transform 0.2s;
+  }
+
+  @nest .tile:hover & svg {
+    transform: translate(2px);
+  }
+}
