@@ -29,9 +29,15 @@ export default function Intro({
       <p className={classNames(s.description, descriptionSizeClassname)}>
         {description}
       </p>
-      {actions && actions.ctas && actions.ctas.length > 0 ? (
+      {actions && actions.ctas && actions?.ctas?.length > 0 ? (
         <div className={s.actions}>
-          <Actions {...actions} appearance={appearance} ctas={actions.ctas} />
+          <Actions
+            appearance={appearance}
+            layout={actions.layout}
+            theme={actions.theme}
+            size={actions.size}
+            ctas={actions.ctas}
+          />
         </div>
       ) : null}
     </div>
