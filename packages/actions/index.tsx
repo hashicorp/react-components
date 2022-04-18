@@ -10,6 +10,11 @@ export default function Actions({
   size = 'medium',
   ctas,
 }: ActionsProps) {
+  if (ctas.length < 1 || ctas.length > 2) {
+    throw new Error(
+      `Actions expects at least 1 cta, no more than 2. You provided ${ctas.length}.`
+    )
+  }
   return (
     <div className={classNames(s.actions, s[layout])} data-testid="actions">
       {ctas.map((cta, index) => {
