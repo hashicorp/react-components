@@ -21,7 +21,7 @@ export default function NextSteps({
         ...action,
         variant: 'tertiary-neutral',
       }
-    }) || []
+    }) || null
   return (
     <section className={classNames(s.nextSteps, themeClass, s[appearance])}>
       <div className={s.container}>
@@ -53,7 +53,9 @@ export default function NextSteps({
                 <Link href={step.cta.url}>
                   <a className={classNames(s.tile, s[variant])}>
                     <h3 className={s.tileHeading}>{step.heading}</h3>
-                    <p className={s.tileDescription}>{step.description}</p>
+                    {step.description ? (
+                      <p className={s.tileDescription}>{step.description}</p>
+                    ) : null}
                     <span className={s.tileCta}>
                       {step.cta.title} <IconArrowRight16 />
                     </span>
