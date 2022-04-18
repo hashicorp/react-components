@@ -42,7 +42,7 @@ export default function Intro({
       )}
       {renderActions ? (
         <div className={s.actions}>
-          <Actions appearance={appearance} {...actions} />
+          <Actions {...actions} appearance={appearance} ctas={actions.ctas} />
         </div>
       ) : null}
     </div>
