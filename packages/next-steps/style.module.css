@@ -104,7 +104,9 @@
   width: 100%;
 
   &.stepsListItemFeature {
-    grid-column: span 2;
+    @media (--medium-up) {
+      grid-column: span 2;
+    }
   }
 }
 
