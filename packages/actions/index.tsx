@@ -6,7 +6,7 @@ import s from './style.module.css'
 export default function Actions({
   appearance = 'light',
   layout = 'inline',
-  brand = 'hashicorp',
+  theme = 'hashicorp',
   size = 'medium',
   ctas,
 }: ActionsProps) {
@@ -24,7 +24,7 @@ export default function Actions({
             onClick={cta.onClick}
             size={size}
             theme={{
-              brand: brand,
+              brand: theme,
               variant: cta.variant || 'primary',
               background: appearance === 'dark' ? 'dark' : undefined,
             }}
