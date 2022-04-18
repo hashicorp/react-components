@@ -4,11 +4,6 @@ export interface RadioGroupProps {
    */
   layout?: 'stacked' | 'inline'
   /**
-   * @deprecated Use `appearance` instead
-   * Render on light or dark backgrounds.
-   */
-  variant?: 'light' | 'dark'
-  /**
    * Render on light or dark backgrounds.
    */
   appearance?: 'light' | 'dark'
