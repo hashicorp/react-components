@@ -10,15 +10,14 @@ export interface StepProps {
   }
 }
 
-type SingleSteps = [StepProps]
-type DuoSteps = [StepProps, StepProps]
-type TrioSteps = [StepProps, StepProps, StepProps]
-
 export interface NextStepsProps {
   appearance: 'light' | 'dark'
   theme: Products
   heading: string
   description: string
-  actions?: ActionsProps['ctas']
-  steps: SingleSteps | DuoSteps | TrioSteps
+  ctas?: ActionsProps['ctas']
+  steps:
+    | [StepProps]
+    | [StepProps, StepProps]
+    | [StepProps, StepProps, StepProps]
 }
