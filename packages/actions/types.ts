@@ -24,13 +24,17 @@ type DuoCta = [CtaProps, CtaProps]
 
 export interface ActionsProps {
   /**
+   * Display actions on light or dark background.
+   */
+  appearance?: 'light' | 'dark'
+  /**
    * Display buttons inline or stacked by default.
    */
   layout?: 'inline' | 'stacked'
   /**
    * Render primary button with product color.
    */
-  brand?: Products
+  theme?: Products
   /**
    * Determines CTA button sizing.
    */
