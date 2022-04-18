@@ -11,11 +11,16 @@
 .container {
   composes: g-grid-container from global;
   composes: g-grid from global;
+  row-gap: 32px;
   align-items: flex-start;
 }
 
 .content {
-  grid-column: 1 / 6;
+  grid-column: 1 / -1;
+
+  @media (--medium-up) {
+    grid-column: 1 / 6;
+  }
 }
 
 .heading {
@@ -47,13 +52,23 @@
 }
 
 .stepsList {
-  grid-column: 7 / -1;
+  --grid-template-columns: 1;
+  --grid-gap: 24px;
+
+  grid-column: 1 / -1;
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(var(--grid-template-columns), 1fr);
+  gap: var(--grid-gap);
+
+  @media (--medium-up) {
+    --grid-template-columns: 2;
+    --grid-gap: 32px;
+
+    grid-column: 7 / -1;
+  }
 }
 
 .stepsListItem {
@@ -78,6 +93,7 @@
   color: var(--color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
+  transition: background-color 0.2s;
 
   &.primary {
     --background-color: var(--brand);
@@ -85,10 +101,20 @@
     --color: var(--brand-text-on-primary);
   }
 
-  @nest .dark &:not(.primary) {
-    --background-color: var(--gray-3);
-    --border-color: transparent;
-    --color: var(--white);
+  &:not(.primary) {
+    &:hover {
+      --background-color: var(--gray-6);
+    }
+
+    @nest .dark & {
+      --background-color: var(--gray-3);
+      --border-color: transparent;
+      --color: var(--white);
+
+      &:hover {
+        --background-color: var(--gray-2);
+      }
+    }
   }
 }
 
