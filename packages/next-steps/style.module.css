@@ -1,0 +1,217 @@
+.nextSteps {
+  /* Temporary color tokens */
+  --neutral-0: #fff;
+  --neutral-25: #f7f7f8;
+  --neutral-50: #f1f2f3;
+  --neutral-75: #e9eaec;
+  --neutral-100: #e1e2e5;
+  --neutral-200: #c1c3c8;
+  --neutral-300: #a3a7ae;
+  --neutral-400: #838791;
+  --neutral-500: #656b76;
+  --neutral-600: #51555d;
+  --neutral-700: #3d4148;
+  --neutral-800: #282a2f;
+  --neutral-900: #151619;
+  --blue-25: #f0f5fe;
+  --blue-50: #e7eefe;
+  --blue-75: #d8e5fd;
+  --blue-100: #cfdefc;
+  --blue-200: #99bafa;
+  --blue-300: #6998f7;
+  --blue-400: #3474f4;
+  --blue-500: #0c56e9;
+  --blue-600: #0944b8;
+  --blue-700: #07348d;
+  --blue-800: #05225c;
+  --blue-900: #021231;
+  --padding-y: 64px;
+
+  position: relative;
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
+
+  @media (--medium-up) {
+    --padding-y: 88px;
+  }
+}
+
+.container {
+  composes: g-grid-container from global;
+  composes: g-grid from global;
+  row-gap: 32px;
+  align-items: flex-start;
+}
+
+.content {
+  grid-column: 1 / -1;
+
+  @media (--medium-up) {
+    grid-column: 1 / 6;
+  }
+}
+
+.heading {
+  --color: var(--black);
+
+  composes: g-type-display-2 from global;
+  margin: 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--white);
+  }
+}
+
+.description {
+  --color: var(--gray-3);
+
+  composes: g-type-body-large from global;
+  margin: 24px 0 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--gray-5);
+  }
+}
+
+.actions {
+  margin-top: 32px;
+}
+
+.stepsList {
+  --grid-template-columns: 1;
+  --grid-gap: 24px;
+
+  grid-column: 1 / -1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-template-columns), 1fr);
+  gap: var(--grid-gap);
+
+  @media (--medium-up) {
+    --grid-template-columns: 2;
+    --grid-gap: 32px;
+
+    grid-column: 7 / -1;
+  }
+}
+
+.stepsListItem {
+  display: flex;
+  width: 100%;
+
+  &.stepsListItemFeature {
+    grid-column: span 2;
+  }
+}
+
+.tile {
+  --background-color: transparent;
+  --border-color: transparent;
+  --color: var(--neutral-0);
+
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 32px;
+  background-color: var(--background-color);
+  color: var(--color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: background-color 0.2s;
+
+  &.primary {
+    --background-color: var(--brand);
+    --border-color: transparent;
+    --color: var(--brand-text-on-primary);
+
+    &:hover,
+    &:active {
+      --background-color: var(--brand);
+    }
+
+    @nest .hashicorp & {
+      --background-color: var(--blue-500);
+      --border-color: transparent;
+      --color: var(--neutral-0);
+
+      &:hover {
+        --background-color: var(--blue-600);
+      }
+
+      &:active {
+        --background-color: var(--blue-700);
+      }
+    }
+  }
+
+  &:not(.primary) {
+    --border-color: var(--neutral-200);
+    --color: var(--neutral-900);
+
+    &:hover {
+      --background-color: var(--neutral-100);
+    }
+
+    &:active {
+      --background-color: var(--neutral-200);
+    }
+
+    @nest .dark & {
+      --background-color: var(--neutral-600);
+      --border-color: transparent;
+      --color: var(--white);
+
+      &:hover {
+        --background-color: var(--neutral-700);
+      }
+
+      &:active {
+        --background-color: var(--neutral-800);
+      }
+    }
+  }
+}
+
+.tileHeading {
+  composes: g-type-display-5 from global;
+  margin: 0;
+  color: inherit;
+}
+
+.tileDescription {
+  --color: var(--neutral-500);
+
+  composes: g-type-display-6 from global;
+  margin: 8px 0 0;
+  color: var(--color);
+
+  @nest .primary & {
+    --color: var(--blue-75);
+  }
+
+  @nest .dark & {
+    --color: var(--neutral-200);
+  }
+}
+
+.tileCta {
+  composes: g-type-buttons-and-standalone-links from global;
+  margin-top: auto;
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+
+  & svg {
+    transition: transform 0.2s;
+  }
+
+  @nest .tile:hover & svg {
+    transform: translate(2px);
+  }
+}
