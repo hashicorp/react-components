@@ -19,9 +19,6 @@ interface CtaProps {
   onClick?: () => void
 }
 
-type SingleCta = [CtaProps]
-type DuoCta = [CtaProps, CtaProps]
-
 export interface ActionsProps {
   /**
    * Display actions on light or dark background.
@@ -43,5 +40,5 @@ export interface ActionsProps {
    * Array of CTAs. Minimum of one, max of two.
    * @see CtaProps
    */
-  ctas: SingleCta | DuoCta
+  ctas: [CtaProps] | [CtaProps, CtaProps]
 }
