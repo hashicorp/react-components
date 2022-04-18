@@ -1,4 +1,7 @@
 import type { ActionsProps } from '@hashicorp/react-actions/types'
+
+type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+
 export interface IntroProps {
   /**
    * Display intro on light or dark backgrounds.
@@ -31,5 +34,5 @@ export interface IntroProps {
   /**
    * Render CTAs following the description element.
    */
-  actions?: ActionsProps
+  actions?: WithOptional<ActionsProps, 'ctas'>
 }

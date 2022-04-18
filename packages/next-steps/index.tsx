@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import type { NextStepsProps } from './types'
 import { IconArrowRight16 } from '@hashicorp/flight-icons/svg-react/arrow-right-16'
 import useProductMeta from '@hashicorp/platform-product-meta'
-import Actions from '@hashicorp/react-actions'
+import Intro from '@hashicorp/react-intro'
 import s from './style.module.css'
 
 export default function NextSteps({
@@ -11,30 +11,35 @@ export default function NextSteps({
   theme = 'hashicorp',
   heading,
   description,
-  actions,
+  ctas,
   steps,
 }: NextStepsProps) {
-  const { themeClass } = useProductMeta(theme)
+  const { slug, themeClass } = useProductMeta(theme)
   return (
-    <section className={classNames(s.nextSteps, themeClass, s[appearance])}>
+    <section
+      className={classNames(
+        s.nextSteps,
+        s[appearance],
+        themeClass,
+        slug && s[slug]
+      )}
+    >
       <div className={s.container}>
         <div className={s.content}>
-          <h2 className={s.heading}>{heading}</h2>
-          <p className={s.description}>{description}</p>
-          {actions && actions.length > 0 ? (
-            <div className={s.actions}>
-              <Actions
-                ctas={actions.map((action) => {
-                  return {
-                    ...action,
-                    variant: 'tertiary-neutral',
-                  }
-                })}
-                layout="stacked"
-                appearance={appearance}
-              />
-            </div>
-          ) : null}
+          <Intro
+            appearance={appearance}
+            heading={heading}
+            description={description}
+            actions={{
+              layout: 'stacked',
+              ctas:
+                ctas &&
+                (ctas.map((cta) => ({
+                  ...cta,
+                  variant: 'tertiary-neutral',
+                })) as NextStepsProps['ctas']),
+            }}
+          />
         </div>
         <ul className={s.stepsList}>
           {steps.map((step, index) => {
