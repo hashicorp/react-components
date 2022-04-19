@@ -23,6 +23,7 @@ export default function NextSteps({
         themeClass,
         slug && s[slug]
       )}
+      data-testid="next-steps"
     >
       <div className={s.container}>
         <div className={s.content}>
