@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import Actions from '@hashicorp/react-actions'
 import type { IntroProps } from './types'
+import Actions from '@hashicorp/react-actions'
 import s from './style.module.css'
 
 export default function Intro({
@@ -17,7 +17,6 @@ export default function Intro({
   const descriptionSizeClassname = [1, 2].includes(headingSize)
     ? 'g-type-body-large'
     : 'g-type-body'
-  const renderActions = actions && actions.ctas?.length > 0
   return (
     <div
       className={classNames(s.intro, s[appearance], s[textAlignment])}
@@ -30,9 +29,15 @@ export default function Intro({
       <p className={classNames(s.description, descriptionSizeClassname)}>
         {description}
       </p>
-      {renderActions ? (
+      {actions && actions.ctas && actions?.ctas?.length > 0 ? (
         <div className={s.actions}>
-          <Actions appearance={appearance} {...actions} />
+          <Actions
+            appearance={appearance}
+            layout={actions.layout}
+            theme={actions.theme}
+            size={actions.size}
+            ctas={actions.ctas}
+          />
         </div>
       ) : null}
     </div>
