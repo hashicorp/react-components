@@ -192,8 +192,12 @@
   margin: 8px 0 0;
   color: var(--color);
 
-  @nest .primary & {
+  @nest .hashicorp .primary & {
     --color: var(--blue-75);
+  }
+
+  @nest .primary & {
+    --color: var(--brand-text-on-primary);
   }
 
   @nest .dark & {
