@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import Actions from '@hashicorp/react-actions'
 import type { IntroProps } from './types'
+import Actions from '@hashicorp/react-actions'
 import s from './style.module.css'
 
 export default function Intro({
