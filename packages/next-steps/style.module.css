@@ -117,6 +117,7 @@
 
   display: flex;
   width: 100%;
+  min-height: 164px;
   flex-direction: column;
   padding: 32px;
   background-color: var(--background-color);
