@@ -204,6 +204,10 @@
     --color: var(--brand-text-on-primary);
   }
 
+  @nest .primary & {
+    --color: var(--brand-text-on-primary);
+  }
+
   @nest .dark & {
     --color: var(--wpl-neutral-200);
   }
