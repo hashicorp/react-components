@@ -1,5 +1,11 @@
 # @hashicorp/react-content
 
+## 8.2.2
+
+### Patch Changes
+
+- [#562](https://github.com/hashicorp/react-components/pull/562) [`9080e745`](https://github.com/hashicorp/react-components/commit/9080e74559d09510f9ab99ba1d19421e51f2f5e5) Thanks [@zchsh](https://github.com/zchsh)! - Fixes an issue where table headings were not aligned left by default. Maintains option to adjust table heading alignment using either GitHub-flavor markdown (via the align attribute).
+
 ## 8.2.1
 
 ### Patch Changes
