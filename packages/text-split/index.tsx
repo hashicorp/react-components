@@ -1,7 +1,27 @@
+import classNames from 'classnames'
+import type { ReactNode } from 'react'
+import type { Products } from '@hashicorp/platform-product-meta'
 import ButtonGroup from './partials/button-group/index.js'
 import CheckboxList from './partials/checkbox-list/index.js'
-import classNames from 'classnames'
 import s from './style.module.css'
+
+export interface TextSplitProps {
+  heading?: string
+  content?: ReactNode
+  theme?: 'light' | 'dark'
+  product?: Products
+  checkboxes?: string[]
+  links?: {
+    type: 'inbound' | 'outbound' | 'anchor' | 'download'
+    text: string
+    url: string
+  }[]
+  linkStyle?: 'buttons' | 'links'
+  textSide?: 'left'
+  children?: ReactNode
+  className?: string
+}
+
 function TextSplit({
   heading,
   content,
@@ -13,7 +33,7 @@ function TextSplit({
   textSide,
   children,
   className,
-}) {
+}: TextSplitProps) {
   if (!heading && !content) {
     throw new Error('<TextSplit /> requires either heading or content')
   }
@@ -32,7 +52,7 @@ function TextSplit({
             </h2>
           )}
           {hasStringContent ? (
-            <ContentString contentString={content} theme={theme} />
+            <ContentString contentString={content} />
           ) : hasReactContent ? (
             content
           ) : null}

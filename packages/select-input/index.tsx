@@ -3,6 +3,16 @@ import classNames from 'classnames'
 import Downshift from 'downshift'
 import s from './style.module.css'
 
+interface SelectInputProps {
+  name: string
+  label?: string
+  defaultLabel?: string
+  options: { name: string; label: string }[]
+  value?: { name: string; label: string }
+  onValueChange: (name: string) => void
+  size: 'small' | 'medium'
+}
+
 /**
  * Select input field
  * @prop {String} name - input name attribute
@@ -23,9 +33,11 @@ export default function SelectInput({
   defaultLabel,
   options,
   value,
-  onValueChange = () => {},
+  onValueChange = () => {
+    /* do nothing */
+  },
   size = 'medium',
-}) {
+}: SelectInputProps) {
   const displayLabel = defaultLabel || 'Select an option'
   // Changes to the value prop will re-render this component by updating the key value.
   return (
@@ -58,7 +70,7 @@ export default function SelectInput({
                 {label}
               </label>
             ) : null}
-            <input type="hidden" name={name} value={inputValue} />
+            <input type="hidden" name={name} value={inputValue ?? undefined} />
             <button {...getInputProps()} onClick={toggleMenu} type="button">
               {selectedItem ? selectedItem.label : displayLabel}
               <span className={s.arrow} aria-hidden>
