@@ -69,6 +69,10 @@
     --grid-template-columns: 2;
     --grid-gap: 32px;
 
+    grid-column: 6 / -1;
+  }
+
+  @media (--large) {
     grid-column: 7 / -1;
   }
 }
@@ -189,6 +193,7 @@
   color: inherit;
 
   & svg {
+    flex-shrink: 0;
     transition: transform 0.2s;
   }
 
