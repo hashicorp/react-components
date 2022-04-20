@@ -2,7 +2,7 @@
   "name": "@hashicorp/react-components",
   "version": "0.0.0",
   "dependencies": {
-    "@hashicorp/mktg-global-styles": "^4.1.0",
+    "@hashicorp/mktg-global-styles": "^4.2.0",
     "@hashicorp/mktg-logos": "^1.2.0",
     "@hashicorp/sentinel-embedded": "^0.0.14",
     "classnames": "^2.3.1",
