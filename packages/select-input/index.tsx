@@ -4,13 +4,13 @@ import Downshift from 'downshift'
 import s from './style.module.css'
 
 interface SelectInputProps {
-  name: string
+  name?: string
   label?: string
   defaultLabel?: string
   options: { name: string; label: string }[]
   value?: { name: string; label: string }
-  onValueChange: (name: string) => void
-  size: 'small' | 'medium'
+  onValueChange?: (name: string) => void
+  size?: 'small' | 'medium'
 }
 
 /**
