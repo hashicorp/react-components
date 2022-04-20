@@ -1,30 +1,4 @@
 .nextSteps {
-  /* Temporary color tokens */
-  --neutral-0: #fff;
-  --neutral-25: #f7f7f8;
-  --neutral-50: #f1f2f3;
-  --neutral-75: #e9eaec;
-  --neutral-100: #e1e2e5;
-  --neutral-200: #c1c3c8;
-  --neutral-300: #a3a7ae;
-  --neutral-400: #838791;
-  --neutral-500: #656b76;
-  --neutral-600: #51555d;
-  --neutral-700: #3d4148;
-  --neutral-800: #282a2f;
-  --neutral-900: #151619;
-  --blue-25: #f0f5fe;
-  --blue-50: #e7eefe;
-  --blue-75: #d8e5fd;
-  --blue-100: #cfdefc;
-  --blue-200: #99bafa;
-  --blue-300: #6998f7;
-  --blue-400: #3474f4;
-  --blue-500: #0c56e9;
-  --blue-600: #0944b8;
-  --blue-700: #07348d;
-  --blue-800: #05225c;
-  --blue-900: #021231;
   --padding-y: 64px;
 
   position: relative;
@@ -113,7 +87,7 @@
 .tile {
   --background-color: transparent;
   --border-color: transparent;
-  --color: var(--neutral-0);
+  --color: var(--wpl-neutral-0);
 
   display: flex;
   width: 100%;
@@ -137,43 +111,43 @@
     }
 
     @nest .hashicorp & {
-      --background-color: var(--blue-500);
+      --background-color: var(--wpl-blue-500);
       --border-color: transparent;
-      --color: var(--neutral-0);
+      --color: var(--wpl-neutral-0);
 
       &:hover {
-        --background-color: var(--blue-600);
+        --background-color: var(--wpl-blue-600);
       }
 
       &:active {
-        --background-color: var(--blue-700);
+        --background-color: var(--wpl-blue-700);
       }
     }
   }
 
   &:not(.primary) {
-    --border-color: var(--neutral-200);
-    --color: var(--neutral-900);
+    --border-color: var(--wpl-neutral-200);
+    --color: var(--wpl-neutral-900);
 
     &:hover {
-      --background-color: var(--neutral-100);
+      --background-color: var(--wpl-neutral-100);
     }
 
     &:active {
-      --background-color: var(--neutral-200);
+      --background-color: var(--wpl-neutral-200);
     }
 
     @nest .dark & {
-      --background-color: var(--neutral-600);
+      --background-color: var(--wpl-neutral-600);
       --border-color: transparent;
       --color: var(--white);
 
       &:hover {
-        --background-color: var(--neutral-700);
+        --background-color: var(--wpl-neutral-700);
       }
 
       &:active {
-        --background-color: var(--neutral-800);
+        --background-color: var(--wpl-neutral-800);
       }
     }
   }
@@ -186,14 +160,14 @@
 }
 
 .tileDescription {
-  --color: var(--neutral-500);
+  --color: var(--wpl-neutral-500);
 
   composes: g-type-display-6 from global;
   margin: 8px 0 0;
   color: var(--color);
 
   @nest .hashicorp .primary & {
-    --color: var(--blue-75);
+    --color: var(--wpl-blue-75);
   }
 
   @nest .primary & {
@@ -201,7 +175,7 @@
   }
 
   @nest .dark & {
-    --color: var(--neutral-200);
+    --color: var(--wpl-neutral-200);
   }
 }
 
