@@ -1,6 +1,13 @@
 import React, { Children } from 'react'
-import CodeBlock from '../../index.js'
+import type { ReactElement } from 'react'
+import CodeBlock from '../../index'
+import type { CodeBlockProps, CodeBlockOptions } from '../../index'
 import normalizePlainCode from '../../utils/normalize-plain-code'
+
+export interface CodeBlockConfigProps extends CodeBlockProps, CodeBlockOptions {
+  children?: ReactElement[]
+  hideClipboard?: boolean
+}
 
 function CodeBlockConfig({
   className,
@@ -12,9 +19,9 @@ function CodeBlockConfig({
   lineNumbers,
   hasBarAbove,
   theme,
-}) {
+}: CodeBlockConfigProps) {
   // Ensure there is exactly one valid child element
-  const validChildren = Children.toArray(children)
+  const validChildren = Children.toArray(children) as ReactElement[]
   const childCount = Children.count(children)
   if (childCount !== 1 || validChildren.length !== 1) {
     throw new Error(
@@ -24,7 +31,9 @@ function CodeBlockConfig({
   // Validate that the first child is a code block
   const onlyChild = validChildren[0]
   // TODO: more reliable way to validate childType, not sure how it'll work in production mode with minifying
-  const childType = onlyChild.props.mdxType || onlyChild.type.name
+  const childType =
+    onlyChild.props.mdxType ||
+    (typeof onlyChild.type === 'string' ? onlyChild.type : onlyChild.type.name)
   if (childType !== 'pre' && childType !== 'themedPre') {
     throw new Error(
       `In CodeBlockConfig, found a child with type "${childType}". Please ensure a fenced code block, which corresponds to the MDX type "pre", is passed to CodeBlockConfig instead. In JSX, please use CodeBlock directly rather than CodeBlockConfig.`

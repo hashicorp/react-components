@@ -7,11 +7,16 @@ import svgCopySuccess from './svg/copy-success.svg?include'
 import s from './style.module.css'
 import analytics, { heapAttributes } from '../../analytics'
 
-function ClipboardButton({ className, getText }) {
+interface ClipboardButtonProps {
+  className?: string
+  getText: () => Promise<[unknown, null] | [null, string]>
+}
+
+function ClipboardButton({ className, getText }: ClipboardButtonProps) {
   // copiedState can be null (initial), true (success), or false (failure)
-  const [copiedState, setCopiedState] = useState()
+  const [copiedState, setCopiedState] = useState<boolean | null>(null)
   // we reset copiedState to its initial value using a timeout
-  const [resetTimeout, setResetTimeout] = useState()
+  const [resetTimeout, setResetTimeout] = useState<number>()
 
   // Handle copy button clicks
   async function onClick() {
@@ -20,7 +25,8 @@ function ClipboardButton({ className, getText }) {
     // If text cannot be retrieved, exit early to handle the error
     if (getTextError) return handleError(getTextError)
     // Otherwise, continue on...
-    const isCopied = await copyToClipboard(text)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const isCopied = copyToClipboard(text!)
     // If there's an internal failure copying text, exit early to handle the error
     if (!isCopied) return handleError(`ClipboardButton failed. Text: ${text}.`)
     // Otherwise, things went well, track the event and set state
@@ -41,14 +47,14 @@ function ClipboardButton({ className, getText }) {
   useEffect(() => {
     // Clear any pending timeouts, which can occur if the
     // button is quickly clicked multiple times
-    clearTimeout(resetTimeout)
+    window.clearTimeout(resetTimeout)
     // Only run the copiedState reset if it's needed
     const needsReset = copiedState != null
     if (needsReset) {
       // Let failure messages linger a bit longer
       const resetDelay = copiedState == false ? 4000 : 1750
       // Set the timeout to reset the copy success state
-      setResetTimeout(setTimeout(() => setCopiedState(null), resetDelay))
+      setResetTimeout(window.setTimeout(() => setCopiedState(null), resetDelay))
     }
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)

@@ -1,7 +1,10 @@
 import React from 'react'
+import type { ReactElement } from 'react'
 import CodeBlock from '..'
 import CodeTabs from '../partials/code-tabs'
+import type { CodeTabsProps } from '../partials/code-tabs'
 import CodeBlockConfig from '../partials/code-block-config'
+import type { CodeBlockConfigProps } from '../partials/code-block-config'
 import normalizePlainCode from '../utils/normalize-plain-code'
 import classNames from 'classnames'
 import s from './style.module.css'
@@ -9,14 +12,21 @@ import s from './style.module.css'
 const DEFAULT_THEME = 'dark'
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
+interface PreProps {
+  children?: ReactElement[]
+  className?: string
+  hasBarAbove?: boolean
+  theme?: 'light' | 'dark'
+}
+
 export function pre({
   children,
   className,
   hasBarAbove,
   theme = DEFAULT_THEME,
-}) {
+}: PreProps) {
   // Assert that there is exactly one valid child
-  const childArray = React.Children.toArray(children)
+  const childArray = React.Children.toArray(children) as ReactElement[]
   if (childArray.length !== 1) {
     throw new Error(
       `Found <pre> element in MDX with more than one child: ${JSON.stringify(
@@ -65,11 +75,17 @@ export function pre({
   )
 }
 
-export function CodeTabsWithMargin({ theme = DEFAULT_THEME, ...props }) {
+export function CodeTabsWithMargin({
+  theme = DEFAULT_THEME,
+  ...props
+}: CodeTabsProps) {
   return <CodeTabs className={s.codeMargin} {...props} theme={theme} />
 }
 
-export function CodeBlockConfigWithMargin({ theme = DEFAULT_THEME, ...rest }) {
+export function CodeBlockConfigWithMargin({
+  theme = DEFAULT_THEME,
+  ...rest
+}: CodeBlockConfigProps) {
   return (
     <CodeBlockConfig
       className={classNames({ [s.codeMargin]: !rest.hasBarAbove })}
@@ -79,15 +95,17 @@ export function CodeBlockConfigWithMargin({ theme = DEFAULT_THEME, ...rest }) {
   )
 }
 
-export default function codeMdxPrimitives({ theme = DEFAULT_THEME } = {}) {
+export default function codeMdxPrimitives({
+  theme = DEFAULT_THEME,
+}: { theme?: 'light' | 'dark' } = {}) {
   return {
-    CodeBlockConfig: function themedCodeBlockConfig(p) {
+    CodeBlockConfig: function themedCodeBlockConfig(p: CodeBlockConfigProps) {
       return CodeBlockConfigWithMargin({ theme, ...p })
     },
-    CodeTabs: function themedCodeTabs(p) {
+    CodeTabs: function themedCodeTabs(p: CodeTabsProps) {
       return CodeTabsWithMargin({ theme, ...p })
     },
-    pre: function themedPre(p) {
+    pre: function themedPre(p: PreProps) {
       return pre({ theme, ...p })
     },
   }
