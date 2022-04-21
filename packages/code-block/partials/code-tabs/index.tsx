@@ -97,7 +97,7 @@ function CodeTabs({
   const tabGroupIds = parsedTabs.map((t) => t.group)
   const [activeTabIdx, setActiveTabIdx] = useIndexedTabs(tabGroupIds)
   // Track CodeTab selection with window.analytics
-  function setActiveTabWithEvent(tabIdx) {
+  function setActiveTabWithEvent(tabIdx: number) {
     analytics.trackTabSelect(tabGroupIds[tabIdx])
     setActiveTabIdx(tabIdx)
   }

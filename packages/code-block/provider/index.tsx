@@ -4,14 +4,25 @@ export function useTabGroups() {
   return useContext(CodeTabsContext)
 }
 
-const CodeTabsContext = createContext()
+interface CodeTabsContextValue {
+  activeTabGroup: string | null
+  setActiveTabGroup: (group: string) => void
+  preferredTabGroups: string[]
+}
+
+const CodeTabsContext = createContext<CodeTabsContextValue>({
+  activeTabGroup: null,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setActiveTabGroup: () => {},
+  preferredTabGroups: [],
+})
 
 export const LOCAL_STORAGE_KEY = '@hashicorp/react-code-block/code-tabs-prefs'
 const LENGTH_LIMIT = 20
 
 export default function CodeTabsProvider({ children }) {
-  const [preferredTabGroups, setPreferredTabGroups] = useState([])
-  const [activeTabGroup, setActiveTabGroup] = useState(null)
+  const [preferredTabGroups, setPreferredTabGroups] = useState<string[]>([])
+  const [activeTabGroup, setActiveTabGroup] = useState<string | null>(null)
   const contextValue = useMemo(
     () => ({ activeTabGroup, setActiveTabGroup, preferredTabGroups }),
     [activeTabGroup, preferredTabGroups]
@@ -24,7 +35,7 @@ export default function CodeTabsProvider({ children }) {
       // the preference array
       .concat(preferredTabGroups)
       // Remove any falsy values (eg initial)
-      .filter((s) => s !== null && s !== '')
+      .filter((s): s is string => s !== null && s !== '')
       // Deduplicate the array
       .filter((el, i, arr) => arr.indexOf(el) === i)
       // Limit the array length
@@ -36,7 +47,7 @@ export default function CodeTabsProvider({ children }) {
       const storedValueJson = JSON.stringify(updatedPreferences)
       window.localStorage.setItem(LOCAL_STORAGE_KEY, storedValueJson)
     }
-  }, [activeTabGroup])
+  }, [activeTabGroup, preferredTabGroups])
 
   // Load activeTabGroup from cookie, if available
   useEffect(() => {
