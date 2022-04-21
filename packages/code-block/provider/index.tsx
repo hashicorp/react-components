@@ -47,7 +47,7 @@ export default function CodeTabsProvider({ children }) {
       const storedValueJson = JSON.stringify(updatedPreferences)
       window.localStorage.setItem(LOCAL_STORAGE_KEY, storedValueJson)
     }
-  }, [activeTabGroup, preferredTabGroups])
+  }, [activeTabGroup])
 
   // Load activeTabGroup from cookie, if available
   useEffect(() => {
