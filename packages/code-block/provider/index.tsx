@@ -10,12 +10,9 @@ interface CodeTabsContextValue {
   preferredTabGroups: string[]
 }
 
-const CodeTabsContext = createContext<CodeTabsContextValue>({
-  activeTabGroup: null,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setActiveTabGroup: () => {},
-  preferredTabGroups: [],
-})
+const CodeTabsContext = createContext<CodeTabsContextValue | undefined>(
+  undefined
+)
 
 export const LOCAL_STORAGE_KEY = '@hashicorp/react-code-block/code-tabs-prefs'
 const LENGTH_LIMIT = 20

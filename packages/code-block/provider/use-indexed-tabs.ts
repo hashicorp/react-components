@@ -7,7 +7,12 @@ const IS_DEV = process.env.NODE_ENV !== 'production'
 function useIndexedTabs(
   tabGroupIds: string[],
   defaultTabIdx = 0
-): [number, (idx: number) => void, string | null, (group: string) => void] {
+): [
+  number,
+  (idx: number) => void,
+  string | null | undefined,
+  ((group: string) => void) | undefined
+] {
   // Clamp the default value to ensure it doesn't cause issues
   const clampedDefault = clamp(defaultTabIdx, 0, tabGroupIds.length - 1)
   const [localTabIdx, setLocalTabIdx] = useState(clampedDefault)
@@ -55,7 +60,7 @@ function useIndexedTabs(
         (acc, groupId, tabIdx) => {
           // Determine the "rank" of this preference, being
           // the index in the "preferredTabGroups" array
-          const preferenceIdx = preferredTabGroups.indexOf(groupId)
+          const preferenceIdx = preferredTabGroups!.indexOf(groupId)
           // If this is not even in the preferred tabs array, do nothing
           if (preferenceIdx == -1) return acc
           // Otherwise, compare to the current selected rank...
