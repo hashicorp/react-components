@@ -154,7 +154,7 @@
 }
 
 .tileHeading {
-  composes: g-type-display-5 from global;
+  composes: g-type-display-4 from global;
   margin: 0;
   color: inherit;
 }
