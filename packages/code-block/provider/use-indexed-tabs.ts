@@ -4,7 +4,15 @@ import clamp from '../utils/clamp'
 
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
-function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
+function useIndexedTabs(
+  tabGroupIds: string[],
+  defaultTabIdx = 0
+): [
+  number,
+  (idx: number) => void,
+  string | null | undefined,
+  ((group: string) => void) | undefined
+] {
   // Clamp the default value to ensure it doesn't cause issues
   const clampedDefault = clamp(defaultTabIdx, 0, tabGroupIds.length - 1)
   const [localTabIdx, setLocalTabIdx] = useState(clampedDefault)
@@ -26,7 +34,7 @@ function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
   // Enable setting of group value
   // Update both the active tab idx (for this specific tab set),
   // and the tab context's active group (to sync other tab sets)
-  function setActiveTabIdx(targetIdx) {
+  function setActiveTabIdx(targetIdx: number) {
     setLocalTabIdx(targetIdx)
     const targetGroup = tabGroupIds[targetIdx]
     if (targetGroup && setActiveTabGroup) setActiveTabGroup(targetGroup)
@@ -45,11 +53,14 @@ function useIndexedTabs(tabGroupIds, defaultTabIdx = 0) {
       // If the current tab group is null, then this is
       // likely the initial load state. We check to see
       // if there is a preferred tab group set, and use that
-      const preferredMatchIdx = tabGroupIds.reduce(
+      const preferredMatchIdx = tabGroupIds.reduce<{
+        preferenceIdx: number | null
+        tabIdx: number | null
+      }>(
         (acc, groupId, tabIdx) => {
           // Determine the "rank" of this preference, being
           // the index in the "preferredTabGroups" array
-          const preferenceIdx = preferredTabGroups.indexOf(groupId)
+          const preferenceIdx = preferredTabGroups!.indexOf(groupId)
           // If this is not even in the preferred tabs array, do nothing
           if (preferenceIdx == -1) return acc
           // Otherwise, compare to the current selected rank...

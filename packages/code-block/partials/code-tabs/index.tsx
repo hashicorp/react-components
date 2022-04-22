@@ -1,4 +1,5 @@
 import React, { Children } from 'react'
+import type { ReactElement } from 'react'
 import classNames from 'classnames'
 import resolveTabData from '../../utils/resolve-tab-data'
 import useIndexedTabs from '../../provider/use-indexed-tabs'
@@ -12,8 +13,22 @@ import themeLight from '../../theme-light.module.css'
 import s from './style.module.css'
 import analytics from '../../analytics'
 
-function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
-  const validChildren = Children.toArray(children)
+export interface CodeTabsProps {
+  children?: ReactElement[]
+  heading?: string
+  className?: string
+  tabs: (string | { group: string; label: string })[]
+  theme?: 'light' | 'dark'
+}
+
+function CodeTabs({
+  children,
+  heading,
+  className,
+  tabs,
+  theme = 'dark',
+}: CodeTabsProps) {
+  const validChildren = Children.toArray(children) as ReactElement[]
   // Throw an error if the tabs prop is defined, but does not
   // match the number of valid children
   if (tabs !== undefined && tabs.length !== validChildren.length) {
@@ -26,7 +41,10 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   const childTypes = validChildren.map((tabChild) => {
     let type
     // For JSX primitives, the type is captured by the type property
-    if (typeof tabChild.type == 'string' || typeof tabChild.type == 'number') {
+    if (
+      typeof tabChild.type === 'string' ||
+      typeof tabChild.type === 'number'
+    ) {
       type = tabChild.type
       // For function components, accept CodeBlock or CodeBlockConfig.
     } else if (typeof tabChild.type === 'function') {
@@ -38,7 +56,9 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
       ]
       const matchIdx = validComponents
         .map((c) => c.component)
-        .indexOf(tabChild.type)
+        // we use `never` here instead of `any` to signify that we don't care
+        // about the type
+        .indexOf(tabChild.type as never)
       if (matchIdx >= 0) {
         type = validComponents[matchIdx].name
       } else {
@@ -77,7 +97,7 @@ function CodeTabs({ children, heading, className, tabs, theme = 'dark' }) {
   const tabGroupIds = parsedTabs.map((t) => t.group)
   const [activeTabIdx, setActiveTabIdx] = useIndexedTabs(tabGroupIds)
   // Track CodeTab selection with window.analytics
-  function setActiveTabWithEvent(tabIdx) {
+  function setActiveTabWithEvent(tabIdx: number) {
     analytics.trackTabSelect(tabGroupIds[tabIdx])
     setActiveTabIdx(tabIdx)
   }

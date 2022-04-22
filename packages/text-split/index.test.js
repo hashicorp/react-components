@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import TextSplit from './index.js'
+import TextSplit from './index'
 
 const propsBase = {
   heading: 'Example Heading',
