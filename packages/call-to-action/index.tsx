@@ -15,7 +15,7 @@ interface CallToActionProps {
   heading?: string
   content?: string
   links?: {
-    type: 'inbound' | 'outbound' | 'anchor' | 'download'
+    type?: 'inbound' | 'outbound' | 'anchor' | 'download'
     text: string
     url: string
   }[]
