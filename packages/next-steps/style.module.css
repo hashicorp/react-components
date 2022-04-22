@@ -21,7 +21,7 @@
   grid-column: 1 / -1;
 
   @media (--medium-up) {
-    grid-column: 1 / 6;
+    grid-column: 1 / 5;
   }
 }
 
@@ -71,10 +71,6 @@
 
     grid-column: 6 / -1;
   }
-
-  @media (--large) {
-    grid-column: 7 / -1;
-  }
 }
 
 .stepsListItem {
@@ -95,7 +91,7 @@
 
   display: flex;
   width: 100%;
-  min-height: 164px;
+  min-height: 208px;
   flex-direction: column;
   padding: 32px;
   background-color: var(--background-color);
