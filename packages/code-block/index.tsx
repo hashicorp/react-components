@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import type { ReactElement } from 'react'
 import classNames from 'classnames'
 import processSnippet from './utils/process-snippet'
 import ClipboardButton from './partials/clipboard-button'
@@ -10,6 +11,25 @@ import CodeLines from './partials/code-lines'
 import analytics, { heapAttributes } from './analytics'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
+
+export interface CodeBlockOptions {
+  showChrome?: boolean
+  highlight?: boolean
+  lineNumbers?: boolean
+  showClipboard?: boolean
+  showWindowBar?: boolean
+  filename?: string
+  heading?: string
+}
+
+export interface CodeBlockProps {
+  className?: string
+  code: string | ReactElement
+  language?: string
+  theme?: 'light' | 'dark'
+  hasBarAbove?: boolean
+  options?: CodeBlockOptions
+}
 
 function CodeBlock({
   className,
@@ -24,13 +44,13 @@ function CodeBlock({
     showClipboard: false,
     showWindowBar: false,
   },
-}) {
-  const copyRef = useRef()
+}: CodeBlockProps) {
+  const copyRef = useRef<HTMLPreElement>()
 
-  function getText() {
+  async function getText(): Promise<[null, string] | [unknown, null]> {
     try {
       // Gather the text content
-      const rawSnippet = copyRef.current.textContent
+      const rawSnippet = copyRef.current?.textContent
       // Run additional processing, namely for shell commands
       const snippet = processSnippet(rawSnippet)
       return [null, snippet]

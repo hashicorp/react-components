@@ -6,7 +6,11 @@ import NavItem from './nav-item'
 import slugify from 'slugify'
 import HASHI_STACK_MENU_ITEMS from './data'
 
-export default function HashiStackMenu({ onPanelChange }) {
+interface HashiStackMenuProps {
+  onPanelChange?: (activePanelKey: string) => void
+}
+
+export default function HashiStackMenu({ onPanelChange }: HashiStackMenuProps) {
   const [activePanelKey, setActivePanelKey] = useState('')
   const isActive = (a) => activePanelKey === a
 
@@ -14,7 +18,7 @@ export default function HashiStackMenu({ onPanelChange }) {
     if (onPanelChange) {
       onPanelChange(activePanelKey)
     }
-  }, [activePanelKey])
+  }, [onPanelChange, activePanelKey])
 
   // Redirect to the branding page when someone right-clicks on the
   // HashiCorp logo

@@ -1,8 +1,22 @@
 import useProductMeta from '@hashicorp/platform-product-meta'
-import s from './style.module.css'
+import type { Products } from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
+import type { ReactNode } from 'react'
+import s from './style.module.css'
 
-function EnterpriseAlert({ product, inline, children, className }) {
+interface EnterpriseAlertProps {
+  product?: Products
+  inline?: boolean
+  className?: string
+  children?: ReactNode
+}
+
+function EnterpriseAlert({
+  product,
+  inline,
+  children,
+  className,
+}: EnterpriseAlertProps) {
   const { name, slug, themeClass } = useProductMeta(product)
   return (
     <div

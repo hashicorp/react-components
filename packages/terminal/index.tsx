@@ -1,14 +1,22 @@
 import { Fragment } from 'react'
 import useProductMeta from '@hashicorp/platform-product-meta'
+import type { Products } from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import s from './style.module.css'
+
+interface CommandLineTerminalProps {
+  lines: { color: 'navy' | 'gray' | 'white'; code: string; short?: boolean }[]
+  title?: string
+  noScroll?: boolean
+  product: Products
+}
 
 export default function CommandLineTerminal({
   lines,
   title,
   noScroll,
   product,
-}) {
+}: CommandLineTerminalProps) {
   const { themeClass } = useProductMeta(product)
   return (
     <div

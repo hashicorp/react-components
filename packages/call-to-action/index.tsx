@@ -1,4 +1,5 @@
 import Button from '@hashicorp/react-button'
+import type { Products } from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import variantCentered from './styles/variant-centered.module.css'
 import variantCompact from './styles/variant-compact.module.css'
@@ -10,6 +11,20 @@ const stylesDict = {
   links: variantLinks,
 }
 
+interface CallToActionProps {
+  heading?: string
+  content?: string
+  links?: {
+    type: 'inbound' | 'outbound' | 'anchor' | 'download'
+    text: string
+    url: string
+  }[]
+  variant?: 'centered' | 'compact' | 'links'
+  product: Products
+  theme?: 'light' | 'dark' | 'brand'
+  className?: string
+}
+
 function CallToAction({
   heading,
   content,
@@ -18,14 +33,16 @@ function CallToAction({
   product,
   theme = 'light',
   className,
-}) {
+}: CallToActionProps) {
   const s = stylesDict[variant]
   if (!heading && !content) {
     throw new Error('<CallToAction /> requires either heading or content')
   }
   const hasLinks = links && links.length > 0
   if (hasLinks && links.filter((l) => !l.text || !l.url).length > 0) {
-    throw new Error('<CallToAction /> `links` must have both a "text" and a "url" prop')
+    throw new Error(
+      '<CallToAction /> `links` must have both a "text" and a "url" prop'
+    )
   }
   return (
     <div className={classNames(s.root, s[`theme-${theme}`], className)}>
