@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 14.16.1
+
+### Patch Changes
+
+- [#569](https://github.com/hashicorp/react-components/pull/569) [`21e78bfe`](https://github.com/hashicorp/react-components/commit/21e78bfe0d371c8fffb0c86260744cc716d994a6) Thanks [@zchsh](https://github.com/zchsh)! - Bumps @hashicorp/react-content dependency to fix a table alignment issues. See #562 for details.
+
 ## 14.16.0
 
 ### Minor Changes
