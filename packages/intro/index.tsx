@@ -14,9 +14,8 @@ export default function Intro({
   actions,
 }: IntroProps) {
   const headingSizeClassname = `g-type-display-${headingSize}`
-  const descriptionSizeClassname = [1].includes(headingSize)
-    ? 'g-type-body-large'
-    : 'g-type-body'
+  const descriptionSizeClassname =
+    headingSize === 1 ? 'g-type-body-large' : 'g-type-body'
   const descriptionClassName = classNames(
     s.description,
     descriptionSizeClassname
