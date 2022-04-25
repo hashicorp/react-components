@@ -6,10 +6,15 @@ import s from './style.module.css'
 export default function Actions({
   appearance = 'light',
   layout = 'inline',
-  brand = 'hashicorp',
+  theme = 'hashicorp',
   size = 'medium',
   ctas,
 }: ActionsProps) {
+  if (ctas.length < 1 || ctas.length > 2) {
+    throw new Error(
+      `Actions expects at least 1 cta, no more than 2. You provided ${ctas.length}.`
+    )
+  }
   return (
     <div className={classNames(s.actions, s[layout])} data-testid="actions">
       {ctas.map((cta, index) => {
@@ -24,7 +29,7 @@ export default function Actions({
             onClick={cta.onClick}
             size={size}
             theme={{
-              brand: brand,
+              brand: theme,
               variant: cta.variant || 'primary',
               background: appearance === 'dark' ? 'dark' : undefined,
             }}
