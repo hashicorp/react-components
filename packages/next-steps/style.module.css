@@ -1,0 +1,203 @@
+.nextSteps {
+  --padding-y: 64px;
+
+  position: relative;
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
+
+  @media (--medium-up) {
+    --padding-y: 88px;
+  }
+}
+
+.container {
+  composes: g-grid-container from global;
+  composes: g-grid from global;
+  row-gap: 32px;
+  align-items: flex-start;
+}
+
+.content {
+  grid-column: 1 / -1;
+
+  @media (--medium-up) {
+    grid-column: 1 / 5;
+  }
+}
+
+.heading {
+  --color: var(--black);
+
+  composes: g-type-display-2 from global;
+  margin: 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--white);
+  }
+}
+
+.description {
+  --color: var(--gray-3);
+
+  composes: g-type-body-large from global;
+  margin: 24px 0 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--gray-5);
+  }
+}
+
+.actions {
+  margin-top: 32px;
+}
+
+.stepsList {
+  --grid-template-columns: 1;
+  --grid-gap: 24px;
+
+  grid-column: 1 / -1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-template-columns), 1fr);
+  gap: var(--grid-gap);
+
+  @media (--medium-up) {
+    --grid-template-columns: 2;
+    --grid-gap: 32px;
+
+    grid-column: 6 / -1;
+  }
+}
+
+.stepsListItem {
+  display: flex;
+  width: 100%;
+
+  &.stepsListItemFeature {
+    @media (--medium-up) {
+      grid-column: span 2;
+    }
+  }
+}
+
+.tile {
+  --background-color: transparent;
+  --border-color: transparent;
+  --color: var(--wpl-neutral-0);
+
+  display: flex;
+  width: 100%;
+  min-height: 208px;
+  flex-direction: column;
+  padding: 32px;
+  background-color: var(--background-color);
+  color: var(--color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: background-color 0.2s;
+
+  &.primary {
+    --background-color: var(--brand);
+    --border-color: transparent;
+    --color: var(--brand-text-on-primary);
+
+    &:hover,
+    &:active {
+      --background-color: var(--brand);
+    }
+
+    @nest .hashicorp & {
+      --background-color: var(--wpl-blue-500);
+      --border-color: transparent;
+      --color: var(--wpl-neutral-0);
+
+      &:hover {
+        --background-color: var(--wpl-blue-600);
+      }
+
+      &:active {
+        --background-color: var(--wpl-blue-700);
+      }
+    }
+  }
+
+  &:not(.primary) {
+    --border-color: var(--wpl-neutral-200);
+    --color: var(--wpl-neutral-900);
+
+    &:hover {
+      --background-color: var(--wpl-neutral-100);
+    }
+
+    &:active {
+      --background-color: var(--wpl-neutral-200);
+    }
+
+    @nest .dark & {
+      --background-color: var(--wpl-neutral-600);
+      --border-color: transparent;
+      --color: var(--white);
+
+      &:hover {
+        --background-color: var(--wpl-neutral-700);
+      }
+
+      &:active {
+        --background-color: var(--wpl-neutral-800);
+      }
+    }
+  }
+}
+
+.tileHeading {
+  composes: g-type-display-4 from global;
+  margin: 0;
+  color: inherit;
+}
+
+.tileDescription {
+  --color: var(--wpl-neutral-500);
+
+  composes: g-type-display-6 from global;
+  margin: 8px 0 0;
+  color: var(--color);
+
+  @nest .hashicorp .primary & {
+    --color: var(--wpl-blue-75);
+  }
+
+  @nest .primary & {
+    --color: var(--brand-text-on-primary);
+  }
+
+  @nest .primary & {
+    --color: var(--brand-text-on-primary);
+  }
+
+  @nest .dark & {
+    --color: var(--wpl-neutral-200);
+  }
+}
+
+.tileCta {
+  composes: g-type-buttons-and-standalone-links from global;
+  margin-top: auto;
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+
+  & svg {
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  @nest .tile:hover & svg {
+    transform: translate(2px);
+  }
+}
