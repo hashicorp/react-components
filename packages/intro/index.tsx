@@ -20,7 +20,6 @@ export default function Intro({
     s.description,
     descriptionSizeClassname
   )
-  const renderActions = actions && actions.ctas?.length > 0
   return (
     <div
       className={classNames(s.intro, s[appearance], s[textAlignment])}
@@ -40,7 +39,7 @@ export default function Intro({
       ) : (
         <p className={descriptionClassName}>{description}</p>
       )}
-      {renderActions ? (
+      {actions && actions.ctas && actions.ctas.length > 0 ? (
         <div className={s.actions}>
           <Actions
             appearance={appearance}
