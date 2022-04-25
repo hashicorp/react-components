@@ -1,5 +1,17 @@
 # @hashicorp/react-intro
 
+## 0.4.0
+
+### Minor Changes
+
+- [#564](https://github.com/hashicorp/react-components/pull/564) [`59364fab`](https://github.com/hashicorp/react-components/commit/59364fab445c9da855b7b97fdc84bc64fa4837c7) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - - Update actions brand prop to theme
+  - Update intro actions type
+
+### Patch Changes
+
+- Updated dependencies [[`59364fab`](https://github.com/hashicorp/react-components/commit/59364fab445c9da855b7b97fdc84bc64fa4837c7)]:
+  - @hashicorp/react-actions@0.3.0
+
 ## 0.3.0
 
 ### Minor Changes
