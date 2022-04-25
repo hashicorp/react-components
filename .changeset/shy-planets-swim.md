@@ -1,5 +1,5 @@
 ---
-'@hashicorp/react-actions': major
+'@hashicorp/react-actions': minor
 '@hashicorp/react-intro': minor
 ---
 
