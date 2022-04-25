@@ -41,6 +41,18 @@
   @nest .dark & {
     --color: var(--gray-4);
   }
+
+  & > * {
+    color: inherit;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .actions {
