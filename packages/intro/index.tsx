@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import Actions from '@hashicorp/react-actions'
 import type { IntroProps } from './types'
+import Actions from '@hashicorp/react-actions'
 import s from './style.module.css'
 
 export default function Intro({
@@ -42,7 +42,13 @@ export default function Intro({
       )}
       {renderActions ? (
         <div className={s.actions}>
-          <Actions appearance={appearance} {...actions} />
+          <Actions
+            appearance={appearance}
+            layout={actions.layout}
+            theme={actions.theme}
+            size={actions.size}
+            ctas={actions.ctas}
+          />
         </div>
       ) : null}
     </div>
