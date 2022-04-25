@@ -14,9 +14,12 @@ export default function Intro({
   actions,
 }: IntroProps) {
   const headingSizeClassname = `g-type-display-${headingSize}`
-  const descriptionSizeClassname = [1, 2].includes(headingSize)
-    ? 'g-type-body-large'
-    : 'g-type-body'
+  const descriptionSizeClassname =
+    headingSize === 1 ? 'g-type-body-large' : 'g-type-body'
+  const descriptionClassName = classNames(
+    s.description,
+    descriptionSizeClassname
+  )
   const renderActions = actions && actions.ctas?.length > 0
   return (
     <div
@@ -27,9 +30,16 @@ export default function Intro({
       <HeadingElement className={classNames(s.heading, headingSizeClassname)}>
         {heading}
       </HeadingElement>
-      <p className={classNames(s.description, descriptionSizeClassname)}>
-        {description}
-      </p>
+      {description.includes('<p>') ? (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: description,
+          }}
+          className={descriptionClassName}
+        />
+      ) : (
+        <p className={descriptionClassName}>{description}</p>
+      )}
       {renderActions ? (
         <div className={s.actions}>
           <Actions appearance={appearance} {...actions} />
