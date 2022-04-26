@@ -146,4 +146,4 @@ function handleBranchNode(navNode, depth) {
   return { ...navNode, __stack, routes: routesWithStacks }
 }
 
-module.exports = validateRouteStructure
+export default validateRouteStructure

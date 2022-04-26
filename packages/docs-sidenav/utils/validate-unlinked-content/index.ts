@@ -1,5 +1,6 @@
-var fs = require('fs')
-var path = require('path')
+import * as fs from 'fs'
+import * as path from 'path'
+import type { NavData } from '../../types'
 
 /**
  *
@@ -13,7 +14,7 @@ var path = require('path')
  * @returns {Array} - array of file paths which are present in the content directory,
  * but missing from navData. Returns an empty array if all content files are included in navData.
  */
-async function validateUnlinkedContent(navData, contentDir) {
+async function validateUnlinkedContent(navData: NavData, contentDir: string) {
   // Flatten navData to simplify filtering of missing files
   const navDataFlat = flattenNodes(navData)
   // Read all files in the content directory
@@ -52,15 +53,16 @@ async function validateUnlinkedContent(navData, contentDir) {
   return missingPages
 }
 
-function flattenNodes(nodes) {
+function flattenNodes(nodes: NavData) {
   return nodes.reduce((acc, n) => {
-    if (!n.routes) return acc.concat(n)
+    if (!('routes' in n)) return acc.concat(n)
     return acc.concat(flattenNodes(n.routes))
-  }, [])
+  }, [] as NavData)
 }
 
-async function getFiles(dir) {
+async function getFiles(dir: string): Promise<string[]> {
   const entries = await fs.promises.readdir(dir, { withFileTypes: true })
+
   const files = await Promise.all(
     entries.map((entry) => {
       const res = path.resolve(dir, entry.name)
@@ -70,4 +72,4 @@ async function getFiles(dir) {
   return files.flat()
 }
 
-module.exports = validateUnlinkedContent
+export default validateUnlinkedContent
