@@ -9,12 +9,10 @@ jest.mock('@hashicorp/react-docs-sidenav/utils/validate-file-paths')
 jest.mock('@hashicorp/react-docs-sidenav/utils/validate-route-structure')
 jest.mock('@hashicorp/react-docs-sidenav/utils/validate-unlinked-content')
 
-// Future: when '@hashicorp/react-docs-sidenav/utils' are converted to TS
-
-// import { mocked } from 'ts-jest/utils'
-// const mockedValidateFilePaths = mocked(validateFilePaths)
-// const mockedValidateRouteStructure = mocked(validateRouteStructure)
-// const mockedValidateUnlinkedContent = mocked(validateUnlinkedContent)
+import { mocked } from 'jest-mock'
+const mockedValidateFilePaths = mocked(validateFilePaths)
+const mockedValidateRouteStructure = mocked(validateRouteStructure)
+const mockedValidateUnlinkedContent = mocked(validateUnlinkedContent)
 
 const CONTENT_DIR = 'content/commands'
 
@@ -32,15 +30,22 @@ describe('validateNavData', () => {
   })
 
   it('should validate nav data', async () => {
-    validateFilePaths.mockImplementation(async () => validateFilePathsResult)
-    validateRouteStructure.mockImplementation(async () => undefined)
-    validateUnlinkedContent.mockImplementation(async () => [])
+    mockedValidateFilePaths.mockImplementation(
+      async () => validateFilePathsResult
+    )
+    mockedValidateRouteStructure.mockImplementation(async () => undefined)
+    mockedValidateUnlinkedContent.mockImplementation(async () => [])
 
     const res = await validateNavData(navData, CONTENT_DIR)
 
-    expect(validateFilePaths).toHaveBeenCalledWith(navData, 'content/commands')
-    expect(validateRouteStructure).toHaveBeenCalledWith(validateFilePathsResult)
-    expect(validateUnlinkedContent).toHaveBeenCalledWith(
+    expect(mockedValidateFilePaths).toHaveBeenCalledWith(
+      navData,
+      'content/commands'
+    )
+    expect(mockedValidateRouteStructure).toHaveBeenCalledWith(
+      validateFilePathsResult
+    )
+    expect(mockedValidateUnlinkedContent).toHaveBeenCalledWith(
       navData,
       'content/commands'
     )

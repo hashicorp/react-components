@@ -1,5 +1,5 @@
-const fs = require('fs')
-const path = require('path')
+import * as fs from 'fs'
+import * as path from 'path'
 
 async function validateFilePaths(navNodes, localDir) {
   //  Clone the nodes, and validate each one
@@ -54,4 +54,4 @@ async function validateNode(navNode, localDir) {
   return navNode
 }
 
-module.exports = validateFilePaths
+export default validateFilePaths
