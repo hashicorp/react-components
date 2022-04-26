@@ -1,4 +1,4 @@
-import path from 'path'
+import * as path from 'path'
 import validateUnlinkedContent from './'
 
 // We have a fixture folder with unlinked content set up
