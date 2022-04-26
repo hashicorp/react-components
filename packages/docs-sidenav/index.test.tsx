@@ -1,6 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import DocsSidenav from './'
+import DocsSidenav from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 
@@ -9,15 +9,18 @@ const defaultProps = getTestValues(props)
 describe('<DocsSidenav />', () => {
   it('renders a root element with a g-docs-sidenav className', () => {
     const { container } = render(<DocsSidenav {...defaultProps} />)
-    expect(container.firstChild.className).toContain('g-docs-sidenav')
+    expect((container.firstChild as HTMLDivElement).className).toContain(
+      'g-docs-sidenav'
+    )
   })
 
   it('renders and displays nesting levels correctly', () => {
     render(<DocsSidenav {...defaultProps} />)
+
     // For this test, we step through the expected nesting levels based on
     // the fixture data, ensuring that each level is nested properly and has
     // the classes to reflect whether it's shown as active
-    const branchOne = screen.getByText('Vault Agent').closest('button')
+    const branchOne = screen.getByText('Vault Agent').closest('button')!
     expect(branchOne.getAttribute('data-is-active')).toBe('true')
     expect(branchOne.getAttribute('data-is-open')).toBe('true')
 
@@ -25,31 +28,31 @@ describe('<DocsSidenav />', () => {
       .getByText(
         'Auto-Auth With A Very Long NavCategory Title That Should Wrap To Multiple Lines'
       )
-      .closest('button')
+      .closest('button')!
     expect(branchTwo.getAttribute('data-is-active')).toBe('true')
     expect(branchTwo.getAttribute('data-is-open')).toBe('true')
 
-    const branchThree = screen.getByText('Methods').closest('button')
+    const branchThree = screen.getByText('Methods').closest('button')!
     expect(branchThree.getAttribute('data-is-active')).toBe('true')
     expect(branchThree.getAttribute('data-is-open')).toBe('true')
 
-    const activeLeaf = screen.getByText('AWS').closest('a')
+    const activeLeaf = screen.getByText('AWS').closest('a')!
     expect(activeLeaf.getAttribute('data-is-active')).toBe('true')
 
     // Let's also make sure that other pages are not also displaying as active
     // First we check an similarly named page at a different level
-    const inactiveLeafOne = screen.getByText('AWS Agent').closest('a')
+    const inactiveLeafOne = screen.getByText('AWS Agent').closest('a')!
     expect(inactiveLeafOne.getAttribute('data-is-active')).toBe('false')
     // Next we check a page at the same level but with a different name
-    const inactiveLeafTwo = screen.getByText('GCP').closest('a')
+    const inactiveLeafTwo = screen.getByText('GCP').closest('a')!
     expect(inactiveLeafTwo.getAttribute('data-is-active')).toBe('false')
     // Finally we check the overview page at the same level
     const inactiveLeafThree = screen
       .getAllByText('Overview')
-      .map((node) => node.closest('a'))
+      .map((node) => node.closest('a')!)
       .filter((linkElem) => {
         return linkElem.getAttribute('href') === '/docs/agent/autoauth/methods'
-      })[0]
+      })[0]!
     expect(inactiveLeafThree.getAttribute('data-is-active')).toBe('false')
   })
 
@@ -60,10 +63,10 @@ describe('<DocsSidenav />', () => {
     // Check the "overview" index node we've set as active using currentPath
     const activeIndexLeaf = screen
       .getAllByText('Overview')
-      .map((node) => node.closest('a'))
+      .map((node) => node.closest('a')!)
       .filter((linkElem) => {
         return linkElem.getAttribute('href') === expectedHref
-      })[0]
+      })[0]!
     expect(activeIndexLeaf.getAttribute('data-is-active')).toBe('true')
   })
 
@@ -94,7 +97,7 @@ describe('<DocsSidenav />', () => {
       .getByText(
         'Auto-Auth With A Very Long NavCategory Title That Should Wrap To Multiple Lines'
       )
-      .closest('button')
+      .closest('button')!
     expect(branchTwo.getAttribute('data-is-active')).toBe('true')
     expect(branchTwo.getAttribute('data-is-open')).toBe('true')
     // Click the item, then ensure it's closed, but still active
@@ -118,7 +121,7 @@ describe('<DocsSidenav />', () => {
     // Get the menu button
     const mobileMenuToggle = screen
       .getByText('Documentation Menu')
-      .closest('button')
+      .closest('button')!
     // Click the menu button, and check the sidebar opens
     fireEvent.click(mobileMenuToggle)
     expect(sidebarNavList.getAttribute('data-is-mobile-open')).toBe('true')
@@ -139,7 +142,8 @@ describe('<DocsSidenav />', () => {
     // Get the search button
     const searchToggle = screen
       .getByLabelText('Show Search Bar')
-      .closest('button')
+      .closest('button')!
+
     // Click the menu button, and check the sidebar opens
     fireEvent.click(searchToggle)
 

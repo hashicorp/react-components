@@ -9,6 +9,7 @@ import HashiHead from '@hashicorp/react-head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
 import { AlgoliaConfigObject } from '@hashicorp/react-search/types'
+import type { Products } from '@hashicorp/platform-product-meta'
 
 import VersionSelect from '@hashicorp/react-version-select'
 import { getVersionFromPath } from '@hashicorp/react-version-select/util'
@@ -32,7 +33,7 @@ interface DocsPageInnerProps {
   pageTitle: string
   baseRoute: string
   githubFileUrl: string
-  product: { name: string; slug: string }
+  product: { name: string; slug: Products }
   /** @deprecated */
   showEditPage: boolean
   showVersionSelect: boolean
@@ -160,7 +161,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 }
 
 export interface DocsPageProps {
-  product: { name: string; slug: string }
+  product: { name: string; slug: Products }
   baseRoute: string
   showEditPage?: boolean
   showVersionSelect?: boolean

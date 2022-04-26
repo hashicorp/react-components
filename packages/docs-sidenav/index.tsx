@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 // @hashicorp imports
 import useProductMeta from '@hashicorp/platform-product-meta'
+import type { Products } from '@hashicorp/platform-product-meta'
 import LinkWrap, { isAbsoluteURL } from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'
 // local utilities
@@ -17,7 +18,18 @@ import svgExternalLink from './icons/external-link.svg?include'
 import svgSearchIcon from './icons/search.svg?include'
 // styles
 import s from './style.module.css'
+// types
+import type { NavNode, NavNodeWithInjectedFields } from './types'
 
+export interface DocsSidenavProps {
+  currentPath: string
+  baseRoute?: string
+  product?: Products
+  navData: NavNode[]
+  disableFilter?: boolean
+  versionSelect?: JSX.Element | null
+  search?: JSX.Element
+}
 export default function DocsSidenav({
   currentPath,
   baseRoute,
@@ -26,7 +38,7 @@ export default function DocsSidenav({
   disableFilter = false,
   versionSelect,
   search,
-}) {
+}: DocsSidenavProps) {
   const router = useRouter()
   // splitting on ? to drop query parameters if they exist
   const activePath = router ? router.asPath.split('?')[0] : null
@@ -39,7 +51,8 @@ export default function DocsSidenav({
   // Set up filtering state
   const [filterInput, setFilterInput] = useState('')
   const [content, setContent] = useState(navData)
-  const [filteredContent, setFilteredContent] = useState(navData)
+  const [filteredContent, setFilteredContent] =
+    useState<NavNodeWithInjectedFields[]>(navData)
 
   // isMobileOpen controls menu open / close state
   const [isMobileOpen, setIsMobileOpen] = useState(false)
@@ -54,7 +67,7 @@ export default function DocsSidenav({
   // we listen for transition end on the menu element, and when
   // a transition ends and the menu is not open, we set isMenuFullyHidden
   // which translates into a visibility: hidden CSS property
-  const menuRef = useRef(null)
+  const menuRef = useRef<HTMLUListElement | null>(null)
   const handleMenuTransitionEnd = useCallback(() => {
     setIsMenuFullyHidden(!isMobileOpen)
   }, [isMobileOpen, setIsMenuFullyHidden])
@@ -64,7 +77,7 @@ export default function DocsSidenav({
   const handleDocumentClick = useCallback(
     (event) => {
       if (!isMobileOpen) return
-      const isClickOutside = !menuRef.current.contains(event.target)
+      const isClickOutside = !menuRef.current?.contains(event.target)
       if (isClickOutside) setIsMobileOpen(false)
     },
     [isMobileOpen]
@@ -156,64 +169,72 @@ export default function DocsSidenav({
         <NavTree
           baseRoute={baseRoute}
           content={filteredContent || []}
-          currentPath={currentPath}
-          Link={Link}
+          // currentPath={currentPath}
+          // Link={Link}
         />
       </ul>
     </div>
   )
 }
 
-function NavTree({ baseRoute, content }) {
-  return content.map((item, idx) => {
-    //  Dividers
-    if (item.divider) {
-      // eslint-disable-next-line react/no-array-index-key
-      return <Divider key={idx} />
-    }
+interface NavTreeProps {
+  baseRoute?: string
+  content: NavNodeWithInjectedFields[]
+}
+function NavTree({ baseRoute, content }: NavTreeProps) {
+  return (
+    <>
+      {content.map((item, idx) => {
+        //  Dividers
+        if ('divider' in item) {
+          // eslint-disable-next-line react/no-array-index-key
+          return <Divider key={idx} />
+        }
 
-    // Headings
-    if (item.heading) {
-      return <h3 key={item.heading + idx}>{item.heading}</h3>
-    }
+        // Headings
+        if ('heading' in item) {
+          return <h3 key={item.heading + idx}>{item.heading}</h3>
+        }
 
-    // Direct links
-    if (item.title && item.href) {
-      return (
-        <DirectLink
-          key={item.title + item.href}
-          title={item.title}
-          href={item.href}
-          isActive={item.__isActive}
-        />
-      )
-    }
-    // Individual pages (leaf nodes)
-    if (typeof item.path == 'string') {
-      return (
-        <NavLeaf
-          key={item.path}
-          title={item.title}
-          isActive={item.__isActive}
-          isHidden={item.hidden}
-          url={`/${baseRoute}/${item.path}`}
-        />
-      )
-    }
-    // Otherwise, render a nav branch
-    // (this will recurse and render a nav tree)
-    return (
-      <NavBranch
-        key={item.title}
-        title={item.title}
-        routes={item.routes}
-        isActive={item.__isActive}
-        isFiltered={item.__isFiltered}
-        isHidden={item.hidden}
-        baseRoute={baseRoute}
-      />
-    )
-  })
+        // Direct links
+        if ('title' in item && 'href' in item) {
+          return (
+            <DirectLink
+              key={item.title + item.href}
+              title={item.title}
+              href={item.href}
+              isActive={item.__isActive}
+            />
+          )
+        }
+        // Individual pages (leaf nodes)
+        if ('path' in item) {
+          return (
+            <NavLeaf
+              key={item.path}
+              title={item.title}
+              isActive={item.__isActive}
+              isHidden={item.hidden}
+              url={`/${baseRoute}/${item.path}`}
+            />
+          )
+        }
+        // Otherwise, render a nav branch
+        // (this will recurse and render a nav tree)
+        return (
+          <NavBranch
+            key={item.title}
+            title={item.title}
+            routes={item.routes}
+            isActive={item.__isActive}
+            isFiltered={item.__isFiltered}
+            isHidden={item.hidden}
+            baseRoute={baseRoute}
+          />
+        )
+      })}
+    </>
+  )
 }
 
 function NavBranch({
@@ -254,7 +275,13 @@ function NavBranch({
   )
 }
 
-function NavLeaf({ title, url, isActive, isHidden }) {
+interface NavLeafProps {
+  title: string
+  url: string
+  isActive?: boolean
+  isHidden?: boolean
+}
+function NavLeaf({ title, url, isActive, isHidden }: NavLeafProps) {
   // if the item has a path, it's a leaf node so we render a link to the page
   return (
     <li className={isHidden ? s.hiddenNode : ''}>
@@ -272,7 +299,12 @@ function NavLeaf({ title, url, isActive, isHidden }) {
   )
 }
 
-function DirectLink({ title, href, isActive }) {
+interface DirectLinkProps {
+  title: string
+  href: string
+  isActive?: boolean
+}
+function DirectLink({ title, href, isActive }: DirectLinkProps) {
   return (
     <li>
       <LinkWrap
