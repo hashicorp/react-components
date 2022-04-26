@@ -1,5 +1,12 @@
 # @hashicorp/react-glossary-page
 
+## 2.5.8
+
+### Patch Changes
+
+- Updated dependencies [[`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2)]:
+  - @hashicorp/react-docs-page@16.0.0
+
 ## 2.5.7
 
 ### Patch Changes
