@@ -1,7 +1,10 @@
 import fuzzysearch from 'fuzzysearch'
-import type { NavData } from '../types'
+import type { NavData, NavNodeWithInjectedFields } from '../types'
 
-function filterContent(content: NavData, searchValue: string) {
+function filterContent(
+  content: NavData,
+  searchValue: string
+): NavNodeWithInjectedFields[] {
   // if there's no search searchValue we short-circuit and return everything
   if (!searchValue) return content
   // Otherwise we reduce the content array to only matching content

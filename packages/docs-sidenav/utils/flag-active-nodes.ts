@@ -1,20 +1,20 @@
-import type { NavNodeWithInjectedFields } from '../types'
+import type { NavNodeWithInjectedFields, NavNode } from '../types'
 
 /**
  * Injects the `__isActive?: boolean` property into each node
  */
 function addIsActiveToNodes(
-  navNodes: NavNodeWithInjectedFields[],
+  navNodes: NavNode[],
   currentPath: string,
   pathname: string | null
-) {
+): NavNodeWithInjectedFields[] {
   return navNodes
     .slice()
     .map((node) => addIsActiveToNode(node, currentPath, pathname))
 }
 
 function addIsActiveToNode(
-  navNode: NavNodeWithInjectedFields,
+  navNode: NavNode,
   currentPath: string,
   pathname: string | null
 ): NavNodeWithInjectedFields {
