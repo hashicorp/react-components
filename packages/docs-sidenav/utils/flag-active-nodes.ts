@@ -1,13 +1,26 @@
-function addIsActiveToNodes(navNodes, currentPath, pathname) {
+import type { NavNodeWithInjectedFields } from '../types'
+
+/**
+ * Injects the `__isActive?: boolean` property into each node
+ */
+function addIsActiveToNodes(
+  navNodes: NavNodeWithInjectedFields[],
+  currentPath: string,
+  pathname: string | null
+) {
   return navNodes
     .slice()
     .map((node) => addIsActiveToNode(node, currentPath, pathname))
 }
 
-function addIsActiveToNode(navNode, currentPath, pathname) {
+function addIsActiveToNode(
+  navNode: NavNodeWithInjectedFields,
+  currentPath: string,
+  pathname: string | null
+): NavNodeWithInjectedFields {
   // If it's a node with child routes, return true
   // if any of the child routes are active
-  if (navNode.routes) {
+  if ('routes' in navNode) {
     const routesWithActive = addIsActiveToNodes(
       navNode.routes,
       currentPath,
@@ -36,21 +49,21 @@ function addIsActiveToNode(navNode, currentPath, pathname) {
         // be highlighted. By definition, external direct links will be outside
         // of the base route where the docs-sidenav is rendered, so we don't
         // seem to have a need to highlight these as active.
-        const isActiveCanonical = r.__isActive && r.path
-        const isActiveCategory = r.__isActive && r.routes
+        const isActiveCanonical = r.__isActive && 'path' in r
+        const isActiveCategory = r.__isActive && 'routes' in r
         return isActiveCanonical || isActiveCategory
       }).length > 0
     return { ...navNode, routes: routesWithActive, __isActive: isActive }
   }
   // If it's a node with a path value,
   // return true if the path is a match
-  if (typeof navNode.path == 'string') {
+  if ('path' in navNode) {
     const isActive = navNode.path === currentPath
     return { ...navNode, __isActive: isActive }
   }
   // If it's a direct link,
   // return true if the path matches the router.pathname
-  if (navNode.href) {
+  if ('href' in navNode) {
     const isActive = navNode.href === pathname
     return { ...navNode, __isActive: isActive }
   }
