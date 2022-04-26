@@ -1,9 +1,11 @@
 {
   "name": "@hashicorp/react-select-input",
   "description": "Select input field",
-  "version": "4.0.5",
+  "version": "5.0.0",
   "author": "HashiCorp",
-  "contributors": ["Richard Flosi"],
+  "contributors": [
+    "Richard Flosi"
+  ],
   "dependencies": {
     "classnames": "^2.3.1",
     "downshift": "3.1.5"
