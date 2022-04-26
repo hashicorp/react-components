@@ -1,5 +1,12 @@
 # @hashicorp/react-open-api-page
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2)]:
+  - @hashicorp/react-docs-sidenav@9.0.0
+
 ## 2.0.2
 
 ### Patch Changes
