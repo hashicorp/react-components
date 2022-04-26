@@ -166,12 +166,7 @@ export default function DocsSidenav({
             value={filterInput}
           />
         )}
-        <NavTree
-          baseRoute={baseRoute}
-          content={filteredContent || []}
-          // currentPath={currentPath}
-          // Link={Link}
-        />
+        <NavTree baseRoute={baseRoute} content={filteredContent || []} />
       </ul>
     </div>
   )
