@@ -4,4 +4,5 @@ export interface VideoButtonProps {
   size?: 'medium' | 'large'
   radius?: 'full' | 'rounded'
   children: string
+  className?: string
 }

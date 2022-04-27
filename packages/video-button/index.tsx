@@ -11,10 +11,17 @@ export default function VideoButton({
   size = 'medium',
   radius = 'full',
   children,
+  className,
 }: VideoButtonProps) {
   return (
     <button
-      className={classNames(s.videoButton, s[theme], s[size], s[radius])}
+      className={classNames(
+        className,
+        s.videoButton,
+        s[theme],
+        s[size],
+        s[radius]
+      )}
       onClick={onClick}
       data-testid="video-button"
     >
