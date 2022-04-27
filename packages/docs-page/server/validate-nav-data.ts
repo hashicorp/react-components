@@ -1,8 +1,12 @@
 import validateFilePaths from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 import validateRouteStructure from '@hashicorp/react-docs-sidenav/utils/validate-route-structure'
 import validateUnlinkedContent from '@hashicorp/react-docs-sidenav/utils/validate-unlinked-content'
+import type { NavNode } from '@hashicorp/react-docs-sidenav/types'
 
-export async function validateNavData(navData, localContentDir) {
+export async function validateNavData(
+  navData: NavNode[],
+  localContentDir: string
+): Promise<NavNode[]> {
   const withFilePaths = await validateFilePaths(navData, localContentDir)
   // Validate unlinked content checks for content files that are NOT
   // included in the provided navData. This requires filesystem access,
