@@ -1,7 +1,9 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-async function validateFilePaths(navNodes, localDir) {
+import type { NavNode, NavLeaf } from '../../types'
+
+async function validateFilePaths(navNodes: NavNode[], localDir: string) {
   //  Clone the nodes, and validate each one
   return await Promise.all(
     navNodes.slice(0).map(async (navNode) => {
@@ -10,14 +12,12 @@ async function validateFilePaths(navNodes, localDir) {
   )
 }
 
-async function validateNode(navNode, localDir) {
-  // Ignore remote leaf nodes, these already
-  // have their content file explicitly defined
-  // (note: remote leaf nodes are currently only used
-  // for Packer plugin documentation)
-  if (navNode.remoteFile) return navNode
+async function validateNode(
+  navNode: NavNode,
+  localDir: string
+): Promise<NavNode> {
   // Handle local leaf nodes
-  if (typeof navNode.path == 'string') {
+  if ('path' in navNode) {
     const indexFilePath = path.join(navNode.path, 'index.mdx')
     const namedFilePath = `${navNode.path}.mdx`
     const hasIndexFile = fs.existsSync(
@@ -40,10 +40,10 @@ async function validateNode(navNode, localDir) {
       localDir,
       hasIndexFile ? indexFilePath : namedFilePath
     )
-    return { ...navNode, filePath }
+    return { ...navNode, filePath } as NavLeaf
   }
   //  Handle local branch nodes
-  if (navNode.routes) {
+  if ('routes' in navNode) {
     const routesWithFilePaths = await validateFilePaths(
       navNode.routes,
       localDir
