@@ -25,6 +25,7 @@ export type NavNode =
 export interface NavLeaf {
   title: string
   path: string
+  filePath?: string
 }
 
 /**

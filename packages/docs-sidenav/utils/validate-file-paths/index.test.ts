@@ -1,6 +1,8 @@
 import path from 'path'
 import validateFilePaths from './'
 
+import type { NavBranch, NavLeaf } from '../../types'
+
 // We have a content folder fixture set up so that
 // we can properly test this function
 const CONTENT_DIR = 'packages/docs-sidenav/fixtures/content'
@@ -14,7 +16,7 @@ describe('<DocsSidenav /> - validate-file-paths', () => {
       },
     ]
     const withFilePaths = await validateFilePaths(navData, CONTENT_DIR)
-    const resolvedPath = withFilePaths[0].filePath
+    const resolvedPath = (withFilePaths[0] as NavLeaf).filePath
     expect(resolvedPath).toBe(path.join(CONTENT_DIR, 'what-is-vault.mdx'))
   })
 
@@ -31,7 +33,8 @@ describe('<DocsSidenav /> - validate-file-paths', () => {
       },
     ]
     const withFilePaths = await validateFilePaths(navData, CONTENT_DIR)
-    const resolvedPath = withFilePaths[0].routes[0].filePath
+    const resolvedPath = ((withFilePaths[0] as NavBranch).routes[0] as NavLeaf)
+      .filePath
     expect(resolvedPath).toBe(path.join(CONTENT_DIR, 'agent', 'index.mdx'))
   })
 
