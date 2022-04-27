@@ -32,6 +32,9 @@
 
   & svg {
     fill: currentColor;
+
+    /* Visually align the icon */
+    transform: translateX(1px);
   }
 
   /* Themes */
