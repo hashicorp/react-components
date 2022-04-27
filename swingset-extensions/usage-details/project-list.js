@@ -11,14 +11,7 @@ const PROJECT_LIST = [
   ['hashicorp/web-platform-packages', '/packages/docs-mdx'],
   'hashicorp/terraform-website',
   'hashicorp/how-hashicorp-works',
-  ['hashicorp/waypoint', '/website'],
-  ['hashicorp/boundary', '/website'],
-  ['hashicorp/nomad', '/website'],
-  ['hashicorp/consul', '/website'],
-  ['hashicorp/vault', '/website'],
-  ['hashicorp/vagrant', '/website'],
-  ['hashicorp/packer', '/website'],
-  ['hashicorp/sentinel', '/website'],
+  'hashicorp/dev-portal',
 ].map((e) => {
   if (typeof e === 'string') return { repo: e, dir: '' }
   return { repo: e[0], dir: e[1] }
