@@ -15,18 +15,14 @@ export default function VideoButton({
 }: VideoButtonProps) {
   return (
     <button
-      className={classNames(
-        className,
-        s.videoButton,
-        s[theme],
-        s[size],
-        s[radius]
-      )}
+      className={classNames(className, s.videoButton)}
       onClick={onClick}
       data-testid="video-button"
     >
-      <VisuallyHidden>{children}</VisuallyHidden>
-      {size === 'medium' ? <IconPlay16 /> : <IconPlay24 />}
+      <span className={classNames(s.icon, s[theme], s[size], s[radius])}>
+        <VisuallyHidden>{children}</VisuallyHidden>
+        {size === 'medium' ? <IconPlay16 /> : <IconPlay24 />}
+      </span>
     </button>
   )
 }
