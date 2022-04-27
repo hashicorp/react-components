@@ -1,8 +1,9 @@
 import path from 'path'
 import fs from 'fs'
 
+import type { NavNode } from '@hashicorp/react-docs-sidenav/types'
+
 import { validateNavData } from './validate-nav-data'
-import type { NavNode } from 'packages/docs-sidenav/types'
 
 export async function resolveNavData(
   filePath: string,
