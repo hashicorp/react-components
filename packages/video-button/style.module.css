@@ -1,0 +1,66 @@
+.videoButton {
+  --size: 48px;
+  --border-radius: 9999px;
+  --background-color: var(--wpl-blue-500);
+  --background-color-hover: var(--wpl-blue-600);
+  --background-color-active: var(--wpl-blue-700);
+  --color: var(--wpl-neutral-0);
+  --box-shadow: 0 2px 3px rgba(101, 106, 118, 0.1),
+    0 8px 16px -10px rgba(101, 106, 118, 0.2);
+
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--background-color);
+  color: var(--color);
+  border: 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--background-color-hover);
+  }
+
+  &:active {
+    background-color: var(--background-color-active);
+  }
+
+  & svg {
+    fill: currentColor;
+  }
+
+  /* Themes */
+  &.action {
+    --background-color: var(--wpl-blue-500);
+    --background-color-hover: var(--wpl-blue-600);
+    --background-color-active: var(--wpl-blue-700);
+  }
+
+  &.white {
+    --background-color: var(--wpl-neutral-0);
+    --background-color-hover: var(--wpl-neutral-50);
+    --background-color-active: var(--wpl-neutral-100);
+    --color: var(--wpl-neutral-900);
+  }
+
+  &.black {
+    --background-color: var(--wpl-neutral-900);
+    --background-color-hover: var(--wpl-neutral-800);
+    --background-color-active: var(--wpl-neutral-700);
+  }
+
+  /* Border radii */
+  &.rounded {
+    --border-radius: 4px;
+  }
+
+  /* Sizes */
+  &.large {
+    --size: 64px;
+  }
+}
