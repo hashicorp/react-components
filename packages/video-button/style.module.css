@@ -1,0 +1,82 @@
+.videoButton {
+  --size: 48px;
+  --border-radius: 9999px;
+  --background-color: var(--wpl-blue-500);
+  --background-color-hover: var(--wpl-blue-600);
+  --background-color-active: var(--wpl-blue-700);
+  --color: var(--wpl-neutral-0);
+  --box-shadow: 0 2px 3px rgba(101, 106, 118, 0.1),
+    0 8px 16px -10px rgba(101, 106, 118, 0.2);
+
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: max-content;
+  height: max-content;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+
+  &:hover .icon {
+    background-color: var(--background-color-hover);
+  }
+
+  &:active .icon {
+    background-color: var(--background-color-active);
+  }
+
+  & .icon {
+    display: grid;
+    place-items: center;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--background-color);
+    color: var(--color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: background-color 0.2s;
+
+    & svg {
+      fill: currentColor;
+
+      /* Visually align the icon */
+      transform: translateX(var(--optical-svg-offset));
+    }
+
+    /* Themes */
+    &.action {
+      --background-color: var(--wpl-blue-500);
+      --background-color-hover: var(--wpl-blue-600);
+      --background-color-active: var(--wpl-blue-700);
+    }
+
+    &.white {
+      --background-color: var(--wpl-neutral-0);
+      --background-color-hover: var(--wpl-neutral-50);
+      --background-color-active: var(--wpl-neutral-100);
+      --color: var(--wpl-neutral-900);
+    }
+
+    &.black {
+      --background-color: var(--wpl-neutral-900);
+      --background-color-hover: var(--wpl-neutral-800);
+      --background-color-active: var(--wpl-neutral-700);
+    }
+
+    /* Border radii */
+    &.rounded {
+      --border-radius: 4px;
+    }
+
+    /* Sizes */
+    &.medium {
+      --optical-svg-offset: 1px;
+    }
+
+    &.large {
+      --size: 64px;
+      --optical-svg-offset: 2px;
+    }
+  }
+}
