@@ -18,4 +18,9 @@ module.exports = {
     type: 'boolean',
     description: 'If true, button will be disabled.',
   },
+  ariaLabel: {
+    type: 'string',
+    description:
+      'Label describing the buttons action. Rendered as aria-label value.',
+  },
 }
