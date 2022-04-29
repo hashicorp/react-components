@@ -1,13 +1,12 @@
 module.exports = {
-  variant: {
+  appearance: {
     type: 'string',
-    description: 'Render on light or dark backgrounds.',
+    description: 'Display on light or dark background.',
     options: ['light', 'dark'],
   },
   className: {
     type: 'string',
-    description:
-      'An optional class to be added directly to the button if necessary.',
+    description: 'Optional class to be added to the button element.',
   },
   onClick: {
     type: 'function',
@@ -21,6 +20,6 @@ module.exports = {
   ariaLabel: {
     type: 'string',
     description:
-      'Label describing the buttons action. Rendered as aria-label value.',
+      'A label that describes the buttons action. Applied as aria-label value.',
   },
 }
