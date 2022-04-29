@@ -5,7 +5,7 @@ import s from './style.module.css'
 
 export default function CloseButton({
   className,
-  variant = 'light',
+  appearance = 'light',
   onClick,
   disabled,
   ariaLabel,
@@ -13,7 +13,7 @@ export default function CloseButton({
   return (
     <button
       onClick={onClick}
-      className={classNames(s.closeButton, s[variant], className)}
+      className={classNames(s.closeButton, s[appearance], className)}
       disabled={disabled}
       aria-label={ariaLabel}
     >

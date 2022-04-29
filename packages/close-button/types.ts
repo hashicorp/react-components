@@ -1,5 +1,5 @@
 export interface CloseButtonProps {
-  variant?: 'light' | 'dark'
+  appearance?: 'light' | 'dark'
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   disabled?: boolean
   className?: string

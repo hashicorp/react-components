@@ -1,7 +1,28 @@
 .closeButton {
+  --transition-duration: 0.2s;
   --size: 24px;
-  --color: var(--gray-3);
-  --background-color: transparent;
+  --color: var(--color-enabled);
+  --background-color: var(--background-color-enabled);
+
+  /* State variables */
+  --background-color-enabled: transparent;
+  --background-color-hover: var(--wpl-neutral-300);
+  --background-color-active: var(--wpl-neutral-200);
+  --color-enabled: var(--wpl-neutral-500);
+  --color-disabled: var(--wpl-neutral-400);
+  --color-hover: var(--wpl-neutral-0);
+  --color-active: var(--wpl-neutral-0);
+
+  /* Appearance */
+  &.dark {
+    --background-color-enabled: transparent;
+    --background-color-hover: var(--wpl-neutral-500);
+    --background-color-active: var(--wpl-neutral-600);
+    --color-enabled: var(--wpl-neutral-400);
+    --color-disabled: var(--wpl-neutral-500);
+    --color-hover: var(--wpl-neutral-0);
+    --color-active: var(--wpl-neutral-0);
+  }
 
   appearance: none;
   margin: 0;
@@ -15,10 +36,26 @@
   height: var(--size);
   border-radius: 4px;
   cursor: pointer;
-  transition: 0.25s ease;
-  transition-property: color, background-color;
+  transition: var(--transition-duration);
+  transition-property: background-color;
+
+  & svg {
+    fill: inherit;
+    transition: var(--transition-duration);
+    transition-property: color;
+  }
+
+  &:disabled {
+    --color: var(--color-disabled);
+  }
 
   &:hover {
-    --background-color: var(--gray-5);
+    --background-color: var(--background-color-hover);
+    --color: var(--color-hover);
+  }
+
+  &:active {
+    --background-color: var(--background-color-active);
+    --color: var(--color-active);
   }
 }
