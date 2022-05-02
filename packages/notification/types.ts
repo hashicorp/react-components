@@ -30,3 +30,11 @@ export interface NotificationWithResourceProps
   extends Exclude<NotificationProps, 'children'> {
   type: NotificationTypes
 }
+
+export interface NotificationWithThumbnailProps
+  extends Exclude<NotificationProps, 'children'> {
+  thumbnail: {
+    src: string
+    alt: string
+  }
+}
