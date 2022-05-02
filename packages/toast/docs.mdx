@@ -4,7 +4,14 @@ componentName: 'Toast'
 
 <LiveComponent>{`
   <>
-  <button onClick={() => toast('hello world')}>Toast</button>
+  <button onClick={() => toast((t) => {
+    return (
+      <Notification
+        description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+        onDismiss={() => toast.remove(t.id)}
+      />
+    )
+  })}>Toast</button>
   <Toaster />
   </>
 `}</LiveComponent>

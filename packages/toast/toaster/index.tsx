@@ -8,6 +8,15 @@ export default function Toaster() {
       containerStyle={{
         inset: 24,
       }}
+      toastOptions={{
+        style: {
+          margin: 0,
+          padding: 0,
+          backgroundColor: 'transparent',
+          boxShadow: 'none',
+          borderRadius: 0,
+        },
+      }}
     />
   )
 }
