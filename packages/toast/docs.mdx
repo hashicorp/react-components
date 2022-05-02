@@ -8,6 +8,10 @@ componentName: 'Toast'
     return (
       <Notification
         description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+        cta={{
+          title: 'Standalone link',
+          url: '/'
+        }}
         onDismiss={() => toast.remove(t.id)}
       />
     )

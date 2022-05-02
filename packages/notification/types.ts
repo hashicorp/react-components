@@ -15,4 +15,8 @@ export interface NotificationProps {
   product?: NotificationProducts
   description: string
   onDismiss: () => void
+  cta: {
+    title: string
+    url: string
+  }
 }

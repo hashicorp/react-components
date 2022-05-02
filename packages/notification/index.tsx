@@ -106,6 +106,7 @@ export default function Notification({
   product,
   description,
   onDismiss,
+  cta,
 }: NotificationProps) {
   return (
     <div className={classNames(s.notification, s[appearance])}>
@@ -147,8 +148,8 @@ export default function Notification({
         <p className={s.description}>{description}</p>
         <div className={s.cta}>
           <Button
-            title="Standalone link"
-            url="/"
+            title={cta.title}
+            url={cta.url}
             linkType="inbound"
             size="small"
             theme={{
