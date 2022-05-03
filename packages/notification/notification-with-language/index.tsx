@@ -11,7 +11,7 @@ import JpFlag from './flags/jp.svg'
 import KrFlag from './flags/kr.svg'
 import s from '../style.module.css'
 
-const LANGUAGE_MAP: { [key in NotificationLanguages]: React.ReactNode } = {
+const LANGUAGE_MAP: { [key in NotificationLanguages]: string } = {
   de: DeFlag,
   en: EnFlag,
   fr: FrFlag,
@@ -26,7 +26,12 @@ export default function NotificationWithLanguage(
   return (
     <Notification {...rest}>
       <div className={s.language}>
-        <Image src={LANGUAGE_MAP[language]} width="24" height="18" alt="" />
+        <Image
+          src={LANGUAGE_MAP[language]}
+          width="24"
+          height="18"
+          alt={language}
+        />
       </div>
     </Notification>
   )

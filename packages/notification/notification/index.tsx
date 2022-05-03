@@ -13,7 +13,10 @@ export default function Notification({
   children,
 }: NotificationProps) {
   return (
-    <div className={classNames(s.notification, s[appearance])}>
+    <div
+      className={classNames(s.notification, s[appearance])}
+      data-testid="notification"
+    >
       <CloseButton
         appearance={appearance}
         onClick={onDismiss}
