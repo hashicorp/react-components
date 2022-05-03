@@ -11,7 +11,7 @@ export default function Notification({
   onDismiss,
   cta,
   children,
-}: NotificationProps) {
+}: NotificationProps & { children: React.ReactNode }) {
   return (
     <div
       className={classNames(s.notification, s[appearance])}
