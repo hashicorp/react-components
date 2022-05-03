@@ -12,6 +12,7 @@ export default function Toaster() {
         style: {
           margin: 0,
           padding: 0,
+          maxWidth: 404,
           backgroundColor: 'transparent',
           boxShadow: 'none',
           borderRadius: 0,

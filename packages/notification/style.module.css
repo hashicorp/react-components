@@ -1,4 +1,5 @@
 .notification {
+  --inset: 16px;
   --border-color: var(--wpl-neutral-300);
   --background-color: var(--wpl-neutral-0);
 
@@ -33,11 +34,15 @@
 
 .thumbnail {
   display: flex;
-  margin: -16px -32px 16px -16px;
+  margin-top: calc(var(--inset) * -1);
+  margin-left: calc(var(--inset) * -1);
+  margin-right: calc(var(--inset) * -3);
+  margin-bottom: var(--inset);
 }
 
 .content {
-  padding: 16px 32px 16px 16px;
+  padding: var(--inset);
+  padding-right: calc(var(--inset) * 3);
 }
 
 .language {
