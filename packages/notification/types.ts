@@ -28,7 +28,7 @@ export interface NotificationProps {
 
 export interface NotificationWithLanguageProps extends NotificationProps {
   /**
-   * Renders flat associated to language defined.
+   * Renders flag associated to language defined.
    */
   language: NotificationLanguages
 }

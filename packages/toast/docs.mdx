@@ -4,17 +4,12 @@ componentName: 'Toast'
 
 <LiveComponent>{`
   <>
-  <button onClick={() => toast((t) => {
-    return (
-      <Notification
-        description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
-        cta={{
-          title: 'Standalone link',
-          url: '/'
-        }}
-        onDismiss={() => toast.remove(t.id)}
-      />
-    )
+  <button onClick={() => toast({
+    description: 'This is a description',
+    cta: {
+      title: 'Standalone link',
+      url: '/'
+    }
   })}>Generate toast</button>
   <Toaster />
   </>
