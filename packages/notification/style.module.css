@@ -96,6 +96,10 @@
 .productIcon {
   flex-shrink: 0;
   display: flex;
+
+  @nest .dark & svg path {
+    fill: var(--wpl-neutral-0);
+  }
 }
 
 .productName {
