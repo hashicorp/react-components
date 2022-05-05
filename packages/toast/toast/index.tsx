@@ -16,10 +16,11 @@ import {
 
 type ToastProps = Exclude<NotificationProps, 'onDimiss'>
 
-const toast = ({ description, cta }: ToastProps) => {
+const toast = ({ appearance, description, cta }: ToastProps) => {
   return reactHotToast((t) => {
     return (
       <Notification
+        appearance={appearance}
         description={description}
         cta={cta}
         onDismiss={() => reactHotToast.remove(t.id)}
@@ -39,6 +40,7 @@ type ToastWithLanguageProps = Exclude<
 >
 
 const toastWithLanguage = ({
+  appearance,
   language,
   description,
   cta,
@@ -46,6 +48,7 @@ const toastWithLanguage = ({
   return reactHotToast((t) => {
     return (
       <NotificationWithLanguage
+        appearance={appearance}
         language={language}
         description={description}
         cta={cta}
@@ -63,6 +66,7 @@ const toastWithLanguage = ({
 type ToastWithProductProps = Exclude<NotificationWithProductProps, 'onDismiss'>
 
 const toastWithProduct = ({
+  appearance,
   product,
   description,
   cta,
@@ -70,6 +74,7 @@ const toastWithProduct = ({
   return reactHotToast((t) => {
     return (
       <NotificationWithProduct
+        appearance={appearance}
         product={product}
         description={description}
         cta={cta}
@@ -90,6 +95,7 @@ type ToastWithResourceProps = Exclude<
 >
 
 const toastWithResource = ({
+  appearance,
   type,
   description,
   cta,
@@ -97,6 +103,7 @@ const toastWithResource = ({
   return reactHotToast((t) => {
     return (
       <NotificationWithResource
+        appearance={appearance}
         type={type}
         description={description}
         cta={cta}
@@ -117,6 +124,7 @@ type ToastWithThumbnailProps = Exclude<
 >
 
 const toastWithThumbnail = ({
+  appearance,
   thumbnail,
   description,
   cta,
@@ -124,6 +132,7 @@ const toastWithThumbnail = ({
   return reactHotToast((t) => {
     return (
       <NotificationWithThumbnail
+        appearance={appearance}
         thumbnail={thumbnail}
         description={description}
         cta={cta}

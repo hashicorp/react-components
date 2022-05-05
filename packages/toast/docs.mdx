@@ -4,13 +4,47 @@ componentName: 'Toast'
 
 <LiveComponent>{`
   <>
-  <button onClick={() => toast({
-    description: 'This is a description',
-    cta: {
-      title: 'Standalone link',
-      url: '/'
-    }
-  })}>Generate toast</button>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32}}>
+    <button onClick={() => toast({
+      description: 'Body small bold - 2 lines with character limit of 90. Scele risque sit at aliquam lacus est…',
+      cta: {
+        title: 'Standalone link',
+        url: '/'
+      }
+    })}>Generate toast</button>
+    <button onClick={() => toastWithLanguage({
+      language: "de",
+      description: 'Body small bold - 2 lines with character limit of 90. Scele risque sit at aliquam lacus est…',
+      cta: {
+        title: 'Standalone link',
+        url: '/'
+      }
+    })}>Generate toast with language</button>
+    <button onClick={() => toastWithProduct({
+      product: 'waypoint',
+      description: 'Body small bold - 2 lines with character limit of 90. Scele risque sit at aliquam lacus est…',
+      cta: {
+        title: 'Standalone link',
+        url: '/'
+      }
+    })}>Generate toast with product</button>
+    <button onClick={() => toastWithResource({
+      type: 'webinar',
+      description: 'Body small bold - 2 lines with character limit of 90. Scele risque sit at aliquam lacus est…',
+      cta: {
+        title: 'Standalone link',
+        url: '/'
+      }
+    })}>Generate toast with resource</button>
+    <button onClick={() => toast({
+      appearance: 'dark',
+      description: 'Body small bold - 2 lines with character limit of 90. Scele risque sit at aliquam lacus est…',
+      cta: {
+        title: 'Standalone link',
+        url: '/'
+      }
+    })}>Generate toast in dark mode</button>
+  </div>
   <Toaster />
   </>
 `}</LiveComponent>
