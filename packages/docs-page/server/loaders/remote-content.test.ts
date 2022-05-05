@@ -41,8 +41,8 @@ describe('RemoteContentLoader', () => {
     expect(paths).toMatchSnapshot()
   })
 
-  test.only("allows 'navDataPrefix' to look up nav data", async () => {
-    loader = new RemoteContentLoader({
+  test("allows 'navDataPrefix' to look up nav data", async () => {
+    const loader = new RemoteContentLoader({
       basePath: 'plugin/mux',
       navDataPrefix: 'plugin-mux',
       product: 'terraform-plugin-mux',
