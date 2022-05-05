@@ -17,6 +17,13 @@ import { getPathsFromNavData } from '../get-paths-from-nav-data'
 
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
+  /**
+   * In most cases, `basePath` should suffice when resolving nav-data, because
+   * it happens to match the prefix of nav-data file.
+   *
+   * If it does not, `navDataPrefix` will serve as an optional override.
+   */
+  navDataPrefix?: string
   enabledVersionedDocs?: boolean
   remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
   mainBranch?: string // = 'main',
@@ -95,6 +102,7 @@ export default class RemoteContentLoader implements DataLoader {
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
+    if (!this.opts.navDataPrefix) this.opts.navDataPrefix = this.opts.basePath
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -102,15 +110,19 @@ export default class RemoteContentLoader implements DataLoader {
     const versionMetadataList = await cachedFetchVersionMetadataList(
       this.opts.product
     )
-    const latest =
+
+    const latest: string =
       this.opts.latestVersionRef ??
       versionMetadataList.find((e) => e.isLatest).version
+
     // Fetch and parse navigation data
-    return getPathsFromNavData(
-      (await cachedFetchNavData(this.opts.product, this.opts.basePath, latest))
-        .navData,
-      this.opts.paramId
+    const navDataResponse = await cachedFetchNavData(
+      this.opts.product,
+      this.opts.navDataPrefix!,
+      latest
     )
+    const navData = navDataResponse.navData
+    return getPathsFromNavData(navData, this.opts.paramId)
   }
 
   loadStaticProps = async ({
@@ -148,9 +160,8 @@ export default class RemoteContentLoader implements DataLoader {
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
-    )
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
     // remove trailing index to ensure we fetch the right document from the DB
     const pathParamsNoIndex = paramsNoVersion.filter(
       (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
@@ -179,7 +190,7 @@ export default class RemoteContentLoader implements DataLoader {
     const documentPromise = fetchDocument(this.opts.product, fullPath)
     const navDataPromise = cachedFetchNavData(
       this.opts.product,
-      this.opts.basePath,
+      this.opts.navDataPrefix!,
       versionToFetch
     )
 
