@@ -7,7 +7,7 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "react-hot-toast": "^2.2.0",
-    "@haschicorp/react-notification": "^1.1.0"
+    "@hashicorp/react-notification": "^0.1.0"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
