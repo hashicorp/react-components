@@ -93,8 +93,6 @@ export function mapVersionList(
 }
 
 export default class RemoteContentLoader implements DataLoader {
-  private navDataPrefix: string
-
   constructor(public opts: RemoteContentLoaderOpts) {
     if (typeof this.opts.enabledVersionedDocs === 'undefined')
       this.opts.enabledVersionedDocs =
@@ -104,8 +102,7 @@ export default class RemoteContentLoader implements DataLoader {
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
-
-    this.navDataPrefix = this.opts.navDataPrefix || this.opts.basePath
+    if (!this.opts.navDataPrefix) this.opts.navDataPrefix = this.opts.basePath
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -121,7 +118,7 @@ export default class RemoteContentLoader implements DataLoader {
     // Fetch and parse navigation data
     const navDataResponse = await cachedFetchNavData(
       this.opts.product,
-      this.navDataPrefix,
+      this.opts.navDataPrefix!,
       latest
     )
     const navData = navDataResponse.navData
@@ -193,7 +190,7 @@ export default class RemoteContentLoader implements DataLoader {
     const documentPromise = fetchDocument(this.opts.product, fullPath)
     const navDataPromise = cachedFetchNavData(
       this.opts.product,
-      this.navDataPrefix,
+      this.opts.navDataPrefix!,
       versionToFetch
     )
 
