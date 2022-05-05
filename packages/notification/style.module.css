@@ -1,6 +1,6 @@
 .notification {
   --inset: 16px;
-  --border-color: var(--wpl-neutral-300);
+  --border-color: var(--wpl-neutral-200);
   --background-color: var(--wpl-neutral-0);
 
   width: 100%;
@@ -9,13 +9,11 @@
   background-color: var(--background-color);
   border-radius: 4px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 2px 3px rgba(101, 106, 118, 0.1),
-    0 8px 16px -10px rgba(101, 106, 118, 0.2);
   white-space: normal;
 
   &.dark {
     --border-color: var(--wpl-neutral-500);
-    --background-color: var(--wpl-neutral-700);
+    --background-color: var(--wpl-neutral-800);
   }
 
   @media (--medium-up) {
@@ -74,7 +72,7 @@
   color: var(--color);
 
   @nest .dark & {
-    --color: var(--wpl-neutral-300);
+    --color: var(--wpl-neutral-200);
   }
 }
 
