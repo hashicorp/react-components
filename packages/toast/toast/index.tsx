@@ -1,18 +1,18 @@
 import { default as reactHotToast } from 'react-hot-toast'
-import type { NotificationProps } from 'packages/notification/types'
+import type { NotificationProps } from '@hashicorp/react-notification/types'
 import type {
   NotificationWithLanguageProps,
   NotificationWithProductProps,
   NotificationWithResourceProps,
   NotificationWithThumbnailProps,
-} from 'packages/notification/types'
-import Notification from 'packages/notification'
+} from '@hashicorp/react-notification/types'
+import Notification from '@hashicorp/react-notification'
 import {
   NotificationWithLanguage,
   NotificationWithProduct,
   NotificationWithResource,
   NotificationWithThumbnail,
-} from 'packages/notification'
+} from '@hashicorp/react-notification'
 
 type ToastProps = Exclude<NotificationProps, 'onDimiss'>
 
