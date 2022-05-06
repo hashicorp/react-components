@@ -14,7 +14,7 @@ import {
   NotificationWithThumbnail,
 } from '@hashicorp/react-notification'
 
-type ToastProps = Exclude<NotificationProps, 'onDimiss'>
+type ToastProps = Omit<NotificationProps, 'onDismiss'>
 
 const toast = ({ appearance, description, cta }: ToastProps) => {
   return reactHotToast((t) => {
@@ -34,10 +34,7 @@ const toast = ({ appearance, description, cta }: ToastProps) => {
  * @description renders a toast notification with an associated countries flag
  */
 
-type ToastWithLanguageProps = Exclude<
-  NotificationWithLanguageProps,
-  'onDismiss'
->
+type ToastWithLanguageProps = Omit<NotificationWithLanguageProps, 'onDismiss'>
 
 const toastWithLanguage = ({
   appearance,
@@ -63,7 +60,7 @@ const toastWithLanguage = ({
  * @description renders a toast notification with a product icon and name
  */
 
-type ToastWithProductProps = Exclude<NotificationWithProductProps, 'onDismiss'>
+type ToastWithProductProps = Omit<NotificationWithProductProps, 'onDismiss'>
 
 const toastWithProduct = ({
   appearance,
@@ -89,10 +86,7 @@ const toastWithProduct = ({
  * @description renders a toast notification with a predefined resource type
  */
 
-type ToastWithResourceProps = Exclude<
-  NotificationWithResourceProps,
-  'onDismiss'
->
+type ToastWithResourceProps = Omit<NotificationWithResourceProps, 'onDismiss'>
 
 const toastWithResource = ({
   appearance,
@@ -118,10 +112,7 @@ const toastWithResource = ({
  * @description renders a toast notification with a 4/3 ratio thumbnail
  */
 
-type ToastWithThumbnailProps = Exclude<
-  NotificationWithThumbnailProps,
-  'onDismiss'
->
+type ToastWithThumbnailProps = Omit<NotificationWithThumbnailProps, 'onDismiss'>
 
 const toastWithThumbnail = ({
   appearance,
