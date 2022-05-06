@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 16.1.0
+
+### Minor Changes
+
+- [#583](https://github.com/hashicorp/react-components/pull/583) [`27a251e2`](https://github.com/hashicorp/react-components/commit/27a251e21a036b2aaca37e50b5827bd62c366b21) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This version adds a navDataPrefix option to the RemoteContentLoader to make nav-data lookup more flexible.
+
 ## 16.0.0
 
 ### Major Changes
