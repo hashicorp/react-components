@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.3.5
+
+### Patch Changes
+
+- [#586](https://github.com/hashicorp/react-components/pull/586) [`bff747b4`](https://github.com/hashicorp/react-components/commit/bff747b4f790f00a9e8e23e682fc94510d69bddf) Thanks [@zchsh](https://github.com/zchsh)! - Attempts to fix overflow issue that causes layout shift on dot-io sites.
+
 ## 9.3.4
 
 ### Patch Changes
