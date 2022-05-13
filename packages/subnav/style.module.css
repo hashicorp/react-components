@@ -7,7 +7,7 @@
   background: var(--background-color); /* from theme.module.css */
   border-top: 1px solid var(--border-color); /* from theme.module.css */
   border-bottom: 1px solid transparent;
-  overflow: hidden;
+  overflow-x: hidden;
   transition: border-bottom-color 0.8s;
 
   &.isSticky {
