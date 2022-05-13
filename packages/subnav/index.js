@@ -122,6 +122,7 @@ function Subnav({ className, theme = 'light', ...restProps }) {
       ref={wrapperRef}
       className={classNames(s.root, themeStyles[theme], className, {
         [s.isSticky]: isSticky,
+        [s.hasOverflow]: hasOverflow,
       })}
       aria-label={`${product} website navigation`}
     >
