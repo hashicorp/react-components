@@ -50,5 +50,5 @@
   border-radius: 9999px;
   transform: translateX(var(--indicator-translate-x));
   transition: 0.2s ease-in-out;
-  transition-property: background-color, border-color;
+  transition-property: transform, background-color, border-color;
 }
