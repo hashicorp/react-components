@@ -5,9 +5,10 @@
 
 import { Component } from 'react'
 import getIntegrations from '../util/integrations'
-import CloseButton from '../img/icn_close'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
+import CloseButton from '@hashicorp/react-close-button'
+import { IconArrowDown24 } from '@hashicorp/flight-icons/svg-react/arrow-down-24'
 import classNames from 'classnames'
 import s from './dialog.module.css'
 
@@ -104,44 +105,35 @@ export default class ConsentPreferences extends Component {
     const categoryItems = items.map((item) => {
       return (
         <div className={s.categoryItem} key={item.name}>
-          <div className={s.itemTitle}>{item.name}</div>
-          <div className={s.flexCenteredRow}>
-            <div className={s.itemDescription}>{item.description}</div>
-            <div className={s.consentToggle}>
-              <Toggle
-                onChange={this.handleToggle.bind(this, item.name, item.origin)}
-                enabled={Boolean(
-                  this.state.consent.loadAll ||
-                    (this.state.consent &&
-                      this.state.consent[item.origin] &&
-                      this.state.consent[item.origin][item.name])
-                )}
-              />
-            </div>
-          </div>
+          <header className={s.categoryItemHeader}>
+            <h4 className={s.categoryItemTitle}>{item.name}</h4>
+            <Toggle
+              onChange={this.handleToggle.bind(this, item.name, item.origin)}
+              enabled={Boolean(
+                this.state.consent.loadAll ||
+                  (this.state.consent &&
+                    this.state.consent[item.origin] &&
+                    this.state.consent[item.origin][item.name])
+              )}
+            />
+          </header>
+          <p className={s.categoryItemDescription}>{item.description}</p>
         </div>
       )
     })
 
     return (
       <div className={s.category} key={name}>
-        <div className={s.categoryTitle}>{name}</div>
-        <div className={s.flexCenteredRow}>
-          <div className={s.categoryDescription}>
-            {this.state.categories[name]}
-          </div>
-          <div className={s.consentToggle}>
-            {!this.state.showCategories[name] && (
-              <Toggle
-                onChange={this.handleToggle.bind(this, name, 'categories')}
-                enabled={
-                  this.state.consent.loadAll || this.getCategoryToggle(name)
-                }
-              />
-            )}
-          </div>
-        </div>
-        <div className={s.categoryFold}>
+        <header className={s.categoryHeader}>
+          <h3 className={s.categoryHeaderTitle}>{name}</h3>
+          {!this.state.showCategories[name] && (
+            <Toggle
+              onChange={this.handleToggle.bind(this, name, 'categories')}
+              enabled={
+                this.state.consent.loadAll || this.getCategoryToggle(name)
+              }
+            />
+          )}
           <button
             className={classNames(s.categoryFoldTrigger, {
               [s.shown]: this.state.showCategories[name],
@@ -150,19 +142,16 @@ export default class ConsentPreferences extends Component {
               this.handleFold(name)
             }}
           >
-            {!this.state.showCategories[name] && 'See more'}
-            {this.state.showCategories[name] && 'See less'}
-            <svg width="14" height="8" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12.293.293L7 5.586 1.707.293A1 1 0 1 0 .293 1.707l6 6a.997.997 0 0 0 1.414 0l6-6A1 1 0 0 0 12.293.293"
-                fill="var(--brand)"
-                fillRule="evenodd"
-              />
-            </svg>
+            <IconArrowDown24 />
           </button>
-        </div>
+        </header>
         {this.state.showCategories[name] && (
-          <div className={s.categoryItems}>{categoryItems}</div>
+          <div className={s.categoryFold}>
+            <p className={s.categoryFoldDescription}>
+              {this.state.categories[name]}
+            </p>
+            {categoryItems}
+          </div>
         )}
       </div>
     )
@@ -182,19 +171,16 @@ export default class ConsentPreferences extends Component {
         {/* Manage preferences dialog */}
         {!this.state.showConfirmationDialog && (
           <div className={s.visibleDialog}>
-            <div className={s.dialogTitle}>
-              <span>Data Collection Preferences</span>
-              <div
-                className={s.closeButton}
+            <header className={s.dialogHeader}>
+              <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
+              <CloseButton
                 onClick={() => {
                   this.setState({ showConfirmationDialog: true })
                 }}
-              >
-                <CloseButton />
-              </div>
-            </div>
+              />
+            </header>
             <div className={s.dialogBody}>
-              <p>
+              <p className={s.dialogBodyIntro}>
                 HashiCorp uses data collected by cookies and JavaScript
                 libraries to improve your browsing experience, analyze site
                 traffic, and increase the overall performance of our site. By
@@ -218,7 +204,7 @@ export default class ConsentPreferences extends Component {
                 </a>
                 .
               </p>
-              <p>
+              <p className={s.dialogBodyNotice}>
                 The categories below outline which companies and tools we use
                 for collecting data. To opt out of a category of data
                 collection, set the toggle to “Off” and save your preferences.
@@ -250,9 +236,9 @@ export default class ConsentPreferences extends Component {
         {/* Cancellation confirmation dialog */}
         {this.state.showConfirmationDialog && (
           <div className={s.visibleDialog}>
-            <div className={s.dialogTitle}>
-              <span>Are you sure?</span>
-            </div>
+            <header className={s.dialogHeader}>
+              <h2 className={s.dialogHeaderTitle}>Are you sure?</h2>
+            </header>
             <div className={s.dialogBody}>
               <p>
                 Your preferences have not been saved. To continue using our
