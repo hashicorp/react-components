@@ -18,7 +18,6 @@ export default class ConsentPreferences extends Component {
 
     this.state = {
       version: props.version || 0,
-      showConfirmationDialog: false,
       groupedIntegrations: {}, // Integrations object grouped by category
       consent: props.preferences, // Consent preferences object
       categories: props.categories.reduce((obj, category) => {
@@ -169,112 +168,68 @@ export default class ConsentPreferences extends Component {
     return (
       <div className={s.root} data-testid="consent-mgr-dialog">
         {/* Manage preferences dialog */}
-        {!this.state.showConfirmationDialog && (
-          <div className={s.visibleDialog}>
-            <header className={s.dialogHeader}>
-              <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
-              <CloseButton
-                onClick={() => {
-                  this.setState({ showConfirmationDialog: true })
-                }}
-              />
-            </header>
-            <div className={s.dialogBody}>
-              <p className={s.dialogBodyIntro}>
-                HashiCorp uses data collected by cookies and JavaScript
-                libraries to improve your browsing experience, analyze site
-                traffic, and increase the overall performance of our site. By
-                using our website, you’re agreeing to our{' '}
-                <a
-                  href={this.props.privacyPolicyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="privacy-policy-link"
-                >
-                  Privacy Policy
-                </a>{' '}
-                and{' '}
-                <a
-                  href={this.props.cookiePolicyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="cookie-policy-link"
-                >
-                  Cookie Policy
-                </a>
-                .
-              </p>
-              <p className={s.dialogBodyNotice}>
-                The categories below outline which companies and tools we use
-                for collecting data. To opt out of a category of data
-                collection, set the toggle to “Off” and save your preferences.
-              </p>
-              <div id="outline">{categories}</div>
-            </div>
-            <div className={s.dialogFooter}>
-              <Button
-                title="Cancel"
-                theme={{
-                  variant: 'secondary',
-                  brand: 'neutral',
-                  background: 'light',
-                }}
-                onClick={() => {
-                  this.setState({ showConfirmationDialog: true })
-                }}
-              />
-              <Button
-                className={s.saveButton}
-                title="Save Preferences"
-                onClick={() => {
-                  this.props.saveAndLoadAnalytics(this.state.consent)
-                }}
-              />
-            </div>
+        <div className={s.visibleDialog}>
+          <header className={s.dialogHeader}>
+            <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
+            <CloseButton
+              onClick={() => {
+                this.setState({ showConfirmationDialog: true })
+              }}
+            />
+          </header>
+          <div className={s.dialogBody}>
+            <p className={s.dialogBodyIntro}>
+              HashiCorp uses data collected by cookies and JavaScript libraries
+              to improve your browsing experience, analyze site traffic, and
+              increase the overall performance of our site. By using our
+              website, you’re agreeing to our{' '}
+              <a
+                href={this.props.privacyPolicyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="privacy-policy-link"
+              >
+                Privacy Policy
+              </a>{' '}
+              and{' '}
+              <a
+                href={this.props.cookiePolicyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="cookie-policy-link"
+              >
+                Cookie Policy
+              </a>
+              .
+            </p>
+            <p className={s.dialogBodyNotice}>
+              The categories below outline which companies and tools we use for
+              collecting data. To opt out of a category of data collection, set
+              the toggle to “Off” and save your preferences.
+            </p>
+            <div id="outline">{categories}</div>
           </div>
-        )}
-        {/* Cancellation confirmation dialog */}
-        {this.state.showConfirmationDialog && (
-          <div className={s.visibleDialog}>
-            <header className={s.dialogHeader}>
-              <h2 className={s.dialogHeaderTitle}>Are you sure?</h2>
-            </header>
-            <div className={s.dialogBody}>
-              <p>
-                Your preferences have not been saved. To continue using our
-                website, you must either set individual preferences or agree to{' '}
-                <a
-                  href={this.props.privacyPolicyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  our privacy policy
-                </a>
-                .
-              </p>
-            </div>
-            <div className={s.dialogFooter}>
-              <Button
-                title="Back to Preferences"
-                theme={{
-                  variant: 'secondary',
-                  brand: 'neutral',
-                  background: 'light',
-                }}
-                onClick={() => {
-                  this.setState({ showConfirmationDialog: false })
-                }}
-              />
-              <Button
-                title="Agree & Close"
-                className={s.saveButton}
-                onClick={() => {
-                  this.props.saveAndLoadAnalytics({ loadAll: true })
-                }}
-              />
-            </div>
+          <div className={s.dialogFooter}>
+            <Button
+              title="Save my preferences"
+              theme={{
+                variant: 'secondary',
+                brand: 'neutral',
+                background: 'light',
+              }}
+              onClick={() => {
+                this.props.saveAndLoadAnalytics(this.state.consent)
+              }}
+            />
+            <Button
+              className={s.saveButton}
+              title="Accept all"
+              onClick={() => {
+                this.props.saveAndLoadAnalytics({ loadAll: true })
+              }}
+            />
           </div>
-        )}
+        </div>
       </div>
     )
   }
