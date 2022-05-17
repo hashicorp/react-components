@@ -7,7 +7,7 @@ import { Component } from 'react'
 import getIntegrations from '../util/integrations'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
-import CloseButton from '@hashicorp/react-close-button'
+// import CloseButton from '@hashicorp/react-close-button'
 import { IconArrowDown24 } from '@hashicorp/flight-icons/svg-react/arrow-down-24'
 import classNames from 'classnames'
 import s from './dialog.module.css'
@@ -171,11 +171,11 @@ export default class ConsentPreferences extends Component {
         <div className={s.visibleDialog}>
           <header className={s.dialogHeader}>
             <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
-            <CloseButton
+            {/* <CloseButton
               onClick={() => {
                 this.setState({ showConfirmationDialog: true })
               }}
-            />
+            /> */}
           </header>
           <div className={s.dialogBody}>
             <p className={s.dialogBodyIntro}>

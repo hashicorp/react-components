@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { EventEmitter } from 'events'
 import classNames from 'classnames'
 import { loadPreferences, savePreferences } from './util/cookies'
+import { reactHotToast, toastWithActions } from '@hashicorp/react-toast'
 import ConsentBanner from './components/banner'
 import ConsentPreferences from './components/dialog'
 import SegmentScript from './scripts/segment'
@@ -102,27 +103,40 @@ export default function ConsentManager(props: ConsentManagerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
   }, [])
 
+  // Show banner if there are no preferences or the version mismatches
+  useEffect(() => {
+    if (hasEmptyPreferencesOrVersionMismatch) {
+      toastWithActions({
+        heading: 'We value your privacy',
+        description:
+          'We use cookies to enhance your browsing experience and analyze our traffic. By clicking “Accept all”, you consent to our use of cookies.',
+        actions: [
+          {
+            title: 'Accept all',
+            onClick: (id) => {
+              saveAndLoadAnalytics({ loadAll: true })
+              reactHotToast.remove(id)
+            },
+          },
+          {
+            title: 'Manage cookies',
+            onClick: (id) => {
+              openDialog()
+              reactHotToast.remove(id)
+            },
+          },
+        ],
+        options: {
+          id: 'consent-manager',
+          duration: Infinity,
+        },
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
+  }, [])
+
   return (
     <div className={classNames(s.root, props.className)}>
-      {/*  Consent banner at the bottom */}
-      {showBanner && (
-        <ConsentBanner
-          privacyPolicyLink={props.privacyPolicyLink}
-          cookiePolicyLink={props.cookiePolicyLink}
-          onManagePreferences={() => {
-            openDialog()
-            if (props.onManagePreferences) {
-              props.onManagePreferences()
-            }
-          }}
-          onAccept={() => {
-            saveAndLoadAnalytics({ loadAll: true })
-            if (props.onAcceptAll) {
-              props.onAcceptAll()
-            }
-          }}
-        />
-      )}
       {/*  Consent manager preferences dialog */}
       {showDialog && (
         <ConsentPreferences
