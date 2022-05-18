@@ -22,7 +22,6 @@ export interface CodeBlockOptions {
   showWindowBar?: boolean
   filename?: string
   heading?: string
-  onCopyCallBack?: ClipboardButtonProps['onCopyCallback']
 }
 
 export interface CodeBlockProps {
@@ -31,6 +30,7 @@ export interface CodeBlockProps {
   language?: string
   theme?: 'light' | 'dark'
   hasBarAbove?: boolean
+  onCopyCallBack?: ClipboardButtonProps['onCopyCallback']
   options?: CodeBlockOptions
 }
 
@@ -40,6 +40,7 @@ function CodeBlock({
   language,
   theme = 'dark',
   hasBarAbove = false,
+  onCopyCallBack,
   options = {
     showChrome: false,
     highlight: false,
@@ -119,7 +120,7 @@ function CodeBlock({
             <div className={s.copyButtonBackground}>
               <ClipboardButton
                 getText={getText}
-                onCopyCallback={onCopyCallback}
+                onCopyCallback={onCopyCallBack}
               />
             </div>
           </div>
