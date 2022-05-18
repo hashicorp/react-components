@@ -52,6 +52,11 @@ module.exports = {
         description:
           'Set to `true` to show the copy-to-clipboard prompt and functionality.',
       },
+      onCopyCallback: {
+        type: 'function',
+        description:
+          'Optional callback that is called when copy success state changes. Copy success state is `null` initially. When code is successfully copied using the "Copy" button, it changes to `true`. If there is an error when copying code, it changes to `false`. After a timeout set within the `clipboard-button` partial, the copy success state reverts to `null`.',
+      },
     },
   },
 }
