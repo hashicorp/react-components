@@ -21,6 +21,7 @@ export default function createConsentManager({
   categories,
   forceShow = false,
   onAcceptAll,
+  onAnalyticsReady,
   onManagePreferences,
 }: {
   segmentWriteKey?: string
@@ -30,6 +31,7 @@ export default function createConsentManager({
   categories?: ConsentManagerCategory[]
   forceShow?: boolean
   onAcceptAll?: () => void
+  onAnalyticsReady?: () => void
   onManagePreferences?: () => void
 }): {
   ConsentManager: typeof ConsentManagerComponent
@@ -70,6 +72,7 @@ export default function createConsentManager({
     categories: defaultCategories,
     forceShow,
     onAcceptAll,
+    onAnalyticsReady,
     onManagePreferences,
   }
 

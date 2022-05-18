@@ -23,6 +23,7 @@ interface ConsentManagerProps {
   version?: number
   onManagePreferences?: () => void
   onAcceptAll?: () => void
+  onAnalyticsReady?: () => void
 }
 
 const emitter = new EventEmitter()
@@ -123,6 +124,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
       <SegmentScript
         preferences={preferences}
         writeKey={props.segmentWriteKey}
+        onAnalyticsReady={props.onAnalyticsReady}
       />
       <CustomScripts
         preferences={preferences}
