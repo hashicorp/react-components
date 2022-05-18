@@ -48,7 +48,9 @@ export default function SegmentScript({
     preferences.segment ?? {}
   )
   function onReadyCb() {
-    onAnalyticsReady && onAnalyticsReady()
+    if (typeof onAnalyticsReady == 'function') {
+      onAnalyticsReady()
+    }
     segmentReadyCb()
   }
 
