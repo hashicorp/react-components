@@ -97,10 +97,10 @@ export default function ConsentManager(props: ConsentManagerProps) {
   useEffect(() => {
     if (hasEmptyPreferencesOrVersionMismatch || forceShow) {
       toastWithActions({
-        onDismiss: false,
         heading: 'We value your privacy',
         description:
           'We use cookies to enhance your browsing experience and analyze our traffic. By clicking “Accept all”, you consent to our use of cookies.',
+        dismissible: false,
         actions: [
           {
             title: 'Accept all',

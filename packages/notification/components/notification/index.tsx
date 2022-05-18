@@ -20,7 +20,7 @@ export default function Notification({
       <CloseButton
         appearance={appearance}
         onClick={onDismiss}
-        ariaLabel="Dimiss notification"
+        ariaLabel="Dismiss notification"
         className={s.closeButton}
       />
       <div className={s.content}>

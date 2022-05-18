@@ -5,23 +5,24 @@ import Button from '@hashicorp/react-button'
 import CloseButton from '@hashicorp/react-close-button'
 import s from '../style.module.css'
 
-export default function Notification({
+export default function NotificationWithActions({
   appearance = 'light',
   heading,
   description,
   actions,
   onDismiss,
+  dismissible = true,
 }: NotificationWithActionsProps) {
   return (
     <div
       className={classNames(s.notification, s[appearance])}
       data-testid="notification"
     >
-      {onDismiss ? (
+      {dismissible && onDismiss ? (
         <CloseButton
           appearance={appearance}
           onClick={onDismiss}
-          ariaLabel="Dimiss notification"
+          ariaLabel="Dismiss notification"
           className={s.closeButton}
         />
       ) : null}
