@@ -7,12 +7,17 @@ import svgCopySuccess from './svg/copy-success.svg?include'
 import s from './style.module.css'
 import analytics, { heapAttributes } from '../../analytics'
 
-interface ClipboardButtonProps {
+export interface ClipboardButtonProps {
   className?: string
   getText: () => Promise<[unknown, null] | [null, string]>
+  onCopyCallback?: (copySuccess: boolean | null) => void
 }
 
-function ClipboardButton({ className, getText }: ClipboardButtonProps) {
+function ClipboardButton({
+  className,
+  getText,
+  onCopyCallback,
+}: ClipboardButtonProps) {
   // copiedState can be null (initial), true (success), or false (failure)
   const [copiedState, setCopiedState] = useState<boolean | null>(null)
   // we reset copiedState to its initial value using a timeout
@@ -45,6 +50,10 @@ function ClipboardButton({ className, getText }: ClipboardButtonProps) {
   // reset to the default appearance so that it's clear
   // the "Copy" button can be used again
   useEffect(() => {
+    // If an onCopyCallback was provided, call it
+    if (typeof onCopyCallback == 'function') {
+      onCopyCallback(copiedState)
+    }
     // Clear any pending timeouts, which can occur if the
     // button is quickly clicked multiple times
     window.clearTimeout(resetTimeout)
@@ -58,7 +67,7 @@ function ClipboardButton({ className, getText }: ClipboardButtonProps) {
     }
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)
-  }, [copiedState])
+  }, [copiedState, onCopyCallback])
 
   return (
     <button
