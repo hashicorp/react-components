@@ -35,6 +35,7 @@ export interface ConsentManagerProps {
   version?: number
   onManagePreferences?: () => void
   onAcceptAll?: () => void
+  onAnalyticsReady?: () => void
 }
 
 export interface ConsentManagerPreferences {
