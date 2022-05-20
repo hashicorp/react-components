@@ -2,7 +2,9 @@ import { useRef } from 'react'
 import type { ReactElement } from 'react'
 import classNames from 'classnames'
 import processSnippet from './utils/process-snippet'
-import ClipboardButton from './partials/clipboard-button'
+import ClipboardButton, {
+  ClipboardButtonProps,
+} from './partials/clipboard-button'
 import SnippetBar from './partials/snippet-bar'
 import themeDark from './theme-dark.module.css'
 import themeLight from './theme-light.module.css'
@@ -28,6 +30,7 @@ export interface CodeBlockProps {
   language?: string
   theme?: 'light' | 'dark'
   hasBarAbove?: boolean
+  onCopyCallBack?: ClipboardButtonProps['onCopyCallback']
   options?: CodeBlockOptions
 }
 
@@ -37,6 +40,7 @@ function CodeBlock({
   language,
   theme = 'dark',
   hasBarAbove = false,
+  onCopyCallBack,
   options = {
     showChrome: false,
     highlight: false,
@@ -114,7 +118,10 @@ function CodeBlock({
         {hasFloatingCopyButton ? (
           <div className={s.copyButtonContainer}>
             <div className={s.copyButtonBackground}>
-              <ClipboardButton getText={getText} />
+              <ClipboardButton
+                getText={getText}
+                onCopyCallback={onCopyCallBack}
+              />
             </div>
           </div>
         ) : null}
