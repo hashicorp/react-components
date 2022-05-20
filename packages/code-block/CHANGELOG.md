@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 5.1.0
+
+### Minor Changes
+
+- [#591](https://github.com/hashicorp/react-components/pull/591) [`9fa3bdab`](https://github.com/hashicorp/react-components/commit/9fa3bdab34d4f719cf73307f3adb0ff414e35f65) Thanks [@zchsh](https://github.com/zchsh)! - Adds support for an onCopyCallback prop.
+
 ## 5.0.0
 
 ### Major Changes
