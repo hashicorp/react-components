@@ -10,7 +10,7 @@ import analytics, { heapAttributes } from '../../analytics'
 export interface ClipboardButtonProps {
   className?: string
   getText: () => Promise<[unknown, null] | [null, string]>
-  onCopyCallback?: (copySuccess: boolean | null) => void
+  onCopyCallback?: (copiedState: boolean | null) => void
 }
 
 function ClipboardButton({
