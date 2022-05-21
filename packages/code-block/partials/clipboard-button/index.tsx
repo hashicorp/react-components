@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { MutableRefObject, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import InlineSvg from '@hashicorp/react-inline-svg'
 import copyToClipboard from './copy-to-clipboard'
@@ -11,12 +11,14 @@ export interface ClipboardButtonProps {
   className?: string
   getText: () => Promise<[unknown, null] | [null, string]>
   onCopyCallback?: (copiedState: boolean | null) => void
+  buttonRef?: MutableRefObject<HTMLButtonElement>
 }
 
 function ClipboardButton({
   className,
   getText,
   onCopyCallback,
+  buttonRef,
 }: ClipboardButtonProps) {
   // copiedState can be null (initial), true (success), or false (failure)
   const [copiedState, setCopiedState] = useState<boolean | null>(null)
@@ -67,10 +69,11 @@ function ClipboardButton({
     }
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)
-  }, [copiedState, onCopyCallback])
+  }, [copiedState])
 
   return (
     <button
+      ref={buttonRef}
       className={classnames(s.button, className, {
         [s.isCopied]: copiedState == true,
       })}
