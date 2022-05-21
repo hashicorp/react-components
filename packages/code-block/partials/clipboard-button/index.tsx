@@ -69,7 +69,7 @@ function ClipboardButton({
     }
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)
-  }, [copiedState, onCopyCallback])
+  }, [copiedState])
 
   return (
     <button
