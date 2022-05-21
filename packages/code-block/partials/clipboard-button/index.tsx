@@ -26,7 +26,13 @@ function ClipboardButton({
   const [resetTimeout, setResetTimeout] = useState<number>()
 
   // Handle copy button clicks
-  async function onClick() {
+  async function onClick(e) {
+    // If we just ran the copy command, don't try to refire it,
+    // the button still hasn't finished updating
+    if (copiedState !== null) {
+      e.preventDefault()
+      return false
+    }
     // Retrieve the text to copy, using the fn passed by the consumer
     const [getTextError, text] = await getText()
     // If text cannot be retrieved, exit early to handle the error
