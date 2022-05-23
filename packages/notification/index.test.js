@@ -4,6 +4,7 @@ import Notification, {
   NotificationWithLanguage,
   NotificationWithResource,
   NotificationWithThumbnail,
+  NotificationWithActions,
 } from '.'
 
 const defaultProps = {
@@ -78,5 +79,56 @@ describe('<NotificationWithThumbnail />', () => {
     const notification = screen.getByTestId('notification')
     expect(notification).toBeInTheDocument()
     expect(screen.getByAltText('Notification alt')).toBeInTheDocument()
+  })
+})
+
+describe('<NotificationWithActions />', () => {
+  it('should render defaults with actions', () => {
+    render(
+      <NotificationWithActions
+        heading="Notification heading"
+        description="Notification description"
+        actions={[
+          {
+            title: 'Primary action',
+            onClick: () => {},
+          },
+          {
+            title: 'Secondary action',
+            onClick: () => {},
+          },
+        ]}
+      />
+    )
+    const notification = screen.getByTestId('notification')
+    expect(notification).toBeInTheDocument()
+    expect(screen.getByText('Primary action')).toBeInTheDocument()
+    expect(screen.getByText('Secondary action')).toBeInTheDocument()
+  })
+
+  it('should handle on click events', () => {
+    const mockCallBack = jest.fn()
+    render(
+      <NotificationWithActions
+        heading="Notification heading"
+        description="Notification description"
+        actions={[
+          {
+            title: 'Primary action',
+            onClick: mockCallBack,
+          },
+          {
+            title: 'Secondary action',
+            onClick: mockCallBack,
+          },
+        ]}
+      />
+    )
+    const primaryAction = screen.getByText('Primary action')
+    const secondaryAction = screen.getByText('Secondary action')
+    fireEvent.click(primaryAction)
+    expect(mockCallBack).toHaveBeenCalledTimes(1)
+    fireEvent.click(secondaryAction)
+    expect(mockCallBack).toHaveBeenCalledTimes(2)
   })
 })

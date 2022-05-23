@@ -75,3 +75,23 @@ Notification component to be used within our [Toaster](/components/toast) compon
   onDismiss={() => {}}
 />
 `}</LiveComponent>
+
+## With actions
+
+<LiveComponent>{`
+<NotificationWithActions
+  heading="Notification heading"
+  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+  actions={[
+    {
+      title: 'Primary action',
+      onClick: () => {}
+    },
+    {
+      title: 'Secondary action',
+      onClick: () => {}
+    },
+  ]}
+  onDismiss={() => {}}
+/>
+`}</LiveComponent>

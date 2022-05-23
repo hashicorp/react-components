@@ -56,3 +56,22 @@ export interface NotificationWithThumbnailProps extends NotificationProps {
     alt: string
   }
 }
+
+export interface NotificationWithActionsProps
+  extends Pick<NotificationProps, 'appearance' | 'description' | 'onDismiss'> {
+  /**
+   * The text that introduces the notification.
+   */
+  heading: string
+  /**
+   * When true render the close button.
+   */
+  dismissible?: boolean
+  /**
+   * The text that appears within the notification.
+   */
+  actions: Array<{
+    title: string
+    onClick: () => void
+  }>
+}
