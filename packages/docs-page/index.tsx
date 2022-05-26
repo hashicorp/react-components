@@ -39,6 +39,7 @@ interface DocsPageInnerProps {
   showVersionSelect: boolean
   versions: VersionSelectItem[]
   algoliaConfig?: AlgoliaConfigObject
+  optInBanner?: ReactElement
 }
 
 export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
@@ -55,6 +56,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   showVersionSelect,
   versions,
   algoliaConfig,
+  optInBanner,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -139,6 +141,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
               product={slug}
               content={
                 <>
+                  {optInBanner ? optInBanner : null}
                   {isMobile ? null : search}
                   {children}
                 </>
@@ -179,6 +182,7 @@ export interface DocsPageProps {
     githubFileUrl: string
     versions: VersionSelectItem[]
   }
+  optInBanner?: ReactElement
 }
 
 export default function DocsPage({
@@ -196,6 +200,7 @@ export default function DocsPage({
     githubFileUrl,
     versions,
   },
+  optInBanner,
 }: DocsPageProps): ReactElement {
   const router = useRouter()
 
@@ -223,6 +228,7 @@ export default function DocsPage({
       baseRoute={baseRoute}
       versions={versions}
       algoliaConfig={algoliaConfig}
+      optInBanner={optInBanner}
     >
       {content}
     </DocsPageInner>
