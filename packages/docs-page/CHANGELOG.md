@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 16.2.0
+
+### Minor Changes
+
+- [#597](https://github.com/hashicorp/react-components/pull/597) [`b2c02280`](https://github.com/hashicorp/react-components/commit/b2c02280f57b1477ff30f7c1ecc00a8ff2ffe55a) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds optInBanner prop to render an optInBanner in the content area
+
 ## 16.1.0
 
 ### Minor Changes

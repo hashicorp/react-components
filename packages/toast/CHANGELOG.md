@@ -1,5 +1,12 @@
 # @hashicorp/react-toast
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`aef376fe`](https://github.com/hashicorp/react-components/commit/aef376fe022b3fdd4af61c2846e0a1de948e3910)]:
+  - @hashicorp/react-notification@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes
