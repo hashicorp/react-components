@@ -29,7 +29,7 @@ name: 'Grid'
   style={{
     margin: '32px 0',
     padding: '24px 0',
-    background: 'lightGray',
+    background: 'var(--code-light)',
   }}
 >
   <div class="g-grid-container g-grid">
@@ -40,6 +40,7 @@ name: 'Grid'
           style={{
             aspectRatio: '1/1',
             background: 'salmon',
+            gridColumn: 'span 1',
           }}
         />
       ))}
@@ -52,6 +53,15 @@ name: 'Grid'
 .wrapper {
   composes: g-grid-container from global;
   composes: g-grid from global;
+}
+
+/* Place items within grid columns */
+.item {
+  grid-column: 1 / -1;
+
+  @media (--medium-up) {
+    grid-column: span 6;
+  }
 }
 ```
 
