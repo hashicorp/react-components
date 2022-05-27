@@ -1,0 +1,82 @@
+---
+name: 'Grid'
+---
+
+<!-- workaround to drop swingset's styling of first h1 -->
+
+<h1 />
+
+# Grid
+
+<div
+  style={{
+    fontSize: '0.75rem',
+    fontFamily: 'var(--font-monospace)',
+    color: 'var(--gray-3)',
+  }}
+>
+  Grid tokens provided by @hashicorp/mktg-global-styles:
+  <br />
+  <a
+    style={{ color: 'inherit', textDecoration: 'underline' }}
+    href="https://github.com/hashicorp/mktg-global-styles/blob/main/components/g-grid.css"
+  >
+    https://github.com/hashicorp/mktg-global-styles/blob/main/components/g-grid.css
+  </a>
+</div>
+
+<div
+  style={{
+    margin: '32px 0',
+    padding: '24px 0',
+    background: 'var(--code-light)',
+  }}
+>
+  <div class="g-grid-container g-grid">
+    {Array(12)
+      .fill(null)
+      .map((_, index) => (
+        <div
+          style={{
+            aspectRatio: '1/1',
+            background: 'salmon',
+            gridColumn: 'span 1',
+          }}
+        />
+      ))}
+  </div>
+</div>
+
+## Usage
+
+```css
+.wrapper {
+  composes: g-grid-container from global;
+  composes: g-grid from global;
+}
+
+/* Place items within grid columns */
+.item {
+  grid-column: 1 / -1;
+
+  @media (--medium-up) {
+    grid-column: span 6;
+  }
+}
+```
+
+## Grid system
+
+| Breakpoint | Columns | Gap  |
+| ---------- | ------- | ---- |
+| Small      | 4       | 16px |
+| Medium     | 12      | 24px |
+| Large      | 12      | 32px |
+
+## Grid container
+
+| Breakpoint | Max width | Padding X |
+| ---------- | --------- | --------- |
+| Small      | 616px     | 24px      |
+| Medium     | 944px     | 40px      |
+| Large      | 1312px    | 48px      |
