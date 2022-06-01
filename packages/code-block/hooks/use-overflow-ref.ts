@@ -17,6 +17,9 @@ const mutationOpts = { attributes: true, childList: true, subtree: true }
  * - Firefox 14+
  * - Internet Explorer 11+
  * - Safari 17+
+ *
+ * Note: this hook is also used in hashicorp/dev-portal, for our tabs component.
+ * https://github.com/hashicorp/dev-portal/blob/bc82c139677d8c1dd790ca0642d04f2217d75484/src/components/tabs/hooks/use-overflow-ref.ts
  */
 export default function useOverflowRef<T extends HTMLElement>(): [
   boolean,
