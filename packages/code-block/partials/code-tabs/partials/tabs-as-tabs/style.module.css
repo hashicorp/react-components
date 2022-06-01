@@ -21,6 +21,7 @@ to be present.
   cursor: pointer;
   min-height: var(--base-height);
   padding: 0 16px;
+  white-space: nowrap;
 
   /* note that the parent `topBar` has corner rounding,
   we need to round either the first or last tab depending on alignment.
