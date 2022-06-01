@@ -12,7 +12,7 @@ import fragment from './fragment.graphql'
 import s from './style.module.css'
 import analytics from './analytics'
 
-interface AlertBannerCSSVariables extends CSSProperties {
+interface AlertBannerCSSVariables {
   '--background-color'?: string
   '--color'?: string
 }
@@ -80,7 +80,7 @@ function AlertBanner({
         { [s.isShown]: isShown },
         { [s.hideOnMobile]: hideOnMobile }
       )}
-      style={style}
+      style={{ ...style } as CSSProperties}
     >
       <a
         href={url}
