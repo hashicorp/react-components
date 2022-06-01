@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState, CSSProperties } from 'react'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
 import classNames from 'classnames'
@@ -12,6 +12,11 @@ import fragment from './fragment.graphql'
 import s from './style.module.css'
 import analytics from './analytics'
 
+interface AlertBannerCSSVariables {
+  '--background-color'?: string
+  '--color'?: string
+}
+
 interface AlertBannerProps {
   tag: string
   text: string
@@ -21,6 +26,7 @@ interface AlertBannerProps {
   linkText?: string
   name?: string
   product?: HashiCorpProduct
+  style?: AlertBannerCSSVariables
 }
 
 /**
@@ -37,6 +43,7 @@ function AlertBanner({
   tag,
   text,
   url,
+  style,
 }: AlertBannerProps): React.ReactElement {
   const dismissalCookieId = `banner_${name || slugify(text, { lower: true })}`
   const [isShown, setIsShown] = useState(true)
@@ -73,6 +80,7 @@ function AlertBanner({
         { [s.isShown]: isShown },
         { [s.hideOnMobile]: hideOnMobile }
       )}
+      style={{ ...style } as CSSProperties}
     >
       <a
         href={url}

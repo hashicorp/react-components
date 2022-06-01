@@ -1,4 +1,7 @@
 .root {
+  --background-color: var(--brand-secondary);
+  --color: var(--black);
+
   display: none;
   overflow: hidden;
   position: relative;
@@ -18,8 +21,8 @@
 }
 
 .linkElem {
-  background: var(--brand-secondary);
-  color: var(--black);
+  background: var(--background-color);
+  color: var(--color);
   display: block;
   position: relative;
 }
@@ -50,7 +53,7 @@
   &::after {
     content: '';
     height: 16px;
-    background: black;
+    background: var(--color);
     width: 1px;
     display: block;
     margin-left: 11px;
@@ -97,9 +100,10 @@
 
   & > svg {
     display: block;
-    & [stroke] {
-      stroke: var(--black);
-    }
+  }
+
+  & svg path {
+    stroke: var(--color);
   }
 
   &:hover {
