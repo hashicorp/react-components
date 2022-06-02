@@ -117,12 +117,10 @@ function CodeBlock({
         />
         {hasFloatingCopyButton ? (
           <div className={s.copyButtonContainer}>
-            <div className={s.copyButtonBackground}>
-              <ClipboardButton
-                getText={getText}
-                onCopyCallback={onCopyCallBack}
-              />
-            </div>
+            <ClipboardButton
+              getText={getText}
+              onCopyCallback={onCopyCallBack}
+            />
           </div>
         ) : null}
       </div>
