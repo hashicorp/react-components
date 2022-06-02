@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 5.2.0
+
+### Minor Changes
+
+- [#547](https://github.com/hashicorp/react-components/pull/547) [`51d6ea42`](https://github.com/hashicorp/react-components/commit/51d6ea42633194083fbcc192f7580f2d38c6a109) Thanks [@ashleemboyer](https://github.com/ashleemboyer)! - Updated style and icons in CodeBlock copy button
+
 ## 5.1.1
 
 ### Patch Changes
