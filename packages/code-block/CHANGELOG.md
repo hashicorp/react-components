@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 5.1.1
+
+### Patch Changes
+
+- [#600](https://github.com/hashicorp/react-components/pull/600) [`8261ebcd`](https://github.com/hashicorp/react-components/commit/8261ebcd4059d3899cd4c67263c58ef6f785ed0a) Thanks [@zchsh](https://github.com/zchsh)! - Fixes an issue where use-overflow-ref did not work fully when code-tabs are nested in a tabpanel.
+
 ## 5.1.0
 
 ### Minor Changes
