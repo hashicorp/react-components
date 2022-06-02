@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
+import { IconCheckSquare16 } from '@hashicorp/flight-icons/svg-react/check-square-16'
 import { IconDuplicate16 } from '@hashicorp/flight-icons/svg-react/duplicate-16'
+import { IconXSquare16 } from '@hashicorp/flight-icons/svg-react/x-square-16'
 import copyToClipboard from './copy-to-clipboard'
 import analytics, { heapAttributes } from '../../analytics'
 import s from './style.module.css'
@@ -68,10 +70,13 @@ function ClipboardButton({
   }, [copiedState, onCopyCallback])
 
   let buttonText = 'Copy'
+  let buttonIcon = <IconDuplicate16 className={s.svg} />
   if (copiedState === true) {
     buttonText = 'Copied'
+    buttonIcon = <IconCheckSquare16 className={s.svg} />
   } else if (copiedState === false) {
     buttonText = 'Failed'
+    buttonIcon = <IconXSquare16 className={s.svg} />
   }
   return (
     <button
@@ -83,7 +88,7 @@ function ClipboardButton({
       type="button"
     >
       {buttonText}
-      <IconDuplicate16 className={s.svg} />
+      {buttonIcon}
     </button>
   )
 }
