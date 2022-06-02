@@ -25,6 +25,7 @@
     helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
   font-size: 0.8125rem;
+  font-weight: 500;
   justify-content: center;
   line-height: 1;
   padding: var(--padding-top-bottom) var(--padding-left-right);
