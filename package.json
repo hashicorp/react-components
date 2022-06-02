@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "@hashicorp/flight-icons": "^2.1.1",
-    "@hashicorp/mktg-global-styles": "^4.0.0",
+    "@hashicorp/mktg-global-styles": "^4.2.0",
     "@hashicorp/mktg-logos": "^1.2.0",
     "@hashicorp/sentinel-embedded": "^0.0.14",
     "classnames": "^2.3.1",
@@ -52,6 +52,9 @@
   "resolutions": {
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "overrides": {
+    "react-live": "3.1.0"
   },
   "scripts": {
     "hard-reset": "rm -rf node_modules && rm -rf .next && npm i",

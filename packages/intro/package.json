@@ -1,0 +1,15 @@
+{
+  "name": "@hashicorp/react-intro",
+  "version": "0.4.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/react-actions": "^0.3.0",
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  }
+}

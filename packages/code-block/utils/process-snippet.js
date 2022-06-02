@@ -5,7 +5,7 @@ import shellwords from 'shellwords'
  * process it based on the detected language,
  * returning a modified snippet that has is
  * more suited to direct execution
- * @param {string} snippet
+ * @param {string | null} [snippet]
  */
 function processSnippet(snippet) {
   const isShell = snippet.split('\n')[0].startsWith('$ ')

@@ -1,5 +1,47 @@
 # @hashicorp/react-docs-page
 
+## 16.2.0
+
+### Minor Changes
+
+- [#597](https://github.com/hashicorp/react-components/pull/597) [`b2c02280`](https://github.com/hashicorp/react-components/commit/b2c02280f57b1477ff30f7c1ecc00a8ff2ffe55a) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds optInBanner prop to render an optInBanner in the content area
+
+## 16.1.0
+
+### Minor Changes
+
+- [#583](https://github.com/hashicorp/react-components/pull/583) [`27a251e2`](https://github.com/hashicorp/react-components/commit/27a251e21a036b2aaca37e50b5827bd62c366b21) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This version adds a navDataPrefix option to the RemoteContentLoader to make nav-data lookup more flexible.
+
+## 16.0.0
+
+### Major Changes
+
+- [#576](https://github.com/hashicorp/react-components/pull/576) [`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - - convert `docs-sidenav` to typescript
+  - update `docs-page` internal code and narrow prop type
+
+### Patch Changes
+
+- Updated dependencies [[`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2)]:
+  - @hashicorp/react-docs-sidenav@9.0.0
+
+## 15.0.0
+
+### Major Changes
+
+- [#568](https://github.com/hashicorp/react-components/pull/568) [`26918b9e`](https://github.com/hashicorp/react-components/commit/26918b9e32b3d4882bb18786f09eaa63c178bbc6) Thanks [@dstaley](https://github.com/dstaley)! - Add TypeScript types
+
+## 14.16.1
+
+### Patch Changes
+
+- [#569](https://github.com/hashicorp/react-components/pull/569) [`21e78bfe`](https://github.com/hashicorp/react-components/commit/21e78bfe0d371c8fffb0c86260744cc716d994a6) Thanks [@zchsh](https://github.com/zchsh)! - Bumps @hashicorp/react-content dependency to fix a table alignment issues. See #562 for details.
+
+## 14.16.0
+
+### Minor Changes
+
+- [#552](https://github.com/hashicorp/react-components/pull/552) [`6cc916be`](https://github.com/hashicorp/react-components/commit/6cc916bee5b10f4beb136a70e43955b69bb27bcf) Thanks [@BRKalow](https://github.com/BRKalow)! - Add latestVersionRef option to RemoteContentLoader
+
 ## 14.15.0
 
 ### Minor Changes

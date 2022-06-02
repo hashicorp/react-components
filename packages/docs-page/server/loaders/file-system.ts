@@ -52,6 +52,9 @@ export default class FileSystemLoader implements DataLoader {
           '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
         )
       }
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we default this in the constructor, so it must be defined
+      remarkPlugins = this.opts.remarkPlugins!
     }
 
     const mdxRenderer = (mdx) =>

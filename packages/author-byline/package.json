@@ -1,0 +1,14 @@
+{
+  "name": "@hashicorp/react-author-byline",
+  "version": "0.2.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  }
+}

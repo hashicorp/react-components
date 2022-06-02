@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.2.0
+
+### Minor Changes
+
+- [#545](https://github.com/hashicorp/react-components/pull/545) [`94fe63fb`](https://github.com/hashicorp/react-components/commit/94fe63fb50bc6ee5067ccebf2cbec3da70b2a27f) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - feat(ConsentManager): add event callback options
+
 ## 7.1.3
 
 ### Patch Changes

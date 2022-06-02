@@ -1,0 +1,60 @@
+.intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &.center {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.eyebrow {
+  --color: var(--gray-2);
+
+  composes: g-type-label-strong from global;
+  margin: 0 0 16px;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--gray-4);
+  }
+}
+
+.heading {
+  --color: var(--black);
+
+  margin: 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--white);
+  }
+}
+
+.description {
+  --color: var(--gray-2);
+
+  margin: 16px 0 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--gray-4);
+  }
+
+  & > * {
+    color: inherit;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.actions {
+  margin-top: 32px;
+}

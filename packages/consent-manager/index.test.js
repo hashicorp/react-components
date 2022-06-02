@@ -183,6 +183,50 @@ test('loads segment and additional services if loadAll is passed', async () => {
   )
 })
 
+describe('handles custom events', () => {
+  test('manage preferences callback', async () => {
+    const fn = jest.fn()
+    await runWithMockedImport(
+      './components/dialog',
+      () => {
+        return <p data-testid="mocked-dialog">test</p>
+      },
+      (MockedConsentManager) => {
+        render(
+          <MockedConsentManager
+            {...defaultProps}
+            forceShow={true}
+            onManagePreferences={fn}
+          />
+        )
+        fireEvent.click(screen.getByTestId('manage-preferences'))
+        expect(fn).toHaveBeenCalled()
+      }
+    )
+  })
+
+  test('accept all callback', async () => {
+    const fn = jest.fn()
+    await runWithMockedImport(
+      './components/dialog',
+      () => {
+        return <p data-testid="mocked-dialog">test</p>
+      },
+      (MockedConsentManager) => {
+        render(
+          <MockedConsentManager
+            {...defaultProps}
+            forceShow={true}
+            onAcceptAll={fn}
+          />
+        )
+        fireEvent.click(screen.getByTestId('accept'))
+        expect(fn).toHaveBeenCalled()
+      }
+    )
+  })
+})
+
 // Given an internal module name and mock implementation, mocks the given module and returns a version
 // of the component with the module mocked.
 async function runWithMockedImport(module, mock, cb) {

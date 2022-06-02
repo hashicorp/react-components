@@ -1,5 +1,23 @@
 # @hashicorp/react-code-block
 
+## 5.1.1
+
+### Patch Changes
+
+- [#600](https://github.com/hashicorp/react-components/pull/600) [`8261ebcd`](https://github.com/hashicorp/react-components/commit/8261ebcd4059d3899cd4c67263c58ef6f785ed0a) Thanks [@zchsh](https://github.com/zchsh)! - Fixes an issue where use-overflow-ref did not work fully when code-tabs are nested in a tabpanel.
+
+## 5.1.0
+
+### Minor Changes
+
+- [#591](https://github.com/hashicorp/react-components/pull/591) [`9fa3bdab`](https://github.com/hashicorp/react-components/commit/9fa3bdab34d4f719cf73307f3adb0ff414e35f65) Thanks [@zchsh](https://github.com/zchsh)! - Adds support for an onCopyCallback prop.
+
+## 5.0.0
+
+### Major Changes
+
+- [#568](https://github.com/hashicorp/react-components/pull/568) [`26918b9e`](https://github.com/hashicorp/react-components/commit/26918b9e32b3d4882bb18786f09eaa63c178bbc6) Thanks [@dstaley](https://github.com/dstaley)! - Add TypeScript types
+
 ## 4.5.0
 
 ### Minor Changes

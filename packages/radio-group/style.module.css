@@ -1,0 +1,59 @@
+.radioGroup {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.label {
+  --color: var(--black);
+
+  composes: g-type-buttons-and-standalone-links from global;
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  padding: 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--gray-6);
+  }
+}
+
+.error {
+  composes: g-type-body-small from global;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--danger);
+}
+
+.icon {
+  display: flex;
+}
+
+.helpText {
+  --color: var(--gray-3);
+
+  composes: g-type-body-small-strong from global;
+  margin: 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--gray-4);
+  }
+}
+
+.radios {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+
+  &.stacked {
+    flex-direction: column;
+  }
+
+  &.inline {
+    flex-direction: row;
+  }
+}

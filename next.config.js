@@ -34,5 +34,9 @@ module.exports = withHashicorp({
         ],
       },
     ],
+    images: {
+      domains: ['www.datocms-assets.com'],
+      disableStaticImages: true,
+    },
   })
 )

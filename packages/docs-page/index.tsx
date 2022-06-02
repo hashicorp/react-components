@@ -9,6 +9,7 @@ import HashiHead from '@hashicorp/react-head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
 import { AlgoliaConfigObject } from '@hashicorp/react-search/types'
+import type { Products } from '@hashicorp/platform-product-meta'
 
 import VersionSelect from '@hashicorp/react-version-select'
 import { getVersionFromPath } from '@hashicorp/react-version-select/util'
@@ -32,12 +33,13 @@ interface DocsPageInnerProps {
   pageTitle: string
   baseRoute: string
   githubFileUrl: string
-  product: { name: string; slug: string }
+  product: { name: string; slug: Products }
   /** @deprecated */
   showEditPage: boolean
   showVersionSelect: boolean
   versions: VersionSelectItem[]
   algoliaConfig?: AlgoliaConfigObject
+  optInBanner?: ReactElement
 }
 
 export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
@@ -54,6 +56,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   showVersionSelect,
   versions,
   algoliaConfig,
+  optInBanner,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -138,6 +141,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
               product={slug}
               content={
                 <>
+                  {optInBanner ? optInBanner : null}
                   {isMobile ? null : search}
                   {children}
                 </>
@@ -160,7 +164,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 }
 
 export interface DocsPageProps {
-  product: { name: string; slug: string }
+  product: { name: string; slug: Products }
   baseRoute: string
   showEditPage?: boolean
   showVersionSelect?: boolean
@@ -178,6 +182,7 @@ export interface DocsPageProps {
     githubFileUrl: string
     versions: VersionSelectItem[]
   }
+  optInBanner?: ReactElement
 }
 
 export default function DocsPage({
@@ -195,6 +200,7 @@ export default function DocsPage({
     githubFileUrl,
     versions,
   },
+  optInBanner,
 }: DocsPageProps): ReactElement {
   const router = useRouter()
 
@@ -222,6 +228,7 @@ export default function DocsPage({
       baseRoute={baseRoute}
       versions={versions}
       algoliaConfig={algoliaConfig}
+      optInBanner={optInBanner}
     >
       {content}
     </DocsPageInner>

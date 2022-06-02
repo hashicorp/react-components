@@ -1,0 +1,15 @@
+{
+  "name": "@hashicorp/react-radio-group",
+  "version": "0.2.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@react-aria/utils": "^3.11.1",
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  }
+}

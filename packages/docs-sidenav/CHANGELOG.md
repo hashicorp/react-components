@@ -1,5 +1,12 @@
 # @hashicorp/react-docs-sidenav
 
+## 9.0.0
+
+### Major Changes
+
+- [#576](https://github.com/hashicorp/react-components/pull/576) [`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - - convert `docs-sidenav` to typescript
+  - update `docs-page` internal code and narrow prop type
+
 ## 8.4.1
 
 ### Patch Changes

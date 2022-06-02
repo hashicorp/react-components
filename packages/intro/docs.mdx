@@ -1,0 +1,86 @@
+---
+componentName: 'Intro'
+---
+
+<LiveComponent>{`<Intro
+  eyebrow="Volutpat enim fusce tempor"
+  heading="Sit et bibendum adipiscing non mi tempor neque"
+  description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer. Mattis quisque porta vel euismod velit id. Arcu bibendum neque adipiscing et cras facilisi."
+  actions={{
+    ctas: [
+      {
+        title: 'View tutorials',
+        url: '/tutorials',
+        variant: 'primary'
+      },
+      {
+        title: 'View documentation',
+        url: '/docs',
+        variant: 'tertiary-neutral'
+      }
+    ]
+  }}
+/>`}</LiveComponent>
+
+## Examples
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Light theme
+</h3>
+
+<div style={{padding: "24px", border: "1px solid var(--gray-6)"}}>
+
+<Intro
+  eyebrow="Volutpat enim fusce tempor"
+  heading="Sit et bibendum adipiscing non mi tempor neque"
+  description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer. Mattis quisque porta vel euismod velit id. Arcu bibendum neque adipiscing et cras facilisi."
+  actions={{
+    ctas: [
+      {
+        title: 'View tutorials',
+        url: '/tutorials',
+        variant: 'primary',
+      },
+      {
+        title: 'View documentation',
+        url: '/docs',
+        variant: 'tertiary-neutral',
+      },
+    ],
+  }}
+/>
+
+</div>
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Dark theme
+</h3>
+
+<div style={{padding: "24px", background: "black"}}>
+
+<Intro
+  appearance="dark"
+  eyebrow="Volutpat enim fusce tempor"
+  heading="Sit et bibendum adipiscing non mi tempor neque"
+  description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer. Mattis quisque porta vel euismod velit id. Arcu bibendum neque adipiscing et cras facilisi."
+  actions={{
+    ctas: [
+      {
+        title: 'View tutorials',
+        url: '/tutorials',
+        variant: 'primary',
+      },
+      {
+        title: 'View documentation',
+        url: '/docs',
+        variant: 'tertiary-neutral',
+      },
+    ],
+  }}
+/>
+
+</div>
+
+## Props
+
+<PropsTable props={componentProps} />
