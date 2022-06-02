@@ -20,10 +20,9 @@
   border-style: solid;
   border-width: var(--border-width);
   color: var(--token-color-foreground-high-contrast);
+  cursor: pointer;
   display: flex;
-  font-family: system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
-    helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 500;
   justify-content: center;
@@ -43,6 +42,10 @@
     right: -4px;
     top: -4px;
     z-index: 1;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 
   &:hover:not(:disabled) {
