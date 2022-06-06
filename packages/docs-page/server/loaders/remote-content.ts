@@ -180,7 +180,7 @@ export default class RemoteContentLoader implements DataLoader {
      *  Note: we expect the provided params to not include
      * a trailing `/index`, as our URLs do not include trailing `/index`.
      *
-     * The reason for this is that otherwise, we end allowing visits to see
+     * The reason for this is that otherwise, we end allowing visitors to see
      * all category pages at both `/some-doc` and `/some-doc/index` URLs.
      * We want the latter URL to 404, so we do NOT want to automatically
      * resolve trailing `/index` from provided URL path parts.
