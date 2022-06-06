@@ -61,7 +61,7 @@ function ClipboardButton({
       onCopyCallback(false)
     }
   }
-  ;[]
+
   // Track the event, set state, and invoke callback
   function handleSuccess() {
     analytics.trackCopy()
