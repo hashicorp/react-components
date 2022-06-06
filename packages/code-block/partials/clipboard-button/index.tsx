@@ -31,23 +31,46 @@ function ClipboardButton({
   async function onClick() {
     // Retrieve the text to copy, using the fn passed by the consumer
     const [getTextError, text] = await getText()
+
     // If text cannot be retrieved, exit early to handle the error
-    if (getTextError) return handleError(getTextError)
+    if (getTextError) {
+      return handleError(getTextError)
+    }
+
     // Otherwise, continue on...
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const isCopied = copyToClipboard(text!)
+
     // If there's an internal failure copying text, exit early to handle the error
-    if (!isCopied) return handleError(`ClipboardButton failed. Text: ${text}.`)
-    // Otherwise, things went well, track the event and set state
-    analytics.trackCopy()
-    setCopiedState(true)
+    if (!isCopied) {
+      return handleError(`ClipboardButton failed. Text: ${text}.`)
+    }
+
+    // Otherwise, things went well
+    return handleSuccess()
   }
 
-  // Handle errors from copying-to-clipboard
+  // Handle errors from copying-to-clipboard and invoke callback
   function handleError(errorMessage) {
     // Enhancement - is there anywhere we can send this error for tracking?
     console.error(errorMessage)
     setCopiedState(false)
+
+    // If an onCopyCallback was provided, call it
+    if (typeof onCopyCallback == 'function') {
+      onCopyCallback(false)
+    }
+  }
+  ;[]
+  // Track the event, set state, and invoke callback
+  function handleSuccess() {
+    analytics.trackCopy()
+    setCopiedState(true)
+
+    // If an onCopyCallback was provided, call it
+    if (typeof onCopyCallback == 'function') {
+      onCopyCallback(true)
+    }
   }
 
   // After displaying feedback on the success state,
@@ -70,11 +93,6 @@ function ClipboardButton({
       document.activeElement !== buttonRef.current
     ) {
       buttonRef.current.focus()
-    }
-
-    // If an onCopyCallback was provided, call it
-    if (typeof onCopyCallback == 'function') {
-      onCopyCallback(copiedState)
     }
 
     // Clear any pending timeouts, which can occur if the
