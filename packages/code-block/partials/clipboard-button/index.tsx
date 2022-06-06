@@ -37,15 +37,17 @@ function ClipboardButton({
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const isCopied = copyToClipboard(text!)
 
+    // If an onCopyCallback was provided, call it
+    if (typeof onCopyCallback == 'function') {
+      onCopyCallback(copiedState)
+    }
+
     // If there's an internal failure copying text, exit early to handle the error
     if (!isCopied) {
       return handleError(`ClipboardButton failed. Text: ${text}.`)
     }
 
     // Otherwise, things went well, track the event, set state, invoke callback
-    if (typeof onCopyCallback == 'function') {
-      onCopyCallback(copiedState)
-    }
     analytics.trackCopy()
     setCopiedState(true)
   }
