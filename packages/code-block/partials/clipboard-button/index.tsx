@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { IconCheckSquare16 } from '@hashicorp/flight-icons/svg-react/check-square-16'
 import { IconDuplicate16 } from '@hashicorp/flight-icons/svg-react/duplicate-16'
@@ -20,8 +20,12 @@ function ClipboardButton({
 }: ClipboardButtonProps) {
   // copiedState can be null (initial), true (success), or false (failure)
   const [copiedState, setCopiedState] = useState<boolean | null>(null)
+
   // we reset copiedState to its initial value using a timeout
   const [resetTimeout, setResetTimeout] = useState<number>()
+
+  // ref needed for re-focusing the button after `copiedState` change
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   // Handle copy button clicks
   async function onClick() {
@@ -50,13 +54,33 @@ function ClipboardButton({
   // reset to the default appearance so that it's clear
   // the "Copy" button can be used again
   useEffect(() => {
+    /**
+     * This button loses focus when re-rendered on `copiedState` change. This
+     * block brings the button back into focus if the current
+     * `document.activeElement` is `document.body` and the button has not
+     * already been re-focused. If the user has activated the button and then
+     * immediately navigated away via keyboard, the check on
+     * `document.activeElement` will prevent the user's focus from being moved
+     * back to the copy button.
+     */
+    if (
+      buttonRef &&
+      buttonRef.current &&
+      document.activeElement === document.body &&
+      document.activeElement !== buttonRef.current
+    ) {
+      buttonRef.current.focus()
+    }
+
     // If an onCopyCallback was provided, call it
     if (typeof onCopyCallback == 'function') {
       onCopyCallback(copiedState)
     }
+
     // Clear any pending timeouts, which can occur if the
     // button is quickly clicked multiple times
     window.clearTimeout(resetTimeout)
+
     // Only run the copiedState reset if it's needed
     const needsReset = copiedState != null
     if (needsReset) {
@@ -65,6 +89,7 @@ function ClipboardButton({
       // Set the timeout to reset the copy success state
       setResetTimeout(window.setTimeout(() => setCopiedState(null), resetDelay))
     }
+
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)
   }, [copiedState, onCopyCallback])
