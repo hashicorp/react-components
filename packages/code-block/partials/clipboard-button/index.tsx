@@ -27,14 +27,25 @@ function ClipboardButton({
   async function onClick() {
     // Retrieve the text to copy, using the fn passed by the consumer
     const [getTextError, text] = await getText()
+
     // If text cannot be retrieved, exit early to handle the error
-    if (getTextError) return handleError(getTextError)
+    if (getTextError) {
+      return handleError(getTextError)
+    }
+
     // Otherwise, continue on...
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const isCopied = copyToClipboard(text!)
+
     // If there's an internal failure copying text, exit early to handle the error
-    if (!isCopied) return handleError(`ClipboardButton failed. Text: ${text}.`)
-    // Otherwise, things went well, track the event and set state
+    if (!isCopied) {
+      return handleError(`ClipboardButton failed. Text: ${text}.`)
+    }
+
+    // Otherwise, things went well, track the event, set state, invoke callback
+    if (typeof onCopyCallback == 'function') {
+      onCopyCallback(copiedState)
+    }
     analytics.trackCopy()
     setCopiedState(true)
   }
@@ -50,10 +61,6 @@ function ClipboardButton({
   // reset to the default appearance so that it's clear
   // the "Copy" button can be used again
   useEffect(() => {
-    // If an onCopyCallback was provided, call it
-    if (typeof onCopyCallback == 'function') {
-      onCopyCallback(copiedState)
-    }
     // Clear any pending timeouts, which can occur if the
     // button is quickly clicked multiple times
     window.clearTimeout(resetTimeout)
@@ -67,7 +74,7 @@ function ClipboardButton({
     }
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)
-  }, [copiedState, onCopyCallback])
+  }, [copiedState])
 
   let buttonText = 'Copy'
   let buttonIcon = <IconDuplicate16 className={s.svg} />
