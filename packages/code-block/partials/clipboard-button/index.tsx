@@ -92,7 +92,7 @@ function ClipboardButton({
 
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)
-  }, [copiedState, onCopyCallback])
+  }, [copiedState])
 
   let buttonText = 'Copy'
   let buttonIcon = <IconDuplicate16 className={s.svg} />
@@ -110,6 +110,7 @@ function ClipboardButton({
       })}
       data-heap-track={heapAttributes.copy}
       onClick={onClick}
+      ref={buttonRef}
       type="button"
     >
       {buttonText}
