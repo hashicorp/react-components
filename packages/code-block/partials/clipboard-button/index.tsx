@@ -75,7 +75,7 @@ function ClipboardButton({
     // Re-focus the copy button
     buttonRef?.current?.focus()
 
-    // If an onCopyCallback was provided
+    // If an onCopyCallback was provided, call it
     if (typeof onCopyCallback == 'function') {
       onCopyCallback(newState)
     }
