@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { IconCheckSquare16 } from '@hashicorp/flight-icons/svg-react/check-square-16'
 import { IconDuplicate16 } from '@hashicorp/flight-icons/svg-react/duplicate-16'
@@ -20,8 +20,12 @@ function ClipboardButton({
 }: ClipboardButtonProps) {
   // copiedState can be null (initial), true (success), or false (failure)
   const [copiedState, setCopiedState] = useState<boolean | null>(null)
+
   // we reset copiedState to its initial value using a timeout
   const [resetTimeout, setResetTimeout] = useState<number>()
+
+  // ref needed for re-focusing the button after `copiedState` change
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   // Handle copy button clicks
   async function onClick() {
@@ -46,26 +50,35 @@ function ClipboardButton({
     return handleSuccess()
   }
 
-  // Handle errors from copying-to-clipboard and invoke callback
+  // Handle errors from copying-to-clipboard and update state
   function handleError(errorMessage) {
     // Enhancement - is there anywhere we can send this error for tracking?
     console.error(errorMessage)
-    setCopiedState(false)
-
-    // If an onCopyCallback was provided, call it
-    if (typeof onCopyCallback == 'function') {
-      onCopyCallback(false)
-    }
+    updateCopiedState(false)
   }
 
-  // Track the event, set state, and invoke callback
+  // Track the event and update state
   function handleSuccess() {
     analytics.trackCopy()
-    setCopiedState(true)
+    updateCopiedState(true)
+  }
+
+  /**
+   * Handle setting state, re-focusing the button, and invoking the copy
+   * callback. This should not be called when `copiedState` is being reset, only
+   * when there is a success or failure of the copy action.
+   */
+  function updateCopiedState(newState: boolean) {
+    // Update the local state variable
+    setCopiedState(newState)
+
+    // Re-focus the copy button because it loses focus when we call `.select()`
+    // on the textarea element in `copyToClipboard`
+    buttonRef?.current?.focus()
 
     // If an onCopyCallback was provided, call it
     if (typeof onCopyCallback == 'function') {
-      onCopyCallback(true)
+      onCopyCallback(newState)
     }
   }
 
@@ -76,6 +89,7 @@ function ClipboardButton({
     // Clear any pending timeouts, which can occur if the
     // button is quickly clicked multiple times
     window.clearTimeout(resetTimeout)
+
     // Only run the copiedState reset if it's needed
     const needsReset = copiedState != null
     if (needsReset) {
@@ -84,6 +98,7 @@ function ClipboardButton({
       // Set the timeout to reset the copy success state
       setResetTimeout(window.setTimeout(() => setCopiedState(null), resetDelay))
     }
+
     // Clean up if the component unmounts with a pending timeout
     return () => clearTimeout(resetTimeout)
   }, [copiedState])
@@ -104,6 +119,7 @@ function ClipboardButton({
       })}
       data-heap-track={heapAttributes.copy}
       onClick={onClick}
+      ref={buttonRef}
       type="button"
     >
       {buttonText}
