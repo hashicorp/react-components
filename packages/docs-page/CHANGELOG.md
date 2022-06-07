@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 16.2.1
+
+### Patch Changes
+
+- [#603](https://github.com/hashicorp/react-components/pull/603) [`ad19f3d5`](https://github.com/hashicorp/react-components/commit/ad19f3d521ffb3e2c886c52705ea2ea5ee475c35) Thanks [@zchsh](https://github.com/zchsh)! - Fixes issue where URLs with trailing index would resolve, rather than 404 as expected.
+
 ## 16.2.0
 
 ### Minor Changes

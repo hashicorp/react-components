@@ -1,5 +1,12 @@
 # @hashicorp/react-text-split-with-code
 
+## 3.4.3
+
+### Patch Changes
+
+- Updated dependencies [[`c171ca8c`](https://github.com/hashicorp/react-components/commit/c171ca8cfc15076332b5ccce2cde5dccff02ac62), [`a22f756f`](https://github.com/hashicorp/react-components/commit/a22f756fb4d202e173b530475857f7b285b390f8)]:
+  - @hashicorp/react-code-block@6.0.0
+
 ## 3.4.2
 
 ### Patch Changes
