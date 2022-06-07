@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "@hashicorp/platform-docs-mdx": "^0.1.4",
-    "@hashicorp/platform-markdown-utils": "0.3.0-canary-202257221321",
+    "@hashicorp/platform-markdown-utils": "0.3.0-canary-202257231259",
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-alert": "^6.0.2",
     "@hashicorp/react-content": "^8.2.2",
