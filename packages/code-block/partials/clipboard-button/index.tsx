@@ -87,6 +87,7 @@ function ClipboardButton({
      * back to the copy button.
      */
     if (
+      (copiedState === true || copiedState === false) &&
       buttonRef &&
       buttonRef.current &&
       document.activeElement === document.body &&
