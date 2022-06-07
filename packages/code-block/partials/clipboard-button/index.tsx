@@ -72,7 +72,8 @@ function ClipboardButton({
     // Update the local state variable
     setCopiedState(newState)
 
-    // Re-focus the copy button
+    // Re-focus the copy button because it loses focus when we call `.select()`
+    // on the textarea element in `copyToClipboard`
     buttonRef?.current?.focus()
 
     // If an onCopyCallback was provided, call it
