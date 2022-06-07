@@ -177,7 +177,7 @@ export default class RemoteContentLoader implements DataLoader {
     }
 
     /**
-     *  Note: we expect the provided params to not include
+     * Note: we expect the provided params to not include
      * a trailing `/index`, as our URLs do not include trailing `/index`.
      *
      * The reason for this is that otherwise, we end allowing visitors to see
