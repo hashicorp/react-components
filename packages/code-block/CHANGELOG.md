@@ -1,5 +1,15 @@
 # @hashicorp/react-code-block
 
+## 6.0.0
+
+### Major Changes
+
+- [#604](https://github.com/hashicorp/react-components/pull/604) [`a22f756f`](https://github.com/hashicorp/react-components/commit/a22f756fb4d202e173b530475857f7b285b390f8) Thanks [@ashleemboyer](https://github.com/ashleemboyer)! - Moves the invocation of `onCopyCallback` to after the copy button has been clicked, and only invokes the callback if `copiedState` is `true` or `false`.
+
+### Patch Changes
+
+- [#605](https://github.com/hashicorp/react-components/pull/605) [`c171ca8c`](https://github.com/hashicorp/react-components/commit/c171ca8cfc15076332b5ccce2cde5dccff02ac62) Thanks [@ashleemboyer](https://github.com/ashleemboyer)! - Fixing an issue where the copy button totally lost focus on `copiedState` change.
+
 ## 5.2.0
 
 ### Minor Changes
