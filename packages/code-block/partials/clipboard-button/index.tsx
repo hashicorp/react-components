@@ -50,26 +50,34 @@ function ClipboardButton({
     return handleSuccess()
   }
 
-  // Handle errors from copying-to-clipboard and invoke callback
+  // Handle errors from copying-to-clipboard and update state
   function handleError(errorMessage) {
     // Enhancement - is there anywhere we can send this error for tracking?
     console.error(errorMessage)
-    setCopiedState(false)
-
-    // If an onCopyCallback was provided, call it
-    if (typeof onCopyCallback == 'function') {
-      onCopyCallback(false)
-    }
+    updateCopiedState(false)
   }
 
-  // Track the event, set state, and invoke callback
+  // Track the event and update state
   function handleSuccess() {
     analytics.trackCopy()
-    setCopiedState(true)
+    updateCopiedState(true)
+  }
 
-    // If an onCopyCallback was provided, call it
+  /**
+   * Handle setting state, re-focusing the button, and invoking the copy
+   * callback. This should not be called when `copiedState` is being reset, only
+   * when there is a success or failure of the copy action.
+   */
+  function updateCopiedState(newState: boolean) {
+    // Update the local state variable
+    setCopiedState(newState)
+
+    // Re-focus the copy button
+    buttonRef?.current?.focus()
+
+    // If an onCopyCallback was provided
     if (typeof onCopyCallback == 'function') {
-      onCopyCallback(true)
+      onCopyCallback(newState)
     }
   }
 
@@ -77,25 +85,6 @@ function ClipboardButton({
   // reset to the default appearance so that it's clear
   // the "Copy" button can be used again
   useEffect(() => {
-    /**
-     * This button loses focus when re-rendered on `copiedState` change. This
-     * block brings the button back into focus if the current
-     * `document.activeElement` is `document.body` and the button has not
-     * already been re-focused. If the user has activated the button and then
-     * immediately navigated away via keyboard, the check on
-     * `document.activeElement` will prevent the user's focus from being moved
-     * back to the copy button.
-     */
-    if (
-      (copiedState === true || copiedState === false) &&
-      buttonRef &&
-      buttonRef.current &&
-      document.activeElement === document.body &&
-      document.activeElement !== buttonRef.current
-    ) {
-      buttonRef.current.focus()
-    }
-
     // Clear any pending timeouts, which can occur if the
     // button is quickly clicked multiple times
     window.clearTimeout(resetTimeout)
