@@ -162,10 +162,6 @@ export default class RemoteContentLoader implements DataLoader {
 
     const versionMetadataList: VersionMetadataItem[] =
       await cachedFetchVersionMetadataList(this.opts.product)
-    // remove trailing index to ensure we fetch the right document from the DB
-    const pathParamsNoIndex = paramsNoVersion.filter(
-      (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
-    )
 
     const latestVersion =
       this.opts.latestVersionRef ??
@@ -180,11 +176,20 @@ export default class RemoteContentLoader implements DataLoader {
           : normalizeVersion(versionFromPath)
     }
 
+    /**
+     * Note: we expect the provided params to not include
+     * a trailing `/index`, as our URLs do not include trailing `/index`.
+     *
+     * The reason for this is that otherwise, we end allowing visitors to see
+     * all category pages at both `/some-doc` and `/some-doc/index` URLs.
+     * We want the latter URL to 404, so we do NOT want to automatically
+     * resolve trailing `/index` from provided URL path parts.
+     */
     const fullPath = [
       'doc',
       versionToFetch,
       this.opts.basePath,
-      ...pathParamsNoIndex,
+      ...paramsNoVersion,
     ].join('/')
 
     const documentPromise = fetchDocument(this.opts.product, fullPath)
