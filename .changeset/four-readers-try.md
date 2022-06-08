@@ -15,7 +15,7 @@ import {
   anchorLinks,
 } from '@hashicorp/remark-plugins'
 // Code highlighting
-import highlight from '@mapbox/rehype-prism'
+import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSurfaceCodeNewlines from '@hashicorp/platform-code-highlighting/rehype-surface-code-newlines'
 // To enable math features, add remarkMath & rehypeKatex
 // import remarkMath from 'remark-math'
@@ -36,7 +36,7 @@ const remarkPlugins = [
 ]
 
 const rehypePlugins = [
-  [highlight, { ignoreMissing: true }],
+  [rehypePrism, { ignoreMissing: true }],
   rehypeSurfaceCodeNewlines,
   /* ... option to add more plugins here ... */
 ]
