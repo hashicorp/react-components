@@ -5,7 +5,7 @@ import Notification, {
   NotificationWithResource,
   NotificationWithThumbnail,
   NotificationWithActions,
-} from '.'
+} from './components'
 
 const defaultProps = {
   description:
