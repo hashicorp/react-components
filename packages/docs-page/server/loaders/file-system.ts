@@ -19,7 +19,9 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   mainBranch?: string // = 'main',
   remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
   scope?: Record<string, $TSFixMe>
-  localPartialsDir?: string
+  // TODO: consumer should configure includeMarkdown plugin, rather
+  // TODO: than passing localPartialsDir
+  // localPartialsDir?: string
   githubFileUrl?: (path: string) => string
 }
 
@@ -61,7 +63,8 @@ export default class FileSystemLoader implements DataLoader {
       renderPageMdx(mdx, {
         remarkPlugins,
         scope: this.opts.scope,
-        localPartialsDir: this.opts.localPartialsDir,
+        // TODO: ensure this gets configured in consumer's remark plugins setup
+        // localPartialsDir: this.opts.localPartialsDir,
       })
     // Build the currentPath from page parameters
     const currentPath =
