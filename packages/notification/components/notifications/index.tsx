@@ -26,7 +26,7 @@ const Dialog = ({ children }) => {
   }, [])
 
   return (
-    <dialog ref={dialogRef} style={{ all: 'unset' }}>
+    <dialog ref={dialogRef} aria-modal={false} style={{ all: 'unset' }}>
       {children}
     </dialog>
   )
