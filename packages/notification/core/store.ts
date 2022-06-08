@@ -180,7 +180,7 @@ export const useStore = () => {
 
   const mergedNotifications = state.notifications.map((n) => ({
     ...n,
-    duration: n.duration || Infinity,
+    duration: n.duration || 6000,
   }))
 
   return {
