@@ -4,6 +4,26 @@ import { renderNotification } from '../../core/utils'
 import { useNotifications } from '../../core/use-notifications'
 import s from './style.module.css'
 
+const Dialog = ({ children }) => {
+  const dialogRef = React.useRef(null)
+
+  React.useEffect(() => {
+    const dialog = dialogRef.current
+    // Opens the dialog on mount
+    dialog.show()
+    // Closes the dialog on unmount (if not already closed)
+    return () => {
+      dialog.close()
+    }
+  }, [dialogRef.current])
+
+  return (
+    <dialog ref={dialogRef} style={{ all: 'unset' }}>
+      {children}
+    </dialog>
+  )
+}
+
 export const Notifications = () => {
   const { notifications, handlers } = useNotifications()
   return (
@@ -25,10 +45,14 @@ export const Notifications = () => {
                 scale: 0.75,
                 transition: { duration: 0.2 },
               }}
-              role="status"
-              aria-live="polite"
             >
-              {renderNotification(n.message, n)}
+              {n.type === 'toast' ? (
+                <div role="status" aria-live="polite">
+                  {renderNotification(n.message, n)}
+                </div>
+              ) : (
+                <Dialog>{renderNotification(n.message, n)}</Dialog>
+              )}
             </motion.div>
           )
         })}
