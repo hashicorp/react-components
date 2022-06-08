@@ -1,4 +1,5 @@
 import type { ParsedUrlQuery } from 'querystring'
+import { Pluggable } from 'unified'
 import moize, { Options } from 'moize'
 import semver from 'semver'
 import { GetStaticPropsContext } from 'next'
@@ -25,7 +26,8 @@ interface RemoteContentLoaderOpts extends DataLoaderOpts {
    */
   navDataPrefix?: string
   enabledVersionedDocs?: boolean
-  remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
+  remarkPlugins?: ((params?: ParsedUrlQuery) => Pluggable[]) | Pluggable[]
+  rehypePlugins?: Pluggable[]
   mainBranch?: string // = 'main',
   scope?: Record<string, $TSFixMe>
   /**
@@ -102,6 +104,7 @@ export default class RemoteContentLoader implements DataLoader {
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
+    if (!this.opts.rehypePlugins) this.opts.rehypePlugins = []
     if (!this.opts.navDataPrefix) this.opts.navDataPrefix = this.opts.basePath
   }
 
@@ -152,6 +155,7 @@ export default class RemoteContentLoader implements DataLoader {
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
         remarkPlugins,
+        rehypePlugins: this.opts.rehypePlugins,
         scope: this.opts.scope,
       })
 
