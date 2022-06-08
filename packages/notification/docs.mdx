@@ -4,7 +4,7 @@ componentName: 'Notification'
 
 <LiveComponent collapsed>{`<>
 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32}}>
-<button onClick={() => notification((n) => {
+<button onClick={() => notification.dialog((n) => {
   return (
     <Notification
       description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."

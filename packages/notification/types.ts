@@ -6,6 +6,7 @@ export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue
 export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>
 
 export interface Notification {
+  type: 'toast' | 'dialog'
   createdAt: number
   id: string
   message: ValueOrFunction<Renderable, Notification>
