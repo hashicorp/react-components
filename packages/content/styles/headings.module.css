@@ -1,8 +1,4 @@
 .headings {
-  /* Jump link metrics */
-  --subnav-height: 64px;
-  --scroll-offset: calc(var(--subnav-height) + 24px);
-
   /* Set font basics */
   & h1,
   & h2,
@@ -14,13 +10,6 @@
     font-weight: var(--font-weight-bold);
     font-kerning: normal;
     color: var(--black);
-
-    /* Offset scroll for jump links */
-    scroll-margin-top: var(--scroll-offset);
-
-    & a:global(.__target-h) {
-      scroll-margin-top: var(--scroll-offset);
-    }
   }
 
   /* Headings */

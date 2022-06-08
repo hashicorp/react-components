@@ -2,4 +2,42 @@
 '@hashicorp/react-docs-page': major
 ---
 
-Bumps to pull in anchor-links plugin breaking change to how id works. Anchor link target ids are now assigned directly to the heading element, rather than to an extra link element.
+BREAKING CHANGE: no longer provides default remark and rehype plugins.
+
+Consumers should pass all `remarkPlugins` and `rehypePlugins` through loader options. To match previous behaviour, consumers should import our `@hashicorp/remark-plugins` as well as code highlighting plugins.
+
+```ts
+// Shared remark plugins
+import {
+  includeMarkdown,
+  paragraphCustomAlerts,
+  typography,
+  anchorLinks,
+} from '@hashicorp/remark-plugins'
+// Code highlighting
+import highlight from '@mapbox/rehype-prism'
+import rehypeSurfaceCodeNewlines from '@hashicorp/platform-code-highlighting/rehype-surface-code-newlines'
+// To enable math features, add remarkMath & rehypeKatex
+// import remarkMath from 'remark-math'
+// import rehypeKatex from 'rehype-katex'
+
+const remarkPlugins = [
+  [
+    includeMarkdown,
+    {
+      resolveMdx: true,
+      resolveFrom: path.join(process.cwd(), localPartialsDir),
+    },
+  ],
+  paragraphCustomAlerts,
+  typography,
+  anchorLinks,
+  /* ... option to add more plugins here ... */
+]
+
+const rehypePlugins = [
+  [highlight, { ignoreMissing: true }],
+  rehypeSurfaceCodeNewlines,
+  /* ... option to add more plugins here ... */
+]
+```
