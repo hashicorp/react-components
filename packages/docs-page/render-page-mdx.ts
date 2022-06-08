@@ -1,15 +1,12 @@
-import path from 'path'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
-import markdownDefaults from '@hashicorp/platform-markdown-utils'
-import type { ContentPluginsOptions } from '@hashicorp/platform-markdown-utils'
+import { Pluggable } from 'unified'
 import grayMatter from 'gray-matter'
-
 interface Options {
   mdxContentHook?: (content: string) => string
-  remarkPlugins?: ContentPluginsOptions['addRemarkPlugins']
+  remarkPlugins?: Pluggable[]
+  rehypePlugins?: Pluggable[]
   scope?: Record<string, unknown>
-  localPartialsDir?: string
 }
 
 async function renderPageMdx(
@@ -17,8 +14,8 @@ async function renderPageMdx(
   {
     mdxContentHook = (c) => c,
     remarkPlugins = [],
+    rehypePlugins = [],
     scope,
-    localPartialsDir = 'content/partials',
   }: Options = {}
 ): Promise<{
   mdxSource: MDXRemoteSerializeResult
@@ -27,10 +24,10 @@ async function renderPageMdx(
   const { data: frontMatter, content: rawContent } = grayMatter(mdxFileString)
   const content = mdxContentHook(rawContent)
   const mdxSource = await serialize(content, {
-    mdxOptions: markdownDefaults({
-      resolveIncludes: path.join(process.cwd(), localPartialsDir),
-      addRemarkPlugins: remarkPlugins,
-    }),
+    mdxOptions: {
+      remarkPlugins,
+      rehypePlugins,
+    },
     scope,
   })
   return { mdxSource, frontMatter }
