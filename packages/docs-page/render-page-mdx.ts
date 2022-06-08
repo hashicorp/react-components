@@ -12,7 +12,7 @@ import grayMatter from 'gray-matter'
 
 interface Options {
   mdxContentHook?: (content: string) => string
-  remarkPlugins?: ContentPluginsOptions['addRemarkPlugins']
+  remarkPlugins?: ContentPluginsOptions['remarkPlugins']
   scope?: Record<string, unknown>
 }
 
