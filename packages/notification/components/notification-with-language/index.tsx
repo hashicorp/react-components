@@ -2,7 +2,7 @@ import Image from 'next/image'
 import type {
   NotificationWithLanguageProps,
   NotificationLanguages,
-} from '../types'
+} from '../../types'
 import Notification from '../notification'
 import DeFlag from './flags/de.svg'
 import EnFlag from './flags/en.svg'
