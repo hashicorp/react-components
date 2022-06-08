@@ -98,6 +98,10 @@ which is rendered into docs-sidenav */
 }
 
 .inner {
+  /* Jump link metrics */
+  --subnav-height: 64px;
+  --scroll-offset: calc(var(--subnav-height) + 24px);
+
   margin: 32px 0;
   width: 100%;
   position: relative;
@@ -117,6 +121,26 @@ which is rendered into docs-sidenav */
 
   & :global(.g-section-header) {
     margin-bottom: 100px;
+  }
+
+  /* Offset scroll for jump link targets on headings */
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    scroll-margin-top: var(--scroll-offset);
+
+    /* Note: with multiple aliases, additional .__target-h elements are used */
+    & :global(.__target-h) {
+      scroll-margin-top: var(--scroll-offset);
+    }
+  }
+
+  /* Offset scroll for inline-code list-item anchorLinks plugin cases */
+  & :global(.__target-lic) {
+    scroll-margin-top: var(--scroll-offset);
   }
 }
 
