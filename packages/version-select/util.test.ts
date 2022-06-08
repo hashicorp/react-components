@@ -16,10 +16,10 @@ describe('getVersionFromPath', () => {
 
     {
       const path =
-        'https://waypointproject.io/docs/v9000.9000.x/waypoint-hcl/variables/deploy'
+        'https://terraform.io/enterprise/v202205-1/reference-architecture'
 
       const version = getVersionFromPath(path)
-      expect(version).toEqual('v9000.9000.x')
+      expect(version).toEqual('v202205-1')
     }
 
     {
@@ -67,10 +67,13 @@ describe('removeVersionFromPath', () => {
     }
 
     {
-      const path = '/v9.0.1/'
+      const path =
+        'https://terraform.io/enterprise/v202205-1/reference-architecture'
 
       const cleanedPath = removeVersionFromPath(path)
-      expect(cleanedPath).toEqual('/')
+      expect(cleanedPath).toEqual(
+        'https://terraform.io/enterprise/reference-architecture'
+      )
     }
 
     {
