@@ -123,7 +123,7 @@ which is rendered into docs-sidenav */
     margin-bottom: 100px;
   }
 
-  /* Offset scroll for jump links */
+  /* Offset scroll for jump link targets on headings */
   & h1,
   & h2,
   & h3,
@@ -131,10 +131,13 @@ which is rendered into docs-sidenav */
   & h5,
   & h6 {
     scroll-margin-top: var(--scroll-offset);
+  }
 
-    & a:global(.__target-h) {
-      scroll-margin-top: var(--scroll-offset);
-    }
+  /* Offset scroll for jump link elements,
+     which show up in headings when multiple aliases are used,
+     and also show up in our inline-code list-item anchorLinks plugin cases */
+  & a:global(.__target-h) {
+    scroll-margin-top: var(--scroll-offset);
   }
 }
 
