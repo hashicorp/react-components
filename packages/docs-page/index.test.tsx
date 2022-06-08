@@ -7,7 +7,7 @@ import DocsPage from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 import renderPageMdx from './render-page-mdx'
-
+import { anchorLinks } from '@hashicorp/remark-plugins'
 import { mocked } from 'ts-jest/utils'
 import { useRouter, Router } from 'next/router'
 
@@ -23,9 +23,9 @@ jest.mock('next/router')
 jest.mock('next/head')
 
 describe('<DocsPage />', () => {
-  const routerMock = ({
+  const routerMock = {
     asPath: '/docs/overview',
-  } as unknown) as Router
+  } as unknown as Router
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -109,7 +109,8 @@ describe('<DocsPage />', () => {
 
   it('initializes jump to section UI if there is an h1 and two or more h2s', async () => {
     const { mdxSource, frontMatter } = await renderPageMdx(
-      "---\n\npage_title: Test Title\ndescription: Test description\n---\n\n# Heading One\n\nAn intro paragraph.\n\n## Heading Two\n\nHere's a paragraph of content.\n\n## Here a second heading\n\nAnd another paragraph."
+      "---\n\npage_title: Test Title\ndescription: Test description\n---\n\n# Heading One\n\nAn intro paragraph.\n\n## Heading Two\n\nHere's a paragraph of content.\n\n## Here a second heading\n\nAnd another paragraph.",
+      { remarkPlugins: [anchorLinks] }
     )
     render(
       <DocsPage
@@ -143,9 +144,9 @@ describe('<DocsPage />', () => {
 
     it('should allow crawlers to index latest pages', () => {
       useRouterMock.mockImplementation(() => {
-        return ({
+        return {
           asPath: '/docs',
-        } as unknown) as Router
+        } as unknown as Router
       })
 
       render(
@@ -166,9 +167,9 @@ describe('<DocsPage />', () => {
 
     it('should tell crawlers to not index versioned pages', () => {
       useRouterMock.mockImplementation(() => {
-        return ({
+        return {
           asPath: '/docs/v0.5.1',
-        } as unknown) as Router
+        } as unknown as Router
       })
 
       render(
@@ -188,9 +189,9 @@ describe('<DocsPage />', () => {
     describe('the VersionAlert', () => {
       it('should not show if there is no version in the path', () => {
         useRouterMock.mockImplementation(() => {
-          return ({
+          return {
             asPath: '/docs/intro',
-          } as unknown) as Router
+          } as unknown as Router
         })
 
         const { queryByTestId } = render(
@@ -208,9 +209,9 @@ describe('<DocsPage />', () => {
 
       it('should not show if the latest version is in the path', () => {
         useRouterMock.mockImplementation(() => {
-          return ({
+          return {
             asPath: '/docs/v0.6.x/intro',
-          } as unknown) as Router
+          } as unknown as Router
         })
 
         const { queryByTestId } = render(
@@ -229,9 +230,9 @@ describe('<DocsPage />', () => {
 
       it('should show if an older version is in the path', () => {
         useRouterMock.mockImplementation(() => {
-          return ({
+          return {
             asPath: '/docs/v0.5.x/intro',
-          } as unknown) as Router
+          } as unknown as Router
         })
 
         const { queryByTestId } = render(
