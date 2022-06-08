@@ -4,18 +4,26 @@ import { renderNotification } from '../../core/utils'
 import { useNotifications } from '../../core/use-notifications'
 import s from './style.module.css'
 
+interface HTMLDialogElement extends HTMLElement {
+  open: boolean
+  returnValue: string
+  close(returnValue?: string): void
+  show(): void
+  showModal(): void
+}
+
 const Dialog = ({ children }) => {
-  const dialogRef = React.useRef(null)
+  const dialogRef = React.useRef<HTMLDialogElement>(null)
 
   React.useEffect(() => {
     const dialog = dialogRef.current
     // Opens the dialog on mount
-    dialog.show()
+    dialog?.show()
     // Closes the dialog on unmount (if not already closed)
     return () => {
-      dialog.close()
+      dialog?.close()
     }
-  }, [dialogRef.current])
+  }, [])
 
   return (
     <dialog ref={dialogRef} style={{ all: 'unset' }}>
