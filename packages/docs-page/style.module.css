@@ -131,12 +131,15 @@ which is rendered into docs-sidenav */
   & h5,
   & h6 {
     scroll-margin-top: var(--scroll-offset);
+
+    /* Note: with multiple aliases, additional .__target-h elements are used */
+    & :global(.__target-h) {
+      scroll-margin-top: var(--scroll-offset);
+    }
   }
 
-  /* Offset scroll for jump link elements,
-     which show up in headings when multiple aliases are used,
-     and also show up in our inline-code list-item anchorLinks plugin cases */
-  & a:global(.__target-h) {
+  /* Offset scroll for inline-code list-item anchorLinks plugin cases */
+  & :global(.__target-lic) {
     scroll-margin-top: var(--scroll-offset);
   }
 }
