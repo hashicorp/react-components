@@ -1,5 +1,11 @@
 # @hashicorp/react-version-select
 
+## 0.4.0
+
+### Minor Changes
+
+- [#608](https://github.com/hashicorp/react-components/pull/608) [`c3a29de1`](https://github.com/hashicorp/react-components/commit/c3a29de1668098ff74c269073343631a378dcf1c) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Update version-select to handle TFE versions
+
 ## 0.3.0
 
 ### Minor Changes

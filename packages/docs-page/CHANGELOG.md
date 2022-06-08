@@ -1,5 +1,12 @@
 # @hashicorp/react-docs-page
 
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`c3a29de1`](https://github.com/hashicorp/react-components/commit/c3a29de1668098ff74c269073343631a378dcf1c)]:
+  - @hashicorp/react-version-select@0.4.0
+
 ## 17.0.0
 
 ### Major Changes
