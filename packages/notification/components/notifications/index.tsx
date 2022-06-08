@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { resolveValue } from '../../types'
+import { renderNotification } from '../../core/utils'
 import { useNotifications } from '../../core/use-notifications'
 import s from './style.module.css'
 
@@ -28,7 +28,7 @@ export const Notifications = () => {
               role="status"
               aria-live="polite"
             >
-              {resolveValue(n.message, n)}
+              {renderNotification(n.message, n)}
             </motion.div>
           )
         })}
