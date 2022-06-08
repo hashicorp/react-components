@@ -1,6 +1,7 @@
 import type { ParsedUrlQuery } from 'querystring'
 import path from 'path'
 import fs from 'fs'
+import { Pluggable } from 'unified'
 import { GetStaticPropsContext } from 'next'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
 import { resolveNavData } from '../resolve-nav-data'
@@ -17,11 +18,9 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   navDataFile: string
   localContentDir: string
   mainBranch?: string // = 'main',
-  remarkPlugins?: ((params?: ParsedUrlQuery) => $TSFixMe[]) | $TSFixMe[]
+  remarkPlugins?: ((params?: ParsedUrlQuery) => Pluggable[]) | Pluggable[]
+  rehypePlugins?: Pluggable[]
   scope?: Record<string, $TSFixMe>
-  // TODO: consumer should configure includeMarkdown plugin, rather
-  // TODO: than passing localPartialsDir
-  // localPartialsDir?: string
   githubFileUrl?: (path: string) => string
 }
 
@@ -31,6 +30,7 @@ export default class FileSystemLoader implements DataLoader {
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
+    if (!this.opts.rehypePlugins) this.opts.rehypePlugins = []
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -62,9 +62,8 @@ export default class FileSystemLoader implements DataLoader {
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
         remarkPlugins,
+        rehypePlugins: this.opts.rehypePlugins,
         scope: this.opts.scope,
-        // TODO: ensure this gets configured in consumer's remark plugins setup
-        // localPartialsDir: this.opts.localPartialsDir,
       })
     // Build the currentPath from page parameters
     const currentPath =
