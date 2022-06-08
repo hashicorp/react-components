@@ -7,13 +7,12 @@ export default function temporary_injectJumpToSection(node) {
   // Build our array of headline objects
   const headlines = Array.from(root.querySelectorAll('h2')).reduce(
     (acc, h2) => {
-      // Query for headlines containing our jump-to-section targets that are
-      // inserted by Remark
-      const target = h2.querySelector('.__target-h')
-      if (target) {
-        // The given H2 has a JTS target, so add it to our accumulator
+      // Query for headlines with "id" attributes, which are expected
+      // to be added via remark anchorLinks
+      const headingId = h2.getAttribute('id')
+      if (headingId) {
         acc.push({
-          id: target.id,
+          id: headingId,
           text: h2.textContent.slice(1), // slice removes permalink » character
         })
       }
