@@ -1,11 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import Notification, {
+import {
+  Notification,
   NotificationWithProduct,
   NotificationWithLanguage,
   NotificationWithResource,
   NotificationWithThumbnail,
   NotificationWithActions,
-} from './components'
+} from '.'
 
 const defaultProps = {
   description:
