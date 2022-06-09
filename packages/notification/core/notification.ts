@@ -14,34 +14,24 @@ type NotificationHandler = (
   options?: NotificationOptions
 ) => string
 
-const createNotification = (
-  message: Message,
-  type = 'toast',
-  options
-): Notification => ({
+const createNotification = (message: Message, options): Notification => ({
   createdAt: Date.now(),
   visible: true,
-  type,
   message,
   pauseDuration: 0,
   ...options,
   id: options?.id || `notification-${genId()}`,
 })
 
-const createHandler =
-  (type?: 'toast' | 'dialog'): NotificationHandler =>
-  (message, options) => {
-    const notification = createNotification(message, type, options)
-    dispatch({ type: ActionType.UPSERT_NOTIFICATION, notification })
-    return notification.id
-  }
-
-const notification = (message: Message, options?: NotificationOptions) => {
-  createHandler('toast')(message, options)
+const createHandler = (): NotificationHandler => (message, options) => {
+  const notification = createNotification(message, options)
+  dispatch({ type: ActionType.UPSERT_NOTIFICATION, notification })
+  return notification.id
 }
 
-notification.toast = createHandler('toast')
-notification.dialog = createHandler('dialog')
+const notification = (message: Message, options?: NotificationOptions) => {
+  createHandler()(message, options)
+}
 
 notification.dismiss = (notificationId?: string) => {
   dispatch({
