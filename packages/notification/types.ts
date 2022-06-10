@@ -1,5 +1,21 @@
 import type { Products } from '@hashicorp/platform-product-meta'
 
+export type Renderable = JSX.Element | string | null
+
+export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue
+export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>
+
+export interface Notification {
+  createdAt: number
+  id: string
+  message: ValueOrFunction<Renderable, Notification>
+  duration?: number
+  pauseDuration: number
+  visible: boolean
+}
+
+export type NotificationOptions = Partial<Pick<Notification, 'id' | 'duration'>>
+
 export type NotificationLanguages = 'en' | 'de' | 'fr' | 'jp' | 'kr'
 export type NotificationProducts = Exclude<Products, 'hashicorp'>
 export type NotificationTypes = 'podcast' | 'webinar' | 'whitepaper'
