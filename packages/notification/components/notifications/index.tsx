@@ -15,7 +15,6 @@ export const Notifications = () => {
     >
       <AnimatePresence initial={false}>
         {notifications.map((n, i) => {
-          console.log(n)
           return (
             <motion.div
               key={n.id}
