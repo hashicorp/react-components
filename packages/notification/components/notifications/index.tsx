@@ -12,6 +12,7 @@ export const Notifications = () => {
       className={s.root}
       onMouseEnter={handlers.startPause}
       onMouseLeave={handlers.endPause}
+      data-testid="notifications"
     >
       <AnimatePresence initial={false}>
         {notifications.map((n, i) => {
