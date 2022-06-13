@@ -1,5 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import Notification, {
+import {
+  Notifications,
+  Notification,
   NotificationWithProduct,
   NotificationWithLanguage,
   NotificationWithResource,
@@ -16,6 +18,13 @@ const defaultProps = {
   },
   onDismiss: () => {},
 }
+
+describe('<Notifications />', () => {
+  it('should render notification container', () => {
+    render(<Notifications />)
+    screen.getByTestId('notifications')
+  })
+})
 
 describe('<Notification />', () => {
   it('should render with defaults', () => {
