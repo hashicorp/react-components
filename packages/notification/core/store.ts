@@ -104,8 +104,8 @@ export const reducer = (state: State, action: Action): State => {
       if (notificationId) {
         addToRemoveQueue(notificationId)
       } else {
-        state.notifications.forEach((toast) => {
-          addToRemoveQueue(toast.id)
+        state.notifications.forEach((n) => {
+          addToRemoveQueue(n.id)
         })
       }
 
