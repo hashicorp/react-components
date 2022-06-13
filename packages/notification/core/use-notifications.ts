@@ -11,21 +11,21 @@ export const useNotifications = () => {
     }
 
     const now = Date.now()
-    const timeouts = notifications.map((t) => {
-      if (t.duration === Infinity) {
+    const timeouts = notifications.map((n) => {
+      if (n.duration === Infinity) {
         return
       }
 
       const durationLeft =
-        (t.duration || 0) + t.pauseDuration - (now - t.createdAt)
+        (n.duration || 0) + n.pauseDuration - (now - n.createdAt)
 
       if (durationLeft < 0) {
-        if (t.visible) {
-          notification.dismiss(t.id)
+        if (n.visible) {
+          notification.dismiss(n.id)
         }
         return
       }
-      return setTimeout(() => notification.dismiss(t.id), durationLeft)
+      return setTimeout(() => notification.dismiss(n.id), durationLeft)
     })
 
     return () => {
