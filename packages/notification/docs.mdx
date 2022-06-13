@@ -2,18 +2,91 @@
 componentName: 'Notification'
 ---
 
-Notification component to be used within our [Toaster](/components/toast) component.
-
-<LiveComponent>{`
-<Notification
-  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
-  cta={{
-    title: 'Standalone link',
-    url: '/'
-  }}
-  onDismiss={() => {}}
-/>
-`}</LiveComponent>
+<LiveComponent collapsed>{`<>
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32}}>
+<button onClick={() => notification((n) => {
+  return (
+    <Notification
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithLanguage
+      language="jp"
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with language</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithProduct
+      product="waypoint"
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with product</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithResource
+      type="webinar"
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with resource</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithThumbnail
+      thumbnail={{
+        src: 'https://www.datocms-assets.com/2885/1651495958-infrastructure.png',
+        alt: 'Notfication thumbnail'
+      }}
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with thumbnail</button>
+<button onClick={() => notification((n) => {
+  return (
+    <Notification
+      appearance='dark'
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with dark appearance</button>
+</div>
+<Notifications />
+</>`}</LiveComponent>
 
 <PropsTable props={componentProps} />
 
