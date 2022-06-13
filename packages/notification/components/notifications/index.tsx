@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { renderNotification } from '../../core/utils'
 import { useNotifications } from '../../core/use-notifications'
 import s from './style.module.css'
 
 export const Notifications = () => {
   const { notifications, handlers } = useNotifications()
+  const reducedMotion = useReducedMotion()
   return (
     <div
       className={s.root}
@@ -14,15 +15,16 @@ export const Notifications = () => {
     >
       <AnimatePresence initial={false}>
         {notifications.map((n, i) => {
+          console.log(n)
           return (
             <motion.div
               key={n.id}
-              layout
-              initial={{ opacity: 0, y: 50 }}
+              layout={reducedMotion ? false : 'position'}
+              initial={{ opacity: 0, y: reducedMotion ? 0 : 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{
                 opacity: 0,
-                scale: 0.75,
+                scale: reducedMotion ? 1 : 0.75,
                 transition: { duration: 0.2 },
               }}
             >
