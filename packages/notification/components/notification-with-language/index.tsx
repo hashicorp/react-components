@@ -9,6 +9,8 @@ import EnFlag from './flags/en.svg'
 import FrFlag from './flags/fr.svg'
 import JpFlag from './flags/jp.svg'
 import KrFlag from './flags/kr.svg'
+import PtFlag from './flags/pt.svg'
+import EsFlag from './flags/es.svg'
 import s from '../style.module.css'
 
 const LANGUAGE_MAP: { [key in NotificationLanguages]: string } = {
@@ -17,6 +19,8 @@ const LANGUAGE_MAP: { [key in NotificationLanguages]: string } = {
   fr: FrFlag,
   jp: JpFlag,
   kr: KrFlag,
+  pt: PtFlag,
+  es: EsFlag,
 }
 
 export default function NotificationWithLanguage(

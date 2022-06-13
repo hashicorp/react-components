@@ -16,7 +16,14 @@ export interface Notification {
 
 export type NotificationOptions = Partial<Pick<Notification, 'id' | 'duration'>>
 
-export type NotificationLanguages = 'en' | 'de' | 'fr' | 'jp' | 'kr'
+export type NotificationLanguages =
+  | 'en'
+  | 'de'
+  | 'fr'
+  | 'jp'
+  | 'kr'
+  | 'pt'
+  | 'es'
 export type NotificationProducts = Exclude<Products, 'hashicorp'>
 export type NotificationTypes = 'podcast' | 'webinar' | 'whitepaper'
 
