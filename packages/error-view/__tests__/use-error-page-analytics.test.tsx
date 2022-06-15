@@ -16,9 +16,8 @@ describe('useErrorPageAnalytics', () => {
     // Render and assert
     render(<HookTestComponent statusCode={404} />)
     await waitFor(() => expect(window.analytics.track).toHaveBeenCalledTimes(1))
-    expect(window.analytics.track).toBeCalledWith(window.location.href, {
-      category: '404 Response',
-      label: 'No Referrer',
+    expect(window.analytics.track).toBeCalledWith('Error Page Loaded', {
+      http_status_code: 404,
     })
     // Cleanup
     window.analytics = forMockRestore
