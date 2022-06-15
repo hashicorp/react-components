@@ -21,9 +21,8 @@ export default function useErrorPageAnalytics(
       typeof window?.document?.referrer === 'string' &&
       typeof window?.location?.href === 'string'
     )
-      window.analytics.track(window.location.href, {
-        category: `${statusCode} Response`,
-        label: window.document.referrer || 'No Referrer',
+      window.analytics.track('Error Page Loaded', {
+        http_status_code: statusCode,
       })
   }, [statusCode])
 }
