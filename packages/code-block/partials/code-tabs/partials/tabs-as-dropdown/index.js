@@ -26,7 +26,12 @@ function TabsAsDropdown({
           {activeLabel}
           <InlineSvg className={s.dropdownIcon} src={svgChevronDown} />
         </ListboxButton>
-        <ListboxPopover className={s.listboxPopover} portal={false}>
+        <ListboxPopover
+          className={classNames(s.listboxPopover, {
+            [s.hasHeading]: hasHeading,
+          })}
+          portal={false}
+        >
           <ListboxList className={s.listboxList}>
             {tabLabels.map((tabLabel, idx) => {
               return (
