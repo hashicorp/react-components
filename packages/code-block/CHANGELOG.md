@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.0.1
+
+### Patch Changes
+
+- [#612](https://github.com/hashicorp/react-components/pull/612) [`baacf69c`](https://github.com/hashicorp/react-components/commit/baacf69c24a9a52669d39ab9aa8d96087b854e11) Thanks [@zchsh](https://github.com/zchsh)! - Fixes alignment of code-tabs dropdown when no heading is present
+
 ## 6.0.0
 
 ### Major Changes
