@@ -1,5 +1,11 @@
 # @hashicorp/react-error-view
 
+## 0.0.3
+
+### Patch Changes
+
+- [#614](https://github.com/hashicorp/react-components/pull/614) [`5dac4315`](https://github.com/hashicorp/react-components/commit/5dac4315559d3a60d7d768c62accaa0ced6e197e) Thanks [@BrandonRomano](https://github.com/BrandonRomano)! - Adjust error analytics event to have a consistent name
+
 ## 0.0.2
 
 ### Patch Changes
