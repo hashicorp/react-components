@@ -90,7 +90,66 @@ componentName: 'Notification'
 
 <PropsTable props={componentProps} />
 
-## With language
+## Usage
+
+Import and add the `<Notifications />` component within your App file.
+
+```tsx
+// pages/_app.tsx
+import { Notfications } from '@hashicorp/react-notification'
+
+export default function App() {
+  return (
+    <>
+      ...
+      <Notifications />
+    </>
+  )
+}
+```
+
+Render a notification using the `notification` function. Below we demonstrate how you can render a notification on page load, and also based on a user interaction.
+
+```tsx
+// pages/index.tsx
+import * as React from 'react'
+import { notification, Notification } from '@hashicorp/react-notification'
+
+export default function Homepage() {
+  React.useEffect(() => {
+    // Render a notification on page load
+    notification((n) => {
+      return (
+        <Notification
+          description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+          cta={{
+            title: 'Standalone link',
+            url: '/',
+          }}
+          onDismiss={() => notification.remove(n.id)}
+        />
+      )
+    })
+  }, [])
+
+  const handleCopy = () => {
+    // Trigger a notification based on a user action
+    notification((n) => {
+      return <Notification />
+    })
+  }
+
+  return (
+    <>
+      <button onClick={handleCopy}>Copy</button>
+    </>
+  )
+}
+```
+
+<!-- ## Notfication examples
+
+### With language
 
 <LiveComponent>{`
 <NotificationWithLanguage
@@ -104,7 +163,7 @@ componentName: 'Notification'
 />
 `}</LiveComponent>
 
-## With product
+### With product
 
 <LiveComponent>{`
 <NotificationWithProduct
@@ -118,7 +177,7 @@ componentName: 'Notification'
 />
 `}</LiveComponent>
 
-## With resource
+### With resource
 
 <LiveComponent>{`
 <NotificationWithResource
@@ -132,7 +191,7 @@ componentName: 'Notification'
 />
 `}</LiveComponent>
 
-## With thumbnail
+### With thumbnail
 
 <LiveComponent>{`
 <NotificationWithThumbnail
@@ -149,7 +208,7 @@ componentName: 'Notification'
 />
 `}</LiveComponent>
 
-## With actions
+### With actions
 
 <LiveComponent>{`
 <NotificationWithActions
@@ -167,4 +226,4 @@ componentName: 'Notification'
   ]}
   onDismiss={() => {}}
 />
-`}</LiveComponent>
+`}</LiveComponent> -->
