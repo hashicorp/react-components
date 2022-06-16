@@ -2,22 +2,154 @@
 componentName: 'Notification'
 ---
 
-Notification component to be used within our [Toaster](/components/toast) component.
-
-<LiveComponent>{`
-<Notification
-  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
-  cta={{
-    title: 'Standalone link',
-    url: '/'
-  }}
-  onDismiss={() => {}}
-/>
-`}</LiveComponent>
+<LiveComponent collapsed>{`<>
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32}}>
+<button onClick={() => notification((n) => {
+  return (
+    <Notification
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithLanguage
+      language="jp"
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with language</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithProduct
+      product="waypoint"
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with product</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithResource
+      type="webinar"
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with resource</button>
+<button onClick={() => notification((n) => {
+  return (
+    <NotificationWithThumbnail
+      thumbnail={{
+        src: 'https://www.datocms-assets.com/2885/1651495958-infrastructure.png',
+        alt: 'Notfication thumbnail'
+      }}
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with thumbnail</button>
+<button onClick={() => notification((n) => {
+  return (
+    <Notification
+      appearance='dark'
+      description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+      cta={{
+        title: 'Standalone link',
+        url: '/'
+      }}
+      onDismiss={() => notification.remove(n.id)}
+    />
+  )
+})}>Notification with dark appearance</button>
+</div>
+<Notifications />
+</>`}</LiveComponent>
 
 <PropsTable props={componentProps} />
 
-## With language
+## Usage
+
+Import and add the `<Notifications />` component within your App file.
+
+```tsx
+// pages/_app.tsx
+import { Notfications } from '@hashicorp/react-notification'
+
+export default function App() {
+  return (
+    <>
+      ...
+      <Notifications />
+    </>
+  )
+}
+```
+
+Render a notification using the `notification` function. Below we demonstrate how you can render a notification on page load, and also based on a user interaction.
+
+```tsx
+// pages/index.tsx
+import * as React from 'react'
+import { notification, Notification } from '@hashicorp/react-notification'
+
+export default function Homepage() {
+  React.useEffect(() => {
+    // Render a notification on page load
+    notification((n) => {
+      return (
+        <Notification
+          description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+          cta={{
+            title: 'Standalone link',
+            url: '/',
+          }}
+          onDismiss={() => notification.remove(n.id)}
+        />
+      )
+    })
+  }, [])
+
+  const handleCopy = () => {
+    // Trigger a notification based on a user action
+    notification((n) => {
+      return <Notification />
+    })
+  }
+
+  return (
+    <>
+      <button onClick={handleCopy}>Copy</button>
+    </>
+  )
+}
+```
+
+<!-- ## Notfication examples
+
+### With language
 
 <LiveComponent>{`
 <NotificationWithLanguage
@@ -31,7 +163,7 @@ Notification component to be used within our [Toaster](/components/toast) compon
 />
 `}</LiveComponent>
 
-## With product
+### With product
 
 <LiveComponent>{`
 <NotificationWithProduct
@@ -45,7 +177,7 @@ Notification component to be used within our [Toaster](/components/toast) compon
 />
 `}</LiveComponent>
 
-## With resource
+### With resource
 
 <LiveComponent>{`
 <NotificationWithResource
@@ -59,7 +191,7 @@ Notification component to be used within our [Toaster](/components/toast) compon
 />
 `}</LiveComponent>
 
-## With thumbnail
+### With thumbnail
 
 <LiveComponent>{`
 <NotificationWithThumbnail
@@ -76,7 +208,7 @@ Notification component to be used within our [Toaster](/components/toast) compon
 />
 `}</LiveComponent>
 
-## With actions
+### With actions
 
 <LiveComponent>{`
 <NotificationWithActions
@@ -94,4 +226,4 @@ Notification component to be used within our [Toaster](/components/toast) compon
   ]}
   onDismiss={() => {}}
 />
-`}</LiveComponent>
+`}</LiveComponent> -->

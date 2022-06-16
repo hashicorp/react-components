@@ -1,5 +1,8 @@
 import * as React from 'react'
-import type { NotificationTypes, NotificationWithResourceProps } from '../types'
+import type {
+  NotificationTypes,
+  NotificationWithResourceProps,
+} from '../../types'
 import Notification from '../notification'
 import { IconRadio16 } from '@hashicorp/flight-icons/svg-react/radio-16'
 import { IconCalendar16 } from '@hashicorp/flight-icons/svg-react/calendar-16'
