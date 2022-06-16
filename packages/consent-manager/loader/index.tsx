@@ -12,6 +12,7 @@ import {
 const VERSION = 4
 const COMPANY_NAME = 'HashiCorp'
 const PRIVACY_LINK = 'https://www.hashicorp.com/privacy'
+const COOKIES_LINK = 'https://www.hashicorp.com/cookies'
 
 export default function createConsentManager({
   segmentWriteKey = process.env.SEGMENT_WRITE_KEY,
@@ -65,6 +66,7 @@ export default function createConsentManager({
     version: VERSION,
     companyName: COMPANY_NAME,
     privacyPolicyLink: PRIVACY_LINK,
+    cookiePolicyLink: COOKIES_LINK,
     segmentWriteKey: segmentKey,
     utilServerRoot: utilityServerRoot,
     categories: defaultCategories,
