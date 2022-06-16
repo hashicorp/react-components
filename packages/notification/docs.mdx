@@ -92,18 +92,19 @@ componentName: 'Notification'
 
 ## Usage
 
-Import and add the `<Notifications />` component within your App file.
+Import and add the `<Notifications />` component within your App file. Ensure your app is wrapped the MotionConfig component to ensure Framer Motion features are lazy loaded.
 
 ```tsx
 // pages/_app.tsx
+import MotionConfig from '@hashicorp/react-motion-config'
 import { Notfications } from '@hashicorp/react-notification'
 
-export default function App() {
+export default function App({ Component, pageProps }) {
   return (
-    <>
-      ...
+    <MotionConfig>
+      <Component {...pageProps} />
       <Notifications />
-    </>
+    </MotionConfig>
   )
 }
 ```
