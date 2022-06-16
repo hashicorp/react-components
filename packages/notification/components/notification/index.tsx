@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import type { NotificationProps } from '../types'
+import type { NotificationProps } from '../../types'
 import Button from '@hashicorp/react-button'
 import CloseButton from '@hashicorp/react-close-button'
 import s from '../style.module.css'
