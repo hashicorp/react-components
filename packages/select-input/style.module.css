@@ -43,7 +43,6 @@
     & .arrow {
       position: absolute;
       right: 0.75em;
-      top: calc(50% - 10px);
 
       & > svg {
         vertical-align: middle;
