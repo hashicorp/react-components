@@ -8,6 +8,7 @@
     "framer-motion": "^6.3.11"
   },
   "peerDependencies": {
-    "react": ">=16.x"
+    "react": ">=16.x",
+    "framer-motion": ">=6.3.11"
   }
 }
