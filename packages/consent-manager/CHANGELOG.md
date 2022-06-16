@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.3.0
+
+### Minor Changes
+
+- [#616](https://github.com/hashicorp/react-components/pull/616) [`231d6bac`](https://github.com/hashicorp/react-components/commit/231d6bacb380e1ea1ec2f6156a70b8b296dc635c) Thanks [@EnMod](https://github.com/EnMod)! - Adds default cookie policy link
+
 ## 7.2.0
 
 ### Minor Changes
