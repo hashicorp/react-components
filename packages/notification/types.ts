@@ -5,6 +5,17 @@ export type Renderable = JSX.Element | string | null
 export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue
 export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>
 
+export interface NotificationsProps {
+  /**
+   * Anchor the notifications to the left or right side of the viewport
+   */
+  anchor?: 'left' | 'right'
+  /**
+   * The position in pixels that the notifications should be inset within the viewport
+   */
+  inset?: number
+}
+
 export interface Notification {
   createdAt: number
   id: string
