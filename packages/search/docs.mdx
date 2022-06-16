@@ -4,13 +4,15 @@ componentName: Search
 
 A search box and results based on Algolia. Used primarily on documentation websites and learn.
 
-<LiveComponent>{`<SearchProvider>
+<LiveComponent>
+{`<SearchProvider>
   <Search
     renderHitContent={({ hit, Highlight }) => <div><p>{hit.description}</p></div>}
     resolveHitLink={(hit) => ({ href: { pathname: '/' + hit.objectID, query: { id: hit.__queryID} } })}
     placeholder="Search documentation"
   />
-</SearchProvider>`}</LiveComponent>
+</SearchProvider>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 

@@ -2,7 +2,8 @@
 componentName: 'FeedbackForm'
 ---
 
-<LiveComponent>{`<FeedbackForm
+<LiveComponent>
+{`<FeedbackForm
   questions={[
     {
       id: 'helpful',
@@ -68,7 +69,8 @@ componentName: 'FeedbackForm'
     </>
   }
   onQuestionSubmit={() => new Promise((resolve) => setTimeout(resolve, 1000))}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 

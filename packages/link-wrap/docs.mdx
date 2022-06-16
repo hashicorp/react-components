@@ -8,7 +8,9 @@ The `href` passed to this component expects relative urls to be used for interna
 
 If this condition is not true, the links may not behave properly. Specifically, in the context of NextJS, this can result in internal links not using client-side transitions, or external links being erroneously prefetched. More info in [this PR](https://github.com/zeit/next.js/pull/8231), and [this open issue](https://github.com/zeit/next.js/issues/8555) could result in changes to this behavior.
 
-<LiveComponent>{`<LinkWrap href='https://www.hashicorp.com'>test link</LinkWrap>`}</LiveComponent>
+<LiveComponent>
+{`<LinkWrap href='https://www.hashicorp.com'>test link</LinkWrap>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 

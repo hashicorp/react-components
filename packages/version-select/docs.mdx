@@ -4,7 +4,8 @@ componentName: VersionSelect
 
 <p>{packageJson.description}</p>
 
-<LiveComponent>{`<NextRouterDebugger>
+<LiveComponent>
+{`<NextRouterDebugger>
   <VersionSelect
     basePath={'sentinel/intro'}
     versions={[
@@ -15,7 +16,8 @@ componentName: VersionSelect
       { name: 'v1.7.x', label: 'v1.7.x' },
     ]}
   />
-</NextRouterDebugger>`}</LiveComponent>
+</NextRouterDebugger>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 

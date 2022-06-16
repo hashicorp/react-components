@@ -14,7 +14,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "semver": "^7.3.5",
-    "swingset": "^0.11.0"
+    "swingset": "^0.14.0"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.2",

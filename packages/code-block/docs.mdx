@@ -4,7 +4,9 @@ componentName: 'CodeBlock'
 
 A formatted code block for displaying lovely lines of code.
 
-<LiveComponent>{`<CodeBlock language="shell-session" code={\`<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>\`} />`}</LiveComponent>
+<LiveComponent>
+{`<CodeBlock language="shell-session" code={\`<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"hello world!"</span></span></span>\`} />`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -63,7 +65,7 @@ function hello() {
 <CodeBlock
   options={{ showClipboard: true}}
   theme="dark"
-  code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>\n<span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>\n<span class="token punctuation">}</span>`}
+  code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>\n<span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n{/* */}  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>\n<span class="token punctuation">}</span>`}
 />
 
 #### Copy to Clipboard
@@ -111,7 +113,7 @@ function sayHello() {
 theme="dark"
 code={`<span class="token comment">// Doing stuff you shouldn't copy</span>
 <span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<!-- -->  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Hello again'</span><span class="token punctuation">)</span>
+{/* */}  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Hello again'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -174,7 +176,7 @@ function hello() {
   options={{ lineNumbers: true, showClipboard: true }}
   code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>
 <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<!-- -->  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
+{/* */}  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -207,7 +209,7 @@ function logAThirdLine() {
 <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'This is a second line.'</span><span class="token punctuation">)</span>
 <span class="token comment">// Doing more stuff</span>
 <span class="token keyword">function</span> <span class="token function">logAThirdLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<!-- -->  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Hello again'</span><span class="token punctuation">)</span>
+{/* */}  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Hello again'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -237,7 +239,7 @@ function hello() {
   language="javascript"
   code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>
 <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<!-- -->  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
+{/* */}  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -267,7 +269,7 @@ function hello() {
   language="go"
   code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>
 <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<!-- -->  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
+{/* */}  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -279,7 +281,8 @@ By default, the tab options are shown at the left of the component. When space i
 
 #### `CodeTabs` Playground
 
-<LiveComponent>{`
+<LiveComponent>
+{`
 <CodeTabs theme="dark">
 
 <CodeBlock
@@ -291,12 +294,12 @@ By default, the tab options are shown at the left of the component. When space i
 <CodeBlock
   options={{ showClipboard: true }}
   language="go"
-  code={\`<span class="token keyword">package</span> main<!-- -->
-<!-- -->
+  code={\`<span class="token keyword">package</span> main{/* */}
+{/* */}
 <span class="token keyword">import</span> <span class="token string">"fmt"</span>
-<!-- -->
+{/* */}
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<!-- -->  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span>
+{/* */}  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>\`}
 />
 
@@ -403,15 +406,15 @@ acl {
   options={{ showClipboard: true, filename: "consul-acl.hcl", lineNumbers: true, highlight: "4,7-9" }}
   language="json"
   code={`<span class="token punctuation">{</span>
-<!-- -->  <span class="token property">"primary_datacenter"</span><span class="token operator">:</span> <span class="token string">"dc1"</span><span class="token punctuation">,</span>
-<!-- -->  <span class="token property">"acl"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-<!-- -->    <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-<!-- -->    <span class="token property">"default_policy"</span><span class="token operator">:</span> <span class="token string">"deny"</span><span class="token punctuation">,</span>
-<!-- -->    <span class="token property">"down_policy"</span><span class="token operator">:</span> <span class="token string">"extend-cache"</span><span class="token punctuation">,</span>
-<!-- -->    <span class="token property">"tokens"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-<!-- -->      <span class="token property">"agent"</span><span class="token operator">:</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>
-<!-- -->    <span class="token punctuation">}</span>
-<!-- -->  <span class="token punctuation">}</span>
+{/* */}  <span class="token property">"primary_datacenter"</span><span class="token operator">:</span> <span class="token string">"dc1"</span><span class="token punctuation">,</span>
+{/* */}  <span class="token property">"acl"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+{/* */}    <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+{/* */}    <span class="token property">"default_policy"</span><span class="token operator">:</span> <span class="token string">"deny"</span><span class="token punctuation">,</span>
+{/* */}    <span class="token property">"down_policy"</span><span class="token operator">:</span> <span class="token string">"extend-cache"</span><span class="token punctuation">,</span>
+{/* */}    <span class="token property">"tokens"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+{/* */}      <span class="token property">"agent"</span><span class="token operator">:</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>
+{/* */}    <span class="token punctuation">}</span>
+{/* */}  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -420,12 +423,12 @@ acl {
   language="hcl"
   code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>
 <span class="token keyword">acl</span> <span class="token punctuation">{</span>
-<!-- -->  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>
-<!-- -->  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>
-<!-- -->  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>
-<!-- -->  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>
-<!-- -->    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>
-<!-- -->  <span class="token punctuation">}</span>
+{/* */}  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>
+{/* */}  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>
+{/* */}  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>
+{/* */}  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>
+{/* */}    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>
+{/* */}  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -476,12 +479,12 @@ func main() {
 <CodeBlock
   options={{ showClipboard: true }}
   language="go"
-  code={`<span class="token keyword">package</span> main<!-- -->
-<!-- -->
+  code={`<span class="token keyword">package</span> main{/* */}
+{/* */}
 <span class="token keyword">import</span> <span class="token string">"fmt"</span>
-<!-- -->
+{/* */}
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<!-- -->  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span>
+{/* */}  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>`}
 />
 
@@ -531,7 +534,7 @@ In JSX contexts, the consumer has the option to set the `theme` of the code bloc
     showClipboard: true,
   }}
   language="hcl"
-  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n<!-- -->  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n<!-- -->  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n<!-- -->  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n<!-- -->    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n<!-- -->  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
+  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n{/* */}  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n{/* */}  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n{/* */}  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n{/* */}  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n{/* */}    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n{/* */}  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
 />
 
 </CodeTabs>
@@ -562,7 +565,7 @@ In JSX contexts, the consumer has the option to set the `theme` of the code bloc
     showClipboard: true,
   }}
   language="hcl"
-  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n<!-- -->  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n<!-- -->  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n<!-- -->  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n<!-- -->  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n<!-- -->    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n<!-- -->  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
+  code={`<span class="token property">primary_datacenter</span> <span class="token punctuation">=</span> <span class="token string">"dc1"</span>\n<span class="token keyword">acl</span> <span class="token punctuation">{</span>\n{/* */}  <span class="token property">enabled</span>        <span class="token punctuation">=</span> <span class="token boolean">true</span>\n{/* */}  <span class="token property">default_policy</span> <span class="token punctuation">=</span> <span class="token string">"deny"</span>\n{/* */}  <span class="token property">down_policy</span>    <span class="token punctuation">=</span> <span class="token string">"extend-cache"</span>\n{/* */}  <span class="token keyword">tokens</span> <span class="token punctuation">{</span>\n{/* */}    <span class="token property">"agent"</span> <span class="token punctuation">=</span> <span class="token string">"da666809-98ca-0e94-a99c-893c4bf5f9eb"</span>\n{/* */}  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>`}
 />
 
 </CodeTabs>
