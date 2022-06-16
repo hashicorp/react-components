@@ -1,15 +1,25 @@
 import * as React from 'react'
+import type { NotificationsProps } from '@hashicorp/react-notification/types'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import classNames from 'classnames'
 import { renderNotification } from '../../core/utils'
 import { useNotifications } from '../../core/use-notifications'
 import s from './style.module.css'
 
-export const Notifications = () => {
+export const Notifications = ({
+  anchor = 'right',
+  inset = 24,
+}: NotificationsProps) => {
   const { notifications, handlers } = useNotifications()
   const reducedMotion = useReducedMotion()
   return (
     <div
-      className={s.root}
+      style={
+        {
+          '--inset': inset,
+        } as React.CSSProperties
+      }
+      className={classNames(s.root, s[anchor])}
       onMouseEnter={handlers.startPause}
       onMouseLeave={handlers.endPause}
       data-testid="notifications"

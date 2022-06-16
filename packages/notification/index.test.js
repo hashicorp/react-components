@@ -1,5 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import { renderHook } from '@testing-library/react-hooks'
+import { act } from 'react-dom/test-utils'
 import {
+  useNotifications,
+  notification,
   Notifications,
   Notification,
   NotificationWithProduct,
@@ -18,6 +22,29 @@ const defaultProps = {
   },
   onDismiss: () => {},
 }
+
+describe('useNotifications()', () => {
+  it('should handle managing notifications', () => {
+    const { result } = renderHook(() => useNotifications())
+    expect(result.current.notifications.length).toBe(0)
+    act(() => {
+      notification(() => {}, { id: 'test-id' })
+    })
+    expect(result.current.notifications.length).toBe(1)
+    expect(result.current.notifications[0]).toMatchObject({
+      createdAt: expect.any(Number),
+      visible: true,
+      message: expect.any(Function),
+      pauseDuration: 0,
+      id: 'test-id',
+      duration: 6000,
+    })
+    act(() => {
+      notification.remove('test-id')
+    })
+    expect(result.current.notifications.length).toBe(0)
+  })
+})
 
 describe('<Notifications />', () => {
   it('should render notification container', () => {
