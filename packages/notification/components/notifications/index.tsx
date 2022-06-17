@@ -31,7 +31,6 @@ export const Notifications = ({
           return (
             <m.div
               key={n.id}
-              layout={reducedMotion ? false : 'position'}
               initial={{ opacity: 0, y: reducedMotion ? 0 : 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{
