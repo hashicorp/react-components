@@ -19,9 +19,34 @@ Notification component to be used within our [Toaster](/components/toast) compon
 
 <PropsTable props={componentProps} />
 
-## Usage
+## `notification` API
 
-Import and add the `<Notifications />` component within your App file. Ensure your app is wrapped the MotionConfig component to ensure Framer Motion features are lazy loaded.
+```js
+// Render a notification
+notification(
+  (n) => {
+    // Render your notification UI component
+    return <Notification />
+  },
+  {
+    // Provide a custom id to the notification, this ensures
+    // your not rendering the same notification more than once
+    // at a given time, and allows you to programmatically remove
+    // notifications via notification.remove('custom-id').
+    id: 'custom-id',
+    // Set a custom auto dismiss duration.
+    // Set to `Infinity` to prevent auto dismissal.
+    duration: 6000,
+  }
+)
+
+// Remove a notification from the UI
+notification.remove('custom-id')
+```
+
+## How to render notifications
+
+Import and add the `<Notifications />` component within your App file. Ensure your app is wrapped the MotionConfig component to lazy load Framer Motion features.
 
 ```tsx
 // pages/_app.tsx
@@ -77,7 +102,7 @@ export default function Homepage() {
 }
 ```
 
-<!-- ## Notfication examples
+While we recommend you use the appropriate Notification UI components, you have the ability to render custom markup using the notification function.
 
 ### With language
 
@@ -167,4 +192,3 @@ export default function Homepage() {
 />
 `}
 </LiveComponent>
-
