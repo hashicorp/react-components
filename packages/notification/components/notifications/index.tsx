@@ -38,6 +38,8 @@ export const Notifications = ({
                 scale: reducedMotion ? 1 : 0.75,
                 transition: { duration: 0.2 },
               }}
+              role="status"
+              aria-live="polite"
             >
               {renderNotification(n.message, n)}
             </m.div>
