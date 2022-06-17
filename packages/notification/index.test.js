@@ -36,13 +36,28 @@ describe('useNotifications()', () => {
       visible: true,
       message: expect.any(Function),
       pauseDuration: 0,
-      id: 'test-id',
+      id: expect.any(String),
       duration: 6000,
     })
     act(() => {
       notification.remove('test-id')
     })
     expect(result.current.notifications.length).toBe(0)
+  })
+
+  it('accepts custom options', () => {
+    const { result } = renderHook(() => useNotifications())
+    act(() => {
+      notification(() => {}, { id: 'test-id', duration: 8000 })
+    })
+    expect(result.current.notifications[0]).toMatchObject({
+      createdAt: expect.any(Number),
+      visible: true,
+      message: expect.any(Function),
+      pauseDuration: 0,
+      id: 'test-id',
+      duration: 8000,
+    })
   })
 })
 
