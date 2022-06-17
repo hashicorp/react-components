@@ -14,6 +14,10 @@ export interface NotificationsProps {
    * The position in pixels that the notifications should be inset within the viewport
    */
   inset?: number
+  /**
+   * The space in pixels between each rendered notification
+   */
+  gutter?: number
 }
 
 export interface Notification {
