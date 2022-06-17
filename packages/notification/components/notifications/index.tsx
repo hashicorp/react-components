@@ -9,6 +9,7 @@ import s from './style.module.css'
 export const Notifications = ({
   anchor = 'left',
   inset = 24,
+  gutter = 16,
 }: NotificationsProps) => {
   const { notifications, handlers } = useNotifications()
   const reducedMotion = useReducedMotion()
@@ -17,6 +18,7 @@ export const Notifications = ({
       style={
         {
           '--inset': inset,
+          '--gutter': gutter,
         } as React.CSSProperties
       }
       className={classNames(s.root, s[anchor])}

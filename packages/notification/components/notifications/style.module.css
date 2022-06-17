@@ -6,7 +6,7 @@
   align-items: flex-start;
   justify-content: flex-end;
   bottom: calc(var(--inset) * 1px);
-  gap: 16px;
+  gap: var(--gutter);
   z-index: 9999;
 
   &.left {
