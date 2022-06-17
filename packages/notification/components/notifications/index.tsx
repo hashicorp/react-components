@@ -1,6 +1,6 @@
 import * as React from 'react'
 import type { NotificationsProps } from '@hashicorp/react-notification/types'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import classNames from 'classnames'
 import { renderNotification } from '../../core/utils'
 import { useNotifications } from '../../core/use-notifications'
@@ -29,7 +29,7 @@ export const Notifications = ({
       <AnimatePresence initial={false}>
         {notifications.map((n) => {
           return (
-            <motion.div
+            <m.div
               key={n.id}
               layout={reducedMotion ? false : 'position'}
               initial={{ opacity: 0, y: reducedMotion ? 0 : 50 }}
@@ -43,7 +43,7 @@ export const Notifications = ({
               aria-live="polite"
             >
               {renderNotification(n.message, n)}
-            </motion.div>
+            </m.div>
           )
         })}
       </AnimatePresence>
