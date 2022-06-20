@@ -1,0 +1,9 @@
+.root {
+  position: relative;
+  aspect-ratio: 16 / 9;
+
+  & > * {
+    position: absolute;
+    inset: 0;
+  }
+}
