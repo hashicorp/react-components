@@ -15,6 +15,7 @@ export default function VideoPlayer({
     <div className={s.root}>
       <ReactPlayer
         url={url}
+        playsinline={true}
         config={{
           wistia: {
             options: {
