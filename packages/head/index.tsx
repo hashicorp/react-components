@@ -1,9 +1,21 @@
 import Head from 'next/head'
+import isAbsoluteUrl from './helpers/is-absolute-url'
 import { renderMetaTags } from './seo'
 
 export { renderMetaTags }
 
 export default function HashiHead(props: HashiHeadProps): React.ReactElement {
+  /**
+   * Throw an error if props.image is a relative URL.
+   * It must be an absolute URL in order to work as expected as og:image.
+   * TODO: Find reference link to point to re: this.
+   */
+  if (typeof props.image !== 'undefined' && !isAbsoluteUrl(props.image)) {
+    console.error(
+      `Error: HashiHead "props.image" must be an absolute URL. Non-absolute URL detected: "". Please provide a fully qualified absolute URL or "props.image".`
+    )
+  }
+
   return (
     <Head>
       {whenString(props.title, <title>{props.title}</title>)}
@@ -24,12 +36,20 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
       <meta name="theme-color" content="#000" key="themeColor" />
       {whenString(
         props.description,
-        <meta
-          name="description"
-          property="og:description"
-          content={props.description}
-          key="description"
-        />
+        <>
+          <meta
+            name="description"
+            property="og:description"
+            content={props.description}
+            key="description"
+          />
+          <meta
+            // TODO: are we sure we need this? Seems like will fall back to OG
+            property="twitter:description"
+            content={props.description}
+            key="twitterDescription"
+          />
+        </>
       )}
       {whenString(
         props.siteName,
