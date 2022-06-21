@@ -8,7 +8,7 @@ export interface VideoPlayerProps {
   url: string
   /**
    * Autoplay the video when mounted. Used when rendering video within
-   * a modal. will not work on iOS and other mobile devices due to
+   * a modal. Will not work on iOS and other mobile devices due to
    * restrictions on bandwidth on cellular networks. You can find more
    * information on these restrictions in the Player API Documentation.
    * @link https://wistia.com/support/developers/player-api#play
