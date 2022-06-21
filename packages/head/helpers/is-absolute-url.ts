@@ -7,7 +7,7 @@
  * Based on https://github.com/sindresorhus/is-absolute-url
  *
  * @param string The URL to test
- * @returns
+ * @returns true if the URL is absolute, false otherwise
  */
 function isAbsoluteUrl(string: string): boolean {
   const regex = /^[a-zA-Z][a-zA-Z\d+\-.]*:/
