@@ -10,7 +10,7 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
   /**
    * Throw an error if props.image is a relative URL.
    * It must be an absolute URL in order to work as expected as og:image.
-   * TODO: Find reference link to point to re: this.
+   * Reference: https://ogp.me/#url
    */
   if (typeof props.image !== 'undefined' && !isAbsoluteUrl(props.image)) {
     /**
