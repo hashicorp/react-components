@@ -9,6 +9,7 @@ const themes: Record<VideoPlayerThemes, string> = {
 
 export default function VideoPlayer({
   url,
+  autoplay = false,
   theme = 'primary',
 }: VideoPlayerProps) {
   return (
@@ -17,6 +18,8 @@ export default function VideoPlayer({
         url={url}
         playsinline={true}
         controls={true}
+        playing={autoplay}
+        stopOnUnmount={true}
         config={{
           wistia: {
             options: {
