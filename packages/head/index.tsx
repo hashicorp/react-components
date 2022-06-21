@@ -58,7 +58,7 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
           />
           <meta
             // TODO: are we sure we need this? Seems like will fall back to OG
-            property="twitter:description"
+            name="twitter:description"
             content={props.description}
             key="twitterDescription"
           />
