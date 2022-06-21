@@ -4,6 +4,8 @@ import { renderMetaTags } from './seo'
 
 export { renderMetaTags }
 
+const IS_DEV = process.env.NODE_ENV !== 'production'
+
 export default function HashiHead(props: HashiHeadProps): React.ReactElement {
   /**
    * Throw an error if props.image is a relative URL.
@@ -11,9 +13,20 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
    * TODO: Find reference link to point to re: this.
    */
   if (typeof props.image !== 'undefined' && !isAbsoluteUrl(props.image)) {
-    console.error(
-      `Error: HashiHead "props.image" must be an absolute URL. Non-absolute URL detected: "". Please provide a fully qualified absolute URL or "props.image".`
-    )
+    /**
+     * TODO: should we consider alternatives to throwing an error here?
+     * - throw error in effect, i think this would show up in dev,
+     *   but would log in prod rather than prevent rendering
+     * - log to Datadog or something rather than throw. However,
+     *   Datadog only in hashicorp/dev-portal... but maybe okay, given
+     *   so many sites are now served from that repo?
+     */
+    const errorMessage = `Error: HashiHead "props.image" must be an absolute URL. Non-absolute URL detected: "${props.image}". Please provide a fully qualified absolute URL or "props.image".`
+    if (IS_DEV) {
+      throw new Error(errorMessage)
+    } else {
+      console.error(errorMessage)
+    }
   }
 
   return (
