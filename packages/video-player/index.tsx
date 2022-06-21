@@ -16,10 +16,12 @@ export default function VideoPlayer({
       <ReactPlayer
         url={url}
         playsinline={true}
+        controls={true}
         config={{
           wistia: {
             options: {
               playerColor: themes[theme],
+              controlsVisibleOnLoad: false,
             },
           },
         }}
