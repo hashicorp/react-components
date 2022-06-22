@@ -6,6 +6,15 @@
  * Uses regex so may not be 100% accurate.
  * Based on https://github.com/sindresorhus/is-absolute-url
  *
+ * @example
+ * // returns true, this is an absolute URL
+ * isAbsoluteUrl('https://www.hashicorp.com/foo/bar');
+ * @example
+ * // returns false, this is a relative path
+ * isAbsoluteUrl('./foo/bar');
+ * @example
+ * // returns false, this is an absolute path, but not an absolute URL
+ * isAbsoluteUrl('/foo/bar');
  * @param string The URL to test
  * @returns true if the URL is absolute, false otherwise
  */
