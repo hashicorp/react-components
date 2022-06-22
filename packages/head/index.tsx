@@ -13,18 +13,18 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
    * Reference: https://ogp.me/#url
    */
   if (typeof props.image !== 'undefined' && !isAbsoluteUrl(props.image)) {
-    /**
-     * TODO: should we consider alternatives to throwing an error here?
-     * - throw error in effect, i think this would show up in dev,
-     *   but would log in prod rather than prevent rendering
-     * - log to Datadog or something rather than throw. However,
-     *   Datadog only in hashicorp/dev-portal... but maybe okay, given
-     *   so many sites are now served from that repo?
-     */
     const errorMessage = `Error: HashiHead "props.image" must be an absolute URL. Non-absolute URL detected: "${props.image}". Please provide a fully qualified absolute URL or "props.image".`
     if (IS_DEV) {
       throw new Error(errorMessage)
     } else {
+      /**
+       * TODO: should we consider alternatives to throwing an error here?
+       * Eg, perhaps we could log to Datadog or something rather than throw.
+       * However, Datadog only in hashicorp/dev-portal... maybe if we use it
+       * on all properties, this type of tracking could be a good fit?
+       * Related "Removing Sentry" discussion item:
+       * https://app.asana.com/0/1202347960758186/1202475860181284/f
+       */
       console.error(errorMessage)
     }
   }
@@ -57,7 +57,6 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
             key="description"
           />
           <meta
-            // TODO: are we sure we need this? Seems like will fall back to OG
             name="twitter:description"
             content={props.description}
             key="twitterDescription"
