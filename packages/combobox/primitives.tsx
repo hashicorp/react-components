@@ -97,13 +97,28 @@ export function ComboboxButton({
       type="button"
     >
       <VisuallyHidden>{label || 'Show all options'}</VisuallyHidden>
-      <img
+      <span
         className={classnames(s.dropdownCaretIcon, {
           [s.dropdownCaretIconActive]: isExpanded,
         })}
-        alt="" // https://www.w3.org/WAI/tutorials/images/decorative/
-        src={require('./assets/icon-dropdown-gray.svg')}
-      />
+        aria-hidden
+      >
+        <svg viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
+          <title>Mask</title>
+          <defs>
+            <path
+              d="M413.293 1341.293l-5.293 5.293-5.293-5.293a.999.999 0 1 0-1.414 1.414l6 6a.997.997 0 0 0 1.414 0l6-6a.999.999 0 1 0-1.414-1.414"
+              id="a"
+            />
+          </defs>
+          <use
+            fill="#9A9EA5"
+            xlinkHref="#a"
+            transform="translate(-401 -1341)"
+            fillRule="evenodd"
+          />
+        </svg>
+      </span>
     </ReachComboboxButton>
   )
 }
