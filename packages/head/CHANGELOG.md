@@ -1,5 +1,11 @@
 # @hashicorp/react-head
 
+## 3.3.0
+
+### Minor Changes
+
+- [#623](https://github.com/hashicorp/react-components/pull/623) [`270c6792`](https://github.com/hashicorp/react-components/commit/270c679293188fc67684caf9e47aaba92727e2d1) Thanks [@zchsh](https://github.com/zchsh)! - Validates that props.image is an absolute URL, and throws an error in development if it is not. As well, adds `twitter:description` when `description` prop is provided.
+
 ## 3.2.0
 
 ### Minor Changes
