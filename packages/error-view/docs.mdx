@@ -4,9 +4,11 @@ componentName: 'ErrorView'
 
 A component used to display an error view, within layouts that use `g-grid-container`.
 
-<LiveComponent>{`
+<LiveComponent>
+{`
 <ErrorView statusCode={404} />
-`}</LiveComponent>
+`}
+</LiveComponent>
 
 ### `useErrorPageAnalytics`
 
@@ -46,12 +48,16 @@ export default function CustomFourOhFourPage(): React.ReactElement {
 
 `statusCode={404}`
 
-<LiveComponent>{`
+<LiveComponent>
+{`
 <ErrorView statusCode={404} />
-`}</LiveComponent>
+`}
+</LiveComponent>
 
 Fallback (for `500` pages, and any non-`404` statusCode)
 
-<LiveComponent>{`
+<LiveComponent>
+{`
 <ErrorView statusCode={500} />
-`}</LiveComponent>
+`}
+</LiveComponent>

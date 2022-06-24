@@ -4,10 +4,12 @@ componentName: SectionHeader
 
 Very simple headline & subheading for a section of a page.
 
-<LiveComponent>{`<SectionHeader
+<LiveComponent>
+{`<SectionHeader
   headline='Headline'
   description='Maecenas sed <strong>diam eget</strong> risus varius blandit sit amet non magna.'
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -19,22 +21,28 @@ Very simple headline & subheading for a section of a page.
 
 With `useH1` prop:
 
-<LiveComponent>{`<SectionHeader
+<LiveComponent>
+{`<SectionHeader
   headline='Headline'
   description='Maecenas sed diam eget risus varius blandit sit amet non magna.'
   useH1={true}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 With `description` in a `<p>` tag:
 
-<LiveComponent>{`<SectionHeader
+<LiveComponent>
+{`<SectionHeader
   headline='Headline'
   description='<p>Maecenas sed <strong>diam eget</strong> risus varius blandit sit amet non magna.</p>'
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 With `description` with multiple `<p>`:
 
-<LiveComponent>{`<SectionHeader
+<LiveComponent>
+{`<SectionHeader
   headline='Nomad Open Source and Enterprise Features'
   description='<p>Nomad Open Source addresses the <strong>technical complexity</strong> of workload orchestration in the cloud, on-prem, or on hybrid infrastructure.</p><p>Nomad Enterprise addresses the organizational complexity of multi-team and multi-cluster deployments with collaboration and governance features.</p>'
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>

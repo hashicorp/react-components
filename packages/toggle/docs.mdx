@@ -4,7 +4,9 @@ componentName: Toggle
 
 A simple toggle, used primarily in consent manager.
 
-<LiveComponent>{`<Toggle />`}</LiveComponent>
+<LiveComponent>
+{`<Toggle />`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -16,8 +18,12 @@ A simple toggle, used primarily in consent manager.
 
 You can pass the `enabled` prop in to toggle.
 
-<LiveComponent>{`<Toggle enabled />`}</LiveComponent>
+<LiveComponent>
+{`<Toggle enabled />`}
+</LiveComponent>
 
 You can also pass the `onChange` function to react when the toggle changes state
 
-<LiveComponent>{`<Toggle onChange={() => console.log('toggle changed')} />`}</LiveComponent>
+<LiveComponent>
+{`<Toggle onChange={() => console.log('toggle changed')} />`}
+</LiveComponent>

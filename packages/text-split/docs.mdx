@@ -2,7 +2,8 @@
 componentName: 'TextSplit'
 ---
 
-<LiveComponent>{`<TextSplit
+<LiveComponent>
+{`<TextSplit
   product="terraform"
   content='Terraform Cloud is the fastest way to adopt Terraform, the world’s most widely used multi-cloud provisioning product. Offered as a service, Terraform Cloud provides everything practitioners, teams, and organizations need to create and collaborate on infrastructure and manage risks for security, compliance and operational constraints.'
   linkStyle='buttons'
@@ -11,7 +12,8 @@ componentName: 'TextSplit'
     { text: 'secondary action', url: '#' },
     { text: 'tertiary', url: '#' }
   ]}
->bar</TextSplit>`}</LiveComponent>
+>bar</TextSplit>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -21,7 +23,8 @@ componentName: 'TextSplit'
 
 ### Examples
 
-<LiveComponent>{`<TextSplit
+<LiveComponent>
+{`<TextSplit
   content={<p style={{color: "var(--brand)"}}><strong>Hello</strong> world, this is some <em>custom</em> React content</p>}
   linkStyle='buttons'
   links={[
@@ -29,20 +32,24 @@ componentName: 'TextSplit'
     { text: 'secondary action', url: '#' },
     { text: 'tertiary', url: '#' }
   ]}
->bar</TextSplit>`}</LiveComponent>
+>bar</TextSplit>`}
+</LiveComponent>
 
 With checkboxes:
 
-<LiveComponent>{`<TextSplit
+<LiveComponent>
+{`<TextSplit
   product="consul"
   content={<p><strong>Hello</strong> world, this is some <em>custom</em> React content. Time to check some things off...</p>}
   linkStyle='buttons'
   checkboxes={['One item', 'Second', 'And third']}
->bar</TextSplit>`}</LiveComponent>
+>bar</TextSplit>`}
+</LiveComponent>
 
 "Dark Theme"
 
-<LiveComponent collapsed>{`
+<LiveComponent collapsed>
+{`
 <TextSplit
   content={
     <>
@@ -61,11 +68,13 @@ With checkboxes:
   ]}
 >
   bar
-</TextSplit>`}</LiveComponent>
+</TextSplit>`}
+</LiveComponent>
 
 "Gray Theme"
 
-<LiveComponent collapsed>{`
+<LiveComponent collapsed>
+{`
 <TextSplit
   content={
     <>
@@ -86,4 +95,5 @@ With checkboxes:
 >
   bar
 </TextSplit>
-`}</LiveComponent>
+`}
+</LiveComponent>

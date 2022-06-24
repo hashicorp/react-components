@@ -2,7 +2,8 @@
 componentName: 'Toast'
 ---
 
-<LiveComponent>{`
+<LiveComponent>
+{`
   <>
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32}}>
     <button onClick={() => toast({
@@ -58,6 +59,7 @@ componentName: 'Toast'
   </div>
   <Toaster />
   </>
-`}</LiveComponent>
+`}
+</LiveComponent>
 
 <PropsTable props={componentProps} />

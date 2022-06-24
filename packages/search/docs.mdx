@@ -4,13 +4,15 @@ componentName: Search
 
 A search box and results based on Algolia. Used primarily on documentation websites and learn.
 
-<LiveComponent>{`<SearchProvider>
+<LiveComponent>
+{`<SearchProvider>
   <Search
     renderHitContent={({ hit, Highlight }) => <div><p>{hit.description}</p></div>}
     resolveHitLink={(hit) => ({ href: { pathname: '/' + hit.objectID, query: { id: hit.__queryID} } })}
     placeholder="Search documentation"
   />
-</SearchProvider>`}</LiveComponent>
+</SearchProvider>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -34,7 +36,7 @@ A render function whose result is used to display each query "hit"
 
 ### resolveHitLink
 
-> `function` | | `( hit: object ) => NextLinkProps` | _Optional_ | **Default:** (hit) => ({ href:`/${hit.objectID}` })
+> `function` | | `( hit: object ) => NextLinkProps` | _Optional_ | **Default:** (hit) => ({'{ href:`/${hit.objectID}` }'})
 
 A function whose return value is spread as props to `next/link`.
 For more information about the available props, reference the next/link documentation: https://nextjs.org/docs/api-reference/next/link
@@ -129,7 +131,7 @@ const {
 > `function` | `(config: object)`
 > This specific helper function is designed specifically for perfoming search indexing on our various product sites' documentation pages.
 
-##### config.algoliaConfig: { appId: string, apiKey: string, index: string }
+##### config.algoliaConfig: \{ appId: string, apiKey: string, index: string \}
 
 Algolia-related configuration
 
@@ -155,7 +157,7 @@ _Default_: `path.join(__dirname, 'pages')`
 
 _Default_: `'**/*.mdx'`
 
-##### config.globOptions: { [k:string]: any }
+##### config.globOptions: \{ [k:string]: any \}
 
 Additional options to include to the glob match. Available options [here](https://github.com/isaacs/node-glob#options)
 
@@ -173,7 +175,7 @@ _Default_: `['page_title', 'description']`
 > `function` | `(config: object)`
 > This generic helper function allows for custom Algolia indexing
 
-##### config.algoliaConfig: { appId: string, apiKey: string, index: string }
+##### config.algoliaConfig: \{ appId: string, apiKey: string, index: string \}
 
 Algolia-related configuration
 
@@ -187,11 +189,11 @@ _Default_:
 }
 ```
 
-##### config.getSearchObjects: () => Promise<SearchObject[]>
+##### config.getSearchObjects: () => Promise\<SearchObject[]>
 
 This function should return an array of objects that will get passed to Algolia's [`saveObjects`](https://www.algolia.com/doc/api-reference/api-methods/save-objects/) function. Each object must have an `objectID` attribute.
 
-##### config.settings: { [k:string]: any }
+##### config.settings: \{ [k:string]: any \}
 
 Optional `settings` object that can be used to configure the given index's [settings](https://www.algolia.com/doc/api-reference/settings-api-parameters/).
 It's preferable to configure the index this way rather with the web UI because it keeps our settings in source control.

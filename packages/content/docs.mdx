@@ -4,16 +4,19 @@ componentName: Content
 
 A wrapper for long-form content, such as documentation, blog posts, whitepapers, etc.
 
-<LiveComponent>{`<Content
+<LiveComponent>
+{`<Content
   product='terraform'
   content={<p>hello world <a href='#'>this is a link</a></p>}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
 ### Kitchen Sink
 
-<LiveComponent>{`<Content
+<LiveComponent>
+{`<Content
   product=''
   content={<>
     <h1>
@@ -898,4 +901,5 @@ A wrapper for long-form content, such as documentation, blog posts, whitepapers,
       </code>
     </pre>
   </>}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>

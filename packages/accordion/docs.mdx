@@ -4,7 +4,8 @@ componentName: 'Accordion'
 
 Display a list of titled items with expandable content.
 
-<LiveComponent>{`<Accordion
+<LiveComponent>
+{`<Accordion
   heading="My test accordion heading"
   items={[
     {
@@ -16,7 +17,8 @@ Display a list of titled items with expandable content.
       content: 'This is some text content with some <strong>strong text</strong>',
     },
   ]}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -30,7 +32,8 @@ Display a list of titled items with expandable content.
 
 ##### Accordion Item with HTML
 
-<LiveComponent>{`<Accordion
+<LiveComponent>
+{`<Accordion
   items={[
     {
       heading: 'Support Period & End-of-Life Policy',
@@ -43,4 +46,5 @@ Display a list of titled items with expandable content.
         '<p>Response and resolution times are based on your Service Level Agreement with HashiCorp. Please refer to <em>Bronze / Silver / Gold</em> SLA levels.</p><p>HashiCorp will make reasonable efforts to adhere to the response and resolution times for issues within the scope of its own software.</p><p>The following definitions of Severity should be used when opening tickets.</p><h6>Severity 1 (Urgent)</h6><p>Any error reported by the customer where the majority of users for a particular part of the software are affected, the error has high visibility, there is no workaround, and it affects customer’s ability to perform its business.</p>',
     },
   ]}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
