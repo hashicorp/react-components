@@ -1,10 +1,11 @@
 import React from 'react'
-import ConsentManagerComponent, { open } from '../'
+import ConsentManagerComponent, { open, saveAndLoadAnalytics } from '../'
 import defaultCategories from './categories'
 import ossPreset from './presets/oss'
 import enterprisePreset from './presets/enterprise'
 import {
   ConsentManagerCategory,
+  ConsentManagerPreferences,
   ConsentManagerProps,
   ConsentManagerService,
 } from '../types'
@@ -35,6 +36,7 @@ export default function createConsentManager({
 }): {
   ConsentManager: typeof ConsentManagerComponent
   openConsentManager: () => void
+  saveAndLoadAnalytics: (preferences: ConsentManagerPreferences) => void
 } {
   // if hashi env is present, check against it. if not, fall back to checking node env
   const isProd = process.env.HASHI_ENV
@@ -96,5 +98,6 @@ export default function createConsentManager({
       return <ConsentManagerComponent {...config} />
     },
     openConsentManager: open,
+    saveAndLoadAnalytics,
   }
 }

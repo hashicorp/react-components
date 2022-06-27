@@ -7,7 +7,11 @@ import ConsentPreferences from './components/dialog'
 import SegmentScript from './scripts/segment'
 import CustomScripts from './scripts/custom'
 import s from './style.module.css'
-import { ConsentManagerCategory, ConsentManagerService } from './types'
+import {
+  ConsentManagerCategory,
+  ConsentManagerService,
+  ConsentManagerPreferences,
+} from './types'
 
 interface ConsentManagerProps {
   additionalServices?: ConsentManagerService[]
@@ -31,7 +35,7 @@ export function open() {
   emitter.emit('openDialog')
 }
 
-export function saveAndLoadAnalytics(preferences) {
+export function saveAndLoadAnalytics(preferences: ConsentManagerPreferences) {
   emitter.emit('saveAndLoadAnalytics', preferences)
 }
 
