@@ -1,4 +1,4 @@
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/wistia'
 import type { VideoPlayerProps, VideoPlayerThemes } from './types'
 import s from './style.module.css'
 
@@ -19,13 +19,10 @@ export default function VideoPlayer({
         playsinline={true}
         controls={true}
         playing={autoplay}
-        stopOnUnmount={true}
         config={{
-          wistia: {
-            options: {
-              playerColor: themes[theme],
-              controlsVisibleOnLoad: false,
-            },
+          options: {
+            playerColor: themes[theme],
+            controlsVisibleOnLoad: false,
           },
         }}
         width="100%"
