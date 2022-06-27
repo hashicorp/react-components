@@ -79,11 +79,11 @@ export default function ConsentManager(props: ConsentManagerProps) {
 
   // Setup the event handler to open the dialog imperatively
   useEffect(() => {
-    emitter.on('saveAndLoadAnalytics', saveAndLoadAnalytics)
+    emitter.on('openDialog', openDialog)
     return () => {
-      emitter.off('saveAndLoadAnalytics', saveAndLoadAnalytics)
+      emitter.off('openDialog', openDialog)
     }
-  }, [saveAndLoadAnalytics])
+  }, [openDialog])
 
   // Setup the event handler to save and load analytics imperatively
   useEffect(() => {
