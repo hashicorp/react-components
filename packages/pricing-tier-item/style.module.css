@@ -1,17 +1,9 @@
-.body-extra-small {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 150%;
-  text-align: center;
-  letter-spacing: 0.0125em;
-}
-
-.tierCard {
+.pricingTierItem {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
 }
 
 .icon {
@@ -20,6 +12,7 @@
 
 .tierNameXS {
   margin: 0;
+  text-align: center;
   @media (--small) {
     composes: g-type-display-3 from global;
   }
@@ -29,6 +22,7 @@
 
 .tierName {
   margin: 0;
+  text-align: center;
   composes: g-type-display-3 from global;
 }
 
@@ -58,10 +52,20 @@
   composes: g-type-body-small from global;
   max-width: 321px;
   text-align: center;
+  margin: 0 auto;
 
   & p {
     margin: 0;
   }
+}
+
+.body-extra-small {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: 0.0125em;
 }
 
 .descriptionXS {
@@ -72,20 +76,25 @@
   composes: body-extra-small;
   max-width: 321px;
   text-align: center;
+  margin: 0 auto;
 
   & p {
+    text-align: center;
     margin: 0;
   }
 }
 
 .cta {
   padding: 20px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .textLink {
   composes: g-type-buttons-and-standalone-links from global;
   text-decoration: underline;
   padding: 14px 0;
+  text-align: center;
 }
 
 .supplementaryInfo {
