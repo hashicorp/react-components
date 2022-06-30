@@ -1,10 +1,10 @@
 import { Theme } from 'packages/button/types'
-
+import { ReactElement } from 'react'
 export interface TierCardProps {
   /**
-   * Flight Icon name
+   * Flight Icon component
    */
-  icon?: string
+  icon?: ReactElement
   /**
    * Tier name
    */
@@ -20,7 +20,7 @@ export interface TierCardProps {
   /**
    * Consumption detail
    */
-  consumption: string
+  consumption?: string
   /**
    * Tier description (html string)
    */
