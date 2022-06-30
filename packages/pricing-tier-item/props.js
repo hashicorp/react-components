@@ -23,7 +23,7 @@ module.exports = {
   description: {
     type: 'string',
     required: true,
-    description: 'Detailed description of tier',
+    description: 'Detailed description of tier (html string)',
   },
   cta: {
     type: 'object',
@@ -57,13 +57,13 @@ module.exports = {
   },
   supplementaryInfo: {
     type: 'string',
-    description: 'Small footer',
+    description: 'Small footer (html string)',
   },
   size: {
     type: 'string',
     options: ['xs', 'sm'],
     description:
-      'If rendered within a TierCardList, font sizes depend on the amount of cards in list',
+      'If rendered within a PricingTierItemList, font sizes depend on the amount of cards in list',
     default: 'sm',
   },
 }

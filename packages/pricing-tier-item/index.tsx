@@ -1,10 +1,10 @@
 import * as React from 'react'
 import Link from 'next/link'
-import type { TierCardProps } from './types'
+import type { PricingTierItemProps } from './types'
 import s from './style.module.css'
 import Button from 'packages/button'
 
-export default function TierCard({
+export default function PricingTierItem({
   icon,
   title,
   label,
@@ -14,10 +14,10 @@ export default function TierCard({
   cta,
   supplementaryInfo,
   size = 'sm',
-}: TierCardProps): React.ReactElement {
+}: PricingTierItemProps): React.ReactElement {
   const hasExtraSmallFont = size === 'xs'
   return (
-    <div className={s.tierCard}>
+    <div className={s.pricingTierItem}>
       {icon && <div className={s.icon}>{icon}</div>}
       <h3 className={hasExtraSmallFont ? s.tierNameXS : s.tierName}>{title}</h3>
       <div className={s.details}>

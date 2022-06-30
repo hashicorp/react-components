@@ -1,0 +1,66 @@
+---
+componentName: 'PricingTierItem'
+---
+
+<LiveComponent>
+{`
+  <div style={{ width: 400 }}>
+    <PricingTierItem
+      title="Development"
+      label="Starting at"
+      price="$1.578"
+      consumption="per hour"
+      description="<p>Clusters designed to scale with the demand of running production workloads.</p>"
+      cta={{
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free'
+      }}
+      supplementaryInfo="<p>*Price scales with <a>active clients</a></p>"
+    />
+    </div>
+  `}
+</LiveComponent>
+
+### Examples
+<LiveComponent>
+{`
+  <div style={{ width: 400 }}>
+    <PricingTierItem
+      title="Development"
+      description="<p>Clusters designed to scale with the demand of running production workloads.</p>"
+      cta={{
+        type: 'button',
+        url: '#',
+        title: 'Try it for free',
+        theme: { variant: 'secondary' }
+      }}
+      supplementaryInfo="<p>*Price scales with <a>active clients</a></p>"
+    />
+  </div>
+`}
+</LiveComponent>
+<br />
+<LiveComponent>
+{`
+  <div style={{ width: 400 }}>
+    <PricingTierItem
+      title="Development"
+      label="Starting at"
+      price="$1.578"
+      consumption="per hour"
+      description="<p>Clusters designed to scale with the demand of running production workloads.</p>"
+      cta={{
+        type: 'button',
+        url: '#',
+        title: 'Try it for free'
+      }}
+      supplementaryInfo="<p>*Price scales with <a>active clients</a></p>"
+    />
+  </div>
+`}
+</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />

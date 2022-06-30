@@ -1,6 +1,6 @@
 import { Theme } from 'packages/button/types'
 import { ReactElement } from 'react'
-export interface TierCardProps {
+export interface PricingTierItemProps {
   /**
    * Flight Icon component
    */
