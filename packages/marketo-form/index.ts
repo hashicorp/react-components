@@ -1,3 +1,3 @@
-import MarketoFormAPIRoutes from './server/api-routes'
+import Form from './form'
 
-export { MarketoFormAPIRoutes }
+export default Form

@@ -41,7 +41,7 @@ function calculateDefaultValues(
   return initialValues
 }
 
-const MarketoHookForm = ({
+const Form = ({
   formId,
   marketoForm,
   groups,
@@ -158,4 +158,4 @@ const MarketoHookForm = ({
   )
 }
 
-export default MarketoHookForm
+export default Form
