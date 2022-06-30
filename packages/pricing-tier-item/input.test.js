@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import TierCard from '.'
+import PricingTierItem from '.'
 
-describe('<TierCard />', () => {
+describe('<PricingTierItem />', () => {
   it('should render', () => {
-    render(<TierCard />)
+    render(<PricingTierItem />)
     expect(screen.getByText('Company, Role')).toBeInTheDocument()
   })
 })
