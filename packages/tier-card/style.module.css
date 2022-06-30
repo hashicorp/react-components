@@ -1,3 +1,103 @@
-.root {
-  display: block;
+.body-extra-small {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: 0.0125em;
+}
+
+.tierCard {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  margin-bottom: 24px;
+}
+
+.tierNameXS {
+  margin: 0;
+  @media (--small) {
+    composes: g-type-display-3 from global;
+  }
+
+  composes: g-type-display-4 from global;
+}
+
+.tierName {
+  margin: 0;
+  composes: g-type-display-3 from global;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.label {
+  composes: g-type-label from global;
+  margin: 0;
+}
+
+.price {
+  composes: g-type-display-4 from global;
+  margin: 0;
+}
+
+.consumption {
+  composes: g-type-body-small from global;
+  margin: 0;
+}
+
+.description {
+  composes: g-type-body-small from global;
+  max-width: 321px;
+  text-align: center;
+
+  & p {
+    margin: 0;
+  }
+}
+
+.descriptionXS {
+  @media (--small) {
+    composes: g-type-body-small from global;
+  }
+
+  composes: body-extra-small;
+  max-width: 321px;
+  text-align: center;
+
+  & p {
+    margin: 0;
+  }
+}
+
+.cta {
+  padding: 20px 0;
+}
+
+.textLink {
+  composes: g-type-buttons-and-standalone-links from global;
+  text-decoration: underline;
+  padding: 14px 0;
+}
+
+.supplementaryInfo {
+  composes: body-extra-small;
+  color: var(--wpl-neutral-400);
+
+  & p {
+    margin: 0;
+  }
+
+  & a {
+    color: var(--wpl-neutral-300);
+    cursor: pointer;
+  }
 }

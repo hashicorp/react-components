@@ -17,26 +17,32 @@ export default function TierCard({
 }: TierCardProps): React.ReactElement {
   const hasExtraSmallFont = size === 'xs'
   return (
-    <div className={s.root}>
+    <div className={s.tierCard}>
       {icon && <div className={s.icon}>{icon}</div>}
-      <h2 className={hasExtraSmallFont ? s.tierNameXS : s.tierName}>{title}</h2>
+      <h3 className={hasExtraSmallFont ? s.tierNameXS : s.tierName}>{title}</h3>
       <div className={s.details}>
-        <span className={s.label}>{label}</span>
-        <span className={s.price}>{price}</span>
-        <span className={s.consumption}>{consumption}</span>
+        {label && <span className={s.label}>{label}</span>}
+        {price && <span className={s.price}>{price}</span>}
+        {consumption && <span className={s.consumption}>{consumption}</span>}
       </div>
-      <p className={hasExtraSmallFont ? s.descroptionXS : s.descroption}>
-        {description}
-      </p>
+      <div
+        className={hasExtraSmallFont ? s.descriptionXS : s.description}
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
       <div className={s.cta}>
         {cta.type === 'button' ? (
           <Button url={cta.url} title={cta.title} theme={cta.theme} />
         ) : (
-          <Link href={cta.url}>{cta.title}</Link>
+          <Link href={cta.url}>
+            <a className={s.textLink}>{cta.title}</a>
+          </Link>
         )}
       </div>
       {supplementaryInfo && (
-        <span className={s.supplementaryInfo}>{supplementaryInfo}</span>
+        <div
+          className={s.supplementaryInfo}
+          dangerouslySetInnerHTML={{ __html: supplementaryInfo }}
+        />
       )}
     </div>
   )
