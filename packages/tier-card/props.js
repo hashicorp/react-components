@@ -10,12 +10,10 @@ module.exports = {
   },
   label: {
     type: 'string',
-    required: true,
     description: 'Pricing information',
   },
   price: {
     type: 'string',
-    required: true,
     description: 'Price detail',
   },
   consumption: {
@@ -30,6 +28,7 @@ module.exports = {
   cta: {
     type: 'object',
     description: 'Button or text link call to action',
+    required: true,
     properties: {
       url: {
         type: 'string',
