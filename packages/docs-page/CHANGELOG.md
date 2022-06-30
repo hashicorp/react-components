@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.1.0
+
+### Minor Changes
+
+- [#631](https://github.com/hashicorp/react-components/pull/631) [`ce6cfd8b`](https://github.com/hashicorp/react-components/commit/ce6cfd8b5e28e5f8b902e4a9095e61d750de1cc6) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This updates `docs-page` remote content loader to handle TFE versions in path params.
+
 ## 17.0.1
 
 ### Patch Changes
