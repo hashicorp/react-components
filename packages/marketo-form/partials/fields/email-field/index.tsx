@@ -23,7 +23,7 @@ const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
             [field.id]: touchedFields[field.id] !== undefined,
           },
           errors: {
-            [field.id]: errors[field.id] ? errors[field.id].message : null,
+            [field.id]: errors[field.id] ? errors[field.id]?.message : null,
           },
         }}
       />
