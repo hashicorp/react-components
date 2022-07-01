@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import Button from '@hashicorp/react-button'
 import Field from '../partials/field'
+import NameField from '../partials/fields/name-field'
 import { convertToRESTFields } from '../utils'
 import type {
   MarketoForm,
@@ -41,10 +42,17 @@ function calculateDefaultValues(
   return initialValues
 }
 
+const defaultFieldGroupings = {
+  name: {
+    fields: ['FirstName', 'LastName'],
+    component: NameField,
+  },
+}
+
 const Form = ({
   formId,
   marketoForm,
-  groups,
+  groups = defaultFieldGroupings,
   components,
   submitTitle,
   className,
@@ -158,4 +166,5 @@ const Form = ({
   )
 }
 
+export { defaultFieldGroupings }
 export default Form
