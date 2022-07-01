@@ -3,27 +3,30 @@
   flex-grow: 1;
   flex-direction: column;
   align-items: center;
-  max-width: 100%;
+  padding-top: 86px;
+  padding-bottom: 100px;
+  padding-left: 42px;
+  padding-right: 42px;
+  position: relative;
 }
 
 .icon {
-  margin-bottom: 24px;
-}
-
-.tierNameXS {
-  margin: 0;
-  text-align: center;
-  @media (--small) {
-    composes: g-type-display-3 from global;
-  }
-
-  composes: g-type-display-4 from global;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .tierName {
   margin: 0;
   text-align: center;
   composes: g-type-display-3 from global;
+}
+
+.tierNameXS {
+  @media (--medium-up) {
+    composes: g-type-display-4 from global;
+  }
 }
 
 .details {
@@ -50,42 +53,17 @@
 
 .description {
   composes: g-type-body-small from global;
-  max-width: 321px;
   text-align: center;
   margin: 0 auto;
+  color: var(--gray-2);
 
   & p {
-    margin: 0;
-  }
-}
-
-.body-extra-small {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 150%;
-  text-align: center;
-  letter-spacing: 0.0125em;
-}
-
-.descriptionXS {
-  @media (--small) {
-    composes: g-type-body-small from global;
-  }
-
-  composes: body-extra-small;
-  max-width: 321px;
-  text-align: center;
-  margin: 0 auto;
-
-  & p {
-    text-align: center;
     margin: 0;
   }
 }
 
 .cta {
-  padding: 20px 0;
+  padding-top: 32px;
   display: flex;
   justify-content: center;
 }
@@ -93,13 +71,12 @@
 .textLink {
   composes: g-type-buttons-and-standalone-links from global;
   text-decoration: underline;
-  padding: 14px 0;
   text-align: center;
 }
 
 .supplementaryInfo {
-  composes: body-extra-small;
   color: var(--wpl-neutral-400);
+  padding-top: 32px;
 
   & p {
     margin: 0;
@@ -109,4 +86,11 @@
     color: var(--wpl-neutral-300);
     cursor: pointer;
   }
+}
+
+.xsFont {
+  font-weight: var(--font-weight-medium);
+  font-size: 0.813rem;
+  line-height: 1.5em;
+  letter-spacing: 0.0125em;
 }

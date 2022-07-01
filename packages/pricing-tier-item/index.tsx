@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Link from 'next/link'
+import classNames from 'classnames'
 import type { PricingTierItemProps } from './types'
 import s from './style.module.css'
 import Button from 'packages/button'
@@ -19,14 +20,16 @@ export default function PricingTierItem({
   return (
     <div className={s.pricingTierItem}>
       {icon && <div className={s.icon}>{icon}</div>}
-      <h3 className={hasExtraSmallFont ? s.tierNameXS : s.tierName}>{title}</h3>
+      <h3 className={classNames(s.tierName, hasExtraSmallFont && s.tierNameXS)}>
+        {title}
+      </h3>
       <div className={s.details}>
         {label && <span className={s.label}>{label}</span>}
-        {price && <span className={s.price}>{price}</span>}
+        <span className={s.price}>{price}</span>
         {consumption && <span className={s.consumption}>{consumption}</span>}
       </div>
       <div
-        className={hasExtraSmallFont ? s.descriptionXS : s.description}
+        className={classNames(s.description, hasExtraSmallFont && s.xsFont)}
         dangerouslySetInnerHTML={{ __html: description }}
       />
       <div className={s.cta}>
@@ -40,7 +43,7 @@ export default function PricingTierItem({
       </div>
       {supplementaryInfo && (
         <div
-          className={s.supplementaryInfo}
+          className={classNames(s.supplementaryInfo, s.xsFont)}
           dangerouslySetInnerHTML={{ __html: supplementaryInfo }}
         />
       )}
