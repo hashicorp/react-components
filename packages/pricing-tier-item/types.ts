@@ -12,7 +12,7 @@ export interface PricingTierItemProps {
   /**
    * Pricing information
    */
-  label: string
+  label?: string
   /**
    * Price detail
    */
