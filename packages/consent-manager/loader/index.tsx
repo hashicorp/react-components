@@ -53,16 +53,6 @@ export default function createConsentManager({
     ? segmentWriteKey
     : '0EXTgkNx0Ydje2PGXVbRhpKKoe5wtzcE'
 
-  // same for the utility server
-  let utilityServerRoot = isProd
-    ? 'https://util.hashicorp.com'
-    : 'https://hashicorp-web-util-staging.herokuapp.com'
-
-  // allow per-project utility server override. useful for local development
-  if (process.env.UTIL_SERVER) {
-    utilityServerRoot = process.env.UTIL_SERVER.replace(/\/$/, '')
-  }
-
   // next we build the config objct, kicking it off with the default values
   let config: ConsentManagerProps = {
     version: VERSION,
@@ -70,7 +60,6 @@ export default function createConsentManager({
     privacyPolicyLink: PRIVACY_LINK,
     cookiePolicyLink: COOKIES_LINK,
     segmentWriteKey: segmentKey,
-    utilServerRoot: utilityServerRoot,
     categories: defaultCategories,
     forceShow,
     onAcceptAll,

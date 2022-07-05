@@ -31,7 +31,6 @@ export interface ConsentManagerProps {
   segmentServices?: ConsentManagerService[]
   segmentWriteKey?: string
   showDialog?: boolean
-  utilServerRoot?: string
   version?: number
   onManagePreferences?: () => void
   onAcceptAll?: () => void

@@ -23,7 +23,6 @@ interface ConsentManagerProps {
   segmentServices?: ConsentManagerService[]
   segmentWriteKey?: string
   showDialog?: boolean
-  utilServerRoot?: string
   version?: number
   onManagePreferences?: () => void
   onAcceptAll?: () => void
@@ -129,7 +128,6 @@ export default function ConsentManager(props: ConsentManagerProps) {
         <ConsentPreferences
           version={props.version}
           segmentWriteKey={props.segmentWriteKey}
-          utilServerRoot={props.utilServerRoot}
           segmentServices={props.segmentServices}
           additionalServices={props.additionalServices}
           preferences={preferences}
