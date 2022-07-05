@@ -2,7 +2,8 @@ import Link from 'next/link'
 import classNames from 'classnames'
 import type { PricingTierItemProps } from '../../types'
 import s from './style.module.css'
-import Button from 'packages/button'
+// import Button from 'packages/button'
+import Button from '@hashicorp/react-button'
 
 export default function PricingTierItem({
   icon,
