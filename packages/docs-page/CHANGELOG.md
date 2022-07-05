@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.1.1
+
+### Patch Changes
+
+- [#638](https://github.com/hashicorp/react-components/pull/638) [`7adf9066`](https://github.com/hashicorp/react-components/commit/7adf9066b6b214bea9ad208839a72b6148600267) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - move `@hashicorp/remark-plugins` into `peerDependencies`
+
 ## 17.1.0
 
 ### Minor Changes
