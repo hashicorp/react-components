@@ -1,7 +1,6 @@
 .pricingTierItem {
-  display: grid;
-
-  /* flex-grow: 1; */
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   position: relative;
@@ -21,12 +20,12 @@
 }
 
 .tierName {
-  align-self: flex-start;
   padding-top: 80px;
   margin: 0;
   text-align: center;
   composes: g-type-display-3 from global;
   padding-bottom: 24px;
+  flex: 1;
 }
 
 .tierNameSM {
@@ -44,10 +43,10 @@
 }
 
 .details {
-  align-self: flex-start;
   display: flex;
   flex-direction: column;
   text-align: center;
+  flex: 1;
 }
 
 .label {
@@ -71,7 +70,6 @@
 }
 
 .description {
-  align-self: flex-start;
   composes: g-type-body-small from global;
   text-align: center;
   margin: 0 auto;
@@ -90,26 +88,23 @@
 }
 
 .cta {
-  display: flex;
-  margin-top: 32px;
-  padding-bottom: 115px;
+  display: block;
+  padding-bottom: 120px;
   height: 42px;
-  align-items: center;
-  justify-content: center;
-  align-self: flex-end;
 }
 
 .textLink {
   composes: g-type-buttons-and-standalone-links from global;
   text-decoration: underline;
   text-align: center;
+  vertical-align: middle;
 }
 
 .supplementaryInfo {
   color: var(--wpl-neutral-400);
   text-align: center;
   position: absolute;
-  bottom: 8%;
+  bottom: 7%;
   width: 100%;
 
   & p {
