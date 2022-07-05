@@ -1,5 +1,6 @@
 import { Theme } from 'packages/button/types'
 import { ReactElement } from 'react'
+
 export interface PricingTierItemProps {
   /**
    * Flight Icon component
@@ -16,7 +17,7 @@ export interface PricingTierItemProps {
   /**
    * Price detail
    */
-  price: string
+  price?: string
   /**
    * Consumption detail
    */
@@ -42,5 +43,9 @@ export interface PricingTierItemProps {
    * If rendered within a Tier Card List, font sizes depend on the amount
    * of cards in list
    */
-  size?: 'xs' | 'sm'
+  size?: 'md' | 'xs' | 'sm'
+}
+
+export interface PricingTierListProps {
+  tiers: Array<PricingTierItemProps>
 }
