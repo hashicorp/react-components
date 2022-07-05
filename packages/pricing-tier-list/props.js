@@ -14,7 +14,6 @@ module.exports = {
   },
   price: {
     type: 'string',
-    require: true,
     description: 'Price detail',
   },
   consumption: {
