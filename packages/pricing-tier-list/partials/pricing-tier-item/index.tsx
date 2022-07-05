@@ -1,7 +1,6 @@
-import * as React from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
-import type { PricingTierItemProps } from './types'
+import type { PricingTierItemProps } from '../../types'
 import s from './style.module.css'
 import Button from 'packages/button'
 
@@ -14,18 +13,27 @@ export default function PricingTierItem({
   description,
   cta,
   supplementaryInfo,
-  size = 'sm',
+  size = 'md',
 }: PricingTierItemProps): React.ReactElement {
+  const hasSmallFont = size === 'sm'
   const hasExtraSmallFont = size === 'xs'
   return (
     <div className={s.pricingTierItem}>
       {icon && <div className={s.icon}>{icon}</div>}
-      <h3 className={classNames(s.tierName, hasExtraSmallFont && s.tierNameXS)}>
+      <h3
+        className={classNames(
+          s.tierName,
+          hasSmallFont && s.tierNameSM,
+          hasExtraSmallFont && s.tierNameXS
+        )}
+      >
         {title}
       </h3>
       <div className={s.details}>
         {label && <span className={s.label}>{label}</span>}
-        <span className={s.price}>{price}</span>
+        <span className={classNames(s.price, hasExtraSmallFont && s.priceXS)}>
+          {price}
+        </span>
         {consumption && <span className={s.consumption}>{consumption}</span>}
       </div>
       <div

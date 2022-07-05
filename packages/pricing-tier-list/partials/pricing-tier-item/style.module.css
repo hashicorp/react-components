@@ -1,13 +1,16 @@
 .pricingTierItem {
-  display: flex;
-  flex-grow: 1;
+  display: grid;
+
+  /* flex-grow: 1; */
   flex-direction: column;
   align-items: center;
-  padding-top: 86px;
-  padding-bottom: 100px;
-  padding-left: 42px;
-  padding-right: 42px;
   position: relative;
+  border: 1px solid var(--wpl-neutral-100);
+  border-radius: 8px;
+
+  @media (--medium-up) {
+    border: 0;
+  }
 }
 
 .icon {
@@ -18,32 +21,48 @@
 }
 
 .tierName {
+  align-self: flex-start;
+  padding-top: 80px;
   margin: 0;
   text-align: center;
   composes: g-type-display-3 from global;
+  padding-bottom: 24px;
 }
 
-.tierNameXS {
+.tierNameSM {
+  padding-top: 65px;
+
   @media (--medium-up) {
     composes: g-type-display-4 from global;
   }
 }
 
+.tierNameXS {
+  @media (--medium-up) {
+    composes: g-type-display-5 from global;
+  }
+}
+
 .details {
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
-  padding: 24px 0;
   text-align: center;
 }
 
 .label {
   composes: g-type-label from global;
-  margin: 0;
+  padding-bottom: 5px;
 }
 
 .price {
   composes: g-type-display-4 from global;
-  margin: 0;
+}
+
+.priceXS {
+  @media (--medium-up) {
+    composes: g-type-display-5 from global;
+  }
 }
 
 .consumption {
@@ -52,20 +71,32 @@
 }
 
 .description {
+  align-self: flex-start;
   composes: g-type-body-small from global;
   text-align: center;
   margin: 0 auto;
   color: var(--gray-2);
+  flex-grow: 1;
+  max-width: 90%;
+  padding: 24px 0 32px;
 
   & p {
     margin: 0;
   }
+
+  @media (--medium-up) {
+    max-width: 100%;
+  }
 }
 
 .cta {
-  padding-top: 32px;
   display: flex;
+  margin-top: 32px;
+  padding-bottom: 115px;
+  height: 42px;
+  align-items: center;
   justify-content: center;
+  align-self: flex-end;
 }
 
 .textLink {
@@ -76,7 +107,10 @@
 
 .supplementaryInfo {
   color: var(--wpl-neutral-400);
-  padding-top: 32px;
+  text-align: center;
+  position: absolute;
+  bottom: 8%;
+  width: 100%;
 
   & p {
     margin: 0;
