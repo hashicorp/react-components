@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.8.2
+
+### Patch Changes
+
+- [#633](https://github.com/hashicorp/react-components/pull/633) [`3d0261e4`](https://github.com/hashicorp/react-components/commit/3d0261e4c01bebd05e7ad0869760804e7ad82a4a) Thanks [@dstaley](https://github.com/dstaley)! - Update Ubuntu/Debian installation instructions
+
 ## 2.8.1
 
 ### Patch Changes

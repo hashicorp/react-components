@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-product-downloads-page",
   "description": "The page where you go to download HashiCorp products",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "author": "HashiCorp",
   "contributors": [
     "Zack Tanner",
