@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.1.2
+
+### Patch Changes
+
+- [#639](https://github.com/hashicorp/react-components/pull/639) [`c8c945f4`](https://github.com/hashicorp/react-components/commit/c8c945f43eb4fa539959c3cd452804bc21f992e7) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This fixes incorrect logic for parsing and stripping a TFE version from Next.js path params.
+
 ## 17.1.1
 
 ### Patch Changes
