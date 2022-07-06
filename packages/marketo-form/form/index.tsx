@@ -29,10 +29,10 @@ interface Props {
 
 // function that returns the default values of all fields
 function calculateDefaultValues(
-  values: MarketoFormField[]
+  fields: MarketoFormField[]
 ): Record<string, string> {
   const initialValues: Record<string, string> = {}
-  values.forEach((field) => {
+  fields.forEach((field) => {
     if (field.dataType === 'select' && field.defaultValue) {
       initialValues[field.id] = JSON.parse(field.defaultValue)[0]
     } else {
@@ -94,7 +94,7 @@ const Form = ({
   })
 
   const onSubmit = async (data: Record<string, unknown>) => {
-    const res = await fetch('/api/marketo/submit', {
+    const res = await fetch(`${window.location.origin}/api/marketo/submit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
