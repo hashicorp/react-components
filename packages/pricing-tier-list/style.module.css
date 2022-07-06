@@ -32,9 +32,8 @@
   &.length2 {
     @media (--medium-up) {
       grid-column: 2 / 12;
-      column-gap: 36px;
-      padding: 0 57px;
-      justify-content: space-between;
+      column-gap: 20px;
+      padding: 0 32px;
     }
 
     @media (--large) {
@@ -55,14 +54,13 @@
   &.length5 {
     @media (--medium-up) {
       grid-column: 1 / -1;
-      column-gap: 32px;
+      column-gap: 20px;
       row-gap: 0;
       padding: 0 57px;
     }
 
-    @media (--medium) {
-      grid-column: 2 / 12;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (--large) {
+      column-gap: 32px;
     }
   }
 
