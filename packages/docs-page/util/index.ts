@@ -15,9 +15,20 @@ export const stripVersionFromPathParams = (
   let version = 'latest'
   let params = [...pathParams]
 
-  if (index > -1) {
+  // A "version" is expected to only exist at index (0)
+  // in a list of Next.js params.
+  // If it is elsewhere, it's likely that it should be left alone.
+
+  if (index == 0) {
     version = pathParams[index]
     params = [...params.slice(0, index), ...params.slice(index + 1)]
+    return [version, params]
+  }
+
+  // if index is greater than 0, it's possible the version is intended to be in the URL
+  // - ex. GET terraform.io/enterprise/releases/2022/v202205-1
+  if (index > 0) {
+    return [version, params]
   }
 
   return [version, params]
