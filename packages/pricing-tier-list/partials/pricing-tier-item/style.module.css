@@ -6,6 +6,7 @@
   position: relative;
   border: 1px solid var(--wpl-neutral-100);
   border-radius: 8px;
+  align-content: space-evenly;
 
   @media (--medium-up) {
     border: 0;
@@ -25,7 +26,6 @@
   text-align: center;
   composes: g-type-display-3 from global;
   padding-bottom: 24px;
-  flex: 1;
 }
 
 .tierNameSM {
@@ -37,7 +37,11 @@
 }
 
 .tierNameXS {
-  @media (--medium-up) {
+  @media (--medium) {
+    composes: g-type-display-6 from global;
+  }
+
+  @media (--large) {
     composes: g-type-display-5 from global;
   }
 }
@@ -77,6 +81,8 @@
   flex-grow: 1;
   max-width: 90%;
   padding: 24px 0 32px;
+  justify-self: flex-end;
+  display: flex;
 
   & p {
     margin: 0;
@@ -87,24 +93,38 @@
   }
 }
 
-.cta {
-  display: block;
+.bottom {
   padding-bottom: 120px;
-  height: 42px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.cta {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .textLink {
   composes: g-type-buttons-and-standalone-links from global;
   text-decoration: underline;
   text-align: center;
-  vertical-align: middle;
+}
+
+.textLinkXS {
+  @media (--medium) {
+    font-size: 13px;
+  }
 }
 
 .supplementaryInfo {
   color: var(--wpl-neutral-400);
   text-align: center;
   position: absolute;
-  bottom: 7%;
+  top: 80px;
   width: 100%;
 
   & p {
