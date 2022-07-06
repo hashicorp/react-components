@@ -25,12 +25,6 @@ export const stripVersionFromPathParams = (
     return [version, params]
   }
 
-  // if index is greater than 0, it's possible the version is intended to be in the URL
-  // - ex. GET terraform.io/enterprise/releases/2022/v202205-1
-  if (index > 0) {
-    return [version, params]
-  }
-
   return [version, params]
 }
 
