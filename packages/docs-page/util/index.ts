@@ -1,5 +1,5 @@
-const REGEX =
-  /^v([0-9]+)\.([0-9]+)\.(x|[0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/i
+const REGEX = /^v[0-9]+\.[0-9]+\.(x|[0-9]+)$/i
+const TFE_REGEX = /^v[0-9]{6}-[0-9]+$/i
 
 /**
  * Given an array of strings, returns a tuple of
@@ -11,13 +11,18 @@ const REGEX =
 export const stripVersionFromPathParams = (
   pathParams: string[] = []
 ): [string, string[]] => {
-  const index = pathParams.findIndex((e) => REGEX.test(e))
+  const index = pathParams.findIndex((e) => REGEX.test(e) || TFE_REGEX.test(e))
   let version = 'latest'
   let params = [...pathParams]
 
-  if (index > -1) {
+  // A "version" is expected to only exist at index (0)
+  // in a list of Next.js params.
+  // If it is elsewhere, it's likely that it should be left alone.
+
+  if (index == 0) {
     version = pathParams[index]
     params = [...params.slice(0, index), ...params.slice(index + 1)]
+    return [version, params]
   }
 
   return [version, params]

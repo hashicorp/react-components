@@ -1,5 +1,23 @@
 # @hashicorp/react-docs-page
 
+## 17.1.2
+
+### Patch Changes
+
+- [#639](https://github.com/hashicorp/react-components/pull/639) [`c8c945f4`](https://github.com/hashicorp/react-components/commit/c8c945f43eb4fa539959c3cd452804bc21f992e7) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This fixes incorrect logic for parsing and stripping a TFE version from Next.js path params.
+
+## 17.1.1
+
+### Patch Changes
+
+- [#638](https://github.com/hashicorp/react-components/pull/638) [`7adf9066`](https://github.com/hashicorp/react-components/commit/7adf9066b6b214bea9ad208839a72b6148600267) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - move `@hashicorp/remark-plugins` into `peerDependencies`
+
+## 17.1.0
+
+### Minor Changes
+
+- [#631](https://github.com/hashicorp/react-components/pull/631) [`ce6cfd8b`](https://github.com/hashicorp/react-components/commit/ce6cfd8b5e28e5f8b902e4a9095e61d750de1cc6) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This updates `docs-page` remote content loader to handle TFE versions in path params.
+
 ## 17.0.1
 
 ### Patch Changes
