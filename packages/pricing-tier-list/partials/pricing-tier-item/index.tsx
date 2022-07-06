@@ -32,30 +32,41 @@ export default function PricingTierItem({
       </h3>
       <div className={s.details}>
         {label && <span className={s.label}>{label}</span>}
-        <span className={classNames(s.price, hasExtraSmallFont && s.priceXS)}>
-          {price}
-        </span>
+        {price && (
+          <span className={classNames(s.price, hasExtraSmallFont && s.priceXS)}>
+            {price}
+          </span>
+        )}
         {consumption && <span className={s.consumption}>{consumption}</span>}
       </div>
       <div
         className={classNames(s.description, hasExtraSmallFont && s.xsFont)}
         dangerouslySetInnerHTML={{ __html: description }}
       />
-      <div className={s.cta}>
-        {cta.type === 'button' ? (
-          <Button url={cta.url} title={cta.title} theme={cta.theme} />
-        ) : (
-          <Link href={cta.url}>
-            <a className={s.textLink}>{cta.title}</a>
-          </Link>
+      <div className={s.bottom}>
+        <div className={s.cta}>
+          {cta.type === 'button' && size !== 'xs' ? (
+            <Button url={cta.url} title={cta.title} theme={cta.theme} />
+          ) : (
+            <Link href={cta.url}>
+              <a
+                className={classNames(
+                  s.textLink,
+                  hasExtraSmallFont && s.textLinkXS
+                )}
+              >
+                {cta.title}
+              </a>
+            </Link>
+          )}
+        </div>
+        {supplementaryInfo && (
+          <div
+            className={classNames(s.supplementaryInfo, s.xsFont)}
+            dangerouslySetInnerHTML={{ __html: supplementaryInfo }}
+          />
         )}
       </div>
-      {supplementaryInfo && (
-        <div
-          className={classNames(s.supplementaryInfo, s.xsFont)}
-          dangerouslySetInnerHTML={{ __html: supplementaryInfo }}
-        />
-      )}
     </div>
   )
 }
