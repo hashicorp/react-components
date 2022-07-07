@@ -2,7 +2,6 @@ import Link from 'next/link'
 import classNames from 'classnames'
 import type { PricingTierItemProps } from '../../types'
 import s from './style.module.css'
-// import Button from 'packages/button'
 import Button from '@hashicorp/react-button'
 
 export default function PricingTierItem({
@@ -14,33 +13,19 @@ export default function PricingTierItem({
   description,
   cta,
   supplementaryInfo,
-  size = 'md',
+  size = 'lg',
 }: PricingTierItemProps): React.ReactElement {
-  const hasSmallFont = size === 'sm'
-  const hasExtraSmallFont = size === 'xs'
   return (
-    <div className={s.pricingTierItem}>
+    <div className={classNames(s.pricingTierItem, s[`${size}Size`])}>
       {icon && <div className={s.icon}>{icon}</div>}
-      <h3
-        className={classNames(
-          s.tierName,
-          hasSmallFont && s.tierNameSM,
-          hasExtraSmallFont && s.tierNameXS
-        )}
-      >
-        {title}
-      </h3>
+      <h3 className={s.tierName}>{title}</h3>
       <div className={s.details}>
         {label && <span className={s.label}>{label}</span>}
-        {price && (
-          <span className={classNames(s.price, hasExtraSmallFont && s.priceXS)}>
-            {price}
-          </span>
-        )}
+        {price && <span className={s.price}>{price}</span>}
         {consumption && <span className={s.consumption}>{consumption}</span>}
       </div>
       <div
-        className={classNames(s.description, hasExtraSmallFont && s.xsFont)}
+        className={s.description}
         dangerouslySetInnerHTML={{ __html: description }}
       />
       <div className={s.bottom}>
@@ -49,20 +34,13 @@ export default function PricingTierItem({
             <Button url={cta.url} title={cta.title} theme={cta.theme} />
           ) : (
             <Link href={cta.url}>
-              <a
-                className={classNames(
-                  s.textLink,
-                  hasExtraSmallFont && s.textLinkXS
-                )}
-              >
-                {cta.title}
-              </a>
+              <a className={s.textLink}>{cta.title}</a>
             </Link>
           )}
         </div>
         {supplementaryInfo && (
           <div
-            className={classNames(s.supplementaryInfo, s.xsFont)}
+            className={s.supplementaryInfo}
             dangerouslySetInnerHTML={{ __html: supplementaryInfo }}
           />
         )}
