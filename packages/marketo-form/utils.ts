@@ -94,3 +94,52 @@ export function formattedLabel(field: MarketoFormField): string {
 
   return field.id
 }
+
+export function groupFields(
+  groups: Record<
+    string,
+    {
+      fields: string[]
+      component: (props: { fields: MarketoFormField[] }) => JSX.Element
+    }
+  >,
+  fields: MarketoFormField[]
+): Record<string, MarketoFormField[]> {
+  const grouped: Record<string, MarketoFormField[]> = {}
+  fields.forEach((field) => {
+    if (groups) {
+      const customGroup = Object.entries(groups).filter((group) => {
+        return group[1].fields.includes(field.id)
+      })
+      if (customGroup.length > 0) {
+        const customGroupName = customGroup[0][0]
+        if (customGroupName) {
+          if (!grouped[customGroupName]) {
+            grouped[customGroupName] = [field]
+          } else {
+            grouped[customGroupName].push(field)
+          }
+        }
+      } else {
+        grouped[field.id] = [field]
+      }
+    } else {
+      grouped[field.id] = [field]
+    }
+  })
+  return grouped
+}
+
+export function calculateDefaultValues(
+  fields: MarketoFormField[]
+): Record<string, string> {
+  const initialValues: Record<string, string> = {}
+  fields.forEach((field) => {
+    if (field.dataType === 'select' && field.defaultValue) {
+      initialValues[field.id] = JSON.parse(field.defaultValue)[0]
+    } else {
+      initialValues[field.id] = ''
+    }
+  })
+  return initialValues
+}

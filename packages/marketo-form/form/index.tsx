@@ -3,7 +3,11 @@ import { useForm, FormProvider } from 'react-hook-form'
 import Button from '@hashicorp/react-button'
 import Field from '../partials/field'
 import NameField from '../partials/fields/name-field'
-import { convertToRESTFields } from '../utils'
+import {
+  convertToRESTFields,
+  groupFields,
+  calculateDefaultValues,
+} from '../utils'
 import type {
   MarketoForm,
   MarketoFormField,
@@ -27,21 +31,6 @@ interface Props {
   onSubmitError?: () => void
 }
 
-// function that returns the default values of all fields
-function calculateDefaultValues(
-  fields: MarketoFormField[]
-): Record<string, string> {
-  const initialValues: Record<string, string> = {}
-  fields.forEach((field) => {
-    if (field.dataType === 'select' && field.defaultValue) {
-      initialValues[field.id] = JSON.parse(field.defaultValue)[0]
-    } else {
-      initialValues[field.id] = ''
-    }
-  })
-  return initialValues
-}
-
 const defaultFieldGroupings = {
   name: {
     fields: ['FirstName', 'LastName'],
@@ -63,29 +52,7 @@ const Form = ({
   // If a field doesn't belong to a group, it is placed in a group keyed by
   // field.Name.
   const groupedFields = useMemo(() => {
-    const grouped: Record<string, MarketoFormField[]> = {}
-    marketoForm.result.forEach((field) => {
-      if (groups) {
-        const customGroup = Object.entries(groups).filter((group) => {
-          return group[1].fields.includes(field.id)
-        })
-        if (customGroup.length > 0) {
-          const customGroupName = customGroup[0][0]
-          if (customGroupName) {
-            if (!grouped[customGroupName]) {
-              grouped[customGroupName] = [field]
-            } else {
-              grouped[customGroupName].push(field)
-            }
-          }
-        } else {
-          grouped[field.id] = [field]
-        }
-      } else {
-        grouped[field.id] = [field]
-      }
-    })
-    return grouped
+    return groupFields(groups, marketoForm.result)
   }, [marketoForm, groups])
 
   const methods = useForm({
