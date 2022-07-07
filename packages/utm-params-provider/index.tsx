@@ -23,7 +23,7 @@ const UtmParamsProvider = ({ children }) => {
     const searchParams = new URLSearchParams(window.location.search)
     for (const [key, value] of searchParams.entries()) {
       if (UTM_ALLOW_LIST.includes(key as UtmKeys)) {
-        Cookies.set(key, value)
+        Cookies.set(key, value, { expires: 30 })
       }
     }
   }, [])
