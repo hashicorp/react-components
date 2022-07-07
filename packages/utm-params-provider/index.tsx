@@ -16,7 +16,7 @@ const UtmParamsContext = React.createContext<{
 }>({ utmParams: {} })
 
 const UtmParamsProvider = ({ children }) => {
-  const utmParams = React.useRef<UtmParams>({})
+  const [utmParams, setUtmParams] = React.useState<UtmParams>({})
 
   React.useEffect(() => {
     // Write UTM params to cookies from URL
@@ -26,23 +26,21 @@ const UtmParamsProvider = ({ children }) => {
         Cookies.set(key, value, { expires: 30 })
       }
     }
-  }, [])
 
-  React.useEffect(() => {
-    // Read UTM params from cookies
-    utmParams.current = Object.fromEntries(
-      Object.entries(Cookies.get()).filter(([key, _]) =>
-        UTM_ALLOW_LIST.includes(key as UtmKeys)
+    // Read UTM params from cookies and pass to context
+    setUtmParams(
+      Object.fromEntries(
+        Object.entries(Cookies.get()).filter(([key, _]) =>
+          UTM_ALLOW_LIST.includes(key as UtmKeys)
+        )
       )
     )
   }, [])
 
+  const contextValue = React.useMemo(() => ({ utmParams }), [utmParams])
+
   return (
-    <UtmParamsContext.Provider
-      value={{
-        utmParams: utmParams.current,
-      }}
-    >
+    <UtmParamsContext.Provider value={contextValue}>
       {children}
     </UtmParamsContext.Provider>
   )
