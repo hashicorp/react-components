@@ -43,7 +43,7 @@ export interface PricingTierItemProps {
    * If rendered within a Tier Card List, font sizes depend on the amount
    * of cards in list
    */
-  size?: 'md' | 'xs' | 'sm'
+  size?: 'lg' | 'md' | 'xs' | 'sm'
 }
 
 export interface PricingTierListProps {

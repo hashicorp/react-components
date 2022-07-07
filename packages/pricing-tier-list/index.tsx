@@ -4,14 +4,14 @@ import { PricingTierListProps } from './types'
 import s from './style.module.css'
 
 const CARD_SIZES = {
-  1: 'med',
-  2: 'med',
-  3: 'sm',
+  1: 'lg',
+  2: 'lg',
+  3: 'md',
   4: 'sm',
   5: 'xs',
 }
 
-export function PricingTierList({ tiers }: PricingTierListProps) {
+export default function PricingTierList({ tiers }: PricingTierListProps) {
   const tiersLength = tiers.length
 
   return (
