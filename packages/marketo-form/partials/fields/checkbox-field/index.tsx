@@ -5,8 +5,9 @@ import { formattedLabel } from '../../../utils'
 import type { MarketoFormCheckboxField } from '../../../types'
 
 const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
-  const { register } = useFormContext()
+  const { register, watch } = useFormContext()
   const { errors, touchedFields } = useFormState()
+  const value = watch(field.id, false)
 
   if (field.id === 'Consent_Privacy_Policy__c') {
     return (
@@ -20,9 +21,12 @@ const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
                    >
                      Privacy Policy
                    </a>`}
-          field={register(field.id, {
-            required: field.required ? field.validationMessage : false,
-          })}
+          field={{
+            ...register(field.id, {
+              required: field.required ? field.validationMessage : false,
+            }),
+            value,
+          }}
           form={{
             touched: {
               [field.id]: touchedFields[field.id] !== undefined,

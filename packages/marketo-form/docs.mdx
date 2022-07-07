@@ -50,6 +50,21 @@ Renders a form from Marketo.
           ruleType: 'alwaysShow',
         },
       },
+      {
+        id: 'Consent_Privacy_Policy__c',
+        dataType: 'checkbox',
+        validationMessage: 'This field is required.',
+        rowNumber: 6,
+        columnNumber: 0,
+        required: true,
+        formPrefill: true,
+        fieldMetaData: {
+          initiallyChecked: false,
+        },
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      }
     ]
   }}
   submitTitle="Download Now"
