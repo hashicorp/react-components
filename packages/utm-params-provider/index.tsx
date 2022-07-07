@@ -21,11 +21,11 @@ const UtmParamsProvider = ({ children }) => {
   React.useEffect(() => {
     // Write UTM params to cookies from URL
     const searchParams = new URLSearchParams(window.location.search)
-    for (const [key, value] of searchParams.entries()) {
+    searchParams.forEach((value: string, key: string) => {
       if (UTM_ALLOW_LIST.includes(key as UtmKeys)) {
         Cookies.set(key, value, { expires: 30 })
       }
-    }
+    })
 
     // Read UTM params from cookies and pass to context
     setUtmParams(
