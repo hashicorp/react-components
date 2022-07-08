@@ -15,7 +15,7 @@ export default function PricingTierList({ tiers }: PricingTierListProps) {
   const tiersLength = tiers.length
 
   return (
-    <div className={s.pricingTierListWrapper}>
+    <div className={s.pricingTierListContainer}>
       <div
         className={classNames(s.pricingTierList, s[`length${tiersLength}`])}
         style={
