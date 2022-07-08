@@ -7,8 +7,8 @@
     "Zach Shilton"
   ],
   "dependencies": {
-    "clsx": "^1.1.1",
-    "uuid": "^8.3.2"
+    "@reach/auto-id": "^0.17.0",
+    "clsx": "^1.1.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
