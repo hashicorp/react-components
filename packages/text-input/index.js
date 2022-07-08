@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { v1 as uuidv1 } from 'uuid'
+import { useId } from '@reach/auto-id'
 import s from './style.module.css'
 
 function TextInput({
@@ -20,7 +20,7 @@ function TextInput({
   const error = form.touched[field.name] && form.errors[field.name]
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
-  const inputId = 'u' + uuidv1()
+  const inputId = useId()
   return (
     <div
       className={classNames(s.root, className, s[`theme-${theme.background}`], {
