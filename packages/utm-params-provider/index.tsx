@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Cookies from 'js-cookie'
+import { useRouter } from 'next/router'
 
 const UTM_ALLOW_LIST = [
   'utm_source',
@@ -16,31 +17,26 @@ const UtmParamsContext = React.createContext<{
 }>({ utmParams: {} })
 
 const UtmParamsProvider = ({ children }) => {
-  const [utmParams, setUtmParams] = React.useState<UtmParams>({})
+  const { query } = useRouter()
 
-  React.useEffect(() => {
-    // Write UTM params to cookies from URL
-    const searchParams = new URLSearchParams(window.location.search)
-    searchParams.forEach((value: string, key: string) => {
-      if (UTM_ALLOW_LIST.includes(key as UtmKeys)) {
+  const utmParams = React.useMemo<UtmParams>(() => {
+    const result = {}
+    Object.entries(query).forEach(([key, value]) => {
+      const isAllowed = UTM_ALLOW_LIST.includes(key as UtmKeys)
+      if (isAllowed) {
+        result[key] = value
         Cookies.set(key, value, { expires: 30 })
       }
     })
-
-    // Read UTM params from cookies and pass to context
-    setUtmParams(
-      Object.fromEntries(
-        Object.entries(Cookies.get()).filter(([key, _]) =>
-          UTM_ALLOW_LIST.includes(key as UtmKeys)
-        )
-      )
-    )
-  }, [])
-
-  const contextValue = React.useMemo(() => ({ utmParams }), [utmParams])
+    return result
+  }, [query])
 
   return (
-    <UtmParamsContext.Provider value={contextValue}>
+    <UtmParamsContext.Provider
+      value={{
+        utmParams,
+      }}
+    >
       {children}
     </UtmParamsContext.Provider>
   )
