@@ -154,6 +154,7 @@
   & a {
     color: var(--wpl-neutral-300);
     cursor: pointer;
+    text-decoration: underline;
   }
 
   @media (--medium-up) {
