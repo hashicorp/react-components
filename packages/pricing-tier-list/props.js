@@ -61,9 +61,9 @@ module.exports = {
   },
   size: {
     type: 'string',
-    options: ['xs', 'sm'],
+    options: ['lg', 'md', 'xs', 'sm'],
     description:
       'If rendered within a PricingTierItemList, font sizes depend on the amount of cards in list',
-    default: 'sm',
+    default: 'lg',
   },
 }
