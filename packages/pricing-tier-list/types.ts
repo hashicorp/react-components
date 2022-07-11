@@ -1,5 +1,5 @@
-import { Theme } from 'packages/button/types'
 import { ReactElement } from 'react'
+import { Theme } from '@hashicorp/react-button/types'
 
 export interface PricingTierItemProps {
   /**
