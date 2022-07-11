@@ -1,0 +1,7 @@
+.label {
+  color: var(--gray-3);
+  composes: g-type-label from global;
+  display: block;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
