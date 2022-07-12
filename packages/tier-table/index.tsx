@@ -27,7 +27,7 @@ export default function PricingTable({
 
   return (
     <div
-      className={s.pricingTableContainer}
+      className={s.tierTableContainer}
       style={
         {
           '--col-gap': colLength === 2 ? '34px' : '22px',
