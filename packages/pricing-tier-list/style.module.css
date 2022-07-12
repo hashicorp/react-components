@@ -124,7 +124,7 @@
 
 .supplementaryInfo {
   padding-top: 12px;
-  color: var(--wpl-neutral-400);
+  color: var(--wpl-neutral-500);
   width: 100%;
   vertical-align: top;
   height: 100%;
@@ -134,7 +134,7 @@
   }
 
   & a {
-    color: var(--wpl-neutral-300);
+    color: var(--wpl-neutral-400);
     cursor: pointer;
     text-decoration: underline;
   }
