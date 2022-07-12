@@ -3,13 +3,13 @@ import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16
 import { IconChevronDown16 } from '@hashicorp/flight-icons/svg-react/chevron-down-16'
 import { IconXCircle24 } from '@hashicorp/flight-icons/svg-react/x-circle-24'
 import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-circle-fill-24'
-import { PricingTableProps } from './types'
+import { TierTableProps } from './types'
 import s from './style.module.css'
 
 export default function PricingTable({
   columns,
   rows,
-}: PricingTableProps): React.ReactElement {
+}: TierTableProps): React.ReactElement {
   const [collapsedRows, setCollapsedRows] = useState<Array<number>>([])
   const hasColumnHeaders = !!columns && columns.length > 0
   const colLength = rows[0].cells.length
