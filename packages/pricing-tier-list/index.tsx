@@ -8,6 +8,10 @@ import React from 'react'
 export default function PricingTierList({ tiers }: PricingTierListProps) {
   const tiersLength = tiers.length
 
+  if (tiersLength > 5) {
+    throw new Error('<PricingTierList /> only supports up to five tiers')
+  }
+
   return (
     <div className={s.pricingTierListContainer}>
       <div
