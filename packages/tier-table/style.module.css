@@ -1,0 +1,156 @@
+.pricingTableContainer {
+  composes: g-grid-container from global;
+}
+
+.table {
+  overflow-x: auto;
+  position: relative;
+
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    & thead {
+      & * + * {
+        padding-left: var(--col-gap);
+      }
+    }
+
+    & tr.rowIsCollapsed {
+      & th .rowHeading,
+      & td .textCell {
+        & * {
+          display: none;
+
+          &:first-child {
+            display: initial;
+          }
+        }
+      }
+    }
+
+    & tbody {
+      & tr {
+        border-bottom: 1px solid var(--wpl-neutral-200);
+      }
+
+      & th {
+        padding: 26px 0;
+        vertical-align: top;
+
+        & .icon {
+          display: inline-block;
+          float: left;
+          appearance: none;
+          background-color: transparent;
+          border: 0;
+          cursor: pointer;
+          padding: 5px 10px 0 0;
+        }
+      }
+
+      & td {
+        vertical-align: top;
+        padding-left: var(--col-gap);
+        padding-top: 26px;
+        padding-bottom: 26px;
+      }
+    }
+  }
+}
+
+.columnHeading {
+  border-top: 1px solid var(--wpl-neutral-400);
+  padding-top: 6px;
+  composes: g-type-display-5 from global;
+  text-align: start;
+}
+
+.rowHeading {
+  text-align: left;
+  max-width: 264px;
+  vertical-align: top;
+  display: inline-block;
+  float: left;
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5 {
+    margin: 0;
+    padding-bottom: 6px;
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-semi-bold);
+    font-size: 0.938rem;
+    letter-spacing: 0.01em;
+    line-height: 1.667em;
+  }
+
+  & p {
+    margin-top: 0;
+    color: var(--wpl-neutral-500);
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-reg);
+    font-size: 13px;
+    line-height: 150%;
+    letter-spacing: 0.0125em;
+  }
+
+  & a {
+    font-weight: var(--font-weight-reg);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.textCell {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & p,
+  & a {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 150%;
+    letter-spacing: 0.0125em;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5 {
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  & p {
+    margin-top: 0;
+    color: var(--wpl-neutral-400);
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.rowHeading,
+.textCell {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & p {
+    & a {
+      color: inherit;
+      font-weight: inherit;
+    }
+  }
+}

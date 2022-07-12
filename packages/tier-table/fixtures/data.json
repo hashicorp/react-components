@@ -1,0 +1,17 @@
+{
+  "columns": ["", "Development", "Starter"],
+  "rows": [
+    {
+      "name": "Monitored 24/7",
+      "cells": [false, false]
+    },
+    {
+      "name": "Clients limit",
+      "cells": ["<p><strong>BOLD TEXT</strong></p>", false]
+    },
+    {
+      "name": "Cross-region",
+      "cells": [false, false]
+    }
+  ]
+}
