@@ -46,7 +46,7 @@ describe('<ProductDownloadsPage />', () => {
       expect(
         getByText(
           downloadCards,
-          'curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -'
+          'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg'
         )
       ).toBeInTheDocument()
 
@@ -205,8 +205,7 @@ const releases = {
           os: 'darwin',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_darwin_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip',
         },
         {
           name: 'waypoint',
@@ -214,8 +213,7 @@ const releases = {
           os: 'windows',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_windows_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
         },
         {
           name: 'waypoint',
@@ -223,8 +221,7 @@ const releases = {
           os: 'linux',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_windows_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
         },
       ],
     },
@@ -240,8 +237,7 @@ const releases = {
           os: 'darwin',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_darwin_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip',
         },
         {
           name: 'waypoint',
@@ -249,8 +245,7 @@ const releases = {
           os: 'windows',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_windows_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
         },
         {
           name: 'waypoint',
@@ -258,8 +253,7 @@ const releases = {
           os: 'linux',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_windows_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
         },
       ],
     },
@@ -275,8 +269,7 @@ const releases = {
           os: 'darwin',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_darwin_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip',
         },
         {
           name: 'waypoint',
@@ -284,8 +277,7 @@ const releases = {
           os: 'windows',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_windows_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
         },
         {
           name: 'waypoint',
@@ -293,8 +285,7 @@ const releases = {
           os: 'linux',
           arch: 'amd64',
           filename: 'waypoint_0.1.0_windows_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_windows_amd64.zip',
         },
       ],
     },
@@ -310,8 +301,7 @@ const releases = {
           os: 'darwin',
           arch: 'amd64',
           filename: 'waypoint_1.0.0_darwin_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/1.0.0/waypoint_1.0.0_darwin_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/1.0.0/waypoint_1.0.0_darwin_amd64.zip',
         },
         {
           name: 'waypoint',
@@ -319,8 +309,7 @@ const releases = {
           os: 'windows',
           arch: 'amd64',
           filename: 'waypoint_1.0.0_windows_amd64.zip',
-          url:
-            'https://releases.hashicorp.com/waypoint/1.0.0/waypoint_1.0.0_windows_amd64.zip',
+          url: 'https://releases.hashicorp.com/waypoint/1.0.0/waypoint_1.0.0_windows_amd64.zip',
         },
       ],
     },

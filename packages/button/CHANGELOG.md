@@ -1,5 +1,11 @@
 # @hashicorp/react-button
 
+## 6.2.1
+
+### Patch Changes
+
+- [#642](https://github.com/hashicorp/react-components/pull/642) [`8f013839`](https://github.com/hashicorp/react-components/commit/8f01383973802fe3c8865d7d5ab9fcfe655b6376) Thanks [@dstaley](https://github.com/dstaley)! - Render Button with new stacking context
+
 ## 6.2.0
 
 ### Minor Changes
