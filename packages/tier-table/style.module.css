@@ -1,4 +1,4 @@
-.pricingTableContainer {
+.tierTableContainer {
   composes: g-grid-container from global;
 }
 
