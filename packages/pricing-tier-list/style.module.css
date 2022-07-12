@@ -255,7 +255,9 @@
       line-height: 1.5em;
       letter-spacing: 0.0125em;
     }
+  }
 
+  @media (--medium) {
     & .textLink {
       font-size: 13px;
     }
