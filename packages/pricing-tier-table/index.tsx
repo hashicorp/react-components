@@ -6,7 +6,7 @@ import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-c
 import { TierTableProps } from './types'
 import s from './style.module.css'
 
-export default function PricingTable({
+export default function PricingTierTable({
   columns,
   rows,
 }: TierTableProps): React.ReactElement {
@@ -31,7 +31,7 @@ export default function PricingTable({
 
   return (
     <div
-      className={s.tierTableContainer}
+      className={s.pricingTierTableContainer}
       style={
         {
           '--col-gap': colLength === 2 ? '34px' : '22px',

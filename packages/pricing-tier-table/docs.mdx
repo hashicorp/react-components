@@ -1,10 +1,10 @@
 ---
-componentName: 'TierTable'
+componentName: 'PricingTierTable'
 ---
 
 <LiveComponent>
   {`
-    <TierTable
+    <PricingTierTable
       columns={['', 'Development', 'Starter']}
       rows={[
         {
@@ -47,7 +47,7 @@ componentName: 'TierTable'
 ## Without column headers
 <LiveComponent>
   {`
-    <TierTable
+    <PricingTierTable
       columns={[]}
       rows={[
         { heading: '<a>Bronze</>', cells: [false, true, true, true] },
@@ -64,7 +64,7 @@ componentName: 'TierTable'
 ## With column heading in the first column
 <LiveComponent>
   {`
-    <TierTable
+    <PricingTierTable
       columns={['Development', 'Starter', 'Enterprise']}
       rows={[
         {
