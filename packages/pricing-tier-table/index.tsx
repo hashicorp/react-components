@@ -79,7 +79,7 @@ export default function PricingTierTable({
                         className={s.icon}
                         onClick={() => handleCollapseRow(rowIndex)}
                         aria-expanded={!rowIsCollapsed}
-                        aria-controls={ariaControls.join(',')}
+                        aria-controls={ariaControls.join(' ')}
                       >
                         {rowIsCollapsed ? (
                           <IconChevronUp16 />
