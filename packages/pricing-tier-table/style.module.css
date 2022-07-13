@@ -29,12 +29,8 @@
     & tr.rowIsCollapsed {
       & th .rowHeading,
       & td .textCell {
-        & * {
+        & *:not(:first-child) {
           display: none;
-
-          &:first-child {
-            display: initial;
-          }
         }
       }
     }
