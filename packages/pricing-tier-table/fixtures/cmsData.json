@@ -1,0 +1,63 @@
+{
+  "withColumnHeaders": {
+    "hasColumnHeaders": true,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["", "Development", "Starter", "Standard"],
+      "data": [
+        {
+          "Standard": true,
+          "Starter": false,
+          "Development": false,
+          "": "<p><strong>Dynamic Secrets</strong></p>"
+        },
+        {
+          "Standard": false,
+          "Starter": "<a>Single node</a>",
+          "Development": "<p><strong>Single node</strong></p><p>Extra small</p>",
+          "": "<p>Detailed Auto Logs</p>"
+        }
+      ]
+    }
+  },
+  "withoutColumnHeaders": {
+    "hasColumnHeaders": false,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["", "Development", "Starter", "Standard"],
+      "data": [
+        {
+          "Standard": true,
+          "Starter": false,
+          "Development": false,
+          "": "<p><strong>Dynamic Secrets</strong></p>"
+        },
+        {
+          "Standard": false,
+          "Starter": "<a>Single node</a>",
+          "Development": "<p><strong>Single node</strong></p><p>Extra small</p>",
+          "": "<p>Detailed Auto Logs</p>"
+        }
+      ]
+    }
+  },
+  "withAllColumnHeaders": {
+    "hasColumnHeaders": true,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["Development", "Starter", "Standard"],
+      "data": [
+        {
+          "Standard": true,
+          "Starter": false,
+          "Development": "<p><strong>Dynamic Secrets</strong></p>"
+        },
+        {
+          "Standard": false,
+          "Starter": "<a>Single node</a>",
+          "Development": "<p><strong>Single node</strong></p><p>Extra small</p>"
+        }
+      ]
+    }
+  }
+}
