@@ -1,4 +1,4 @@
-import { Row, TierTableProps } from '../types'
+import { Row, PricingTierTableProps } from '../types'
 
 type Record<K extends keyof any, T> = {
   [P in K]: T
@@ -20,7 +20,7 @@ export function normalizeTableData({
   hasColumnHeaders,
   collapsibleRows,
   table,
-}: PluginTableProps): TierTableProps {
+}: PluginTableProps): PricingTierTableProps {
   const { columns, data } = table
   return {
     columns: hasColumnHeaders ? columns : null,

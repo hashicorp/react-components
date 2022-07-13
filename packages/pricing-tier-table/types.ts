@@ -4,7 +4,7 @@ export type Row = {
   cells: Array<string | boolean>
 }
 
-export interface TierTableProps {
+export interface PricingTierTableProps {
   /**
    * Column heading names
    */
