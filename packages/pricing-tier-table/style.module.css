@@ -26,9 +26,9 @@
       }
     }
 
-    & tr.rowIsCollapsed {
-      & th .rowHeading,
-      & td .textCell {
+    & tr {
+      & th .rowHeading[aria-hidden='true'],
+      & td[aria-hidden='true'] {
         & *:not(:first-child) {
           display: none;
         }

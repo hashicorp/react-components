@@ -4,13 +4,13 @@ import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16
 import { IconChevronDown16 } from '@hashicorp/flight-icons/svg-react/chevron-down-16'
 import { IconXCircle24 } from '@hashicorp/flight-icons/svg-react/x-circle-24'
 import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-circle-fill-24'
-import { TierTableProps } from './types'
+import { PricingTierTableProps } from './types'
 import s from './style.module.css'
 
 export default function PricingTierTable({
   columns,
   rows,
-}: TierTableProps): React.ReactElement {
+}: PricingTierTableProps): React.ReactElement {
   const [collapsedRows, setCollapsedRows] = useState<Array<number>>([])
   const hasColumnHeaders = !!columns && columns.length > 0
   const colLength = rows[0].cells.length
@@ -67,16 +67,19 @@ export default function PricingTierTable({
           <tbody>
             {rows.map(({ heading, cells, isCollapsible }, rowIndex) => {
               const rowIsCollapsed = collapsedRows.includes(rowIndex)
+              const cellIds = cells.map(
+                (cell, idx) => `row-${rowIndex}-cell-${idx}`
+              )
+              const ariaControls = [...cellIds, `row-${rowIndex}`]
               return (
-                <tr
-                  key={heading}
-                  className={rowIsCollapsed && s.rowIsCollapsed}
-                >
+                <tr key={heading}>
                   <th scope="row" colSpan={colLength > 3 ? 2 : 1}>
                     {isCollapsible && (
                       <button
                         className={s.icon}
                         onClick={() => handleCollapseRow(rowIndex)}
+                        aria-expanded={!rowIsCollapsed}
+                        aria-controls={ariaControls.join(',')}
                       >
                         {rowIsCollapsed ? (
                           <IconChevronUp16 />
@@ -88,11 +91,17 @@ export default function PricingTierTable({
                     <div
                       className={s.rowHeading}
                       dangerouslySetInnerHTML={{ __html: heading }}
+                      id={`row-${rowIndex}`}
+                      aria-hidden={rowIsCollapsed}
                     />
                   </th>
-                  {cells.map((cell) => {
+                  {cells.map((cell, cellIdx) => {
                     return (
-                      <td key={`${heading}-${cell}`}>
+                      <td
+                        key={`${heading}-${cell}`}
+                        id={`row-${rowIndex}-cell-${cellIdx}`}
+                        aria-hidden={rowIsCollapsed}
+                      >
                         {typeof cell == 'boolean' ? (
                           !cell ? (
                             <IconXCircle24 color="var(--wpl-neutral-300)" />
