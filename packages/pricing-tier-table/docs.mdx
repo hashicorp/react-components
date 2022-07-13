@@ -27,9 +27,9 @@ componentName: 'PricingTierTable'
         },
         {
           heading:
-            '<h3>Dynamic <a>Secrets</a></h3><p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+            '<h3>Dynamic <a href="#">Secrets</a></h3><p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
           cells: [
-            '<h3>Single node</h3><p><a>Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
+            '<h3>Single node</h3><p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
             '<h3>3-node HA Cluster</h3><p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p>',
           ],
           isCollapsible: true,
@@ -50,10 +50,10 @@ componentName: 'PricingTierTable'
     <PricingTierTable
       columns={[]}
       rows={[
-        { heading: '<a>Bronze</>', cells: [false, true, true, true] },
-        { heading: '<a>Silver</>', cells: [false, false, true, true] },
+        { heading: '<a href="#">Bronze</>', cells: [false, true, true, true] },
+        { heading: '<a href="#">Silver</>', cells: [false, false, true, true] },
         {
-          heading: '<a>Service Level Agreement</>',
+          heading: '<a href="#">Service Level Agreement</>',
           cells: [false, true, true, true],
         },
       ]}
