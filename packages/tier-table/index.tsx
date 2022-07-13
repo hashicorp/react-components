@@ -88,9 +88,9 @@ export default function PricingTable({
                       <td key={`${heading}-${cell}`}>
                         {typeof cell == 'boolean' ? (
                           !cell ? (
-                            <IconXCircle24 className={s.xCircle} />
+                            <IconXCircle24 color="var(--wpl-neutral-300)" />
                           ) : (
-                            <IconCheckCircleFill24 className={s.checkMark} />
+                            <IconCheckCircleFill24 color="var(--wpl-green-500)" />
                           )
                         ) : (
                           <div
