@@ -1,5 +1,7 @@
 .tierTableContainer {
   composes: g-grid-container from global;
+  overflow-x: auto;
+  position: relative;
 }
 
 .table {
@@ -9,9 +11,16 @@
   & table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+
+    @media (--medium-up) {
+      table-layout: fixed;
+    }
 
     & thead {
+      & th {
+        text-align: left;
+      }
+
       & * + * {
         padding-left: var(--col-gap);
       }
@@ -63,8 +72,11 @@
 .columnHeading {
   border-top: 1px solid var(--wpl-neutral-400);
   padding-top: 6px;
-  composes: g-type-display-5 from global;
-  text-align: start;
+  composes: g-type-body-x-strong from global;
+  text-align: left;
+  & * {
+    max-width: 100%;
+  }
 }
 
 .rowHeading {
@@ -152,5 +164,17 @@
       color: inherit;
       font-weight: inherit;
     }
+  }
+}
+
+.checkMark {
+  & * {
+    fill: var(--wpl-green-500);
+  }
+}
+
+.xCircle {
+  & * {
+    fill: var(--wpl-neutral-300);
   }
 }
