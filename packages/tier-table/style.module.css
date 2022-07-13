@@ -166,15 +166,3 @@
     }
   }
 }
-
-.checkMark {
-  & * {
-    fill: var(--wpl-green-500);
-  }
-}
-
-.xCircle {
-  & * {
-    fill: var(--wpl-neutral-300);
-  }
-}
