@@ -14,6 +14,10 @@ export default function PricingTable({
   const hasColumnHeaders = !!columns && columns.length > 0
   const colLength = rows[0].cells.length
 
+  if (colLength > 5) {
+    throw new Error('<TierTable /> only supports up to five tiers')
+  }
+
   function handleCollapseRow(idx: number) {
     if (collapsedRows.includes(idx)) {
       const updatedCollapsedRows = [...collapsedRows]
@@ -46,9 +50,7 @@ export default function PricingTable({
                     colSpan={colIdx === 0 && colLength > 3 ? 2 : 1}
                   >
                     {col.length ? (
-                      <div className={s.columnHeading}>
-                        <span>{col}</span>
-                      </div>
+                      <span className={s.columnHeading}>{col}</span>
                     ) : null}
                   </th>
                 ))}
@@ -86,20 +88,11 @@ export default function PricingTable({
                       <td key={`${heading}-${cell}`}>
                         {typeof cell == 'boolean' ? (
                           !cell ? (
-                            <IconXCircle24 />
+                            <IconXCircle24 className={s.xCircle} />
                           ) : (
-                            <IconCheckCircleFill24 />
+                            <IconCheckCircleFill24 className={s.checkMark} />
                           )
                         ) : (
-                          // <Icon
-                          //   name={!cell ? 'x-circle' : 'check-circle-fill'}
-                          //   size={24}
-                          //   fill={
-                          //     !cell
-                          //       ? 'var(--wpl-neutral-300)'
-                          //       : 'var(--wpl-green-500)'
-                          //   }
-                          // />
                           <div
                             className={s.textCell}
                             dangerouslySetInnerHTML={{ __html: cell }}
