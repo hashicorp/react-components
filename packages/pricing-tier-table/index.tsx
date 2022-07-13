@@ -51,7 +51,9 @@ export default function PricingTierTable({
                     colSpan={colIdx === 0 && colLength > 3 ? 2 : 1}
                   >
                     {col.length ? (
-                      <span className={s.columnHeading}>{col}</span>
+                      <div className={s.columnHeading}>
+                        <span>{col}</span>
+                      </div>
                     ) : (
                       <VisuallyHidden>
                         <span>Title Column</span>
