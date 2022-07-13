@@ -8,7 +8,6 @@
 */
 
 import cookies from 'js-cookie'
-import assign from 'object-assign'
 export const COOKIE_KEY = 'hashi-consent-preferences'
 export const COOKIE_EXPIRES = 183
 
@@ -46,7 +45,7 @@ export function loadPreferences() {
 
 export function savePreferences(prefs, version) {
   const domain = getDomain()
-  cookies.set(COOKIE_KEY, assign(prefs, { version: version }), {
+  cookies.set(COOKIE_KEY, Object.assign(prefs, { version: version }), {
     expires: COOKIE_EXPIRES,
     domain,
   })
