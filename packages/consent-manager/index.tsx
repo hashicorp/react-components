@@ -7,7 +7,11 @@ import ConsentPreferences from './components/dialog'
 import SegmentScript from './scripts/segment'
 import CustomScripts from './scripts/custom'
 import s from './style.module.css'
-import { ConsentManagerCategory, ConsentManagerService } from './types'
+import {
+  ConsentManagerCategory,
+  ConsentManagerService,
+  ConsentManagerPreferences,
+} from './types'
 
 interface ConsentManagerProps {
   additionalServices?: ConsentManagerService[]
@@ -31,6 +35,10 @@ export function open() {
   emitter.emit('openDialog')
 }
 
+export function saveAndLoadAnalytics(preferences: ConsentManagerPreferences) {
+  emitter.emit('saveAndLoadAnalytics', preferences)
+}
+
 export default function ConsentManager(props: ConsentManagerProps) {
   const [preferences, setPreferences] = useState(loadPreferences() ?? {})
   const [showDialog, setShowDialog] = useState(props.showDialog ?? false)
@@ -43,26 +51,29 @@ export default function ConsentManager(props: ConsentManagerProps) {
     Object.keys(preferences).length === 0 ||
     preferences.version !== props.version
 
-  const saveAndLoadAnalytics = (preferences) => {
-    if (typeof preferences === 'undefined') {
-      preferences = { loadAll: false, segment: false }
-    }
-    savePreferences(preferences, props.version)
+  const saveAndLoadAnalytics = useCallback(
+    (preferences) => {
+      if (typeof preferences === 'undefined') {
+        preferences = { loadAll: false, segment: false }
+      }
+      savePreferences(preferences, props.version)
 
-    // If analytics have already been added to page, it's likely you're updating your preferences
-    // We reload the page to re-initiate the script with the updated integrations
-    // @ts-expect-error -- initialized doesn't exist on the segment type?
-    if (window.analytics && window.analytics.initialized) {
-      window.location.reload()
-      return
-    }
+      // If analytics have already been added to page, it's likely you're updating your preferences
+      // We reload the page to re-initiate the script with the updated integrations
+      // @ts-expect-error -- initialized doesn't exist on the segment type?
+      if (window.analytics && window.analytics.initialized) {
+        window.location.reload()
+        return
+      }
 
-    // Close all dialogs
-    document.body.classList.remove('g-noscroll')
-    setShowDialog(false)
-    setShowBanner(false)
-    setPreferences(loadPreferences() ?? {})
-  }
+      // Close all dialogs
+      document.body.classList.remove('g-noscroll')
+      setShowDialog(false)
+      setShowBanner(false)
+      setPreferences(loadPreferences() ?? {})
+    },
+    [props.version]
+  )
 
   const openDialog = useCallback(() => {
     document.body.classList.add('g-noscroll')
@@ -77,6 +88,14 @@ export default function ConsentManager(props: ConsentManagerProps) {
       emitter.off('openDialog', openDialog)
     }
   }, [openDialog])
+
+  // Setup the event handler to save and load analytics imperatively
+  useEffect(() => {
+    emitter.on('saveAndLoadAnalytics', saveAndLoadAnalytics)
+    return () => {
+      emitter.off('saveAndLoadAnalytics', saveAndLoadAnalytics)
+    }
+  }, [saveAndLoadAnalytics])
 
   // Show banner if there are no preferences or the version mismatches
   useEffect(() => {
