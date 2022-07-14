@@ -1,0 +1,50 @@
+.rowHeading {
+  composes: g-type-body-small-strong from global;
+}
+
+.rowContent {
+  color: var(--wpl-neutral-600);
+  font-weight: var(--font-weight-reg);
+}
+
+.cellHeading {
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.cellContent {
+  color: var(--wpl-neutral-500);
+}
+
+.rowContent,
+.cellContent {
+  padding-top: 8px;
+}
+
+.rowContent,
+.cellHeading,
+.cellContent {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 150%;
+  letter-spacing: 0.0125em;
+}
+
+.rowHeading,
+.rowContent,
+.cellHeading,
+.cellContent {
+  & a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  & * {
+    margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@hashicorp/react-tier-table",
+  "version": "0.1.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/flight-icons": "^2.0.2",
+    "@reach/visually-hidden": "^0.16.0"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  }
+}

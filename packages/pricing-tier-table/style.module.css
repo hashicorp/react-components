@@ -1,0 +1,31 @@
+.pricingTierTableContainer {
+  composes: g-grid-container from global;
+  overflow-x: auto;
+  position: relative;
+}
+
+.table {
+  overflow-x: auto;
+  position: relative;
+
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+
+    @media (--medium-up) {
+      table-layout: fixed;
+    }
+
+    & thead {
+      & * + * {
+        padding-left: var(--col-gap);
+      }
+    }
+
+    & tbody {
+      & tr {
+        border-bottom: 1px solid var(--wpl-neutral-200);
+      }
+    }
+  }
+}

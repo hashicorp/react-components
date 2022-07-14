@@ -1,0 +1,27 @@
+.rowHeader {
+  padding: 26px 0;
+  vertical-align: top;
+}
+
+.rowHeaderText {
+  text-align: left;
+  max-width: 264px;
+  vertical-align: top;
+  display: inline-block;
+  float: left;
+
+  & *[aria-hidden='true'],
+  & *[data-hidden='true'] {
+    display: none;
+  }
+}
+
+.icon {
+  display: inline-block;
+  float: left;
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 5px 10px 0 0;
+}
