@@ -1,13 +1,10 @@
 .rowHeading {
-  composes: g-type-body-small-strong;
-
-  & * {
-    margin-top: 0;
-  }
+  composes: g-type-body-small-strong from global;
 }
 
 .rowContent {
-  color: var(--wpl-neutral-500);
+  color: var(--wpl-neutral-600);
+  font-weight: var(--font-weight-reg);
 }
 
 .cellHeading {
@@ -15,25 +12,21 @@
 }
 
 .cellContent {
-  color: var(--wpl-neutral-400);
+  color: var(--wpl-neutral-500);
+}
 
-  & * {
-    margin-top: 0;
-  }
+.rowContent,
+.cellContent {
+  padding-top: 8px;
 }
 
 .rowContent,
 .cellHeading,
 .cellContent {
   font-family: var(--font-body);
-  font-weight: var(--font-weight-reg);
   font-size: 13px;
   line-height: 150%;
   letter-spacing: 0.0125em;
-
-  & * {
-    margin-top: 0;
-  }
 }
 
 .rowHeading,
@@ -45,5 +38,13 @@
     font-weight: inherit;
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  & * {
+    margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
   }
 }

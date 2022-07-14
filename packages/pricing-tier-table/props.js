@@ -11,9 +11,21 @@ module.exports = {
       {
         type: 'object',
         properties: {
-          heading: {
-            type: 'string',
-            description: 'Html string used as row heading in first column',
+          header: {
+            type: 'object',
+            properties: {
+              heading: {
+                type: 'React.ReactNode',
+                description:
+                  'Suggested to use with RowHeaderHeading primitive component',
+                required: true,
+              },
+              content: {
+                type: 'React.ReactNode',
+                description:
+                  'Suggested to use with RowHeaderContent primitive component',
+              },
+            },
             required: true,
           },
           isCollapsible: {
@@ -23,8 +35,26 @@ module.exports = {
           },
           cells: {
             type: 'array',
+            properties: [
+              {
+                type: 'object | boolean',
+                properties: {
+                  heading: {
+                    type: 'React.ReactNode',
+                    description:
+                      'Suggested to use with CellHeading primitive component',
+                    required: true,
+                  },
+                  content: {
+                    type: 'React.ReactNode',
+                    description:
+                      'Suggested to use with CellContent primitive component',
+                  },
+                },
+              },
+            ],
             description:
-              'Array of html string or boolean items. If boolean, check or x-circle flight icon will be rendered',
+              'Array of objects or boolean items. If boolean, check or x-circle flight icon will be rendered',
             required: true,
           },
         },

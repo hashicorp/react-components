@@ -1,18 +1,21 @@
 import { ReactNode } from 'react'
 
-export type Row = {
-  header: {
-    heading: ReactNode
-    content?: ReactNode
-  }
+export interface TextCellProps {
+  heading: ReactNode
+  content?: ReactNode
+}
+
+export interface CellProps {
+  cell: boolean | TextCellProps
+}
+
+export interface RowHeaderProps {
+  header: TextCellProps
   isCollapsible?: boolean
-  cells: Array<
-    | boolean
-    | {
-        heading?: ReactNode
-        content: ReactNode
-      }
-  >
+}
+
+export interface RowProps extends RowHeaderProps {
+  cells: Array<boolean | TextCellProps>
 }
 
 export interface PricingTierTableProps {
@@ -23,5 +26,5 @@ export interface PricingTierTableProps {
   /**
    * Table data arranged by rows
    */
-  rows: Array<Row>
+  rows: Array<RowProps>
 }
