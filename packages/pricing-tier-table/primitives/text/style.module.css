@@ -1,0 +1,49 @@
+.rowHeading {
+  composes: g-type-body-small-strong;
+
+  & * {
+    margin-top: 0;
+  }
+}
+
+.rowContent {
+  color: var(--wpl-neutral-500);
+}
+
+.cellHeading {
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.cellContent {
+  color: var(--wpl-neutral-400);
+
+  & * {
+    margin-top: 0;
+  }
+}
+
+.rowContent,
+.cellHeading,
+.cellContent {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-reg);
+  font-size: 13px;
+  line-height: 150%;
+  letter-spacing: 0.0125em;
+
+  & * {
+    margin-top: 0;
+  }
+}
+
+.rowHeading,
+.rowContent,
+.cellHeading,
+.cellContent {
+  & a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

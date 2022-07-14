@@ -1,7 +1,18 @@
+import { ReactNode } from 'react'
+
 export type Row = {
-  heading: string
+  header: {
+    heading: ReactNode
+    content?: ReactNode
+  }
   isCollapsible?: boolean
-  cells: Array<string | boolean>
+  cells: Array<
+    | boolean
+    | {
+        heading?: ReactNode
+        content: ReactNode
+      }
+  >
 }
 
 export interface PricingTierTableProps {
