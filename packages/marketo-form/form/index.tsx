@@ -95,6 +95,8 @@ const Form = ({
     <FormProvider {...methods}>
       <form className={className} onSubmit={methods.handleSubmit(onSubmit)}>
         {Object.entries(groupedFields).map(([groupName, fields]) => {
+          // If this group name has a custom component defined, use that
+          // instead of the default field components.
           if (groups && groupName in groups) {
             const Component = groups[groupName].component
             return (
@@ -104,11 +106,13 @@ const Form = ({
               />
             )
           }
+
           if (fields.length > 1) {
             console.warn(
               `Multiple fields in group ${groupName} with no component defined.`
             )
           }
+
           return (
             <Field
               key={fields[0].id}
