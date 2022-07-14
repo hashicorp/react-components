@@ -65,14 +65,15 @@ export default function PricingTierTable({
             </thead>
           )}
           <tbody>
-            {rows.map(({ heading, cells, isCollapsible }, rowIndex) => {
+            {rows.map(({ header, cells, isCollapsible }, rowIndex) => {
               const rowIsCollapsed = collapsedRows.includes(rowIndex)
               const cellIds = cells.map(
                 (cell, idx) => `row-${rowIndex}-cell-${idx}`
               )
               const ariaControls = [...cellIds, `row-${rowIndex}`]
               return (
-                <tr key={heading}>
+                // eslint-disable-next-line react/no-array-index-key
+                <tr key={`row-${rowIndex}`}>
                   <th scope="row" colSpan={colLength > 3 ? 2 : 1}>
                     {isCollapsible && (
                       <button
@@ -88,17 +89,24 @@ export default function PricingTierTable({
                         )}
                       </button>
                     )}
-                    <div
-                      className={s.rowHeading}
-                      dangerouslySetInnerHTML={{ __html: heading }}
-                      id={`row-${rowIndex}`}
-                      aria-hidden={rowIsCollapsed}
-                    />
+                    <div className={s.rowHeading}>
+                      <div className={s.rowHeaderHeading}>{header.heading}</div>
+                      {header.content && (
+                        <div
+                          className={s.rowHeaderContent}
+                          id={`row-header-${rowIndex}`}
+                          aria-hidden={rowIsCollapsed}
+                        >
+                          {header.content}
+                        </div>
+                      )}
+                    </div>
                   </th>
                   {cells.map((cell, cellIdx) => {
                     return (
                       <td
-                        key={`${heading}-${cell}`}
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={`${header.heading}-${cellIdx}`}
                         id={`row-${rowIndex}-cell-${cellIdx}`}
                         aria-hidden={rowIsCollapsed}
                       >
@@ -109,10 +117,10 @@ export default function PricingTierTable({
                             <IconCheckCircleFill24 color="var(--wpl-green-500)" />
                           )
                         ) : (
-                          <div
-                            className={s.textCell}
-                            dangerouslySetInnerHTML={{ __html: cell }}
-                          />
+                          <div className={s.textCell}>
+                            {cell.heading && cell.heading}
+                            {cell.content && cell.content}
+                          </div>
                         )}
                       </td>
                     )
