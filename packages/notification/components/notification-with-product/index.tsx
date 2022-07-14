@@ -2,7 +2,7 @@ import * as React from 'react'
 import type {
   NotificationProducts,
   NotificationWithProductProps,
-} from '../types'
+} from '../../types'
 import Notification from '../notification'
 import { IconBoundaryColor24 } from '@hashicorp/flight-icons/svg-react/boundary-color-24'
 import { IconConsulColor24 } from '@hashicorp/flight-icons/svg-react/consul-color-24'
