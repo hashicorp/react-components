@@ -8,27 +8,26 @@
 export default function getIntegrations(
   segmentServices,
   additionalServices,
-  segmentWriteKey,
-  utilServerRoot
+  segmentWriteKey
 ) {
-  return fetchIntegrationsFromSegment(segmentWriteKey, utilServerRoot)
+  return fetchIntegrationsFromSegment(segmentWriteKey)
     .then(zipIntegrations.bind(this, segmentServices, additionalServices))
     .then(groupByCategory)
 }
 
 // Get integrations from Segment by write key
-function fetchIntegrationsFromSegment(segmentWriteKey, utilServerRoot) {
-  return fetch(`${utilServerRoot}/seg_integrations/${segmentWriteKey}`).then(
-    (res) => {
-      if (!res.ok) {
-        throw new Error(
-          `Failed to fetch integrations: HTTP ${res.status} ${res.statusText}`
-        )
-      }
-
-      return res.json()
+function fetchIntegrationsFromSegment(segmentWriteKey) {
+  return fetch(
+    `https://cdn.segment.com/v1/projects/${segmentWriteKey}/integrations`
+  ).then((res) => {
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch integrations: HTTP ${res.status} ${res.statusText}`
+      )
     }
-  )
+
+    return res.json()
+  })
 }
 
 // Include developer overrides for fetched Segment integrations

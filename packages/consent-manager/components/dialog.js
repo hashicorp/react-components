@@ -36,8 +36,7 @@ export default class ConsentPreferences extends Component {
     getIntegrations(
       this.props.segmentServices,
       this.props.additionalServices,
-      this.props.segmentWriteKey,
-      this.props.utilServerRoot
+      this.props.segmentWriteKey
     ).then((groupedIntegrations) => {
       this.setState({ groupedIntegrations })
     })

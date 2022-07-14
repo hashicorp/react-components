@@ -4,7 +4,6 @@ const defaultProps = {
   version: 0,
   showDialog: false,
   segmentWriteKey: 'iyi06c432UL7SB1r3fQReec4bNwFyzkW',
-  utilServerRoot: 'https://hashicorp-web-util-staging.herokuapp.com',
   privacyPolicyLink: 'https://www.hashicorp.com/privacy',
   companyName: 'HashiCorp',
   segmentServices: [
