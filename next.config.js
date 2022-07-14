@@ -38,5 +38,20 @@ module.exports = withHashicorp({
       domains: ['www.datocms-assets.com'],
       disableStaticImages: true,
     },
+    webpack(config) {
+      // disable `exports` support for framer-motion. This will cause Webpack to
+      // fall back to using `module`
+      config.module.rules.push({
+        test: (input) => {
+          return (
+            input.includes('framer-motion') || input.includes('motion-config')
+          )
+        },
+        resolve: {
+          exportsFields: [],
+        },
+      })
+      return config
+    },
   })
 )
