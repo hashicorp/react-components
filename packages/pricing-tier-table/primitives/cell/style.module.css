@@ -1,0 +1,13 @@
+.tableCell {
+  vertical-align: top;
+  padding-left: var(--col-gap);
+  padding-top: 26px;
+  padding-bottom: 26px;
+
+  & .cellContent {
+    &[aria-hidden='true'],
+    &[data-hidden='true'] {
+      display: none;
+    }
+  }
+}

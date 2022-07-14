@@ -1,21 +1,22 @@
+import { ReactNode } from 'react'
 import s from './style.module.css'
 
 interface TextProps {
-  text: string
+  children: string | ReactNode
 }
 
-export function RowHeading({ text }: TextProps) {
-  return <h3 className={s.rowHeading}>{text}</h3>
+export function RowHeaderHeading({ children }: TextProps) {
+  return <div className={s.rowHeading}>{children}</div>
 }
 
-export function RowContent({ text }: TextProps) {
-  return <h3 className={s.rowContent}>{text}</h3>
+export function RowHeaderContent({ children }: TextProps) {
+  return <div className={s.rowContent}>{children}</div>
 }
 
-export function CellHeading({ text }: TextProps) {
-  return <h3 className={s.cellHeading}>{text}</h3>
+export function CellHeading({ children }: TextProps) {
+  return <div className={s.cellHeading}>{children}</div>
 }
 
-export function CellContent({ text }: TextProps) {
-  return <h3 className={s.cellContent}>{text}</h3>
+export function CellContent({ children }: TextProps) {
+  return <div className={s.cellContent}>{children}</div>
 }

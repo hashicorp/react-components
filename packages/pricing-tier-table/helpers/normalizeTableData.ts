@@ -1,26 +1,9 @@
-import { Row, PricingTierTableProps } from '../types'
-
-type Record<K extends keyof any, T> = {
-  [P in K]: T
-}
-
-export type PluginRow = Record<string, any>
-
-interface PluginTableProps {
-  collapsibleRows: Array<number>
-  hasColumnHeaders: boolean
-  table: {
-    columns: string[]
-    data: PluginRow[]
-  }
-}
-
 // Handles formatting of data returned by DatoCMS
 export function normalizeTableData({
   hasColumnHeaders,
   collapsibleRows,
   table,
-}: PluginTableProps): PricingTierTableProps {
+}) {
   const { columns, data } = table
   return {
     columns: hasColumnHeaders ? columns : null,
@@ -35,7 +18,7 @@ export function normalizeTableData({
         }
         acc.isCollapsible = collapsibleRows.includes(rowIdx)
         return acc
-      }, {} as Row)
+      }, {} as any)
     }),
   }
 }
