@@ -11,7 +11,7 @@ interface RowHeaderCellProps extends RowHeaderProps {
   rowIsCollapsed: boolean
 }
 
-export default function RowHeaderCell({
+export default function RowHeader({
   header,
   colSpan,
   isCollapsible,
@@ -34,9 +34,13 @@ export default function RowHeaderCell({
         </button>
       )}
       <div className={s.rowHeaderText}>
-        {header.heading}
+        <div className={s.rowHeading}>{header.heading}</div>
         {header.content && (
-          <div id={`row-${rowIdx}`} aria-hidden={rowIsCollapsed}>
+          <div
+            id={`row-${rowIdx}`}
+            aria-hidden={rowIsCollapsed}
+            className={s.rowContent}
+          >
             {header.content}
           </div>
         )}

@@ -25,14 +25,14 @@ export default function TableCell({
         )
       ) : (
         <div>
-          {cell.heading}
+          <div className={s.cellHeading}>{cell.heading}</div>
           {cell.content && (
             <div
               id={`row-${rowIdx}-cell-${cellIdx}`}
               className={s.cellContent}
               aria-hidden={rowIsCollapsed}
             >
-              {cell.content}
+              <div className={s.cellContent}>{cell.content}</div>
             </div>
           )}
         </div>
