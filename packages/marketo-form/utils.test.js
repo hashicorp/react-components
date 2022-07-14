@@ -43,15 +43,12 @@ describe('formattedLabel', () => {
 
 describe('groupFields', () => {
   it('groups fields', () => {
-    const groups = groupFields(
-      {
-        name: {
-          fields: ['FirstName', 'LastName'],
-          component: () => {},
-        },
+    const groups = groupFields(UTM_FORM_PROPS.marketoForm.result, {
+      name: {
+        fields: ['FirstName', 'LastName'],
+        component: () => {},
       },
-      UTM_FORM_PROPS.marketoForm.result
-    )
+    })
     expect(groups).toEqual({
       name: [
         UTM_FORM_PROPS.marketoForm.result[0],

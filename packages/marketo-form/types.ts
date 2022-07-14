@@ -15,6 +15,7 @@ export interface Autofill {
 export interface MarketoBaseFormField {
   id: string
   dataType: MarketoFormDatatype
+  defaultValue?: string
   label?: string
   required: boolean
   autoFill?: Autofill
@@ -57,7 +58,6 @@ export interface FieldMetaData {
 
 export interface MarketoFormSelectField extends MarketoBaseFormField {
   dataType: 'select'
-  defaultValue?: string
   validationMessage: string
   fieldMetaData: FieldMetaData
 }

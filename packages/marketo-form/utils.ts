@@ -1,5 +1,9 @@
 import { MarketoFormField } from './types'
 
+// Marketo stores field names in two versions, SOAP and REST. Some API
+// endpoints return SOAP names, while others accept REST names. This object
+// contains all fields from our Marketo instance that have a REST name that is
+// different from the SOAP name.
 const soapToRESTFieldNames: Record<string, string> = {
   Address: 'address',
   AnnualRevenue: 'annualRevenue',
@@ -71,20 +75,24 @@ const soapToRESTFieldNames: Record<string, string> = {
   Website: 'website',
 }
 
+// Given an object with SOAP named keys, returns an object with SOAP
+// names replaced with their REST variants.
 export function convertToRESTFields(
   data: Record<string, unknown>
 ): Record<string, unknown> {
   const restData: Record<string, unknown> = {}
-  for (const [k, v] of Object.entries(data)) {
-    if (k in soapToRESTFieldNames) {
-      restData[soapToRESTFieldNames[k]] = v
+  for (const [key, value] of Object.entries(data)) {
+    if (key in soapToRESTFieldNames) {
+      restData[soapToRESTFieldNames[key]] = value
     } else {
-      restData[k] = v
+      restData[key] = value
     }
   }
   return restData
 }
 
+// Returns the label for a field, appending an asterisk (*) if the field
+// is required.
 export function formattedLabel(field: MarketoFormField): string {
   if (field.required && field.label) {
     return `${field.label} *`
@@ -95,48 +103,68 @@ export function formattedLabel(field: MarketoFormField): string {
   return field.id
 }
 
+// Returns a Record<string, MarketoFormField[]> that groups fields that should
+// be rendered by a single component.
+//
+// This function allows consumers to define multiple fields that should be
+// rendered by a single component. The configuration is in the following form:
+// const config = {
+//   groupName: {
+//     fields: ["FieldNameOne", "FieldNameTwo"],
+//     component: RenderComponent
+//   }
+// }
+// In this instance, MarketoForm will call RenderComponent with a `fields` prop
+// containing the MarketoFormField object for FieldNameOne and FieldNameTwo.
 export function groupFields(
+  fields: MarketoFormField[],
   groups: Record<
     string,
     {
       fields: string[]
       component: (props: { fields: MarketoFormField[] }) => JSX.Element
     }
-  >,
-  fields: MarketoFormField[]
+  >
 ): Record<string, MarketoFormField[]> {
+  // Final value that will be returned. Keys are group names and values are
+  // an array of MarketoFormField objects.
   const grouped: Record<string, MarketoFormField[]> = {}
+
   fields.forEach((field) => {
-    if (groups) {
-      const customGroup = Object.entries(groups).filter((group) => {
-        return group[1].fields.includes(field.id)
-      })
-      if (customGroup.length > 0) {
-        const customGroupName = customGroup[0][0]
-        if (customGroupName) {
-          if (!grouped[customGroupName]) {
-            grouped[customGroupName] = [field]
-          } else {
-            grouped[customGroupName].push(field)
-          }
-        }
+    // Check if groups contains a group targeting this field
+    const customGroup = Object.entries(groups).filter(([_, config]) => {
+      return config.fields.includes(field.id)
+    })
+    if (customGroup.length > 0) {
+      const customGroupName = customGroup[0][0]
+      if (customGroupName in grouped) {
+        grouped[customGroupName].push(field)
       } else {
-        grouped[field.id] = [field]
+        grouped[customGroupName] = [field]
       }
     } else {
       grouped[field.id] = [field]
     }
   })
+
   return grouped
 }
 
+// Returns an object representing the default state of the form as defined by
+// the Marketo form's configuration.
 export function calculateDefaultValues(
   fields: MarketoFormField[]
 ): Record<string, string> {
   const initialValues: Record<string, string> = {}
   fields.forEach((field) => {
-    if (field.dataType === 'select' && field.defaultValue) {
-      initialValues[field.id] = JSON.parse(field.defaultValue)[0]
+    if (field.defaultValue && field.defaultValue !== '') {
+      if (field.dataType === 'select') {
+        // For some reason, the Marketo API returns the value for <select> fields
+        // as a JSON encoded string.
+        initialValues[field.id] = JSON.parse(field.defaultValue)[0]
+      } else {
+        initialValues[field.id] = field.defaultValue
+      }
     } else {
       initialValues[field.id] = ''
     }

@@ -52,7 +52,7 @@ const Form = ({
   // If a field doesn't belong to a group, it is placed in a group keyed by
   // field.Name.
   const groupedFields = useMemo(() => {
-    return groupFields(groups, marketoForm.result)
+    return groupFields(marketoForm.result, groups)
   }, [marketoForm, groups])
 
   const methods = useForm({
