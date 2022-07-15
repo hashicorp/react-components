@@ -1,5 +1,5 @@
 ---
-"@hashicorp/react-tier-table": patch
+"@hashicorp/react-pricing-tier-table": patch
 ---
 
 Adds initial PrcingTierTable component
