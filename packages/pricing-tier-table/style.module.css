@@ -29,3 +29,17 @@
     }
   }
 }
+
+.colHeader {
+  text-align: left;
+
+  & * {
+    max-width: 100%;
+  }
+}
+
+.colHeaderText {
+  composes: g-type-body-x-strong from global;
+  border-top: 1px solid var(--wpl-neutral-400);
+  padding-top: 6px;
+}

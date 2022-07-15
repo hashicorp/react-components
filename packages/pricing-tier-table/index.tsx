@@ -1,9 +1,9 @@
 import { useState } from 'react'
+import VisuallyHidden from '@reach/visually-hidden'
 import { PricingTierTableProps } from './types'
 import s from './style.module.css'
-import Cell from './primitives/cell'
+import RowCell from './primitives/row-cell'
 import RowHeader from './primitives/row-header'
-import ColHeader from './primitives/col-header'
 
 export default function PricingTierTable({
   columns,
@@ -44,11 +44,22 @@ export default function PricingTierTable({
             <thead>
               <tr>
                 {columns.map((col, colIdx) => (
-                  <ColHeader
+                  <th
                     key={col}
-                    col={col}
+                    scope="col"
                     colSpan={colIdx === 0 && colLength > 3 ? 2 : 1}
-                  />
+                    className={s.colHeader}
+                  >
+                    {col.length ? (
+                      <div className={s.colHeaderText}>
+                        <span>{col}</span>
+                      </div>
+                    ) : (
+                      <VisuallyHidden>
+                        <span>Title Column</span>
+                      </VisuallyHidden>
+                    )}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -75,7 +86,7 @@ export default function PricingTierTable({
                   />
                   {cells.map((cell, cellIdx) => {
                     return (
-                      <Cell
+                      <RowCell
                         // eslint-disable-next-line react/no-array-index-key
                         key={`row-${rowIdx}-cell-${cellIdx}`}
                         rowIdx={rowIdx}

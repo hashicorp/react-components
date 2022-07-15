@@ -3,20 +3,20 @@ import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-c
 import { CellProps } from '../../types'
 import s from './style.module.css'
 
-interface TableCellProps extends CellProps {
+interface RowCellProps extends CellProps {
   rowIdx: number
   cellIdx: number
   rowIsCollapsed: boolean
 }
 
-export default function TableCell({
+export default function RowCell({
   cell,
   rowIdx,
   cellIdx,
   rowIsCollapsed,
-}: TableCellProps): React.ReactElement {
+}: RowCellProps): React.ReactElement {
   return (
-    <td className={s.tableCell}>
+    <td className={s.rowCell}>
       {typeof cell == 'boolean' ? (
         !cell ? (
           <IconXCircle24 color="var(--wpl-neutral-300)" />
