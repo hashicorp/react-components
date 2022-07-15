@@ -56,6 +56,18 @@ describe('<VersionSelect />', () => {
     expect(options).toHaveLength(VERSIONS.length)
   })
 
+  it('should include projectName in the label', () => {
+    const { getByText } = render(
+      <VersionSelect
+        {...defaultProps}
+        basePath={'docs'}
+        projectName="Waypoint"
+      />
+    )
+
+    expect(getByText('Waypoint Version')).toBeInTheDocument()
+  })
+
   it('should display the correct version from the URL', () => {
     // initial, latest
     useRouterMock.mockImplementation(() => {
