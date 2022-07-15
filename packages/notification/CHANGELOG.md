@@ -1,5 +1,11 @@
 # @hashicorp/react-notification
 
+## 0.3.0
+
+### Minor Changes
+
+- [#609](https://github.com/hashicorp/react-components/pull/609) [`c5cd7243`](https://github.com/hashicorp/react-components/commit/c5cd72438f5ba062d356acffa375fb94a4244649) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Introduce notifications system
+
 ## 0.2.0
 
 ### Minor Changes
