@@ -11,14 +11,20 @@ import {
 interface Props {
   versions: { label: string; name: string }[]
   basePath: string
+  projectName?: string
 }
 
 /**
  * Component which accepts a list of versions and renders a select component. Navigates to the new version on select
  */
-const VersionSelect: React.ComponentType<Props> = ({ versions, basePath }) => {
+const VersionSelect: React.ComponentType<Props> = ({
+  versions,
+  basePath,
+  projectName,
+}) => {
   const { asPath, push } = useRouter()
   const version = getVersionFromPath(asPath)
+  const label = projectName ? `${projectName} Version` : 'Version'
 
   const onVersionSelect = (newVersion: string) => {
     // If selecting a version same as current version, noop
@@ -58,7 +64,7 @@ const VersionSelect: React.ComponentType<Props> = ({ versions, basePath }) => {
       value={selectedVersion}
       defaultLabel="Version"
       onValueChange={onVersionSelect}
-      label="Version"
+      label={label}
     />
   )
 }

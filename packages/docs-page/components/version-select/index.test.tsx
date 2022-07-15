@@ -23,12 +23,12 @@ const defaultProps = {
 }
 
 describe('<VersionSelect />', () => {
-  const routerMock = ({
+  const routerMock = {
     route: '/docs/[[...page]]',
     pathname: '/docs/[[...page]]',
     asPath: '/docs',
     push: mockPush,
-  } as unknown) as Router
+  } as unknown as Router
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -56,13 +56,25 @@ describe('<VersionSelect />', () => {
     expect(options).toHaveLength(VERSIONS.length)
   })
 
+  it('should include projectName in the label', () => {
+    const { getByText } = render(
+      <VersionSelect
+        {...defaultProps}
+        basePath={'docs'}
+        projectName="Waypoint"
+      />
+    )
+
+    expect(getByText('Waypoint Version')).toBeInTheDocument()
+  })
+
   it('should display the correct version from the URL', () => {
     // initial, latest
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         asPath: '/commands',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, rerender } = render(
@@ -72,10 +84,10 @@ describe('<VersionSelect />', () => {
 
     // simulate navigation to v0.4.x
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         asPath: '/commands/v0.4.x',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     rerender(<VersionSelect {...defaultProps} basePath={'docs'} />)
@@ -83,10 +95,10 @@ describe('<VersionSelect />', () => {
 
     // simulate browser-back to latest
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         asPath: '/commands/',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     rerender(<VersionSelect {...defaultProps} basePath={'docs'} />)
@@ -95,12 +107,12 @@ describe('<VersionSelect />', () => {
 
   it('should navigate to a selected version', () => {
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/commands/[[...page]]',
         pathname: '/commands/[[...page]]',
         asPath: '/commands',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(
@@ -119,12 +131,12 @@ describe('<VersionSelect />', () => {
 
   it('should navigate to the latest version', () => {
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/commands/[[...page]]',
         pathname: '/commands/[[...page]]',
         asPath: '/commands/v0.4.x',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(
@@ -143,12 +155,12 @@ describe('<VersionSelect />', () => {
 
   it('should navigate from a version to another version', () => {
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/commands/[[...page]]',
         pathname: '/commands/[[...page]]',
         asPath: '/commands/v0.4.x',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(
@@ -167,7 +179,7 @@ describe('<VersionSelect />', () => {
 
   it('should navigate to a selected version while retaining the sub path', () => {
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/docs/[[...page]]',
         pathname: '/docs/[[...page]]',
         query: {
@@ -175,7 +187,7 @@ describe('<VersionSelect />', () => {
         },
         asPath: '/docs/some/nested/article',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(
@@ -197,7 +209,7 @@ describe('<VersionSelect />', () => {
 
   it('should navigate to the latest version while retaining the sub path', () => {
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/docs/[[...page]]',
         pathname: '/docs/[[...page]]',
         query: {
@@ -205,7 +217,7 @@ describe('<VersionSelect />', () => {
         },
         asPath: '/docs/v0.4.x/some/nested/article',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(
@@ -224,7 +236,7 @@ describe('<VersionSelect />', () => {
 
   it('should navigate from a version to another version while retaining the sub path', () => {
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/docs/[[...page]]',
         pathname: '/docs/[[...page]]',
         query: {
@@ -232,7 +244,7 @@ describe('<VersionSelect />', () => {
         },
         asPath: '/docs/v0.4.x/some/nested/article',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(
@@ -254,7 +266,7 @@ describe('<VersionSelect />', () => {
 
   it('should noop if selecting latest, while on latest', () => {
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/docs/[[...page]]',
         pathname: '/docs/[[...page]]',
         query: {
@@ -262,7 +274,7 @@ describe('<VersionSelect />', () => {
         },
         asPath: '/docs/some/nested/article',
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(
@@ -283,7 +295,7 @@ describe('<VersionSelect />', () => {
     const currentVersion = 'v0.4.x'
 
     useRouterMock.mockImplementation(() => {
-      return ({
+      return {
         route: '/docs/[[...page]]',
         pathname: '/docs/[[...page]]',
         query: {
@@ -291,7 +303,7 @@ describe('<VersionSelect />', () => {
         },
         asPath: `/docs/${currentVersion}/some/nested/article`,
         push: mockPush,
-      } as unknown) as Router
+      } as unknown as Router
     })
 
     const { getByRole, getAllByRole } = render(

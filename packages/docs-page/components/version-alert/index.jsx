@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import {
   getVersionFromPath,
   removeVersionFromPath,
-} from '@hashicorp/react-version-select/util'
+} from '../version-select/util'
 import s from './style.module.css'
 import useIsMobile from '../../use-is-mobile'
 

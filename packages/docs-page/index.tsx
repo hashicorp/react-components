@@ -11,11 +11,11 @@ import { SearchProvider } from '@hashicorp/react-search'
 import { AlgoliaConfigObject } from '@hashicorp/react-search/types'
 import type { Products } from '@hashicorp/platform-product-meta'
 
-import VersionSelect from '@hashicorp/react-version-select'
-import { getVersionFromPath } from '@hashicorp/react-version-select/util'
 import CodeTabsProvider from '@hashicorp/react-code-block/provider'
 import { MDXProviderComponentsProp } from '@mdx-js/react'
 
+import { getVersionFromPath } from './components/version-select/util'
+import VersionSelect from './components/version-select'
 import SearchBar from './components/search-bar'
 import VersionAlert from './components/version-alert'
 import generateComponents from './components'
@@ -40,6 +40,7 @@ interface DocsPageInnerProps {
   versions: VersionSelectItem[]
   algoliaConfig?: AlgoliaConfigObject
   optInBanner?: ReactElement
+  projectName?: string
 }
 
 export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
@@ -57,6 +58,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   versions,
   algoliaConfig,
   optInBanner,
+  projectName,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -86,7 +88,11 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 
   const versionSelect = showVersionSelect ? (
     <div className={s.versionSelect}>
-      <VersionSelect versions={versions} basePath={baseRoute} />
+      <VersionSelect
+        versions={versions}
+        basePath={baseRoute}
+        projectName={projectName}
+      />
     </div>
   ) : null
 
@@ -183,6 +189,7 @@ export interface DocsPageProps {
     versions: VersionSelectItem[]
   }
   optInBanner?: ReactElement
+  projectName?: string
 }
 
 export default function DocsPage({
@@ -201,6 +208,7 @@ export default function DocsPage({
     versions,
   },
   optInBanner,
+  projectName,
 }: DocsPageProps): ReactElement {
   const router = useRouter()
 
@@ -229,6 +237,7 @@ export default function DocsPage({
       versions={versions}
       algoliaConfig={algoliaConfig}
       optInBanner={optInBanner}
+      projectName={projectName}
     >
       {content}
     </DocsPageInner>
