@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.2.0
+
+### Minor Changes
+
+- [#650](https://github.com/hashicorp/react-components/pull/650) [`c9719e1b`](https://github.com/hashicorp/react-components/commit/c9719e1b7b04e25c30d3dfa4726cb637e1ce9a25) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds new `projectName` prop, which is used to augment the version select label.
+
 ## 17.1.2
 
 ### Patch Changes
