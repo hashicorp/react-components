@@ -34,6 +34,7 @@ it('should load preferences', () => {
 })
 
 it('should save preferences', () => {
+  global.window.location = { hostname: 'foo.bar.baz.net' }
   const preferences = { loadAll: true, version: 1 }
   const version = 1
   const args = [
@@ -41,12 +42,9 @@ it('should save preferences', () => {
     preferences,
     { expires: cookiesJS.COOKIE_EXPIRES, domain: '' },
   ]
-  const originalCookiesJSGetDomain = cookiesJS.getDomain
   const originalCookiesSet = cookies.set
 
   // mocks
-  // eslint-disable-next-line no-import-assign -- it's mocked, so the rule does not apply
-  cookiesJS.getDomain = jest.fn().mockImplementation(() => 'baz.net')
   cookies.set = jest.fn()
 
   cookiesJS.savePreferences(preferences, version)
@@ -55,8 +53,5 @@ it('should save preferences', () => {
 
   expect(JSON.stringify(lastArgs)).toBe(JSON.stringify(args))
 
-  // restore mocks
-  // eslint-disable-next-line no-import-assign -- it's mocked, so the rule does not apply
-  cookiesJS.getDomain = originalCookiesJSGetDomain
   cookies.set = originalCookiesSet
 })
