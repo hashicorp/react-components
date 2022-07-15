@@ -1,10 +1,9 @@
+import { render, screen } from '@testing-library/react'
+import PricingTierTable from '.'
 import { normalizeTableData } from './helpers/normalizeTableData'
 import cmsData from './fixtures/cmsData.json'
 
-const { withColumnHeaders, withoutColumnHeaders, withAllColumnHeaders } =
-  cmsData
-
-const expectedRows = [
+const rows = [
   {
     header: {
       heading: '<h3>Dynamic Secrets</h3>',
@@ -30,12 +29,25 @@ const expectedRows = [
   },
 ]
 
+describe('<PricingTierTable />', () => {
+  it('should render', () => {
+    render(
+      <PricingTierTable columns={['', 'Development', 'Starter']} rows={rows} />
+    )
+    const element = screen.getByTestId('pricing-table')
+    expect(element).toBeInTheDocument()
+  })
+})
+
+const { withColumnHeaders, withoutColumnHeaders, withAllColumnHeaders } =
+  cmsData
+
 describe('Format cms data', () => {
   it('should format without a empty first column header', () => {
     const normalized = normalizeTableData(withColumnHeaders)
     const expected = {
       columns: ['', 'Development', 'Starter'],
-      rows: expectedRows,
+      rows,
     }
 
     expect(normalized).toMatchObject(expected)
@@ -45,7 +57,7 @@ describe('Format cms data', () => {
     const normalized = normalizeTableData(withoutColumnHeaders)
     const expected = {
       columns: null,
-      rows: expectedRows,
+      rows,
     }
     expect(normalized).toMatchObject(expected)
   })
@@ -54,7 +66,7 @@ describe('Format cms data', () => {
     const normalized = normalizeTableData(withAllColumnHeaders)
     const expected = {
       columns: ['First', 'Development', 'Starter'],
-      rows: expectedRows,
+      rows,
     }
     expect(normalized).toMatchObject(expected)
   })

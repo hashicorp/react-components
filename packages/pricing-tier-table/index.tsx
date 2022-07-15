@@ -36,6 +36,7 @@ export default function PricingTierTable({
           '--col-gap': colLength === 2 ? '34px' : '22px',
         } as React.CSSProperties
       }
+      data-testid="pricing-table"
     >
       <div className={s.table}>
         <table>
