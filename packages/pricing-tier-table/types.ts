@@ -1,8 +1,6 @@
-import { ReactNode } from 'react'
-
 export interface TextCellProps {
-  heading: ReactNode
-  content?: ReactNode
+  heading: string
+  content?: string
 }
 
 export interface CellProps {

@@ -9,48 +9,48 @@ componentName: 'PricingTierTable'
       rows={[
         {
           header: {
-            heading: <h3>Monitored 24/7</h3>,
+            heading: '<h3>Monitored 24/7</h3>',
           },
           cells: [true, true],
         },
         {
           header: {
-            heading: <h3>Advanced data protection module (ADP)</h3>,
+            heading: '<h3>Advanced data protection module (ADP)</h3>',
           },
           cells: [
             {
-              heading: <h3>Heading</h3>
+              heading: '<h3>Heading</h3>'
             },
             true
           ],
         },
         {
           header: {
-            heading: <h3>Cross-region</h3>,
+            heading: '<h3>Cross-region</h3>',
           },
           cells: [false, true],
         },
         {
           header: {
-            heading: <h3>Dynamic Secrets</h3>,
-            content: <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>,
+            heading: '<h3>Dynamic Secrets</h3>',
+            content: ' <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>'
           },
           cells: [true, true],
           isCollapsible: true,
         },
         {
           header: {
-            heading: <h3>Dynamic <a href="#">Secrets</a></h3>,
-            content: <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>,
+            heading: '<h3>Dynamic <a href="#">Secrets</a></h3>',
+            content:  '<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>'
           },
           cells: [
             { 
-              heading: <h3>Single node</h3>, 
-              content: <p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>,
+              heading: '<h3>Single node</h3>', 
+              content: '<p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
             },
             {
-              heading: <h3>3-node HA Cluster</h3>,
-              content: <div><p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p></div>
+              heading: '<h3>3-node HA Cluster</h3>',
+              content: '<p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p>'
             },
           ],
           isCollapsible: true,
@@ -71,10 +71,10 @@ componentName: 'PricingTierTable'
     <PricingTierTable
       columns={[]}
       rows={[
-        { header: { heading: <a href="#" style={{ color: 'blue' }}>Bronze</a> }, cells: [false, true, true, true] },
-        { header: { heading: <a href="#" style={{ color: 'blue' }}>Silver</a> }, cells: [false, false, true, true] },
+        { header: { heading: '<a href="#">Bronze</a>' }, cells: [false, true, true, true] },
+        { header: { heading: '<a href="#">Silver</a>'}, cells: [false, false, true, true] },
         {
-          header: { heading: <a href="#" style={{ color: 'blue' }}>Service Level Agreement</a> },
+          header: { heading: '<a href="#">Service Level Agreement</a>' },
           cells: [false, true, true, true],
         },
       ]}
@@ -89,11 +89,11 @@ componentName: 'PricingTierTable'
       columns={['Development', 'Starter', 'Enterprise']}
       rows={[
         {
-          header: { heading: <h3>Monitored 24/7</h3> },
+          header: { heading: '<h3>Monitored 24/7</h3>' },
           cells: [true, true],
         },
         {
-          header: { heading: <h3>Cross-region</h3> },
+          header: { heading: '<h3>Cross-region</h3>' },
           cells: [false, true],
         },
       ]}

@@ -34,15 +34,17 @@ export default function RowHeader({
         </button>
       )}
       <div className={s.rowHeaderText}>
-        <div className={s.rowHeading}>{header.heading}</div>
+        <div
+          className={s.rowHeading}
+          dangerouslySetInnerHTML={{ __html: header.heading }}
+        />
         {header.content && (
           <div
             id={`row-${rowIdx}`}
             aria-hidden={rowIsCollapsed}
             className={s.rowContent}
-          >
-            {header.content}
-          </div>
+            dangerouslySetInnerHTML={{ __html: header.content }}
+          />
         )}
       </div>
     </th>

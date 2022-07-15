@@ -25,15 +25,17 @@ export default function RowCell({
         )
       ) : (
         <div>
-          <div className={s.cellHeading}>{cell.heading}</div>
+          <div
+            className={s.cellHeading}
+            dangerouslySetInnerHTML={{ __html: cell.heading }}
+          />
           {cell.content && (
             <div
               id={`row-${rowIdx}-cell-${cellIdx}`}
               className={s.cellContent}
               aria-hidden={rowIsCollapsed}
-            >
-              <div className={s.cellContent}>{cell.content}</div>
-            </div>
+              dangerouslySetInnerHTML={{ __html: cell.content }}
+            />
           )}
         </div>
       )}

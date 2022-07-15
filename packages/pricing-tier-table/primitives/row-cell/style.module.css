@@ -29,19 +29,16 @@
       }
     }
   }
+}
 
-  & .cellHeading,
-  & .cellContent {
-    font-family: var(--font-body);
-    font-size: 13px;
-    line-height: 150%;
-    letter-spacing: 0.0125em;
+.cellHeading,
+.cellContent {
+  composes: g-type-body-x-small from global;
 
-    & a {
-      color: inherit;
-      font-weight: inherit;
-      text-decoration: underline;
-      cursor: pointer;
-    }
+  & a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

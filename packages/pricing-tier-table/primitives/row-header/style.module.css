@@ -15,28 +15,6 @@
     display: none;
   }
 
-  & .rowContent {
-    color: var(--wpl-neutral-600);
-    font-weight: var(--font-weight-reg);
-    padding-top: 8px;
-    font-family: var(--font-body);
-    font-size: 13px;
-    line-height: 150%;
-    letter-spacing: 0.0125em;
-
-    & * {
-      margin-top: 0;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    & a {
-      color: inherit;
-    }
-  }
-
   & .rowHeading,
   & .rowContent {
     & a {
@@ -66,5 +44,23 @@
     & a {
       color: inherit;
     }
+  }
+}
+
+.rowContent {
+  color: var(--wpl-neutral-600);
+  composes: g-type-body-x-small from global;
+  padding-top: 8px;
+
+  & * {
+    margin-top: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  & a {
+    color: inherit;
   }
 }
