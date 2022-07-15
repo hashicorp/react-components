@@ -167,7 +167,9 @@ export const dispatch = (action: Action) => {
 }
 
 export const useStore = () => {
-  const [state, setState] = React.useState<State>(memoryState)
+  // Using a functional state initializer here ensures that memoryState can update in between when this useState
+  // is called and when the listener is added in the below useEffect
+  const [state, setState] = React.useState<State>(() => memoryState)
   React.useEffect(() => {
     listeners.push(setState)
     return () => {
