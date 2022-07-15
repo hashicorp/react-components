@@ -1,6 +1,6 @@
 /* Body X Small */
 .g-type-body-x-small {
-  font-weight: var(--font-weight-reg);
+  font-weight: var(--font-weight-medium);
   font-family: var(--font-body);
   font-size: 0.8125rem;
   line-height: 1.219em;

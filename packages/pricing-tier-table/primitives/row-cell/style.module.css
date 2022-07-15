@@ -4,14 +4,6 @@
   padding-top: 26px;
   padding-bottom: 26px;
 
-  & .cellHeading {
-    font-weight: var(--font-weight-semi-bold);
-
-    & * {
-      margin: 0;
-    }
-  }
-
   & .cellContent {
     color: var(--wpl-neutral-500);
     padding-top: 8px;
@@ -31,10 +23,21 @@
   }
 }
 
+.cellHeading {
+  composes: g-type-body-x-small-strong from '../../g-type-x-small.css';
+  min-height: 25px;
+
+  & * {
+    margin: 0;
+  }
+}
+
+.cellContent {
+  composes: g-type-body-x-small from '../../g-type-x-small.css';
+}
+
 .cellHeading,
 .cellContent {
-  composes: g-type-body-x-small from global;
-
   & a {
     color: inherit;
     font-weight: inherit;

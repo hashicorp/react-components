@@ -49,7 +49,7 @@
 
 .rowContent {
   color: var(--wpl-neutral-600);
-  composes: g-type-body-x-small from global;
+  composes: g-type-body-x-small from '../../g-type-x-small.css';
   padding-top: 8px;
 
   & * {
