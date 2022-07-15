@@ -48,7 +48,6 @@ export default function PricingTierTable({
                     key={col}
                     scope="col"
                     colSpan={colIdx === 0 && colLength > 3 ? 2 : 1}
-                    className={s.colHeader}
                   >
                     {col.length ? (
                       <div className={s.colHeaderText}>
