@@ -5,7 +5,7 @@
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/flight-icons": "^2.6.0",
+    "@hashicorp/flight-icons": "^2.0.2",
     "@hashicorp/react-button": "^6.2.1",
     "@reach/visually-hidden": "^0.16.0"
   },
