@@ -1,5 +1,4 @@
 .pricingTierListContainer {
-  composes: g-grid-container from global;
   composes: g-grid from global;
   align-items: center;
   justify-content: center;
