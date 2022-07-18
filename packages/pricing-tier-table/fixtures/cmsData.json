@@ -1,0 +1,83 @@
+{
+  "withColumnHeaders": {
+    "hasColumnHeaders": true,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["", "Development", "Starter"],
+      "data": [
+        {
+          "Starter": true,
+          "Development": false,
+          "": {
+            "heading": "<h3>Dynamic Secrets</h3>"
+          }
+        },
+        {
+          "Starter": {
+            "heading": "<h3>Detailed Auto Logs</h3>",
+            "content": "<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>"
+          },
+          "Development": true,
+          "": {
+            "heading": "<h3>Detailed Auto Logs</h3>",
+            "content": "<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>"
+          }
+        }
+      ]
+    }
+  },
+  "withoutColumnHeaders": {
+    "hasColumnHeaders": false,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["", "Development", "Starter"],
+      "data": [
+        {
+          "Starter": true,
+          "Development": false,
+          "": {
+            "heading": "<h3>Dynamic Secrets</h3>"
+          }
+        },
+        {
+          "Starter": {
+            "heading": "<h3>Detailed Auto Logs</h3>",
+            "content": "<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>"
+          },
+          "Development": true,
+          "": {
+            "heading": "<h3>Detailed Auto Logs</h3>",
+            "content": "<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>"
+          }
+        }
+      ]
+    }
+  },
+  "withAllColumnHeaders": {
+    "hasColumnHeaders": true,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["First", "Development", "Starter"],
+      "data": [
+        {
+          "Starter": true,
+          "Development": false,
+          "First": {
+            "heading": "<h3>Dynamic Secrets</h3>"
+          }
+        },
+        {
+          "Starter": {
+            "heading": "<h3>Detailed Auto Logs</h3>",
+            "content": "<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>"
+          },
+          "Development": true,
+          "First": {
+            "heading": "<h3>Detailed Auto Logs</h3>",
+            "content": "<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>"
+          }
+        }
+      ]
+    }
+  }
+}
