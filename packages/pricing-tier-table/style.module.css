@@ -1,6 +1,11 @@
-.pricingTierTableInner {
-  overflow-x: auto;
-  position: relative;
+.pricingTable {
+  background-color: var(--gray-6);
+
+  @media (--medium-up) {
+    background-color: #fff;
+    overflow-x: auto;
+    position: relative;
+  }
 }
 
 .table {
@@ -49,18 +54,15 @@
 }
 
 .downloadContainer {
+  composes: g-grid-container from global;
   display: flex;
-  background-color: var(--gray-6);
   flex-direction: column;
-  padding: 64px 0;
+  padding-top: 64px;
+  padding-bottom: 64px;
 
   @media (--medium-up) {
     display: none;
   }
-}
-
-.downloadInner {
-  composes: g-grid-container from global;
 }
 
 .downloadHeading {

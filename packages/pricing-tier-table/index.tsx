@@ -31,88 +31,85 @@ export default function PricingTierTable({
   }
 
   return (
-    <div data-testid="pricing-table">
-      <div
-        className={s.pricingTierTableInner}
-        style={
-          {
-            '--col-gap': colLength === 2 ? '34px' : '22px',
-          } as React.CSSProperties
-        }
-      >
-        <div className={s.table}>
-          <table>
-            {hasColumnHeaders && (
-              <thead>
-                <tr>
-                  {columns.map((col, colIdx) => (
-                    <th
-                      key={col}
-                      scope="col"
-                      colSpan={colIdx === 0 && colLength > 3 ? 2 : 1}
-                    >
-                      {col.length ? (
-                        <div className={s.colHeaderText}>
-                          <span>{col}</span>
-                        </div>
-                      ) : (
-                        <VisuallyHidden>
-                          <span>Title Column</span>
-                        </VisuallyHidden>
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-            )}
-            <tbody>
-              {rows.map(({ header, cells, isCollapsible }, rowIdx) => {
-                const cellIds = cells.map(
-                  (cell, idx) => `row-${rowIdx}-cell-${idx}`
-                )
-                const ariaControls = [...cellIds, `row-${rowIdx}`]
-                const rowIsCollapsed = collapsedRows.includes(rowIdx)
+    <div
+      className={s.pricingTable}
+      style={
+        {
+          '--col-gap': colLength === 2 ? '34px' : '22px',
+        } as React.CSSProperties
+      }
+      data-testid="pricing-table"
+    >
+      <div className={s.table}>
+        <table>
+          {hasColumnHeaders && (
+            <thead>
+              <tr>
+                {columns.map((col, colIdx) => (
+                  <th
+                    key={col}
+                    scope="col"
+                    colSpan={colIdx === 0 && colLength > 3 ? 2 : 1}
+                  >
+                    {col.length ? (
+                      <div className={s.colHeaderText}>
+                        <span>{col}</span>
+                      </div>
+                    ) : (
+                      <VisuallyHidden>
+                        <span>Title Column</span>
+                      </VisuallyHidden>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+          )}
+          <tbody>
+            {rows.map(({ header, cells, isCollapsible }, rowIdx) => {
+              const cellIds = cells.map(
+                (cell, idx) => `row-${rowIdx}-cell-${idx}`
+              )
+              const ariaControls = [...cellIds, `row-${rowIdx}`]
+              const rowIsCollapsed = collapsedRows.includes(rowIdx)
 
-                return (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <tr key={`row-${rowIdx}`}>
-                    <RowHeader
-                      header={header}
-                      isCollapsible={isCollapsible}
-                      rowIdx={rowIdx}
-                      ariaControls={ariaControls}
-                      colSpan={colLength > 3 ? 2 : 1}
-                      handleCollapseRow={handleCollapseRow}
-                      rowIsCollapsed={rowIsCollapsed}
-                    />
-                    {cells.map((cell, cellIdx) => {
-                      return (
-                        <RowCell
-                          // eslint-disable-next-line react/no-array-index-key
-                          key={`row-${rowIdx}-cell-${cellIdx}`}
-                          rowIdx={rowIdx}
-                          cellIdx={cellIdx}
-                          cell={cell}
-                          rowIsCollapsed={rowIsCollapsed}
-                        />
-                      )
-                    })}
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
+              return (
+                // eslint-disable-next-line react/no-array-index-key
+                <tr key={`row-${rowIdx}`}>
+                  <RowHeader
+                    header={header}
+                    isCollapsible={isCollapsible}
+                    rowIdx={rowIdx}
+                    ariaControls={ariaControls}
+                    colSpan={colLength > 3 ? 2 : 1}
+                    handleCollapseRow={handleCollapseRow}
+                    rowIsCollapsed={rowIsCollapsed}
+                  />
+                  {cells.map((cell, cellIdx) => {
+                    return (
+                      <RowCell
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={`row-${rowIdx}-cell-${cellIdx}`}
+                        rowIdx={rowIdx}
+                        cellIdx={cellIdx}
+                        cell={cell}
+                        rowIsCollapsed={rowIsCollapsed}
+                      />
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
-      <div className={s.downloadContainer} data-testid="pricing-table-download">
-        <div className={s.downloadInner}>
-          <h2 className={s.downloadHeading}>{downloadSection.heading}</h2>
-          <p className={s.downloadDescription}>{downloadSection.description}</p>
-          <Button
-            title={downloadSection.pdfLink.title}
-            url={downloadSection.pdfLink.url}
-          />
-        </div>
+      <div className={s.downloadContainer}>
+        <h2 className={s.downloadHeading}>{downloadSection.heading}</h2>
+        <p className={s.downloadDescription}>{downloadSection.description}</p>
+        <Button
+          title={downloadSection.pdfLink.title}
+          url={downloadSection.pdfLink.url}
+        />
       </div>
     </div>
   )
