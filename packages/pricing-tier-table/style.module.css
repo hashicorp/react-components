@@ -1,5 +1,4 @@
 .pricingTierTableInner {
-  composes: g-grid-container from global;
   overflow-x: auto;
   position: relative;
 }
