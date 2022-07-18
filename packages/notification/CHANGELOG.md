@@ -1,5 +1,11 @@
 # @hashicorp/react-notification
 
+## 0.3.2
+
+### Patch Changes
+
+- [#653](https://github.com/hashicorp/react-components/pull/653) [`3b3dd565`](https://github.com/hashicorp/react-components/commit/3b3dd5652a92a5cc047596e45c24b194668cd4e1) Thanks [@BRKalow](https://github.com/BRKalow)! - Call setState on subscription to the notification state.
+
 ## 0.3.1
 
 ### Patch Changes
