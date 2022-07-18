@@ -168,7 +168,7 @@ export const dispatch = (action: Action) => {
 
 export const useStore = () => {
   const [state, setState] = React.useState<State>(memoryState)
-  // handle subscribing to state updates, immediately update state to ensure what's stored in in the useState hook
+  // handle subscribing to state updates, immediately update state to ensure what's stored in the useState hook
   // above is fresh
   React.useEffect(() => {
     listeners.push(setState)
