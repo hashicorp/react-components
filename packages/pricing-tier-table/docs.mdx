@@ -56,16 +56,27 @@ componentName: 'PricingTierTable'
           isCollapsible: true,
         },
       ]}
+      downloadSection={{
+        heading: 'Download the entire feature edition chart',
+        description:
+          'Ultricies risus molestie cursus metus mattis consectetur amet vitae eu. A diam tellus id neque urna auctor cursus ipsum.',
+        pdfLink: {
+          title: 'Download PDF',
+          url: 'https://www.datocms-assets.com/2885/1654902115-hashicorp_a_cloud_operating_model_for_platform_teams.pdf',
+        },
+      }}
     />
   `}
 </LiveComponent>
 
 ### Props
+
 <PropsTable props={componentProps} />
 
 ### Other Examples
 
 ## Without column headers
+
 <LiveComponent>
   {`
     <PricingTierTable
@@ -78,11 +89,21 @@ componentName: 'PricingTierTable'
           cells: [false, true, true, true],
         },
       ]}
+      downloadSection={{
+        heading: 'Download the entire feature edition chart',
+        description:
+          'Ultricies risus molestie cursus metus mattis consectetur amet vitae eu. A diam tellus id neque urna auctor cursus ipsum.',
+        pdfLink: {
+          title: 'Download PDF',
+          url: 'https://www.datocms-assets.com/2885/1654902115-hashicorp_a_cloud_operating_model_for_platform_teams.pdf',
+        },
+      }}
     />
   `}
 </LiveComponent>
 
 ## With column heading in the first column
+
 <LiveComponent>
   {`
     <PricingTierTable
@@ -97,6 +118,15 @@ componentName: 'PricingTierTable'
           cells: [false, true],
         },
       ]}
+      downloadSection={{
+        heading: 'Download the entire feature edition chart',
+        description:
+          'Ultricies risus molestie cursus metus mattis consectetur amet vitae eu. A diam tellus id neque urna auctor cursus ipsum.',
+        pdfLink: {
+          title: 'Download PDF',
+          url: 'https://www.datocms-assets.com/2885/1654902115-hashicorp_a_cloud_operating_model_for_platform_teams.pdf',
+        },
+      }}
     />
   `}
 </LiveComponent>

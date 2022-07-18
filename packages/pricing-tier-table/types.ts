@@ -25,4 +25,15 @@ export interface PricingTierTableProps {
    * Table data arranged by rows
    */
   rows: Array<RowProps>
+  /**
+   * Download section displayed on mobile
+   */
+  downloadSection: {
+    heading: string
+    description: string
+    pdfLink: {
+      title: string
+      url: string
+    }
+  }
 }

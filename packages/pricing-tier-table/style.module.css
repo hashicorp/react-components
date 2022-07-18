@@ -7,6 +7,11 @@
 .table {
   overflow-x: auto;
   position: relative;
+  display: none;
+
+  @media (--medium-up) {
+    display: block;
+  }
 
   & table {
     width: 100%;
@@ -42,4 +47,32 @@
   & * {
     max-width: 100%;
   }
+}
+
+.downloadContainer {
+  display: flex;
+  background-color: var(--gray-6);
+  flex-direction: column;
+  padding: 64px 0;
+
+  @media (--medium-up) {
+    display: none;
+  }
+}
+
+.downloadInner {
+  composes: g-grid-container from global;
+}
+
+.downloadHeading {
+  composes: g-type-display-3 from global;
+  color: var(--wpl-neutral-900);
+  margin: 0;
+}
+
+.downloadDescription {
+  composes: g-type-body from global;
+  color: var(--gray-3);
+  margin: 0;
+  padding: 16px 0 32px;
 }

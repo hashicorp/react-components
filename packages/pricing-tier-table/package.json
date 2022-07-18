@@ -6,6 +6,7 @@
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/flight-icons": "^2.0.2",
+    "@hashicorp/react-button": "^6.0.4",
     "@reach/visually-hidden": "^0.16.0"
   },
   "peerDependencies": {
