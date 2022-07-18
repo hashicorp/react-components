@@ -1,0 +1,16 @@
+{
+  "name": "@hashicorp/react-pricing-feature-tabs",
+  "version": "0.1.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@reach/tabs": "^0.16.1",
+    "framer-motion": "^6.3.11"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "framer-motion": ">=6.3.11",
+    "react": ">=16.x"
+  }
+}
