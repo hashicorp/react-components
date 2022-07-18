@@ -16,7 +16,7 @@ export default function PricingTierTable({
   const colLength = rows[0].cells.length
 
   if (colLength > 5) {
-    throw new Error('<TierTable /> only supports up to five tiers')
+    throw new Error('<PricingTierTable /> only supports up to five tiers')
   }
 
   function handleCollapseRow(idx: number) {
