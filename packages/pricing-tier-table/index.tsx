@@ -31,15 +31,14 @@ export default function PricingTierTable({
   }
 
   return (
-    <>
+    <div data-testid="pricing-table">
       <div
-        className={s.pricingTierTableContainer}
+        className={s.pricingTierTableInner}
         style={
           {
             '--col-gap': colLength === 2 ? '34px' : '22px',
           } as React.CSSProperties
         }
-        data-testid="pricing-table"
       >
         <div className={s.table}>
           <table>
@@ -105,7 +104,7 @@ export default function PricingTierTable({
           </table>
         </div>
       </div>
-      <div className={s.downloadContainer}>
+      <div className={s.downloadContainer} data-testid="pricing-table-download">
         <div className={s.downloadInner}>
           <h2 className={s.downloadHeading}>{downloadSection.heading}</h2>
           <p className={s.downloadDescription}>{downloadSection.description}</p>
@@ -115,6 +114,6 @@ export default function PricingTierTable({
           />
         </div>
       </div>
-    </>
+    </div>
   )
 }

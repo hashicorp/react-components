@@ -17,14 +17,6 @@ describe('<PricingTierTable />', () => {
     const element = screen.getByTestId('pricing-table')
     expect(element).toBeInTheDocument()
   })
-
-  // it('shows download button on mobile', () => {
-  //   render(
-  //     <PricingTierTable columns={['', 'Development', 'Starter']} rows={rowsData.rows} downloadSection={downloadSectionData.downloadSection} />
-  //   )
-  //   const element = screen.getByTestId('pricing-table')
-  //   expect(element).toBeInTheDocument()
-  // })
 })
 
 const { withColumnHeaders, withoutColumnHeaders, withAllColumnHeaders } =
