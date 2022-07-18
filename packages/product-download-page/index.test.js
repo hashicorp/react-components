@@ -46,7 +46,7 @@ describe('<ProductDownloadsPage />', () => {
       expect(
         getByText(
           downloadCards,
-          'wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg'
+          'curl -sSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-releases.gpg'
         )
       ).toBeInTheDocument()
 
