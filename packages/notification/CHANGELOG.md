@@ -1,5 +1,11 @@
 # @hashicorp/react-notification
 
+## 0.3.1
+
+### Patch Changes
+
+- [#651](https://github.com/hashicorp/react-components/pull/651) [`908b8627`](https://github.com/hashicorp/react-components/commit/908b8627228dedf0ae9db954bae01e788f5b3780) Thanks [@BRKalow](https://github.com/BRKalow)! - Fixes bug where notification is called on load but does not show a notification.
+
 ## 0.3.0
 
 ### Minor Changes
