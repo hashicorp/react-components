@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { EventEmitter } from 'events'
 import classNames from 'classnames'
 import { loadPreferences, savePreferences } from './util/cookies'
-import { removeToast, toastWithActions } from '@hashicorp/react-toast'
 import ConsentBanner from './components/banner'
 import ConsentPreferences from './components/dialog'
 import SegmentScript from './scripts/segment'
@@ -42,7 +41,10 @@ export function saveAndLoadAnalytics(preferences: ConsentManagerPreferences) {
 export default function ConsentManager(props: ConsentManagerProps) {
   const [preferences, setPreferences] = useState(loadPreferences() ?? {})
   const [showDialog, setShowDialog] = useState(props.showDialog ?? false)
-  const { forceShow, onManagePreferences, onAcceptAll } = props
+  const [showBanner, setShowBanner] = useState(() => {
+    // 1. If prop override is set, always show the consent bar.
+    if (props.forceShow) return true
+  })
 
   const hasEmptyPreferencesOrVersionMismatch =
     Object.keys(preferences).length === 0 ||
@@ -74,6 +76,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
 
   const openDialog = useCallback(() => {
     document.body.classList.add('g-noscroll')
+    setShowBanner(false)
     setShowDialog(true)
   }, [])
 
@@ -95,45 +98,31 @@ export default function ConsentManager(props: ConsentManagerProps) {
 
   // Show banner if there are no preferences or the version mismatches
   useEffect(() => {
-    if (hasEmptyPreferencesOrVersionMismatch || forceShow) {
-      toastWithActions({
-        heading: 'We value your privacy',
-        description:
-          'We use cookies to enhance your browsing experience and analyze our traffic. By clicking “Accept all”, you consent to our use of cookies.',
-        dismissible: false,
-        actions: [
-          {
-            title: 'Accept all',
-            onClick: (id) => {
-              saveAndLoadAnalytics({ loadAll: true })
-              if (onAcceptAll) {
-                onAcceptAll()
-              }
-              removeToast(id)
-            },
-          },
-          {
-            title: 'Manage cookies',
-            onClick: (id) => {
-              openDialog()
-              if (onManagePreferences) {
-                onManagePreferences()
-              }
-              removeToast(id)
-            },
-          },
-        ],
-        options: {
-          id: 'consent-manager',
-          duration: Infinity,
-        },
-      })
-    }
+    setShowBanner(hasEmptyPreferencesOrVersionMismatch)
     // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
   }, [])
 
   return (
     <div className={classNames(s.root, props.className)}>
+      {/*  Consent banner at the bottom */}
+      {showBanner && (
+        <ConsentBanner
+          privacyPolicyLink={props.privacyPolicyLink}
+          cookiePolicyLink={props.cookiePolicyLink}
+          onManagePreferences={() => {
+            openDialog()
+            if (props.onManagePreferences) {
+              props.onManagePreferences()
+            }
+          }}
+          onAccept={() => {
+            saveAndLoadAnalytics({ loadAll: true })
+            if (props.onAcceptAll) {
+              props.onAcceptAll()
+            }
+          }}
+        />
+      )}
       {/*  Consent manager preferences dialog */}
       {showDialog && (
         <ConsentPreferences
