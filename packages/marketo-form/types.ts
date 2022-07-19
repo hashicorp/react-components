@@ -19,12 +19,6 @@ export interface MarketoBaseFormField {
   label?: string
   required: boolean
   autoFill?: Autofill
-  visibilityRules?: VisibilityRules
-}
-
-export interface VisibilityRules {
-  ruleType: string
-  rules?: VisibilityRule[]
 }
 
 export interface MarketoFormTextField extends MarketoBaseFormField {
@@ -35,14 +29,6 @@ export interface MarketoFormTextField extends MarketoBaseFormField {
 export interface MarketoFormEmailField extends MarketoBaseFormField {
   dataType: 'email'
   validationMessage: string
-}
-
-export interface VisibilityRule {
-  subjectField: string
-  operator: string
-  values: string[]
-  altLabel: string
-  picklistFilterValues: SelectValue[]
 }
 
 export interface SelectValue {

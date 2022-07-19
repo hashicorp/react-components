@@ -51,6 +51,25 @@ Renders a form from Marketo.
         },
       },
       {
+        id: 'FavoriteProduct',
+        label: 'Favorite HashiCorp Product',
+        dataType: 'select',
+        required: true,
+        validationMessage: 'This field is required.',
+        fieldMetaData: {
+          values: [
+            { label: 'Terraform', value: 'terraform' },
+            { label: 'Packer', value: 'packer' },
+            { label: 'Consul', value: 'consul' },
+            { label: 'Vault', value: 'vault' },
+            { label: 'Boundary', value: 'boundary' },
+            { label: 'Nomad', value: 'nomad' },
+            { label: 'Waypoint', value: 'waypoint' },
+            { label: 'Vagrant', value: 'vagrant' },
+          ]
+        }
+      },
+      {
         id: 'Consent_Privacy_Policy__c',
         dataType: 'checkbox',
         validationMessage: 'This field is required.',
