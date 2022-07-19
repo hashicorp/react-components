@@ -104,10 +104,11 @@ export default function ConsentManager(props: ConsentManagerProps) {
   }, [])
 
   useEffect(() => {
-    if (isInUS()) {
+    if (hasEmptyPreferencesOrVersionMismatch && isInUS()) {
       saveAndLoadAnalytics({ loadAll: true })
       setShowBanner(true)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
   }, [])
 
   return (
