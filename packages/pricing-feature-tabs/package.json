@@ -5,12 +5,10 @@
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "@reach/tabs": "^0.16.1",
-    "framer-motion": "^6.3.11"
+    "@reach/tabs": "^0.16.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "framer-motion": ">=6.3.11",
     "react": ">=16.x"
   }
 }
