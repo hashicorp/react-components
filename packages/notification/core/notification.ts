@@ -2,7 +2,7 @@ import {
   Renderable,
   Notification,
   NotificationOptions,
-  NotificationAsType,
+  NotificationType,
   ValueOrFunction,
 } from '../types'
 import { genId } from './utils'
@@ -17,7 +17,7 @@ type NotificationHandler = (
 
 const createNotification = (
   message: Message,
-  type: NotificationAsType = 'toast',
+  type: NotificationType = 'toast',
   options
 ): Notification => ({
   createdAt: Date.now(),
@@ -30,7 +30,7 @@ const createNotification = (
 })
 
 const createHandler =
-  (type?: NotificationAsType): NotificationHandler =>
+  (type?: NotificationType): NotificationHandler =>
   (message, options) => {
     const notification = createNotification(message, type, options)
     dispatch({ type: ActionType.UPSERT_NOTIFICATION, notification })

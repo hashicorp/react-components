@@ -4,7 +4,7 @@ export type Renderable = JSX.Element | string | null
 
 export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue
 export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>
-export type NotificationAsType = 'toast' | 'dialog'
+export type NotificationType = 'toast' | 'dialog'
 
 export interface NotificationsProps {
   /**
@@ -22,7 +22,7 @@ export interface NotificationsProps {
 }
 
 export interface Notification {
-  type: NotificationAsType
+  type: NotificationType
   createdAt: number
   id: string
   message: ValueOrFunction<Renderable, Notification>
@@ -42,7 +42,7 @@ export type NotificationLanguages =
   | 'pt'
   | 'es'
 export type NotificationProducts = Exclude<Products, 'hashicorp'>
-export type NotificationTypes = 'podcast' | 'webinar' | 'whitepaper'
+export type NotificationResources = 'podcast' | 'webinar' | 'whitepaper'
 
 export interface NotificationProps {
   /**
@@ -84,7 +84,7 @@ export interface NotificationWithResourceProps extends NotificationProps {
   /**
    * Renders resource type name and icon.
    */
-  type: NotificationTypes
+  type: NotificationResources
 }
 
 export interface NotificationWithThumbnailProps extends NotificationProps {
