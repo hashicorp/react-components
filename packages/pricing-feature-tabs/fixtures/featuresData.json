@@ -1,0 +1,106 @@
+{
+  "features": [
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 2 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 3 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 4 Name"
+      },
+      "tabContent": "<div />"
+    }
+  ],
+  "overMax": [
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 2 Name"
+      },
+      "tabContent": "<div />"
+    }
+  ],
+  "underMin": [
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 2 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 3 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 4 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 5 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 6 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 7 Name"
+      },
+      "tabContent": "<div />"
+    },
+    {
+      "tabLabel": {
+        "icon": "<div />",
+        "feature": "Feature 8 Name"
+      },
+      "tabContent": "<div />"
+    }
+  ]
+}
