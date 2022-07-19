@@ -28,6 +28,12 @@ export const Notifications = ({
     >
       <AnimatePresence initial={false}>
         {notifications.map((n) => {
+          /**
+           * Define the role attribute based on toast type.
+           * toast.dialog() should be used in the case that
+           * the notification contians interactive content.
+           */
+          const role = n.type === 'toast' ? 'alert' : 'alertDialog'
           return (
             <m.div
               key={n.id}
@@ -39,7 +45,7 @@ export const Notifications = ({
                 scale: reducedMotion ? 1 : 0.75,
                 transition: { duration: 0.2 },
               }}
-              role="status"
+              role={role}
               aria-live="polite"
             >
               {renderNotification(n.message, n)}
