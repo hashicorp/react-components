@@ -3,6 +3,7 @@ import EmailField from '../fields/email-field'
 import SelectField from '../fields/select-field'
 import CountryField from '../fields/country-field'
 import CheckboxField from '../fields/checkbox-field'
+import PrivacyPolicyField from '../fields/privacy-policy-field'
 import HiddenField from '../fields/hidden-field'
 import type { MarketoFormField, MarketoFormComponents } from '../../types'
 
@@ -39,6 +40,9 @@ const Field = ({
       if (components && 'checkbox' in components) {
         const Component = components.checkbox!
         return <Component field={field} />
+      }
+      if (field.id === 'Consent_Privacy_Policy__c') {
+        return <PrivacyPolicyField field={field} />
       }
       return <CheckboxField field={field} />
     case 'hidden':
