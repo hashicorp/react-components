@@ -1,15 +1,31 @@
 import { ReactElement } from 'react'
 import { Theme } from '@hashicorp/react-button/types'
 
-export interface PricingTierItemProps {
-  /**
-   * Flight Icon component
-   */
-  icon?: ReactElement
+interface Props {
   /**
    * Tier name
    */
   title: string
+  /**
+   * Button or text link
+   */
+  cta: {
+    url: string
+    title: string
+    type: 'button' | 'textLink'
+    theme?: Theme
+  }
+}
+
+export interface PricingStickyTrayProps {
+  tiers: Array<Props>
+}
+
+export interface PricingTierItemProps extends Props {
+  /**
+   * Flight Icon component
+   */
+  icon?: ReactElement
   /**
    * Pricing information
    */
@@ -26,15 +42,6 @@ export interface PricingTierItemProps {
    * Tier description (html string)
    */
   description: string
-  /**
-   * Button or text link
-   */
-  cta: {
-    url: string
-    title: string
-    type: 'button' | 'textLink'
-    theme?: Theme
-  }
   /**
    * Small footer (html string)
    */
