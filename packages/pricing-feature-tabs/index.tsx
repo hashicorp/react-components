@@ -7,7 +7,6 @@ import {
   TabPanel,
   TabsOrientation,
 } from '@reach/tabs'
-import { AnimateSharedLayout } from 'framer-motion'
 import classNames from 'classnames'
 import { PricingFeatureTabsProps } from './types'
 import s from './style.module.css'
@@ -54,44 +53,11 @@ export default function PricingFeatureTabs({
           </Tab>
         ))}
       </TabList>
-      <div className={s.tabPanels}>
-        <TabPanels>
-          {features.map((item, index) => {
-            return (
-              <TabPanel
-                key={item.tabLabel.feature}
-                className={classNames({
-                  [s.fadeIn]: index === activeTabIndex,
-                })}
-              >
-                {item.tabContent}
-              </TabPanel>
-            )
-          })}
-          style={
-            {
-              '--col': featuresLength,
-            } as React.CSSProperties
-          }
-        >
-          {features.map(({ icon, feature }, index) => (
-            <Tab
-              className={classNames(s.tab, {
-                [s.active]: index === activeTabIndex,
-              })}
-              key={feature}
-            >
-              <div className={s.iconWrapper}>{icon}</div>
-              <span className={s.featureText}>{feature}</span>
-            </Tab>
-          ))}
-        </TabList>
-      </AnimateSharedLayout>
       <TabPanels className={s.tabPanels}>
         {features.map((item, index) => {
           return (
             <TabPanel
-              key={item.feature}
+              key={item.tabLabel.feature}
               className={classNames({
                 [s.fadeIn]: index === activeTabIndex,
               })}

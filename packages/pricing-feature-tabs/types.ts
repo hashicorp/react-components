@@ -1,14 +1,16 @@
 import { ReactNode } from 'react'
 
 export interface PricingFeatureProps {
-  /**
-   * Icon as React Element
-   */
-  icon: ReactNode
-  /**
-   * Feature name
-   */
-  feature: string
+  tabLabel: {
+    /**
+     * Icon as React Element
+     */
+    icon: ReactNode
+    /**
+     * Feature name
+     */
+    feature: string
+  }
   /**
    * Feature Content that belongs to feature (pricing table)
    */
