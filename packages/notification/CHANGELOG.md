@@ -1,5 +1,11 @@
 # @hashicorp/react-notification
 
+## 0.4.0
+
+### Minor Changes
+
+- [#656](https://github.com/hashicorp/react-components/pull/656) [`ae05942d`](https://github.com/hashicorp/react-components/commit/ae05942d4a632c55c4137bc8108f7723df477f5a) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adjust role based on notification type
+
 ## 0.3.2
 
 ### Patch Changes
