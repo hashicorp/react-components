@@ -42,7 +42,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--wpl-neutral-0);
-  padding: 24px 32px;
+  padding: 24px;
   flex-shrink: 0;
   border-bottom: 1px solid var(--wpl-neutral-200);
 }
@@ -53,7 +53,7 @@
 }
 
 .dialogBody {
-  padding: 5px 25px;
+  padding: 5px 24px;
   flex-grow: 1;
   overflow-y: scroll;
   color: var(--black);
@@ -160,7 +160,7 @@
   display: flex;
   justify-content: flex-end;
   flex-shrink: 0;
-  padding: 24px 32px;
+  padding: 24px;
   gap: 24px;
   background-color: var(--wpl-neutral-0);
   border-top: 1px solid var(--wpl-neutral-200);
