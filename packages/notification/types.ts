@@ -4,6 +4,7 @@ export type Renderable = JSX.Element | string | null
 
 export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue
 export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>
+export type NotificationAsType = 'toast' | 'dialog'
 
 export interface NotificationsProps {
   /**
@@ -21,6 +22,7 @@ export interface NotificationsProps {
 }
 
 export interface Notification {
+  type: NotificationAsType
   createdAt: number
   id: string
   message: ValueOrFunction<Renderable, Notification>
