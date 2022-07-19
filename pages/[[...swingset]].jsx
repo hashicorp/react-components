@@ -13,7 +13,6 @@ import { Tab } from '../packages/tabs'
 import codeMdxComponents from '../packages/code-block/mdx'
 import UsageDetails from '../swingset-extensions/usage-details'
 import tableStyleWrapper from '../packages/content/styles/table.module.css'
-import { Toaster } from '../packages/toast'
 
 function Logo() {
   return (
@@ -128,7 +127,6 @@ const components = {
   FormikStateViewer,
   NextRouterDebugger,
   ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
-  Toaster,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })
