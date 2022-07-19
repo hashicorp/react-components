@@ -1,16 +1,14 @@
-import classNames from 'classnames'
-import { PricingTierListProps } from './types'
-import s from './style.module.css'
-import Button from '@hashicorp/react-button'
-import Link from 'next/link'
 import React from 'react'
+import Link from 'next/link'
+import classNames from 'classnames'
+import Button from '@hashicorp/react-button'
+import { PricingTierListProps } from './types'
+import { handleTiersLength } from './helpers'
+import s from './style.module.css'
 
 export default function PricingTierList({ tiers }: PricingTierListProps) {
   const tiersLength = tiers.length
-
-  if (tiersLength > 5) {
-    throw new Error('<PricingTierList /> only supports up to five tiers')
-  }
+  handleTiersLength(tiersLength)
 
   return (
     <div className={s.pricingTierListContainer}>
@@ -18,7 +16,7 @@ export default function PricingTierList({ tiers }: PricingTierListProps) {
         className={classNames(s.pricingTierList, s[`length${tiersLength}`])}
         style={
           {
-            '--tier-columns': tiersLength,
+            '--col': tiersLength,
           } as React.CSSProperties
         }
         data-testid="pricing-tier-list"

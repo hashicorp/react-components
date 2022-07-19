@@ -11,7 +11,7 @@
   background: var(--white);
 
   @media (--medium-up) {
-    grid-template-columns: repeat(var(--tier-columns), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--col), minmax(0, 1fr));
     border: 1px solid var(--wpl-neutral-100);
     border-radius: 8px;
   }
