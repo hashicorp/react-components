@@ -10,24 +10,53 @@ import {
 } from '../utils'
 import type {
   MarketoForm,
-  MarketoFormField,
-  MarketoFormikComponents,
+  MarketoFormGroups,
+  MarketoFormComponents,
 } from '../types'
 
 interface Props {
+  /**
+   * Numeric ID of the Marketo form being rendered. Used to determine where to
+   * submit form values.
+   */
   formId: number
+
+  /**
+   * The Marketo API response containing the fields to render.
+   * See {@link MarketoForm} for more details.
+   */
   marketoForm: MarketoForm
-  groups?: Record<
-    string,
-    {
-      fields: string[]
-      component: (props: { fields: MarketoFormField[] }) => JSX.Element
-    }
-  >
-  components?: MarketoFormikComponents
+
+  /**
+   * Configuration on which fields to render with a single component.
+   * See {@link MarketoFormGroups} for more details.
+   */
+  groups?: MarketoFormGroups
+
+  /**
+   * Custom components to be used in lieu of the default built-in components.
+   * See {@link MarketoFormComponents} for more details.
+   */
+  components?: MarketoFormComponents
+
+  /**
+   * Text to use for the submit button. Defaults to "Submit".
+   */
   submitTitle?: string
+
+  /**
+   * Additional class name to apply to the <form> element.
+   */
   className?: string
+
+  /**
+   * Callback called when form has been successfully submitted.
+   */
   onSubmitSuccess?: () => void
+
+  /**
+   * Callback called when form submission results in an error.
+   */
   onSubmitError?: () => void
 }
 

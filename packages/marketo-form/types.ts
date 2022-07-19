@@ -78,14 +78,33 @@ export type MarketoFormField =
   | MarketoFormCheckboxField
   | MarketoFormHiddenField
 
+/**
+ * The Marketo API response containing form fields.
+ */
 export interface MarketoForm {
   result: MarketoFormField[]
 }
 
-export interface MarketoFormikComponents {
+/**
+ * Custom components to be used in lieu of the default built-in components.
+ */
+export interface MarketoFormComponents {
   text?: (props: { field: MarketoFormTextField }) => JSX.Element
   email?: (props: { field: MarketoFormEmailField }) => JSX.Element
   select?: (props: { field: MarketoFormSelectField }) => JSX.Element
   checkbox?: (props: { field: MarketoFormCheckboxField }) => JSX.Element
   hidden?: (props: { field: MarketoFormHiddenField }) => JSX.Element
 }
+
+/**
+ * Configuration on which fields to render with a single component. Can be used
+ * to render multiple default components on one row (such as First Name and
+ * Last Name) or to render a particular set of fields with a single component.
+ */
+export type MarketoFormGroups = Record<
+  string,
+  {
+    fields: string[]
+    component: (props: { fields: MarketoFormField[] }) => JSX.Element
+  }
+>

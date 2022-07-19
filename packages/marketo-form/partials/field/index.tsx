@@ -4,14 +4,14 @@ import SelectField from '../fields/select-field'
 import CountryField from '../fields/country-field'
 import CheckboxField from '../fields/checkbox-field'
 import HiddenField from '../fields/hidden-field'
-import type { MarketoFormField, MarketoFormikComponents } from '../../types'
+import type { MarketoFormField, MarketoFormComponents } from '../../types'
 
 const Field = ({
   field,
   components,
 }: {
   field: MarketoFormField
-  components?: MarketoFormikComponents
+  components?: MarketoFormComponents
 }) => {
   switch (field.dataType) {
     case 'text':
