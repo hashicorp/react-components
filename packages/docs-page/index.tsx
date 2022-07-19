@@ -98,7 +98,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 
   const versionAlert =
     !versionIsLatest && showVersionSelect ? (
-      <VersionAlert product={name} />
+      <VersionAlert product={projectName || name} />
     ) : null
 
   return (
@@ -189,6 +189,9 @@ export interface DocsPageProps {
     versions: VersionSelectItem[]
   }
   optInBanner?: ReactElement
+  /**
+   * This will override the `product.name` that is passed to the version-alert.
+   */
   projectName?: string
 }
 
