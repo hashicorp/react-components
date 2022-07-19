@@ -21,6 +21,7 @@ export default function PricingTierList({ tiers }: PricingTierListProps) {
             '--tier-columns': tiersLength,
           } as React.CSSProperties
         }
+        data-testid="pricing-tier-list"
       >
         {tiers.map(
           (
