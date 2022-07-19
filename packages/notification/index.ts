@@ -8,6 +8,7 @@ import NotificationWithLanguage from './components/notification-with-language'
 import NotificationWithProduct from './components/notification-with-product'
 import NotificationWithResource from './components/notification-with-resource'
 import NotificationWithThumbnail from './components/notification-with-thumbnail'
+import NotificationWithActions from './components/notification-with-actions'
 
 export default notification
 export {
@@ -20,4 +21,5 @@ export {
   NotificationWithProduct,
   NotificationWithResource,
   NotificationWithThumbnail,
+  NotificationWithActions,
 }
