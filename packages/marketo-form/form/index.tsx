@@ -122,7 +122,11 @@ const Form = ({
 
   return (
     <FormProvider {...methods}>
-      <form className={className} onSubmit={methods.handleSubmit(onSubmit)}>
+      <form
+        className={className}
+        onSubmit={methods.handleSubmit(onSubmit)}
+        data-marketo-form-id={formId}
+      >
         {Object.entries(groupedFields).map(([groupName, fields]) => {
           // If this group name has a custom component defined, use that
           // instead of the default field components.
@@ -158,9 +162,6 @@ const Form = ({
               : submitTitle ?? 'Submit'
           }
         />
-        <div>
-          <small>{`Marketo Form (${formId})`}</small>
-        </div>
       </form>
     </FormProvider>
   )
