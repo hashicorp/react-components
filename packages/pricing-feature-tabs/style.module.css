@@ -10,7 +10,7 @@
     gap: 24px;
 
     @media (--medium-up) {
-      grid-template-columns: repeat(var(--col), 1fr);
+      grid-template-columns: repeat(var(--col), minmax(0, 1fr));
 
       &.smList {
         column-gap: 16px;
