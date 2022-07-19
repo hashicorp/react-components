@@ -214,7 +214,7 @@ export default class ConsentPreferences extends Component {
           </div>
           <div className={s.dialogFooter}>
             <Button
-              title="Save my preferences"
+              title="Save preferences"
               theme={{
                 variant: 'secondary',
                 brand: 'neutral',
