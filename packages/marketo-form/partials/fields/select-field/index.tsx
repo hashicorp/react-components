@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import SelectInput from '@hashicorp/react-select-input'
-import Wrapper from '../../wrapper'
+import FieldWrapper from '../../field-wrapper'
 import type { MarketoFormSelectField, SelectValue } from '../../../types'
 
 function applyVisibilityRule(
@@ -44,7 +44,7 @@ const SelectField = ({ field }: { field: MarketoFormSelectField }) => {
   }, [field, values])
 
   return visibility !== null ? (
-    <Wrapper>
+    <FieldWrapper>
       <SelectInput
         {...register(field.id, { required: field.required })}
         label={`${visibility.label}${field.required ? ' *' : ''}`}
@@ -55,7 +55,7 @@ const SelectField = ({ field }: { field: MarketoFormSelectField }) => {
           setValue(field.id, name)
         }}
       />
-    </Wrapper>
+    </FieldWrapper>
   ) : null
 }
 

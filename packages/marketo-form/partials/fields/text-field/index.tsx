@@ -1,6 +1,6 @@
 import { useFormContext, useFormState } from 'react-hook-form'
 import TextInput from '@hashicorp/react-text-input'
-import Wrapper from '../../wrapper'
+import FieldWrapper from '../../field-wrapper'
 import { formattedLabel } from '../../../utils'
 import type { MarketoFormTextField } from '../../../types'
 
@@ -9,7 +9,7 @@ const Index = ({ field }: { field: MarketoFormTextField }) => {
   const { errors, touchedFields } = useFormState()
 
   return (
-    <Wrapper>
+    <FieldWrapper>
       <TextInput
         label={formattedLabel(field)}
         field={register(field.id, {
@@ -24,7 +24,7 @@ const Index = ({ field }: { field: MarketoFormTextField }) => {
           },
         }}
       />
-    </Wrapper>
+    </FieldWrapper>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useFormContext, useFormState } from 'react-hook-form'
 import TextInput from '@hashicorp/react-text-input'
-import Wrapper from '../../wrapper'
+import FieldWrapper from '../../field-wrapper'
 import { formattedLabel } from '../../../utils'
 import type { MarketoFormEmailField } from '../../../types'
 
@@ -9,7 +9,7 @@ const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
   const { errors, touchedFields } = useFormState()
 
   return (
-    <Wrapper>
+    <FieldWrapper>
       <TextInput
         label={formattedLabel(field)}
         field={{
@@ -27,7 +27,7 @@ const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
           },
         }}
       />
-    </Wrapper>
+    </FieldWrapper>
   )
 }
 

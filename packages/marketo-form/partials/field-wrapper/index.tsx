@@ -2,7 +2,13 @@ import type { ReactNode } from 'react'
 import clsx from 'clsx'
 import styles from './style.module.css'
 
-const Wrapper = ({ size, children }: { size?: 'lg'; children: ReactNode }) => {
+const FieldWrapper = ({
+  size,
+  children,
+}: {
+  size?: 'lg'
+  children: ReactNode
+}) => {
   return (
     <div
       className={clsx('marketo-form-field-wrapper', styles.wrapper, {
@@ -14,4 +20,4 @@ const Wrapper = ({ size, children }: { size?: 'lg'; children: ReactNode }) => {
   )
 }
 
-export default Wrapper
+export default FieldWrapper

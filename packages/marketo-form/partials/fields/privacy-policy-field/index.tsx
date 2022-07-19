@@ -1,6 +1,6 @@
 import { useFormContext, useFormState } from 'react-hook-form'
 import CheckboxInput from '@hashicorp/react-checkbox-input'
-import Wrapper from '../../wrapper'
+import FieldWrapper from '../../field-wrapper'
 import type { MarketoFormCheckboxField } from '../../../types'
 
 const PrivacyPolicyField = ({ field }: { field: MarketoFormCheckboxField }) => {
@@ -9,7 +9,7 @@ const PrivacyPolicyField = ({ field }: { field: MarketoFormCheckboxField }) => {
   const value = watch(field.id, false)
 
   return (
-    <Wrapper size="lg">
+    <FieldWrapper size="lg">
       <CheckboxInput
         label={`I agree to HashiCorp’s
                    <a
@@ -34,7 +34,7 @@ const PrivacyPolicyField = ({ field }: { field: MarketoFormCheckboxField }) => {
           },
         }}
       />
-    </Wrapper>
+    </FieldWrapper>
   )
 }
 

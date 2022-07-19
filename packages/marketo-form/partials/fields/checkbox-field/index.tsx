@@ -1,6 +1,6 @@
 import { useFormContext, useFormState } from 'react-hook-form'
 import CheckboxInput from '@hashicorp/react-checkbox-input'
-import Wrapper from '../../wrapper'
+import FieldWrapper from '../../field-wrapper'
 import { formattedLabel } from '../../../utils'
 import type { MarketoFormCheckboxField } from '../../../types'
 
@@ -10,7 +10,7 @@ const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
   const value = watch(field.id, false)
 
   return (
-    <Wrapper size="lg">
+    <FieldWrapper size="lg">
       <CheckboxInput
         label={formattedLabel(field)}
         field={{
@@ -28,7 +28,7 @@ const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
           },
         }}
       />
-    </Wrapper>
+    </FieldWrapper>
   )
 }
 
