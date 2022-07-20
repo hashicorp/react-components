@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.3.0
+
+### Minor Changes
+
+- [#660](https://github.com/hashicorp/react-components/pull/660) [`67f962ba`](https://github.com/hashicorp/react-components/commit/67f962baef83e5417edc20d5d044d3faefcf12d9) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Pass `projectName` to internal `VersionAlert`
+
 ## 17.2.0
 
 ### Minor Changes
