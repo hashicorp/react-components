@@ -1,4 +1,7 @@
 import { PricingTierItemProps } from '@hashicorp/react-pricing-tier-list/types'
+import { Products } from '@hashicorp/platform-product-meta'
+
+export type PricingHeroProducts = Exclude<Products, 'hashicorp'>
 
 export interface PricingHeroProps {
   /**
@@ -9,4 +12,5 @@ export interface PricingHeroProps {
    * Pricing tier info
    */
   tiers: Array<PricingTierItemProps>
+  product: PricingHeroProducts
 }

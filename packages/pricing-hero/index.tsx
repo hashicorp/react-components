@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'
-import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
-import PricingTierList from '@hashicorp/react-pricing-tier-list'
-import PricingTierStickyTray from '@hashicorp/react-pricing-tier-list/components/pricing-sticky-tray'
+import PricingTierList, {
+  PricingTierStickyTray,
+} from '@hashicorp/react-pricing-tier-list'
 import { IconBoundaryColor24 } from '@hashicorp/flight-icons/svg-react/boundary-color-24'
 import { IconConsulColor24 } from '@hashicorp/flight-icons/svg-react/consul-color-24'
 import { IconNomadColor24 } from '@hashicorp/flight-icons/svg-react/nomad-color-24'
@@ -13,11 +13,11 @@ import { IconTerraformColor24 } from '@hashicorp/flight-icons/svg-react/terrafor
 import { IconVaultColor24 } from '@hashicorp/flight-icons/svg-react/vault-color-24'
 import { IconVagrantColor24 } from '@hashicorp/flight-icons/svg-react/vagrant-color-24'
 import { IconWaypointColor24 } from '@hashicorp/flight-icons/svg-react/waypoint-color-24'
-import { PricingHeroProps } from './types'
+import { PricingHeroProps, PricingHeroProducts } from './types'
 import s from './style.module.css'
 
 const PRODUCT_MAP: {
-  [key in Products]: {
+  [key in PricingHeroProducts]: {
     name: string
     icon: React.ReactNode
   }
@@ -56,8 +56,11 @@ const PRODUCT_MAP: {
   },
 }
 
-export default function PricingHero({ title, tiers }: PricingHeroProps) {
-  const { slug } = useProductMeta()
+export default function PricingHero({
+  product,
+  title,
+  tiers,
+}: PricingHeroProps) {
   const [trayIsVisible, setTrayIsVisible] = useState(false)
   const [ref, isInView] = useInView({
     root: null,
@@ -74,18 +77,17 @@ export default function PricingHero({ title, tiers }: PricingHeroProps) {
     <>
       <header className={s.hero}>
         <div className={s.accent}>
-          <span>
-            <Image
-              src={require('./img/hero-accent.svg')}
-              width={684}
-              height={392}
-              alt=""
-              priority={true}
-            />
-          </span>
+          <Image
+            src={require('./img/hero-accent.svg')}
+            width={684}
+            height={392}
+            alt=""
+            priority={true}
+          />
         </div>
         <div className={s.container}>
-          <div className={s.content}>
+          <div className={s.titleContent}>
+            <span className={s.productIcon}>{PRODUCT_MAP[product].icon}</span>{' '}
             <h1 className={s.title}>{title}</h1>
           </div>
           <div className={s.pricingTierList}>

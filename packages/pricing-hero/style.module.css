@@ -1,3 +1,61 @@
-.root {
-  display: block;
+.hero {
+  --padding-y: 64px;
+
+  position: relative;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
+
+  @media (--medium-up) {
+    --padding-y: 100px;
+  }
+}
+
+.accent {
+  display: none;
+
+  @media (--medium-up) {
+    --offset: 450px;
+
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  @media (--large) {
+    --offset: 768px;
+  }
+
+  & > span {
+    max-width: calc(100% - var(--offset));
+  }
+}
+
+.container {
+  composes: g-grid-container from global;
+  composes: g-grid from global;
+  row-gap: 80px;
+}
+
+.titleContent {
+  grid-column: 1 / 10;
+}
+
+.title {
+  composes: g-type-display-1 from global;
+  margin: 0;
+}
+
+.pricingTierList {
+  grid-column: 1 / -1;
+}
+
+.intersectionTrigger {
+  bottom: 0;
+  height: 2px;
+  position: absolute;
+  width: 100%;
 }
