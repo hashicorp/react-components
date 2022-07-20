@@ -57,7 +57,7 @@
 }
 
 .textLink {
-  composes: g-type-body-x-small;
+  composes: g-type-body-x-small from '../g-type-x-small.css';
   text-decoration: underline;
   text-align: center;
 }
