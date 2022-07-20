@@ -9,6 +9,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  /* display: grid; */
+
+  /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
   position: relative;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -16,6 +20,10 @@
   padding-top: 8px;
   padding-bottom: 12px;
   background-color: var(--white);
+
+  /* @media (--medium-up) {
+    grid-template-columns: repeat(var(--col), minmax(0, 1fr));
+  } */
 
   &::after {
     content: '';
@@ -49,7 +57,7 @@
 }
 
 .textLink {
-  composes: g-type-body-x-small from '../../g-type-x-small.css';
+  composes: g-type-body-x-small;
   text-decoration: underline;
   text-align: center;
 }
