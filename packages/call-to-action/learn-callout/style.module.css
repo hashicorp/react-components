@@ -1,0 +1,152 @@
+.root {
+  padding-top: 88px;
+  padding-bottom: 88px;
+  background-size: contain;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+.learnContainer {
+  composes: g-grid-container from global;
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.columnContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 36px;
+
+  @media (max-width: 1200px) {
+    margin: 0 -16px;
+    flex-wrap: wrap;
+  }
+}
+
+.headline {
+  composes: g-type-display-2 from global;
+  @media (max-width: 1200px) {
+    margin: 0;
+  }
+}
+
+.mobileButton {
+  @media (min-width: 1201px) {
+    display: none;
+  }
+}
+
+.desktopButton {
+  @media (max-width: 1200px) {
+    display: none;
+  }
+}
+
+.columnFlexCenterWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 16px;
+  width: 33.333%;
+  overflow: auto;
+
+  @media (max-width: 1200px) {
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 48px;
+  }
+}
+
+.itemLink {
+  display: flex;
+  cursor: pointer;
+  margin: 0 16px;
+  width: 33.333%;
+  transition: box-shadow 0.25s, transform 0.25s, -webkit-transform 0.25s;
+
+  &:hover {
+    box-shadow: 0 16px 28px rgba(37, 38, 45, 0.12);
+    transform: translateY(-4px);
+  }
+
+  @media (max-width: 1200px) {
+    width: calc(50% - 32px);
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+    &:last-child {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+.course {
+  border: 1px solid var(--gray-5);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  & h4 {
+    color: var(--gray-2);
+  }
+}
+
+.courseImage {
+  background: var(--gray-6);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  padding: 25px;
+
+  & img {
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+  }
+}
+
+.courseTime {
+  composes: g-type-label-strong from global;
+  color: var(--gray-3);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.courseContent {
+  min-height: 200px;
+  padding: 25px;
+  text-align: center;
+  background: #fff;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.courseHeading {
+  composes: g-type-display-4 from global;
+  margin: 24px 0;
+}
+
+.courseLabel {
+  composes: g-type-label-strong from global;
+  color: var(--gray-3); /* Overriden per product by themeClass */
+}
