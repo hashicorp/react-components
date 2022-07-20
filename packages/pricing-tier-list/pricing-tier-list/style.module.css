@@ -299,6 +299,7 @@
 
   @media (--large) {
     column-gap: 32px;
+    padding: 0 12px;
 
     & .header {
       grid-column: var(--column-index);
