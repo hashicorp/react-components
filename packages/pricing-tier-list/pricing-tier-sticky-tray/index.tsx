@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { handleTiersLength } from '../../helpers'
-import { PricingStickyTrayProps } from '../../types'
+import { handleTiersLength } from '../helpers'
+import { PricingStickyTrayProps } from '../types'
 import s from './style.module.css'
 
 export default function PricingStickyTray({ tiers }: PricingStickyTrayProps) {
