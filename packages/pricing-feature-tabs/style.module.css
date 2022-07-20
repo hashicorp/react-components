@@ -7,35 +7,11 @@
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    column-gap: 16px;
+    row-gap: 24px;
 
     @media (--medium-up) {
       grid-template-columns: repeat(var(--col), minmax(0, 1fr));
-
-      &.smList {
-        column-gap: 16px;
-        grid-column: 3 / 11;
-      }
-
-      &.mdList {
-        column-gap: 16px;
-      }
-
-      &.lgList {
-        column-gap: 6px;
-
-        & .tab {
-          padding: 12px 12px 32px 12px;
-        }
-      }
-    }
-
-    @media (--large) {
-      &.lgList {
-        & .featureText {
-          font-weight: var(--font-weight-bold);
-        }
-      }
     }
 
     & .tab {
@@ -46,7 +22,7 @@
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      padding: 22px 22px 42px 22px;
+      padding: 12px;
       text-align: left;
       height: 100%;
 
@@ -84,7 +60,7 @@
   color: var(--wpl-neutral-900);
 
   @media (--medium-up) {
-    composes: g-type-body-x-small from './g-type-x-small.css';
+    composes: g-type-body-x-small-strong from './g-type-x-small.css';
   }
 }
 

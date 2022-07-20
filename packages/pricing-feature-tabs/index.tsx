@@ -31,11 +31,7 @@ export default function PricingFeatureTabs({
       data-testid="pricing-feature-tabs"
     >
       <TabList
-        className={classNames(s.tabList, {
-          [s.smList]: featuresLength < 4,
-          [s.mdList]: featuresLength >= 4 && featuresLength <= 5,
-          [s.lgList]: featuresLength > 5,
-        })}
+        className={s.tabList}
         style={
           {
             '--col': featuresLength,
