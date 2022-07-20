@@ -1,0 +1,82 @@
+.tabs {
+  display: grid;
+  row-gap: 62px;
+  composes: g-grid from global;
+
+  & .tabList {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 24px;
+
+    @media (--medium-up) {
+      grid-template-columns: repeat(var(--col), minmax(0, 1fr));
+    }
+
+    & .tab {
+      appearance: none;
+      border: 1px solid var(--wpl-neutral-300);
+      border-radius: 8px;
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      text-align: left;
+      height: 100%;
+
+      &.active {
+        border-color: var(--wpl-blue-500);
+
+        & .iconWrapper {
+          --icon-fill: var(--wpl-blue-500);
+
+          & svg * {
+            fill: var(--icon-fill);
+          }
+
+          & span {
+            --fill: var(--icon-fill) !important;
+          }
+        }
+
+        & .featureText {
+          color: var(--wpl-blue-500);
+        }
+      }
+    }
+  }
+
+  & .tabPanels {
+    grid-column: 1 / -1;
+    margin: 0 auto;
+  }
+}
+
+.featureText {
+  composes: g-type-body-small from global;
+  padding-top: 12px;
+  color: var(--wpl-neutral-900);
+
+  @media (--medium-up) {
+    composes: g-type-body-x-small-strong from './g-type-x-small.css';
+  }
+}
+
+.fadeIn {
+  @media (--medium-up) {
+    animation: fade-in 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0.15;
+  }
+  to {
+    opacity: 1;
+  }
+}
