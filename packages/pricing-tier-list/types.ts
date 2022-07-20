@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { Theme } from '@hashicorp/react-button/types'
 
-interface Props {
+interface TierProps {
   /**
    * Tier name
    */
@@ -18,10 +18,10 @@ interface Props {
 }
 
 export interface PricingStickyTrayProps {
-  tiers: Array<Props>
+  tiers: Array<TierProps>
 }
 
-export interface PricingTierItemProps extends Props {
+export interface PricingTierItemProps extends TierProps {
   /**
    * Flight Icon component
    */
