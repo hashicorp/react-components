@@ -1,0 +1,16 @@
+{
+  "name": "@hashicorp/react-pricing-hero",
+  "version": "0.1.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/platform-product-meta": "^0.1.1",
+    "@hashicorp/react-pricing-tier-list": "^0.1.1-canary-20220719210211",
+    "react-intersection-observer": "^9.3.5"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  }
+}
