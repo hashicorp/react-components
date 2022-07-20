@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
-import { PricingTierListProps } from './types'
-import { handleTiersLength } from './helpers'
+import { PricingTierListProps } from '../types'
+import { handleTiersLength } from '../helpers'
 import s from './style.module.css'
 
 export default function PricingTierList({ tiers }: PricingTierListProps) {
