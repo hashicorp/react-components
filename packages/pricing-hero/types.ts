@@ -12,5 +12,9 @@ export interface PricingHeroProps {
    * Pricing tier info
    */
   tiers: Array<PricingTierItemProps>
+  /**
+   * color used for background blur and accent svg
+   */
+  backgroundAccentColor: string
   product: PricingHeroProducts
 }

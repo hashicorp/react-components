@@ -79,5 +79,8 @@ module.exports = {
       required: true,
       description: 'HashiCorp product lowercase',
     },
+    backgroundGradientColor: {
+      type: 'string',
+    },
   },
 }

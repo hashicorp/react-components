@@ -1,0 +1,113 @@
+---
+componentName: 'PricingHero'
+---
+
+<LiveComponent>
+  {`
+    <PricingHero
+      tiers={[
+        {
+          title: 'Development',
+          label: 'Starting at',
+          price: '$1.578',
+          consumption: 'per hour',
+          description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+          cta: {
+            type: 'textLink',
+            url: '#',
+            title: 'Try it for free',
+          },
+          supplementaryInfo: '<p>*Price scales with <a>active clients</a></p>'
+        },
+        {
+          title: 'Starter',
+          label: 'Starting at',
+          price: '$1.578',
+          consumption: 'per hour',
+          description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+          cta: {
+            type: 'button',
+            url: '#',
+            title: 'Try it for free',
+          },
+          supplementaryInfo: '<p>*Price scales with <a>active clients</a></p>'
+        },
+        {
+          title: 'Standard',
+          label: 'Starting at',
+          price: '$1.578',
+          consumption: 'per hour',
+          description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+          cta: {
+            type: 'textLink',
+            url: '#',
+            title: 'Try it for free',
+          },
+          supplementaryInfo: '<p>*Price scales with <a>active clients</a></p>'
+        },
+      ]}
+      product="terraform"
+      title="Terraform Pricing"
+      backgroundAccentColor="var(--terraform-secondary)"
+    />
+  `}
+</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Other Examples
+
+#### HCP Hero
+
+<LiveComponent>
+  {`
+    <PricingHero
+      tiers={[
+        {
+          title: 'Development',
+          label: 'Starting at',
+          price: '$1.578',
+          consumption: 'per hour',
+          description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+          cta: {
+            type: 'textLink',
+            url: '#',
+            title: 'Try it for free',
+          },
+          supplementaryInfo: '<p>*Price scales with <a>active clients</a></p>'
+        },
+        {
+          title: 'Starter',
+          label: 'Starting at',
+          price: '$1.578',
+          consumption: 'per hour',
+          description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+          cta: {
+            type: 'button',
+            url: '#',
+            title: 'Try it for free',
+          },
+          supplementaryInfo: '<p>*Price scales with <a>active clients</a></p>'
+        },
+        {
+          title: 'Standard',
+          label: 'Starting at',
+          price: '$1.578',
+          consumption: 'per hour',
+          description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+          cta: {
+            type: 'textLink',
+            url: '#',
+            title: 'Try it for free',
+          },
+          supplementaryInfo: '<p>*Price scales with <a>active clients</a></p>'
+        },
+      ]}
+      product="vault"
+      title="HCP Vault Pricing"
+      backgroundAccentColor="var(--consul-accent)"
+    />
+  `}
+</LiveComponent>

@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+// import Image from 'next/image'
 import { useInView } from 'react-intersection-observer'
 import classNames from 'classnames'
 import PricingTierList, {
   PricingTierStickyTray,
 } from '@hashicorp/react-pricing-tier-list'
+import InlineSvg from '@hashicorp/react-inline-svg'
 import { IconBoundaryColor24 } from '@hashicorp/flight-icons/svg-react/boundary-color-24'
 import { IconConsulColor24 } from '@hashicorp/flight-icons/svg-react/consul-color-24'
 import { IconNomadColor24 } from '@hashicorp/flight-icons/svg-react/nomad-color-24'
@@ -16,47 +17,21 @@ import { IconWaypointColor24 } from '@hashicorp/flight-icons/svg-react/waypoint-
 import { PricingHeroProps, PricingHeroProducts } from './types'
 import s from './style.module.css'
 
-const PRODUCT_MAP: {
-  [key in PricingHeroProducts]: {
-    name: string
-    icon: React.ReactNode
-  }
+const PRODUCT_ICON_MAP: {
+  [key in PricingHeroProducts]: React.ReactNode
 } = {
-  boundary: {
-    name: 'Boundary',
-    icon: <IconBoundaryColor24 />,
-  },
-  consul: {
-    name: 'Consul',
-    icon: <IconConsulColor24 />,
-  },
-  nomad: {
-    name: 'Nomad',
-    icon: <IconNomadColor24 />,
-  },
-  packer: {
-    name: 'Packer',
-    icon: <IconPackerColor24 />,
-  },
-  terraform: {
-    name: 'Terraform',
-    icon: <IconTerraformColor24 />,
-  },
-  vault: {
-    name: 'Vault',
-    icon: <IconVaultColor24 />,
-  },
-  vagrant: {
-    name: 'Vagrant',
-    icon: <IconVagrantColor24 />,
-  },
-  waypoint: {
-    name: 'Waypoint',
-    icon: <IconWaypointColor24 />,
-  },
+  boundary: <IconBoundaryColor24 />,
+  consul: <IconConsulColor24 />,
+  nomad: <IconNomadColor24 />,
+  packer: <IconPackerColor24 />,
+  terraform: <IconTerraformColor24 />,
+  vault: <IconVaultColor24 />,
+  vagrant: <IconVagrantColor24 />,
+  waypoint: <IconWaypointColor24 />,
 }
 
 export default function PricingHero({
+  backgroundAccentColor,
   product,
   title,
   tiers,
@@ -75,22 +50,33 @@ export default function PricingHero({
 
   return (
     <>
-      <header className={s.hero}>
+      <header
+        className={s.hero}
+        style={
+          {
+            '--background-accent-color': backgroundAccentColor,
+          } as React.CSSProperties
+        }
+      >
         <div className={s.accent}>
-          <Image
+          {/* <Image
             src={require('./img/hero-accent.svg')}
             width={684}
             height={392}
             alt=""
             priority={true}
+          /> */}
+          <InlineSvg
+            className={s.cardFooterArrow}
+            src={require('./img/hero-accent.svg?include')}
           />
         </div>
         <div className={s.container}>
           <div className={s.titleContent}>
-            <span className={s.productIcon}>{PRODUCT_MAP[product].icon}</span>{' '}
+            <span className={s.productIcon}>{PRODUCT_ICON_MAP[product]}</span>{' '}
             <h1 className={s.title}>{title}</h1>
           </div>
-          <div className={s.pricingTierList}>
+          <div className={s.pricingTierListContainer}>
             <PricingTierList tiers={tiers} />
           </div>
         </div>

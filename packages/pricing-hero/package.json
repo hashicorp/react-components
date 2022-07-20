@@ -6,6 +6,7 @@
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.1",
+    "@hashicorp/react-inline-svg": "^6.0.3",
     "@hashicorp/react-pricing-tier-list": "^0.1.1-canary-20220720152128",
     "react-intersection-observer": "^9.3.5"
   },
