@@ -12,9 +12,13 @@ const SelectField = ({ field }: { field: MarketoFormSelectField }) => {
       <SelectInput
         {...register(field.id, { required: field.required })}
         label={formattedLabel(field)}
-        options={field.fieldMetaData.values?.map((plv) => {
-          return { name: plv.value, label: plv.label }
-        })}
+        options={
+          field.fieldMetaData.values
+            ? field.fieldMetaData.values.map((plv) => {
+                return { name: plv.value, label: plv.label }
+              })
+            : []
+        }
         onValueChange={(name) => {
           setValue(field.id, name)
         }}
