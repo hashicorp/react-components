@@ -1,8 +1,48 @@
 import type { Products } from '@hashicorp/platform-product-meta'
 
-export type NotificationLanguages = 'en' | 'de' | 'fr' | 'jp' | 'kr'
+export type Renderable = JSX.Element | string | null
+
+export type ValueFunction<TValue, TArg> = (arg: TArg) => TValue
+export type ValueOrFunction<TValue, TArg> = TValue | ValueFunction<TValue, TArg>
+export type NotificationType = 'toast' | 'dialog'
+
+export interface NotificationsProps {
+  /**
+   * Anchor the notifications to the left or right side of the viewport
+   */
+  anchor?: 'left' | 'right'
+  /**
+   * The position in pixels that the notifications should be inset within the viewport
+   */
+  inset?: number
+  /**
+   * The space in pixels between each rendered notification
+   */
+  gutter?: number
+}
+
+export interface Notification {
+  type: NotificationType
+  createdAt: number
+  id: string
+  message: ValueOrFunction<Renderable, Notification>
+  duration?: number
+  pauseDuration: number
+  visible: boolean
+}
+
+export type NotificationOptions = Partial<Pick<Notification, 'id' | 'duration'>>
+
+export type NotificationLanguages =
+  | 'en'
+  | 'de'
+  | 'fr'
+  | 'jp'
+  | 'kr'
+  | 'pt'
+  | 'es'
 export type NotificationProducts = Exclude<Products, 'hashicorp'>
-export type NotificationTypes = 'podcast' | 'webinar' | 'whitepaper'
+export type NotificationResources = 'podcast' | 'webinar' | 'whitepaper'
 
 export interface NotificationProps {
   /**
@@ -44,7 +84,7 @@ export interface NotificationWithResourceProps extends NotificationProps {
   /**
    * Renders resource type name and icon.
    */
-  type: NotificationTypes
+  type: NotificationResources
 }
 
 export interface NotificationWithThumbnailProps extends NotificationProps {

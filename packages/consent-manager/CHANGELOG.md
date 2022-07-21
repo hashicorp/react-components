@@ -1,5 +1,17 @@
 # @hashicorp/react-consent-manager
 
+## 7.4.0
+
+### Minor Changes
+
+- [#629](https://github.com/hashicorp/react-components/pull/629) [`f969489c`](https://github.com/hashicorp/react-components/commit/f969489c704bc36fcf37ab12db19624bca73e642) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - expose saveAndLoadAnalytics function
+
+* [#637](https://github.com/hashicorp/react-components/pull/637) [`04aa6541`](https://github.com/hashicorp/react-components/commit/04aa6541578aee4da36cf02876512dd2a7eea4af) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Fetch integrations directly from Segment
+
+### Patch Changes
+
+- [#635](https://github.com/hashicorp/react-components/pull/635) [`a4391931`](https://github.com/hashicorp/react-components/commit/a4391931102eb03d95943d9ec30cd10709215067) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Remove events and object-assign dependencies
+
 ## 7.3.0
 
 ### Minor Changes

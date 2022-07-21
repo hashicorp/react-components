@@ -10,9 +10,9 @@ const useRouterMock = mocked(useRouter)
 jest.mock('next/router')
 
 describe('<VersionAlert />', () => {
-  const routerMock = ({
+  const routerMock = {
     asPath: '/docs',
-  } as unknown) as Router
+  } as unknown as Router
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -24,16 +24,34 @@ describe('<VersionAlert />', () => {
     expect(container.hasChildNodes()).toBe(false)
   })
 
-  it('should be shown when viewing an older version', () => {
-    useRouterMock.mockImplementation(() => {
-      return ({
-        asPath: '/docs/v0.5.1',
-      } as unknown) as Router
-    })
+  it.each([
+    [
+      /* Product      */ 'Waypoint',
+      /* Path         */ '/docs/v0.5.x',
+      /* Text content */ "You're looking at documentation for Waypoint v0.5.x. Click here to view the latest content.",
+    ],
+    [
+      'CDK for Terraform',
+      '/cdktf/v0.10.x',
+      "You're looking at documentation for CDK for Terraform v0.10.x. Click here to view the latest content.",
+    ],
+    [
+      'Terraform Enterprise',
+      '/enterprise/v202207-1',
+      "You're looking at documentation for Terraform Enterprise v202207-1. Click here to view the latest content.",
+    ],
+  ])(
+    'given product: %p, and path: %p as arguments, should render an alert: %p',
+    (product, path, textContent) => {
+      useRouterMock.mockImplementation(() => {
+        return {
+          asPath: path,
+        } as unknown as Router
+      })
 
-    const { getByText } = render(<VersionAlert product={'waypoint'} />)
+      const { getByTestId } = render(<VersionAlert product={product} />)
 
-    expect(getByText('waypoint', { exact: false })).toBeInTheDocument()
-    expect(getByText('v0.5.1', { exact: false })).toBeInTheDocument()
-  })
+      expect(getByTestId('text')).toHaveTextContent(textContent)
+    }
+  )
 })
