@@ -1,5 +1,5 @@
 ---
-"@hashicorp/react-pricing-tier-list": patch
+'@hashicorp/react-pricing-tiers': patch
 ---
 
-Adds initial PricingTierList component
+Adds initial PricingTiers component
