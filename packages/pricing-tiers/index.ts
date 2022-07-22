@@ -1,5 +1,5 @@
-import PricingTierList from './pricing-tier-list'
+import PricingTiers from './pricing-tiers'
 import PricingTierStickyTray from './pricing-tier-sticky-tray'
 
-export default PricingTierList
+export default PricingTiers
 export { PricingTierStickyTray }

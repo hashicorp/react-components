@@ -2,24 +2,24 @@ import React from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
-import { PricingTierListProps } from '../types'
+import { PricingTiersProps } from '../types'
 import { handleTiersLength } from '../helpers'
 import s from './style.module.css'
 
-export default function PricingTierList({ tiers }: PricingTierListProps) {
+export default function PricingTiers({ tiers }: PricingTiersProps) {
   const tiersLength = tiers.length
   handleTiersLength(tiersLength)
 
   return (
-    <div className={s.pricingTierListContainer}>
+    <div className={s.pricingTiersContainer}>
       <div
-        className={classNames(s.pricingTierList, s[`length${tiersLength}`])}
+        className={classNames(s.pricingTiers, s[`length${tiersLength}`])}
         style={
           {
             '--col': tiersLength,
           } as React.CSSProperties
         }
-        data-testid="pricing-tier-list"
+        data-testid="pricing-tiers"
       >
         {tiers.map(
           (
