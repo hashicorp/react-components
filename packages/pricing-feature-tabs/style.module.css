@@ -56,8 +56,9 @@
 
 .featureText {
   composes: g-type-body-small from global;
-  padding-top: 12px;
+  padding-top: 8px;
   color: var(--wpl-neutral-900);
+  height: 66px;
 
   @media (--medium-up) {
     composes: g-type-body-x-small-strong from './g-type-x-small.css';
