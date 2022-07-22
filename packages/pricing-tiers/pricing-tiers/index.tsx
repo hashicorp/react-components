@@ -31,7 +31,7 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
               consumption,
               description,
               cta,
-              supplementaryInfo,
+              footnote,
             },
             colIdx
           ) => {
@@ -79,10 +79,10 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                       </Link>
                     )}
                   </div>
-                  {supplementaryInfo && (
+                  {footnote && (
                     <div
-                      className={s.supplementaryInfo}
-                      dangerouslySetInnerHTML={{ __html: supplementaryInfo }}
+                      className={s.footnote}
+                      dangerouslySetInnerHTML={{ __html: footnote }}
                     />
                   )}
                 </div>
