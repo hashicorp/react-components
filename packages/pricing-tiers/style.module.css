@@ -4,17 +4,6 @@
   justify-content: center;
 
   &.isCollapsed {
-    display: none;
-    @media (--medium-up) {
-      display: grid;
-    }
-
-    &.length5 {
-      @media (--medium) {
-        display: none;
-      }
-    }
-
     & .pricingTiers {
       &::after {
         display: none;
