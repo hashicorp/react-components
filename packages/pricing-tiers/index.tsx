@@ -2,18 +2,27 @@ import React from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
-import { PricingTiersProps } from '../types'
-import { handleTiersLength } from '../helpers'
+import { PricingTiersProps } from './types'
+import { handleTiersLength } from './helpers'
 import s from './style.module.css'
 
-export default function PricingTiers({ tiers }: PricingTiersProps) {
+export default function PricingTiers({
+  tiers,
+  isCollapsed,
+}: PricingTiersProps) {
   const tiersLength = tiers.length
   handleTiersLength(tiersLength)
 
   return (
-    <div className={s.pricingTiersContainer}>
+    <div
+      className={classNames(
+        s.pricingTiersContainer,
+        s[`length${tiersLength}`],
+        isCollapsed && s.isCollapsed
+      )}
+    >
       <div
-        className={classNames(s.pricingTiers, s[`length${tiersLength}`])}
+        className={s.pricingTiers}
         style={
           {
             '--col': tiersLength,
@@ -46,28 +55,34 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                     } as React.CSSProperties
                   }
                 >
-                  {icon && <div className={s.icon}>{icon}</div>}
+                  {icon && !isCollapsed && <div className={s.icon}>{icon}</div>}
                   <h3 className={s.tierName}>{title}</h3>
-                  <div className={s.details}>
-                    {label && <span className={s.label}>{label}</span>}
-                    {price && <span className={s.price}>{price}</span>}
-                    {consumption && (
-                      <span className={s.consumption}>{consumption}</span>
-                    )}
-                  </div>
+                  {!isCollapsed && (
+                    <div className={s.details}>
+                      {label && <span className={s.label}>{label}</span>}
+                      {price && <span className={s.price}>{price}</span>}
+                      {consumption && (
+                        <span className={s.consumption}>{consumption}</span>
+                      )}
+                    </div>
+                  )}
                 </div>
-                <div
-                  className={s.description}
-                  dangerouslySetInnerHTML={{ __html: description }}
-                  style={
-                    {
-                      '--column-index': _columnIndex,
-                    } as React.CSSProperties
-                  }
-                />
+                {!isCollapsed && (
+                  <div
+                    className={s.description}
+                    dangerouslySetInnerHTML={{ __html: description }}
+                    style={
+                      {
+                        '--column-index': _columnIndex,
+                      } as React.CSSProperties
+                    }
+                  />
+                )}
                 <div className={s.bottom}>
                   <div className={s.cta}>
-                    {cta.type === 'button' && tiersLength < 5 ? (
+                    {cta.type === 'button' &&
+                    tiersLength < 5 &&
+                    !isCollapsed ? (
                       <Button
                         url={cta.url}
                         title={cta.title}
@@ -79,7 +94,7 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                       </Link>
                     )}
                   </div>
-                  {footnote && (
+                  {footnote && !isCollapsed && (
                     <div
                       className={s.footnote}
                       dangerouslySetInnerHTML={{ __html: footnote }}
