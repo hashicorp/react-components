@@ -55,7 +55,7 @@ module.exports = {
       },
     },
   },
-  supplementaryInfo: {
+  footnote: {
     type: 'string',
     description: 'Small footer (html string)',
   },

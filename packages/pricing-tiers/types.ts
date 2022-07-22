@@ -45,7 +45,7 @@ export interface PricingTierItemProps extends TierProps {
   /**
    * Small footer (html string)
    */
-  supplementaryInfo?: string
+  footnore?: string
   /**
    * If rendered within a Tier Card List, font sizes depend on the amount
    * of cards in list

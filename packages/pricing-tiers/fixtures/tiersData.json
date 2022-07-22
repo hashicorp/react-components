@@ -52,7 +52,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Starter",
@@ -65,7 +65,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Standard",
@@ -78,7 +78,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     }
   ],
   "fourTiers": [
@@ -93,7 +93,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Starter",
@@ -106,7 +106,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Standard",
@@ -119,7 +119,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Plus",
@@ -132,7 +132,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     }
   ],
   "fiveTiers": [
@@ -147,7 +147,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Starter",
@@ -160,7 +160,7 @@
         "url": "#",
         "title": "Sign up for HCP Vault"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Standard",
@@ -173,7 +173,7 @@
         "url": "#",
         "title": "Sign up for HCP Vault"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Plus",
@@ -186,7 +186,7 @@
         "url": "#",
         "title": "Try it for free"
       },
-      "supplementaryInfo": "<p>*Price scales with <a>active clients</a></p>"
+      "footnote": "<p>*Price scales with <a>active clients</a></p>"
     },
     {
       "title": "Enterprise",
