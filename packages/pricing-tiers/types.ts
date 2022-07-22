@@ -53,6 +53,6 @@ export interface PricingTierItemProps extends TierProps {
   size?: 'lg' | 'md' | 'xs' | 'sm'
 }
 
-export interface PricingTierListProps {
+export interface PricingTiersProps {
   tiers: Array<PricingTierItemProps>
 }
