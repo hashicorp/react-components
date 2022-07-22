@@ -55,4 +55,5 @@ export interface PricingTierItemProps extends TierProps {
 
 export interface PricingTiersProps {
   tiers: Array<PricingTierItemProps>
+  isCollapsed?: boolean
 }
