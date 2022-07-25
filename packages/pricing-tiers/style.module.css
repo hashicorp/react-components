@@ -12,6 +12,7 @@
       & .tierName {
         padding-top: 16px;
         padding-bottom: 8px;
+        font-size: 1.063rem;
       }
 
       & .bottom {
@@ -320,8 +321,4 @@
       }
     }
   }
-}
-
-.tierNameSmall {
-  composes: g-type-body-strong from global;
 }
