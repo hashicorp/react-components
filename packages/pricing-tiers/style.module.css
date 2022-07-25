@@ -215,7 +215,7 @@
       padding: 0 57px;
 
       & .tierName {
-        /* copy of g-type-body-display-4 medium-up */
+        /* copy of g-type-body-display-4 */
         font-size: 1.438rem;
         letter-spacing: -0.004em;
         line-height: 1.391em;
@@ -257,6 +257,7 @@
     }
   }
 }
+
 .length5 {
   & .pricingTiers {
     & .bottom {
@@ -319,4 +320,8 @@
       }
     }
   }
+}
+
+.tierNameSmall {
+  composes: g-type-body-strong from global;
 }
