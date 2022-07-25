@@ -56,14 +56,7 @@ export default function PricingTiers({
                   }
                 >
                   {icon && !isCollapsed && <div className={s.icon}>{icon}</div>}
-                  <h3
-                    className={classNames(
-                      s.tierName,
-                      isCollapsed && s.tierNameSmall
-                    )}
-                  >
-                    {title}
-                  </h3>
+                  <h3 className={s.tierName}>{title}</h3>
                   {!isCollapsed && (
                     <div className={s.details}>
                       {label && <span className={s.label}>{label}</span>}
