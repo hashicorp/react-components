@@ -1,5 +1,17 @@
 # @hashicorp/react-notification
 
+## 0.4.0
+
+### Minor Changes
+
+- [#656](https://github.com/hashicorp/react-components/pull/656) [`ae05942d`](https://github.com/hashicorp/react-components/commit/ae05942d4a632c55c4137bc8108f7723df477f5a) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adjust role based on notification type
+
+## 0.3.2
+
+### Patch Changes
+
+- [#653](https://github.com/hashicorp/react-components/pull/653) [`3b3dd565`](https://github.com/hashicorp/react-components/commit/3b3dd5652a92a5cc047596e45c24b194668cd4e1) Thanks [@BRKalow](https://github.com/BRKalow)! - Call setState on subscription to the notification state.
+
 ## 0.3.1
 
 ### Patch Changes

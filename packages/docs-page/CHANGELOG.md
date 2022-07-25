@@ -1,5 +1,20 @@
 # @hashicorp/react-docs-page
 
+## 17.3.1
+
+### Patch Changes
+
+- [#663](https://github.com/hashicorp/react-components/pull/663) [`f1af288d`](https://github.com/hashicorp/react-components/commit/f1af288dbcb4430840a3b232d9724a9830cd1c58) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Bump react-content dependency
+
+- Updated dependencies [[`101f7665`](https://github.com/hashicorp/react-components/commit/101f766593df7531f46ffac43849c8d31aa48ed2)]:
+  - @hashicorp/react-content@8.2.3
+
+## 17.3.0
+
+### Minor Changes
+
+- [#660](https://github.com/hashicorp/react-components/pull/660) [`67f962ba`](https://github.com/hashicorp/react-components/commit/67f962baef83e5417edc20d5d044d3faefcf12d9) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Pass `projectName` to internal `VersionAlert`
+
 ## 17.2.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @hashicorp/react-content
 
+## 8.2.3
+
+### Patch Changes
+
+- [#663](https://github.com/hashicorp/react-components/pull/663) [`101f7665`](https://github.com/hashicorp/react-components/commit/101f766593df7531f46ffac43849c8d31aa48ed2) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix ol styles leaking to nested ul list items
+
 ## 8.2.2
 
 ### Patch Changes

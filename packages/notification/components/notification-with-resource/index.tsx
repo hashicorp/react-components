@@ -1,6 +1,6 @@
 import * as React from 'react'
 import type {
-  NotificationTypes,
+  NotificationResources,
   NotificationWithResourceProps,
 } from '../../types'
 import Notification from '../notification'
@@ -10,7 +10,7 @@ import { IconGuide16 } from '@hashicorp/flight-icons/svg-react/guide-16'
 import s from '../style.module.css'
 
 const TYPE_MAP: {
-  [key in NotificationTypes]: {
+  [key in NotificationResources]: {
     name: string
     icon: React.ReactNode
   }
