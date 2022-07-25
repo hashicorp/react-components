@@ -6,7 +6,7 @@
     padding-left: 32px;
     list-style: none;
 
-    & li {
+    & > li {
       position: relative;
 
       /* Vertical margins for single-paragraph content, multi-paragraph content
