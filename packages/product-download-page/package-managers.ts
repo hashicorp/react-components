@@ -15,8 +15,8 @@ export function generateDefaultPackageManagers(
     {
       label: 'Ubuntu/Debian',
       commands: [
-        `curl -sSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor > /usr/share/keyrings/hashicorp-releases.gpg`,
-        `echo "deb [signed-by=/usr/share/keyrings/hashicorp-releases.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list`,
+        `curl -sSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp.gpg`,
+        `echo "deb [signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list`,
         `sudo apt update && sudo apt install ${productSlug}`,
       ],
       os: 'linux',
@@ -66,8 +66,8 @@ export function generateEnterprisePackageManagers(
     {
       label: 'Ubuntu/Debian',
       commands: [
-        `curl -sSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor > /usr/share/keyrings/hashicorp-releases.gpg`,
-        `echo "deb [signed-by=/usr/share/keyrings/hashicorp-releases.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list`,
+        `curl -sSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp.gpg`,
+        `echo "deb [signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list`,
         `sudo apt update && sudo apt install ${productSlug}-enterprise`,
       ],
       os: 'linux',
