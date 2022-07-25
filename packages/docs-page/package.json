@@ -11,7 +11,7 @@
     "@hashicorp/platform-docs-mdx": "^0.1.4",
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-alert": "^6.0.2",
-    "@hashicorp/react-content": "^8.2.2",
+    "@hashicorp/react-content": "^8.2.3-canary-20220725173739",
     "@hashicorp/react-docs-sidenav": "^9.0.0",
     "@hashicorp/react-head": "^3.1.2",
     "@hashicorp/react-placeholder": "^0.1.0",
