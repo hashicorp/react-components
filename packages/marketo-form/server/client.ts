@@ -7,6 +7,19 @@ interface MarketoTokenResponse {
   access_token: string
 }
 
+interface MarketoFieldsSuccessResponse {
+  success: true
+}
+
+interface MarketoFieldsErrorResponse {
+  success: false
+  errors: { code: string; message: string }[]
+}
+
+export type MarketoFieldsResponse =
+  | MarketoFieldsSuccessResponse
+  | MarketoFieldsErrorResponse
+
 export async function getToken(): Promise<MarketoTokenResponse> {
   const url = new URL(`${process.env.MARKETO_IDENTITY}/oauth/token`)
   url.searchParams.append('grant_type', 'client_credentials')
