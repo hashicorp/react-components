@@ -17,7 +17,7 @@ async function getForm(req: NextApiRequest, res: NextApiResponse) {
     //
     // More info https://github.com/microsoft/TypeScript/issues/10564
     switch (form.success) {
-      case false:
+      case false: {
         const errorCodes = form.errors.map((e) => e.code)
 
         // 702 -> Form not found
@@ -27,6 +27,7 @@ async function getForm(req: NextApiRequest, res: NextApiResponse) {
         }
 
         throw new Error(JSON.stringify(form))
+      }
     }
 
     res.status(marketoRes.status).json(form)
