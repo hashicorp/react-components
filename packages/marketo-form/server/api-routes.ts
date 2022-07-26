@@ -11,16 +11,22 @@ async function getForm(req: NextApiRequest, res: NextApiResponse) {
     const marketoRes = await client.getForm(flatten(req.query.form))
     const form = (await marketoRes.json()) as MarketoFieldsResponse
 
-    if ('success' in form && !form.success) {
-      const errorCodes = form.errors.map((e) => e.code)
+    // Using a switch statement instead of `if (!form.success)` is necessary
+    // to discriminate a union type by a boolean property in environments where
+    // the TypeScript compiler option "strictNullChecks" is false.
+    //
+    // More info https://github.com/microsoft/TypeScript/issues/10564
+    switch (form.success) {
+      case false:
+        const errorCodes = form.errors.map((e) => e.code)
 
-      // 702 -> Form not found
-      if (errorCodes.includes('702')) {
-        res.status(404).json({ error: 'not found' })
-        return
-      }
+        // 702 -> Form not found
+        if (errorCodes.includes('702')) {
+          res.status(404).json({ error: 'not found' })
+          return
+        }
 
-      throw new Error(JSON.stringify(form))
+        throw new Error(JSON.stringify(form))
     }
 
     res.status(marketoRes.status).json(form)
