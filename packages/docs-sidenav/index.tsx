@@ -195,7 +195,7 @@ function NavTree({ baseRoute, content }: NavTreeProps) {
         if ('title' in item && 'href' in item) {
           return (
             <DirectLink
-              key={item.title + item.href}
+              key={item.title + item.href + idx}
               title={item.title}
               href={item.href}
               isActive={item.__isActive}
@@ -206,7 +206,7 @@ function NavTree({ baseRoute, content }: NavTreeProps) {
         if ('path' in item) {
           return (
             <NavLeaf
-              key={item.path}
+              key={item.path + idx}
               title={item.title}
               isActive={item.__isActive}
               isHidden={item.hidden}
@@ -218,7 +218,7 @@ function NavTree({ baseRoute, content }: NavTreeProps) {
         // (this will recurse and render a nav tree)
         return (
           <NavBranch
-            key={item.title}
+            key={item.title + idx}
             title={item.title}
             routes={item.routes}
             isActive={item.__isActive}
