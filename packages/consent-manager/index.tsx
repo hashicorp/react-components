@@ -116,6 +116,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
       {/*  Consent banner at the bottom */}
       {showBanner && (
         <ConsentBanner
+          preferences={preferences}
           privacyPolicyLink={props.privacyPolicyLink}
           cookiePolicyLink={props.cookiePolicyLink}
           onManagePreferences={() => {
