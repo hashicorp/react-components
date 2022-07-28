@@ -5,6 +5,7 @@ import CountryField from '../fields/country-field'
 import CheckboxField from '../fields/checkbox-field'
 import PrivacyPolicyField from '../fields/privacy-policy-field'
 import HiddenField from '../fields/hidden-field'
+import FormPageUrlField from '../fields/form-page-url-field'
 import type { MarketoFormField, MarketoFormComponents } from '../../types'
 
 const Field = ({
@@ -49,6 +50,9 @@ const Field = ({
       if (components && 'hidden' in components) {
         const Component = components.hidden!
         return <Component field={field} />
+      }
+      if (field.id === 'form_page_url__c') {
+        return <FormPageUrlField field={field} />
       }
       return <HiddenField field={field} />
     default:

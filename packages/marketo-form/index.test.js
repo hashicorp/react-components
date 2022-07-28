@@ -115,6 +115,7 @@ describe('MarketoForm', () => {
               firstName: 'Michael',
               lastName: 'Burnham',
               utm_medium__c: 'social',
+              form_page_url__c: 'http://local.test/testing?utm_medium=social',
             },
             visitorData: {
               pageURL: 'http://local.test/testing?utm_medium=social',

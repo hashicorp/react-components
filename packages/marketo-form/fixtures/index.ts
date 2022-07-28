@@ -52,6 +52,14 @@ const UTM_FORM_PROPS = {
           parameterName: 'utm_medium',
         },
       },
+      {
+        id: 'form_page_url__c',
+        label: 'form_page_url:',
+        dataType: 'hidden',
+        rowNumber: 7,
+        columnNumber: 0,
+        required: false,
+      },
     ],
   },
 }
