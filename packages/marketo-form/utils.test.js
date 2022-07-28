@@ -65,6 +65,7 @@ describe('calculateDefaultValues', () => {
       FirstName: '',
       LastName: '',
       utm_medium__c: '',
+      form_page_url__c: '',
     })
   })
 })
