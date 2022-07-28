@@ -55,6 +55,7 @@ describe('groupFields', () => {
         UTM_FORM_PROPS.marketoForm.result[1],
       ],
       utm_medium__c: [UTM_FORM_PROPS.marketoForm.result[2]],
+      form_page_url__c: [UTM_FORM_PROPS.marketoForm.result[3]],
     })
   })
 })
