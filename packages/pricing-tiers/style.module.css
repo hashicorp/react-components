@@ -15,7 +15,20 @@
         font-size: 1.063rem;
       }
 
+      & .header {
+        grid-column: var(--column-index);
+        grid-row: 1;
+      }
+
+      & .description {
+        grid-column: var(--column-index);
+        grid-row: 2;
+      }
+
       & .bottom {
+        margin-bottom: 0;
+        grid-column: var(--column-index);
+        grid-row: 3;
         padding-bottom: 24px;
       }
     }
