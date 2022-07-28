@@ -3,7 +3,6 @@ import Link from 'next/link'
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
 import { PricingTiersProps } from './types'
-import { handleTiersLength } from './helpers'
 import s from './style.module.css'
 
 export default function PricingTiers({
@@ -11,7 +10,9 @@ export default function PricingTiers({
   isCollapsed,
 }: PricingTiersProps) {
   const tiersLength = tiers.length
-  handleTiersLength(tiersLength)
+  if (tiersLength > 5) {
+    throw new Error('<PricingTiers /> only supports up to five tiers')
+  }
 
   return (
     <div
