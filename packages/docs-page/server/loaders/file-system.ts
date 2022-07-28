@@ -6,6 +6,8 @@ import { GetStaticPropsContext } from 'next'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
 import { resolveNavData } from '../resolve-nav-data'
 
+import { stripVersionFromPathParams } from '../../util'
+
 import { DEFAULT_PARAM_ID } from '../consts'
 
 import renderPageMdx from '../../render-page-mdx'
@@ -18,7 +20,9 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   navDataFile: string
   localContentDir: string
   mainBranch?: string // = 'main',
-  remarkPlugins?: ((params?: ParsedUrlQuery) => Pluggable[]) | Pluggable[]
+  remarkPlugins?:
+    | ((params?: ParsedUrlQuery, version?: string) => Pluggable[])
+    | Pluggable[]
   rehypePlugins?: Pluggable[]
   scope?: Record<string, $TSFixMe>
   githubFileUrl?: (path: string) => string
@@ -44,11 +48,20 @@ export default class FileSystemLoader implements DataLoader {
   loadStaticProps = async ({
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
+    console.log('YALCYBOI')
     let remarkPlugins: $TSFixMe[] = []
+
+    // given: v0.5.x (latest), v0.4.x, v0.3.x
+    const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
+      params![this.opts.paramId!] as string[]
+    )
 
     // We support passing in a function to remarkPlugins, which gets the parameters of the current page
     if (typeof this.opts.remarkPlugins === 'function') {
-      remarkPlugins = this.opts.remarkPlugins(params)
+      remarkPlugins = this.opts.remarkPlugins(
+        paramsNoVersion as any,
+        versionFromPath
+      )
       if (!Array.isArray(remarkPlugins)) {
         throw new Error(
           '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
@@ -63,12 +76,12 @@ export default class FileSystemLoader implements DataLoader {
       renderPageMdx(mdx, {
         remarkPlugins,
         rehypePlugins: this.opts.rehypePlugins,
-        scope: this.opts.scope,
+        scope: { version: versionFromPath, ...this.opts.scope },
       })
     // Build the currentPath from page parameters
     const currentPath =
       params && this.opts.paramId && params[this.opts.paramId]
-        ? (params[this.opts.paramId] as string[]).join('/')
+        ? (paramsNoVersion as string[]).join('/')
         : ''
     //  Read in the nav data, and resolve local filePaths
     const navData = await resolveNavData(

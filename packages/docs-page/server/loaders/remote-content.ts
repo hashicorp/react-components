@@ -152,17 +152,17 @@ export default class RemoteContentLoader implements DataLoader {
       remarkPlugins = this.opts.remarkPlugins!
     }
 
-    const mdxRenderer = (mdx) =>
-      renderPageMdx(mdx, {
-        remarkPlugins,
-        rehypePlugins: this.opts.rehypePlugins,
-        scope: this.opts.scope,
-      })
-
     // given: v0.5.x (latest), v0.4.x, v0.3.x
     const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
       params![this.opts.paramId!] as string[]
     )
+
+    const mdxRenderer = (mdx) =>
+      renderPageMdx(mdx, {
+        remarkPlugins,
+        rehypePlugins: this.opts.rehypePlugins,
+        scope: { version: versionFromPath, ...this.opts.scope },
+      })
 
     const versionMetadataList: VersionMetadataItem[] =
       await cachedFetchVersionMetadataList(this.opts.product)
