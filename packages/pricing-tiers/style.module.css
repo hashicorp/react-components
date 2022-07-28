@@ -30,6 +30,13 @@
         grid-column: var(--column-index);
         grid-row: 3;
         padding-bottom: 24px;
+
+        & .cta {
+          min-height: unset;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
     }
   }
