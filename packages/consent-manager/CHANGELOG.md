@@ -1,5 +1,12 @@
 # @hashicorp/react-consent-manager
 
+## 7.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`f942b5d2`](https://github.com/hashicorp/react-components/commit/f942b5d291c50cbdafe0e3c49319235ba87c1497)]:
+  - @hashicorp/react-toggle@5.0.0
+
 ## 7.4.0
 
 ### Minor Changes
