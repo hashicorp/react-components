@@ -48,7 +48,6 @@ export default class FileSystemLoader implements DataLoader {
   loadStaticProps = async ({
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
-    console.log('YALCYBOI')
     let remarkPlugins: $TSFixMe[] = []
 
     // given: v0.5.x (latest), v0.4.x, v0.3.x
