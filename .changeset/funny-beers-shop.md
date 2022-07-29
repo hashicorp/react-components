@@ -1,5 +1,6 @@
 ---
-'@hashicorp/react-toggle': minor
+'@hashicorp/react-toggle': major
 ---
 
-reskin toggle
+- reskin toggle
+- adds `disabled` option
