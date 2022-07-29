@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "@hashicorp/react-button": "^6.2.0",
-    "@hashicorp/react-toggle": "^4.1.0-canary-20220729152050",
+    "@hashicorp/react-toggle": "^5.0.0",
     "classnames": "^2.3.1",
     "js-cookie": "^2.2.1"
   },
