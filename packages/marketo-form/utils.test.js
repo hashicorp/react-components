@@ -69,4 +69,17 @@ describe('calculateDefaultValues', () => {
       form_page_url__c: '',
     })
   })
+
+  it('accounts for passed in values', () => {
+    expect(
+      calculateDefaultValues(UTM_FORM_PROPS.marketoForm.result, {
+        form_page_url__c: 'http',
+      })
+    ).toEqual({
+      FirstName: '',
+      LastName: '',
+      utm_medium__c: '',
+      form_page_url__c: 'http',
+    })
+  })
 })

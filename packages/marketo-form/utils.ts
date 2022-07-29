@@ -153,7 +153,8 @@ export function groupFields(
 // Returns an object representing the default state of the form as defined by
 // the Marketo form's configuration.
 export function calculateDefaultValues(
-  fields: MarketoFormField[]
+  fields: MarketoFormField[],
+  values?: Record<string, any>
 ): Record<string, string> {
   const initialValues: Record<string, string> = {}
   fields.forEach((field) => {
@@ -169,5 +170,5 @@ export function calculateDefaultValues(
       initialValues[field.id] = ''
     }
   })
-  return initialValues
+  return { ...initialValues, ...values }
 }

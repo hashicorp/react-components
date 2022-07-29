@@ -34,6 +34,13 @@ interface Props {
   groups?: MarketoFormGroups
 
   /**
+   * Initial values to use for fields, primarily useful in setting values for
+   * hidden fields that don't derive their values from URL parameters. Keys are
+   * SOAP field names.
+   */
+  initialValues?: Record<string, any>
+
+  /**
    * Custom components to be used in lieu of the default built-in components.
    * See {@link MarketoFormComponents} for more details.
    */
@@ -71,6 +78,7 @@ const Form = ({
   formId,
   marketoForm,
   groups = defaultFieldGroupings,
+  initialValues,
   components,
   submitTitle,
   className,
@@ -86,7 +94,7 @@ const Form = ({
 
   const methods = useForm({
     mode: 'onBlur',
-    defaultValues: calculateDefaultValues(marketoForm.result),
+    defaultValues: calculateDefaultValues(marketoForm.result, initialValues),
   })
 
   const onSubmit = async (data: Record<string, unknown>) => {

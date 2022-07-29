@@ -87,6 +87,45 @@ describe('MarketoForm', () => {
     })
   })
 
+  test('submits with initial values', async () => {
+    render(
+      <MarketoForm
+        {...BASIC_FORM_PROPS}
+        initialValues={{ LastName: 'Burnham' }}
+      />
+    )
+
+    const firstNameField = screen.getByLabelText('First Name *')
+    expect(firstNameField).toBeInTheDocument()
+    userEvent.type(firstNameField, 'Michael')
+
+    const submitButton = screen.getByText('Submit')
+    expect(submitButton).toBeInTheDocument()
+    userEvent.click(submitButton)
+
+    await waitFor(() => expect(spy).toHaveBeenCalled())
+    expect(spy).toHaveBeenCalledWith('http://local.test/api/marketo/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        input: [
+          {
+            leadFormFields: {
+              firstName: 'Michael',
+              lastName: 'Burnham',
+            },
+            visitorData: {
+              pageURL: 'http://local.test/testing?utm_medium=social',
+            },
+          },
+        ],
+        formId: BASIC_FORM_PROPS.formId,
+      }),
+    })
+  })
+
   test('submits form data with UTM params', async () => {
     render(<MarketoForm {...UTM_FORM_PROPS} />)
 
