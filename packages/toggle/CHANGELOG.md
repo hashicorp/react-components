@@ -4,7 +4,8 @@
 
 ### Major Changes
 
-- [#589](https://github.com/hashicorp/react-components/pull/589) [`f942b5d2`](https://github.com/hashicorp/react-components/commit/f942b5d291c50cbdafe0e3c49319235ba87c1497) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - - reskin toggle
+- [#589](https://github.com/hashicorp/react-components/pull/589) [`f942b5d2`](https://github.com/hashicorp/react-components/commit/f942b5d291c50cbdafe0e3c49319235ba87c1497) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! -
+  - reskin toggle
   - adds `disabled` option
 
 ## 4.0.1
