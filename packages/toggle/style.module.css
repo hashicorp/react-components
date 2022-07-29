@@ -78,6 +78,7 @@
 .toggleIndicator {
   --size: 16px;
 
+  flex-shrink: 0;
   display: block;
   width: var(--size);
   height: var(--size);
