@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.6.0
+
+### Minor Changes
+
+- [#658](https://github.com/hashicorp/react-components/pull/658) [`e0f753db`](https://github.com/hashicorp/react-components/commit/e0f753dbd942baff0fcee77918a003e4d2dbc2f5) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adds logic to loadAll preferences if the user is within the US
+
 ## 7.5.0
 
 ### Minor Changes
