@@ -47,7 +47,7 @@ export default function ConsentBanner({
             onClick={onAccept}
             data-testid="accept"
           >
-            {preferences.loadAll ? 'Dismiss' : 'Accept'}
+            {preferences?.loadAll ? 'Dismiss' : 'Accept'}
           </button>
         </div>
       </div>
