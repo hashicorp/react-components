@@ -1,6 +1,7 @@
 import s from './banner.module.css'
 
 export default function ConsentBanner({
+  preferences,
   privacyPolicyLink,
   cookiePolicyLink,
   onManagePreferences,
@@ -46,7 +47,7 @@ export default function ConsentBanner({
             onClick={onAccept}
             data-testid="accept"
           >
-            Accept
+            {preferences?.loadAll ? 'Dismiss' : 'Accept'}
           </button>
         </div>
       </div>
