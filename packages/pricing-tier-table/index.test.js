@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import PricingTierTable from '.'
-import { normalizeTableData } from './helpers/normalizeTableData'
+import { normalizeTableData } from './helpers'
 import cmsData from './fixtures/cmsData.json'
 import rowsData from './fixtures/rowsData.json'
 import downloadSectionData from './fixtures/downloadSectionData.json'
