@@ -8,6 +8,7 @@
     "Jeff Escalante"
   ],
   "dependencies": {
+    "@hashicorp/platform-util": "^0.2.0",
     "@hashicorp/react-button": "^6.2.0",
     "@hashicorp/react-toggle": "^5.0.0",
     "classnames": "^2.3.1",
