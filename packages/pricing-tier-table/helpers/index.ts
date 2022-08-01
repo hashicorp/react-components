@@ -1,9 +1,11 @@
+import { CMSTableProps } from '../types'
+
 // Handles formatting of data returned by DatoCMS
 export function normalizeTableData({
   hasColumnHeaders,
   collapsibleRows,
   table,
-}) {
+}: CMSTableProps) {
   const { columns, data } = table
   return {
     columns: hasColumnHeaders ? columns : null,

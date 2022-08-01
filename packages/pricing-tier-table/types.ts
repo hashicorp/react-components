@@ -1,3 +1,14 @@
+export interface CMSTableProps {
+  hasColumnHeaders: boolean
+  collapsibleRows: Array<number>
+  table: {
+    columns: Array<string>
+    data: Array<{
+      [x: string]: boolean | string
+    }>
+  }
+}
+
 export interface TextCellProps {
   heading: string
   content?: string
