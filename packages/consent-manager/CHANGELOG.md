@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 7.5.0
+
+### Minor Changes
+
+- [#590](https://github.com/hashicorp/react-components/pull/590) [`77ee90aa`](https://github.com/hashicorp/react-components/commit/77ee90aab1b582ef1daffd075eb6cce8a13686e1) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Reskin dialog component
+
 ## 7.4.1
 
 ### Patch Changes
