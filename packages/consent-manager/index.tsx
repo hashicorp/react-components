@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { EventEmitter } from 'events'
 import classNames from 'classnames'
+import { isInUS } from '@hashicorp/platform-util/geo'
 import { loadPreferences, savePreferences } from './util/cookies'
 import ConsentBanner from './components/banner'
 import ConsentPreferences from './components/dialog'
@@ -102,11 +103,20 @@ export default function ConsentManager(props: ConsentManagerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
   }, [])
 
+  useEffect(() => {
+    if (hasEmptyPreferencesOrVersionMismatch && isInUS()) {
+      saveAndLoadAnalytics({ loadAll: true })
+      setShowBanner(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
+  }, [])
+
   return (
     <div className={classNames(s.root, props.className)}>
       {/*  Consent banner at the bottom */}
       {showBanner && (
         <ConsentBanner
+          preferences={preferences}
           privacyPolicyLink={props.privacyPolicyLink}
           cookiePolicyLink={props.cookiePolicyLink}
           onManagePreferences={() => {
