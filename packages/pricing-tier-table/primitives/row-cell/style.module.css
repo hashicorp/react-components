@@ -29,11 +29,25 @@
 
   & * {
     margin: 0;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
   }
 }
 
 .cellContent {
   composes: g-type-body-x-small from '../../g-type-x-small.css';
+
+  & * {
+    margin: 0;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+  }
 }
 
 .cellHeading,

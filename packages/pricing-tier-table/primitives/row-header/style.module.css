@@ -40,6 +40,11 @@
 
   & * {
     margin: 0;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
 
     & a {
       color: inherit;
@@ -54,6 +59,11 @@
 
   & * {
     margin-top: 0;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
 
     &:last-child {
       margin-bottom: 0;
