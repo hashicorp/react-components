@@ -154,8 +154,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
           id="inner"
           role="main"
           className={classNames(s.inner, s.tempJumpToSectionParent, {
-            [s.versionedDocsOffset]:
-              process.env.ENABLE_VERSIONED_DOCS === 'true',
+            [s.versionedDocsOffset]: showVersionSelect,
           })}
         >
           <CodeTabsProvider>
