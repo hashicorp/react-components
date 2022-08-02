@@ -50,6 +50,7 @@
 .dialogHeaderTitle {
   composes: g-type-display-4 from global;
   margin: 0;
+  color: var(--wpl-neutral-900);
 }
 
 .dialogBody {
@@ -150,6 +151,7 @@
 .categoryItemTitle {
   composes: g-type-body-small-strong from global;
   margin: 0;
+  color: var(--wpl-neutral-900);
 }
 
 .categoryItemDescription {
