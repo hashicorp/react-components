@@ -128,7 +128,7 @@ describe('<DocsPage />', () => {
   })
 
   describe('when versioned docs is enabled', () => {
-    const versions = [
+    let versions = [
       {
         name: 'latest',
         label: 'v0.6.x (latest)',
@@ -247,6 +247,46 @@ describe('<DocsPage />', () => {
         )
 
         expect(queryByTestId('tag')).toHaveTextContent('old version')
+      })
+
+      it('should show display values from versions', () => {
+        // Terraform core
+        versions = [
+          {
+            name: 'latest',
+            label: 'v1.2.x (latest)',
+            isLatest: true,
+            version: 'v1.2.x',
+          },
+          {
+            name: 'v1.1.x',
+            label: 'v1.1 and earlier',
+            isLatest: false,
+            version: 'v1.1.x',
+          },
+        ]
+
+        // mock that v1.1.x is selected
+        useRouterMock.mockImplementation(() => {
+          return {
+            asPath: '/cli/v1.1.x',
+          } as unknown as Router
+        })
+
+        const { queryByTestId } = render(
+          <DocsPage
+            {...defaultProps}
+            showVersionSelect={true}
+            staticProps={{
+              ...defaultProps.staticProps,
+              versions,
+            }}
+          />
+        )
+
+        expect(queryByTestId('text')).toHaveTextContent(
+          "You're looking at documentation for Terraform v1.1 and earlier. Click here to view the latest content."
+        )
       })
     })
   })
