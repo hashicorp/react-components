@@ -69,7 +69,6 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
     versionInPath &&
     versions?.find((v) => v.isLatest)?.version === versionInPath
 
-  //
   const selectedVersion: VersionSelectItem | null =
     (versionInPath && versions?.find((v) => v.version === versionInPath)) ||
     null
