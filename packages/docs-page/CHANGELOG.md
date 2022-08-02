@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.3.2
+
+### Patch Changes
+
+- [#674](https://github.com/hashicorp/react-components/pull/674) [`18bbd6e8`](https://github.com/hashicorp/react-components/commit/18bbd6e8c5082e4afc3ae418993babb84faeb9db) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Refactored version-alert implementation. No external API change
+
 ## 17.3.1
 
 ### Patch Changes
