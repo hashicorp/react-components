@@ -12,7 +12,6 @@ export function normalizeTableData({
     rows: data.map((row, rowIdx) => {
       return Object.keys(row).reduce((acc, key) => {
         if (key === columns[0]) {
-          console.log(key, row[key])
           acc.header = row[key]
         } else {
           const arr = acc.cells ? acc.cells : []
