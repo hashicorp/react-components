@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 8.0.1
+
+### Patch Changes
+
+- [#672](https://github.com/hashicorp/react-components/pull/672) [`4f9ec2db`](https://github.com/hashicorp/react-components/commit/4f9ec2dba23e8d1caedb63daa897220eb34ca76f) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Fix heading color
+
 ## 8.0.0
 
 ### Major Changes
