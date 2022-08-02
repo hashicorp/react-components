@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.3.3
+
+### Patch Changes
+
+- [#676](https://github.com/hashicorp/react-components/pull/676) [`22d16677`](https://github.com/hashicorp/react-components/commit/22d16677e9d9d5ff69533b9df2a157d101971ecf) Thanks [@BRKalow](https://github.com/BRKalow)! - Fix condition for applying the margin top to align search with the version select
+
 ## 17.3.2
 
 ### Patch Changes
