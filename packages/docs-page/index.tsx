@@ -69,6 +69,11 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
     versionInPath &&
     versions?.find((v) => v.isLatest)?.version === versionInPath
 
+  //
+  const selectedVersion: VersionSelectItem | null =
+    (versionInPath && versions?.find((v) => v.version === versionInPath)) ||
+    null
+
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
   useEffect(() => {
@@ -98,7 +103,20 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 
   const versionAlert =
     !versionIsLatest && showVersionSelect ? (
-      <VersionAlert product={projectName || name} />
+      <VersionAlert
+        tag={`old version ${
+          isMobile
+            ? `(${selectedVersion?.label || selectedVersion?.version})`
+            : ''
+        }`}
+        text={
+          isMobile
+            ? `Click to view latest`
+            : `You're looking at documentation for ${projectName || name} ${
+                selectedVersion?.label || selectedVersion?.version
+              }. Click here to view the latest content.`
+        }
+      />
     ) : null
 
   return (
