@@ -1,0 +1,51 @@
+.rowCell {
+  vertical-align: top;
+  padding-left: var(--col-gap);
+  padding-top: 26px;
+  padding-bottom: 26px;
+
+  & .cellContent {
+    color: var(--wpl-neutral-500);
+    padding-top: 8px;
+
+    &[aria-hidden='true'],
+    &[data-hidden='true'] {
+      display: none;
+    }
+
+    & * {
+      margin-top: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.cellHeading {
+  composes: g-type-body-x-small-strong from '../../g-type-x-small.css';
+  min-height: 25px;
+}
+
+.cellContent {
+  composes: g-type-body-x-small from '../../g-type-x-small.css';
+}
+
+.cellHeading,
+.cellContent {
+  & a {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  & * {
+    margin: 0;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+  }
+}
