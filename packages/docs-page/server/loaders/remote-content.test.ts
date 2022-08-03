@@ -152,7 +152,9 @@ describe('RemoteContentLoader', () => {
         "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/content/commands/index.mdx",
         "mdxSource": Object {
           "compiledSource": Any<String>,
-          "scope": Object {},
+          "scope": Object {
+            "version": "latest",
+          },
         },
         "navData": Any<Array>,
         "versions": Array [
