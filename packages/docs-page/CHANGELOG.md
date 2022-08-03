@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.4.0
+
+### Minor Changes
+
+- [#668](https://github.com/hashicorp/react-components/pull/668) [`8521e0de`](https://github.com/hashicorp/react-components/commit/8521e0deab27702c18bc3cc5f49f49fc35cf2ff5) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Support version faking when using FS loader
+
 ## 17.3.3
 
 ### Patch Changes
