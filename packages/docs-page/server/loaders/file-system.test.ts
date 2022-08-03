@@ -49,7 +49,9 @@ describe('FileSystemLoader', () => {
         "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/packages/docs-page/server/__fixtures__/index.mdx",
         "mdxSource": Object {
           "compiledSource": Any<String>,
-          "scope": Object {},
+          "scope": Object {
+            "version": "latest",
+          },
         },
         "navData": Any<Array>,
         "versions": Array [],
@@ -84,7 +86,9 @@ describe('FileSystemLoader', () => {
         "githubFileUrl": "https://hashicorp.com/packages/docs-page/server/__fixtures__/index.mdx",
         "mdxSource": Object {
           "compiledSource": Any<String>,
-          "scope": Object {},
+          "scope": Object {
+            "version": "latest",
+          },
         },
         "navData": Any<Array>,
         "versions": Array [],
