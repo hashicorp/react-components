@@ -56,12 +56,10 @@
 
 .card {
   width: 100%;
-  min-height: 278px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: space-between;
   padding: 40px 32px;
   color: var(--gray-2);
   border: 1px solid var(--gray-5);
@@ -143,4 +141,8 @@
   text-transform: uppercase;
   color: var(--gray-3);
   font-weight: bold;
+}
+
+.archDownloadLinks {
+  padding-top: 16px;
 }

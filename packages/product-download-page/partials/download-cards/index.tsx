@@ -93,7 +93,7 @@ function Cards({
           <span className={styles.cardTitle}>
             {prettyOs(os)} Binary Download
           </span>
-          <div>
+          <div className={styles.archDownloadLinks}>
             <div className={styles.logoWrapper}>
               {logo}
               <span className={styles.version}>{version}</span>
