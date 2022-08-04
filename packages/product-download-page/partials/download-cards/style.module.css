@@ -144,18 +144,3 @@
   color: var(--gray-3);
   font-weight: bold;
 }
-
-.fastly {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  & svg path {
-    fill: var(--black);
-  }
-
-  & img {
-    margin-top: 12px;
-    width: 48px;
-  }
-}

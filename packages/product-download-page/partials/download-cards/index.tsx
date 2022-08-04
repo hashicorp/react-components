@@ -104,10 +104,6 @@ function Cards({
               </a>
             ))}
           </div>
-          <div className={styles.fastly}>
-            Bandwidth courtesy of
-            <img src={require('../logos/fastly.svg')} alt="Fastly" />
-          </div>
         </div>
       </div>
     </>
