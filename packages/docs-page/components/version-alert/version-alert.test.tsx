@@ -20,38 +20,27 @@ describe('<VersionAlert />', () => {
   })
 
   it('should be hidden when no version is present in the URL', () => {
-    const { container } = render(<VersionAlert product={'waypoint'} />)
+    const { container } = render(
+      <VersionAlert
+        tag={'old version'}
+        text={"You're looking at documentation for product"}
+      />
+    )
     expect(container.hasChildNodes()).toBe(false)
   })
 
-  it.each([
-    [
-      /* Product      */ 'Waypoint',
-      /* Path         */ '/docs/v0.5.x',
-      /* Text content */ "You're looking at documentation for Waypoint v0.5.x. Click here to view the latest content.",
-    ],
-    [
-      'CDK for Terraform',
-      '/cdktf/v0.10.x',
-      "You're looking at documentation for CDK for Terraform v0.10.x. Click here to view the latest content.",
-    ],
-    [
-      'Terraform Enterprise',
-      '/enterprise/v202207-1',
-      "You're looking at documentation for Terraform Enterprise v202207-1. Click here to view the latest content.",
-    ],
-  ])(
-    'given product: %p, and path: %p as arguments, should render an alert: %p',
-    (product, path, textContent) => {
-      useRouterMock.mockImplementation(() => {
-        return {
-          asPath: path,
-        } as unknown as Router
-      })
+  it('should render a tag and text content', () => {
+    useRouterMock.mockImplementation(() => {
+      return {
+        asPath: 'cli/v1.1.x',
+      } as unknown as Router
+    })
 
-      const { getByTestId } = render(<VersionAlert product={product} />)
+    const { getByTestId } = render(
+      <VersionAlert tag="old version" text="Some Text" />
+    )
 
-      expect(getByTestId('text')).toHaveTextContent(textContent)
-    }
-  )
+    expect(getByTestId('tag')).toHaveTextContent('old version')
+    expect(getByTestId('text')).toHaveTextContent('Some Text')
+  })
 })

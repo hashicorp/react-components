@@ -5,25 +5,24 @@ import {
   removeVersionFromPath,
 } from '../version-select/util'
 import s from './style.module.css'
-import useIsMobile from '../../use-is-mobile'
 
-export default function VersionAlert({ product }) {
+export interface VersionAlertProps {
+  tag: string
+  text: string
+}
+export default function VersionAlert({ tag, text }: VersionAlertProps) {
   const router = useRouter()
-  const isMobile = useIsMobile()
   const versionInPath = getVersionFromPath(router.asPath)
 
   if (!versionInPath) return null
 
   return (
     <div className={s.wrapper}>
+      {/* @ts-expect-error: explicitly not passing `product` */}
       <Alert
         url={removeVersionFromPath(router.asPath)}
-        tag={`old version ${isMobile ? `(${versionInPath})` : ''}`}
-        text={
-          isMobile
-            ? `Click to view latest`
-            : `You're looking at documentation for ${product} ${versionInPath}. Click here to view the latest content.`
-        }
+        tag={tag}
+        text={text}
         state="warning"
         textColor="dark"
       />

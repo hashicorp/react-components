@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-sidenav
 
+## 9.0.1
+
+### Patch Changes
+
+- [#666](https://github.com/hashicorp/react-components/pull/666) [`7ec02621`](https://github.com/hashicorp/react-components/commit/7ec026210319728a53834c4b8907269e325402cd) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This adds the array index to the end of all sidenav "nodes" to increase the uniqueness in keys
+
 ## 9.0.0
 
 ### Major Changes

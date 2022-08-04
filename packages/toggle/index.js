@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import s from './style.module.css'
 
-export default function Toggle({ enabled, onChange = () => {} }) {
+export default function Toggle({
+  appearance = 'light',
+  enabled,
+  onChange = () => {},
+  disabled = false,
+}) {
   const [enabledState, setEnabledState] = useState(enabled || false)
 
   useEffect(() => {
@@ -21,16 +26,24 @@ export default function Toggle({ enabled, onChange = () => {} }) {
   }
 
   return (
-    <label className={s.switchLabel}>
+    <label
+      className={classNames(
+        s.toggle,
+        s[appearance],
+        { [s.disabled]: disabled },
+        { [s.on]: enabledState }
+      )}
+    >
       <input
         type="checkbox"
         role="switch"
         checked={enabledState}
         onChange={handleChange}
-        className={s.switchInput}
+        className={s.toggleInput}
+        disabled={disabled}
         data-testid="react-toggle"
       />
-      <span className={classNames(s.switch, { [s.on]: enabledState })} />
+      <span className={s.toggleIndicator} />
     </label>
   )
 }

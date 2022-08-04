@@ -1,5 +1,11 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.9.0
+
+### Minor Changes
+
+- [#679](https://github.com/hashicorp/react-components/pull/679) [`001c45da`](https://github.com/hashicorp/react-components/commit/001c45da31a3639993b3d1d1e27c2d3e215a9a5d) Thanks [@dstaley](https://github.com/dstaley)! - Remove bandwidth attribution
+
 ## 2.8.2
 
 ### Patch Changes

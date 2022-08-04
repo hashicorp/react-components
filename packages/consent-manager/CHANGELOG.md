@@ -1,5 +1,31 @@
 # @hashicorp/react-consent-manager
 
+## 8.0.1
+
+### Patch Changes
+
+- [#672](https://github.com/hashicorp/react-components/pull/672) [`4f9ec2db`](https://github.com/hashicorp/react-components/commit/4f9ec2dba23e8d1caedb63daa897220eb34ca76f) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Fix heading color
+
+## 8.0.0
+
+### Major Changes
+
+- [#658](https://github.com/hashicorp/react-components/pull/658) [`e0f753db`](https://github.com/hashicorp/react-components/commit/e0f753dbd942baff0fcee77918a003e4d2dbc2f5) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adds logic to loadAll preferences if the user is within the US
+  - Consumers will need to implement `edge-utils` `setGeoCookie` to detect users within the US
+
+## 7.5.0
+
+### Minor Changes
+
+- [#590](https://github.com/hashicorp/react-components/pull/590) [`77ee90aa`](https://github.com/hashicorp/react-components/commit/77ee90aab1b582ef1daffd075eb6cce8a13686e1) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Reskin dialog component
+
+## 7.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`f942b5d2`](https://github.com/hashicorp/react-components/commit/f942b5d291c50cbdafe0e3c49319235ba87c1497)]:
+  - @hashicorp/react-toggle@5.0.0
+
 ## 7.4.0
 
 ### Minor Changes

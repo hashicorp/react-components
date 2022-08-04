@@ -1,5 +1,23 @@
 # @hashicorp/react-docs-page
 
+## 17.4.0
+
+### Minor Changes
+
+- [#668](https://github.com/hashicorp/react-components/pull/668) [`8521e0de`](https://github.com/hashicorp/react-components/commit/8521e0deab27702c18bc3cc5f49f49fc35cf2ff5) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Support version faking when using FS loader
+
+## 17.3.3
+
+### Patch Changes
+
+- [#676](https://github.com/hashicorp/react-components/pull/676) [`22d16677`](https://github.com/hashicorp/react-components/commit/22d16677e9d9d5ff69533b9df2a157d101971ecf) Thanks [@BRKalow](https://github.com/BRKalow)! - Fix condition for applying the margin top to align search with the version select
+
+## 17.3.2
+
+### Patch Changes
+
+- [#674](https://github.com/hashicorp/react-components/pull/674) [`18bbd6e8`](https://github.com/hashicorp/react-components/commit/18bbd6e8c5082e4afc3ae418993babb84faeb9db) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Refactored version-alert implementation. No external API change
+
 ## 17.3.1
 
 ### Patch Changes

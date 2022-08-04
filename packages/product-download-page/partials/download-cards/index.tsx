@@ -93,7 +93,7 @@ function Cards({
           <span className={styles.cardTitle}>
             {prettyOs(os)} Binary Download
           </span>
-          <div>
+          <div className={styles.archDownloadLinks}>
             <div className={styles.logoWrapper}>
               {logo}
               <span className={styles.version}>{version}</span>
@@ -103,10 +103,6 @@ function Cards({
                 {prettyArch(arch)}
               </a>
             ))}
-          </div>
-          <div className={styles.fastly}>
-            Bandwidth courtesy of
-            <img src={require('../logos/fastly.svg')} alt="Fastly" />
           </div>
         </div>
       </div>
