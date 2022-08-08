@@ -1,5 +1,11 @@
 # @hashicorp/react-head
 
+## 3.3.1
+
+### Patch Changes
+
+- [#684](https://github.com/hashicorp/react-components/pull/684) [`4bf0222f`](https://github.com/hashicorp/react-components/commit/4bf0222fbe54bf2aa333611b8514e729bbb87876) Thanks [@BRKalow](https://github.com/BRKalow)! - Only validate the `image` prop if it's passed as the correct type.
+
 ## 3.3.0
 
 ### Minor Changes
