@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.5.0
+
+### Minor Changes
+
+- [#681](https://github.com/hashicorp/react-components/pull/681) [`d67e047c`](https://github.com/hashicorp/react-components/commit/d67e047cca49904eb23a21579744061f59728f06) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Expose `mdxContentHook` option on loader interfaces
+
 ## 17.4.0
 
 ### Minor Changes
