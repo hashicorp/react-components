@@ -102,7 +102,7 @@ describe('FileSystemLoader', () => {
   })
 
   test('mdxContentHook is called if provided', async () => {
-    mockMdxContentHook.mockImplementation((mdxContent) => 'Mock impl')
+    mockMdxContentHook.mockImplementation((mdxContent, scope) => 'Mock impl')
 
     const l = new FileSystemLoader({
       navDataFile: 'test',
@@ -112,11 +112,14 @@ describe('FileSystemLoader', () => {
         return `https://hashicorp.com/${p}`
       },
       mdxContentHook: mockMdxContentHook,
+      scope: { version: 'latest' },
     })
 
     await l.loadStaticProps({ params: {} })
 
-    expect(mockMdxContentHook).toHaveBeenCalled()
+    expect(mockMdxContentHook).toHaveBeenCalledWith(expect.any(String), {
+      version: 'latest',
+    })
     // assert that `serialize` is called with the result of the hook
     expect(serializeSpy).toHaveBeenCalledWith('Mock impl', expect.any(Object))
   })

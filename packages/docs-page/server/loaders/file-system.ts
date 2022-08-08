@@ -36,7 +36,7 @@ export default class FileSystemLoader implements DataLoader {
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
     if (!this.opts.rehypePlugins) this.opts.rehypePlugins = []
     if (!this.opts.mdxContentHook)
-      this.opts.mdxContentHook = (mdxContent) => mdxContent
+      this.opts.mdxContentHook = (mdxContent, scope) => mdxContent
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
