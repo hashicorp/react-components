@@ -11,6 +11,10 @@ import RemoteContentLoader, { mapVersionList } from './remote-content'
 let loader: RemoteContentLoader
 let scope: nock.Scope
 
+import * as nextMdxRemote from 'next-mdx-remote/serialize'
+const serializeSpy = jest.spyOn(nextMdxRemote, 'serialize')
+const mockMdxContentHook = jest.fn()
+
 describe('RemoteContentLoader', () => {
   beforeAll(() => {
     loader = new RemoteContentLoader({
@@ -206,6 +210,37 @@ describe('RemoteContentLoader', () => {
     })
 
     expect(props.githubFileUrl).toBeNull()
+  })
+
+  test('mdxContentHook is called if provided', async () => {
+    scope
+      .get('/api/content/waypoint/version-metadata')
+      .query({ partial: 'true' })
+      .reply(200, versionMetadata_200)
+    scope
+      .get('/api/content/waypoint/doc/v0.4.x/commands')
+      .reply(200, document_v4)
+    scope
+      .get('/api/content/waypoint/nav-data/v0.4.x/commands')
+      .reply(200, navData_v4)
+
+    mockMdxContentHook.mockImplementation((mdxContent) => 'Mock impl')
+
+    const versionedDocsLoader = new RemoteContentLoader({
+      ...loader.opts,
+      enabledVersionedDocs: true,
+      mdxContentHook: mockMdxContentHook,
+    })
+
+    await versionedDocsLoader.loadStaticProps({
+      params: {
+        page: ['v0.4.x'],
+      },
+    })
+
+    expect(mockMdxContentHook).toHaveBeenCalled()
+    // assert that `serialize` is called with the result of the hook
+    expect(serializeSpy).toHaveBeenCalledWith('Mock impl', expect.any(Object))
   })
 })
 

@@ -35,6 +35,8 @@ export default class FileSystemLoader implements DataLoader {
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
     if (!this.opts.rehypePlugins) this.opts.rehypePlugins = []
+    if (!this.opts.mdxContentHook)
+      this.opts.mdxContentHook = (mdxContent) => mdxContent
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -73,6 +75,7 @@ export default class FileSystemLoader implements DataLoader {
 
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
+        mdxContentHook: this.opts.mdxContentHook,
         remarkPlugins,
         rehypePlugins: this.opts.rehypePlugins,
         scope: { version: versionFromPath, ...this.opts.scope },

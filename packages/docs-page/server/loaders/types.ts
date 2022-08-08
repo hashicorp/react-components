@@ -9,4 +9,5 @@ export interface DataLoader {
 export interface DataLoaderOpts {
   product: string
   paramId?: string
+  mdxContentHook?: (mdxContent: string) => string
 }
