@@ -20,6 +20,6 @@ export interface DataLoaderOpts {
    */
   mdxContentHook?: (
     mdxContent: string,
-    scope: Record<string, unknown>
+    scope: Record<string, unknown> | undefined
   ) => string
 }
