@@ -106,6 +106,8 @@ export default class RemoteContentLoader implements DataLoader {
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
     if (!this.opts.rehypePlugins) this.opts.rehypePlugins = []
     if (!this.opts.navDataPrefix) this.opts.navDataPrefix = this.opts.basePath
+    if (!this.opts.mdxContentHook)
+      this.opts.mdxContentHook = (mdxContent) => mdxContent
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -159,6 +161,7 @@ export default class RemoteContentLoader implements DataLoader {
 
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
+        mdxContentHook: this.opts.mdxContentHook,
         remarkPlugins,
         rehypePlugins: this.opts.rehypePlugins,
         scope: { version: versionFromPath, ...this.opts.scope },
