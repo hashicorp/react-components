@@ -4,6 +4,7 @@ import OperationObject from './partials/operation-object'
 import HashiHead from '@hashicorp/react-head'
 import DocsSidenav from '@hashicorp/react-docs-sidenav'
 import Content from '@hashicorp/react-content'
+import DevDotOptIn from './partials/dev-dot-opt-in'
 import useOnClickOutside from './hooks/use-on-click-outside'
 import s from './style.module.css'
 
@@ -17,6 +18,7 @@ function OpenApiPage({
   baseRoute,
   massageOperationPathFn = (path) => path,
   renderOperationIntro,
+  optInSlot = true,
 }) {
   const operationsRef = useRef(null)
   const [expandedOperations, setExpandedOperations] = useState([])
@@ -35,59 +37,64 @@ function OpenApiPage({
   const pageTitle = operationCategory ? operationCategory.name : info.title
 
   return (
-    <div className={s.root}>
-      <HashiHead
-        title={`${pageTitle}${siteName ? ` | ${siteName}` : ''}`}
-        description={info.description}
-      />
-      <DocsSidenav
-        product={productSlug}
-        Link={Link}
-        currentPath={currentPath}
-        baseRoute={baseRoute}
-        disableFilter={true}
-        navData={navData}
-      />
-      <Content
-        className={s.contentContainer}
-        product={productSlug}
-        content={
-          operationCategory ? (
-            <>
-              <p className={s.pageHeading}>{info.title}</p>
-              <h1 className={s.categoryHeading}>{operationCategory.name}</h1>
-              <div ref={operationsRef}>
-                {operationCategory.operations.map((op) => {
-                  const isExpanded =
-                    expandedOperations.indexOf(op.operationId) !== -1
+    <>
+      {optInSlot && <DevDotOptIn shouldRender={true} redirectLink={'/'} />}
+      <div className={s.root}>
+        <HashiHead
+          title={`${pageTitle}${siteName ? ` | ${siteName}` : ''}`}
+          description={info.description}
+        />
 
-                  return (
-                    <OperationObject
-                      key={op.__type + op.__path}
-                      path={massageOperationPathFn(op.__path)}
-                      type={op.__type}
-                      data={op}
-                      renderOperationIntro={renderOperationIntro}
-                      isCollapsed={!isExpanded}
-                      setIsCollapsed={(isCollapsed) =>
-                        setOperationState(op.operationId, !isCollapsed)
-                      }
-                    />
-                  )
-                })}
-              </div>
-            </>
-          ) : (
-            <>
-              <h1 className={s.pageHeading}>{info.title}</h1>
-              <p className={s.sidebarPrompt}>
-                Select a service from the sidebar.
-              </p>
-            </>
-          )
-        }
-      />
-    </div>
+        <DocsSidenav
+          product={productSlug}
+          Link={Link}
+          currentPath={currentPath}
+          baseRoute={baseRoute}
+          disableFilter={true}
+          navData={navData}
+        />
+
+        <Content
+          className={s.contentContainer}
+          product={productSlug}
+          content={
+            operationCategory ? (
+              <>
+                <p className={s.pageHeading}>{info.title}</p>
+                <h1 className={s.categoryHeading}>{operationCategory.name}</h1>
+                <div ref={operationsRef}>
+                  {operationCategory.operations.map((op) => {
+                    const isExpanded =
+                      expandedOperations.indexOf(op.operationId) !== -1
+
+                    return (
+                      <OperationObject
+                        key={op.__type + op.__path}
+                        path={massageOperationPathFn(op.__path)}
+                        type={op.__type}
+                        data={op}
+                        renderOperationIntro={renderOperationIntro}
+                        isCollapsed={!isExpanded}
+                        setIsCollapsed={(isCollapsed) =>
+                          setOperationState(op.operationId, !isCollapsed)
+                        }
+                      />
+                    )
+                  })}
+                </div>
+              </>
+            ) : (
+              <>
+                <h1 className={s.pageHeading}>{info.title}</h1>
+                <p className={s.sidebarPrompt}>
+                  Select a service from the sidebar.
+                </p>
+              </>
+            )
+          }
+        />
+      </div>
+    </>
   )
 }
 
