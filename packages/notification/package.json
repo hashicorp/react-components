@@ -14,5 +14,10 @@
     "@hashicorp/mktg-global-styles": ">=3.x",
     "framer-motion": "^6.3.11",
     "react": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/notification"
   }
 }

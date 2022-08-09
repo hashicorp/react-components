@@ -19,5 +19,10 @@
     "@hashicorp/react-head": "^3.1.2",
     "change-case": "^4.1.2",
     "classnames": "^2.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/open-api-page"
   }
 }

@@ -31,5 +31,10 @@
   },
   "devDependencies": {
     "random-words": "^1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/search"
   }
 }
