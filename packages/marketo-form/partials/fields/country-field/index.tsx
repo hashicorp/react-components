@@ -43,7 +43,11 @@ export default function CountryField({ field }: CountryFieldProps) {
             : []
         }
       />
-      {showError && <ErrorMessage error={field.validationMessage} />}
+      {showError && (
+        <ErrorMessage
+          error={field.validationMessage ?? 'Please select your country.'}
+        />
+      )}
     </>
   )
 }
