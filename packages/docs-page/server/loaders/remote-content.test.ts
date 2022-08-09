@@ -224,12 +224,15 @@ describe('RemoteContentLoader', () => {
       .get('/api/content/waypoint/nav-data/v0.4.x/commands')
       .reply(200, navData_v4)
 
-    mockMdxContentHook.mockImplementation((mdxContent) => 'Mock impl')
+    mockMdxContentHook.mockImplementation((mdxContent, scope) => 'Mock impl')
 
     const versionedDocsLoader = new RemoteContentLoader({
       ...loader.opts,
       enabledVersionedDocs: true,
       mdxContentHook: mockMdxContentHook,
+      scope: {
+        version: 'v0.4.x',
+      },
     })
 
     await versionedDocsLoader.loadStaticProps({
@@ -238,7 +241,9 @@ describe('RemoteContentLoader', () => {
       },
     })
 
-    expect(mockMdxContentHook).toHaveBeenCalled()
+    expect(mockMdxContentHook).toHaveBeenCalledWith(expect.any(String), {
+      version: 'v0.4.x',
+    })
     // assert that `serialize` is called with the result of the hook
     expect(serializeSpy).toHaveBeenCalledWith('Mock impl', expect.any(Object))
   })
