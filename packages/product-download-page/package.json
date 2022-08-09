@@ -24,5 +24,10 @@
   },
   "devDependencies": {
     "@types/semver": "^7.3.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/product-download-page"
   }
 }
