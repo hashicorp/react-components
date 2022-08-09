@@ -165,4 +165,51 @@ describe('MarketoForm', () => {
       }),
     })
   })
+
+  test('renders built-in error validation messages', async () => {
+    render(<MarketoForm {...BASIC_FORM_PROPS} />)
+
+    const firstNameField = screen.getByLabelText('First Name *')
+    expect(firstNameField).toBeInTheDocument()
+    userEvent.click(firstNameField)
+
+    const lastNameField = screen.getByLabelText('Last Name *')
+    expect(lastNameField).toBeInTheDocument()
+    userEvent.click(lastNameField)
+
+    const errorMessage = await screen.findByText('This field is required.')
+    expect(errorMessage).toBeInTheDocument()
+  })
+
+  test('renders additional error validation messages', async () => {
+    render(
+      <MarketoForm
+        {...BASIC_FORM_PROPS}
+        validateFields={async (values, errors) => {
+          return {
+            values,
+            errors: {
+              ...errors,
+              FirstName: {
+                message: `${errors.FirstName.message} Additional message.`,
+              },
+            },
+          }
+        }}
+      />
+    )
+
+    const firstNameField = screen.getByLabelText('First Name *')
+    expect(firstNameField).toBeInTheDocument()
+    userEvent.click(firstNameField)
+
+    const lastNameField = screen.getByLabelText('Last Name *')
+    expect(lastNameField).toBeInTheDocument()
+    userEvent.click(lastNameField)
+
+    const errorMessage = await screen.findByText(
+      'This field is required. Additional message.'
+    )
+    expect(errorMessage).toBeInTheDocument()
+  })
 })

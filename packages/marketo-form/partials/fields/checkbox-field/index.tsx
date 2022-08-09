@@ -14,9 +14,7 @@ const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
       <CheckboxInput
         label={formattedLabel(field)}
         field={{
-          ...register(field.id, {
-            required: field.required ? field.validationMessage : false,
-          }),
+          ...register(field.id),
           value,
         }}
         form={{

@@ -22,9 +22,7 @@ export default function CountryField({ field }: CountryFieldProps) {
     return setValue(field.id, value)
   }
 
-  const { onChange, onBlur, name } = register(field.id, {
-    required: field.required ? field.validationMessage : false,
-  })
+  const { onChange, onBlur, name } = register(field.id)
 
   return (
     <>

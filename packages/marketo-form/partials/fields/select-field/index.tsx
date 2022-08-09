@@ -10,7 +10,7 @@ const SelectField = ({ field }: { field: MarketoFormSelectField }) => {
   return (
     <FieldWrapper>
       <SelectInput
-        {...register(field.id, { required: field.required })}
+        {...register(field.id)}
         label={formattedLabel(field)}
         options={
           field.fieldMetaData.values

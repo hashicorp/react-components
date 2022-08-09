@@ -18,17 +18,16 @@ export interface MarketoBaseFormField {
   defaultValue?: string
   label?: string
   required: boolean
+  validationMessage?: string
   autoFill?: Autofill
 }
 
 export interface MarketoFormTextField extends MarketoBaseFormField {
   dataType: 'text'
-  validationMessage: string
 }
 
 export interface MarketoFormEmailField extends MarketoBaseFormField {
   dataType: 'email'
-  validationMessage: string
 }
 
 export interface SelectValue {
@@ -44,13 +43,11 @@ export interface FieldMetaData {
 
 export interface MarketoFormSelectField extends MarketoBaseFormField {
   dataType: 'select'
-  validationMessage: string
   fieldMetaData: FieldMetaData
 }
 
 export interface MarketoFormCheckboxField extends MarketoBaseFormField {
   dataType: 'checkbox'
-  validationMessage: string
 }
 
 export interface MarketoFormHiddenField extends MarketoBaseFormField {

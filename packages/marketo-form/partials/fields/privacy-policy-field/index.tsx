@@ -20,9 +20,7 @@ const PrivacyPolicyField = ({ field }: { field: MarketoFormCheckboxField }) => {
                      Privacy Policy
                    </a>`}
         field={{
-          ...register(field.id, {
-            required: field.required ? field.validationMessage : false,
-          }),
+          ...register(field.id),
           value,
         }}
         form={{

@@ -13,9 +13,7 @@ const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
       <TextInput
         label={formattedLabel(field)}
         field={{
-          ...register(field.id, {
-            required: field.required ? field.validationMessage : false,
-          }),
+          ...register(field.id),
           type: 'email',
         }}
         form={{

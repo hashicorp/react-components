@@ -65,6 +65,19 @@ interface Props {
    * Callback called when form submission results in an error.
    */
   onSubmitError?: () => void
+
+  /**
+   * Callback called after performing validation based on Marketo settings, but
+   * before rendering error messages. Used to perform validations that aren't
+   * supported by the Marketo API (such as checking if an email address is
+   * correctly formatted).
+   * @param values Map of field IDs to field values
+   * @param errors Map of field IDs to error messages
+   */
+  validateFields?: (
+    values: Record<string, string | boolean>,
+    errors: Record<string, { message: string }>
+  ) => Promise<{ values: any; errors: Record<string, { message: string }> }>
 }
 
 const defaultFieldGroupings = {
@@ -84,6 +97,7 @@ const Form = ({
   className,
   onSubmitSuccess,
   onSubmitError,
+  validateFields,
 }: Props) => {
   // memoized function that groups marketo fields based on supplied groups.
   // If a field doesn't belong to a group, it is placed in a group keyed by
@@ -95,6 +109,31 @@ const Form = ({
   const methods = useForm({
     mode: 'onBlur',
     defaultValues: calculateDefaultValues(marketoForm.result, initialValues),
+    resolver: async (values: Record<string, string | boolean>) => {
+      let errors: Record<string, { message: string }> = {}
+
+      marketoForm.result.forEach((field) => {
+        if (field.required) {
+          if (
+            !(field.id in values) ||
+            values[field.id] === '' ||
+            values[field.id] === false
+          ) {
+            errors[field.id] = {
+              message: field.validationMessage ?? 'This field is required.',
+            }
+          }
+        }
+      })
+
+      if (validateFields) {
+        const additionalValidations = await validateFields(values, errors)
+        values = additionalValidations.values
+        errors = additionalValidations.errors
+      }
+
+      return { values, errors }
+    },
   })
 
   const onSubmit = async (data: Record<string, unknown>) => {
