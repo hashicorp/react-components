@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.6.0
+
+### Minor Changes
+
+- [#683](https://github.com/hashicorp/react-components/pull/683) [`ffca266c`](https://github.com/hashicorp/react-components/commit/ffca266ce977fa918ceb2986e6edacf8c9367180) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - pass `scope` to mdxContentHook
+
 ## 17.5.0
 
 ### Minor Changes
