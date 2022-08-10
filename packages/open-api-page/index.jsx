@@ -17,6 +17,7 @@ function OpenApiPage({
   baseRoute,
   massageOperationPathFn = (path) => path,
   renderOperationIntro,
+  optInBannerSlot,
 }) {
   const operationsRef = useRef(null)
   const [expandedOperations, setExpandedOperations] = useState([])
@@ -54,6 +55,7 @@ function OpenApiPage({
         content={
           operationCategory ? (
             <>
+              {optInBannerSlot ? optInBannerSlot : null}
               <p className={s.pageHeading}>{info.title}</p>
               <h1 className={s.categoryHeading}>{operationCategory.name}</h1>
               <div ref={operationsRef}>
@@ -79,6 +81,7 @@ function OpenApiPage({
             </>
           ) : (
             <>
+              {optInBannerSlot ? optInBannerSlot : null}
               <h1 className={s.pageHeading}>{info.title}</h1>
               <p className={s.sidebarPrompt}>
                 Select a service from the sidebar.

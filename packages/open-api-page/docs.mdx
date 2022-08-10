@@ -58,6 +58,33 @@ The `<OpenApiPage />` component, and related server utilities, are used to rende
 />`}
 </LiveComponent>
 
+#### Option with Dev Dot opt in `optInBannerSlot`
+
+<LiveComponent
+  components={{
+    boundaryFixture: {
+      info: componentProps.info.fixtureValues.boundary,
+      navData: componentProps.navData.fixtureValues.boundary,
+      operationCategory:
+        componentProps.operationCategory.fixtureValues.boundary,
+      isSingleService: componentProps.isSingleService.fixtureValues.boundary,
+      currentPath: componentProps.currentPath.fixtureValues.boundary,
+    },
+  }}
+>
+  {`<OpenApiPage
+  siteName="Boundary by HashiCorp"
+  productSlug="boundary"
+  info={boundaryFixture.info}
+  navData={boundaryFixture.navData}
+  operationCategory={boundaryFixture.operationCategory}
+  isSingleService={boundaryFixture.isSingleService}
+  currentPath={boundaryFixture.currentPath}
+  baseRoute="/api-docs"
+   optInBannerSlot={<h1>Opt in to dev dot</h1>}
+/>`}
+</LiveComponent>
+
 ### Props
 
 <PropsTable props={componentProps} />

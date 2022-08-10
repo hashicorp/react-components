@@ -85,4 +85,9 @@ module.exports = {
     description:
       'An optional render function to display introductory content at the start of each operation detail section. This render function is call with an argument `({ data })`, where `data` is the specific [Operation Object](https://swagger.io/specification/v2/#operation-object) data. One use case is in the HCP Packer OpenAPI docs, where we want to clarify that operation paths have been truncated, and show the full, non-truncated paths in an information box at the top of each operation detail section.',
   },
+  optInBannerSlot: {
+    type: 'React Element',
+    description:
+      'An optional rendered react component to accommodate the Dev Dot opt in messaging and redirect.',
+  },
 }
