@@ -37,6 +37,8 @@
           }
 
           & span {
+            color: var(--icon-fill);
+
             --fill: var(--icon-fill) !important;
           }
         }
