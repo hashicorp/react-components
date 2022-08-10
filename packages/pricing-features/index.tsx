@@ -34,7 +34,7 @@ export default function PricingFeatures({
           )}
         </div>
       ))}
-      <div className={s.download}>
+      <div className={s.downloadBlock}>
         <DownloadBlock {...download} />
       </div>
     </section>

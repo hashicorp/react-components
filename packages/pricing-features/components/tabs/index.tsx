@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, ReactNode } from 'react'
 import {
   Tabs,
   TabList,
@@ -14,7 +14,7 @@ import s from './style.module.css'
 interface PricingFeatureTabsProps {
   tabs: Array<{
     label: LabelProps
-    content: React.ReactNode
+    content: ReactNode
   }>
 }
 
