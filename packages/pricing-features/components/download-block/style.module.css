@@ -1,0 +1,20 @@
+.downloadContainer {
+  composes: g-grid-container from global;
+  display: flex;
+  flex-direction: column;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.downloadHeading {
+  composes: g-type-display-3 from global;
+  color: var(--wpl-neutral-900);
+  margin: 0;
+}
+
+.downloadDescription {
+  composes: g-type-body from global;
+  color: var(--gray-3);
+  margin: 0;
+  padding: 16px 0 32px;
+}
