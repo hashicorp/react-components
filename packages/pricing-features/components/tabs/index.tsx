@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import {
   Tabs,
   TabList,
@@ -8,12 +8,19 @@ import {
   TabsOrientation,
 } from '@reach/tabs'
 import classNames from 'classnames'
-// import { PricingFeatureTabsProps } from './types'
+import { LabelProps } from '../../types'
 import s from './style.module.css'
 
-export default function PricingFeatureTabs({ tabs }) {
+interface PricingFeatureTabsProps {
+  tabs: Array<{
+    label: LabelProps
+    content: React.ReactNode
+  }>
+}
+
+export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0)
-  const handleTabChange = (index) => setActiveTabIndex(index)
+  const handleTabChange = (index: number) => setActiveTabIndex(index)
   const tabsLength = tabs.length
 
   if (tabsLength > 7 || tabsLength < 2) {
@@ -52,7 +59,7 @@ export default function PricingFeatureTabs({ tabs }) {
         {tabs.map((item, index) => {
           return (
             <TabPanel
-              key={item.label.feature}
+              key={item.label.heading}
               className={classNames({
                 [s.fadeIn]: index === activeTabIndex,
               })}

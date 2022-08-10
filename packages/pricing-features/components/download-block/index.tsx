@@ -1,7 +1,20 @@
 import Button from '@hashicorp/react-button'
 import s from './style.module.css'
 
-export default function DownloadSection({ heading, description, pdfLink }) {
+interface DownloadBlockProps {
+  heading: string
+  description: string
+  pdfLink: {
+    title: string
+    url: string
+  }
+}
+
+export default function DownloadBlock({
+  heading,
+  description,
+  pdfLink,
+}: DownloadBlockProps) {
   return (
     <div className={s.downloadContainer}>
       <h2 className={s.downloadHeading}>{heading}</h2>

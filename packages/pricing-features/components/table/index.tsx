@@ -1,22 +1,12 @@
-// import { IconXCircle24 } from '@hashicorp/flight-icons/svg-react/x-circle-24'
-// import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-circle-fill-24'
-// import { IconChevronDown16 } from '@hashicorp/flight-icons/svg-react/chevron-down-16'
-// import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16'
-// import { CellProps } from '../../types'
-
 import { useState } from 'react'
 import VisuallyHidden from '@reach/visually-hidden'
-import Button from '@hashicorp/react-button'
-// import { PricingTierTableProps } from './types'
+import { TableProps, TextCellProps } from '../../types'
 import s from './style.module.css'
-// import RowCell from './primitives/row-cell'
-// import RowHeader from './primitives/row-header'
 
 export default function PricingTierTable({
   columns,
   rows,
-  downloadSection,
-}): React.ReactElement {
+}: TableProps): React.ReactElement {
   const [collapsedRows, setCollapsedRows] = useState<Array<number>>([])
   const hasColumnHeaders = !!columns && columns.length > 0
   const colLength = rows[0].cells.length
@@ -93,7 +83,7 @@ export default function PricingTierTable({
                   />
                   {cells.map((cell, cellIdx) => {
                     return (
-                      <RowCell
+                      <Cell
                         // eslint-disable-next-line react/no-array-index-key
                         key={`row-${rowIdx}-cell-${cellIdx}`}
                         rowIdx={rowIdx}
@@ -109,32 +99,25 @@ export default function PricingTierTable({
           </tbody>
         </table>
       </div>
-      {/* <div className={s.downloadContainer}>
-        <h2 className={s.downloadHeading}>{downloadSection.heading}</h2>
-        <p className={s.downloadDescription}>{downloadSection.description}</p>
-        <Button
-          title={downloadSection.pdfLink.title}
-          url={downloadSection.pdfLink.url}
-        />
-      </div> */}
     </div>
   )
 }
 
-// interface RowCellProps extends CellProps {
-//   rowIdx: number
-//   cellIdx: number
-//   rowIsCollapsed: boolean
-// }
+interface CellProps {
+  cell: boolean | TextCellProps
+  rowIdx: number
+  cellIdx: number
+  rowIsCollapsed: boolean
+}
 
-function RowCell({
+function Cell({
   cell,
   rowIdx,
   cellIdx,
   rowIsCollapsed,
-}): React.ReactElement {
+}: CellProps): React.ReactElement {
   return (
-    <td className={s.rowCell}>
+    <td className={s.cell}>
       {typeof cell == 'boolean' ? (
         !cell ? (
           // <IconXCircle24 color="var(--wpl-neutral-300)" />
@@ -163,18 +146,15 @@ function RowCell({
   )
 }
 
-// import { IconChevronDown16 } from '@hashicorp/flight-icons/svg-react/chevron-down-16'
-// import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16'
-// import { RowHeaderProps } from '../../types'
-// import s from './style.module.css'
-
-// interface RowHeaderCellProps extends RowHeaderProps {
-//   ariaControls: Array<string>
-//   colSpan: number
-//   rowIdx: number
-//   handleCollapseRow: (number) => void
-//   rowIsCollapsed: boolean
-// }
+interface RowHeaderProps {
+  header: TextCellProps
+  colSpan: number
+  isCollapsible?: boolean
+  ariaControls: Array<string>
+  rowIdx: number
+  handleCollapseRow: (idx: number) => void
+  rowIsCollapsed: boolean
+}
 
 function RowHeader({
   header,
@@ -184,7 +164,7 @@ function RowHeader({
   rowIdx,
   handleCollapseRow,
   rowIsCollapsed,
-}): React.ReactElement {
+}: RowHeaderProps): React.ReactElement {
   return (
     <th scope="row" colSpan={colSpan} className={s.rowHeader}>
       {isCollapsible && (

@@ -11,13 +11,7 @@
 .table {
   overflow-x: auto;
   position: relative;
-
-  /* display: none; */
-
-  /* @media (--medium-up) { */
   display: block;
-
-  /* } */
 
   & table {
     width: 100%;
@@ -132,7 +126,7 @@
   }
 }
 
-.rowCell {
+.cell {
   vertical-align: top;
   padding-left: var(--col-gap);
   padding-top: 26px;
