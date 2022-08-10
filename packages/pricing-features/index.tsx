@@ -10,10 +10,10 @@ export default function PricingFeatures({
   download,
 }: PricingFeaturesProps) {
   return (
-    <section className={s.features}>
+    <section className={s.features} data-testid="pricing-features">
       {features.map(({ heading, footnote, content }, idx) => (
-        <div className={s.content} key={heading || `features-${idx}`}>
-          {heading && <h2 className={s.heading}>{heading}</h2>}
+        <div className={s.content} key={heading}>
+          <h2 className={s.heading}>{heading}</h2>
           {'tabs' in content ? (
             <Tabs
               tabs={content.tabs.map((tab) => ({
