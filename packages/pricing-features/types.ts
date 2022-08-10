@@ -41,12 +41,14 @@ export interface TabsProps {
   }>
 }
 
+export interface FeatureProps {
+  heading: string
+  content: TableProps | TabsProps
+  footnote?: string
+}
+
 export interface PricingFeaturesProps {
-  features: Array<{
-    heading: string
-    content: TableProps | TabsProps
-    footnote?: string
-  }>
+  features: Array<FeatureProps>
   /**
    * Download section displayed on mobile
    */
