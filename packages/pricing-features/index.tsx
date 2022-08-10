@@ -25,10 +25,12 @@ export default function PricingFeatures({
             <Table {...content} />
           )}
           {footnote && (
-            <div
-              className={s.footnote}
-              dangerouslySetInnerHTML={{ __html: footnote }}
-            />
+            <div className={s.footnoteContainer}>
+              <div
+                className={s.footnote}
+                dangerouslySetInnerHTML={{ __html: footnote }}
+              />
+            </div>
           )}
         </div>
       ))}

@@ -16,10 +16,14 @@ export default function DownloadBlock({
   pdfLink,
 }: DownloadBlockProps) {
   return (
-    <div className={s.downloadContainer}>
-      <h2 className={s.downloadHeading}>{heading}</h2>
-      <p className={s.downloadDescription}>{description}</p>
-      <Button title={pdfLink.title} url={pdfLink.url} />
+    <div className={s.container}>
+      <div className={s.inner}>
+        <h2 className={s.heading}>{heading}</h2>
+        <p className={s.description}>{description}</p>
+        <div>
+          <Button title={pdfLink.title} url={pdfLink.url} />
+        </div>
+      </div>
     </div>
   )
 }
