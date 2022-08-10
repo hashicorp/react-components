@@ -1,17 +1,20 @@
 import Table from './components/table'
 import Tabs from './components/tabs'
 import DownloadBlock from './components/download-block'
+import { PricingFeaturesProps } from './types'
+import { normalizeTableData } from './helpers'
 import s from './style.module.css'
 
-// PricingFeaturesProps
-
-export default function PricingFeatures({ features, download }) {
+export default function PricingFeatures({
+  features,
+  download,
+}: PricingFeaturesProps) {
   return (
     <section className={s.features}>
       {features.map(({ heading, footnote, content }, idx) => (
         <div className={s.content} key={heading || `features-${idx}`}>
           {heading && <h2 className={s.heading}>{heading}</h2>}
-          {content.tabs ? (
+          {'tabs' in content ? (
             <Tabs
               tabs={content.tabs.map((tab) => ({
                 label: tab.label,
@@ -36,4 +39,4 @@ export default function PricingFeatures({ features, download }) {
   )
 }
 
-export { Table, Tabs, DownloadBlock }
+export { Table, Tabs, DownloadBlock, normalizeTableData }
