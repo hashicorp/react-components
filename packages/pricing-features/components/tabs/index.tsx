@@ -24,7 +24,7 @@ export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
   const tabsLength = tabs.length
 
   if (tabsLength > 7 || tabsLength < 2) {
-    throw new Error('<PricingFeatureTabs /> only supports between 3 and 7 tabs')
+    throw new Error('<PricingFeatureTabs /> only supports between 2 and 7 tabs')
   }
 
   return (

@@ -34,6 +34,52 @@ describe('<PricingFeatures />', () => {
     const element = screen.getByTestId('pricing-features')
     expect(element).toBeInTheDocument()
   })
+
+  it('should throw error with 1 tab', () => {
+    expect(() =>
+      render(
+        <PricingFeatures
+          features={[
+            {
+              heading: 'Features',
+              content: {
+                tabs: [
+                  {
+                    label: 'tab',
+                    icon: <span>icon</span>,
+                    content: table,
+                  },
+                ],
+              },
+            },
+          ]}
+          download={download}
+        />
+      )
+    ).toThrow('<PricingFeatureTabs /> only supports between 2 and 7 tabs')
+  })
+
+  it('should throw with more than 7 tabs', () => {
+    expect(() =>
+      render(
+        <PricingFeatures
+          features={[
+            {
+              heading: 'Features',
+              content: {
+                tabs: Array(8).fill({
+                  label: 'tab',
+                  icon: <span>icon</span>,
+                  content: table,
+                }),
+              },
+            },
+          ]}
+          download={download}
+        />
+      )
+    ).toThrow('<PricingFeatureTabs /> only supports between 2 and 7 tabs')
+  })
 })
 
 const { withColumnHeaders, withoutColumnHeaders, withAllColumnHeaders } = cms
