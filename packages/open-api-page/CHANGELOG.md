@@ -1,5 +1,11 @@
 # @hashicorp/react-open-api-page
 
+## 2.1.0
+
+### Minor Changes
+
+- [#688](https://github.com/hashicorp/react-components/pull/688) [`53a2626d`](https://github.com/hashicorp/react-components/commit/53a2626da71b75da535f333ec28da1432b9924e6) Thanks [@kendallstrautman](https://github.com/kendallstrautman)! - feat(open-api-docs): adds devdot opt-in banner slot
+
 ## 2.0.3
 
 ### Patch Changes
