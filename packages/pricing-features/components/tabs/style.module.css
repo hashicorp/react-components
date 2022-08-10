@@ -29,7 +29,7 @@
       &.active {
         border-color: var(--wpl-blue-500);
 
-        & .iconWrapper {
+        & .labelIcon {
           --icon-fill: var(--wpl-blue-500);
 
           & svg * {
@@ -43,7 +43,7 @@
           }
         }
 
-        & .featureText {
+        & .labelHeading {
           color: var(--wpl-blue-500);
         }
       }
@@ -56,7 +56,7 @@
   }
 }
 
-.featureText {
+.labelHeading {
   composes: g-type-body-small from global;
   padding-top: 8px;
   color: var(--wpl-neutral-900);

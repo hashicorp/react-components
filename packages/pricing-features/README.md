@@ -3,9 +3,9 @@
 The `<PricingFeatures />` component is used to display an array of feature sections including a heading, optional footnote, and content. `content` can include either:
 
 - feature tabs with table data
-- table data on its own.
+- table data on its own
 
-Note: Tabs _should_ display an svg icon but is shown as text in due to limitations in Swingset.
+Note: Tabs _should_ display an icon image but is shown as text due to Swingset limitations. In practice, we use our `<Icon />` component.
 
 On mobile, a block is displayed that contains a pdf download button.
 

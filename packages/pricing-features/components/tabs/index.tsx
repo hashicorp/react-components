@@ -50,8 +50,8 @@ export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
             })}
             key={label.heading}
           >
-            <div className={s.iconWrapper}>{label.icon}</div>
-            <span className={s.featureText}>{label.heading}</span>
+            <div className={s.labelIcon}>{label.icon}</div>
+            <span className={s.labelHeading}>{label.heading}</span>
           </Tab>
         ))}
       </TabList>

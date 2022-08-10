@@ -1,10 +1,10 @@
 .features {
-  composes: g-grid-container from global;
   display: grid;
   row-gap: 40px;
 }
 
 .content {
+  composes: g-grid-container from global;
   display: none;
 
   @media (--medium-up) {
@@ -27,26 +27,27 @@
   padding-bottom: 32px;
 }
 
-.footnote {
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  line-height: 1.219em;
-  letter-spacing: 0.0125em;
-  color: var(--wpl-neutral-500);
+.footnoteContainer {
   padding-top: 16px;
   display: flex;
   justify-content: flex-end;
 
-  /* TODO: CHECK WITH MULTIPLE PARAGRAPHS */
+  & .footnote {
+    font-weight: var(--font-weight-medium);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    line-height: 1.219em;
+    letter-spacing: 0.0125em;
+    color: var(--wpl-neutral-500);
 
-  /* & p:first-child {
-    margin-top: 0;
+    & p:first-child {
+      margin: 0;
+    }
+
+    & p:last-child {
+      margin-bottom: 0;
+    }
   }
-
-  & p:last-child {
-    margin-bottom: 0;
-  } */
 }
 
 .download {

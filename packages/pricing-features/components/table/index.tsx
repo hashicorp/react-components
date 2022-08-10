@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import VisuallyHidden from '@reach/visually-hidden'
+import { IconXCircle24 } from '@hashicorp/flight-icons/svg-react/x-circle-24'
+import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-circle-fill-24'
+import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16'
+import { IconChevronDown16 } from '@hashicorp/flight-icons/svg-react/chevron-down-16'
 import { TableProps, TextCellProps } from '../../types'
 import s from './style.module.css'
 
@@ -120,11 +124,9 @@ function Cell({
     <td className={s.cell}>
       {typeof cell == 'boolean' ? (
         !cell ? (
-          // <IconXCircle24 color="var(--wpl-neutral-300)" />
-          <div>x</div>
+          <IconXCircle24 color="var(--wpl-neutral-300)" />
         ) : (
-          // <IconCheckCircleFill24 color="var(--wpl-green-500)" />
-          <div>check</div>
+          <IconCheckCircleFill24 color="var(--wpl-green-500)" />
         )
       ) : (
         <div>
@@ -175,7 +177,7 @@ function RowHeader({
           aria-label="toggle row content"
           onClick={() => handleCollapseRow(rowIdx)}
         >
-          {/* {rowIsCollapsed ? <IconChevronUp16 /> : <IconChevronDown16 />} */}
+          {rowIsCollapsed ? <IconChevronUp16 /> : <IconChevronDown16 />}
         </button>
       )}
       <div className={s.rowHeaderText}>

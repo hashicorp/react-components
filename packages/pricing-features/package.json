@@ -1,28 +1,17 @@
 {
   "name": "@hashicorp/react-pricing-features",
-  "description": "",
   "version": "0.1.0",
+  "description": "",
   "author": "HashiCorp",
-  "contributors": [
-    ""
-  ],
   "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/flight-icons": "^2.0.2",
+    "@hashicorp/react-button": "^6.2.1",
+    "@reach/tabs": "^0.16.1",
+    "@reach/visually-hidden": "^0.16.0"
+  },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "react": ">=16.x"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hashicorp/react-components.git",
-    "directory": "packages/placeholder"
-  },
-  "dependencies": {
-    "@hashicorp/flight-icons": "^2.5.0",
-    "@hashicorp/react-button": "^6.2.1",
-    "@reach/tabs": "^0.17.0",
-    "@reach/visually-hidden": "^0.17.0"
   }
 }
