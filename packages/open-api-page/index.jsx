@@ -36,65 +36,61 @@ function OpenApiPage({
   const pageTitle = operationCategory ? operationCategory.name : info.title
 
   return (
-    <>
-      <div className={s.root}>
-        <HashiHead
-          title={`${pageTitle}${siteName ? ` | ${siteName}` : ''}`}
-          description={info.description}
-        />
-        <DocsSidenav
+    <div className={s.root}>
+      <HashiHead
+        title={`${pageTitle}${siteName ? ` | ${siteName}` : ''}`}
+        description={info.description}
+      />
+      <DocsSidenav
+        product={productSlug}
+        Link={Link}
+        currentPath={currentPath}
+        baseRoute={baseRoute}
+        disableFilter={true}
+        navData={navData}
+      />
+      <div className={s.contentContainer}>
+        {optInBannerSlot ? optInBannerSlot : null}
+        <Content
           product={productSlug}
-          Link={Link}
-          currentPath={currentPath}
-          baseRoute={baseRoute}
-          disableFilter={true}
-          navData={navData}
-        />
-        <div className={s.contentContainer}>
-          {optInBannerSlot ? optInBannerSlot : null}
-          <Content
-            product={productSlug}
-            content={
-              operationCategory ? (
-                <>
-                  <p className={s.pageHeading}>{info.title}</p>
-                  <h1 className={s.categoryHeading}>
-                    {operationCategory.name}
-                  </h1>
-                  <div ref={operationsRef}>
-                    {operationCategory.operations.map((op) => {
-                      const isExpanded =
-                        expandedOperations.indexOf(op.operationId) !== -1
+          content={
+            operationCategory ? (
+              <>
+                <p className={s.pageHeading}>{info.title}</p>
+                <h1 className={s.categoryHeading}>{operationCategory.name}</h1>
+                <div ref={operationsRef}>
+                  {operationCategory.operations.map((op) => {
+                    const isExpanded =
+                      expandedOperations.indexOf(op.operationId) !== -1
 
-                      return (
-                        <OperationObject
-                          key={op.__type + op.__path}
-                          path={massageOperationPathFn(op.__path)}
-                          type={op.__type}
-                          data={op}
-                          renderOperationIntro={renderOperationIntro}
-                          isCollapsed={!isExpanded}
-                          setIsCollapsed={(isCollapsed) =>
-                            setOperationState(op.operationId, !isCollapsed)
-                          }
-                        />
-                      )
-                    })}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h1 className={s.pageHeading}>{info.title}</h1>
-                  <p className={s.sidebarPrompt}>
-                    Select a service from the sidebar.
-                  </p>
-                </>
-              )
-            }
-          />
-        </div>
+                    return (
+                      <OperationObject
+                        key={op.__type + op.__path}
+                        path={massageOperationPathFn(op.__path)}
+                        type={op.__type}
+                        data={op}
+                        renderOperationIntro={renderOperationIntro}
+                        isCollapsed={!isExpanded}
+                        setIsCollapsed={(isCollapsed) =>
+                          setOperationState(op.operationId, !isCollapsed)
+                        }
+                      />
+                    )
+                  })}
+                </div>
+              </>
+            ) : (
+              <>
+                <h1 className={s.pageHeading}>{info.title}</h1>
+                <p className={s.sidebarPrompt}>
+                  Select a service from the sidebar.
+                </p>
+              </>
+            )
+          }
+        />
       </div>
-    </>
+    </div>
   )
 }
 
