@@ -21,7 +21,7 @@ export default function DownloadBlock({
         <h2 className={s.heading}>{heading}</h2>
         <p className={s.description}>{description}</p>
         <div>
-          <Button title={pdfLink.title} url={pdfLink.url} />
+          <Button title={pdfLink.title} url={pdfLink.url} download />
         </div>
       </div>
     </div>
