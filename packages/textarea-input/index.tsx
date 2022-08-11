@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useId } from '@reach/auto-id'
-import type { RefObject, ChangeEventHandler, FocusEventHandler } from 'react'
+import type { ChangeEventHandler, FocusEventHandler } from 'react'
 import s from './style.module.css'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
     name: string
     onChange: ChangeEventHandler<HTMLTextAreaElement>
     onBlur?: FocusEventHandler<HTMLTextAreaElement>
-    ref?: RefObject<HTMLTextAreaElement>
+    ref?: (instance: HTMLTextAreaElement) => void
   }
   form: { touched: Record<string, boolean>; errors: Record<string, string> }
   label?: string
