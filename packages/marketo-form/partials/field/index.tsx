@@ -1,5 +1,6 @@
 import TextField from '../fields/text-field'
 import EmailField from '../fields/email-field'
+import TextareaField from '../fields/textarea-field'
 import SelectField from '../fields/select-field'
 import CountryField from '../fields/country-field'
 import CheckboxField from '../fields/checkbox-field'
@@ -22,6 +23,12 @@ const Field = ({
         return <Component field={field} />
       }
       return <TextField field={field} />
+    case 'textArea':
+      if (components && 'textArea' in components) {
+        const Component = components.textArea!
+        return <Component field={field} />
+      }
+      return <TextareaField field={field} />
     case 'email':
       if (components && 'email' in components) {
         const Component = components.email!

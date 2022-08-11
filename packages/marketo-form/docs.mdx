@@ -70,6 +70,16 @@ Renders a form from Marketo.
         }
       },
       {
+        id: 'appendToNotes',
+        label: 'Comments',
+        dataType: 'textArea',
+        required: false,
+        validationMessage: 'This field is required.',
+        visibilityRules: {
+          ruleType: 'alwaysShow'
+        }
+      },
+      {
         id: 'Consent_Privacy_Policy__c',
         dataType: 'checkbox',
         validationMessage: 'This field is required.',

@@ -2,6 +2,7 @@ export type MarketoFormDatatype =
   | 'text'
   | 'email'
   | 'phone'
+  | 'textArea'
   | 'select'
   | 'checkbox'
   | 'hidden'
@@ -28,6 +29,10 @@ export interface MarketoFormTextField extends MarketoBaseFormField {
 
 export interface MarketoFormEmailField extends MarketoBaseFormField {
   dataType: 'email'
+}
+
+export interface MarketoFormTextAreaField extends MarketoBaseFormField {
+  dataType: 'textArea'
 }
 
 export interface SelectValue {
@@ -57,6 +62,7 @@ export interface MarketoFormHiddenField extends MarketoBaseFormField {
 export type MarketoFormField =
   | MarketoFormTextField
   | MarketoFormEmailField
+  | MarketoFormTextAreaField
   | MarketoFormSelectField
   | MarketoFormCheckboxField
   | MarketoFormHiddenField
@@ -74,6 +80,7 @@ export interface MarketoForm {
 export interface MarketoFormComponents {
   text?: (props: { field: MarketoFormTextField }) => JSX.Element
   email?: (props: { field: MarketoFormEmailField }) => JSX.Element
+  textArea?: (props: { field: MarketoFormTextAreaField }) => JSX.Element
   select?: (props: { field: MarketoFormSelectField }) => JSX.Element
   checkbox?: (props: { field: MarketoFormCheckboxField }) => JSX.Element
   hidden?: (props: { field: MarketoFormHiddenField }) => JSX.Element
