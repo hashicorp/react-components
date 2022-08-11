@@ -2,4 +2,4 @@
 '@hashicorp/react-textarea-input': minor
 ---
 
-Fix TS type for field.ref property
+Fix TypeScript types for `field.ref` and `form.errors` properties

@@ -11,7 +11,10 @@ interface Props {
     onBlur?: FocusEventHandler<HTMLTextAreaElement>
     ref?: (instance: HTMLTextAreaElement) => void
   }
-  form: { touched: Record<string, boolean>; errors: Record<string, string> }
+  form: {
+    touched: Record<string, boolean>
+    errors: Record<string, string | null | undefined>
+  }
   label?: string
   placeholder?: string
   theme?: { background: 'light' | 'dark' | 'brand' }
