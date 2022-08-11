@@ -43,15 +43,10 @@ module.exports = {
         options: ['button', 'textLink'],
         default: 'textLink',
       },
-      theme: {
-        type: 'object',
-        properties: {
-          variant: {
-            type: 'string',
-            options: ['primary', 'secondary'],
-            default: 'primary',
-          },
-        },
+      variant: {
+        type: 'string',
+        options: ['primary', 'secondary'],
+        default: 'primary',
       },
     },
   },
