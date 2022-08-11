@@ -6,7 +6,10 @@ import type { MarketoFormTextAreaField } from '../../../types'
 
 const Index = ({ field }: { field: MarketoFormTextAreaField }) => {
   const { register } = useFormContext()
-  const { errors, touchedFields } = useFormState()
+  // We use the generic Record<string, unknown> to short-circuit a recursive
+  // type that produces an unsatisfiable type when the default of
+  // Record<string, any> is used.
+  const { errors, touchedFields } = useFormState<Record<string, unknown>>()
 
   return (
     <FieldWrapper>
