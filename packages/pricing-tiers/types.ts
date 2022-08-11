@@ -1,5 +1,4 @@
 import { ReactElement } from 'react'
-import { Theme } from '@hashicorp/react-button/types'
 
 interface TierProps {
   /**
@@ -13,7 +12,7 @@ interface TierProps {
     url: string
     title: string
     type: 'button' | 'textLink'
-    theme?: Theme
+    variant?: 'primary' | 'secondary'
   }
 }
 

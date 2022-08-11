@@ -87,7 +87,7 @@ export default function PricingTiers({
                       <Button
                         url={cta.url}
                         title={cta.title}
-                        theme={cta.theme}
+                        theme={{ variant: cta.variant }}
                       />
                     ) : (
                       <Link href={cta.url}>
