@@ -117,7 +117,8 @@ const Form = ({
           if (
             !(field.id in values) ||
             values[field.id] === '' ||
-            values[field.id] === false
+            values[field.id] === false ||
+            values[field.id] === undefined
           ) {
             errors[field.id] = {
               message: field.validationMessage ?? 'This field is required.',
