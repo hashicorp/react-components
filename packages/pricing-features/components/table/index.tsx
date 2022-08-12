@@ -123,11 +123,13 @@ function Cell({
   return (
     <td className={s.cell}>
       {typeof cell == 'boolean' ? (
-        !cell ? (
-          <IconXCircle24 color="var(--wpl-neutral-300)" />
-        ) : (
-          <IconCheckCircleFill24 color="var(--wpl-green-500)" />
-        )
+        <div className={s.booleanCell}>
+          {!cell ? (
+            <IconXCircle24 color="var(--wpl-neutral-300)" />
+          ) : (
+            <IconCheckCircleFill24 color="var(--wpl-green-500)" />
+          )}
+        </div>
       ) : (
         <div>
           <div
