@@ -50,7 +50,7 @@
 }
 
 .rowHeader {
-  padding: 26px 0;
+  padding: 17px 0 26px;
   vertical-align: top;
 }
 
@@ -64,6 +64,10 @@
   & *[aria-hidden='true'],
   & *[data-hidden='true'] {
     display: none;
+  }
+
+  & .rowHeading {
+    padding-bottom: 6px;
   }
 
   & .rowHeading,
@@ -90,7 +94,6 @@
   composes: g-type-body-small-strong from global;
 
   & * {
-    margin: 0;
     font-size: inherit;
     letter-spacing: inherit;
     line-height: inherit;
@@ -109,16 +112,15 @@
   padding-top: 8px;
 
   & * {
-    margin-top: 0;
     font-size: inherit;
     letter-spacing: inherit;
     line-height: inherit;
     font-family: inherit;
     font-weight: inherit;
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  & p {
+    color: ;
   }
 
   & a {
@@ -129,8 +131,12 @@
 .cell {
   vertical-align: top;
   padding-left: var(--col-gap);
-  padding-top: 26px;
-  padding-bottom: 26px;
+  padding-top: 20px;
+  padding-bottom: 24px;
+
+  & .booleanCell {
+    padding-top: 4px;
+  }
 
   & .cellContent {
     color: var(--wpl-neutral-500);
@@ -140,20 +146,12 @@
     &[data-hidden='true'] {
       display: none;
     }
-
-    & * {
-      margin-top: 0;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
   }
 }
 
 .cellHeading {
   composes: g-type-body-x-small-strong from '../../g-type-x-small.css';
-  min-height: 25px;
+  padding-bottom: 6px;
 }
 
 .cellContent {
@@ -169,11 +167,25 @@
   }
 
   & * {
-    margin: 0;
     font-size: inherit;
     letter-spacing: inherit;
     line-height: inherit;
     font-family: inherit;
     font-weight: inherit;
+  }
+}
+
+.rowContent,
+.rowHeading,
+.cellHeading,
+.cellContent {
+  & * {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
