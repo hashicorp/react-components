@@ -1,5 +1,5 @@
-import { useFormContext, useFormState } from 'react-hook-form'
+import { useFormContext, useFormState, useWatch } from 'react-hook-form'
 import Form, { defaultFieldGroupings } from './form'
 
-export { useFormContext, useFormState, defaultFieldGroupings }
+export { useFormContext, useFormState, useWatch, defaultFieldGroupings }
 export default Form
