@@ -2,6 +2,25 @@
   composes: g-grid from global;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    background-color: #f2f2f3;
+    filter: blur(24px);
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 93%;
+    height: 120px;
+    bottom: -10px;
+    display: none;
+
+    @media (--medium-up) {
+      display: block;
+    }
+  }
 
   &.isCollapsed {
     & .pricingTiers {
@@ -39,6 +58,18 @@
         }
       }
     }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 92%;
+      height: 26px;
+      bottom: 3px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background: var(--wpl-neutral-200);
+      filter: blur(19px);
+    }
   }
 }
 
@@ -52,25 +83,6 @@
 
   @media (--medium-up) {
     grid-template-columns: repeat(var(--col), minmax(0, 1fr));
-  }
-
-  &::after {
-    content: '';
-    background: var(--vault-accent);
-    filter: blur(24px);
-    border-radius: 8px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 93%;
-    height: 23%;
-    bottom: -10px;
-    z-index: -1;
-    display: none;
-
-    @media (--medium-up) {
-      display: block;
-    }
   }
 }
 
