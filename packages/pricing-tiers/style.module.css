@@ -105,10 +105,6 @@
     margin: 0;
     text-align: center;
   }
-
-  @media (--medium-up) {
-    max-width: 300px;
-  }
 }
 
 .bottom {
@@ -234,8 +230,8 @@
     }
 
     @media (--large) {
-      column-gap: 135px;
-      padding: 0 135px;
+      column-gap: 100px;
+      padding: 0 100px;
     }
   }
 }
