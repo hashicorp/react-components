@@ -15,7 +15,9 @@ export default function Card({
       className={classNames(s.card, s[appearance], featured && s.featured)}
     >
       {children}
-      {cta.title ? <span>{cta.title}</span> : null} <IconArrowRight24 />
+      <div className={s.cta}>
+        {cta.title ? <span>{cta.title}</span> : null} <IconArrowRight24 />
+      </div>
     </a>
   )
 }
@@ -37,7 +39,7 @@ export function Meta({ date, category }: MetaProps) {
   return <div className={s.meta}>{meta}</div>
 }
 
-export function Content({ heading, description }) {
+export function Content({ heading, headingLevel, description }) {
   return (
     <div className={s.content}>
       <p className={s.heading}>{heading}</p>

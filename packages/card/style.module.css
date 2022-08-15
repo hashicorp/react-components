@@ -1,5 +1,14 @@
 .card {
-  /* TBD */
+  /* TODO use WPL values */
+  border: 1.5px solid #c1c3c8;
+  padding: 20px;
+  display: block;
+  color: var(--wpl-neutral-500);
+  border-radius: 8px;
+
+  &.dark {
+    /* TBD */
+  }
 }
 
 .thumbnail {
@@ -7,7 +16,8 @@
 }
 
 .meta {
-  /* TBD */
+  composes: g-type-label from global;
+  padding-bottom: 16px;
 }
 
 .content {
@@ -15,9 +25,23 @@
 }
 
 .heading {
-  /* TBD */
+  /* TODO make heading level appearance selectable */
+  composes: g-type-display-5 from global;
+  color: var(--wpl-neutral-900);
+  margin-top: 0;
 }
 
 .description {
-  /* TBD */
+  composes: g-type-body-small from global;
+}
+
+.cta {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  justify-content: end;
+
+  & span {
+    padding-right: 10px;
+  }
 }
