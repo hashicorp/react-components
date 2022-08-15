@@ -5,7 +5,7 @@ export interface CardProps {
   heading: string
   description?: string
   cta: {
-    text?: string
+    title?: string
     url: string
   }
 }

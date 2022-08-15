@@ -1,7 +1,7 @@
 import type { CardProps, MetaProps, ThumbnailProps } from './types'
 import classNames from 'classnames'
 import s from './style.module.css'
-import Button from 'packages/button'
+import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 
 export default function Card({
   children,
@@ -15,7 +15,7 @@ export default function Card({
       className={classNames(s.card, s[appearance], featured && s.featured)}
     >
       {children}
-      <Button title={cta.text || ''} url={cta.url} linkType="inbound" />
+      {cta.title ? <span>{cta.title}</span> : null} <IconArrowRight24 />
     </a>
   )
 }

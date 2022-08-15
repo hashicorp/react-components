@@ -7,11 +7,21 @@ Cards are [placeholder description here].
 <LiveComponent>
   {`
 <>
-  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
-    <Card />
-    <Card />
-    <Card />
-  </div>
+  <Card cta={{url: "https://hashicorp.com"}}>
+    <Content 
+      heading="Sample heading"
+    />
+  </Card>
+  <Card cta={{title: 'Visit homepage', url: "https://hashicorp.com"}}>
+    <Meta
+      date="2022-08-15"
+      category="Category"
+    />
+    <Content 
+      heading="Sample heading"
+      description="Sample description"
+    />
+  </Card>
 </>
 `}
 </LiveComponent>
