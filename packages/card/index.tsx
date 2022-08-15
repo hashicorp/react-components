@@ -1,7 +1,8 @@
+import Image from 'next/image'
 import type { CardProps, MetaProps, ThumbnailProps } from './types'
 import classNames from 'classnames'
-import s from './style.module.css'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
+import s from './style.module.css'
 
 export default function Card({
   children,
@@ -22,14 +23,25 @@ export default function Card({
   )
 }
 
-export function Thumbnail({ url }: ThumbnailProps) {
-  const isVideo = ['mp4', 'webm'].includes(parseFormat(url))
+export function Thumbnail({ image, url }: ThumbnailProps) {
+  // TODO Refine this parse
+  const isVideo =
+    ['mp4', 'webm'].includes(parseFormat(url)) || url.includes('youtu')
 
   return (
-    <div className={s.thumbnail}>
+    <a href={url} className={s.thumbnail} target="_blank" rel="noreferrer">
       {isVideo ? <div>Play button</div> : null}
-      JSX for the thumbnail
-    </div>
+      {/* TODO Determine more scalable sizing solution for thumbnail (fixed sizes for all?) */}
+      <div className={s.image}>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={800}
+          height={600}
+          objectFit="cover"
+        />
+      </div>
+    </a>
   )
 }
 

@@ -1,3 +1,5 @@
+import { ImageProps } from 'next/image'
+
 export interface CardProps {
   children: string
   featured?: boolean
@@ -11,6 +13,7 @@ export interface CardProps {
 }
 
 export interface ThumbnailProps {
+  image: ImageProps
   url: string
 }
 
