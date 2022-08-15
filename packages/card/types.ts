@@ -22,7 +22,7 @@ export interface MetaProps {
   category?: string
 }
 
-export interface MetaProps {
+export interface ContentProps {
   heading: string
   description?: string
 }

@@ -1,15 +1,15 @@
 import Image from 'next/image'
-import type { CardProps, MetaProps, ThumbnailProps } from './types'
+import type {
+  CardProps,
+  ThumbnailProps,
+  MetaProps,
+  ContentProps,
+} from './types'
 import classNames from 'classnames'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import s from './style.module.css'
 
-export default function Card({
-  children,
-  appearance,
-  featured,
-  cta,
-}: CardProps) {
+function Card({ children, appearance, featured, cta }: CardProps) {
   return (
     <a
       href={cta.url}
@@ -23,7 +23,7 @@ export default function Card({
   )
 }
 
-export function Thumbnail({ image, url }: ThumbnailProps) {
+function Thumbnail({ image, url }: ThumbnailProps) {
   // TODO Refine this parse
   const isVideo =
     ['mp4', 'webm'].includes(parseFormat(url)) || url.includes('youtu')
@@ -45,13 +45,13 @@ export function Thumbnail({ image, url }: ThumbnailProps) {
   )
 }
 
-export function Meta({ date, category }: MetaProps) {
+function Meta({ date, category }: MetaProps) {
   const meta = date && category ? `${date} | ${category}` : date || category
 
   return <div className={s.meta}>{meta}</div>
 }
 
-export function Content({ heading, headingLevel, description }) {
+function Content({ heading, description }: ContentProps) {
   return (
     <div className={s.content}>
       <p className={s.heading}>{heading}</p>
@@ -67,3 +67,9 @@ function parseFormat(url) {
   const hasExtension = !!extensionMatch && !!extensionMatch[1]
   return hasExtension ? extensionMatch[1] : false
 }
+
+Card.Thumbnail = Thumbnail
+Card.Meta = Meta
+Card.Content = Content
+
+export default Card
