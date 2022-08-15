@@ -13,6 +13,7 @@
   --color: var(--gray-2);
 
   composes: g-type-label-strong from global;
+  text-transform: inherit;
   margin: 0 0 16px;
   color: var(--color);
 
