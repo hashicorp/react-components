@@ -1,5 +1,3 @@
-import type { Products } from '@hashicorp/platform-product-meta'
-
 export interface CardProps {
   children: string
   featured?: boolean
@@ -16,16 +14,12 @@ export interface ThumbnailProps {
   url: string
 }
 
-export interface BadgesProps {
-  badges: Array<{
-    label: string
-    product: Products
-  }>
+export interface MetaProps {
+  date?: string
+  category?: string
 }
 
 export interface MetaProps {
-  meta: {
-    date?: string
-    category?: string
-  }
+  heading: string
+  description?: string
 }
