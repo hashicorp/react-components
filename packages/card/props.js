@@ -1,33 +1,41 @@
 module.exports = {
   children: {
-    description: 'The text that appears inside the badge.',
+    description: 'Sub-components added to the card content.',
     type: 'string',
     control: { type: 'text' },
-    testValue: 'New',
+    testValue: 'Sample content (TODO: polish this documentation)',
     required: true,
   },
-  theme: {
-    description: 'Styles the badge background and text color.',
+  appearance: {
+    description: 'Styles the card with either a light or dark theme.',
     type: 'string',
     required: false,
-    options: [
-      'neutral',
-      'white',
-      'black',
-      'nomad',
-      'consul',
-      'terraform',
-      'vault',
-      'packer',
-      'vagrant',
-      'waypoint',
-      'boundary',
-    ],
+    options: ['light', 'dark'],
+    testValue: 'light',
   },
-  variant: {
-    description: 'Variant styling based upon choosen theme.',
-    type: 'string',
+  featured: {
+    description:
+      'Determines whether the card will render with a "featured" layout or not',
+    type: 'boolean',
     required: false,
-    options: ['primary', 'secondary'],
+    control: { type: 'checkbox' },
+    testValue: false,
+  },
+  cta: {
+    type: 'object',
+    description: 'A link followed when the card is clicked.',
+    required: true,
+    properties: {
+      title: {
+        description: 'The text used within the link.',
+        type: 'string',
+        required: false,
+      },
+      url: {
+        description: 'The url used within the link.',
+        type: 'string',
+        required: true,
+      },
+    },
   },
 }
