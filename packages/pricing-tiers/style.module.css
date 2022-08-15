@@ -102,8 +102,15 @@
   margin: 0 auto;
 
   & p {
-    margin: 0;
     text-align: center;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
   }
 }
 
@@ -180,8 +187,12 @@
   vertical-align: top;
   height: 100%;
 
-  & p {
-    margin: 0;
+  & p:first-child {
+    margin-top: 0;
+  }
+
+  & p:last-child {
+    margin-bottom: 0;
   }
 
   & a {
