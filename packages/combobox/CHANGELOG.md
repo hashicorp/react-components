@@ -1,5 +1,11 @@
 # @hashicorp/react-combobox
 
+## 1.2.0
+
+### Minor Changes
+
+- [#695](https://github.com/hashicorp/react-components/pull/695) [`61b1ccb2`](https://github.com/hashicorp/react-components/commit/61b1ccb204144907e9e7785312414dae753a3a73) Thanks [@dstaley](https://github.com/dstaley)! - Update dependencies
+
 ## 1.1.0
 
 ### Minor Changes
