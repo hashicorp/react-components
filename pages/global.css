@@ -4,3 +4,21 @@
   margin: 1rem 1rem 0.25rem 2rem;
   height: 32px;
 }
+
+/* Body X Small */
+.g-type-body-x-small {
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.219em;
+  letter-spacing: 0.0125em;
+}
+
+/* Body X Small Strong */
+.g-type-body-x-small-strong {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.219em;
+  letter-spacing: 0.0125em;
+}
