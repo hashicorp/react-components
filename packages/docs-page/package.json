@@ -8,7 +8,7 @@
     "Kevin Wang"
   ],
   "dependencies": {
-    "@hashicorp/platform-docs-mdx": "^0.1.4",
+    "@hashicorp/platform-docs-mdx": "^0.2.0",
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-alert": "^6.0.2",
     "@hashicorp/react-content": "^8.2.3",
