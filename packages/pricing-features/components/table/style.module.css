@@ -108,7 +108,7 @@
 
 .rowContent {
   color: var(--wpl-neutral-600);
-  composes: g-type-body-x-small from '../../g-type-x-small.css';
+  composes: g-type-body-x-small from global;
   padding-top: 8px;
 
   & * {
@@ -117,10 +117,6 @@
     line-height: inherit;
     font-family: inherit;
     font-weight: inherit;
-  }
-
-  & p {
-    color: ;
   }
 
   & a {
@@ -150,12 +146,12 @@
 }
 
 .cellHeading {
-  composes: g-type-body-x-small-strong from '../../g-type-x-small.css';
+  composes: g-type-body-x-small-strong from global;
   padding-bottom: 6px;
 }
 
 .cellContent {
-  composes: g-type-body-x-small from '../../g-type-x-small.css';
+  composes: g-type-body-x-small from global;
 }
 
 .cellHeading,

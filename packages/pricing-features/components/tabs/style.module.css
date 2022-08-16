@@ -63,7 +63,7 @@
   height: 66px;
 
   @media (--medium-up) {
-    composes: g-type-body-x-small-strong from '../../g-type-x-small.css';
+    composes: g-type-body-x-small-strong from global;
   }
 }
 
