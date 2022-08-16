@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.7.0
+
+### Minor Changes
+
+- [#697](https://github.com/hashicorp/react-components/pull/697) [`73cd27d8`](https://github.com/hashicorp/react-components/commit/73cd27d8ab85a8a9e91232608d3515be50a31a66) Thanks [@dstaley](https://github.com/dstaley)! - Update @hashicorp/platform-docs-mdx
+
 ## 17.6.0
 
 ### Minor Changes
