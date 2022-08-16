@@ -35,13 +35,13 @@
 }
 
 .description {
-  --color: var(--gray-2);
+  --color: var(--wpl-neutral-500);
 
   margin: 16px 0 0;
   color: var(--color);
 
   @nest .dark & {
-    --color: var(--gray-4);
+    --color: var(--wpl-neutral-400);
   }
 
   & > * {
