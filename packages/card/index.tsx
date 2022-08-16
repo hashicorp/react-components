@@ -29,7 +29,7 @@ function Thumbnail({ image, url }: ThumbnailProps) {
     ['mp4', 'webm'].includes(parseFormat(url)) || url.includes('youtu')
 
   return (
-    <a href={url} className={s.thumbnail} target="_blank" rel="noreferrer">
+    <div className={s.thumbnail}>
       {isVideo ? <div>Play button</div> : null}
       {/* TODO Determine more scalable sizing solution for thumbnail (fixed sizes for all?) */}
       <div className={s.image}>
@@ -41,14 +41,14 @@ function Thumbnail({ image, url }: ThumbnailProps) {
           objectFit="cover"
         />
       </div>
-    </a>
+    </div>
   )
 }
 
 function Meta({ date, category }: MetaProps) {
   const meta = date && category ? `${date} | ${category}` : date || category
 
-  return <div className={s.meta}>{meta}</div>
+  return <p className={s.meta}>{meta}</p>
 }
 
 function Content({ heading, description }: ContentProps) {

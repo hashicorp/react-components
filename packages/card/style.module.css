@@ -17,7 +17,7 @@
 
 .meta {
   composes: g-type-label from global;
-  padding-bottom: 16px;
+  margin-top: 0;
 }
 
 .content {
