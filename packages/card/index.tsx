@@ -1,43 +1,63 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type {
   CardProps,
   ThumbnailProps,
   MetaProps,
   ContentProps,
+  HeadingProps,
+  DescriptionProps,
 } from './types'
 import classNames from 'classnames'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import s from './style.module.css'
 
-function Card({ children, appearance, featured, cta }: CardProps) {
+function Card(props: CardProps) {
+  const {
+    appearance = 'light',
+    meta,
+    thumbnail,
+    heading,
+    description,
+    link,
+    children,
+  } = props
+
   return (
-    <a
-      href={cta.url}
-      className={classNames(s.card, s[appearance], featured && s.featured)}
-    >
-      {children}
+    <div className={classNames(s.card, s[appearance])}>
+      {children ? (
+        children
+      ) : (
+        <>
+          {thumbnail ? <Thumbnail {...thumbnail} /> : null}
+          <Content>
+            {meta && meta.length > 0 ? <Meta items={meta} /> : null}
+            <Heading>{heading}</Heading>
+            {description ? <Description>{description}</Description> : null}
+          </Content>
+        </>
+      )}
       <div className={s.cta}>
-        {cta.title ? <span>{cta.title}</span> : null} <IconArrowRight24 />
+        <IconArrowRight24 />
       </div>
-    </a>
+      <Link href={link}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+        <a className={s.link} aria-label={heading} />
+      </Link>
+    </div>
   )
 }
 
-function Thumbnail({ image, url }: ThumbnailProps) {
-  // TODO Refine this parse
-  const isVideo =
-    ['mp4', 'webm'].includes(parseFormat(url)) || url.includes('youtu')
-
+function Thumbnail({ src, alt }: ThumbnailProps) {
   return (
     <div className={s.thumbnail}>
-      {isVideo ? <div>Play button</div> : null}
-      {/* TODO Determine more scalable sizing solution for thumbnail (fixed sizes for all?) */}
       <div className={s.image}>
         <Image
-          src={image.src}
-          alt={image.alt}
+          src={src}
+          alt={alt}
           width={800}
-          height={600}
+          height={450}
+          layout="responsive"
           objectFit="cover"
         />
       </div>
@@ -45,31 +65,42 @@ function Thumbnail({ image, url }: ThumbnailProps) {
   )
 }
 
-function Meta({ date, category }: MetaProps) {
-  const meta = date && category ? `${date} | ${category}` : date || category
-
-  return <p className={s.meta}>{meta}</p>
-}
-
-function Content({ heading, description }: ContentProps) {
+function Meta({ items }: MetaProps) {
   return (
-    <div className={s.content}>
-      <p className={s.heading}>{heading}</p>
-      {description ? <p className={s.description}>{description}</p> : null}
-    </div>
+    <ul className={s.meta}>
+      {items.map((item, stableIdx) => {
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={stableIdx}>
+            {stableIdx > 0 ? (
+              <span className={s.metaSeparator} aria-hidden={true}>
+                |
+              </span>
+            ) : null}
+            {item}
+          </li>
+        )
+      })}
+    </ul>
   )
 }
 
-// DUPLICATE FUNCTION
-// Lifted from packages/image
-function parseFormat(url) {
-  const extensionMatch = url.match(/\.(\w+)$/)
-  const hasExtension = !!extensionMatch && !!extensionMatch[1]
-  return hasExtension ? extensionMatch[1] : false
+function Content({ children }: ContentProps) {
+  return <div className={s.content}>{children}</div>
+}
+
+function Heading({ as: Component = 'h2', children }: HeadingProps) {
+  return <Component className={s.heading}>{children}</Component>
+}
+
+function Description({ children }: DescriptionProps) {
+  return <p className={s.description}>{children}</p>
 }
 
 Card.Thumbnail = Thumbnail
 Card.Meta = Meta
 Card.Content = Content
+Card.Heading = Heading
+Card.Description = Description
 
 export default Card

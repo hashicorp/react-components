@@ -1,47 +1,77 @@
 .card {
-  /* TODO use WPL values */
-  border: 1.5px solid #c1c3c8;
-  padding: 20px;
+  --border-color: var(--wpl-neutral-200);
+  --primary-text-color: var(--wpl-neutral-900);
+  --secondary-text-color: var(--wpl-neutral-500);
+
+  border: 1px solid var(--border-color);
   display: block;
-  color: var(--wpl-neutral-500);
   border-radius: 8px;
+  overflow: hidden;
+  position: relative;
 
   &.dark {
     /* TBD */
   }
+
+  &:hover {
+    --border-color: var(--wpl-neutral-300);
+  }
+
+  &:focus-within {
+    --border-color: var(--wpl-blue-200);
+
+    outline-color: var(--border-color);
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 0;
+  }
 }
 
-.thumbnail {
-  /* TBD */
+.link {
+  position: absolute;
+  inset: 0;
+  outline: none;
 }
 
 .meta {
   composes: g-type-label from global;
-  margin-top: 0;
+  color: var(--secondary-text-color);
+  margin: 0;
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.metaSeparator {
+  --padding-x: 12px;
+
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
 }
 
 .content {
-  /* TBD */
+  display: grid;
+  row-gap: 16px;
+  padding: 20px;
 }
 
 .heading {
   /* TODO make heading level appearance selectable */
   composes: g-type-display-5 from global;
-  color: var(--wpl-neutral-900);
-  margin-top: 0;
+  color: var(--primary-text-color);
+  margin: 0;
 }
 
 .description {
   composes: g-type-body-small from global;
+  margin: 0;
+  color: var(--secondary-text-color);
 }
 
 .cta {
-  display: grid;
-  grid-template-columns: max-content max-content;
+  display: flex;
   align-items: center;
-  justify-content: end;
-
-  & span {
-    padding-right: 10px;
-  }
+  justify-content: flex-end;
+  color: var(--wpl-neutral-200);
+  padding: 20px;
 }

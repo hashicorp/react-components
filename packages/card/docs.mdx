@@ -7,35 +7,18 @@ Cards are [placeholder description here].
 <LiveComponent>
   {`
 <>
-  <Card cta={{url: "https://hashicorp.com"}}>
-    <Card.Content 
-      heading="Sample heading"
-    />
-  </Card>
-  <Card cta={{title: 'Visit homepage', url: "https://hashicorp.com"}}>
-    <Card.Meta
-      date="2022-08-15"
-      category="Category"
-    />
-    <Card.Content 
-      heading="Sample heading"
-      description="Sample description"
-    />
-  </Card>
-  <Card cta={{title: 'Visit homepage', url: "https://hashicorp.com"}}>
-    <Card.Thumbnail 
-      image={{src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png" , alt: "HashiConf Europe 2022 Recap" }}
-      url="https://www.youtube.com/watch?v=PZDqX-NWe18"
-    />
-    <Card.Meta
-      date="2022-08-15"
-      category="Category"
-    />
-    <Card.Content 
-      heading="Sample heading"
-      description="Sample description"
-    />
-  </Card>
+  <Card
+    link="https://hashicorp.com"
+    thumbnail={
+      {src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png" , alt: "HashiConf Europe 2022 Recap" }
+    }
+    meta={[
+      '2022-08-15',
+      'Category'
+    ]}
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+  />
 </>
 `}
 </LiveComponent>
