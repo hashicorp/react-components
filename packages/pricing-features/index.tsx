@@ -11,7 +11,7 @@ export default function PricingFeatures({
 }: PricingFeaturesProps) {
   return (
     <section className={s.features} data-testid="pricing-features">
-      {features.map(({ heading, footnote, content }, idx) => (
+      {features.map(({ heading, footnote, content }) => (
         <div className={s.content} key={heading}>
           <h2 className={s.heading}>{heading}</h2>
           {'tabs' in content ? (
