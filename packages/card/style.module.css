@@ -52,7 +52,7 @@
 .content {
   display: grid;
   row-gap: 16px;
-  padding: 24px;
+  padding: 24px 24px 0 24px;
 }
 
 .heading {
@@ -73,5 +73,5 @@
   align-items: center;
   justify-content: flex-end;
   color: var(--wpl-neutral-200);
-  padding: 24px;
+  padding: 8px 24px 24px 24px;
 }
