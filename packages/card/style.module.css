@@ -1,6 +1,6 @@
 .card {
   --border-color: var(--wpl-neutral-200);
-  --primary-text-color: var(--wpl-neutral-900);
+  --primary-text-color: var(--wpl-neutral-700);
   --secondary-text-color: var(--wpl-neutral-500);
 
   border: 1px solid var(--border-color);
@@ -52,7 +52,7 @@
 .content {
   display: grid;
   row-gap: 16px;
-  padding: 20px;
+  padding: 24px;
 }
 
 .heading {
@@ -73,5 +73,5 @@
   align-items: center;
   justify-content: flex-end;
   color: var(--wpl-neutral-200);
-  padding: 20px;
+  padding: 24px;
 }
