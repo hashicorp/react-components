@@ -2,16 +2,14 @@
   --border-color: var(--wpl-neutral-200);
   --primary-text-color: var(--wpl-neutral-700);
   --secondary-text-color: var(--wpl-neutral-500);
+  --background-color: var(--wpl-neutral-0);
 
   border: 1px solid var(--border-color);
   display: block;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-
-  &.dark {
-    /* TBD */
-  }
+  background-color: var(--background-color);
 
   &:hover {
     --border-color: var(--wpl-neutral-300);
@@ -24,6 +22,17 @@
     outline-width: 2px;
     outline-style: solid;
     outline-offset: 0;
+  }
+
+  &.dark {
+    --border-color: var(--wpl-neutral-800);
+    --primary-text-color: var(--wpl-neutral-0);
+    --secondary-text-color: var(--wpl-neutral-200);
+    --background-color: var(--wpl-neutral-800);
+
+    &:hover {
+      --background-color: var(--wpl-neutral-700);
+    }
   }
 }
 
