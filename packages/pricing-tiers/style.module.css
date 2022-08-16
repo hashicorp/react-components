@@ -22,12 +22,14 @@
     }
   }
 
+  &.length1 {
+    &::before {
+      width: 45%;
+    }
+  }
+
   &.isCollapsed {
     & .pricingTiers {
-      &::after {
-        display: none;
-      }
-
       & .tierName {
         padding-top: 16px;
         padding-bottom: 8px;
@@ -70,6 +72,12 @@
       background: var(--wpl-neutral-200);
       filter: blur(19px);
     }
+
+    &.length1 {
+      &::before {
+        width: 48%;
+      }
+    }
   }
 }
 
@@ -104,13 +112,13 @@
   & p {
     text-align: center;
 
-  &:first-child {
-    margin-top: 0;
-  }
+    &:first-child {
+      margin-top: 0;
+    }
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -205,6 +213,18 @@
     font-size: 0.813rem;
     line-height: 1.5em;
     letter-spacing: 0.0125em;
+  }
+}
+
+.length1 {
+  @media (--medium-up) {
+    & .pricingTiers {
+      grid-column: 4 / 10;
+    }
+
+    & .description {
+      max-width: 355px;
+    }
   }
 }
 
@@ -306,10 +326,6 @@
 
     @media (--medium) {
       grid-template-columns: unset;
-
-      &::after {
-        display: none;
-      }
 
       & .bottom {
         width: 100%;
