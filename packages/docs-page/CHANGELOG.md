@@ -1,5 +1,23 @@
 # @hashicorp/react-docs-page
 
+## 17.7.0
+
+### Minor Changes
+
+- [#697](https://github.com/hashicorp/react-components/pull/697) [`73cd27d8`](https://github.com/hashicorp/react-components/commit/73cd27d8ab85a8a9e91232608d3515be50a31a66) Thanks [@dstaley](https://github.com/dstaley)! - Update @hashicorp/platform-docs-mdx
+
+## 17.6.0
+
+### Minor Changes
+
+- [#683](https://github.com/hashicorp/react-components/pull/683) [`ffca266c`](https://github.com/hashicorp/react-components/commit/ffca266ce977fa918ceb2986e6edacf8c9367180) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - pass `scope` to mdxContentHook
+
+## 17.5.0
+
+### Minor Changes
+
+- [#681](https://github.com/hashicorp/react-components/pull/681) [`d67e047c`](https://github.com/hashicorp/react-components/commit/d67e047cca49904eb23a21579744061f59728f06) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Expose `mdxContentHook` option on loader interfaces
+
 ## 17.4.0
 
 ### Minor Changes

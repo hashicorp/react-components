@@ -11,5 +11,10 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "react": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/radio-group"
   }
 }

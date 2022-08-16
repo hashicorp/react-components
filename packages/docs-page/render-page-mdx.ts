@@ -3,7 +3,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { Pluggable } from 'unified'
 import grayMatter from 'gray-matter'
 interface Options {
-  mdxContentHook?: (content: string) => string
+  mdxContentHook?: (content: string, scope: Options['scope']) => string
   remarkPlugins?: Pluggable[]
   rehypePlugins?: Pluggable[]
   scope?: Record<string, unknown>
@@ -12,7 +12,7 @@ interface Options {
 async function renderPageMdx(
   mdxFileString: string,
   {
-    mdxContentHook = (c) => c,
+    mdxContentHook = (c, scope) => c,
     remarkPlugins = [],
     rehypePlugins = [],
     scope,
@@ -22,7 +22,7 @@ async function renderPageMdx(
   frontMatter: Record<string, unknown>
 }> {
   const { data: frontMatter, content: rawContent } = grayMatter(mdxFileString)
-  const content = mdxContentHook(rawContent)
+  const content = mdxContentHook(rawContent, scope)
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins,

@@ -12,7 +12,7 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
    * It must be an absolute URL in order to work as expected as og:image.
    * Reference: https://ogp.me/#url
    */
-  if (typeof props.image !== 'undefined' && !isAbsoluteUrl(props.image)) {
+  if (typeof props.image === 'string' && !isAbsoluteUrl(props.image)) {
     const errorMessage = `Error: HashiHead "props.image" must be an absolute URL. Non-absolute URL detected: "${props.image}". Please provide a fully qualified absolute URL or "props.image".`
     if (IS_DEV) {
       throw new Error(errorMessage)

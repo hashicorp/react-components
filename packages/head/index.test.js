@@ -112,6 +112,12 @@ describe('<Head />', () => {
     global.console.error.mockRestore()
   })
 
+  it('should not throw an error if image is not a string', () => {
+    expect(() => {
+      renderHead(<Head image={null} />)
+    }).not.toThrowError()
+  })
+
   it('should render and display <link rel="preload"> tags', () => {
     const { container } = renderHead(
       <Head preload={[{ href: '/style.css', as: 'stylesheet' }]} />

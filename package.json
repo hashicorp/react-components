@@ -25,7 +25,7 @@
     "@hashicorp/platform-cli": "^2.0.0",
     "@hashicorp/platform-cms": "^0.3.0",
     "@hashicorp/platform-code-highlighting": "0.1.2",
-    "@hashicorp/platform-docs-mdx": "0.1.3",
+    "@hashicorp/platform-docs-mdx": "^0.2.0",
     "@hashicorp/platform-nextjs-plugin": "^2.1.0",
     "@hashicorp/platform-postcss-config": "^0.1.0",
     "@hashicorp/platform-types": "^0.3.0",
