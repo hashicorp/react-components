@@ -10,15 +10,16 @@
 }
 
 .eyebrow {
-  --color: var(--gray-2);
+  --color: var(--wpl-neutral-500);
 
-  composes: g-type-label-strong from global;
+  composes: g-type-body-large from global;
+  font-weight: var(--font-weight-bold);
   text-transform: inherit;
-  margin: 0 0 16px;
+  margin: 0 0 40px;
   color: var(--color);
 
   @nest .dark & {
-    --color: var(--gray-4);
+    --color: var(--wpl-neutral-300);
   }
 }
 
