@@ -21,21 +21,10 @@ module.exports = {
     control: { type: 'checkbox' },
     testValue: false,
   },
-  cta: {
-    type: 'object',
+  link: {
+    type: 'string',
     description: 'A link followed when the card is clicked.',
     required: true,
-    properties: {
-      title: {
-        description: 'The text used within the link.',
-        type: 'string',
-        required: false,
-      },
-      url: {
-        description: 'The url used within the link.',
-        type: 'string',
-        required: true,
-      },
-    },
+    testValue: 'https://hashicorp.com',
   },
 }
