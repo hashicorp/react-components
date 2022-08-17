@@ -13,14 +13,6 @@ module.exports = {
     options: ['light', 'dark'],
     testValue: 'light',
   },
-  featured: {
-    description:
-      'Determines whether the card will render with a "featured" layout or not',
-    type: 'boolean',
-    required: false,
-    control: { type: 'checkbox' },
-    testValue: false,
-  },
   link: {
     type: 'string',
     description: 'A link followed when the card is clicked.',
