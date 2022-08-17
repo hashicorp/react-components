@@ -35,7 +35,7 @@ function CheckboxInput({
     >
       <div className={s.wrapper}>
         <span className={s.checkbox}>
-          {field.value && <SvgrCheckmark />}
+          {field.value || field.checked ? <SvgrCheckmark /> : null}
           <input id={inputId} type="checkbox" {...field} />
         </span>
 
