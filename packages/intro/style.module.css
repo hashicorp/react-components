@@ -15,7 +15,7 @@
   composes: g-type-body-large from global;
   font-weight: var(--font-weight-bold);
   text-transform: inherit;
-  margin: 0 0 40px;
+  margin: 0 0 32px;
   color: var(--color);
 
   @nest .dark & {
