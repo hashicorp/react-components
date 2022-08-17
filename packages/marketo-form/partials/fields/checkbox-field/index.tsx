@@ -7,7 +7,7 @@ import type { MarketoFormCheckboxField } from '../../../types'
 const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
   const { register, watch } = useFormContext()
   const { errors, touchedFields } = useFormState()
-  const value = watch(field.id, false)
+  const checked = watch(field.id, false)
 
   return (
     <FieldWrapper size="lg">
@@ -15,7 +15,7 @@ const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
         label={formattedLabel(field)}
         field={{
           ...register(field.id),
-          value,
+          checked,
         }}
         form={{
           touched: {
