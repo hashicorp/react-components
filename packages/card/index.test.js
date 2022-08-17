@@ -1,29 +1,22 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import Card from '.'
 
 describe('<Card />', () => {
   it('should render the provided React children', () => {
-    const cardText = 'New'
-    render(<Card>{cardText}</Card>)
-    const cardElement = screen.getByText(cardText)
-    expect(cardElement).toBeInTheDocument()
+    const cardText = 'Children text'
+    const { container } = render(<Card>{cardText}</Card>)
+    expect(container).toHaveTextContent(cardText)
   })
 
-  it('should render the default variant', () => {
-    render(<Card>New</Card>)
-    const cardElement = screen.getByText('New')
-    expect(cardElement).toHaveClass('card', 'neutral', 'primary')
-    expect(cardElement).not.toHaveClass('secondary')
+  it('should render the default (light) variant', () => {
+    const { container } = render(<Card heading="Heading" />)
+    expect(container).toHaveClass('card', 'light')
+    expect(container).not.toHaveClass('dark')
   })
 
-  it('should render the correct themed variant', () => {
-    render(
-      <Card theme="consul" variant="secondary">
-        New
-      </Card>
-    )
-    const cardElement = screen.getByText('New')
-    expect(cardElement).toHaveClass('card', 'consul', 'secondary')
-    expect(cardElement).not.toHaveClass('primary')
+  it('should render the dark variant', () => {
+    const { container } = render(<Card appearance="dark" heading="Heading" />)
+    expect(container).toHaveClass('card', 'dark')
+    expect(container).not.toHaveClass('light')
   })
 })
