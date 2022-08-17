@@ -1,0 +1,143 @@
+---
+componentName: 'Card'
+---
+
+Cards are [placeholder description here].
+
+<LiveComponent>
+  {`
+<>
+  <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '32px'}}>
+    <Card
+      link="https://hashicorp.com"
+      thumbnail={
+        {src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png" , alt: "HashiConf Europe 2022 Recap" }
+      }
+      meta={[
+        'August 15, 2022',
+        'Category'
+      ]}
+      heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+      description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    />
+    <Card
+      appearance="dark"
+      link="https://hashicorp.com"
+      thumbnail={
+        {src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png" , alt: "HashiConf Europe 2022 Recap" }
+      }
+      meta={[
+        'August 15, 2022',
+        'Category'
+      ]}
+      heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+      description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    />
+    <Card
+      link="https://hashicorp.com"
+      heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+    />
+  </div>
+</>
+`}
+</LiveComponent>
+
+## Examples
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Light theme
+</h3>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <Card
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+  />
+  <Card
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+  />
+  <Card
+    link="https://hashicorp.com"
+    meta={['August 15, 2022', 'Category']}
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+  />
+</div>
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Dark theme
+</h3>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <Card
+    appearance="dark"
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+  />
+  <Card
+    appearance="dark"
+    link="https://hashicorp.com"
+    meta={['Category']}
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+  />
+  <Card
+    appearance="dark"
+    link="https://hashicorp.com"
+    meta={['August 15, 2022', 'Category']}
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
+  />
+</div>
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Using composable children
+</h3>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <Card link="https://hashicorp.com">
+    <Card.Content>
+      <Card.Heading>Composable heading</Card.Heading>
+      Arbitrary text
+    </Card.Content>
+  </Card>
+  <Card link="https://hashicorp.com">
+    <Card.Content>
+      <Card.Meta items={['Composable meta']} />
+      <Card.Description>Composable description</Card.Description>
+      <p style={{ background: 'red' }}>Other arbitrary content</p>
+    </Card.Content>
+  </Card>
+  <Card link="https://hashicorp.com">
+    <Card.Content>
+      <Card.Heading>Composable heading</Card.Heading>
+      Arbitrary text
+      <p style={{ background: 'red' }}>Other arbitrary content</p>
+    </Card.Content>
+  </Card>
+</div>
+
+## Props
+
+<PropsTable props={componentProps} />
