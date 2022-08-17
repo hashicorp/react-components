@@ -51,6 +51,9 @@ const UTM_FORM_PROPS = {
           valueFrom: 'query',
           parameterName: 'utm_medium',
         },
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
       },
       {
         id: 'form_page_url__c',
@@ -59,9 +62,58 @@ const UTM_FORM_PROPS = {
         rowNumber: 7,
         columnNumber: 0,
         required: false,
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
       },
     ],
   },
 }
 
-export { BASIC_FORM_PROPS, UTM_FORM_PROPS }
+const VISIBILITY_RULE_FORM_PROPS = {
+  ...BASIC_FORM_PROPS,
+  marketoForm: {
+    result: [
+      ...BASIC_FORM_PROPS.marketoForm.result,
+      {
+        id: 'Phone',
+        label: 'Phone Number',
+        dataType: 'telephone',
+        validationMessage: 'Must be a phone number.',
+        rowNumber: 6,
+        columnNumber: 0,
+        required: false,
+        formPrefill: true,
+        visibilityRules: {
+          rules: [
+            {
+              subjectField: 'fastTracktoSales',
+              operator: 'is',
+              values: ['yes'],
+              altLabel: 'Phone Number:',
+            },
+          ],
+          ruleType: 'show',
+        },
+      },
+      {
+        id: 'fastTracktoSales',
+        label: 'Have salesperson contact me',
+        dataType: 'checkbox',
+        validationMessage: 'This field is required.',
+        rowNumber: 7,
+        columnNumber: 0,
+        required: false,
+        formPrefill: true,
+        fieldMetaData: {
+          initiallyChecked: false,
+        },
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      },
+    ],
+  },
+}
+
+export { BASIC_FORM_PROPS, UTM_FORM_PROPS, VISIBILITY_RULE_FORM_PROPS }

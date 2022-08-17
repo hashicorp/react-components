@@ -2,7 +2,11 @@ import { render, screen, waitFor } from '@testing-library/react'
 import nock from 'nock'
 import userEvent from '@testing-library/user-event'
 import MarketoForm from './'
-import { BASIC_FORM_PROPS, UTM_FORM_PROPS } from './fixtures'
+import {
+  BASIC_FORM_PROPS,
+  UTM_FORM_PROPS,
+  VISIBILITY_RULE_FORM_PROPS,
+} from './fixtures'
 
 describe('MarketoForm', () => {
   let originalLocation
@@ -211,5 +215,17 @@ describe('MarketoForm', () => {
       'This field is required. Additional message.'
     )
     expect(errorMessage).toBeInTheDocument()
+  })
+
+  test('handles simple visibility rules', async () => {
+    render(<MarketoForm {...VISIBILITY_RULE_FORM_PROPS} />)
+
+    expect(screen.queryByLabelText('Phone Number')).toBeNull()
+
+    const fastTrackField = screen.getByLabelText('Have salesperson contact me')
+    expect(fastTrackField).toBeInTheDocument()
+    userEvent.click(fastTrackField)
+
+    expect(screen.getByLabelText('Phone Number')).toBeInTheDocument()
   })
 })
