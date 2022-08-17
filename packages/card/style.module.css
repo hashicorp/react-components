@@ -12,9 +12,15 @@
   overflow: hidden;
   position: relative;
   background-color: var(--background-color);
+  transition: 0.2s ease;
+  transition-property: border-color, background-color;
 
   &:hover {
     --border-color: var(--wpl-neutral-300);
+
+    & .cta svg {
+      transform: translateX(2px);
+    }
   }
 
   &:focus-within {
@@ -93,4 +99,8 @@
   color: var(--wpl-neutral-200);
   padding: 8px 24px 24px 24px;
   margin-top: auto;
+
+  & svg {
+    transition: transform 0.25s ease;
+  }
 }
