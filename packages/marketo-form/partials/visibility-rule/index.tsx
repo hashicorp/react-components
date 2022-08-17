@@ -13,10 +13,10 @@ const FieldWithVisibilityRule = ({
   const { watch } = useFormContext()
 
   // Currently we only support the first defined rule.
-  const value = watch(field.visibilityRules.rules![0].subjectField)
+  const value = watch(field.visibilityRules!.rules![0].subjectField)
 
   const show = useMemo(() => {
-    const { operator, values } = field.visibilityRules.rules![0]
+    const { operator, values } = field.visibilityRules!.rules![0]
     return (
       operator === 'is' &&
       (values.includes(value) ||
@@ -35,11 +35,11 @@ const VisibilityRule = ({
   field: MarketoFormField
   components?: MarketoFormComponents
 }) => {
-  if (field.visibilityRules.ruleType === 'alwaysShow') {
-    return <Field field={field} components={components} />
+  if (field.visibilityRules && field.visibilityRules.ruleType === 'show') {
+    return <FieldWithVisibilityRule field={field} components={components} />
   }
 
-  return <FieldWithVisibilityRule field={field} components={components} />
+  return <Field field={field} components={components} />
 }
 
 export default VisibilityRule

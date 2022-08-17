@@ -33,7 +33,7 @@ export interface MarketoBaseFormField {
   required: boolean
   validationMessage?: string
   autoFill?: Autofill
-  visibilityRules: VisibilityRules
+  visibilityRules?: VisibilityRules
 }
 
 export interface MarketoFormTextField extends MarketoBaseFormField {
