@@ -63,6 +63,13 @@
   display: grid;
   row-gap: 16px;
   padding: 24px 24px 0 24px;
+
+  /* HACK: Remove margin on phantom p tag that wraps headings in <Content /> */
+
+  /* ! TODO Figure out the underlying issue so this rule can be removed */
+  & > p:first-child {
+    margin: 0;
+  }
 }
 
 .heading {
