@@ -10,9 +10,10 @@ Cards are used to promote other marketing pages.
   <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '32px'}}>
     <Card
       link="https://hashicorp.com"
-      thumbnail={
-        {src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png" , alt: "HashiConf Europe 2022 Recap" }
-      }
+      thumbnail={{
+        src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png",
+        alt: "HashiConf Europe 2022 Recap"
+      }}
       meta={[
         'August 15, 2022',
         'Category'
@@ -23,9 +24,10 @@ Cards are used to promote other marketing pages.
     <Card
       appearance="dark"
       link="https://hashicorp.com"
-      thumbnail={
-        {src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png" , alt: "HashiConf Europe 2022 Recap" }
-      }
+      thumbnail={{
+        src: "https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png",
+        alt: "HashiConf Europe 2022 Recap"
+      }}
       meta={[
         'August 15, 2022',
         'Category'
@@ -119,22 +121,22 @@ Cards are used to promote other marketing pages.
 >
   <Card link="https://hashicorp.com">
     <Card.Content>
+      <Card.Thumbnail 
+        src="https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png",
+        alt="HashiConf Europe 2022 Recap"
+      />
       <Card.Heading>Composable heading</Card.Heading>
-      Arbitrary text
     </Card.Content>
   </Card>
   <Card link="https://hashicorp.com">
     <Card.Content>
       <Card.Meta items={['Composable meta']} />
       <Card.Description>Composable description</Card.Description>
-      <p style={{ background: 'red' }}>Other arbitrary content</p>
     </Card.Content>
   </Card>
   <Card link="https://hashicorp.com">
     <Card.Content>
       <Card.Heading>Composable heading</Card.Heading>
-      Arbitrary text
-      <p style={{ background: 'red' }}>Other arbitrary content</p>
     </Card.Content>
   </Card>
 </div>
