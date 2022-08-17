@@ -7,7 +7,7 @@ Cards are [placeholder description here].
 <LiveComponent>
   {`
 <>
-  <div style={{display: 'flex', gap: '32px'}}>
+  <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '32px'}}>
     <Card
       link="https://hashicorp.com"
       thumbnail={
@@ -48,7 +48,14 @@ Cards are [placeholder description here].
   Light theme
 </h3>
 
-<div style={{ display: 'flex', gap: '32px', marginBottom: '32px' }}>
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
   <Card
     link="https://hashicorp.com"
     heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…"
@@ -69,7 +76,14 @@ Cards are [placeholder description here].
   Dark theme
 </h3>
 
-<div style={{ display: 'flex', gap: '32px', marginBottom: '32px' }}>
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
   <Card
     appearance="dark"
     link="https://hashicorp.com"
@@ -94,7 +108,14 @@ Cards are [placeholder description here].
   Using composable children
 </h3>
 
-<div style={{ display: 'flex', gap: '32px', marginBottom: '32px' }}>
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
   <Card link="https://hashicorp.com">
     <Card.Content>
       <Card.Heading>Composable heading</Card.Heading>
