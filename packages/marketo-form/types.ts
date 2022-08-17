@@ -13,6 +13,18 @@ export interface Autofill {
   parameterName: string
 }
 
+export interface VisibilityRule {
+  subjectField: string
+  operator: 'is'
+  values: string[]
+  altLabel: string
+}
+
+export interface VisibilityRules {
+  rules?: VisibilityRule[]
+  ruleType: 'alwaysShow' | 'show'
+}
+
 export interface MarketoBaseFormField {
   id: string
   dataType: MarketoFormDatatype
@@ -21,6 +33,7 @@ export interface MarketoBaseFormField {
   required: boolean
   validationMessage?: string
   autoFill?: Autofill
+  visibilityRules: VisibilityRules
 }
 
 export interface MarketoFormTextField extends MarketoBaseFormField {

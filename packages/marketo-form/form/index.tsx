@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import Button from '@hashicorp/react-button'
-import Field from '../partials/field'
+import VisibilityRule from '../partials/visibility-rule'
 import NameField from '../partials/fields/name-field'
 import {
   convertToRESTFields,
@@ -195,7 +195,7 @@ const Form = ({
           }
 
           return (
-            <Field
+            <VisibilityRule
               key={fields[0].id}
               components={components}
               field={fields[0]}
