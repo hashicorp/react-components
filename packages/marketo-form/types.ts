@@ -59,17 +59,22 @@ export interface SelectValue {
   isDefault?: boolean
 }
 
-export interface FieldMetaData {
+export interface SelectFieldMetaData {
   values?: SelectValue[]
 }
 
 export interface MarketoFormSelectField extends MarketoBaseFormField {
   dataType: 'select'
-  fieldMetaData: FieldMetaData
+  fieldMetaData: SelectFieldMetaData
+}
+
+export interface CheckboxFieldMetaData {
+  initiallyChecked: boolean
 }
 
 export interface MarketoFormCheckboxField extends MarketoBaseFormField {
   dataType: 'checkbox'
+  fieldMetaData: CheckboxFieldMetaData
 }
 
 export interface MarketoFormHiddenField extends MarketoBaseFormField {

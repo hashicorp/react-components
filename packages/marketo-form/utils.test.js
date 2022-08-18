@@ -1,5 +1,5 @@
 import { calculateDefaultValues, formattedLabel, groupFields } from './utils'
-import { UTM_FORM_PROPS } from './fixtures'
+import { UTM_FORM_PROPS, VISIBILITY_RULE_FORM_PROPS } from './fixtures'
 
 describe('formattedLabel', () => {
   it('appends asterisk for required fields', () => {
@@ -62,11 +62,13 @@ describe('groupFields', () => {
 
 describe('calculateDefaultValues', () => {
   it('calculates default values', () => {
-    expect(calculateDefaultValues(UTM_FORM_PROPS.marketoForm.result)).toEqual({
+    expect(
+      calculateDefaultValues(VISIBILITY_RULE_FORM_PROPS.marketoForm.result)
+    ).toEqual({
       FirstName: '',
       LastName: '',
-      utm_medium__c: '',
-      form_page_url__c: '',
+      Phone: '',
+      fastTracktoSales: false,
     })
   })
 

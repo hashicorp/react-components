@@ -155,8 +155,8 @@ export function groupFields(
 export function calculateDefaultValues(
   fields: MarketoFormField[],
   values?: Record<string, any>
-): Record<string, string> {
-  const initialValues: Record<string, string> = {}
+): Record<string, string | boolean> {
+  const initialValues: Record<string, string | boolean> = {}
   fields.forEach((field) => {
     if (field.defaultValue && field.defaultValue !== '') {
       if (field.dataType === 'select') {
@@ -166,9 +166,12 @@ export function calculateDefaultValues(
       } else {
         initialValues[field.id] = field.defaultValue
       }
+    } else if (field.dataType === 'checkbox') {
+      initialValues[field.id] = field.fieldMetaData.initiallyChecked
     } else {
       initialValues[field.id] = ''
     }
   })
+  console.log({ initialValues })
   return { ...initialValues, ...values }
 }
