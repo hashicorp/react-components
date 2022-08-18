@@ -87,6 +87,8 @@ describe('<Card />', () => {
     expect(getByAltText(thumbnail.alt).tagName).toBe('IMG')
   })
 
+  // Children render tests
+
   it('should render the provided React children', () => {
     const cardText = 'Children text'
 
@@ -96,6 +98,8 @@ describe('<Card />', () => {
     expect(rootElement).toBeInTheDocument()
     expect(rootElement).toHaveTextContent(cardText)
   })
+
+  // Appearance tests
 
   it('should render the default (light) variant', () => {
     render(<Card link="https://hashicorp.com" heading="Heading" />)
