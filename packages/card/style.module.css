@@ -55,6 +55,7 @@
   color: var(--secondary-text-color);
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
 }
