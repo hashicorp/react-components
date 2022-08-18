@@ -1,0 +1,144 @@
+---
+componentName: 'MarketoForm'
+---
+
+Renders a form from Marketo.
+
+<LiveComponent>
+{`<MarketoForm
+  formId={9999}
+  marketoForm={{
+    result: [
+      {
+        id: 'FirstName',
+        label: 'First Name:',
+        dataType: 'text',
+        validationMessage: 'This field is required.',
+        required: true,
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      },
+      {
+        id: 'LastName',
+        label: 'Last Name:',
+        dataType: 'text',
+        validationMessage: 'This field is required.',
+        required: true,
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      },
+      {
+        id: 'Email',
+        label: 'Business Email:',
+        dataType: 'email',
+        validationMessage:
+          "Must be valid email. <span class='mktoErrorDetail'>example@yourdomain.com</span>",
+        required: true,
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      },
+      {
+        id: 'Company',
+        label: 'Company:',
+        dataType: 'text',
+        validationMessage: 'This field is required.',
+        required: true,
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      },
+      {
+        id: 'FavoriteProduct',
+        label: 'Favorite HashiCorp Product',
+        dataType: 'select',
+        required: true,
+        validationMessage: 'This field is required.',
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+        fieldMetaData: {
+          values: [
+            { label: 'Terraform', value: 'terraform' },
+            { label: 'Packer', value: 'packer' },
+            { label: 'Consul', value: 'consul' },
+            { label: 'Vault', value: 'vault' },
+            { label: 'Boundary', value: 'boundary' },
+            { label: 'Nomad', value: 'nomad' },
+            { label: 'Waypoint', value: 'waypoint' },
+            { label: 'Vagrant', value: 'vagrant' },
+          ]
+        }
+      },
+      {
+        id: 'appendToNotes',
+        label: 'Comments',
+        dataType: 'textArea',
+        required: false,
+        validationMessage: 'This field is required.',
+        visibilityRules: {
+          ruleType: 'alwaysShow'
+        }
+      },
+      {
+        id: 'Phone',
+        label: 'Phone:',
+        dataType: 'text',
+        validationMessage: 'This field is required.',
+        required: false,
+        visibilityRules: {
+          ruleType: 'show',
+          rules: [
+            {
+              subjectField: 'fastTracktoSales',
+              operator: 'is',
+              values: ['yes'],
+              altLabel: 'Phone Number:'
+            }
+          ]
+        },
+      },
+      {
+        id: 'fastTracktoSales',
+        label: "I'd like a sales person to contact me about a trial or pricing.",
+        dataType: 'checkbox',
+        validationMessage: 'This field is required.',
+        rowNumber: 6,
+        columnNumber: 0,
+        required: false,
+        formPrefill: true,
+        fieldMetaData: {
+          initiallyChecked: false,
+        },
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      },
+      {
+        id: 'Consent_Privacy_Policy__c',
+        dataType: 'checkbox',
+        validationMessage: 'This field is required.',
+        rowNumber: 6,
+        columnNumber: 0,
+        required: true,
+        formPrefill: true,
+        fieldMetaData: {
+          initiallyChecked: false,
+        },
+        visibilityRules: {
+          ruleType: 'alwaysShow',
+        },
+      }
+    ]
+  }}
+  submitTitle="Download Now"
+  onSubmitSuccess={() => alert('Success!')}
+  onSubmitFailure={() => alert('Failure!')}
+/>`}
+</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
