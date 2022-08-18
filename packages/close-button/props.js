@@ -4,6 +4,11 @@ module.exports = {
     description: 'Display on light or dark background.',
     options: ['light', 'dark'],
   },
+  size: {
+    type: 'string',
+    description: 'The size of rendered button.',
+    options: ['medium', 'large'],
+  },
   className: {
     type: 'string',
     description: 'Optional class to be added to the button element.',

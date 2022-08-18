@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { IconX16 } from '@hashicorp/flight-icons/svg-react/x-16'
+import { IconX24 } from '@hashicorp/flight-icons/svg-react/x-24'
 import type { CloseButtonProps } from './types'
 import s from './style.module.css'
 
@@ -9,15 +10,16 @@ export default function CloseButton({
   onClick,
   disabled,
   ariaLabel,
+  size = 'medium',
 }: CloseButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={classNames(s.closeButton, s[appearance], className)}
+      className={classNames(s.closeButton, s[appearance], s[size], className)}
       disabled={disabled}
       aria-label={ariaLabel}
     >
-      <IconX16 />
+      {size === 'medium' ? <IconX16 /> : <IconX24 />}
     </button>
   )
 }
