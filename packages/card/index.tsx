@@ -24,7 +24,7 @@ function Card(props: CardProps) {
   } = props
 
   return (
-    <div className={classNames(s.card, s[appearance])}>
+    <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
       {children ? (
         children
       ) : (
@@ -50,7 +50,7 @@ function Card(props: CardProps) {
 
 function Thumbnail({ src, alt }: ThumbnailProps) {
   return (
-    <div className={s.thumbnail}>
+    <div className={s.thumbnail} data-testid="wpl-card-thumbnail">
       <div className={s.image}>
         <Image
           src={src}
@@ -67,7 +67,7 @@ function Thumbnail({ src, alt }: ThumbnailProps) {
 
 function Meta({ items }: MetaProps) {
   return (
-    <ul className={s.meta}>
+    <ul className={s.meta} data-testid="wpl-card-meta">
       {items.map((item, stableIdx) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
@@ -86,15 +86,27 @@ function Meta({ items }: MetaProps) {
 }
 
 function Content({ children }: ContentProps) {
-  return <div className={s.content}>{children}</div>
+  return (
+    <div className={s.content} data-testid="wpl-card-content">
+      {children}
+    </div>
+  )
 }
 
 function Heading({ as: Component = 'h2', children }: HeadingProps) {
-  return <Component className={s.heading}>{children}</Component>
+  return (
+    <Component className={s.heading} data-testid="wpl-card-heading">
+      {children}
+    </Component>
+  )
 }
 
 function Description({ children }: DescriptionProps) {
-  return <p className={s.description}>{children}</p>
+  return (
+    <p className={s.description} data-testid="wpl-card-description">
+      {children}
+    </p>
+  )
 }
 
 Card.Thumbnail = Thumbnail
