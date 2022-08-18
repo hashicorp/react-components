@@ -22,7 +22,12 @@ export default function CountryField({ field }: CountryFieldProps) {
     return setValue(field.id, value)
   }
 
-  const { onChange, onBlur, name } = register(field.id)
+  const { onBlur, name, ref } = register(field.id)
+
+  function onChangeHandler(e: any) {
+    const val = e.currentTarget.value
+    setValue(field.id, val)
+  }
 
   return (
     <>
@@ -31,12 +36,15 @@ export default function CountryField({ field }: CountryFieldProps) {
         invalidInputValue={showError}
         onSelect={handleSelect}
         label="Country"
-        inputProps={{
-          name,
-          onChange,
-          onBlur,
-          placeholder: 'Select your country',
-        }}
+        inputProps={
+          {
+            name,
+            onChange: onChangeHandler,
+            onBlur,
+            ref,
+            placeholder: 'Select your country',
+          } as any
+        }
         options={
           field.fieldMetaData.values
             ? field.fieldMetaData.values.map((plv) => plv.value)
