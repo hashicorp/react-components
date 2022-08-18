@@ -15,7 +15,9 @@ jobs:
     if: contains( github.event.pull_request.labels.*.name, 'release:canary')
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js 16.x
         uses: actions/setup-node@master
