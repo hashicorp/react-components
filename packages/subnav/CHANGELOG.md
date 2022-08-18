@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.3.6
+
+### Patch Changes
+
+- [#702](https://github.com/hashicorp/react-components/pull/702) [`bda1c7f5`](https://github.com/hashicorp/react-components/commit/bda1c7f54523744cbbb6d4fa40277d9788bc93ca) Thanks [@zchsh](https://github.com/zchsh)! - Reverts a flawed fix to an overflow issue.
+
 ## 9.3.5
 
 ### Patch Changes
