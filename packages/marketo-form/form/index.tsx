@@ -125,6 +125,21 @@ const Form = ({
             }
           }
         }
+
+        // Validate that select field value is an allowed value
+        if (field.dataType === 'select') {
+          if (
+            field.id in values &&
+            field.fieldMetaData.values &&
+            !field.fieldMetaData.values
+              .map((v) => v.value)
+              .includes(values[field.id] as string)
+          ) {
+            errors[field.id] = {
+              message: field.validationMessage ?? 'Please select an option.',
+            }
+          }
+        }
       })
 
       if (validateFields) {
