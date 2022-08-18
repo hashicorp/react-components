@@ -38,6 +38,21 @@ async function getForm(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function submitForm(req: NextApiRequest, res: NextApiResponse) {
+  // Don't submit forms to the Marketo API when using E2E tests.
+  if (process.env.E2E_TESTS === 'true') {
+    res.status(200).json({
+      requestId: '7d85#181a7ae5e56',
+      result: [
+        {
+          id: 25325329,
+          status: 'updated',
+        },
+      ],
+      success: true,
+    })
+    return
+  }
+
   try {
     const marketoRes = await client.submitForm(req.body)
     const form = await marketoRes.json()
