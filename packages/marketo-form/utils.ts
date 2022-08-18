@@ -172,6 +172,5 @@ export function calculateDefaultValues(
       initialValues[field.id] = ''
     }
   })
-  console.log({ initialValues })
   return { ...initialValues, ...values }
 }
