@@ -14,6 +14,11 @@ const defaultProps = {
 
 describe('<Card />', () => {
   // Prop tests
+  it('should render the provided link prop', () => {
+    render(<Card {...defaultProps} />)
+
+    expect(screen.getByRole('link')).toHaveAttribute('href', defaultProps.link)
+  })
 
   it('should render the provided heading prop', () => {
     render(<Card {...defaultProps} />)
@@ -131,6 +136,20 @@ describe('<Card />', () => {
 
     screen.getByText(arbitraryText)
     expect(screen.queryByText(defaultProps.heading)).not.toBeInTheDocument()
+  })
+
+  it('should render correct levels for the Heading sub-component via the as prop', () => {
+    render(
+      <Card link={defaultProps.link}>
+        <Card.Heading>As h2</Card.Heading>
+        <Card.Heading as="h3">As h3</Card.Heading>
+        <Card.Heading as="h4">As h4</Card.Heading>
+      </Card>
+    )
+
+    expect(screen.getByText('As h2').tagName).toBe('H2')
+    expect(screen.getByText('As h3').tagName).toBe('H3')
+    expect(screen.getByText('As h4').tagName).toBe('H4')
   })
 
   // Appearance tests
