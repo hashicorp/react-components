@@ -87,6 +87,10 @@ const defaultFieldGroupings = {
   },
 }
 
+function isValidEmail(value: string): boolean {
+  return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+}
+
 const Form = ({
   formId,
   marketoForm,
@@ -137,6 +141,16 @@ const Form = ({
           ) {
             errors[field.id] = {
               message: field.validationMessage ?? 'Please select an option.',
+            }
+          }
+        }
+
+        if (field.dataType === 'email') {
+          if (field.id in values && !isValidEmail(values[field.id] as string)) {
+            errors[field.id] = {
+              message:
+                field.validationMessage ??
+                'Please enter a valid email address.',
             }
           }
         }
