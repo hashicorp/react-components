@@ -41,7 +41,7 @@ describe('<Card />', () => {
   it('should render the provided meta prop (two items)', () => {
     const cardMeta = ['August 15, 2022', 'Category']
 
-    render(<Card {...defaultProps} meta={cardMeta} />)
+    render(<Card {...defaultProps} />)
 
     const metaElement = screen.getByTestId('wpl-card-meta')
 
@@ -59,11 +59,78 @@ describe('<Card />', () => {
 
   // Children render tests
 
-  it('should render the provided React children', () => {
-    const cardText = 'Children text'
+  it('should render provided Thumbnail sub-component children', () => {
+    const { getByAltText } = render(
+      <Card link={defaultProps.link}>
+        <Card.Thumbnail {...defaultProps.thumbnail} />
+      </Card>
+    )
 
-    render(<Card link={defaultProps.link}>{cardText}</Card>)
-    screen.getByText(cardText)
+    expect(getByAltText(defaultProps.thumbnail.alt).tagName).toBe('IMG')
+  })
+
+  it('should render provided Meta sub-component children', () => {
+    render(
+      <Card link={defaultProps.link}>
+        <Card.Meta items={defaultProps.meta} />
+      </Card>
+    )
+
+    const metaElement = screen.getByTestId('wpl-card-meta')
+
+    defaultProps.meta.forEach((item) => {
+      expect(metaElement).toContainElement(screen.getByText(item))
+    })
+  })
+
+  it('should render provided Heading sub-component children', () => {
+    render(
+      <Card link={defaultProps.link}>
+        <Card.Heading>{defaultProps.heading}</Card.Heading>
+      </Card>
+    )
+
+    screen.getByText(defaultProps.heading)
+  })
+
+  it('should render provided Description sub-component children', () => {
+    render(
+      <Card link={defaultProps.link}>
+        <Card.Description>{defaultProps.description}</Card.Description>
+      </Card>
+    )
+
+    screen.getByText(defaultProps.description)
+  })
+
+  it('should render arbitrary JSX children', () => {
+    const arbitraryText = 'Arbitrary paragraph text'
+    const arbitraryParagraph = <p>{arbitraryText}</p>
+
+    render(<Card link={defaultProps.link}>{arbitraryParagraph}</Card>)
+
+    screen.getByText(arbitraryText)
+  })
+
+  it('should render arbitrary text content', () => {
+    const arbitraryText = 'Arbitrary text'
+
+    render(<Card link={defaultProps.link}>{arbitraryText}</Card>)
+
+    screen.getByText(arbitraryText)
+  })
+
+  it('should not render props-based layout if children are provided', () => {
+    const arbitraryText = 'Arbitrary text'
+
+    render(
+      <Card link={defaultProps.link} heading={defaultProps.heading}>
+        {arbitraryText}
+      </Card>
+    )
+
+    screen.getByText(arbitraryText)
+    expect(screen.queryByText(defaultProps.heading)).not.toBeInTheDocument()
   })
 
   // Appearance tests
