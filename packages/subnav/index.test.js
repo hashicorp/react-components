@@ -176,12 +176,6 @@ describe('<Subnav />', () => {
     expect(titleElem.getAttribute('href')).toBe(url)
   })
 
-  it('should render custom menu text', () => {
-    const customMenuText = 'Hello world'
-    render(<Subnav {...baseProps} menuText={customMenuText} />)
-    screen.findByText(customMenuText)
-  })
-
   const logoSlugs = [
     'terraform',
     'vault',
