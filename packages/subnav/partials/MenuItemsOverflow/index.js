@@ -48,6 +48,7 @@ class MenuItemsOverflow extends React.Component {
       Link,
       hideGithubStars,
       theme,
+      menuText,
     } = this.props
     const { isCollapsed } = this.state
     return (
@@ -55,7 +56,7 @@ class MenuItemsOverflow extends React.Component {
         <DropdownTrigger
           isCollapsed={isCollapsed}
           onClick={this.toggleCollapsed}
-          text="Menu"
+          text={menuText}
           product={product}
         />
         <div
