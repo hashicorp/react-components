@@ -37,6 +37,7 @@ function SubnavInner({
   Link,
   matchOnBasePath = false,
   theme,
+  menuText = 'Menu',
 }) {
   const { themeClass } = useProductMeta(product) // overrides --brand css vars
   // Add _isActiveUrl to menuItems so we can highlight them appropriately
@@ -104,6 +105,7 @@ function SubnavInner({
             product={product}
             Link={Link}
             theme={theme}
+            menuText={menuText}
           />
         )}
       </div>
