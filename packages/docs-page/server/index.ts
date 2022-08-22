@@ -22,7 +22,7 @@ export { default as validateFilePaths } from '@hashicorp/react-docs-sidenav/util
  */
 export interface BaseOpts {
   fallback?: GetStaticPathsResult['fallback']
-  revalidate: number
+  revalidate?: number | boolean
   product: string
   scope?: Record<string, $TSFixMe>
 }
