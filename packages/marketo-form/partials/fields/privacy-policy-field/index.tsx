@@ -6,7 +6,7 @@ import type { MarketoFormCheckboxField } from '../../../types'
 const PrivacyPolicyField = ({ field }: { field: MarketoFormCheckboxField }) => {
   const { register, watch } = useFormContext()
   const { errors, touchedFields } = useFormState()
-  const value = watch(field.id, false)
+  const checked = watch(field.id, false)
 
   return (
     <FieldWrapper size="lg">
@@ -21,7 +21,7 @@ const PrivacyPolicyField = ({ field }: { field: MarketoFormCheckboxField }) => {
                    </a>`}
         field={{
           ...register(field.id),
-          value,
+          checked,
         }}
         form={{
           touched: {
