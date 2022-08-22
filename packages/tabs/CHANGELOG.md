@@ -1,5 +1,11 @@
 # @hashicorp/react-tabs
 
+## 7.2.1
+
+### Patch Changes
+
+- [#706](https://github.com/hashicorp/react-components/pull/706) [`77dff81a`](https://github.com/hashicorp/react-components/commit/77dff81acb33e7adcc73b8ef808b0e0b6ef41db5) Thanks [@BRKalow](https://github.com/BRKalow)! - Fix case where the activeTabIdx of a nested Tabs instance is not reset when tabs content changes
+
 ## 7.2.0
 
 ### Minor Changes
