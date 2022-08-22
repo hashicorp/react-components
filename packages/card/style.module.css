@@ -32,6 +32,14 @@
     outline-offset: 0;
   }
 
+  &.light {
+    &:hover {
+      & .cta {
+        color: var(--border-color);
+      }
+    }
+  }
+
   &.dark {
     --border-color: var(--wpl-neutral-800);
     --primary-text-color: var(--wpl-neutral-0);
@@ -92,6 +100,7 @@
   color: var(--wpl-neutral-200);
   padding: 8px 24px 24px 24px;
   margin-top: auto;
+  transition: color 0.25s ease;
 
   & svg {
     transition: transform 0.25s ease;
