@@ -1,4 +1,4 @@
-module.exports = {
+const baseProps = {
   children: {
     type: 'function',
     description: 'Children to render into the Card.',
@@ -51,4 +51,59 @@ module.exports = {
     required: true,
     testValue: 'https://hashicorp.com',
   },
+}
+
+const thumbnailProps = {
+  src: {
+    description: 'URL for the image',
+    type: 'string',
+    control: { type: 'input' },
+    required: true,
+  },
+  alt: {
+    description: 'Alternative text for the image',
+    type: 'string',
+    control: { type: 'input' },
+    required: false,
+  },
+}
+
+const metaProps = {
+  items: {
+    type: 'array',
+    description: 'Content shown above the card heading.',
+    required: false,
+    testValue: ['August 15, 2022', 'Category'],
+  },
+}
+
+const headingProps = {
+  as: {
+    description: 'Changes the HTML element used to wrap the heading text.',
+    type: 'string',
+    required: false,
+    options: ['h2', 'h3', 'h4'],
+    testValue: 'h2',
+  },
+  children: {
+    type: 'string',
+    description: 'Text to render into the component.',
+    required: true,
+  },
+}
+
+const descriptionProps = {
+  children: {
+    type: 'string',
+    description: 'Text to render into the component.',
+    required: true,
+  },
+}
+
+module.exports = {
+  baseProps,
+  thumbnailProps,
+  metaProps,
+  headingProps,
+  descriptionProps,
 }
