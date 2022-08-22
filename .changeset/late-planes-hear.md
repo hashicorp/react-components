@@ -2,4 +2,4 @@
 '@hashicorp/react-subnav': minor
 ---
 
-Adds menuText prop
+Adds menuText prop and min-width to dropdown
