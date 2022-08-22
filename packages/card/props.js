@@ -1,8 +1,7 @@
 module.exports = {
   children: {
-    description: 'Sub-components added to the card content.',
-    type: 'string',
-    control: { type: 'text' },
+    type: 'function',
+    description: 'Children to render into the Card.',
     required: true,
   },
   thumbnail: {
