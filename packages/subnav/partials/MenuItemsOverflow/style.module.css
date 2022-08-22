@@ -16,7 +16,7 @@
   position: absolute;
   right: 0;
   top: 100%;
-  width: 256px;
+  min-width: 256px;
   z-index: 1;
 
   &.isCollapsed {
