@@ -1,15 +1,43 @@
-import { ReactNode } from 'react'
+import { LegacyRef, ReactNode } from 'react'
 
 export interface TextCellProps {
   heading: string
   content?: string
 }
 
-export interface TableProps {
+interface StickyTableHeaderTiers {
+  title: string
+  cta: {
+    title: string
+    url: string
+  }
+}
+
+export interface TableComponentProps {
+  /**
+   * Refs used to detect in view for sticky headers table
+   */
+  colHeaderRef?: LegacyRef<HTMLTableSectionElement> | undefined
+  tableRef?: LegacyRef<HTMLTableSectionElement> | undefined
   /**
    * Column heading names
    */
   columns?: Array<string> | null
+  /**
+   * Table data arranged by rows
+   */
+  rows: Array<{
+    header: TextCellProps
+    isCollapsible?: boolean
+    cells: Array<boolean | TextCellProps>
+  }>
+}
+export interface StickyHeadersTableProps {
+  tiers: Array<StickyTableHeaderTiers>
+  /**
+   * Column heading names
+   */
+  columns: Array<string>
   /**
    * Table data arranged by rows
    */
@@ -37,13 +65,13 @@ export interface TabsProps {
     /**
      * Content that belongs to feature (pricing table)
      */
-    content: TableProps
+    content: StickyHeadersTableProps
   }>
 }
 
 export interface FeatureProps {
   heading: string
-  content: TableProps | TabsProps
+  content: StickyHeadersTableProps | TabsProps
   footnote?: string
 }
 

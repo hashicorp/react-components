@@ -33,7 +33,6 @@ export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
       index={activeTabIndex}
       onChange={handleTabChange}
       orientation={TabsOrientation.Horizontal}
-      data-testid="pricing-feature-tabs"
     >
       <TabList
         className={s.tabList}

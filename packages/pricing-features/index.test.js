@@ -2,37 +2,98 @@ import { render, screen } from '@testing-library/react'
 import PricingFeatures from '.'
 import { normalizeTableData } from './helpers'
 import cms from './fixtures/cms.json'
-import download from './fixtures/download.json'
 import table from './fixtures/table.json'
+
+beforeAll(() => {
+  // IntersectionObserver isn't available in test environment
+  const mockIntersectionObserver = jest.fn()
+  mockIntersectionObserver.mockReturnValue({
+    observe: () => null,
+    unobserve: () => null,
+    disconnect: () => null,
+  })
+  window.IntersectionObserver = mockIntersectionObserver
+})
+
+afterAll(() => {
+  window.IntersectionObserver = null
+})
+
+const defaultTabs = [
+  {
+    label: {
+      heading: 'tab',
+      icon: <span>icon</span>,
+    },
+    content: table,
+  },
+  {
+    label: {
+      heading: 'tab 2',
+      icon: <span>icon</span>,
+    },
+    content: table,
+  },
+]
+
+const defaultProps = {
+  features: [
+    {
+      heading: 'Features',
+      content: {
+        tabs: defaultTabs,
+      },
+    },
+  ],
+  download: {
+    heading: 'Download the entire feature edition chart',
+    description:
+      'Ultricies risus molestie cursus metus mattis consectetur amet vitae eu. A diam tellus id neque urna auctor cursus ipsum.',
+    pdfLink: {
+      title: 'Download PDF',
+      url: 'https://www.datocms-assets.com/2885/1654902115-hashicorp_a_cloud_operating_model_for_platform_teams.pdf',
+    },
+  },
+}
 
 describe('<PricingFeatures />', () => {
   it('should render', () => {
-    render(
-      <PricingFeatures
-        features={[
-          {
-            heading: 'Features',
-            content: {
-              tabs: [
-                {
-                  label: 'tab',
-                  icon: <span>icon</span>,
-                  content: table,
-                },
-                {
-                  label: 'tab 2',
-                  icon: <span>icon 2</span>,
-                  content: table,
-                },
-              ],
-            },
-          },
-        ]}
-        download={download}
-      />
-    )
+    render(<PricingFeatures {...defaultProps} />)
     const element = screen.getByTestId('pricing-features')
     expect(element).toBeInTheDocument()
+  })
+
+  it('should throw error when tiers length does not match column headers', () => {
+    expect(() =>
+      render(
+        <PricingFeatures
+          features={[
+            {
+              heading: 'Features',
+              content: {
+                tabs: [
+                  defaultTabs[0],
+                  {
+                    label: {
+                      heading: 'tab 2',
+                      icon: <span>icon</span>,
+                    },
+                    content: {
+                      ...table,
+                      tiers: [
+                        ...table.tiers,
+                        { title: 'Extra tier', cta: 'Try', url: '#' },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+          ]}
+          download={defaultProps.download}
+        />
+      )
+    ).toThrow('Tiers length should equal column headers')
   })
 
   it('should throw error with 1 tab', () => {
@@ -43,17 +104,11 @@ describe('<PricingFeatures />', () => {
             {
               heading: 'Features',
               content: {
-                tabs: [
-                  {
-                    label: 'tab',
-                    icon: <span>icon</span>,
-                    content: table,
-                  },
-                ],
+                tabs: [defaultTabs[0]],
               },
             },
           ]}
-          download={download}
+          download={defaultProps.download}
         />
       )
     ).toThrow('<PricingFeatureTabs /> only supports between 2 and 7 tabs')
@@ -67,15 +122,17 @@ describe('<PricingFeatures />', () => {
             {
               heading: 'Features',
               content: {
-                tabs: Array(8).fill({
-                  label: 'tab',
-                  icon: <span>icon</span>,
+                tabs: Array.from(Array(8).keys()).map((key) => ({
+                  label: {
+                    heading: `tab ${key}`,
+                    icon: <span>icon</span>,
+                  },
                   content: table,
-                }),
+                })),
               },
             },
           ]}
-          download={download}
+          download={defaultProps.download}
         />
       )
     ).toThrow('<PricingFeatureTabs /> only supports between 2 and 7 tabs')
@@ -107,7 +164,7 @@ describe('Format cms data', () => {
   it('should format with all column headers', () => {
     const normalized = normalizeTableData(withAllColumnHeaders)
     const expected = {
-      columns: ['First', 'Development', 'Starter'],
+      columns: ['First', 'Col 1', 'Col 2'],
       rows: table.rows,
     }
     expect(normalized).toMatchObject(expected)

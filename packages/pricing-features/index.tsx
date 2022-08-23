@@ -1,4 +1,5 @@
 import Table from './components/table'
+import StickyHeadersTable from './components/sticky-headers-table'
 import Tabs from './components/tabs'
 import DownloadBlock from './components/download-block'
 import { PricingFeaturesProps } from './types'
@@ -18,11 +19,11 @@ export default function PricingFeatures({
             <Tabs
               tabs={content.tabs.map((tab) => ({
                 label: tab.label,
-                content: <Table {...tab.content} />,
+                content: <StickyHeadersTable {...tab.content} />,
               }))}
             />
           ) : (
-            <Table {...content} />
+            <StickyHeadersTable {...content} />
           )}
           {footnote && (
             <div className={s.footnoteContainer}>
@@ -41,4 +42,4 @@ export default function PricingFeatures({
   )
 }
 
-export { Table, Tabs, DownloadBlock, normalizeTableData }
+export { Table, StickyHeadersTable, Tabs, DownloadBlock, normalizeTableData }
