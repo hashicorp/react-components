@@ -27,58 +27,6 @@
       width: 45%;
     }
   }
-
-  &.isCollapsed {
-    & .pricingTiers {
-      & .tierName {
-        padding-top: 16px;
-        padding-bottom: 8px;
-        font-size: 1.063rem;
-      }
-
-      & .header {
-        grid-column: var(--column-index);
-        grid-row: 1;
-      }
-
-      & .description {
-        grid-column: var(--column-index);
-        grid-row: 2;
-      }
-
-      & .bottom {
-        margin-bottom: 0;
-        grid-column: var(--column-index);
-        grid-row: 3;
-        padding-bottom: 24px;
-
-        & .cta {
-          min-height: unset;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 92%;
-      height: 26px;
-      bottom: 3px;
-      left: 50%;
-      transform: translate(-50%, 0);
-      background: var(--wpl-neutral-200);
-      filter: blur(19px);
-    }
-
-    &.length1 {
-      &::before {
-        width: 48%;
-      }
-    }
-  }
 }
 
 .pricingTiers {
@@ -164,15 +112,18 @@
 .label {
   composes: g-type-label from global;
   padding-bottom: 5px;
+  min-height: 23px;
 }
 
 .price {
   composes: g-type-display-4 from global;
+  min-height: 34px;
 }
 
 .consumption {
   composes: g-type-body-small from global;
   margin: 0;
+  min-height: 25px;
 }
 
 .cta {

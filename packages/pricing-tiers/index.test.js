@@ -13,6 +13,11 @@ describe('<PricingTiers />', () => {
     expect(element).toBeInTheDocument()
   })
 
+  it('should only show text links with 5 tiers', () => {
+    const { container } = render(<PricingTiers tiers={fiveTiers} />)
+    expect(container.querySelector('button')).not.toBeInTheDocument()
+  })
+
   it('should throw error when tiers length more than maximum', () => {
     expect(() =>
       render(<PricingTiers tiers={[...threeTiers, ...fiveTiers]} />)

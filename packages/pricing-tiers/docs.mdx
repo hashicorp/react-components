@@ -3,7 +3,7 @@ componentName: 'PricingTiers'
 ---
 
 <LiveComponent>
-{`
+  {`
   <PricingTiers
       tiers={[
         {
@@ -27,6 +27,7 @@ componentName: 'PricingTiers'
 </LiveComponent>
 
 ### Props
+
 <PropsTable props={componentProps} />
 
 ### Examples
@@ -35,281 +36,224 @@ componentName: 'PricingTiers'
   2 Tiers
 </h3>
 
-  <PricingTiers
-    tiers={[
-      {
-        title: 'Development',
-        label: 'Starting at',
-        price: '$0.03',
-        description: '<p>Available as a managed service on HashiCorp Cloud Platform. Recommended for most teams</p>',
-        cta: {
-          type: 'button',
-          url: '#',
-          title: 'Try it for free',
-        }
+<PricingTiers
+  tiers={[
+    {
+      title: 'Development',
+      label: 'Starting at',
+      price: '$0.03',
+      description:
+        '<p>Available as a managed service on HashiCorp Cloud Platform. Recommended for most teams</p>',
+      cta: {
+        type: 'button',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Development',
-        price: 'Custom Pricing',
-        description: '<p>Managed by your team on your infrastructure of choice. Recommended for teams with custom deployment requirements</p>',
-        cta: {
-          type: 'button',
-          url: '#',
-          title: 'Contact sales',
-          variant: 'secondary'
-        }
-      }
-    ]}
-  />
+    },
+    {
+      title: 'Development',
+      price: 'Custom Pricing',
+      description:
+        '<p>Managed by your team on your infrastructure of choice. Recommended for teams with custom deployment requirements</p>',
+      cta: {
+        type: 'button',
+        url: '#',
+        title: 'Contact sales',
+        variant: 'secondary',
+      },
+    },
+  ]}
+/>
 
+<br />
 
 <h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
   3 Tiers
 </h3>
+<PricingTiers
+  tiers={[
+    {
+      title: 'Development',
+      label: 'Starting at',
+      price: '$1.578',
+      consumption: 'per hour',
+      description:
+        '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
+      },
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Starter',
+      label: 'Starting at',
+      price: '$1.578',
+      consumption: 'per hour',
+      description:
+        '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+      cta: {
+        type: 'button',
+        url: '#',
+        title: 'Try it for free',
+      },
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Standard',
+      label: 'Starting at',
+      price: '$1.578',
+      consumption: 'per hour',
+      description:
+        '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
+      },
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+  ]}
+/>
 
-  <PricingTiers
-    tiers={[
-      {
-        title: 'Development',
-        label: 'Starting at',
-        price: '$1.578',
-        consumption: 'per hour',
-        description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>'
-      },
-      {
-        title: 'Starter',
-        label: 'Starting at',
-        price: '$1.578',
-        consumption: 'per hour',
-        description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
-        cta: {
-          type: 'button',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>'
-      },
-      {
-        title: 'Standard',
-        label: 'Starting at',
-        price: '$1.578',
-        consumption: 'per hour',
-        description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>'
-      },
-    ]}
-  />
+<br />
 
 <h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
   4 Tiers
 </h3>
-  <PricingTiers
-    tiers={[
-      {
-        title: 'Development',
-        label: 'Starting at',
-        price: '$0.03',
-        consumption: 'per hour',
-        description: '<p>Designed to get started quickly for small projects, proof-of-concepts, non-production workloads</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+<PricingTiers
+  tiers={[
+    {
+      title: 'Development',
+      label: 'Starting at',
+      price: '$0.03',
+      consumption: 'per hour',
+      description:
+        '<p>Designed to get started quickly for small projects, proof-of-concepts, non-production workloads</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Starter',
-        label: 'Starting at',
-        price: '$0.05',
-        consumption: 'per hour',
-        description: '<p>Designed as affordable, production-ready clusters with clients included to get started quickly.</p>',
-        cta: {
-          type: 'button',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Starter',
+      label: 'Starting at',
+      price: '$0.05',
+      consumption: 'per hour',
+      description:
+        '<p>Designed as affordable, production-ready clusters with clients included to get started quickly.</p>',
+      cta: {
+        type: 'button',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Standard',
-        label: 'Starting at',
-        price: '$1.578',
-        consumption: 'per hour',
-        description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Standard',
+      label: 'Starting at',
+      price: '$1.578',
+      consumption: 'per hour',
+      description:
+        '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Plus',
-        label: 'Starting at',
-        price: '$1.844',
-        consumption: 'per hour',
-        description: '<p>Designed for high availability replication of secrets and policies across multiple data centers. Requires 2 clusters for replication..</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Plus',
+      label: 'Starting at',
+      price: '$1.844',
+      consumption: 'per hour',
+      description:
+        '<p>Designed for high availability replication of secrets and policies across multiple data centers. Requires 2 clusters for replication..</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
       },
-    ]}
-  />
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+  ]}
+/>
+
+<br />
 
 <h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
-  5 Tiers
+  5 Tiers (max)
 </h3>
-  <PricingTiers
-    tiers={[
-      {
-        title: 'Development',
-        label: 'Starting at',
-        price: '$0.03',
-        consumption: 'per hour',
-        description: '<p>Designed to get started quickly for small projects, proof-of-concepts, non-production workloads</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+<PricingTiers
+  tiers={[
+    {
+      title: 'Development',
+      label: 'Starting at',
+      price: '$0.03',
+      consumption: 'per hour',
+      description:
+        '<p>Designed to get started quickly for small projects, proof-of-concepts, non-production workloads</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Starter',
-        label: 'Starting at',
-        price: '$0.05',
-        consumption: 'per hour',
-        description: '<p>Designed as affordable, production-ready clusters with clients included to get started quickly.</p>',
-        cta: {
-          type: 'button',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Starter',
+      label: 'Starting at',
+      price: '$0.05',
+      consumption: 'per hour',
+      description:
+        '<p>Designed as affordable, production-ready clusters with clients included to get started quickly.</p>',
+      cta: {
+        type: 'button',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Standard',
-        label: 'Starting at',
-        price: '$1.578',
-        consumption: 'per hour',
-        description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Standard',
+      label: 'Starting at',
+      price: '$1.578',
+      consumption: 'per hour',
+      description:
+        '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Plus',
-        label: 'Starting at',
-        price: '$1.844',
-        consumption: 'per hour',
-        description: '<p>Designed for high availability replication of secrets and policies across multiple data centers. Requires 2 clusters for replication.</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Plus',
+      label: 'Starting at',
+      price: '$1.844',
+      consumption: 'per hour',
+      description:
+        '<p>Designed for high availability replication of secrets and policies across multiple data centers. Requires 2 clusters for replication.</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Try it for free',
       },
-      {
-        title: 'Enterprise',
-        description: '<p>Designed for custom deployments</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Contact sales',
-        },
+      footnote: '<p>*Price scales with <a>active clients</a></p>',
+    },
+    {
+      title: 'Enterprise',
+      description: '<p>Designed for custom deployments</p>',
+      cta: {
+        type: 'textLink',
+        url: '#',
+        title: 'Contact sales',
       },
-    ]}
-  />
-
-<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
-  Collapsed
-</h3>
-<LiveComponent>
-{`
-  <PricingTiers
-    isCollapsed
-    tiers={[
-      {
-        title: 'Development',
-        label: 'Starting at',
-        price: '$0.03',
-        consumption: 'per hour',
-        description: '<p>Designed to get started quickly for small projects, proof-of-concepts, non-production workloads</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
-      },
-      {
-        title: 'Starter',
-        label: 'Starting at',
-        price: '$0.05',
-        consumption: 'per hour',
-        description: '<p>Designed as affordable, production-ready clusters with clients included to get started quickly.</p>',
-        cta: {
-          type: 'button',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
-      },
-      {
-        title: 'Standard',
-        label: 'Starting at',
-        price: '$1.578',
-        consumption: 'per hour',
-        description: '<p>Clusters designed to scale with the demand of running production workloads.</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
-      },
-      {
-        title: 'Plus',
-        label: 'Starting at',
-        price: '$1.844',
-        consumption: 'per hour',
-        description: '<p>Designed for high availability replication of secrets and policies across multiple data centers. Requires 2 clusters for replication.</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Try it for free',
-        },
-        footnote: '<p>*Price scales with <a>active clients</a></p>',
-      },
-      {
-        title: 'Enterprise',
-        description: '<p>Designed for custom deployments</p>',
-        cta: {
-          type: 'textLink',
-          url: '#',
-          title: 'Contact sales',
-        },
-      },
-    ]}
-  />
-`}
-</LiveComponent>
+    },
+  ]}
+/>

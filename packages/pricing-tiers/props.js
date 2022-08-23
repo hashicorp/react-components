@@ -54,11 +54,4 @@ module.exports = {
     type: 'string',
     description: 'Small footer (html string)',
   },
-  size: {
-    type: 'string',
-    options: ['lg', 'md', 'xs', 'sm'],
-    description:
-      'If rendered within a PricingTierItemList, font sizes depend on the amount of cards in list',
-    default: 'lg',
-  },
 }
