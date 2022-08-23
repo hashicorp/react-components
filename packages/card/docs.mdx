@@ -2,7 +2,7 @@
 componentName: 'Card'
 ---
 
-Cards are used to promote and link to marketing pages, always using a descriptive heading but optionally other elements as needed.
+A component used to promote and link to marketing pages, always using a descriptive heading but optionally other elements as needed.
 
 <LiveComponent>
   {`
@@ -200,6 +200,24 @@ Cards are used to promote and link to marketing pages, always using a descriptiv
   </Card>
 </div>
 
-## Props
+## Base Props
 
-<PropsTable props={componentProps} />
+<PropsTable props={componentProps.baseProps} />
+
+## Sub-component-specific Props
+
+### `<Thumbnail />`
+
+<PropsTable props={componentProps.thumbnailProps} />
+
+### `<Meta />`
+
+<PropsTable props={componentProps.metaProps} />
+
+### `<Heading />`
+
+<PropsTable props={componentProps.headingProps} />
+
+### `<Description />`
+
+<PropsTable props={componentProps.descriptionProps} />
