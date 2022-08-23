@@ -45,14 +45,8 @@ export interface PricingTierItemProps extends TierProps {
    * Small footer (html string)
    */
   footnote?: string
-  /**
-   * If rendered within a Tier Card List, font sizes depend on the amount
-   * of cards in list
-   */
-  size?: 'lg' | 'md' | 'xs' | 'sm'
 }
 
 export interface PricingTiersProps {
   tiers: Array<PricingTierItemProps>
-  isCollapsed?: boolean
 }
