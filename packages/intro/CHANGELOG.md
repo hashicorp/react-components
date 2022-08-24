@@ -1,5 +1,11 @@
 # @hashicorp/react-intro
 
+## 0.4.1
+
+### Patch Changes
+
+- [#693](https://github.com/hashicorp/react-components/pull/693) [`05937ddb`](https://github.com/hashicorp/react-components/commit/05937ddb3e38e3c74a45eec70526f13f096616e1) Thanks [@EnMod](https://github.com/EnMod)! - Updates the eyebrow's text to be sentence case, instead of uppercase
+
 ## 0.4.0
 
 ### Minor Changes
