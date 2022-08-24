@@ -63,39 +63,6 @@ describe('<PricingFeatures />', () => {
     expect(element).toBeInTheDocument()
   })
 
-  it('should throw error when tiers length does not match column headers', () => {
-    expect(() =>
-      render(
-        <PricingFeatures
-          features={[
-            {
-              heading: 'Features',
-              content: {
-                tabs: [
-                  defaultTabs[0],
-                  {
-                    label: {
-                      heading: 'tab 2',
-                      icon: <span>icon</span>,
-                    },
-                    content: {
-                      ...table,
-                      tiers: [
-                        ...table.tiers,
-                        { title: 'Extra tier', cta: 'Try', url: '#' },
-                      ],
-                    },
-                  },
-                ],
-              },
-            },
-          ]}
-          download={defaultProps.download}
-        />
-      )
-    ).toThrow('Tiers length should equal column headers')
-  })
-
   it('should throw error with 1 tab', () => {
     expect(() =>
       render(

@@ -22,9 +22,5 @@
       ],
       "isCollapsible": true
     }
-  ],
-  "tiers": [
-    { "title": "Col 1", "cta": { "title": "Try for free", "url": "#" } },
-    { "title": "Col 2", "cta": { "title": " Try for free", "url": "#" } }
   ]
 }
