@@ -21,9 +21,9 @@ interface PricingFeatureTabsProps {
 export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const handleTabChange = (index: number) => setActiveTabIndex(index)
-  const tabsLength = tabs.length
+  const tabCount = tabs.length
 
-  if (tabsLength > 7 || tabsLength < 2) {
+  if (tabCount > 7 || tabCount < 2) {
     throw new Error('<PricingFeatureTabs /> only supports between 2 and 7 tabs')
   }
 
@@ -38,7 +38,9 @@ export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
         className={s.tabList}
         style={
           {
-            '--col': tabsLength,
+            '--col': tabCount,
+            '--tab-padding':
+              tabCount > 3 ? '12px 12px 32px 12px' : '22px 22px 42px 22px',
           } as React.CSSProperties
         }
       >

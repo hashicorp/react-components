@@ -22,7 +22,7 @@
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      padding: 12px;
+      padding: var(--tab-padding);
       text-align: left;
       height: 100%;
 
@@ -60,7 +60,6 @@
   composes: g-type-body-small from global;
   padding-top: 8px;
   color: var(--wpl-neutral-900);
-  height: 66px;
 
   @media (--medium-up) {
     composes: g-type-body-x-small-strong from global;

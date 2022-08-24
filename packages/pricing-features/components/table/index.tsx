@@ -4,20 +4,18 @@ import { IconXCircle24 } from '@hashicorp/flight-icons/svg-react/x-circle-24'
 import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-circle-fill-24'
 import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16'
 import { IconChevronDown16 } from '@hashicorp/flight-icons/svg-react/chevron-down-16'
-import { TableComponentProps } from '../../types'
+import { TableProps } from '../../types'
 import s from './style.module.css'
 
 export default function PricingTierTable({
   columns,
   rows,
-  colHeaderRef,
-  tableRef,
-}: TableComponentProps): React.ReactElement {
+}: TableProps): React.ReactElement {
   const [collapsedRows, setCollapsedRows] = useState<Array<number>>([])
   const hasColumnHeaders = !!columns && columns.length > 0
-  const colLength = rows[0].cells.length
+  const colCount = rows[0].cells.length
 
-  if (colLength > 5) {
+  if (colCount > 5) {
     throw new Error('<PricingTierTable /> only supports up to five tiers')
   }
 
@@ -38,20 +36,20 @@ export default function PricingTierTable({
         className={s.pricingTable}
         style={
           {
-            '--col-gap': colLength === 2 ? '34px' : '22px',
+            '--col-gap': colCount === 2 ? '34px' : '22px',
           } as React.CSSProperties
         }
       >
         <div className={s.table}>
           <table>
             {hasColumnHeaders && (
-              <thead ref={colHeaderRef}>
+              <thead>
                 <tr>
                   {columns.map((col, colIdx) => (
                     <th
                       key={col}
                       scope="col"
-                      colSpan={colIdx === 0 && colLength > 3 ? 2 : 1}
+                      colSpan={colIdx === 0 && colCount > 3 ? 2 : 1}
                     >
                       {col.length ? (
                         <div className={s.colHeaderText}>
@@ -67,7 +65,7 @@ export default function PricingTierTable({
                 </tr>
               </thead>
             )}
-            <tbody ref={tableRef}>
+            <tbody>
               {rows.map(({ header, cells, isCollapsible }, rowIdx) => {
                 const cellIds = cells.map(
                   (cell, idx) => `row-${rowIdx}-cell-${idx}`
@@ -80,37 +78,41 @@ export default function PricingTierTable({
                   <tr key={`row-${rowIdx}`}>
                     <th
                       scope="row"
-                      colSpan={colLength > 3 ? 2 : 1}
+                      colSpan={colCount > 3 ? 2 : 1}
                       className={s.rowHeader}
                     >
-                      {isCollapsible && (
-                        <button
-                          className={s.icon}
-                          aria-controls={ariaControls.join(' ')}
-                          aria-expanded="false"
-                          aria-label="toggle row content"
-                          onClick={() => handleCollapseRow(rowIdx)}
-                        >
-                          {rowIsCollapsed ? (
-                            <IconChevronUp16 />
-                          ) : (
-                            <IconChevronDown16 />
-                          )}
-                        </button>
-                      )}
-                      <div className={s.rowHeaderText}>
-                        <div
-                          className={s.rowHeading}
-                          dangerouslySetInnerHTML={{ __html: header.heading }}
-                        />
-                        {header.content && (
-                          <div
-                            id={`row-${rowIdx}`}
-                            aria-hidden={rowIsCollapsed}
-                            className={s.rowContent}
-                            dangerouslySetInnerHTML={{ __html: header.content }}
-                          />
+                      <div className={s.rowHeaderInner}>
+                        {isCollapsible && (
+                          <button
+                            className={s.icon}
+                            aria-controls={ariaControls.join(' ')}
+                            aria-expanded="false"
+                            aria-label="toggle row content"
+                            onClick={() => handleCollapseRow(rowIdx)}
+                          >
+                            {rowIsCollapsed ? (
+                              <IconChevronUp16 />
+                            ) : (
+                              <IconChevronDown16 />
+                            )}
+                          </button>
                         )}
+                        <div className={s.rowHeaderText}>
+                          <div
+                            className={s.rowHeading}
+                            dangerouslySetInnerHTML={{ __html: header.heading }}
+                          />
+                          {header.content && (
+                            <div
+                              id={`row-${rowIdx}`}
+                              aria-hidden={rowIsCollapsed}
+                              className={s.rowContent}
+                              dangerouslySetInnerHTML={{
+                                __html: header.content,
+                              }}
+                            />
+                          )}
+                        </div>
                       </div>
                     </th>
                     {cells.map((cell, cellIdx) => {

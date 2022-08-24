@@ -54,12 +54,14 @@
   vertical-align: top;
 }
 
+.rowHeaderInner {
+  display: flex;
+  align-items: flex-start;
+}
+
 .rowHeaderText {
   text-align: left;
-  max-width: 264px;
-  vertical-align: top;
-  display: inline-block;
-  float: left;
+  max-width: 280px;
 
   & *[aria-hidden='true'],
   & *[data-hidden='true'] {
@@ -81,13 +83,12 @@
 }
 
 .icon {
-  display: inline-block;
-  float: left;
   appearance: none;
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  padding: 5px 10px 0 0;
+  padding: 5px 0 0;
+  margin-right: 10px;
 }
 
 .rowHeading {
