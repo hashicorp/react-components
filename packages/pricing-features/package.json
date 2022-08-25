@@ -8,8 +8,7 @@
     "@hashicorp/flight-icons": "^2.0.2",
     "@hashicorp/react-button": "^6.2.1",
     "@reach/tabs": "^0.16.1",
-    "@reach/visually-hidden": "^0.16.0",
-    "react-intersection-observer": "^9.4.0"
+    "@reach/visually-hidden": "^0.16.0"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
