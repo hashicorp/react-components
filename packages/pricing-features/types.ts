@@ -18,6 +18,7 @@ export interface TableProps {
     isCollapsible?: boolean
     cells: Array<boolean | TextCellProps>
   }>
+  colHeadersRef?: LegacyRef<HTMLTableSectionElement> | undefined
 }
 
 export interface LabelProps {
@@ -64,7 +65,7 @@ export interface PricingFeaturesProps {
    * Download section displayed on mobile
    */
   download: DownloadProps
-  headingRef?: LegacyRef<HTMLTableSectionElement> | undefined
+  tableColHeadersRef?: LegacyRef<HTMLTableSectionElement> | undefined
 }
 
 export interface CMSTableProps {
