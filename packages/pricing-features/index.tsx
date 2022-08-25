@@ -19,22 +19,16 @@ export default function PricingFeatures({
             <Tabs
               tabs={content.tabs.map((tab) => ({
                 label: tab.label,
-                content: (
-                  <Table
-                    {...tab.content.table}
-                    colHeadersRef={
-                      idx === 0 && tableColHeadersRef
-                        ? tableColHeadersRef
-                        : null
-                    }
-                  />
-                ),
+                content: <Table {...tab.content.table} />,
               }))}
+              contentRef={
+                idx === 0 && tableColHeadersRef ? tableColHeadersRef : null
+              }
             />
           ) : (
             <Table
               {...content.table}
-              colHeadersRef={
+              contentRef={
                 idx === 0 && tableColHeadersRef ? tableColHeadersRef : null
               }
             />

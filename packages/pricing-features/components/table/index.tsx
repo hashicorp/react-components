@@ -10,7 +10,7 @@ import s from './style.module.css'
 export default function PricingTierTable({
   columns,
   rows,
-  colHeadersRef,
+  contentRef,
 }: TableProps): React.ReactElement {
   const [collapsedRows, setCollapsedRows] = useState<Array<number>>([])
   const hasColumnHeaders = !!columns && columns.length > 0
@@ -44,7 +44,7 @@ export default function PricingTierTable({
         <div className={s.table}>
           <table>
             {hasColumnHeaders && (
-              <thead ref={colHeadersRef}>
+              <thead ref={contentRef}>
                 <tr>
                   {columns.map((col, colIdx) => (
                     <th

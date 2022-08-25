@@ -18,7 +18,7 @@ export interface TableProps {
     isCollapsible?: boolean
     cells: Array<boolean | TextCellProps>
   }>
-  colHeadersRef?: LegacyRef<HTMLTableSectionElement> | undefined
+  contentRef?: LegacyRef<HTMLTableSectionElement> | undefined
 }
 
 export interface LabelProps {
