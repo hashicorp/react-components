@@ -10,14 +10,16 @@
 }
 
 .eyebrow {
-  --color: var(--gray-2);
+  --color: var(--wpl-neutral-500);
 
-  composes: g-type-label-strong from global;
-  margin: 0 0 16px;
+  composes: g-type-body-large from global;
+  font-weight: var(--font-weight-bold);
+  text-transform: inherit;
+  margin: 0 0 32px;
   color: var(--color);
 
   @nest .dark & {
-    --color: var(--gray-4);
+    --color: var(--wpl-neutral-300);
   }
 }
 
@@ -33,13 +35,13 @@
 }
 
 .description {
-  --color: var(--gray-2);
+  --color: var(--wpl-neutral-500);
 
   margin: 16px 0 0;
   color: var(--color);
 
   @nest .dark & {
-    --color: var(--gray-4);
+    --color: var(--wpl-neutral-400);
   }
 
   & > * {

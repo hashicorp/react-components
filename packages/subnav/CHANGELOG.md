@@ -1,5 +1,17 @@
 # @hashicorp/react-subnav
 
+## 9.4.0
+
+### Minor Changes
+
+- [#705](https://github.com/hashicorp/react-components/pull/705) [`a361fab5`](https://github.com/hashicorp/react-components/commit/a361fab5f38ced326a1e291dc370559eaced3d6d) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adds menuText prop
+
+## 9.3.6
+
+### Patch Changes
+
+- [#702](https://github.com/hashicorp/react-components/pull/702) [`bda1c7f5`](https://github.com/hashicorp/react-components/commit/bda1c7f54523744cbbb6d4fa40277d9788bc93ca) Thanks [@zchsh](https://github.com/zchsh)! - Reverts a flawed fix to an overflow issue.
+
 ## 9.3.5
 
 ### Patch Changes

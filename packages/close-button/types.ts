@@ -4,6 +4,10 @@ export interface CloseButtonProps {
    */
   appearance?: 'light' | 'dark'
   /**
+   * The size of rendered button.
+   */
+  size?: 'medium' | 'large'
+  /**
    * A function that will be called when the button is clicked.
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void

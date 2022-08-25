@@ -1,10 +1,11 @@
 {
-  "name": "@hashicorp/react-close-button",
-  "version": "0.1.2",
+  "name": "@hashicorp/react-card",
+  "version": "0.1.1",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
+    "@hashicorp/platform-product-meta": "^0.1.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
@@ -14,6 +15,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/hashicorp/react-components.git",
-    "directory": "packages/close-button"
+    "directory": "packages/card"
   }
 }
