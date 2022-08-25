@@ -4,35 +4,20 @@ import { normalizeTableData } from './helpers'
 import cms from './fixtures/cms.json'
 import table from './fixtures/table.json'
 
-beforeAll(() => {
-  // IntersectionObserver isn't available in test environment
-  const mockIntersectionObserver = jest.fn()
-  mockIntersectionObserver.mockReturnValue({
-    observe: () => null,
-    unobserve: () => null,
-    disconnect: () => null,
-  })
-  window.IntersectionObserver = mockIntersectionObserver
-})
-
-afterAll(() => {
-  window.IntersectionObserver = null
-})
-
 const defaultTabs = [
   {
     label: {
       heading: 'tab',
       icon: <span>icon</span>,
     },
-    content: table,
+    content: { table },
   },
   {
     label: {
       heading: 'tab 2',
       icon: <span>icon</span>,
     },
-    content: table,
+    content: { table },
   },
 ]
 
@@ -94,7 +79,7 @@ describe('<PricingFeatures />', () => {
                     heading: `tab ${key}`,
                     icon: <span>icon</span>,
                   },
-                  content: table,
+                  content: { table },
                 })),
               },
             },

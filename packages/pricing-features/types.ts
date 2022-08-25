@@ -73,7 +73,7 @@ export interface CMSTableProps {
   table: {
     columns: Array<string>
     data: Array<{
-      [x: string]: boolean | string
+      [x: string]: boolean | TextCellProps
     }>
   }
 }
