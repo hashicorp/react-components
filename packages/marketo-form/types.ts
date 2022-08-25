@@ -94,6 +94,7 @@ export type MarketoFormField =
  * The Marketo API response containing form fields.
  */
 export interface MarketoForm {
+  success: boolean
   result: MarketoFormField[]
 }
 

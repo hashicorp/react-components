@@ -8,7 +8,9 @@ function flatten(param: string | string[]): string {
 
 async function getForm(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const marketoRes = await client.getForm(flatten(req.query.form))
+    const marketoRes = await client.getForm(
+      parseInt(flatten(req.query.form), 10)
+    )
     const form = (await marketoRes.json()) as MarketoFieldsResponse
 
     // Using a switch statement instead of `if (!form.success)` is necessary

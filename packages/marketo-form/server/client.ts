@@ -1,5 +1,6 @@
 import { URL } from 'url'
 import createFetch from '@vercel/fetch'
+import type { MarketoForm } from '../types'
 
 const fetch = createFetch()
 
@@ -29,7 +30,7 @@ export async function getToken(): Promise<MarketoTokenResponse> {
   return await res.json()
 }
 
-export async function getForm(formId: string) {
+export async function getForm(formId: number) {
   const { access_token } = await getToken()
   return await fetch(
     `${process.env.MARKETO_ENDPOINT}/asset/v1/form/${formId}/fields.json`,
@@ -40,6 +41,27 @@ export async function getForm(formId: string) {
       },
     }
   )
+}
+
+export async function getFormProps(
+  id: number
+): Promise<{ id: number; form: MarketoForm }> {
+  const res = await getForm(id)
+  if (res.status !== 200) {
+    throw new Error(
+      `[marketo-form] non-200 status code when requesting form ${id}: ${res.status}`
+    )
+  }
+
+  const form = (await res.json()) as MarketoForm
+  if (form.success !== true) {
+    throw new Error(
+      `[marketo-form] error response when requesting form ${id}: ${JSON.stringify(
+        form
+      )}`
+    )
+  }
+  return { id, form }
 }
 
 export async function submitForm(body: unknown) {
