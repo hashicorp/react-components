@@ -95,6 +95,7 @@ export type MarketoFormField =
  */
 export interface MarketoForm {
   success: boolean
+  errors: { code: string; message: string }[]
   result: MarketoFormField[]
 }
 

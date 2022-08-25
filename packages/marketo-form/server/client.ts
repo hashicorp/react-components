@@ -43,8 +43,17 @@ export async function getForm(formId: number) {
   )
 }
 
+function wait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+function isRateLimited(res: MarketoForm): boolean {
+  return res.errors.some((e) => e.code === '606')
+}
+
 export async function getFormProps(
-  id: number
+  id: number,
+  depth: number = 0
 ): Promise<{ id: number; form: MarketoForm }> {
   const res = await getForm(id)
   if (res.status !== 200) {
@@ -54,7 +63,12 @@ export async function getFormProps(
   }
 
   const form = (await res.json()) as MarketoForm
-  if (form.success !== true) {
+  if (!form.success) {
+    if (isRateLimited(form) && depth < 8) {
+      await wait(2 ** depth * 1000)
+      return getFormProps(id, depth + 1)
+    }
+
     throw new Error(
       `[marketo-form] error response when requesting form ${id}: ${JSON.stringify(
         form
