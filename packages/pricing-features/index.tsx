@@ -8,7 +8,7 @@ import s from './style.module.css'
 export default function PricingFeatures({
   features,
   download,
-  tableColHeadersRef,
+  contentRef,
 }: PricingFeaturesProps) {
   return (
     <section className={s.features} data-testid="pricing-features">
@@ -21,16 +21,12 @@ export default function PricingFeatures({
                 label: tab.label,
                 content: <Table {...tab.content.table} />,
               }))}
-              contentRef={
-                idx === 0 && tableColHeadersRef ? tableColHeadersRef : null
-              }
+              contentRef={idx === 0 && contentRef ? contentRef : null}
             />
           ) : (
             <Table
               {...content.table}
-              contentRef={
-                idx === 0 && tableColHeadersRef ? tableColHeadersRef : null
-              }
+              contentRef={idx === 0 && contentRef ? contentRef : null}
             />
           )}
           {footnote && (

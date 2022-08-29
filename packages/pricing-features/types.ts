@@ -67,7 +67,7 @@ export interface PricingFeaturesProps {
    * Download section displayed on mobile
    */
   download: DownloadProps
-  tableColHeadersRef?: LegacyRef<HTMLTableSectionElement> | undefined
+  contentRef?: LegacyRef<HTMLTableSectionElement> | undefined
 }
 
 export interface CMSTableProps {
