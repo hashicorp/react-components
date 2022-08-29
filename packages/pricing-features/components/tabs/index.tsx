@@ -1,4 +1,4 @@
-import { useState, ReactElement, LegacyRef, cloneElement } from 'react'
+import { useState, ReactElement } from 'react'
 import {
   Tabs,
   TabList,
@@ -16,13 +16,9 @@ interface PricingFeatureTabsProps {
     label: LabelProps
     content: ReactElement
   }>
-  contentRef?: LegacyRef<HTMLTableSectionElement>
 }
 
-export default function PricingFeatureTabs({
-  tabs,
-  contentRef,
-}: PricingFeatureTabsProps) {
+export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0)
   const handleTabChange = (index: number) => setActiveTabIndex(index)
   const tabCount = tabs.length
@@ -69,11 +65,7 @@ export default function PricingFeatureTabs({
                 [s.fadeIn]: index === activeTabIndex,
               })}
             >
-              {index === activeTabIndex && contentRef
-                ? cloneElement(item.content, {
-                    contentRef,
-                  })
-                : item.content}
+              {item.content}
             </TabPanel>
           )
         })}

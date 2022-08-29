@@ -1,4 +1,4 @@
-import { LegacyRef, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 export interface TextCellProps {
   heading: string
@@ -20,7 +20,6 @@ export interface TableProps {
    * Table data arranged by rows
    */
   rows: Array<RowProps>
-  contentRef?: LegacyRef<HTMLTableSectionElement> | undefined
 }
 
 export interface LabelProps {
@@ -67,7 +66,6 @@ export interface PricingFeaturesProps {
    * Download section displayed on mobile
    */
   download: DownloadProps
-  contentRef?: LegacyRef<HTMLTableSectionElement> | undefined
 }
 
 export interface CMSTableProps {
