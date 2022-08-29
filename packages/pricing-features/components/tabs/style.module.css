@@ -62,7 +62,7 @@
   color: var(--wpl-neutral-900);
 
   @media (--medium-up) {
-    composes: g-type-body-x-small-strong from global;
+    composes: g-type-body-x-small-strong from '../../global-font.css';
   }
 }
 
