@@ -5,6 +5,12 @@ export interface TextCellProps {
   content?: string
 }
 
+export interface RowProps {
+  header: TextCellProps
+  isCollapsible?: boolean
+  cells: Array<boolean | TextCellProps>
+}
+
 export interface TableProps {
   /**
    * Column heading names
@@ -13,11 +19,7 @@ export interface TableProps {
   /**
    * Table data arranged by rows
    */
-  rows: Array<{
-    header: TextCellProps
-    isCollapsible?: boolean
-    cells: Array<boolean | TextCellProps>
-  }>
+  rows: Array<RowProps>
   contentRef?: LegacyRef<HTMLTableSectionElement> | undefined
 }
 
