@@ -109,8 +109,7 @@
 
 .rowContent {
   color: var(--wpl-neutral-600);
-  composes: g-type-body-x-small from global;
-  padding-top: 8px;
+  composes: g-type-body-x-small from '../../global-font.css';
 
   & * {
     font-size: inherit;
@@ -147,12 +146,12 @@
 }
 
 .cellHeading {
-  composes: g-type-body-x-small-strong from global;
+  composes: g-type-body-x-small-strong from '../../global-font.css';
   padding-bottom: 6px;
 }
 
 .cellContent {
-  composes: g-type-body-x-small from global;
+  composes: g-type-body-x-small from '../../global-font.css';
 }
 
 .cellHeading,
