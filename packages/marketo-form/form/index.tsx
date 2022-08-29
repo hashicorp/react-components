@@ -88,7 +88,11 @@ const defaultFieldGroupings = {
 }
 
 function isValidEmail(value: string): boolean {
-  return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+  // Source: https://html.spec.whatwg.org/multipage/input.html#email-state-(type=email)
+  /* eslint-disable-next-line no-useless-escape */
+  return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i.test(
+    value
+  )
 }
 
 const Form = ({
