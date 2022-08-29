@@ -69,9 +69,11 @@ export default function PricingFeatureTabs({
                 [s.fadeIn]: index === activeTabIndex,
               })}
             >
-              {cloneElement(item.content, {
-                contentRef: index === activeTabIndex ? contentRef : null,
-              })}
+              {index === activeTabIndex && contentRef
+                ? cloneElement(item.content, {
+                    contentRef,
+                  })
+                : item.content}
             </TabPanel>
           )
         })}

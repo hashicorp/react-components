@@ -21,6 +21,11 @@ const featuresProps = {
       },
     ],
   },
+  tableColHeadersRef: {
+    type: 'ref',
+    description:
+      'Passed down to <thead> in the table of the first features section. If within a tab, it will only be applied in the currently active tab',
+  },
 }
 
 const tabsProps = {

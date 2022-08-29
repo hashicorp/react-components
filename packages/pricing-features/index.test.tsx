@@ -1,51 +1,23 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import PricingFeatures from '.'
 import { normalizeTableData } from './helpers'
 import cms from './fixtures/cms.json'
 import table from './fixtures/table.json'
 
-const defaultTabs = [
-  {
-    label: {
-      heading: 'tab',
-      icon: <span>icon</span>,
-    },
-    content: { table },
-  },
-  {
-    label: {
-      heading: 'tab 2',
-      icon: <span>icon</span>,
-    },
-    content: { table },
-  },
-]
-
-const defaultProps = {
-  features: [
-    {
-      heading: 'Features',
-      content: {
-        tabs: defaultTabs,
-      },
-    },
-  ],
-  download: {
-    heading: 'Download the entire feature edition chart',
-    description:
-      'Ultricies risus molestie cursus metus mattis consectetur amet vitae eu. A diam tellus id neque urna auctor cursus ipsum.',
-    pdfLink: {
-      title: 'Download PDF',
-      url: 'https://www.datocms-assets.com/2885/1654902115-hashicorp_a_cloud_operating_model_for_platform_teams.pdf',
-    },
-  },
-}
-
 describe('<PricingFeatures />', () => {
   it('should render', () => {
-    render(<PricingFeatures {...defaultProps} />)
-    const element = screen.getByTestId('pricing-features')
-    expect(element).toBeInTheDocument()
+    const { getByTestId } = render(<PricingFeatures {...defaultProps} />)
+    getByTestId('pricing-features')
+  })
+
+  it('should show toggle button on collapsible row', () => {
+    const { getByLabelText } = render(
+      <PricingFeatures
+        download={defaultProps.download}
+        features={[defaultProps.features[1]]}
+      />
+    )
+    getByLabelText('toggle row content')
   })
 
   it('should throw error with 1 tab', () => {
@@ -96,12 +68,7 @@ const { withColumnHeaders, withoutColumnHeaders, withAllColumnHeaders } = cms
 describe('Format cms data', () => {
   it('should format without a empty first column header', () => {
     const normalized = normalizeTableData(withColumnHeaders)
-    const expected = {
-      columns: table.columns,
-      rows: table.rows,
-    }
-
-    expect(normalized).toMatchObject(expected)
+    expect(normalized).toMatchObject(table)
   })
 
   it('should format without column headers', () => {
@@ -122,3 +89,46 @@ describe('Format cms data', () => {
     expect(normalized).toMatchObject(expected)
   })
 })
+
+const defaultTabs = [
+  {
+    label: {
+      heading: 'tab',
+      icon: <span>icon</span>,
+    },
+    content: { table },
+  },
+  {
+    label: {
+      heading: 'tab 2',
+      icon: <span>icon</span>,
+    },
+    content: { table },
+  },
+]
+
+const defaultProps = {
+  features: [
+    {
+      heading: 'Features Section',
+      content: {
+        tabs: defaultTabs,
+      },
+    },
+    {
+      heading: 'Features Section 2',
+      content: {
+        table,
+      },
+    },
+  ],
+  download: {
+    heading: 'Download the entire feature edition chart',
+    description:
+      'Ultricies risus molestie cursus metus mattis consectetur amet vitae eu. A diam tellus id neque urna auctor cursus ipsum.',
+    pdfLink: {
+      title: 'Download PDF',
+      url: 'https://www.datocms-assets.com/2885/1654902115-hashicorp_a_cloud_operating_model_for_platform_teams.pdf',
+    },
+  },
+}
