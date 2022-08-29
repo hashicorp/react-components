@@ -1,0 +1,8 @@
+.name {
+  display: grid;
+  grid-gap: 8px;
+  @media (--medium-up) {
+    grid-gap: 32px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
