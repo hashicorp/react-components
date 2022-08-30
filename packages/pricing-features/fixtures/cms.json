@@ -1,0 +1,83 @@
+{
+  "withColumnHeaders": {
+    "hasColumnHeaders": true,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["", "Col 1", "Col 2"],
+      "data": [
+        {
+          "Col 2": true,
+          "Col 1": false,
+          "": {
+            "heading": "<h3>Row Header</h3>"
+          }
+        },
+        {
+          "Col 2": {
+            "heading": "<h3>Cell Heading</h3>",
+            "content": "<p>Cell Content</p>"
+          },
+          "Col 1": true,
+          "": {
+            "heading": "<h3>Row Header 2</h3>",
+            "content": "<p>Row Header 2 Content</p>"
+          }
+        }
+      ]
+    }
+  },
+  "withoutColumnHeaders": {
+    "hasColumnHeaders": false,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["", "Col 1", "Col 2"],
+      "data": [
+        {
+          "Col 2": true,
+          "Col 1": false,
+          "": {
+            "heading": "<h3>Row Header</h3>"
+          }
+        },
+        {
+          "Col 2": {
+            "heading": "<h3>Cell Heading</h3>",
+            "content": "<p>Cell Content</p>"
+          },
+          "Col 1": true,
+          "": {
+            "heading": "<h3>Row Header 2</h3>",
+            "content": "<p>Row Header 2 Content</p>"
+          }
+        }
+      ]
+    }
+  },
+  "withAllColumnHeaders": {
+    "hasColumnHeaders": true,
+    "collapsibleRows": [1],
+    "table": {
+      "columns": ["First", "Col 1", "Col 2"],
+      "data": [
+        {
+          "Col 2": true,
+          "Col 1": false,
+          "First": {
+            "heading": "<h3>Row Header</h3>"
+          }
+        },
+        {
+          "Col 2": {
+            "heading": "<h3>Cell Heading</h3>",
+            "content": "<p>Cell Content</p>"
+          },
+          "Col 1": true,
+          "First": {
+            "heading": "<h3>Row Header 2</h3>",
+            "content": "<p>Row Header 2 Content</p>"
+          }
+        }
+      ]
+    }
+  }
+}
