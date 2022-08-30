@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.7.1
+
+### Patch Changes
+
+- [#713](https://github.com/hashicorp/react-components/pull/713) [`4d9adc47`](https://github.com/hashicorp/react-components/commit/4d9adc476b38210d30eb1bf4373f59ec7a816ed1) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - fixed `version-select` version detection logic
+
 ## 17.7.0
 
 ### Minor Changes
