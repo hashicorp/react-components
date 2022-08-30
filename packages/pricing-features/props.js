@@ -125,9 +125,52 @@ const textCellProps = {
   },
 }
 
+const stickyTiersProps = {
+  isVisible: {
+    type: 'boolean',
+    default: 'false',
+    description: 'If true, sticky styles will be applied to the component',
+  },
+  tiers: {
+    type: 'array',
+    description:
+      'Titles ideally should match column titles in tables. Maximum 5.',
+    properties: [
+      {
+        type: 'object',
+        properties: {
+          title: {
+            type: 'string',
+            required: true,
+          },
+          cta: {
+            type: 'object',
+            properties: {
+              title: {
+                type: 'string',
+                required: true,
+              },
+              url: {
+                type: 'string',
+                required: true,
+              },
+              onClick: {
+                type: 'function',
+                description:
+                  'A function that will be called when the button is clicked.',
+              },
+            },
+          },
+        },
+      },
+    ],
+  },
+}
+
 module.exports = {
   featuresProps,
   tabsProps,
   tableProps,
   textCellProps,
+  stickyTiersProps,
 }

@@ -9,10 +9,14 @@ Note: Tabs _should_ display an icon image but is shown as text due to Swingset l
 
 On mobile, a block is displayed that contains a pdf download button.
 
-Each component is exported and available for use on their own:
-` import { Table, Tabs, DownloadBlock } from '@hashicorp/react-pricing-features'`
+Each content component is exported and available for use on their own:
+`import { Table, Tabs, DownloadBlock } from '@hashicorp/react-pricing-features'`
+
+StickyTiers and DownloadBlock are also exported.
+`import { StickyTiers, DownloadBlock } from '@hashicorp/react-pricing-features'`
 
 This package also exports a helper function used to format incoming data from DatoCMS `normalizeTableData`.
+`import { normalizeTableData } from '@hashicorp/react-pricing-features'`
 
 ## Installation
 

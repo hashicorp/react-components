@@ -1,0 +1,85 @@
+/* Body X Small */
+.g-type-body-x-small {
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.219em;
+  letter-spacing: 0.0125em;
+}
+
+.stickyTiers {
+  composes: g-grid-container from global;
+  display: none;
+  position: sticky;
+  top: 60px;
+  z-index: 2;
+  opacity: 0;
+
+  @media (--medium-up) {
+    display: flex;
+    animation: fade-out 0.2s;
+    animation-fill-mode: forwards;
+
+    &.isVisible {
+      animation: fade-in 0.4s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  & .inner {
+    background: var(--white);
+    align-items: center;
+    grid-template-columns: var(--grid-template-columns);
+    padding: 16px 0 24px;
+    display: grid;
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(0 4px 19px #c1c3c8);
+    z-index: 3;
+  }
+}
+
+.tier {
+  padding-left: var(--col-gap);
+  display: grid;
+  row-gap: 1px;
+}
+
+.tierName {
+  composes: g-type-body-x-strong from global;
+  margin: 0;
+}
+
+.cta {
+  height: 18px;
+  composes: g-type-body-x-small;
+  display: flex;
+  align-items: flex-end;
+  color: var(--wpl-blue-500);
+
+  & a {
+    text-decoration: underline;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
