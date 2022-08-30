@@ -67,16 +67,24 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                   }
                 />
                 <div className={s.bottom}>
-                  <div className={s.cta}>
+                  <div
+                    className={classNames(
+                      s.cta,
+                      cta.type === 'button' && tiersLength < 5 && s.buttonCta
+                    )}
+                  >
                     {cta.type === 'button' && tiersLength < 5 ? (
                       <Button
                         url={cta.url}
                         title={cta.title}
                         theme={{ variant: cta.variant }}
+                        onClick={cta.onClick}
                       />
                     ) : (
                       <Link href={cta.url}>
-                        <a className={s.textLink}>{cta.title}</a>
+                        <a className={s.textLink} onClick={cta.onClick}>
+                          {cta.title}
+                        </a>
                       </Link>
                     )}
                   </div>

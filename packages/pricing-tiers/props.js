@@ -48,6 +48,11 @@ module.exports = {
         options: ['primary', 'secondary'],
         default: 'primary',
       },
+      onClick: {
+        type: 'function',
+        description:
+          'A function that will be called when the button is clicked.',
+      },
     },
   },
   footnote: {
