@@ -5,30 +5,22 @@ import {
 } from './util'
 
 describe('getVersionFromPath', () => {
-  it('should return the version if it is present', () => {
-    {
-      const path =
-        'https://waypointproject.io/docs/v10.2.x/waypoint-hcl/variables/deploy'
-
-      const version = getVersionFromPath(path)
-      expect(version).toEqual('v10.2.x')
-    }
-
-    {
-      const path =
-        'https://terraform.io/enterprise/v202205-1/reference-architecture'
-
-      const version = getVersionFromPath(path)
-      expect(version).toEqual('v202205-1')
-    }
-
-    {
-      const path =
-        'https://waypointproject.io/docs/v0.5.x/waypoint-hcl/variables/deploy'
-
-      const version = getVersionFromPath(path)
-      expect(version).toEqual('v0.5.x')
-    }
+  it.each([
+    [
+      'http://localhost:3000/docs/v10.2.x/waypoint-hcl/variables/deploy',
+      'v10.2.x',
+    ],
+    [
+      'https://www.terraform.io/enterprise/v202208-1/releases/2022/v202207-2',
+      'v202208-1',
+    ],
+    ['/docs/v10.2.x/waypoint-hcl/variables/deploy', 'v10.2.x'],
+    ['/docs/v0.5.x/waypoint-hcl/variables/deploy', 'v0.5.x'],
+    ['/enterprise/v202205-1/reference-architecture', 'v202205-1'],
+    ['/enterprise/v202208-1/releases/2022/v202207-2', 'v202208-1'],
+  ])('given "%s", should return "%s"', (path, expectedVersion) => {
+    const version = getVersionFromPath(path)
+    expect(version).toEqual(expectedVersion)
   })
 
   it('should return `undefined` if no version is present', () => {
@@ -37,21 +29,28 @@ describe('getVersionFromPath', () => {
     expect(version).toBeUndefined()
   })
 
-  it('should return `undefined` if version is not formatted properly', () => {
-    {
-      const path =
-        'https://waypointproject.io/docs/10.2.4-canary.6/waypoint-hcl/variables/deploy'
+  it.each([
+    '/docs/10.2.4-canary.6/waypoint-hcl/variables/deplo',
+    'https://waypointproject.io/docs/10.2.4-canary.6/waypoint-hcl/variables/deploy',
+    'https://waypointproject.io/docs/v10.2/waypoint-hcl/variables/deploy',
+  ])(
+    'should return `undefined` if version is not formatted properly',
+    (path) => {
       const version = getVersionFromPath(path)
       expect(version).toBeUndefined()
     }
+  )
 
-    {
-      const path =
-        'https://waypointproject.io/docs/v10.2/waypoint-hcl/variables/deploy'
+  it.each([
+    '/enterprise/releases/2022/v202207-2',
+    'https://www.terraform.io/enterprise/releases/2022/v202207-2,',
+  ])(
+    'should return `undefined` when a version is not in the expected position',
+    (path) => {
       const version = getVersionFromPath(path)
       expect(version).toBeUndefined()
     }
-  })
+  )
 })
 
 describe('removeVersionFromPath', () => {
