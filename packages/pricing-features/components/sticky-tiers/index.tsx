@@ -9,7 +9,7 @@ export interface StickyTiersProps {
     cta: {
       title: string
       url: string
-      onClick: () => void
+      onClick?: () => void
     }
   }>
   isVisible?: boolean

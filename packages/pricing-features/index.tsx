@@ -1,6 +1,7 @@
 import Table from './components/table'
 import Tabs from './components/tabs'
 import DownloadBlock from './components/download-block'
+import StickyTiers from './components/sticky-tiers'
 import { PricingFeaturesProps } from './types'
 import { normalizeTableData } from './helpers'
 import s from './style.module.css'
@@ -41,4 +42,4 @@ export default function PricingFeatures({
   )
 }
 
-export { Table, Tabs, DownloadBlock, normalizeTableData }
+export { Table, Tabs, DownloadBlock, StickyTiers, normalizeTableData }
