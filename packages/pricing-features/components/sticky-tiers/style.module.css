@@ -1,12 +1,3 @@
-/* Body X Small */
-.g-type-body-x-small {
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  line-height: 1.219em;
-  letter-spacing: 0.0125em;
-}
-
 .stickyTiers {
   composes: g-grid-container from global;
   display: none;
@@ -43,18 +34,21 @@
 
 .tier {
   padding-left: var(--col-gap);
-  display: grid;
-  row-gap: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .tierName {
   composes: g-type-body-x-strong from global;
   margin: 0;
+  padding-bottom: 1px;
 }
 
 .cta {
-  height: 18px;
-  composes: g-type-body-x-small;
+  composes: g-type-body-x-small from '../../global-font.css';
   display: flex;
   align-items: flex-end;
   color: var(--wpl-blue-500);
