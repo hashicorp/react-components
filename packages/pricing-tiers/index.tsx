@@ -67,12 +67,7 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                   }
                 />
                 <div className={s.bottom}>
-                  <div
-                    className={classNames(
-                      s.cta,
-                      cta.type === 'button' && tiersLength < 5 && s.buttonCta
-                    )}
-                  >
+                  <div className={s.cta}>
                     {cta.type === 'button' && tiersLength < 5 ? (
                       <Button
                         url={cta.url}

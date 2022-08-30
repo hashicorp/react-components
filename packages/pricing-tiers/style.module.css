@@ -74,10 +74,6 @@
   text-align: center;
   padding-bottom: 100px;
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--wpl-neutral-100);
@@ -85,6 +81,12 @@
     @media (--medium-up) {
       border-bottom: 0;
     }
+  }
+
+  @media (--small) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -129,12 +131,6 @@
 .cta {
   min-height: 48px;
   display: flex;
-  justify-content: center;
-
-  &.buttonCta {
-    height: 100%;
-    align-items: center;
-  }
 }
 
 .textLink {
