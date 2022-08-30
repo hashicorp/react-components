@@ -27,6 +27,15 @@ export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
     throw new Error('<PricingFeatureTabs /> only supports between 2 and 7 tabs')
   }
 
+  const STYLES_BY_TAB_COUNT = {
+    2: { '--tab-padding': '22px 22px 42px 22px', '--col-gap': '16px' },
+    3: { '--tab-padding': '22px 22px 42px 22px', '--col-gap': '16px' },
+    4: { '--tab-padding': '12px 12px 32px 12px', '--col-gap': '16px' },
+    5: { '--tab-padding': '12px 4px 32px 8px', '--col-gap': '12px' },
+    6: { '--tab-padding': '12px 4px 32px 8px', '--col-gap': '10px' },
+    7: { '--tab-padding': '12px 4px 32px 8px', '--col-gap': '8px' },
+  }
+
   return (
     <Tabs
       className={s.tabs}
@@ -38,9 +47,8 @@ export default function PricingFeatureTabs({ tabs }: PricingFeatureTabsProps) {
         className={s.tabList}
         style={
           {
+            ...STYLES_BY_TAB_COUNT[tabCount],
             '--col': tabCount,
-            '--tab-padding':
-              tabCount > 3 ? '12px 12px 32px 12px' : '22px 22px 42px 22px',
           } as React.CSSProperties
         }
       >

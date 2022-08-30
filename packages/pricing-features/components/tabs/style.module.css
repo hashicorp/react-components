@@ -7,8 +7,11 @@
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: 1fr 1fr;
-    column-gap: 16px;
-    row-gap: 24px;
+    column-gap: var(--col-gap);
+
+    @media (--large) {
+      column-gap: 16px;
+    }
 
     @media (--medium-up) {
       grid-template-columns: repeat(var(--col), minmax(0, 1fr));
