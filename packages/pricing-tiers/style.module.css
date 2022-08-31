@@ -130,6 +130,8 @@
 
 .cta {
   min-height: 48px;
+  display: grid;
+  place-items: center;
 
   &.textLinkCta {
     display: flex;
