@@ -1,8 +1,6 @@
 import { screen, render, cleanup } from '@testing-library/react'
 import PricingTiers from '.'
-import tiersData from './fixtures/tiersData.json'
-
-const { oneTier, twoTiers, threeTiers, fourTiers, fiveTiers } = tiersData
+import { PricingTierItemProps } from './types'
 
 afterEach(cleanup)
 
@@ -54,3 +52,79 @@ describe('<PricingTiers />', () => {
     expect(listElement).toBeInTheDocument()
   })
 })
+
+const oneTier: PricingTierItemProps[] = [
+  {
+    title: 'Development',
+    price: 'Custom Pricing',
+    description:
+      '<p>Managed by your team on your infrastructure of choice. Recommended for teams with custom deployment requirements</p>',
+    cta: {
+      type: 'button',
+      url: '#',
+      title: 'Try it for free',
+      variant: 'secondary',
+    },
+  },
+]
+const twoTiers: PricingTierItemProps[] = [
+  ...oneTier,
+  {
+    title: 'Starter',
+    price: 'Custom Pricing',
+    description:
+      '<p>Managed by your team on your infrastructure of choice. Recommended for teams with custom deployment requirements</p>',
+    cta: {
+      type: 'button',
+      url: '#',
+      title: 'Contact sales',
+      variant: 'secondary',
+    },
+  },
+]
+const threeTiers: PricingTierItemProps[] = [
+  ...twoTiers,
+  {
+    title: 'Standard',
+    label: 'Starting at',
+    price: '$1.578',
+    consumption: 'per hour',
+    description:
+      '<p>Clusters designed to scale with the demand of running production workloads.</p>',
+    cta: {
+      type: 'textLink',
+      url: '#',
+      title: 'Try it for free',
+    },
+    footnote: '<p>*Price scales with <a>active clients</a></p>',
+  },
+]
+const fourTiers: PricingTierItemProps[] = [
+  ...threeTiers,
+  {
+    title: 'Plus',
+    label: 'Starting at',
+    price: '$1.844',
+    consumption: 'per hour',
+    description:
+      '<p>Designed for high availability replication of secrets and policies across multiple data centers. Requires 2 clusters for replication.</p>',
+    cta: {
+      type: 'textLink',
+      url: '#',
+      title: 'Try it for free',
+    },
+    footnote: '<p>*Price scales with <a>active clients</a></p>',
+  },
+]
+const fiveTiers: PricingTierItemProps[] = [
+  ...fourTiers,
+  {
+    title: 'Enterprise',
+    description: '<p>Designed for custom deployments</p>',
+    cta: {
+      type: 'textLink',
+      url: '#',
+      title: 'Contact sales',
+    },
+  },
+]
