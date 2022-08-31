@@ -46,7 +46,7 @@ export default function StickyTiers({
             <p className={s.tierName}>{title}</p>
             <div className={s.cta}>
               <Link href={cta.url}>
-                <a onClick={cta.onClick} role="button">
+                <a onClick={cta.onClick} tabIndex={-1}>
                   {cta.title}
                 </a>
               </Link>
