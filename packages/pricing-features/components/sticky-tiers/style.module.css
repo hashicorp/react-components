@@ -24,8 +24,8 @@
     width: 100%;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    filter: drop-shadow(0 4px 19px #c1c3c8);
+    border: 1px solid var(--wpl-neutral-200);
+    filter: drop-shadow(0 4px 19px var(--wpl-neutral-200));
     z-index: 3;
   }
 }
