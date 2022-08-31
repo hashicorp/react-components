@@ -1,0 +1,353 @@
+.pricingTiersContainer {
+  composes: g-grid from global;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    background-color: var(--wpl-neutral-50);
+    filter: blur(24px);
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 93%;
+    height: 120px;
+    bottom: -10px;
+    display: none;
+
+    @media (--medium-up) {
+      display: block;
+    }
+  }
+
+  &.length1 {
+    &::before {
+      width: 45%;
+    }
+  }
+}
+
+.pricingTiers {
+  grid-column: 1 / -1;
+  display: grid;
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--wpl-neutral-100);
+  border-radius: 8px;
+
+  @media (--medium-up) {
+    grid-template-columns: repeat(var(--col), minmax(0, 1fr));
+  }
+}
+
+.header {
+  text-align: center;
+  position: relative;
+}
+
+.description {
+  text-align: center;
+  width: 100%;
+  composes: g-type-body-small from global;
+  color: var(--wpl-neutral-700);
+  padding: 24px 0 32px;
+  vertical-align: top;
+  max-width: 90%;
+  margin: 0 auto;
+
+  & p {
+    text-align: center;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.bottom {
+  text-align: center;
+  padding-bottom: 100px;
+  width: 100%;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--wpl-neutral-100);
+
+    @media (--medium-up) {
+      border-bottom: 0;
+    }
+  }
+
+  @media (--small) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.tierName {
+  composes: g-type-display-3 from global;
+  padding-top: 80px;
+  margin: 0;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.label {
+  composes: g-type-label from global;
+  padding-bottom: 5px;
+  min-height: 23px;
+}
+
+.price {
+  composes: g-type-display-4 from global;
+  min-height: 34px;
+}
+
+.consumption {
+  composes: g-type-body-small from global;
+  margin: 0;
+  min-height: 25px;
+}
+
+.cta {
+  min-height: 48px;
+  display: grid;
+  place-items: center;
+
+  &.textLinkCta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.textLink {
+  composes: g-type-buttons-and-standalone-links from global;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.footnote {
+  padding-top: 12px;
+  color: var(--wpl-neutral-500);
+  width: 100%;
+  vertical-align: top;
+  height: 100%;
+
+  & p:first-child {
+    margin-top: 0;
+  }
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
+
+  & a {
+    color: var(--wpl-neutral-400);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  @media (--medium-up) {
+    font-size: 0.813rem;
+    line-height: 1.5em;
+    letter-spacing: 0.0125em;
+  }
+}
+
+.length1 {
+  @media (--medium-up) {
+    & .pricingTiers {
+      grid-column: 4 / 10;
+    }
+
+    & .description {
+      max-width: 355px;
+    }
+  }
+}
+
+.length1,
+.length2,
+.length3,
+.length4 {
+  & .pricingTiers {
+    @media (--medium-up) {
+      & .header {
+        grid-column: var(--column-index);
+        grid-row: 1;
+      }
+
+      & .description {
+        grid-column: var(--column-index);
+        grid-row: 2;
+      }
+
+      & .bottom {
+        margin-bottom: 0;
+        grid-column: var(--column-index);
+        grid-row: 3;
+      }
+    }
+  }
+}
+
+.length2 {
+  & .pricingTiers {
+    @media (--medium-up) {
+      column-gap: 20px;
+      padding: 0 32px;
+    }
+
+    @media (--large) {
+      column-gap: 100px;
+      padding: 0 100px;
+    }
+  }
+}
+
+.length3 {
+  & .pricingTiers {
+    @media (--medium) {
+      column-gap: 12px;
+      padding: 0 12px;
+    }
+
+    @media (--large) {
+      column-gap: 36px;
+      padding: 0 60px;
+    }
+
+    @media (--medium-up) {
+      grid-column: 1 / -1;
+
+      & .tierName {
+        /* copy of g-type-body-display-4 */
+        font-size: 1.438rem;
+        letter-spacing: -0.004em;
+        line-height: 1.391em;
+      }
+    }
+  }
+}
+
+.length4 {
+  & .pricingTiers {
+    @media (--medium) {
+      column-gap: 12px;
+      padding: 0 12px;
+    }
+
+    @media (--large) {
+      column-gap: 36px;
+      padding: 0 60px;
+    }
+
+    @media (--medium-up) {
+      grid-column: 1 / -1;
+      row-gap: 0;
+
+      & .tierName {
+        /* copy of g-type-body-display-4 medium-up */
+        font-size: 1.438rem;
+        letter-spacing: -0.004em;
+        line-height: 1.391em;
+      }
+
+      & .description {
+        font-size: 0.813rem;
+        line-height: 1.5em;
+        letter-spacing: 0.0125em;
+      }
+    }
+
+    @media (--medium) {
+      & .textLink {
+        font-size: 13px;
+      }
+    }
+
+    @media (--large) {
+      column-gap: 32px;
+    }
+  }
+}
+
+.length5 {
+  & .pricingTiers {
+    & .bottom {
+      width: 100%;
+    }
+
+    @media (--medium) {
+      grid-template-columns: unset;
+
+      & .bottom {
+        width: 100%;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid var(--wpl-neutral-100);
+        }
+      }
+    }
+
+    @media (--large) {
+      column-gap: 32px;
+      padding: 0 32px;
+
+      & .header {
+        grid-column: var(--column-index);
+        grid-row: 1;
+      }
+
+      & .tierName {
+        /* copy of g-type-body-display-5 */
+        font-family: var(--font-display);
+        font-weight: var(--font-weight-bold);
+        font-size: 1.125rem;
+        line-height: 1.556em;
+      }
+
+      & .price {
+        /* copy of g-type-body-display-5 */
+        font-family: var(--font-display);
+        font-weight: var(--font-weight-bold);
+        font-size: 1.125rem;
+        line-height: 1.556em;
+      }
+
+      & .description {
+        font-size: 0.813rem;
+        line-height: 1.5em;
+        letter-spacing: 0.0125em;
+        grid-column: var(--column-index);
+        grid-row: 2;
+      }
+
+      & .bottom {
+        grid-row: 3;
+        grid-column: var(--column-index);
+        margin-bottom: 0;
+      }
+    }
+  }
+}
