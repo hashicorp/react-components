@@ -18,9 +18,14 @@ export default function StickyTiers({
   tiers,
   isVisible = false,
 }: StickyTiersProps) {
-  const tiersCount = tiers.length
+  const tierCount = tiers.length
+  const gridTemplateColumns =
+    tierCount > 3
+      ? `2fr repeat(${tierCount}, 1fr)`
+      : `repeat(${tierCount + 1}, 1fr)`
+  const colGap = tierCount === 2 ? '34px' : '22px'
 
-  if (tiersCount > 5) {
+  if (tierCount > 5) {
     throw new Error('<StickyTiers /> only supports up to five tiers')
   }
 
@@ -29,11 +34,8 @@ export default function StickyTiers({
       className={classNames(s.stickyTiers, isVisible && s.isVisible)}
       style={
         {
-          '--grid-template-columns':
-            tiersCount > 3
-              ? `2fr repeat(${tiersCount}, 1fr)`
-              : `repeat(${tiersCount + 1}, 1fr)`,
-          '--col-gap': tiersCount === 2 ? '34px' : '22px',
+          '--grid-template-columns': gridTemplateColumns,
+          '--col-gap': colGap,
         } as React.CSSProperties
       }
       // content in this component is available in other parts of the page
@@ -46,6 +48,7 @@ export default function StickyTiers({
             <p className={s.tierName}>{title}</p>
             <div className={s.cta}>
               <Link href={cta.url}>
+                {/* links should not be tabbable since they are in other locations on the page (see tier cards in hero) */}
                 <a onClick={cta.onClick} tabIndex={-1}>
                   {cta.title}
                 </a>
