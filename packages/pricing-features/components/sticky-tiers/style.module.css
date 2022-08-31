@@ -8,8 +8,6 @@
 
   @media (--medium-up) {
     display: flex;
-    animation: fade-out 0.2s;
-    animation-fill-mode: forwards;
 
     &.isVisible {
       animation: fade-in 0.4s;
@@ -65,15 +63,5 @@
 
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
   }
 }
