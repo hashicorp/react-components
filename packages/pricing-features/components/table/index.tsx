@@ -68,7 +68,7 @@ export default function PricingTierTable({
             <tbody>
               {rows.map(({ header, cells, isCollapsible }, rowIdx) => {
                 const cellIds = cells.map(
-                  (cell, idx) => `row-${rowIdx}-cell-${idx}`
+                  (cell, idx) => `${header.heading}-row-${rowIdx}-cell-${idx}`
                 )
                 const ariaControls = [...cellIds, `row-${rowIdx}`]
                 const rowIsCollapsed = collapsedRows.includes(rowIdx)
@@ -86,7 +86,7 @@ export default function PricingTierTable({
                           <button
                             className={s.icon}
                             aria-controls={ariaControls.join(' ')}
-                            aria-expanded="false"
+                            aria-expanded={!rowIsCollapsed}
                             aria-label="toggle row content"
                             onClick={() => handleCollapseRow(rowIdx)}
                           >
