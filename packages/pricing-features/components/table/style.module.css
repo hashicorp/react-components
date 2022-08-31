@@ -1,5 +1,5 @@
 .pricingTable {
-  background-color: var(--gray-6);
+  background-color: var(--wpl-neutral-50);
 
   @media (--medium-up) {
     background-color: #fff;
