@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import VisuallyHidden from '@reach/visually-hidden'
 import { IconXCircle24 } from '@hashicorp/flight-icons/svg-react/x-circle-24'
 import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-circle-fill-24'
 import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16'
@@ -56,9 +55,7 @@ export default function PricingTierTable({
                           <span>{col}</span>
                         </div>
                       ) : (
-                        <VisuallyHidden>
-                          <span>Title Column</span>
-                        </VisuallyHidden>
+                        <div />
                       )}
                     </th>
                   ))}
