@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import classNames from 'classnames'
-import VisuallyHidden from '@reach/visually-hidden'
 import s from './style.module.css'
 
 export interface StickyTiersProps {
@@ -41,11 +40,7 @@ export default function StickyTiers({
       aria-hidden={true}
     >
       <div className={s.inner}>
-        <div>
-          <VisuallyHidden>
-            <span>Empty Space</span>
-          </VisuallyHidden>
-        </div>
+        <div />
         {tiers.map(({ title, cta }) => (
           <div key={title} className={s.tier}>
             <p className={s.tierName}>{title}</p>
