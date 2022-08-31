@@ -6,7 +6,7 @@
 
   &::before {
     content: '';
-    background-color: #f2f2f3;
+    background-color: var(--wpl-neutral-50);
     filter: blur(24px);
     border-radius: 8px;
     position: absolute;
@@ -51,7 +51,7 @@
   text-align: center;
   width: 100%;
   composes: g-type-body-small from global;
-  color: var(--gray-2);
+  color: var(--wpl-neutral-700);
   padding: 24px 0 32px;
   vertical-align: top;
   max-width: 90%;
