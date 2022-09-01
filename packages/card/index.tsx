@@ -1,5 +1,8 @@
+import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import InlineSvg from '@hashicorp/react-inline-svg'
+import svgArrowRight24 from '@hashicorp/flight-icons/svg/arrow-right-24.svg?include'
 import type {
   CardProps,
   ThumbnailProps,
@@ -8,8 +11,6 @@ import type {
   HeadingProps,
   DescriptionProps,
 } from './types'
-import classNames from 'classnames'
-import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import s from './style.module.css'
 
 function Card(props: CardProps) {
@@ -38,7 +39,7 @@ function Card(props: CardProps) {
         </>
       )}
       <div className={s.cta}>
-        <IconArrowRight24 />
+        <InlineSvg src={svgArrowRight24} alt="" />
       </div>
       <Link href={link}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
