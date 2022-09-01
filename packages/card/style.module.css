@@ -102,11 +102,6 @@
   margin-top: auto;
   transition: color 0.25s ease;
 
-  & > div {
-    width: 24px;
-    height: 24px;
-  }
-
   & svg {
     transition: transform 0.25s ease;
   }
