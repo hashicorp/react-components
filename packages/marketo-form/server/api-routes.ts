@@ -6,6 +6,24 @@ function flatten(param: string | string[]): string {
   return Array.isArray(param) ? param[0] : param
 }
 
+async function notifyError(body: unknown, err: unknown) {
+  if (process.env.MARKETO_ERROR_ZAPIER_WEBHOOK) {
+    try {
+      await fetch(process.env.MARKETO_ERROR_ZAPIER_WEBHOOK, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ body, err }, null, 2),
+      })
+    } catch (err) {
+      console.error({ body, err })
+    }
+  }
+
+  return Promise.resolve()
+}
+
 async function getForm(req: NextApiRequest, res: NextApiResponse) {
   try {
     const marketoRes = await client.getForm(
@@ -57,9 +75,13 @@ async function submitForm(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     const marketoRes = await client.submitForm(req.body)
-    const form = await marketoRes.json()
+    const form = (await marketoRes.json()) as { success: boolean }
+    if (!form.success) {
+      await notifyError(req.body, form)
+    }
     res.status(marketoRes.status).json(form)
   } catch (err) {
+    await notifyError(req.body, err)
     res.status(500).json({ error: 'internal server error' })
     throw err
   }
