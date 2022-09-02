@@ -1,0 +1,134 @@
+/* 
+* These styles were copied directly from 'components/button' 
+*
+* Root class applied to all button variations. 
+*/
+
+/* composable classes from devdot design system */
+.hds-font-weight-medium {
+  font-weight: 500;
+}
+
+.root {
+  /* variables from devdot design system */
+  --token-color-surface-faint: #fafafa;
+  --token-color-focus-action-internal: #0c56e9;
+  --token-color-border-strong: #3b3d4566;
+  --token-elevation-low-box-shadow: 0 1px 1px 0 #656a760d, 0 2px 2px 0 #656a760d;
+  --token-color-foreground-primary: #3b3d45;
+  --token-color-surface-primary: #fff;
+  --token-color-focus-action-external: #5990ff;
+  --token-color-surface-interactive-active: #dedfe3;
+
+  /* variables */
+  --border-width: 1px;
+
+  /* composition */
+  composes: hds-font-weight-medium;
+
+  /* attributes */
+  align-items: center;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: var(--border-width);
+  display: flex;
+  font-size: var(--font-size);
+  font-family: 'metro-web', 'Metro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+    sans-serif;
+  gap: 6px;
+  isolation: isolate;
+  justify-content: center;
+  line-height: var(--line-height);
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+  position: relative;
+  text-decoration: underline;
+
+  &::before {
+    border-radius: 8px;
+    border: 3px solid transparent;
+    bottom: -4px;
+    box-sizing: border-box;
+    content: '';
+    left: -4px;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    z-index: -1;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: transparent;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: var(--token-color-surface-faint);
+    border-color: var(--token-color-border-primary);
+    box-shadow: none;
+    color: var(--token-color-foreground-disabled);
+    cursor: not-allowed;
+  }
+}
+
+/*
+  ***
+  * Size classes
+  ***
+  */
+
+.small {
+  --padding-top-bottom: calc(7px - var(--border-width));
+  --padding-left-right: calc(12px - var(--border-width));
+  --font-size: 0.8125rem;
+  --line-height: 0.875rem;
+}
+
+.medium {
+  --padding-top-bottom: calc(10px - var(--border-width));
+  --padding-left-right: calc(16px - var(--border-width));
+  --font-size: 0.875rem;
+  --line-height: 1rem;
+}
+
+.large {
+  --padding-top-bottom: calc(12px - var(--border-width));
+  --padding-left-right: calc(20px - var(--border-width));
+  --font-size: 1rem;
+  --line-height: 1.5rem;
+}
+
+.secondary {
+  background-color: var(--token-color-surface-faint);
+  border-color: var(--token-color-border-strong);
+  box-shadow: var(--token-elevation-low-box-shadow);
+  color: var(--token-color-foreground-primary);
+
+  &:hover:not(:disabled) {
+    background-color: var(--token-color-surface-primary);
+    border-color: var(--token-color-border-strong);
+    color: var(--token-color-foreground-primary);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--token-color-surface-interactive-active);
+    border-color: var(--token-color-border-strong);
+    box-shadow: none;
+    color: var(--token-color-foreground-primary);
+  }
+
+  &:focus-visible {
+    background-color: var(--token-color-surface-faint);
+    border-color: var(--token-color-focus-action-internal);
+    color: var(--token-color-foreground-primary);
+    box-shadow: none;
+
+    &::before {
+      border-color: var(--token-color-focus-action-external);
+    }
+  }
+}
