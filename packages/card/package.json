@@ -9,6 +9,7 @@
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/flight-icons": ">=2.x",
     "react": ">=16.x"
   },
   "repository": {
