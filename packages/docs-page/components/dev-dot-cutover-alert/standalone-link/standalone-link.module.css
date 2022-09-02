@@ -1,9 +1,23 @@
-.root {
-  /* composes: g-focus-ring-from-box-shadow from global; */
+/* composable classes from devdot design system */
+.g-focus-ring-from-box-shadow {
   &:focus {
     outline: transparent;
   }
 
+  &:focus-visible {
+    box-shadow: var(--token-focus-ring-action-box-shadow);
+    outline: transparent;
+  }
+}
+
+.root {
+  /* variables from devdot design system */
+  --token-typography-body-100-font-size: 0.8125rem;
+  --token-typography-font-weight-medium: 500;
+  --token-color-foreground-strong: #0c0c0e;
+  --token-color-foreground-primary: #3b3d45;
+
+  composes: g-focus-ring-from-box-shadow from global;
   align-items: center;
   border-radius: 5px;
   cursor: pointer;
@@ -20,9 +34,9 @@
   }
 
   /*
-  Not styling ::before with position: absolute and -5px positions because that
-  does not work on links that span more than one line.
-  */
+    Not styling ::before with position: absolute and -5px positions because that
+    does not work on links that span more than one line.
+    */
   &:focus-visible {
     text-decoration: none;
     margin: -5px;
@@ -44,30 +58,31 @@
 
 .text {
   font-size: var(--font-size);
-
-  /* font-weight: var(--token-typography-font-weight-medium); */
-  font-weight: 500;
+  font-weight: var(--token-typography-font-weight-medium);
   line-height: var(--line-height);
 }
 
+/*
+  ***
+  * color helper classes
+  ***
+  */
+
 .color-secondary {
-  /* color: var(--token-color-foreground-strong); */
-  color: #0c0c0e;
+  color: var(--token-color-foreground-strong);
 
   &:active {
-    /* color: var(--token-color-foreground-primary); */
-    color: #3b3d45;
+    color: var(--token-color-foreground-primary);
   }
 }
 
 /*
-***
-* size helper classes
-***
-*/
+  ***
+  * size helper classes
+  ***
+  */
 
 .small {
-  /* --font-size: var(--token-typography-body-100-font-size); */
-  --font-size: 0.8125rem;
+  --font-size: var(--token-typography-body-100-font-size);
   --line-height: 1rem;
 }

@@ -3,12 +3,28 @@
 *
 * Root class applied to all button variations. 
 */
+
+/* composable classes from devdot design system */
+.hds-font-weight-medium {
+  font-weight: 500;
+}
+
 .root {
+  /* variables from devdot design system */
+  --token-color-surface-faint: #fafafa;
+  --token-color-focus-action-internal: #0c56e9;
+  --token-color-border-strong: #3b3d4566;
+  --token-elevation-low-box-shadow: 0 1px 1px 0 #656a760d, 0 2px 2px 0 #656a760d;
+  --token-color-foreground-primary: #3b3d45;
+  --token-color-surface-primary: #fff;
+  --token-color-focus-action-external: #5990ff;
+  --token-color-surface-interactive-active: #dedfe3;
+
   /* variables */
   --border-width: 1px;
 
-  /* composes: hds-font-weight-medium from global; */
-  font-weight: 500;
+  /* composition */
+  composes: hds-font-weight-medium from global;
 
   /* attributes */
   align-items: center;
@@ -49,6 +65,14 @@
   &:not(:disabled) {
     cursor: pointer;
   }
+
+  &:disabled {
+    background-color: var(--token-color-surface-faint);
+    border-color: var(--token-color-border-primary);
+    box-shadow: none;
+    color: var(--token-color-foreground-disabled);
+    cursor: not-allowed;
+  }
 }
 
 /*
@@ -79,52 +103,32 @@
 }
 
 .secondary {
-  /* background-color: var(--token-color-surface-faint); */
-  background-color: #fafafa;
-
-  /* border-color: var(--token-color-border-strong); */
-  border-color: #3b3d4566;
-
-  /* box-shadow: var(--token-elevation-low-box-shadow); */
-  box-shadow: 0 1px 1px 0 #656a760d, 0 2px 2px 0 #656a760d;
-
-  /* color: var(--token-color-foreground-primary); */
-  color: #3b3d45;
+  background-color: var(--token-color-surface-faint);
+  border-color: var(--token-color-border-strong);
+  box-shadow: var(--token-elevation-low-box-shadow);
+  color: var(--token-color-foreground-primary);
 
   &:hover:not(:disabled) {
-    /* background-color: var(--token-color-surface-primary); */
-    background-color: #fff;
-
-    /* border-color: var(--token-color-border-strong); */
-    border-color: #3b3d4566;
-
-    /* color: var(--token-color-foreground-primary); */
-    color: #3b3d45;
+    background-color: var(--token-color-surface-primary);
+    border-color: var(--token-color-border-strong);
+    color: var(--token-color-foreground-primary);
   }
 
   &:active:not(:disabled) {
     background-color: var(--token-color-surface-interactive-active);
-
-    /* border-color: var(--token-color-border-strong); */
-    border-color: #3b3d4566;
+    border-color: var(--token-color-border-strong);
     box-shadow: none;
-
-    /* color: var(--token-color-foreground-primary); */
-    color: #3b3d45;
+    color: var(--token-color-foreground-primary);
   }
 
   &:focus-visible {
-    /* background-color: var(--token-color-surface-faint); */
-    background-color: #fafafa;
+    background-color: var(--token-color-surface-faint);
     border-color: var(--token-color-focus-action-internal);
-
-    /* color: var(--token-color-foreground-primary); */
-    color: #3b3d45;
+    color: var(--token-color-foreground-primary);
     box-shadow: none;
 
     &::before {
-      /* border-color: var(--token-color-focus-action-external); */
-      border-color: #5990ff;
+      border-color: var(--token-color-focus-action-external);
     }
   }
 }

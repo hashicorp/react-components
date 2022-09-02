@@ -23,10 +23,6 @@ const getDevDotLink = (product, path, baseUrl) => {
   return url.toString()
 }
 
-/**
- * Largely copied from: https://github.com/hashicorp/learn/pull/4480
- */
-
 export default function DevDotCutoverAlert({
   product,
   devDotCutoverInfo: { cutoverDate, baseUrl },
@@ -42,8 +38,8 @@ export default function DevDotCutoverAlert({
   }
 
   return (
-    <div className={s.container}>
-      <div className={s.root}>
+    <div className={s.root}>
+      <div className={s.alertContainer}>
         <div className={s.icon}>
           <IconAlertCircle16 />
         </div>
