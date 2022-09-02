@@ -24,7 +24,7 @@
   --border-width: 1px;
 
   /* composition */
-  composes: hds-font-weight-medium from global;
+  composes: hds-font-weight-medium;
 
   /* attributes */
   align-items: center;

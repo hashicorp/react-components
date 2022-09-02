@@ -17,7 +17,7 @@
   --token-color-foreground-strong: #0c0c0e;
   --token-color-foreground-primary: #3b3d45;
 
-  composes: g-focus-ring-from-box-shadow from global;
+  composes: g-focus-ring-from-box-shadow;
   align-items: center;
   border-radius: 5px;
   cursor: pointer;
