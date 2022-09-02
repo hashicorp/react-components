@@ -199,4 +199,21 @@ module.exports = {
       },
     },
   },
+  devDotCutoverInfo: {
+    type: 'object',
+    description:
+      'Optional Dev Portal cutover information. If entered, the cutover alert message will be displayed.',
+    properties: {
+      cutoverDate: {
+        type: 'string',
+        required: true,
+        description: 'Date that product will be migrated to dev portal',
+      },
+      baseUrl: {
+        type: 'string',
+        description: 'Base url to get link for Migrate CTA',
+        default: 'https://developer.hashicorp.com',
+      },
+    },
+  },
 }
