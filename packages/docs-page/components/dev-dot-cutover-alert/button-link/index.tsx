@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { ButtonLinkProps } from './types'
 import s from './button-link.module.css'
 
-/* COPY OF DEVDOT ButtonLink COMPONENT */
+/* Copied from devdot https://github.com/hashicorp/dev-portal/tree/main/src/components/button-link */
 
 /**
  * _Note WIP Component_

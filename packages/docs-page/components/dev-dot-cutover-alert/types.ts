@@ -6,4 +6,7 @@ export interface DevDotCutoverAlertProps {
     cutoverDate: string
     baseUrl?: string
   }
+  handleOptIn?: () => void
+  devDotLink?: string
+  description?: string
 }

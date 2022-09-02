@@ -24,13 +24,16 @@ const getDevDotLink = (product, path, baseUrl) => {
 }
 
 export default function DevDotCutoverAlert({
+  handleOptIn,
   product,
   devDotCutoverInfo: { cutoverDate, baseUrl },
+  devDotLink,
+  description,
 }: DevDotCutoverAlertProps) {
   const { asPath } = useRouter()
   const { name, slug } = product
 
-  function handleOptIn() {
+  function onClick() {
     // Set a cookie to ensure any future navigation will send them to dev dot
     Cookies.set(`${slug}-io-beta-opt-in`, true, {
       expires: DAYS_UNTIL_EXPIRE,
@@ -48,14 +51,16 @@ export default function DevDotCutoverAlert({
             HashiCorp Developer, a unified practitioner experience is launching
             soon!
           </p>
-          <p
-            className={s.description}
-          >{`${name} Docs content is being improved and migrated into our new developer experience. The migration will take place on ${cutoverDate}`}</p>
+          <p className={s.description}>
+            {description
+              ? description
+              : `${name} Docs content is being improved and migrated into our new developer experience. The migration will take place on ${cutoverDate}`}
+          </p>
           <div className={s.actions}>
             <ButtonLink
               text="Migrate Now"
-              href={getDevDotLink(slug, asPath, baseUrl)}
-              onClick={handleOptIn}
+              href={devDotLink || getDevDotLink(slug, asPath, baseUrl)}
+              onClick={() => (handleOptIn ? handleOptIn() : onClick())}
               color="secondary"
               size="small"
             />

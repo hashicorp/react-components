@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { StandaloneLinkProps } from './types'
 import s from './standalone-link.module.css'
 
-/* COPY OF DEVDOT StandaloneLink COMPONENT */
+/* Copied from devdot https://github.com/hashicorp/dev-portal/tree/main/src/components/standalone-link */
 
 const StandaloneLink = ({
   ariaLabel,
