@@ -280,3 +280,5 @@ export default function DocsPage({
     </DocsPageInner>
   )
 }
+
+export { DevDotCutoverAlert }
