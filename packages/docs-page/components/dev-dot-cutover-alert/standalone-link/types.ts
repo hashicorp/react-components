@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import type { LinkProps } from 'next/link'
 
 type AnchorElementProps = JSX.IntrinsicElements['a']
 
@@ -33,7 +34,7 @@ export interface StandaloneLinkProps {
   /**
    * The destination of the link.
    */
-  href: AnchorElementProps['href']
+  href: LinkProps['href']
 
   /**
    * An icon from `@hashicorp/flight-icons` to render.
