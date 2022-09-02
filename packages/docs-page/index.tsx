@@ -21,6 +21,7 @@ import VersionAlert from './components/version-alert'
 import generateComponents from './components'
 import temporary_injectJumpToSection from './temporary_jump-to-section'
 import LoadingSkeleton from './components/loading-skeleton'
+import DevDotCutoverAlert from './components/dev-dot-cutover-alert'
 import useIsMobile from './use-is-mobile'
 import s from './style.module.css'
 import type { VersionSelectItem } from './server/loaders/remote-content'
@@ -41,6 +42,10 @@ interface DocsPageInnerProps {
   algoliaConfig?: AlgoliaConfigObject
   optInBanner?: ReactElement
   projectName?: string
+  devDotCutoverInfo?: {
+    cutoverDate: string
+    baseUrl?: string
+  }
 }
 
 export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
@@ -59,6 +64,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   algoliaConfig,
   optInBanner,
   projectName,
+  devDotCutoverInfo,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -164,6 +170,12 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
               content={
                 <>
                   {optInBanner ? optInBanner : null}
+                  {devDotCutoverInfo ? (
+                    <DevDotCutoverAlert
+                      product={{ name, slug }}
+                      devDotCutoverInfo={devDotCutoverInfo}
+                    />
+                  ) : null}
                   {isMobile ? null : search}
                   {children}
                 </>
@@ -205,6 +217,10 @@ export interface DocsPageProps {
     versions: VersionSelectItem[]
   }
   optInBanner?: ReactElement
+  devDotCutoverInfo?: {
+    cutoverDate: string
+    baseUrl?: string
+  }
   /**
    * This will override the `product.name` that is passed to the version-alert.
    */
@@ -228,6 +244,7 @@ export default function DocsPage({
   },
   optInBanner,
   projectName,
+  devDotCutoverInfo,
 }: DocsPageProps): ReactElement {
   const router = useRouter()
 
@@ -257,6 +274,7 @@ export default function DocsPage({
       algoliaConfig={algoliaConfig}
       optInBanner={optInBanner}
       projectName={projectName}
+      devDotCutoverInfo={devDotCutoverInfo}
     >
       {content}
     </DocsPageInner>

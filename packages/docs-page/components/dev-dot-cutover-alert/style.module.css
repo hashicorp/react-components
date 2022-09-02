@@ -1,0 +1,62 @@
+/* @TODO: change hardcoded colors to token colors */
+.container {
+  composes: g-type-body-small from global;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.root {
+  /* background-color: var(--token-color-surface-highlight); */
+  background-color: #f9f2ff;
+
+  /* border: 1px solid var(--token-color-border-highlight); */
+  border: 1px solid #ead2fe;
+  border-radius: 6px;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+}
+
+.icon {
+  color: #911ced;
+  flex-shrink: 0;
+  display: flex;
+
+  & svg {
+    display: block;
+  }
+}
+
+.contentContainer {
+  flex-grow: 1;
+}
+
+.actions {
+  padding-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.title {
+  composes: hds-typography-body-200 from global;
+  color: #911ced;
+
+  /* font-weight: var(--token-typography-font-weight-semibold); */
+  font-weight: 600;
+
+  /* !important is necessary here to stop leaks from enclosing
+     @hashicorp/react-content component styles */
+  margin: 0 !important;
+}
+
+.description {
+  composes: hds-typography-body-200 from global;
+
+  /* color: var(--token-color-foreground-primary); */
+  color: #3b3d45;
+
+  /* !important is necessary here to stop leaks from enclosing
+     @hashicorp/react-content component styles */
+  margin: 4px 0 0 !important;
+}
