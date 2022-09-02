@@ -57,9 +57,27 @@ async function getForm(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
+function isE2ETest(req: NextApiRequest): boolean {
+  // running e2e tests locally
+  if (process.env.E2E_TESTS === 'true') {
+    return true
+  }
+
+  // running e2e tests against a Vercel preview
+  if (
+    'input' in req.body &&
+    req.body.input.length > 0 &&
+    req.body.input[0].leadFormFields.email === 'daniela.rod@example.com'
+  ) {
+    return true
+  }
+
+  return false
+}
+
 async function submitForm(req: NextApiRequest, res: NextApiResponse) {
   // Don't submit forms to the Marketo API when using E2E tests.
-  if (process.env.E2E_TESTS === 'true') {
+  if (isE2ETest(req)) {
     res.status(200).json({
       requestId: '7d85#181a7ae5e56',
       result: [
