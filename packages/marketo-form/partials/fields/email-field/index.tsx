@@ -16,6 +16,7 @@ const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
           ...register(field.id),
           type: 'email',
         }}
+        placeholder={field.hintText}
         form={{
           touched: {
             [field.id]: touchedFields[field.id] !== undefined,

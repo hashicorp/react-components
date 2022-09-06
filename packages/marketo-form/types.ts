@@ -38,18 +38,22 @@ export interface MarketoBaseFormField {
 
 export interface MarketoFormTextField extends MarketoBaseFormField {
   dataType: 'text'
+  hintText?: string
 }
 
 export interface MarketoFormEmailField extends MarketoBaseFormField {
   dataType: 'email'
+  hintText?: string
 }
 
 export interface MarketoFormTelephoneField extends MarketoBaseFormField {
   dataType: 'telephone'
+  hintText?: string
 }
 
 export interface MarketoFormTextAreaField extends MarketoBaseFormField {
   dataType: 'textArea'
+  hintText?: string
 }
 
 export interface SelectValue {

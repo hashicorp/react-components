@@ -13,6 +13,7 @@ const Index = ({ field }: { field: MarketoFormTextField }) => {
       <TextInput
         label={formattedLabel(field)}
         field={register(field.id)}
+        placeholder={field.hintText}
         form={{
           touched: {
             [field.id]: touchedFields[field.id] !== undefined,
