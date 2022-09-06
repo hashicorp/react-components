@@ -43,10 +43,6 @@ export async function getForm(formId: number) {
     }
   )
 }
-const memoizedGetForm = moize(getForm, {
-  isPromise: true,
-  maxAge: 60 * 1000, // 60 seconds
-})
 
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -60,7 +56,7 @@ export async function getFormProps(
   id: number,
   depth: number = 0
 ): Promise<{ id: number; form: MarketoForm }> {
-  const res = await memoizedGetForm(id)
+  const res = await getForm(id)
   if (res.status !== 200) {
     throw new Error(
       `[marketo-form] non-200 status code when requesting form ${id}: ${res.status}`
@@ -82,6 +78,10 @@ export async function getFormProps(
   }
   return { id, form }
 }
+export const memoizedGetFormProps = moize(getFormProps, {
+  isPromise: true,
+  maxAge: 60 * 1000, // 60 seconds
+})
 
 export async function submitForm(body: unknown) {
   const { access_token } = await getToken()
