@@ -60,7 +60,7 @@ function AlertBanner({
    * to remember the dismissal of this banner
    */
   function closeBanner() {
-    cookie.set(dismissalCookieId, 1)
+    cookie.set(dismissalCookieId, '1')
     setIsShown(false)
     analytics.trackClose({ linkText, product, tag, text })
   }
