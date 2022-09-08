@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import Button from '@hashicorp/react-button'
 import VisibilityRule from '../partials/visibility-rule'
@@ -107,6 +107,10 @@ const Form = ({
   onSubmitError,
   validateFields,
 }: Props) => {
+  // Track if the form has been rendered at least once, so that we know if
+  // react-hook-form has already cached values.
+  const hasBeenRendered = useRef(false)
+
   // memoized function that groups marketo fields based on supplied groups.
   // If a field doesn't belong to a group, it is placed in a group keyed by
   // field.Name.
@@ -169,6 +173,23 @@ const Form = ({
       return { values, errors }
     },
   })
+
+  // Reset form if initialValues changes since defaultValues is cached on the
+  // first render. This handles the situation where initialValues is updated
+  // after the form is rendered, primarily when using router state which is
+  // resolved _after_ the initial render for SSG pages.
+  useEffect(() => {
+    if (hasBeenRendered.current) {
+      methods.reset(calculateDefaultValues(marketoForm.result, initialValues), {
+        keepDirtyValues: true,
+      })
+    }
+  }, [hasBeenRendered, methods, marketoForm, initialValues])
+
+  // Track that we've finished rendering.
+  useEffect(() => {
+    hasBeenRendered.current = true
+  }, [hasBeenRendered])
 
   const onSubmit = async (data: Record<string, unknown>) => {
     const res = await fetch(`${window.location.origin}/api/marketo/submit`, {
