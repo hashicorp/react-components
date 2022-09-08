@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.2.0
+
+### Minor Changes
+
+- [#717](https://github.com/hashicorp/react-components/pull/717) [`02e9b938`](https://github.com/hashicorp/react-components/commit/02e9b9386d16f7930c5864ed39fea35c0594a087) Thanks [@EnMod](https://github.com/EnMod)! - Removes `@hashicorp/platform-product-meta` dep, adds `@hashicorp/flight-icons` dep
+
 ## 0.1.1
 
 ### Patch Changes
