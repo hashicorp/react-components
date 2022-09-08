@@ -5,11 +5,11 @@
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/platform-product-meta": "^0.1.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/flight-icons": ">=2.x",
     "react": ">=16.x"
   },
   "repository": {
