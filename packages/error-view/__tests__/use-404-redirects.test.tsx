@@ -58,8 +58,7 @@ describe('use404Redirects', () => {
       expect(useRouterMethods.replace).toHaveBeenCalledWith('/new-destination')
     )
     expect(window.analytics.track).toHaveBeenCalledTimes(1)
-    expect(window.analytics.track).toBeCalledWith('http://local.test/testing', {
-      category: 'Client-side Redirect',
+    expect(window.analytics.track).toBeCalledWith('Client-side Redirect', {
       label: 'http://local.test/new-destination',
     })
   })
