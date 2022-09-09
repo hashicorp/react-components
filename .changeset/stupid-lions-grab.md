@@ -2,4 +2,4 @@
 '@hashicorp/react-error-view': minor
 ---
 
-Uses the useErrorPageAnalytics hook
+Replaces track event name with static value.
