@@ -2,6 +2,8 @@
 componentName: 'Actions'
 ---
 
+Use to promote next call-to-action.
+
 <LiveComponent>
   {`<Actions
   ctas={[
@@ -19,54 +21,7 @@ componentName: 'Actions'
 />`}
 </LiveComponent>
 
-## Examples
-
-<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
-  Light theme
-</h3>
-
-<div style={{padding: "24px", border: "1px solid var(--gray-6)"}}>
-
-<Actions
-  ctas={[
-    {
-      title: 'View tutorials',
-      url: '/tutorials',
-      variant: 'primary',
-    },
-    {
-      title: 'View documentation',
-      url: '/docs',
-      variant: 'tertiary-neutral',
-    },
-  ]}
-/>
-
-</div>
-
-<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
-  Dark theme
-</h3>
-
-<div style={{padding: "24px", background: "black"}}>
-
-<Actions
-  appearance="dark"
-  ctas={[
-    {
-      title: 'View tutorials',
-      url: '/tutorials',
-      variant: 'primary',
-    },
-    {
-      title: 'View documentation',
-      url: '/docs',
-      variant: 'tertiary-neutral',
-    },
-  ]}
-/>
-
-</div>
+<UsageDetails packageJson={packageJson} />
 
 ### Props
 
