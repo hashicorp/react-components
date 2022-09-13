@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import StandaloneLink from '.'
 
 const defaultProps = {
@@ -22,5 +22,13 @@ describe('<StandaloneLink />', () => {
     const linkElement = linkText.closest('a')
     expect(linkElement).toHaveClass('root', 'secondary')
     expect(linkElement).not.toHaveClass('primary', 'tertiary')
+  })
+
+  it('should call onClick function', () => {
+    const mockOnClick = jest.fn()
+    render(<StandaloneLink {...defaultProps} onClick={mockOnClick} />)
+    const linkElement = screen.getByText(defaultProps.children).closest('a')
+    fireEvent.click(linkElement)
+    expect(mockOnClick).toHaveBeenCalled()
   })
 })
