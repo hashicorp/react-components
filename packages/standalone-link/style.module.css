@@ -1,0 +1,123 @@
+.root {
+  --transition-duration: 200ms;
+  --transition-timing-function: ease-in-out;
+  --color: var(--wpl-blue-500);
+  --outline-color: var(--wpl-blue-500);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color);
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  line-height: 1.25;
+  border-radius: 1px;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: color;
+
+  &:focus {
+    outline: transparent;
+  }
+
+  &:focus-visible {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 2px;
+    outline-color: var(--outline-color);
+  }
+}
+
+/*
+ * Variants
+ */
+
+.primary {
+  --color: var(--wpl-blue-500);
+
+  &:hover {
+    --color: var(--wpl-blue-600);
+  }
+
+  &.dark {
+    --color: var(--wpl-neutral-100);
+
+    &:hover {
+      --color: var(--wpl-neutral-200);
+    }
+  }
+}
+
+.secondary {
+  --color: var(--wpl-neutral-600);
+  --outline-color: var(--wpl-neutral-400);
+
+  &:hover {
+    --color: var(--wpl-neutral-700);
+  }
+
+  &.dark {
+    --color: var(--wpl-neutral-100);
+
+    &:hover {
+      --color: var(--wpl-neutral-200);
+    }
+  }
+}
+
+.tertiary {
+  --color: var(--wpl-neutral-500);
+  --outline-color: var(--wpl-neutral-400);
+
+  &:hover {
+    --color: var(--wpl-neutral-600);
+  }
+
+  &.dark {
+    --color: var(--wpl-neutral-400);
+
+    &:hover {
+      --color: var(--wpl-neutral-300);
+    }
+  }
+}
+
+/*
+ * Arrow icon
+ */
+
+.icon {
+  overflow: visible !important;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: fill;
+}
+
+.arrow {
+  --translate-x: -8px;
+
+  transform: translateX(var(--translate-x));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: transform;
+
+  @nest .root:hover & {
+    --translate-x: 0;
+  }
+}
+
+.line {
+  --scale-x: 0;
+  --opacity: 0;
+
+  transform: scaleX(var(--scale-x));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: opacity, transform;
+
+  @nest .root:hover & {
+    --translate-x: 0;
+    --scale-x: 1;
+    --opacity: 1;
+  }
+}
