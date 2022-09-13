@@ -2,12 +2,23 @@
   --transition-duration: 175ms;
   --transition-timing-function: ease-in-out;
   --color: var(--wpl-blue-500);
+  --outline-color: var(--wpl-blue-500);
 
   display: inline-flex;
   align-items: center;
   gap: 15px;
   color: var(--color);
   font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 1px;
+
+  &:focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 2px;
+    outline-color: var(--outline-color);
+  }
 }
 
 /*
@@ -32,6 +43,7 @@
 
 .secondary {
   --color: var(--wpl-neutral-600);
+  --outline-color: var(--wpl-neutral-400);
 
   &:hover {
     --color: var(--wpl-neutral-700);
@@ -48,6 +60,7 @@
 
 .tertiary {
   --color: var(--wpl-neutral-500);
+  --outline-color: var(--wpl-neutral-400);
 
   &:hover {
     --color: var(--wpl-neutral-600);
