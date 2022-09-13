@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-sidenav
 
+## 9.0.2
+
+### Patch Changes
+
+- [#724](https://github.com/hashicorp/react-components/pull/724) [`9d748928`](https://github.com/hashicorp/react-components/commit/9d74892896ccf58f3d51bca17df09c8ba66ec14d) Thanks [@BRKalow](https://github.com/BRKalow)! - Fix mobile menu toggling by validating that the click was in the menu toggle before closing in our "auto close on click outisde" logic
+
 ## 9.0.1
 
 ### Patch Changes
