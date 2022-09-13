@@ -40,7 +40,7 @@
     --color: var(--wpl-neutral-100);
 
     &:hover {
-      --color: var(--wpl-blue-200);
+      --color: var(--wpl-neutral-200);
     }
   }
 }
@@ -57,7 +57,7 @@
     --color: var(--wpl-neutral-100);
 
     &:hover {
-      --color: var(--wpl-blue-200);
+      --color: var(--wpl-neutral-200);
     }
   }
 }
@@ -74,7 +74,7 @@
     --color: var(--wpl-neutral-400);
 
     &:hover {
-      --color: var(--wpl-blue-300);
+      --color: var(--wpl-neutral-300);
     }
   }
 }
