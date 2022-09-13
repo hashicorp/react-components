@@ -1,4 +1,6 @@
-export interface StandaloneLinkProps {
+type AnchorElementProps = JSX.IntrinsicElements['a']
+
+export interface StandaloneLinkProps extends AnchorElementProps {
   /**
    * Display on light or dark backgrounds.
    */
@@ -15,9 +17,4 @@ export interface StandaloneLinkProps {
    * The link color.
    */
   variant?: 'primary' | 'secondary' | 'tertiary'
-  /**
-   * Optional onClick handler which is called when
-   * the link is clicked.
-   */
-  onClick?: () => void
 }

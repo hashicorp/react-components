@@ -1,25 +1,20 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import type { StandaloneLinkProps } from './types'
 import Link from 'next/link'
 import classNames from 'classnames'
 import s from './style.module.css'
-
-type Noop = () => void
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop: Noop = () => {}
 
 export default function StandaloneLink({
   appearance = 'light',
   href,
   children,
   variant = 'primary',
-  onClick = noop,
+  ...restProps
 }: StandaloneLinkProps) {
   return (
     <Link href={href}>
       <a
         className={classNames(s.root, s[appearance], s[variant])}
-        onClick={onClick}
+        {...restProps}
       >
         <span>{children}</span>
         <span>
