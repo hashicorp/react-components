@@ -16,8 +16,8 @@ describe('<StandaloneLink />', () => {
     expect(linkElement).not.toHaveClass('secondary', 'tertiary')
   })
 
-  it('should render the correct themed variant', () => {
-    render(<StandaloneLink {...defaultProps} variant="secondary" />)
+  it('should render the correct theme', () => {
+    render(<StandaloneLink {...defaultProps} theme="secondary" />)
     const linkText = screen.getByText(defaultProps.children)
     const linkElement = linkText.closest('a')
     expect(linkElement).toHaveClass('root', 'secondary')
