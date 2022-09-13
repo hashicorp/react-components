@@ -10,7 +10,7 @@
   color: var(--color);
   font-weight: var(--font-weight-bold);
   font-size: 16px;
-  line-height: 20px;
+  line-height: 1.25;
   border-radius: 1px;
 
   &:focus {
