@@ -6,4 +6,15 @@ module.exports = {
     testValue: 'New',
     required: true,
   },
+  href: {
+    description: '',
+    required: true,
+  },
+  variant: {
+    description: '',
+    type: 'string',
+    control: { type: 'text' },
+    testValue: 'New',
+    required: false,
+  },
 }
