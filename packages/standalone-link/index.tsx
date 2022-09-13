@@ -7,15 +7,12 @@ export default function StandaloneLink({
   appearance = 'light',
   href,
   children,
-  variant = 'primary',
+  theme = 'primary',
   ...restProps
 }: StandaloneLinkProps) {
   return (
     <Link href={href}>
-      <a
-        className={classNames(s.root, s[appearance], s[variant])}
-        {...restProps}
-      >
+      <a className={classNames(s.root, s[appearance], s[theme])} {...restProps}>
         <span>{children}</span>
         <span>
           <svg

@@ -16,5 +16,5 @@ export interface StandaloneLinkProps extends AnchorElementProps {
   /**
    * The link color.
    */
-  variant?: 'primary' | 'secondary' | 'tertiary'
+  theme?: 'primary' | 'secondary' | 'tertiary'
 }

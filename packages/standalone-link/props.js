@@ -16,7 +16,7 @@ module.exports = {
     type: 'string',
     required: true,
   },
-  variant: {
+  theme: {
     description: 'The link color.',
     type: 'string',
     options: ['primary', 'secondary', 'tertiary'],
