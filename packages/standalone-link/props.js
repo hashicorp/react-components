@@ -22,10 +22,4 @@ module.exports = {
     options: ['primary', 'secondary', 'tertiary'],
     required: false,
   },
-  onClick: {
-    description:
-      'Optional onClick handler which is called when the link is clicked.',
-    type: 'function',
-    require: false,
-  },
 }
