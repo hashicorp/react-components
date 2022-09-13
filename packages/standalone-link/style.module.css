@@ -52,17 +52,17 @@
 }
 
 .line {
-  --translate-x: -8px;
+  --scale-x: 0;
   --opacity: 0;
 
-  transform: translateX(var(--translate-x));
-  opacity: var(--opacity);
+  transform: scaleX(var(--scale-x));
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   transition-property: transform, opacity;
 
   @nest .root:hover & {
     --translate-x: 0;
+    --scale-x: 1;
     --opacity: 1;
   }
 }
