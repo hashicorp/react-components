@@ -12,6 +12,9 @@
   font-size: 16px;
   line-height: 1.25;
   border-radius: 1px;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: color;
 
   &:focus {
     outline: transparent;
@@ -85,6 +88,9 @@
 
 .icon {
   overflow: visible !important;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: fill;
 }
 
 .arrow {
