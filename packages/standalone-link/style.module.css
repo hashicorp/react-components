@@ -6,7 +6,7 @@
 
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   color: var(--color);
   font-weight: var(--font-weight-bold);
   font-size: 16px;
@@ -29,7 +29,7 @@
 }
 
 /*
- * Variants
+ * Themes
  */
 
 .primary {
@@ -87,14 +87,18 @@
  */
 
 .icon {
+  flex-shrink: 0;
+}
+
+.arrow {
   overflow: visible !important;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   transition-property: fill;
 }
 
-.arrow {
-  --translate-x: -8px;
+.chevron {
+  --translate-x: -4px;
 
   transform: translateX(var(--translate-x));
   transition-duration: var(--transition-duration);
@@ -107,9 +111,10 @@
 }
 
 .line {
-  --scale-x: 0;
+  --scale-x: 0.5;
   --opacity: 0;
 
+  opacity: var(--opacity);
   transform: scaleX(var(--scale-x));
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);

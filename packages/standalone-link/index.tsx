@@ -13,10 +13,10 @@ export default function StandaloneLink({
   return (
     <Link href={href}>
       <a className={classNames(s.root, s[appearance], s[theme])} {...restProps}>
-        <span>{children}</span>
-        <span>
+        <span className={s.label}>{children}</span>
+        <span className={s.icon}>
           <svg
-            className={s.icon}
+            className={s.arrow}
             width="9"
             height="10"
             viewBox="0 0 9 10"
@@ -25,7 +25,7 @@ export default function StandaloneLink({
             focusable={false}
           >
             <path
-              className={s.arrow}
+              className={s.chevron}
               d="M4 1L8 5L4 9"
               stroke="currentColor"
               strokeWidth={1.8}
