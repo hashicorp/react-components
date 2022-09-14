@@ -1,5 +1,5 @@
 .root {
-  --transition-duration: 200ms;
+  --transition-duration: 250ms;
   --transition-timing-function: ease-in-out;
   --color: var(--wpl-blue-500);
   --outline-color: var(--wpl-blue-500);
