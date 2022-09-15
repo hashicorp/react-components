@@ -3,14 +3,14 @@ import React from 'react'
 
 interface BaseCardProps {
   appearance?: 'light' | 'dark'
-  heading: string
   link: string
 }
 
 interface CardWithChildren extends BaseCardProps {
-  meta?: never
-  description?: never
   thumbnail?: never
+  meta?: never
+  heading?: never
+  description?: never
   children: React.ReactNode
 }
 
@@ -18,6 +18,7 @@ interface CardWithProps extends BaseCardProps {
   children?: never
   thumbnail?: ThumbnailProps
   meta?: MetaProps['items']
+  heading: string
   description?: DescriptionProps['children']
 }
 
