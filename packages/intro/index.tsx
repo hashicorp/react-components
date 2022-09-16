@@ -3,6 +3,8 @@ import type { IntroProps } from './types'
 import Actions from '@hashicorp/react-actions'
 import s from './style.module.css'
 
+const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str)
+
 export default function Intro({
   appearance = 'light',
   textAlignment = 'left',
@@ -29,7 +31,7 @@ export default function Intro({
       <HeadingElement className={classNames(s.heading, headingSizeClassname)}>
         {heading}
       </HeadingElement>
-      {description.includes('<p>') ? (
+      {containsHTML(description) ? (
         <div
           dangerouslySetInnerHTML={{
             __html: description,
