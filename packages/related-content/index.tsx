@@ -15,9 +15,11 @@ const RelatedContent = ({
     <div className={classNames([s.wrapper, s[appearance]])}>
       <div className={s.textStack}>
         <h2 className={classNames([s.headline, s[appearance]])}>{headline}</h2>
-        <p className={classNames([s.description, s[appearance]])}>
-          {description}
-        </p>
+        {description ? (
+          <p className={classNames([s.description, s[appearance]])}>
+            {description}
+          </p>
+        ) : null}
       </div>
       <div className={s.cards}>
         {cards.map((card, i) => (

@@ -3,9 +3,9 @@ import type { ThemeVariant } from '@hashicorp/react-button/types'
 export interface RelatedContentProps {
   appearance?: 'light' | 'dark'
   headline: string
-  description: string
+  description?: string
   cards: Array<CardProps>
-  cta: {
+  cta?: {
     title: string
     url: string
     variant: ThemeVariant
