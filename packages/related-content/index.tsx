@@ -21,7 +21,7 @@ const RelatedContent = ({
           </p>
         ) : null}
       </div>
-      <div className={s.cards}>
+      <div className={s.cards} data-testid="wpl-cards-container">
         {cards.map((card, i) => (
           <Card
             key={i}
