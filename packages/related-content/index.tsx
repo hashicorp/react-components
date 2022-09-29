@@ -36,7 +36,9 @@ const RelatedContent = ({
       </div>
       {cta ? (
         <div className={s.cta}>
-          <StandaloneLink href={cta.url}>{cta.title}</StandaloneLink>
+          <StandaloneLink appearance={appearance} href={cta.url}>
+            {cta.title}
+          </StandaloneLink>
         </div>
       ) : null}
     </div>
