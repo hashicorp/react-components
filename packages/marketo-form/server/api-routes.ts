@@ -1,4 +1,5 @@
 import * as client from './client'
+import type { SubmissionFilter } from '../types'
 import type { MarketoFieldsResponse } from './client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -75,7 +76,15 @@ function isE2ETest(req: NextApiRequest): boolean {
   return false
 }
 
-async function submitForm(req: NextApiRequest, res: NextApiResponse) {
+async function submitForm(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  {
+    submissionFilter,
+  }: {
+    submissionFilter?: SubmissionFilter
+  }
+) {
   // Don't submit forms to the Marketo API when using E2E tests.
   if (isE2ETest(req)) {
     res.status(200).json({
@@ -92,6 +101,14 @@ async function submitForm(req: NextApiRequest, res: NextApiResponse) {
   }
 
   try {
+    const passesSubmissionFilter = submissionFilter
+      ? await submissionFilter(req)
+      : true
+    if (!passesSubmissionFilter) {
+      // trick spammers into thinking their form submitted successfully
+      res.status(200).json({ success: true })
+      return
+    }
     const marketoRes = await client.submitForm(req.body)
     const form = (await marketoRes.json()) as { success: boolean }
     if (!form.success) {
@@ -105,13 +122,19 @@ async function submitForm(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  switch (req.query.marketo[0]) {
-    case 'form':
-      return getForm(req, res)
-    case 'submit':
-      return submitForm(req, res)
-    default:
-      return res.status(404).json({ error: 'not found' })
+export function buildApiRoutes({
+  submissionFilter,
+}: {
+  submissionFilter?: SubmissionFilter
+} = {}) {
+  return async function apiRoutes(req: NextApiRequest, res: NextApiResponse) {
+    switch (req.query.marketo[0]) {
+      case 'form':
+        return getForm(req, res)
+      case 'submit':
+        return submitForm(req, res, { submissionFilter })
+      default:
+        return res.status(404).json({ error: 'not found' })
+    }
   }
 }

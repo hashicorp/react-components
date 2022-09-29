@@ -1,3 +1,5 @@
+import type { NextApiRequest } from 'next'
+
 export type MarketoFormDatatype =
   | 'text'
   | 'email'
@@ -128,3 +130,5 @@ export type MarketoFormGroups = Record<
     component: (props: { fields: MarketoFormField[] }) => JSX.Element
   }
 >
+
+export type SubmissionFilter = (req: NextApiRequest) => Promise<boolean>

@@ -1,3 +1,3 @@
-import MarketoFormAPIRoutes from './api-routes'
+import { buildApiRoutes } from './api-routes'
 
-export { MarketoFormAPIRoutes }
+export { buildApiRoutes }
