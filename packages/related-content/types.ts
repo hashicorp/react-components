@@ -5,7 +5,11 @@ export interface RelatedContentProps {
   headline: string
   description?: string
   cards: Array<RelatedContentCardProps>
-  cta?: StandaloneLinkProps
+  cta: RelatedContentCtaProps
+}
+
+interface RelatedContentCtaProps extends Omit<StandaloneLinkProps, 'children'> {
+  text: string
 }
 
 type RelatedContentCardProps = Omit<CardProps, 'appearance'>

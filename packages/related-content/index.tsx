@@ -34,13 +34,11 @@ const RelatedContent = ({
           />
         ))}
       </div>
-      {cta && cta.title && cta.href ? (
-        <div className={s.cta}>
-          <StandaloneLink appearance={appearance} href={cta.href}>
-            {cta.title}
-          </StandaloneLink>
-        </div>
-      ) : null}
+      <div className={s.cta} data-testid="wpl-cta-container">
+        <StandaloneLink appearance={appearance} href={cta.href}>
+          {cta.text}
+        </StandaloneLink>
+      </div>
     </div>
   )
 }

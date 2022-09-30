@@ -40,8 +40,8 @@ const defaultProps = {
     },
   ],
   cta: {
-    title: 'Sign up now',
-    url: '/components/relatedcontent',
+    text: 'Sign up now',
+    href: '/components/relatedcontent',
   },
 }
 
@@ -68,7 +68,7 @@ describe('<RelatedContent />', () => {
 
   it('should render the optional CTA', () => {
     render(<RelatedContent {...defaultProps} />)
-    const ctaText = screen.getByText(defaultProps.cta.title)
-    expect(ctaText.tagName).toBe('SPAN')
+    const ctaContainer = screen.getByTestId('wpl-cta-container')
+    expect(ctaContainer).toHaveClass('cta')
   })
 })
