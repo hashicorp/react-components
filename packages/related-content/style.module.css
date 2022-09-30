@@ -1,6 +1,11 @@
 .wrapper {
   composes: g-grid from global;
   composes: g-grid-container from global;
+  padding: 64px 0;
+
+  @media (--large) {
+    padding: 88px 0;
+  }
   &.dark {
     background-color: var(--wpl-neutral-900);
   }
