@@ -1,0 +1,14 @@
+{
+  "name": "@hashicorp/react-product-badge",
+  "version": "0.1.1",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": "^4.2.0",
+    "react": ">=16.x"
+  }
+}
