@@ -1,4 +1,5 @@
 import type { ButtonProductAttributionProps } from './types'
+import classNames from 'classnames'
 import s from './style.module.css'
 
 const ButtonProductAttribution = ({
@@ -11,14 +12,16 @@ const ButtonProductAttribution = ({
   } as React.CSSProperties
 
   return (
-    <button className={s.root}>
+    <button className={classNames([s.root, s[appearance]])}>
       <span
         aria-label={productName}
         role="img"
         className={s.icon}
         style={iconStyles}
       />
-      <span className={s.productName}>{productName}</span>
+      <span className={classNames([s.productName, s[appearance]])}>
+        {productName}
+      </span>
     </button>
   )
 }

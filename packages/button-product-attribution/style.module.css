@@ -9,10 +9,12 @@
 
   &:hover {
     background-color: var(--wpl-neutral-25);
+    border: 1.5px solid var(--wpl-neutral-200);
   }
 
   &:active {
     background-color: var(--wpl-neutral-50);
+    border: 1.5px solid var(--wpl-neutral-200);
   }
 
   &:focus {
@@ -20,10 +22,33 @@
   }
 
   &:disabled {
-    border: 1.5px solid transparent;
+    border: 1.5px solid var(--wpl-neutral-0);
 
     &:hover {
       background-color: var(--wpl-neutral-0);
+    }
+  }
+
+  &.dark {
+    background-color: var(--wpl-neutral-900);
+    border: 1.5px solid var(--wpl-neutral-700);
+
+    &:hover {
+      background-color: var(--wpl-neutral-850);
+      border: 1.5px solid var(--wpl-neutral-500);
+    }
+
+    &:active {
+      background-color: var(--wpl-neutral-800);
+      border: 1.5px solid var(--wpl-neutral-500);
+    }
+
+    &:disabled {
+      border: 1.5px solid var(--wpl-neutral-900);
+
+      &:hover {
+        background-color: var(--wpl-neutral-900);
+      }
     }
   }
 }
@@ -43,4 +68,8 @@
 .productName {
   composes: g-type-body-small-x-strong from global;
   text-transform: capitalize;
+
+  &.dark {
+    color: var(--wpl-neutral-200);
+  }
 }
