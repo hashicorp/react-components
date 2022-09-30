@@ -11,7 +11,6 @@ const RelatedContent = ({
   cards,
   cta,
 }: RelatedContentProps) => {
-  const ctaExists = cta && cta.title && cta.href
   return (
     <div className={classNames([s.wrapper, s[appearance]])}>
       <div className={s.textStack}>
@@ -35,7 +34,7 @@ const RelatedContent = ({
           />
         ))}
       </div>
-      {ctaExists ? (
+      {cta && cta.title && cta.href ? (
         <div className={s.cta}>
           <StandaloneLink appearance={appearance} href={cta.href}>
             {cta.title}
