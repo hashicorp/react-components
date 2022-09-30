@@ -1,15 +1,27 @@
-const VERSION_REGEXP = /v\d+\.\d+\.(\d+|\w+)/g
-const TFE_VERSION_REGEXP = /v[0-9]{6}-\d+/g
+const VERSION_REGEXP = /v\d+\.\d+\.(\d+|\w+)/i
+const TFE_VERSION_REGEXP = /v[0-9]{6}-\d+/i
 
 /**
  * Extract the version from a path string, or an array of path segments
  */
 export function getVersionFromPath(path: string): string | undefined {
-  const pathSegments = path.split('/')
+  const pathSegments = path
+    // `path` should never contain the scheme/domain/port, but just in case...
+    .replace(/^https?:\/\/[a-z-:0-9.]+/i, '')
+    // Strip leading slash
+    .replace(/^\//i, '')
+    .split('/')
 
-  const version = pathSegments.find(
-    (el) => VERSION_REGEXP.test(el) || TFE_VERSION_REGEXP.test(el)
-  )
+  // version is only expected to be at index 1, or 2 in the case of TF-Plugins
+  const version = pathSegments.find((el, i) => {
+    if (i === 1 && TFE_VERSION_REGEXP.test(el)) {
+      return true
+    }
+    if ((i === 1 || i === 2) && VERSION_REGEXP.test(el)) {
+      return true
+    }
+    return false
+  })
 
   return version
 }

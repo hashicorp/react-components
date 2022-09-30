@@ -1,0 +1,67 @@
+.stickyTiers {
+  composes: g-grid-container from global;
+  display: none;
+  position: sticky;
+  top: 60px;
+  z-index: 2;
+  opacity: 0;
+
+  @media (--medium-up) {
+    display: flex;
+
+    &.isVisible {
+      animation: fade-in 0.4s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  & .inner {
+    background: var(--white);
+    align-items: center;
+    grid-template-columns: var(--grid-template-columns);
+    padding: 16px 0 24px;
+    display: grid;
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1px solid var(--wpl-neutral-200);
+    filter: drop-shadow(0 4px 19px var(--wpl-neutral-200));
+    z-index: 3;
+  }
+}
+
+.tier {
+  padding-left: var(--col-gap);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.tierName {
+  composes: g-type-body-x-strong from global;
+  margin: 0;
+  padding-bottom: 1px;
+}
+
+.cta {
+  composes: g-type-body-x-small from '../../global-font.css';
+  display: flex;
+  align-items: flex-end;
+  color: var(--wpl-blue-500);
+
+  & a {
+    text-decoration: underline;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

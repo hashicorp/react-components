@@ -1,0 +1,24 @@
+.container {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: var(--gray-6);
+}
+
+.inner {
+  composes: g-grid-container from global;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  composes: g-type-display-3 from global;
+  color: var(--wpl-neutral-900);
+  margin: 0;
+}
+
+.description {
+  composes: g-type-body from global;
+  color: var(--gray-3);
+  margin: 0;
+  padding: 16px 0 32px;
+}

@@ -28,8 +28,7 @@ export default function use404Redirects(): void {
             typeof window?.analytics?.track === 'function' &&
             typeof window?.location?.href === 'string'
           ) {
-            window.analytics.track(window.location.href, {
-              category: 'Client-side Redirect',
+            window.analytics.track('Client-side Redirect', {
               label: href,
             })
           }

@@ -1,6 +1,6 @@
 {
-  "name": "@hashicorp/react-card",
-  "version": "0.2.0",
+  "name": "@hashicorp/react-standalone-link",
+  "version": "0.1.1",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
@@ -9,12 +9,12 @@
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "@hashicorp/flight-icons": ">=2.x",
-    "react": ">=16.x"
+    "react": ">=16.x",
+    "next": ">=11.x"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/hashicorp/react-components.git",
-    "directory": "packages/card"
+    "directory": "packages/standalone-link"
   }
 }

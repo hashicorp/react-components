@@ -1,5 +1,7 @@
+import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import type {
   CardProps,
   ThumbnailProps,
@@ -8,8 +10,6 @@ import type {
   HeadingProps,
   DescriptionProps,
 } from './types'
-import classNames from 'classnames'
-import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import s from './style.module.css'
 
 function Card(props: CardProps) {

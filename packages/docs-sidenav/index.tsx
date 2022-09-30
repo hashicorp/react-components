@@ -68,6 +68,7 @@ export default function DocsSidenav({
   // a transition ends and the menu is not open, we set isMenuFullyHidden
   // which translates into a visibility: hidden CSS property
   const menuRef = useRef<HTMLUListElement | null>(null)
+  const menuToggleRef = useRef<HTMLButtonElement | null>(null)
   const handleMenuTransitionEnd = useCallback(() => {
     setIsMenuFullyHidden(!isMobileOpen)
   }, [isMobileOpen, setIsMenuFullyHidden])
@@ -77,7 +78,9 @@ export default function DocsSidenav({
   const handleDocumentClick = useCallback(
     (event) => {
       if (!isMobileOpen) return
-      const isClickOutside = !menuRef.current?.contains(event.target)
+      const isClickOutside =
+        !menuRef.current?.contains(event.target) &&
+        !menuToggleRef.current?.contains(event.target)
       if (isClickOutside) setIsMobileOpen(false)
     },
     [isMobileOpen]
@@ -117,6 +120,7 @@ export default function DocsSidenav({
           <button
             className={`${s.mobileMenuToggle} g-type-body-small-strong`}
             onClick={() => setIsMobileOpen(!isMobileOpen)}
+            ref={menuToggleRef}
           >
             <span>
               <InlineSvg src={svgMenuIcon} /> Documentation Menu

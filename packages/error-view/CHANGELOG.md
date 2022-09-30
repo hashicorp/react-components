@@ -1,5 +1,11 @@
 # @hashicorp/react-error-view
 
+## 0.1.0
+
+### Minor Changes
+
+- [#719](https://github.com/hashicorp/react-components/pull/719) [`883764e3`](https://github.com/hashicorp/react-components/commit/883764e37b9ce009a109efe0c14d82d7896e8691) Thanks [@nandereck](https://github.com/nandereck)! - Replaces track event name with static value.
+
 ## 0.0.3
 
 ### Patch Changes
