@@ -1,0 +1,8 @@
+.errorText {
+  --error-text-color: var(--danger);
+
+  composes: g-type-body-small from global;
+  color: var(--error-text-color);
+  line-height: 1.4;
+  margin-top: 4px;
+}
