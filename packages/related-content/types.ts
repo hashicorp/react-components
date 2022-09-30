@@ -4,6 +4,8 @@ export interface RelatedContentProps {
   appearance?: 'light' | 'dark'
   headline: string
   description?: string
-  cards: Array<CardProps>
+  cards: Array<RelatedContentCardProps>
   cta?: StandaloneLinkProps
 }
+
+type RelatedContentCardProps = Omit<CardProps, 'appearance'>
