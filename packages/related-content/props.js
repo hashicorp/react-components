@@ -1,4 +1,9 @@
 const baseProps = {
+  appearance: {
+    type: 'string',
+    options: ['light', 'dark'],
+    description: 'Render on light or dark backgrounds',
+  },
   headline: {
     type: 'string',
     required: true,
@@ -17,11 +22,6 @@ const baseProps = {
     type: 'Object',
     description:
       'Optional CTA. Uses the StandaloneLink component. See StandaloneLink props <a href="https://react-components.vercel.app/components/standalone-link">here</a>',
-  },
-  appearance: {
-    type: 'string',
-    options: ['light', 'dark'],
-    description: 'Render on light or dark backgrounds',
   },
 }
 
