@@ -8,7 +8,8 @@ export interface RelatedContentProps {
   cta: RelatedContentCtaProps
 }
 
-interface RelatedContentCtaProps extends Omit<StandaloneLinkProps, 'children'> {
+interface RelatedContentCtaProps
+  extends Omit<StandaloneLinkProps, 'children' | 'appearance'> {
   text: string
 }
 
