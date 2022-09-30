@@ -34,7 +34,7 @@ const RelatedContent = ({
           />
         ))}
       </div>
-      {cta ? (
+      {cta && cta.title && cta.href ? (
         <div className={s.cta}>
           <StandaloneLink appearance={appearance} href={cta.href}>
             {cta.title}
