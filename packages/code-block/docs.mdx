@@ -110,6 +110,7 @@ function sayHello() {
 `Result`
 
 <CodeBlock
+  language="javascript"
   theme="dark"
   code={`<span class="token comment">// Doing stuff you shouldn't copy</span>
 <span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -137,6 +138,7 @@ hello world
 `Result`
 
 <CodeBlock
+  language="shell-session"
   options={{ showClipboard: true }}
   code={`<span class="token shell-symbol important">$</span> echo "hello world"\nhello world`}
 />
@@ -157,6 +159,7 @@ $ vault kv put kv-v1/dev/config/mongodb \
 `Result`
 
 <CodeBlock
+  language="shell-session"
   options={{ showClipboard: true }}
   code={`<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">vault kv put kv-v1/dev/config/mongodb <span class="token punctuation">\\</span></span></span>\n<span class="token command"><span class="token bash language-bash">        <span class="token assign-left variable">url</span><span class="token operator">=</span>foo.example.com:35533 <span class="token punctuation">\\</span></span></span>\n<span class="token command"><span class="token bash language-bash">        <span class="token assign-left variable">db_name</span><span class="token operator">=</span>users <span class="token punctuation">\\</span></span></span>\n<span class="token command"><span class="token bash language-bash">        <span class="token assign-left variable">username</span><span class="token operator">=</span>admin <span class="token assign-left variable">password</span><span class="token operator">=</span>passw0rd</span></span>`}
 />
@@ -175,6 +178,7 @@ $ brew tap hashicorp/tap/terraform
 `Result`
 
 <CodeBlock
+  language="shell-session"
   options={{ showClipboard: true }}
   code={`<span class="token shell-symbol important">$</span> brew tap hashicorp/tap\n<span class="token shell-symbol important">$</span> brew install hashicorp/tap/terraform`}
 />
