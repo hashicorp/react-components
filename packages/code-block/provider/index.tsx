@@ -1,4 +1,5 @@
 import { createContext, useState, useContext, useEffect, useMemo } from 'react'
+import safeLocalStorage from '../utils/safe-local-storage'
 
 export function useTabGroups() {
   return useContext(CodeTabsContext)
@@ -42,13 +43,13 @@ export default function CodeTabsProvider({ children }) {
     // then save it to local storage
     if (updatedPreferences.length > 0) {
       const storedValueJson = JSON.stringify(updatedPreferences)
-      window.localStorage.setItem(LOCAL_STORAGE_KEY, storedValueJson)
+      safeLocalStorage.setItem(LOCAL_STORAGE_KEY, storedValueJson)
     }
   }, [activeTabGroup])
 
   // Load activeTabGroup from cookie, if available
   useEffect(() => {
-    const maybeStoredValue = window.localStorage.getItem(LOCAL_STORAGE_KEY)
+    const maybeStoredValue = safeLocalStorage.getItem(LOCAL_STORAGE_KEY)
     if (maybeStoredValue) {
       // Try / catch in case JSON.parse fails
       try {
