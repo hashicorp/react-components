@@ -1,5 +1,11 @@
 # @hashicorp/react-intro
 
+## 0.4.2
+
+### Patch Changes
+
+- [#727](https://github.com/hashicorp/react-components/pull/727) [`eff7596b`](https://github.com/hashicorp/react-components/commit/eff7596b6c36dce762de10f74ccf781c04e9530e) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Use regex to detect HTML in the description
+
 ## 0.4.1
 
 ### Patch Changes
