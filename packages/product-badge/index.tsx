@@ -17,7 +17,7 @@ const ProductBadge = ({
         s[appearance],
         s[theme],
         themeClass,
-        { [(s.secondary, s.hasDot)]: hasDot },
+        { [s.hasDot]: hasDot },
       ])}
     >
       <p
@@ -25,7 +25,7 @@ const ProductBadge = ({
           s.text,
           s[appearance],
           s[theme],
-          { [(s.secondary, s.hasDot)]: hasDot },
+          { [s.hasDot]: hasDot },
         ])}
       >
         {productName}
