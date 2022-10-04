@@ -47,7 +47,6 @@ function parseShellSnippet(snippet) {
   const firstLine = lines[0]
   const isMultiLineCommand =
     firstLine.endsWith('\\') || firstLine.endsWith('EOF')
-  console.log({ firstLine, isMultiLineCommand })
   if (isMultiLineCommand) {
     // If this is a multi-line snippet, return it formatted with shellwords escape & split
     const multiLineFmt = shellwords.escape(snippet).replace('\\$\\', '')
