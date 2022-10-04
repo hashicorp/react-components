@@ -1,8 +1,18 @@
 import type { Products } from '@hashicorp/platform-product-meta'
 
-export interface ProductBadgeProps {
+export type ProductBadgeProps = BaseProps & ConditionalProps
+
+type BaseProps = {
   productName: Products
   appearance?: 'light' | 'dark'
-  theme?: 'primary' | 'secondary'
-  hasDot?: boolean
 }
+
+type ConditionalProps =
+  | {
+      theme?: 'primary'
+      hasDot?: false
+    }
+  | {
+      theme?: 'secondary'
+      hasDot?: boolean
+    }
