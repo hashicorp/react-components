@@ -7,13 +7,27 @@ const ProductBadge = ({
   appearance = 'light',
   productName,
   variant = 'primary',
+  hasDot = false,
 }: ProductBadgeProps) => {
   const { themeClass } = useProductMeta(productName)
   return (
     <div
-      className={classNames([s.root, s[appearance], s[variant], themeClass])}
+      className={classNames([
+        s.root,
+        s[appearance],
+        s[variant],
+        themeClass,
+        { [(s.secondary, s.hasDot)]: hasDot },
+      ])}
     >
-      <p className={classNames([s.text, s[appearance], s[variant]])}>
+      <p
+        className={classNames([
+          s.text,
+          s[appearance],
+          s[variant],
+          { [(s.secondary, s.hasDot)]: hasDot },
+        ])}
+      >
         {productName}
       </p>
     </div>
