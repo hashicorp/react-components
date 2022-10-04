@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.1.1
+
+### Patch Changes
+
+- [#735](https://github.com/hashicorp/react-components/pull/735) [`0aa2389a`](https://github.com/hashicorp/react-components/commit/0aa2389a98fa9ab004a855a81decbefc4014f022) Thanks [@zchsh](https://github.com/zchsh)! - Fixes an issue where code-block would throw an error and potentially break the consuming app if local storage is disabled.
+
 ## 6.1.0
 
 ### Minor Changes
