@@ -182,6 +182,7 @@ const Form = ({
     if (hasBeenRendered.current) {
       methods.reset(calculateDefaultValues(marketoForm.result, initialValues), {
         keepValues: true,
+        keepDirtyValues: true,
       })
     }
   }, [hasBeenRendered, methods, marketoForm, initialValues])
