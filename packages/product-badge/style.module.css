@@ -1,13 +1,98 @@
 .root {
-  background-color: #f24c53;
+  display: flex;
+  align-items: center;
+  height: 24px;
   padding: 1.5px 12px 2.5px 12px;
   border-radius: 24px;
   width: max-content;
+
+  &.light {
+    &.primary {
+      background-color: var(--brand);
+    }
+
+    &.secondary {
+      background-color: var(--wpl-neutral-50);
+    }
+
+    &.hasDot {
+      background-color: var(--wpl-neutral-50);
+    }
+  }
+
+  &.dark {
+    &.primary {
+      background-color: var(--wpl-neutral-0);
+    }
+    &.secondary {
+      background-color: var(--wpl-neutral-700);
+    }
+    &.hasDot {
+      background-color: var(--wpl-neutral-700);
+    }
+  }
 }
 
 .text {
-  composes: g-type-body-small-x-strong from global;
+  display: inline-block;
+  position: relative;
+  composes: g-type-label from global;
   text-transform: capitalize;
-  color: var(--wpl-neutral-0);
   margin: 0;
+
+  &.light {
+    &.primary {
+      color: var(--brand-text-on-primary);
+    }
+
+    &.secondary {
+      color: var(--wpl-neutral-500);
+    }
+
+    &.hasDot {
+      color: var(--wpl-neutral-500);
+      padding-left: 12px;
+
+      &::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 7px;
+        height: 7px;
+        background-color: var(--brand);
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &.dark {
+    &.primary {
+      color: var(--wpl-neutral-500);
+    }
+
+    &.secondary {
+      color: var(--wpl-neutral-200);
+    }
+
+    &.hasDot {
+      color: var(--wpl-neutral-200);
+      padding-left: 12px;
+
+      &::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 7px;
+        height: 7px;
+        background-color: var(--brand);
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+    }
+  }
 }

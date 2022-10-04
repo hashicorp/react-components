@@ -1,16 +1,26 @@
 import { ProductBadgeProps } from './types'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import s from './style.module.css'
 
 const ProductBadge = ({
   appearance = 'light',
-  productName = 'boundary',
-  hasDot,
-  variant,
+  productName,
+  variant = 'primary',
 }: ProductBadgeProps) => {
+  if (!productName) {
+    throw new Error(
+      `ProductBadge expects a productName. You provided ${productName}.`
+    )
+  }
+  const { themeClass } = useProductMeta(productName)
   return (
-    <div className={classNames([s.root, s[appearance]])}>
-      <p className={s.text}>{productName}</p>
+    <div
+      className={classNames([s.root, s[appearance], s[variant], themeClass])}
+    >
+      <p className={classNames([s.text, s[appearance], s[variant]])}>
+        {productName}
+      </p>
     </div>
   )
 }
