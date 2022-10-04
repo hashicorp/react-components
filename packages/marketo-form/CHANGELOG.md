@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.1.2
+
+### Patch Changes
+
+- [#745](https://github.com/hashicorp/react-components/pull/745) [`e8424612`](https://github.com/hashicorp/react-components/commit/e842461209fcebc5a940128dad1f0acaf8183780) Thanks [@dstaley](https://github.com/dstaley)! - Keep dirty values when resetting form
+
 ## 0.1.1
 
 ### Patch Changes
