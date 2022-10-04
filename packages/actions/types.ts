@@ -1,4 +1,5 @@
 import type { Products } from '@hashicorp/platform-product-meta'
+import { StandaloneLinkProps } from 'packages/standalone-link/types'
 
 interface CtaProps {
   /**
@@ -17,6 +18,13 @@ interface CtaProps {
    * A function that will be called when the button is clicked.
    */
   onClick?: () => void
+}
+
+interface ActionsLink extends StandaloneLinkProps {
+  /**
+   * Renders the `StandaloneLink` instead of `Button`
+   */
+  isStandaloneLink?: boolean
 }
 
 export interface ActionsProps {
@@ -40,5 +48,5 @@ export interface ActionsProps {
    * Array of CTAs. Minimum of one, max of two.
    * @see CtaProps
    */
-  ctas: [CtaProps] | [CtaProps, CtaProps]
+  ctas: [CtaProps] | [CtaProps, CtaProps] | [CtaProps, ActionsLink]
 }

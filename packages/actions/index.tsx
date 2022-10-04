@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
 import type { ActionsProps } from './types'
 import s from './style.module.css'
+import StandaloneLink from 'packages/standalone-link'
 
 export default function Actions({
   appearance = 'light',
@@ -19,21 +20,27 @@ export default function Actions({
     <div className={classNames(s.actions, s[layout])} data-testid="actions">
       {ctas.map((cta, index) => {
         return (
-          <Button
-            key={index}
-            title={cta.title}
-            linkType={
-              cta.variant === 'tertiary-neutral' ? 'inbound' : undefined
-            }
-            url={cta.url}
-            onClick={cta.onClick}
-            size={size}
-            theme={{
-              brand: theme,
-              variant: cta.variant || 'primary',
-              background: appearance === 'dark' ? 'dark' : undefined,
-            }}
-          />
+          <>
+            {cta.isStandaloneLink ? (
+              <StandaloneLink href={cta.url}>{cta.title}</StandaloneLink>
+            ) : (
+              <Button
+                key={index}
+                title={cta.title}
+                linkType={
+                  cta.variant === 'tertiary-neutral' ? 'inbound' : undefined
+                }
+                url={cta.url}
+                onClick={cta.onClick}
+                size={size}
+                theme={{
+                  brand: theme,
+                  variant: cta.variant || 'primary',
+                  background: appearance === 'dark' ? 'dark' : undefined,
+                }}
+              />
+            )}
+          </>
         )
       })}
     </div>
