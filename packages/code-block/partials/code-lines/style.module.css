@@ -12,6 +12,13 @@ pre.pre {
   padding: 0;
   margin: 0;
   background-color: transparent;
+
+  /* Prevent shell-symbols from being selected, for better select-copy-paste */
+  &:global(.language-shell-session) {
+    & :global(.token.shell-symbol) {
+      user-select: none;
+    }
+  }
 }
 
 .code {
