@@ -22,9 +22,13 @@ module.exports = {
     ],
     required: true,
   },
-  variant: {
+  theme: {
     type: 'string',
     description: 'Applies a styling to the component.',
     options: ['primary', 'secondary', 'hasDot'],
+  },
+  hasDot: {
+    type: 'boolean',
+    description: 'Applies a dot. Forces the `secondary` theme.',
   },
 }

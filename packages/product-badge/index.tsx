@@ -6,7 +6,7 @@ import s from './style.module.css'
 const ProductBadge = ({
   appearance = 'light',
   productName,
-  variant = 'primary',
+  theme = 'primary',
   hasDot = false,
 }: ProductBadgeProps) => {
   const { themeClass } = useProductMeta(productName)
@@ -15,7 +15,7 @@ const ProductBadge = ({
       className={classNames([
         s.root,
         s[appearance],
-        s[variant],
+        s[theme],
         themeClass,
         { [(s.secondary, s.hasDot)]: hasDot },
       ])}
@@ -24,7 +24,7 @@ const ProductBadge = ({
         className={classNames([
           s.text,
           s[appearance],
-          s[variant],
+          s[theme],
           { [(s.secondary, s.hasDot)]: hasDot },
         ])}
       >
