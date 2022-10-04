@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.2.0
+
+### Minor Changes
+
+- [#736](https://github.com/hashicorp/react-components/pull/736) [`702eb92a`](https://github.com/hashicorp/react-components/commit/702eb92ac35758fbdddabe9042b3a07c9d470a5b) Thanks [@zchsh](https://github.com/zchsh)! - Support copy-button copying of shell-session snippets with multiple single-line commands. Support select-copy-paste copying of shell-session snippets by setting user-select none on shell-symbols.
+
 ## 6.1.1
 
 ### Patch Changes
