@@ -180,9 +180,14 @@ const Form = ({
   // resolved _after_ the initial render for SSG pages.
   useEffect(() => {
     if (hasBeenRendered.current) {
-      methods.reset(calculateDefaultValues(marketoForm.result, initialValues), {
-        keepValues: true,
-        keepDirtyValues: true,
+      const newValues = calculateDefaultValues(
+        marketoForm.result,
+        initialValues
+      )
+      Object.entries(newValues).forEach(([fieldId, value]) => {
+        if (!methods.getValues(fieldId)) {
+          methods.setValue(fieldId, value)
+        }
       })
     }
   }, [hasBeenRendered, methods, marketoForm, initialValues])
