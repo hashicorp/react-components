@@ -9,7 +9,7 @@
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": "^4.2.0",
-    "@hashicorp/platform-product-meta": "^0.1.1",
+    "@hashicorp/platform-product-meta": "^0.1.0",
     "react": ">=16.x"
   }
 }
