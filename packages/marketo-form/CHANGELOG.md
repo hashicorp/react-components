@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.1.1
+
+### Patch Changes
+
+- [#743](https://github.com/hashicorp/react-components/pull/743) [`cbbd5082`](https://github.com/hashicorp/react-components/commit/cbbd508249da7b7bf737ccafc9cfe679686b9c18) Thanks [@dstaley](https://github.com/dstaley)! - Correctly keep modified values when recalculating initial state
+
 ## 0.1.0
 
 ### Minor Changes

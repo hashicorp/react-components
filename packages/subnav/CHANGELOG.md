@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.5.0
+
+### Minor Changes
+
+- [#740](https://github.com/hashicorp/react-components/pull/740) [`ea840077`](https://github.com/hashicorp/react-components/commit/ea84007724e2b604ea0be0114aee474a1ccc6d6f) Thanks [@nandereck](https://github.com/nandereck)! - Bumping mktg-logos deps
+
 ## 9.4.0
 
 ### Minor Changes
