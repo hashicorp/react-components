@@ -1,4 +1,4 @@
-import { ProductBadgeProps } from './types'
+import type { ProductBadgeProps } from './types'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import s from './style.module.css'
@@ -7,7 +7,7 @@ const ProductBadge = ({
   appearance = 'light',
   productName,
   theme = 'primary',
-  hasDot = false,
+  hasDot,
 }: ProductBadgeProps) => {
   const { themeClass } = useProductMeta(productName)
   return (
