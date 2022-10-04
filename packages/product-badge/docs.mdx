@@ -9,14 +9,16 @@ componentName: 'ProductBadge'
         <ProductBadge
           productName={'waypoint'}
           appearance={'dark'}
-          variant={'hasDot'}
+          hasDot={true}
+          variant={'secondary'}
         />
       </div>
       <div style={{display: 'flex', flexWrap: 'wrap', gap: 16, backgroundColor: 'white', padding: '16px'}}>
         <ProductBadge
           productName={'waypoint'}
           appearance={'light'}
-          variant={'hasDot'}
+          hasDot={true}
+          variant={'secondary'}
         />
       </div>
     </section>
@@ -99,7 +101,8 @@ componentName: 'ProductBadge'
               key={i}
               productName={product}
               appearance={'dark'}
-              variant={'hasDot'}
+              variant={'secondary'}
+              hasDot={true}
             />
           )
         })}
@@ -174,7 +177,8 @@ componentName: 'ProductBadge'
               key={i}
               productName={product}
               appearance={'light'}
-              variant={'hasDot'}
+              variant={'secondary'}
+              hasDot={true}
             />
           )
         })}
