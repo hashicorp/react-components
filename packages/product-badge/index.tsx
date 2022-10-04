@@ -8,11 +8,6 @@ const ProductBadge = ({
   productName,
   variant = 'primary',
 }: ProductBadgeProps) => {
-  if (!productName) {
-    throw new Error(
-      `ProductBadge expects a productName. You provided ${productName}.`
-    )
-  }
   const { themeClass } = useProductMeta(productName)
   return (
     <div
