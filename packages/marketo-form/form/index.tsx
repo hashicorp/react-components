@@ -181,7 +181,7 @@ const Form = ({
   useEffect(() => {
     if (hasBeenRendered.current) {
       methods.reset(calculateDefaultValues(marketoForm.result, initialValues), {
-        keepDirtyValues: true,
+        keepValues: true,
       })
     }
   }, [hasBeenRendered, methods, marketoForm, initialValues])
