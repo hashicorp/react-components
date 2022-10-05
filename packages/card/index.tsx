@@ -37,6 +37,7 @@ function Card(props: CardProps) {
           <Content>
             {meta && meta.length > 0 ? <Meta items={meta} /> : null}
             <Heading>{heading}</Heading>
+            {description ? <Description>{description}</Description> : null}
             {productBadges &&
             productBadges?.badges &&
             productBadges?.badges?.length > 0 ? (
@@ -45,7 +46,6 @@ function Card(props: CardProps) {
                 appearance={appearance}
               />
             ) : null}
-            {description ? <Description>{description}</Description> : null}
           </Content>
         </>
       )}
