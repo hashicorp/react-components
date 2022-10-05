@@ -13,7 +13,6 @@ import type {
   DescriptionProps,
 } from './types'
 import s from './style.module.css'
-import React from 'react'
 
 function Card(props: CardProps) {
   const {
@@ -118,14 +117,13 @@ function ProductBadges({ badges, appearance = 'light' }: ProductBadgesProps) {
     <div className={s.productBadges}>
       {badges.map((badge, stableIdx) => {
         return (
-          // eslint-disable-next-line react/no-array-index-key
-          <React.Fragment key={stableIdx}>
-            <ProductBadge
-              appearance={appearance}
-              productName={badge.productName}
-              hasDot={true}
-            />
-          </React.Fragment>
+          <ProductBadge
+            // eslint-disable-next-line react/no-array-index-key
+            key={stableIdx}
+            appearance={appearance}
+            productName={badge.productName}
+            hasDot={true}
+          />
         )
       })}
     </div>
