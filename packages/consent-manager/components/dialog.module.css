@@ -162,10 +162,16 @@
 
 .dialogFooter {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   flex-shrink: 0;
   padding: 24px;
-  gap: 24px;
+  column-gap: 24px;
+  row-gap: 12px;
   background-color: var(--wpl-neutral-0);
   border-top: 1px solid var(--wpl-neutral-200);
+
+  @media (min-width: 420px) {
+    flex-direction: row;
+  }
 }
