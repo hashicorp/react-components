@@ -37,9 +37,11 @@ function Card(props: CardProps) {
           <Content>
             {meta && meta.length > 0 ? <Meta items={meta} /> : null}
             <Heading>{heading}</Heading>
-            {productBadges && ProductBadges.length > 0 ? (
+            {productBadges &&
+            productBadges?.badges &&
+            productBadges?.badges?.length > 0 ? (
               <ProductBadges
-                productBadges={productBadges}
+                badges={productBadges.badges}
                 appearance={appearance}
               />
             ) : null}
@@ -111,13 +113,10 @@ function Heading({ as: Component = 'h2', children }: HeadingProps) {
   )
 }
 
-function ProductBadges({
-  productBadges,
-  appearance = 'light',
-}: ProductBadgesProps) {
+function ProductBadges({ badges, appearance = 'light' }: ProductBadgesProps) {
   return (
     <div className={s.productBadges}>
-      {productBadges.map((badge, stableIdx) => {
+      {badges.map((badge, stableIdx) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={stableIdx}>

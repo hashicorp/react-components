@@ -10,7 +10,7 @@ interface BaseCardProps {
 
 interface CardWithChildren extends BaseCardProps {
   meta?: never
-  productBadges?: ProductBadgesProps
+  productBadges?: never
   description?: never
   thumbnail?: never
   children: React.ReactNode
@@ -20,7 +20,7 @@ interface CardWithProps extends BaseCardProps {
   children?: never
   thumbnail?: ThumbnailProps
   meta?: MetaProps['items']
-  productBadges?: any
+  productBadges?: ProductBadgesProps
   description?: DescriptionProps['children']
 }
 
@@ -42,7 +42,7 @@ export interface HeadingProps {
 }
 
 export interface ProductBadgesProps {
-  productBadges: Array<ProductBadgeProps>
+  badges: Array<ProductBadgeProps>
   appearance?: 'light' | 'dark'
 }
 
