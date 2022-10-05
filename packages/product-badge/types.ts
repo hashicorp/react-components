@@ -10,7 +10,7 @@ type BaseProps = {
 type ConditionalProps =
   | {
       theme?: 'primary'
-      hasDot?: false
+      hasDot?: never
     }
   | {
       theme?: 'secondary'
