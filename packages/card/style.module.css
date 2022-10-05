@@ -93,6 +93,12 @@
   color: var(--secondary-text-color);
 }
 
+.productBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .cta {
   display: flex;
   align-items: center;

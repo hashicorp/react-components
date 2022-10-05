@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import ProductBadge from '@hashicorp/react-product-badge'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import type {
   CardProps,
@@ -8,9 +9,11 @@ import type {
   MetaProps,
   ContentProps,
   HeadingProps,
+  ProductBadgesProps,
   DescriptionProps,
 } from './types'
 import s from './style.module.css'
+import React from 'react'
 
 function Card(props: CardProps) {
   const {
@@ -18,6 +21,7 @@ function Card(props: CardProps) {
     meta,
     thumbnail,
     heading,
+    productBadges,
     description,
     link,
     children,
@@ -33,6 +37,12 @@ function Card(props: CardProps) {
           <Content>
             {meta && meta.length > 0 ? <Meta items={meta} /> : null}
             <Heading>{heading}</Heading>
+            {productBadges && ProductBadges.length > 0 ? (
+              <ProductBadges
+                productBadges={productBadges}
+                appearance={appearance}
+              />
+            ) : null}
             {description ? <Description>{description}</Description> : null}
           </Content>
         </>
@@ -101,6 +111,28 @@ function Heading({ as: Component = 'h2', children }: HeadingProps) {
   )
 }
 
+function ProductBadges({
+  productBadges,
+  appearance = 'light',
+}: ProductBadgesProps) {
+  return (
+    <div className={s.productBadges}>
+      {productBadges.map((badge, stableIdx) => {
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <React.Fragment key={stableIdx}>
+            <ProductBadge
+              appearance={appearance}
+              productName={badge.productName}
+              hasDot={true}
+            />
+          </React.Fragment>
+        )
+      })}
+    </div>
+  )
+}
+
 function Description({ children }: DescriptionProps) {
   return (
     <p className={s.description} data-testid="wpl-card-description">
@@ -113,6 +145,7 @@ Card.Thumbnail = Thumbnail
 Card.Meta = Meta
 Card.Content = Content
 Card.Heading = Heading
+Card.ProductBadges = ProductBadges
 Card.Description = Description
 
 export default Card
