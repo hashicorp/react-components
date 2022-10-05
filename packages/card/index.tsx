@@ -145,7 +145,6 @@ Card.Thumbnail = Thumbnail
 Card.Meta = Meta
 Card.Content = Content
 Card.Heading = Heading
-Card.ProductBadges = ProductBadges
 Card.Description = Description
 
 export default Card
