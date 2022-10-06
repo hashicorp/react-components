@@ -70,6 +70,7 @@ function SubnavInner({
       <div
         className={classNames(s.subnavInner, themeClass, {
           [s.notConstrained]: !constrainWidth,
+          [s.hasOverflow]: hasOverflow,
         })}
         data-overflow-target
       >

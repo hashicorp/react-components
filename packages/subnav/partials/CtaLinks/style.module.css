@@ -1,7 +1,7 @@
 .root {
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   white-space: nowrap;
 
   & > * + * {
