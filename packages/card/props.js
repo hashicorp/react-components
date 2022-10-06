@@ -40,6 +40,23 @@ const baseProps = {
     type: 'string',
     required: false,
   },
+  productBadges: {
+    type: 'object',
+    description: `A list of ProductBadges.`,
+    properties: {
+      appearance: {
+        description:
+          'Styles the ProductBadges with either a light or dark theme.',
+        type: 'string',
+        required: false,
+        options: ['light', 'dark'],
+      },
+      badges: {
+        type: 'array',
+        description: `A list of ProductBadges. See props for the ProductBadges component <a href="https://react-components.vercel.app/components/productbadges">here</a>`,
+      },
+    },
+  },
   description: {
     description: "Text describing the card's destination.",
     type: 'string',

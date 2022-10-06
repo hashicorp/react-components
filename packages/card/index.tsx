@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import ProductBadge from '@hashicorp/react-product-badge'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import type {
   CardProps,
@@ -8,6 +9,7 @@ import type {
   MetaProps,
   ContentProps,
   HeadingProps,
+  ProductBadgesProps,
   DescriptionProps,
 } from './types'
 import s from './style.module.css'
@@ -18,11 +20,11 @@ function Card(props: CardProps) {
     meta,
     thumbnail,
     heading,
+    productBadges,
     description,
     link,
     children,
   } = props
-
   return (
     <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
       {children ? (
@@ -34,6 +36,9 @@ function Card(props: CardProps) {
             {meta && meta.length > 0 ? <Meta items={meta} /> : null}
             <Heading>{heading}</Heading>
             {description ? <Description>{description}</Description> : null}
+            {productBadges && productBadges?.length > 0 ? (
+              <ProductBadges badges={productBadges} appearance={appearance} />
+            ) : null}
           </Content>
         </>
       )}
@@ -98,6 +103,24 @@ function Heading({ as: Component = 'h2', children }: HeadingProps) {
     <Component className={s.heading} data-testid="wpl-card-heading">
       {children}
     </Component>
+  )
+}
+
+function ProductBadges({ badges, appearance = 'light' }: ProductBadgesProps) {
+  return (
+    <div className={s.productBadges}>
+      {badges.map((badge, stableIdx) => {
+        return (
+          <ProductBadge
+            // eslint-disable-next-line react/no-array-index-key
+            key={stableIdx}
+            appearance={appearance}
+            productName={badge}
+            hasDot={true}
+          />
+        )
+      })}
+    </div>
   )
 }
 
