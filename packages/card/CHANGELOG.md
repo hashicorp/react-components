@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.3.0
+
+### Minor Changes
+
+- [#748](https://github.com/hashicorp/react-components/pull/748) [`be14f118`](https://github.com/hashicorp/react-components/commit/be14f118a5fc62b0abbee8d8ba23b5cb3c87e38e) Thanks [@nandereck](https://github.com/nandereck)! - Add ProductBadge support to Card
+
 ## 0.2.0
 
 ### Minor Changes
