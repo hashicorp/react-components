@@ -1,5 +1,5 @@
 import { ImageProps } from 'next/image'
-import type { Products } from '@hashicorp/platform-product-meta'
+import type { ProductBadgeProps } from '@hashicorp/react-product-badge/types'
 import React from 'react'
 
 interface BaseCardProps {
@@ -20,7 +20,7 @@ interface CardWithProps extends BaseCardProps {
   children?: never
   thumbnail?: ThumbnailProps
   meta?: MetaProps['items']
-  productBadges?: Array<Products>
+  productBadges?: Array<ProductBadgeProps['productName']>
   description?: DescriptionProps['children']
 }
 
@@ -42,7 +42,7 @@ export interface HeadingProps {
 }
 
 export interface ProductBadgesProps {
-  badges: Array<Products>
+  badges: Array<ProductBadgeProps['productName']>
   appearance?: 'light' | 'dark'
 }
 
