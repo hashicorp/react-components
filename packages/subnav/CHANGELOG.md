@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.5.1
+
+### Patch Changes
+
+- [#749](https://github.com/hashicorp/react-components/pull/749) [`df426f9b`](https://github.com/hashicorp/react-components/commit/df426f9bf17b7a3374fe2649ffb1990d8db3bcb2) Thanks [@pbortnick](https://github.com/pbortnick)! - Ensure subnav link items are centered when there is no overflow
+
 ## 9.5.0
 
 ### Minor Changes

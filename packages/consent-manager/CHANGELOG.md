@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 8.1.0
+
+### Minor Changes
+
+- [#729](https://github.com/hashicorp/react-components/pull/729) [`13a6f0d5`](https://github.com/hashicorp/react-components/commit/13a6f0d5110c245d09188bcb998c19ea03565d3d) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - stack actions on mobile
+
 ## 8.0.1
 
 ### Patch Changes
