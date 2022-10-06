@@ -25,7 +25,6 @@ function Card(props: CardProps) {
     link,
     children,
   } = props
-
   return (
     <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
       {children ? (
@@ -37,13 +36,8 @@ function Card(props: CardProps) {
             {meta && meta.length > 0 ? <Meta items={meta} /> : null}
             <Heading>{heading}</Heading>
             {description ? <Description>{description}</Description> : null}
-            {productBadges &&
-            productBadges?.badges &&
-            productBadges?.badges?.length > 0 ? (
-              <ProductBadges
-                badges={productBadges.badges}
-                appearance={appearance}
-              />
+            {productBadges && productBadges?.length > 0 ? (
+              <ProductBadges badges={productBadges} appearance={appearance} />
             ) : null}
           </Content>
         </>
@@ -121,7 +115,7 @@ function ProductBadges({ badges, appearance = 'light' }: ProductBadgesProps) {
             // eslint-disable-next-line react/no-array-index-key
             key={stableIdx}
             appearance={appearance}
-            productName={badge.productName}
+            productName={badge}
             hasDot={true}
           />
         )
