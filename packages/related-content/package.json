@@ -1,0 +1,22 @@
+{
+  "name": "@hashicorp/react-related-content",
+  "version": "0.1.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "@hashicorp/react-card": "^0.2.0",
+    "@hashicorp/react-standalone-link": "^0.1.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x",
+    "next": ">=11.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/related-content"
+  }
+}
