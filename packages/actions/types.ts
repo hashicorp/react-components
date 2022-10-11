@@ -1,4 +1,5 @@
 import type { Products } from '@hashicorp/platform-product-meta'
+import { StandaloneLinkProps } from '@hashicorp/react-standalone-link/types'
 
 interface CtaProps {
   /**
@@ -41,4 +42,7 @@ export interface ActionsProps {
    * @see CtaProps
    */
   ctas: [CtaProps] | [CtaProps, CtaProps]
+  links: [any]
+  cta: CtaProps
+  link: StandaloneLinkProps
 }

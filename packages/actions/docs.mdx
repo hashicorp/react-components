@@ -44,28 +44,97 @@ componentName: 'Actions'
 
 </div>
 
+<div style={{marginTop: '16px', padding: "24px", border: "1px solid var(--gray-6)"}}>
+  <Actions
+    links={[
+      {
+        href: '/tutorials',
+        children: 'View tutorials'
+      },
+      {
+        href: '/docs',
+        children: 'View documentation'
+      }
+    ]}
+  />
+</div>
+
+<div style={{marginTop: '16px', padding: "24px", border: "1px solid var(--gray-6)"}}>
+  <Actions
+    cta={
+      {
+        title: 'View tutorials',
+        url: '/tutorials',
+        variant: 'primary'
+      }
+    }
+    link={
+      {
+        href: '/tutorials',
+        children: 'View documentation'
+      }
+    }
+  />
+</div>
+
 <h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
   Dark theme
 </h3>
 
 <div style={{padding: "24px", background: "black"}}>
 
-<Actions
-  appearance="dark"
-  ctas={[
-    {
-      title: 'View tutorials',
-      url: '/tutorials',
-      variant: 'primary',
-    },
-    {
-      title: 'View documentation',
-      url: '/docs',
-      variant: 'tertiary-neutral',
-    },
-  ]}
-/>
+  <div>
+    <Actions
+      appearance="dark"
+      ctas={[
+        {
+          title: 'View tutorials',
+          url: '/tutorials',
+          variant: 'primary',
+        },
+        {
+          title: 'View documentation',
+          url: '/docs',
+          variant: 'tertiary-neutral',
+        },
+      ]}
+    />
+  </div>
 
+  <div style={{marginTop: '32px'}}>
+    <Actions
+      appearance="dark"
+      links={[
+        {
+          href: '/tutorials',
+          children: 'View tutorials'
+        },
+        {
+          href: '/docs',
+          children: 'View documentation'
+        }
+      ]}
+    />
+  </div>
+
+  <div style={{marginTop: '32px'}}>
+    <Actions
+      appearance="dark"
+      cta={
+        {
+          title: 'View tutorials',
+          url: '/tutorials',
+          variant: 'primary'
+        }
+      }
+      link={
+        {
+          href: '/tutorials',
+          children: 'View documentation'
+        }
+      }
+    />
+  </div>  
 </div>
 
 ### Props
