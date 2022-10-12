@@ -1,5 +1,4 @@
 import type { Products } from '@hashicorp/platform-product-meta'
-import type { StandaloneLinkProps } from '@hashicorp/react-standalone-link/types'
 
 interface CtaProps {
   /**
@@ -18,6 +17,14 @@ interface CtaProps {
    * A function that will be called when the button is clicked.
    */
   onClick?: () => void
+}
+
+interface ButtonCtaProps extends CtaProps {
+  type?: 'button' | undefined
+}
+
+interface StandaloneLinkCtaProps extends CtaProps {
+  type: 'standalone-link'
 }
 
 export interface ActionsProps {
@@ -39,17 +46,17 @@ export interface ActionsProps {
   size?: 'small' | 'medium'
   /**
    * Array of CTAs. Minimum of one, max of two.
-   * When both CtaProps and StandaloneLinkProps are
-   * provided, they are only accepted in that order.
+   * When both a Button and StandaloneLink are
+   * rendered, they can only render accepted in said order.
    * This is intentional and ensures adherence to a design
    * requirement of rendering the Button first when data
    * for both a Button and a StandaloneLink are provided.
-   * @see CtaProps and StandaloneLinkProps
+   * @see CtaProps
    */
   ctas:
-    | [CtaProps]
-    | [StandaloneLinkProps]
-    | [CtaProps, CtaProps]
-    | [StandaloneLinkProps, StandaloneLinkProps]
-    | [CtaProps, StandaloneLinkProps]
+    | [ButtonCtaProps]
+    | [StandaloneLinkCtaProps]
+    | [ButtonCtaProps, ButtonCtaProps]
+    | [StandaloneLinkCtaProps, StandaloneLinkCtaProps]
+    | [ButtonCtaProps, StandaloneLinkCtaProps]
 }

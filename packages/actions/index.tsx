@@ -24,11 +24,21 @@ export default function Actions({
         // This const is confusingly named because `Button` and `StandaloneLink`
         // use different prop names to trigger variations (`variant` and `theme`).
 
-        const themeOrVariant = index === 0 ? 'primary' : 'secondary'
-        const isStandaloneLink = cta?.href && cta?.children
-        const isButton = cta?.title && cta?.url
+        const variant = index === 0 ? 'primary' : 'secondary'
+        const isStandaloneLink = cta?.type === 'standalone-link'
 
-        if (isButton) {
+        if (isStandaloneLink) {
+          return (
+            <StandaloneLink
+              href={cta.url}
+              theme={variant}
+              appearance={appearance}
+              onClick={cta?.onClick}
+            >
+              {cta.title}
+            </StandaloneLink>
+          )
+        } else {
           return (
             <Button
               // eslint-disable-next-line react/no-array-index-key
@@ -39,22 +49,10 @@ export default function Actions({
               size={size}
               theme={{
                 brand: theme,
-                variant: themeOrVariant,
+                variant: variant,
                 background: appearance === 'dark' ? 'dark' : undefined,
               }}
             />
-          )
-        }
-
-        if (isStandaloneLink) {
-          return (
-            <StandaloneLink
-              href={cta.href}
-              theme={themeOrVariant}
-              appearance={appearance}
-            >
-              {cta.children}
-            </StandaloneLink>
           )
         }
       })}
