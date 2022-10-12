@@ -38,10 +38,10 @@ module.exports = {
         description: 'The text that appears inside the button.',
         required: true,
       },
-      url: {
+      href: {
         type: 'string',
         description: 'Where the button links to when clicked.',
-        require: true,
+        required: true,
       },
       onClick: {
         type: 'function',
@@ -52,7 +52,7 @@ module.exports = {
         type: 'string',
         description:
           'Applies a styling to the button based on the desired hierarchy.',
-        options: ['primary', 'secondary', 'tertiary-neutral'],
+        options: ['primary', 'secondary'],
       },
     },
   },

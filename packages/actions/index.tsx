@@ -28,7 +28,7 @@ export default function Actions({
         if (isStandaloneLink) {
           return (
             <StandaloneLink
-              href={cta.url}
+              href={cta.href}
               theme={variant}
               appearance={appearance}
               onClick={cta?.onClick}
@@ -42,7 +42,7 @@ export default function Actions({
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               title={cta.title}
-              url={cta.url}
+              url={cta.href}
               onClick={cta.onClick}
               size={size}
               theme={{

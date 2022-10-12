@@ -8,7 +8,7 @@ interface CtaProps {
   /**
    * Where the button links to when clicked.
    */
-  url: string
+  href: string
   /**
    * A function that will be called when the button is clicked.
    */
