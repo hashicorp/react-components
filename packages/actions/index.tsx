@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
+import StandaloneLink from '@hashicorp/react-standalone-link'
 import type { ActionsProps } from './types'
 import s from './style.module.css'
 
@@ -18,23 +19,45 @@ export default function Actions({
   return (
     <div className={classNames(s.actions, s[layout])} data-testid="actions">
       {ctas.map((cta, index) => {
-        return (
-          <Button
-            key={index}
-            title={cta.title}
-            linkType={
-              cta.variant === 'tertiary-neutral' ? 'inbound' : undefined
-            }
-            url={cta.url}
-            onClick={cta.onClick}
-            size={size}
-            theme={{
-              brand: theme,
-              variant: cta.variant || 'primary',
-              background: appearance === 'dark' ? 'dark' : undefined,
-            }}
-          />
-        )
+        // The first CTA and second CTA should always
+        // have the `primary` and `secondary` variant/theme respectively.
+        // This const is confusingly named because `Button` and `StandaloneLink`
+        // use different prop names to trigger variants (`variant` and `theme`).
+
+        const themeOrVariant = index === 0 ? 'primary' : 'secondary'
+        const isStandaloneLink = cta?.href && cta?.children
+        const isButton = cta?.title && cta?.url
+
+        if (isButton) {
+          return (
+            <Button
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              title={cta.title}
+              linkType={undefined}
+              url={cta.url}
+              onClick={cta.onClick}
+              size={size}
+              theme={{
+                brand: theme,
+                variant: themeOrVariant,
+                background: appearance === 'dark' ? 'dark' : undefined,
+              }}
+            />
+          )
+        }
+
+        if (isStandaloneLink) {
+          return (
+            <StandaloneLink
+              href={cta.href}
+              theme={themeOrVariant}
+              appearance={appearance}
+            >
+              {cta.children}
+            </StandaloneLink>
+          )
+        }
       })}
     </div>
   )
