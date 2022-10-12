@@ -42,7 +42,10 @@
 .text {
   display: inline-block;
   position: relative;
-  composes: g-type-label from global;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: capitalize;
   margin: 0;
 
