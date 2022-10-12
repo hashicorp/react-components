@@ -1,5 +1,11 @@
 # @hashicorp/react-head
 
+## 3.3.2
+
+### Patch Changes
+
+- [#754](https://github.com/hashicorp/react-components/pull/754) [`92ad2c5a`](https://github.com/hashicorp/react-components/commit/92ad2c5ac846d4530ca541d09907c2c5c8e80e3a) Thanks [@dstaley](https://github.com/dstaley)! - Specifically import React types
+
 ## 3.3.1
 
 ### Patch Changes
