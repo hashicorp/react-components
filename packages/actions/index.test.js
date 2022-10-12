@@ -8,12 +8,12 @@ describe('<Actions />', () => {
         ctas={[
           {
             title: 'View tutorials',
-            url: '/tutorials',
+            href: '/tutorials',
             variant: 'primary',
           },
           {
             title: 'View documentation',
-            url: '/docs',
+            href: '/docs',
             variant: 'tertiary-neutral',
           },
         ]}
