@@ -1,4 +1,5 @@
 import type { Products } from '@hashicorp/platform-product-meta'
+import type { StandaloneLinkProps } from '@hashicorp/react-standalone-link/types'
 
 interface CtaProps {
   /**
@@ -38,7 +39,17 @@ export interface ActionsProps {
   size?: 'small' | 'medium'
   /**
    * Array of CTAs. Minimum of one, max of two.
-   * @see CtaProps
+   * When both CtaProps and StandaloneLinkProps are
+   * provided, they are only accepted in that order.
+   * This is intentional and ensures adherence to a design
+   * requirement of rendering the Button first when data
+   * for both a Button and a StandaloneLink are provided.
+   * @see CtaProps and StandaloneLinkProps
    */
-  ctas: [CtaProps] | [CtaProps, CtaProps]
+  ctas:
+    | [CtaProps]
+    | [StandaloneLinkProps]
+    | [CtaProps, CtaProps]
+    | [StandaloneLinkProps, StandaloneLinkProps]
+    | [CtaProps, StandaloneLinkProps]
 }
