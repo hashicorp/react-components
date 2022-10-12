@@ -26,21 +26,48 @@ componentName: 'Actions'
 </h3>
 
 <div style={{padding: "24px", border: "1px solid var(--gray-6)"}}>
-
-<Actions
-  ctas={[
-    {
-      title: 'View tutorials',
-      url: '/tutorials',
-      variant: 'primary',
-    },
-    {
-      title: 'View documentation',
-      url: '/docs',
-      variant: 'tertiary-neutral',
-    },
-  ]}
-/>
+  <div style={{ paddingBottom: "24px"}}>
+    <Actions
+      ctas={[
+        {
+          title: 'View tutorials',
+          url: '/tutorials',
+        },
+        {
+          title: 'View documentation',
+          url: '/docs',
+        },
+      ]}
+    />
+  </div>
+  <div style={{ paddingBottom: "24px"}}>
+    <Actions
+      ctas={[
+        {
+          title: 'View tutorials',
+          url: '/tutorials',
+        },
+        {
+          children: 'View documentation',
+          href: '/docs',
+        },
+      ]}
+    />
+  </div>
+  <div>
+    <Actions
+      ctas={[
+        {
+          children: 'View tutorials',
+          href: '/tutorials',
+        },
+        {
+          children: 'View documentation',
+          href: '/docs',
+        },
+      ]}
+    />
+  </div>
 
 </div>
 
@@ -50,21 +77,51 @@ componentName: 'Actions'
 
 <div style={{padding: "24px", background: "black"}}>
 
-<Actions
-  appearance="dark"
-  ctas={[
-    {
-      title: 'View tutorials',
-      url: '/tutorials',
-      variant: 'primary',
-    },
-    {
-      title: 'View documentation',
-      url: '/docs',
-      variant: 'tertiary-neutral',
-    },
-  ]}
-/>
+  <div style={{ paddingBottom: "24px"}}>
+    <Actions
+      appearance={'dark'}
+      ctas={[
+        {
+          title: 'View tutorials',
+          url: '/tutorials',
+        },
+        {
+          title: 'View documentation',
+          url: '/docs',
+        },
+      ]}
+    />
+  </div>
+  <div style={{ paddingBottom: "24px"}}>
+    <Actions
+      appearance={'dark'}
+      ctas={[
+        {
+          title: 'View tutorials',
+          url: '/tutorials',
+        },
+        {
+          children: 'View documentation',
+          href: '/docs',
+        },
+      ]}
+    />
+  </div>
+  <div>
+    <Actions
+      appearance={'dark'}
+      ctas={[
+        {
+          children: 'View tutorials',
+          href: '/tutorials',
+        },
+        {
+          children: 'View documentation',
+          href: '/docs',
+        },
+      ]}
+    />
+  </div>
 
 </div>
 
