@@ -10,17 +10,13 @@ interface CtaProps {
    */
   url: string
   /**
-   * Applies a styling to the button based on the desired hierarchy.
-   */
-  variant?: 'primary' | 'secondary' | 'tertiary-neutral'
-  /**
    * A function that will be called when the button is clicked.
    */
   onClick?: () => void
 }
 
 interface ButtonCtaProps extends CtaProps {
-  type?: 'button' | undefined
+  type?: 'button'
 }
 
 interface StandaloneLinkCtaProps extends CtaProps {
