@@ -34,7 +34,6 @@ export default function Actions({
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               title={cta.title}
-              linkType={undefined}
               url={cta.url}
               onClick={cta.onClick}
               size={size}
