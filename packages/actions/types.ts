@@ -47,7 +47,7 @@ export interface ActionsProps {
   /**
    * Array of CTAs. Minimum of one, max of two.
    * When both a Button and StandaloneLink are
-   * rendered, they can only render accepted in said order.
+   * rendered, they can only render in said order.
    * This is intentional and ensures adherence to a design
    * requirement of rendering the Button first when data
    * for both a Button and a StandaloneLink are provided.
