@@ -42,9 +42,8 @@
 .text {
   display: inline-block;
   position: relative;
-  font-family: var(--font-body);
+  composes: g-type-body-small-x-strong from global;
   font-size: 0.88rem;
-  font-weight: var(--font-weight-bold);
   letter-spacing: 0.03em;
   text-transform: capitalize;
   margin: 0;
