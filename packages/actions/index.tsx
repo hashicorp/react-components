@@ -20,9 +20,9 @@ export default function Actions({
     <div className={classNames(s.actions, s[layout])} data-testid="actions">
       {ctas.map((cta, index) => {
         // The first CTA and second CTA should always
-        // have the `primary` and `secondary` variant/theme respectively.
+        // have the `primary` and `secondary` variations respectively.
         // This const is confusingly named because `Button` and `StandaloneLink`
-        // use different prop names to trigger variants (`variant` and `theme`).
+        // use different prop names to trigger variations (`variant` and `theme`).
 
         const themeOrVariant = index === 0 ? 'primary' : 'secondary'
         const isStandaloneLink = cta?.href && cta?.children
