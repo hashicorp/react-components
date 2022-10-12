@@ -21,8 +21,6 @@ export default function Actions({
       {ctas.map((cta, index) => {
         // The first CTA and second CTA should always
         // have the `primary` and `secondary` variations respectively.
-        // This const is confusingly named because `Button` and `StandaloneLink`
-        // use different prop names to trigger variations (`variant` and `theme`).
 
         const variant = index === 0 ? 'primary' : 'secondary'
         const isStandaloneLink = cta?.type === 'standalone-link'
