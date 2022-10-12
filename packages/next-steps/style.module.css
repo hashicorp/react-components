@@ -85,8 +85,8 @@
 }
 
 .tile {
-  --background-color: transparent;
-  --border-color: transparent;
+  --background-color: var(--wpl-neutral-0);
+  --border-color: --wpl-neutral-0;
   --color: var(--wpl-neutral-0);
 
   display: flex;
