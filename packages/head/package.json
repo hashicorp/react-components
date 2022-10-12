@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-head",
   "description": "Create a Hashicorp branded <head> in NextJS projects.",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "author": "HashiCorp",
   "contributors": [
     "Jonathan Neal"

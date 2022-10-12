@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.2.0
+
+### Minor Changes
+
+- [#755](https://github.com/hashicorp/react-components/pull/755) [`e803cc00`](https://github.com/hashicorp/react-components/commit/e803cc00d473a6570328473dfb760c5b52a8b3b2) Thanks [@dstaley](https://github.com/dstaley)! - Update react-hook-form
+
 ## 0.1.2
 
 ### Patch Changes
