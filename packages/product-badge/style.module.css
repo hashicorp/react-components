@@ -43,8 +43,8 @@
   display: inline-block;
   position: relative;
   font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 0.88rem;
+  font-weight: var(--font-weight-bold);
   letter-spacing: 0.03em;
   text-transform: capitalize;
   margin: 0;
