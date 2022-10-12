@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import isAbsoluteUrl from './helpers/is-absolute-url'
 import { renderMetaTags } from './seo'
+import type { ReactNode, ReactElement } from 'react'
 
 export { renderMetaTags }
 
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
-export default function HashiHead(props: HashiHeadProps): React.ReactElement {
+export default function HashiHead(props: HashiHeadProps): ReactElement {
   /**
    * Throw an error if props.image is a relative URL.
    * It must be an absolute URL in order to work as expected as og:image.
@@ -111,7 +112,7 @@ const whenString = (value, returnValue) =>
 
 interface HashiHeadProps {
   canonicalUrl?: string
-  children?: React.ReactNode
+  children?: ReactNode
   description?: string
   icon?: {
     [key: string]: unknown
