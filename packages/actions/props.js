@@ -9,9 +9,9 @@ module.exports = {
     description: 'Display buttons inline or stacked by default.',
     options: ['inline', 'stacked'],
   },
-  brand: {
+  theme: {
     type: 'string',
-    description: 'Render primary variant button with product color.',
+    description: 'Render primary variant button CTA with product color.',
     options: [
       'hashicorp',
       'nomad',
@@ -31,7 +31,8 @@ module.exports = {
   },
   ctas: {
     type: 'object',
-    description: 'Array of CTAs. Minimum of one, max of two.',
+    description:
+      'Array of CTAs. Minimum of one, max of two. A CTA can either be rendered as a Button or a StandaloneLink. If both a Button and StandaloneLink are provided, the Button will always render first.',
     properties: {
       title: {
         type: 'string',
@@ -43,16 +44,16 @@ module.exports = {
         description: 'Where the button links to when clicked.',
         required: true,
       },
+      type: {
+        type: 'string',
+        description:
+          'Render either a Button component or StandaloneLink component for the CTA. Defaults to Button.',
+        options: ['button', 'standalone-link'],
+      },
       onClick: {
         type: 'function',
         description:
           'A function that will be called when the button is clicked.',
-      },
-      variant: {
-        type: 'string',
-        description:
-          'Applies a styling to the button based on the desired hierarchy.',
-        options: ['primary', 'secondary'],
       },
     },
   },
