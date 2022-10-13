@@ -38,7 +38,45 @@ describe('<Actions />', () => {
         ]}
       />
     )
-    expect(screen.getByTestId('button')).toBeVisible()
-    expect(screen.getByTestId('standaloneLink')).toBeVisible()
+    expect(screen.getByTestId('button-0')).toBeVisible()
+    expect(screen.getByTestId('standaloneLink-1')).toBeVisible()
+  })
+  it('should render two StandaloneLink CTAs', () => {
+    render(
+      <Actions
+        ctas={[
+          {
+            title: 'View tutorials',
+            href: '/tutorials',
+            type: 'standalone-link',
+          },
+          {
+            title: 'View documentation',
+            href: '/docs',
+            type: 'standalone-link',
+          },
+        ]}
+      />
+    )
+    expect(screen.getByTestId('standaloneLink-0')).toBeVisible()
+    expect(screen.getByTestId('standaloneLink-1')).toBeVisible()
+  })
+  it('should render two Button CTAs', () => {
+    render(
+      <Actions
+        ctas={[
+          {
+            title: 'View tutorials',
+            href: '/tutorials',
+          },
+          {
+            title: 'View documentation',
+            href: '/docs',
+          },
+        ]}
+      />
+    )
+    expect(screen.getByTestId('button-0')).toBeVisible()
+    expect(screen.getByTestId('button-1')).toBeVisible()
   })
 })
