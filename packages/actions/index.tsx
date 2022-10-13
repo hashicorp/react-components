@@ -34,7 +34,7 @@ export default function Actions({
               theme={variant}
               appearance={appearance}
               onClick={cta?.onClick}
-              data-testid="standaloneLink"
+              data-testid={`standaloneLink-${index}`}
             >
               {cta.title}
             </StandaloneLink>
@@ -53,7 +53,7 @@ export default function Actions({
                 variant: variant,
                 background: appearance === 'dark' ? 'dark' : undefined,
               }}
-              data-testid="button"
+              data-testid={`button-${index}`}
             />
           )
         }
