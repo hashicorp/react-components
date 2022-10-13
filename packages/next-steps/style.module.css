@@ -128,6 +128,7 @@
   &:not(.primary) {
     --border-color: var(--wpl-neutral-200);
     --color: var(--wpl-neutral-900);
+    --background-color: var(--wpl-neutral-0);
 
     &:hover {
       --background-color: var(--wpl-neutral-100);
