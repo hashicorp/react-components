@@ -32,7 +32,7 @@ module.exports = {
   ctas: {
     type: 'object',
     description:
-      'Array of CTAs. Minimum of one, max of two. A CTA can either be rendered as a Button or a StandaloneLink. If both a Button and StandaloneLink are provided, the Button will always render first.',
+      'Array of CTAs. Minimum of one, max of two. A CTA can either be rendered as a Button or a StandaloneLink via the `cta.type` prop.',
     properties: {
       title: {
         type: 'string',
