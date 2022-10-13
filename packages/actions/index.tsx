@@ -28,6 +28,8 @@ export default function Actions({
         if (isStandaloneLink) {
           return (
             <StandaloneLink
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               href={cta.href}
               theme={variant}
               appearance={appearance}
