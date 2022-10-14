@@ -1,5 +1,16 @@
 # @hashicorp/react-intro
 
+## 0.5.0
+
+### Minor Changes
+
+- [#758](https://github.com/hashicorp/react-components/pull/758) [`f464318c`](https://github.com/hashicorp/react-components/commit/f464318c0b7b71e39d810f028743ef2512599a99) Thanks [@nandereck](https://github.com/nandereck)! - Enables StandaloneLink support in Actions. Updates NextSteps and Intro components to accommodate changes in Actions.
+
+### Patch Changes
+
+- Updated dependencies [[`f464318c`](https://github.com/hashicorp/react-components/commit/f464318c0b7b71e39d810f028743ef2512599a99)]:
+  - @hashicorp/react-actions@0.4.0
+
 ## 0.4.2
 
 ### Patch Changes
