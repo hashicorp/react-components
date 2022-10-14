@@ -1,5 +1,11 @@
 # @hashicorp/react-next-steps
 
+## 0.2.0
+
+### Minor Changes
+
+- [#759](https://github.com/hashicorp/react-components/pull/759) [`4957b882`](https://github.com/hashicorp/react-components/commit/4957b882d2a6321d3a9921507c7dff4b700e1198) Thanks [@nandereck](https://github.com/nandereck)! - Set non-primary tile background color to white
+
 ## 0.1.1
 
 ### Patch Changes
