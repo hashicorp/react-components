@@ -37,7 +37,7 @@ export default function NextSteps({
                 ctas &&
                 (ctas.map((cta) => ({
                   ...cta,
-                  variant: 'tertiary-neutral',
+                  type: 'standalone-link',
                 })) as NextStepsProps['ctas']),
             }}
           />
