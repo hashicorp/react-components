@@ -23,11 +23,11 @@ const steps = [
 const ctas = [
   {
     title: 'Cta 1',
-    url: '/cta-1',
+    href: '/cta-1',
   },
   {
     title: 'Cta 2',
-    url: '/cta-2',
+    href: '/cta-2',
   },
 ]
 
@@ -63,11 +63,11 @@ describe('<NextSteps />', () => {
 
     expect(screen.getByText(ctas[0].title).closest('a')).toHaveAttribute(
       'href',
-      ctas[0].url
+      ctas[0].href
     )
     expect(screen.getByText(ctas[1].title).closest('a')).toHaveAttribute(
       'href',
-      ctas[1].url
+      ctas[1].href
     )
   })
 

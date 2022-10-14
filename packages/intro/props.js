@@ -63,30 +63,8 @@ module.exports = {
       },
       ctas: {
         type: 'object',
-        description: 'Array of CTAs. Minimum of one, max of two.',
-        properties: {
-          title: {
-            type: 'string',
-            description: 'The text that appears inside the button.',
-            required: true,
-          },
-          url: {
-            type: 'string',
-            description: 'Where the button links to when clicked.',
-            require: true,
-          },
-          onClick: {
-            type: 'function',
-            description:
-              'A function that will be called when the button is clicked.',
-          },
-          variant: {
-            type: 'string',
-            description:
-              'Applies a styling to the button based on the desired hierarchy.',
-            options: ['primary', 'secondary', 'tertiary-neutral'],
-          },
-        },
+        description:
+          'Array of CTAs. Minimum of one, max of two. See props for the `Actions` CTAs <a href="https://react-components.vercel.app/components/actions">here</a>',
       },
     },
   },
