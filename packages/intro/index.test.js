@@ -23,8 +23,8 @@ describe('<Intro />', () => {
         description="Description"
         actions={{
           ctas: [
-            { title: 'One', href: '/one' },
-            { title: 'Two', href: '/two' },
+            { title: 'One', url: '/one' },
+            { title: 'Two', url: '/two' },
           ],
         }}
       />
