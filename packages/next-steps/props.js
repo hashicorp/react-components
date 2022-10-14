@@ -37,7 +37,7 @@ module.exports = {
         type: 'string',
         description: 'The title of the cta.',
       },
-      url: {
+      href: {
         type: 'string',
         description: 'The url of the cta.',
       },

@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Button from '@hashicorp/react-button'
+import StandaloneLink from '@hashicorp/react-standalone-link'
 import type { ActionsProps } from './types'
 import s from './style.module.css'
 
@@ -18,23 +19,44 @@ export default function Actions({
   return (
     <div className={classNames(s.actions, s[layout])} data-testid="actions">
       {ctas.map((cta, index) => {
-        return (
-          <Button
-            key={index}
-            title={cta.title}
-            linkType={
-              cta.variant === 'tertiary-neutral' ? 'inbound' : undefined
-            }
-            url={cta.url}
-            onClick={cta.onClick}
-            size={size}
-            theme={{
-              brand: theme,
-              variant: cta.variant || 'primary',
-              background: appearance === 'dark' ? 'dark' : undefined,
-            }}
-          />
-        )
+        // The first CTA and second CTA should always
+        // have the `primary` and `secondary` variations respectively.
+
+        const variant = index === 0 ? 'primary' : 'secondary'
+        const isStandaloneLink = cta?.type === 'standalone-link'
+
+        if (isStandaloneLink) {
+          return (
+            <StandaloneLink
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              href={cta.href}
+              theme={variant}
+              appearance={appearance}
+              onClick={cta?.onClick}
+              data-testid={`standaloneLink-${index}`}
+            >
+              {cta.title}
+            </StandaloneLink>
+          )
+        } else {
+          return (
+            <Button
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              title={cta.title}
+              url={cta.href}
+              onClick={cta.onClick}
+              size={size}
+              theme={{
+                brand: theme,
+                variant: variant,
+                background: appearance === 'dark' ? 'dark' : undefined,
+              }}
+              data-testid={`button-${index}`}
+            />
+          )
+        }
       })}
     </div>
   )

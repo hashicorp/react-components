@@ -8,15 +8,19 @@ interface CtaProps {
   /**
    * Where the button links to when clicked.
    */
-  url: string
-  /**
-   * Applies a styling to the button based on the desired hierarchy.
-   */
-  variant?: 'primary' | 'secondary' | 'tertiary-neutral'
+  href: string
   /**
    * A function that will be called when the button is clicked.
    */
   onClick?: () => void
+}
+
+interface ButtonCtaProps extends CtaProps {
+  type?: 'button'
+}
+
+interface StandaloneLinkCtaProps extends CtaProps {
+  type: 'standalone-link'
 }
 
 export interface ActionsProps {
@@ -38,7 +42,17 @@ export interface ActionsProps {
   size?: 'small' | 'medium'
   /**
    * Array of CTAs. Minimum of one, max of two.
+   * When both a Button and StandaloneLink are
+   * rendered, they can only render in said order.
+   * This is intentional and ensures adherence to a design
+   * requirement of rendering the Button first when data
+   * for both a Button and a StandaloneLink are provided.
    * @see CtaProps
    */
-  ctas: [CtaProps] | [CtaProps, CtaProps]
+  ctas:
+    | [ButtonCtaProps]
+    | [StandaloneLinkCtaProps]
+    | [ButtonCtaProps, ButtonCtaProps]
+    | [StandaloneLinkCtaProps, StandaloneLinkCtaProps]
+    | [ButtonCtaProps, StandaloneLinkCtaProps]
 }
