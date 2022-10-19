@@ -1,0 +1,109 @@
+.root {
+  &.dark {
+    background-color: var(--wpl-neutral-900);
+  }
+}
+
+.eyebrow {
+  composes: g-type-label-strong from global;
+  margin: 0 0 var(--wpl-spacing-03) 0;
+  color: var(--wpl-neutral-500);
+
+  &.dark {
+    color: var(--wpl-neutral-400);
+  }
+}
+
+.productList {
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  & .isVerticallyCentered {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.product {
+  &:not(:first-child) {
+    margin-left: var(--wpl-spacing-03);
+  }
+
+  &.isLink {
+    padding: var(--wpl-spacing-01) var(--wpl-spacing-02);
+    border-radius: calc(var(--wpl-spacing-01) / 2);
+    border: 1.5px solid var(--wpl-neutral-100);
+    transition: background-color 0.2s, border 0.2s;
+
+    &:not(:first-child) {
+      margin-left: var(--wpl-spacing-01);
+    }
+
+    &:hover {
+      background-color: var(--wpl-neutral-25);
+      border-color: var(--wpl-neutral-200);
+    }
+
+    &:active {
+      background-color: var(--wpl-neutral-50);
+      border-color: var(--wpl-neutral-200);
+    }
+
+    &:focus {
+      border-color: var(--wpl-blue-400);
+    }
+
+    &:disabled {
+      border-color: var(--wpl-neutral-0);
+
+      &:hover {
+        background-color: var(--wpl-neutral-0);
+      }
+    }
+
+    &.dark {
+      border-color: var(--wpl-neutral-700);
+
+      &:hover {
+        background-color: var(--wpl-neutral-850);
+        border-color: var(--wpl-neutral-500);
+      }
+
+      &:active {
+        background-color: var(--wpl-neutral-800);
+        border-color: var(--wpl-neutral-500);
+      }
+
+      &:disabled {
+        border-color: var(--wpl-neutral-900);
+
+        &:hover {
+          background-color: var(--wpl-neutral-900);
+        }
+      }
+    }
+  }
+}
+
+.productIcon {
+  --size: var(--wpl-spacing-03);
+
+  flex-shrink: 0;
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  background-size: var(--size);
+  background-image: var(--icon);
+  margin-right: 6px;
+}
+
+.productName {
+  composes: g-type-body-small-x-strong from global;
+  text-transform: capitalize;
+  color: var(--wpl-neutral-500);
+
+  &.dark {
+    color: var(--wpl-neutral-200);
+  }
+}
