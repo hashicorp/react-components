@@ -88,14 +88,8 @@
 }
 
 .productIcon {
-  --size: var(--wpl-spacing-03);
-
-  flex-shrink: 0;
-  display: inline-block;
-  width: var(--size);
-  height: var(--size);
-  background-size: var(--size);
-  background-image: var(--icon);
+  display: flex;
+  align-items: center;
   margin-right: 6px;
 }
 

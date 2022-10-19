@@ -1,6 +1,25 @@
 import type { ProductsUsedProps } from './types'
+import { IconBoundaryColor16 } from '@hashicorp/flight-icons/svg-react/boundary-color-16'
+import { IconConsulColor16 } from '@hashicorp/flight-icons/svg-react/consul-color-16'
+import { IconNomadColor16 } from '@hashicorp/flight-icons/svg-react/nomad-color-16'
+import { IconPackerColor16 } from '@hashicorp/flight-icons/svg-react/packer-color-16'
+import { IconTerraformColor16 } from '@hashicorp/flight-icons/svg-react/terraform-color-16'
+import { IconVaultColor16 } from '@hashicorp/flight-icons/svg-react/vault-color-16'
+import { IconVagrantColor16 } from '@hashicorp/flight-icons/svg-react/vagrant-color-16'
+import { IconWaypointColor16 } from '@hashicorp/flight-icons/svg-react/waypoint-color-16'
 import classNames from 'classnames'
 import s from './style.module.css'
+
+const ProductIconMap = {
+  boundary: <IconBoundaryColor16 />,
+  consul: <IconConsulColor16 />,
+  nomad: <IconNomadColor16 />,
+  packer: <IconPackerColor16 />,
+  terraform: <IconTerraformColor16 />,
+  vault: <IconVaultColor16 />,
+  vagrant: <IconVagrantColor16 />,
+  waypoint: <IconWaypointColor16 />,
+}
 
 const ProductsUsed = ({
   appearance = 'light',
@@ -14,9 +33,6 @@ const ProductsUsed = ({
       <ul className={s.productList}>
         {products.map((product, index) => {
           const isLink = !!product.href
-          const iconStyles = {
-            '--icon': `url("https://www.hashicorp.com/img/flight-icons/${product.name}-color-24.svg")`,
-          } as React.CSSProperties
 
           return (
             <li
@@ -30,12 +46,9 @@ const ProductsUsed = ({
               ])}
             >
               <ConditionalLink href={product.href}>
-                <span
-                  aria-label={product.name}
-                  role="img"
-                  className={s.productIcon}
-                  style={iconStyles}
-                />
+                <span className={s.productIcon}>
+                  {ProductIconMap[product.name]}
+                </span>
                 <span className={classNames([s.productName, s[appearance]])}>
                   {product.name}
                 </span>
