@@ -9,7 +9,7 @@ const ProductsUsed = ({
   const eyebrowText = 'Products used'
 
   return (
-    <div className={classNames([s.root, s[appearance]])}>
+    <div className={classNames([s.root, s[appearance]])} data-testid="root">
       <p className={classNames([s.eyebrow, s[appearance]])}>{eyebrowText}</p>
       <ul className={s.productList}>
         {products.map((product, index) => {
@@ -50,7 +50,7 @@ const ProductsUsed = ({
 
 const ConditionalLink = ({ href, children }) => {
   return href ? (
-    <a href={href} className={s.isVerticallyCentered}>
+    <a href={href} className={s.isVerticallyCentered} data-testid={'anchorEl'}>
       {children}
     </a>
   ) : (
