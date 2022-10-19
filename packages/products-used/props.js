@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
   appearance: {
     type: 'string',
     description: 'Display on light or dark backgrounds.',
