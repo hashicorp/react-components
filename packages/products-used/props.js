@@ -6,11 +6,12 @@ module.exports = {
   },
   products: {
     type: 'object',
-    description: 'Array of products.',
+    description:
+      'Array of products or products with links. Only supports one or the other, not a mix of the two.',
     properties: {
       name: {
         description:
-          'A lower-case product identifier to pull in respective theme colors.',
+          'A lower-case product identifier to render the name of the product',
         type: 'string',
         control: { type: 'select' },
         options: [
