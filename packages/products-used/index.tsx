@@ -31,10 +31,7 @@ const ProductsUsed = ({
   // products without links (16px). This spacing is set on the `ul` using the `gap` property.
   // This logic determines whether or not products have links so as to conditionally change
   // the spacing.
-  const productsWithLinks = products.find((product) =>
-    Object.keys(product).includes('href')
-  )
-  const productsHaveLinks = !!productsWithLinks
+  const productsHaveLinks = products[0]?.hasOwnProperty('href')
 
   return (
     <div className={classNames([s.root, s[appearance]])} data-testid="root">
