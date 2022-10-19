@@ -15,7 +15,6 @@ module.exports = {
         type: 'string',
         control: { type: 'select' },
         options: [
-          'hashicorp',
           'boundary',
           'consul',
           'nomad',
@@ -29,7 +28,7 @@ module.exports = {
       },
       href: {
         type: 'string',
-        description: 'Where the button links to when clicked.',
+        description: 'Where the anchor element links to when clicked.',
       },
     },
   },

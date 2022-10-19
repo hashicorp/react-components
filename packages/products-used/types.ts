@@ -15,7 +15,7 @@ interface Product {
   /**
    * Renders a product name
    */
-  name: Products
+  name: Exclude<Products, 'hashicorp'>
 }
 
 interface ProductLink extends Product {
