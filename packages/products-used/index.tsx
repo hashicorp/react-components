@@ -27,25 +27,33 @@ const ProductsUsed = ({
 }: ProductsUsedProps) => {
   const eyebrowText = 'Products used'
 
+  // Products with links have different spacing between each other (8px) than
+  // products without links (16px). This spacing is set on the `ul` using the `gap` property.
+  // This logic determines whether or not products have links so as to conditionally change
+  // the spacing.
+  const productsWithLinks = products.find((product) =>
+    Object.keys(product).includes('href')
+  )
+  const productsHaveLinks = !!productsWithLinks
+
   return (
     <div className={classNames([s.root, s[appearance]])} data-testid="root">
       <p className={classNames([s.eyebrow, s[appearance]])}>{eyebrowText}</p>
-      <ul className={s.productList}>
+      <ul
+        className={classNames([s.productList], {
+          [s.isSmallerGap]: productsHaveLinks,
+        })}
+      >
         {products.map((product, index) => {
-          const isLink = !!product.href
-
           return (
             <li
               // eslint-disable-next-line react/no-array-index-key
               key={index}
-              className={classNames([
-                s.product,
-                s.isVerticallyCentered,
-                s[appearance],
-                { [s.isLink]: isLink },
-              ])}
             >
-              <ConditionalLink href={product.href}>
+              <ConditionalLink
+                className={classNames([s.product, s[appearance]])}
+                href={product.href}
+              >
                 <span className={s.productIcon}>
                   {ProductIconMap[product.name]}
                 </span>
@@ -61,13 +69,13 @@ const ProductsUsed = ({
   )
 }
 
-const ConditionalLink = ({ href, children }) => {
+const ConditionalLink = ({ href, children, className }) => {
   return href ? (
-    <a href={href} className={s.isVerticallyCentered} data-testid={'anchorEl'}>
+    <a href={href} className={className} data-testid={'anchorEl'}>
       {children}
     </a>
   ) : (
-    children
+    <div className={className}>{children}</div>
   )
 }
 
