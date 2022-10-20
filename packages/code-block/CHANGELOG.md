@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.2.1
+
+### Patch Changes
+
+- [#768](https://github.com/hashicorp/react-components/pull/768) [`95c749ef`](https://github.com/hashicorp/react-components/commit/95c749effc8d9eb17251e65f3d29db866b109121) Thanks [@zchsh](https://github.com/zchsh)! - Fixes issue where code-tabs in MDX would render blocks with a language-undefined className, even if the className was in fact defined.
+
 ## 6.2.0
 
 ### Minor Changes
