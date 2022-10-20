@@ -185,20 +185,49 @@
 }
 
 .tileCta {
-  composes: g-type-buttons-and-standalone-links from global;
   margin-top: auto;
   padding-top: 24px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: inherit;
+}
 
-  & svg {
-    flex-shrink: 0;
-    transition: transform 0.2s;
+.tileCtaLabel {
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.tileCtaIcon {
+  --transition-duration: 250ms;
+  --transition-timing-function: ease-in-out;
+
+  flex-shrink: 0;
+}
+
+.arrow {
+  --translate-x: -4px;
+
+  transform: translateX(var(--translate-x));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: fill, transform;
+
+  @nest .tile:hover & {
+    --translate-x: 0;
   }
+}
 
-  @nest .tile:hover & svg {
-    transform: translate(2px);
+.line {
+  --stroke-dashoffset: 10;
+
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: opacity, transform, stroke-dashoffset;
+  stroke-dasharray: 10;
+  stroke-dashoffset: var(--stroke-dashoffset);
+
+  @nest .tile:hover & {
+    --stroke-dashoffset: 1;
   }
 }
