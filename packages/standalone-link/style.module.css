@@ -91,19 +91,12 @@
 }
 
 .arrow {
-  overflow: visible !important;
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
-  transition-property: fill;
-}
-
-.chevron {
   --translate-x: -4px;
 
   transform: translateX(var(--translate-x));
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
-  transition-property: transform;
+  transition-property: fill, transform;
 
   @nest .root:hover & {
     --translate-x: 0;
@@ -111,18 +104,15 @@
 }
 
 .line {
-  --scale-x: 0.5;
-  --opacity: 0;
+  --stroke-dashoffset: 10;
 
-  opacity: var(--opacity);
-  transform: scaleX(var(--scale-x));
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
-  transition-property: opacity, transform;
+  transition-property: opacity, transform, stroke-dashoffset;
+  stroke-dasharray: 10;
+  stroke-dashoffset: var(--stroke-dashoffset);
 
   @nest .root:hover & {
-    --translate-x: 0;
-    --scale-x: 1;
-    --opacity: 1;
+    --stroke-dashoffset: 1;
   }
 }
