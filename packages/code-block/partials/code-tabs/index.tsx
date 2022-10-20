@@ -152,10 +152,6 @@ function CodeTabs({
         {validChildren.map((tabChild, idx) => {
           const isActive = idx == activeTabIdx
           const clonedChild = React.cloneElement(tabChild, {
-            // Note: wipes any custom classNames on the tabChild.
-            // This is intentional, for example, it removes
-            // any margin set in MDX custom components
-            className: s.tabChild,
             hasBarAbove: true, // removes margin, and top border rounding, for better UI fit
             theme, // ensures theme of child code blocks in JSX matches tabs theme
           })
