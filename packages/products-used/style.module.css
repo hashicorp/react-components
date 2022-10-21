@@ -64,6 +64,10 @@
         background-color: var(--wpl-neutral-800);
         border-color: var(--wpl-neutral-500);
       }
+
+      &:focus {
+        border-color: var(--wpl-blue-400);
+      }
     }
   }
 }
