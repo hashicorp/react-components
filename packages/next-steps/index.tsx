@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import classNames from 'classnames'
 import type { NextStepsProps } from './types'
-import { IconArrowRight16 } from '@hashicorp/flight-icons/svg-react/arrow-right-16'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import Intro from '@hashicorp/react-intro'
 import s from './style.module.css'
@@ -64,7 +63,7 @@ export default function NextSteps({
                       <span className={s.tileCtaLabel}>{step.cta.title}</span>
                       <span className={s.tileCtaIcon}>
                         <svg
-                          className={s.arrow}
+                          className={s.tileCtaIconArrow}
                           width="9"
                           height="10"
                           viewBox="0 0 9 10"
@@ -73,13 +72,12 @@ export default function NextSteps({
                           focusable={false}
                         >
                           <path
-                            className={s.chevron}
                             d="M4 1L8 5L4 9"
                             stroke="currentColor"
                             strokeWidth={1.8}
                           />
                           <path
-                            className={s.line}
+                            className={s.tileCtaIconLine}
                             d="M8 5H0"
                             stroke="currentColor"
                             strokeWidth={1.8}

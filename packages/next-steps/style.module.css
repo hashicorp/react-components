@@ -88,6 +88,8 @@
   --background-color: transparent;
   --border-color: transparent;
   --color: var(--wpl-neutral-0);
+  --transition-duration: 250ms;
+  --transition-timing-function: ease-in-out;
 
   display: flex;
   width: 100%;
@@ -99,6 +101,9 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   transition: background-color 0.2s;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: background-color;
 
   &.primary {
     --background-color: var(--brand);
@@ -190,6 +195,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: inherit;
 }
 
 .tileCtaLabel {
@@ -199,31 +205,29 @@
 }
 
 .tileCtaIcon {
-  --transition-duration: 250ms;
-  --transition-timing-function: ease-in-out;
-
   flex-shrink: 0;
 }
 
-.arrow {
+.tileCtaIconArrow {
   --translate-x: -4px;
 
   transform: translateX(var(--translate-x));
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
-  transition-property: fill, transform;
+  transition-property: transform;
+  color: inherit;
 
   @nest .tile:hover & {
     --translate-x: 0;
   }
 }
 
-.line {
+.tileCtaIconLine {
   --stroke-dashoffset: 10;
 
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
-  transition-property: opacity, transform, stroke-dashoffset;
+  transition-property: stroke-dashoffset;
   stroke-dasharray: 10;
   stroke-dashoffset: var(--stroke-dashoffset);
 
