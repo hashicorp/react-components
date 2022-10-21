@@ -3,4 +3,5 @@
 '@hashicorp/react-next-steps': minor
 ---
 
-bump StandaloneLink and tile cta style and animation
+- bump StandaloneLink
+- update tile cta style and animation
