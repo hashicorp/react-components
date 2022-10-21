@@ -1,5 +1,11 @@
 # @hashicorp/react-next-steps
 
+## 0.4.0
+
+### Minor Changes
+
+- [#773](https://github.com/hashicorp/react-components/pull/773) [`ca979e76`](https://github.com/hashicorp/react-components/commit/ca979e7656ea78ceb33c284752e90fb5940a86bc) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - update tile cta style and animation
+
 ## 0.3.0
 
 ### Minor Changes
