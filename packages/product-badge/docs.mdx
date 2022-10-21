@@ -9,7 +9,6 @@ componentName: 'ProductBadge'
         <ProductBadge
           productName={'waypoint'}
           appearance={'dark'}
-          hasDot={true}
           theme={'secondary'}
         />
       </div>
@@ -17,7 +16,6 @@ componentName: 'ProductBadge'
         <ProductBadge
           productName={'waypoint'}
           appearance={'light'}
-          hasDot={true}
           theme={'secondary'}
         />
       </div>
@@ -84,31 +82,6 @@ componentName: 'ProductBadge'
         })}
       </div>
     </div>
-    <div>
-      <h3 style={{ color: 'white', margin: '0' }}>hasDot</h3>
-      <div style={{display: 'flex', flexWrap: 'wrap', gap: 16, padding: '16px 0 32px 0'}}>
-        {[
-          'terraform',
-          'vault',
-          'consul',
-          'nomad',
-          'waypoint',
-          'boundary',
-          'packer',
-          'vagrant',
-        ].map((product, i) => {
-          return (
-            <ProductBadge
-              key={i}
-              productName={product}
-              appearance={'dark'}
-              theme={'secondary'}
-              hasDot={true}
-            />
-          )
-        })}
-      </div>
-    </div>
   </div>
   
   {/* Light */}
@@ -157,31 +130,6 @@ componentName: 'ProductBadge'
               productName={product}
               appearance={'light'}
               theme={'secondary'}
-            />
-          )
-        })}
-      </div>
-    </div>
-    <div>
-      <h3 style={{ color: 'black', margin: '0' }}>hasDot</h3>
-      <div style={{display: 'flex', flexWrap: 'wrap', gap: 16, padding: '16px 0 32px 0'}}>
-        {[
-          'terraform',
-          'vault',
-          'consul',
-          'nomad',
-          'waypoint',
-          'boundary',
-          'packer',
-          'vagrant',
-        ].map((product, i) => {
-          return (
-            <ProductBadge
-              key={i}
-              productName={product}
-              appearance={'light'}
-              theme={'secondary'}
-              hasDot={true}
             />
           )
         })}

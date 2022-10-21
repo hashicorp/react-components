@@ -24,11 +24,10 @@ describe('<ProductBadge />', () => {
         productName={productName}
         appearance={'dark'}
         theme={'secondary'}
-        hasDot={true}
       />
     )
     const productBadgeEl = screen.getByText(productName)
-    expect(productBadgeEl).toHaveClass('text', 'dark', 'secondary', 'hasDot')
+    expect(productBadgeEl).toHaveClass('text', 'dark', 'secondary')
     expect(productBadgeEl).not.toHaveClass('primary', 'light')
   })
 })

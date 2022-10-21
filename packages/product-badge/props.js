@@ -27,8 +27,4 @@ module.exports = {
     description: 'Applies styling to the component.',
     options: ['primary', 'secondary'],
   },
-  hasDot: {
-    type: 'boolean',
-    description: 'Applies a dot. Forces the `secondary` theme.',
-  },
 }

@@ -8,7 +8,7 @@
   background-color: var(--brand);
   color: var(--brand-text-on-primary);
 
-  &.hasDot {
+  &.secondary {
     gap: 5px;
 
     &::before {
@@ -23,8 +23,7 @@
   }
 
   &.light {
-    &.secondary,
-    &.hasDot {
+    &.secondary {
       background-color: var(--wpl-neutral-50);
     }
   }
@@ -32,8 +31,7 @@
   &.dark {
     background-color: var(--wpl-neutral-0);
 
-    &.secondary,
-    &.hasDot {
+    &.secondary {
       background-color: var(--wpl-neutral-700);
     }
   }
@@ -47,8 +45,7 @@
   margin: 0;
 
   &.light {
-    &.secondary,
-    &.hasDot {
+    &.secondary {
       color: var(--wpl-neutral-500);
     }
   }
@@ -56,8 +53,7 @@
   &.dark {
     color: var(--wpl-neutral-500);
 
-    &.secondary,
-    &.hasDot {
+    &.secondary {
       color: var(--wpl-neutral-200);
     }
   }
