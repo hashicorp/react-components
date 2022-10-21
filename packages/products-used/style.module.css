@@ -79,7 +79,8 @@
 }
 
 .productName {
-  composes: g-type-body-small-x-strong from global;
+  composes: g-type-tag-label from global;
+  font-size: 13px;
   text-transform: capitalize;
   color: var(--wpl-neutral-500);
 
