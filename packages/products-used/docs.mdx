@@ -1,0 +1,132 @@
+---
+componentName: 'ProductsUsed'
+---
+
+A ProductsUsed
+
+<LiveComponent>
+  {`
+    <>
+      <div style={{ padding: '32px'}}>
+        <ProductsUsed 
+          products={
+            [
+              {
+                name: 'waypoint',
+                href: "https://www.hashicorp.com/"
+              },
+              {
+                name: 'consul',
+                href: "https://www.hashicorp.com/"
+              },
+            ]
+          }
+          appearance={'light'}
+        />
+      </div>
+      <div style={{ padding: '32px', backgroundColor: '#151619' }}>
+        <ProductsUsed 
+          products={
+            [
+              {
+                name: 'waypoint',
+                href: "https://www.hashicorp.com/"
+              },
+              {
+                name: 'consul',
+                href: "https://www.hashicorp.com/"
+              },
+            ]
+          }
+          appearance={'dark'}
+        />
+      </div>
+    </>
+  `}
+</LiveComponent>
+
+### Props
+
+<PropsTable props={componentProps} />
+
+### Examples
+
+<section>
+  {/* Light */}
+  <div style={{backgroundColor: 'white', padding: '32px'}}>
+    <div style={{marginBottom: '32px' }}>
+      <h2 style={{ color: 'black', margin: '0 0 16px' }}>Primary</h2>
+      <ProductsUsed 
+        products={
+          [
+            {name: 'waypoint'},
+            {name: 'consul'},
+            {name: 'terraform'},
+          ]
+        }
+        appearance={'light'}
+      />
+    </div>
+    <div style={{marginBottom: '32px' }}>
+      <h2 style={{ color: 'black', margin: '0 0 16px' }}>Link</h2>
+      <ProductsUsed 
+        products={
+          [
+            {
+              name: 'waypoint',
+              href: "https://www.hashicorp.com/"
+            },
+            {
+              name: 'consul',
+              href: "https://www.hashicorp.com/"
+            },
+            {
+              name: 'terraform',
+              href: "https://www.hashicorp.com/"
+            },
+          ]
+        }
+        appearance={'light'}
+      />
+    </div>
+  </div>
+  {/* Dark */}
+  <div style={{backgroundColor: '#151619', padding: '32px'}}>
+    <div style={{marginBottom: '32px' }}>
+      <h2 style={{ color: 'white', margin: '0 0 16px' }}>Primary</h2>
+      <ProductsUsed 
+        products={
+          [
+            {name: 'waypoint'},
+            {name: 'consul'},
+            {name: 'terraform'},
+          ]
+        }
+        appearance={'dark'}
+      />
+    </div>
+    <div style={{marginBottom: '32px' }}>
+      <h2 style={{ color: 'white', margin: '0 0 16px' }}>Link</h2>
+      <ProductsUsed 
+        products={
+          [
+            {
+              name: 'waypoint',
+              href: "https://www.hashicorp.com/"
+            },
+            {
+              name: 'consul',
+              href: "https://www.hashicorp.com/"
+            },
+            {
+              name: 'terraform',
+              href: "https://www.hashicorp.com/"
+            },
+          ]
+        }
+        appearance={'dark'}
+      />
+    </div>
+  </div>
+  
+</section>
