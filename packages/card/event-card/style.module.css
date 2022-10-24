@@ -6,7 +6,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--wpl-blue-500);
+  color: var(--wpl-neutral-500);
 }
 
 .ctaLabel {
