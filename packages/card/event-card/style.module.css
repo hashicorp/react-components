@@ -1,10 +1,12 @@
 .cta {
+  --transition-duration: 250ms;
+  --transition-timing-function: ease-in-out;
+
   margin-top: auto;
-  padding-top: 24px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: inherit;
+  color: var(--wpl-blue-500);
 }
 
 .ctaLabel {
@@ -26,7 +28,7 @@
   transition-property: transform;
   color: inherit;
 
-  @nest .eventCardInner:hover & {
+  @nest [data-testid='wpl-card']:hover & {
     --translate-x: 0;
   }
 }
@@ -40,7 +42,7 @@
   stroke-dasharray: 10;
   stroke-dashoffset: var(--stroke-dashoffset);
 
-  @nest .eventCardInner:hover & {
+  @nest [data-testid='wpl-card']:hover & {
     --stroke-dashoffset: 1;
   }
 }
