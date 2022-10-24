@@ -112,3 +112,9 @@
     transition: transform 0.25s ease;
   }
 }
+
+.location {
+  composes: g-type-body-small-x-strong from global;
+  margin: 0;
+  color: var(--secondary-text-color);
+}
