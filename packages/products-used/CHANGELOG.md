@@ -1,5 +1,11 @@
 # @hashicorp/react-products-used
 
+## 1.1.0
+
+### Minor Changes
+
+- [#778](https://github.com/hashicorp/react-components/pull/778) [`ecc49cb0`](https://github.com/hashicorp/react-components/commit/ecc49cb042da7f16626a69b23a148b21a52d784a) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Removes background color from root element
+
 ## 1.0.0
 
 ### Major Changes
