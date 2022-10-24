@@ -33,11 +33,11 @@ export function EventCard({
               appearance={appearance}
             />
           ) : null}
-          <span className={s.cta}>
-            <span className={s.ctaLabel}>{ctaText}</span>
-            <span className={s.ctaIcon}>
+          <span className={s.pseudoCta}>
+            <span className={s.pseudoCtaLabel}>{ctaText}</span>
+            <span className={s.pseudoCtaIcon}>
               <svg
-                className={s.ctaIconArrow}
+                className={s.pseudoCtaIconArrow}
                 width="9"
                 height="10"
                 viewBox="0 0 9 10"
@@ -51,7 +51,7 @@ export function EventCard({
                   strokeWidth={1.8}
                 />
                 <path
-                  className={s.ctaIconLine}
+                  className={s.pseudoCtaIconLine}
                   d="M8 5H0"
                   stroke="currentColor"
                   strokeWidth={1.8}

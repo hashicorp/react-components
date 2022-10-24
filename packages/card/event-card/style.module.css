@@ -1,4 +1,4 @@
-.cta {
+.pseudoCta {
   --transition-duration: 250ms;
   --transition-timing-function: ease-in-out;
 
@@ -9,17 +9,17 @@
   color: var(--wpl-neutral-500);
 }
 
-.ctaLabel {
+.pseudoCtaLabel {
   font-weight: var(--font-weight-bold);
   font-size: 16px;
   line-height: 1.25;
 }
 
-.ctaIcon {
+.pseudoCtaIcon {
   flex-shrink: 0;
 }
 
-.ctaIconArrow {
+.pseudoCtaIconArrow {
   --translate-x: -4px;
 
   transform: translateX(var(--translate-x));
@@ -33,7 +33,7 @@
   }
 }
 
-.ctaIconLine {
+.pseudoCtaIconLine {
   --stroke-dashoffset: 10;
 
   transition-duration: var(--transition-duration);
