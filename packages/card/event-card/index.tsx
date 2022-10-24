@@ -21,8 +21,6 @@ export function EventCard({
   const ctaText = `Register for ${eventType.toLowerCase()}`
 
   return (
-    // TODO Determine how to make these two props optional for EventCard
-    // TODO Possibly make their requirement dependent on whether children are passed or not? May need a type guard function...
     <Card heading={title} link={link} appearance={appearance}>
       <Card.Content>
         <Card.Meta items={[eventDate, eventType]}></Card.Meta>
