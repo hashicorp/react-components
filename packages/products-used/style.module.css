@@ -1,7 +1,5 @@
 .root {
-  &.dark {
-    background-color: var(--wpl-neutral-900);
-  }
+  position: relative;
 }
 
 .eyebrow {
