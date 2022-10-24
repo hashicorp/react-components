@@ -1,5 +1,8 @@
 import type { CardProps, ProductBadgesProps, ThumbnailProps } from '../types'
 import Card from '../card'
+import { IconGithub16 } from '@hashicorp/flight-icons/svg-react/github-16'
+import { IconTwitter16 } from '@hashicorp/flight-icons/svg-react/twitter-16'
+import { IconLinkedin16 } from '@hashicorp/flight-icons/svg-react/linkedin-16'
 import s from './style.module.css'
 
 interface PersonCardProps {
@@ -10,6 +13,21 @@ interface PersonCardProps {
   location?: string
   bio: string
   productBadges?: ProductBadgesProps['badges']
+}
+
+function Icon({ url }) {
+  let icon
+  if (url.includes('twitter')) {
+    icon = <IconTwitter16 />
+  }
+  if (url.includes('github')) {
+    icon = <IconGithub16 />
+  }
+  if (url.includes('linkedin')) {
+    icon = <IconLinkedin16 />
+  }
+
+  return icon ? <div className={s.thumbnailIcon}>{icon}</div> : null
 }
 
 export function PersonCard({
@@ -23,7 +41,10 @@ export function PersonCard({
 }: PersonCardProps) {
   return (
     <Card heading={name} link={link} appearance={appearance}>
-      <Card.Thumbnail {...thumbnail} />
+      <div className={s.thumbnailContainer}>
+        <Card.Thumbnail {...thumbnail} />
+        <Icon url={link} />
+      </div>
       <Card.Content>
         <div>
           <Card.Heading>{name}</Card.Heading>
