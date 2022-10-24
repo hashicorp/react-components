@@ -137,5 +137,6 @@ Card.Meta = Meta
 Card.Content = Content
 Card.Heading = Heading
 Card.Description = Description
+Card.ProductBadges = ProductBadges
 
 export default Card
