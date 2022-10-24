@@ -6,6 +6,7 @@ interface BaseCardProps {
   appearance?: 'light' | 'dark'
   heading: string
   link: string
+  withArrow?: boolean
 }
 
 interface CardWithChildren extends BaseCardProps {
