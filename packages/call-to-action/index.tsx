@@ -3,11 +3,13 @@ import type { Products } from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import variantCentered from './styles/variant-centered.module.css'
 import variantCompact from './styles/variant-compact.module.css'
+import variantCompactGrid from './styles/variant-compact-grid.module.css'
 import variantLinks from './styles/variant-links.module.css'
 
 const stylesDict = {
   centered: variantCentered,
   compact: variantCompact,
+  compactGrid: variantCompactGrid,
   links: variantLinks,
 }
 
@@ -19,7 +21,7 @@ interface CallToActionProps {
     text: string
     url: string
   }[]
-  variant?: 'centered' | 'compact' | 'links'
+  variant?: 'centered' | 'compact' | 'compactGrid' | 'links'
   product: Products
   theme?: 'light' | 'dark' | 'brand'
   className?: string
