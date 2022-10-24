@@ -1,0 +1,46 @@
+.cta {
+  margin-top: auto;
+  padding-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+}
+
+.ctaLabel {
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.ctaIcon {
+  flex-shrink: 0;
+}
+
+.ctaIconArrow {
+  --translate-x: -4px;
+
+  transform: translateX(var(--translate-x));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: transform;
+  color: inherit;
+
+  @nest .eventCardInner:hover & {
+    --translate-x: 0;
+  }
+}
+
+.ctaIconLine {
+  --stroke-dashoffset: 10;
+
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: stroke-dashoffset;
+  stroke-dasharray: 10;
+  stroke-dashoffset: var(--stroke-dashoffset);
+
+  @nest .eventCardInner:hover & {
+    --stroke-dashoffset: 1;
+  }
+}

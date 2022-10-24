@@ -1,5 +1,6 @@
 import Card from '../card'
 import { CardProps, ProductBadgesProps } from '../types'
+import s from './style.module.css'
 
 interface EventCardProps {
   appearance?: CardProps['appearance']
@@ -22,13 +23,44 @@ export function EventCard({
 
   return (
     <Card heading={title} link={link} appearance={appearance}>
-      <Card.Content>
-        <Card.Meta items={[eventDate, eventType]}></Card.Meta>
-        <Card.Heading>{title}</Card.Heading>
-        {productBadges && productBadges?.length > 0 ? (
-          <Card.ProductBadges badges={productBadges} appearance={appearance} />
-        ) : null}
-      </Card.Content>
+      <div className={s.eventCardInner}>
+        <Card.Content>
+          <Card.Meta items={[eventDate, eventType]}></Card.Meta>
+          <Card.Heading>{title}</Card.Heading>
+          {productBadges && productBadges?.length > 0 ? (
+            <Card.ProductBadges
+              badges={productBadges}
+              appearance={appearance}
+            />
+          ) : null}
+          <span className={s.cta}>
+            <span className={s.ctaLabel}>{ctaText}</span>
+            <span className={s.ctaIcon}>
+              <svg
+                className={s.ctaIconArrow}
+                width="9"
+                height="10"
+                viewBox="0 0 9 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable={false}
+              >
+                <path
+                  d="M4 1L8 5L4 9"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                />
+                <path
+                  className={s.ctaIconLine}
+                  d="M8 5H0"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                />
+              </svg>
+            </span>
+          </span>
+        </Card.Content>
+      </div>
     </Card>
   )
 }
