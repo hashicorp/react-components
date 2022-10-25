@@ -28,7 +28,10 @@ function Card(props: CardProps) {
     children,
   } = props
   return (
-    <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
+    <div
+      className={classNames('wpl-card', s.card, s[appearance])}
+      data-testid="wpl-card"
+    >
       {children ? (
         children
       ) : (
