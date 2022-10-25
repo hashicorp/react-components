@@ -23,6 +23,7 @@ function Card(props: CardProps) {
     productBadges,
     description,
     link,
+    withArrow = true,
     children,
   } = props
   return (
@@ -42,9 +43,9 @@ function Card(props: CardProps) {
           </Content>
         </>
       )}
-      <div className={s.cta}>
-        <IconArrowRight24 />
-      </div>
+
+      <div className={s.cta}>{withArrow ? <IconArrowRight24 /> : null}</div>
+
       <Link href={link}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
         <a className={s.link} aria-label={heading} />
@@ -137,5 +138,6 @@ Card.Meta = Meta
 Card.Content = Content
 Card.Heading = Heading
 Card.Description = Description
+Card.ProductBadges = ProductBadges
 
 export default Card
