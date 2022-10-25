@@ -288,6 +288,35 @@ A component used to promote and link to marketing pages, always using a descript
   />
 </div>
 
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<EventCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <EventCard
+    link="https://hashicorp.com"
+    title="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    eventDate="August 15, 2022"
+    eventType="Webinar"
+    productBadges={['nomad']}
+  />
+  <EventCard
+    appearance="dark"
+    link="https://hashicorp.com"
+    title="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    eventDate="August 15, 2022"
+    eventType="Webinar"
+    productBadges={['nomad']}
+  />
+</div>
+
 ## Base Props
 
 <PropsTable props={componentProps.baseProps} />

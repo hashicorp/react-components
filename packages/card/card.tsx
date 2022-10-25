@@ -17,17 +17,20 @@ import s from './style.module.css'
 function Card(props: CardProps) {
   const {
     appearance = 'light',
+    withArrow = true,
     meta,
     thumbnail,
     heading,
     productBadges,
     description,
     link,
-    withArrow = true,
     children,
   } = props
   return (
-    <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
+    <div
+      className={classNames('wpl-card', s.card, s[appearance])}
+      data-testid="wpl-card"
+    >
       {children ? (
         children
       ) : (
