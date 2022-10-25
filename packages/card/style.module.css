@@ -111,4 +111,8 @@
   & svg {
     transition: transform 0.25s ease;
   }
+
+  &:empty {
+    padding-top: 0;
+  }
 }
