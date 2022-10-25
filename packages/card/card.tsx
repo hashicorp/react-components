@@ -24,7 +24,6 @@ function Card(props: CardProps) {
     productBadges,
     description,
     link,
-    withArrow = true,
     children,
   } = props
   return (
