@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import ProductBadge from '@hashicorp/react-product-badge'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
@@ -45,9 +45,8 @@ function Card(props: CardProps) {
       <div className={s.cta}>
         <IconArrowRight24 />
       </div>
-      <Link href={link}>
+      <Link href={link} className={s.link} aria-label={heading}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-        <a className={s.link} aria-label={heading} />
       </Link>
     </div>
   )
