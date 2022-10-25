@@ -45,9 +45,8 @@ function Card(props: CardProps) {
       <div className={s.cta}>
         <IconArrowRight24 />
       </div>
-      <Link href={link}>
+      <Link href={link} className={s.link} aria-label={heading}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-        <a className={s.link} aria-label={heading} />
       </Link>
     </div>
   )
