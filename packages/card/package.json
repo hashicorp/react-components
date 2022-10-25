@@ -6,7 +6,6 @@
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/react-product-badge": "^0.1.1",
-    "@hashicorp/react-standalone-link": "^0.1.2",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
