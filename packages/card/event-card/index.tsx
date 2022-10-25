@@ -22,7 +22,7 @@ export function EventCard({
   const ctaText = `Register for ${eventType.toLowerCase()}`
 
   return (
-    <Card heading={title} link={link} appearance={appearance}>
+    <Card heading={title} link={link} appearance={appearance} withArrow={false}>
       <div className={s.eventCardInner}>
         <Card.Content>
           <Card.Meta items={[eventDate, eventType]}></Card.Meta>
