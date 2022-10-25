@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import ProductBadge from '@hashicorp/react-product-badge'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
