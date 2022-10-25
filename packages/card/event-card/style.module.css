@@ -28,7 +28,7 @@
   transition-property: transform;
   color: inherit;
 
-  @nest [data-testid='wpl-card']:hover & {
+  @nest :global(.wpl-card):hover & {
     --translate-x: 0;
   }
 }
@@ -42,7 +42,7 @@
   stroke-dasharray: 10;
   stroke-dashoffset: var(--stroke-dashoffset);
 
-  @nest [data-testid='wpl-card']:hover & {
+  @nest :global(.wpl-card):hover & {
     --stroke-dashoffset: 1;
   }
 }
