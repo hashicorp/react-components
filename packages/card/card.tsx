@@ -17,6 +17,7 @@ import s from './style.module.css'
 function Card(props: CardProps) {
   const {
     appearance = 'light',
+    withArrow = true,
     meta,
     thumbnail,
     heading,
