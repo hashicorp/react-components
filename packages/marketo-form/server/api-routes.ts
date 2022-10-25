@@ -3,7 +3,10 @@ import type { SubmissionFilter } from '../types'
 import type { MarketoFieldsResponse } from './client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-function flatten(param: string | string[]): string {
+function flatten(param?: string | string[]): string {
+  if (!param) {
+    throw new Error(`Attempting to call flatten with undefined value`)
+  }
   return Array.isArray(param) ? param[0] : param
 }
 
@@ -128,7 +131,7 @@ export function buildApiRoutes({
   submissionFilter?: SubmissionFilter
 } = {}) {
   return async function apiRoutes(req: NextApiRequest, res: NextApiResponse) {
-    switch (req.query.marketo[0]) {
+    switch (req.query.marketo![0]) {
       case 'form':
         return getForm(req, res)
       case 'submit':

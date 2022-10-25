@@ -9,12 +9,12 @@
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.11",
-    "next": "^11.1.0",
+    "next": "^13.0.0",
     "next-mdx-remote": "^3.0.8",
     "next-remote-watch": "^1.0.0",
     "node-cache": "^5.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "remark-gfm": "^3.0.1",
     "semver": "^7.3.5",
     "swingset": "^0.14.1"
@@ -53,11 +53,9 @@
     "npm": ">=7.0.0",
     "node": ">=10.0.0"
   },
-  "resolutions": {
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
   "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom",
     "react-live": "3.1.0"
   },
   "scripts": {
