@@ -5,14 +5,14 @@
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "classnames": "^2.3.1",
-    "@hashicorp/react-card": "^0.2.0",
-    "@hashicorp/react-standalone-link": "^0.1.1"
+    "@hashicorp/react-card": "^0.3.0",
+    "@hashicorp/react-standalone-link": "^0.1.1",
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "react": ">=16.x",
-    "next": ">=11.x"
+    "next": ">=11.x",
+    "react": ">=16.x"
   },
   "repository": {
     "type": "git",

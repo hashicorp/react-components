@@ -1,4 +1,7 @@
-type AnchorElementProps = JSX.IntrinsicElements['a']
+import type Link from 'next/link'
+import type { ComponentProps } from 'react'
+
+type AnchorElementProps = ComponentProps<typeof Link>
 
 export interface StandaloneLinkProps extends AnchorElementProps {
   /**
