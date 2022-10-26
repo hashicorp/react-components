@@ -4,6 +4,10 @@
   --secondary-text-color: var(--wpl-neutral-500);
   --background-color: var(--wpl-neutral-0);
 
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
   &:hover {
     --border-color: var(--wpl-neutral-300);
 
