@@ -1,7 +1,7 @@
 .card {
   --border-color: var(--wpl-neutral-200);
   --primary-text-color: var(--wpl-neutral-700);
-  --secondary-text-color: var(--wpl-neutral-500);
+  --secondary-text-color: #75757a;
   --background-color: var(--wpl-neutral-0);
 
   display: flex;
@@ -46,8 +46,8 @@
   &.dark {
     --border-color: var(--wpl-neutral-800);
     --primary-text-color: var(--wpl-neutral-0);
-    --secondary-text-color: var(--wpl-neutral-200);
-    --background-color: var(--wpl-neutral-800);
+    --secondary-text-color: #9a9a9e;
+    --background-color: #323234;
 
     &:hover {
       --background-color: var(--wpl-neutral-700);
