@@ -1,10 +1,9 @@
-import { mocked } from 'ts-jest/utils'
 import FileSystemLoader from './file-system'
 import { resolveNavData } from '../resolve-nav-data'
 import navData from '../__fixtures__/navData.json'
 
 jest.mock('../resolve-nav-data')
-const mockedResolveNavData = mocked(resolveNavData)
+const mockedResolveNavData = jest.mocked(resolveNavData)
 
 const CONTENT_DIR = 'packages/docs-page/server/__fixtures__'
 
