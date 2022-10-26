@@ -4,20 +4,12 @@
   --secondary-text-color: var(--wpl-neutral-500);
   --background-color: var(--wpl-neutral-0);
 
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  background-color: var(--background-color);
-  transition: 0.2s ease;
-  transition-property: transform, border-color, box-shadow, background-color;
-  box-shadow: 0 16px 24px -16px #cbcbcd33, 0 8px 12px -8px #cbcbcd66;
-
   &:hover {
     --border-color: var(--wpl-neutral-300);
+
+    & .contentContainer {
+      transform: translateY(-2px);
+    }
 
     & .cta svg {
       transform: translateX(2px);
@@ -37,8 +29,9 @@
     box-shadow: 0 16px 24px -16px #cbcbcd33, 0 8px 12px -8px #cbcbcd66;
 
     &:hover {
-      box-shadow: 0 16px 16px -10px #656a7633, 0 2px 3px 0 #656a7626;
-      transform: translateY(-2px);
+      & .contentContainer {
+        box-shadow: 0 16px 16px -10px #656a7633, 0 2px 3px 0 #656a7626;
+      }
 
       & .cta {
         color: var(--border-color);
@@ -56,6 +49,19 @@
       --background-color: var(--wpl-neutral-700);
     }
   }
+}
+
+.contentContainer {
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--background-color);
+  transition: 0.2s ease;
+  transition-property: transform, box-shadow, border-color, background-color;
 }
 
 .link {
