@@ -31,28 +31,30 @@ function Card(props: CardProps) {
       className={classNames('wpl-card', s.card, s[appearance])}
       data-testid="wpl-card"
     >
-      {children ? (
-        children
-      ) : (
-        <>
-          {thumbnail ? <Thumbnail {...thumbnail} /> : null}
-          <Content>
-            {meta && meta.length > 0 ? <Meta items={meta} /> : null}
-            <Heading>{heading}</Heading>
-            {description ? <Description>{description}</Description> : null}
-            {productBadges && productBadges?.length > 0 ? (
-              <ProductBadges badges={productBadges} appearance={appearance} />
-            ) : null}
-          </Content>
-        </>
-      )}
+      <div className={s.contentContainer}>
+        {children ? (
+          children
+        ) : (
+          <>
+            {thumbnail ? <Thumbnail {...thumbnail} /> : null}
+            <Content>
+              {meta && meta.length > 0 ? <Meta items={meta} /> : null}
+              <Heading>{heading}</Heading>
+              {description ? <Description>{description}</Description> : null}
+              {productBadges && productBadges?.length > 0 ? (
+                <ProductBadges badges={productBadges} appearance={appearance} />
+              ) : null}
+            </Content>
+          </>
+        )}
 
-      <div className={s.cta}>{withArrow ? <IconArrowRight24 /> : null}</div>
+        <div className={s.cta}>{withArrow ? <IconArrowRight24 /> : null}</div>
 
-      <Link href={link}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-        <a className={s.link} aria-label={heading} />
-      </Link>
+        <Link href={link}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+          <a className={s.link} aria-label={heading} />
+        </Link>
+      </div>
     </div>
   )
 }
