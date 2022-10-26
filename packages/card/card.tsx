@@ -48,7 +48,9 @@ function Card(props: CardProps) {
           </>
         )}
 
-        <div className={s.cta}>{withArrow ? <IconArrowRight24 /> : null}</div>
+        <div className={s.cta} data-testid="wpl-card-cta">
+          {withArrow ? <IconArrowRight24 /> : null}
+        </div>
 
         <Link href={link}>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}

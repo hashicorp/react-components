@@ -152,6 +152,18 @@ describe('<Card />', () => {
     expect(screen.getByText('As h4').tagName).toBe('H4')
   })
 
+  it('should not render the CTA arrow when withArrow is false', () => {
+    render(
+      <Card link={defaultProps.link} withArrow={false}>
+        Example
+      </Card>
+    )
+
+    const ctaElement = screen.getByTestId('wpl-card-cta')
+
+    expect(ctaElement).toBeEmptyDOMElement()
+  })
+
   // Appearance tests
 
   it('should render the default (light) variant', () => {
