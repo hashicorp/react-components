@@ -19,9 +19,6 @@
   &:hover {
     --border-color: var(--wpl-neutral-300);
 
-    box-shadow: 0 16px 16px -10px #656a7633, 0 2px 3px 0 #656a7626;
-    transform: translateY(-2px);
-
     & .cta svg {
       transform: translateX(2px);
     }
@@ -37,7 +34,12 @@
   }
 
   &.light {
+    box-shadow: 0 16px 24px -16px #cbcbcd33, 0 8px 12px -8px #cbcbcd66;
+
     &:hover {
+      box-shadow: 0 16px 16px -10px #656a7633, 0 2px 3px 0 #656a7626;
+      transform: translateY(-2px);
+
       & .cta {
         color: var(--border-color);
       }
