@@ -132,3 +132,8 @@ export type MarketoFormGroups = Record<
 >
 
 export type SubmissionFilter = (req: NextApiRequest) => Promise<boolean>
+
+export interface MarketoSubmissionResponse {
+  success: boolean
+  result: { status: 'created' | 'updated' | 'skipped' }[]
+}
