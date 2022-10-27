@@ -1,5 +1,5 @@
 import * as client from './client'
-import type { SubmissionFilter } from '../types'
+import type { SubmissionFilter, MarketoSubmissionResponse } from '../types'
 import type { MarketoFieldsResponse } from './client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -76,6 +76,11 @@ function isE2ETest(req: NextApiRequest): boolean {
   return false
 }
 
+// Returns true if any of the results have a status of skipped
+function includesSkippedRecords(res: MarketoSubmissionResponse): boolean {
+  return res.result.some((r) => r.status === 'skipped')
+}
+
 async function submitForm(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -110,8 +115,8 @@ async function submitForm(
       return
     }
     const marketoRes = await client.submitForm(req.body)
-    const form = (await marketoRes.json()) as { success: boolean }
-    if (!form.success) {
+    const form = (await marketoRes.json()) as MarketoSubmissionResponse
+    if (!form.success || includesSkippedRecords(form)) {
       await notifyError(req.body, form)
     }
     res.status(marketoRes.status).json(form)
