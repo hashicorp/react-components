@@ -18,13 +18,13 @@ interface PersonCardProps {
 function Icon({ url }) {
   let icon
   if (url.includes('twitter')) {
-    icon = <IconTwitter16 />
+    icon = <IconTwitter16 data-testid={'wpl-personcard-twitter-icon'} />
   }
   if (url.includes('github')) {
-    icon = <IconGithub16 />
+    icon = <IconGithub16 data-testid={'wpl-personcard-github-icon'} />
   }
   if (url.includes('linkedin')) {
-    icon = <IconLinkedin16 />
+    icon = <IconLinkedin16 data-testid={'wpl-personcard-linkedin-icon'} />
   }
 
   return icon ? <div className={s.thumbnailIcon}>{icon}</div> : null
