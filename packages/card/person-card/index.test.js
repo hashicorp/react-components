@@ -15,6 +15,27 @@ const defaultProps = {
 
 describe('<PersonCard />', () => {
   // Prop tests
+  it('should render the provided name prop', () => {
+    render(<PersonCard {...defaultProps} />)
+
+    const name = screen.getByText(defaultProps.name)
+    expect(name.tagName).toBe('H2')
+  })
+
+  it('should render the provided bio prop', () => {
+    render(<PersonCard {...defaultProps} />)
+
+    const bio = screen.getByText(defaultProps.bio)
+    expect(bio.tagName).toBe('P')
+  })
+
+  it('should render the provided location prop', () => {
+    render(<PersonCard {...defaultProps} />)
+
+    const location = screen.getByText(defaultProps.location)
+    expect(location.tagName).toBe('P')
+  })
+
   it('should render the correct thumbnail based on the provided link prop', () => {
     const links = {
       github: 'https://github.com',
