@@ -7,5 +7,9 @@ export interface VideoFeatureProps {
   heading: IntroProps['heading']
   description: IntroProps['description']
   author: AuthorBylineProps
-  video: $TSFixMe // TODO Import types from InlineVideo component once built
+  // TODO Import video types from InlineVideo component once built
+  video: {
+    url: string
+    description?: string
+  }
 }

@@ -29,7 +29,7 @@ export default function VideoFeature({
       >
         <p>{'<InlineVideo />'}</p>
         <p>{video.url}</p>
-        <p>{video.caption}</p>
+        <p>{video.description}</p>
       </div>
     </div>
   )

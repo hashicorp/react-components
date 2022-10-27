@@ -15,7 +15,7 @@ const defaultProps = {
   },
   video: {
     url: 'https://youtu.be/nJ0aI6sEDRo',
-    caption:
+    description:
       'Description - 2 lines with character limit of 90. Tempus in egestas sagittis nulla feugiat',
   },
 }

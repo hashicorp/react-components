@@ -30,7 +30,7 @@ module.exports = {
         description: 'URL for the featured video. [Host] links are supported.',
         required: true,
       },
-      caption: {
+      description: {
         type: 'string',
         description: 'Description for the video.',
       },
