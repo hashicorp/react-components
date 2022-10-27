@@ -36,7 +36,7 @@ describe('<PersonCard />', () => {
     expect(location.tagName).toBe('P')
   })
 
-  it('should render the correct thumbnail based on the provided link prop', () => {
+  it('should render the correct thumbnail icon based on the provided link prop', () => {
     const links = {
       github: 'https://github.com',
       twitter: 'https://twitter.com',
