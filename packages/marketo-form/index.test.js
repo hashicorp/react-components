@@ -26,6 +26,8 @@ describe('MarketoForm', () => {
     window.location = {
       // We use an absolute URL here since fetch in Jest can't use relative URLs
       origin: 'http://local.test',
+      protocol: 'http:',
+      host: 'local.test',
       pathname: '/testing',
       href: 'http://local.test/testing?utm_medium=social',
       search: '?utm_medium=social',
@@ -158,7 +160,7 @@ describe('MarketoForm', () => {
               firstName: 'Michael',
               lastName: 'Burnham',
               utm_medium__c: 'social',
-              form_page_url__c: 'http://local.test/testing?utm_medium=social',
+              form_page_url__c: 'http://local.test/testing',
             },
             visitorData: {
               pageURL: 'http://local.test/testing?utm_medium=social',
