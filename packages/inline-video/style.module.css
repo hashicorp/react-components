@@ -21,7 +21,9 @@
 }
 
 .videoPlayer {
-  /* TBD */
+  aspect-ratio: 16 / 9;
+  background-color: var(--wpl-purple-100);
+  border-radius: 4px;
 }
 
 .description {
