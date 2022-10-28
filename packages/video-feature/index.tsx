@@ -23,13 +23,15 @@ export default function VideoFeature({
         <AuthorByline {...author} appearance={appearance} />
       </div>
 
-      {/* ! FPO while <InlineVideo /> is scoped and built */}
-      <div
-        style={{ background: 'gray', display: 'grid', placeItems: 'center' }}
-      >
-        <p>{'<InlineVideo />'}</p>
-        <p>{video.url}</p>
-        <p>{video.description}</p>
+      <div className={s.video}>
+        {/* ! FPO while <InlineVideo /> is scoped and built */}
+        <div
+          style={{ background: 'gray', display: 'grid', placeItems: 'center' }}
+        >
+          <p>{'<InlineVideo />'}</p>
+          <p>{video.url}</p>
+          <p>{video.description}</p>
+        </div>
       </div>
     </div>
   )

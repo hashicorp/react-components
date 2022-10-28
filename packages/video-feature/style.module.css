@@ -1,3 +1,32 @@
 .videoFeature {
-  /* TBD */
+  --padding-y: 48px;
+  --padding-x: 48px;
+  --background-color: var(--wpl-neutral-100);
+
+  composes: g-grid-container from global;
+  padding: var(--padding-y) var(--padding-x);
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @media (--medium-up) {
+    flex-direction: row;
+  }
+
+  @media (--large) {
+    --padding-y: 64px;
+    --padding-x: 72px;
+
+    gap: 64px;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 32px;
+}
+
+.video {
+  flex-shrink: 0;
 }
