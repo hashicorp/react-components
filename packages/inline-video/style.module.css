@@ -1,3 +1,29 @@
 .inlineVideo {
   /* TBD */
 }
+
+.gradient {
+  &.infrastructure {
+    /* TBD */
+  }
+
+  &.security {
+    /* TBD */
+  }
+
+  &.networking {
+    /* TBD */
+  }
+
+  &.applications {
+    /* TBD */
+  }
+}
+
+.videoPlayer {
+  /* TBD */
+}
+
+.description {
+  /* TBD */
+}
