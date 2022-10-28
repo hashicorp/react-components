@@ -96,7 +96,7 @@
   flex-direction: column;
   flex-grow: 1;
   row-gap: 16px;
-  padding: 24px 24px 0 24px;
+  padding: 20px 20px 0 20px;
 }
 
 .heading {
@@ -122,7 +122,7 @@
   align-items: center;
   justify-content: flex-end;
   color: var(--wpl-neutral-200);
-  padding: 8px 24px 24px 24px;
+  padding: 8px 20px 20px 20px;
   margin-top: auto;
   transition: color 0.25s ease;
 
