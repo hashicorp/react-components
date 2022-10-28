@@ -20,6 +20,11 @@
 
     gap: 64px;
   }
+
+  &.dark {
+    /* ! New --wpl-neutral-700 from HDS */
+    --background-color: #0c0c0e;
+  }
 }
 
 .content {

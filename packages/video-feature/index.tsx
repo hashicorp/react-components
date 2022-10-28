@@ -13,7 +13,7 @@ export default function VideoFeature({
   video,
 }: VideoFeatureProps) {
   return (
-    <div className={classNames(s.videoFeature, s[contentSide])}>
+    <div className={classNames(s.videoFeature, s[appearance], s[contentSide])}>
       <div className={s.content}>
         <Intro
           heading={heading}
