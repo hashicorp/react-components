@@ -6,7 +6,8 @@ const FormPageUrlField = ({ field }: { field: MarketoFormHiddenField }) => {
   const { register, setValue } = useFormContext()
 
   useEffect(() => {
-    setValue(field.id, window.location.href)
+    const { protocol, host, pathname } = window.location
+    setValue(field.id, `${protocol}//${host}${pathname}`)
   }, [])
 
   return <input type="hidden" {...register(field.id)} />
