@@ -1,22 +1,47 @@
 .inlineVideo {
-  /* TBD */
+  --gradient-size: 32px;
+
+  display: grid;
+  grid-template-columns: var(--gradient-size) 1fr;
+  grid-template-rows: min-content min-content;
 }
 
 .gradient {
+  --gradient-accent-size: 30px;
+  --gradient-rotation: 90deg;
+  --gradient-stops: #cde6fe 0%, #0654ef 100%;
+
+  background-image: linear-gradient(
+    var(--gradient-rotation),
+    var(--gradient-stops)
+  );
+  width: 100%;
+  align-self: center;
+
+  @media (--medium-up) {
+    --gradient-rotation: 180deg;
+
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    /* Subtracting (--size * 2) here gives the gradient some "margin" on the top/bottom equal to that --size, per design */
+    height: calc(100% - (var(--gradient-size) * 2));
+  }
+
   &.infrastructure {
-    /* TBD */
+    --gradient-stops: #8763d8 0%, #8cddff 100%;
   }
 
   &.security {
-    /* TBD */
+    --gradient-stops: #f26c64 0%, #ffe68d 100%;
   }
 
   &.networking {
-    /* TBD */
+    --gradient-stops: #c750b7 0%, #ffb3b7 100%;
   }
 
   &.applications {
-    /* TBD */
+    --gradient-stops: #5493e4 0%, #5bd0d9 50%, #a3f7d7 100%;
   }
 }
 
@@ -31,4 +56,5 @@
   color: var(--wpl-neutral-500);
   padding: 16px 24px;
   margin: 0;
+  grid-column: 2;
 }
