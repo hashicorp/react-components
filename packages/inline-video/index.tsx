@@ -15,11 +15,11 @@ export default function InlineVideo(props: InlineVideoProps) {
       className={classNames(s.inlineVideo, s[appearance], s[gradientSide])}
       data-testid="wpl-inline-video"
     >
-      {url}
-      <br />
-      {description}
-      <br />
-      {solution}
+      <div className={classNames(s.gradient, solution && s[solution])} />
+
+      <div className={s.videoPlayer}>{url}</div>
+
+      <p className={s.description}>{description}</p>
     </div>
   )
 }
