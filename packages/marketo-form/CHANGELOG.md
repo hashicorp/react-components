@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.3.0
+
+### Minor Changes
+
+- [`1125f588`](https://github.com/hashicorp/react-components/commit/1125f588137049b7c91b018342cc199da88d1e23) Thanks [@dstaley](https://github.com/dstaley)! - Report skipped records as errors
+
 ## 0.2.0
 
 ### Minor Changes
