@@ -1,0 +1,20 @@
+---
+componentName: 'InlineVideo'
+---
+
+A component used to promote and link to marketing pages, always using a descriptive heading but optionally other elements as needed.
+
+<LiveComponent>
+  {`
+    <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '32px'}}>
+      <InlineVideo
+        url="https://youtu.be/nJ0aI6sEDRo"
+        description="Description - 2 lines with character limit of 90. Tempus in egestas sagittis nulla feugiat"
+      />
+    </div>
+  `}
+</LiveComponent>
+
+## Props
+
+<PropsTable props={componentProps} />
