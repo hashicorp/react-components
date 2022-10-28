@@ -1,0 +1,20 @@
+{
+  "name": "@hashicorp/react-inline-video",
+  "version": "0.0.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/flight-icons": ">=2.x",
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/inline-video"
+  }
+}
