@@ -47,7 +47,7 @@
     --border-color: var(--wpl-neutral-800);
     --primary-text-color: var(--wpl-neutral-0);
     --secondary-text-color: #9a9a9e;
-    --background-color: #323234;
+    --background-color: #3e3e41;
 
     &:hover {
       --background-color: var(--wpl-neutral-700);
