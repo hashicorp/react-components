@@ -1,5 +1,11 @@
 # @hashicorp/react-products-used
 
+## 1.2.0
+
+### Minor Changes
+
+- [#786](https://github.com/hashicorp/react-components/pull/786) [`3a137ae5`](https://github.com/hashicorp/react-components/commit/3a137ae59d2d8c22691111551c8530f1ae7a8d8f) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix global style peer dependency
+
 ## 1.1.0
 
 ### Minor Changes
