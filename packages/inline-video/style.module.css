@@ -61,7 +61,7 @@
 
 .video {
   aspect-ratio: 16 / 9;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: var(--wpl-purple-100);
   overflow: hidden;
 }
