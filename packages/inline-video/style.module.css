@@ -16,21 +16,16 @@
     @nest .right & {
       padding-right: var(--gradient-size);
     }
-  }
 
-  &::before {
-    position: absolute;
-    display: none;
-    content: '';
-    width: 20%;
-    height: calc(100% - var(--gradient-size) * 2);
-    top: var(--gradient-size);
-    border-radius: 8px;
-    z-index: -1;
-    background-image: linear-gradient(0deg, var(--gradient-stops));
-
-    @media (--medium-up) {
-      display: block;
+    &::before {
+      position: absolute;
+      content: '';
+      width: 20%;
+      height: calc(100% - var(--gradient-size) * 2);
+      top: var(--gradient-size);
+      border-radius: 8px;
+      z-index: -1;
+      background-image: linear-gradient(0deg, var(--gradient-stops));
 
       @nest .left & {
         left: 0;
