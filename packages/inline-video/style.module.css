@@ -3,7 +3,7 @@
 }
 
 .videoContainer {
-  --gradient-stops: #0654ef 0%, #cde6fe 100%;
+  --gradient: var(--wpl-gradient-corporate-vertical);
 
   width: 100%;
   position: relative;
@@ -25,7 +25,7 @@
       top: var(--gradient-size);
       border-radius: 8px;
       z-index: -1;
-      background-image: linear-gradient(0deg, var(--gradient-stops));
+      background-image: var(--gradient);
 
       @nest .left & {
         left: 0;
@@ -34,23 +34,23 @@
       @nest .right & {
         right: 0;
       }
+
+      &.infrastructure {
+        --gradient: var(--wpl-gradient-infrastructure-vertical);
+      }
+
+      &.security {
+        --gradient: var(--wpl-gradient-security-vertical);
+      }
+
+      &.networking {
+        --gradient: var(--wpl-gradient-networking-vertical);
+      }
+
+      &.applications {
+        --gradient: var(--wpl-gradient-applications-vertical);
+      }
     }
-  }
-
-  &.infrastructure {
-    --gradient-stops: #8763d8 0%, #8cddff 100%;
-  }
-
-  &.security {
-    --gradient-stops: #f26c64 0%, #ffe68d 100%;
-  }
-
-  &.networking {
-    --gradient-stops: #c750b7 0%, #ffb3b7 100%;
-  }
-
-  &.applications {
-    --gradient-stops: #5493e4 0%, #5bd0d9 50%, #a3f7d7 100%;
   }
 }
 
