@@ -1,5 +1,11 @@
 # @hashicorp/react-call-to-action
 
+## 5.1.0
+
+### Minor Changes
+
+- [#775](https://github.com/hashicorp/react-components/pull/775) [`f14017af`](https://github.com/hashicorp/react-components/commit/f14017afe507d459bb74a7669000aa34441ce6a1) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - add grid variant
+
 ## 5.0.0
 
 ### Major Changes
