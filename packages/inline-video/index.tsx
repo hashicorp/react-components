@@ -15,9 +15,12 @@ export default function InlineVideo(props: InlineVideoProps) {
       className={classNames(s.inlineVideo, s[appearance], s[gradientSide])}
       data-testid="wpl-inline-video"
     >
-      <div className={classNames(s.gradient, solution && s[solution])} />
-
-      <div className={s.videoPlayer}>{url}</div>
+      <div className={classNames(s.videoContainer, solution && s[solution])}>
+        <div className={s.video}>
+          {/* TODO Render an actual video here */}
+          {url}
+        </div>
+      </div>
 
       {description ? <p className={s.description}>{description}</p> : null}
     </div>

@@ -1,31 +1,24 @@
 .inlineVideo {
   --gradient-size: 32px;
-
-  display: grid;
-  grid-template-columns: var(--gradient-size) 1fr;
-  grid-template-rows: min-content min-content;
 }
 
-.gradient {
-  --gradient-accent-size: 30px;
-  --gradient-rotation: 90deg;
-  --gradient-stops: #cde6fe 0%, #0654ef 100%;
+.videoContainer {
+  --gradient-stops: #0654ef 0%, #cde6fe 100%;
 
-  background-image: linear-gradient(
-    var(--gradient-rotation),
-    var(--gradient-stops)
-  );
   width: 100%;
-  align-self: center;
+  padding-left: var(--gradient-size);
+  position: relative;
 
-  @media (--medium-up) {
-    --gradient-rotation: 180deg;
-
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-
-    /* Subtracting (--size * 2) here gives the gradient some "margin" on the top/bottom equal to that --size, per design */
-    height: calc(100% - (var(--gradient-size) * 2));
+  &::before {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 20%;
+    height: calc(100% - var(--gradient-size) * 2);
+    top: var(--gradient-size);
+    border-radius: 8px;
+    z-index: -1;
+    background-image: linear-gradient(0deg, var(--gradient-stops));
   }
 
   &.infrastructure {
@@ -45,16 +38,16 @@
   }
 }
 
-.videoPlayer {
+.video {
   aspect-ratio: 16 / 9;
-  background-color: var(--wpl-purple-100);
   border-radius: 4px;
+  background-color: var(--wpl-purple-100);
 }
 
 .description {
   composes: g-type-body-small-strong from global;
   color: var(--wpl-neutral-500);
   padding: 16px 24px;
+  padding-left: calc(24px + var(--gradient-size));
   margin: 0;
-  grid-column: 2;
 }
