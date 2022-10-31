@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-call-to-action",
   "description": "Display a title, content, and links in a call-to-action format",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
