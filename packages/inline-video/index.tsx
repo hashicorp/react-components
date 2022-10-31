@@ -1,4 +1,6 @@
 import classNames from 'classnames'
+import WistiaPlayer from 'react-player/wistia'
+import Player from 'react-player'
 import type { InlineVideoProps } from './types'
 import s from './style.module.css'
 
@@ -10,6 +12,13 @@ export default function InlineVideo(props: InlineVideoProps) {
     description,
     solution,
   } = props
+
+  const playerProps = {
+    controls: true,
+    url,
+    width: '100%',
+    height: '100%',
+  }
   return (
     <div
       className={classNames(s.inlineVideo, s[appearance], s[gradientSide])}
@@ -17,8 +26,11 @@ export default function InlineVideo(props: InlineVideoProps) {
     >
       <div className={classNames(s.videoContainer, solution && s[solution])}>
         <div className={s.video}>
-          {/* TODO Render an actual video here */}
-          {url}
+          {url.includes('wistia') ? (
+            <WistiaPlayer {...playerProps} />
+          ) : (
+            <Player {...playerProps} />
+          )}
         </div>
       </div>
 
