@@ -19,7 +19,7 @@ export default function InlineVideo(props: InlineVideoProps) {
 
       <div className={s.videoPlayer}>{url}</div>
 
-      <p className={s.description}>{description}</p>
+      {description ? <p className={s.description}>{description}</p> : null}
     </div>
   )
 }
