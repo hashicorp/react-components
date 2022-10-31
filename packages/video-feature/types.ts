@@ -1,5 +1,6 @@
 import type { AuthorBylineProps } from 'packages/author-byline/types'
 import type { IntroProps } from '@hashicorp/react-intro/types'
+import type { InlineVideoProps } from '@hashicorp/react-inline-video/types'
 
 export interface VideoFeatureProps {
   appearance?: 'light' | 'dark'
@@ -7,9 +8,5 @@ export interface VideoFeatureProps {
   heading: IntroProps['heading']
   description: IntroProps['description']
   author: AuthorBylineProps
-  // TODO Import video types from InlineVideo component once built
-  video: {
-    url: string
-    description?: string
-  }
+  video: InlineVideoProps
 }

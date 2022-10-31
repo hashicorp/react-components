@@ -1,7 +1,8 @@
 import classNames from 'classnames'
 import AuthorByline from '@hashicorp/react-author-byline'
 import Intro from '@hashicorp/react-intro'
-import { VideoFeatureProps } from './types'
+import InlineVideo from '@hashicorp/react-inline-video'
+import type { VideoFeatureProps } from './types'
 import s from './style.module.css'
 
 export default function VideoFeature({
@@ -24,14 +25,7 @@ export default function VideoFeature({
       </div>
 
       <div className={s.video}>
-        {/* ! FPO while <InlineVideo /> is scoped and built */}
-        <div
-          style={{ background: 'gray', display: 'grid', placeItems: 'center' }}
-        >
-          <p>{'<InlineVideo />'}</p>
-          <p>{video.url}</p>
-          <p>{video.description}</p>
-        </div>
+        <InlineVideo {...video} />
       </div>
     </div>
   )
