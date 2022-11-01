@@ -4,7 +4,7 @@ import type { InlineVideoProps } from '@hashicorp/react-inline-video/types'
 
 export interface VideoFeatureProps {
   appearance?: 'light' | 'dark'
-  contentSide?: 'left' | 'right'
+  contentPosition?: 'left' | 'right'
   heading: IntroProps['heading']
   description: IntroProps['description']
   author: AuthorBylineProps

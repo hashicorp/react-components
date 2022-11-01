@@ -7,9 +7,8 @@ module.exports = {
     description: 'Display the component on light or dark backgrounds.',
     options: ['light', 'dark'],
   },
-  contentSide: {
-    description:
-      'Side that content will appear on. (update to correct nomenclature)',
+  contentPosition: {
+    description: 'Position for content to appear on.',
     type: 'string',
     control: { type: 'text' },
     testValue: 'left',

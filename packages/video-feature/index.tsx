@@ -7,14 +7,16 @@ import s from './style.module.css'
 
 export default function VideoFeature({
   appearance = 'light',
-  contentSide = 'left',
+  contentPosition = 'left',
   heading,
   description,
   author,
   video,
 }: VideoFeatureProps) {
   return (
-    <div className={classNames(s.videoFeature, s[appearance], s[contentSide])}>
+    <div
+      className={classNames(s.videoFeature, s[appearance], s[contentPosition])}
+    >
       <div className={s.content}>
         <Intro
           heading={heading}
@@ -25,7 +27,7 @@ export default function VideoFeature({
       </div>
 
       <div className={s.video}>
-        <InlineVideo {...video} gradientSide={contentSide} />
+        <InlineVideo {...video} gradientPosition={contentPosition} />
       </div>
     </div>
   )
