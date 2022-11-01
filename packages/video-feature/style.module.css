@@ -26,6 +26,12 @@
     /* ! New --wpl-neutral-700 from HDS */
     --background-color: #0c0c0e;
   }
+
+  &.right {
+    @media (--medium-up) {
+      flex-direction: row-reverse;
+    }
+  }
 }
 
 .content {
