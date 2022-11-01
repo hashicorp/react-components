@@ -6,10 +6,18 @@ A component rendering a video inline with an optional description below it.
 
 <LiveComponent>
   {`
-    <InlineVideo
-      url="https://youtu.be/nJ0aI6sEDRo"
-      description="Description - 2 lines with character limit of 90. Tempus in egestas sagittis nulla feugiat"
-    />
+    <div style={{display: 'grid', gridTemplateColumns: 'calc(50% - 16px) calc(50% - 16px)', gap: '32px'}}>
+      <InlineVideo
+        solution="networking"
+        url="https://youtu.be/nJ0aI6sEDRo"
+        description="Description - 2 lines with character limit of 90. Tempus in egestas sagittis nulla feugiat"
+      />
+      <InlineVideo
+        gradientPosition="right"
+        url="https://support.wistia.com/medias/ktv95e6b2g"
+        description="Description - 2 lines with character limit of 90. Tempus in egestas sagittis nulla feugiat"
+      />
+    </div>
   `}
 </LiveComponent>
 
