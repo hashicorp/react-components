@@ -27,7 +27,14 @@ export default function InlineVideo(props: InlineVideoProps) {
       <div className={classNames(s.videoContainer, solution && s[solution])}>
         <div className={s.video}>
           {url.includes('wistia') ? (
-            <WistiaPlayer {...playerProps} />
+            <WistiaPlayer
+              {...playerProps}
+              config={{
+                options: {
+                  controlsVisibleOnLoad: false,
+                },
+              }}
+            />
           ) : (
             <Player {...playerProps} />
           )}
