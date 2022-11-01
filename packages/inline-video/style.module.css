@@ -7,7 +7,6 @@
 
   width: 100%;
   position: relative;
-  z-index: 1;
 
   @media (--medium-up) {
     @nest .left & {
