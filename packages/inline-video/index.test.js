@@ -8,7 +8,7 @@ const defaultProps = {
 }
 
 describe('<InlineVideo />', () => {
-  it('TODO: Write tests', () => {
+  it('renders the provided description text', () => {
     render(<InlineVideo {...defaultProps} />)
     const element = screen.getByText(defaultProps.description)
     expect(element).toBeInTheDocument()
