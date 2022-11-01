@@ -3,7 +3,6 @@
   --padding-x: 48px;
   --background-color: var(--wpl-neutral-100);
 
-  composes: g-grid-container from global;
   padding: var(--padding-y) var(--padding-x);
   background-color: var(--background-color);
   display: flex;
