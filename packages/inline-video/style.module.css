@@ -26,7 +26,6 @@
       top: var(--gradient-size);
       left: 0;
       border-radius: 8px;
-      z-index: -1;
       background-image: var(--gradient);
     }
   }
@@ -51,8 +50,13 @@
 .video {
   aspect-ratio: 16 / 9;
   border-radius: 8px;
-  background-color: var(--wpl-purple-100);
+  background-color: var(--wpl-neutral-50);
   overflow: hidden;
+  position: relative;
+
+  @nest .dark & {
+    background-color: var(--wpl-neutral-800);
+  }
 }
 
 .description {
