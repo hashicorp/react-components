@@ -7,7 +7,7 @@ import s from './style.module.css'
 export default function InlineVideo(props: InlineVideoProps) {
   const {
     appearance = 'light',
-    gradientSide = 'left',
+    gradientPosition = 'left',
     url,
     description,
     solution,
@@ -21,7 +21,7 @@ export default function InlineVideo(props: InlineVideoProps) {
   }
   return (
     <div
-      className={classNames(s.inlineVideo, s[appearance], s[gradientSide])}
+      className={classNames(s.inlineVideo, s[appearance], s[gradientPosition])}
       data-testid="wpl-inline-video"
     >
       <div className={classNames(s.videoContainer, solution && s[solution])}>
