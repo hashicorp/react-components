@@ -6,9 +6,8 @@ module.exports = {
     options: ['light', 'dark'],
     testValue: 'light',
   },
-  gradientSide: {
-    description:
-      'Side that the gradient will appear on. (update to correct nomenclature)',
+  gradientPosition: {
+    description: 'Position for the gradient.',
     type: 'string',
     control: { type: 'text' },
     testValue: 'left',
