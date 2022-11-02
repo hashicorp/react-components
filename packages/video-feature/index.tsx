@@ -23,7 +23,7 @@ export default function VideoFeature({
           description={description}
           appearance={appearance}
         />
-        <AuthorByline {...author} appearance={appearance} />
+        {author ? <AuthorByline {...author} appearance={appearance} /> : null}
       </div>
 
       <div className={s.video}>
