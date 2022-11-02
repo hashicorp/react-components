@@ -1,6 +1,24 @@
 import cookies from 'js-cookie'
 import * as cookiesJS from './cookies.js'
 
+it('should not show preferences loaded before cookies are saved', () => {
+  expect(cookiesJS.preferencesSavedAndLoaded()).toBe(false)
+})
+
+it('should show preferences loaded if cookies are loaded', () => {
+  const preferences = JSON.stringify({ loadAll: true, version: 1 })
+  const originalCookiesGetJSON = cookies.getJSON
+
+  // mocks
+  cookies.getJSON = jest.fn().mockImplementationOnce(() => preferences)
+  cookiesJS.loadPreferences()
+
+  const preferencesLoaded = cookiesJS.preferencesSavedAndLoaded()
+  expect(preferencesLoaded).toBe(true)
+
+  cookies.set = originalCookiesGetJSON
+})
+
 it('should get the domain', () => {
   const originalLocation = global.window.location
   const originalCookiesGet = cookies.get
@@ -54,28 +72,4 @@ it('should save preferences', () => {
   expect(JSON.stringify(lastArgs)).toBe(JSON.stringify(args))
 
   cookies.set = originalCookiesSet
-})
-
-it('should not show preferences loaded if cookies are not loaded', () => {
-  const originalCookiesGetJSON = cookies.getJSON
-  cookiesJS.loadPreferences()
-
-  const preferencesLoaded = cookiesJS.preferencesSavedAndLoaded()
-  expect(preferencesLoaded).toBe(false)
-
-  cookies.set = originalCookiesGetJSON
-})
-
-it('should show preferences loaded if cookies are loaded', () => {
-  const preferences = JSON.stringify({ loadAll: true, version: 1 })
-  const originalCookiesGetJSON = cookies.getJSON
-
-  // mocks
-  cookies.getJSON = jest.fn().mockImplementationOnce(() => preferences)
-  cookiesJS.loadPreferences()
-
-  const preferencesLoaded = cookiesJS.preferencesSavedAndLoaded()
-  expect(preferencesLoaded).toBe(true)
-
-  cookies.set = originalCookiesGetJSON
 })
