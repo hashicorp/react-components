@@ -5,13 +5,14 @@
 
   padding: var(--padding-y) var(--padding-x);
   background-color: var(--background-color);
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 48px;
   border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
 
   @media (--medium-up) {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
   }
 
   @media (--large) {
@@ -25,12 +26,6 @@
     /* ! New --wpl-neutral-700 from HDS */
     --background-color: #0c0c0e;
   }
-
-  &.right {
-    @media (--medium-up) {
-      flex-direction: row-reverse;
-    }
-  }
 }
 
 .content {
@@ -39,5 +34,11 @@
 }
 
 .video {
-  flex-shrink: 0;
+  grid-row: 1;
+
+  @nest .left & {
+    @media (--medium-up) {
+      grid-column: 2;
+    }
+  }
 }
