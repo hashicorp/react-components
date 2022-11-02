@@ -11,6 +11,8 @@ import cookies from 'js-cookie'
 export const COOKIE_KEY = 'hashi-consent-preferences'
 export const COOKIE_EXPIRES = 183
 
+var preferencesLoaded
+
 export function getDomain() {
   const host = window.location.hostname
   const parts = host.split('.')
@@ -40,7 +42,11 @@ export function getDomain() {
 }
 
 export function loadPreferences() {
-  return cookies.getJSON(COOKIE_KEY)
+  const cookiesObj = cookies.getJSON(COOKIE_KEY)
+  if (cookiesObj && Object.keys(cookiesObj).length > 0) {
+    preferencesLoaded = true
+  }
+  return cookiesObj
 }
 
 export function savePreferences(prefs, version) {
@@ -51,11 +57,4 @@ export function savePreferences(prefs, version) {
   })
 }
 
-export function preferencesSavedAndLoaded() {
-  const preferences = loadPreferences()
-  if (preferences && preferences.length > 0) {
-    return true
-  }
-
-  return false
-}
+export const preferencesSavedAndLoaded = () => !!preferencesLoaded
