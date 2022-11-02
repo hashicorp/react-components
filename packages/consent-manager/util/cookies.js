@@ -50,3 +50,12 @@ export function savePreferences(prefs, version) {
     domain,
   })
 }
+
+export function preferencesSavedAndLoaded() {
+  const preferences = loadPreferences()
+  if (preferences && preferences.length > 0) {
+    return true
+  }
+
+  return false
+}
