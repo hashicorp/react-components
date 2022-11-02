@@ -7,6 +7,6 @@ export interface VideoFeatureProps {
   contentPosition?: 'left' | 'right'
   heading: IntroProps['heading']
   description: IntroProps['description']
-  author?: AuthorBylineProps
-  video: InlineVideoProps
+  author?: Pick<AuthorBylineProps, 'avatar' | 'name' | 'role'>
+  video: Pick<InlineVideoProps, 'solution' | 'url' | 'description'>
 }
