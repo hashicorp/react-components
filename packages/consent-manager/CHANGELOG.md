@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 8.2.0
+
+### Minor Changes
+
+- [#795](https://github.com/hashicorp/react-components/pull/795) [`72f90d73`](https://github.com/hashicorp/react-components/commit/72f90d739cfd4387a2e524bc83fc187f9f7753c4) Thanks [@pbortnick](https://github.com/pbortnick)! - update: set cookie preferences global variable
+
 ## 8.1.0
 
 ### Minor Changes
