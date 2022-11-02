@@ -44,12 +44,6 @@ export function getDomain() {
 export function loadPreferences() {
   const cookiesJSON = cookies.getJSON(COOKIE_KEY)
   if (cookiesJSON) {
-    // if (
-    //   cookiesJSON &&
-    //   Object.keys(
-    //     typeof cookiesJSON === 'string' ? JSON.parse(cookiesJSON) : cookiesJSON
-    //   ).length > 0
-    // ) {
     preferencesLoaded = true
   } else if (preferencesLoaded) {
     preferencesLoaded = false
@@ -64,6 +58,7 @@ export function savePreferences(prefs, version) {
     expires: COOKIE_EXPIRES,
     domain,
   })
+  preferencesLoaded = true
 }
 
 export const preferencesSavedAndLoaded = () => !!preferencesLoaded
