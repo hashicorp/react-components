@@ -20,6 +20,7 @@ export default function VideoFeature({
       <div className={s.content}>
         <Intro
           heading={heading}
+          headingSize={3}
           description={description}
           appearance={appearance}
         />
