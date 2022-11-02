@@ -42,14 +42,19 @@ export function getDomain() {
 }
 
 export function loadPreferences() {
-  const cookiesObj = cookies.getJSON(COOKIE_KEY)
-  if (cookiesObj && Object.keys(JSON.parse(cookiesObj)).length > 0) {
+  const cookiesJSON = cookies.getJSON(COOKIE_KEY)
+  if (
+    cookiesJSON &&
+    Object.keys(
+      typeof cookiesJSON === 'string' ? JSON.parse(cookiesJSON) : cookiesJSON
+    ).length > 0
+  ) {
     preferencesLoaded = true
   } else if (preferencesLoaded) {
     preferencesLoaded = false
   }
 
-  return cookiesObj
+  return cookiesJSON
 }
 
 export function savePreferences(prefs, version) {
