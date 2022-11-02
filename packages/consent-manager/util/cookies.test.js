@@ -57,11 +57,7 @@ it('should save preferences', () => {
 })
 
 it('should return false if cookies are not loaded', () => {
-  const preferences = JSON.stringify({})
   const originalCookiesGetJSON = cookies.getJSON
-
-  // mocks
-  cookies.getJSON = jest.fn().mockImplementationOnce(() => preferences)
   cookiesJS.loadPreferences()
 
   const preferencesLoaded = cookiesJS.preferencesSavedAndLoaded()

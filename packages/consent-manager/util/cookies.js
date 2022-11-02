@@ -43,12 +43,13 @@ export function getDomain() {
 
 export function loadPreferences() {
   const cookiesJSON = cookies.getJSON(COOKIE_KEY)
-  if (
-    cookiesJSON &&
-    Object.keys(
-      typeof cookiesJSON === 'string' ? JSON.parse(cookiesJSON) : cookiesJSON
-    ).length > 0
-  ) {
+  if (cookiesJSON) {
+    // if (
+    //   cookiesJSON &&
+    //   Object.keys(
+    //     typeof cookiesJSON === 'string' ? JSON.parse(cookiesJSON) : cookiesJSON
+    //   ).length > 0
+    // ) {
     preferencesLoaded = true
   } else if (preferencesLoaded) {
     preferencesLoaded = false
