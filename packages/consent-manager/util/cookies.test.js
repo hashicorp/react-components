@@ -56,7 +56,7 @@ it('should save preferences', () => {
   cookies.set = originalCookiesSet
 })
 
-it('should return false if cookies are not loaded', () => {
+it('should not show preferences loaded if cookies are not loaded', () => {
   const originalCookiesGetJSON = cookies.getJSON
   cookiesJS.loadPreferences()
 
@@ -66,7 +66,7 @@ it('should return false if cookies are not loaded', () => {
   cookies.set = originalCookiesGetJSON
 })
 
-it('should return true if cookies are loaded', () => {
+it('should show preferences loaded if cookies are loaded', () => {
   const preferences = JSON.stringify({ loadAll: true, version: 1 })
   const originalCookiesGetJSON = cookies.getJSON
 
