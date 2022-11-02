@@ -27,7 +27,11 @@ export default function VideoFeature({
       </div>
 
       <div className={s.video}>
-        <InlineVideo {...video} gradientPosition={contentPosition} />
+        <InlineVideo
+          {...video}
+          gradientPosition={contentPosition}
+          appearance={appearance}
+        />
       </div>
     </div>
   )
