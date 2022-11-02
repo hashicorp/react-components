@@ -43,9 +43,12 @@ export function getDomain() {
 
 export function loadPreferences() {
   const cookiesObj = cookies.getJSON(COOKIE_KEY)
-  if (cookiesObj && Object.keys(cookiesObj).length > 0) {
+  if (cookiesObj && Object.keys(JSON.parse(cookiesObj)).length > 0) {
     preferencesLoaded = true
+  } else if (preferencesLoaded) {
+    preferencesLoaded = false
   }
+
   return cookiesObj
 }
 

@@ -57,7 +57,17 @@ it('should save preferences', () => {
 })
 
 it('should return false if cookies are not loaded', () => {
-  expect(cookiesJS.preferencesSavedAndLoaded()).toBe(false)
+  const preferences = JSON.stringify({})
+  const originalCookiesGetJSON = cookies.getJSON
+
+  // mocks
+  cookies.getJSON = jest.fn().mockImplementationOnce(() => preferences)
+  cookiesJS.loadPreferences()
+
+  const preferencesLoaded = cookiesJS.preferencesSavedAndLoaded()
+  expect(preferencesLoaded).toBe(false)
+
+  cookies.set = originalCookiesGetJSON
 })
 
 it('should return true if cookies are loaded', () => {
@@ -66,8 +76,10 @@ it('should return true if cookies are loaded', () => {
 
   // mocks
   cookies.getJSON = jest.fn().mockImplementationOnce(() => preferences)
-  expect(cookiesJS.preferencesSavedAndLoaded()).toBe(true)
+  cookiesJS.loadPreferences()
 
-  // restore mocks
-  cookies.getJSON = originalCookiesGetJSON
+  const preferencesLoaded = cookiesJS.preferencesSavedAndLoaded()
+  expect(preferencesLoaded).toBe(true)
+
+  cookies.set = originalCookiesGetJSON
 })
