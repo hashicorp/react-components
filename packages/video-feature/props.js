@@ -1,5 +1,6 @@
 const introProps = require('../intro/props')
 const authorBylineProps = require('../author-byline/props')
+const inlineVideoProps = require('../inline-video/props')
 
 module.exports = {
   appearance: {
@@ -18,21 +19,18 @@ module.exports = {
   author: {
     type: 'object',
     description: 'Details about the video author.',
-    properties: authorBylineProps,
+    properties: {
+      avatar: authorBylineProps.avatar,
+      name: authorBylineProps.name,
+      role: authorBylineProps.role,
+    },
   },
-  // TODO Move props into <InlineVideo /> and import from there
   video: {
     type: 'object',
     properties: {
-      url: {
-        type: 'string',
-        description: 'URL for the featured video. [Host] links are supported.',
-        required: true,
-      },
-      description: {
-        type: 'string',
-        description: 'Description for the video.',
-      },
+      solution: inlineVideoProps.solution,
+      url: inlineVideoProps.url,
+      description: inlineVideoProps.description,
     },
   },
 }
