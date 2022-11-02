@@ -53,10 +53,12 @@ export const loadPreferences = () => {
 
 export function savePreferences(prefs, version) {
   const domain = getDomain()
-  cookies.set(COOKIE_KEY, Object.assign(prefs, { version: version }), {
+  const prefsWithVersion = Object.assign(prefs, { version: version })
+  cookies.set(COOKIE_KEY, prefsWithVersion, {
     expires: COOKIE_EXPIRES,
     domain,
   })
+  preferences = prefsWithVersion
   preferencesLoaded = true
 }
 
