@@ -1,0 +1,45 @@
+.videoFeature {
+  --padding-y: 48px;
+  --padding-x: 48px;
+  --background-color: var(--wpl-neutral-100);
+
+  composes: g-grid-container from global;
+  padding: var(--padding-y) var(--padding-x);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+
+  @media (--medium-up) {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  @media (--large) {
+    --padding-y: 64px;
+    --padding-x: 72px;
+
+    gap: 64px;
+  }
+
+  &.dark {
+    /* ! New --wpl-neutral-700 from HDS */
+    --background-color: #0c0c0e;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 32px;
+}
+
+.video {
+  grid-row: 1;
+
+  @nest .left & {
+    @media (--medium-up) {
+      grid-column: 2;
+    }
+  }
+}
