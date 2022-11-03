@@ -1,0 +1,21 @@
+{
+  "name": "@hashicorp/react-video-feature",
+  "version": "0.0.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/react-author-byline": "^0.2.0",
+    "@hashicorp/react-inline-video": "^0.1.0",
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/video-feature"
+  }
+}
