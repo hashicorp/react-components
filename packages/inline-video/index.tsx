@@ -29,6 +29,7 @@ export default function InlineVideo(props: InlineVideoProps) {
           {url.includes('wistia') ? (
             <WistiaPlayer
               {...playerProps}
+              data-testid="wistia-player"
               config={{
                 options: {
                   controlsVisibleOnLoad: false,
@@ -36,7 +37,7 @@ export default function InlineVideo(props: InlineVideoProps) {
               }}
             />
           ) : (
-            <Player {...playerProps} />
+            <Player data-testid="youtube-player" {...playerProps} />
           )}
         </div>
       </div>
