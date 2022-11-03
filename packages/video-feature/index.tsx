@@ -17,22 +17,24 @@ export default function VideoFeature({
     <div
       className={classNames(s.videoFeature, s[appearance], s[contentPosition])}
     >
-      <div className={s.content}>
-        <Intro
-          heading={heading}
-          headingSize={3}
-          description={description}
-          appearance={appearance}
-        />
-        {author ? <AuthorByline {...author} appearance={appearance} /> : null}
-      </div>
+      <div className={s.inner}>
+        <div className={s.content}>
+          <Intro
+            heading={heading}
+            headingSize={3}
+            description={description}
+            appearance={appearance}
+          />
+          {author ? <AuthorByline {...author} appearance={appearance} /> : null}
+        </div>
 
-      <div className={s.video}>
-        <InlineVideo
-          {...video}
-          gradientPosition={contentPosition}
-          appearance={appearance}
-        />
+        <div className={s.video}>
+          <InlineVideo
+            {...video}
+            gradientPosition={contentPosition}
+            appearance={appearance}
+          />
+        </div>
       </div>
     </div>
   )
