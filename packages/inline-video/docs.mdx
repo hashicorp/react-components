@@ -21,6 +21,45 @@ A component rendering a video inline with an optional description below it.
   `}
 </LiveComponent>
 
+## Examples
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  On dark appearance
+</h3>
+
+<div
+  style={{
+    padding: '48px',
+    maxWidth: '560px',
+    background: 'black',
+    marginBottom: '32px',
+  }}
+>
+  <InlineVideo
+    appearance="dark"
+    url="https://youtu.be/nJ0aI6sEDRo"
+    description="Description - 2 lines with character limit of 90. Tempus in egestas sagittis nulla feugiat"
+  />
+</div>
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  With optional solution themes for gradient
+</h3>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'calc(50% - 16px) calc(50% - 16px)',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <InlineVideo solution="infrastructure" url="https://youtu.be/nJ0aI6sEDRo" />
+  <InlineVideo solution="security" url="https://youtu.be/nJ0aI6sEDRo" />
+  <InlineVideo solution="networking" url="https://youtu.be/nJ0aI6sEDRo" />
+  <InlineVideo solution="applications" url="https://youtu.be/nJ0aI6sEDRo" />
+</div>
+
 ## Props
 
 <PropsTable props={componentProps} />
