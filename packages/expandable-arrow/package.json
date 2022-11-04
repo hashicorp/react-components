@@ -1,0 +1,18 @@
+{
+  "name": "@hashicorp/react-expandable-arrow",
+  "version": "0.0.1",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/expandable-arrow"
+  }
+}
