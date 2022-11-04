@@ -1,0 +1,22 @@
+---
+componentName: 'Text'
+componentGroup: 'Form Fields'
+---
+
+<LiveComponent>
+  {`
+<>
+  <div style={{ padding: 16 }}>
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: {}, errors: {} }} />
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" helpText="Help Text" required form={{ touched: {}, errors: {} }} />
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" helpText="Help Text" required form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+      <Text theme={{ background: 'dark' }} field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: {}, errors: {} }} />
+      <Text theme={{ background: 'dark' }} field={{ name: 'input' }} placeholder="Placeholder" label="Label" helpText="Help Text" required form={{ touched: {}, errors: {} }} />
+      <Text theme={{ background: 'dark' }} field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+    </div>
+</>
+`}
+</LiveComponent>

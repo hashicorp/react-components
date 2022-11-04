@@ -1,0 +1,19 @@
+---
+componentName: 'Checkbox'
+componentGroup: 'Form Fields'
+---
+
+<LiveComponent>
+  {`
+<>
+  <div style={{ padding: 16 }}>
+    <Checkbox field={{ name: 'input' }} label="Label" form={{ touched: {}, errors: {} }} />
+    <Checkbox field={{ name: 'input' }} label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+      <Checkbox theme={{ background: 'dark' }} field={{ name: 'input' }} label="Label" form={{ touched: {}, errors: {} }} />
+      <Checkbox theme={{ background: 'dark' }} field={{ name: 'input' }} label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+    </div>
+</>
+`}
+</LiveComponent>
