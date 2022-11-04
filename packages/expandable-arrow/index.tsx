@@ -19,6 +19,7 @@ export default function ExpandableArrow({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       focusable={false}
+      data-testid="expandable-arrow"
     >
       <path d="M4 1L8 5L4 9" stroke="currentColor" strokeWidth={1.8} />
       <path

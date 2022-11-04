@@ -3,3 +3,24 @@ componentName: 'ExpandableArrow'
 ---
 
 <LiveComponent>{`<ExpandableArrow expanded={false} />`}</LiveComponent>
+
+## Example usage
+
+```tsx
+function Button() {
+  const [isHovered, setIsHovered] = React.useState(false)
+  return (
+    <button
+      onMouseOver={() => {
+        setIsHovered(true)
+      }}
+      onMouseOut={() => {
+        setIsHovered(false)
+      }}
+    >
+      {children}
+      <ExpandableArrow expanded={isHovered} />
+    </button>
+  )
+}
+```
