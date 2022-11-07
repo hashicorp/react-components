@@ -27,6 +27,9 @@ async function notifyError(body: unknown, err: unknown) {
 
 async function getForm(req: NextApiRequest, res: NextApiResponse) {
   try {
+    if (!req.query.form) {
+      throw new Error('missing ?form query parameter.')
+    }
     const marketoRes = await client.getForm(
       parseInt(flatten(req.query.form), 10)
     )
