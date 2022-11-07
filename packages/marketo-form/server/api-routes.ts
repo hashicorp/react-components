@@ -136,7 +136,10 @@ export function buildApiRoutes({
   submissionFilter?: SubmissionFilter
 } = {}) {
   return async function apiRoutes(req: NextApiRequest, res: NextApiResponse) {
-    switch (req.query.marketo[0]) {
+    const route = Array.isArray(req.query.marketo)
+      ? req.query.marketo[0]
+      : req.query.marketo
+    switch (route) {
       case 'form':
         return getForm(req, res)
       case 'submit':
