@@ -1,8 +1,8 @@
+import { useState } from 'react'
 import Card from '../card'
 import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import { CardProps, ProductBadgesProps } from '../types'
 import s from './style.module.css'
-import useHover from '../hooks/use-hover'
 
 interface EventCardProps {
   appearance?: CardProps['appearance']
@@ -22,11 +22,15 @@ export function EventCard({
   productBadges,
 }: EventCardProps) {
   const ctaText = `Register for ${eventType.toLowerCase()}`
-  const [hoverRef, isHovered] = useHover<HTMLDivElement>()
+  const [arrowExpanded, setArrowExpanded] = useState(false)
+
+  function handleHover(isHovered: boolean) {
+    setArrowExpanded(isHovered)
+  }
 
   return (
     <Card
-      ref={hoverRef}
+      hoverHandler={handleHover}
       heading={title}
       link={link}
       appearance={appearance}
@@ -41,7 +45,7 @@ export function EventCard({
         <span className={s.pseudoCta}>
           <span className={s.pseudoCtaLabel}>{ctaText}</span>
           <span className={s.pseudoCtaIcon}>
-            <ExpandableArrow expanded={isHovered} />
+            <ExpandableArrow expanded={arrowExpanded} />
           </span>
         </span>
       </Card.Content>
