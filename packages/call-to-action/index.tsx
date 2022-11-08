@@ -22,7 +22,7 @@ interface CallToActionProps {
     url: string
   }[]
   variant?: 'centered' | 'compact' | 'compactGrid' | 'links'
-  product: Products
+  product?: Products
   theme?: 'light' | 'dark' | 'brand'
   className?: string
 }
@@ -32,7 +32,7 @@ function CallToAction({
   content,
   links,
   variant = 'centered',
-  product,
+  product = 'hashicorp',
   theme = 'light',
   className,
 }: CallToActionProps) {
