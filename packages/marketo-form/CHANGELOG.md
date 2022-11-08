@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.3.1
+
+### Patch Changes
+
+- [#802](https://github.com/hashicorp/react-components/pull/802) [`67020b77`](https://github.com/hashicorp/react-components/commit/67020b77bccd38298078d3b5e1fa8757a81e09d8) Thanks [@dstaley](https://github.com/dstaley)! - Throw error if form query parameter is missing
+
 ## 0.3.0
 
 ### Minor Changes
