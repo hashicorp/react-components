@@ -14,15 +14,12 @@
   grid-template-columns: 1fr;
   gap: 48px;
 
-  @media (--medium-up) {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-
   @media (--large) {
     --padding-y: 64px;
     --padding-x: 72px;
 
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
     gap: 64px;
   }
 
@@ -41,7 +38,7 @@
   grid-row: 1;
 
   @nest .left & {
-    @media (--medium-up) {
+    @media (--large) {
       grid-column: 2;
     }
   }
