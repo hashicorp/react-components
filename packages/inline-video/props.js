@@ -14,7 +14,7 @@ module.exports = {
   },
   url: {
     type: 'string',
-    description: 'URL for the featured video. [Host] links are supported.',
+    description: 'URL for the featured video.',
     required: true,
   },
   description: {
