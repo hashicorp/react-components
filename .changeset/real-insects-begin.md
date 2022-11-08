@@ -3,4 +3,4 @@
 '@hashicorp/react-inline-video': patch
 ---
 
-Initial release of `<VideoFeature />`. Also adjusts description for `url` prop of `<InlineVideo />`.
+Initial release of `<VideoFeature />`. Also adjusts description for `url` prop of `<InlineVideo />` and its mobile breakpoint.
