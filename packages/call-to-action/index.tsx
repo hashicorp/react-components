@@ -32,7 +32,7 @@ function CallToAction({
   content,
   links,
   variant = 'centered',
-  product,
+  product = 'hashicorp',
   theme = 'light',
   className,
 }: CallToActionProps) {
