@@ -1,32 +1,17 @@
-import { ImageProps } from 'next/image'
 import type { ProductBadgeProps } from '@hashicorp/react-product-badge/types'
 import React from 'react'
 
-interface BaseCardProps {
+export interface BaseCardProps {
   appearance?: 'light' | 'dark'
   heading: string
   link: string
-}
-
-interface CardWithChildren extends BaseCardProps {
-  meta?: never
-  productBadges?: never
-  description?: never
-  thumbnail?: never
   children: React.ReactNode
 }
 
-interface CardWithProps extends BaseCardProps {
-  children?: never
-  thumbnail?: ThumbnailProps
-  meta?: MetaProps['items']
-  productBadges?: Array<ProductBadgeProps['productName']>
-  description?: DescriptionProps['children']
+export interface ThumbnailProps {
+  src: string
+  alt: string
 }
-
-export type CardProps = CardWithChildren | CardWithProps
-
-export type ThumbnailProps = ImageProps
 
 export interface MetaProps {
   items: Array<string | React.ReactNode>
@@ -48,4 +33,11 @@ export interface ProductBadgesProps {
 
 export interface DescriptionProps {
   children: string
+}
+
+export interface CardProps extends BaseCardProps {
+  thumbnail?: ThumbnailProps
+  meta?: MetaProps['items']
+  description?: DescriptionProps['children']
+  productBadges?: ProductBadgesProps['badges']
 }
