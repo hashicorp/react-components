@@ -1,0 +1,45 @@
+.videoFeature {
+  composes: g-grid-container from global;
+}
+
+.inner {
+  --padding-y: 48px;
+  --padding-x: 48px;
+  --background-color: var(--wpl-neutral-100);
+
+  padding: var(--padding-y) var(--padding-x);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+
+  @media (--large) {
+    --padding-y: 64px;
+    --padding-x: 72px;
+
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  @nest .dark & {
+    /* ! New --wpl-neutral-700 from HDS */
+    --background-color: #0c0c0e;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 32px;
+}
+
+.video {
+  grid-row: 1;
+
+  @nest .left & {
+    @media (--large) {
+      grid-column: 2;
+    }
+  }
+}
