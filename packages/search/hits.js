@@ -186,7 +186,7 @@ const Hit = forwardRef(
         id={`hit-${hit.__position}`}
         data-testid="hit-item"
       >
-        <Link {...hitLink} passHref>
+        <Link {...hitLink} passHref legacyBehavior>
           <LinkWithClick
             ref={ref}
             className={classNames(s.hitLinkWrapper, { [s.isActive]: isActive })}

@@ -11,7 +11,7 @@ export default function StandaloneLink({
   ...restProps
 }: StandaloneLinkProps) {
   return (
-    <Link href={href}>
+    <Link href={href} legacyBehavior>
       <a className={classNames(s.root, s[appearance], s[theme])} {...restProps}>
         <span className={s.label}>{children}</span>
         <span className={s.icon}>
