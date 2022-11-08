@@ -18,31 +18,3 @@
 .pseudoCtaIcon {
   flex-shrink: 0;
 }
-
-.pseudoCtaIconArrow {
-  --translate-x: -4px;
-
-  transform: translateX(var(--translate-x));
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
-  transition-property: transform;
-  color: inherit;
-
-  @nest :global(.wpl-card):hover & {
-    --translate-x: 0;
-  }
-}
-
-.pseudoCtaIconLine {
-  --stroke-dashoffset: 10;
-
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
-  transition-property: stroke-dashoffset;
-  stroke-dasharray: 10;
-  stroke-dashoffset: var(--stroke-dashoffset);
-
-  @nest :global(.wpl-card):hover & {
-    --stroke-dashoffset: 1;
-  }
-}

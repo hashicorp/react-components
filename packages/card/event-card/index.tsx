@@ -1,6 +1,8 @@
 import Card from '../card'
+import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import { CardProps, ProductBadgesProps } from '../types'
 import s from './style.module.css'
+import useHover from '../hooks/use-hover'
 
 interface EventCardProps {
   appearance?: CardProps['appearance']
@@ -20,9 +22,16 @@ export function EventCard({
   productBadges,
 }: EventCardProps) {
   const ctaText = `Register for ${eventType.toLowerCase()}`
+  const [hoverRef, isHovered] = useHover<HTMLDivElement>()
 
   return (
-    <Card heading={title} link={link} appearance={appearance} withArrow={false}>
+    <Card
+      hoverRef={hoverRef}
+      heading={title}
+      link={link}
+      appearance={appearance}
+      withArrow={false}
+    >
       <Card.Content>
         <Card.Meta items={[eventDate, eventType]}></Card.Meta>
         <Card.Heading>{title}</Card.Heading>
@@ -32,23 +41,7 @@ export function EventCard({
         <span className={s.pseudoCta}>
           <span className={s.pseudoCtaLabel}>{ctaText}</span>
           <span className={s.pseudoCtaIcon}>
-            <svg
-              className={s.pseudoCtaIconArrow}
-              width="9"
-              height="10"
-              viewBox="0 0 9 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              focusable={false}
-            >
-              <path d="M4 1L8 5L4 9" stroke="currentColor" strokeWidth={1.8} />
-              <path
-                className={s.pseudoCtaIconLine}
-                d="M8 5H0"
-                stroke="currentColor"
-                strokeWidth={1.8}
-              />
-            </svg>
+            <ExpandableArrow expanded={isHovered} />
           </span>
         </span>
       </Card.Content>
