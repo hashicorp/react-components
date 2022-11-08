@@ -61,7 +61,7 @@
 .description {
   composes: g-type-body-small-strong from global;
   color: var(--wpl-neutral-500);
-  padding: 16px 24px;
+  padding: 16px 24px 0 24px;
   margin: 0;
 
   @media (--large) {
