@@ -19,7 +19,9 @@ jest.mock('@hashicorp/react-head', () => jest.fn(() => null))
 const useRouterMock = mocked(useRouter)
 const headMock = mocked(Head)
 
-jest.mock('next/router')
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}))
 jest.mock('next/head')
 
 describe('<DocsPage />', () => {
