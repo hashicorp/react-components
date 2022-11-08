@@ -26,7 +26,7 @@ export function EventCard({
 
   return (
     <Card
-      hoverRef={hoverRef}
+      ref={hoverRef}
       heading={title}
       link={link}
       appearance={appearance}
