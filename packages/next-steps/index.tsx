@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import type { NextStepsProps } from './types'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import Intro from '@hashicorp/react-intro'
-import ExpandableArrow from 'packages/expandable-arrow'
+import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import s from './style.module.css'
 
 export default function NextSteps({
