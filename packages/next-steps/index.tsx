@@ -53,7 +53,7 @@ export default function NextSteps({
                   isFeatured && s.stepsListItemFeature
                 )}
               >
-                <Link href={step.cta.url}>
+                <Link href={step.cta.url} legacyBehavior>
                   <a className={classNames(s.tile, s[variant])}>
                     <h3 className={s.tileHeading}>{step.heading}</h3>
                     {step.description ? (

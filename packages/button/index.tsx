@@ -115,7 +115,13 @@ function Button({
     </Elem>
   )
 
-  return url ? <Link href={url}>{content}</Link> : content
+  return url ? (
+    <Link href={url} legacyBehavior>
+      {content}
+    </Link>
+  ) : (
+    content
+  )
 }
 
 function Icon({
