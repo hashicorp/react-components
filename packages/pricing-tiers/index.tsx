@@ -82,7 +82,7 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                         onClick={cta.onClick}
                       />
                     ) : (
-                      <Link href={cta.url}>
+                      <Link href={cta.url} legacyBehavior>
                         <a className={s.textLink} onClick={cta.onClick}>
                           {cta.title}
                         </a>

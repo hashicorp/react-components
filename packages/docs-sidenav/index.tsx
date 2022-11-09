@@ -284,7 +284,7 @@ function NavLeaf({ title, url, isActive, isHidden }: NavLeafProps) {
   // if the item has a path, it's a leaf node so we render a link to the page
   return (
     <li className={isHidden ? s.hiddenNode : ''}>
-      <Link href={url}>
+      <Link href={url} legacyBehavior>
         <a className={s.navItem} data-is-active={isActive}>
           <InlineSvg
             src={svgBullet}
