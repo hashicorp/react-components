@@ -6,6 +6,7 @@ export interface BaseCardProps {
   heading: string
   link: string
   children: React.ReactNode
+  withArrow?: boolean
 }
 
 export interface ThumbnailProps {

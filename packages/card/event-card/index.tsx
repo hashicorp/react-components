@@ -31,6 +31,7 @@ export function EventCard({
       heading={title}
       link={link}
       appearance={appearance}
+      withArrow={false}
     >
       <CardPrimitives.Content>
         <CardPrimitives.Meta

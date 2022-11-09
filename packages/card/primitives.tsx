@@ -17,13 +17,19 @@ import s from './style.module.css'
 
 const Card = React.forwardRef<HTMLAnchorElement, BaseCardProps>(
   (props, ref) => {
-    const { appearance = 'light', heading, link, children } = props
+    const {
+      appearance = 'light',
+      withArrow = true,
+      heading,
+      link,
+      children,
+    } = props
     return (
       <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
         {children}
-        <div className={s.cta}>
-          <IconArrowRight24 />
-        </div>
+
+        <div className={s.cta}>{withArrow ? <IconArrowRight24 /> : null}</div>
+
         <Link href={link}>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
           <a ref={ref} className={s.link} aria-label={heading} />

@@ -40,7 +40,12 @@ export function PersonCard({
   productBadges,
 }: PersonCardProps) {
   return (
-    <CardPrimitives.Card heading={name} link={link} appearance={appearance}>
+    <CardPrimitives.Card
+      heading={name}
+      link={link}
+      appearance={appearance}
+      withArrow={false}
+    >
       <div className={s.thumbnailContainer}>
         <CardPrimitives.Thumbnail {...thumbnail} />
         <Icon url={link} />
