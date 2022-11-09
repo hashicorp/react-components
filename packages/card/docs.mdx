@@ -162,6 +162,41 @@ A component used to promote and link to marketing pages, always using a descript
   Card variants
 </h3>
 
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<PersonCard />'}
+</h4>
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <PersonCard
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    name="Firstname Lastname"
+    location="City, Country"
+    bio="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas"
+    productBadges={['boundary']}
+  />
+  <PersonCard
+    appearance="dark"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://twitter.com"
+    name="Firstname Lastname"
+    location="City, Country"
+    bio="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas"
+    productBadges={['boundary']}
+  />
+</div>
 
 <h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
   {'<EventCard />'}
