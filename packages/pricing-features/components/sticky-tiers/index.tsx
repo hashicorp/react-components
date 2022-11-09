@@ -47,7 +47,7 @@ export default function StickyTiers({
           <div key={title} className={s.tier}>
             <p className={s.tierName}>{title}</p>
             <div className={s.cta}>
-              <Link href={cta.url}>
+              <Link href={cta.url} legacyBehavior>
                 {/* links should not be tabbable since they are in other locations on the page (see tier cards in hero) */}
                 <a onClick={cta.onClick} tabIndex={-1}>
                   {cta.title}

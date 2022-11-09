@@ -76,7 +76,7 @@ export default function NextSteps({
 function Tile({ variant, heading, description, cta }) {
   const [isHovered, setIsHovered] = React.useState(false)
   return (
-    <Link href={cta.url}>
+    <Link href={cta.url} legacyBehavior>
       <a
         className={classNames(s.tile, s[variant])}
         onMouseOver={() => {
