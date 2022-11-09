@@ -6,11 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -18,14 +14,9 @@
     "skipLibCheck": true,
     "strict": true,
     "noImplicitAny": false,
-    "target": "es5"
+    "target": "es5",
+    "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "global.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["global.d.ts", "**/*.ts", "**/*.tsx"]
 }
