@@ -1,9 +1,4 @@
 const baseProps = {
-  children: {
-    type: 'function',
-    description: 'Children to render into the Card.',
-    required: true,
-  },
   thumbnail: {
     type: 'object',
     description: "An image showcasing the card's destination.",
