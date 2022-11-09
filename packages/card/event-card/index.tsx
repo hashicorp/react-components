@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import Card from '../card'
+import * as CardPrimitives from '../primitives'
 import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import { CardProps, ProductBadgesProps } from '../types'
 import s from './style.module.css'
+import useHover from '../hooks/use-hover'
 
 interface EventCardProps {
   appearance?: CardProps['appearance']
@@ -22,33 +22,34 @@ export function EventCard({
   productBadges,
 }: EventCardProps) {
   const ctaText = `Register for ${eventType.toLowerCase()}`
-  const [arrowExpanded, setArrowExpanded] = useState(false)
-
-  function handleHover(isHovered: boolean) {
-    setArrowExpanded(isHovered)
-  }
+  const [hoverRef, isHovered] = useHover<HTMLAnchorElement>()
 
   return (
-    <Card
-      hoverHandler={handleHover}
+    <CardPrimitives.Card
+      ref={hoverRef}
       heading={title}
       link={link}
       appearance={appearance}
       withArrow={false}
     >
-      <Card.Content>
-        <Card.Meta items={[eventDate, eventType]}></Card.Meta>
-        <Card.Heading>{title}</Card.Heading>
+      <CardPrimitives.Content>
+        <CardPrimitives.Meta
+          items={[eventDate, eventType]}
+        ></CardPrimitives.Meta>
+        <CardPrimitives.Heading>{title}</CardPrimitives.Heading>
         {productBadges && productBadges?.length > 0 ? (
-          <Card.ProductBadges badges={productBadges} appearance={appearance} />
+          <CardPrimitives.ProductBadges
+            badges={productBadges}
+            appearance={appearance}
+          />
         ) : null}
         <span className={s.pseudoCta}>
           <span className={s.pseudoCtaLabel}>{ctaText}</span>
           <span className={s.pseudoCtaIcon}>
-            <ExpandableArrow expanded={arrowExpanded} />
+            <ExpandableArrow expanded={isHovered} />
           </span>
         </span>
-      </Card.Content>
-    </Card>
+      </CardPrimitives.Content>
+    </CardPrimitives.Card>
   )
 }

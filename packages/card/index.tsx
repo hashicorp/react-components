@@ -1,5 +1,6 @@
 import Card from './card'
-export { PersonCard } from './person-card'
-export { EventCard } from './event-card'
+import { EventCard } from './event-card'
+import { PersonCard } from './person-card'
 
 export default Card
+export { EventCard, PersonCard }
