@@ -1,0 +1,17 @@
+.pseudoCta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--secondary-text-color);
+}
+
+.pseudoCtaLabel {
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.pseudoCtaIcon {
+  flex-shrink: 0;
+}
