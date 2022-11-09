@@ -7,6 +7,7 @@
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-actions": "^0.4.0",
+    "@hashicorp/react-expandable-arrow": "^0.0.2",
     "@hashicorp/react-intro": "^0.5.0",
     "classnames": "^2.3.1"
   },

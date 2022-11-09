@@ -1,8 +1,10 @@
+import * as React from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
 import type { NextStepsProps } from './types'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import Intro from '@hashicorp/react-intro'
+import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import s from './style.module.css'
 
 export default function NextSteps({
@@ -87,11 +89,48 @@ export default function NextSteps({
                     </span>
                   </a>
                 </Link>
+                <Tile
+                  variant={variant}
+                  cta={{
+                    title: step.cta.title,
+                    url: step.cta.url,
+                  }}
+                  heading={step.heading}
+                  description={step.description}
+                />
               </li>
             )
           })}
         </ul>
       </div>
     </section>
+  )
+}
+
+function Tile({ variant, heading, description, cta }) {
+  const [isHovered, setIsHovered] = React.useState(false)
+  return (
+    <Link href={cta.url}>
+      <a
+        className={classNames(s.tile, s[variant])}
+        onMouseOver={() => {
+          setIsHovered(true)
+        }}
+        onMouseOut={() => {
+          setIsHovered(false)
+        }}
+      >
+        <h3 className={s.tileHeading}>{heading}</h3>
+        {description ? (
+          <p className={s.tileDescription}>{description}</p>
+        ) : null}
+        <span className={s.tileCta}>
+          <span className={s.tileCtaLabel}>{cta.title}</span>
+          <span className={s.tileCtaIcon}>
+            <ExpandableArrow expanded={isHovered} />
+          </span>
+        </span>
+      </a>
+    </Link>
   )
 }

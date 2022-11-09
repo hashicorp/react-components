@@ -82,37 +82,6 @@
   }
 }
 
-/*
- * Arrow icon
- */
-
 .icon {
   flex-shrink: 0;
-}
-
-.arrow {
-  --translate-x: -4px;
-
-  transform: translateX(var(--translate-x));
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
-  transition-property: fill, transform;
-
-  @nest .root:hover & {
-    --translate-x: 0;
-  }
-}
-
-.line {
-  --stroke-dashoffset: 10;
-
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
-  transition-property: opacity, transform, stroke-dashoffset;
-  stroke-dasharray: 10;
-  stroke-dashoffset: var(--stroke-dashoffset);
-
-  @nest .root:hover & {
-    --stroke-dashoffset: 1;
-  }
 }
