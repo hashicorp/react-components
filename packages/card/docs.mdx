@@ -112,6 +112,46 @@ A component used to promote and link to marketing pages, always using a descript
 </div>
 
 <h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Using different heading elements
+</h3>
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <Card link="https://hashicorp.com">
+    <Card.Content>
+      <Card.Heading>
+        {
+          'Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…'
+        }
+      </Card.Heading>
+    </Card.Content>
+  </Card>
+  <Card link="https://hashicorp.com">
+    <Card.Content>
+      <Card.Heading as="h3">
+        {
+          'Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…'
+        }
+      </Card.Heading>
+    </Card.Content>
+  </Card>
+  <Card link="https://hashicorp.com">
+    <Card.Content>
+      <Card.Heading as="h4">
+        {
+          'Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…'
+        }
+      </Card.Heading>
+    </Card.Content>
+  </Card>
+</div>
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
   Use Case Cards with Product Badges
 </h3>
 
@@ -225,3 +265,25 @@ A component used to promote and link to marketing pages, always using a descript
     productBadges={['nomad']}
   />
 </div>
+
+## Base Props
+
+<PropsTable props={componentProps.baseProps} />
+
+## Sub-component-specific Props
+
+### `<Thumbnail />`
+
+<PropsTable props={componentProps.thumbnailProps} />
+
+### `<Meta />`
+
+<PropsTable props={componentProps.metaProps} />
+
+### `<Heading />`
+
+<PropsTable props={componentProps.headingProps} />
+
+### `<Description />`
+
+<PropsTable props={componentProps.descriptionProps} />
