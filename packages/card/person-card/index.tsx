@@ -1,5 +1,5 @@
 import type { CardProps, ProductBadgesProps, ThumbnailProps } from '../types'
-import * as CardPrimitives from '../primitives'
+import * as CardPrimitive from '../primitives'
 import { IconGithub16 } from '@hashicorp/flight-icons/svg-react/github-16'
 import { IconTwitter16 } from '@hashicorp/flight-icons/svg-react/twitter-16'
 import { IconLinkedin16 } from '@hashicorp/flight-icons/svg-react/linkedin-16'
@@ -40,29 +40,29 @@ export function PersonCard({
   productBadges,
 }: PersonCardProps) {
   return (
-    <CardPrimitives.Card
+    <CardPrimitive.Card
       heading={name}
       link={link}
       appearance={appearance}
       withArrow={false}
     >
       <div className={s.thumbnailContainer}>
-        <CardPrimitives.Thumbnail {...thumbnail} />
+        <CardPrimitive.Thumbnail {...thumbnail} />
         <Icon url={link} />
       </div>
-      <CardPrimitives.Content>
+      <CardPrimitive.Content>
         <div>
-          <CardPrimitives.Heading>{name}</CardPrimitives.Heading>
+          <CardPrimitive.Heading>{name}</CardPrimitive.Heading>
           {location ? <p className={s.location}>{location}</p> : null}
         </div>
-        <CardPrimitives.Description>{bio}</CardPrimitives.Description>
+        <CardPrimitive.Description>{bio}</CardPrimitive.Description>
         {productBadges && productBadges?.length > 0 ? (
-          <CardPrimitives.ProductBadges
+          <CardPrimitive.ProductBadges
             badges={productBadges}
             appearance={appearance}
           />
         ) : null}
-      </CardPrimitives.Content>
-    </CardPrimitives.Card>
+      </CardPrimitive.Content>
+    </CardPrimitive.Card>
   )
 }

@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import * as CardPrimitives from '../primitives'
+import * as CardPrimitive from '../primitives'
 import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import { CardProps, ProductBadgesProps } from '../types'
 import s from './style.module.css'
@@ -26,20 +25,18 @@ export function EventCard({
   const [hoverRef, isHovered] = useHover<HTMLAnchorElement>()
 
   return (
-    <CardPrimitives.Card
+    <CardPrimitive.Card
       ref={hoverRef}
       heading={title}
       link={link}
       appearance={appearance}
       withArrow={false}
     >
-      <CardPrimitives.Content>
-        <CardPrimitives.Meta
-          items={[eventDate, eventType]}
-        ></CardPrimitives.Meta>
-        <CardPrimitives.Heading>{title}</CardPrimitives.Heading>
+      <CardPrimitive.Content>
+        <CardPrimitive.Meta items={[eventDate, eventType]}></CardPrimitive.Meta>
+        <CardPrimitive.Heading>{title}</CardPrimitive.Heading>
         {productBadges && productBadges?.length > 0 ? (
-          <CardPrimitives.ProductBadges
+          <CardPrimitive.ProductBadges
             badges={productBadges}
             appearance={appearance}
           />
@@ -50,7 +47,7 @@ export function EventCard({
             <ExpandableArrow expanded={isHovered} />
           </span>
         </span>
-      </CardPrimitives.Content>
-    </CardPrimitives.Card>
+      </CardPrimitive.Content>
+    </CardPrimitive.Card>
   )
 }
