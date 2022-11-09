@@ -22,6 +22,23 @@ export default function Intro({
     s.description,
     descriptionSizeClassname
   )
+  let descriptionMarkup
+  if (typeof description === 'object') {
+    descriptionMarkup = (
+      <div className={descriptionClassName}>{description}</div>
+    )
+  } else if (typeof description === 'string' && containsHTML(description)) {
+    descriptionMarkup = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: description,
+        }}
+        className={descriptionClassName}
+      />
+    )
+  } else {
+    descriptionMarkup = <p className={descriptionClassName}>{description}</p>
+  }
   return (
     <div
       className={classNames(s.intro, s[appearance], s[textAlignment])}
@@ -31,16 +48,7 @@ export default function Intro({
       <HeadingElement className={classNames(s.heading, headingSizeClassname)}>
         {heading}
       </HeadingElement>
-      {containsHTML(description) ? (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: description,
-          }}
-          className={descriptionClassName}
-        />
-      ) : (
-        <p className={descriptionClassName}>{description}</p>
-      )}
+      {descriptionMarkup}
       {actions && actions.ctas && actions.ctas.length > 0 ? (
         <div className={s.actions}>
           <Actions
