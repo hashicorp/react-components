@@ -8,7 +8,7 @@ const SelectField = ({ field }: { field: MarketoFormSelectField }) => {
   const { register, setValue } = useFormContext()
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <SelectInput
         {...register(field.id)}
         label={formattedLabel(field)}
