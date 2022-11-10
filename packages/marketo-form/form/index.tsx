@@ -13,7 +13,6 @@ import type {
   MarketoFormGroups,
   MarketoFormComponents,
 } from '../types'
-import { Theme } from 'packages/button/types'
 
 interface Props {
   /**
@@ -79,12 +78,6 @@ interface Props {
     values: Record<string, string | boolean>,
     errors: Record<string, { message: string }>
   ) => Promise<{ values: any; errors: Record<string, { message: string }> }>
-
-  /**
-   * Theming options for the Submit button.
-   * See {@link Theme} for more details.
-   */
-  theme?: Theme
 }
 
 const defaultFieldGroupings = {
@@ -113,7 +106,6 @@ const Form = ({
   onSubmitSuccess,
   onSubmitError,
   validateFields,
-  theme,
 }: Props) => {
   // Track if the form has been rendered at least once, so that we know if
   // react-hook-form has already cached values.
@@ -277,7 +269,6 @@ const Form = ({
               ? 'Submitting...'
               : submitTitle ?? 'Submit'
           }
-          theme={theme}
         />
       </form>
     </FormProvider>
