@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.4.0
+
+### Minor Changes
+
+- [#810](https://github.com/hashicorp/react-components/pull/810) [`789b2753`](https://github.com/hashicorp/react-components/commit/789b2753f10cd20a0f3c936421036ec22601f232) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Refactor to use card primitive
+
 ## 0.3.0
 
 ### Minor Changes
