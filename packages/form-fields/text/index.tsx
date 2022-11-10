@@ -7,41 +7,33 @@ import Label from '../partials/label'
 interface TextInputProps {
   className?: string
   field: HTMLProps<HTMLInputElement>
-  form: { touched: Record<string, boolean>; errors: Record<string, string> }
+  error?: string
   type: HTMLProps<HTMLInputElement>['type']
   label?: string
   helpText?: string
   required?: boolean
   placeholder?: string
-  theme: { background: 'light' | 'dark' }
+  appearance?: 'light' | 'dark'
 }
 
 function Text({
   className,
   field,
-  form,
+  error,
   type = 'text',
   label,
   helpText,
   required,
   placeholder,
-  theme = {
-    background: 'light',
-  },
+  appearance = 'light',
 }: TextInputProps) {
-  //  Note: `field` and `form` props typically come from Formik
-  //  ref: https://jaredpalmer.com/formik/docs/api/field
-  //  However, they can also be provided in non-Formik use cases
-  //  and this component will still function as expected.
-  const error =
-    field.name && form.touched[field.name] && form.errors[field.name]
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = useId()
   const helpId = useId()
   return (
     <div
-      className={classNames(s.root, className, s[`theme-${theme.background}`], {
+      className={classNames(s.root, className, s[`theme-${appearance}`], {
         [s.hidden]: type === 'hidden',
       })}
     >

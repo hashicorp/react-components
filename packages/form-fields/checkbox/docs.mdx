@@ -7,12 +7,12 @@ componentGroup: 'Form Fields'
   {`
 <>
   <div style={{ padding: 16 }}>
-    <Checkbox field={{ name: 'input' }} label="Label" form={{ touched: {}, errors: {} }} />
-    <Checkbox field={{ name: 'input' }} label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+    <Checkbox field={{ name: 'input' }} label="Label" />
+    <Checkbox field={{ name: 'input' }} label="Label" error="Error message" />
   </div>
   <div style={{ padding: 16, backgroundColor: 'black' }}>
-      <Checkbox theme={{ background: 'dark' }} field={{ name: 'input' }} label="Label" form={{ touched: {}, errors: {} }} />
-      <Checkbox theme={{ background: 'dark' }} field={{ name: 'input' }} label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+      <Checkbox appearance='dark' field={{ name: 'input' }} label="Label" />
+      <Checkbox appearance='dark' field={{ name: 'input' }} label="Label" error="Error message" />
     </div>
 </>
 `}

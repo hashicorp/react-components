@@ -7,12 +7,12 @@ componentGroup: 'Form Fields'
   {`
 <>
   <div style={{ padding: 16 }}>
-    <Textarea field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: {}, errors: {} }} />
-    <Textarea field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+    <Textarea field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
+    <Textarea field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" />
   </div>
   <div style={{ padding: 16, backgroundColor: 'black' }}>
-      <Textarea theme={{ background: 'dark' }} field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: {}, errors: {} }} />
-      <Textarea theme={{ background: 'dark' }} field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} />
+      <Textarea appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
+      <Textarea appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" />
     </div>
 </>
 `}

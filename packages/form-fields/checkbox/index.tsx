@@ -6,13 +6,10 @@ import clsx from 'clsx'
 
 interface CheckboxInputProps {
   label: string
-  theme?: { background: 'light' | 'dark' }
+  appearance?: 'light' | 'dark'
   className?: string
   field: HTMLProps<HTMLInputElement>
-  form: {
-    touched: Record<string, boolean>
-    errors: Record<string, string | null | undefined>
-  }
+  error?: string
 }
 
 /**
@@ -21,16 +18,11 @@ interface CheckboxInputProps {
  */
 function CheckboxInput({
   label,
-  theme = { background: 'light' },
+  appearance = 'light',
   field,
-  form,
+  error,
   className,
 }: CheckboxInputProps) {
-  //  `field` and `form` props typically come from Formik,
-  // though you can also provide them without Formik.
-  //  https://jaredpalmer.com/formik/docs/api/field
-  const error =
-    field.name && form.touched[field.name] && form.errors[field.name]
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = useId()
@@ -39,7 +31,7 @@ function CheckboxInput({
     <div
       className={classNames(
         s.root,
-        s[`background-${theme.background}`],
+        s[`background-${appearance}`],
         {
           [s.hasError]: Boolean(error),
         },

@@ -7,12 +7,12 @@ componentGroup: 'Form Fields'
   {`
 <>
   <div style={{ padding: 16 }}>
-    <Select field={{ name: 'input' }} label="Label" form={{ touched: {}, errors: {} }} options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
-    <Select field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
+    <Select field={{ name: 'input' }} label="Label" options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
+    <Select field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
   </div>
   <div style={{ padding: 16, backgroundColor: 'black' }}>
-      <Select theme={{ background: 'dark' }} field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: {}, errors: {} }} options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
-      <Select theme={{ background: 'dark' }} field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: { input: true }, errors: { input: 'Error message' } }} options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
+      <Select appearance='dark' field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: {}, errors: {} }} options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
+      <Select appearance='dark' field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
     </div>
 </>
 `}
