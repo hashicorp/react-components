@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.3.2
+
+### Patch Changes
+
+- [#791](https://github.com/hashicorp/react-components/pull/791) [`6bd4f1cb`](https://github.com/hashicorp/react-components/commit/6bd4f1cbf150b2f6238500004e00bd116c25a40a) Thanks [@dstaley](https://github.com/dstaley)! - Export Field component for external usage
+
 ## 0.3.1
 
 ### Patch Changes
