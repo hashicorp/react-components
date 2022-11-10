@@ -12,7 +12,7 @@ const Index = ({ field }: { field: MarketoFormTextAreaField }) => {
   const { errors, touchedFields } = useFormState<Record<string, unknown>>()
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <TextareaInput
         label={formattedLabel(field)}
         field={register(field.id)}

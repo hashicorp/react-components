@@ -9,7 +9,7 @@ const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
   const { errors, touchedFields } = useFormState()
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <TextInput
         label={formattedLabel(field)}
         field={{
