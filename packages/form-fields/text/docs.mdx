@@ -1,0 +1,22 @@
+---
+componentName: 'Text'
+componentGroup: 'Form Fields'
+---
+
+<LiveComponent>
+  {`
+<>
+  <div style={{ padding: 16 }}>
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" helpText="Help Text" required />
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" />
+    <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" helpText="Help Text" required error="Error message" />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+      <Text appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
+      <Text appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" helpText="Help Text" required />
+      <Text appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" />
+    </div>
+</>
+`}
+</LiveComponent>
