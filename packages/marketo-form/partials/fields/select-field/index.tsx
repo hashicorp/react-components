@@ -1,27 +1,27 @@
 import { useFormContext } from 'react-hook-form'
-import SelectInput from '@hashicorp/react-select-input'
+import SelectInput from '@hashicorp/react-form-fields/select'
 import FieldWrapper from '../../field-wrapper'
-import { formattedLabel } from '../../../utils'
+import { formattedLabel, useErrorMessage } from '../../../utils'
 import type { MarketoFormSelectField } from '../../../types'
 
 const SelectField = ({ field }: { field: MarketoFormSelectField }) => {
-  const { register, setValue } = useFormContext()
+  const { register } = useFormContext()
+  const error = useErrorMessage(field.id)
 
   return (
     <FieldWrapper>
       <SelectInput
-        {...register(field.id)}
+        field={{ ...register(field.id) }}
         label={formattedLabel(field)}
         options={
           field.fieldMetaData.values
             ? field.fieldMetaData.values.map((plv) => {
-                return { name: plv.value, label: plv.label }
+                return { value: plv.value, label: plv.label }
               })
             : []
         }
-        onValueChange={(name) => {
-          setValue(field.id, name)
-        }}
+        error={error}
+        required={field.required}
       />
     </FieldWrapper>
   )

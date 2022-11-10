@@ -1,30 +1,25 @@
-import { useFormContext, useFormState } from 'react-hook-form'
-import TextInput from '@hashicorp/react-text-input'
+import { useFormContext } from 'react-hook-form'
+import TextInput from '@hashicorp/react-form-fields/text'
 import FieldWrapper from '../../field-wrapper'
-import { formattedLabel } from '../../../utils'
+import { formattedLabel, useErrorMessage } from '../../../utils'
 import type { MarketoFormEmailField } from '../../../types'
 
 const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
   const { register } = useFormContext()
-  const { errors, touchedFields } = useFormState()
+  const error = useErrorMessage(field.id)
 
   return (
     <FieldWrapper>
       <TextInput
         label={formattedLabel(field)}
+        type="email"
         field={{
           ...register(field.id),
           type: 'email',
         }}
         placeholder={field.hintText}
-        form={{
-          touched: {
-            [field.id]: touchedFields[field.id] !== undefined,
-          },
-          errors: {
-            [field.id]: errors[field.id] ? errors[field.id]?.message : null,
-          },
-        }}
+        error={error}
+        required={field.required}
       />
     </FieldWrapper>
   )
