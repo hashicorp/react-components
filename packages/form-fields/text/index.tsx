@@ -39,7 +39,7 @@ function Text({
     >
       {label && (
         <Label
-          inputId={inputId}
+          htmlFor={inputId}
           label={label}
           helpId={helpId}
           helpText={helpText}

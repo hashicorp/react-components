@@ -6,7 +6,7 @@ interface LabelProps {
   label: string
   helpText?: string
   helpId?: string
-  inputId?: string
+  htmlFor?: string
   required?: boolean
   error?: string | false
 }
@@ -15,14 +15,14 @@ const Label = ({
   label,
   helpText,
   helpId,
-  inputId,
+  htmlFor,
   required,
   error,
 }: LabelProps) => {
   return (
     <>
       <label
-        htmlFor={inputId}
+        htmlFor={htmlFor}
         className={clsx(s.label, {
           [s.hasHelp]: helpText,
           [s.hasError]: error,

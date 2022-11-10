@@ -33,7 +33,7 @@ function Select({
     <div className={classNames(s.root, className, s[`theme-${appearance}`])}>
       {label && (
         <Label
-          inputId={inputId}
+          htmlFor={inputId}
           label={label}
           helpId={helpId}
           helpText={helpText}

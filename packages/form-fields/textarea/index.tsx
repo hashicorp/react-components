@@ -33,7 +33,7 @@ function TextareaInput({
     <div className={clsx(s.root, className, s[`theme-${appearance}`])}>
       {label && (
         <Label
-          inputId={inputId}
+          htmlFor={inputId}
           label={label}
           helpId={helpId}
           helpText={helpText}
