@@ -3,7 +3,6 @@ import EmailField from '../fields/email-field'
 import TelephoneField from '../fields/telephone-field'
 import TextareaField from '../fields/textarea-field'
 import SelectField from '../fields/select-field'
-import CountryField from '../fields/country-field'
 import CheckboxField from '../fields/checkbox-field'
 import PrivacyPolicyField from '../fields/privacy-policy-field'
 import HiddenField from '../fields/hidden-field'
@@ -46,9 +45,6 @@ const Field = ({
       if (components && 'select' in components) {
         const Component = components.select!
         return <Component field={field} />
-      }
-      if (field.id === 'Country') {
-        return <CountryField field={field} />
       }
       return <SelectField field={field} />
     case 'checkbox':
