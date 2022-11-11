@@ -1,0 +1,19 @@
+---
+componentName: 'Textarea'
+componentGroup: 'Form Fields'
+---
+
+<LiveComponent>
+  {`
+<>
+  <div style={{ padding: 16 }}>
+    <Textarea field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
+    <Textarea field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+      <Textarea appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
+      <Textarea appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" />
+    </div>
+</>
+`}
+</LiveComponent>

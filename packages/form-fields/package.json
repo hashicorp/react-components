@@ -1,0 +1,9 @@
+{
+  "name": "@hashicorp/react-form-fields",
+  "version": "0.0.0",
+  "dependencies": {
+    "@hashicorp/flight-icons": "^2.5.0",
+    "@reach/auto-id": "^0.18.0",
+    "clsx": "^1.2.1"
+  }
+}
