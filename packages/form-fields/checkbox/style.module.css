@@ -47,8 +47,7 @@
   margin-bottom: 0;
   cursor: pointer;
   & a {
-    color: var(--label-link-color);
-    text-decoration: var(--label-link-decoration);
+    text-decoration: underline;
   }
 }
 
