@@ -21,15 +21,6 @@
     }
   }
 
-  &:focus-within {
-    --border-color: var(--wpl-blue-200);
-
-    outline-color: var(--border-color);
-    outline-width: 2px;
-    outline-style: solid;
-    outline-offset: 0;
-  }
-
   &.light {
     box-shadow: 0 16px 24px -16px #cbcbcd33, 0 8px 12px -8px #cbcbcd66;
 
@@ -67,6 +58,15 @@
   background-color: var(--background-color);
   transition: 0.2s ease;
   transition-property: transform, box-shadow, border-color, background-color;
+
+  &:focus-within {
+    --border-color: var(--wpl-blue-200);
+
+    outline-color: var(--border-color);
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 0;
+  }
 }
 
 .link {
