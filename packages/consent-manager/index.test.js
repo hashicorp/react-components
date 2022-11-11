@@ -22,6 +22,7 @@ const defaultProps = {
         'A short description of what the service is and how your company uses the data.',
       body: '',
       url: 'http://www.an-optional-url-for-a-script-to-add-to-the-page.com',
+      async: true,
     },
     {
       name: 'Name of the service 2',
@@ -43,6 +44,7 @@ const defaultProps = {
       category: 'Example Category',
       description: 'A script with additional elements to be injected',
       body: 'window.foo = "bar"',
+      async: true,
       dataAttrs: [
         {
           name: 'test',

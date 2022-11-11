@@ -7,7 +7,9 @@ import { useRouter, Router } from 'next/router'
 
 const useRouterMock = mocked(useRouter)
 
-jest.mock('next/router')
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}))
 
 describe('<VersionAlert />', () => {
   const routerMock = {

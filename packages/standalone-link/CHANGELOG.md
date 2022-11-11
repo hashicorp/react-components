@@ -1,5 +1,11 @@
 # @hashicorp/react-standalone-link
 
+## 0.2.0
+
+### Minor Changes
+
+- [#806](https://github.com/hashicorp/react-components/pull/806) [`96c4ecf6`](https://github.com/hashicorp/react-components/commit/96c4ecf6c82d3cc947c0c41faea499ce808180ab) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Replace custom SVG with ExpandableArrow component
+
 ## 0.1.2
 
 ### Patch Changes

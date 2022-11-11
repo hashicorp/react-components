@@ -27,6 +27,9 @@ async function notifyError(body: unknown, err: unknown) {
 
 async function getForm(req: NextApiRequest, res: NextApiResponse) {
   try {
+    if (!req.query.form) {
+      throw new Error('missing ?form query parameter.')
+    }
     const marketoRes = await client.getForm(
       parseInt(flatten(req.query.form), 10)
     )
@@ -133,7 +136,10 @@ export function buildApiRoutes({
   submissionFilter?: SubmissionFilter
 } = {}) {
   return async function apiRoutes(req: NextApiRequest, res: NextApiResponse) {
-    switch (req.query.marketo[0]) {
+    const route = Array.isArray(req.query.marketo)
+      ? req.query.marketo[0]
+      : req.query.marketo
+    switch (route) {
       case 'form':
         return getForm(req, res)
       case 'submit':

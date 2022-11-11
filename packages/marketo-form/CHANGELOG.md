@@ -1,5 +1,17 @@
 # @hashicorp/react-marketo-form
 
+## 0.3.2
+
+### Patch Changes
+
+- [#791](https://github.com/hashicorp/react-components/pull/791) [`6bd4f1cb`](https://github.com/hashicorp/react-components/commit/6bd4f1cbf150b2f6238500004e00bd116c25a40a) Thanks [@dstaley](https://github.com/dstaley)! - Export Field component for external usage
+
+## 0.3.1
+
+### Patch Changes
+
+- [#802](https://github.com/hashicorp/react-components/pull/802) [`67020b77`](https://github.com/hashicorp/react-components/commit/67020b77bccd38298078d3b5e1fa8757a81e09d8) Thanks [@dstaley](https://github.com/dstaley)! - Throw error if form query parameter is missing
+
 ## 0.3.0
 
 ### Minor Changes

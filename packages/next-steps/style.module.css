@@ -207,31 +207,3 @@
 .tileCtaIcon {
   flex-shrink: 0;
 }
-
-.tileCtaIconArrow {
-  --translate-x: -4px;
-
-  transform: translateX(var(--translate-x));
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
-  transition-property: transform;
-  color: inherit;
-
-  @nest .tile:hover & {
-    --translate-x: 0;
-  }
-}
-
-.tileCtaIconLine {
-  --stroke-dashoffset: 10;
-
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
-  transition-property: stroke-dashoffset;
-  stroke-dasharray: 10;
-  stroke-dashoffset: var(--stroke-dashoffset);
-
-  @nest .tile:hover & {
-    --stroke-dashoffset: 1;
-  }
-}

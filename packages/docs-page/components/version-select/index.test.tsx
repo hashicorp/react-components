@@ -7,7 +7,9 @@ import VersionSelect from './index'
 import { mocked } from 'ts-jest/utils'
 import { useRouter, Router } from 'next/router'
 
-jest.mock('next/router')
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}))
 
 const useRouterMock = mocked(useRouter)
 const mockPush = jest.fn()
