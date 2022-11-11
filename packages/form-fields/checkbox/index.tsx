@@ -1,11 +1,11 @@
-import React, { HTMLProps } from 'react'
+import React, { HTMLProps, ReactNode } from 'react'
 import { useId } from '@reach/auto-id'
 import s from './style.module.css'
 import classNames from 'classnames'
 import clsx from 'clsx'
 
 interface CheckboxInputProps {
-  label: string
+  label: ReactNode
   appearance?: 'light' | 'dark'
   className?: string
   field: HTMLProps<HTMLInputElement>
@@ -50,7 +50,7 @@ function CheckboxInput({
 
         {label && (
           <label htmlFor={inputId} className={s.label}>
-            <span dangerouslySetInnerHTML={{ __html: label }} />
+            {label}
           </label>
         )}
       </div>
