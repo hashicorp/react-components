@@ -1,4 +1,5 @@
 import type { ActionsProps } from '@hashicorp/react-actions/types'
+import React from 'react'
 
 type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
@@ -30,7 +31,7 @@ export interface IntroProps {
   /**
    * Text following the heading element.
    */
-  description: string
+  description: string | React.ReactNode
   /**
    * Render CTAs following the description element.
    */
