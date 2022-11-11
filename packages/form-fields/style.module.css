@@ -30,7 +30,7 @@
   font-family: inherit;
   font-size: 1rem;
   color: var(--input-text-color);
-  border: 2px solid;
+  border: 1.5px solid;
   border-color: var(--input-border-color);
   background: var(--input-background-color);
   border-radius: 4px;
@@ -38,7 +38,7 @@
   width: 100%;
   line-height: 1.5em; /* Match .g-type-* line-height for siblings */
 
-  &:hover {
+  &:hover:not(.hasError) {
     border-color: var(--input-hover-border-color);
   }
 
