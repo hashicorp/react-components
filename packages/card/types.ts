@@ -3,6 +3,7 @@ import React from 'react'
 
 export interface BaseCardProps {
   appearance?: 'light' | 'dark'
+  withArrow?: boolean
   heading: string
   link: string
   children: React.ReactNode
