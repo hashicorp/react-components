@@ -1,5 +1,12 @@
 # @hashicorp/react-next-steps
 
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [[`701c118d`](https://github.com/hashicorp/react-components/commit/701c118d62ccfb12d4ba52fb3692d17be737b2a3)]:
+  - @hashicorp/react-intro@0.6.0
+
 ## 0.5.0
 
 ### Minor Changes

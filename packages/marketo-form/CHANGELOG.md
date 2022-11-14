@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.4.0
+
+### Minor Changes
+
+- [#815](https://github.com/hashicorp/react-components/pull/815) [`5850beac`](https://github.com/hashicorp/react-components/commit/5850beac3128d64d2b9853f023640d33461672e2) Thanks [@nandereck](https://github.com/nandereck)! - Surface field ID on the FieldWrapper component
+
 ## 0.3.2
 
 ### Patch Changes

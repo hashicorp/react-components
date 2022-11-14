@@ -1,5 +1,11 @@
 # @hashicorp/react-intro
 
+## 0.6.0
+
+### Minor Changes
+
+- [#814](https://github.com/hashicorp/react-components/pull/814) [`701c118d`](https://github.com/hashicorp/react-components/commit/701c118d62ccfb12d4ba52fb3692d17be737b2a3) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Add ReactNode support to description
+
 ## 0.5.0
 
 ### Minor Changes
