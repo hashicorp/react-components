@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.5.0
+
+### Minor Changes
+
+- [#776](https://github.com/hashicorp/react-components/pull/776) [`9a3b0757`](https://github.com/hashicorp/react-components/commit/9a3b0757b6c6067c2413203cf7495bc5fcf9cfd6) Thanks [@EnMod](https://github.com/EnMod)! - Adds EventCard and PersonCard variants. Also adds ExpandableArrow dep.
+
 ## 0.4.0
 
 ### Minor Changes
