@@ -4,6 +4,7 @@ import Label from '../../label'
 import { formattedLabel } from '../../../utils'
 import ErrorMessage from '../../error-message'
 import type { MarketoFormSelectField } from '../../../types'
+import FieldWrapper from '../../field-wrapper'
 
 interface CountryFieldProps {
   field: MarketoFormSelectField
@@ -30,7 +31,7 @@ export default function CountryField({ field }: CountryFieldProps) {
   }
 
   return (
-    <>
+    <FieldWrapper fieldId={field.id}>
       <Label fieldName={field.id} label={formattedLabel(field)} />
       <Combobox
         invalidInputValue={showError}
@@ -56,6 +57,6 @@ export default function CountryField({ field }: CountryFieldProps) {
           error={field.validationMessage ?? 'Please select your country.'}
         />
       )}
-    </>
+    </FieldWrapper>
   )
 }

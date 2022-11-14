@@ -1,8 +1,8 @@
 const baseProps = {
-  children: {
-    type: 'function',
-    description: 'Children to render into the Card.',
-    required: true,
+  withArrow: {
+    type: 'boolean',
+    description:
+      'Allows the arrow at the bottom of the card to render. Defaults to `true`.',
   },
   thumbnail: {
     type: 'object',

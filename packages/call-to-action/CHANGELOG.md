@@ -1,5 +1,11 @@
 # @hashicorp/react-call-to-action
 
+## 5.2.0
+
+### Minor Changes
+
+- [#809](https://github.com/hashicorp/react-components/pull/809) [`ba3fb840`](https://github.com/hashicorp/react-components/commit/ba3fb8408c15184bdccb67af2cf7a484ba13a3c8) Thanks [@pbortnick](https://github.com/pbortnick)! - fix(Call To Action): Make product prop optional
+
 ## 5.1.0
 
 ### Minor Changes
