@@ -1,12 +1,12 @@
 {
   "name": "@hashicorp/react-pricing-features",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/flight-icons": "^2.0.2",
-    "@hashicorp/react-button": "^6.2.1",
+    "@hashicorp/react-button": "^6.3.0",
     "@reach/tabs": "^0.16.1",
     "@reach/visually-hidden": "^0.16.0"
   },
