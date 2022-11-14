@@ -33,7 +33,7 @@ const Card = React.forwardRef<HTMLAnchorElement, BaseCardProps>(
             {withArrow ? <IconArrowRight24 /> : null}
           </div>
 
-          <Link href={link}>
+          <Link href={link} legacyBehavior>
             {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
             <a ref={ref} className={s.link} aria-label={heading} />
           </Link>
