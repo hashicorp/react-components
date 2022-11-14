@@ -1,4 +1,9 @@
 const baseProps = {
+  withArrow: {
+    type: 'boolean',
+    description:
+      'Allows the arrow at the bottom of the card to render. Defaults to `true`.',
+  },
   thumbnail: {
     type: 'object',
     description: "An image showcasing the card's destination.",

@@ -9,7 +9,7 @@ const TelephoneField = ({ field }: { field: MarketoFormTelephoneField }) => {
   const error = useErrorMessage(field.id)
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <TextInput
         label={formattedLabel(field)}
         type="tel"

@@ -9,7 +9,7 @@ const EmailField = ({ field }: { field: MarketoFormEmailField }) => {
   const error = useErrorMessage(field.id)
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <TextInput
         label={formattedLabel(field)}
         type="email"

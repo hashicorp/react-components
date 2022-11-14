@@ -9,7 +9,7 @@ const SelectField = ({ field }: { field: MarketoFormSelectField }) => {
   const error = useErrorMessage(field.id)
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <SelectInput
         field={{ ...register(field.id) }}
         label={formattedLabel(field)}

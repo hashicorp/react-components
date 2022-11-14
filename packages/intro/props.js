@@ -30,7 +30,7 @@ module.exports = {
   },
   description: {
     required: true,
-    type: 'string',
+    type: 'string|React.ReactNode',
     description: 'Text following the heading element.',
   },
   actions: {

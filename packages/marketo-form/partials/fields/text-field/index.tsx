@@ -9,7 +9,7 @@ const Index = ({ field }: { field: MarketoFormTextField }) => {
   const error = useErrorMessage(field.id)
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <TextInput
         label={formattedLabel(field)}
         type="text"
