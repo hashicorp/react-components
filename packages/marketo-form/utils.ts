@@ -1,4 +1,5 @@
 import { MarketoFormField } from './types'
+import { useFormState } from 'react-hook-form'
 
 // Marketo stores field names in two versions, SOAP and REST. Some API
 // endpoints return SOAP names, while others accept REST names. This object
@@ -94,9 +95,7 @@ export function convertToRESTFields(
 // Returns the label for a field, appending an asterisk (*) if the field
 // is required.
 export function formattedLabel(field: MarketoFormField): string {
-  if (field.required && field.label) {
-    return `${field.label} *`
-  } else if (field.label) {
+  if (field.label) {
     return field.label
   }
 
@@ -173,4 +172,14 @@ export function calculateDefaultValues(
     }
   })
   return { ...initialValues, ...values }
+}
+
+export function useErrorMessage(id: string): string | undefined {
+  const { errors, touchedFields } = useFormState()
+
+  if (!touchedFields[id] || !errors[id]) {
+    return
+  }
+
+  return errors[id]?.message as string
 }
