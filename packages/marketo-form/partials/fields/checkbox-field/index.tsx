@@ -10,7 +10,7 @@ const CheckboxField = ({ field }: { field: MarketoFormCheckboxField }) => {
   const checked = watch(field.id, false)
 
   return (
-    <FieldWrapper size="lg">
+    <FieldWrapper size="lg" fieldId={field.id}>
       <CheckboxInput
         label={formattedLabel(field)}
         field={{
