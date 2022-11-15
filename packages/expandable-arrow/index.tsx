@@ -13,20 +13,28 @@ export default function ExpandableArrow({
   return (
     <svg
       className={classNames(s.root, expanded && s.expanded, className)}
-      width="9"
+      width="12"
       height="10"
-      viewBox="0 0 9 10"
+      viewBox="0 0 12 10"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       focusable={false}
       data-testid="expandable-arrow"
     >
-      <path d="M4 1L8 5L4 9" stroke="currentColor" strokeWidth={1.8} />
+      <path
+        d="M7.25 1L11.25 5L7.25 9"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
       <path
         className={s.line}
-        d="M8 5H0"
+        d="M10 5H0"
         stroke="currentColor"
-        strokeWidth={1.8}
+        strokeWidth={1.5}
+        strokeLinejoin="round"
+        strokeLinecap="round"
       />
     </svg>
   )
