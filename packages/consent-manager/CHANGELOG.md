@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 8.2.1
+
+### Patch Changes
+
+- [#824](https://github.com/hashicorp/react-components/pull/824) [`fb827df3`](https://github.com/hashicorp/react-components/commit/fb827df377a04e47ae094b86eb88e97caae7e94c) Thanks [@pbortnick](https://github.com/pbortnick)! - fix: check preferences before setting global var
+
 ## 8.2.0
 
 ### Minor Changes
