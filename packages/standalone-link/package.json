@@ -5,7 +5,7 @@
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/react-expandable-arrow": "^0.0.2",
+    "@hashicorp/react-expandable-arrow": "^0.1.0-canary-20221117195426",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
