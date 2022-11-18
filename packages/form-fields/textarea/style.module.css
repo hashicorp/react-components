@@ -1,0 +1,25 @@
+.root {
+  composes: wpl-variables input-root from '../style.module.css';
+  width: 100%;
+  margin-bottom: 24px;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.theme-dark {
+  composes: wpl-variables-dark from '../style.module.css';
+}
+
+.input {
+  composes: wpl-input-base from '../style.module.css';
+}
+
+.hasError {
+  composes: hasError from '../style.module.css';
+}
+
+.error {
+  composes: wpl-error-message from '../style.module.css';
+}
