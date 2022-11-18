@@ -3,8 +3,6 @@ import type { IntroProps } from './types'
 import Actions from '@hashicorp/react-actions'
 import s from './style.module.css'
 
-const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str)
-
 export default function Intro({
   appearance = 'light',
   textAlignment = 'left',
@@ -31,16 +29,7 @@ export default function Intro({
       <HeadingElement className={classNames(s.heading, headingSizeClassname)}>
         {heading}
       </HeadingElement>
-      {containsHTML(description) ? (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: description,
-          }}
-          className={descriptionClassName}
-        />
-      ) : (
-        <p className={descriptionClassName}>{description}</p>
-      )}
+      <Description className={descriptionClassName}>{description}</Description>
       {actions && actions.ctas && actions.ctas.length > 0 ? (
         <div className={s.actions}>
           <Actions
@@ -54,4 +43,34 @@ export default function Intro({
       ) : null}
     </div>
   )
+}
+
+const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str)
+
+function Description({
+  className,
+  children,
+}: {
+  className: string
+  children: IntroProps['description']
+}) {
+  // ReactNode
+  if (typeof children === 'object') {
+    return <div className={className}>{children}</div>
+  }
+
+  // HTML String
+  if (typeof children === 'string' && containsHTML(children)) {
+    return (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: children,
+        }}
+        className={className}
+      />
+    )
+  }
+
+  // String
+  return <p className={className}>{children}</p>
 }

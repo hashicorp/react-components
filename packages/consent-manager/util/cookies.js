@@ -45,7 +45,9 @@ export function getDomain() {
 export const loadPreferences = () => {
   if (!preferences) {
     preferences = cookies.getJSON(COOKIE_KEY)
-    preferencesLoaded = true
+    if (preferences) {
+      preferencesLoaded = true
+    }
   }
 
   return preferences

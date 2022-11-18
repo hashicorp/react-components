@@ -5,7 +5,7 @@ import Link from 'next/link'
 import ProductBadge from '@hashicorp/react-product-badge'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import type {
-  BaseCardProps,
+  CardPrimitiveProps,
   ThumbnailProps,
   MetaProps,
   ContentProps,
@@ -15,19 +15,29 @@ import type {
 } from './types'
 import s from './style.module.css'
 
-const Card = React.forwardRef<HTMLAnchorElement, BaseCardProps>(
+const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
   (props, ref) => {
-    const { appearance = 'light', heading, link, children } = props
+    const {
+      appearance = 'light',
+      withArrow = true,
+      heading,
+      link,
+      children,
+    } = props
     return (
       <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
-        {children}
-        <div className={s.cta}>
-          <IconArrowRight24 />
+        <div className={s.contentContainer}>
+          {children}
+
+          <div className={s.cta} data-testid="wpl-card-cta">
+            {withArrow ? <IconArrowRight24 /> : null}
+          </div>
+
+          <Link href={link} legacyBehavior>
+            {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+            <a ref={ref} className={s.link} aria-label={heading} />
+          </Link>
         </div>
-        <Link href={link}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-          <a ref={ref} className={s.link} aria-label={heading} />
-        </Link>
       </div>
     )
   }

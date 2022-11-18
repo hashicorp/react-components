@@ -31,7 +31,7 @@ export default function CountryField({ field }: CountryFieldProps) {
   }
 
   return (
-    <FieldWrapper>
+    <FieldWrapper fieldId={field.id}>
       <Label fieldName={field.id} label={formattedLabel(field)} />
       <Combobox
         invalidInputValue={showError}

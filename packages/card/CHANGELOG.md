@@ -1,5 +1,21 @@
 # @hashicorp/react-card
 
+## 0.6.0
+
+### Minor Changes
+
+- [#808](https://github.com/hashicorp/react-components/pull/808) [`45fe15ee`](https://github.com/hashicorp/react-components/commit/45fe15eec86e09d324624b0398e81edd92b3af37) Thanks [@dstaley](https://github.com/dstaley)! - Use `legacyBehavior` prop for `next/link` to support Next v13
+
+### Patch Changes
+
+- [#820](https://github.com/hashicorp/react-components/pull/820) [`50093938`](https://github.com/hashicorp/react-components/commit/50093938f070e489c94e866097b7278b78f72a4c) Thanks [@EnMod](https://github.com/EnMod)! - Refactors Card primitive to use its own type. Fixes type errors stemming from children being set as a key on BaseCardProps.
+
+## 0.5.0
+
+### Minor Changes
+
+- [#776](https://github.com/hashicorp/react-components/pull/776) [`9a3b0757`](https://github.com/hashicorp/react-components/commit/9a3b0757b6c6067c2413203cf7495bc5fcf9cfd6) Thanks [@EnMod](https://github.com/EnMod)! - Adds EventCard and PersonCard variants. Also adds ExpandableArrow dep.
+
 ## 0.4.0
 
 ### Minor Changes

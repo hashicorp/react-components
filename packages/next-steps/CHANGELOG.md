@@ -1,5 +1,23 @@
 # @hashicorp/react-next-steps
 
+## 0.6.0
+
+### Minor Changes
+
+- [#808](https://github.com/hashicorp/react-components/pull/808) [`45fe15ee`](https://github.com/hashicorp/react-components/commit/45fe15eec86e09d324624b0398e81edd92b3af37) Thanks [@dstaley](https://github.com/dstaley)! - Use `legacyBehavior` prop for `next/link` to support Next v13
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @hashicorp/react-actions@0.4.2
+
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [[`701c118d`](https://github.com/hashicorp/react-components/commit/701c118d62ccfb12d4ba52fb3692d17be737b2a3)]:
+  - @hashicorp/react-intro@0.6.0
+
 ## 0.5.0
 
 ### Minor Changes

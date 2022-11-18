@@ -22,6 +22,7 @@ export default function LinkWrap({
         replace={replace}
         scroll={scroll}
         shallow={shallow}
+        legacyBehavior
       >
         <a data-testid="a" {...props}>
           {children}

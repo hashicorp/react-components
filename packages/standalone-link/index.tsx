@@ -15,7 +15,7 @@ export default function StandaloneLink({
   const [isHovered, setIsHovered] = React.useState(false)
   const { onMouseOver, onMouseOut } = restProps
   return (
-    <Link href={href}>
+    <Link href={href} legacyBehavior>
       <a
         className={classNames(s.root, s[appearance], s[theme])}
         onMouseOver={(event) => {
