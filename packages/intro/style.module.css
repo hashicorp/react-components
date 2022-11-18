@@ -24,13 +24,13 @@
 }
 
 .heading {
-  --color: var(--black);
+  --color: var(--wpl-neutral-900);
 
   margin: 0;
   color: var(--color);
 
   @nest .dark & {
-    --color: var(--white);
+    --color: var(--wpl-neutral-0);
   }
 }
 
