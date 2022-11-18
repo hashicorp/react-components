@@ -66,3 +66,14 @@
   line-height: 1.4;
   margin-top: 4px;
 }
+
+.input-root {
+  display: flex;
+  flex-direction: column;
+
+  & input,
+  & select,
+  & textarea {
+    margin-top: auto;
+  }
+}

@@ -14,6 +14,10 @@ componentCategory: 'Form Fields'
       <Select appearance='dark' field={{ name: 'input' }} placeholder="Placeholder" label="Label" form={{ touched: {}, errors: {} }} options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
       <Select appearance='dark' field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" options={[{ label: 'One', value: 'one' }, { label: 'Two', value: 'two' }, { label: 'Three', value: 'three' }]} />
     </div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', padding: '16px' }}>
+        <Select field={{ name: 'input' }} label="Label" options={[]} helpText="Help Text" error="Error message" />
+        <Select field={{ name: 'input' }} label="Label" options={[]} />
+    </div>
 </>
 `}
 </LiveComponent>

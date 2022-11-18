@@ -1,5 +1,5 @@
 .root {
-  composes: wpl-variables from '../style.module.css';
+  composes: wpl-variables input-root from '../style.module.css';
   width: 100%;
   margin-bottom: 24px;
 

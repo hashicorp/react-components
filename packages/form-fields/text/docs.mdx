@@ -16,7 +16,11 @@ componentCategory: 'Form Fields'
       <Text appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
       <Text appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" helpText="Help Text" required />
       <Text appearance="dark" field={{ name: 'input' }} placeholder="Placeholder" label="Label" error="Error message" />
-    </div>
+  </div>
+  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', padding: '16px' }}>
+      <Text field={{ name: 'input' }} label="Label" helpText="Help Text" error="Error message" />
+      <Text field={{ name: 'input' }} label="Label" />
+  </div>
 </>
 `}
 </LiveComponent>
