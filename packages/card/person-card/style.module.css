@@ -20,16 +20,10 @@
   place-items: center;
   border-radius: 9999px;
   overflow: hidden;
+  background-color: var(--wpl-neutral-0);
+  opacity: 0.5;
 
   & svg {
     position: relative;
-  }
-
-  &::before {
-    position: absolute;
-    inset: 0;
-    content: '';
-    background-color: var(--wpl-neutral-50);
-    opacity: 0.75;
   }
 }
