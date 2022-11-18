@@ -8,7 +8,11 @@ const FieldWrapper = ({
   fieldId: string
 }) => {
   return (
-    <div className="marketo-form-field-wrapper" data-field-id={fieldId}>
+    <div
+      style={{ display: 'flex' }}
+      className="marketo-form-field-wrapper"
+      data-field-id={fieldId}
+    >
       {children}
     </div>
   )
