@@ -5,7 +5,7 @@ import Link from 'next/link'
 import ProductBadge from '@hashicorp/react-product-badge'
 import { IconArrowRight24 } from '@hashicorp/flight-icons/svg-react/arrow-right-24'
 import type {
-  BaseCardProps,
+  CardPrimitiveProps,
   ThumbnailProps,
   MetaProps,
   ContentProps,
@@ -15,7 +15,7 @@ import type {
 } from './types'
 import s from './style.module.css'
 
-const Card = React.forwardRef<HTMLAnchorElement, BaseCardProps>(
+const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
   (props, ref) => {
     const {
       appearance = 'light',
@@ -33,7 +33,7 @@ const Card = React.forwardRef<HTMLAnchorElement, BaseCardProps>(
             {withArrow ? <IconArrowRight24 /> : null}
           </div>
 
-          <Link href={link}>
+          <Link href={link} legacyBehavior>
             {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
             <a ref={ref} className={s.link} aria-label={heading} />
           </Link>

@@ -30,7 +30,7 @@ function ErrorPage({ statusCode }: ErrorPageProps): React.ReactElement {
       <h1 className={s.heading}>{heading}</h1>
       <p>{message}</p>
       <p>
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <a className={s.link}>Back to Home</a>
         </Link>
       </p>

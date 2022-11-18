@@ -6,6 +6,9 @@ export interface BaseCardProps {
   withArrow?: boolean
   heading: string
   link: string
+}
+
+export interface CardPrimitiveProps extends BaseCardProps {
   children: React.ReactNode
 }
 

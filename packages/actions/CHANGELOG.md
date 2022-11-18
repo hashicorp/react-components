@@ -1,5 +1,13 @@
 # @hashicorp/react-actions
 
+## 0.4.2
+
+### Patch Changes
+
+- Updated dependencies [[`45fe15ee`](https://github.com/hashicorp/react-components/commit/45fe15eec86e09d324624b0398e81edd92b3af37)]:
+  - @hashicorp/react-button@6.3.0
+  - @hashicorp/react-standalone-link@0.3.0
+
 ## 0.4.1
 
 ### Patch Changes

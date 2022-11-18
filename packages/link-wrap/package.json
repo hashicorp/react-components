@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-link-wrap",
   "description": "Wraps a standard 'a' element to enable NextJS Link usage",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "author": "Hashicorp",
   "contributors": [
     "Jeff Escalante"
