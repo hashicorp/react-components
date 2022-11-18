@@ -8,11 +8,7 @@
   ],
   "dependencies": {
     "@hashicorp/react-button": "^6.2.0",
-    "@hashicorp/react-checkbox-input": "^5.0.3",
-    "@hashicorp/react-combobox": "^1.2.0",
-    "@hashicorp/react-select-input": "^5.1.0",
-    "@hashicorp/react-text-input": "^5.0.1",
-    "@hashicorp/react-textarea-input": "^1.1.0",
+    "@hashicorp/react-form-fields": "^0.1.0-canary-20221111004305",
     "@vercel/fetch": "^6.2.0",
     "clsx": "^1.1.1",
     "js-cookie": "^3.0.1",
