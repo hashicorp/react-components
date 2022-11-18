@@ -102,6 +102,7 @@
 
 .description {
   composes: g-type-body-small from global;
+  font-weight: var(--font-weight-bold);
   margin: 0;
   color: var(--secondary-text-color);
 }
