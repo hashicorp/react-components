@@ -92,8 +92,7 @@ export function convertToRESTFields(
   return restData
 }
 
-// Returns the label for a field, appending an asterisk (*) if the field
-// is required.
+// Returns the label for a field.
 export function formattedLabel(field: MarketoFormField): string {
   if (field.label) {
     return field.label
