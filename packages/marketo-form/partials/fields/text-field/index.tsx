@@ -1,27 +1,22 @@
-import { useFormContext, useFormState } from 'react-hook-form'
-import TextInput from '@hashicorp/react-text-input'
+import { useFormContext } from 'react-hook-form'
+import TextInput from '@hashicorp/react-form-fields/text'
 import FieldWrapper from '../../field-wrapper'
-import { formattedLabel } from '../../../utils'
+import { formattedLabel, useErrorMessage } from '../../../utils'
 import type { MarketoFormTextField } from '../../../types'
 
 const Index = ({ field }: { field: MarketoFormTextField }) => {
   const { register } = useFormContext()
-  const { errors, touchedFields } = useFormState()
+  const error = useErrorMessage(field.id)
 
   return (
     <FieldWrapper fieldId={field.id}>
       <TextInput
         label={formattedLabel(field)}
+        type="text"
         field={register(field.id)}
         placeholder={field.hintText}
-        form={{
-          touched: {
-            [field.id]: touchedFields[field.id] !== undefined,
-          },
-          errors: {
-            [field.id]: errors[field.id] ? errors[field.id]?.message : null,
-          },
-        }}
+        error={error}
+        required={field.required}
       />
     </FieldWrapper>
   )
