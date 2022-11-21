@@ -1,38 +1,37 @@
 ---
-componentName: Hero
+componentName: 'Hero'
 ---
 
-A flexible hero component used as the primary content at the top of many HashiCorp pages.
-
 <LiveComponent>
-{`<Hero
-  data={{
-    title: 'Testing',
-    description: 'Etiam porta sem malesuada magna mollis euismod.',
-    product: 'nomad',
-    backgroundImage: {
-      url: 'https://www.datocms-assets.com/2885/1538522323-vault-grid-background.jpg',
-      format: 'svg',
-      alt: 'terraform background'
-    },
-    buttons: [
-      { title: 'Download', url: '#' },
-      { title: 'Get Started', url: '#' }
-    ],
-    videos: [{
-      name: 'UI',
-      playbackRate: 2,
-      src: [{
-        srcType: 'mp4',
-        url: '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-ui.mp4',
-      }],
-    }]
-  }}
-/>`}
-</LiveComponent>
+  {`
+    <section>
+      <div style={{display: 'flex', flexWrap: 'wrap', backgroundColor: 'white', padding: '16px'}}>
+        <Hero 
+          eyebrow={'EYEBROW'}
+          heading={'im a heading'}
+          description={'im a description'}
+          actions={{
+            ctas: [
+              {
+                title: 'View tutorials',
+                href: '/tutorials',
+              },
+              {
+                title: 'View documentation',
+                href: '/docs',
+                type: 'standalone-link'
+              }
+            ]
+          }}
+          url={"https://hashicorp.wistia.com/medias/glovs5atuj"}
+        />
+      </div>
+    </section>
 
-<UsageDetails packageJson={packageJson} />
+  `}
+</LiveComponent>
 
 ### Props
 
 <PropsTable props={componentProps} />
+
