@@ -89,7 +89,9 @@
   --color: var(--wpl-neutral-0);
   --transition-duration: 250ms;
   --transition-timing-function: ease-in-out;
+  --border-radius: 8px;
 
+  position: relative;
   display: flex;
   width: 100%;
   min-height: 208px;
@@ -97,8 +99,7 @@
   padding: 32px;
   background-color: var(--background-color);
   color: var(--color);
-  border-radius: 8px;
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius);
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   transition-property: background-color;
@@ -107,8 +108,7 @@
     --background-color: var(--brand);
     --color: var(--brand-text-on-primary);
 
-    &:hover,
-    &:active {
+    &:hover {
       --background-color: var(--brand);
     }
 
@@ -119,10 +119,6 @@
       &:hover {
         --background-color: var(--wpl-blue-600);
       }
-
-      &:active {
-        --background-color: var(--wpl-blue-700);
-      }
     }
   }
 
@@ -131,11 +127,7 @@
     --background-color: var(--wpl-neutral-50);
 
     &:hover {
-      --background-color: var(--wpl-neutral-100);
-    }
-
-    &:active {
-      --background-color: var(--wpl-neutral-200);
+      --background-color: var(--wpl-neutral-50);
     }
 
     @nest .dark & {
@@ -143,13 +135,37 @@
       --color: var(--white);
 
       &:hover {
-        --background-color: var(--wpl-neutral-600);
-      }
-
-      &:active {
-        --background-color: var(--wpl-neutral-800);
+        --background-color: var(--wpl-neutral-700);
       }
     }
+  }
+}
+
+.tileInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tileScrim {
+  --background-color: #000;
+
+  position: absolute;
+  inset: 0;
+  background: var(--background-color);
+  border-radius: var(--border-radius);
+  opacity: 0;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: opacity;
+
+  @nest .dark & {
+    --background-color: #fff;
+  }
+
+  @nest .tile &:hover {
+    opacity: 0.05;
   }
 }
 

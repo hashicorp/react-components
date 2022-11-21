@@ -49,6 +49,7 @@ export default function NextSteps({
             const variant = index === 0 ? 'primary' : 'secondary'
             return (
               <li
+                // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 className={classNames(
                   s.stepsListItem,
@@ -56,6 +57,7 @@ export default function NextSteps({
                 )}
               >
                 <Tile
+                  theme={theme}
                   variant={variant}
                   cta={{
                     title: step.cta.title,
@@ -73,7 +75,7 @@ export default function NextSteps({
   )
 }
 
-function Tile({ variant, heading, description, cta }) {
+function Tile({ theme, variant, heading, description, cta }) {
   const [isHovered, setIsHovered] = React.useState(false)
   return (
     <Link href={cta.url} legacyBehavior>
@@ -86,16 +88,21 @@ function Tile({ variant, heading, description, cta }) {
           setIsHovered(false)
         }}
       >
-        <h3 className={s.tileHeading}>{heading}</h3>
-        {description ? (
-          <p className={s.tileDescription}>{description}</p>
-        ) : null}
-        <span className={s.tileCta}>
-          <span className={s.tileCtaLabel}>{cta.title}</span>
-          <span className={s.tileCtaIcon}>
-            <ExpandableArrow expanded={isHovered} />
+        <div className={s.tileInner}>
+          <h3 className={s.tileHeading}>{heading}</h3>
+          {description ? (
+            <p className={s.tileDescription}>{description}</p>
+          ) : null}
+          <span className={s.tileCta}>
+            <span className={s.tileCtaLabel}>{cta.title}</span>
+            <span className={s.tileCtaIcon}>
+              <ExpandableArrow expanded={isHovered} />
+            </span>
           </span>
-        </span>
+        </div>
+        {theme !== 'hashicorp' || variant === 'secondary' ? (
+          <span className={s.tileScrim} />
+        ) : null}
       </a>
     </Link>
   )
