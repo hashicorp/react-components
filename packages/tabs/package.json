@@ -13,7 +13,7 @@
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/mktg-global-styles": "^4.4.0-canary-20221116152808",
     "react": ">=16.x"
   },
   "license": "MPL-2.0",
