@@ -1,8 +1,8 @@
 .toggle {
   --toggle-background-color: var(--wpl-neutral-0);
-  --toggle-border-color: var(--wpl-neutral-200);
+  --toggle-border-color: var(--wpl-neutral-500);
   --toggle-outline-color: var(--wpl-blue-500);
-  --indicator-background-color: var(--wpl-neutral-200);
+  --indicator-background-color: var(--wpl-neutral-500);
   --indicator-translate-x: 0;
 
   display: inline-flex;
@@ -19,8 +19,8 @@
   transition-property: background-color, border-color;
 
   &:hover:not(.on):not(.disabled) {
-    --toggle-border-color: var(--wpl-neutral-300);
-    --indicator-background-color: var(--wpl-neutral-300);
+    --toggle-border-color: var(--wpl-neutral-700);
+    --indicator-background-color: var(--wpl-neutral-700);
   }
 
   &:focus-within {
@@ -46,13 +46,13 @@
   /* Appearance: dark */
   &.dark {
     --toggle-background-color: var(--wpl-neutral-900);
-    --toggle-border-color: var(--wpl-neutral-500);
+    --toggle-border-color: var(--wpl-neutral-400);
     --toggle-outline-color: var(--wpl-neutral-0);
-    --indicator-background-color: var(--wpl-neutral-500);
+    --indicator-background-color: var(--wpl-neutral-400);
 
     &:hover:not(.on):not(.disabled) {
-      --toggle-border-color: var(--wpl-neutral-400);
-      --indicator-background-color: var(--wpl-neutral-400);
+      --toggle-border-color: var(--wpl-neutral-200);
+      --indicator-background-color: var(--wpl-neutral-200);
     }
 
     &.on {
