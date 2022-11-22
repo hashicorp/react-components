@@ -1,36 +1,36 @@
 .root {
+  --full-width: 1 / -1;
+
   composes: g-grid-container from global;
   composes: g-grid from global;
   padding: var(--wpl-spacing-09) 0 184px 0;
 }
 
 .videoWrapper {
-  grid-column: 1 / -1;
+  grid-column: var(--full-width);
   align-self: center;
 
   @media (--medium) {
-    grid-row: 1 / -1;
+    grid-row: var(--full-width);
     grid-column: 7 / -1;
   }
 
   @media (--large) {
-    grid-row: 1 / -1;
+    grid-row: var(--full-width);
     grid-column: 7 / -1;
   }
 }
 
 .content {
-  grid-column: 1 / -1;
+  grid-column: var(--full-width);
 
   @media (--medium) {
-    margin-bottom: 0;
-    margin-right: -15px;
     grid-column: 1 / span 6;
-    grid-row: 1 / -1;
+    grid-row: var(--full-width);
   }
 
   @media (--large) {
     grid-column: 1 / span 6;
-    grid-row: 1 / -1;
+    grid-row: var(--full-width);
   }
 }
