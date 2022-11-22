@@ -11,7 +11,7 @@ interface EyebrowProps {
 export default function Eyebrow({
   text,
   appearance = 'light',
-  theme = 'infrastructure',
+  theme,
 }: EyebrowProps) {
   return (
     <div className={classNames(s.eyebrow, s[theme])}>
