@@ -1,3 +1,4 @@
+import EyebrowWithPattern from './eyebrow-with-pattern'
 import Intro from '@hashicorp/react-intro'
 import InlineVideo from '@hashicorp/react-inline-video'
 import type { HeroProps } from './types'
@@ -10,9 +11,9 @@ const Hero = ({
   description,
   actions,
   url,
-  smallImage = `${require('./images/graphic-small.svg')}`,
-  mediumImage = `${require('./images/graphic-medium.svg')}`,
-  desktopImage = `${require('./images/graphic.svg')}`,
+  smallImage,
+  mediumImage,
+  desktopImage,
 }: HeroProps) => {
   return (
     <div className={s.root}>
@@ -22,9 +23,9 @@ const Hero = ({
         </div>
       ) : null}
       <div className={s.content}>
-        <div>
+        {eyebrow ? (
           <EyebrowWithPattern appearance={appearance} text={eyebrow} />
-        </div>
+        ) : null}
         <Intro
           appearance={appearance}
           heading={heading}
@@ -37,11 +38,4 @@ const Hero = ({
   )
 }
 
-const EyebrowWithPattern = ({ appearance, text }) => {
-  return (
-    <div>
-      <p>{text}</p>
-    </div>
-  )
-}
 export default Hero
