@@ -39,7 +39,7 @@
   width: 100%;
   line-height: 1.5em; /* Match .g-type-* line-height for siblings */
 
-  &:hover:not(.hasError) {
+  &:hover {
     border-color: var(--input-hover-border-color);
   }
 
@@ -59,6 +59,14 @@
 
 .hasError {
   border-color: var(--danger);
+
+  &:hover {
+    border-color: var(--danger);
+  }
+
+  &:focus {
+    border-color: var(--danger);
+  }
 }
 
 .wpl-error-message {
