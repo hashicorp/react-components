@@ -1,25 +1,36 @@
 .root {
   composes: g-grid-container from global;
   composes: g-grid from global;
-  padding: var(--wpl-spacing-05);
+  padding: var(--wpl-spacing-09) 0 184px 0;
+}
 
-  @media (--medium-up) {
-    display: flex;
-    align-items: center;
-    padding: var(--wpl-spacing-05);
+.videoWrapper {
+  grid-column: 1 / -1;
+  align-self: center;
+
+  @media (--medium) {
+    grid-row: 1 / -1;
+    grid-column: 7 / -1;
   }
 
   @media (--large) {
-    padding: var(--wpl-spacing-15) 192px;
+    grid-row: 1 / -1;
+    grid-column: 7 / -1;
   }
 }
 
-/* .introWrapper {} */
+.content {
+  grid-column: 1 / -1;
 
-.videoWrapper {
-  width: 100%;
+  @media (--medium) {
+    margin-bottom: 0;
+    margin-right: -15px;
+    grid-column: 1 / span 6;
+    grid-row: 1 / -1;
+  }
 
-  @media (--medium-up) {
-    order: 1;
+  @media (--large) {
+    grid-column: 1 / span 6;
+    grid-row: 1 / -1;
   }
 }
