@@ -5,13 +5,13 @@ import s from './style.module.css'
 interface EyebrowProps {
   text: string
   appearance: 'light' | 'dark'
-  theme: 'infrastructure' | 'security' | 'networking' | 'applications'
+  theme?: 'infrastructure' | 'security' | 'networking' | 'applications'
 }
 
 export default function Eyebrow({
   text,
   appearance = 'light',
-  theme,
+  theme = 'infrastructure',
 }: EyebrowProps) {
   return (
     <div className={classNames(s.eyebrow, s[theme])}>
