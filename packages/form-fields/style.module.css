@@ -30,7 +30,7 @@
   font-family: inherit;
   font-size: 1rem;
   color: var(--input-text-color);
-  border: 1.5px solid;
+  border: 1px solid;
   border-color: var(--input-border-color);
   background: var(--input-background-color);
   border-radius: 4px;
