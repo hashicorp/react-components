@@ -1,0 +1,88 @@
+.wpl-variables {
+  --danger: #e5242a;
+  --label-text-color: #3d4148;
+  --input-text-color: #3d4148;
+  --input-checkbox-label-color: #707275;
+  --input-checkbox-background: transparent;
+  --input-border-color: #929396;
+  --input-focus-border-color: #0c56e9;
+  --input-hover-border-color: #a3a7ae;
+  --input-active-border-color: #838791;
+  --input-error-border-color: var(--danger);
+  --input-background-color: var(--white);
+  --error-text-color: var(--danger);
+  --help-text-color: #656b76;
+}
+
+.wpl-variables-dark {
+  --danger: #eb5257;
+  --label-text-color: #c1c3c8;
+  --input-text-color: #e1e2e5;
+  --input-checkbox-label-color: #a3a7ae;
+  --input-border-color: #838791;
+  --input-hover-border-color: #838791;
+  --input-active-border-color: #a3a7ae;
+  --input-error-border-color: #eb5257;
+  --input-background-color: #151619;
+  --help-text-color: #838791;
+}
+
+.wpl-input-base {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--input-text-color);
+  border: 1px solid;
+  border-color: var(--input-border-color);
+  background: var(--input-background-color);
+  border-radius: 4px;
+  padding: 12px;
+  width: 100%;
+  line-height: 1.5em; /* Match .g-type-* line-height for siblings */
+
+  &:hover {
+    border-color: var(--input-hover-border-color);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--input-focus-border-color);
+  }
+
+  &:active {
+    border-color: var(--input-active-border-color);
+  }
+
+  &:placeholder-shown {
+    color: var(--gray-3);
+  }
+}
+
+.hasError {
+  border-color: var(--danger);
+
+  &:hover {
+    border-color: var(--danger);
+  }
+
+  &:focus {
+    border-color: var(--danger);
+  }
+}
+
+.wpl-error-message {
+  composes: g-type-body-small from global;
+  color: var(--danger);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+.input-root {
+  display: flex;
+  flex-direction: column;
+
+  & input,
+  & select,
+  & textarea {
+    margin-top: auto;
+  }
+}
