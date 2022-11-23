@@ -1,5 +1,12 @@
 # @hashicorp/react-standalone-link
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies [[`a0df5f89`](https://github.com/hashicorp/react-components/commit/a0df5f899ac43033032bbe0559f53b6897ae0ca1)]:
+  - @hashicorp/react-expandable-arrow@0.1.0
+
 ## 0.3.0
 
 ### Minor Changes
