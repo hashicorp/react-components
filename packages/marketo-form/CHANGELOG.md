@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.5.0
+
+### Minor Changes
+
+- [#828](https://github.com/hashicorp/react-components/pull/828) [`bafded5c`](https://github.com/hashicorp/react-components/commit/bafded5c510546f1ea236e3455d7af8fb5060115) Thanks [@nandereck](https://github.com/nandereck)! - Allow for hidden autofill values to be passed through
+
 ## 0.4.0
 
 ### Minor Changes
