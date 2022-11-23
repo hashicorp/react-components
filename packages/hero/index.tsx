@@ -1,7 +1,9 @@
+import React from 'react'
 import EyebrowWithPattern from './eyebrow-with-pattern'
-import Intro from '@hashicorp/react-intro'
-import InlineVideo from '@hashicorp/react-inline-video'
 import type { HeroProps } from './types'
+import Image from 'next/image'
+import InlineVideo from '@hashicorp/react-inline-video'
+import Intro from '@hashicorp/react-intro'
 import s from './style.module.css'
 
 const Hero = ({
@@ -11,27 +13,60 @@ const Hero = ({
   description,
   actions,
   url,
+  backgroundColor = 'black',
   smallImage,
   mediumImage,
   desktopImage,
 }: HeroProps) => {
+  const style = { '--backgroundColor': backgroundColor } as React.CSSProperties
   return (
-    <div className={s.root}>
-      {url ? (
-        <div className={s.videoWrapper}>
-          <InlineVideo appearance={appearance} url={url} />
-        </div>
-      ) : null}
+    <div className={s.root} style={style}>
       <div className={s.content}>
-        {eyebrow ? (
-          <EyebrowWithPattern appearance={appearance} text={eyebrow} />
+        {url ? (
+          <div className={s.videoWrapper}>
+            <InlineVideo appearance={appearance} url={url} />
+          </div>
         ) : null}
-        <Intro
-          appearance={appearance}
-          heading={heading}
-          headingElement={'h1'}
-          description={description}
-          actions={actions}
+        <div className={s.introWrapper}>
+          {eyebrow ? (
+            <div className={s.eyebrowWrapper}>
+              <EyebrowWithPattern appearance={appearance} text={eyebrow} />
+            </div>
+          ) : null}
+          <Intro
+            appearance={appearance}
+            heading={heading}
+            headingElement={'h1'}
+            description={description}
+            actions={actions}
+          />
+        </div>
+      </div>
+      <div className={s.smallImage}>
+        <Image
+          src={require(`./images/graphic-small.svg`)}
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+        />
+      </div>
+      <div className={s.mediumImage}>
+        <Image
+          src={require(`./images/graphic-medium.svg`)}
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+        />
+      </div>
+      <div className={s.largeImage}>
+        <Image
+          src={require(`./images/graphic.svg`)}
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          priority={true}
         />
       </div>
     </div>
