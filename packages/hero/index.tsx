@@ -18,9 +18,11 @@ const Hero = ({
   mediumImage,
   desktopImage,
 }: HeroProps) => {
-  const style = { '--backgroundColor': backgroundColor } as React.CSSProperties
+  const rootStyles = {
+    '--backgroundColor': backgroundColor,
+  } as React.CSSProperties
   return (
-    <div className={s.root} style={style}>
+    <div className={s.root} style={rootStyles}>
       <div className={s.content}>
         {url ? (
           <div className={s.videoWrapper}>

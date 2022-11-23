@@ -85,6 +85,10 @@
   @media (min-width: 768px) {
     display: none;
   }
+
+  @media (min-width: 960px) {
+    display: none;
+  }
 }
 
 .mediumImage {
@@ -96,6 +100,10 @@
     margin-left: -28px;
     grid-row: 1 / -1;
     grid-column: 2 / -1;
+  }
+
+  @media (min-width: 960px) {
+    display: none;
   }
 }
 
