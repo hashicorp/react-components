@@ -4,7 +4,6 @@
   position: relative;
   display: grid;
   align-items: center;
-  padding: var(--wpl-spacing-06) 0;
 
   & > * {
     grid-area: 1 / 1;
@@ -12,18 +11,14 @@
 }
 
 .text {
-  composes: g-type-label-strong from global;
-
+  composes: g-type-label from global;
+  padding-left: 28px;
   &.light {
     color: var(--black);
   }
 
   &.dark {
     color: var(--white);
-  }
-
-  @media (--medium-up) {
-    padding-left: 28px;
   }
 }
 
@@ -49,11 +44,7 @@
 
   width: var(--size);
   height: var(--size);
-  display: none;
+  display: block;
   mask-image: var(--bg-image);
   background-image: var(--fill, var(--black));
-
-  @media (--medium-up) {
-    display: block;
-  }
 }
