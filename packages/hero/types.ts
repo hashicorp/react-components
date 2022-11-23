@@ -8,7 +8,7 @@ export type ContentProps = Pick<
   Pick<InlineVideoProps, 'url'>
 
 export interface HeroProps extends ContentProps {
-  backgroundColor: string
+  backgroundColor?: string
   smallImage: string
   mediumImage: string
   desktopImage: string
