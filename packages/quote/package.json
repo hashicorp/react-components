@@ -9,7 +9,7 @@
     "@hashicorp/react-author-byline": "^0.2.0"
   },
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": "^4.4.0-canary-20221116152808",
+    "@hashicorp/mktg-global-styles": ">=3.x",
     "react": ">=16.x"
   },
   "repository": {
