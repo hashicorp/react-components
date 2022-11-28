@@ -17,6 +17,7 @@ const Hero = ({
   smallImage,
   mediumImage,
   desktopImage,
+  theme,
 }: HeroProps) => {
   const rootStyles = {
     '--backgroundColor': backgroundColor,
@@ -32,7 +33,11 @@ const Hero = ({
         <div className={s.introWrapper}>
           {eyebrow ? (
             <div className={s.eyebrowWrapper}>
-              <EyebrowWithPattern appearance={appearance} text={eyebrow} />
+              <EyebrowWithPattern
+                appearance={appearance}
+                theme={theme}
+                text={eyebrow}
+              />
             </div>
           ) : null}
           <Intro
