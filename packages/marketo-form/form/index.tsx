@@ -7,6 +7,7 @@ import {
   convertToRESTFields,
   groupFields,
   calculateDefaultValues,
+  segmentIdentify,
 } from '../utils'
 import type {
   MarketoForm,
@@ -198,6 +199,10 @@ const Form = ({
   }, [hasBeenRendered])
 
   const onSubmit = async (data: Record<string, unknown>) => {
+    const leadFormFields = convertToRESTFields(data)
+
+    segmentIdentify(leadFormFields)
+
     const res = await fetch(`${window.location.origin}/api/marketo/submit`, {
       method: 'POST',
       headers: {
@@ -206,7 +211,7 @@ const Form = ({
       body: JSON.stringify({
         input: [
           {
-            leadFormFields: convertToRESTFields(data),
+            leadFormFields,
             visitorData: {
               pageURL: window.location.href,
             },
