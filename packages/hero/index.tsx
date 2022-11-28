@@ -7,13 +7,13 @@ import Intro from '@hashicorp/react-intro'
 import s from './style.module.css'
 
 const Hero = ({
-  appearance = 'dark',
+  appearance = 'light',
   eyebrow,
   heading,
   description,
   actions,
   url,
-  backgroundColor = 'black',
+  backgroundColor = 'white',
   smallImage,
   mediumImage,
   desktopImage,
@@ -48,8 +48,9 @@ const Hero = ({
         <Image
           src={require(`./images/graphic-small.svg`)}
           alt=""
-          layout="fill"
-          objectFit="cover"
+          layout="responsive"
+          width="616"
+          height="308"
           priority={true}
         />
       </div>
@@ -66,8 +67,9 @@ const Hero = ({
         <Image
           src={require(`./images/graphic.svg`)}
           alt=""
-          layout="fill"
-          objectFit="cover"
+          layout="responsive"
+          width="1120"
+          height="560"
           priority={true}
         />
       </div>

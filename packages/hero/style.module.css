@@ -1,33 +1,39 @@
 .root {
+  --full-width: 1 / -1;
+
   display: grid;
   background-color: var(--backgroundColor);
-  grid-template-rows: 1fr 400px;
-  overflow: hidden;
+  grid-template-rows: repeat(12, 1fr);
+  max-width: 1312px;
+  margin: 0 auto;
 
   @media (min-width: 768px) {
-    grid-template-rows: unset;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(12, 1fr);
   }
 }
 
+.backgroundImage,
 .content {
-  --full-width: 1 / -1;
+  grid-column: var(--full-width);
+}
 
-  z-index: 2;
+.content {
   composes: g-grid-container from global;
   composes: g-grid from global;
-  padding-top: 56px;
-  padding-bottom: 56px;
+  padding-top: var(--wpl-spacing-09);
+  grid-row: 1 / 10;
+  z-index: 1;
 
   @media (min-width: 768px) {
-    grid-row: 1 / 2;
-    grid-column: 1 / -1;
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: var(--wpl-spacing-08);
+    padding-bottom: var(--wpl-spacing-08);
+    grid-row: var(--full-width);
   }
+
   @media (min-width: 960px) {
-    padding-top: 128px;
-    padding-bottom: 128px;
+    padding-top: var(--wpl-spacing-15);
+    padding-bottom: var(--wpl-spacing-15);
   }
 }
 
@@ -42,7 +48,7 @@
     grid-column: 7 / -1;
   }
 
-  @media (--large) {
+  @media (min-width: 960px) {
     grid-row: var(--full-width);
     grid-column: 7 / -1;
   }
@@ -56,7 +62,7 @@
     grid-row: var(--full-width);
   }
 
-  @media (--large) {
+  @media (min-width: 960px) {
     grid-column: 1 / span 6;
     grid-row: var(--full-width);
   }
@@ -68,7 +74,7 @@
   @media (min-width: 768px) {
     padding-bottom: var(--wpl-spacing-05);
   }
-  @media (--large) {
+  @media (min-width: 960px) {
     padding-bottom: var(--wpl-spacing-05);
   }
 }
@@ -79,8 +85,9 @@
 
 .smallImage {
   composes: backgroundImage;
-  display: flex;
-  margin-top: -163px;
+  display: block;
+  align-self: flex-end;
+  grid-row: 6 / 13;
 
   @media (min-width: 768px) {
     display: none;
@@ -96,10 +103,9 @@
   display: none;
 
   @media (min-width: 768px) {
-    display: flex;
-    margin-left: -28px;
-    grid-row: 1 / -1;
-    grid-column: 2 / -1;
+    display: block;
+    grid-row: var(--full-width);
+    grid-column: 6 / 13;
   }
 
   @media (min-width: 960px) {
@@ -116,9 +122,9 @@
   }
 
   @media (min-width: 960px) {
-    display: flex;
-    margin-left: -480px;
-    grid-row: 1 / -1;
-    grid-column: 2 / -1;
+    display: block;
+    align-self: flex-end;
+    grid-row: var(--full-width);
+    grid-column: 4 / 13;
   }
 }
