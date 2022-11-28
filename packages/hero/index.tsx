@@ -16,12 +16,13 @@ const Hero = ({
   backgroundColor = 'white',
   smallImage,
   mediumImage,
-  desktopImage,
+  largeImage,
   theme,
 }: HeroProps) => {
   const rootStyles = {
     '--backgroundColor': backgroundColor,
   } as React.CSSProperties
+
   return (
     <div className={s.root} style={rootStyles}>
       <div className={s.content}>
@@ -51,7 +52,7 @@ const Hero = ({
       </div>
       <div className={s.smallImage}>
         <Image
-          src={require(`./images/graphic-small.svg`)}
+          src={smallImage}
           alt=""
           layout="responsive"
           width="616"
@@ -61,7 +62,7 @@ const Hero = ({
       </div>
       <div className={s.mediumImage}>
         <Image
-          src={require(`./images/graphic-medium.svg`)}
+          src={mediumImage}
           alt=""
           layout="fill"
           objectFit="cover"
@@ -70,7 +71,7 @@ const Hero = ({
       </div>
       <div className={s.largeImage}>
         <Image
-          src={require(`./images/graphic.svg`)}
+          src={largeImage}
           alt=""
           layout="responsive"
           width="1120"

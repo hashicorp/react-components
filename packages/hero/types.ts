@@ -13,5 +13,5 @@ export interface HeroProps extends ContentProps {
   backgroundColor?: string
   smallImage: string
   mediumImage: string
-  desktopImage: string
+  largeImage: string
 }
