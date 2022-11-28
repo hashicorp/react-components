@@ -7,7 +7,7 @@
   max-width: 1312px;
   margin: 0 auto;
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(12, 1fr);
   }
@@ -25,13 +25,13 @@
   grid-row: 1 / 10;
   z-index: 1;
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     padding-top: var(--wpl-spacing-08);
     padding-bottom: var(--wpl-spacing-08);
     grid-row: var(--full-width);
   }
 
-  @media (min-width: 960px) {
+  @media (--large) {
     padding-top: var(--wpl-spacing-15);
     padding-bottom: var(--wpl-spacing-15);
   }
@@ -42,13 +42,13 @@
   align-self: center;
   padding-bottom: var(--wpl-spacing-06);
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     padding-bottom: 0;
     grid-row: var(--full-width);
     grid-column: 7 / -1;
   }
 
-  @media (min-width: 960px) {
+  @media (--large) {
     grid-row: var(--full-width);
     grid-column: 7 / -1;
   }
@@ -57,12 +57,12 @@
 .introWrapper {
   grid-column: var(--full-width);
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     grid-column: 1 / span 6;
     grid-row: var(--full-width);
   }
 
-  @media (min-width: 960px) {
+  @media (--large) {
     grid-column: 1 / span 6;
     grid-row: var(--full-width);
   }
@@ -71,10 +71,10 @@
 .eyebrowWrapper {
   padding-bottom: var(--wpl-spacing-06);
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     padding-bottom: var(--wpl-spacing-05);
   }
-  @media (min-width: 960px) {
+  @media (--large) {
     padding-bottom: var(--wpl-spacing-05);
   }
 }
@@ -89,11 +89,11 @@
   align-self: flex-end;
   grid-row: 6 / 13;
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     display: none;
   }
 
-  @media (min-width: 960px) {
+  @media (--large) {
     display: none;
   }
 }
@@ -102,13 +102,13 @@
   composes: backgroundImage;
   display: none;
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     display: block;
     grid-row: var(--full-width);
     grid-column: 6 / 13;
   }
 
-  @media (min-width: 960px) {
+  @media (--large) {
     display: none;
   }
 }
@@ -117,11 +117,11 @@
   composes: backgroundImage;
   display: none;
 
-  @media (min-width: 768px) {
+  @media (--medium-up) {
     display: none;
   }
 
-  @media (min-width: 960px) {
+  @media (--large) {
     display: block;
     align-self: flex-end;
     grid-row: var(--full-width);
