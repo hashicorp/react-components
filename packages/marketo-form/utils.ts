@@ -1,3 +1,4 @@
+import { isAnalyticsMethodAvailable } from '@hashicorp/platform-analytics'
 import { MarketoFormField } from './types'
 
 // Marketo stores field names in two versions, SOAP and REST. Some API
@@ -179,12 +180,7 @@ export function segmentIdentify(leadFormFields: Record<string, unknown>) {
   // This function is wrapped in a try/catch to prevent Segment errors from
   // interrupting the form submission workflow.
   try {
-    if (
-      typeof window !== 'undefined' &&
-      window.analytics &&
-      window.analytics.identify &&
-      typeof window.analytics.identify === 'function'
-    ) {
+    if (isAnalyticsMethodAvailable('identify')) {
       const traits: Record<string, unknown> = {}
 
       // Segment traits mostly map 1:1 to Marketo REST field names. However,
