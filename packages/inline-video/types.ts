@@ -3,5 +3,5 @@ export interface InlineVideoProps {
   url: string
   description?: string
   solution?: 'infrastructure' | 'security' | 'networking' | 'applications'
-  gradientPosition?: 'left' | 'right'
+  gradientPosition?: 'left' | 'right' | false
 }

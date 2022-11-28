@@ -19,9 +19,14 @@ export default function InlineVideo(props: InlineVideoProps) {
     width: '100%',
     height: '100%',
   }
+
   return (
     <div
-      className={classNames(s.inlineVideo, s[appearance], s[gradientPosition])}
+      className={classNames(
+        s.inlineVideo,
+        s[appearance],
+        gradientPosition && s[gradientPosition]
+      )}
       data-testid="wpl-inline-video"
     >
       <div className={classNames(s.videoContainer, solution && s[solution])}>
