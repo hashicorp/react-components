@@ -47,11 +47,6 @@
     grid-row: var(--full-width);
     grid-column: 7 / -1;
   }
-
-  @media (--large) {
-    grid-row: var(--full-width);
-    grid-column: 7 / -1;
-  }
 }
 
 .introWrapper {
@@ -61,20 +56,12 @@
     grid-column: 1 / span 6;
     grid-row: var(--full-width);
   }
-
-  @media (--large) {
-    grid-column: 1 / span 6;
-    grid-row: var(--full-width);
-  }
 }
 
 .eyebrowWrapper {
   padding-bottom: var(--wpl-spacing-06);
 
   @media (--medium-up) {
-    padding-bottom: var(--wpl-spacing-05);
-  }
-  @media (--large) {
     padding-bottom: var(--wpl-spacing-05);
   }
 }
@@ -90,10 +77,6 @@
   grid-row: 6 / 13;
 
   @media (--medium-up) {
-    display: none;
-  }
-
-  @media (--large) {
     display: none;
   }
 }
@@ -116,10 +99,6 @@
 .largeImage {
   composes: backgroundImage;
   display: none;
-
-  @media (--medium-up) {
-    display: none;
-  }
 
   @media (--large) {
     display: block;
