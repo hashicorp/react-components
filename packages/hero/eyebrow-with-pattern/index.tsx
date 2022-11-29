@@ -2,16 +2,16 @@ import React from 'react'
 import classNames from 'classnames'
 import s from './style.module.css'
 
-interface EyebrowProps {
+export interface EyebrowProps {
   text: string
-  appearance: 'light' | 'dark'
-  theme: SolutionSpaces
+  appearance?: 'light' | 'dark'
+  theme?: 'infrastructure' | 'security' | 'networking' | 'applications'
 }
 
 export default function Eyebrow({
   text,
-  appearance = 'dark',
-  theme,
+  appearance = 'light',
+  theme = 'infrastructure',
 }: EyebrowProps) {
   return (
     <div className={classNames(s.eyebrow, s[theme])}>
