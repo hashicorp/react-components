@@ -25,66 +25,68 @@ const Hero = ({
 
   return (
     <div className={s.root} style={rootStyles}>
-      <div className={s.content}>
-        {url ? (
-          <div className={s.videoWrapper}>
-            <InlineVideo appearance={appearance} url={url} />
-          </div>
-        ) : null}
-        <div className={s.introWrapper}>
-          {eyebrow ? (
-            <div className={s.eyebrowWrapper}>
-              <EyebrowWithPattern
-                appearance={appearance}
-                theme={theme}
-                text={eyebrow}
-              />
+      <div className={s.inner}>
+        <div className={s.content}>
+          {url ? (
+            <div className={s.videoWrapper}>
+              <InlineVideo appearance={appearance} url={url} />
             </div>
           ) : null}
-          <Intro
-            appearance={appearance}
-            heading={heading}
-            headingElement={'h1'}
-            description={description}
-            actions={actions}
-          />
+          <div className={s.introWrapper}>
+            {eyebrow ? (
+              <div className={s.eyebrowWrapper}>
+                <EyebrowWithPattern
+                  appearance={appearance}
+                  theme={theme}
+                  text={eyebrow}
+                />
+              </div>
+            ) : null}
+            <Intro
+              appearance={appearance}
+              heading={heading}
+              headingElement={'h1'}
+              description={description}
+              actions={actions}
+            />
+          </div>
         </div>
+        {smallImage ? (
+          <div className={s.smallImage}>
+            <Image
+              src={smallImage}
+              alt=""
+              layout="responsive"
+              width="616"
+              height="308"
+              priority={true}
+            />
+          </div>
+        ) : null}
+        {mediumImage ? (
+          <div className={s.mediumImage}>
+            <Image
+              src={mediumImage}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              priority={true}
+            />
+          </div>
+        ) : null}
+        {largeImage ? (
+          <div className={s.largeImage}>
+            <Image
+              src={largeImage}
+              alt=""
+              layout="responsive"
+              width="1120"
+              height="560"
+              priority={true}
+            />
+          </div>
+        ) : null}
       </div>
-      {smallImage ? (
-        <div className={s.smallImage}>
-          <Image
-            src={smallImage}
-            alt=""
-            layout="responsive"
-            width="616"
-            height="308"
-            priority={true}
-          />
-        </div>
-      ) : null}
-      {mediumImage ? (
-        <div className={s.mediumImage}>
-          <Image
-            src={mediumImage}
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            priority={true}
-          />
-        </div>
-      ) : null}
-      {largeImage ? (
-        <div className={s.largeImage}>
-          <Image
-            src={largeImage}
-            alt=""
-            layout="responsive"
-            width="1120"
-            height="560"
-            priority={true}
-          />
-        </div>
-      ) : null}
     </div>
   )
 }

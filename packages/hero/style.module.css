@@ -1,8 +1,11 @@
 .root {
   --full-width: 1 / -1;
 
-  display: grid;
   background-color: var(--backgroundColor);
+}
+
+.inner {
+  display: grid;
   grid-template-rows: repeat(12, 1fr);
   max-width: 1312px;
   margin: 0 auto;
