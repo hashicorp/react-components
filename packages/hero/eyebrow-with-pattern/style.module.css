@@ -1,0 +1,50 @@
+.eyebrow {
+  --size: 64px;
+
+  position: relative;
+  display: grid;
+  align-items: center;
+
+  & > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.text {
+  composes: g-type-label from global;
+  padding-left: 28px;
+  &.light {
+    color: var(--black);
+  }
+
+  &.dark {
+    color: var(--white);
+  }
+}
+
+.pattern {
+  --bg-image: '';
+  --fill: var(--wpl-gradient-corporate-diagonal);
+
+  @nest .infrastructure & {
+    --fill: var(--wpl-gradient-infrastructure-diagonal);
+  }
+
+  @nest .security & {
+    --fill: var(--wpl-gradient-security-diagonal);
+  }
+
+  @nest .networking & {
+    --fill: var(--wpl-gradient-networking-diagonal);
+  }
+
+  @nest .applications & {
+    --fill: var(--wpl-gradient-applications-diagonal);
+  }
+
+  width: var(--size);
+  height: var(--size);
+  display: block;
+  mask-image: var(--bg-image);
+  background-image: var(--fill, var(--black));
+}
