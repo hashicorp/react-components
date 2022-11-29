@@ -57,8 +57,10 @@ const Hero = ({
               src={smallImage}
               alt=""
               layout="responsive"
-              width="616"
-              height="308"
+              width="1200"
+              height="1000"
+              objectFit="cover"
+              objectPosition="top center"
               priority={true}
             />
           </div>
@@ -74,19 +76,21 @@ const Hero = ({
             />
           </div>
         ) : null}
-        {largeImage ? (
-          <div className={s.largeImage}>
-            <Image
-              src={largeImage}
-              alt=""
-              layout="responsive"
-              width="1120"
-              height="560"
-              priority={true}
-            />
-          </div>
-        ) : null}
       </div>
+      {largeImage ? (
+        <div className={s.largeImage}>
+          <Image
+            src={largeImage}
+            alt=""
+            layout="responsive"
+            width="953"
+            height="770"
+            objectFit="cover"
+            objectPosition="right center"
+            priority={true}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
