@@ -50,35 +50,41 @@ const Hero = ({
           />
         </div>
       </div>
-      <div className={s.smallImage}>
-        <Image
-          src={smallImage}
-          alt=""
-          layout="responsive"
-          width="616"
-          height="308"
-          priority={true}
-        />
-      </div>
-      <div className={s.mediumImage}>
-        <Image
-          src={mediumImage}
-          alt=""
-          layout="fill"
-          objectFit="cover"
-          priority={true}
-        />
-      </div>
-      <div className={s.largeImage}>
-        <Image
-          src={largeImage}
-          alt=""
-          layout="responsive"
-          width="1120"
-          height="560"
-          priority={true}
-        />
-      </div>
+      {smallImage ? (
+        <div className={s.smallImage}>
+          <Image
+            src={smallImage}
+            alt=""
+            layout="responsive"
+            width="616"
+            height="308"
+            priority={true}
+          />
+        </div>
+      ) : null}
+      {mediumImage ? (
+        <div className={s.mediumImage}>
+          <Image
+            src={mediumImage}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+            priority={true}
+          />
+        </div>
+      ) : null}
+      {largeImage ? (
+        <div className={s.largeImage}>
+          <Image
+            src={largeImage}
+            alt=""
+            layout="responsive"
+            width="1120"
+            height="560"
+            priority={true}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
