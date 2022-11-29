@@ -36,6 +36,14 @@
   }
 }
 
+.eyebrow {
+  padding-bottom: var(--wpl-spacing-06);
+
+  @media (--medium-up) {
+    padding-bottom: var(--wpl-spacing-05);
+  }
+}
+
 .video {
   position: relative;
   margin-bottom: var(--wpl-spacing-06);
