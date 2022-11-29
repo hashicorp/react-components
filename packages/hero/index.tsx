@@ -1,4 +1,4 @@
-import Eyebrow from './eyebrow-with-pattern'
+import EyebrowWithPattern from './eyebrow-with-pattern'
 import type { HeroProps } from './types'
 import Image from 'next/image'
 import InlineVideo from '@hashicorp/react-inline-video'
@@ -32,7 +32,11 @@ const Hero = ({
           <div className={s.content}>
             {eyebrow ? (
               <div className={s.eyebrow}>
-                <Eyebrow appearance={appearance} theme={theme} text={eyebrow} />
+                <EyebrowWithPattern
+                  appearance={appearance}
+                  theme={theme}
+                  text={eyebrow}
+                />
               </div>
             ) : null}
             <Intro
