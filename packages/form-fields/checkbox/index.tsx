@@ -1,4 +1,4 @@
-import React, { HTMLProps, ReactNode } from 'react'
+import React, { ReactNode, ComponentProps } from 'react'
 import { useId } from '@reach/auto-id'
 import s from './style.module.css'
 import classNames from 'classnames'
@@ -8,7 +8,7 @@ interface CheckboxInputProps {
   label: ReactNode
   appearance?: 'light' | 'dark'
   className?: string
-  field: HTMLProps<HTMLInputElement>
+  field: ComponentProps<'input'>
   error?: string
 }
 
@@ -31,7 +31,7 @@ function CheckboxInput({
     <div
       className={classNames(
         s.root,
-        s[`background-${appearance}`],
+        s[`theme-${appearance}`],
         {
           [s.hasError]: Boolean(error),
         },
