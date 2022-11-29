@@ -31,12 +31,15 @@ const Hero = ({
           ) : null}
           <div className={s.content}>
             {eyebrow ? (
-              <Eyebrow appearance={appearance} theme={theme} text={eyebrow} />
+              <div className={s.eyebrow}>
+                <Eyebrow appearance={appearance} theme={theme} text={eyebrow} />
+              </div>
             ) : null}
             <Intro
               appearance={appearance}
               heading={heading}
               headingElement={'h1'}
+              headingSize={1}
               description={description}
               actions={actions}
             />
