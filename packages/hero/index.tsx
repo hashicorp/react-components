@@ -1,75 +1,51 @@
-import Image from 'next/image'
-import Button from '@hashicorp/react-button'
-import InlineVideo from '@hashicorp/react-inline-video'
 import Eyebrow from './eyebrow-with-pattern'
+import type { HeroProps } from './types'
+import Image from 'next/image'
+import InlineVideo from '@hashicorp/react-inline-video'
+import Intro from '@hashicorp/react-intro'
 import s from './style.module.css'
 
-export interface HeroProps {
-  title: string
-  description: string
-  // TODO: determine if ctas are required
-  ctas?: Array<{
-    title: string
-    url: string
-  }>
-  image: {
-    src: string
-  }
-  solutionSpace: 'infrastructure' | 'security' | 'networking' | 'applications'
-  videoUrl?: string
-}
-
 const Hero = ({
-  title,
+  appearance = 'light',
+  eyebrow,
+  heading,
   description,
-  ctas,
-  image,
-  solutionSpace,
-  videoUrl,
+  actions,
+  url,
+  backgroundColor = 'white',
+  smallImage,
+  largeImage,
+  theme,
 }: HeroProps) => {
+  const rootStyles = {
+    '--backgroundColor': backgroundColor,
+  } as React.CSSProperties
   return (
-    <header className={s.root}>
+    <header className={s.root} style={rootStyles}>
       <div className={s.bgBounding}>
         <div className={s.container}>
-          {videoUrl ? (
+          {url ? (
             <div className={s.video}>
-              <InlineVideo solution={solutionSpace} url={videoUrl} />
+              <InlineVideo solution={theme} url={url} />
             </div>
           ) : null}
           <div className={s.content}>
-            <Eyebrow
-              appearance="dark"
-              theme={solutionSpace || 'infrastructure'}
-              text="Solution"
+            {eyebrow ? (
+              <Eyebrow appearance={appearance} theme={theme} text={eyebrow} />
+            ) : null}
+            <Intro
+              appearance={appearance}
+              heading={heading}
+              headingElement={'h1'}
+              description={description}
+              actions={actions}
             />
-            <h1 className={s.title}>{title}</h1>
-            <p className={s.description}>{description}</p>
-            {ctas && (
-              <div className={s.ctas}>
-                {ctas.map(({ url, title }, idx) => {
-                  const isPrimary = idx === 0
-                  return (
-                    <Button
-                      title={title}
-                      url={parseUrl(url).href}
-                      key={title}
-                      size="small"
-                      linkType={!isPrimary ? 'inbound' : undefined}
-                      theme={{
-                        variant: isPrimary ? 'primary' : 'tertiary-neutral',
-                        background: 'dark',
-                      }}
-                    />
-                  )
-                })}
-              </div>
-            )}
           </div>
         </div>
         <div className={s.desktopMedia}>
-          {image && (
+          {smallImage && (
             <Image
-              src={require(`./img/${solutionSpace || 'infrastructure'}.svg`)}
+              src={smallImage}
               alt=""
               layout="fill"
               objectFit="contain"
@@ -78,11 +54,9 @@ const Hero = ({
           )}
         </div>
         <div className={s.smallMedia}>
-          {image && (
+          {largeImage && (
             <Image
-              src={require(`./img/${
-                solutionSpace || 'infrastructure'
-              }-small.svg`)}
+              src={largeImage}
               alt=""
               width={800}
               height={667}
