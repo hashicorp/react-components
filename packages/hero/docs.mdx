@@ -5,7 +5,36 @@ componentName: Hero
 A flexible hero component used as the primary content at the top of many HashiCorp pages.
 
 <LiveComponent>
-{`<Hero />`}
+{`
+  <section>
+    <div>
+      <Hero
+        backgroundColor={'black'}
+        appearance={'dark'}
+        theme={'security'}
+        eyebrow={'EYEBROW'}
+        heading={'Display copy'}
+        description={'Body copy, pharetra pellentesque sed elementum risus accumsan et. Tristique tortor, morbi vivamus nibh mollis. Ultrices aliquet sit nibh consequat quam'}
+        actions={{
+          ctas: [
+            {
+              title: 'View tutorials',
+              href: '/tutorials',
+            },
+            {
+              title: 'View documentation',
+              href: '/docs',
+              type: 'standalone-link'
+            }
+          ]
+        }}
+        url={"https://hashicorp.wistia.com/medias/glovs5atuj"}
+        smallImage={'https://www.datocms-assets.com/2885/1669764465-security.svg'}
+        largeImage={'https://www.datocms-assets.com/2885/1669764461-security-small.svg'}
+      />
+    </div>
+  </section>
+`}
 </LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
