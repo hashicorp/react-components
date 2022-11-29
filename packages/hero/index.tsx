@@ -82,11 +82,8 @@ const Hero = ({
           <Image
             src={largeImage}
             alt=""
-            layout="responsive"
-            width="953"
-            height="770"
+            layout="fill"
             objectFit="cover"
-            objectPosition="right center"
             priority={true}
           />
         </div>

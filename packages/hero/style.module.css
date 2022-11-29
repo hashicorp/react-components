@@ -107,6 +107,8 @@
     display: block;
     grid-row: var(--full-width);
     grid-column: 4 / 13;
+    width: 100%;
+    height: 100%;
   }
 
   @media (--large) {
@@ -124,5 +126,7 @@
     align-self: center;
     grid-row: var(--full-width);
     grid-column: 6 / -1;
+    width: 100%;
+    height: 100%;
   }
 }
