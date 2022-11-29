@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.6.0
+
+### Minor Changes
+
+- [#832](https://github.com/hashicorp/react-components/pull/832) [`50fbf782`](https://github.com/hashicorp/react-components/commit/50fbf782f2e0c7640f2d26e4f07f0fe477bad245) Thanks [@dstaley](https://github.com/dstaley)! - Call segment.identify on form submissions
+
 ## 0.5.0
 
 ### Minor Changes
