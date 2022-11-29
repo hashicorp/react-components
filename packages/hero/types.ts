@@ -14,6 +14,5 @@ export type ContentProps = Pick<
 export interface HeroProps extends ContentProps {
   backgroundColor?: string
   smallImage?: string
-  mediumImage?: string
   largeImage?: string
 }
