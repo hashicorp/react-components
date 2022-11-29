@@ -14,11 +14,16 @@
   composes: g-grid from global;
   composes: g-grid-container from global;
   grid-template-rows: min-content min-content;
-  padding-top: 80px;
+  padding-top: var(--wpl-spacing-09);
 
   @media (--medium-up) {
-    padding-top: 132px;
-    padding-bottom: 150px;
+    padding-top: var(--wpl-spacing-08);
+    padding-bottom: 184px;
+  }
+
+  @media (--large) {
+    padding-top: var(--wpl-spacing-15);
+    padding-bottom: var(--wpl-spacing-15);
   }
 }
 
@@ -88,33 +93,5 @@
 
   @media (--medium-up) {
     display: none;
-  }
-}
-
-.title {
-  color: var(--white);
-  composes: g-type-display-1 from global;
-  margin: 0;
-  padding-top: 32px;
-}
-
-.description {
-  color: var(--gray-4);
-  composes: g-type-body-large from global;
-  margin-bottom: 50px;
-  margin-top: 28px;
-}
-
-.ctas {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 27px;
-  grid-column: 1 / -1;
-  padding: 0;
-  position: relative;
-
-  @media (--medium-up) {
-    grid-column: 1 / 7;
   }
 }
