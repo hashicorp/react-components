@@ -13,17 +13,13 @@ const EyebrowWithPattern = ({
   appearance = 'light',
   theme = 'infrastructure',
 }: EyebrowProps) => {
+  const bgImageStyles = {
+    '--bg-image': `url(${require('./img/bg.svg')})`,
+  } as React.CSSProperties
   return (
     <div className={classNames(s.eyebrow, s[theme])}>
       <span className={classNames(s.text, s[appearance])}>{text}</span>
-      <span
-        className={s.pattern}
-        style={
-          {
-            '--bg-image': `url(${require('./img/bg.svg')})`,
-          } as React.CSSProperties
-        }
-      />
+      <span className={s.pattern} style={bgImageStyles} />
     </div>
   )
 }
