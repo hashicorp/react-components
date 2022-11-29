@@ -8,11 +8,11 @@ export interface EyebrowProps {
   theme?: 'infrastructure' | 'security' | 'networking' | 'applications'
 }
 
-export default function Eyebrow({
+const EyebrowWithPattern = ({
   text,
   appearance = 'light',
   theme = 'infrastructure',
-}: EyebrowProps) {
+}: EyebrowProps) => {
   return (
     <div className={classNames(s.eyebrow, s[theme])}>
       <span className={classNames(s.text, s[appearance])}>{text}</span>
@@ -27,3 +27,5 @@ export default function Eyebrow({
     </div>
   )
 }
+
+export default EyebrowWithPattern
