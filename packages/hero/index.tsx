@@ -50,9 +50,9 @@ const Hero = ({
           </div>
         </div>
         <div className={s.desktopMedia}>
-          {smallImage && (
+          {largeImage && (
             <Image
-              src={smallImage}
+              src={largeImage}
               alt=""
               layout="fill"
               objectFit="contain"
@@ -61,9 +61,9 @@ const Hero = ({
           )}
         </div>
         <div className={s.smallMedia}>
-          {largeImage && (
+          {smallImage && (
             <Image
-              src={largeImage}
+              src={smallImage}
               alt=""
               width={800}
               height={667}
