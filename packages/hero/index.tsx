@@ -14,6 +14,7 @@ const Hero = ({
   url,
   backgroundColor = 'white',
   smallImage,
+  mediumImage,
   largeImage,
   theme,
 }: HeroProps) => {
@@ -56,6 +57,17 @@ const Hero = ({
               alt=""
               layout="fill"
               objectFit="contain"
+              priority={true}
+            />
+          )}
+        </div>
+        <div className={s.mediumMedia}>
+          {mediumImage && (
+            <Image
+              src={mediumImage}
+              alt=""
+              layout="fill"
+              objectFit="cover"
               priority={true}
             />
           )}
