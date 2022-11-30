@@ -8,6 +8,11 @@
   composes: g-grid-container from global;
   max-width: 1600px;
   padding: 0;
+
+  @media (--medium-up) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
 .container {
@@ -17,8 +22,10 @@
   padding-top: var(--wpl-spacing-09);
 
   @media (--medium-up) {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
     padding-top: var(--wpl-spacing-08);
-    padding-bottom: 184px;
+    padding-bottom: var(--wpl-spacing-08);
   }
 
   @media (--large) {
@@ -83,8 +90,27 @@
     margin-left: 20%;
   }
 
-  @media (--medium-up) {
+  @media (--large) {
     display: block;
+  }
+}
+
+.mediumMedia {
+  display: none;
+
+  @media (--medium-up) {
+    display: flex;
+    position: relative;
+    grid-row: 1 / -1;
+    grid-column: 6 / -1;
+
+    & img {
+      object-position: center right;
+    }
+  }
+
+  @media (--large) {
+    display: none;
   }
 }
 
