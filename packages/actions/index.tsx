@@ -4,7 +4,7 @@ import StandaloneLink from '@hashicorp/react-standalone-link'
 import type { ActionsProps } from './types'
 import s from './style.module.css'
 
-const hasButton = (item) => item.type === undefined
+const hasButton = (item) => item.type === 'button' || item.type === undefined
 const hasStandaloneLink = (item) => item.type === 'standalone-link'
 
 export default function Actions({
