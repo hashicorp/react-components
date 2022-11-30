@@ -49,7 +49,7 @@
 }
 
 .secondary {
-  --color: var(--wpl-neutral-600);
+  --color: var(--wpl-neutral-500);
   --outline-color: var(--wpl-neutral-400);
 
   &:hover {
