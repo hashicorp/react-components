@@ -50,7 +50,7 @@ const Hero = ({
             />
           </div>
         </div>
-        <div className={s.desktopMedia}>
+        <div className={s.largeMedia}>
           {largeImage && (
             <Image
               src={largeImage}
