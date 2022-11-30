@@ -4,6 +4,9 @@ import StandaloneLink from '@hashicorp/react-standalone-link'
 import type { ActionsProps } from './types'
 import s from './style.module.css'
 
+const hasButton = (item) => item.type === undefined
+const hasStandaloneLink = (item) => item.type === 'standalone-link'
+
 export default function Actions({
   appearance = 'light',
   layout = 'inline',
@@ -16,8 +19,17 @@ export default function Actions({
       `Actions expects at least 1 cta, no more than 2. You provided ${ctas.length}.`
     )
   }
+  let mixed = false
+  // If CTAs contain a button and standalone link
+  // increase the column gap
+  if (ctas.some(hasButton) && ctas.some(hasStandaloneLink)) {
+    mixed = true
+  }
   return (
-    <div className={classNames(s.actions, s[layout])} data-testid="actions">
+    <div
+      className={classNames(s.actions, s[layout], mixed && s.mixed)}
+      data-testid="actions"
+    >
       {ctas.map((cta, index) => {
         // The first CTA and second CTA should always
         // have the `primary` and `secondary` variations respectively.
