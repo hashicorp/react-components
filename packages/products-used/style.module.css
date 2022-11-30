@@ -32,7 +32,7 @@
 
   &[href] {
     min-height: 40px;
-    padding: 0 var(--wpl-spacing-02);
+    padding: var(--wpl-spacing-01) var(--wpl-spacing-02);
     border-radius: calc(var(--wpl-spacing-01) / 2);
     border: 1px solid var(--wpl-neutral-100);
     transition: background-color 0.2s, border 0.2s;
