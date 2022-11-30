@@ -31,40 +31,34 @@
   align-items: center;
 
   &[href] {
-    padding: var(--wpl-spacing-01) var(--wpl-spacing-02);
+    min-height: 40px;
+    padding: 0 var(--wpl-spacing-02);
     border-radius: calc(var(--wpl-spacing-01) / 2);
-    border: 2px solid var(--wpl-neutral-100);
+    border: 1px solid var(--wpl-neutral-100);
     transition: background-color 0.2s, border 0.2s;
 
     &:hover {
-      background-color: var(--wpl-neutral-25);
-      border-color: var(--wpl-neutral-200);
-    }
-
-    &:active {
-      background-color: var(--wpl-neutral-50);
-      border-color: var(--wpl-neutral-200);
+      background-color: var(--wpl-neutral-100);
     }
 
     &:focus {
-      border-color: var(--wpl-blue-400);
+      outline: transparent;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--wpl-neutral-400);
+      outline-offset: 2px;
     }
 
     &.dark {
-      border-color: var(--wpl-neutral-700);
+      border-color: var(--wpl-neutral-600);
 
       &:hover {
-        background-color: var(--wpl-neutral-850);
-        border-color: var(--wpl-neutral-500);
+        background-color: var(--wpl-neutral-600);
       }
 
-      &:active {
-        background-color: var(--wpl-neutral-800);
-        border-color: var(--wpl-neutral-500);
-      }
-
-      &:focus {
-        border-color: var(--wpl-blue-400);
+      &:focus-visible {
+        outline: 2px solid var(--wpl-neutral-600);
       }
     }
   }
@@ -78,11 +72,11 @@
 
 .productName {
   composes: g-type-tag-label from global;
-  font-size: 13px;
+  font-size: 14px;
   text-transform: capitalize;
-  color: var(--wpl-neutral-500);
+  color: var(--wpl-neutral-900);
 
   &.dark {
-    color: var(--wpl-neutral-200);
+    color: var(--wpl-neutral-0);
   }
 }
