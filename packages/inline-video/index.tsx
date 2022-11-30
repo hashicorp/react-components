@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import WistiaPlayer from 'react-player/wistia'
-import Player from 'react-player'
 import type { InlineVideoProps } from './types'
 import s from './style.module.css'
+import dynamic from 'next/dynamic'
 
 export default function InlineVideo(props: InlineVideoProps) {
   const {
@@ -13,6 +13,7 @@ export default function InlineVideo(props: InlineVideoProps) {
     solution,
   } = props
 
+  const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false })
   const playerProps = {
     controls: true,
     url,
@@ -41,7 +42,7 @@ export default function InlineVideo(props: InlineVideoProps) {
               }}
             />
           ) : (
-            <Player {...playerProps} />
+            <ReactPlayer {...playerProps} />
           )}
         </div>
       </div>
