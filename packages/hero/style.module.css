@@ -72,26 +72,16 @@
 
 .largeMedia {
   overflow: hidden;
-  grid-column: 1 / -1;
+  grid-column: 3 / -1;
   width: 100%;
-  right: 0;
-  left: auto;
   display: none;
-  position: absolute;
-  top: 0;
-  height: 100%;
-
-  & img {
-    object-position: bottom right;
-  }
-
-  @media (--medium) {
-    max-width: 80%;
-    margin-left: 20%;
-  }
+  position: relative;
+  grid-row: 1/-1;
 
   @media (--large) {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 }
 
@@ -103,10 +93,6 @@
     position: relative;
     grid-row: 1 / -1;
     grid-column: 6 / -1;
-
-    & img {
-      object-position: center right;
-    }
   }
 
   @media (--large) {
