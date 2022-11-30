@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 
 /**
  * This hidden element acts solely as a container
@@ -8,6 +8,19 @@ import { forwardRef } from 'react'
  * line numbers and so on in other parts of code-block.
  */
 function HiddenCopyContent({ code }, copyRef) {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  /**
+   * We are avoiding SSR here as this component is only used for the copy-to-clipboard interaction, and so rendering
+   * the text content of the code introduces duplicate markup and some difficult-to-debug hydration mismatches.
+   * By the time someone interacts with the copy-to-clipboard functionality, this should be rendered.
+   */
+  if (!isClient) return null
+
   return (
     <pre ref={copyRef} style={{ display: 'none' }}>
       {typeof code === 'string' ? (
