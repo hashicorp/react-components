@@ -1,12 +1,12 @@
 {
   "name": "@hashicorp/react-video-feature",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/react-author-byline": "^0.2.0",
-    "@hashicorp/react-inline-video": "^0.2.0",
+    "@hashicorp/react-inline-video": "^0.3.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
