@@ -13,20 +13,15 @@ A flexible hero component used as the primary content at the top of many HashiCo
         appearance={'dark'}
         theme={'security'}
         eyebrow={'EYEBROW'}
-        heading={'Display copy'}
+        title={'Display copy'}
         description={'Body copy, pharetra pellentesque sed elementum risus accumsan et. Tristique tortor, morbi vivamus nibh mollis. Ultrices aliquet sit nibh consequat quam'}
-        actions={{
-          ctas: [
-            {
-              title: 'View tutorials',
-              href: '/tutorials',
-            },
-            {
-              title: 'View documentation',
-              href: '/docs',
-              type: 'standalone-link'
-            }
-          ]
+        primaryCta={{
+          title: "Primary CTA",
+          href: "https://www.hashicorp.com",
+        }}
+        secondaryCta={{
+          children: "Secondary CTA",
+          href: "https://www.hashicorp.com",
         }}
         url={"https://hashicorp.wistia.com/medias/glovs5atuj"}
         smallImage={'https://www.datocms-assets.com/2885/1669764461-security-small.svg'}
