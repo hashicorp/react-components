@@ -1,10 +1,10 @@
 .root {
-  composes: wpl-variables from '../style.module.css';
+  composes: wpl-variables from '../../style.module.css';
   margin-bottom: 12px;
 }
 
 .theme-dark {
-  composes: wpl-variables-dark from '../style.module.css';
+  composes: wpl-variables-dark from '../../style.module.css';
 }
 
 .wrapper {
@@ -23,13 +23,17 @@
 }
 
 .input {
-  composes: wpl-input-base from '../style.module.css';
+  composes: wpl-input-base from '../../style.module.css';
   height: 100%;
   appearance: none;
   background: var(--input-checkbox-background);
   transition: border 0.2s;
   cursor: pointer;
   border-width: 1px;
+
+  &[type='radio'] {
+    border-radius: 20px;
+  }
 
   &:focus {
     outline: 2px solid var(--input-checkbox-focus-outline-color);
@@ -44,6 +48,10 @@
     background-image: var(--input-checkbox-checked-background-image);
     background-repeat: no-repeat;
     background-position: center;
+
+    &[type='radio'] {
+      background-image: var(--input-radio-checked-background-image);
+    }
 
     &:hover {
       background-color: var(--input-checkbox-checked-hover-background-color);
@@ -68,5 +76,5 @@
 }
 
 .error {
-  composes: wpl-error-message from '../style.module.css';
+  composes: wpl-error-message from '../../style.module.css';
 }

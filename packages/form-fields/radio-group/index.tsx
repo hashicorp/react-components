@@ -1,4 +1,4 @@
-import Checkbox from '../checkbox'
+import Radio from '../checkbox'
 import type { ComponentProps } from 'react'
 import ChoiceGroup from '../partials/choice-group'
 
@@ -9,11 +9,11 @@ interface CheckboxGroupProps {
   error?: string
   appearance?: 'light' | 'dark'
   className?: string
-  inputs: ComponentProps<typeof Checkbox>[]
+  inputs: ComponentProps<typeof Radio>[]
 }
 
-function CheckboxGroup(props: CheckboxGroupProps) {
-  return <ChoiceGroup type="checkbox" {...props} />
+function RadioGroup(props: CheckboxGroupProps) {
+  return <ChoiceGroup type="radio" {...props} />
 }
 
-export default CheckboxGroup
+export default RadioGroup

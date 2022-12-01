@@ -9,6 +9,7 @@
   --input-checkbox-checked-hover-background-color: var(--wpl-blue-400);
   --input-checkbox-background: transparent;
   --input-checkbox-checked-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill='%23fff' d='M14.78 4.28a.75.75 0 0 0-1.06-1.06l-7.97 7.97-3.47-3.47a.75.75 0 0 0-1.06 1.06l4 4a.75.75 0 0 0 1.06 0l8.5-8.5Z'/%3E%3C/svg%3E");
+  --input-radio-checked-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
   --input-border-color: var(--wpl-neutral-400);
   --input-focus-border-color: #0c56e9;
   --input-hover-border-color: var(--wpl-neutral-700);
@@ -29,6 +30,7 @@
   --input-checkbox-focus-background-color: var(--wpl-neutral-700);
   --input-checkbox-checked-hover-background-color: var(--wpl-neutral-100);
   --input-checkbox-checked-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill='%23000' d='M14.78 4.28a.75.75 0 0 0-1.06-1.06l-7.97 7.97-3.47-3.47a.75.75 0 0 0-1.06 1.06l4 4a.75.75 0 0 0 1.06 0l8.5-8.5Z'/%3E%3C/svg%3E");
+  --input-radio-checked-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23000'/%3e%3c/svg%3e");
   --input-border-color: var(--wpl-neutral-400);
   --input-hover-border-color: var(--wpl-neutral-200);
   --input-active-border-color: #a3a7ae;
