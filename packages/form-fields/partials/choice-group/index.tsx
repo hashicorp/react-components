@@ -3,7 +3,7 @@ import Radio from '../../radio'
 import Checkbox from '../../checkbox'
 import Label from '../label'
 import type { ComponentProps } from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import s from './style.module.css'
 
 interface BaseChoiceGroupProps {
@@ -39,11 +39,8 @@ function ChoiceGroup({
   inputs,
 }: ChoiceGroupProps) {
   const helpId = useId()
-  const Component = type === 'radio' ? Radio : Checkbox
   return (
-    <fieldset
-      className={classNames(s.root, className, s[`theme-${appearance}`])}
-    >
+    <fieldset className={clsx(s.root, className, s[`theme-${appearance}`])}>
       {label && (
         <Label
           legend
@@ -55,17 +52,19 @@ function ChoiceGroup({
         />
       )}
       <div>
-        {inputs.map((input) => (
-          <Component
-            {...input}
-            key={input.field.name}
-            appearance={appearance}
-            field={{
-              ...input.field,
-              'aria-describedby': helpId,
-            }}
-          />
-        ))}
+        {inputs.map((input) => {
+          const props = {
+            ...input,
+            key: input.field.name,
+            appearance,
+            field: { ...input.field, 'aria-describedby': helpId },
+          }
+          return type === 'radio' ? (
+            <Radio {...props} />
+          ) : (
+            <Checkbox {...props} />
+          )
+        })}
       </div>
     </fieldset>
   )
