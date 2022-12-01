@@ -24,13 +24,14 @@ function CheckboxGroup({
   className,
   inputs,
 }: CheckboxGroupProps) {
-  const labelId = useId()
   const helpId = useId()
   return (
-    <div className={classNames(s.root, className, s[`theme-${appearance}`])}>
+    <fieldset
+      className={classNames(s.root, className, s[`theme-${appearance}`])}
+    >
       {label && (
         <Label
-          id={labelId}
+          legend
           label={label}
           helpId={helpId}
           helpText={helpText}
@@ -47,12 +48,11 @@ function CheckboxGroup({
             field={{
               ...input.field,
               'aria-describedby': helpId,
-              'aria-labelledby': labelId,
             }}
           />
         ))}
       </div>
-    </div>
+    </fieldset>
   )
 }
 

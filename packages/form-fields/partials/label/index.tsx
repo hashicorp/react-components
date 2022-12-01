@@ -10,6 +10,7 @@ interface LabelProps {
   id?: string
   required?: boolean
   error?: string | false
+  legend?: boolean
 }
 
 const Label = ({
@@ -20,10 +21,12 @@ const Label = ({
   id,
   required,
   error,
+  legend = false,
 }: LabelProps) => {
+  const LabelElement = legend ? 'legend' : 'label'
   return (
     <>
-      <label
+      <LabelElement
         id={id}
         htmlFor={htmlFor}
         className={clsx(s.label, {
@@ -39,7 +42,7 @@ const Label = ({
         ) : (
           label
         )}
-      </label>
+      </LabelElement>
       {helpText && (
         <div id={helpId} className={clsx(s.help, { [s.hasError]: error })}>
           {helpText}
