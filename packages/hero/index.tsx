@@ -1,4 +1,5 @@
 import Button from '@hashicorp/react-button'
+import classNames from 'classnames'
 import EyebrowWithPattern from './eyebrow-with-pattern'
 import type { HeroProps } from './types'
 import Image from 'next/image'
@@ -11,6 +12,7 @@ const Hero = ({
   eyebrow,
   title,
   description,
+  descriptionColor,
   primaryCta,
   secondaryCta,
   url,
@@ -23,6 +25,10 @@ const Hero = ({
   const rootStyles = {
     '--backgroundColor': backgroundColor,
   } as React.CSSProperties
+  const descriptionStyles = {
+    '--color': descriptionColor,
+  } as React.CSSProperties
+
   return (
     <header className={s.root} style={rootStyles}>
       <div className={s.bgBounding}>
@@ -32,7 +38,7 @@ const Hero = ({
               <InlineVideo solution={theme} url={url} />
             </div>
           ) : null}
-          <div className={s.content}>
+          <div className={classNames(s.content, s[appearance])}>
             {eyebrow ? (
               <div className={s.eyebrow}>
                 <EyebrowWithPattern
@@ -42,19 +48,20 @@ const Hero = ({
                 />
               </div>
             ) : null}
-
+            {/* TODO: Heading can optionally be display 1 or 2 */}
             <h1 className={s.title}>{title}</h1>
-            <p className={s.description}>{description}</p>
+            <p className={s.description} style={descriptionStyles}>
+              {description}
+            </p>
             <div className={s.ctas}>
               <Button
                 title={primaryCta.title}
                 url={primaryCta.href}
                 key={primaryCta.title}
-                size="small"
                 linkType={'inbound'}
                 theme={{
                   variant: 'primary',
-                  background: 'dark',
+                  background: appearance,
                   brand: primaryCta.brand,
                 }}
               />
