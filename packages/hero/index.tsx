@@ -1,16 +1,18 @@
+import Button from '@hashicorp/react-button'
 import EyebrowWithPattern from './eyebrow-with-pattern'
 import type { HeroProps } from './types'
 import Image from 'next/image'
 import InlineVideo from '@hashicorp/react-inline-video'
-import Intro from '@hashicorp/react-intro'
+import StandaloneLink from '@hashicorp/react-standalone-link'
 import s from './style.module.css'
 
 const Hero = ({
   appearance = 'light',
   eyebrow,
-  heading,
+  title,
   description,
-  actions,
+  primaryCta,
+  secondaryCta,
   url,
   backgroundColor = 'white',
   smallImage,
@@ -40,14 +42,31 @@ const Hero = ({
                 />
               </div>
             ) : null}
-            <Intro
-              appearance={appearance}
-              heading={heading}
-              headingElement={'h1'}
-              headingSize={1}
-              description={description}
-              actions={actions}
-            />
+
+            <h1 className={s.title}>{title}</h1>
+            <p className={s.description}>{description}</p>
+            <div className={s.ctas}>
+              <Button
+                title={primaryCta.title}
+                url={primaryCta.href}
+                key={primaryCta.title}
+                size="small"
+                linkType={'inbound'}
+                theme={{
+                  variant: 'primary',
+                  background: 'dark',
+                  brand: primaryCta.brand,
+                }}
+              />
+              {secondaryCta ? (
+                <StandaloneLink
+                  appearance={appearance}
+                  href={secondaryCta.href}
+                >
+                  {secondaryCta.children}
+                </StandaloneLink>
+              ) : null}
+            </div>
           </div>
         </div>
         <div className={s.largeMedia}>
