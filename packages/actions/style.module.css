@@ -8,4 +8,8 @@
     align-items: flex-start;
     flex-direction: column;
   }
+
+  &.mixed {
+    column-gap: 24px;
+  }
 }
