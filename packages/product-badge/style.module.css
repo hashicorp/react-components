@@ -25,7 +25,7 @@
   &.light {
     &.secondary,
     &.hasDot {
-      background-color: var(--wpl-neutral-50);
+      background-color: hsla(225, 2%, 63%, 0.13);
     }
   }
 
@@ -34,7 +34,7 @@
 
     &.secondary,
     &.hasDot {
-      background-color: var(--wpl-neutral-700);
+      background-color: hsla(0, 0%, 100%, 0.18);
     }
   }
 }
@@ -42,7 +42,10 @@
 .text {
   display: inline-block;
   position: relative;
-  composes: g-type-label from global;
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-bold);
+  font-size: 14px;
+  letter-spacing: 0.0125em;
   text-transform: capitalize;
   margin: 0;
 
@@ -58,7 +61,7 @@
 
     &.secondary,
     &.hasDot {
-      color: var(--wpl-neutral-200);
+      color: var(--wpl-neutral-300);
     }
   }
 }

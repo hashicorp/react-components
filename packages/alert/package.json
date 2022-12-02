@@ -4,7 +4,9 @@
   "version": "6.0.2",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert%22",
-  "contributors": ["Jeff Escalante"],
+  "contributors": [
+    "Jeff Escalante"
+  ],
   "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/alert",
   "license": "MPL-2.0",
   "main": "index.jsx",
