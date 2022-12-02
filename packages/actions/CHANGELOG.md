@@ -1,5 +1,14 @@
 # @hashicorp/react-actions
 
+## 0.4.3
+
+### Patch Changes
+
+- [#835](https://github.com/hashicorp/react-components/pull/835) [`b9160926`](https://github.com/hashicorp/react-components/commit/b9160926d7b2f9d65f8bbbf81ff9ec9f2f33063d) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Increase column gap with mixed usage
+
+- Updated dependencies [[`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268)]:
+  - @hashicorp/react-standalone-link@0.4.0
+
 ## 0.4.2
 
 ### Patch Changes

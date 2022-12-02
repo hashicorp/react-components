@@ -1,5 +1,16 @@
 # @hashicorp/react-card
 
+## 0.7.0
+
+### Minor Changes
+
+- [#823](https://github.com/hashicorp/react-components/pull/823) [`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Update neutral and blue colors
+
+### Patch Changes
+
+- Updated dependencies [[`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268)]:
+  - @hashicorp/react-product-badge@0.3.0
+
 ## 0.6.1
 
 ### Patch Changes
