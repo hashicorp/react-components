@@ -49,7 +49,7 @@ export default function Actions({
               onClick={cta.onClick}
               size={size}
               theme={{
-                brand: theme,
+                brand: appearance === 'dark' ? 'neutral' : theme,
                 variant: variant,
                 background: appearance === 'dark' ? 'dark' : undefined,
               }}
