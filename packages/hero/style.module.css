@@ -108,7 +108,7 @@
   }
 }
 
-.title {
+.heading {
   --color: var(--black);
 
   margin: 0 0 var(--wpl-spacing-03);
