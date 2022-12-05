@@ -11,8 +11,8 @@ export type ContentProps = WithOptional<InlineVideoProps, 'url'> &
 export interface HeroProps extends ContentProps {
   appearance: 'light' | 'dark'
   eyebrow?: string
-  title: string
-  titleSize?: '1' | '2'
+  heading: string
+  headingSize?: '1' | '2'
   description: string
   descriptionColor?: string
   primaryCta: PrimaryCtaProps
