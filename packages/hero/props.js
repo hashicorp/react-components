@@ -78,6 +78,12 @@ module.exports = {
         type: 'string',
         required: true,
       },
+      theme: {
+        description: 'The link color.',
+        type: 'string',
+        options: ['primary', 'secondary', 'tertiary'],
+        required: false,
+      },
     },
   },
   backgroundColor: {

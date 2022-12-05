@@ -35,6 +35,32 @@ A flexible hero component used as the primary content at the top of many HashiCo
 
 <UsageDetails packageJson={packageJson} />
 
+
 ### Props
 
 <PropsTable props={componentProps} />
+
+### Examples
+<LiveComponent>
+  {`<Hero
+      backgroundColor={'#FEF5FE'}
+      appearance={'light'}
+      theme={'solutions'}
+      descriptionColor={'black'}
+      eyebrow={'EYEBROW'}
+      heading={'Display copy'}
+      description={'Body copy, pharetra pellentesque sed elementum risus accumsan et. Tristique tortor, morbi vivamus nibh mollis. Ultrices aliquet sit nibh consequat quam'}
+      primaryCta={{
+        title: "Primary CTA",
+        href: "https://www.hashicorp.com",
+      }}
+      secondaryCta={{
+        children: "Secondary CTA",
+        href: "https://www.hashicorp.com",
+        theme: "secondary"
+      }}
+      smallImage={'https://www.datocms-assets.com/2885/1669673752-graphic-small.svg'}
+      mediumImage={'https://www.datocms-assets.com/2885/1669673746-graphic-medium.svg'}
+      largeImage={'https://www.datocms-assets.com/2885/1669673756-graphic.svg'}
+    />`}
+</LiveComponent>
