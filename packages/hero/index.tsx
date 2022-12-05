@@ -10,8 +10,8 @@ import s from './style.module.css'
 const Hero = ({
   appearance = 'light',
   eyebrow,
-  title,
-  titleSize = '1',
+  heading,
+  headingSize = '1',
   description,
   descriptionColor,
   primaryCta,
@@ -29,7 +29,7 @@ const Hero = ({
   const descriptionStyles = {
     '--color': descriptionColor,
   } as React.CSSProperties
-  const titleSizeClassname = `g-type-display-${titleSize}`
+  const headingSizeClassname = `g-type-display-${headingSize}`
 
   return (
     <header className={s.root} style={rootStyles}>
@@ -50,8 +50,8 @@ const Hero = ({
                 />
               </div>
             ) : null}
-            <h1 className={classNames([s.title, titleSizeClassname])}>
-              {title}
+            <h1 className={classNames([s.heading, headingSizeClassname])}>
+              {heading}
             </h1>
             <p className={s.description} style={descriptionStyles}>
               {description}
