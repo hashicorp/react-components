@@ -72,6 +72,7 @@ const Hero = ({
                 <StandaloneLink
                   appearance={appearance}
                   href={secondaryCta.href}
+                  theme={secondaryCta?.theme}
                 >
                   {secondaryCta.children}
                 </StandaloneLink>
