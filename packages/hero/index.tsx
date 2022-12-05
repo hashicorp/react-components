@@ -11,6 +11,7 @@ const Hero = ({
   appearance = 'light',
   eyebrow,
   title,
+  titleSize = '1',
   description,
   descriptionColor,
   primaryCta,
@@ -28,6 +29,7 @@ const Hero = ({
   const descriptionStyles = {
     '--color': descriptionColor,
   } as React.CSSProperties
+  const titleSizeClassname = `g-type-display-${titleSize}`
 
   return (
     <header className={s.root} style={rootStyles}>
@@ -48,8 +50,9 @@ const Hero = ({
                 />
               </div>
             ) : null}
-            {/* TODO: Heading can optionally be display 1 or 2 */}
-            <h1 className={s.title}>{title}</h1>
+            <h1 className={classNames([s.title, titleSizeClassname])}>
+              {title}
+            </h1>
             <p className={s.description} style={descriptionStyles}>
               {description}
             </p>

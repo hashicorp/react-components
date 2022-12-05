@@ -111,7 +111,6 @@
 .title {
   --color: var(--black);
 
-  composes: g-type-display-1 from global;
   margin: 0 0 var(--wpl-spacing-03);
   color: var(--color);
 

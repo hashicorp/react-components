@@ -12,6 +12,7 @@ export interface HeroProps extends ContentProps {
   appearance: 'light' | 'dark'
   eyebrow?: string
   title: string
+  titleSize?: '1' | '2'
   description: string
   descriptionColor?: string
   primaryCta: PrimaryCtaProps
