@@ -2,25 +2,6 @@ import { calculateDefaultValues, formattedLabel, groupFields } from './utils'
 import { UTM_FORM_PROPS, VISIBILITY_RULE_FORM_PROPS } from './fixtures'
 
 describe('formattedLabel', () => {
-  it('appends asterisk for required fields', () => {
-    expect(
-      formattedLabel({
-        id: 'FirstName',
-        label: 'First Name',
-        dataType: 'text',
-        validationMessage: 'This field is required.',
-        rowNumber: 3,
-        columnNumber: 0,
-        maxLength: 255,
-        required: true,
-        formPrefill: true,
-        visibilityRules: {
-          ruleType: 'alwaysShow',
-        },
-      })
-    ).toBe('First Name *')
-  })
-
   it('does not append asterisk for non-required fields', () => {
     expect(
       formattedLabel({
