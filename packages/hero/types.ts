@@ -6,7 +6,7 @@ import { StandaloneLinkProps } from '@hashicorp/react-standalone-link/types'
 type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 export type ContentProps = WithOptional<InlineVideoProps, 'url'> &
-  WithOptional<EyebrowProps, 'theme'>
+  Pick<EyebrowProps, 'theme'>
 
 export interface HeroProps extends ContentProps {
   appearance: 'light' | 'dark'
