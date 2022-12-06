@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-hero",
-  "description": "basic full page hero with a lot of customization options",
+  "description": "Full-width hero",
   "version": "8.0.4",
   "author": "HashiCorp",
   "contributors": [

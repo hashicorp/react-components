@@ -1,273 +1,146 @@
 .root {
-  background: var(--black);
-  color: var(--white);
-  padding: 128px 0 160px;
-  position: relative;
-  overflow: hidden;
-
-  @media (max-width: 1119px) {
-    padding: 78px 0 104px;
-  }
-
-  @media (max-width: 767px) {
-    padding: 56px 0 80px;
-  }
-
-  &.light {
-    background: var(--white);
-    color: var(--black);
-  }
-
-  &.centered {
-    text-align: center;
-  }
+  margin: 0 auto;
+  background-color: var(--backgroundColor);
 }
 
-.background {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  object-fit: cover;
-  min-width: 100%;
-  min-height: 100%;
+.bgBounding {
+  position: relative;
+  composes: g-grid-container from global;
+  max-width: 1600px;
+  padding: 0;
+
+  @media (--medium-up) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
 .container {
+  composes: g-grid from global;
   composes: g-grid-container from global;
-  display: flex;
+  grid-template-rows: min-content min-content;
+  padding-top: var(--wpl-spacing-09);
+
+  @media (--medium-up) {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    padding-top: var(--wpl-spacing-08);
+    padding-bottom: var(--wpl-spacing-08);
+  }
+
+  @media (--large) {
+    padding-top: var(--wpl-spacing-15);
+    padding-bottom: var(--wpl-spacing-15);
+  }
+}
+
+.content {
+  grid-column: 1 / -1;
+  z-index: 1;
+
+  @media (--medium) {
+    grid-column: 1 / 7;
+    grid-row: 1 / 1;
+  }
+
+  @media (--large) {
+    grid-column: 1 / 7;
+  }
+}
+
+.eyebrow {
+  padding-bottom: var(--wpl-spacing-06);
+
+  @media (--medium-up) {
+    padding-bottom: var(--wpl-spacing-05);
+  }
+}
+
+.video {
   position: relative;
-  align-items: center;
-  justify-content: space-between;
+  margin-bottom: var(--wpl-spacing-06);
+  grid-column: 1 / -1;
+  align-self: center;
 
-  @media (max-width: 1119px) {
-    display: block;
-    text-align: center;
-  }
-
-  &.centered {
-    align-items: center;
-    flex-direction: column;
-
-    /* targets the image or video, whatever is rendered */
-    & > div:nth-child(2) {
-      margin-top: 48px;
-      width: 100%;
-    }
+  @media (--medium-up) {
+    margin-bottom: 0;
+    grid-column: 7 / -1;
+    grid-row: 1 / 1;
+    z-index: 10;
   }
 }
 
-.headline {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: calc(50% - 16px);
-  max-width: 564px;
+.largeMedia {
+  overflow: hidden;
+  grid-column: 3 / -1;
   width: 100%;
+  display: none;
+  position: relative;
+  grid-row: 1/-1;
 
-  @media (max-width: 1119px) {
-    max-width: 534px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-
-  &:last-child {
-    flex-basis: auto;
-
-    @media (min-width: 1120px) {
-      max-width: 730px;
-    }
+  @media (--large) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 }
 
-.headlineLogo {
-  margin-bottom: 32px;
-  height: 60px;
-  display: block;
+.mediumMedia {
+  display: none;
 
-  @media (max-width: 1119px) {
-    margin-left: auto;
-    margin-right: auto;
+  @media (--medium-up) {
+    display: flex;
+    position: relative;
+    grid-row: 1 / -1;
+    grid-column: 6 / -1;
   }
 
-  &.centered {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-.headlineAlert {
-  margin-bottom: 24px;
-
-  @media (max-width: 767px) {
-    margin-bottom: 32px;
+  @media (--large) {
+    display: none;
   }
 }
 
-.headlineTitle {
-  composes: g-type-display-1 from global;
-  margin: 0;
+.smallMedia {
+  display: flex;
+
+  @media (--medium-up) {
+    display: none;
+  }
 }
 
-.headlineDescription {
+.heading {
+  --color: var(--black);
+
+  margin: 0 0 var(--wpl-spacing-03);
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--white);
+  }
+}
+
+.description {
+  --color: var(--wpl-neutral-500);
+
+  margin: 0 0 var(--wpl-spacing-06);
   composes: g-type-body-large from global;
-  margin-top: 24px;
-  color: var(--gray-5);
+  color: var(--color);
 
-  @media (--small) {
-    margin-top: 16px;
-  }
-
-  & > p {
-    margin: 0;
-
-    & + p {
-      margin-top: 24px;
-
-      @media (--small) {
-        margin-top: 16px;
-      }
-    }
-  }
-
-  &.light {
-    color: var(--gray-2);
+  @nest .dark & {
+    --color: var(--white);
   }
 }
 
-.headlineFormLead {
-  margin-top: 40px;
-}
-
-.headlineButtons {
+.ctas {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  margin: 24px -8px 0;
-
-  @media (max-width: 1119px) {
-    justify-content: center;
-    margin-left: -12px;
-    margin-right: -12px;
-  }
-
-  @media (max-width: 767px) {
-    margin-top: 16px;
-  }
-
-  &.centered {
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.headlineButton {
-  margin: 16px 8px 0;
-
-  @media (max-width: 1119px) {
-    margin-left: 12px;
-    margin-right: 12px;
-  }
-
-  &.hasZeroPadding {
-    margin-left: 24px;
-    margin-right: 24px;
-
-    @media (max-width: 1119px) {
-      margin-left: 32px;
-      margin-right: 32px;
-    }
-  }
-
-  &.centered {
-    @media (max-width: 600px) {
-      align-self: center;
-    }
-  }
-}
-
-.headlineHelpText {
-  composes: g-type-buttons-and-standalone-links from global;
-  text-decoration: none;
-  margin-top: 32px;
-  display: inline-block;
-  transition: 0.25s ease;
-  transition-property: opacity;
+  gap: 27px;
+  grid-column: 1 / -1;
+  padding: 0;
   position: relative;
 
-  @media (max-width: 1119px) {
-    justify-content: center;
-  }
-
-  &:hover {
-    opacity: 0.75;
-  }
-
-  & div {
-    display: inline;
-  }
-
-  & p {
-    display: inline;
-    margin: 0;
-
-    & > a {
-      color: inherit;
-    }
-  }
-
-  & svg {
-    margin: 0 0 1px 12px;
-    & line {
-      stroke: var(--brand);
-    }
-
-    & path {
-      fill: var(--brand);
-    }
-
-    @media (max-width: 1119px) {
-      margin-left: 6px;
-    }
-  }
-
-  &.centered {
-    justify-content: center;
-    margin-right: 0;
-  }
-}
-
-.image {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: calc(50% - 48px);
-  max-width: 816px;
-  width: 100%;
-
-  @media (max-width: 1119px) {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    margin-top: 40px;
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-
-  @media (max-width: 767px) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  & picture,
-  & img,
-  & svg {
-    max-width: 720px;
-    width: 100%;
-  }
-
-  & img,
-  & svg {
-    @media (max-width: 1119px) {
-      padding: 0 16px;
-    }
+  @media (--medium-up) {
+    grid-column: 1 / 7;
   }
 }
