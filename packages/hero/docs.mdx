@@ -11,18 +11,22 @@ A flexible hero component used as the primary content at the top of many HashiCo
       <Hero
         backgroundColor={'black'}
         appearance={'dark'}
-        theme={'solutions'}
+        solution={'infrastructure'}
         eyebrow={'EYEBROW'}
         heading={'Display copy'}
         description={'Body copy, pharetra pellentesque sed elementum risus accumsan et. Tristique tortor, morbi vivamus nibh mollis. Ultrices aliquet sit nibh consequat quam'}
-        primaryCta={{
-          title: "Primary CTA",
-          href: "https://www.hashicorp.com",
-        }}
-        secondaryCta={{
-          children: "Secondary CTA",
-          href: "https://www.hashicorp.com",
-        }}
+        ctas={[
+          {
+            title: "Primary CTA",
+            href: "https://www.hashicorp.com",
+            type: 'button'
+          },
+          {
+            title: "Secondary CTA",
+            href: "https://www.hashicorp.com",
+            type: 'standalone-link'
+          }
+        ]}
         url={"https://hashicorp.wistia.com/medias/glovs5atuj"}
         smallImage={'https://www.datocms-assets.com/2885/1669837469-frame-1.svg'}
         mediumImage={'https://www.datocms-assets.com/2885/1669837472-frame-2.svg'}
@@ -45,20 +49,23 @@ A flexible hero component used as the primary content at the top of many HashiCo
   {`<Hero
       backgroundColor={'#FEF5FE'}
       appearance={'light'}
-      theme={'solutions'}
+      solution={'infrastructure'}
       descriptionColor={'black'}
       eyebrow={'EYEBROW'}
       heading={'Display copy'}
       description={'Body copy, pharetra pellentesque sed elementum risus accumsan et. Tristique tortor, morbi vivamus nibh mollis. Ultrices aliquet sit nibh consequat quam'}
-      primaryCta={{
-        title: "Primary CTA",
-        href: "https://www.hashicorp.com",
-      }}
-      secondaryCta={{
-        children: "Secondary CTA",
-        href: "https://www.hashicorp.com",
-        theme: "secondary"
-      }}
+      ctas={[
+        {
+          title: "Primary CTA",
+          href: "https://www.hashicorp.com",
+          type: 'button'
+        },
+        {
+          title: "Secondary CTA",
+          href: "https://www.hashicorp.com",
+          type: 'standalone-link'
+        }
+      ]}
       smallImage={'https://www.datocms-assets.com/2885/1669673752-graphic-small.svg'}
       mediumImage={'https://www.datocms-assets.com/2885/1669673746-graphic-medium.svg'}
       largeImage={'https://www.datocms-assets.com/2885/1669673756-graphic.svg'}
