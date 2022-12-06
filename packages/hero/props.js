@@ -4,11 +4,33 @@ module.exports = {
     description: 'Display intro on light or dark backgrounds.',
     options: ['light', 'dark'],
   },
+  theme: {
+    description: 'Styles the button with a color based on a HashiCorp product',
+    type: 'string',
+    control: { type: 'select' },
+    options: [
+      'neutral',
+      'hashicorp',
+      'nomad',
+      'consul',
+      'terraform',
+      'vault',
+      'packer',
+      'vagrant',
+      'waypoint',
+      'boundary',
+    ],
+  },
   eyebrow: {
     type: 'string',
     description: 'Optional text displayed above the heading.',
   },
-  title: {
+  solution: {
+    type: 'string',
+    description: 'Controls eyebrow pattern and video gradient colors',
+    options: ['infrastructure' | 'security' | 'networking' | 'applications'],
+  },
+  heading: {
     required: true,
     type: 'string',
     description: 'Text displayed within the heading element.',
@@ -32,59 +54,11 @@ module.exports = {
     type: 'string',
     description: 'URL for the featured video.',
   },
-  primaryCta: {
+  ctas: {
+    required: true,
     type: 'object',
-    properties: {
-      title: {
-        required: true,
-        type: 'string',
-        description: 'The text that appears inside the button.',
-      },
-      href: {
-        required: true,
-        type: 'string',
-        description: 'The URL destination',
-      },
-      brand: {
-        type: 'string',
-        description: 'Render primary variant button with product color.',
-        options: [
-          'hashicorp',
-          'nomad',
-          'consul',
-          'terraform',
-          'vault',
-          'packer',
-          'vagrant',
-          'waypoint',
-          'boundary',
-          'neutral',
-        ],
-      },
-    },
-  },
-  secondaryCta: {
-    type: 'object',
-    properties: {
-      children: {
-        description: 'The text that appears inside the link.',
-        type: 'string',
-        control: { type: 'text' },
-        testValue: 'Call-to-action',
-        required: true,
-      },
-      href: {
-        description: 'The url destination.',
-        type: 'string',
-        required: true,
-      },
-      theme: {
-        description: 'The link color.',
-        type: 'string',
-        options: ['primary', 'secondary', 'tertiary'],
-        required: false,
-      },
-    },
+    description:
+      'Array of CTAs. Minimum of one, max of two. See props for the `Actions` CTAs <a href="https://react-components.vercel.app/components/actions">here</a>',
   },
   backgroundColor: {
     type: 'string',
