@@ -1,5 +1,11 @@
 .inlineVideo {
   --gradient-size: 32px;
+
+  /* Apply border radius to Wistia play button */
+  & :global(.w-bpb-wrapper) {
+    border-radius: 4px !important;
+    overflow: hidden;
+  }
 }
 
 .videoContainer {

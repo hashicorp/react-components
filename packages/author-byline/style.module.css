@@ -1,14 +1,14 @@
 .authorByline {
-  --name-color: var(--black);
-  --role-color: var(--gray-3);
+  --name-color: var(--wpl-neutral-900);
+  --role-color: var(--wpl-neutral-500);
 
   display: flex;
   align-items: center;
   gap: 16px;
 
   &.dark {
-    --name-color: var(--white);
-    --role-color: var(--white);
+    --name-color: var(--wpl-neutral-0);
+    --role-color: var(--wpl-neutral-400);
   }
 }
 

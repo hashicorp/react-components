@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import WistiaPlayer from 'react-player/wistia'
 import Player from 'react-player'
@@ -19,25 +20,42 @@ export default function InlineVideo(props: InlineVideoProps) {
     width: '100%',
     height: '100%',
   }
+
+  const [hasWindow, setHasWindow] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setHasWindow(true)
+    }
+  }, [])
+
   return (
     <div
-      className={classNames(s.inlineVideo, s[appearance], s[gradientPosition])}
+      className={classNames(
+        s.inlineVideo,
+        s[appearance],
+        gradientPosition && s[gradientPosition]
+      )}
       data-testid="wpl-inline-video"
     >
       <div className={classNames(s.videoContainer, solution && s[solution])}>
         <div className={s.video}>
-          {url.includes('wistia') ? (
-            <WistiaPlayer
-              {...playerProps}
-              config={{
-                options: {
-                  controlsVisibleOnLoad: false,
-                },
-              }}
-            />
-          ) : (
-            <Player {...playerProps} />
-          )}
+          {hasWindow ? (
+            <>
+              {url.includes('wistia') ? (
+                <WistiaPlayer
+                  {...playerProps}
+                  config={{
+                    options: {
+                      controlsVisibleOnLoad: false,
+                    },
+                  }}
+                />
+              ) : (
+                <Player {...playerProps} />
+              )}
+            </>
+          ) : null}
         </div>
       </div>
 

@@ -4,9 +4,15 @@
   "version": "6.0.3",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22inline-svg%22",
-  "contributors": ["Nicole Forrester"],
+  "contributors": [
+    "Nicole Forrester"
+  ],
   "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/inline-svg",
-  "keywords": ["component", "react", "svg"],
+  "keywords": [
+    "component",
+    "react",
+    "svg"
+  ],
   "license": "MPL-2.0",
   "main": "index.jsx",
   "peerDependencies": {

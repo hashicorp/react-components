@@ -86,11 +86,12 @@
 
 .tile {
   --background-color: transparent;
-  --border-color: transparent;
   --color: var(--wpl-neutral-0);
   --transition-duration: 250ms;
   --transition-timing-function: ease-in-out;
+  --border-radius: 8px;
 
+  position: relative;
   display: flex;
   width: 100%;
   min-height: 208px;
@@ -98,64 +99,73 @@
   padding: 32px;
   background-color: var(--background-color);
   color: var(--color);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  transition: background-color 0.2s;
+  border-radius: var(--border-radius);
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   transition-property: background-color;
 
   &.primary {
     --background-color: var(--brand);
-    --border-color: transparent;
     --color: var(--brand-text-on-primary);
 
-    &:hover,
-    &:active {
+    &:hover {
       --background-color: var(--brand);
     }
 
     @nest .hashicorp & {
       --background-color: var(--wpl-blue-500);
-      --border-color: transparent;
       --color: var(--wpl-neutral-0);
 
       &:hover {
         --background-color: var(--wpl-blue-600);
       }
-
-      &:active {
-        --background-color: var(--wpl-blue-700);
-      }
     }
   }
 
   &:not(.primary) {
-    --border-color: var(--wpl-neutral-200);
     --color: var(--wpl-neutral-900);
-    --background-color: var(--wpl-neutral-0);
+    --background-color: var(--wpl-neutral-50);
 
     &:hover {
-      --background-color: var(--wpl-neutral-100);
-    }
-
-    &:active {
-      --background-color: var(--wpl-neutral-200);
+      --background-color: var(--wpl-neutral-50);
     }
 
     @nest .dark & {
-      --background-color: var(--wpl-neutral-600);
-      --border-color: transparent;
+      --background-color: var(--wpl-neutral-700);
       --color: var(--white);
 
       &:hover {
         --background-color: var(--wpl-neutral-700);
       }
-
-      &:active {
-        --background-color: var(--wpl-neutral-800);
-      }
     }
+  }
+}
+
+.tileInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tileScrim {
+  --background-color: #000;
+
+  position: absolute;
+  inset: 0;
+  background: var(--background-color);
+  border-radius: var(--border-radius);
+  opacity: 0;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: opacity;
+
+  @nest .dark & {
+    --background-color: #fff;
+  }
+
+  @nest .tile &:hover {
+    opacity: 0.05;
   }
 }
 
@@ -166,14 +176,14 @@
 }
 
 .tileDescription {
-  --color: var(--wpl-neutral-500);
+  --color: var(--wpl-neutral-900);
 
   composes: g-type-display-6 from global;
   margin: 8px 0 0;
   color: var(--color);
 
   @nest .hashicorp .primary & {
-    --color: var(--wpl-blue-75);
+    --color: var(--wpl-neutral-0);
   }
 
   @nest .primary & {
@@ -185,7 +195,7 @@
   }
 
   @nest .dark & {
-    --color: var(--wpl-neutral-200);
+    --color: var(--wpl-neutral-0);
   }
 }
 

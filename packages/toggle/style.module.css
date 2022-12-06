@@ -1,32 +1,35 @@
 .toggle {
   --toggle-background-color: var(--wpl-neutral-0);
-  --toggle-border-color: var(--wpl-neutral-200);
+  --toggle-border-color: var(--wpl-neutral-500);
   --toggle-outline-color: var(--wpl-blue-500);
-  --indicator-background-color: var(--wpl-neutral-200);
+  --indicator-background-color: var(--wpl-neutral-500);
   --indicator-translate-x: 0;
+  --padding-x: 4px;
+  --border-radius: 24px;
 
+  position: relative;
   display: inline-flex;
   align-items: center;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
   width: 44px;
   height: 24px;
   background-color: var(--toggle-background-color);
-  border-radius: 24px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--toggle-border-color);
   cursor: pointer;
   transition: 0.2s ease-in-out;
   transition-property: background-color, border-color;
 
   &:hover:not(.on):not(.disabled) {
-    --toggle-border-color: var(--wpl-neutral-300);
-    --indicator-background-color: var(--wpl-neutral-300);
+    --toggle-border-color: var(--wpl-neutral-700);
+    --indicator-background-color: var(--wpl-neutral-700);
   }
 
-  &:focus-within {
+  /* &:focus-within {
     outline: 1px solid var(--toggle-outline-color);
     outline-offset: 2px;
-  }
+  } */
 
   &.on {
     --toggle-background-color: var(--wpl-blue-500);
@@ -46,13 +49,13 @@
   /* Appearance: dark */
   &.dark {
     --toggle-background-color: var(--wpl-neutral-900);
-    --toggle-border-color: var(--wpl-neutral-500);
+    --toggle-border-color: var(--wpl-neutral-400);
     --toggle-outline-color: var(--wpl-neutral-0);
-    --indicator-background-color: var(--wpl-neutral-500);
+    --indicator-background-color: var(--wpl-neutral-400);
 
     &:hover:not(.on):not(.disabled) {
-      --toggle-border-color: var(--wpl-neutral-400);
-      --indicator-background-color: var(--wpl-neutral-400);
+      --toggle-border-color: var(--wpl-neutral-200);
+      --indicator-background-color: var(--wpl-neutral-200);
     }
 
     &.on {
@@ -76,15 +79,31 @@
 }
 
 .toggleIndicator {
-  --size: 16px;
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
 
-  flex-shrink: 0;
-  display: block;
-  width: var(--size);
-  height: var(--size);
-  background-color: var(--indicator-background-color);
-  border-radius: 9999px;
-  transform: translateX(var(--indicator-translate-x));
-  transition: 0.2s ease-in-out;
-  transition-property: transform, background-color, border-color;
+  @nest .toggleInput:focus-visible + & {
+    outline: 1px solid var(--toggle-outline-color);
+    outline-offset: 2px;
+  }
+
+  &::before {
+    --size: 16px;
+
+    content: '';
+    flex-shrink: 0;
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--indicator-background-color);
+    border-radius: 9999px;
+    transform: translateX(var(--indicator-translate-x));
+    transition: 0.2s ease-in-out;
+    transition-property: transform, background-color, border-color;
+  }
 }

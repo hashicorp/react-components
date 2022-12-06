@@ -1,3 +1,4 @@
+import { isAnalyticsMethodAvailable } from '@hashicorp/platform-analytics'
 import { MarketoFormField } from './types'
 import { useFormState } from 'react-hook-form'
 
@@ -181,4 +182,52 @@ export function useErrorMessage(id: string): string | undefined {
   }
 
   return errors[id]?.message as string
+}
+
+export function segmentIdentify(leadFormFields: Record<string, unknown>) {
+  // This function is wrapped in a try/catch to prevent Segment errors from
+  // interrupting the form submission workflow.
+  try {
+    if (isAnalyticsMethodAvailable('identify')) {
+      const traits: Record<string, unknown> = {}
+
+      // Segment traits mostly map 1:1 to Marketo REST field names. However,
+      // since that's not always the case, we check and set each
+      // field individually.
+      // Reference: https://segment.com/docs/connections/spec/identify/
+      if ('email' in leadFormFields) {
+        traits['email'] = leadFormFields['email']
+      }
+
+      if ('firstName' in leadFormFields) {
+        traits['firstName'] = leadFormFields['firstName']
+      }
+
+      if ('lastName' in leadFormFields) {
+        traits['lastName'] = leadFormFields['lastName']
+      }
+
+      if ('phone' in leadFormFields) {
+        traits['phone'] = leadFormFields['phone']
+      }
+
+      if ('title' in leadFormFields) {
+        traits['title'] = leadFormFields['title']
+      }
+
+      if ('company' in leadFormFields) {
+        traits['company'] = { name: leadFormFields['company'] }
+      }
+
+      if ('country' in leadFormFields) {
+        traits['address'] = { country: leadFormFields['country'] }
+      }
+
+      if (Object.keys(traits).length > 0) {
+        window.analytics.identify(traits)
+      }
+    }
+  } catch (err) {
+    console.error(err)
+  }
 }

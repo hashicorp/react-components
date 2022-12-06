@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.2.2
+
+### Patch Changes
+
+- [#834](https://github.com/hashicorp/react-components/pull/834) [`3d138a8e`](https://github.com/hashicorp/react-components/commit/3d138a8efa43c1a14e3180205fc8f2b162ef3c64) Thanks [@BRKalow](https://github.com/BRKalow)! - Only render HiddenCopyContent on the client to avoid hydration mismatches and duplicative markup
+
 ## 6.2.1
 
 ### Patch Changes
