@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-hero",
-  "description": "basic full page hero with a lot of customization options",
+  "description": "Full-width hero",
   "version": "8.0.4",
   "author": "HashiCorp",
   "contributors": [
@@ -9,6 +9,7 @@
   "dependencies": {
     "@hashicorp/js-utils": "^1.0.10",
     "@hashicorp/platform-product-meta": "^0.1.0",
+    "@hashicorp/react-actions": "^0.4.2",
     "@hashicorp/react-alert": "^6.0.2",
     "@hashicorp/react-button": "^6.0.4",
     "@hashicorp/react-image": "^4.0.4",
