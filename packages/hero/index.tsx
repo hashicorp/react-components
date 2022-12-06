@@ -1,10 +1,9 @@
-import Button from '@hashicorp/react-button'
+import Actions from 'packages/actions'
 import classNames from 'classnames'
 import EyebrowWithPattern from './eyebrow-with-pattern'
 import type { HeroProps } from './types'
 import Image from 'next/image'
 import InlineVideo from '@hashicorp/react-inline-video'
-import StandaloneLink from '@hashicorp/react-standalone-link'
 import s from './style.module.css'
 
 const Hero = ({
@@ -14,13 +13,13 @@ const Hero = ({
   headingSize = '1',
   description,
   descriptionColor,
-  primaryCta,
-  secondaryCta,
+  ctas,
   url,
   backgroundColor = 'white',
   smallImage,
   mediumImage,
   largeImage,
+  solution,
   theme,
 }: HeroProps) => {
   const rootStyles = {
@@ -37,7 +36,7 @@ const Hero = ({
         <div className={s.container}>
           {url ? (
             <div className={s.video}>
-              <InlineVideo solution={theme} url={url} />
+              <InlineVideo solution={solution} url={url} />
             </div>
           ) : null}
           <div className={classNames(s.content, s[appearance])}>
@@ -45,7 +44,7 @@ const Hero = ({
               <div className={s.eyebrow}>
                 <EyebrowWithPattern
                   appearance={appearance}
-                  theme={theme}
+                  solution={solution}
                   text={eyebrow}
                 />
               </div>
@@ -56,27 +55,7 @@ const Hero = ({
             <p className={s.description} style={descriptionStyles}>
               {description}
             </p>
-            <div className={s.ctas}>
-              <Button
-                title={primaryCta.title}
-                url={primaryCta.href}
-                key={primaryCta.title}
-                theme={{
-                  variant: 'primary',
-                  background: appearance,
-                  brand: primaryCta.brand,
-                }}
-              />
-              {secondaryCta ? (
-                <StandaloneLink
-                  appearance={appearance}
-                  href={secondaryCta.href}
-                  theme={secondaryCta?.theme}
-                >
-                  {secondaryCta.children}
-                </StandaloneLink>
-              ) : null}
-            </div>
+            <Actions appearance={appearance} theme={theme} ctas={ctas} />
           </div>
         </div>
         <div className={s.largeMedia}>
