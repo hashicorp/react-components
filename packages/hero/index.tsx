@@ -61,7 +61,6 @@ const Hero = ({
                 title={primaryCta.title}
                 url={primaryCta.href}
                 key={primaryCta.title}
-                linkType={'inbound'}
                 theme={{
                   variant: 'primary',
                   background: appearance,
