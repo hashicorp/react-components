@@ -5,19 +5,19 @@ import s from './style.module.css'
 export interface EyebrowProps {
   text: string
   appearance?: 'light' | 'dark'
-  theme?: 'infrastructure' | 'security' | 'networking' | 'applications'
+  solution?: 'infrastructure' | 'security' | 'networking' | 'applications'
 }
 
 const EyebrowWithPattern = ({
   text,
   appearance = 'light',
-  theme = 'infrastructure',
+  solution = 'infrastructure',
 }: EyebrowProps) => {
   const bgImageStyles = {
     '--bg-image': `url(${require('./img/bg.svg')})`,
   } as React.CSSProperties
   return (
-    <div className={classNames(s.eyebrow, s[theme])}>
+    <div className={classNames(s.eyebrow, s[solution])}>
       <span className={classNames(s.text, s[appearance])}>{text}</span>
       <span className={s.pattern} style={bgImageStyles} />
     </div>
