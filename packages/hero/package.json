@@ -1,22 +1,15 @@
 {
   "name": "@hashicorp/react-hero",
-  "description": "basic full page hero with a lot of customization options",
+  "description": "Full-width hero",
   "version": "8.0.4",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante"
   ],
   "dependencies": {
-    "@hashicorp/js-utils": "^1.0.10",
-    "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-alert": "^6.0.2",
-    "@hashicorp/react-button": "^6.0.4",
-    "@hashicorp/react-image": "^4.0.4",
-    "@hashicorp/react-text-input": "^5.0.1",
-    "classnames": "^2.3.1",
-    "formik": "^2.2.9",
-    "promise-polyfill": "^8.2.1",
-    "query-string": "^6.14.1"
+    "@hashicorp/react-actions": "^0.4.2",
+    "@hashicorp/react-inline-video": "^0.1.1",
+    "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
