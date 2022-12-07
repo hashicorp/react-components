@@ -1,4 +1,4 @@
-import Actions from 'packages/actions'
+import Actions from '@hashicorp/react-actions'
 import classNames from 'classnames'
 import EyebrowWithPattern from './eyebrow-with-pattern'
 import type { HeroProps } from './types'
