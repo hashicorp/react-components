@@ -21,6 +21,7 @@ const Hero = ({
   largeImage,
   solution,
   theme,
+  gradientPosition,
 }: HeroProps) => {
   const rootStyles = {
     '--backgroundColor': backgroundColor,
@@ -39,7 +40,7 @@ const Hero = ({
               <InlineVideo
                 solution={solution}
                 url={url}
-                gradientPosition={false}
+                gradientPosition={gradientPosition}
               />
             </div>
           ) : null}
