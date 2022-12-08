@@ -232,7 +232,7 @@ const Playground: FC<PlaygroundProps> = ({
         files={files}
         customSetup={{ entry: 'index.tsx' }}
         theme={{
-          font: { body: '', mono: '', lineHeight: '', size: '' },
+          font: { body: '', mono: '', size: '14px' },
           colors: { surface1: '#f8f9fb' },
         }}
       >
