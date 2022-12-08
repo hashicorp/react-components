@@ -1,0 +1,118 @@
+.root {
+  margin-bottom: 2rem;
+
+  & :global(.sp-cm) {
+    font-size: 14px;
+    overflow: auto;
+  }
+
+  & :global(.cm-editor) {
+    padding: 1rem;
+  }
+
+  & :global(.cm-scroller) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace;
+    overflow: auto;
+    height: 20rem;
+  }
+
+  & :global(.cm-gutter) {
+    margin-right: 1rem;
+  }
+
+  & :global(.cm-activeLine) {
+    background-color: inherit;
+  }
+
+  & :global(.sp-tabs-scrollable-container) {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: no-wrap;
+    overflow: auto;
+    background-color: var(--gray-6);
+  }
+
+  & :global(.sp-tab-button) {
+    height: 40px;
+    border: 0;
+    background: transparent;
+    padding: 0 8px;
+
+    &[data-active='true'] {
+      border-top: 2px solid var(--brand);
+      background-color: #f6f8fa;
+      color: var(--brand);
+    }
+  }
+}
+
+.header {
+  padding: 12px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.layout {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 6%) 0 2px 4px 0;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+
+  &.vertical {
+    flex-direction: column-reverse;
+  }
+
+  &.fullscreen {
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+
+    & :global(.sp-cm) {
+      /* max height - toolbar */
+      height: calc(100% - 40px);
+    }
+
+    & :global(.cm-scroller) {
+      height: auto;
+    }
+  }
+}
+
+.editorStage {
+  flex-basis: 50%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.previewStage {
+  padding: 1rem;
+  flex-basis: 50%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gray-6);
+  height: 40px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: 1rem;
+}

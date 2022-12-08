@@ -7,6 +7,7 @@ import { SearchProvider } from '../packages/search'
 import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
 import FormikStateViewer from '../swingset-extensions/formik-state-viewer'
 import NextRouterDebugger from '../swingset-extensions/next-router-debugger'
+import Playground from '../swingset-extensions/playground'
 import ComboboxField from '../packages/combobox/field'
 
 import { Tab } from '../packages/tabs'
@@ -127,6 +128,7 @@ const components = {
   FormikStateViewer,
   NextRouterDebugger,
   ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
+  Playground,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })
