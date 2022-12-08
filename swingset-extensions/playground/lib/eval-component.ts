@@ -7,9 +7,7 @@ import { components } from 'swingset/__swingset_data'
  */
 const componentDeps = Object.fromEntries(
   Object.values(components).map((component) => {
-    // @ts-expect-error -- swingset has no types, path represents the file path to the component's folder
     const lastPathPiece = component.path.split('/').slice(-1)
-    // @ts-expect-error -- swingset has no types, exports are all of exports from the component's index file
     return [lastPathPiece, component.exports]
   })
 )
