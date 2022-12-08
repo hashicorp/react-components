@@ -5,9 +5,9 @@
 
 import { Component } from 'react'
 import getIntegrations from '../util/integrations'
-import CloseButton from '../img/icn_close'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
+import { IconArrowDown24 } from '@hashicorp/flight-icons/svg-react/arrow-down-24'
 import classNames from 'classnames'
 import s from './dialog.module.css'
 
@@ -17,7 +17,6 @@ export default class ConsentPreferences extends Component {
 
     this.state = {
       version: props.version || 0,
-      showConfirmationDialog: false,
       groupedIntegrations: {}, // Integrations object grouped by category
       consent: props.preferences, // Consent preferences object
       categories: props.categories.reduce((obj, category) => {
@@ -36,8 +35,7 @@ export default class ConsentPreferences extends Component {
     getIntegrations(
       this.props.segmentServices,
       this.props.additionalServices,
-      this.props.segmentWriteKey,
-      this.props.utilServerRoot
+      this.props.segmentWriteKey
     ).then((groupedIntegrations) => {
       this.setState({ groupedIntegrations })
     })
@@ -105,44 +103,35 @@ export default class ConsentPreferences extends Component {
     const categoryItems = items.map((item) => {
       return (
         <div className={s.categoryItem} key={item.name}>
-          <div className={s.itemTitle}>{item.name}</div>
-          <div className={s.flexCenteredRow}>
-            <div className={s.itemDescription}>{item.description}</div>
-            <div className={s.consentToggle}>
-              <Toggle
-                onChange={this.handleToggle.bind(this, item.name, item.origin)}
-                enabled={Boolean(
-                  this.state.consent.loadAll ||
-                    (this.state.consent &&
-                      this.state.consent[item.origin] &&
-                      this.state.consent[item.origin][item.name])
-                )}
-              />
-            </div>
-          </div>
+          <header className={s.categoryItemHeader}>
+            <h4 className={s.categoryItemTitle}>{item.name}</h4>
+            <Toggle
+              onChange={this.handleToggle.bind(this, item.name, item.origin)}
+              enabled={Boolean(
+                this.state.consent.loadAll ||
+                  (this.state.consent &&
+                    this.state.consent[item.origin] &&
+                    this.state.consent[item.origin][item.name])
+              )}
+            />
+          </header>
+          <p className={s.categoryItemDescription}>{item.description}</p>
         </div>
       )
     })
 
     return (
       <div className={s.category} key={name}>
-        <div className={s.categoryTitle}>{name}</div>
-        <div className={s.flexCenteredRow}>
-          <div className={s.categoryDescription}>
-            {this.state.categories[name]}
-          </div>
-          <div className={s.consentToggle}>
-            {!this.state.showCategories[name] && (
-              <Toggle
-                onChange={this.handleToggle.bind(this, name, 'categories')}
-                enabled={
-                  this.state.consent.loadAll || this.getCategoryToggle(name)
-                }
-              />
-            )}
-          </div>
-        </div>
-        <div className={s.categoryFold}>
+        <header className={s.categoryHeader}>
+          <h3 className={s.categoryHeaderTitle}>{name}</h3>
+          {!this.state.showCategories[name] && (
+            <Toggle
+              onChange={this.handleToggle.bind(this, name, 'categories')}
+              enabled={
+                this.state.consent.loadAll || this.getCategoryToggle(name)
+              }
+            />
+          )}
           <button
             className={classNames(s.categoryFoldTrigger, {
               [s.shown]: this.state.showCategories[name],
@@ -150,20 +139,20 @@ export default class ConsentPreferences extends Component {
             onClick={() => {
               this.handleFold(name)
             }}
+            aria-label={
+              this.state.showCategories[name] ? 'See less' : 'See more'
+            }
           >
-            {!this.state.showCategories[name] && 'See more'}
-            {this.state.showCategories[name] && 'See less'}
-            <svg width="14" height="8" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12.293.293L7 5.586 1.707.293A1 1 0 1 0 .293 1.707l6 6a.997.997 0 0 0 1.414 0l6-6A1 1 0 0 0 12.293.293"
-                fill="var(--brand)"
-                fillRule="evenodd"
-              />
-            </svg>
+            <IconArrowDown24 />
           </button>
-        </div>
+        </header>
         {this.state.showCategories[name] && (
-          <div className={s.categoryItems}>{categoryItems}</div>
+          <div className={s.categoryFold}>
+            <p className={s.categoryFoldDescription}>
+              {this.state.categories[name]}
+            </p>
+            {categoryItems}
+          </div>
         )}
       </div>
     )
@@ -181,115 +170,63 @@ export default class ConsentPreferences extends Component {
     return (
       <div className={s.root} data-testid="consent-mgr-dialog">
         {/* Manage preferences dialog */}
-        {!this.state.showConfirmationDialog && (
-          <div className={s.visibleDialog}>
-            <div className={s.dialogTitle}>
-              <span>Data Collection Preferences</span>
-              <div
-                className={s.closeButton}
-                onClick={() => {
-                  this.setState({ showConfirmationDialog: true })
-                }}
+        <div className={s.visibleDialog}>
+          <header className={s.dialogHeader}>
+            <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
+          </header>
+          <div className={s.dialogBody}>
+            <p className={s.dialogBodyIntro}>
+              HashiCorp uses data collected by cookies and JavaScript libraries
+              to improve your browsing experience, analyze site traffic, and
+              increase the overall performance of our site. By using our
+              website, you’re agreeing to our{' '}
+              <a
+                href={this.props.privacyPolicyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="privacy-policy-link"
               >
-                <CloseButton />
-              </div>
-            </div>
-            <div className={s.dialogBody}>
-              <p>
-                HashiCorp uses data collected by cookies and JavaScript
-                libraries to improve your browsing experience, analyze site
-                traffic, and increase the overall performance of our site. By
-                using our website, you’re agreeing to our{' '}
-                <a
-                  href={this.props.privacyPolicyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="privacy-policy-link"
-                >
-                  Privacy Policy
-                </a>{' '}
-                and{' '}
-                <a
-                  href={this.props.cookiePolicyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="cookie-policy-link"
-                >
-                  Cookie Policy
-                </a>
-                .
-              </p>
-              <p>
-                The categories below outline which companies and tools we use
-                for collecting data. To opt out of a category of data
-                collection, set the toggle to “Off” and save your preferences.
-              </p>
-              <div id="outline">{categories}</div>
-            </div>
-            <div className={s.dialogFooter}>
-              <Button
-                title="Cancel"
-                theme={{
-                  variant: 'secondary',
-                  brand: 'neutral',
-                  background: 'light',
-                }}
-                onClick={() => {
-                  this.setState({ showConfirmationDialog: true })
-                }}
-              />
-              <Button
-                className={s.saveButton}
-                title="Save Preferences"
-                onClick={() => {
-                  this.props.saveAndLoadAnalytics(this.state.consent)
-                }}
-              />
-            </div>
+                Privacy Policy
+              </a>{' '}
+              and{' '}
+              <a
+                href={this.props.cookiePolicyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="cookie-policy-link"
+              >
+                Cookie Policy
+              </a>
+              .
+            </p>
+            <p className={s.dialogBodyNotice}>
+              The categories below outline which companies and tools we use for
+              collecting data. To opt out of a category of data collection, set
+              the toggle to “Off” and save your preferences.
+            </p>
+            <div id="outline">{categories}</div>
           </div>
-        )}
-        {/* Cancellation confirmation dialog */}
-        {this.state.showConfirmationDialog && (
-          <div className={s.visibleDialog}>
-            <div className={s.dialogTitle}>
-              <span>Are you sure?</span>
-            </div>
-            <div className={s.dialogBody}>
-              <p>
-                Your preferences have not been saved. To continue using our
-                website, you must either set individual preferences or agree to{' '}
-                <a
-                  href={this.props.privacyPolicyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  our privacy policy
-                </a>
-                .
-              </p>
-            </div>
-            <div className={s.dialogFooter}>
-              <Button
-                title="Back to Preferences"
-                theme={{
-                  variant: 'secondary',
-                  brand: 'neutral',
-                  background: 'light',
-                }}
-                onClick={() => {
-                  this.setState({ showConfirmationDialog: false })
-                }}
-              />
-              <Button
-                title="Agree & Close"
-                className={s.saveButton}
-                onClick={() => {
-                  this.props.saveAndLoadAnalytics({ loadAll: true })
-                }}
-              />
-            </div>
+          <div className={s.dialogFooter}>
+            <Button
+              title="Save preferences"
+              theme={{
+                variant: 'secondary',
+                brand: 'neutral',
+                background: 'light',
+              }}
+              onClick={() => {
+                this.props.saveAndLoadAnalytics(this.state.consent)
+              }}
+            />
+            <Button
+              className={s.saveButton}
+              title="Accept all"
+              onClick={() => {
+                this.props.saveAndLoadAnalytics({ loadAll: true })
+              }}
+            />
           </div>
-        )}
+        </div>
       </div>
     )
   }

@@ -1,5 +1,44 @@
 # @hashicorp/react-subnav
 
+## 9.5.1
+
+### Patch Changes
+
+- [#749](https://github.com/hashicorp/react-components/pull/749) [`df426f9b`](https://github.com/hashicorp/react-components/commit/df426f9bf17b7a3374fe2649ffb1990d8db3bcb2) Thanks [@pbortnick](https://github.com/pbortnick)! - Ensure subnav link items are centered when there is no overflow
+
+## 9.5.0
+
+### Minor Changes
+
+- [#740](https://github.com/hashicorp/react-components/pull/740) [`ea840077`](https://github.com/hashicorp/react-components/commit/ea84007724e2b604ea0be0114aee474a1ccc6d6f) Thanks [@nandereck](https://github.com/nandereck)! - Bumping mktg-logos deps
+
+## 9.4.0
+
+### Minor Changes
+
+- [#705](https://github.com/hashicorp/react-components/pull/705) [`a361fab5`](https://github.com/hashicorp/react-components/commit/a361fab5f38ced326a1e291dc370559eaced3d6d) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adds menuText prop
+
+## 9.3.6
+
+### Patch Changes
+
+- [#702](https://github.com/hashicorp/react-components/pull/702) [`bda1c7f5`](https://github.com/hashicorp/react-components/commit/bda1c7f54523744cbbb6d4fa40277d9788bc93ca) Thanks [@zchsh](https://github.com/zchsh)! - Reverts a flawed fix to an overflow issue.
+
+## 9.3.5
+
+### Patch Changes
+
+- [#586](https://github.com/hashicorp/react-components/pull/586) [`bff747b4`](https://github.com/hashicorp/react-components/commit/bff747b4f790f00a9e8e23e682fc94510d69bddf) Thanks [@zchsh](https://github.com/zchsh)! - Attempts to fix overflow issue that causes layout shift on dot-io sites.
+
+## 9.3.4
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+- Updated dependencies [[`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e)]:
+  - @hashicorp/react-button@6.0.4
+
 ## 9.3.3
 
 ### Patch Changes

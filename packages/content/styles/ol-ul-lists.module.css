@@ -45,7 +45,7 @@
 
   /* List - ordered bullets */
   & ol:not([class]) {
-    & li {
+    & > li {
       counter-increment: li;
       &::before {
         top: 0.125rem;

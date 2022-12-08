@@ -37,12 +37,23 @@ describe('<CheckboxInput />', () => {
     expect(screen.getByText(emText).tagName).toBe('EM')
   })
 
-  it('should show the Check icon when the input is checked', () => {
+  it('should show the Check icon when the input is checked via value', () => {
     const props = defaultProps
     const { container } = render(
       <CheckboxInput
         {...defaultProps}
-        field={{ ...props.field, value: true, checked: true }}
+        field={{ ...props.field, value: true }}
+      />
+    )
+    expect(container.querySelector('svg')).toBeInTheDocument()
+  })
+
+  it('should show the Check icon when the input is checked via checked', () => {
+    const props = defaultProps
+    const { container } = render(
+      <CheckboxInput
+        {...defaultProps}
+        field={{ ...props.field, checked: true }}
       />
     )
     expect(container.querySelector('svg')).toBeInTheDocument()

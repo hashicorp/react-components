@@ -1,5 +1,6 @@
 import React from 'react'
 import slugify from 'slugify'
+import Link from 'next/link'
 import fragment from './fragment.graphql'
 import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'
@@ -88,7 +89,7 @@ function Button({
   const hasRightIcon = hasIcon && iconProps.position !== 'left'
   const hasLeftIcon = hasIcon && iconProps.position === 'left'
 
-  return (
+  const content = (
     <Elem
       className={classNames(
         s.root,
@@ -100,7 +101,6 @@ function Button({
         className
       )}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
-      href={url}
       ref={hoverRef}
       rel={isExternal ? 'noopener' : undefined}
       target={isExternal ? '_blank' : undefined}
@@ -113,6 +113,14 @@ function Button({
       <span className={s.text}>{title}</span>
       {hasRightIcon && <Icon {...iconProps} svg={iconProps.svg!} />}
     </Elem>
+  )
+
+  return url ? (
+    <Link href={url} legacyBehavior>
+      {content}
+    </Link>
+  ) : (
+    content
   )
 }
 

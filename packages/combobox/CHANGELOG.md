@@ -1,5 +1,23 @@
 # @hashicorp/react-combobox
 
+## 1.2.0
+
+### Minor Changes
+
+- [#695](https://github.com/hashicorp/react-components/pull/695) [`61b1ccb2`](https://github.com/hashicorp/react-components/commit/61b1ccb204144907e9e7785312414dae753a3a73) Thanks [@dstaley](https://github.com/dstaley)! - Update dependencies
+
+## 1.1.0
+
+### Minor Changes
+
+- [#621](https://github.com/hashicorp/react-components/pull/621) [`b5fc3767`](https://github.com/hashicorp/react-components/commit/b5fc37678236f64c6cae2915f2d36b91f4cc00ea) Thanks [@dstaley](https://github.com/dstaley)! - Align styles for @hashicorp/react-combobox and @hashcorp/react-select-input
+
+## 1.0.3
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
 ## 1.0.2
 
 ### Patch Changes

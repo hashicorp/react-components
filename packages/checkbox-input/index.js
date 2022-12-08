@@ -1,5 +1,5 @@
 import React from 'react'
-import { v1 as uuidv1 } from 'uuid'
+import { useId } from '@reach/auto-id'
 import s from './style.module.css'
 import classNames from 'classnames'
 
@@ -20,7 +20,7 @@ function CheckboxInput({
   const error = form.touched[field.name] && form.errors[field.name]
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
-  const inputId = 'u' + uuidv1()
+  const inputId = useId()
 
   return (
     <div
@@ -35,7 +35,7 @@ function CheckboxInput({
     >
       <div className={s.wrapper}>
         <span className={s.checkbox}>
-          {field.value && <SvgrCheckmark />}
+          {field.value || field.checked ? <SvgrCheckmark /> : null}
           <input id={inputId} type="checkbox" {...field} />
         </span>
 

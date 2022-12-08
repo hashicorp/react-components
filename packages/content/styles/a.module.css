@@ -20,10 +20,10 @@
 
     &:visited {
       color: var(--visited);
-    }
 
-    &:visited:hover {
-      color: var(--visited-d1);
+      &:hover {
+        color: var(--visited-d1);
+      }
     }
   }
 }

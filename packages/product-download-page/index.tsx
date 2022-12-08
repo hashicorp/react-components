@@ -179,7 +179,7 @@ export default function ProductDownloadsPage({
 
 interface ProductDownloadsPageProps {
   tutorialLink: Link
-  merchandisingSlot: React.ReactElement
+  merchandisingSlot?: React.ReactElement
   logo: React.ReactElement
   getStartedLinks: Link[]
   getStartedDescription: string
@@ -190,7 +190,7 @@ interface ProductDownloadsPageProps {
   packageManagerOverrides?: PackageManagerConfig[]
   showPackageManagers?: boolean
   pageTitle?: string
-  enterpriseMode: boolean
+  enterpriseMode?: boolean
   product: HashiCorpProduct
   latestVersion: string
   releases: ReleasesAPIResponse

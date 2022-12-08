@@ -1,13 +1,16 @@
 {
   "name": "@hashicorp/react-vertical-text-block-list",
   "description": "Vertical block list of links",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "author": "HashiCorp",
-  "contributors": ["Mike Wickett", "Jeff Escalante"],
+  "contributors": [
+    "Mike Wickett",
+    "Jeff Escalante"
+  ],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-image": "^4.0.1",
-    "@hashicorp/react-link-wrap": "^3.0.1",
+    "@hashicorp/react-image": "^4.0.4",
+    "@hashicorp/react-link-wrap": "^3.0.3",
     "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",
@@ -17,5 +20,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/vertical-text-block-list"
   }
 }

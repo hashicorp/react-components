@@ -1,19 +1,26 @@
 {
   "name": "@hashicorp/react-text-split-with-image",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "Display an image alongside a title, description, and links.",
   "author": "HashiCorp",
-  "contributors": ["Brandon Romano"],
+  "contributors": [
+    "Brandon Romano"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/react-image": "^4.0.3",
-    "@hashicorp/react-text-split": "^4.0.0"
+    "@hashicorp/react-text-split": "^5.0.0"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "react": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/text-split-with-image"
   }
 }

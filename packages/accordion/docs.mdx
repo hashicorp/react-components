@@ -4,32 +4,21 @@ componentName: 'Accordion'
 
 Display a list of titled items with expandable content.
 
-<Playground>
-
-```tsx
-import Accordion from 'accordion'
-
-export default function Example() {
-  return (
-    <Accordion
-      heading="My test accordion heading"
-      items={[
-        {
-          heading: 'My Accordion Item',
-          content: 'This is some default text in the collapsable area.',
-        },
-        {
-          heading: 'Another Accordion Item',
-          content:
-            'This is some text content with some <strong>strong text</strong>',
-        },
-      ]}
-    />
-  )
-}
-```
-
-</Playground>
+<LiveComponent>
+{`<Accordion
+  heading="My test accordion heading"
+  items={[
+    {
+      heading: 'My Accordion Item',
+      content: 'This is some default text in the collapsable area.',
+    },
+    {
+      heading: 'Another Accordion Item',
+      content: 'This is some text content with some <strong>strong text</strong>',
+    },
+  ]}
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -43,7 +32,8 @@ export default function Example() {
 
 ##### Accordion Item with HTML
 
-<LiveComponent>{`<Accordion
+<LiveComponent>
+{`<Accordion
   items={[
     {
       heading: 'Support Period & End-of-Life Policy',
@@ -56,4 +46,5 @@ export default function Example() {
         '<p>Response and resolution times are based on your Service Level Agreement with HashiCorp. Please refer to <em>Bronze / Silver / Gold</em> SLA levels.</p><p>HashiCorp will make reasonable efforts to adhere to the response and resolution times for issues within the scope of its own software.</p><p>The following definitions of Severity should be used when opening tickets.</p><h6>Severity 1 (Urgent)</h6><p>Any error reported by the customer where the majority of users for a particular part of the software are affected, the error has high visibility, there is no workaround, and it affects customer’s ability to perform its business.</p>',
     },
   ]}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>

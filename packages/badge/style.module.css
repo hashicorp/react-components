@@ -1,0 +1,58 @@
+.badge {
+  composes: g-type-label from global;
+  background-color: var(--background-color, var(--black));
+  color: var(--color, var(--white));
+  border-radius: 4px;
+  display: block;
+  padding: 0 8px;
+  text-align: center;
+  white-space: nowrap;
+  width: max-content;
+  height: 24px;
+  line-height: 24px;
+}
+
+.product {
+  &.primary {
+    background-color: var(--brand);
+    color: var(--brand-text-on-primary);
+  }
+  &.secondary {
+    background-color: var(--brand-secondary);
+    color: var(--black);
+  }
+}
+
+.neutral,
+.hashicorp {
+  &.primary {
+    --background-color: var(--brand);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--vagrant-secondary);
+    --color: var(--black);
+  }
+}
+
+.black {
+  &.primary {
+    --background-color: var(--black);
+    --color: var(--white);
+  }
+  &.secondary {
+    --background-color: var(--gray-6);
+    --color: var(--black);
+  }
+}
+
+.white {
+  &.primary {
+    --background-color: var(--white);
+    --color: var(--black);
+  }
+  &.secondary {
+    --background-color: var(--white);
+    --color: var(--gray-3);
+  }
+}

@@ -1,19 +1,22 @@
 {
   "name": "@hashicorp/react-search",
   "description": "Algolia-powered search component",
-  "version": "6.4.0",
+  "version": "6.5.0",
   "author": "HashiCorp",
-  "contributors": ["Kevin Pruett", "Jimmy Merritello"],
+  "contributors": [
+    "Kevin Pruett",
+    "Jimmy Merritello"
+  ],
   "dependencies": {
-    "@hashicorp/react-inline-svg": "^6.0.1",
-    "@hashicorp/remark-plugins": "^3.1.1",
+    "@hashicorp/react-inline-svg": "^6.0.3",
+    "@hashicorp/remark-plugins": "^3.3.1",
     "@reach/visually-hidden": "^0.16.0",
-    "algoliasearch": "^4.10.3",
+    "algoliasearch": "^4.12.0",
     "classnames": "^2.3.1",
-    "dotenv": "^10.0.0",
-    "glob": "^7.1.7",
+    "dotenv": "^14.3.1",
+    "glob": "^7.2.0",
     "gray-matter": "^4.0.3",
-    "react-instantsearch-dom": "^6.12.1",
+    "react-instantsearch-dom": "^6.21.1",
     "remark": "^13.0.0",
     "search-insights": "^1.7.1",
     "unist-util-visit": "^2.0.3"
@@ -27,6 +30,11 @@
     "access": "public"
   },
   "devDependencies": {
-    "random-words": "^1.1.1"
+    "random-words": "^1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/search"
   }
 }

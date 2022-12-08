@@ -1,5 +1,41 @@
 # @hashicorp/react-content
 
+## 8.3.0
+
+### Minor Changes
+
+- [#823](https://github.com/hashicorp/react-components/pull/823) [`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Update neutral and blue colors
+
+## 8.2.3
+
+### Patch Changes
+
+- [#663](https://github.com/hashicorp/react-components/pull/663) [`101f7665`](https://github.com/hashicorp/react-components/commit/101f766593df7531f46ffac43849c8d31aa48ed2) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix ol styles leaking to nested ul list items
+
+## 8.2.2
+
+### Patch Changes
+
+- [#562](https://github.com/hashicorp/react-components/pull/562) [`9080e745`](https://github.com/hashicorp/react-components/commit/9080e74559d09510f9ab99ba1d19421e51f2f5e5) Thanks [@zchsh](https://github.com/zchsh)! - Fixes an issue where table headings were not aligned left by default. Maintains option to adjust table heading alignment using either GitHub-flavor markdown (via the align attribute).
+
+## 8.2.1
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+## 8.2.0
+
+### Minor Changes
+
+- [#490](https://github.com/hashicorp/react-components/pull/490) [`d545b9d`](https://github.com/hashicorp/react-components/commit/d545b9dcb42c7538273cecc0e99e9adc25dced82) Thanks [@dstaley](https://github.com/dstaley)! - Remove enforced left-alignment for table headers
+
+## 8.1.2
+
+### Patch Changes
+
+- [#488](https://github.com/hashicorp/react-components/pull/488) [`bd8a16d`](https://github.com/hashicorp/react-components/commit/bd8a16de91c139bd15acfe93b7a5c41b1362892b) Thanks [@BRKalow](https://github.com/BRKalow)! - Update table styles so that the top-level table width and child table element widths do not get mismatched, while still retaining the max-width and x-axis scroll.
+
 ## 8.1.1
 
 ### Patch Changes

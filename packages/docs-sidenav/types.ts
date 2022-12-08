@@ -52,3 +52,20 @@ interface NavBranch {
   title: string
   routes: NavNode[]
 }
+
+/**
+ * When `__isActive: true`, the the nav node
+ * should be highlighted in the UI.
+ *
+ * When `__isFiltered: true`, this signifies that a
+ * filter user input is present and that the nav node
+ * **should be** displayed in the UI.
+ *
+ * We have an optional `hidden: boolean` property that can be
+ * manually added to hide nav items from the sidebar.
+ */
+export type NavNodeWithInjectedFields = NavNode & {
+  __isActive?: boolean
+  __isFiltered?: boolean
+  hidden?: boolean
+}

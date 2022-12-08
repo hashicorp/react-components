@@ -1,0 +1,62 @@
+.intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &.center {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.eyebrow {
+  --color: var(--wpl-neutral-500);
+
+  composes: g-type-body-large from global;
+  font-weight: var(--font-weight-bold);
+  text-transform: inherit;
+  margin: 0 0 32px;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--wpl-neutral-300);
+  }
+}
+
+.heading {
+  --color: var(--wpl-neutral-900);
+
+  margin: 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--wpl-neutral-0);
+  }
+}
+
+.description {
+  --color: var(--wpl-neutral-500);
+
+  margin: 16px 0 0;
+  color: var(--color);
+
+  @nest .dark & {
+    --color: var(--wpl-neutral-400);
+  }
+
+  & > * {
+    color: inherit;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.actions {
+  margin-top: 32px;
+}

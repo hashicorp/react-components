@@ -6,6 +6,7 @@ import {
   waitFor,
 } from '@testing-library/react'
 import CodeBlock from './'
+import { heapAttributes } from './analytics'
 // Mock copy-to-clipboard
 import copyToClipboard from './partials/clipboard-button/copy-to-clipboard'
 jest.mock('./partials/clipboard-button/copy-to-clipboard', () =>
@@ -76,6 +77,7 @@ it('should have a data-heap-track="code-block-clipboard-icon" attribute on the C
   )
   const copyButton = screen.getByText('Copy')
   expect(copyButton.tagName).toBe('BUTTON')
+  expect(copyButton.getAttribute('data-heap-track')).toBe(heapAttributes.copy)
 })
 
 it('should render a keyboard-focusable `Copy` button', () => {
@@ -129,6 +131,29 @@ it('should track a "Copy" event when the "Copy" button is clicked', async () => 
   })
   // Cleanup
   window.analytics = forMockRestore
+  copyToClipboard.mockClear()
+})
+
+it('should call "onCopyCallback" when the "Copy" button is clicked', async () => {
+  // Set up a mock
+  const onCopyCallback = jest.fn()
+  // Render
+  render(
+    <CodeBlock
+      code={`console.log("Hello world");`}
+      onCopyCallBack={onCopyCallback}
+      options={{ showClipboard: true }}
+    />
+  )
+  // Find and click the copy button
+  const buttonElem = screen.getByText('Copy')
+  expect(buttonElem.tagName).toBe('BUTTON')
+  expect(buttonElem).toBeInTheDocument()
+  fireEvent.click(buttonElem)
+  //  Expect onCopyCallback to have been called
+  await waitFor(() => expect(onCopyCallback).toHaveBeenCalledTimes(1))
+  expect(onCopyCallback).toBeCalledWith(true)
+  copyToClipboard.mockClear()
 })
 
 it('should track a "Click" event when the root element is clicked', async () => {
@@ -168,4 +193,5 @@ it('should use process-snippet to strip the leading $ from shell snippets', asyn
   const expectedCode = processSnippet(codeString)
   await waitFor(() => expect(copyToClipboard).toHaveBeenCalledTimes(1))
   expect(copyToClipboard).toHaveBeenCalledWith(expectedCode)
+  copyToClipboard.mockClear()
 })

@@ -1,0 +1,26 @@
+{
+  "columns": ["", "Col 1", "Col 2"],
+  "rows": [
+    {
+      "header": {
+        "heading": "<h3>Row Header</h3>"
+      },
+      "cells": [false, true],
+      "isCollapsible": false
+    },
+    {
+      "header": {
+        "heading": "<h3>Row Header 2</h3>",
+        "content": "<p>Row Header 2 Content</p>"
+      },
+      "cells": [
+        true,
+        {
+          "heading": "<h3>Cell Heading</h3>",
+          "content": "<p>Cell Content</p>"
+        }
+      ],
+      "isCollapsible": true
+    }
+  ]
+}

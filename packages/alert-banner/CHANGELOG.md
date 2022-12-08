@@ -1,5 +1,17 @@
 # @hashicorp/react-alert-banner
 
+## 7.0.3
+
+### Patch Changes
+
+- [#630](https://github.com/hashicorp/react-components/pull/630) [`fdccbcc9`](https://github.com/hashicorp/react-components/commit/fdccbcc99ed85aafbdc6af4442f482d6ce5820af) Thanks [@dstaley](https://github.com/dstaley)! - Use string for cookie value
+
+## 7.0.2
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
 ## 7.0.1
 
 ### Patch Changes

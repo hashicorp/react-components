@@ -1,0 +1,50 @@
+---
+componentName: 'RelatedContent'
+---
+
+A full-page-width component that displays text and cards. Used for displaying related content.
+
+<LiveComponent>
+  {`
+    <RelatedContent
+      appearance={'light'} 
+      headline={"Related Content"}
+      description={"Leo mauris fermentum pharetra blandit tellus euismod. Leo mauris fermentum pharetra blandit tellus euismod."}
+      cards={
+        [
+          {
+            link: "https://hashicorp.com",
+            meta: [ 'USE CASES' ],
+            heading: "Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…",
+            description: "Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…",
+          },
+          {
+            link: "https://hashicorp.com",
+            meta: [ 'USE CASES' ],
+            heading: "Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…",
+            description: "Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…",
+          },
+          {
+            link: "https://hashicorp.com",
+            meta: [ 'USE CASES' ],
+            heading: "Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…",
+            description: "Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…",
+          },
+          {
+            link: "https://hashicorp.com",
+            meta: [ 'USE CASES' ],
+            heading: "Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus euismod…",
+            description: "Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…",
+          },
+        ]
+      }
+      cta={{
+        text: "Sign up now",
+        href: "/components/relatedcontent"
+      }} 
+    />
+  `}
+</LiveComponent>
+
+<PropsTable props={componentProps.baseProps} />
+

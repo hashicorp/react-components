@@ -4,10 +4,10 @@ componentName: ConsentManager
 
 A GDPR-compliant consent manager, integrated with segment.
 
-<LiveComponent>{`<ConsentManager
+<LiveComponent>
+  {`<ConsentManager
   version={1}
   segmentWriteKey='iyi06c432UL7SB1r3fQReec4bNwFyzkW'
-  utilServerRoot='https://hashicorp-web-util-staging.herokuapp.com'
   privacyPolicyLink='https://www.hashicorp.com/privacy'
   cookiePolicyLink='https://www.hashicorp.com/cookies'
   segmentServices={[
@@ -51,7 +51,8 @@ A GDPR-compliant consent manager, integrated with segment.
     },
   ]}
   forceShow={true}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 

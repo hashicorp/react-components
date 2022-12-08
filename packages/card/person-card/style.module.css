@@ -1,0 +1,29 @@
+.location {
+  composes: g-type-body-small-x-strong from global;
+  margin: 0;
+  color: var(--secondary-text-color);
+}
+
+.thumbnailContainer {
+  position: relative;
+}
+
+.thumbnailIcon {
+  --size: 40px;
+
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: var(--size);
+  height: var(--size);
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: var(--wpl-neutral-0);
+  opacity: 0.5;
+
+  & svg {
+    position: relative;
+  }
+}

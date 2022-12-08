@@ -10,6 +10,10 @@ const CONTENT_DIR = 'packages/docs-page/server/__fixtures__'
 
 let loader: FileSystemLoader
 
+import * as nextMdxRemote from 'next-mdx-remote/serialize'
+const serializeSpy = jest.spyOn(nextMdxRemote, 'serialize')
+const mockMdxContentHook = jest.fn()
+
 describe('FileSystemLoader', () => {
   beforeAll(() => {
     loader = new FileSystemLoader({
@@ -49,7 +53,9 @@ describe('FileSystemLoader', () => {
         "githubFileUrl": "https://github.com/hashicorp/waypoint/blob/main/website/packages/docs-page/server/__fixtures__/index.mdx",
         "mdxSource": Object {
           "compiledSource": Any<String>,
-          "scope": Object {},
+          "scope": Object {
+            "version": "latest",
+          },
         },
         "navData": Any<Array>,
         "versions": Array [],
@@ -84,12 +90,37 @@ describe('FileSystemLoader', () => {
         "githubFileUrl": "https://hashicorp.com/packages/docs-page/server/__fixtures__/index.mdx",
         "mdxSource": Object {
           "compiledSource": Any<String>,
-          "scope": Object {},
+          "scope": Object {
+            "version": "latest",
+          },
         },
         "navData": Any<Array>,
         "versions": Array [],
       }
     `
     )
+  })
+
+  test('mdxContentHook is called if provided', async () => {
+    mockMdxContentHook.mockImplementation((mdxContent, scope) => 'Mock impl')
+
+    const l = new FileSystemLoader({
+      navDataFile: 'test',
+      localContentDir: CONTENT_DIR,
+      product: 'waypoint',
+      githubFileUrl(p) {
+        return `https://hashicorp.com/${p}`
+      },
+      mdxContentHook: mockMdxContentHook,
+      scope: { version: 'latest' },
+    })
+
+    await l.loadStaticProps({ params: {} })
+
+    expect(mockMdxContentHook).toHaveBeenCalledWith(expect.any(String), {
+      version: 'latest',
+    })
+    // assert that `serialize` is called with the result of the hook
+    expect(serializeSpy).toHaveBeenCalledWith('Mock impl', expect.any(Object))
   })
 })

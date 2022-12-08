@@ -1,5 +1,4 @@
 .select {
-  --select-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
   --select-font-size: 16px;
 
   &[data-size='small'] {
@@ -11,30 +10,31 @@
 
   & > label {
     display: block;
-    padding-bottom: 0.5em;
-    font-size: 0.75em;
-    font-weight: var(--font-weight-bold);
-    color: var(--gray-4);
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-3);
     text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.5em;
   }
 
   & > button {
     display: block;
     width: 100%;
-    padding: 0.75em;
-    border: 1px solid var(--gray-4);
+    padding: 12px;
+    border: 1px solid var(--gray-5);
     border-radius: 2px;
     box-sizing: border-box;
-    box-shadow: var(--select-shadow);
     background: var(--white);
-    font-size: 1em;
+    font-size: 1rem;
+    line-height: 1.5em;
+    font-family: inherit;
+    color: var(--gray-2);
     cursor: pointer;
     text-align: left;
     position: relative;
-
-    &:hover {
-      border: 1px solid var(--gray-3);
-    }
 
     &:placeholder-shown {
       color: var(--gray-6);
@@ -43,7 +43,6 @@
     & .arrow {
       position: absolute;
       right: 0.75em;
-      top: calc(50% - 10px);
 
       & > svg {
         vertical-align: middle;
@@ -61,9 +60,8 @@
     & ul {
       display: none;
       background: var(--white);
-      border: 1px solid var(--gray-4);
+      border: 1px solid var(--gray-5);
       box-sizing: border-box;
-      box-shadow: var(--select-shadow);
       border-radius: 2px;
       list-style: none;
       margin: 0;

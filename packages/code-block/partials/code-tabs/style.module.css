@@ -15,12 +15,14 @@ to be present.
   align-items: center;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  padding-left: 4px;
+
+  &.hasHeading {
+    padding-left: 4px;
+  }
 }
 
 .heading {
   composes: g-type-body-small-strong from global;
-
   align-items: center;
   color: var(--text-color-base);
   display: flex;

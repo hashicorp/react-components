@@ -17,7 +17,6 @@
       margin: 0;
       padding: 0;
       user-select: none;
-      box-shadow: var(--select-shadow);
       background: var(--white);
       border-radius: 2px;
       max-height: var(--combobox-list-max-height, 40vh);
@@ -109,17 +108,16 @@
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
+  align-items: flex-end;
+  padding-right: 12px;
 }
 
 .dropdownCaretIcon {
   --darken-on-active: brightness(10%);
 
-  width: 20px;
+  width: 11px;
   height: auto;
-  transition: 0.3s transform;
-  &:hover {
-    filter: var(--darken-on-active);
-  }
+  transition: 0.2s transform;
 }
 
 .dropdownCaretIconActive {

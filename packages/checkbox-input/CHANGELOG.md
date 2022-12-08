@@ -1,5 +1,17 @@
 # @hashicorp/react-checkbox-input
 
+## 5.0.3
+
+### Patch Changes
+
+- [#699](https://github.com/hashicorp/react-components/pull/699) [`3714aff2`](https://github.com/hashicorp/react-components/commit/3714aff2aa95714162c2f753d4814ad192fd8fcd) Thanks [@dstaley](https://github.com/dstaley)! - Display checkmark when checked is true
+
+## 5.0.2
+
+### Patch Changes
+
+- [#645](https://github.com/hashicorp/react-components/pull/645) [`83382731`](https://github.com/hashicorp/react-components/commit/83382731e5d59541a9006eb7fc17df830690a487) Thanks [@dstaley](https://github.com/dstaley)! - Use @reach/auto-id to generate SSR-safe ids
+
 ## 5.0.1
 
 ### Patch Changes

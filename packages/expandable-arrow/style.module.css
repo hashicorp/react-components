@@ -1,0 +1,28 @@
+.root {
+  --translate-x: -4px;
+  --transition-duration: 250ms;
+  --transition-timing-function: ease-in-out;
+
+  transform: translateX(var(--translate-x));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: fill, transform;
+
+  &.expanded {
+    --translate-x: 0;
+  }
+}
+
+.line {
+  --stroke-dashoffset: 10;
+
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: stroke-dashoffset;
+  stroke-dasharray: 10;
+  stroke-dashoffset: var(--stroke-dashoffset);
+
+  @nest .expanded & {
+    --stroke-dashoffset: 1;
+  }
+}

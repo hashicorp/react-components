@@ -1,5 +1,5 @@
 test.todo(
-  '`segmentServices`, `additionalServices`, `segmentWriteKey`, and `utilServerRoot` props are passed to getIntegration function'
+  '`segmentServices`, `additionalServices`, and `segmentWriteKey` props are passed to getIntegration function'
 )
 
 test.todo('custom `privacyPolicyLink` renders in the right place')

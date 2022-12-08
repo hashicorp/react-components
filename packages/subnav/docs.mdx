@@ -4,7 +4,8 @@ componentName: Subnav
 
 Displays a navigation bar, with links and a call-to-action. Links can be organized into submenus, although from a UX standpoint it's preferable to provide simplified, flattened navigation. The Subnav is intended for use directly below our primary navigation.
 
-<LiveComponent>{`<Subnav
+<LiveComponent>
+{`<Subnav
   titleLink={{ text: 'Title', url: '#' }}
   menuItems={[
     { text: 'Link One', url: '#'},
@@ -14,7 +15,18 @@ Displays a navigation bar, with links and a call-to-action. Links can be organiz
   ctaLinks={[
     { text: 'CTA Button', url: '#' }
   ]}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
+
+## Without CTA:
+<Subnav
+  titleLink={{ text: 'Title', url: '#' }}
+  menuItems={[
+    { text: 'Link One', url: '#'},
+    { text: 'Link Two', url: '#'},
+    { text: 'Link Three', url: '#'}
+  ]}
+/>
 
 <UsageDetails packageJson={packageJson} />
 

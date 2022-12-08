@@ -1,5 +1,21 @@
 # @hashicorp/react-case-study-slider
 
+## 7.0.3
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+- Updated dependencies [[`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e)]:
+  - @hashicorp/react-featured-slider@5.0.2
+  - @hashicorp/react-image@4.0.4
+
+## 7.0.2
+
+### Patch Changes
+
+- [#500](https://github.com/hashicorp/react-components/pull/500) [`b7e0c0e`](https://github.com/hashicorp/react-components/commit/b7e0c0e400419e66ff1d19560afbca6aaa122e4e) Thanks [@jmfury](https://github.com/jmfury)! - Fixes regression on links from a Case Study resource item
+
 ## 7.0.1
 
 ### Patch Changes

@@ -6,9 +6,12 @@ to be present.
 
 .tabsAsDropdown {
   display: flex;
-  margin-left: auto;
   justify-content: flex-end;
   flex-wrap: wrap;
+
+  &.hasHeading {
+    margin-left: auto;
+  }
 }
 
 .listboxInput {
@@ -18,7 +21,6 @@ to be present.
 
 .listboxButton {
   composes: g-type-body-small-strong from global;
-
   color: var(--text-color-faded);
   min-height: var(--base-height);
   padding: 0 16px;
@@ -38,10 +40,10 @@ to be present.
   & svg {
     display: block;
     & [fill] {
-      fill: currentcolor;
+      fill: currentColor;
     }
     & [stroke] {
-      stroke: currentcolor;
+      stroke: currentColor;
     }
   }
 }
@@ -50,7 +52,7 @@ to be present.
   display: block;
   position: absolute;
   z-index: 1;
-  right: 0;
+  left: 0;
   min-width: min-content;
   border: 1px solid var(--background-tabs);
   border-top: none;
@@ -65,6 +67,11 @@ to be present.
   &[hidden] {
     display: none;
   }
+
+  &.hasHeading {
+    left: auto;
+    right: 0;
+  }
 }
 
 .listboxList {
@@ -75,6 +82,7 @@ to be present.
     box-shadow: none;
     outline: none;
   }
+
   /*
   The styles below are required to override
   globally scoped g-content styles. They should 
@@ -120,7 +128,7 @@ to be present.
   */
   margin: 0 !important;
   padding: 4px 8px !important;
-  &:before {
+  &::before {
     display: none;
   }
 }

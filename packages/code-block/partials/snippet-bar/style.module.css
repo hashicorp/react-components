@@ -96,9 +96,7 @@ to be present.
 /* copy button container */
 
 .copyBtnContainer {
-  align-items: center;
-  display: flex;
-  min-height: var(--base-height);
+  margin-right: 12px;
 
   @media print {
     display: none;

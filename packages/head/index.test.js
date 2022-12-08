@@ -51,6 +51,7 @@ describe('<Head />', () => {
         metaHttpEquivHTML,
         metaDefaultTagsHTML,
         '<meta name="description" property="og:description" content="Page Description">',
+        '<meta name="twitter:description" content="Page Description">',
         '</head>',
       ].join('')
     )
@@ -85,17 +86,36 @@ describe('<Head />', () => {
   })
 
   it('should render and display <meta name="og:image"> tag', () => {
-    const { container } = renderHead(<Head image="/site-image.jpg" />)
+    const { container } = renderHead(
+      <Head image="https://www.hashicorp.com/site-image.jpg" />
+    )
 
     expect(container.innerHTML).toBe(
       [
         '<head>',
         metaHttpEquivHTML,
         metaDefaultTagsHTML,
-        '<meta property="og:image" content="/site-image.jpg">',
+        '<meta property="og:image" content="https://www.hashicorp.com/site-image.jpg">',
         '</head>',
       ].join('')
     )
+  })
+
+  it('should throw an error in development if image is not an absolute URL', () => {
+    //  Suppress console.error for this test, we expect an error
+    jest.spyOn(console, 'error')
+    global.console.error.mockImplementation(() => {})
+    expect(() => {
+      renderHead(<Head image="/site-image.jpg" />)
+    }).toThrowError()
+    //  Restore console.error for further tests
+    global.console.error.mockRestore()
+  })
+
+  it('should not throw an error if image is not a string', () => {
+    expect(() => {
+      renderHead(<Head image={null} />)
+    }).not.toThrowError()
   })
 
   it('should render and display <link rel="preload"> tags', () => {

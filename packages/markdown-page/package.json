@@ -1,15 +1,17 @@
 {
   "name": "@hashicorp/react-markdown-page",
   "description": "Create a single page based on a mdx file in NextJS projects.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": "HashiCorp",
-  "contributors": ["Jeff Escalante"],
+  "contributors": [
+    "Jeff Escalante"
+  ],
   "dependencies": {
     "@hashicorp/platform-markdown-utils": "^0.2.0",
-    "@hashicorp/react-content": "^8.1.0",
+    "@hashicorp/react-content": "^8.2.1",
     "@hashicorp/react-head": "^3.1.2",
     "gray-matter": "4.0.3",
-    "next-mdx-remote": ">=3.x"
+    "next-mdx-remote": "3.x"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
@@ -18,5 +20,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/markdown-page"
   }
 }

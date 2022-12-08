@@ -4,19 +4,27 @@
 export default function temporary_injectJumpToSection(node) {
   const root = node.querySelector('.g-content')
   const firstH1 = root.querySelector('h1')
-  const otherH2s = [].slice.call(root.querySelectorAll('h2')) // NodeList -> array
+  // Build our array of headline objects
+  const headlines = Array.from(root.querySelectorAll('h2')).reduce(
+    (acc, h2) => {
+      // Query for headlines with "id" attributes, which are expected
+      // to be added via remark anchorLinks
+      const headingId = h2.getAttribute('id')
+      if (headingId) {
+        acc.push({
+          id: headingId,
+          text: h2.textContent.slice(1), // slice removes permalink » character
+        })
+      }
+
+      return acc
+    },
+    []
+  )
 
   // if there's no h1 or no 3 h2s, don't render jump to section
   if (!firstH1) return
-  if (otherH2s.length < 1) return
-
-  const headlines = otherH2s.map((h2) => {
-    // slice removes the anchor link character
-    return {
-      id: h2.querySelector('.__target-h').id,
-      text: h2.textContent.slice(1), // slice removes permalink » character
-    }
-  })
+  if (headlines.length < 1) return
 
   // build the html
   const html = `

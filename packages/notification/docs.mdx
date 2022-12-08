@@ -1,0 +1,192 @@
+---
+componentName: 'Notification'
+---
+
+<LiveComponent>
+  {`
+<Notification
+  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+  cta={{
+    title: 'Standalone link',
+    url: '/'
+  }}
+  onDismiss={() => {}}
+/>
+`}
+</LiveComponent>
+
+<PropsTable props={componentProps} />
+
+## `notification` API
+
+```js
+// Render a notification
+notification(
+  (n) => {
+    // Render your notification UI component
+    return <Notification />
+  },
+  {
+    // Provide a custom id to the notification, this ensures
+    // your not rendering the same notification more than once
+    // at a given time, and allows you to programmatically remove
+    // notifications via notification.remove('custom-id').
+    id: 'custom-id',
+    // Set a custom auto dismiss duration.
+    // Set to `Infinity` to prevent auto dismissal.
+    duration: 6000,
+  }
+)
+
+// Remove a notification from the UI
+notification.remove('custom-id')
+```
+
+## How to render notifications
+
+Import and add the `<Notifications />` component within your App file. Ensure your app is wrapped the MotionConfig component to lazy load Framer Motion features.
+
+```tsx
+// pages/_app.tsx
+import MotionConfig from '@hashicorp/react-motion-config'
+import { Notfications } from '@hashicorp/react-notification'
+
+export default function App({ Component, pageProps }) {
+  return (
+    <MotionConfig>
+      <Component {...pageProps} />
+      <Notifications />
+    </MotionConfig>
+  )
+}
+```
+
+Render a notification using the `notification` function. Below we demonstrate how you can render a notification on page load, and also based on a user interaction.
+
+```tsx
+// pages/index.tsx
+import * as React from 'react'
+import { notification, Notification } from '@hashicorp/react-notification'
+
+export default function Homepage() {
+  React.useEffect(() => {
+    // Render a notification on page load
+    notification((n) => {
+      return (
+        <Notification
+          description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+          cta={{
+            title: 'Standalone link',
+            url: '/',
+          }}
+          onDismiss={() => notification.remove(n.id)}
+        />
+      )
+    })
+  }, [])
+
+  const handleCopy = () => {
+    // Trigger a notification based on a user action
+    notification((n) => {
+      return <Notification />
+    })
+  }
+
+  return (
+    <>
+      <button onClick={handleCopy}>Copy</button>
+    </>
+  )
+}
+```
+
+While we recommend you use the appropriate Notification UI components, you have the ability to render custom markup using the notification function.
+
+### With language
+
+<LiveComponent>
+  {`
+<NotificationWithLanguage
+  language="en"
+  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+  cta={{
+    title: 'Standalone link',
+    url: '/'
+  }}
+  onDismiss={() => {}}
+/>
+`}
+</LiveComponent>
+
+### With product
+
+<LiveComponent>
+  {`
+<NotificationWithProduct
+  product="vault"
+  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+  cta={{
+    title: 'Standalone link',
+    url: '/'
+  }}
+  onDismiss={() => {}}
+/>
+`}
+</LiveComponent>
+
+### With resource
+
+<LiveComponent>
+  {`
+<NotificationWithResource
+  type="webinar"
+  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+  cta={{
+    title: 'Standalone link',
+    url: '/'
+  }}
+  onDismiss={() => {}}
+/>
+`}
+</LiveComponent>
+
+### With thumbnail
+
+<LiveComponent>
+  {`
+<NotificationWithThumbnail
+  thumbnail={{
+    src: 'https://www.datocms-assets.com/2885/1651495958-infrastructure.png',
+    alt: 'HashiCorp Infrastructure'
+  }}
+  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+  cta={{
+    title: 'Standalone link',
+    url: '/'
+  }}
+  onDismiss={() => {}}
+/>
+`}
+</LiveComponent>
+
+### With actions
+
+<LiveComponent>
+  {`
+<NotificationWithActions
+  heading="Notification heading"
+  description="lAliquet in lacus, scelerisque tristique purus. Lob ortis felis orci lacus egestas et turpis."
+  actions={[
+    {
+      title: 'Primary action',
+      onClick: () => {}
+    },
+    {
+      title: 'Secondary action',
+      onClick: () => {}
+    },
+  ]}
+  onDismiss={() => {}}
+/>
+`}
+</LiveComponent>

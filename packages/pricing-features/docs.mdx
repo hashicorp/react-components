@@ -1,0 +1,313 @@
+---
+componentName: 'PricingFeatures'
+---
+
+<LiveComponent>
+  {`
+   <PricingFeatures
+      features={[
+        {
+          heading: 'Features',
+          content: {
+            tabs: [
+              {
+                label: {
+                  icon: <div style={{ height: '24px' }}><span style={{ verticalAlign: 'middle' }}>key</span></div>,
+                  heading: 'Secrets Management',
+                },
+                content: {
+                  table: {
+                    columns: ['', 'Development', 'Starter'],
+                    rows: [
+                      {
+                        header: {
+                          heading: '<p>Monitored 24/7</p>',
+                        },
+                        cells: [true, true],
+                      },
+                      {
+                        header: {
+                          heading:
+                            '<p>Advanced data protection module (ADP)</p>',
+                        },
+                        cells: [
+                          {
+                            heading: '<p>Heading</p>',
+                          },
+                          true,
+                        ],
+                      },
+                      {
+                        header: {
+                          heading: '<p>Cross-region</p>',
+                        },
+                        cells: [false, true],
+                      },
+                      {
+                        header: {
+                          heading: '<p>Dynamic Secrets</p>',
+                          content:
+                            ' <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [true, true],
+                        isCollapsible: true,
+                      },
+                      {
+                        header: {
+                          heading: '<p>Dynamic <a href="#">Secrets</a></p>',
+                          content:
+                            '<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [
+                          {
+                            heading: '<p>Single node</p>',
+                            content:
+                              '<p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
+                          },
+                          {
+                            heading: '<p>3-node HA Cluster</p>',
+                            content:
+                              '<p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p>',
+                          },
+                        ],
+                        isCollapsible: true,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                label: {
+                  icon: <div style={{ height: '24px' }}><span style={{ verticalAlign: 'middle' }}>lock</span></div>,
+                  heading: 'Data Protection',
+                },
+                content: {
+                  table: {
+                    columns: ['', 'Development', 'Starter'],
+                    rows: [
+                      {
+                        header: {
+                          heading: '<p>Dynamic Secrets</p>',
+                          content:
+                            ' <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [true, true],
+                        isCollapsible: true,
+                      },
+                      {
+                        header: {
+                          heading: '<p>Dynamic <a href="#">Secrets</a></p>',
+                          content:
+                            '<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [
+                          {
+                            heading: '<p>Single node</p>',
+                            content:
+                              '<p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
+                          },
+                          {
+                            heading: '<p>3-node HA Cluster</p>',
+                            content:
+                              '<p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p>',
+                          },
+                        ],
+                        isCollapsible: true,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                label: {
+                  icon: <div style={{ height: '24px' }}><span style={{ verticalAlign: 'middle' }}>lock</span></div>,
+                  heading: 'Identity-based access',
+                },
+                content: {
+                  table: {
+                    columns: ['', 'Development', 'Starter'],
+                    rows: [
+                      {
+                        header: {
+                          heading: '<p>Dynamic Secrets</p>',
+                          content:
+                            ' <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [true, true],
+                        isCollapsible: true,
+                      },
+                      {
+                        header: {
+                          heading: '<p>Dynamic <a href="#">Secrets</a></p>',
+                          content:
+                            '<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [
+                          {
+                            heading: '<p>Single node</p>',
+                            content:
+                              '<p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
+                          },
+                          {
+                            heading: '<p>3-node HA Cluster</p>',
+                            content:
+                              '<p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p>',
+                          },
+                        ],
+                        isCollapsible: true,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+                label: {
+                  icon: <div style={{ height: '24px' }}><span style={{ verticalAlign: 'middle' }}>lock</span></div>,
+                  heading: 'Multi-datacenter & Scale',
+                },
+                content: {
+                  table: {
+                    columns: ['', 'Development', 'Starter'],
+                    rows: [
+                      {
+                        header: {
+                          heading: '<p>Dynamic Secrets</p>',
+                          content:
+                            ' <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [true, true],
+                        isCollapsible: true,
+                      },
+                      {
+                        header: {
+                          heading: '<p>Dynamic <a href="#">Secrets</a></p>',
+                          content:
+                            '<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [
+                          {
+                            heading: '<p>Single node</p>',
+                            content:
+                              '<p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
+                          },
+                          {
+                            heading: '<p>3-node HA Cluster</p>',
+                            content:
+                              '<p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p>',
+                          },
+                        ],
+                        isCollapsible: true,
+                      },
+                    ],
+                  },
+                },
+              },
+               {
+                label: {
+                  icon: <div style={{ height: '24px' }}><span style={{ verticalAlign: 'middle' }}>lock</span></div>,
+                  heading: 'Advanced Data Protection',
+                },
+                content: {
+                  table: {
+                    columns: ['', 'Development', 'Starter'],
+                    rows: [
+                      {
+                        header: {
+                          heading: '<p>Dynamic Secrets</p>',
+                          content:
+                            ' <p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [true, true],
+                        isCollapsible: true,
+                      },
+                      {
+                        header: {
+                          heading: '<p>Dynamic <a href="#">Secrets</a></p>',
+                          content:
+                            '<p>Dynamic secrets are generated on demand and are unique to a client and can be revoked immediately after use, minimizing the life of a secret.</p>',
+                        },
+                        cells: [
+                          {
+                            heading: '<p>Single node</p>',
+                            content:
+                              '<p><a href="#">Extra Small</a> (2 vCPU, 1 GiB RAM) - $0.03/hr</p>',
+                          },
+                          {
+                            heading: '<p>3-node HA Cluster</p>',
+                            content:
+                              '<p>Small (2 vCPU, 8 GiB RAM) - $1.578/hr plus $0.158/hr per client</p><p>Medium (4 vCPU, 16 GiB RAM) - $3.163/hr plus $0.127/hr per client</p><p>Large (8 vCPU, 32 GiB RAM) - $7.489/hr plus $0.075/hr per client</p>',
+                          },
+                        ],
+                        isCollapsible: true,
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          },
+          footnote:
+            '<p>* Sample footnote</p><p>With <strong>multiple</strong> lines</p>',
+        },
+        {
+          heading: 'Support',
+          content: {
+            table: {
+              columns: null,
+              rows: [
+                {
+                  header: {
+                    heading: '<a>Bronze</a>',
+                  },
+                  cells: [true, true],
+                },
+                {
+                  header: {
+                    heading: '<a>Silver</a>',
+                  },
+                  cells: [false, true],
+                },
+                {
+                  header: {
+                    heading: '<a>Service Level Agreement</a>',
+                  },
+                  cells: [true, false],
+                },
+              ],
+            },
+          },
+        },
+        
+      ]}
+      download={{
+        heading: 'Download the entire feature edition chart',
+        description:
+          'Ultricies risus molestie cursus metus mattis consectetur amet vitae eu. A diam tellus id neque urna auctor cursus ipsum.',
+        pdfLink: {
+          title: 'Download PDF',
+          url: 'https://www.datocms-assets.com/2885/1650544076-terraform-full-feature-pricing-table_v3.pdf',
+        },
+      }}
+    />
+`}
+</LiveComponent>
+
+## Props
+
+<PropsTable props={componentProps.featuresProps} />
+
+### Content Props: Tabs
+
+<PropsTable props={componentProps.tabsProps} />
+
+### Content Props: Table
+
+<PropsTable props={componentProps.tableProps} />
+
+##### TextCell Props
+
+<PropsTable props={componentProps.textCellProps} />
+
+#### Component Props: StickyTiers
+
+<PropsTable props={componentProps.stickyTiersProps} />

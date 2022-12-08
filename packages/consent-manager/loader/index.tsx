@@ -1,10 +1,11 @@
 import React from 'react'
-import ConsentManagerComponent, { open } from '../'
+import ConsentManagerComponent, { open, saveAndLoadAnalytics } from '../'
 import defaultCategories from './categories'
 import ossPreset from './presets/oss'
 import enterprisePreset from './presets/enterprise'
 import {
   ConsentManagerCategory,
+  ConsentManagerPreferences,
   ConsentManagerProps,
   ConsentManagerService,
 } from '../types'
@@ -12,6 +13,7 @@ import {
 const VERSION = 4
 const COMPANY_NAME = 'HashiCorp'
 const PRIVACY_LINK = 'https://www.hashicorp.com/privacy'
+const COOKIES_LINK = 'https://www.hashicorp.com/cookies'
 
 export default function createConsentManager({
   segmentWriteKey = process.env.SEGMENT_WRITE_KEY,
@@ -20,6 +22,8 @@ export default function createConsentManager({
   otherServices,
   categories,
   forceShow = false,
+  onAcceptAll,
+  onManagePreferences,
 }: {
   segmentWriteKey?: string
   preset?: 'oss' | 'enterprise'
@@ -27,9 +31,12 @@ export default function createConsentManager({
   otherServices?: ConsentManagerService[]
   categories?: ConsentManagerCategory[]
   forceShow?: boolean
+  onAcceptAll?: () => void
+  onManagePreferences?: () => void
 }): {
   ConsentManager: typeof ConsentManagerComponent
   openConsentManager: () => void
+  saveAndLoadAnalytics: (preferences: ConsentManagerPreferences) => void
 } {
   // if hashi env is present, check against it. if not, fall back to checking node env
   const isProd = process.env.HASHI_ENV
@@ -46,25 +53,17 @@ export default function createConsentManager({
     ? segmentWriteKey
     : '0EXTgkNx0Ydje2PGXVbRhpKKoe5wtzcE'
 
-  // same for the utility server
-  let utilityServerRoot = isProd
-    ? 'https://util.hashicorp.com'
-    : 'https://hashicorp-web-util-staging.herokuapp.com'
-
-  // allow per-project utility server override. useful for local development
-  if (process.env.UTIL_SERVER) {
-    utilityServerRoot = process.env.UTIL_SERVER.replace(/\/$/, '')
-  }
-
   // next we build the config objct, kicking it off with the default values
   let config: ConsentManagerProps = {
     version: VERSION,
     companyName: COMPANY_NAME,
     privacyPolicyLink: PRIVACY_LINK,
+    cookiePolicyLink: COOKIES_LINK,
     segmentWriteKey: segmentKey,
-    utilServerRoot: utilityServerRoot,
     categories: defaultCategories,
     forceShow,
+    onAcceptAll,
+    onManagePreferences,
   }
 
   // add preset values if present
@@ -88,5 +87,6 @@ export default function createConsentManager({
       return <ConsentManagerComponent {...config} />
     },
     openConsentManager: open,
+    saveAndLoadAnalytics,
   }
 }

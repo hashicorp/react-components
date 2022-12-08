@@ -27,6 +27,11 @@ module.exports = {
     description:
       'Intended for automatic use in CodeTabs, not meant as a consumer-facing prop. Set to `true` to remove border rounding from the top of the CodeBlock.',
   },
+  onCopyCallback: {
+    type: 'function',
+    description:
+      'Optional callback that is called when copy success state changes to `true` or `false`. When code is successfully copied using the "Copy" button, it changes to `true`. If there is an error when copying code, it changes to `false`.',
+  },
   options: {
     type: 'object',
     description:

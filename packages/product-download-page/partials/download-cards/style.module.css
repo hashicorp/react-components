@@ -56,12 +56,10 @@
 
 .card {
   width: 100%;
-  min-height: 278px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: space-between;
   padding: 40px 32px;
   color: var(--gray-2);
   border: 1px solid var(--gray-5);
@@ -107,6 +105,8 @@
   border-radius: 3px;
   text-align: left;
   margin: 32px 0;
+  overflow-x: auto;
+  max-width: calc(100vw - 96px);
 
   & pre {
     margin: 0;
@@ -120,6 +120,11 @@
       color: #e93471;
       content: '$';
       margin-right: 8px;
+    }
+
+    &::after {
+      content: ' ';
+      margin-left: 8px;
     }
 
     @media (--medium-up) {
@@ -138,17 +143,6 @@
   font-weight: bold;
 }
 
-.fastly {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  & svg path {
-    fill: var(--black);
-  }
-
-  & img {
-    margin-top: 12px;
-    width: 48px;
-  }
+.archDownloadLinks {
+  padding-top: 16px;
 }

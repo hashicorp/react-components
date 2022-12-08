@@ -1,0 +1,23 @@
+.root {
+  position: fixed;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  bottom: calc(var(--inset) * 1px);
+  gap: calc(var(--gutter) * 1px);
+  z-index: 9999;
+
+  &.left {
+    left: calc(var(--inset) * 1px);
+  }
+
+  &.right {
+    right: calc(var(--inset) * 1px);
+  }
+
+  & > * {
+    pointer-events: auto;
+  }
+}

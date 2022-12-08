@@ -12,7 +12,7 @@ export function getVersionLabel(
 }
 
 export function sortAndFilterReleases(releases: string[]): string[] {
-  const validReleases = releases.filter(semverValid)
+  const validReleases = releases.filter((rel) => semverValid(rel))
   // descending sort on releases, while filtering out pre-releases
   return semverRSort(validReleases).filter(
     (version) => !semverPrerelease(version)
@@ -22,27 +22,13 @@ export function sortAndFilterReleases(releases: string[]): string[] {
 export function prettyArch(arch: string): string {
   switch (arch) {
     case 'all':
-      return 'Universal (32 and 64-bit)'
-    case 'i686':
-    case 'i386':
-    case '686':
-    case '386':
+      return 'Universal (386 and Amd64)'
     case 'x86_64':
-    case '86_64':
-    case 'amd64':
+      return 'Amd64'
+    case 'i686':
+      return '686'
     default:
-      if (/-/.test(arch)) {
-        const parts = arch.split(/-(.+)/)
-        return `${prettyArch(parts[0])} (${parts[1]})`
-      } else {
-        const parts = arch.split('_')
-        if (parts.length > 0) {
-          return (
-            parts[parts.length - 1].charAt(0).toUpperCase() +
-            parts[parts.length - 1].slice(1)
-          )
-        }
-      }
+      return `${arch.charAt(0).toUpperCase()}${arch.slice(1)}`
   }
 
   return ''

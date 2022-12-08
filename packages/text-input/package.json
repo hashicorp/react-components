@@ -1,12 +1,14 @@
 {
   "name": "@hashicorp/react-text-input",
   "description": "Text field input to be used in formik forms",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "author": "HashiCorp",
-  "contributors": ["Zach Shilton"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "dependencies": {
-    "classnames": "^2.3.1",
-    "uuid": "^8.3.2"
+    "@reach/auto-id": "^0.17.0",
+    "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
@@ -15,5 +17,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/text-input"
   }
 }

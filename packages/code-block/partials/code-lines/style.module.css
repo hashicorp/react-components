@@ -12,6 +12,13 @@ pre.pre {
   padding: 0;
   margin: 0;
   background-color: transparent;
+
+  /* Prevent shell-symbols from being selected, for better select-copy-paste */
+  &:global(.language-shell-session) {
+    & :global(.token.shell-symbol) {
+      user-select: none;
+    }
+  }
 }
 
 .code {
@@ -24,6 +31,7 @@ pre.pre {
   display: block;
   flex-grow: 1;
   padding: var(--code-padding) 0;
+
   /*
   
   Ran into weird issues in Safari with overflow here.
@@ -47,6 +55,7 @@ pre.pre {
   /* web standard Firefox */
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-foreground) transparent;
+
   /* webkit prefixed Safari, Chrome, chromium-based browsers */
   &::-webkit-scrollbar {
     width: 11px;

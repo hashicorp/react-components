@@ -20,12 +20,6 @@ module.exports = {
     description: 'segment.io write key',
     required: true,
   },
-  utilServerRoot: {
-    type: 'string',
-    description:
-      "root path of the instance of HashiCorp's `web-utility-server` to use. This is used to fetch integrations based on segment write key",
-    required: true,
-  },
   forceShow: {
     type: 'boolean',
     description:
@@ -151,5 +145,14 @@ module.exports = {
   className: {
     type: 'string',
     description: 'Optional className to add to the root element',
+  },
+  onManagePreferences: {
+    type: 'function',
+    description:
+      'Optional callback event that fires when users clicks Manage Preferences',
+  },
+  onAcceptAll: {
+    type: 'function',
+    description: 'Optional callback event that fires when users clicks Accept.',
   },
 }

@@ -69,6 +69,12 @@ function Tabs({
   }
 
   useEffect(() => {
+    if (activeTabIdx >= children.length) {
+      setActiveTabIdx(defaultTabIdx || 0)
+    }
+  }, [children])
+
+  useEffect(() => {
     const hasGroups = children.filter((tab) => tab.props.group).length > 0
     if (
       process.env.NODE_ENV !== 'production' &&
@@ -89,6 +95,8 @@ function Tabs({
     return null
   }
 
+  const activeTab = children[activeTabIdx] ?? children[defaultTabIdx || 0]
+
   return (
     <section className={classNames(className, themeStyle[theme])}>
       <TabTriggers
@@ -103,7 +111,7 @@ function Tabs({
         setActiveTab={setActiveTab}
         theme={theme}
       />
-      <div className={s.content}>{children[activeTabIdx].props.children}</div>
+      <div className={s.content}>{activeTab.props.children}</div>
     </section>
   )
 }

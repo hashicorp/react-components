@@ -1,11 +1,13 @@
 {
   "name": "@hashicorp/react-accordion",
   "description": "A block that displays a set of title + content items, with content collapsed by default, but expandable to view. Also includes an optional heading for the block.",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "HashiCorp",
-  "contributors": ["Zach Shilton"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "dependencies": {
-    "@hashicorp/react-inline-svg": "^6.0.2",
+    "@hashicorp/react-inline-svg": "^6.0.3",
     "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",
@@ -15,5 +17,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/accordion"
   }
 }

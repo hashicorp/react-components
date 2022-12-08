@@ -1,42 +1,87 @@
-/*
-Note: Expects CSS properties from 
-code-block/theme-(dark|light).module.css
-to be present.
-*/
-
 .button {
-  composes: g-type-body-small-strong from global;
+  /* variables for math */
+  --border-width: 1px;
+  --padding-top-bottom: calc(6px - var(--border-width));
+  --padding-left-right: calc(12px - var(--border-width));
+
+  /* variables from design-tokens repo */
+  --token-color-palette-blue-200: #1060ff;
+  --token-color-palette-blue-300: #0c56e9;
+  --token-color-palette-blue-400: #0046d1;
+  --token-color-foreground-high-contrast: #fff;
+  --token-color-focus-action-internal: #0c56e9;
+  --token-color-focus-action-external: #5990ff;
+
+  /* CSS properties */
   align-items: center;
-  background: none;
-  border: none;
-  border-radius: 4px;
-  color: var(--text-color-faded);
+  background-color: var(--token-color-palette-blue-200);
+  border-color: var(--token-color-palette-blue-300);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: var(--border-width);
+  color: var(--token-color-foreground-high-contrast);
   cursor: pointer;
   display: flex;
-  padding: 0 16px;
-  line-height: 32px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 1;
+  padding: var(--padding-top-bottom) var(--padding-left-right);
+  position: relative;
 
-  &:hover {
-    color: var(--text-color-base);
+  /* for the focus ring */
+  &::before {
+    border-radius: 8px;
+    border: 3px solid transparent;
+    bottom: -4px;
+    box-sizing: border-box;
+    content: '';
+    left: -4px;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    z-index: 1;
   }
 
-  &.isCopied {
-    color: var(--text-color-success);
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--token-color-palette-blue-300);
+    border-color: var(--token-color-palette-blue-400);
+    color: var(--token-color-foreground-high-contrast);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--token-color-palette-blue-400);
+    border-color: var(--token-color-palette-blue-400);
+    box-shadow: none;
+    color: var(--token-color-foreground-high-contrast);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    background-color: var(--token-color-palette-blue-200);
+    border-color: var(--token-color-focus-action-internal);
+    color: var(--token-color-foreground-high-contrast);
+    outline: none;
+
+    &::before {
+      border-radius: 10px;
+      border-color: var(--token-color-focus-action-external);
+      bottom: -6px;
+      left: -6px;
+      right: -6px;
+      top: -6px;
+    }
   }
 }
 
 .svg {
-  position: relative;
-  margin-left: 4px;
-
-  & svg {
-    display: block;
-    width: 16px;
-    height: 16px;
-
-    & [fill] {
-      fill: currentcolor;
-      transition: fill 0.2s ease-in-out;
-    }
-  }
+  margin-left: 8px;
 }

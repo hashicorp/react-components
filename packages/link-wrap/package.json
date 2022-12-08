@@ -1,9 +1,11 @@
 {
   "name": "@hashicorp/react-link-wrap",
   "description": "Wraps a standard 'a' element to enable NextJS Link usage",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "author": "Hashicorp",
-  "contributors": ["Jeff Escalante"],
+  "contributors": [
+    "Jeff Escalante"
+  ],
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
@@ -11,5 +13,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/link-wrap"
   }
 }

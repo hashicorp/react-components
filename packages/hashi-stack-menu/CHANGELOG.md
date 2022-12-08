@@ -1,5 +1,23 @@
 # @hashicorp/react-hashi-stack-menu
 
+## 3.0.0
+
+### Major Changes
+
+- [#568](https://github.com/hashicorp/react-components/pull/568) [`26918b9e`](https://github.com/hashicorp/react-components/commit/26918b9e32b3d4882bb18786f09eaa63c178bbc6) Thanks [@dstaley](https://github.com/dstaley)! - Add TypeScript types
+
+## 2.2.1
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+## 2.2.0
+
+### Minor Changes
+
+- [#496](https://github.com/hashicorp/react-components/pull/496) [`1f9633b`](https://github.com/hashicorp/react-components/commit/1f9633bef6b7d9237adc901efb5a2175e32e3efb) Thanks [@dstaley](https://github.com/dstaley)! - Redirect to brand page when right-clicking HashiCorp logo
+
 ## 2.1.2
 
 ### Patch Changes

@@ -4,18 +4,15 @@ componentName: 'Alert'
 
 The `<Alert>` component renders a small alert banner with a link to another page. It is often used to redirect users to a new release or announcement.
 
-<Playground>{`import Alert from 'alert'
-  
-export default function Example() {
-    return (<Alert
-      url="#"
-      tag="New"
-      product="terraform"
-      text="Terraform Collaboration for Everyone"
-      textColor="dark"
-    />
-  )
-}`}</Playground>
+<LiveComponent>
+{`<Alert
+  url="#"
+  tag="New"
+  product="terraform"
+  text="Terraform Collaboration for Everyone"
+  textColor="dark"
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -25,22 +22,24 @@ export default function Example() {
 
 ### Playground
 
-<!-- <KnobsComponent
+{/* <KnobsComponent
   knobs={{
     tag: componentProps.tag,
     text: componentProps.text,
     tagColor: componentProps.tagColor,
     textColor: componentProps.textColor,
   }}
-/> -->
+/> */}
 
 If you need to override the brand color with a special _state_ (error, warning, success):
 
-<LiveComponent>{`<Alert
+<LiveComponent>
+{`<Alert
   url="#"
   tag="New"
   product="terraform"
   text="Terraform Collaboration for Everyone"
   textColor="dark"
   state="error"
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>

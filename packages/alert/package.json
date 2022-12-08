@@ -1,10 +1,12 @@
 {
   "name": "@hashicorp/react-alert",
   "description": "A small alert banner with a link",
-  "version": "6.0.2",
+  "version": "6.1.0",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert%22",
-  "contributors": ["Jeff Escalante"],
+  "contributors": [
+    "Jeff Escalante"
+  ],
   "homepage": "https://github.com/hashicorp/react-components/tree/master/packages/alert",
   "license": "MPL-2.0",
   "main": "index.jsx",

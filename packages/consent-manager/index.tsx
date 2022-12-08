@@ -1,13 +1,18 @@
 import { useState, useEffect, useCallback } from 'react'
-import EventEmitter from 'events'
+import { EventEmitter } from 'events'
 import classNames from 'classnames'
+import { isInUS } from '@hashicorp/platform-util/geo'
 import { loadPreferences, savePreferences } from './util/cookies'
 import ConsentBanner from './components/banner'
 import ConsentPreferences from './components/dialog'
 import SegmentScript from './scripts/segment'
 import CustomScripts from './scripts/custom'
 import s from './style.module.css'
-import { ConsentManagerCategory, ConsentManagerService } from './types'
+import {
+  ConsentManagerCategory,
+  ConsentManagerService,
+  ConsentManagerPreferences,
+} from './types'
 
 interface ConsentManagerProps {
   additionalServices?: ConsentManagerService[]
@@ -19,14 +24,19 @@ interface ConsentManagerProps {
   segmentServices?: ConsentManagerService[]
   segmentWriteKey?: string
   showDialog?: boolean
-  utilServerRoot?: string
   version?: number
+  onManagePreferences?: () => void
+  onAcceptAll?: () => void
 }
 
 const emitter = new EventEmitter()
 
 export function open() {
   emitter.emit('openDialog')
+}
+
+export function saveAndLoadAnalytics(preferences: ConsentManagerPreferences) {
+  emitter.emit('saveAndLoadAnalytics', preferences)
 }
 
 export default function ConsentManager(props: ConsentManagerProps) {
@@ -41,26 +51,29 @@ export default function ConsentManager(props: ConsentManagerProps) {
     Object.keys(preferences).length === 0 ||
     preferences.version !== props.version
 
-  const saveAndLoadAnalytics = (preferences) => {
-    if (typeof preferences === 'undefined') {
-      preferences = { loadAll: false, segment: false }
-    }
-    savePreferences(preferences, props.version)
+  const saveAndLoadAnalytics = useCallback(
+    (preferences) => {
+      if (typeof preferences === 'undefined') {
+        preferences = { loadAll: false, segment: false }
+      }
+      savePreferences(preferences, props.version)
 
-    // If analytics have already been added to page, it's likely you're updating your preferences
-    // We reload the page to re-initiate the script with the updated integrations
-    // @ts-expect-error -- initialized doesn't exist on the segment type?
-    if (window.analytics && window.analytics.initialized) {
-      window.location.reload()
-      return
-    }
+      // If analytics have already been added to page, it's likely you're updating your preferences
+      // We reload the page to re-initiate the script with the updated integrations
+      // @ts-expect-error -- initialized doesn't exist on the segment type?
+      if (window.analytics && window.analytics.initialized) {
+        window.location.reload()
+        return
+      }
 
-    // Close all dialogs
-    document.body.classList.remove('g-noscroll')
-    setShowDialog(false)
-    setShowBanner(false)
-    setPreferences(loadPreferences() ?? {})
-  }
+      // Close all dialogs
+      document.body.classList.remove('g-noscroll')
+      setShowDialog(false)
+      setShowBanner(false)
+      setPreferences(loadPreferences() ?? {})
+    },
+    [props.version]
+  )
 
   const openDialog = useCallback(() => {
     document.body.classList.add('g-noscroll')
@@ -76,9 +89,25 @@ export default function ConsentManager(props: ConsentManagerProps) {
     }
   }, [openDialog])
 
+  // Setup the event handler to save and load analytics imperatively
+  useEffect(() => {
+    emitter.on('saveAndLoadAnalytics', saveAndLoadAnalytics)
+    return () => {
+      emitter.off('saveAndLoadAnalytics', saveAndLoadAnalytics)
+    }
+  }, [saveAndLoadAnalytics])
+
   // Show banner if there are no preferences or the version mismatches
   useEffect(() => {
     setShowBanner(hasEmptyPreferencesOrVersionMismatch)
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
+  }, [])
+
+  useEffect(() => {
+    if (hasEmptyPreferencesOrVersionMismatch && isInUS()) {
+      saveAndLoadAnalytics({ loadAll: true })
+      setShowBanner(true)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
   }, [])
 
@@ -87,11 +116,20 @@ export default function ConsentManager(props: ConsentManagerProps) {
       {/*  Consent banner at the bottom */}
       {showBanner && (
         <ConsentBanner
+          preferences={preferences}
           privacyPolicyLink={props.privacyPolicyLink}
           cookiePolicyLink={props.cookiePolicyLink}
-          onManagePreferences={openDialog}
+          onManagePreferences={() => {
+            openDialog()
+            if (props.onManagePreferences) {
+              props.onManagePreferences()
+            }
+          }}
           onAccept={() => {
             saveAndLoadAnalytics({ loadAll: true })
+            if (props.onAcceptAll) {
+              props.onAcceptAll()
+            }
           }}
         />
       )}
@@ -100,7 +138,6 @@ export default function ConsentManager(props: ConsentManagerProps) {
         <ConsentPreferences
           version={props.version}
           segmentWriteKey={props.segmentWriteKey}
-          utilServerRoot={props.utilServerRoot}
           segmentServices={props.segmentServices}
           additionalServices={props.additionalServices}
           preferences={preferences}

@@ -12,7 +12,7 @@ import { DataLoader } from './loaders/types'
 export { getNodeFromPath } from './get-node-from-path'
 export { getPathsFromNavData } from './get-paths-from-nav-data'
 export { validateNavData } from './validate-nav-data'
-export { validateFilePaths } from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
+export { default as validateFilePaths } from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 
 interface BaseOpts {
   fallback?: GetStaticPathsResult['fallback']
@@ -26,7 +26,8 @@ export function getStaticGenerationFunctions(
     | ({
         basePath: string
         strategy: 'remote'
-      } & BaseOpts)
+      } & BaseOpts &
+        Partial<ConstructorParameters<typeof RemoteContentLoader>[0]>)
     | ({
         localContentDir: string
         navDataFile: string
@@ -36,7 +37,8 @@ export function getStaticGenerationFunctions(
          * Passed to our resolveIncludes plugin.
          * Defaults to "content/partials". */
         localPartialsDir?: string
-      } & BaseOpts)
+      } & BaseOpts &
+        Partial<ConstructorParameters<typeof FileSystemLoader>[0]>)
 ): {
   getStaticPaths: GetStaticPaths
   getStaticProps: GetStaticProps

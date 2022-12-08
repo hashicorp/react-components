@@ -1,0 +1,22 @@
+{
+  "name": "@hashicorp/react-card",
+  "version": "0.7.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@hashicorp/react-expandable-arrow": "^0.1.0",
+    "@hashicorp/react-product-badge": "^0.3.0",
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "@hashicorp/flight-icons": ">=2.x",
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/card"
+  }
+}

@@ -1,58 +1,109 @@
-.switch {
-  background: var(--gray-4);
-  width: 55px;
-  height: 30px;
-  border-radius: 18px;
-  display: inline-block;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+.toggle {
+  --toggle-background-color: var(--wpl-neutral-0);
+  --toggle-border-color: var(--wpl-neutral-500);
+  --toggle-outline-color: var(--wpl-blue-500);
+  --indicator-background-color: var(--wpl-neutral-500);
+  --indicator-translate-x: 0;
+  --padding-x: 4px;
+  --border-radius: 24px;
 
-  &::after {
-    content: '';
-    display: block;
-    border: 1px solid var(--gray-4);
-    box-shadow: 1px 1px 1px var(--gray-2);
-    width: 25px;
-    height: 24px;
-    top: 3px;
-    left: 3px;
-    border-radius: 12px;
-    background: white;
-    position: relative;
-    transition: left 0.2s ease-in-out;
-    cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
+  width: 44px;
+  height: 24px;
+  background-color: var(--toggle-background-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--toggle-border-color);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  transition-property: background-color, border-color;
+
+  &:hover:not(.on):not(.disabled) {
+    --toggle-border-color: var(--wpl-neutral-700);
+    --indicator-background-color: var(--wpl-neutral-700);
   }
 
-  &.on {
-    background: var(--brand);
+  /* &:focus-within {
+    outline: 1px solid var(--toggle-outline-color);
+    outline-offset: 2px;
+  } */
 
-    &::after {
-      left: 25px;
-      border-color: #104fd2;
+  &.on {
+    --toggle-background-color: var(--wpl-blue-500);
+    --toggle-border-color: var(--wpl-blue-500);
+    --indicator-background-color: var(--wpl-neutral-0);
+    --indicator-translate-x: 18px;
+  }
+
+  &.disabled {
+    --toggle-background-color: var(--wpl-neutral-100);
+    --toggle-border-color: var(--wpl-neutral-100);
+    --indicator-background-color: var(--wpl-neutral-0);
+
+    pointer-events: none;
+  }
+
+  /* Appearance: dark */
+  &.dark {
+    --toggle-background-color: var(--wpl-neutral-900);
+    --toggle-border-color: var(--wpl-neutral-400);
+    --toggle-outline-color: var(--wpl-neutral-0);
+    --indicator-background-color: var(--wpl-neutral-400);
+
+    &:hover:not(.on):not(.disabled) {
+      --toggle-border-color: var(--wpl-neutral-200);
+      --indicator-background-color: var(--wpl-neutral-200);
+    }
+
+    &.on {
+      --toggle-background-color: var(--wpl-neutral-0);
+      --toggle-border-color: var(--wpl-neutral-0);
+      --indicator-background-color: var(--wpl-neutral-900);
+    }
+
+    &.disabled {
+      --toggle-background-color: var(--wpl-neutral-700);
+      --toggle-border-color: var(--wpl-neutral-700);
+      --indicator-background-color: var(--wpl-neutral-900);
     }
   }
 }
 
-.switchLabel {
-  position: relative;
-  height: 30px;
-  display: inline-block;
+.toggleInput {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
 }
 
-.switchInput {
-  margin: 0;
-  padding: 0;
+.toggleIndicator {
   position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.0001;
-  cursor: pointer;
+  inset: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
 
-  /* targets the adjacent .switch element */
-  &:focus + span {
-    outline: 1px auto;
-    outline-color: -webkit-focus-ring-color;
-    outline-offset: 1px;
+  @nest .toggleInput:focus-visible + & {
+    outline: 1px solid var(--toggle-outline-color);
+    outline-offset: 2px;
+  }
+
+  &::before {
+    --size: 16px;
+
+    content: '';
+    flex-shrink: 0;
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--indicator-background-color);
+    border-radius: 9999px;
+    transform: translateX(var(--indicator-translate-x));
+    transition: 0.2s ease-in-out;
+    transition-property: transform, background-color, border-color;
   }
 }

@@ -4,7 +4,6 @@ const defaultProps = {
   version: 0,
   showDialog: false,
   segmentWriteKey: 'iyi06c432UL7SB1r3fQReec4bNwFyzkW',
-  utilServerRoot: 'https://hashicorp-web-util-staging.herokuapp.com',
   privacyPolicyLink: 'https://www.hashicorp.com/privacy',
   companyName: 'HashiCorp',
   segmentServices: [
@@ -23,6 +22,7 @@ const defaultProps = {
         'A short description of what the service is and how your company uses the data.',
       body: '',
       url: 'http://www.an-optional-url-for-a-script-to-add-to-the-page.com',
+      async: true,
     },
     {
       name: 'Name of the service 2',
@@ -44,6 +44,7 @@ const defaultProps = {
       category: 'Example Category',
       description: 'A script with additional elements to be injected',
       body: 'window.foo = "bar"',
+      async: true,
       dataAttrs: [
         {
           name: 'test',
@@ -181,6 +182,50 @@ test('loads segment and additional services if loadAll is passed', async () => {
       expect(html).toMatch(/window\.foo = "bar"/)
     }
   )
+})
+
+describe('handles custom events', () => {
+  test('manage preferences callback', async () => {
+    const fn = jest.fn()
+    await runWithMockedImport(
+      './components/dialog',
+      () => {
+        return <p data-testid="mocked-dialog">test</p>
+      },
+      (MockedConsentManager) => {
+        render(
+          <MockedConsentManager
+            {...defaultProps}
+            forceShow={true}
+            onManagePreferences={fn}
+          />
+        )
+        fireEvent.click(screen.getByTestId('manage-preferences'))
+        expect(fn).toHaveBeenCalled()
+      }
+    )
+  })
+
+  test('accept all callback', async () => {
+    const fn = jest.fn()
+    await runWithMockedImport(
+      './components/dialog',
+      () => {
+        return <p data-testid="mocked-dialog">test</p>
+      },
+      (MockedConsentManager) => {
+        render(
+          <MockedConsentManager
+            {...defaultProps}
+            forceShow={true}
+            onAcceptAll={fn}
+          />
+        )
+        fireEvent.click(screen.getByTestId('accept'))
+        expect(fn).toHaveBeenCalled()
+      }
+    )
+  })
 })
 
 // Given an internal module name and mock implementation, mocks the given module and returns a version

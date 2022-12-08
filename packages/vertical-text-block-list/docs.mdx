@@ -4,7 +4,8 @@ componentName: VerticalTextBlockList
 
 A pretty way to display a list of informational links. Used primarily on community pages on docs sites.
 
-<LiveComponent>{`<VerticalTextBlockList
+<LiveComponent>
+{`<VerticalTextBlockList
   data={[
     {
       logo: {
@@ -16,7 +17,8 @@ A pretty way to display a list of informational links. Used primarily on communi
       linkUrl: 'https://learn.hashicorp.com/terraform',
     }
   ]}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -26,7 +28,7 @@ A pretty way to display a list of informational links. Used primarily on communi
 
 ### Playground
 
-<!-- <KnobsComponent knobs={componentProps} /> -->
+{/* <KnobsComponent knobs={componentProps} /> */}
 
 <VerticalTextBlockList
   product="vault"

@@ -1,8 +1,12 @@
+import type { ParsedUrlQuery } from 'querystring'
 import path from 'path'
 import fs from 'fs'
+import { Pluggable } from 'unified'
 import { GetStaticPropsContext } from 'next'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
 import { resolveNavData } from '../resolve-nav-data'
+
+import { stripVersionFromPathParams } from '../../util'
 
 import { DEFAULT_PARAM_ID } from '../consts'
 
@@ -16,9 +20,11 @@ interface FileSystemLoaderOpts extends DataLoaderOpts {
   navDataFile: string
   localContentDir: string
   mainBranch?: string // = 'main',
-  remarkPlugins?: $TSFixMe[]
+  remarkPlugins?:
+    | ((params?: ParsedUrlQuery, version?: string) => Pluggable[])
+    | Pluggable[]
+  rehypePlugins?: Pluggable[]
   scope?: Record<string, $TSFixMe>
-  localPartialsDir?: string
   githubFileUrl?: (path: string) => string
 }
 
@@ -28,6 +34,9 @@ export default class FileSystemLoader implements DataLoader {
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
+    if (!this.opts.rehypePlugins) this.opts.rehypePlugins = []
+    if (!this.opts.mdxContentHook)
+      this.opts.mdxContentHook = (mdxContent, scope) => mdxContent
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -41,16 +50,40 @@ export default class FileSystemLoader implements DataLoader {
   loadStaticProps = async ({
     params,
   }: GetStaticPropsContext): Promise<$TSFixMe> => {
+    let remarkPlugins: $TSFixMe[] = []
+
+    // given: v0.5.x (latest), v0.4.x, v0.3.x
+    const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
+      params![this.opts.paramId!] as string[]
+    )
+
+    // We support passing in a function to remarkPlugins, which gets the parameters of the current page
+    if (typeof this.opts.remarkPlugins === 'function') {
+      remarkPlugins = this.opts.remarkPlugins(
+        paramsNoVersion as any,
+        versionFromPath
+      )
+      if (!Array.isArray(remarkPlugins)) {
+        throw new Error(
+          '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
+        )
+      }
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we default this in the constructor, so it must be defined
+      remarkPlugins = this.opts.remarkPlugins!
+    }
+
     const mdxRenderer = (mdx) =>
       renderPageMdx(mdx, {
-        remarkPlugins: this.opts.remarkPlugins,
-        scope: this.opts.scope,
-        localPartialsDir: this.opts.localPartialsDir,
+        mdxContentHook: this.opts.mdxContentHook,
+        remarkPlugins,
+        rehypePlugins: this.opts.rehypePlugins,
+        scope: { version: versionFromPath, ...this.opts.scope },
       })
     // Build the currentPath from page parameters
     const currentPath =
       params && this.opts.paramId && params[this.opts.paramId]
-        ? (params[this.opts.paramId] as string[]).join('/')
+        ? (paramsNoVersion as string[]).join('/')
         : ''
     //  Read in the nav data, and resolve local filePaths
     const navData = await resolveNavData(

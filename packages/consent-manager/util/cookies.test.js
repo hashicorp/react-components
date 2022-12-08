@@ -1,6 +1,24 @@
 import cookies from 'js-cookie'
 import * as cookiesJS from './cookies.js'
 
+it('should not show preferences loaded before cookies are saved', () => {
+  expect(cookiesJS.preferencesSavedAndLoaded()).toBe(false)
+})
+
+it('should show preferences loaded if cookies are loaded', () => {
+  const preferences = JSON.stringify({ loadAll: true, version: 1 })
+  const originalCookiesGetJSON = cookies.getJSON
+
+  // mocks
+  cookies.getJSON = jest.fn().mockImplementationOnce(() => preferences)
+  cookiesJS.loadPreferences()
+
+  const preferencesLoaded = cookiesJS.preferencesSavedAndLoaded()
+  expect(preferencesLoaded).toBe(true)
+
+  cookies.set = originalCookiesGetJSON
+})
+
 it('should get the domain', () => {
   const originalLocation = global.window.location
   const originalCookiesGet = cookies.get
@@ -34,6 +52,7 @@ it('should load preferences', () => {
 })
 
 it('should save preferences', () => {
+  global.window.location = { hostname: 'foo.bar.baz.net' }
   const preferences = { loadAll: true, version: 1 }
   const version = 1
   const args = [
@@ -41,12 +60,9 @@ it('should save preferences', () => {
     preferences,
     { expires: cookiesJS.COOKIE_EXPIRES, domain: '' },
   ]
-  const originalCookiesJSGetDomain = cookiesJS.getDomain
   const originalCookiesSet = cookies.set
 
   // mocks
-  // eslint-disable-next-line no-import-assign -- it's mocked, so the rule does not apply
-  cookiesJS.getDomain = jest.fn().mockImplementation(() => 'baz.net')
   cookies.set = jest.fn()
 
   cookiesJS.savePreferences(preferences, version)
@@ -55,8 +71,5 @@ it('should save preferences', () => {
 
   expect(JSON.stringify(lastArgs)).toBe(JSON.stringify(args))
 
-  // restore mocks
-  // eslint-disable-next-line no-import-assign -- it's mocked, so the rule does not apply
-  cookiesJS.getDomain = originalCookiesJSGetDomain
   cookies.set = originalCookiesSet
 })

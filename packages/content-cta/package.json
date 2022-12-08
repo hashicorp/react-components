@@ -1,12 +1,14 @@
 {
   "name": "@hashicorp/react-content-cta",
   "description": "alert style content callout with product theming",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "HashiCorp",
-  "contributors": ["Nicole Forrester"],
+  "contributors": [
+    "Nicole Forrester"
+  ],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-button": "^6.0.0",
+    "@hashicorp/react-button": "^6.0.4",
     "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",
@@ -17,5 +19,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "style": "./style.css"
+  "style": "./style.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/content-cta"
+  }
 }

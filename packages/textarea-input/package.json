@@ -1,0 +1,26 @@
+{
+  "name": "@hashicorp/react-textarea-input",
+  "description": "Textarea field input to be used in formik forms",
+  "version": "1.1.0",
+  "author": "HashiCorp",
+  "contributors": [
+    "Zach Shilton"
+  ],
+  "dependencies": {
+    "@reach/auto-id": "^0.17.0",
+    "clsx": "^1.1.1"
+  },
+  "license": "MPL-2.0",
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "react": ">=16.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/textarea-input"
+  }
+}

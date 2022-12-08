@@ -7,7 +7,7 @@ import DocsPage from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 import renderPageMdx from './render-page-mdx'
-
+import { anchorLinks } from '@hashicorp/remark-plugins'
 import { mocked } from 'ts-jest/utils'
 import { useRouter, Router } from 'next/router'
 
@@ -19,13 +19,15 @@ jest.mock('@hashicorp/react-head', () => jest.fn(() => null))
 const useRouterMock = mocked(useRouter)
 const headMock = mocked(Head)
 
-jest.mock('next/router')
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}))
 jest.mock('next/head')
 
 describe('<DocsPage />', () => {
-  const routerMock = ({
+  const routerMock = {
     asPath: '/docs/overview',
-  } as unknown) as Router
+  } as unknown as Router
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -109,7 +111,8 @@ describe('<DocsPage />', () => {
 
   it('initializes jump to section UI if there is an h1 and two or more h2s', async () => {
     const { mdxSource, frontMatter } = await renderPageMdx(
-      "---\n\npage_title: Test Title\ndescription: Test description\n---\n\n# Heading One\n\nAn intro paragraph.\n\n## Heading Two\n\nHere's a paragraph of content.\n\n## Here a second heading\n\nAnd another paragraph."
+      "---\n\npage_title: Test Title\ndescription: Test description\n---\n\n# Heading One\n\nAn intro paragraph.\n\n## Heading Two\n\nHere's a paragraph of content.\n\n## Here a second heading\n\nAnd another paragraph.",
+      { remarkPlugins: [anchorLinks] }
     )
     render(
       <DocsPage
@@ -127,7 +130,7 @@ describe('<DocsPage />', () => {
   })
 
   describe('when versioned docs is enabled', () => {
-    const versions = [
+    let versions = [
       {
         name: 'latest',
         label: 'v0.6.x (latest)',
@@ -143,9 +146,9 @@ describe('<DocsPage />', () => {
 
     it('should allow crawlers to index latest pages', () => {
       useRouterMock.mockImplementation(() => {
-        return ({
+        return {
           asPath: '/docs',
-        } as unknown) as Router
+        } as unknown as Router
       })
 
       render(
@@ -166,9 +169,9 @@ describe('<DocsPage />', () => {
 
     it('should tell crawlers to not index versioned pages', () => {
       useRouterMock.mockImplementation(() => {
-        return ({
+        return {
           asPath: '/docs/v0.5.1',
-        } as unknown) as Router
+        } as unknown as Router
       })
 
       render(
@@ -188,9 +191,9 @@ describe('<DocsPage />', () => {
     describe('the VersionAlert', () => {
       it('should not show if there is no version in the path', () => {
         useRouterMock.mockImplementation(() => {
-          return ({
+          return {
             asPath: '/docs/intro',
-          } as unknown) as Router
+          } as unknown as Router
         })
 
         const { queryByTestId } = render(
@@ -208,9 +211,9 @@ describe('<DocsPage />', () => {
 
       it('should not show if the latest version is in the path', () => {
         useRouterMock.mockImplementation(() => {
-          return ({
+          return {
             asPath: '/docs/v0.6.x/intro',
-          } as unknown) as Router
+          } as unknown as Router
         })
 
         const { queryByTestId } = render(
@@ -229,9 +232,9 @@ describe('<DocsPage />', () => {
 
       it('should show if an older version is in the path', () => {
         useRouterMock.mockImplementation(() => {
-          return ({
+          return {
             asPath: '/docs/v0.5.x/intro',
-          } as unknown) as Router
+          } as unknown as Router
         })
 
         const { queryByTestId } = render(
@@ -246,6 +249,46 @@ describe('<DocsPage />', () => {
         )
 
         expect(queryByTestId('tag')).toHaveTextContent('old version')
+      })
+
+      it('should show display values from versions', () => {
+        // Terraform core
+        versions = [
+          {
+            name: 'latest',
+            label: 'v1.2.x (latest)',
+            isLatest: true,
+            version: 'v1.2.x',
+          },
+          {
+            name: 'v1.1.x',
+            label: 'v1.1 and earlier',
+            isLatest: false,
+            version: 'v1.1.x',
+          },
+        ]
+
+        // mock that v1.1.x is selected
+        useRouterMock.mockImplementation(() => {
+          return {
+            asPath: '/cli/v1.1.x',
+          } as unknown as Router
+        })
+
+        const { queryByTestId } = render(
+          <DocsPage
+            {...defaultProps}
+            showVersionSelect={true}
+            staticProps={{
+              ...defaultProps.staticProps,
+              versions,
+            }}
+          />
+        )
+
+        expect(queryByTestId('text')).toHaveTextContent(
+          "You're looking at documentation for Terraform v1.1 and earlier. Click here to view the latest content."
+        )
       })
     })
   })

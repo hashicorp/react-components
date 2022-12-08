@@ -1,5 +1,5 @@
 const docsSidenavProps = require('../docs-sidenav/props')
-const versionSelectProps = require('../version-select/props')
+const versionSelectProps = require('./components/version-select/props')
 const sharedProps = require('../../props')
 
 module.exports = {

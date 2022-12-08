@@ -1,5 +1,45 @@
 # @hashicorp/react-product-downloads-page
 
+## 2.9.0
+
+### Minor Changes
+
+- [#679](https://github.com/hashicorp/react-components/pull/679) [`001c45da`](https://github.com/hashicorp/react-components/commit/001c45da31a3639993b3d1d1e27c2d3e215a9a5d) Thanks [@dstaley](https://github.com/dstaley)! - Remove bandwidth attribution
+
+## 2.8.2
+
+### Patch Changes
+
+- [#633](https://github.com/hashicorp/react-components/pull/633) [`3d0261e4`](https://github.com/hashicorp/react-components/commit/3d0261e4c01bebd05e7ad0869760804e7ad82a4a) Thanks [@dstaley](https://github.com/dstaley)! - Update Ubuntu/Debian installation instructions
+
+## 2.8.1
+
+### Patch Changes
+
+- [#536](https://github.com/hashicorp/react-components/pull/536) [`d6eba797`](https://github.com/hashicorp/react-components/commit/d6eba7971bbbf7c58cf3cc110f5b7b423e3cd27c) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Install `@types/semver`; Fix incorrect `semverValid` usage
+
+## 2.8.0
+
+### Minor Changes
+
+- [#526](https://github.com/hashicorp/react-components/pull/526) [`390ec6d3`](https://github.com/hashicorp/react-components/commit/390ec6d3aa2473a6a5959cdbb2a88225b7f2dd22) Thanks [@zchsh](https://github.com/zchsh)! - Fixes an issue where props that could be optional were required.
+
+## 2.7.2
+
+### Patch Changes
+
+- [#510](https://github.com/hashicorp/react-components/pull/510) [`963d39a`](https://github.com/hashicorp/react-components/commit/963d39ac51d63ff45a8a85ab078c7130502c972d) Thanks [@dstaley](https://github.com/dstaley)! - Adjust human-readable CPU architecture labels
+
+## 2.7.1
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+- Updated dependencies [[`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e)]:
+  - @hashicorp/react-button@6.0.4
+  - @hashicorp/react-tabs@7.1.2
+
 ## 2.7.0
 
 ### Minor Changes

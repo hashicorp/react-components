@@ -1,9 +1,11 @@
 {
   "name": "@hashicorp/react-sentinel-embedded",
   "description": "Embed the Sentinel playground into an MDX page.",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "author": "HashiCorp",
-  "contributors": ["Cameron Stitt"],
+  "contributors": [
+    "Cameron Stitt"
+  ],
   "dependencies": {
     "@hashicorp/sentinel-embedded": "^0.0.14"
   },
@@ -14,5 +16,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/sentinel-embedded"
   }
 }

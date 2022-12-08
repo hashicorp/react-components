@@ -1,9 +1,11 @@
 {
   "name": "@hashicorp/react-select-input",
   "description": "Select input field",
-  "version": "4.0.5",
+  "version": "5.1.0",
   "author": "HashiCorp",
-  "contributors": ["Richard Flosi"],
+  "contributors": [
+    "Richard Flosi"
+  ],
   "dependencies": {
     "classnames": "^2.3.1",
     "downshift": "3.1.5"
@@ -15,5 +17,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/select-input"
   }
 }

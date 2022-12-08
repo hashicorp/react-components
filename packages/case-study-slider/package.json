@@ -1,12 +1,14 @@
 {
   "name": "@hashicorp/react-case-study-slider",
   "description": "displays up to three case studies",
-  "version": "7.0.1",
+  "version": "7.0.3",
   "author": "HashiCorp",
-  "contributors": ["Mike Wickett"],
+  "contributors": [
+    "Mike Wickett"
+  ],
   "dependencies": {
-    "@hashicorp/react-featured-slider": "^5.0.1",
-    "@hashicorp/react-image": "^4.0.1"
+    "@hashicorp/react-featured-slider": "^5.0.2",
+    "@hashicorp/react-image": "^4.0.4"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
@@ -14,5 +16,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/case-study-slider"
   }
 }

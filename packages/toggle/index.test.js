@@ -11,6 +11,11 @@ test('when the enabled prop is set to true, its enabled', () => {
   expect(screen.getByTestId('react-toggle')).toBeChecked()
 })
 
+test('when the disabled prop is set to true, its disabled', () => {
+  render(<Toggle disabled={true} />)
+  expect(screen.getByTestId('react-toggle')).toBeDisabled()
+})
+
 test('when the enabled prop changes after render, it is reflected', () => {
   const { rerender } = render(<Toggle />)
   expect(screen.getByTestId('react-toggle')).not.toBeChecked()

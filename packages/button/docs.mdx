@@ -4,7 +4,9 @@ componentName: 'Button'
 
 The button is used widely across HashiCorp properties, and has many ways it can be customized. Let's start with its most basic form.
 
-<LiveComponent>{`<Button title='Button Text' />`}</LiveComponent>
+<LiveComponent>
+{`<Button title='Button Text' />`}
+</LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
@@ -18,7 +20,7 @@ There are many props that can be used to customize this component, all of which 
 
 The example below shows some UI controls for the props that can most significantly change the button's visual appearance. Tinker with them a little to get a feel for the ways a button can be visually customized.
 
-<!-- <KnobsComponent
+{/* <KnobsComponent
   knobs={{
     title: componentProps.title,
     disabled: componentProps.disabled,
@@ -32,13 +34,14 @@ The example below shows some UI controls for the props that can most significant
       position: componentProps.icon.position,
     },
   }}
-/> -->
+/> */}
 
 #### Playground
 
 Now let's look at an example with a code editor that shows all available props. You can tinker with it below. All of the properties below other than the title are set to their default values.
 
-<LiveComponent>{`<Button
+<LiveComponent>
+{`<Button
   title='Primary Button'
   url={undefined}  
   label="Test button that goes nowhere"
@@ -58,7 +61,8 @@ Now let's look at an example with a code editor that shows all available props. 
     isAnimated: undefined,
     animationId: undefined                      
   }}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 #### Examples
 
@@ -66,53 +70,64 @@ We'll explore a few specific variations of props below:
 
 ##### Secondary Button
 
-<LiveComponent>{`<Button
+<LiveComponent>
+{`<Button
   title='Secondary Button'
   theme={{ variant: 'secondary' }}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 ##### Tertiary Button with linkType and brand
 
-<LiveComponent>{`<Button
+<LiveComponent>
+{`<Button
   title='Tertiary Button'
   linkType='inbound'
   theme={{
     variant: 'tertiary',
     brand: 'nomad'
   }}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 ##### Tertiary Neutral Button
 
 Note how despite the color theme, the appearance is neutral.
 
-<LiveComponent>{`<Button
+<LiveComponent>
+{`<Button
   title='Tertiary Button'
   linkType='inbound'
   theme={{
     variant: 'tertiary-neutral',
     brand: 'terraform'
   }}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 ##### Disabled Button
 
-<LiveComponent>{`<Button
+<LiveComponent>
+{`<Button
   title='Disabled Button'
   disabled={true}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 ##### Button with Download Icon
 
-<LiveComponent>{`<Button
+<LiveComponent>
+{`<Button
   title='Download'
   linkType='download'
   icon={{ position: 'left', isAnimated: true }}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>
 
 ##### Button with Custom Icon
 
-<LiveComponent>{`<Button
+<LiveComponent>
+{`<Button
   title='Support'
   theme={{ brand: 'consul' }}
   icon={{
@@ -120,4 +135,5 @@ Note how despite the color theme, the appearance is neutral.
     isAnimated: true,
     svg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M12 16a4 4 0 100-8 4 4 0 000 8z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M14.83 9.17l3.53-3.53M4.93 19.07l4.24-4.24" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   }}
-/>`}</LiveComponent>
+/>`}
+</LiveComponent>

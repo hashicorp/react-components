@@ -9,5 +9,10 @@
   },
   "dependencies": {
     "classnames": "^2.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/min-100-layout"
   }
 }

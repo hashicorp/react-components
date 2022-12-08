@@ -1,0 +1,32 @@
+.quote {
+  --color: var(--wpl-neutral-700);
+
+  margin: 0;
+
+  &.dark {
+    --color: var(--wpl-neutral-0);
+  }
+}
+
+.text {
+  margin: 0;
+  composes: g-type-display-4 from global;
+  color: var(--color);
+
+  & > p {
+    margin: 0;
+    color: inherit;
+
+    &::before {
+      content: '“';
+    }
+
+    &::after {
+      content: '”';
+    }
+  }
+}
+
+.caption {
+  margin-top: 32px;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@hashicorp/react-error-view",
+  "description": "error view for use on docs sites",
+  "version": "0.2.0",
+  "author": "HashiCorp",
+  "contributors": [
+    "Zach Shilton"
+  ],
+  "main": "index.tsx",
+  "license": "MPL-2.0",
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "next": ">=11.x",
+    "react": ">=16.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/error-view"
+  }
+}

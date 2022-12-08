@@ -1,14 +1,17 @@
 {
   "name": "@hashicorp/react-product-downloads-page",
   "description": "The page where you go to download HashiCorp products",
-  "version": "2.7.0",
+  "version": "2.9.0",
   "author": "HashiCorp",
-  "contributors": ["Zack Tanner", "Jeff Escalante"],
+  "contributors": [
+    "Zack Tanner",
+    "Jeff Escalante"
+  ],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-button": "^6.0.0",
+    "@hashicorp/react-button": "^6.0.4",
     "@hashicorp/react-head": "^3.1.2",
-    "@hashicorp/react-tabs": "^7.0.0",
+    "@hashicorp/react-tabs": "^7.1.2",
     "semver": "^7.3.5"
   },
   "peerDependencies": {
@@ -18,5 +21,13 @@
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@types/semver": "^7.3.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/product-download-page"
   }
 }

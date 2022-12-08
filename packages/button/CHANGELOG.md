@@ -1,5 +1,35 @@
 # @hashicorp/react-button
 
+## 6.3.0
+
+### Minor Changes
+
+- [#808](https://github.com/hashicorp/react-components/pull/808) [`45fe15ee`](https://github.com/hashicorp/react-components/commit/45fe15eec86e09d324624b0398e81edd92b3af37) Thanks [@dstaley](https://github.com/dstaley)! - Use `legacyBehavior` prop for `next/link` to support Next v13
+
+## 6.2.1
+
+### Patch Changes
+
+- [#642](https://github.com/hashicorp/react-components/pull/642) [`8f013839`](https://github.com/hashicorp/react-components/commit/8f01383973802fe3c8865d7d5ab9fcfe655b6376) Thanks [@dstaley](https://github.com/dstaley)! - Render Button with new stacking context
+
+## 6.2.0
+
+### Minor Changes
+
+- [#521](https://github.com/hashicorp/react-components/pull/521) [`cb0a3eaf`](https://github.com/hashicorp/react-components/commit/cb0a3eaf8fe9be30dc72b1b3e87ad6ed2e2e2b07) Thanks [@rayelder](https://github.com/rayelder)! - Align <Button /> border-radius and height to Figma component
+
+## 6.1.0
+
+### Minor Changes
+
+- [#495](https://github.com/hashicorp/react-components/pull/495) [`cdab7ec`](https://github.com/hashicorp/react-components/commit/cdab7ec618621bbfe6b828bdfbb023bf6f2ef57d) Thanks [@dstaley](https://github.com/dstaley)! - Render all links with `next/link`. Due to edge cases that may arise as a result of performing client-side navigations to redirected pages, it is recommended that you also use the [`use404Redirects`](https://github.com/hashicorp/react-components/tree/main/packages/error-view#use404redirects) hook from `@hashicorp/error-view` in your `_404.jsx` template.
+
+## 6.0.4
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
 ## 6.0.3
 
 ### Patch Changes

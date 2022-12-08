@@ -1,13 +1,16 @@
 {
   "name": "@hashicorp/react-combobox",
   "description": "Combobox component with base functionality and styles built for composability",
-  "version": "1.0.2",
+  "version": "1.2.0",
   "author": "HashiCorp",
-  "contributors": ["Jimmy Merritello", "Kendall Strautman"],
+  "contributors": [
+    "Jimmy Merritello",
+    "Kendall Strautman"
+  ],
   "license": "MPL-2.0",
   "dependencies": {
-    "@reach/combobox": "0.15.1",
-    "@reach/visually-hidden": "^0.15.0",
+    "@reach/combobox": "^0.17.0",
+    "@reach/visually-hidden": "^0.16.0",
     "classnames": "^2.3.1",
     "fuzzysearch": "1.0.3"
   },
@@ -16,5 +19,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/combobox"
   }
 }

@@ -1,5 +1,17 @@
 # @hashicorp/react-select-input
 
+## 5.1.0
+
+### Minor Changes
+
+- [#621](https://github.com/hashicorp/react-components/pull/621) [`b5fc3767`](https://github.com/hashicorp/react-components/commit/b5fc37678236f64c6cae2915f2d36b91f4cc00ea) Thanks [@dstaley](https://github.com/dstaley)! - Align styles for @hashicorp/react-combobox and @hashcorp/react-select-input
+
+## 5.0.0
+
+### Major Changes
+
+- [#568](https://github.com/hashicorp/react-components/pull/568) [`26918b9e`](https://github.com/hashicorp/react-components/commit/26918b9e32b3d4882bb18786f09eaa63c178bbc6) Thanks [@dstaley](https://github.com/dstaley)! - Add TypeScript types
+
 ## 4.0.5
 
 ### Patch Changes

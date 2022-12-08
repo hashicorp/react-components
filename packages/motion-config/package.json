@@ -1,0 +1,19 @@
+{
+  "name": "@hashicorp/react-motion-config",
+  "version": "0.2.0",
+  "description": "",
+  "author": "HashiCorp",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "framer-motion": "^6.3.11"
+  },
+  "peerDependencies": {
+    "react": ">=16.x",
+    "framer-motion": ">=6.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/motion-config"
+  }
+}

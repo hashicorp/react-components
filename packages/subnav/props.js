@@ -43,6 +43,11 @@ module.exports = {
     description:
       'If `true`, will ensure GitHub stars are not shown in any `ctaLinks`, even if the special value `GitHub` is passed',
   },
+  menuText: {
+    type: 'string',
+    description: 'Optionally define mobile menu "Menu" text.',
+    required: false,
+  },
   menuItems: {
     type: 'array',
     description: 'An array of links to be displayed as navigation menu items.',

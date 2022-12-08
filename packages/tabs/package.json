@@ -1,13 +1,15 @@
 {
   "name": "@hashicorp/react-tabs",
   "description": "Display content in a tabbed interface",
-  "version": "7.1.1",
+  "version": "7.2.1",
   "author": "HashiCorp",
-  "contributors": ["Zach Shilton"],
+  "contributors": [
+    "Zach Shilton"
+  ],
   "dependencies": {
-    "@hashicorp/react-inline-svg": "^6.0.1",
-    "@reach/portal": "^0.16.0",
-    "@reach/tooltip": "^0.16.0",
+    "@hashicorp/react-inline-svg": "^6.0.3",
+    "@reach/portal": "^0.16.2",
+    "@reach/tooltip": "^0.17.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
@@ -17,5 +19,10 @@
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/tabs"
   }
 }

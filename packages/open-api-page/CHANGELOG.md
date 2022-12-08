@@ -1,5 +1,27 @@
 # @hashicorp/react-open-api-page
 
+## 2.1.0
+
+### Minor Changes
+
+- [#688](https://github.com/hashicorp/react-components/pull/688) [`53a2626d`](https://github.com/hashicorp/react-components/commit/53a2626da71b75da535f333ec28da1432b9924e6) Thanks [@kendallstrautman](https://github.com/kendallstrautman)! - feat(open-api-docs): adds devdot opt-in banner slot
+
+## 2.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2)]:
+  - @hashicorp/react-docs-sidenav@9.0.0
+
+## 2.0.2
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+- Updated dependencies [[`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e)]:
+  - @hashicorp/react-content@8.2.1
+
 ## 2.0.1
 
 ### Patch Changes

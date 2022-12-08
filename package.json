@@ -3,51 +3,57 @@
   "version": "0.0.0",
   "dependencies": {
     "@codesandbox/sandpack-react": "^0.12.0",
-    "@hashicorp/mktg-global-styles": "^4.0.0",
-    "@hashicorp/mktg-logos": "^1.2.0",
+    "@hashicorp/flight-icons": "^2.5.0",
+    "@hashicorp/mktg-global-styles": "^4.4.0",
+    "@hashicorp/mktg-logos": "^1.3.2",
     "@hashicorp/sentinel-embedded": "^0.0.14",
-    "@parcel/css-wasm": "^1.0.2",
-    "@swc/wasm-web": "^1.2.129",
+    "@swc/wasm-web": "^1.3.21",
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
     "formik": "^2.2.9",
+    "framer-motion": "^6.3.11",
+    "lightningcss-wasm": "^1.17.1",
     "lz-string": "^1.4.4",
-    "next": "^11.1.0",
+    "next": "^12.3.2",
+    "next-mdx-remote": "^3.0.8",
     "next-remote-watch": "^1.0.0",
     "node-cache": "^5.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-error-boundary": "^3.1.4",
+    "remark-gfm": "^3.0.1",
     "semver": "^7.3.5",
-    "swingset": "^0.11.0"
+    "swingset": "^0.14.1"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.0",
-    "@changesets/cli": "^2.16.0",
-    "@hashicorp/platform-cli": "^1.1.0",
-    "@hashicorp/platform-cms": "^0.1.0",
-    "@hashicorp/platform-code-highlighting": "0.1.1",
-    "@hashicorp/platform-docs-mdx": "0.1.1",
-    "@hashicorp/platform-nextjs-plugin": "1.0.1",
-    "@hashicorp/platform-types": "^0.1.0",
+    "@changesets/changelog-github": "^0.4.2",
+    "@changesets/cli": "^2.23.0",
+    "@hashicorp/platform-cli": "^2.0.0",
+    "@hashicorp/platform-cms": "^0.3.0",
+    "@hashicorp/platform-code-highlighting": "0.1.2",
+    "@hashicorp/platform-configs": "^0.2.0",
+    "@hashicorp/platform-docs-mdx": "^0.2.0",
+    "@hashicorp/platform-nextjs-plugin": "^2.1.0",
+    "@hashicorp/platform-postcss-config": "^0.1.0",
+    "@hashicorp/platform-types": "^0.3.0",
     "@hashicorp/platform-util": "0.1.0",
     "@octokit/core": "^3.5.1",
-    "@swc-node/jest": "^1.3.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/react": "^17.0.16",
-    "dotenv": "^10.0.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^8.0.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/react": "^17.0.38",
+    "dotenv": "^14.3.0",
     "eslint": "^7.32.0",
     "identity-obj-proxy": "^3.0.0",
     "isomorphic-unfetch": "^3.1.0",
-    "jest": "^27.0.6",
+    "jest": "^27.4.7",
     "jest-raw-loader": "^1.0.1",
-    "nock": "^13.1.3",
-    "prettier": "^2.3.2",
-    "simple-git-hooks": "^2.5.1",
-    "ts-jest": "^27.0.5",
-    "typescript": "^4.3.5"
+    "nock": "^13.2.2",
+    "prettier": "^2.5.1",
+    "simple-git-hooks": "^2.7.0",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
   },
   "engines": {
     "npm": ">=7.0.0",
@@ -56,6 +62,9 @@
   "resolutions": {
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "overrides": {
+    "react-live": "3.1.0"
   },
   "scripts": {
     "hard-reset": "rm -rf node_modules && rm -rf .next && npm i",
@@ -74,9 +83,14 @@
   "simple-git-hooks": {
     "pre-commit": "npx next-hashicorp precommit"
   },
-  "workspaces": ["./packages/*"],
+  "workspaces": [
+    "./packages/*"
+  ],
   "private": true,
   "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": ["next-hashicorp format", "next-hashicorp lint"]
+    "*.+(js|jsx|ts|tsx)": [
+      "next-hashicorp format",
+      "next-hashicorp lint"
+    ]
   }
 }

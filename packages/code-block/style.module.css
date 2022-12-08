@@ -16,22 +16,10 @@
 
 .copyButtonContainer {
   position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  min-height: 58px;
+  top: 12px;
+  right: 12px;
 
   @media print {
     display: none;
   }
-}
-
-.copyButtonBackground {
-  position: relative;
-  background: var(--background-base);
-  border-radius: 2px;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
 }

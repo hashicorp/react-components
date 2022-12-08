@@ -1,11 +1,13 @@
 {
   "name": "@hashicorp/react-stepped-feature-list",
   "description": "Renders a list of features for a product",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "author": "HashiCorp",
-  "contributors": ["Zack Tanner"],
+  "contributors": [
+    "Zack Tanner"
+  ],
   "dependencies": {
-    "nuka-carousel": "^4.7.7"
+    "nuka-carousel": "^4.8.4"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
@@ -14,5 +16,10 @@
   "license": "MPL-2.0",
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/stepped-feature-list"
   }
 }

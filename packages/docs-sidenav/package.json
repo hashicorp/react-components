@@ -1,12 +1,14 @@
 {
   "name": "@hashicorp/react-docs-sidenav",
   "description": "Sidebar used for navigation HashiCorp docs",
-  "version": "8.4.1",
+  "version": "9.1.0",
   "author": "HashiCorp",
-  "contributors": ["Jeff Escalante"],
+  "contributors": [
+    "Jeff Escalante"
+  ],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-link-wrap": "^3.0.3",
+    "@hashicorp/react-link-wrap": "^3.1.0",
     "fuzzysearch": "1.0.3"
   },
   "license": "MPL-2.0",
@@ -16,5 +18,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/docs-sidenav"
   }
 }

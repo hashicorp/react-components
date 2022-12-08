@@ -9,11 +9,13 @@ import HashiHead from '@hashicorp/react-head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { SearchProvider } from '@hashicorp/react-search'
 import { AlgoliaConfigObject } from '@hashicorp/react-search/types'
+import type { Products } from '@hashicorp/platform-product-meta'
 
-import VersionSelect from '@hashicorp/react-version-select'
-import { getVersionFromPath } from '@hashicorp/react-version-select/util'
+import CodeTabsProvider from '@hashicorp/react-code-block/provider'
 import { MDXProviderComponentsProp } from '@mdx-js/react'
 
+import { getVersionFromPath } from './components/version-select/util'
+import VersionSelect from './components/version-select'
 import SearchBar from './components/search-bar'
 import VersionAlert from './components/version-alert'
 import generateComponents from './components'
@@ -24,19 +26,21 @@ import s from './style.module.css'
 import type { VersionSelectItem } from './server/loaders/remote-content'
 
 interface DocsPageInnerProps {
-  canonicalUrl: string
+  canonicalUrl: string | null
   description: string
   navData: NavData
   currentPath: string
   pageTitle: string
   baseRoute: string
   githubFileUrl: string
-  product: { name: string; slug: string }
+  product: { name: string; slug: Products }
   /** @deprecated */
   showEditPage: boolean
   showVersionSelect: boolean
   versions: VersionSelectItem[]
   algoliaConfig?: AlgoliaConfigObject
+  optInBanner?: ReactElement
+  projectName?: string
 }
 
 export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
@@ -53,6 +57,8 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   showVersionSelect,
   versions,
   algoliaConfig,
+  optInBanner,
+  projectName,
 }) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
@@ -62,6 +68,10 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   const versionIsLatest =
     versionInPath &&
     versions?.find((v) => v.isLatest)?.version === versionInPath
+
+  const selectedVersion: VersionSelectItem | null =
+    (versionInPath && versions?.find((v) => v.version === versionInPath)) ||
+    null
 
   // TEMPORARY (https://app.asana.com/0/1100423001970639/1160656182754009)
   // activates the "jump to section" feature
@@ -82,20 +92,37 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 
   const versionSelect = showVersionSelect ? (
     <div className={s.versionSelect}>
-      <VersionSelect versions={versions} basePath={baseRoute} />
+      <VersionSelect
+        versions={versions}
+        basePath={baseRoute}
+        projectName={projectName}
+      />
     </div>
   ) : null
 
   const versionAlert =
     !versionIsLatest && showVersionSelect ? (
-      <VersionAlert product={name} />
+      <VersionAlert
+        tag={`old version ${
+          isMobile
+            ? `(${selectedVersion?.label || selectedVersion?.version})`
+            : ''
+        }`}
+        text={
+          isMobile
+            ? `Click to view latest`
+            : `You're looking at documentation for ${projectName || name} ${
+                selectedVersion?.label || selectedVersion?.version
+              }. Click here to view the latest content.`
+        }
+      />
     ) : null
 
   return (
     <div id="p-docs">
       {/* render the page's data to the document head */}
       <HashiHead
-        canonicalUrl={canonicalUrl}
+        canonicalUrl={canonicalUrl ?? undefined}
         description={description}
         siteName={`${name} by HashiCorp`}
         title={`${pageTitle} | ${name} by HashiCorp`}
@@ -127,20 +154,22 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
           id="inner"
           role="main"
           className={classNames(s.inner, s.tempJumpToSectionParent, {
-            [s.versionedDocsOffset]:
-              process.env.ENABLE_VERSIONED_DOCS === 'true',
+            [s.versionedDocsOffset]: showVersionSelect,
           })}
         >
-          <Content
-            className="g-content" // used in temporary_injectJumpToSection
-            product={slug}
-            content={
-              <>
-                {isMobile ? null : search}
-                {children}
-              </>
-            }
-          />
+          <CodeTabsProvider>
+            <Content
+              className="g-content" // used in temporary_injectJumpToSection
+              product={slug}
+              content={
+                <>
+                  {optInBanner ? optInBanner : null}
+                  {isMobile ? null : search}
+                  {children}
+                </>
+              }
+            />
+          </CodeTabsProvider>
         </div>
       </div>
       {/* if desired, show an "edit this page" link on the bottom right, linking to github */}
@@ -157,7 +186,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
 }
 
 export interface DocsPageProps {
-  product: { name: string; slug: string }
+  product: { name: string; slug: Products }
   baseRoute: string
   showEditPage?: boolean
   showVersionSelect?: boolean
@@ -166,7 +195,7 @@ export interface DocsPageProps {
   staticProps: {
     mdxSource: MDXRemoteSerializeResult
     frontMatter: {
-      canonical_url: string
+      canonical_url: string | null
       description: string
       page_title: string
     }
@@ -175,6 +204,11 @@ export interface DocsPageProps {
     githubFileUrl: string
     versions: VersionSelectItem[]
   }
+  optInBanner?: ReactElement
+  /**
+   * This will override the `product.name` that is passed to the version-alert.
+   */
+  projectName?: string
 }
 
 export default function DocsPage({
@@ -192,6 +226,8 @@ export default function DocsPage({
     githubFileUrl,
     versions,
   },
+  optInBanner,
+  projectName,
 }: DocsPageProps): ReactElement {
   const router = useRouter()
 
@@ -219,6 +255,8 @@ export default function DocsPage({
       baseRoute={baseRoute}
       versions={versions}
       algoliaConfig={algoliaConfig}
+      optInBanner={optInBanner}
+      projectName={projectName}
     >
       {content}
     </DocsPageInner>

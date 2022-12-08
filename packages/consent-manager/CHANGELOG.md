@@ -1,5 +1,97 @@
 # @hashicorp/react-consent-manager
 
+## 8.2.1
+
+### Patch Changes
+
+- [#824](https://github.com/hashicorp/react-components/pull/824) [`fb827df3`](https://github.com/hashicorp/react-components/commit/fb827df377a04e47ae094b86eb88e97caae7e94c) Thanks [@pbortnick](https://github.com/pbortnick)! - fix: check preferences before setting global var
+
+## 8.2.0
+
+### Minor Changes
+
+- [#795](https://github.com/hashicorp/react-components/pull/795) [`72f90d73`](https://github.com/hashicorp/react-components/commit/72f90d739cfd4387a2e524bc83fc187f9f7753c4) Thanks [@pbortnick](https://github.com/pbortnick)! - update: set cookie preferences global variable
+
+## 8.1.0
+
+### Minor Changes
+
+- [#729](https://github.com/hashicorp/react-components/pull/729) [`13a6f0d5`](https://github.com/hashicorp/react-components/commit/13a6f0d5110c245d09188bcb998c19ea03565d3d) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - stack actions on mobile
+
+## 8.0.1
+
+### Patch Changes
+
+- [#672](https://github.com/hashicorp/react-components/pull/672) [`4f9ec2db`](https://github.com/hashicorp/react-components/commit/4f9ec2dba23e8d1caedb63daa897220eb34ca76f) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Fix heading color
+
+## 8.0.0
+
+### Major Changes
+
+- [#658](https://github.com/hashicorp/react-components/pull/658) [`e0f753db`](https://github.com/hashicorp/react-components/commit/e0f753dbd942baff0fcee77918a003e4d2dbc2f5) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Adds logic to loadAll preferences if the user is within the US
+  - Consumers will need to implement `edge-utils` `setGeoCookie` to detect users within the US
+
+## 7.5.0
+
+### Minor Changes
+
+- [#590](https://github.com/hashicorp/react-components/pull/590) [`77ee90aa`](https://github.com/hashicorp/react-components/commit/77ee90aab1b582ef1daffd075eb6cce8a13686e1) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Reskin dialog component
+
+## 7.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`f942b5d2`](https://github.com/hashicorp/react-components/commit/f942b5d291c50cbdafe0e3c49319235ba87c1497)]:
+  - @hashicorp/react-toggle@5.0.0
+
+## 7.4.0
+
+### Minor Changes
+
+- [#629](https://github.com/hashicorp/react-components/pull/629) [`f969489c`](https://github.com/hashicorp/react-components/commit/f969489c704bc36fcf37ab12db19624bca73e642) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - expose saveAndLoadAnalytics function
+
+* [#637](https://github.com/hashicorp/react-components/pull/637) [`04aa6541`](https://github.com/hashicorp/react-components/commit/04aa6541578aee4da36cf02876512dd2a7eea4af) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Fetch integrations directly from Segment
+
+### Patch Changes
+
+- [#635](https://github.com/hashicorp/react-components/pull/635) [`a4391931`](https://github.com/hashicorp/react-components/commit/a4391931102eb03d95943d9ec30cd10709215067) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Remove events and object-assign dependencies
+
+## 7.3.0
+
+### Minor Changes
+
+- [#616](https://github.com/hashicorp/react-components/pull/616) [`231d6bac`](https://github.com/hashicorp/react-components/commit/231d6bacb380e1ea1ec2f6156a70b8b296dc635c) Thanks [@EnMod](https://github.com/EnMod)! - Adds default cookie policy link
+
+## 7.2.0
+
+### Minor Changes
+
+- [#545](https://github.com/hashicorp/react-components/pull/545) [`94fe63fb`](https://github.com/hashicorp/react-components/commit/94fe63fb50bc6ee5067ccebf2cbec3da70b2a27f) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - feat(ConsentManager): add event callback options
+
+## 7.1.3
+
+### Patch Changes
+
+- [#521](https://github.com/hashicorp/react-components/pull/521) [`cbcf167c`](https://github.com/hashicorp/react-components/commit/cbcf167cec21da83482c13effac2e44c6d2a54eb) Thanks [@rayelder](https://github.com/rayelder)! - Adjust accept button border radius
+
+- Updated dependencies [[`cb0a3eaf`](https://github.com/hashicorp/react-components/commit/cb0a3eaf8fe9be30dc72b1b3e87ad6ed2e2e2b07)]:
+  - @hashicorp/react-button@6.2.0
+
+## 7.1.2
+
+### Patch Changes
+
+- [#514](https://github.com/hashicorp/react-components/pull/514) [`072f32c9`](https://github.com/hashicorp/react-components/commit/072f32c9b5473ec5282973d9746bcf350a0cd966) Thanks [@zchsh](https://github.com/zchsh)! - Adds missing events dependency to avoid webpack > 5 errors.
+
+## 7.1.1
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+- Updated dependencies [[`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e)]:
+  - @hashicorp/react-button@6.0.4
+
 ## 7.1.0
 
 ### Minor Changes

@@ -1,5 +1,19 @@
 # @hashicorp/react-toggle
 
+## 5.1.0
+
+### Minor Changes
+
+- [#823](https://github.com/hashicorp/react-components/pull/823) [`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Update neutral and blue colors
+
+## 5.0.0
+
+### Major Changes
+
+- [#589](https://github.com/hashicorp/react-components/pull/589) [`f942b5d2`](https://github.com/hashicorp/react-components/commit/f942b5d291c50cbdafe0e3c49319235ba87c1497) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! -
+  - reskin toggle
+  - adds `disabled` option
+
 ## 4.0.1
 
 ### Patch Changes

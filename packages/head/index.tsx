@@ -1,6 +1,35 @@
 import Head from 'next/head'
+import isAbsoluteUrl from './helpers/is-absolute-url'
+import { renderMetaTags } from './seo'
+import type { ReactNode, ReactElement } from 'react'
 
-export default function HashiHead(props: HashiHeadProps): React.ReactElement {
+export { renderMetaTags }
+
+const IS_DEV = process.env.NODE_ENV !== 'production'
+
+export default function HashiHead(props: HashiHeadProps): ReactElement {
+  /**
+   * Throw an error if props.image is a relative URL.
+   * It must be an absolute URL in order to work as expected as og:image.
+   * Reference: https://ogp.me/#url
+   */
+  if (typeof props.image === 'string' && !isAbsoluteUrl(props.image)) {
+    const errorMessage = `Error: HashiHead "props.image" must be an absolute URL. Non-absolute URL detected: "${props.image}". Please provide a fully qualified absolute URL or "props.image".`
+    if (IS_DEV) {
+      throw new Error(errorMessage)
+    } else {
+      /**
+       * TODO: should we consider alternatives to throwing an error here?
+       * Eg, perhaps we could log to Datadog or something rather than throw.
+       * However, Datadog only in hashicorp/dev-portal... maybe if we use it
+       * on all properties, this type of tracking could be a good fit?
+       * Related "Removing Sentry" discussion item:
+       * https://app.asana.com/0/1202347960758186/1202475860181284/f
+       */
+      console.error(errorMessage)
+    }
+  }
+
   return (
     <Head>
       {whenString(props.title, <title>{props.title}</title>)}
@@ -21,12 +50,19 @@ export default function HashiHead(props: HashiHeadProps): React.ReactElement {
       <meta name="theme-color" content="#000" key="themeColor" />
       {whenString(
         props.description,
-        <meta
-          name="description"
-          property="og:description"
-          content={props.description}
-          key="description"
-        />
+        <>
+          <meta
+            name="description"
+            property="og:description"
+            content={props.description}
+            key="description"
+          />
+          <meta
+            name="twitter:description"
+            content={props.description}
+            key="twitterDescription"
+          />
+        </>
       )}
       {whenString(
         props.siteName,
@@ -76,7 +112,7 @@ const whenString = (value, returnValue) =>
 
 interface HashiHeadProps {
   canonicalUrl?: string
-  children?: React.ReactNode
+  children?: ReactNode
   description?: string
   icon?: {
     [key: string]: unknown

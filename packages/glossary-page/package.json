@@ -1,20 +1,27 @@
 {
   "name": "@hashicorp/react-glossary-page",
   "description": "Create a Hashicorp branded glossary page in NextJS projects.",
-  "version": "2.5.5",
+  "version": "2.5.9",
   "author": "HashiCorp",
-  "contributors": ["Bryce Kalow"],
+  "contributors": [
+    "Bryce Kalow"
+  ],
   "dependencies": {
-    "@hashicorp/react-docs-page": "^14.14.0",
-    "@hashicorp/remark-plugins": "^3.1.1"
+    "@hashicorp/react-docs-page": "^17.0.0",
+    "@hashicorp/remark-plugins": "^3.3.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "next-mdx-remote": ">=3.x",
+    "next-mdx-remote": "3.x",
     "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/glossary-page"
   }
 }

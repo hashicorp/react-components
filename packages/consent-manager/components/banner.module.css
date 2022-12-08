@@ -47,7 +47,7 @@
   font-weight: var(--font-weight-bold);
   font-family: inherit;
   padding: 10px 20px;
-  border-radius: 2px;
+  border-radius: 4px;
   transform: translate3d(0, 0, 0);
   transition: transform 200ms ease;
   background-color: var(--brand);

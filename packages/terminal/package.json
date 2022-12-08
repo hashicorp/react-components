@@ -1,9 +1,12 @@
 {
   "name": "@hashicorp/react-command-line-terminal",
   "description": "Static UI element to render a command line terminal with code",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "author": "HashiCorp",
-  "contributors": ["Zack Tanner", "Brandon Romano"],
+  "contributors": [
+    "Zack Tanner",
+    "Brandon Romano"
+  ],
   "license": "MPL-2.0",
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0"
@@ -14,5 +17,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/terminal"
   }
 }

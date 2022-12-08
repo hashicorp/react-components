@@ -1,4 +1,4 @@
 module.exports = {
-  semi: false,
-  singleQuote: true,
+  ...require('@hashicorp/platform-cli/config/prettier.config.js'),
+  /* Specify overrides here */
 }

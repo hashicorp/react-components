@@ -2,7 +2,7 @@ import initSwc, { transformSync } from '@swc/wasm-web'
 import initParcelCSS, {
   transform as transformCSS,
   TransformResult,
-} from '@parcel/css-wasm'
+} from 'lightningcss-wasm'
 
 const enc = new TextEncoder()
 const dec = new TextDecoder()
@@ -38,13 +38,14 @@ function compileCode(code: string) {
 function compileCSS(css?: string) {
   if (!css) return null
   return transformCSS({
-    filename: 'stlye.css',
+    filename: 'style.css',
     code: enc.encode(css),
     cssModules: true,
+    minify: true,
     drafts: {
       nesting: true,
+      customMedia: true,
     },
-    minify: true,
   })
 }
 

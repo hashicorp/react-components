@@ -1,3 +1,5 @@
+import type { ParsedUrlQuery } from 'querystring'
+import { Pluggable } from 'unified'
 import moize, { Options } from 'moize'
 import semver from 'semver'
 import { GetStaticPropsContext } from 'next'
@@ -16,10 +18,23 @@ import { getPathsFromNavData } from '../get-paths-from-nav-data'
 
 interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
+  /**
+   * In most cases, `basePath` should suffice when resolving nav-data, because
+   * it happens to match the prefix of nav-data file.
+   *
+   * If it does not, `navDataPrefix` will serve as an optional override.
+   */
+  navDataPrefix?: string
   enabledVersionedDocs?: boolean
-  remarkPlugins?: $TSFixMe[]
+  remarkPlugins?: ((params?: ParsedUrlQuery) => Pluggable[]) | Pluggable[]
+  rehypePlugins?: Pluggable[]
   mainBranch?: string // = 'main',
   scope?: Record<string, $TSFixMe>
+  /**
+   * Allows us to override the default ref from which we fetch the latest content.
+   * e.g. when no version exists in the path, and latestVersionRef was 'my-stable-branch', we would fetch content for `my-stable-branch`
+   */
+  latestVersionRef?: string
 }
 
 /**
@@ -89,6 +104,10 @@ export default class RemoteContentLoader implements DataLoader {
     if (!this.opts.mainBranch) this.opts.mainBranch = 'main'
     if (!this.opts.scope) this.opts.scope = {}
     if (!this.opts.remarkPlugins) this.opts.remarkPlugins = []
+    if (!this.opts.rehypePlugins) this.opts.rehypePlugins = []
+    if (!this.opts.navDataPrefix) this.opts.navDataPrefix = this.opts.basePath
+    if (!this.opts.mdxContentHook)
+      this.opts.mdxContentHook = (mdxContent, scope) => mdxContent
   }
 
   loadStaticPaths = async (): Promise<$TSFixMe> => {
@@ -96,13 +115,19 @@ export default class RemoteContentLoader implements DataLoader {
     const versionMetadataList = await cachedFetchVersionMetadataList(
       this.opts.product
     )
-    const latest = versionMetadataList.find((e) => e.isLatest).version
+
+    const latest: string =
+      this.opts.latestVersionRef ??
+      versionMetadataList.find((e) => e.isLatest).version
+
     // Fetch and parse navigation data
-    return getPathsFromNavData(
-      (await cachedFetchNavData(this.opts.product, this.opts.basePath, latest))
-        .navData,
-      this.opts.paramId
+    const navDataResponse = await cachedFetchNavData(
+      this.opts.product,
+      this.opts.navDataPrefix!,
+      latest
     )
+    const navData = navDataResponse.navData
+    return getPathsFromNavData(navData, this.opts.paramId)
   }
 
   loadStaticProps = async ({
@@ -114,26 +139,40 @@ export default class RemoteContentLoader implements DataLoader {
         ? (params[this.opts.paramId] as string[]).join('/')
         : ''
 
-    const mdxRenderer = (mdx) =>
-      renderPageMdx(mdx, {
-        remarkPlugins: this.opts.remarkPlugins,
-        scope: this.opts.scope,
-      })
+    let remarkPlugins: $TSFixMe[] = []
+
+    // We support passing in a function to remarkPlugins, which gets the parameters of the current page
+    if (typeof this.opts.remarkPlugins === 'function') {
+      remarkPlugins = this.opts.remarkPlugins(params)
+      if (!Array.isArray(remarkPlugins)) {
+        throw new Error(
+          '`remarkPlugins:` When specified as a function, must return an array of remark plugins'
+        )
+      }
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we default this in the constructor, so it must be defined
+      remarkPlugins = this.opts.remarkPlugins!
+    }
 
     // given: v0.5.x (latest), v0.4.x, v0.3.x
     const [versionFromPath, paramsNoVersion] = stripVersionFromPathParams(
       params![this.opts.paramId!] as string[]
     )
 
-    const versionMetadataList: VersionMetadataItem[] = await cachedFetchVersionMetadataList(
-      this.opts.product
-    )
-    // remove trailing index to ensure we fetch the right document from the DB
-    const pathParamsNoIndex = paramsNoVersion.filter(
-      (param, idx, arr) => !(param === 'index' && idx === arr.length - 1)
-    )
+    const mdxRenderer = (mdx) =>
+      renderPageMdx(mdx, {
+        mdxContentHook: this.opts.mdxContentHook,
+        remarkPlugins,
+        rehypePlugins: this.opts.rehypePlugins,
+        scope: { version: versionFromPath, ...this.opts.scope },
+      })
 
-    const latestVersion = versionMetadataList.find((e) => e.isLatest)!.version
+    const versionMetadataList: VersionMetadataItem[] =
+      await cachedFetchVersionMetadataList(this.opts.product)
+
+    const latestVersion =
+      this.opts.latestVersionRef ??
+      versionMetadataList.find((e) => e.isLatest)!.version
 
     let versionToFetch = latestVersion
 
@@ -144,17 +183,26 @@ export default class RemoteContentLoader implements DataLoader {
           : normalizeVersion(versionFromPath)
     }
 
+    /**
+     * Note: we expect the provided params to not include
+     * a trailing `/index`, as our URLs do not include trailing `/index`.
+     *
+     * The reason for this is that otherwise, we end allowing visitors to see
+     * all category pages at both `/some-doc` and `/some-doc/index` URLs.
+     * We want the latter URL to 404, so we do NOT want to automatically
+     * resolve trailing `/index` from provided URL path parts.
+     */
     const fullPath = [
       'doc',
       versionToFetch,
       this.opts.basePath,
-      ...pathParamsNoIndex,
+      ...paramsNoVersion,
     ].join('/')
 
     const documentPromise = fetchDocument(this.opts.product, fullPath)
     const navDataPromise = cachedFetchNavData(
       this.opts.product,
-      this.opts.basePath,
+      this.opts.navDataPrefix!,
       versionToFetch
     )
 
@@ -174,9 +222,10 @@ export default class RemoteContentLoader implements DataLoader {
     if (document.githubFile) {
       // Link latest version to `main`
       // Hide link on older versions
-      const isLatest = versionMetadataList.find(
-        (e) => e.version === document.version
-      )!.isLatest
+      const isLatest =
+        (versionFromPath === 'latest' && Boolean(this.opts.latestVersionRef)) ||
+        versionMetadataList.find((e) => e.version === document.version)!
+          .isLatest
       if (isLatest) {
         // GitHub only allows you to modify a file if you are on a branch, not a commit
         githubFileUrl = `https://github.com/hashicorp/${this.opts.product}/blob/${this.opts.mainBranch}/${document.githubFile}`

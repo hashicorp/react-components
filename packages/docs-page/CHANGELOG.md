@@ -1,5 +1,225 @@
 # @hashicorp/react-docs-page
 
+## 17.7.1
+
+### Patch Changes
+
+- [#713](https://github.com/hashicorp/react-components/pull/713) [`4d9adc47`](https://github.com/hashicorp/react-components/commit/4d9adc476b38210d30eb1bf4373f59ec7a816ed1) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - fixed `version-select` version detection logic
+
+## 17.7.0
+
+### Minor Changes
+
+- [#697](https://github.com/hashicorp/react-components/pull/697) [`73cd27d8`](https://github.com/hashicorp/react-components/commit/73cd27d8ab85a8a9e91232608d3515be50a31a66) Thanks [@dstaley](https://github.com/dstaley)! - Update @hashicorp/platform-docs-mdx
+
+## 17.6.0
+
+### Minor Changes
+
+- [#683](https://github.com/hashicorp/react-components/pull/683) [`ffca266c`](https://github.com/hashicorp/react-components/commit/ffca266ce977fa918ceb2986e6edacf8c9367180) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - pass `scope` to mdxContentHook
+
+## 17.5.0
+
+### Minor Changes
+
+- [#681](https://github.com/hashicorp/react-components/pull/681) [`d67e047c`](https://github.com/hashicorp/react-components/commit/d67e047cca49904eb23a21579744061f59728f06) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Expose `mdxContentHook` option on loader interfaces
+
+## 17.4.0
+
+### Minor Changes
+
+- [#668](https://github.com/hashicorp/react-components/pull/668) [`8521e0de`](https://github.com/hashicorp/react-components/commit/8521e0deab27702c18bc3cc5f49f49fc35cf2ff5) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Support version faking when using FS loader
+
+## 17.3.3
+
+### Patch Changes
+
+- [#676](https://github.com/hashicorp/react-components/pull/676) [`22d16677`](https://github.com/hashicorp/react-components/commit/22d16677e9d9d5ff69533b9df2a157d101971ecf) Thanks [@BRKalow](https://github.com/BRKalow)! - Fix condition for applying the margin top to align search with the version select
+
+## 17.3.2
+
+### Patch Changes
+
+- [#674](https://github.com/hashicorp/react-components/pull/674) [`18bbd6e8`](https://github.com/hashicorp/react-components/commit/18bbd6e8c5082e4afc3ae418993babb84faeb9db) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Refactored version-alert implementation. No external API change
+
+## 17.3.1
+
+### Patch Changes
+
+- [#663](https://github.com/hashicorp/react-components/pull/663) [`f1af288d`](https://github.com/hashicorp/react-components/commit/f1af288dbcb4430840a3b232d9724a9830cd1c58) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Bump react-content dependency
+
+- Updated dependencies [[`101f7665`](https://github.com/hashicorp/react-components/commit/101f766593df7531f46ffac43849c8d31aa48ed2)]:
+  - @hashicorp/react-content@8.2.3
+
+## 17.3.0
+
+### Minor Changes
+
+- [#660](https://github.com/hashicorp/react-components/pull/660) [`67f962ba`](https://github.com/hashicorp/react-components/commit/67f962baef83e5417edc20d5d044d3faefcf12d9) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - Pass `projectName` to internal `VersionAlert`
+
+## 17.2.0
+
+### Minor Changes
+
+- [#650](https://github.com/hashicorp/react-components/pull/650) [`c9719e1b`](https://github.com/hashicorp/react-components/commit/c9719e1b7b04e25c30d3dfa4726cb637e1ce9a25) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds new `projectName` prop, which is used to augment the version select label.
+
+## 17.1.2
+
+### Patch Changes
+
+- [#639](https://github.com/hashicorp/react-components/pull/639) [`c8c945f4`](https://github.com/hashicorp/react-components/commit/c8c945f43eb4fa539959c3cd452804bc21f992e7) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This fixes incorrect logic for parsing and stripping a TFE version from Next.js path params.
+
+## 17.1.1
+
+### Patch Changes
+
+- [#638](https://github.com/hashicorp/react-components/pull/638) [`7adf9066`](https://github.com/hashicorp/react-components/commit/7adf9066b6b214bea9ad208839a72b6148600267) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - move `@hashicorp/remark-plugins` into `peerDependencies`
+
+## 17.1.0
+
+### Minor Changes
+
+- [#631](https://github.com/hashicorp/react-components/pull/631) [`ce6cfd8b`](https://github.com/hashicorp/react-components/commit/ce6cfd8b5e28e5f8b902e4a9095e61d750de1cc6) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This updates `docs-page` remote content loader to handle TFE versions in path params.
+
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`c3a29de1`](https://github.com/hashicorp/react-components/commit/c3a29de1668098ff74c269073343631a378dcf1c)]:
+  - @hashicorp/react-version-select@0.4.0
+
+## 17.0.0
+
+### Major Changes
+
+- [#607](https://github.com/hashicorp/react-components/pull/607) [`c4308f52`](https://github.com/hashicorp/react-components/commit/c4308f52c77d2f3445a61626f1e430a9b0e6651b) Thanks [@zchsh](https://github.com/zchsh)! - BREAKING CHANGE: no longer provides default remark and rehype plugins.
+
+  Consumers should pass all `remarkPlugins` and `rehypePlugins` through loader options. To match previous behaviour, consumers should import our `@hashicorp/remark-plugins` as well as code highlighting plugins.
+
+  ```ts
+  // Shared remark plugins
+  import {
+    includeMarkdown,
+    paragraphCustomAlerts,
+    typography,
+    anchorLinks,
+  } from '@hashicorp/remark-plugins'
+  // Code highlighting
+  import rehypePrism from '@mapbox/rehype-prism'
+  import rehypeSurfaceCodeNewlines from '@hashicorp/platform-code-highlighting/rehype-surface-code-newlines'
+  // To enable math features, add remarkMath & rehypeKatex
+  // import remarkMath from 'remark-math'
+  // import rehypeKatex from 'rehype-katex'
+
+  const remarkPlugins = [
+    [
+      includeMarkdown,
+      {
+        resolveMdx: true,
+        resolveFrom: path.join(process.cwd(), localPartialsDir),
+      },
+    ],
+    paragraphCustomAlerts,
+    typography,
+    anchorLinks,
+    /* ... option to add more plugins here ... */
+  ]
+
+  const rehypePlugins = [
+    [rehypePrism, { ignoreMissing: true }],
+    rehypeSurfaceCodeNewlines,
+    /* ... option to add more plugins here ... */
+  ]
+  ```
+
+## 16.2.1
+
+### Patch Changes
+
+- [#603](https://github.com/hashicorp/react-components/pull/603) [`ad19f3d5`](https://github.com/hashicorp/react-components/commit/ad19f3d521ffb3e2c886c52705ea2ea5ee475c35) Thanks [@zchsh](https://github.com/zchsh)! - Fixes issue where URLs with trailing index would resolve, rather than 404 as expected.
+
+## 16.2.0
+
+### Minor Changes
+
+- [#597](https://github.com/hashicorp/react-components/pull/597) [`b2c02280`](https://github.com/hashicorp/react-components/commit/b2c02280f57b1477ff30f7c1ecc00a8ff2ffe55a) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds optInBanner prop to render an optInBanner in the content area
+
+## 16.1.0
+
+### Minor Changes
+
+- [#583](https://github.com/hashicorp/react-components/pull/583) [`27a251e2`](https://github.com/hashicorp/react-components/commit/27a251e21a036b2aaca37e50b5827bd62c366b21) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This version adds a navDataPrefix option to the RemoteContentLoader to make nav-data lookup more flexible.
+
+## 16.0.0
+
+### Major Changes
+
+- [#576](https://github.com/hashicorp/react-components/pull/576) [`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - - convert `docs-sidenav` to typescript
+  - update `docs-page` internal code and narrow prop type
+
+### Patch Changes
+
+- Updated dependencies [[`36f924ae`](https://github.com/hashicorp/react-components/commit/36f924aec763c0dc8c206602ef197194b77d7ff2)]:
+  - @hashicorp/react-docs-sidenav@9.0.0
+
+## 15.0.0
+
+### Major Changes
+
+- [#568](https://github.com/hashicorp/react-components/pull/568) [`26918b9e`](https://github.com/hashicorp/react-components/commit/26918b9e32b3d4882bb18786f09eaa63c178bbc6) Thanks [@dstaley](https://github.com/dstaley)! - Add TypeScript types
+
+## 14.16.1
+
+### Patch Changes
+
+- [#569](https://github.com/hashicorp/react-components/pull/569) [`21e78bfe`](https://github.com/hashicorp/react-components/commit/21e78bfe0d371c8fffb0c86260744cc716d994a6) Thanks [@zchsh](https://github.com/zchsh)! - Bumps @hashicorp/react-content dependency to fix a table alignment issues. See #562 for details.
+
+## 14.16.0
+
+### Minor Changes
+
+- [#552](https://github.com/hashicorp/react-components/pull/552) [`6cc916be`](https://github.com/hashicorp/react-components/commit/6cc916bee5b10f4beb136a70e43955b69bb27bcf) Thanks [@BRKalow](https://github.com/BRKalow)! - Add latestVersionRef option to RemoteContentLoader
+
+## 14.15.0
+
+### Minor Changes
+
+- [#524](https://github.com/hashicorp/react-components/pull/524) [`657f44b3`](https://github.com/hashicorp/react-components/commit/657f44b3d61a026aca5781297aaf679b76341e40) Thanks [@BRKalow](https://github.com/BRKalow)! - Support passing a function for remarkPlugins, which accepts the params for the current page being rendered.
+
+## 14.14.5
+
+### Patch Changes
+
+- [#541](https://github.com/hashicorp/react-components/pull/541) [`d68f7db0`](https://github.com/hashicorp/react-components/commit/d68f7db026a5af4cce012841fbbf9bf17154ca20) Thanks [@dstaley](https://github.com/dstaley)! - Update TypeScript types to allow `null` as a value for `canonicalUrl`
+
+## 14.14.4
+
+### Patch Changes
+
+- [#516](https://github.com/hashicorp/react-components/pull/516) [`ceb89b24`](https://github.com/hashicorp/react-components/commit/ceb89b24b0086a77421f59ed560c09d7eb6c28e0) Thanks [@dstaley](https://github.com/dstaley)! - Ignore non-jump-to-section tagged H2 elements within the content of a DocsPage
+
+## 14.14.3
+
+### Patch Changes
+
+- [#504](https://github.com/hashicorp/react-components/pull/504) [`25d353c`](https://github.com/hashicorp/react-components/commit/25d353c045437889f01e473f1ca5d8d14308809d) Thanks [@zchsh](https://github.com/zchsh)! - Bumps platform-docs-mdx to fix a manual copy issue in code-block
+
+## 14.14.2
+
+### Patch Changes
+
+- [#508](https://github.com/hashicorp/react-components/pull/508) [`f0bfe27`](https://github.com/hashicorp/react-components/commit/f0bfe27d58f74c3dbc8049899d6bef7758782572) Thanks [@BRKalow](https://github.com/BRKalow)! - Adds CodeTabsProvider to DocsPage, which is necessary for syncing language selection across multiple CodeTabs instances.
+
+## 14.14.1
+
+### Patch Changes
+
+- [#498](https://github.com/hashicorp/react-components/pull/498) [`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e) Thanks [@BRKalow](https://github.com/BRKalow)! - Bumps underlying dependencies.
+
+- Updated dependencies [[`e60fa8f`](https://github.com/hashicorp/react-components/commit/e60fa8f437a98f97f6c0ed396f194192cf5e376e)]:
+  - @hashicorp/react-content@8.2.1
+  - @hashicorp/react-search@6.4.1
+
 ## 14.14.0
 
 ### Minor Changes
