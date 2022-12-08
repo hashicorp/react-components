@@ -1,11 +1,11 @@
 {
   "name": "@hashicorp/react-intro",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "@hashicorp/react-actions": "^0.4.0",
+    "@hashicorp/react-actions": "^0.4.3",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
