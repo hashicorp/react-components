@@ -39,7 +39,7 @@ const Hero = ({
               <InlineVideo
                 solution={solution}
                 url={url}
-                gradientPosition={undefined}
+                gradientPosition={false}
               />
             </div>
           ) : null}
