@@ -1,4 +1,4 @@
-import { ActionsProps } from 'packages/actions/types'
+import { ActionsProps } from '@hashicorp/react-actions/types'
 import { EyebrowProps } from './eyebrow-with-pattern'
 import { InlineVideoProps } from '@hashicorp/react-inline-video/types'
 import { Products } from '@hashicorp/platform-product-meta'
