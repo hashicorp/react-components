@@ -36,7 +36,11 @@ const Hero = ({
         <div className={s.container}>
           {url ? (
             <div className={s.video}>
-              <InlineVideo solution={solution} url={url} />
+              <InlineVideo
+                solution={solution}
+                url={url}
+                gradientPosition={false}
+              />
             </div>
           ) : null}
           <div className={classNames(s.content, s[appearance])}>
