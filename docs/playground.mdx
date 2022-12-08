@@ -1,0 +1,51 @@
+---
+name: 'Playground'
+---
+
+<Playground title="Component Playground" layout="vertical" persistStateToUrl>
+```tsx
+import Alert from 'alert'
+import Subnav from 'subnav'
+import CallToAction from 'call-to-action'
+import Callouts from 'callouts'
+import s from 'style.module.css'
+
+export default function Example() {
+  return (
+    <>
+      <Subnav
+        titleLink={{ text: 'Welcome to the playground', url: '#' }}
+        menuItems={[]}
+        ctaLinks={[{ text: 'CTA Button', url: '#' }]}
+      />
+      <CallToAction
+        heading="Fun Stuff"
+        content="Lives here"
+        product="packer"
+        variant="centered"
+      />
+      <Callouts
+        heading="Example Main Heading"
+        layout="two-up"
+        items={[
+          {
+            heading: 'Example Item Heading',
+            content: 'Sed posuere consectetur est at lobortis.',
+          },
+          {
+            heading: 'Example Item Heading 2',
+            content: 'Sed posuere consectetur est at lobortis.',
+          },
+        ]}
+      />
+    </>
+  )
+}
+```
+
+```css
+.yellow {
+  background: yellow;
+}
+```
+</Playground>

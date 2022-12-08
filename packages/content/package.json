@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-content",
   "description": "Styled prose content",
-  "version": "8.2.3",
+  "version": "8.3.0",
   "author": "HashiCorp",
   "contributors": [
     "Mike Wickett",
@@ -9,7 +9,7 @@
   ],
   "license": "MPL-2.0",
   "peerDependencies": {
-    "@hashicorp/mktg-global-styles": ">=3.2.x",
+    "@hashicorp/mktg-global-styles": ">=3.x",
     "react": ">=16.x"
   },
   "publishConfig": {

@@ -1,5 +1,24 @@
 # @hashicorp/react-video-feature
 
+## 0.2.0
+
+### Minor Changes
+
+- [#823](https://github.com/hashicorp/react-components/pull/823) [`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Update neutral and blue colors
+
+### Patch Changes
+
+- Updated dependencies [[`2868e1be`](https://github.com/hashicorp/react-components/commit/2868e1be740a710f28e5eb08fccb3d672c9d9888), [`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268)]:
+  - @hashicorp/react-inline-video@0.4.0
+  - @hashicorp/react-author-byline@0.3.0
+
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`ce8ed5a4`](https://github.com/hashicorp/react-components/commit/ce8ed5a4725f9fff4638a5f3528bd1b559517d58)]:
+  - @hashicorp/react-inline-video@0.3.0
+
 ## 0.1.1
 
 ### Patch Changes

@@ -51,6 +51,7 @@ module.exports = withHashicorp({
           exportsFields: [],
         },
       })
+
       return config
     },
   })

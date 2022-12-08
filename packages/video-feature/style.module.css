@@ -5,7 +5,7 @@
 .inner {
   --padding-y: 48px;
   --padding-x: 48px;
-  --background-color: var(--wpl-neutral-100);
+  --background-color: var(--wpl-neutral-50);
 
   padding: var(--padding-y) var(--padding-x);
   background-color: var(--background-color);
@@ -24,8 +24,7 @@
   }
 
   @nest .dark & {
-    /* ! New --wpl-neutral-700 from HDS */
-    --background-color: #0c0c0e;
+    --background-color: var(--wpl-neutral-900);
   }
 }
 

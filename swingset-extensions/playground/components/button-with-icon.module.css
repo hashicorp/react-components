@@ -1,0 +1,10 @@
+.button {
+  border: 0;
+  background: transparent;
+  vertical-align: middle;
+  cursor: pointer;
+
+  & svg {
+    vertical-align: middle;
+  }
+}
