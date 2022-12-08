@@ -54,10 +54,10 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
   const router = useRouter()
   const { sandpack } = useSandpack()
   const { code: activeCode } = useActiveCode()
-  const { files, activePath, resetAllFiles } = sandpack
+  const { files, activeFile, resetAllFiles } = sandpack
 
-  const styles = files['style.module.css']?.code
-  const code = files['index.tsx'].code
+  const styles = files['/style.module.css']?.code
+  const code = files['/index.tsx']?.code
 
   // TODO: handle accessibility in this scenario
   const [isFullscreen, setIsFullscreen] = useState(false)
@@ -122,7 +122,7 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
     }
   })
 
-  const language = activePath === 'index.tsx' ? 'tsx' : 'css'
+  const language = activeFile === '/index.tsx' ? 'tsx' : 'css'
 
   return (
     <>
@@ -229,9 +229,11 @@ const Playground: FC<PlaygroundProps> = ({
     <div className={s.root}>
       <div className={s.header}>{title}</div>
       <SandpackProvider
-        customSetup={{
-          files,
-          entry: 'index.tsx',
+        files={files}
+        customSetup={{ entry: 'index.tsx' }}
+        theme={{
+          font: { body: '', mono: '', lineHeight: '', size: '' },
+          colors: { surface1: '#f8f9fb' },
         }}
       >
         <PlaygroundInner
