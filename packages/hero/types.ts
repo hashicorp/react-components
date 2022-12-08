@@ -7,7 +7,8 @@ type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 export type ContentProps = WithOptional<InlineVideoProps, 'url'> &
   Pick<EyebrowProps, 'solution'> &
-  Pick<ActionsProps, 'ctas'>
+  Pick<ActionsProps, 'ctas'> &
+  Pick<InlineVideoProps, 'gradientPosition'>
 
 export interface HeroProps extends ContentProps {
   appearance: 'light' | 'dark'

@@ -54,6 +54,11 @@ module.exports = {
     type: 'string',
     description: 'URL for the featured video.',
   },
+  gradientPosition: {
+    type: 'string' || 'boolean',
+    description: 'Determines if and where the InlineVideo gradient renders',
+    options: ['left', 'right', false],
+  },
   ctas: {
     required: true,
     type: 'object',
