@@ -5,7 +5,7 @@ import { IconTwitter16 } from '@hashicorp/flight-icons/svg-react/twitter-16'
 import { IconLinkedin16 } from '@hashicorp/flight-icons/svg-react/linkedin-16'
 import s from './style.module.css'
 
-interface PersonCardProps {
+export interface PersonCardProps {
   appearance?: CardProps['appearance']
   thumbnail: ThumbnailProps
   link: string

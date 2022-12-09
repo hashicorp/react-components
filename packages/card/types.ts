@@ -1,5 +1,7 @@
 import type { ProductBadgeProps } from '@hashicorp/react-product-badge/types'
 import React from 'react'
+import type { EventCardProps } from './event-card'
+import type { PersonCardProps } from './person-card'
 
 export interface BaseCardProps {
   appearance?: 'light' | 'dark'
@@ -45,3 +47,5 @@ export interface CardProps extends BaseCardProps {
   description?: DescriptionProps['children']
   productBadges?: ProductBadgesProps['badges']
 }
+
+export { EventCardProps, PersonCardProps }
