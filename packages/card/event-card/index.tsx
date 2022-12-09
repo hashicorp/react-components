@@ -4,7 +4,7 @@ import { CardProps, ProductBadgesProps } from '../types'
 import s from './style.module.css'
 import useHover from '../hooks/use-hover'
 
-interface EventCardProps {
+export interface EventCardProps {
   appearance?: CardProps['appearance']
   link: string
   eventDate: string
