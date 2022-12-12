@@ -16,14 +16,20 @@ interface BaseChoiceGroupProps {
   inputs: (ComponentProps<typeof Radio> | ComponentProps<typeof Checkbox>)[]
 }
 
+interface RadioProps extends ComponentProps<typeof Radio> {
+  key: string
+}
+
+interface CheckboxProps extends ComponentProps<typeof Checkbox> {}
+
 interface RadioChoiceGroupProps extends BaseChoiceGroupProps {
   type: 'radio'
-  inputs: ComponentProps<typeof Radio>[]
+  inputs: RadioProps[]
 }
 
 interface CheckboxChoiceGroupProps extends BaseChoiceGroupProps {
   type: 'checkbox'
-  inputs: ComponentProps<typeof Checkbox>[]
+  inputs: CheckboxProps[]
 }
 
 type ChoiceGroupProps = RadioChoiceGroupProps | CheckboxChoiceGroupProps
@@ -52,17 +58,16 @@ function ChoiceGroup({
         />
       )}
       <div>
-        {inputs.map((input) => {
+        {inputs.map((input: CheckboxProps | RadioProps) => {
           const props = {
             ...input,
-            key: input.field.name,
             appearance,
             field: { ...input.field, 'aria-describedby': helpId },
           }
           return type === 'radio' ? (
-            <Radio {...props} />
+            <Radio key={(input as RadioProps).key} {...props} />
           ) : (
-            <Checkbox {...props} />
+            <Checkbox key={input.field.name} {...props} />
           )
         })}
       </div>
