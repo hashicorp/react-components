@@ -8,7 +8,7 @@ interface TextInputProps {
   className?: string
   field: HTMLProps<HTMLInputElement>
   error?: string
-  type: HTMLProps<HTMLInputElement>['type']
+  type?: HTMLProps<HTMLInputElement>['type']
   label?: string
   helpText?: string
   required?: boolean
