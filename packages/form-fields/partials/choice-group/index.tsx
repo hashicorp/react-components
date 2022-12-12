@@ -16,11 +16,11 @@ interface BaseChoiceGroupProps {
   inputs: (ComponentProps<typeof Radio> | ComponentProps<typeof Checkbox>)[]
 }
 
-interface RadioProps extends ComponentProps<typeof Radio> {
+export interface RadioProps extends ComponentProps<typeof Radio> {
   key: string
 }
 
-interface CheckboxProps extends ComponentProps<typeof Checkbox> {}
+export interface CheckboxProps extends ComponentProps<typeof Checkbox> {}
 
 interface RadioChoiceGroupProps extends BaseChoiceGroupProps {
   type: 'radio'

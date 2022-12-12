@@ -1,6 +1,4 @@
-import Checkbox from '../checkbox'
-import type { ComponentProps } from 'react'
-import ChoiceGroup from '../partials/choice-group'
+import ChoiceGroup, { type CheckboxProps } from '../partials/choice-group'
 
 interface CheckboxGroupProps {
   label?: string
@@ -9,7 +7,7 @@ interface CheckboxGroupProps {
   error?: string
   appearance?: 'light' | 'dark'
   className?: string
-  inputs: ComponentProps<typeof Checkbox>[]
+  inputs: CheckboxProps[]
 }
 
 function CheckboxGroup(props: CheckboxGroupProps) {
