@@ -10,7 +10,7 @@ interface CareerCardProps {
   productBadges: CardProps['productBadges']
 }
 
-export default function CareerCard({
+export function CareerCard({
   heading,
   meta,
   link,

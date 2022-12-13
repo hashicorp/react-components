@@ -10,7 +10,7 @@ interface PartnerCardProps {
   thumbnail: ThumbnailProps
 }
 
-export default function PartnerCard({
+export function PartnerCard({
   description,
   meta,
   link,

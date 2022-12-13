@@ -8,7 +8,7 @@ export interface NewsroomCardProps {
   thumbnail: ThumbnailProps
 }
 
-export default function NewsroomCard({
+export function NewsroomCard({
   heading,
   meta,
   link,

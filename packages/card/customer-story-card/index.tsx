@@ -10,7 +10,7 @@ interface CustomerStoryCardProps {
   thumbnail: ThumbnailProps
 }
 
-export default function CustomerStoryCard({
+export function CustomerStoryCard({
   heading,
   meta,
   link,

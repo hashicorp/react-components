@@ -1,26 +1,30 @@
 import * as CardPrimitives from '../primitives'
-import type { CardProps, MetaProps } from '../types'
+import type { CardProps } from '../types'
 import s from './style.module.css'
 
 interface BlogCardProps {
   heading: string
   description: string
-  meta: MetaProps['items']
+  orderingDate: Date
+  category: string
   link: string
   productBadges: CardProps['productBadges']
 }
 
-export default function BlogCard({
+export function BlogCard({
   heading,
   description,
-  meta,
+  orderingDate,
+  category,
   link,
   productBadges,
 }: BlogCardProps): JSX.Element {
+  const formattedDate = new Date(orderingDate).toLocaleDateString('en-US')
+
   return (
     <CardPrimitives.Card heading={heading} link={link} withArrow={false}>
       <CardPrimitives.Content>
-        <CardPrimitives.Meta items={meta} />
+        <CardPrimitives.Meta items={[formattedDate, category]} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
         <CardPrimitives.Description>{description}</CardPrimitives.Description>
         <div className={s.bottom}>

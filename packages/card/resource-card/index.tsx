@@ -10,7 +10,7 @@ interface ResourceCardProps {
   thumbnail: ThumbnailProps
 }
 
-export default function ResourceCard({
+export function ResourceCard({
   heading,
   meta,
   link,

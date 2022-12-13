@@ -224,6 +224,37 @@ A component used to promote and link to marketing pages, always using a descript
   />
 </div>
 
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<BlogCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <BlogCard
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    orderingDate="August 15, 2022"
+    category="Category"
+    productBadges={['nomad']}
+  />
+  <BlogCard
+    appearance="dark"
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    orderingDate="August 15, 2022"
+    category="Category"
+    productBadges={['nomad']}
+  />
+</div>
+
 ## Base Props
 
 <PropsTable props={componentProps.baseProps} />
