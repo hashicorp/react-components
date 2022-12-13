@@ -240,7 +240,7 @@ A component used to promote and link to marketing pages, always using a descript
     link="https://hashicorp.com"
     heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
     description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
-    orderingDate="August 15, 2022"
+    date="August 15, 2022"
     category="Category"
     productBadges={['nomad']}
   />
@@ -249,9 +249,179 @@ A component used to promote and link to marketing pages, always using a descript
     link="https://hashicorp.com"
     heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
     description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
-    orderingDate="August 15, 2022"
+    date="August 15, 2022"
     category="Category"
     productBadges={['nomad']}
+  />
+</div>
+
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<CareerCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <CareerCard
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    workplaceType="Remote"
+    location="City, Country"
+    productBadges={['nomad']}
+  />
+  <CareerCard
+    appearance="dark"
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    workplaceType="Onsite"
+    location="City, Country"
+    productBadges={['nomad']}
+  />
+</div>
+
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<CustomerStoryCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <CustomerStoryCard
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    category="Case Study"
+    productBadges={['nomad']}
+  />
+  <CustomerStoryCard
+    appearance="dark"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    category="Case Study"
+    productBadges={['nomad']}
+  />
+</div>
+
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<NewsroomCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <NewsroomCard
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    date="August 15, 2022"
+  />
+  <NewsroomCard
+    appearance="dark"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    date="August 15, 2022"
+  />
+</div>
+
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<PartnerCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <PartnerCard
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    category="Technology Partner"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
+  />
+  <PartnerCard
+    appearance="dark"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    category="Technology Partner"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
+  />
+</div>
+
+
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<ResourceCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <ResourceCard
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    category="Category"
+    date="August 15, 2022"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
+  />
+  <ResourceCard
+    appearance="dark"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    category="Category"
+    date="August 15, 2022"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
   />
 </div>
 

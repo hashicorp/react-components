@@ -1,27 +1,34 @@
 import * as CardPrimitives from '../primitives'
-import type { CardProps, MetaProps } from '../types'
+import type { CardProps } from '../types'
 import s from './style.module.css'
 
 interface CareerCardProps {
   heading: string
-  subHeading: string
-  meta: MetaProps['items']
+  workplaceType: string
+  location: string
   link: string
   productBadges: CardProps['productBadges']
+  appearance?: CardProps['appearance']
 }
 
 export function CareerCard({
   heading,
-  meta,
+  workplaceType,
+  location,
   link,
-  subHeading,
   productBadges,
+  appearance,
 }: CareerCardProps) {
   return (
-    <CardPrimitives.Card heading={heading} link={link} withArrow={false}>
+    <CardPrimitives.Card
+      heading={heading}
+      link={link}
+      withArrow={false}
+      appearance={appearance}
+    >
       <CardPrimitives.Content>
-        <CardPrimitives.Meta items={meta}></CardPrimitives.Meta>
-        <p className={s.subHeading}>{subHeading}</p>
+        <CardPrimitives.Meta items={[workplaceType]} />
+        <p className={s.subHeading}>{location}</p>
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
         <div className={s.bottom}>
           {productBadges && productBadges?.length > 0 ? (
