@@ -1,0 +1,59 @@
+---
+componentName: 'Playground'
+componentCategory: 'Form Fields'
+---
+
+<Playground title="Component Playground" layout="vertical" persistStateToUrl>
+```tsx
+import { useState } from 'react';
+import Text from '@hashicorp/react-form-fields/text'
+import CheckboxGroup from '@hashicorp/react-form-fields/checkbox-group'
+import s from 'style.module.css'
+
+export default function Example() {
+    const [checkedOptions, setCheckedOptions] = useState({});
+
+    // hello
+    const onChange = (e) => {
+        setCheckedOptions(opts => {
+            return { ...opts, [e.target.name]: e.target.checked }
+        });
+    };
+
+return (
+
+<>
+  <Text field={{ name: 'input' }} placeholder="Placeholder" label="Label" />
+  <button
+    onClick={() => {
+      setCheckedOptions({ one: true, two: false })
+    }}
+  >
+    Click me
+  </button>
+  <CheckboxGroup
+    label="Label"
+    helpText="Help text"
+    inputs={[
+      {
+        label: <span>hello</span>,
+        field: { name: 'one', checked: !!checkedOptions['one'], onChange },
+      },
+      {
+        label: 'Option Two',
+        field: { name: 'two', checked: !!checkedOptions['two'], onChange },
+      },
+    ]}
+  />
+</>
+) }
+
+````
+
+```css
+.yellow {
+  background: yellow;
+}
+````
+
+</Playground>

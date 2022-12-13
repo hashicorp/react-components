@@ -10,7 +10,7 @@ module.exports = withHashicorp({
   nextOptimizedImages: true,
 })(
   withSwingset({
-    componentsRoot: 'packages/*',
+    componentsRoot: 'packages/**/*',
     docsRoot: 'docs/*',
   })({
     eslint: {

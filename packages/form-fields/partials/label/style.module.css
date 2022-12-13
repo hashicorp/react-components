@@ -1,0 +1,42 @@
+.label {
+  composes: g-type-body-x-strong from global;
+  display: block;
+  color: var(--label-text-color);
+  margin-bottom: 16px;
+
+  & .required {
+    color: tomato;
+  }
+
+  &.hasHelp,
+  &.hasError {
+    margin-bottom: 0;
+  }
+}
+
+.required {
+  color: var(--danger);
+}
+
+.help {
+  composes: g-type-body-small from global;
+  font-weight: var(--font-weight-medium);
+  color: var(--help-text-color);
+  margin-bottom: 16px;
+
+  &.hasError {
+    margin-bottom: 0;
+  }
+}
+
+.error {
+  composes: g-type-body-small from global;
+  font-weight: var(--font-weight-medium);
+  color: var(--danger);
+  margin-bottom: 16px;
+
+  & svg {
+    vertical-align: text-bottom;
+    margin-right: 8px;
+  }
+}
