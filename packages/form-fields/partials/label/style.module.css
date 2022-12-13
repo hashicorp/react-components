@@ -2,7 +2,7 @@
   composes: g-type-body-x-strong from global;
   display: block;
   color: var(--label-text-color);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 
   & .required {
     color: tomato;
@@ -22,7 +22,7 @@
   composes: g-type-body-small from global;
   font-weight: var(--font-weight-medium);
   color: var(--help-text-color);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 
   &.hasError {
     margin-bottom: 0;
@@ -33,7 +33,7 @@
   composes: g-type-body-small from global;
   font-weight: var(--font-weight-medium);
   color: var(--danger);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 
   & svg {
     vertical-align: text-bottom;
