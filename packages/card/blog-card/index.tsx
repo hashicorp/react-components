@@ -5,7 +5,7 @@ import s from './style.module.css'
 interface BlogCardProps {
   heading: string
   description: string
-  date: Date
+  date: string
   category: string
   link: string
   productBadges: CardProps['productBadges']
@@ -21,8 +21,6 @@ export function BlogCard({
   productBadges,
   appearance,
 }: BlogCardProps): JSX.Element {
-  const formattedDate = new Date(date).toLocaleDateString('en-US')
-
   return (
     <CardPrimitives.Card
       heading={heading}
@@ -31,7 +29,7 @@ export function BlogCard({
       appearance={appearance}
     >
       <CardPrimitives.Content>
-        <CardPrimitives.Meta items={[formattedDate, category]} />
+        <CardPrimitives.Meta items={[date, category]} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
         <CardPrimitives.Description>{description}</CardPrimitives.Description>
         <div className={s.bottom}>

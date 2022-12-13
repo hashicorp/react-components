@@ -225,37 +225,6 @@ A component used to promote and link to marketing pages, always using a descript
 </div>
 
 <h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
-  {'<BlogCard />'}
-</h4>
-
-<div
-  style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gap: '32px',
-    marginBottom: '32px',
-  }}
->
-  <BlogCard
-    link="https://hashicorp.com"
-    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
-    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
-    date="August 15, 2022"
-    category="Category"
-    productBadges={['nomad']}
-  />
-  <BlogCard
-    appearance="dark"
-    link="https://hashicorp.com"
-    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
-    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
-    date="August 15, 2022"
-    category="Category"
-    productBadges={['nomad']}
-  />
-</div>
-
-<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
   {'<CareerCard />'}
 </h4>
 
@@ -285,6 +254,78 @@ A component used to promote and link to marketing pages, always using a descript
 </div>
 
 <h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<PartnerCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <PartnerCard
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    category="Technology Partner"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/2885/1544036733-feature-aws.jpg',
+      alt: 'Partner',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
+  />
+  <PartnerCard
+    appearance="dark"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    category="Technology Partner"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/2885/1544036733-feature-aws.jpg',
+      alt: 'Partner',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
+  />
+</div>
+
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  {'<ResourceCard />'}
+</h4>
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '32px',
+    marginBottom: '32px',
+  }}
+>
+  <ResourceCard
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    category="Category"
+    date="August 15, 2022"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
+  />
+  <ResourceCard
+    appearance="dark"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    category="Category"
+    date="August 15, 2022"
+    thumbnail={{
+      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
+      alt: 'HashiConf Europe 2022 Recap',
+    }}
+    link="https://hashicorp.com"
+    productBadges={['waypoint', 'consul']}
+  />
+</div>
+
+<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
   {'<CustomerStoryCard />'}
 </h4>
 
@@ -298,8 +339,8 @@ A component used to promote and link to marketing pages, always using a descript
 >
   <CustomerStoryCard
     thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
+      src: 'https://www.datocms-assets.com/2885/1670949945-example-customer-story.png',
+      alt: 'Customer Story'
     }}
     link="https://hashicorp.com"
     heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
@@ -309,8 +350,8 @@ A component used to promote and link to marketing pages, always using a descript
   <CustomerStoryCard
     appearance="dark"
     thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
+      src: 'https://www.datocms-assets.com/2885/1670949945-example-customer-story.png',
+      alt: 'Customer Story'
     }}
     link="https://hashicorp.com"
     heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
@@ -333,8 +374,8 @@ A component used to promote and link to marketing pages, always using a descript
 >
   <NewsroomCard
     thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
+      src: 'https://www.datocms-assets.com/2885/1670949586-example-newsroom-nbc.png',
+      alt: 'Newsroom',
     }}
     link="https://hashicorp.com"
     heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
@@ -343,8 +384,8 @@ A component used to promote and link to marketing pages, always using a descript
   <NewsroomCard
     appearance="dark"
     thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
+      src: 'https://www.datocms-assets.com/2885/1670949586-example-newsroom-nbc.png',
+      alt: 'Newsroom',
     }}
     link="https://hashicorp.com"
     heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
@@ -353,7 +394,7 @@ A component used to promote and link to marketing pages, always using a descript
 </div>
 
 <h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
-  {'<PartnerCard />'}
+  {'<BlogCard />'}
 </h4>
 
 <div
@@ -364,64 +405,22 @@ A component used to promote and link to marketing pages, always using a descript
     marginBottom: '32px',
   }}
 >
-  <PartnerCard
-    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
-    category="Technology Partner"
-    thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
-    }}
+  <BlogCard
     link="https://hashicorp.com"
-    productBadges={['waypoint', 'consul']}
-  />
-  <PartnerCard
-    appearance="dark"
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
     description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
-    category="Technology Partner"
-    thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
-    }}
-    link="https://hashicorp.com"
-    productBadges={['waypoint', 'consul']}
-  />
-</div>
-
-
-<h4 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
-  {'<ResourceCard />'}
-</h4>
-
-<div
-  style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gap: '32px',
-    marginBottom: '32px',
-  }}
->
-  <ResourceCard
-    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
-    category="Category"
     date="August 15, 2022"
-    thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
-    }}
-    link="https://hashicorp.com"
-    productBadges={['waypoint', 'consul']}
-  />
-  <ResourceCard
-    appearance="dark"
-    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
     category="Category"
-    date="August 15, 2022"
-    thumbnail={{
-      src: 'https://www.datocms-assets.com/19447/1648680074-screenshot-2022-03-31-at-00-40-47.png',
-      alt: 'HashiConf Europe 2022 Recap',
-    }}
+    productBadges={['nomad']}
+  />
+  <BlogCard
+    appearance="dark"
     link="https://hashicorp.com"
-    productBadges={['waypoint', 'consul']}
+    heading="Display 5 - 4 lines with character limit of 130. Leo mauris fermentum pharetra blandit tellus"
+    description="Body small - 4 lines with character limit of 170. Leo mauris fermentum pharetra blandit tellus euismod pharetra. Duis egestas volutpat dolor…"
+    date="August 15, 2022"
+    category="Category"
+    productBadges={['nomad']}
   />
 </div>
 

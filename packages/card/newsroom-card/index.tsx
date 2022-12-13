@@ -1,9 +1,9 @@
 import * as CardPrimitives from '../primitives'
-import type { CardProps, MetaProps, ThumbnailProps } from '../types'
+import type { CardProps, ThumbnailProps } from '../types'
 
 export interface NewsroomCardProps {
   heading: string
-  publishedDate: Date
+  date: string
   link: string
   thumbnail: ThumbnailProps
   appearance?: CardProps['appearance']
@@ -11,13 +11,11 @@ export interface NewsroomCardProps {
 
 export function NewsroomCard({
   heading,
-  publishedDate,
+  date,
   link,
   thumbnail,
   appearance,
 }: NewsroomCardProps): JSX.Element {
-  const formattedDate = new Date(publishedDate).toLocaleDateString('en-US')
-
   return (
     <CardPrimitives.Card
       heading={heading}
@@ -27,7 +25,7 @@ export function NewsroomCard({
     >
       <CardPrimitives.Thumbnail {...thumbnail} />
       <CardPrimitives.Content>
-        <CardPrimitives.Meta items={[formattedDate]} />
+        <CardPrimitives.Meta items={[date]} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
       </CardPrimitives.Content>
     </CardPrimitives.Card>

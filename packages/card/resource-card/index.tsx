@@ -4,7 +4,7 @@ import s from './style.module.css'
 
 interface ResourceCardProps {
   heading: string
-  date: Date
+  date: string
   category: string
   link: string
   productBadges: CardProps['productBadges']
@@ -21,8 +21,6 @@ export function ResourceCard({
   thumbnail,
   appearance,
 }: ResourceCardProps): JSX.Element {
-  const formattedDate = new Date(date).toLocaleDateString('en-US')
-
   return (
     <CardPrimitives.Card
       heading={heading}
@@ -32,7 +30,7 @@ export function ResourceCard({
     >
       <CardPrimitives.Thumbnail {...thumbnail} />
       <CardPrimitives.Content>
-        <CardPrimitives.Meta items={[formattedDate, category]} />
+        <CardPrimitives.Meta items={[date, category]} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
         <div className={s.bottom}>
           {productBadges && productBadges?.length > 0 ? (
