@@ -2,7 +2,7 @@ import * as CardPrimitives from '../primitives'
 import type { CardProps, ThumbnailProps } from '../types'
 import s from './style.module.css'
 
-interface PartnerCardProps {
+export interface PartnerCardProps {
   description: string
   category: string
   link: string

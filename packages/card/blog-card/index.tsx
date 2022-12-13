@@ -2,7 +2,7 @@ import * as CardPrimitives from '../primitives'
 import type { CardProps } from '../types'
 import s from './style.module.css'
 
-interface BlogCardProps {
+export interface BlogCardProps {
   heading: string
   description: string
   date: string

@@ -1,7 +1,13 @@
 import type { ProductBadgeProps } from '@hashicorp/react-product-badge/types'
 import React from 'react'
+import type { BlogCardProps } from './blog-card'
+import type { CareerCardProps } from './career-card'
+import type { CustomerStoryCardProps } from './customer-story-card'
 import type { EventCardProps } from './event-card'
+import type { NewsroomCardProps } from './newsroom-card'
+import type { PartnerCardProps } from './partner-card'
 import type { PersonCardProps } from './person-card'
+import type { ResourceCardProps } from './resource-card'
 
 export interface BaseCardProps {
   appearance?: 'light' | 'dark'
@@ -48,4 +54,13 @@ export interface CardProps extends BaseCardProps {
   productBadges?: ProductBadgesProps['badges']
 }
 
-export { EventCardProps, PersonCardProps }
+export {
+  BlogCardProps,
+  CareerCardProps,
+  CustomerStoryCardProps,
+  EventCardProps,
+  NewsroomCardProps,
+  PartnerCardProps,
+  PersonCardProps,
+  ResourceCardProps,
+}

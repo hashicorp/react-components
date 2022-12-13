@@ -1,8 +1,8 @@
 import * as CardPrimitives from '../primitives'
-import type { CardProps, MetaProps, ThumbnailProps } from '../types'
+import type { CardProps, ThumbnailProps } from '../types'
 import s from './style.module.css'
 
-interface CustomerStoryCardProps {
+export interface CustomerStoryCardProps {
   heading: string
   category: string
   link: string
