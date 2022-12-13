@@ -10,16 +10,15 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .checkbox {
   position: relative;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   margin-left: 0;
-  margin-right: 12px;
 }
 
 .input {
@@ -67,7 +66,7 @@
 .label {
   composes: g-type-body-x-strong from global;
   color: var(--input-checkbox-label-color);
-  margin-left: 12px;
+  padding-left: 10px;
   margin-bottom: 0;
   cursor: pointer;
   & a {
