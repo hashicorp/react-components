@@ -23,7 +23,7 @@
     "react-error-boundary": "^3.1.4",
     "remark-gfm": "^3.0.1",
     "semver": "^7.3.5",
-    "swingset": "^0.16.0"
+    "swingset": "^0.17.0-canary-20221213190039"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.2",
