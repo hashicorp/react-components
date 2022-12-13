@@ -1,7 +1,7 @@
-import type { RelatedContentProps } from './types'
-import classNames from 'classnames'
 import Card from '@hashicorp/react-card'
-import StandaloneLink from '@hashicorp/react-standalone-link'
+import classNames from 'classnames'
+import Link from 'next/link'
+import type { RelatedContentProps } from './types'
 import s from './style.module.css'
 
 const RelatedContent = ({
@@ -35,9 +35,9 @@ const RelatedContent = ({
         ))}
       </div>
       <div className={s.cta} data-testid="wpl-cta-container">
-        <StandaloneLink appearance={appearance} href={cta.href}>
+        <Link href={cta.href} legacyBehavior>
           {cta.text}
-        </StandaloneLink>
+        </Link>
       </div>
     </div>
   )

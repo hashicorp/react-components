@@ -1,5 +1,11 @@
 # @hashicorp/react-related-content
 
+## 0.3.0
+
+### Minor Changes
+
+- [#845](https://github.com/hashicorp/react-components/pull/845) [`4734c654`](https://github.com/hashicorp/react-components/commit/4734c65464f80bcfa976be24639b8fd66bb20c6c) Thanks [@nandereck](https://github.com/nandereck)! - Replace StandaloneLink with custom link
+
 ## 0.2.3
 
 ### Patch Changes

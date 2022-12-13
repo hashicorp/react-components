@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.7.1
+
+### Patch Changes
+
+- [#843](https://github.com/hashicorp/react-components/pull/843) [`738165d2`](https://github.com/hashicorp/react-components/commit/738165d2bd8159ee7a866bba9e4a4df56932b47d) Thanks [@pbortnick](https://github.com/pbortnick)! - chore(react-card): export card types
+
 ## 0.7.0
 
 ### Minor Changes
