@@ -8,7 +8,7 @@ interface BlogCardProps {
   date: string
   category: string
   link: string
-  productBadges: CardProps['productBadges']
+  productBadges?: CardProps['productBadges']
   appearance?: CardProps['appearance']
 }
 

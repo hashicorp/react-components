@@ -7,7 +7,7 @@ interface CareerCardProps {
   workplaceType: string
   location: string
   link: string
-  productBadges: CardProps['productBadges']
+  productBadges?: CardProps['productBadges']
   appearance?: CardProps['appearance']
 }
 

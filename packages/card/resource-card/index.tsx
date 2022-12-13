@@ -7,7 +7,7 @@ interface ResourceCardProps {
   date: string
   category: string
   link: string
-  productBadges: CardProps['productBadges']
+  productBadges?: CardProps['productBadges']
   thumbnail: ThumbnailProps
   appearance?: CardProps['appearance']
 }
