@@ -6,8 +6,8 @@ interface CustomerStoryCardProps {
   heading: string
   meta: MetaProps['items']
   link: string
-  thumbnail: ThumbnailProps
   productBadges: CardProps['productBadges']
+  thumbnail: ThumbnailProps
 }
 
 export default function CustomerStoryCard({
