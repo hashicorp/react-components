@@ -1,5 +1,6 @@
 import Card from '@hashicorp/react-card'
 import classNames from 'classnames'
+import Link from 'next/link'
 import type { RelatedContentProps } from './types'
 import s from './style.module.css'
 
@@ -34,9 +35,9 @@ const RelatedContent = ({
         ))}
       </div>
       <div className={s.cta} data-testid="wpl-cta-container">
-        <a className={s.ctaText} href={cta.href}>
+        <Link href={cta.href} legacyBehavior>
           {cta.text}
-        </a>
+        </Link>
       </div>
     </div>
   )
