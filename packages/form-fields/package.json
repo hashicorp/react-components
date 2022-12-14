@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-form-fields",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": {
     "@hashicorp/flight-icons": "^2.5.0",
     "@reach/auto-id": "^0.18.0",
