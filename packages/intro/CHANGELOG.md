@@ -1,5 +1,16 @@
 # @hashicorp/react-intro
 
+## 0.7.0
+
+### Minor Changes
+
+- [#823](https://github.com/hashicorp/react-components/pull/823) [`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Update neutral and blue colors
+
+### Patch Changes
+
+- Updated dependencies [[`b9160926`](https://github.com/hashicorp/react-components/commit/b9160926d7b2f9d65f8bbbf81ff9ec9f2f33063d)]:
+  - @hashicorp/react-actions@0.4.3
+
 ## 0.6.0
 
 ### Minor Changes

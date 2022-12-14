@@ -67,4 +67,18 @@
 
 .cta {
   grid-column: 1 / -1;
+
+  & a {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 0.0125em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: inline;
+
+    @nest .dark & {
+      color: var(--wpl-neutral-300);
+    }
+  }
 }

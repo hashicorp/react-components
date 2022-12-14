@@ -1,0 +1,52 @@
+---
+componentName: 'CheckboxGroup'
+componentCategory: 'Form Fields'
+---
+
+<LiveComponent>
+  {`
+<>
+  <div style={{ padding: 16 }}>
+    <CheckboxGroup
+      label="Label"
+      helpText="Help text"
+      inputs={[
+        { label: 'Option One', field: { name: 'one' } },
+        { label: 'Option Two', field: { name: 'two' } }
+      ]}
+    />
+    <CheckboxGroup
+          label="Label"
+          helpText="Help text"
+          error="Error message"
+          inputs={[
+            { label: 'Option One', field: { name: 'one' } },
+            { label: 'Option Two', field: { name: 'two' } }
+          ]}
+        />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+      <CheckboxGroup
+        appearance="dark"
+        label="Label"
+        helpText="Help text"
+        inputs={[
+          { label: 'Option One', field: { name: 'one' } },
+          { label: 'Option Two', field: { name: 'two' } }
+        ]}
+      />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+        <CheckboxGroup
+          appearance="dark"
+          label="Label"
+          helpText="Help text"
+          inputs={[
+            { label: <span style={{ color: 'tomato'}}>tomato!</span>, field: { name: 'one' } },
+            { label: 'Option Two', field: { name: 'two' } }
+          ]}
+        />
+    </div>
+</>
+`}
+</LiveComponent>

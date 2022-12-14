@@ -1,5 +1,11 @@
 # @hashicorp/react-inline-video
 
+## 0.4.0
+
+### Minor Changes
+
+- [#839](https://github.com/hashicorp/react-components/pull/839) [`2868e1be`](https://github.com/hashicorp/react-components/commit/2868e1be740a710f28e5eb08fccb3d672c9d9888) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Apply border radius to Wistia play button
+
 ## 0.3.0
 
 ### Minor Changes

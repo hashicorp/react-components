@@ -46,9 +46,10 @@ export default function ProductDownloadsPage({
       `We went looking for version "${_latestVersion}" but could not find it in the release data. Please make sure that the "latestVersion" prop matches the version name of an existing release.`
     )
 
-  const sortedDownloads = useMemo(() => sortPlatforms(currentRelease), [
-    currentRelease,
-  ])
+  const sortedDownloads = useMemo(
+    () => sortPlatforms(currentRelease),
+    [currentRelease]
+  )
   const osKeys = Object.keys(sortedDownloads)
   const [osIndex, setSelectedOsIndex] = useState(0)
 

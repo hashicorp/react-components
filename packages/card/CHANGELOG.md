@@ -1,5 +1,22 @@
 # @hashicorp/react-card
 
+## 0.7.1
+
+### Patch Changes
+
+- [#843](https://github.com/hashicorp/react-components/pull/843) [`738165d2`](https://github.com/hashicorp/react-components/commit/738165d2bd8159ee7a866bba9e4a4df56932b47d) Thanks [@pbortnick](https://github.com/pbortnick)! - chore(react-card): export card types
+
+## 0.7.0
+
+### Minor Changes
+
+- [#823](https://github.com/hashicorp/react-components/pull/823) [`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Update neutral and blue colors
+
+### Patch Changes
+
+- Updated dependencies [[`80ef3a38`](https://github.com/hashicorp/react-components/commit/80ef3a38ba67e23ba2d019530fb57d218e9d8268)]:
+  - @hashicorp/react-product-badge@0.3.0
+
 ## 0.6.1
 
 ### Patch Changes
