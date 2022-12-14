@@ -1,6 +1,5 @@
 import * as CardPrimitives from '../primitives'
 import type { CardProps } from '../types'
-import s from './style.module.css'
 
 export interface BlogCardProps {
   heading: string
@@ -32,11 +31,12 @@ export function BlogCard({
         <CardPrimitives.Meta items={[date, category]} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
         <CardPrimitives.Description>{description}</CardPrimitives.Description>
-        <div className={s.bottom}>
-          {productBadges && productBadges?.length > 0 ? (
-            <CardPrimitives.ProductBadges badges={productBadges} />
-          ) : null}
-        </div>
+        {productBadges && productBadges?.length > 0 ? (
+          <CardPrimitives.ProductBadges
+            badges={productBadges}
+            appearance={appearance}
+          />
+        ) : null}
       </CardPrimitives.Content>
     </CardPrimitives.Card>
   )

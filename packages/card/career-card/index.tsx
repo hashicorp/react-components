@@ -30,11 +30,12 @@ export function CareerCard({
         <CardPrimitives.Meta items={[workplaceType]} />
         <p className={s.subHeading}>{location}</p>
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
-        <div className={s.bottom}>
-          {productBadges && productBadges?.length > 0 ? (
-            <CardPrimitives.ProductBadges badges={productBadges} />
-          ) : null}
-        </div>
+        {productBadges && productBadges?.length > 0 ? (
+          <CardPrimitives.ProductBadges
+            badges={productBadges}
+            appearance={appearance}
+          />
+        ) : null}
       </CardPrimitives.Content>
     </CardPrimitives.Card>
   )
