@@ -58,6 +58,12 @@ interface Props {
   className?: string
 
   /**
+   * Whether to reset the form after a successful submission.
+   * Default: false
+   */
+  resetOnSubmission?: boolean
+
+  /**
    * Callback called when form has been successfully submitted.
    */
   onSubmitSuccess?: () => void
@@ -104,6 +110,7 @@ const Form = ({
   components,
   submitTitle,
   className,
+  resetOnSubmission,
   onSubmitSuccess,
   onSubmitError,
   validateFields,
@@ -225,11 +232,17 @@ const Form = ({
       if (onSubmitSuccess) {
         onSubmitSuccess()
       }
+
+      if (resetOnSubmission) {
+        methods.reset()
+      }
     } else {
       console.error(marketoResponse)
       if (onSubmitError) {
         onSubmitError()
       }
+
+      throw new Error('An error occurred while submitting form.')
     }
   }
 
@@ -268,9 +281,13 @@ const Form = ({
           )
         })}
         <Button
-          disabled={methods.formState.isSubmitting}
+          disabled={
+            methods.formState.isSubmitting ||
+            (methods.formState.isSubmitSuccessful && !resetOnSubmission)
+          }
           title={
-            methods.formState.isSubmitting
+            methods.formState.isSubmitting ||
+            (methods.formState.isSubmitSuccessful && !resetOnSubmission)
               ? 'Submitting...'
               : submitTitle ?? 'Submit'
           }
