@@ -1,14 +1,19 @@
-import { ElementType } from 'react'
+import React, { ElementType } from 'react'
 import * as jsxRuntime from 'react/jsx-runtime'
 import { components } from 'swingset/__swingset_data'
+
+function pathToPackage(p: string): string {
+  // We always know what comes after packages
+  const [, folderPath] = p.split('packages/')
+  return `@hashicorp/react-${folderPath}`
+}
 
 /**
  * Use swingset's data to make an "export map" of all components
  */
 const componentDeps = Object.fromEntries(
   Object.values(components).map((component) => {
-    const lastPathPiece = component.path.split('/').slice(-1)
-    return [lastPathPiece, component.exports]
+    return [pathToPackage(component.path), component.exports]
   })
 )
 
@@ -17,6 +22,7 @@ const componentDeps = Object.fromEntries(
  */
 const dependencies = {
   'react/jsx-runtime': jsxRuntime,
+  react: React,
   ...componentDeps,
 }
 

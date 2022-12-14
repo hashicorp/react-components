@@ -1,0 +1,52 @@
+---
+componentName: 'RadioGroupv2'
+componentCategory: 'Form Fields'
+---
+
+<LiveComponent>
+  {`
+<>
+  <div style={{ padding: 16 }}>
+    <RadioGroupv2
+      label="Label"
+      helpText="Help text"
+      inputs={[
+        { label: 'Option One', field: { name: 'one' } },
+        { label: 'Option Two', field: { name: 'one' } }
+      ]}
+    />
+    <RadioGroupv2
+          label="Label"
+          helpText="Help text"
+          error="Error message"
+          inputs={[
+            { label: 'Option One', field: { name: 'two' } },
+            { label: 'Option Two', field: { name: 'two' } }
+          ]}
+        />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+      <RadioGroupv2
+        appearance="dark"
+        label="Label"
+        helpText="Help text"
+        inputs={[
+          { label: 'Option One', field: { name: 'three' } },
+          { label: 'Option Two', field: { name: 'three' } }
+        ]}
+      />
+  </div>
+  <div style={{ padding: 16, backgroundColor: 'black' }}>
+        <RadioGroupv2
+          appearance="dark"
+          label="Label"
+          helpText="Help text"
+          inputs={[
+            { label: <span style={{ color: 'tomato'}}>tomato!</span>, field: { name: 'four' } },
+            { label: 'Option Two', field: { name: 'four' } }
+          ]}
+        />
+    </div>
+</>
+`}
+</LiveComponent>
