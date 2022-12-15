@@ -83,6 +83,11 @@
     justify-content: flex-end;
     align-items: flex-end;
   }
+
+  & img {
+    object-fit: cover;
+    object-position: left bottom;
+  }
 }
 
 .mediumMedia {
@@ -97,6 +102,11 @@
 
   @media (--large) {
     display: none;
+  }
+
+  & img {
+    object-fit: cover;
+    object-position: left;
   }
 }
 
