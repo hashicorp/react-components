@@ -71,8 +71,6 @@ const Hero = ({
               layout="fill"
               objectFit="cover"
               objectPosition={'left bottom'}
-              width={2400}
-              height={1350}
               priority={true}
             />
           )}
@@ -82,7 +80,6 @@ const Hero = ({
             <Image
               src={mediumImage}
               alt=""
-              layout="fill"
               objectFit="cover"
               objectPosition={'left'}
               width={1200}
