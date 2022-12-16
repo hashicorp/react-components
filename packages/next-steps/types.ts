@@ -7,7 +7,11 @@ export interface StepProps {
    */
   heading: string
   /**
-   * Optinal description for the step.
+   * The heading for the step.
+   */
+  badge?: string
+  /**
+   * Optional text for a badge.
    */
   description?: string
   /**
