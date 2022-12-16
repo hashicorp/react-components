@@ -64,6 +64,7 @@ export default function NextSteps({
                     url: step.cta.url,
                   }}
                   heading={step.heading}
+                  badge={step.badge}
                   description={step.description}
                 />
               </li>
@@ -75,7 +76,7 @@ export default function NextSteps({
   )
 }
 
-function Tile({ theme, variant, heading, description, cta }) {
+function Tile({ theme, variant, heading, badge, description, cta }) {
   const [isHovered, setIsHovered] = React.useState(false)
   return (
     <Link href={cta.url} legacyBehavior>
@@ -89,7 +90,10 @@ function Tile({ theme, variant, heading, description, cta }) {
         }}
       >
         <div className={s.tileInner}>
-          <h3 className={s.tileHeading}>{heading}</h3>
+          <div className={s.tileHeading}>
+            <h3 className={s.tileHeadingText}>{heading}</h3>
+            {badge ? <p className={s.tileBadge}>Beta</p> : null}
+          </div>
           {description ? (
             <p className={s.tileDescription}>{description}</p>
           ) : null}

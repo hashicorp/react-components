@@ -170,9 +170,27 @@
 }
 
 .tileHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--wpl-spacing-02);
+}
+
+.tileHeadingText {
   composes: g-type-display-4 from global;
   margin: 0;
   color: inherit;
+}
+
+.tileBadge {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-bold);
+  font-size: 14px;
+  letter-spacing: 0.0125em;
+  border-radius: 24px;
+  padding: 0 var(--wpl-spacing-02) 1px;
+  color: var(--background-color);
+  background-color: var(--color);
 }
 
 .tileDescription {
