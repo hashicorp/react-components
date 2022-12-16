@@ -7,5 +7,5 @@
 .subHeading {
   composes: g-type-body-small-x-strong from global;
   margin: 0;
-  color: var(--wpl-neutral-500);
+  color: var(--secondary-text-color);
 }
