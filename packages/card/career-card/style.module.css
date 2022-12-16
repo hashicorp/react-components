@@ -1,0 +1,11 @@
+.bottom {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.subHeading {
+  composes: g-type-body-small-x-strong from global;
+  margin: 0;
+  color: var(--secondary-text-color);
+}
