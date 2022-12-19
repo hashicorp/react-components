@@ -49,8 +49,8 @@ describe('MarketoForm', () => {
   test('renders form with provided fields', async () => {
     render(<MarketoForm {...BASIC_FORM_PROPS} />)
 
-    const firstNameField = screen.getByLabelText('First Name *')
-    const lastNameField = screen.getByLabelText('Last Name *')
+    const firstNameField = screen.getByLabelText(/First Name/)
+    const lastNameField = screen.getByLabelText(/Last Name/)
     expect(firstNameField).toBeInTheDocument()
     expect(lastNameField).toBeInTheDocument()
   })
@@ -58,11 +58,11 @@ describe('MarketoForm', () => {
   test('submits form data', async () => {
     render(<MarketoForm {...BASIC_FORM_PROPS} />)
 
-    const firstNameField = screen.getByLabelText('First Name *')
+    const firstNameField = screen.getByLabelText(/First Name/)
     expect(firstNameField).toBeInTheDocument()
     userEvent.type(firstNameField, 'Michael')
 
-    const lastNameField = screen.getByLabelText('Last Name *')
+    const lastNameField = screen.getByLabelText(/Last Name/)
     expect(lastNameField).toBeInTheDocument()
     userEvent.type(lastNameField, 'Burnham')
 
@@ -101,7 +101,7 @@ describe('MarketoForm', () => {
       />
     )
 
-    const firstNameField = screen.getByLabelText('First Name *')
+    const firstNameField = screen.getByLabelText(/First Name/)
     expect(firstNameField).toBeInTheDocument()
     userEvent.type(firstNameField, 'Michael')
 
@@ -135,11 +135,11 @@ describe('MarketoForm', () => {
   test('submits form data with UTM params', async () => {
     render(<MarketoForm {...UTM_FORM_PROPS} />)
 
-    const firstNameField = screen.getByLabelText('First Name *')
+    const firstNameField = screen.getByLabelText(/First Name/)
     expect(firstNameField).toBeInTheDocument()
     userEvent.type(firstNameField, 'Michael')
 
-    const lastNameField = screen.getByLabelText('Last Name *')
+    const lastNameField = screen.getByLabelText(/Last Name/)
     expect(lastNameField).toBeInTheDocument()
     userEvent.type(lastNameField, 'Burnham')
 
@@ -175,11 +175,11 @@ describe('MarketoForm', () => {
   test('renders built-in error validation messages', async () => {
     render(<MarketoForm {...BASIC_FORM_PROPS} />)
 
-    const firstNameField = screen.getByLabelText('First Name *')
+    const firstNameField = screen.getByLabelText(/First Name/)
     expect(firstNameField).toBeInTheDocument()
     userEvent.click(firstNameField)
 
-    const lastNameField = screen.getByLabelText('Last Name *')
+    const lastNameField = screen.getByLabelText(/Last Name/)
     expect(lastNameField).toBeInTheDocument()
     userEvent.click(lastNameField)
 
@@ -205,11 +205,11 @@ describe('MarketoForm', () => {
       />
     )
 
-    const firstNameField = screen.getByLabelText('First Name *')
+    const firstNameField = screen.getByLabelText(/First Name/)
     expect(firstNameField).toBeInTheDocument()
     userEvent.click(firstNameField)
 
-    const lastNameField = screen.getByLabelText('Last Name *')
+    const lastNameField = screen.getByLabelText(/Last Name/)
     expect(lastNameField).toBeInTheDocument()
     userEvent.click(lastNameField)
 
