@@ -85,6 +85,33 @@ name: 'Color'
           </code>
         </div>
       ))}
+      {
+        ['-48', '-40', '-32', '-24', '-16', '-8'].map((suffix) => (
+          <div
+            key={suffix}
+            style={{
+              width: '100%',
+              background: `var(--${b}-alpha${suffix})`,
+              height: '50px',
+              boxShadow: 'inset 0px 0px 1px rgba(0,0,0,0.5)',
+              position: 'relative',
+            }}
+          >
+            <code
+              style={{
+                position: 'absolute',
+                top: '5px',
+                right: '5px',
+                background: 'rgba(255,255,255,0.2)',
+                padding: '0.25rem 0.5rem',
+                fontSize: '0.75rem',
+              }}
+            >
+              var(--{`${b}-alpha${suffix}`})
+            </code>
+          </div>
+        ))
+      }
     </div>
   ))}
 </>
