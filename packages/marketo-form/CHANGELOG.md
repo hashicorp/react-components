@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.7.0
+
+### Minor Changes
+
+- [#816](https://github.com/hashicorp/react-components/pull/816) [`e6c258c8`](https://github.com/hashicorp/react-components/commit/e6c258c860adb36363827995cb89e54ea2b5f21e) Thanks [@dstaley](https://github.com/dstaley)! - Use @hashicorp/react-form-fields for base field inputs
+
 ## 0.6.0
 
 ### Minor Changes
