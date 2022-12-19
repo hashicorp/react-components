@@ -90,10 +90,10 @@ function Tile({ theme, variant, heading, badge, description, cta }) {
         }}
       >
         <div className={s.tileInner}>
-          <div className={s.tileHeading}>
-            <h3 className={s.tileHeadingText}>{heading}</h3>
-            {badge ? <p className={s.tileBadge}>Beta</p> : null}
-          </div>
+          <h3 className={s.tileHeading}>
+            <span className={s.tileHeadingText}>{heading}</span>
+            {badge ? <span className={s.tileBadge}>Beta</span> : null}
+          </h3>
           {description ? (
             <p className={s.tileDescription}>{description}</p>
           ) : null}
