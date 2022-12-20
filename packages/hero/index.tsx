@@ -65,27 +65,12 @@ const Hero = ({
         </div>
         <div className={s.largeMedia}>
           {largeImage && (
-            <Image
-              src={largeImage}
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition={'left bottom'}
-              priority={true}
-            />
+            <Image src={largeImage} alt="" layout="fill" priority={true} />
           )}
         </div>
         <div className={s.mediumMedia}>
           {mediumImage && (
-            <Image
-              src={mediumImage}
-              alt=""
-              objectFit="cover"
-              objectPosition={'left'}
-              width={1200}
-              height={1200}
-              priority={true}
-            />
+            <Image src={mediumImage} alt="" layout="fill" priority={true} />
           )}
         </div>
         <div className={s.smallMedia}>
