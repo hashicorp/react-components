@@ -25,7 +25,7 @@
   composes: wpl-input-base from '../../style.module.css';
   height: 100%;
   appearance: none;
-  background: var(--input-checkbox-background);
+  background-color: var(--input-checkbox-background);
   transition: border 0.2s;
   cursor: pointer;
   border-width: 1px;
