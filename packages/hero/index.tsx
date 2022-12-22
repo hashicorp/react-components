@@ -64,13 +64,11 @@ const Hero = ({
           </div>
         </div>
         <div className={s.largeMedia}>
-          {largeImage && (
-            <Image src={largeImage} alt="" layout="fill" priority={true} />
-          )}
+          {largeImage && <Image src={largeImage} alt="" fill priority={true} />}
         </div>
         <div className={s.mediumMedia}>
           {mediumImage && (
-            <Image src={mediumImage} alt="" layout="fill" priority={true} />
+            <Image src={mediumImage} alt="" fill priority={true} />
           )}
         </div>
         <div className={s.smallMedia}>
