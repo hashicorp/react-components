@@ -64,11 +64,29 @@ const Hero = ({
           </div>
         </div>
         <div className={s.largeMedia}>
-          {largeImage && <Image src={largeImage} alt="" fill priority={true} />}
+          {largeImage && (
+            <Image
+              src={largeImage}
+              alt=""
+              /*
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment 
+              // @ts-ignore */
+              fill
+              priority={true}
+            />
+          )}
         </div>
         <div className={s.mediumMedia}>
           {mediumImage && (
-            <Image src={mediumImage} alt="" fill priority={true} />
+            <Image
+              src={mediumImage}
+              alt=""
+              /*
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment 
+              // @ts-ignore */
+              fill
+              priority={true}
+            />
           )}
         </div>
         <div className={s.smallMedia}>
