@@ -60,7 +60,7 @@ export interface NotificationProps {
   /**
    * The call to action for the notification.
    */
-  cta: {
+  cta?: {
     title: string
     url: string
   }
