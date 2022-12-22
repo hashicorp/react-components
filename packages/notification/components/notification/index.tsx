@@ -26,18 +26,21 @@ export default function Notification({
       <div className={s.content}>
         {children}
         <p className={s.description}>{description}</p>
-        <div className={s.cta}>
-          <Button
-            title={cta.title}
-            url={cta.url}
-            linkType="inbound"
-            size="small"
-            theme={{
-              variant: appearance === 'dark' ? 'tertiary-neutral' : 'tertiary',
-              background: appearance,
-            }}
-          />
-        </div>
+        {cta ? (
+          <div className={s.cta}>
+            <Button
+              title={cta.title}
+              url={cta.url}
+              linkType="inbound"
+              size="small"
+              theme={{
+                variant:
+                  appearance === 'dark' ? 'tertiary-neutral' : 'tertiary',
+                background: appearance,
+              }}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   )
