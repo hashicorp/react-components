@@ -1,6 +1,15 @@
 const BASIC_FORM_PROPS = {
-  formId: 9999,
-  marketoForm: {
+  metadata: {
+    result: [
+      {
+        id: 9999,
+        language: 'English',
+        waitingLabel: 'Submitting...',
+        buttonLabel: 'Submit',
+      },
+    ],
+  },
+  fields: {
     result: [
       {
         id: 'FirstName',
@@ -36,9 +45,9 @@ const BASIC_FORM_PROPS = {
 
 const UTM_FORM_PROPS = {
   ...BASIC_FORM_PROPS,
-  marketoForm: {
+  fields: {
     result: [
-      ...BASIC_FORM_PROPS.marketoForm.result,
+      ...BASIC_FORM_PROPS.fields.result,
       {
         id: 'utm_medium__c',
         label: 'utm_medium:',
@@ -72,9 +81,9 @@ const UTM_FORM_PROPS = {
 
 const VISIBILITY_RULE_FORM_PROPS = {
   ...BASIC_FORM_PROPS,
-  marketoForm: {
+  fields: {
     result: [
-      ...BASIC_FORM_PROPS.marketoForm.result,
+      ...BASIC_FORM_PROPS.fields.result,
       {
         id: 'Phone',
         label: 'Phone Number',

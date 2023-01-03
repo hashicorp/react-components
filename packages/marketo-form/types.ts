@@ -96,14 +96,39 @@ export type MarketoFormField =
   | MarketoFormCheckboxField
   | MarketoFormHiddenField
 
+export interface MarketoFormMetadata {
+  id: number
+  name: string
+  description: string
+  createdAt: string
+  updatedAt: string
+  url: string
+  status: string
+  theme: string
+  language: string
+  locale: string
+  progressiveProfiling: boolean
+  labelPosition: string
+  fontFamily: string
+  fontSize: string
+  buttonLocation: number
+  buttonLabel: string
+  waitingLabel: string
+  workSpaceId: number
+}
+
 /**
  * The Marketo API response containing form fields.
  */
-export interface MarketoForm {
+export interface MarketoFormResponse<T> {
   success: boolean
   errors: { code: string; message: string }[]
-  result: MarketoFormField[]
+  result: T[]
 }
+
+export type MarketoFormFieldsResponse = MarketoFormResponse<MarketoFormField>
+export type MarketoFormMetadataResponse =
+  MarketoFormResponse<MarketoFormMetadata>
 
 /**
  * Custom components to be used in lieu of the default built-in components.

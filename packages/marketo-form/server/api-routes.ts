@@ -1,11 +1,6 @@
 import * as client from './client'
 import type { SubmissionFilter, MarketoSubmissionResponse } from '../types'
-import type { MarketoFieldsResponse } from './client'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-function flatten(param: string | string[]): string {
-  return Array.isArray(param) ? param[0] : param
-}
 
 async function notifyError(body: unknown, err: unknown) {
   if (process.env.MARKETO_ERROR_ZAPIER_WEBHOOK) {
@@ -23,42 +18,6 @@ async function notifyError(body: unknown, err: unknown) {
   }
 
   return Promise.resolve()
-}
-
-async function getForm(req: NextApiRequest, res: NextApiResponse) {
-  try {
-    if (!req.query.form) {
-      throw new Error('missing ?form query parameter.')
-    }
-    const marketoRes = await client.getForm(
-      parseInt(flatten(req.query.form), 10)
-    )
-    const form = (await marketoRes.json()) as MarketoFieldsResponse
-
-    // Using a switch statement instead of `if (!form.success)` is necessary
-    // to discriminate a union type by a boolean property in environments where
-    // the TypeScript compiler option "strictNullChecks" is false.
-    //
-    // More info https://github.com/microsoft/TypeScript/issues/10564
-    switch (form.success) {
-      case false: {
-        const errorCodes = form.errors.map((e) => e.code)
-
-        // 702 -> Form not found
-        if (errorCodes.includes('702')) {
-          res.status(404).json({ error: 'not found' })
-          return
-        }
-
-        throw new Error(JSON.stringify(form))
-      }
-    }
-
-    res.status(marketoRes.status).json(form)
-  } catch (err) {
-    res.status(500).json({ error: 'internal server error' })
-    throw err
-  }
 }
 
 function isE2ETest(req: NextApiRequest): boolean {
@@ -140,8 +99,6 @@ export function buildApiRoutes({
       ? req.query.marketo[0]
       : req.query.marketo
     switch (route) {
-      case 'form':
-        return getForm(req, res)
       case 'submit':
         return submitForm(req, res, { submissionFilter })
       default:

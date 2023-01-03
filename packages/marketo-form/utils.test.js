@@ -24,19 +24,16 @@ describe('formattedLabel', () => {
 
 describe('groupFields', () => {
   it('groups fields', () => {
-    const groups = groupFields(UTM_FORM_PROPS.marketoForm.result, {
+    const groups = groupFields(UTM_FORM_PROPS.fields.result, {
       name: {
         fields: ['FirstName', 'LastName'],
         component: () => {},
       },
     })
     expect(groups).toEqual({
-      name: [
-        UTM_FORM_PROPS.marketoForm.result[0],
-        UTM_FORM_PROPS.marketoForm.result[1],
-      ],
-      utm_medium__c: [UTM_FORM_PROPS.marketoForm.result[2]],
-      form_page_url__c: [UTM_FORM_PROPS.marketoForm.result[3]],
+      name: [UTM_FORM_PROPS.fields.result[0], UTM_FORM_PROPS.fields.result[1]],
+      utm_medium__c: [UTM_FORM_PROPS.fields.result[2]],
+      form_page_url__c: [UTM_FORM_PROPS.fields.result[3]],
     })
   })
 })
@@ -44,7 +41,7 @@ describe('groupFields', () => {
 describe('calculateDefaultValues', () => {
   it('calculates default values', () => {
     expect(
-      calculateDefaultValues(VISIBILITY_RULE_FORM_PROPS.marketoForm.result)
+      calculateDefaultValues(VISIBILITY_RULE_FORM_PROPS.fields.result)
     ).toEqual({
       FirstName: '',
       LastName: '',
@@ -55,7 +52,7 @@ describe('calculateDefaultValues', () => {
 
   it('accounts for passed in values', () => {
     expect(
-      calculateDefaultValues(UTM_FORM_PROPS.marketoForm.result, {
+      calculateDefaultValues(UTM_FORM_PROPS.fields.result, {
         form_page_url__c: 'http',
       })
     ).toEqual({
