@@ -1,26 +1,15 @@
-import { URL } from 'url'
 import createFetch from '@vercel/fetch'
 import moize from 'moize'
-import type { MarketoForm } from '../types'
+import type {
+  MarketoFormFieldsResponse,
+  MarketoFormMetadataResponse,
+} from '../types'
 
 const fetch = createFetch()
 
 interface MarketoTokenResponse {
   access_token: string
 }
-
-interface MarketoFieldsSuccessResponse {
-  success: true
-}
-
-interface MarketoFieldsErrorResponse {
-  success: false
-  errors: { code: string; message: string }[]
-}
-
-export type MarketoFieldsResponse =
-  | MarketoFieldsSuccessResponse
-  | MarketoFieldsErrorResponse
 
 export async function getToken(): Promise<MarketoTokenResponse> {
   const url = new URL(`${process.env.MARKETO_IDENTITY}/oauth/token`)
@@ -32,51 +21,27 @@ export async function getToken(): Promise<MarketoTokenResponse> {
 }
 
 export async function getForm(formId: number) {
-  const { access_token } = await getToken()
-  return await fetch(
-    `${process.env.MARKETO_ENDPOINT}/asset/v1/form/${formId}/fields.json`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${access_token}`,
-      },
-    }
-  )
+  return await fetch(`https://content.hashicorp.com/api/marketo?id=${formId}`)
 }
 
-function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-function isRateLimited(res: MarketoForm): boolean {
-  return res.errors.some((e) => e.code === '606')
-}
-
-export async function getFormProps(
-  id: number,
-  depth: number = 0
-): Promise<{ id: number; form: MarketoForm }> {
+export async function getFormProps(id: number): Promise<{
+  fields: MarketoFormFieldsResponse
+  metadata: MarketoFormMetadataResponse
+}> {
   const res = await getForm(id)
   if (res.status !== 200) {
     throw new Error(
       `[marketo-form] non-200 status code when requesting form ${id}: ${res.status}`
     )
   }
-
-  const form = (await res.json()) as MarketoForm
-  if (!form.success) {
-    if (isRateLimited(form) && depth < 8) {
-      await wait(2 ** depth * 1000)
-      return getFormProps(id, depth + 1)
+  const form = (await res.json()) as {
+    result: {
+      fields: MarketoFormFieldsResponse
+      metadata: MarketoFormMetadataResponse
     }
-
-    throw new Error(
-      `[marketo-form] error response when requesting form ${id}: ${JSON.stringify(
-        form
-      )}`
-    )
   }
-  return { id, form }
+
+  return form.result
 }
 export const memoizedGetFormProps = moize(getFormProps, {
   isPromise: true,
