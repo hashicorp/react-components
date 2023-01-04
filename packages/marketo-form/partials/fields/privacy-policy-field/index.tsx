@@ -23,7 +23,15 @@ const LABELS_BY_LANGUAGE = {
   ),
   French: (
     <>
-      J&apos;accepte la politique de confidentialité d&apos;HashiCorp.
+      J&apos;accepte la{' '}
+      <a
+        href="https://www.hashicorp.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        politique de confidentialité
+      </a>{' '}
+      d&apos;HashiCorp.
       <span className={style.required}>*</span>
     </>
   ),
@@ -36,31 +44,71 @@ const LABELS_BY_LANGUAGE = {
   ),
   Japanese: (
     <>
-      HashiCorpのプライバシーポリシーに同意します。
+      HashiCorpの
+      <a
+        href="https://www.hashicorp.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        プライバシーポリシ
+      </a>
+      ーに同意します。
       <span className={style.required}>*</span>
     </>
   ),
   German: (
     <>
-      Ich stimme den Datenschutzrichtlinien von HashiCorp zu.
+      Ich stimme den{' '}
+      <a
+        href="https://www.hashicorp.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Datenschutzrichtlinien
+      </a>{' '}
+      von HashiCorp zu.
       <span className={style.required}>*</span>
     </>
   ),
   Spanish: (
     <>
-      Estoy de acuerdo con la política de privacidad de HashiCorp.
+      Estoy de acuerdo con la{' '}
+      <a
+        href="https://www.hashicorp.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        política de privacidad
+      </a>{' '}
+      de HashiCorp.
       <span className={style.required}>*</span>
     </>
   ),
   'Portuguese (Brazil)': (
     <>
-      Eu concordo com a Política de Privacidade da HashiCorp.
+      Eu concordo com a{' '}
+      <a
+        href="https://www.hashicorp.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Política de Privacidade
+      </a>{' '}
+      da HashiCorp.
       <span className={style.required}>*</span>
     </>
   ),
   Italian: (
     <>
-      Accetto l&apos;informativa sulla privacy di HashiCorp.
+      Accetto l&apos;informativa{' '}
+      <a
+        href="https://www.hashicorp.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        sulla privacy
+      </a>{' '}
+      di HashiCorp.
       <span className={style.required}>*</span>
     </>
   ),
