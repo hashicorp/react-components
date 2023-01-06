@@ -10,6 +10,7 @@ const hasStandaloneLink = (item) => item.type === 'standalone-link'
 export default function Actions({
   appearance = 'light',
   layout = 'inline',
+  alignment = 'left',
   theme = 'hashicorp',
   size = 'medium',
   ctas,
@@ -27,7 +28,12 @@ export default function Actions({
   }
   return (
     <div
-      className={classNames(s.actions, s[layout], mixed && s.mixed)}
+      className={classNames(
+        s.actions,
+        s[layout],
+        s[alignment],
+        mixed && s.mixed
+      )}
       data-testid="actions"
     >
       {ctas.map((cta, index) => {
