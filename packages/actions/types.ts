@@ -33,6 +33,10 @@ export interface ActionsProps {
    */
   layout?: 'inline' | 'stacked'
   /**
+   * Display buttons inline or stacked by default.
+   */
+  alignment?: 'left' | 'center'
+  /**
    * Render primary button with product color.
    */
   theme?: Products

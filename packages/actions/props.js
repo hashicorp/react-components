@@ -9,6 +9,11 @@ module.exports = {
     description: 'Display buttons inline or stacked by default.',
     options: ['inline', 'stacked'],
   },
+  alignment: {
+    type: 'string',
+    description: 'Align items when stacked.',
+    options: ['left', 'center'],
+  },
   theme: {
     type: 'string',
     description: 'Render primary variant button CTA with product color.',

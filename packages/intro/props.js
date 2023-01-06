@@ -41,7 +41,7 @@ module.exports = {
         description: 'Display buttons inline or stacked by default.',
         options: ['inline', 'stacked'],
       },
-      brand: {
+      theme: {
         type: 'string',
         description: 'Render primary variant button with product color.',
         options: [

@@ -35,6 +35,7 @@ export default function Intro({
           <Actions
             appearance={appearance}
             layout={actions.layout}
+            alignment={textAlignment}
             theme={actions.theme}
             size={actions.size}
             ctas={actions.ctas}
