@@ -5,11 +5,19 @@
   gap: 16px 18px;
 
   &.stacked {
-    align-items: flex-start;
     flex-direction: column;
+
+    &.left {
+      align-items: flex-start;
+    }
+
+    &.center {
+      align-items: center;
+    }
   }
 
   &.mixed {
     column-gap: 24px;
+    row-gap: 32px;
   }
 }
