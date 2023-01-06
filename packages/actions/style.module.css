@@ -6,18 +6,17 @@
 
   &.stacked {
     flex-direction: column;
-  }
 
-  &.left {
-    align-items: flex-start;
-  }
+    &.left {
+      align-items: flex-start;
+    }
 
-  &.center {
-    align-items: center;
+    &.center {
+      align-items: center;
+    }
   }
 
   &.mixed {
     column-gap: 24px;
-    row-gap: 32px;
   }
 }
