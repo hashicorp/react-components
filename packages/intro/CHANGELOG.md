@@ -1,5 +1,14 @@
 # @hashicorp/react-intro
 
+## 0.7.1
+
+### Patch Changes
+
+- [#858](https://github.com/hashicorp/react-components/pull/858) [`639de00a`](https://github.com/hashicorp/react-components/commit/639de00afd7da5c22cd15385f35ffd73ac6cb774) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - add actions alignment option
+
+- Updated dependencies [[`639de00a`](https://github.com/hashicorp/react-components/commit/639de00afd7da5c22cd15385f35ffd73ac6cb774)]:
+  - @hashicorp/react-actions@0.4.4
+
 ## 0.7.0
 
 ### Minor Changes
