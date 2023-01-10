@@ -1,58 +1,74 @@
-.badge {
-  composes: g-type-label from global;
-  background-color: var(--background-color, var(--black));
-  color: var(--color, var(--white));
-  border-radius: 4px;
-  display: block;
-  padding: 0 8px;
-  text-align: center;
-  white-space: nowrap;
-  width: max-content;
-  height: 24px;
-  line-height: 24px;
-}
-
-.product {
+.root {
   &.primary {
     background-color: var(--brand);
     color: var(--brand-text-on-primary);
-  }
-  &.secondary {
-    background-color: var(--brand-secondary);
-    color: var(--black);
-  }
-}
 
-.neutral,
-.hashicorp {
-  &.primary {
-    --background-color: var(--brand);
-    --color: var(--white);
-  }
-  &.secondary {
-    --background-color: var(--vagrant-secondary);
-    --color: var(--black);
-  }
-}
+    &.pageaction,
+    &.pageactionFaint {
+      background-color: var(--wpl-neutral-0);
+      color: var(--wpl-neutral-900);
+    }
 
-.black {
-  &.primary {
-    --background-color: var(--black);
-    --color: var(--white);
-  }
-  &.secondary {
-    --background-color: var(--gray-6);
-    --color: var(--black);
-  }
-}
+    &.themeaction {
+      background-color: var(--wpl-blue-500);
+      color: var(--wpl-neutral-0);
 
-.white {
-  &.primary {
-    --background-color: var(--white);
-    --color: var(--black);
+      &.pagestrong,
+      &.pagestrongFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-neutral-900);
+      }
+
+      &.pageaction {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-blue-500);
+      }
+
+      &.pageactionFaint {
+        background-color: var(--wpl-blue-500);
+        color: var(--wpl-neutral-0);
+      }
+    }
+
+    &.themeneutral {
+      color: var(--wpl-neutral-900);
+      background-color: var(--wpl-neutral-0);
+
+      &.pagestrong,
+      &.pagestrongFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-neutral-900);
+      }
+
+      &.pageaction {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-blue-500);
+      }
+
+      &.pageactionFaint {
+        background-color: var(--wpl-blue-500);
+        color: var(--wpl-neutral-0);
+      }
+    }
   }
+
   &.secondary {
-    --background-color: var(--white);
-    --color: var(--gray-3);
+    background-color: rgba(159, 160, 163, 0.13);
+    color: var(--wpl-neutral-500);
+
+    &.pagestrong {
+      background-color: rgba(255, 255, 255, 0.18);
+      color: var(--wpl-neutral-400);
+    }
+
+    &.pagestrongFaint {
+      background-color: rgba(159, 160, 163, 0.1);
+      color: var(--wpl-neutral-300);
+    }
+
+    &.pageaction {
+      background-color: rgba(159, 160, 163, 0.1);
+      color: var(--wpl-neutral-300);
+    }
   }
 }
