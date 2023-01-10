@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.9.0
+
+### Minor Changes
+
+- [#860](https://github.com/hashicorp/react-components/pull/860) [`fc8dc923`](https://github.com/hashicorp/react-components/commit/fc8dc9238e54955114440c621afd157b12c6b2d2) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Add thumbnail border and bottom align badges
+
 ## 0.8.0
 
 ### Minor Changes
