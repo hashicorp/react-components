@@ -69,6 +69,14 @@
   outline: none;
 }
 
+.thumbnail {
+  border-bottom: 1px solid var(--border-color);
+
+  & .image {
+    display: grid;
+  }
+}
+
 .meta {
   composes: g-type-label from global;
   color: var(--secondary-text-color);
@@ -108,6 +116,7 @@
 }
 
 .productBadges {
+  margin-top: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
