@@ -3,9 +3,9 @@ import classNames from 'classnames'
 import s from './style.module.css'
 
 export default function Badge() {
-  const page = 'strongFaint'
-  const theme = 'action'
   const variant = 'secondary'
+  const theme = 'boundary'
+  const page = 'strongFaint'
   const products = [
     'boundary',
     'consul',
@@ -20,12 +20,18 @@ export default function Badge() {
   const { themeClass: productThemeClass } = useProductMeta(productName)
   const themeClass = products.includes(theme)
     ? productThemeClass
-    : s[`theme${theme}`]
+    : s[`theme_${theme}`]
+
   return (
     <span
-      className={classNames([s.root, s[variant], themeClass, s[`page${page}`]])}
+      className={classNames([
+        s.root,
+        s[variant],
+        s[`theme_${theme}`],
+        s[`page_${page}`],
+      ])}
     >
-      im a badge
+      Badge
     </span>
   )
 }

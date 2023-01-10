@@ -1,51 +1,55 @@
 .root {
+  padding: 0 12px 1px;
+  border-radius: 24px;
+  composes: g-type-body-small-x-strong from global;
+
   &.primary {
     background-color: var(--brand);
     color: var(--brand-text-on-primary);
 
-    &.pageaction,
-    &.pageactionFaint {
+    &.page_action,
+    &.page_actionFaint {
       background-color: var(--wpl-neutral-0);
       color: var(--wpl-neutral-900);
     }
 
-    &.themeaction {
+    &.theme_action {
       background-color: var(--wpl-blue-500);
       color: var(--wpl-neutral-0);
 
-      &.pagestrong,
-      &.pagestrongFaint {
+      &.page_strong,
+      &.page_strongFaint {
         background-color: var(--wpl-neutral-0);
         color: var(--wpl-neutral-900);
       }
 
-      &.pageaction {
+      &.page_action {
         background-color: var(--wpl-neutral-0);
         color: var(--wpl-blue-500);
       }
 
-      &.pageactionFaint {
+      &.page_actionFaint {
         background-color: var(--wpl-blue-500);
         color: var(--wpl-neutral-0);
       }
     }
 
-    &.themeneutral {
+    &.theme_neutral {
       color: var(--wpl-neutral-900);
       background-color: var(--wpl-neutral-0);
 
-      &.pagestrong,
-      &.pagestrongFaint {
+      &.page_strong,
+      &.page_strongFaint {
         background-color: var(--wpl-neutral-0);
         color: var(--wpl-neutral-900);
       }
 
-      &.pageaction {
+      &.page_action {
         background-color: var(--wpl-neutral-0);
         color: var(--wpl-blue-500);
       }
 
-      &.pageactionFaint {
+      &.page_actionFaint {
         background-color: var(--wpl-blue-500);
         color: var(--wpl-neutral-0);
       }
@@ -53,22 +57,88 @@
   }
 
   &.secondary {
-    background-color: rgba(159, 160, 163, 0.13);
-    color: var(--wpl-neutral-500);
+    &.theme_action {
+      &.page_light,
+      &.page_action {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-500);
+      }
 
-    &.pagestrong {
-      background-color: rgba(255, 255, 255, 0.18);
-      color: var(--wpl-neutral-400);
+      &.page_strong {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: var(--wpl-neutral-400);
+      }
+
+      &.page_strongfaint {
+        background-color: rgba(159, 160, 163, 0.1);
+        color: var(--wpl-neutral-300);
+      }
+
+      &.page_action {
+        background-color: rgba(255, 255, 255, 0.64);
+        color: rgba(53, 113, 233, 0.85);
+      }
+
+      &.page_actionfaint {
+        background-color: var(--wpl-blue-100);
+        color: var(--wpl-blue-600);
+      }
     }
 
-    &.pagestrongFaint {
-      background-color: rgba(159, 160, 163, 0.1);
-      color: var(--wpl-neutral-300);
+    &.theme_neutral {
+      &.page_light,
+      &.page_action {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-500);
+      }
+
+      &.page_strong {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: var(--wpl-neutral-400);
+      }
+
+      &.page_strongFaint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-300);
+      }
+
+      &.page_action {
+        background-color: rgba(255, 255, 255, 0.64);
+        color: rgba(53, 113, 233, 0.85);
+      }
+
+      &.page_actionFaint {
+        background-color: var(--wpl-blue-100);
+        color: var(--wpl-blue-600);
+      }
     }
 
-    &.pageaction {
-      background-color: rgba(159, 160, 163, 0.1);
-      color: var(--wpl-neutral-300);
+    &.theme_product {
+      &.page_light,
+      &.page_action {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-500);
+      }
+
+      &.page_strong {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: var(--wpl-neutral-400);
+      }
+
+      &.page_strongFaint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-300);
+      }
+
+      &.page_action {
+        background-color: rgba(255, 255, 255, 0.64);
+        color: var(--neutral-900);
+      }
+
+      &.page_actionFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-blue-600);
+      }
     }
   }
 }
