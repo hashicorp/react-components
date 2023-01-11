@@ -26,8 +26,11 @@
     }
 
     &.theme_neutral {
-      background-color: var(--wpl-neutral-0);
-      color: var(--wpl-neutral-900);
+      &.page_light,
+      &.page_faint {
+        background-color: var(--wpl-neutral-900);
+        color: var(--wpl-neutral-0);
+      }
 
       &.page_strong,
       &.page_strongFaint {

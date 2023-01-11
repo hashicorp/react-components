@@ -4,8 +4,8 @@ import s from './style.module.css'
 
 export default function Badge() {
   const variant = 'secondary'
-  const theme = 'waypoint'
-  const page = 'strong'
+  const theme = 'neutral'
+  const page = 'action'
   const products = [
     'boundary',
     'consul',
@@ -24,7 +24,6 @@ export default function Badge() {
     ? `${productThemeClass} ${s.theme_product}`
     : s[`theme_${theme}`]
 
-  console.log(themeClass)
   return (
     <span
       className={classNames([
