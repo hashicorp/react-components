@@ -4,15 +4,6 @@
   composes: g-type-body-small-x-strong from global;
 
   &.primary {
-    background-color: var(--brand);
-    color: var(--brand-text-on-primary);
-
-    &.page_action,
-    &.page_actionFaint {
-      background-color: var(--wpl-neutral-0);
-      color: var(--wpl-neutral-900);
-    }
-
     &.theme_action {
       background-color: var(--wpl-blue-500);
       color: var(--wpl-neutral-0);
@@ -35,8 +26,8 @@
     }
 
     &.theme_neutral {
-      color: var(--wpl-neutral-900);
       background-color: var(--wpl-neutral-0);
+      color: var(--wpl-neutral-900);
 
       &.page_strong,
       &.page_strongFaint {
@@ -52,6 +43,22 @@
       &.page_actionFaint {
         background-color: var(--wpl-blue-500);
         color: var(--wpl-neutral-0);
+      }
+    }
+
+    &.theme_product {
+      &.page_light,
+      &.page_faint,
+      &.page_strong,
+      &.page_strongFaint {
+        background-color: var(--brand);
+        color: var(--brand-text-on-primary);
+      }
+
+      &.page_action,
+      &.page_actionFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-neutral-900);
       }
     }
   }
