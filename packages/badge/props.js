@@ -1,5 +1,5 @@
 module.exports = {
-  text: {
+  children: {
     description: 'The text that appears inside the badge.',
     type: 'string',
     control: { type: 'text' },

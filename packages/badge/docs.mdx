@@ -7,7 +7,7 @@ Badges are non-interactive labels highlighting metadata such as status or catego
 <LiveComponent>
   {`
   <div style={{ display: 'flex', gap: 16 }}>
-    <Badge variant="primary" theme="action" page="light" text="Badge" />
+    <Badge variant="primary" theme="action" page="light">Badge</Badge>
   </div>
 `}
 </LiveComponent>
@@ -63,7 +63,7 @@ Badges are non-interactive labels highlighting metadata such as status or catego
 
                       return (
                         <div key={vIndex} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: backgroundColor, padding: '16px'}}>
-                          <Badge variant={v} theme={t} page={p} text="Badge" />
+                          <Badge variant={v} theme={t} page={p}>Badge</Badge>
                         </div>
                       )
                     })
