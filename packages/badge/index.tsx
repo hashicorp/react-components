@@ -1,23 +1,37 @@
-import type { BadgeProps } from './types'
-import productStyles from '@hashicorp/platform-product-meta/style.module.css'
 import classNames from 'classnames'
+import type { BadgeProps, ProductThemes } from './types'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import s from './style.module.css'
 
-export default function Badge({
+const Badge = ({
   children,
   variant = 'primary',
-  theme = 'neutral',
-}: BadgeProps) {
-  let themeClass
-  const productClass = productStyles[theme]
-  if (productClass) {
-    themeClass = classNames(s.product, productClass)
+  theme = 'action',
+  page = 'light',
+}: BadgeProps) => {
+  let productName: ProductThemes | undefined
+  if (theme === 'neutral' || theme === 'action') {
+    productName = undefined
   } else {
-    themeClass = s[theme]
+    productName = theme
   }
+  const { themeClass: productThemeClass } = useProductMeta(productName)
+  const themeClass = productThemeClass
+    ? `${productThemeClass} ${s.theme_product}`
+    : s[`theme_${theme}`]
+
   return (
-    <span className={classNames(s.badge, themeClass, s[variant])}>
+    <span
+      className={classNames([
+        s.root,
+        s[variant],
+        themeClass,
+        s[`page_${page}`],
+      ])}
+    >
       {children}
     </span>
   )
 }
+
+export default Badge

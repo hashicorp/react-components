@@ -1,58 +1,207 @@
-.badge {
-  composes: g-type-label from global;
-  background-color: var(--background-color, var(--black));
-  color: var(--color, var(--white));
-  border-radius: 4px;
-  display: block;
-  padding: 0 8px;
-  text-align: center;
-  white-space: nowrap;
+.root {
+  padding: 0 var(--wpl-spacing-02);
+  border-radius: var(--wpl-spacing-05);
   width: max-content;
+  composes: g-type-body-small-x-strong from global;
+
+  /* TODO: Create "Body / Extra-small / Bold" in `mktg-global-styles` and use here */
+  font-size: 14px;
   height: 24px;
-  line-height: 24px;
-}
 
-.product {
   &.primary {
-    background-color: var(--brand);
-    color: var(--brand-text-on-primary);
-  }
-  &.secondary {
-    background-color: var(--brand-secondary);
-    color: var(--black);
-  }
-}
+    &.theme_action {
+      &.page_light,
+      &.page_faint {
+        background-color: var(--wpl-blue-500);
+        color: var(--wpl-neutral-0);
+      }
 
-.neutral,
-.hashicorp {
-  &.primary {
-    --background-color: var(--brand);
-    --color: var(--white);
-  }
-  &.secondary {
-    --background-color: var(--vagrant-secondary);
-    --color: var(--black);
-  }
-}
+      &.page_strong,
+      &.page_strongFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-neutral-900);
+      }
 
-.black {
-  &.primary {
-    --background-color: var(--black);
-    --color: var(--white);
-  }
-  &.secondary {
-    --background-color: var(--gray-6);
-    --color: var(--black);
-  }
-}
+      &.page_action {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-blue-500);
+      }
 
-.white {
-  &.primary {
-    --background-color: var(--white);
-    --color: var(--black);
+      &.page_actionFaint {
+        background-color: var(--wpl-blue-500);
+        color: var(--wpl-neutral-0);
+      }
+    }
+
+    &.theme_neutral {
+      &.page_light,
+      &.page_faint {
+        background-color: var(--wpl-neutral-900);
+        color: var(--wpl-neutral-0);
+      }
+
+      &.page_strong,
+      &.page_strongFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-neutral-900);
+      }
+
+      &.page_action {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-blue-500);
+      }
+
+      &.page_actionFaint {
+        background-color: var(--wpl-blue-500);
+        color: var(--wpl-neutral-0);
+      }
+    }
+
+    &.theme_product {
+      &.page_light,
+      &.page_faint,
+      &.page_strong,
+      &.page_strongFaint {
+        background-color: var(--brand);
+        color: var(--brand-text-on-primary);
+      }
+
+      &.page_action,
+      &.page_actionFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-neutral-900);
+      }
+    }
   }
+
   &.secondary {
-    --background-color: var(--white);
-    --color: var(--gray-3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    /* 
+      This declaration determines the base styles for rendering the dot in the `secondary` variant.
+      Consequent declarations targeting the ::before element override these styles.
+    */
+    &::before {
+      --size: 7px;
+
+      content: '';
+      width: var(--size);
+      height: var(--size);
+      background-color: var(--brand);
+      border-radius: 50%;
+    }
+
+    &.theme_action {
+      gap: 0;
+
+      &::before {
+        width: 0;
+        height: 0;
+      }
+
+      &.page_light,
+      &.page_faint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-500);
+      }
+
+      &.page_strong {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: var(--wpl-neutral-400);
+      }
+
+      &.page_strongFaint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: rgba(159, 160, 163, 1);
+      }
+
+      &.page_action {
+        background-color: rgba(255, 255, 255, 0.64);
+        color: rgba(53, 113, 233, 0.85);
+      }
+
+      &.page_actionFaint {
+        background-color: var(--wpl-blue-100);
+        color: var(--wpl-blue-600);
+      }
+    }
+
+    &.theme_neutral {
+      &.page_light,
+      &.page_faint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-500);
+
+        &::before {
+          background-color: var(--wpl-neutral-500);
+        }
+      }
+
+      &.page_strong {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: var(--wpl-neutral-400);
+
+        &::before {
+          background-color: var(--wpl-neutral-400);
+        }
+      }
+
+      &.page_strongFaint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-300);
+
+        &::before {
+          background-color: var(--wpl-neutral-300);
+        }
+      }
+
+      &.page_action {
+        background-color: rgba(255, 255, 255, 0.64);
+        color: rgba(53, 113, 233, 0.85);
+
+        &::before {
+          background-color: var(--wpl-blue-500);
+        }
+      }
+
+      &.page_actionFaint {
+        background-color: var(--wpl-blue-100);
+        color: var(--wpl-blue-600);
+
+        &::before {
+          background-color: var(--wpl-blue-500);
+        }
+      }
+    }
+
+    &.theme_product {
+      &.page_light,
+      &.page_faint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-500);
+      }
+
+      &.page_strong {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: var(--wpl-neutral-400);
+      }
+
+      &.page_strongFaint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: var(--wpl-neutral-300);
+      }
+
+      &.page_action {
+        background-color: rgba(255, 255, 255, 0.64);
+        color: var(--neutral-900);
+      }
+
+      &.page_actionFaint {
+        background-color: var(--wpl-neutral-0);
+        color: var(--wpl-neutral-900);
+      }
+    }
   }
 }

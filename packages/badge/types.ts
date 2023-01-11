@@ -1,7 +1,12 @@
 import type { Products } from '@hashicorp/platform-product-meta'
 
+export type ProductThemes = Exclude<Products, 'hashicorp'>
+export type ExtraThemes = 'neutral' | 'action'
+export type BadgeThemes = ProductThemes | ExtraThemes
+
 export interface BadgeProps {
   children: string
-  theme?: Products | 'neutral' | 'white' | 'black'
   variant?: 'primary' | 'secondary'
+  theme?: BadgeThemes
+  page?: 'light' | 'faint' | 'strong' | 'strongFaint' | 'action' | 'actionFaint'
 }
