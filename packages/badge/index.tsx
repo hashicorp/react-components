@@ -20,7 +20,7 @@ const Badge = ({
     'waypoint',
   ]
   const isProductTheme = products.includes(theme)
-  const productName = isProductTheme ? theme : undefined
+  const productName = isProductTheme ? theme : 'hashicorp'
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore - The ternary above ensures that `useProductMeta` always gets
   // the appropriate value but this does not seem to appease the the TS gods
