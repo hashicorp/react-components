@@ -1,9 +1,10 @@
 .root {
-  padding: 0 var(--wpl-spacing-02) 1px;
+  padding: 0 var(--wpl-spacing-02);
   border-radius: var(--wpl-spacing-05);
   width: max-content;
   composes: g-type-body-small-x-strong from global;
   font-size: 14px;
+  height: 24px;
 
   &.primary {
     &.theme_action {
