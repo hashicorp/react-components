@@ -1,5 +1,11 @@
 # @hashicorp/react-badge
 
+## 0.2.0
+
+### Minor Changes
+
+- [#862](https://github.com/hashicorp/react-components/pull/862) [`23ba7a28`](https://github.com/hashicorp/react-components/commit/23ba7a2814fc0ce01da6a519e6554a8d8eadf610) Thanks [@nandereck](https://github.com/nandereck)! - Refactor to match WPL spec
+
 ## 0.1.1
 
 ### Patch Changes
