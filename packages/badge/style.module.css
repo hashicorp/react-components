@@ -3,6 +3,8 @@
   border-radius: var(--wpl-spacing-05);
   width: max-content;
   composes: g-type-body-small-x-strong from global;
+
+  /* TODO: Create "Body / Extra-small / Bold" in `mktg-global-styles` and use here */
   font-size: 14px;
   height: 24px;
 
