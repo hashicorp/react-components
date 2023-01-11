@@ -20,7 +20,7 @@ const Badge = ({
     'waypoint',
   ]
   const isProductTheme = products.includes(theme)
-  const productName = isProductTheme ? theme : 'hashicorp'
+  const productName = isProductTheme ? theme : undefined
   const { themeClass: productThemeClass } = useProductMeta(productName)
 
   const themeClass = isProductTheme

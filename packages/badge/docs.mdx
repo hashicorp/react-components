@@ -6,11 +6,9 @@ Badges are non-interactive labels highlighting metadata such as status or catego
 
 <LiveComponent>
   {`
-<>
   <div style={{ display: 'flex', gap: 16 }}>
     <Badge variant="primary" theme="action" page="light" text="Badge" />
   </div>
-</>
 `}
 </LiveComponent>
 
@@ -31,9 +29,9 @@ Badges are non-interactive labels highlighting metadata such as status or catego
       'vagrant',
       'vault',
       'waypoint',
-    ].map((t) => {
+    ].map((t, tIndex) => {
       return (
-        <div style={{display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)'}}>
+        <div key={tIndex} style={{display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)'}}>
           {
             [
               'light',
@@ -42,14 +40,14 @@ Badges are non-interactive labels highlighting metadata such as status or catego
               'strongFaint',
               'action',
               'actionFaint'
-            ].map((p) => {
+            ].map((p, pIndex) => {
               return ( 
-                <div style={{display: 'grid', gridTemplateRows: '1fr 1fr'}}>
+                <div key={pIndex} style={{display: 'grid', gridTemplateRows: '1fr 1fr'}}>
                   {
                     [
                       'primary',
                       'secondary',
-                    ].map((v) => {
+                    ].map((v, vIndex) => {
                       const isActionTheme = t === 'action';
                       const isNeutralTheme = t === 'neutral'
                       const isProduct = !isActionTheme && !isNeutralTheme
@@ -64,7 +62,7 @@ Badges are non-interactive labels highlighting metadata such as status or catego
                       const backgroundColor = pageToColorMap[p];
 
                       return (
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: backgroundColor, padding: '16px'}}>
+                        <div key={vIndex} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: backgroundColor, padding: '16px'}}>
                           <Badge variant={v} theme={t} page={p} text="Badge" />
                         </div>
                       )
