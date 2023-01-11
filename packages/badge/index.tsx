@@ -2,10 +2,10 @@ import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import s from './style.module.css'
 
-export default function Badge() {
-  const variant = 'secondary'
-  const theme = 'neutral'
-  const page = 'action'
+export default function Badge({ variant, theme, page }) {
+  // const variant = 'secondary'
+  // const theme = 'action'
+  // const page = 'action'
   const products = [
     'boundary',
     'consul',

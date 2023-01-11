@@ -1,12 +1,16 @@
 .root {
   padding: 0 12px 1px;
   border-radius: 24px;
+  width: max-content;
   composes: g-type-body-small-x-strong from global;
 
   &.primary {
     &.theme_action {
-      background-color: var(--wpl-blue-500);
-      color: var(--wpl-neutral-0);
+      &.page_light,
+      &.page_faint {
+        background-color: var(--wpl-blue-500);
+        color: var(--wpl-neutral-0);
+      }
 
       &.page_strong,
       &.page_strongFaint {
@@ -69,7 +73,7 @@
   &.secondary {
     &.theme_action {
       &.page_light,
-      &.page_action {
+      &.page_faint {
         background-color: rgba(159, 160, 163, 0.13);
         color: var(--wpl-neutral-500);
       }
@@ -97,7 +101,7 @@
 
     &.theme_neutral {
       &.page_light,
-      &.page_action {
+      &.page_faint {
         background-color: rgba(159, 160, 163, 0.13);
         color: var(--wpl-neutral-500);
       }
@@ -125,7 +129,7 @@
 
     &.theme_product {
       &.page_light,
-      &.page_action {
+      &.page_faint {
         background-color: rgba(159, 160, 163, 0.13);
         color: var(--wpl-neutral-500);
       }
@@ -147,7 +151,7 @@
 
       &.page_actionFaint {
         background-color: var(--wpl-neutral-0);
-        color: var(--wpl-blue-600);
+        color: var(--wpl-neutral-900);
       }
     }
   }
