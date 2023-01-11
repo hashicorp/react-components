@@ -21,6 +21,9 @@ const Badge = ({
   ]
   const isProductTheme = products.includes(theme)
   const productName = isProductTheme ? theme : undefined
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore - The ternary above ensures that `useProductMeta` always gets
+  // the appropriate value but this does not seem to appease the the TS gods
   const { themeClass: productThemeClass } = useProductMeta(productName)
 
   const themeClass = isProductTheme
