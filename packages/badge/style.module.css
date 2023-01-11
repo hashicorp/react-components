@@ -83,9 +83,9 @@
         color: var(--wpl-neutral-400);
       }
 
-      &.page_strongfaint {
-        background-color: rgba(159, 160, 163, 0.1);
-        color: var(--wpl-neutral-300);
+      &.page_strongFaint {
+        background-color: rgba(159, 160, 163, 0.13);
+        color: rgba(159, 160, 163, 1);
       }
 
       &.page_action {
@@ -93,7 +93,7 @@
         color: rgba(53, 113, 233, 0.85);
       }
 
-      &.page_actionfaint {
+      &.page_actionFaint {
         background-color: var(--wpl-blue-100);
         color: var(--wpl-blue-600);
       }
