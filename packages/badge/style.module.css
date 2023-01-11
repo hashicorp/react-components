@@ -1,6 +1,6 @@
 .root {
-  padding: 0 12px 1px;
-  border-radius: 24px;
+  padding: 0 var(--wpl-spacing-02) 1px;
+  border-radius: var(--wpl-spacing-05);
   width: max-content;
   composes: g-type-body-small-x-strong from global;
 
@@ -75,6 +75,10 @@
     align-items: center;
     gap: 5px;
 
+    /* 
+      This declaration determines the base styles for rendering the dot in the `secondary` variant.
+      Consequent declarations targeting the ::before element override these styles.
+    */
     &::before {
       --size: 7px;
 
