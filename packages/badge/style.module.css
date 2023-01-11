@@ -71,7 +71,28 @@
   }
 
   &.secondary {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &::before {
+      --size: 7px;
+
+      content: '';
+      width: var(--size);
+      height: var(--size);
+      background-color: var(--brand);
+      border-radius: 50%;
+    }
+
     &.theme_action {
+      gap: 0;
+
+      &::before {
+        width: 0;
+        height: 0;
+      }
+
       &.page_light,
       &.page_faint {
         background-color: rgba(159, 160, 163, 0.13);
@@ -104,26 +125,46 @@
       &.page_faint {
         background-color: rgba(159, 160, 163, 0.13);
         color: var(--wpl-neutral-500);
+
+        &::before {
+          background-color: var(--wpl-neutral-500);
+        }
       }
 
       &.page_strong {
         background-color: rgba(255, 255, 255, 0.18);
         color: var(--wpl-neutral-400);
+
+        &::before {
+          background-color: var(--wpl-neutral-400);
+        }
       }
 
       &.page_strongFaint {
         background-color: rgba(159, 160, 163, 0.13);
         color: var(--wpl-neutral-300);
+
+        &::before {
+          background-color: var(--wpl-neutral-300);
+        }
       }
 
       &.page_action {
         background-color: rgba(255, 255, 255, 0.64);
         color: rgba(53, 113, 233, 0.85);
+
+        &::before {
+          background-color: var(--wpl-blue-500);
+        }
       }
 
       &.page_actionFaint {
         background-color: var(--wpl-blue-100);
         color: var(--wpl-blue-600);
+
+        &::before {
+          background-color: var(--wpl-blue-500);
+        }
       }
     }
 
