@@ -1,7 +1,8 @@
 import type { Products } from '@hashicorp/platform-product-meta'
 
 export interface BadgeProps {
-  children: string
-  theme?: Products | 'neutral' | 'white' | 'black'
+  text: string
   variant?: 'primary' | 'secondary'
+  theme?: Products | 'neutral' | 'action'
+  page?: 'light' | 'faint' | 'strong' | 'strongFaint' | 'action' | 'actionFaint'
 }

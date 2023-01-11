@@ -1,9 +1,8 @@
 module.exports = {
-  children: {
+  text: {
     description: 'The text that appears inside the badge.',
     type: 'string',
     control: { type: 'text' },
-    testValue: 'New',
     required: true,
   },
   theme: {
@@ -11,17 +10,16 @@ module.exports = {
     type: 'string',
     required: false,
     options: [
+      'action',
       'neutral',
-      'white',
-      'black',
-      'nomad',
+      'boundary',
       'consul',
+      'nomad',
+      'packer',
       'terraform',
       'vault',
-      'packer',
       'vagrant',
       'waypoint',
-      'boundary',
     ],
   },
   variant: {
@@ -29,5 +27,18 @@ module.exports = {
     type: 'string',
     required: false,
     options: ['primary', 'secondary'],
+  },
+  page: {
+    description: 'Variant styling based page color',
+    type: 'string',
+    required: false,
+    options: [
+      'light',
+      'faint',
+      'strong',
+      'strongFaint',
+      'action',
+      'actionFaint',
+    ],
   },
 }

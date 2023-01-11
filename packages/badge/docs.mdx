@@ -8,9 +8,7 @@ Badges are non-interactive labels highlighting metadata such as status or catego
   {`
 <>
   <div style={{ display: 'flex', gap: 16 }}>
-    <Badge variant="primary" theme="action" page="light">New</Badge>
-    <Badge variant="primary" theme="neutral" page="light">New</Badge>
-    <Badge variant="primary" theme="nomad" page="light">New</Badge>
+    <Badge variant="primary" theme="action" page="light" text="Badge" />
   </div>
 </>
 `}
@@ -67,7 +65,7 @@ Badges are non-interactive labels highlighting metadata such as status or catego
 
                       return (
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: backgroundColor, padding: '16px'}}>
-                          <Badge variant={v} theme={t} page={p} />
+                          <Badge variant={v} theme={t} page={p} text="Badge" />
                         </div>
                       )
                     })

@@ -1,11 +1,14 @@
-import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
+import { BadgeProps } from './types'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import s from './style.module.css'
 
-export default function Badge({ variant, theme, page }) {
-  // const variant = 'secondary'
-  // const theme = 'action'
-  // const page = 'action'
+const Badge = ({
+  text,
+  variant = 'primary',
+  theme = 'vagrant',
+  page = 'light',
+}: BadgeProps) => {
   const products = [
     'boundary',
     'consul',
@@ -33,7 +36,9 @@ export default function Badge({ variant, theme, page }) {
         s[`page_${page}`],
       ])}
     >
-      Badge
+      {text}
     </span>
   )
 }
+
+export default Badge
