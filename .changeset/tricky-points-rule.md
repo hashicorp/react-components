@@ -1,5 +1,5 @@
 ---
-'@hashicorp/react-badge': major
+'@hashicorp/react-badge': minor
 ---
 
 Refactor to match WPL spec
