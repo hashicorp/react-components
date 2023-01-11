@@ -6,7 +6,7 @@ import s from './style.module.css'
 const Badge = ({
   children,
   variant = 'primary',
-  theme = 'vagrant',
+  theme = 'action',
   page = 'light',
 }: BadgeProps) => {
   let productName: ProductThemes | undefined
