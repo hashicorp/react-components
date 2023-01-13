@@ -1,5 +1,11 @@
 # @hashicorp/react-quote
 
+## 0.3.1
+
+### Patch Changes
+
+- [#864](https://github.com/hashicorp/react-components/pull/864) [`f999c3fe`](https://github.com/hashicorp/react-components/commit/f999c3fe51ec25335da714e3177436a50ca7a872) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - add text size option
+
 ## 0.3.0
 
 ### Minor Changes
