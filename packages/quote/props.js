@@ -1,6 +1,12 @@
 module.exports = {
+  textSize: {
+    type: 'number',
+    description: 'The display size the text should render as.',
+    options: [4, 5],
+  },
   text: {
     type: 'string',
+    required: true,
     description: 'The text displayed as the quote',
   },
   avatar: {
