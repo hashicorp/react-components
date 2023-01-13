@@ -1,7 +1,10 @@
 .quote {
   --color: var(--wpl-neutral-700);
+  --gap: 32px;
 
   margin: 0;
+  display: grid;
+  gap: var(--gap);
 
   &.dark {
     --color: var(--wpl-neutral-0);
@@ -25,8 +28,4 @@
       content: '”';
     }
   }
-}
-
-.caption {
-  margin-top: 32px;
 }
