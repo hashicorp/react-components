@@ -31,15 +31,20 @@ const LABELS_BY_LANGUAGE = {
       >
         politique de confidentialité
       </a>{' '}
-      d&apos;HashiCorp.
-      <span className={style.required}>*</span>
+      d&apos;HashiCorp.<span className={style.required}>*</span>
     </>
   ),
   Korean: (
     <>
-      향후 HashiCorp의 마케팅 이벤트 및 프로모션, 유용한 정보와 교육 등 안내를
-      받으실 수 있습니다. (자세한 내용은 Privacy Policy를 참고하시기 바랍니다:
-      HashiCorp)
+      HashiCorp의{' '}
+      <a
+        href="https://www.hashicorp.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        개인정보 처리방침
+      </a>
+      에 동의합니다<span className={style.required}>*</span>
     </>
   ),
   Japanese: (
@@ -50,9 +55,9 @@ const LABELS_BY_LANGUAGE = {
         target="_blank"
         rel="noopener noreferrer"
       >
-        プライバシーポリシ
+        プライバシーポリシー
       </a>
-      ーに同意します。
+      に同意します。
       <span className={style.required}>*</span>
     </>
   ),
@@ -66,8 +71,7 @@ const LABELS_BY_LANGUAGE = {
       >
         Datenschutzrichtlinien
       </a>{' '}
-      von HashiCorp zu.
-      <span className={style.required}>*</span>
+      von HashiCorp zu.<span className={style.required}>*</span>
     </>
   ),
   Spanish: (
@@ -80,8 +84,7 @@ const LABELS_BY_LANGUAGE = {
       >
         política de privacidad
       </a>{' '}
-      de HashiCorp.
-      <span className={style.required}>*</span>
+      de HashiCorp.<span className={style.required}>*</span>
     </>
   ),
   'Portuguese (Brazil)': (
@@ -94,19 +97,18 @@ const LABELS_BY_LANGUAGE = {
       >
         Política de Privacidade
       </a>{' '}
-      da HashiCorp.
-      <span className={style.required}>*</span>
+      da HashiCorp.<span className={style.required}>*</span>
     </>
   ),
   Italian: (
     <>
-      Accetto l&apos;informativa{' '}
+      Accetto{' '}
       <a
         href="https://www.hashicorp.com/privacy"
         target="_blank"
         rel="noopener noreferrer"
       >
-        sulla privacy
+        l&apos;informativa sulla privacy
       </a>{' '}
       di HashiCorp.
       <span className={style.required}>*</span>
