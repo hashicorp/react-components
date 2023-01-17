@@ -129,6 +129,10 @@ export interface MarketoFormResponse<T> {
 export type MarketoFormFieldsResponse = MarketoFormResponse<MarketoFormField>
 export type MarketoFormMetadataResponse =
   MarketoFormResponse<MarketoFormMetadata>
+export interface MarketoFormAPIResponse {
+  fields: MarketoFormFieldsResponse
+  metadata: MarketoFormMetadataResponse
+}
 
 /**
  * Custom components to be used in lieu of the default built-in components.

@@ -3,6 +3,7 @@ import moize from 'moize'
 import type {
   MarketoFormFieldsResponse,
   MarketoFormMetadataResponse,
+  MarketoFormAPIResponse,
 } from '../types'
 
 const fetch = createFetch()
@@ -24,10 +25,9 @@ export async function getForm(formId: number) {
   return await fetch(`https://content.hashicorp.com/api/marketo?id=${formId}`)
 }
 
-export async function getFormProps(id: number): Promise<{
-  fields: MarketoFormFieldsResponse
-  metadata: MarketoFormMetadataResponse
-}> {
+export async function getFormProps(
+  id: number
+): Promise<MarketoFormAPIResponse> {
   const res = await getForm(id)
   if (res.status !== 200) {
     throw new Error(
