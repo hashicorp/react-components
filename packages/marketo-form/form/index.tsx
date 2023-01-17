@@ -3,6 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import Button from '@hashicorp/react-button'
 import VisibilityRule from '../partials/visibility-rule'
 import NameField from '../partials/fields/name-field'
+import { FormMetadataContext } from '../contexts/FormMetadata'
 import {
   convertToRESTFields,
   groupFields,
@@ -10,23 +11,24 @@ import {
   segmentIdentify,
 } from '../utils'
 import type {
-  MarketoForm,
+  MarketoFormMetadataResponse,
+  MarketoFormFieldsResponse,
   MarketoFormGroups,
   MarketoFormComponents,
 } from '../types'
 
 interface Props {
   /**
-   * Numeric ID of the Marketo form being rendered. Used to determine where to
-   * submit form values.
+   * The Marketo API response containing the metadata of the form.
+   * See {@link MarketoFormMetadataResponse} for more details.
    */
-  formId: number
+  metadata: MarketoFormMetadataResponse
 
   /**
    * The Marketo API response containing the fields to render.
-   * See {@link MarketoForm} for more details.
+   * See {@link MarketoFormFieldsResponse} for more details.
    */
-  marketoForm: MarketoForm
+  fields: MarketoFormFieldsResponse
 
   /**
    * Configuration on which fields to render with a single component.
@@ -103,8 +105,8 @@ function isValidEmail(value: string): boolean {
 }
 
 const Form = ({
-  formId,
-  marketoForm,
+  metadata,
+  fields,
   groups = defaultFieldGroupings,
   initialValues,
   components,
@@ -123,16 +125,16 @@ const Form = ({
   // If a field doesn't belong to a group, it is placed in a group keyed by
   // field.Name.
   const groupedFields = useMemo(() => {
-    return groupFields(marketoForm.result, groups)
-  }, [marketoForm, groups])
+    return groupFields(fields.result, groups)
+  }, [fields, groups])
 
   const methods = useForm({
     mode: 'onBlur',
-    defaultValues: calculateDefaultValues(marketoForm.result, initialValues),
+    defaultValues: calculateDefaultValues(fields.result, initialValues),
     resolver: async (values: Record<string, string | boolean>) => {
       let errors: Record<string, { message: string }> = {}
 
-      marketoForm.result.forEach((field) => {
+      fields.result.forEach((field) => {
         if (field.required) {
           if (
             !(field.id in values) ||
@@ -188,17 +190,14 @@ const Form = ({
   // resolved _after_ the initial render for SSG pages.
   useEffect(() => {
     if (hasBeenRendered.current) {
-      const newValues = calculateDefaultValues(
-        marketoForm.result,
-        initialValues
-      )
+      const newValues = calculateDefaultValues(fields.result, initialValues)
       Object.entries(newValues).forEach(([fieldId, value]) => {
         if (!methods.getValues(fieldId)) {
           methods.setValue(fieldId, value)
         }
       })
     }
-  }, [hasBeenRendered, methods, marketoForm, initialValues])
+  }, [hasBeenRendered, methods, fields, initialValues])
 
   // Track that we've finished rendering.
   useEffect(() => {
@@ -224,7 +223,7 @@ const Form = ({
             },
           },
         ],
-        formId,
+        formId: metadata.result[0].id,
       }),
     })
     const marketoResponse = (await res.json()) as { success: boolean }
@@ -247,53 +246,55 @@ const Form = ({
   }
 
   return (
-    <FormProvider {...methods}>
-      <form
-        className={className}
-        onSubmit={methods.handleSubmit(onSubmit)}
-        data-marketo-form-id={formId}
-      >
-        {Object.entries(groupedFields).map(([groupName, fields]) => {
-          // If this group name has a custom component defined, use that
-          // instead of the default field components.
-          if (groups && groupName in groups) {
-            const Component = groups[groupName].component
+    <FormMetadataContext.Provider value={metadata.result[0]}>
+      <FormProvider {...methods}>
+        <form
+          className={className}
+          onSubmit={methods.handleSubmit(onSubmit)}
+          data-marketo-form-id={metadata.result[0].id}
+        >
+          {Object.entries(groupedFields).map(([groupName, fields]) => {
+            // If this group name has a custom component defined, use that
+            // instead of the default field components.
+            if (groups && groupName in groups) {
+              const Component = groups[groupName].component
+              return (
+                <Component
+                  key={fields.map((f) => f.id).join('-')}
+                  fields={fields}
+                />
+              )
+            }
+
+            if (fields.length > 1) {
+              console.warn(
+                `Multiple fields in group ${groupName} with no component defined.`
+              )
+            }
+
             return (
-              <Component
-                key={fields.map((f) => f.id).join('-')}
-                fields={fields}
+              <VisibilityRule
+                key={fields[0].id}
+                components={components}
+                field={fields[0]}
               />
             )
-          }
-
-          if (fields.length > 1) {
-            console.warn(
-              `Multiple fields in group ${groupName} with no component defined.`
-            )
-          }
-
-          return (
-            <VisibilityRule
-              key={fields[0].id}
-              components={components}
-              field={fields[0]}
-            />
-          )
-        })}
-        <Button
-          disabled={
-            methods.formState.isSubmitting ||
-            (methods.formState.isSubmitSuccessful && !resetOnSubmission)
-          }
-          title={
-            methods.formState.isSubmitting ||
-            (methods.formState.isSubmitSuccessful && !resetOnSubmission)
-              ? 'Submitting...'
-              : submitTitle ?? 'Submit'
-          }
-        />
-      </form>
-    </FormProvider>
+          })}
+          <Button
+            disabled={
+              methods.formState.isSubmitting ||
+              (methods.formState.isSubmitSuccessful && !resetOnSubmission)
+            }
+            title={
+              methods.formState.isSubmitting ||
+              (methods.formState.isSubmitSuccessful && !resetOnSubmission)
+                ? metadata.result[0].waitingLabel
+                : submitTitle ?? metadata.result[0].buttonLabel
+            }
+          />
+        </form>
+      </FormProvider>
+    </FormMetadataContext.Provider>
   )
 }
 

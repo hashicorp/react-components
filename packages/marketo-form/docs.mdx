@@ -5,139 +5,180 @@ componentName: 'MarketoForm'
 Renders a form from Marketo.
 
 <LiveComponent>
-{`<MarketoForm
-  formId={9999}
-  marketoForm={{
-    result: [
-      {
-        id: 'FirstName',
-        label: 'First Name:',
-        dataType: 'text',
-        validationMessage: 'This field is required.',
-        required: true,
-        visibilityRules: {
-          ruleType: 'alwaysShow',
-        },
-      },
-      {
-        id: 'LastName',
-        label: 'Last Name:',
-        dataType: 'text',
-        validationMessage: 'This field is required.',
-        required: true,
-        visibilityRules: {
-          ruleType: 'alwaysShow',
-        },
-      },
-      {
-        id: 'Email',
-        label: 'Business Email:',
-        dataType: 'email',
-        validationMessage:
-          "Must be valid email. <span class='mktoErrorDetail'>example@yourdomain.com</span>",
-        required: true,
-        visibilityRules: {
-          ruleType: 'alwaysShow',
-        },
-      },
-      {
-        id: 'Company',
-        label: 'Company:',
-        dataType: 'text',
-        validationMessage: 'This field is required.',
-        required: true,
-        visibilityRules: {
-          ruleType: 'alwaysShow',
-        },
-      },
-      {
-        id: 'FavoriteProduct',
-        label: 'Favorite HashiCorp Product',
-        dataType: 'select',
-        required: true,
-        validationMessage: 'This field is required.',
-        visibilityRules: {
-          ruleType: 'alwaysShow',
-        },
-        fieldMetaData: {
-          values: [
-            { label: 'Terraform', value: 'terraform' },
-            { label: 'Packer', value: 'packer' },
-            { label: 'Consul', value: 'consul' },
-            { label: 'Vault', value: 'vault' },
-            { label: 'Boundary', value: 'boundary' },
-            { label: 'Nomad', value: 'nomad' },
-            { label: 'Waypoint', value: 'waypoint' },
-            { label: 'Vagrant', value: 'vagrant' },
-          ]
-        }
-      },
-      {
-        id: 'appendToNotes',
-        label: 'Comments',
-        dataType: 'textArea',
-        required: false,
-        validationMessage: 'This field is required.',
-        visibilityRules: {
-          ruleType: 'alwaysShow'
-        }
-      },
-      {
-        id: 'Phone',
-        label: 'Phone:',
-        dataType: 'text',
-        validationMessage: 'This field is required.',
-        required: false,
-        visibilityRules: {
-          ruleType: 'show',
-          rules: [
+  {`<MarketoForm
+    metadata={{
+      result: [
+        {
+          id: 9999,
+          name: "FORM - Contact Sales",
+          description: "",
+          createdAt: "2020-08-26T21:35:12Z+0000",
+          updatedAt: "2022-11-11T01:39:32Z+0000",
+          url: "https://app-ab32.marketo.com/#FO1307B2",
+          status: "approved",
+          theme: "simple",
+          language: "English",
+          locale: "en_US",
+          progressiveProfiling: false,
+          labelPosition: "left",
+          fontFamily: "Helvetica",
+          fontSize: "13px",
+          folder: {
+            type: "Folder",
+            value: 32792,
+            folderName: "01. In use forms",
+          },
+          knownVisitor: {
+            type: "form",
+            template: null,
+          },
+          thankYouList: [
             {
-              subjectField: 'fastTracktoSales',
-              operator: 'is',
-              values: ['yes'],
-              altLabel: 'Phone Number:'
-            }
-          ]
+              followupType: "none",
+              followupValue: null,
+              default: true,
+            },
+          ],
+          buttonLocation: 120,
+          buttonLabel: "Submit",
+          waitingLabel: "Please Wait",
+          workSpaceId: 1,
         },
-      },
-      {
-        id: 'fastTracktoSales',
-        label: "I'd like a sales person to contact me about a trial or pricing.",
-        dataType: 'checkbox',
-        validationMessage: 'This field is required.',
-        rowNumber: 6,
-        columnNumber: 0,
-        required: false,
-        formPrefill: true,
-        fieldMetaData: {
-          initiallyChecked: false,
+      ],
+    }}
+    fields={{
+      result: [
+        {
+          id: "FirstName",
+          label: "First Name:",
+          dataType: "text",
+          validationMessage: "This field is required.",
+          required: true,
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
         },
-        visibilityRules: {
-          ruleType: 'alwaysShow',
+        {
+          id: "LastName",
+          label: "Last Name:",
+          dataType: "text",
+          validationMessage: "This field is required.",
+          required: true,
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
         },
-      },
-      {
-        id: 'Consent_Privacy_Policy__c',
-        dataType: 'checkbox',
-        validationMessage: 'This field is required.',
-        rowNumber: 6,
-        columnNumber: 0,
-        required: true,
-        formPrefill: true,
-        fieldMetaData: {
-          initiallyChecked: false,
+        {
+          id: "Email",
+          label: "Business Email:",
+          dataType: "email",
+          validationMessage:
+            "Must be valid email. <span class='mktoErrorDetail'>example@yourdomain.com</span>",
+          required: true,
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
         },
-        visibilityRules: {
-          ruleType: 'alwaysShow',
+        {
+          id: "Company",
+          label: "Company:",
+          dataType: "text",
+          validationMessage: "This field is required.",
+          required: true,
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
         },
-      }
-    ]
-  }}
-  submitTitle="Download Now"
-  onSubmitSuccess={() => alert('Success!')}
-  onSubmitFailure={() => alert('Failure!')}
-/>`}
+        {
+          id: "FavoriteProduct",
+          label: "Favorite HashiCorp Product",
+          dataType: "select",
+          required: true,
+          validationMessage: "This field is required.",
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
+          fieldMetaData: {
+            values: [
+              { label: "Terraform", value: "terraform" },
+              { label: "Packer", value: "packer" },
+              { label: "Consul", value: "consul" },
+              { label: "Vault", value: "vault" },
+              { label: "Boundary", value: "boundary" },
+              { label: "Nomad", value: "nomad" },
+              { label: "Waypoint", value: "waypoint" },
+              { label: "Vagrant", value: "vagrant" },
+            ],
+          },
+        },
+        {
+          id: "appendToNotes",
+          label: "Comments",
+          dataType: "textArea",
+          required: false,
+          validationMessage: "This field is required.",
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
+        },
+        {
+          id: "Phone",
+          label: "Phone:",
+          dataType: "text",
+          validationMessage: "This field is required.",
+          required: false,
+          visibilityRules: {
+            ruleType: "show",
+            rules: [
+              {
+                subjectField: "fastTracktoSales",
+                operator: "is",
+                values: ["yes"],
+                altLabel: "Phone Number:",
+              },
+            ],
+          },
+        },
+        {
+          id: "fastTracktoSales",
+          label:
+            "I'd like a sales person to contact me about a trial or pricing.",
+          dataType: "checkbox",
+          validationMessage: "This field is required.",
+          rowNumber: 6,
+          columnNumber: 0,
+          required: false,
+          formPrefill: true,
+          fieldMetaData: {
+            initiallyChecked: false,
+          },
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
+        },
+        {
+          id: "Consent_Privacy_Policy__c",
+          dataType: "checkbox",
+          validationMessage: "This field is required.",
+          rowNumber: 6,
+          columnNumber: 0,
+          required: true,
+          formPrefill: true,
+          fieldMetaData: {
+            initiallyChecked: false,
+          },
+          visibilityRules: {
+            ruleType: "alwaysShow",
+          },
+        },
+      ],
+    }}
+    submitTitle="Download Now"
+    onSubmitSuccess={() => alert("Success!")}
+    onSubmitFailure={() => alert("Failure!")}
+  />`}
 </LiveComponent>
+;
 
 ### Props
 
