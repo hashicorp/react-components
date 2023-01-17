@@ -105,11 +105,11 @@
   transition-property: background-color;
 
   &.primary {
-    --background-color: var(--brand);
-    --color: var(--brand-text-on-primary);
+    --background-color: var(--brand-secondary);
+    --color: var(--wpl-neutral-900);
 
     &:hover {
-      --background-color: var(--brand);
+      --background-color: var(--brand-secondary);
     }
 
     @nest .hashicorp & {
@@ -192,6 +192,7 @@
 
   @nest .primary & {
     --color: var(--brand-text-on-primary);
+    --color: var(--wpl-neutral-900);
   }
 
   @nest .dark & {
