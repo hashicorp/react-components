@@ -116,6 +116,11 @@
   @media (--medium-up) {
     display: none;
   }
+
+  & img {
+    object-fit: contain;
+    object-position: bottom center;
+  }
 }
 
 .heading {
