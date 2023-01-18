@@ -112,9 +112,7 @@ function Tile({ theme, variant, heading, badge, description, cta }) {
             </span>
           </span>
         </div>
-        {theme !== 'hashicorp' || variant === 'secondary' ? (
-          <span className={s.tileScrim} />
-        ) : null}
+        <span className={s.tileScrim} />
       </a>
     </Link>
   )

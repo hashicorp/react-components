@@ -100,6 +100,7 @@
   --transition-duration: 250ms;
   --transition-timing-function: ease-in-out;
   --border-radius: 8px;
+  --scrim-background: transparent;
 
   position: relative;
   display: flex;
@@ -117,6 +118,7 @@
   &.primary {
     --background-color: var(--brand-secondary);
     --color: var(--wpl-neutral-900);
+    --scrim-background: black;
 
     &:hover {
       --background-color: var(--brand-secondary);
@@ -125,9 +127,19 @@
     @nest .hashicorp & {
       --background-color: var(--wpl-blue-500);
       --color: var(--wpl-neutral-0);
+      --scrim-background: transparent;
 
       &:hover {
         --background-color: var(--wpl-blue-600);
+      }
+    }
+
+    @nest .dark & {
+      --background-color: var(--wpl-neutral-700);
+      --color: var(--wpl-neutral-0);
+
+      &:hover {
+        --background-color: var(--wpl-neutral-600);
       }
     }
   }
@@ -137,7 +149,7 @@
     --background-color: var(--wpl-neutral-50);
 
     &:hover {
-      --background-color: var(--wpl-neutral-50);
+      --background-color: var(--wpl-neutral-100);
     }
 
     @nest .dark & {
@@ -145,7 +157,7 @@
       --color: var(--white);
 
       &:hover {
-        --background-color: var(--wpl-neutral-700);
+        --background-color: var(--wpl-neutral-600);
       }
     }
   }
@@ -159,20 +171,14 @@
 }
 
 .tileScrim {
-  --background-color: #000;
-
   position: absolute;
   inset: 0;
-  background: var(--background-color);
+  background: var(--scrim-background);
   border-radius: var(--border-radius);
   opacity: 0;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   transition-property: opacity;
-
-  @nest .dark & {
-    --background-color: #fff;
-  }
 
   @nest .tile &:hover {
     opacity: 0.05;
