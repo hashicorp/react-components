@@ -20,7 +20,7 @@
 .content {
   grid-column: 1 / -1;
 
-  @media (--medium-up) {
+  @media (--large) {
     grid-column: 1 / 5;
   }
 }
@@ -61,7 +61,7 @@
   gap: var(--wpl-spacing-05);
   grid-column: 1 / -1;
 
-  @media (--medium-up) {
+  @media (--large) {
     --grid-gap: var(--wpl-spacing-06);
 
     grid-column: 6 / -1;
