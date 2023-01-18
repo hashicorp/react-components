@@ -239,13 +239,13 @@
   flex-shrink: 0;
 }
 
-.tertiaryCta {
+.cta {
   grid-column: 1/ -1;
   display: flex;
   gap: var(--wpl-spacing-03);
 }
 
-.tertiaryCtaText {
+.ctaCopy {
   margin: 0;
   composes: g-type-body-strong from global;
   font-size: 16px;

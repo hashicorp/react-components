@@ -43,7 +43,11 @@ export interface NextStepsProps {
   /**
    * Optional ctas displayed below the heading and description.
    */
-  ctas?: ActionsProps['ctas']
+  cta?: {
+    copy: string
+    href: string
+    ctaText: string
+  }
   /**
    * The list of steps to display as tiles.
    */
