@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Badge from '@hashicorp/react-badge'
-import StandaloneLink from '@hashicorp/react-standalone-link'
 import classNames from 'classnames'
 import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import Intro from '@hashicorp/react-intro'
 import Link from 'next/link'
 import type { NextStepsProps } from './types'
+import StandaloneLink from '@hashicorp/react-standalone-link'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import s from './style.module.css'
 
@@ -45,37 +45,43 @@ export default function NextSteps({
             }}
           />
         </div>
-        <ul className={s.stepsList}>
-          {steps.map((step, index) => {
-            const isFeatured = steps.length === 3 && index === 0
-            const variant = index === 0 ? 'primary' : 'secondary'
-            return (
-              <li
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                className={classNames(
-                  s.stepsListItem,
-                  isFeatured && s.stepsListItemFeature
-                )}
-              >
-                <Tile
-                  badge={step.badge}
-                  theme={theme}
-                  variant={variant}
-                  cta={{
-                    title: step.cta.title,
-                    url: step.cta.url,
-                  }}
-                  heading={step.heading}
-                  description={step.description}
-                />
-              </li>
-            )
-          })}
-        </ul>
-        <div>
-          <p>Ready to talk with our sales team?</p>
-          <StandaloneLink />
+        <div className={s.stepsWrapper}>
+          <ul className={s.stepsList}>
+            {steps.map((step, index) => {
+              const isFeatured = steps.length === 3 && index === 0
+              const variant = index === 0 ? 'primary' : 'secondary'
+              return (
+                <li
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                  className={classNames(
+                    s.stepsListItem,
+                    isFeatured && s.stepsListItemFeature
+                  )}
+                >
+                  <Tile
+                    badge={step.badge}
+                    theme={theme}
+                    variant={variant}
+                    cta={{
+                      title: step.cta.title,
+                      url: step.cta.url,
+                    }}
+                    heading={step.heading}
+                    description={step.description}
+                  />
+                </li>
+              )
+            })}
+          </ul>
+          <div className={s.tertiaryCta}>
+            <p className={s.tertiaryCtaText}>
+              Ready to talk with our sales team?
+            </p>
+            <StandaloneLink href="www.hashicorp.com" theme={'secondary'}>
+              Sign up now
+            </StandaloneLink>
+          </div>
         </div>
       </div>
     </section>
