@@ -20,16 +20,11 @@ const steps = [
     },
   },
 ]
-const ctas = [
-  {
-    title: 'Cta 1',
-    href: '/cta-1',
-  },
-  {
-    title: 'Cta 2',
-    href: '/cta-2',
-  },
-]
+const cta = {
+  copy: 'Ready to speak with our sales team?',
+  href: 'https://www.hashicorp.com',
+  ctaText: 'Contact us',
+}
 
 describe('<NextSteps />', () => {
   it('should render next steps', () => {
@@ -51,23 +46,19 @@ describe('<NextSteps />', () => {
     )
   })
 
-  it('should render provided ctas', () => {
+  it('should render provided cta', () => {
     render(
       <NextSteps
         heading={heading}
         description={description}
-        ctas={ctas}
+        cta={cta}
         steps={steps}
       />
     )
 
-    expect(screen.getByText(ctas[0].title).closest('a')).toHaveAttribute(
+    expect(screen.getByText(cta.ctaText).closest('a')).toHaveAttribute(
       'href',
-      ctas[0].href
-    )
-    expect(screen.getByText(ctas[1].title).closest('a')).toHaveAttribute(
-      'href',
-      ctas[1].href
+      cta.href
     )
   })
 
