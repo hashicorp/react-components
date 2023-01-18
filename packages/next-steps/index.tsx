@@ -1,12 +1,13 @@
 import * as React from 'react'
-import Link from 'next/link'
+import Badge from '@hashicorp/react-badge'
+import StandaloneLink from '@hashicorp/react-standalone-link'
 import classNames from 'classnames'
+import ExpandableArrow from '@hashicorp/react-expandable-arrow'
+import Intro from '@hashicorp/react-intro'
+import Link from 'next/link'
 import type { NextStepsProps } from './types'
 import useProductMeta from '@hashicorp/platform-product-meta'
-import Intro from '@hashicorp/react-intro'
-import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import s from './style.module.css'
-import Badge from '@hashicorp/react-badge'
 
 export default function NextSteps({
   appearance = 'light',
@@ -72,6 +73,10 @@ export default function NextSteps({
             )
           })}
         </ul>
+        <div>
+          <p>Ready to talk with our sales team?</p>
+          <StandaloneLink />
+        </div>
       </div>
     </section>
   )
