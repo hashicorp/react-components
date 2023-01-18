@@ -169,6 +169,12 @@
   }
 }
 
+.tileHeadingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .tileHeading {
   composes: g-type-display-4 from global;
   margin: 0;

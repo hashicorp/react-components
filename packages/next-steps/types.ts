@@ -33,7 +33,11 @@ export interface NextStepsProps {
    */
   heading: string
   /**
-   * The description for the section.
+   * The heading for the section.
+   */
+  badge?: string
+  /**
+   * Optional badge
    */
   description: string
   /**

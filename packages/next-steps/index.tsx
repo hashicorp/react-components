@@ -6,9 +6,11 @@ import useProductMeta from '@hashicorp/platform-product-meta'
 import Intro from '@hashicorp/react-intro'
 import ExpandableArrow from '@hashicorp/react-expandable-arrow'
 import s from './style.module.css'
+import Badge from '@hashicorp/react-badge'
 
 export default function NextSteps({
   appearance = 'light',
+  badge,
   theme = 'hashicorp',
   heading,
   description,
@@ -57,6 +59,7 @@ export default function NextSteps({
                 )}
               >
                 <Tile
+                  badge={badge}
                   theme={theme}
                   variant={variant}
                   cta={{
@@ -75,7 +78,7 @@ export default function NextSteps({
   )
 }
 
-function Tile({ theme, variant, heading, description, cta }) {
+function Tile({ theme, variant, heading, badge, description, cta }) {
   const [isHovered, setIsHovered] = React.useState(false)
   return (
     <Link href={cta.url} legacyBehavior>
@@ -89,7 +92,10 @@ function Tile({ theme, variant, heading, description, cta }) {
         }}
       >
         <div className={s.tileInner}>
-          <h3 className={s.tileHeading}>{heading}</h3>
+          <div className={s.tileHeadingWrapper}>
+            <h3 className={s.tileHeading}>{heading}</h3>
+            {badge ? <BadgeWrapper theme={theme}>{badge}</BadgeWrapper> : null}
+          </div>
           {description ? (
             <p className={s.tileDescription}>{description}</p>
           ) : null}
@@ -105,5 +111,16 @@ function Tile({ theme, variant, heading, description, cta }) {
         ) : null}
       </a>
     </Link>
+  )
+}
+
+const BadgeWrapper = ({ theme, children }) => {
+  const badgeTheme = theme === 'hashicorp' ? 'action' : theme
+  const page = theme === 'hashicorp' ? 'action' : 'actionFaint'
+
+  return (
+    <Badge theme={badgeTheme} page={page}>
+      {children}
+    </Badge>
   )
 }
