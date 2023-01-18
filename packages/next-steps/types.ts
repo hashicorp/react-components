@@ -37,7 +37,7 @@ export interface NextStepsProps {
    */
   heading: string
   /**
-   * The heading for the section.
+   * The description for the section.
    */
   description: string
   /**
