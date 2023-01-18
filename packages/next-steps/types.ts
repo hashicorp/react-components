@@ -9,6 +9,10 @@ export interface StepProps {
   /**
    * Optinal description for the step.
    */
+  badge?: string
+  /**
+   * Optional badge
+   */
   description?: string
   /**
    * The call to action for the step.
@@ -34,10 +38,6 @@ export interface NextStepsProps {
   heading: string
   /**
    * The heading for the section.
-   */
-  badge?: string
-  /**
-   * Optional badge
    */
   description: string
   /**

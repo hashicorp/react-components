@@ -10,7 +10,6 @@ import Badge from '@hashicorp/react-badge'
 
 export default function NextSteps({
   appearance = 'light',
-  badge,
   theme = 'hashicorp',
   heading,
   description,
@@ -59,7 +58,7 @@ export default function NextSteps({
                 )}
               >
                 <Tile
-                  badge={badge}
+                  badge={step.badge}
                   theme={theme}
                   variant={variant}
                   cta={{
