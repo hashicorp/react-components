@@ -132,6 +132,43 @@ componentName: 'NextSteps'
 
 </div>
 
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Optional Tertiary CTA
+</h3>
+
+<div style={{marginBottom: 24, backgroundColor: 'black'}}>
+
+<NextSteps
+  appearance="dark"
+  theme="consul"
+  heading="Next steps"
+  description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
+  steps={[
+    {
+      heading: 'Heading',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+    {
+      heading: 'Heading',
+      description: 'Sub-heading',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+  ]}
+  tertiaryCta={{
+    copy: "Ready to connect with our sales team?",
+    href: "https://www.hashicorp.com",
+    ctaText: "Contact us",
+  }}
+/>
+
+</div>
+
 ## Props
 
 <PropsTable props={componentProps} />

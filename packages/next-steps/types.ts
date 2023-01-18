@@ -51,4 +51,14 @@ export interface NextStepsProps {
     | [StepProps]
     | [StepProps, StepProps]
     | [StepProps, StepProps, StepProps]
+  /**
+   * Optional tertiary CTA. Displayed below the tiles.
+   * Only renders if there are less than 3 tiles and no CTAs
+   * (see above) provided.
+   */
+  tertiaryCta?: {
+    copy: string
+    href: string
+    ctaText: string
+  }
 }

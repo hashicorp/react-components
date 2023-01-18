@@ -245,4 +245,8 @@
   margin: 0;
   composes: g-type-body-strong from global;
   font-size: 16px;
+
+  @nest .dark & {
+    color: var(--wpl-neutral-0);
+  }
 }

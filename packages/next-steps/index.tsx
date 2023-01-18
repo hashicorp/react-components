@@ -16,8 +16,12 @@ export default function NextSteps({
   description,
   ctas,
   steps,
+  tertiaryCta,
 }: NextStepsProps) {
   const { slug, themeClass } = useProductMeta(theme)
+
+  // Only render the tertiary CTA if it is provided, there are less than 3 steps and no CTAs
+  const showTertiaryCta = tertiaryCta && steps.length < 3 && !ctas
   return (
     <section
       className={classNames(
@@ -74,14 +78,18 @@ export default function NextSteps({
               )
             })}
           </ul>
-          <div className={s.tertiaryCta}>
-            <p className={s.tertiaryCtaText}>
-              Ready to talk with our sales team?
-            </p>
-            <StandaloneLink href="www.hashicorp.com" theme={'secondary'}>
-              Sign up now
-            </StandaloneLink>
-          </div>
+          {showTertiaryCta ? (
+            <div className={s.tertiaryCta}>
+              <p className={s.tertiaryCtaText}>{tertiaryCta.copy}</p>
+              <StandaloneLink
+                href={tertiaryCta.href}
+                theme={'secondary'}
+                appearance={appearance}
+              >
+                {tertiaryCta.ctaText}
+              </StandaloneLink>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
