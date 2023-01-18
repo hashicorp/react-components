@@ -53,6 +53,10 @@ module.exports = {
         required: true,
         description: 'The heading for the step.',
       },
+      badge: {
+        type: 'string',
+        description: 'Optional badge. Limit to one word.',
+      },
       description: {
         type: 'string',
         description: 'The description for the step.',
