@@ -179,16 +179,20 @@
   }
 }
 
-.tileHeadingWrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .tileHeading {
-  composes: g-type-display-4 from global;
   margin: 0;
   color: inherit;
+}
+
+.tileHeadingText {
+  composes: g-type-display-4 from global;
+  vertical-align: middle;
+}
+
+.tileBadge {
+  display: inline-flex;
+  margin: 0 0 0 var(--wpl-spacing-02);
+  vertical-align: middle;
 }
 
 .tileDescription {

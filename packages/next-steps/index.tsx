@@ -110,10 +110,10 @@ function Tile({ theme, variant, heading, badge, description, cta }) {
         }}
       >
         <div className={s.tileInner}>
-          <div className={s.tileHeadingWrapper}>
-            <h3 className={s.tileHeading}>{heading}</h3>
+          <h3 className={s.tileHeading}>
+            <span className={s.tileHeadingText}>{heading}</span>
             {badge ? <BadgeWrapper theme={theme}>{badge}</BadgeWrapper> : null}
-          </div>
+          </h3>
           {description ? (
             <p className={s.tileDescription}>{description}</p>
           ) : null}
@@ -137,8 +137,10 @@ const BadgeWrapper = ({ theme, children }) => {
   const page = theme === 'hashicorp' ? 'action' : 'actionFaint'
 
   return (
-    <Badge theme={badgeTheme} page={page}>
-      {children}
-    </Badge>
+    <span className={s.tileBadge}>
+      <Badge theme={badgeTheme} page={page}>
+        {children}
+      </Badge>
+    </span>
   )
 }
