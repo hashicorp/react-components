@@ -94,8 +94,10 @@ const Hero = ({
             <Image
               src={smallImage}
               alt=""
-              width={760}
-              height={380}
+              /*
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment 
+              // @ts-ignore */
+              fill
               priority={true}
             />
           )}
