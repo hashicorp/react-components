@@ -1,4 +1,9 @@
-import { calculateDefaultValues, formattedLabel, groupFields } from './utils'
+import {
+  calculateDefaultValues,
+  formattedLabel,
+  groupFields,
+  includesSkippedRecords,
+} from './utils'
 import { UTM_FORM_PROPS, VISIBILITY_RULE_FORM_PROPS } from './fixtures'
 
 describe('formattedLabel', () => {
@@ -64,5 +69,40 @@ describe('calculateDefaultValues', () => {
       utm_medium__c: '',
       form_page_url__c: 'http',
     })
+  })
+})
+
+describe('includesSkippedRecords', () => {
+  it('returns true when containing skipped records', () => {
+    const response = {
+      requestId: 'f8a8#185cc1e96b9',
+      result: [
+        {
+          status: 'skipped',
+          reasons: [
+            {
+              code: '1003',
+              message:
+                "Invalid value for field 'email' and value 'dylan.staley@hashicorp.co.k'",
+            },
+          ],
+        },
+      ],
+      success: true,
+    }
+    expect(includesSkippedRecords(response)).toBe(true)
+  })
+
+  it('returns false when not containing skipped records', () => {
+    const response = {
+      requestId: 'f8a8#185cc1e96b9',
+      result: [
+        {
+          status: 'created',
+        },
+      ],
+      success: true,
+    }
+    expect(includesSkippedRecords(response)).toBe(false)
   })
 })
