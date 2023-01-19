@@ -66,6 +66,11 @@ interface Props {
   resetOnSubmission?: boolean
 
   /**
+   * Callback called when form has started submission process.
+   */
+  onSubmitStart?: () => void
+
+  /**
    * Callback called when form has been successfully submitted.
    */
   onSubmitSuccess?: () => void
@@ -113,6 +118,7 @@ const Form = ({
   submitTitle,
   className,
   resetOnSubmission,
+  onSubmitStart,
   onSubmitSuccess,
   onSubmitError,
   validateFields,
@@ -208,6 +214,9 @@ const Form = ({
   }, [hasBeenRendered])
 
   const onSubmit = async (data: Record<string, unknown>) => {
+    if (onSubmitStart) {
+      onSubmitStart()
+    }
     const leadFormFields = convertToRESTFields(data)
 
     segmentIdentify(leadFormFields)
