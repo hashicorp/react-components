@@ -20,7 +20,7 @@ describe('MarketoForm', () => {
     nock('http://local.test')
       .persist()
       .post('/api/marketo/submit')
-      .reply(200, { success: true })
+      .reply(200, { success: true, result: [] })
 
     delete window.location
     window.location = {
