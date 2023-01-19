@@ -1,5 +1,5 @@
 import { isAnalyticsMethodAvailable } from '@hashicorp/platform-analytics'
-import { MarketoFormField } from './types'
+import { MarketoFormField, MarketoSubmissionResponse } from './types'
 import { useFormState } from 'react-hook-form'
 
 // Marketo stores field names in two versions, SOAP and REST. Some API
@@ -230,4 +230,11 @@ export function segmentIdentify(leadFormFields: Record<string, unknown>) {
   } catch (err) {
     console.error(err)
   }
+}
+
+// Returns true if any of the results have a status of skipped
+export function includesSkippedRecords(
+  res: MarketoSubmissionResponse
+): boolean {
+  return res.result.some((r) => r.status === 'skipped')
 }
