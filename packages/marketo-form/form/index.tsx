@@ -8,11 +8,13 @@ import {
   groupFields,
   calculateDefaultValues,
   segmentIdentify,
+  includesSkippedRecords,
 } from '../utils'
 import type {
   MarketoForm,
   MarketoFormGroups,
   MarketoFormComponents,
+  MarketoSubmissionResponse,
 } from '../types'
 
 interface Props {
@@ -227,8 +229,12 @@ const Form = ({
         formId,
       }),
     })
-    const marketoResponse = (await res.json()) as { success: boolean }
-    if (res.status === 200 && marketoResponse.success) {
+    const marketoResponse = (await res.json()) as MarketoSubmissionResponse
+    if (
+      res.status === 200 &&
+      marketoResponse.success &&
+      !includesSkippedRecords(marketoResponse)
+    ) {
       if (onSubmitSuccess) {
         onSubmitSuccess()
       }
