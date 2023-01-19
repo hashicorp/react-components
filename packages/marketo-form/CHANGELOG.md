@@ -1,5 +1,12 @@
 # @hashicorp/react-marketo-form
 
+## 0.7.1
+
+### Patch Changes
+
+- [#868](https://github.com/hashicorp/react-components/pull/868) [`10a7dc7f`](https://github.com/hashicorp/react-components/commit/10a7dc7f92b55533a8a0c0c0216999695b165913) Thanks [@dstaley](https://github.com/dstaley)! - - `MarketoForm` will now treat skipped records as errors, and correctly invoke any `onSubmitError` handlers.
+  - Added a new `onSubmitStart` handler that's called as soon as the submission process begins.
+
 ## 0.7.0
 
 ### Minor Changes
