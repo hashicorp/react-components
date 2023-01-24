@@ -1,26 +1,26 @@
 .nextSteps {
-  --padding-y: 64px;
+  --padding-y: var(--wpl-spacing-10);
 
   position: relative;
   padding-top: var(--padding-y);
   padding-bottom: var(--padding-y);
 
   @media (--medium-up) {
-    --padding-y: 88px;
+    --padding-y: var(--wpl-spacing-13);
   }
 }
 
 .container {
   composes: g-grid-container from global;
   composes: g-grid from global;
-  row-gap: 32px;
+  row-gap: var(--wpl-spacing-06);
   align-items: flex-start;
 }
 
 .content {
   grid-column: 1 / -1;
 
-  @media (--medium-up) {
+  @media (--large) {
     grid-column: 1 / 5;
   }
 }
@@ -41,7 +41,7 @@
   --color: var(--gray-3);
 
   composes: g-type-body-large from global;
-  margin: 24px 0 0;
+  margin: var(--wpl-spacing-05) 0 0;
   color: var(--color);
 
   @nest .dark & {
@@ -50,26 +50,36 @@
 }
 
 .actions {
-  margin-top: 32px;
+  margin-top: var(--wpl-spacing-06);
+}
+
+.stepsWrapper {
+  --grid-gap: var(--wpl-spacing-05);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--wpl-spacing-05);
+  grid-column: 1 / -1;
+
+  @media (--large) {
+    --grid-gap: var(--wpl-spacing-06);
+
+    grid-column: 6 / -1;
+  }
 }
 
 .stepsList {
   --grid-template-columns: 1;
-  --grid-gap: 24px;
 
-  grid-column: 1 / -1;
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(var(--grid-template-columns), 1fr);
   gap: var(--grid-gap);
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
   @media (--medium-up) {
     --grid-template-columns: 2;
-    --grid-gap: 32px;
-
-    grid-column: 6 / -1;
   }
 }
 
@@ -90,13 +100,14 @@
   --transition-duration: 250ms;
   --transition-timing-function: ease-in-out;
   --border-radius: 8px;
+  --scrim-background: transparent;
 
   position: relative;
   display: flex;
   width: 100%;
   min-height: 208px;
   flex-direction: column;
-  padding: 32px;
+  padding: var(--wpl-spacing-06);
   background-color: var(--background-color);
   color: var(--color);
   border-radius: var(--border-radius);
@@ -105,19 +116,30 @@
   transition-property: background-color;
 
   &.primary {
-    --background-color: var(--brand);
-    --color: var(--brand-text-on-primary);
+    --background-color: var(--brand-secondary);
+    --color: var(--wpl-neutral-900);
+    --scrim-background: black;
 
     &:hover {
-      --background-color: var(--brand);
+      --background-color: var(--brand-secondary);
     }
 
     @nest .hashicorp & {
       --background-color: var(--wpl-blue-500);
       --color: var(--wpl-neutral-0);
+      --scrim-background: transparent;
 
       &:hover {
         --background-color: var(--wpl-blue-600);
+      }
+    }
+
+    @nest .dark & {
+      --background-color: var(--wpl-neutral-700);
+      --color: var(--wpl-neutral-0);
+
+      &:hover {
+        --background-color: var(--wpl-neutral-600);
       }
     }
   }
@@ -127,7 +149,7 @@
     --background-color: var(--wpl-neutral-50);
 
     &:hover {
-      --background-color: var(--wpl-neutral-50);
+      --background-color: var(--wpl-neutral-100);
     }
 
     @nest .dark & {
@@ -135,7 +157,7 @@
       --color: var(--white);
 
       &:hover {
-        --background-color: var(--wpl-neutral-700);
+        --background-color: var(--wpl-neutral-600);
       }
     }
   }
@@ -149,20 +171,14 @@
 }
 
 .tileScrim {
-  --background-color: #000;
-
   position: absolute;
   inset: 0;
-  background: var(--background-color);
+  background: var(--scrim-background);
   border-radius: var(--border-radius);
   opacity: 0;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
   transition-property: opacity;
-
-  @nest .dark & {
-    --background-color: #fff;
-  }
 
   @nest .tile &:hover {
     opacity: 0.05;
@@ -170,9 +186,19 @@
 }
 
 .tileHeading {
-  composes: g-type-display-4 from global;
   margin: 0;
   color: inherit;
+}
+
+.tileHeadingText {
+  composes: g-type-display-4 from global;
+  vertical-align: middle;
+}
+
+.tileBadge {
+  display: inline-flex;
+  margin: 0 0 0 var(--wpl-spacing-02);
+  vertical-align: middle;
 }
 
 .tileDescription {
@@ -192,6 +218,7 @@
 
   @nest .primary & {
     --color: var(--brand-text-on-primary);
+    --color: var(--wpl-neutral-900);
   }
 
   @nest .dark & {
@@ -201,7 +228,7 @@
 
 .tileCta {
   margin-top: auto;
-  padding-top: 24px;
+  padding-top: var(--wpl-spacing-05);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -216,4 +243,20 @@
 
 .tileCtaIcon {
   flex-shrink: 0;
+}
+
+.cta {
+  grid-column: 1/ -1;
+  display: flex;
+  gap: var(--wpl-spacing-03);
+}
+
+.ctaCopy {
+  margin: 0;
+  composes: g-type-body-strong from global;
+  font-size: 16px;
+
+  @nest .dark & {
+    color: var(--wpl-neutral-0);
+  }
 }

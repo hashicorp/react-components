@@ -7,7 +7,11 @@ export interface StepProps {
    */
   heading: string
   /**
-   * Optinal description for the step.
+   * Optional badge for the step.
+   */
+  badge?: string
+  /**
+   * Optional description for the step.
    */
   description?: string
   /**
@@ -37,14 +41,18 @@ export interface NextStepsProps {
    */
   description: string
   /**
-   * Optional ctas displayed below the heading and description.
-   */
-  ctas?: ActionsProps['ctas']
-  /**
    * The list of steps to display as tiles.
    */
   steps:
     | [StepProps]
     | [StepProps, StepProps]
     | [StepProps, StepProps, StepProps]
+  /**
+   * Optional CTA displayed below the tiles.
+   */
+  cta?: {
+    copy: string
+    href: string
+    ctaText: string
+  }
 }
