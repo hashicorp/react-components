@@ -34,7 +34,7 @@ export interface ContentProps {
 }
 
 export interface HeadingProps {
-  as?: 'h2' | 'h3' | 'h4'
+  as?: 'h2' | 'h3' | 'h4' | 'h5' | 'span'
   children: string
 }
 

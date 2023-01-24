@@ -1,20 +1,27 @@
-import Card from '@hashicorp/react-card'
+import { headings, type RelatedContentProps } from './types'
 import classNames from 'classnames'
-import Link from 'next/link'
-import type { RelatedContentProps } from './types'
+import * as CardPrimitive from '@hashicorp/react-card/primitives'
+import StandaloneLink from '@hashicorp/react-standalone-link'
 import s from './style.module.css'
 
 const RelatedContent = ({
   appearance = 'light',
   headline,
+  headlineAs = 'h2',
   description,
   cards,
   cta,
 }: RelatedContentProps) => {
+  const Component: React.ElementType = headlineAs
+  const cardHeadingElement =
+    headings[headings.indexOf(headlineAs) + 1] || 'span'
+
   return (
     <div className={classNames([s.wrapper, s[appearance]])}>
       <div className={s.textStack}>
-        <h2 className={classNames([s.headline, s[appearance]])}>{headline}</h2>
+        <Component className={classNames([s.headline, s[appearance]])}>
+          {headline}
+        </Component>
         {description ? (
           <p className={classNames([s.description, s[appearance]])}>
             {description}
@@ -22,22 +29,39 @@ const RelatedContent = ({
         ) : null}
       </div>
       <div className={s.cards} data-testid="wpl-cards-container">
-        {cards.map((card, i) => (
-          <Card
-            key={i}
-            link={card.link}
-            thumbnail={card.thumbnail}
-            meta={card.meta}
-            heading={card.heading}
-            description={card.description}
+        {cards.map(({ link, thumbnail, meta, heading, description }) => (
+          <CardPrimitive.Card
             appearance={appearance}
-          />
+            heading={heading}
+            link={link}
+            key={heading}
+          >
+            {thumbnail ? (
+              <CardPrimitive.Thumbnail
+                src={thumbnail.src}
+                alt={thumbnail.alt}
+              />
+            ) : null}
+            <CardPrimitive.Content>
+              {meta && meta.length > 0 ? (
+                <CardPrimitive.Meta items={meta} />
+              ) : null}
+              <CardPrimitive.Heading as={cardHeadingElement}>
+                {heading}
+              </CardPrimitive.Heading>
+              {description ? (
+                <CardPrimitive.Description>
+                  {description}
+                </CardPrimitive.Description>
+              ) : null}
+            </CardPrimitive.Content>
+          </CardPrimitive.Card>
         ))}
       </div>
       <div className={s.cta} data-testid="wpl-cta-container">
-        <Link href={cta.href} legacyBehavior>
+        <StandaloneLink appearance={appearance} href={cta.href}>
           {cta.text}
-        </Link>
+        </StandaloneLink>
       </div>
     </div>
   )
