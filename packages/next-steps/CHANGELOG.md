@@ -1,5 +1,11 @@
 # @hashicorp/react-next-steps
 
+## 0.8.0
+
+### Minor Changes
+
+- [#866](https://github.com/hashicorp/react-components/pull/866) [`16f0acbc`](https://github.com/hashicorp/react-components/commit/16f0acbc1bf7e25ba3bf9b0b9af30e5e5aa60b1b) Thanks [@nandereck](https://github.com/nandereck)! - enable tertiary CTA, change tile colors and enable badges
+
 ## 0.7.0
 
 ### Minor Changes
