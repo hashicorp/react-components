@@ -1,10 +1,12 @@
 import * as React from 'react'
-import Link from 'next/link'
+import Badge from '@hashicorp/react-badge'
 import classNames from 'classnames'
-import type { NextStepsProps } from './types'
-import useProductMeta from '@hashicorp/platform-product-meta'
-import Intro from '@hashicorp/react-intro'
 import ExpandableArrow from '@hashicorp/react-expandable-arrow'
+import Intro from '@hashicorp/react-intro'
+import Link from 'next/link'
+import type { NextStepsProps } from './types'
+import StandaloneLink from '@hashicorp/react-standalone-link'
+import useProductMeta from '@hashicorp/platform-product-meta'
 import s from './style.module.css'
 
 export default function NextSteps({
@@ -12,10 +14,11 @@ export default function NextSteps({
   theme = 'hashicorp',
   heading,
   description,
-  ctas,
   steps,
+  cta,
 }: NextStepsProps) {
   const { slug, themeClass } = useProductMeta(theme)
+
   return (
     <section
       className={classNames(
@@ -32,50 +35,56 @@ export default function NextSteps({
             appearance={appearance}
             heading={heading}
             description={description}
-            actions={{
-              layout: 'stacked',
-              ctas:
-                ctas &&
-                (ctas.map((cta) => ({
-                  ...cta,
-                  type: 'standalone-link',
-                })) as NextStepsProps['ctas']),
-            }}
           />
         </div>
-        <ul className={s.stepsList}>
-          {steps.map((step, index) => {
-            const isFeatured = steps.length === 3 && index === 0
-            const variant = index === 0 ? 'primary' : 'secondary'
-            return (
-              <li
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                className={classNames(
-                  s.stepsListItem,
-                  isFeatured && s.stepsListItemFeature
-                )}
+        <div className={s.stepsWrapper}>
+          <ul className={s.stepsList}>
+            {steps.map((step, index) => {
+              const isFeatured = steps.length === 3 && index === 0
+              const variant = index === 0 ? 'primary' : 'secondary'
+              return (
+                <li
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                  className={classNames(
+                    s.stepsListItem,
+                    isFeatured && s.stepsListItemFeature
+                  )}
+                >
+                  <Tile
+                    badge={step.badge}
+                    theme={theme}
+                    variant={variant}
+                    cta={{
+                      title: step.cta.title,
+                      url: step.cta.url,
+                    }}
+                    heading={step.heading}
+                    description={step.description}
+                  />
+                </li>
+              )
+            })}
+          </ul>
+          {cta ? (
+            <div className={s.cta}>
+              <p className={s.ctaCopy}>{cta.copy}</p>
+              <StandaloneLink
+                href={cta.href}
+                theme={'secondary'}
+                appearance={appearance}
               >
-                <Tile
-                  theme={theme}
-                  variant={variant}
-                  cta={{
-                    title: step.cta.title,
-                    url: step.cta.url,
-                  }}
-                  heading={step.heading}
-                  description={step.description}
-                />
-              </li>
-            )
-          })}
-        </ul>
+                {cta.ctaText}
+              </StandaloneLink>
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   )
 }
 
-function Tile({ theme, variant, heading, description, cta }) {
+function Tile({ theme, variant, heading, badge, description, cta }) {
   const [isHovered, setIsHovered] = React.useState(false)
   return (
     <Link href={cta.url} legacyBehavior>
@@ -89,7 +98,10 @@ function Tile({ theme, variant, heading, description, cta }) {
         }}
       >
         <div className={s.tileInner}>
-          <h3 className={s.tileHeading}>{heading}</h3>
+          <h3 className={s.tileHeading}>
+            <span className={s.tileHeadingText}>{heading}</span>
+            {badge ? <BadgeWrapper theme={theme}>{badge}</BadgeWrapper> : null}
+          </h3>
           {description ? (
             <p className={s.tileDescription}>{description}</p>
           ) : null}
@@ -100,10 +112,21 @@ function Tile({ theme, variant, heading, description, cta }) {
             </span>
           </span>
         </div>
-        {theme !== 'hashicorp' || variant === 'secondary' ? (
-          <span className={s.tileScrim} />
-        ) : null}
+        <span className={s.tileScrim} />
       </a>
     </Link>
+  )
+}
+
+const BadgeWrapper = ({ theme, children }) => {
+  const badgeTheme = theme === 'hashicorp' ? 'action' : theme
+  const page = theme === 'hashicorp' ? 'action' : 'actionFaint'
+
+  return (
+    <span className={s.tileBadge}>
+      <Badge theme={badgeTheme} page={page}>
+        {children}
+      </Badge>
+    </span>
   )
 }

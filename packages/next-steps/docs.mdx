@@ -8,20 +8,16 @@ componentName: 'NextSteps'
   <NextSteps
     heading="Next steps"
     description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
-    ctas={[
-      {
-        title: 'Action link',
-        href: '/'
-      },
-      {
-        title: 'Action link',
-        href: '/'
-      }
-    ]}
+    cta={{
+      copy: "Ready to speak with our sales team?",
+      href: "https://www.hashicorp.com",
+      ctaText: "Contact us"
+    }}
     steps={[
       {
         heading: 'Heading',
         description: 'Sub-heading',
+        badge: 'Beta',
         cta: {
           title: 'Step link',
           url: '/'
@@ -60,20 +56,16 @@ componentName: 'NextSteps'
 <NextSteps
   heading="Next steps"
   description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
-  ctas={[
-    {
-      title: 'Action link',
-      href: '/',
-    },
-    {
-      title: 'Action link',
-      href: '/',
-    },
-  ]}
+  cta={{
+    copy: "Ready to speak with our sales team?",
+    href: "https://www.hashicorp.com",
+    ctaText: "Contact us"
+  }}
   steps={[
     {
       heading: 'Heading',
       description: 'Sub-heading',
+      badge: 'Beta',
       cta: {
         title: 'Step link',
         url: '/',
@@ -103,12 +95,11 @@ componentName: 'NextSteps'
   theme="consul"
   heading="Next steps"
   description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
-  ctas={[
-    {
-      title: 'Action link',
-      href: '/',
-    },
-  ]}
+  cta={{
+    copy: "Ready to speak with our sales team?",
+    href: "https://www.hashicorp.com",
+    ctaText: "Contact us"
+  }}
   steps={[
     {
       heading: 'Heading',
@@ -128,6 +119,44 @@ componentName: 'NextSteps'
   ]}
 />
 
+</div>
+
+<h3 className="g-type-label" style={{ color: 'var(--gray-3)' }}>
+  Optional Badge
+</h3>
+
+<div style={{border: "1px solid var(--gray-6)"}}>
+
+<NextSteps
+  theme={'packer'}
+  badge={'Beta'}
+  heading="Next steps"
+  description="Cras ullamcorper duis nunc velit commodo etiam. Auctor tincidunt pellentesque ullamcorper nisi integer."
+  cta={{
+    copy: "Ready to speak with our sales team?",
+    href: "https://www.hashicorp.com",
+    ctaText: "Contact us"
+  }}
+  steps={[
+    {
+      heading: 'Heading',
+      description: 'Sub-heading',
+      badge: 'Beta',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+    {
+      heading: 'Heading',
+      description: 'Sub-heading',
+      cta: {
+        title: 'Step link',
+        url: '/',
+      },
+    },
+  ]}
+/>
 </div>
 
 ## Props
