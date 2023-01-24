@@ -29,17 +29,21 @@ module.exports = {
     required: true,
     description: 'The description for the section.',
   },
-  ctas: {
+  cta: {
     type: 'object',
-    description: 'Optional ctas displayed below the heading and description.',
+    description: 'Optional CTA displayed below the tiles.',
     properties: {
-      title: {
+      copy: {
         type: 'string',
-        description: 'The title of the cta.',
+        description: 'The description copy prior to the CTA.',
       },
       href: {
         type: 'string',
-        description: 'The url of the cta.',
+        description: 'The url of the CTA.',
+      },
+      ctaText: {
+        type: 'string',
+        description: 'The text of the CTA.',
       },
     },
   },

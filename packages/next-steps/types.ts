@@ -41,14 +41,6 @@ export interface NextStepsProps {
    */
   description: string
   /**
-   * Optional ctas displayed below the heading and description.
-   */
-  cta?: {
-    copy: string
-    href: string
-    ctaText: string
-  }
-  /**
    * The list of steps to display as tiles.
    */
   steps:
@@ -56,11 +48,9 @@ export interface NextStepsProps {
     | [StepProps, StepProps]
     | [StepProps, StepProps, StepProps]
   /**
-   * Optional tertiary CTA. Displayed below the tiles.
-   * Only renders if there are less than 3 tiles and no CTAs
-   * (see above) provided.
+   * Optional CTA displayed below the tiles.
    */
-  tertiaryCta?: {
+  cta?: {
     copy: string
     href: string
     ctaText: string
