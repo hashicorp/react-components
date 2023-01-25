@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-marketo-form",
   "description": "A form component that dynamically renders a Marketo form",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "author": "HashiCorp",
   "contributors": [
     "Dylan Staley"
@@ -9,7 +9,7 @@
   "dependencies": {
     "@hashicorp/platform-analytics": "^0.10.0",
     "@hashicorp/react-button": "^6.2.0",
-    "@hashicorp/react-form-fields": "^0.1.0",
+    "@hashicorp/react-form-fields": "^0.1.1",
     "@vercel/fetch": "^6.2.0",
     "clsx": "^1.1.1",
     "js-cookie": "^3.0.1",

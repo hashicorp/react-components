@@ -1,5 +1,16 @@
 # @hashicorp/react-marketo-form
 
+## 0.8.0
+
+### Minor Changes
+
+- [#857](https://github.com/hashicorp/react-components/pull/857) [`2dfb913c`](https://github.com/hashicorp/react-components/commit/2dfb913cde43b4354183bbd04e65975aadd995e5) Thanks [@dstaley](https://github.com/dstaley)! - Add support for Marketo-driven localization
+
+### Patch Changes
+
+- Updated dependencies [[`3c65a8bf`](https://github.com/hashicorp/react-components/commit/3c65a8bf3a6699fe9fca4422f6ff04a26ffeefd4)]:
+  - @hashicorp/react-form-fields@0.1.1
+
 ## 0.7.1
 
 ### Patch Changes
