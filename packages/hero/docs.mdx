@@ -5,34 +5,69 @@ componentName: Hero
 A flexible hero component used as the primary content at the top of many HashiCorp pages.
 
 <LiveComponent>
-{`<Hero
-  data={{
-    title: 'Testing',
-    description: 'Etiam porta sem malesuada magna mollis euismod.',
-    product: 'nomad',
-    backgroundImage: {
-      url: 'https://www.datocms-assets.com/2885/1538522323-vault-grid-background.jpg',
-      format: 'svg',
-      alt: 'terraform background'
-    },
-    buttons: [
-      { title: 'Download', url: '#' },
-      { title: 'Get Started', url: '#' }
-    ],
-    videos: [{
-      name: 'UI',
-      playbackRate: 2,
-      src: [{
-        srcType: 'mp4',
-        url: '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-ui.mp4',
-      }],
-    }]
-  }}
-/>`}
+{`
+  <section>
+    <div>
+      <Hero
+        backgroundColor={'black'}
+        appearance={'dark'}
+        solution={'infrastructure'}
+        eyebrow={'EYEBROW'}
+        heading={'Display copy'}
+        description={'Body copy, pharetra pellentesque sed elementum risus accumsan et. Tristique tortor, morbi vivamus nibh mollis. Ultrices aliquet sit nibh consequat quam'}
+        ctas={[
+          {
+            title: "Primary CTA",
+            href: "https://www.hashicorp.com",
+            type: 'button'
+          },
+          {
+            title: "Secondary CTA",
+            href: "https://www.hashicorp.com",
+            type: 'standalone-link'
+          }
+        ]}
+        url={"https://hashicorp.wistia.com/medias/glovs5atuj"}
+        smallImage={'https://www.datocms-assets.com/2885/1674018485-hero_mobile.png'}
+        mediumImage={'https://www.datocms-assets.com/2885/1674016656-hero_tablet.png'}
+        largeImage={'https://www.datocms-assets.com/2885/1674016643-hero_desktop.png'}
+      />
+    </div>
+  </section>
+`}
 </LiveComponent>
 
 <UsageDetails packageJson={packageJson} />
 
+
 ### Props
 
 <PropsTable props={componentProps} />
+
+### Examples
+<LiveComponent>
+  {`<Hero
+      backgroundColor={'#FEF5FE'}
+      appearance={'light'}
+      solution={'infrastructure'}
+      descriptionColor={'black'}
+      eyebrow={'EYEBROW'}
+      heading={'Display copy'}
+      description={'Body copy, pharetra pellentesque sed elementum risus accumsan et. Tristique tortor, morbi vivamus nibh mollis. Ultrices aliquet sit nibh consequat quam'}
+      ctas={[
+        {
+          title: "Primary CTA",
+          href: "https://www.hashicorp.com",
+          type: 'button'
+        },
+        {
+          title: "Secondary CTA",
+          href: "https://www.hashicorp.com",
+          type: 'standalone-link'
+        }
+      ]}
+      smallImage={'https://www.datocms-assets.com/2885/1669673752-graphic-small.svg'}
+      mediumImage={'https://www.datocms-assets.com/2885/1669673746-graphic-medium.svg'}
+      largeImage={'https://www.datocms-assets.com/2885/1669673756-graphic.svg'}
+    />`}
+</LiveComponent>
