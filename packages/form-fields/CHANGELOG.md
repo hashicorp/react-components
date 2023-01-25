@@ -1,5 +1,11 @@
 # @hashicorp/react-form-fields
 
+## 0.1.1
+
+### Patch Changes
+
+- [#867](https://github.com/hashicorp/react-components/pull/867) [`3c65a8bf`](https://github.com/hashicorp/react-components/commit/3c65a8bf3a6699fe9fca4422f6ff04a26ffeefd4) Thanks [@dstaley](https://github.com/dstaley)! - Fix focus ring behavior
+
 ## 0.1.0
 
 ### Minor Changes
