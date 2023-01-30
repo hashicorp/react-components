@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 8.2.2
+
+### Patch Changes
+
+- [#873](https://github.com/hashicorp/react-components/pull/873) [`7b46ea45`](https://github.com/hashicorp/react-components/commit/7b46ea450f5e04b6eb5def6b04c3642ce363dd62) Thanks [@dstaley](https://github.com/dstaley)! - Add @hashicorp/flight-icons dependency
+
 ## 8.2.1
 
 ### Patch Changes
