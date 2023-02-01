@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 export function areBasePathsMatching(pathA: string, pathB: string) {
   if (!pathA || !pathB) return false
   // use .filter(Boolean) to remove any falsy values, like ""

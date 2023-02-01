@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React from 'react'
 import ClipboardButton from '../clipboard-button'
 import InlineSvg from '@hashicorp/react-inline-svg'

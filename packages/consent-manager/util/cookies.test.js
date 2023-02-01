@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import cookies from 'js-cookie'
 import * as cookiesJS from './cookies.js'
 

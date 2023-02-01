@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const docsSidenavProps = require('../docs-sidenav/props')
 const versionSelectProps = require('./components/version-select/props')
 const sharedProps = require('../../props')

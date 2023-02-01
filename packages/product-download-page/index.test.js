@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { fireEvent, screen, getByText, render } from '@testing-library/react'
 import ProductDownloadsPage from './'
 import props from './props'

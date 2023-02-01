@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const MKTG_CONTENT_API = process.env.MKTG_CONTENT_API
 
 // Courtesy helper for warning about missing env vars during development

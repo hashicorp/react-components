@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Table from './components/table'
 import Tabs from './components/tabs'
 import DownloadBlock from './components/download-block'

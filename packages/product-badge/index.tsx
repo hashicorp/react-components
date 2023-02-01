@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { ProductBadgeProps } from './types'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'

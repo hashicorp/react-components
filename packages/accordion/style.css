@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 @import './styles/index.css';
 @import './partials/AccordionItems/style.css';
 @import './partials/Collapsible/style.css';

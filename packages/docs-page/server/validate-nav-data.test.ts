@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { validateNavData } from './validate-nav-data'
 import navData from './__fixtures__/navData.json'
 

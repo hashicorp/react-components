@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useState, useEffect } from 'react'
 import TabTriggers from './partials/tab-triggers'
 import TabProvider, { useTabGroups } from './provider'

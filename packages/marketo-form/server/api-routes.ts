@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import * as client from './client'
 import { includesSkippedRecords } from '../utils'
 import type { SubmissionFilter, MarketoSubmissionResponse } from '../types'

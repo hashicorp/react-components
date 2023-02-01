@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const introProps = require('../intro/props')
 const authorBylineProps = require('../author-byline/props')
 const inlineVideoProps = require('../inline-video/props')

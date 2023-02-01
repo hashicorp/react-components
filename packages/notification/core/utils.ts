@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { ValueFunction, ValueOrFunction } from '../types'
 
 export const genId = (() => {

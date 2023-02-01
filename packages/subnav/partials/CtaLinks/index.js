@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Button from '@hashicorp/react-button'
 import svgGithub from './icons/github.svg.js'
 import GithubStarsLink from './github-stars-link/index.js'

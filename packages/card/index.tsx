@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Card from './card'
 import { BlogCard } from './blog-card'
 import { CareerCard } from './career-card'

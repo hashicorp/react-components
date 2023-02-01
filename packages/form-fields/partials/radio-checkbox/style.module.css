@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .root {
   composes: wpl-variables from '../../style.module.css';
   margin-bottom: 12px;

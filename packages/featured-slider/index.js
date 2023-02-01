@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { Component } from 'react'
 import LogoBar from './partials/logo-bar'
 import Button from '@hashicorp/react-button'

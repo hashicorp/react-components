@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import classNames from 'classnames'
 import type { ReactNode } from 'react'
 import type { Products } from '@hashicorp/platform-product-meta'

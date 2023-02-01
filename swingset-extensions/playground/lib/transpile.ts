@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import initSwc, { transformSync } from '@swc/wasm-web'
 import initParcelCSS, {
   transform as transformCSS,

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useMemo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import Field from '../field'

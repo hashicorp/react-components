@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Link from 'next/link'
 import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { eliminateOrphans } from '@hashicorp/js-utils'
 import fragment from './fragment.graphql'
 import s from './style.module.css'

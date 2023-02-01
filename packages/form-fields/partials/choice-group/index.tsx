@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useId } from '@reach/auto-id'
 import Radio from '../../radio'
 import Checkbox from '../../checkbox'

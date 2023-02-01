@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import TextField from '../fields/text-field'
 import EmailField from '../fields/email-field'
 import TelephoneField from '../fields/telephone-field'

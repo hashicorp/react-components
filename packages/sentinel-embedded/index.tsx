@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import s from '@hashicorp/sentinel-embedded/dist/bundle.module.css'
 import template from '@hashicorp/sentinel-embedded/src/components/playground-template'
 import '@hashicorp/sentinel-embedded'

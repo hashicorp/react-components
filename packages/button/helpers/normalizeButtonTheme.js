@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 function normalizeButtonTheme(theme) {
   //  Handle legacy string themes, passed directly or from Dato
   const isLegacyStringTheme = typeof theme === 'string'

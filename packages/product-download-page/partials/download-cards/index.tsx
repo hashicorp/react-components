@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Tabs, { Tab } from '@hashicorp/react-tabs'
 import { prettyOs, prettyArch, SortedReleases } from '../../utils/downloader'
 import { Link, PackageManagerConfig } from '../..'

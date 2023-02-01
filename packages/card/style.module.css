@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .card {
   --border-color: var(--wpl-neutral-50);
   --primary-text-color: var(--wpl-neutral-900);

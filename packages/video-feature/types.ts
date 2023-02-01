@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { AuthorBylineProps } from '@hashicorp/react-author-byline/types'
 import type { IntroProps } from '@hashicorp/react-intro/types'
 import type { InlineVideoProps } from '@hashicorp/react-inline-video/types'

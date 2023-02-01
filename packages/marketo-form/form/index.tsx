@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useEffect, useMemo, useRef } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import Button from '@hashicorp/react-button'

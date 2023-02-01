@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 require('dotenv').config()
 const { Octokit } = require('@octokit/core')
 const { execFileSync } = require('child_process')

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { ProductBadgeProps } from '@hashicorp/react-product-badge/types'
 import React from 'react'
 import type { BlogCardProps } from './blog-card'

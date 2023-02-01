@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useContext } from 'react'
 import { useFormContext } from 'react-hook-form'
 import CheckboxInput from '@hashicorp/react-form-fields/checkbox'

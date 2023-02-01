@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React from 'react'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import CtaLinks from '../CtaLinks/index.js'

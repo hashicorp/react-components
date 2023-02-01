@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useState, Fragment } from 'react'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import Dropdown from '../dropdown'

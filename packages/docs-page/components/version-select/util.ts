@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const VERSION_REGEXP = /v\d+\.\d+\.(\d+|\w+)/i
 const TFE_VERSION_REGEXP = /v[0-9]{6}-\d+/i
 

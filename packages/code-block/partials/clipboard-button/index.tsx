@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { IconCheckSquare16 } from '@hashicorp/flight-icons/svg-react/check-square-16'

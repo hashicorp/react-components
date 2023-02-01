@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useId } from '@react-aria/utils'
 import type { RadioInputProps } from './types'
 import classNames from 'classnames'

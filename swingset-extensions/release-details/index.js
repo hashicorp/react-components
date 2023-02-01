@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useEffect, useState } from 'react'
 import Icon from '../usage-details/partials/icon'
 import Button from '../../packages/button'

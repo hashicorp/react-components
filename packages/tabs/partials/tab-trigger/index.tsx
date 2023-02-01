@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useEffect } from 'react'
 import TooltipIcon from '../../icons/tooltip.svg?include'
 import Tooltip from '../tooltip'

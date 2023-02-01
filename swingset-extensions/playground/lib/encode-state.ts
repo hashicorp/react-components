@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import lzString from 'lz-string'
 import { SandpackFiles } from '@codesandbox/sandpack-react'
 

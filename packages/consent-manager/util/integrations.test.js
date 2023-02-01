@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 test('fetches integrations from segment, formats them as expected', async () => {
   jest.resetModules()
   global.fetch = () =>

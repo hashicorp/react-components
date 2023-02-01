@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .sourcegraphLink {
   composes: g-type-buttons-and-standalone-links from global;
   display: flex;

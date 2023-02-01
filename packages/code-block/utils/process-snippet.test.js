@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import processSnippet from './process-snippet.js'
 
 it('should not affect non-shell snippets', () => {

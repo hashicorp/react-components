@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import styles from './nav-item.module.css'
 import { useRef, useEffect } from 'react'
 import BrowsePanel from '../browse-panel'

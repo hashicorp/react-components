@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { CardProps } from '@hashicorp/react-card/types'
 import type { StandaloneLinkProps } from '@hashicorp/react-standalone-link/types'
 export interface RelatedContentProps {

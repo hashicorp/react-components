@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Collapsible from '../collapsible'
 import ResponseObject from '../response-object'
 import Parameter from '../parameter'

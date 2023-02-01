@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .toggle {
   --toggle-background-color: var(--wpl-neutral-0);
   --toggle-border-color: var(--wpl-neutral-500);

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { render, fireEvent, screen } from '@testing-library/react'
 import TextareaInput from '.'
 import props from './props'

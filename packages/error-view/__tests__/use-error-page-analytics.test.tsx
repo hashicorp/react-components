@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { render, waitFor } from '@testing-library/react'
 import useErrorPageAnalytics from '../use-error-page-analytics'
 

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import styles from './hashi-stack-menu.module.css'
 import { useEffect, useState } from 'react'
 import InlineSvg from '@hashicorp/react-inline-svg'

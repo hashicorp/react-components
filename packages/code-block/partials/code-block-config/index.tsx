@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { Children } from 'react'
 import type { ReactElement } from 'react'
 import CodeBlock from '../../index'

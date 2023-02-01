@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import TextSplitWithCode from '@hashicorp/react-text-split-with-code'
 import TextSplitWithImage from '@hashicorp/react-text-split-with-image'
 import TextSplitWithLogoGrid from '@hashicorp/react-text-split-with-logo-grid'
