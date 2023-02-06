@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { screen, render, cleanup } from '@testing-library/react'
 import PricingTiers from '.'
 import { PricingTierItemProps } from './types'

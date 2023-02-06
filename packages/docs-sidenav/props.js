@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const sampleNavData = require('./fixtures/nav-data.json')
 const sharedProps = require('../../props')
 

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { AccordionItems } from '@hashicorp/react-accordion'
 import Tabs, { Tab } from '@hashicorp/react-tabs'
 import classNames from 'classnames'

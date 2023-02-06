@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useFormContext } from 'react-hook-form'
 import SelectInput from '@hashicorp/react-form-fields/select'
 import FieldWrapper from '../../field-wrapper'

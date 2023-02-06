@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+/**
  * So far, we have a pattern of using a common value for
  * docs catchall route parameters: route/[[...page]].jsx.
  * This default parameter ID captures that pattern.

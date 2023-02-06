@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import * as React from 'react'
 import type { NotificationsProps } from '@hashicorp/react-notification/types'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'

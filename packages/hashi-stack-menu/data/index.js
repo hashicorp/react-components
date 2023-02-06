@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // The following are building blocks of our default data exported below
 export const DEFAULT_PRODUCT_GROUPS = {
   infrastructure: {

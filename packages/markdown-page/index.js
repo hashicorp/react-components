@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import s from './style.module.css'
 import { MDXRemote } from 'next-mdx-remote'
 import HashiHead from '@hashicorp/react-head'

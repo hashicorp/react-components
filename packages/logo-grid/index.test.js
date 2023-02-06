@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // import LogoGrid from './'
 
 test.todo('Displays logos that are passed in via the `data` prop')

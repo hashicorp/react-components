@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import classNames from 'classnames'
 import Search from '@hashicorp/react-search'
 import searchHitStyles from '@hashicorp/react-search/hit-content-styles.module.css'

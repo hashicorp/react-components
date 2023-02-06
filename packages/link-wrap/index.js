@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // All props of nextjs/link are passed through directly
 // https://github.com/zeit/next.js/blob/canary/packages/next/client/link.tsx#L48
 export default function LinkWrap({

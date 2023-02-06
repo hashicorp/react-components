@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { MDXRemote } from 'next-mdx-remote'
 import { DocsPageInner } from '@hashicorp/react-docs-page'
 import generateComponents from '@hashicorp/react-docs-page/components'

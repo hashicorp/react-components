@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 test.todo(
   '`segmentServices`, `additionalServices`, and `segmentWriteKey` props are passed to getIntegration function'
 )

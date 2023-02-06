@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { SVGProps } from 'react'
 
 export const IconMaximize = (props: SVGProps<SVGSVGElement>) => (

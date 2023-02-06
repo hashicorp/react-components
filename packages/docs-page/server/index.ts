@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { GetStaticPaths, GetStaticProps, GetStaticPathsResult } from 'next'
 import { ContentApiError } from '../content-api'
 import FileSystemLoader from './loaders/file-system'

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useCallback, useState, useRef } from 'react'
 import Link from 'next/link'
 import OperationObject from './partials/operation-object'

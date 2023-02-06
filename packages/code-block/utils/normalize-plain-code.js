@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+/**
  * Non-highlighted code in MDX needs to be tweaked
  * to work as expected with our code-block component.
  *

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import useProductMeta from '@hashicorp/platform-product-meta'
 import CalloutItem from './partials/callout-item/index.js'
 import classNames from 'classnames'

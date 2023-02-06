@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import '@testing-library/jest-dom/extend-expect'
 import 'isomorphic-unfetch'
 import nock from 'nock'

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { mocked } from 'ts-jest/utils'
 import FileSystemLoader from './file-system'
 import { resolveNavData } from '../resolve-nav-data'

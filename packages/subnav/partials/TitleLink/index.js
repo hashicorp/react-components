@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { camelCase } from 'camel-case'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import InlineSvg from '@hashicorp/react-inline-svg'

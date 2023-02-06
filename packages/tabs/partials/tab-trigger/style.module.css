@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .root {
   --inner-text-color: var(--text-color); /* from theme.module.css */
   --inner-border-color: transparent;

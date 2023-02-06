@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useEffect, useRef } from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
 import IconMagGlass from './img/search.svg.js'

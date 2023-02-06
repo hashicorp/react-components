@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import TextField from '../text-field'
 import type { MarketoFormField, MarketoFormTextField } from '../../../types'
 import styles from './style.module.css'

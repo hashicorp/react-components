@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+/**
  * Given a string of HTML, split it on newlines,
  * and return an array of React <span> elements,
  * each of which will contain a single line.

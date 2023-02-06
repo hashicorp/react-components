@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Alert from '@hashicorp/react-alert'
 import { useRouter } from 'next/router'
 import {

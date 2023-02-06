@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useMemo } from 'react'
 import parseHighlightedLines from '../../utils/parse-highlighted-lines'
 import splitJsxIntoLines from './utils/split-jsx-into-lines'

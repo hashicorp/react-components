@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const textSplitProps = require('../text-split/props')
 const codeBlockProps = require('../code-block/props')
 const imageProps = require('../image/props')

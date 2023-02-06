@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+/**
  * Copies a string of text to the clipboard
  * @param {string} string - string of text to copy
  * @returns {boolean} - `true` if successful, or `false` otherwise

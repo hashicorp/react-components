@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import styles from './stack-item.module.css'
 import InlineSvg from '@hashicorp/react-inline-svg'
 

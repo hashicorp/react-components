@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const withHashicorp = require('@hashicorp/platform-nextjs-plugin')
 const withSwingset = require('swingset')
 

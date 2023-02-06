@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { ParsedUrlQuery } from 'querystring'
 import { Pluggable } from 'unified'
 import moize, { Options } from 'moize'

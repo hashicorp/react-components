@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useState, useEffect, useCallback } from 'react'
 import { EventEmitter } from 'events'
 import classNames from 'classnames'

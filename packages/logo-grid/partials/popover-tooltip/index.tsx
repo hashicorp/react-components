@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useRef, RefObject } from 'react'
 import { useRect } from '@reach/rect'
 import InlineSvg from '@hashicorp/react-inline-svg'

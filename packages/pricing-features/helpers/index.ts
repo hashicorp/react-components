@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { CMSTableProps, TableProps, RowProps, TextCellProps } from '../types'
 
 // Handles formatting of data returned by DatoCMS

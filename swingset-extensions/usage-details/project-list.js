@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+/**
  * PROJECT_LIST ends up being an array
  * of { repo, dir } items, the initial
  * array format is just for brevity

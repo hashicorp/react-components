@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { forwardRef, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Highlight, connectHits } from 'react-instantsearch-dom'

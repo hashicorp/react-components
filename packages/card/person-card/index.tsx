@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { CardProps, ProductBadgesProps, ThumbnailProps } from '../types'
 import * as CardPrimitives from '../primitives'
 import { IconGithub16 } from '@hashicorp/flight-icons/svg-react/github-16'

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import Card from '@hashicorp/react-card'
 import classNames from 'classnames'
 import Link from 'next/link'

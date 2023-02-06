@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // This is terrible, very non-idiomatic code. It is here temporarily to enable this feature
 // while the team works on a more permanent solution. Please do not ever write code like this.
 // Ticket to fix this: https://app.asana.com/0/1100423001970639/1160656182754009

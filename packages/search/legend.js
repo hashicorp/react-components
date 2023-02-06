@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import InlineSvg from '@hashicorp/react-inline-svg'
 import IconEnter from './img/search-legend-enter.svg.js'
 import IconPage from './img/search-legend-page.svg.js'

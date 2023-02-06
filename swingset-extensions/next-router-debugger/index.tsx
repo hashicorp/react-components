@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useState } from 'react'
 import { useRouter, NextRouter } from 'next/router'
 import { RouterContext } from 'next/dist/shared/lib/router-context'

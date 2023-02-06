@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { render, screen } from '@testing-library/react'
 import propsDefault from './fixtures/default.json'
 import CalloutItem from './index.js'

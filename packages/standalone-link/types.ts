@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 type AnchorElementProps = JSX.IntrinsicElements['a']
 
 export interface StandaloneLinkProps extends AnchorElementProps {

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .wrapper {
   composes: g-grid from global;
   composes: g-grid-container from global;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import clsx from 'clsx'
 import { useId } from '@reach/auto-id'
 import s from './style.module.css'

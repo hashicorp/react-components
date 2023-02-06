@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { isAnalyticsMethodAvailable } from '@hashicorp/platform-analytics'
 import { MarketoFormField, MarketoSubmissionResponse } from './types'
 import { useFormState } from 'react-hook-form'

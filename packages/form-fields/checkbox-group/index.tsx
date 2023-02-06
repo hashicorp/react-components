@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import ChoiceGroup, { type CheckboxProps } from '../partials/choice-group'
 
 interface CheckboxGroupProps {

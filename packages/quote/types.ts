@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import type { AuthorBylineProps } from '@hashicorp/react-author-byline/types'
 
 export interface QuoteProps extends AuthorBylineProps {

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import ProjectListItem from './partials/project-list-item'
 import TopBar from './partials/top-bar'
 import styles from './usage-details.module.css'

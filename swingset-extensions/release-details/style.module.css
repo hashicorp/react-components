@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .heading {
   composes: g-type-display-3 from global;
   border-bottom: 1px solid var(--gray-5);

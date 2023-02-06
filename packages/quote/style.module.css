@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .quote {
   --color: var(--wpl-neutral-700);
   --gap: 32px;

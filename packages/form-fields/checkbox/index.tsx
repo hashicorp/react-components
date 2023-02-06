@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { ReactNode, ComponentProps } from 'react'
 import RadioCheckbox from '../partials/radio-checkbox'
 

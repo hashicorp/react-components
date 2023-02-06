@@ -1,4 +1,9 @@
 /**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+/**
  * DUPLICATE HOOK
  * Lifted from packages/button/hooks/use-hover.ts
  */

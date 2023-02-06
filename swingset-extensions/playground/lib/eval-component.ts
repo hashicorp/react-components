@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { ElementType } from 'react'
 import * as jsxRuntime from 'react/jsx-runtime'
 import { components } from 'swingset/__swingset_data'

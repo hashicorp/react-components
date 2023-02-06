@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 .box {
   background-color: var(--placeholder-bg-color, var(--gray-6));
   border-radius: 2px;

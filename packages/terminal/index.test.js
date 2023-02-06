@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { render } from '@testing-library/react'
 import CommandLineTerminal from './'
 import props from './props'

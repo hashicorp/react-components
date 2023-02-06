@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { NavNode } from '@hashicorp/react-docs-sidenav/types'
 
 import { DEFAULT_PARAM_ID } from './consts'

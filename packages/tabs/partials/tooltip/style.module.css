@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 /*
 Additional composition is helpful here.
 Note that .arrow and .root can't use CSS custom properties

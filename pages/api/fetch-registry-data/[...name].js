@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const NodeCache = require('node-cache')
 
 //  Cache package.json requests for 5 minutes

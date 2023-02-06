@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { useState, useEffect, useRef, RefObject } from 'react'
 
 export default function useScrollLeft<T extends HTMLElement>(): [

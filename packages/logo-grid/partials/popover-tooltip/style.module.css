@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 /* Additional composition is helpful here,
 as we can't use CSS custom properties as nicely as
 usual since .dialogArrow is rendered into a Portal. */

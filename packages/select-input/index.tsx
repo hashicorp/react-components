@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 // Downshift should be pinned to 3.1.5, aria-selected behavior changed after that version, and the new behaviour is not what we want at the moment
 import classNames from 'classnames'
 import Downshift from 'downshift'

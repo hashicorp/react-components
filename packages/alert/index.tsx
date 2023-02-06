@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import classNames from 'classnames'
 import useProductMeta, { Products } from '@hashicorp/platform-product-meta'
 import fragment from './fragment.graphql'

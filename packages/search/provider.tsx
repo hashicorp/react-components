@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import React, { useMemo, useState, createContext, useContext } from 'react'
 import algoliaSearch, { SearchClient } from 'algoliasearch'
 import searchInsights from 'search-insights'

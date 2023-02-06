@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { Component } from 'react'
 import classnames from 'classnames'
 import s from './carousel.module.css'
