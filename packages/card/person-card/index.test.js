@@ -46,6 +46,7 @@ describe('<PersonCard />', () => {
       github: 'https://github.com',
       twitter: 'https://twitter.com',
       linkedin: 'https://linkedin.com',
+      link: 'https://example.com',
     }
 
     render(
@@ -59,5 +60,11 @@ describe('<PersonCard />', () => {
     Object.keys(links).forEach((platform) => {
       screen.getByTestId(`wpl-personcard-${platform}-icon`)
     })
+  })
+
+  it('should not render a thumbnail icon when link is on hashicorp.com', () => {
+    render(<PersonCard {...defaultProps} link="https://hashicorp.com" />)
+
+    expect(screen.queryByTestId('wpl-personcard-link-icon')).toBeNull()
   })
 })
