@@ -29,6 +29,10 @@ export interface PricingStickyTrayProps {
 
 export interface PricingTierItemProps extends TierProps {
   /**
+   * Tag text displayed at top of card. Eg: "beta"
+   */
+  tag?: string
+  /**
    * Flight Icon component
    */
   icon?: ReactElement

@@ -32,6 +32,7 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
         {tiers.map(
           (
             {
+              tag,
               icon,
               title,
               label,
@@ -54,6 +55,7 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                     } as React.CSSProperties
                   }
                 >
+                  {tag && <span className={s.tag}>{tag}</span>}
                   {icon && <div className={s.icon}>{icon}</div>}
                   <p className={s.tierName}>{title}</p>
                   <div className={s.details}>

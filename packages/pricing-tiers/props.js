@@ -4,6 +4,11 @@
  */
 
 module.exports = {
+  tag: {
+    type: 'string',
+    description:
+      'Small text that appears at the top of the card. Should be limited to <10 characters. Eg: "Beta"',
+  },
   icon: {
     type: 'element',
     description: 'Flight Icon as React element',

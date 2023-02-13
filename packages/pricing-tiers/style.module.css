@@ -95,6 +95,15 @@
   }
 }
 
+.tag {
+  composes: g-type-label-strong from global;
+  color: var(--wpl-neutral-500);
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 .icon {
   position: absolute;
   top: 35px;
