@@ -106,14 +106,14 @@
 
 .icon {
   position: absolute;
-  top: 35px;
+  top: 30px;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
 .tierName {
   composes: g-type-display-3 from global;
-  padding-top: 80px;
+  padding-top: 90px;
   margin: 0;
   text-align: center;
   padding-bottom: 24px;
