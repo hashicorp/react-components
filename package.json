@@ -14,6 +14,7 @@
     "framer-motion": "^6.3.11",
     "lightningcss-wasm": "^1.17.1",
     "lz-string": "^1.4.4",
+    "mdx-embed": "^1.1.2",
     "next": "^12.3.2",
     "next-mdx-remote": "^3.0.8",
     "next-remote-watch": "^1.0.0",
