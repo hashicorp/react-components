@@ -1,5 +1,11 @@
 # @hashicorp/react-pricing-tiers
 
+## 0.2.1
+
+### Patch Changes
+
+- [#877](https://github.com/hashicorp/react-components/pull/877) [`85b22d6e`](https://github.com/hashicorp/react-components/commit/85b22d6e4b7737d199f0502fb0efc8207715b0c8) Thanks [@pbortnick](https://github.com/pbortnick)! - update(pricing tiers): Add tag and cta brand
+
 ## 0.2.0
 
 ### Minor Changes
