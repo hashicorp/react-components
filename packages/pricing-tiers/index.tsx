@@ -83,7 +83,7 @@ export default function PricingTiers({ tiers }: PricingTiersProps) {
                       <Button
                         url={cta.url}
                         title={cta.title}
-                        theme={{ variant: cta.variant }}
+                        theme={{ variant: cta.variant, brand: cta.brand }}
                         onClick={cta.onClick}
                       />
                     ) : (

@@ -53,6 +53,11 @@ module.exports = {
         options: ['primary', 'secondary'],
         default: 'primary',
       },
+      brand: {
+        type: 'string',
+        options: ['neutral'],
+        default: null,
+      },
       onClick: {
         type: 'function',
         description:

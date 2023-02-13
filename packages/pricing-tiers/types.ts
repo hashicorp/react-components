@@ -18,6 +18,7 @@ interface TierProps {
     title: string
     type: 'button' | 'textLink'
     variant?: 'primary' | 'secondary'
+    brand?: 'neutral'
     onClick?: () => void
   }
 }
