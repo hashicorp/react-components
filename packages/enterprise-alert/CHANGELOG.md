@@ -1,5 +1,11 @@
 # @hashicorp/react-enterprise-alert
 
+## 7.0.1
+
+### Patch Changes
+
+- [#881](https://github.com/hashicorp/react-components/pull/881) [`406fa0c9`](https://github.com/hashicorp/react-components/commit/406fa0c9e6e075878078788dd8e0539e52f7512e) Thanks [@BRKalow](https://github.com/BRKalow)! - Fix EnterpriseAlert so that it does not potentially generate invalid markup when used inline
+
 ## 7.0.0
 
 ### Major Changes

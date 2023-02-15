@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-enterprise-alert",
   "description": "Render an alert used to note the requirement of an enterprise product",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22enterprise-alert%22",
   "contributors": [
