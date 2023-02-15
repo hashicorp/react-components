@@ -23,8 +23,12 @@ function EnterpriseAlert({
   className,
 }: EnterpriseAlertProps) {
   const { name, slug, themeClass } = useProductMeta(product)
+
+  // This ensures we aren't producing invalid HTML when rendering inline alerts within MDX. When used inline, we might end up nesting a div inside of a p. This is invalid as p cannot contain block-level elements (ref: https://www.w3.org/TR/html401/struct/text.html#h-9.3.1).
+  const Element = inline ? 'span' : 'div'
+
   return (
-    <div
+    <Element
       className={classNames(s.root, themeClass, className, {
         [s.themed]: themeClass,
         [s.inline]: inline,
@@ -50,7 +54,7 @@ function EnterpriseAlert({
           )}
         </p>
       )}
-    </div>
+    </Element>
   )
 }
 
