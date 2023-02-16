@@ -16,14 +16,12 @@ const HiddenField = ({ field }: { field: MarketoFormHiddenField }) => {
       if (searchParams.has(field.autoFill.parameterName)) {
         setValue(field.id, searchParams.get(field.autoFill.parameterName))
       }
-    } else if (field.autoFill && field.autoFill.valueFrom === 'default') {
-      setValue(field.id, field.autoFill.value)
     } else if (
-      formState.defaultValues &&
-      field.id in formState.defaultValues &&
-      formState.defaultValues[field.id]
+      field.autoFill &&
+      field.autoFill.valueFrom === 'default' &&
+      field.autoFill.value
     ) {
-      setValue(field.id, formState.defaultValues[field.id])
+      setValue(field.id, field.autoFill.value)
     }
   }, [field, setValue, formState])
 
