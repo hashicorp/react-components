@@ -8,7 +8,7 @@ import { useFormContext } from 'react-hook-form'
 import type { MarketoFormHiddenField } from '../../../types'
 
 const HiddenField = ({ field }: { field: MarketoFormHiddenField }) => {
-  const { register, setValue } = useFormContext()
+  const { register, setValue, formState } = useFormContext()
 
   useEffect(() => {
     if (field.autoFill && field.autoFill.valueFrom === 'query') {
@@ -18,8 +18,10 @@ const HiddenField = ({ field }: { field: MarketoFormHiddenField }) => {
       }
     } else if (field.autoFill && field.autoFill.valueFrom === 'default') {
       setValue(field.id, field.autoFill.value)
+    } else if (formState.defaultValues && field.id in formState.defaultValues) {
+      setValue(field.id, formState.defaultValues[field.id])
     }
-  }, [])
+  }, [field, setValue, formState])
 
   return <input type="hidden" {...register(field.id)} />
 }
