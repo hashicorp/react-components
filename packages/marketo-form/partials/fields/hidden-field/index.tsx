@@ -18,7 +18,11 @@ const HiddenField = ({ field }: { field: MarketoFormHiddenField }) => {
       }
     } else if (field.autoFill && field.autoFill.valueFrom === 'default') {
       setValue(field.id, field.autoFill.value)
-    } else if (formState.defaultValues && field.id in formState.defaultValues) {
+    } else if (
+      formState.defaultValues &&
+      field.id in formState.defaultValues &&
+      formState.defaultValues[field.id]
+    ) {
       setValue(field.id, formState.defaultValues[field.id])
     }
   }, [field, setValue, formState])
