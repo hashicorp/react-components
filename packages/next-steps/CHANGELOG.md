@@ -1,5 +1,11 @@
 # @hashicorp/react-next-steps
 
+## 0.8.1
+
+### Patch Changes
+
+- [#880](https://github.com/hashicorp/react-components/pull/880) [`ccad0b5d`](https://github.com/hashicorp/react-components/commit/ccad0b5d970ef12ec6485df0d68eea51ebd9b12d) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - all cta to wrap
+
 ## 0.8.0
 
 ### Minor Changes
