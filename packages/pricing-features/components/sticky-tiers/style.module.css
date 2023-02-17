@@ -29,8 +29,8 @@
     width: 100%;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    border: 1px solid var(--wpl-neutral-200);
-    filter: drop-shadow(0 4px 19px var(--wpl-neutral-200));
+    border: 1px solid var(--wpl-neutral-100);
+    filter: drop-shadow(0 4px 10px var(--wpl-neutral-100));
     z-index: 3;
   }
 }
