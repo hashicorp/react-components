@@ -8,11 +8,12 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  padding-bottom: 8px;
 
   &::before {
     content: '';
-    background-color: var(--wpl-neutral-50);
-    filter: blur(24px);
+    background: var(--vault-accent);
+    filter: blur(12px);
     border-radius: 8px;
     position: absolute;
     left: 50%;

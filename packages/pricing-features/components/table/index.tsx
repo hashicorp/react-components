@@ -6,7 +6,7 @@
 import { useState } from 'react'
 import { IconXCircle24 } from '@hashicorp/flight-icons/svg-react/x-circle-24'
 import { IconCheckCircleFill24 } from '@hashicorp/flight-icons/svg-react/check-circle-fill-24'
-import { IconChevronUp16 } from '@hashicorp/flight-icons/svg-react/chevron-up-16'
+import { IconChevronRight16 } from '@hashicorp/flight-icons/svg-react/chevron-right-16'
 import { IconChevronDown16 } from '@hashicorp/flight-icons/svg-react/chevron-down-16'
 import { TableProps } from '../../types'
 import s from './style.module.css'
@@ -93,7 +93,7 @@ export default function PricingTierTable({
                             onClick={() => handleCollapseRow(rowIdx)}
                           >
                             {rowIsCollapsed ? (
-                              <IconChevronUp16 />
+                              <IconChevronRight16 />
                             ) : (
                               <IconChevronDown16 />
                             )}
