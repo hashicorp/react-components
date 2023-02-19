@@ -41,13 +41,23 @@ const segmentReadyCb = function passSegmentKeysToHeap() {
   }
 }
 
-export default function SegmentScript({ preferences, writeKey }) {
+export default function SegmentScript({
+  preferences,
+  writeKey,
+  onAnalyticsReady,
+}) {
   if (!preferences.loadAll && !preferences.segment) return null
 
   const integrations = Object.assign(
     { All: Boolean(preferences.loadAll), 'Segment.io': true },
     preferences.segment ?? {}
   )
+  function onReadyCb() {
+    if (typeof onAnalyticsReady == 'function') {
+      onAnalyticsReady()
+    }
+    segmentReadyCb()
+  }
 
   return (
     <Script id="segment">
@@ -56,7 +66,7 @@ export default function SegmentScript({ preferences, writeKey }) {
         integrations ? JSON.stringify({ integrations: integrations }) : {}
       });
   analytics.page();
-  analytics.ready(${segmentReadyCb});
+  analytics.ready(${onReadyCb});
   }}();`}
     </Script>
   )

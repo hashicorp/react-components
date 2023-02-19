@@ -160,4 +160,8 @@ module.exports = {
     type: 'function',
     description: 'Optional callback event that fires when users clicks Accept.',
   },
+  onAnalyticsReady: {
+    type: 'function',
+    description: 'Optional callback that is passed to the segment.ready method',
+  },
 }
