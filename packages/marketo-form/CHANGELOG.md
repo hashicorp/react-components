@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.8.2
+
+### Patch Changes
+
+- [#886](https://github.com/hashicorp/react-components/pull/886) [`cbb148e4`](https://github.com/hashicorp/react-components/commit/cbb148e409f362333e6e898b529cd5c92462b79c) Thanks [@dstaley](https://github.com/dstaley)! - Require emails to have domains
+
 ## 0.8.1
 
 ### Patch Changes
