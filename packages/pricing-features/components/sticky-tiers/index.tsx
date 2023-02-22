@@ -36,7 +36,7 @@ export default function StickyTiers({
 
   return (
     <div
-      className={classNames(s.stickyTiers, isVisible && s.isVisible)}
+      className={classNames(s.wrapper, isVisible && s.isVisible)}
       style={
         {
           '--grid-template-columns': gridTemplateColumns,
@@ -46,21 +46,23 @@ export default function StickyTiers({
       // content in this component is available in other parts of the page
       aria-hidden={true}
     >
-      <div className={s.inner}>
-        <div />
-        {tiers.map(({ title, cta }) => (
-          <div key={title} className={s.tier}>
-            <p className={s.tierName}>{title}</p>
-            <div className={s.cta}>
-              <Link href={cta.url} legacyBehavior>
-                {/* links should not be tabbable since they are in other locations on the page (see tier cards in hero) */}
-                <a onClick={cta.onClick} tabIndex={-1}>
-                  {cta.title}
-                </a>
-              </Link>
+      <div className={classNames(s.stickyTiers, isVisible && s.isVisible)}>
+        <div className={s.inner}>
+          <div />
+          {tiers.map(({ title, cta }) => (
+            <div key={title} className={s.tier}>
+              <p className={s.tierName}>{title}</p>
+              <div className={s.cta}>
+                <Link href={cta.url} legacyBehavior>
+                  {/* links should not be tabbable since they are in other locations on the page (see tier cards in hero) */}
+                  <a onClick={cta.onClick} tabIndex={-1}>
+                    {cta.title}
+                  </a>
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
