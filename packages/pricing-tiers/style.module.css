@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  padding-bottom: 8px;
 
   @media (--medium-up) {
     filter: drop-shadow(0 4px 10px var(--wpl-neutral-100));
