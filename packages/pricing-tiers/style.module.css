@@ -10,22 +10,8 @@
   position: relative;
   padding-bottom: 8px;
 
-  &::before {
-    content: '';
-    background: var(--vault-accent);
-    filter: blur(12px);
-    border-radius: 8px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 93%;
-    height: 120px;
-    bottom: -10px;
-    display: none;
-
-    @media (--medium-up) {
-      display: block;
-    }
+  @media (--medium-up) {
+    filter: drop-shadow(0 4px 10px var(--wpl-neutral-100));
   }
 
   &.length1 {
