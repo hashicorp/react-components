@@ -22,8 +22,11 @@ export default function getIntegrations(
 
 // Get integrations from Segment by write key
 function fetchIntegrationsFromSegment(segmentWriteKey) {
+  const segmendCdnHostname =
+    process.env.SEGMENT_CDN_HOSTNAME || 'cdn.segment.com'
+
   return fetch(
-    `https://artemis.hashicorp.com/v1/projects/${segmentWriteKey}/integrations`
+    `https://${segmendCdnHostname}/v1/projects/${segmentWriteKey}/integrations`
   ).then((res) => {
     if (!res.ok) {
       throw new Error(
