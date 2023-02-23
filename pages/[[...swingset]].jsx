@@ -8,6 +8,7 @@ import { createStaticProps, createStaticPaths } from 'swingset/server'
 import Head from 'next/head'
 import Link from 'next/link'
 import remarkGfm from 'remark-gfm'
+import { Figma } from 'mdx-embed'
 import { SearchProvider } from '../packages/search'
 import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik'
 import FormikStateViewer from '../swingset-extensions/formik-state-viewer'
@@ -134,6 +135,7 @@ const components = {
   NextRouterDebugger,
   ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
   Playground,
+  Figma,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })
