@@ -76,9 +76,14 @@
 
 .thumbnail {
   border-bottom: 1px solid var(--border-color);
+}
 
-  & .image {
-    display: grid;
+.image {
+  display: grid;
+  aspect-ratio: 16 / 9;
+
+  & img {
+    object-fit: cover;
   }
 }
 
