@@ -79,6 +79,14 @@
 
   & .image {
     display: grid;
+    aspect-ratio: 16 / 9;
+
+    & img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
