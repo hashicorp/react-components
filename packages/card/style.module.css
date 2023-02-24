@@ -78,6 +78,7 @@
   border-bottom: 1px solid var(--border-color);
 
   & .image {
+    position: relative;
     display: grid;
     aspect-ratio: 16 / 9;
 
