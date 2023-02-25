@@ -1,8 +1,8 @@
+'use client'
 /**
  * Copyright (c) HashiCorp, Inc.
  * SPDX-License-Identifier: MPL-2.0
  */
-'use client'
 
 import React from 'react'
 import slugify from 'slugify'
