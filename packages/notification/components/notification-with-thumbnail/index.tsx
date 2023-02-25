@@ -2,6 +2,7 @@
  * Copyright (c) HashiCorp, Inc.
  * SPDX-License-Identifier: MPL-2.0
  */
+'use client'
 
 import * as React from 'react'
 import type { NotificationWithThumbnailProps } from '../../types'
