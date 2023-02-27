@@ -52,14 +52,7 @@ function Thumbnail({ src, alt }: ThumbnailProps) {
   return (
     <div className={s.thumbnail} data-testid="wpl-card-thumbnail">
       <div className={s.image}>
-        <Image
-          src={src}
-          alt={alt}
-          width={800}
-          height={450}
-          layout="responsive"
-          objectFit="cover"
-        />
+        <Image src={src} alt={alt} width={800} height={450} />
       </div>
     </div>
   )
