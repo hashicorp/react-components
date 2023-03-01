@@ -83,7 +83,6 @@ function AlertBanner({
     <>
       <div
         className={classNames(
-          'alert-banner',
           s.root,
           themeClass,
           { [s.isShown]: isShown },
