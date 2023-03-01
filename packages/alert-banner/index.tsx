@@ -43,9 +43,11 @@ function AlertBanner({
   const [isShown, setIsShown] = useState(() => {
     const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
     const hasBeenDismissed =
-      typeof window === 'undefined' ? false : cookie.get(dismissalCookieId)
+      typeof window === 'undefined'
+        ? false
+        : cookie.get(dismissalCookieId) === '1'
 
-    return Boolean(hasExpired || hasBeenDismissed || true)
+    return !hasExpired && !hasBeenDismissed
   })
   const { themeClass } = useProductMeta(product)
 
@@ -60,7 +62,7 @@ function AlertBanner({
     setIsShown((current) =>
       current !== shouldBeShown ? shouldBeShown : current
     )
-  }, [expirationDate])
+  }, [dismissalCookieId, expirationDate])
 
   /**
    * Dismiss the banner, and set a cookie
