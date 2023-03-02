@@ -171,7 +171,7 @@ test('loads segment and additional services if loadAll is passed', async () => {
       const html = document.body.innerHTML
       // script was injected
       expect(html).toMatch(
-        /<script type="text\/javascript" src="https:\/\/cdn.segment.com\/analytics\.js/
+        /<script type="text\/javascript" src="https:\/\/artemis.hashicorp.com\/script/
       )
       // all services loaded, as well as custom segment
       expect(html).toMatch(

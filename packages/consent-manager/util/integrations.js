@@ -23,7 +23,7 @@ export default function getIntegrations(
 // Get integrations from Segment by write key
 function fetchIntegrationsFromSegment(segmentWriteKey) {
   return fetch(
-    `https://cdn.segment.com/v1/projects/${segmentWriteKey}/integrations`
+    `https://artemis.hashicorp.com/v1/projects/${segmentWriteKey}/integrations`
   ).then((res) => {
     if (!res.ok) {
       throw new Error(
