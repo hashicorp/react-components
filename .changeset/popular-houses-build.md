@@ -2,4 +2,9 @@
 '@hashicorp/react-consent-manager': major
 ---
 
-This updates the segment CDN url to use the HashiCorp proxy
+This updates React ConsentManager's segment-loading scripts.
+
+- a `analytics._cdn` prop has been set
+- a custom AJS(analytics.js) path is used as well.
+
+ConsentManager now exports a `segmentPreloadScript`
