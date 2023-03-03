@@ -38,9 +38,9 @@ npm install @hashicorp/react-consent-manager@latest
 
 As of `v9.0.0`, the Segment CDN hostname has been replace with a HashiCorp hostname via `analytics._cdn`. A custom Segment Analytics.js URL is also being used. There is no breaking change to the react component API.
 
-## `segmentPreloadScript`
+## `SegmentPreloadScript`
 
-In `v9.0.0`, ConsentManager now exports a `segmentPreloadScript`. Why? ConsentManager uses a very similar Segment script to the current preloading script that we use in our `_document.tsx/js` files.
+In `v9.0.0`, ConsentManager now exports a `SegmentPreloadScript` component. Why? ConsentManager uses a very similar Segment script to the current preloading script that we use in our `_document.tsx/js` files.
 
 Now that we're updating both with a custom Segment AJS URL and CDN hostname, it makes sense for the two to be co-located.
 
@@ -52,7 +52,7 @@ Expect the new change to look like the following:
 
   import Document, { Html, Head, Main, NextScript } from 'next/document'
   import HashiHead from '@hashicorp/react-head'
-+ import { segmentPreloadScript } from '@hashicorp/react-consent-manager/scripts/segment'
++ import { SegmentPreloadScript } from '@hashicorp/react-consent-manager/scripts/segment'
   // other imports
 
   export default class MyDocument extends Document {
@@ -73,7 +73,7 @@ Expect the new change to look like the following:
 -               __html: `!function(){var analytics=window... ... ...`
 -             }}
 -           />
-+           <script dangerouslySetInnerHTML={{ __html: segmentPreloadScript }} />
++           <SegmentPreloadScript />
 
 // etc...
 ```
