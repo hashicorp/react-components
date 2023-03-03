@@ -1,5 +1,16 @@
 # @hashicorp/react-consent-manager
 
+## 9.0.0
+
+### Major Changes
+
+- [#879](https://github.com/hashicorp/react-components/pull/879) [`a2c3e077`](https://github.com/hashicorp/react-components/commit/a2c3e07726df8f54ce7bc803c156a46d059973da) Thanks [@thiskevinwang](https://github.com/thiskevinwang)! - This updates React ConsentManager's segment-loading scripts.
+
+  - a `analytics._cdn` prop has been set
+  - a custom AJS(analytics.js) path is used as well.
+
+  ConsentManager now exports a `SegmentPreloadScript`
+
 ## 8.2.2
 
 ### Patch Changes
