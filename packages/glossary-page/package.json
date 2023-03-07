@@ -16,6 +16,9 @@
     "next-mdx-remote": "3.x",
     "react": ">=16.x"
   },
+  "devDependencies": {
+    "next-mdx-remote": "^3.0.8"
+  },
   "publishConfig": {
     "access": "public"
   },

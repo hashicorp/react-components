@@ -12,7 +12,8 @@
   "peerDependencies": {
     "@hashicorp/flight-icons": ">=2.x",
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "react": ">=16.x"
+    "react": ">=16.x",
+    "next": ">=13.x"
   },
   "repository": {
     "type": "git",

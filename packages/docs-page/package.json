@@ -39,7 +39,8 @@
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.5",
-    "@types/semver": "^7.3.9"
+    "@types/semver": "^7.3.9",
+    "next-mdx-remote": "^3.0.8"
   },
   "repository": {
     "type": "git",
