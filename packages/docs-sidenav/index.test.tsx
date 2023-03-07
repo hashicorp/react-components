@@ -9,6 +9,8 @@ import DocsSidenav from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 
+jest.mock('next/router', () => ({ useRouter: jest.fn() }))
+
 const defaultProps = getTestValues(props)
 
 describe('<DocsSidenav />', () => {
