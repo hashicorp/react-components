@@ -110,8 +110,9 @@ const defaultFieldGroupings = {
 
 function isValidEmail(value: string): boolean {
   // Source: https://html.spec.whatwg.org/multipage/input.html#email-state-(type=email)
+  // Slightly modified to require domains instead of bare TLDs
   /* eslint-disable-next-line no-useless-escape */
-  return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i.test(
+  return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/i.test(
     value
   )
 }

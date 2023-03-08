@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import classNames from 'classnames'
 import type { AuthorBylineProps } from './types'
 import s from './style.module.css'

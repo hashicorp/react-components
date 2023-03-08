@@ -13,7 +13,8 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "framer-motion": "^6.3.11",
-    "react": ">=16.x"
+    "react": ">=16.x",
+    "next": ">=13.x"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-card",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
@@ -12,7 +12,8 @@
   "peerDependencies": {
     "@hashicorp/flight-icons": ">=2.x",
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "react": ">=16.x"
+    "react": ">=16.x",
+    "next": ">=13.x"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,11 @@
 # @hashicorp/react-image
 
+## 4.1.0
+
+### Minor Changes
+
+- [#895](https://github.com/hashicorp/react-components/pull/895) [`7f2adaed`](https://github.com/hashicorp/react-components/commit/7f2adaed1660a3c505e40ec0bbece1c45070a23f) Thanks [@dstaley](https://github.com/dstaley)! - Update GraphQL fragment to fetch image dimensions
+
 ## 4.0.4
 
 ### Patch Changes

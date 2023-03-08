@@ -31,6 +31,7 @@
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "@hashicorp/remark-plugins": "^4.0.0",
+    "@mdx-js/react": "1.x",
     "next-mdx-remote": "3.x",
     "react": ">=16.x"
   },
@@ -38,8 +39,10 @@
     "access": "public"
   },
   "devDependencies": {
+    "@mdx-js/react": "^1.6.22",
     "@types/mdx-js__react": "^1.5.5",
-    "@types/semver": "^7.3.9"
+    "@types/semver": "^7.3.9",
+    "next-mdx-remote": "^3.0.8"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,7 @@
-fragment imageFields on FileField {
+fragment imageFields on FileFieldInterface {
   url
   alt
   format
+  width
+  height
 }

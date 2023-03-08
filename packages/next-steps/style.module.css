@@ -253,7 +253,9 @@
 .cta {
   grid-column: 1/ -1;
   display: flex;
-  gap: var(--wpl-spacing-03);
+  flex-wrap: wrap;
+  column-gap: var(--wpl-spacing-03);
+  row-gap: var(--wpl-spacing-01);
 }
 
 .ctaCopy {

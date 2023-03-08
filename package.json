@@ -14,12 +14,11 @@
     "framer-motion": "^6.3.11",
     "lightningcss-wasm": "^1.17.1",
     "lz-string": "^1.4.4",
-    "next": "^12.3.2",
-    "next-mdx-remote": "^3.0.8",
+    "next": "^13.2.3",
     "next-remote-watch": "^1.0.0",
     "node-cache": "^5.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-error-boundary": "^3.1.4",
     "remark-gfm": "^3.0.1",
     "semver": "^7.3.5",
@@ -33,14 +32,14 @@
     "@hashicorp/platform-code-highlighting": "0.1.2",
     "@hashicorp/platform-configs": "^0.2.0",
     "@hashicorp/platform-docs-mdx": "^0.2.0",
-    "@hashicorp/platform-nextjs-plugin": "^2.1.0",
+    "@hashicorp/platform-nextjs-plugin": "^4.2.0",
     "@hashicorp/platform-postcss-config": "^0.1.0",
     "@hashicorp/platform-types": "^0.3.0",
     "@hashicorp/platform-util": "0.1.0",
+    "@mdx-js/react": "^1.6.22",
     "@octokit/core": "^3.5.1",
     "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/react-hooks": "^8.0.0",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/react": "^17.0.38",
     "dotenv": "^14.3.0",
@@ -59,11 +58,9 @@
     "npm": ">=7.0.0",
     "node": ">=10.0.0"
   },
-  "resolutions": {
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
   "overrides": {
+    "react": "$react",
+    "react-dom": "$react",
     "react-live": "3.1.0"
   },
   "scripts": {

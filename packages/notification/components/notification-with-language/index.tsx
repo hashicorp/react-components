@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import type {
   NotificationWithLanguageProps,
   NotificationLanguages,

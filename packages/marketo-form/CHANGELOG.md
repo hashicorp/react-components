@@ -1,5 +1,17 @@
 # @hashicorp/react-marketo-form
 
+## 0.8.2
+
+### Patch Changes
+
+- [#886](https://github.com/hashicorp/react-components/pull/886) [`cbb148e4`](https://github.com/hashicorp/react-components/commit/cbb148e409f362333e6e898b529cd5c92462b79c) Thanks [@dstaley](https://github.com/dstaley)! - Require emails to have domains
+
+## 0.8.1
+
+### Patch Changes
+
+- [#884](https://github.com/hashicorp/react-components/pull/884) [`d7a4fda2`](https://github.com/hashicorp/react-components/commit/d7a4fda22665ab92ad075c66ca11811b13d819ce) Thanks [@dstaley](https://github.com/dstaley)! - Explicitly set default values for hidden fields
+
 ## 0.8.0
 
 ### Minor Changes

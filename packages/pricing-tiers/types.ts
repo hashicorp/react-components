@@ -18,6 +18,7 @@ interface TierProps {
     title: string
     type: 'button' | 'textLink'
     variant?: 'primary' | 'secondary'
+    brand?: 'neutral'
     onClick?: () => void
   }
 }
@@ -27,6 +28,10 @@ export interface PricingStickyTrayProps {
 }
 
 export interface PricingTierItemProps extends TierProps {
+  /**
+   * Tag text displayed at top of card. Eg: "beta"
+   */
+  tag?: string
   /**
    * Flight Icon component
    */

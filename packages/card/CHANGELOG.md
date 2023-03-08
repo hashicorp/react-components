@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.9.1
+
+### Patch Changes
+
+- [#890](https://github.com/hashicorp/react-components/pull/890) [`07c0ce61`](https://github.com/hashicorp/react-components/commit/07c0ce61d866053ce5e80304225151d230a2ed58) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix issue with thumbnail image sizing
+
 ## 0.9.0
 
 ### Minor Changes

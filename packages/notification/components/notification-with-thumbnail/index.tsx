@@ -5,7 +5,7 @@
 
 import * as React from 'react'
 import type { NotificationWithThumbnailProps } from '../../types'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Notification from '../notification'
 import s from '../style.module.css'
 
