@@ -9,13 +9,14 @@
   ],
   "license": "MPL-2.0",
   "dependencies": {
-    "@reach/combobox": "^0.17.0",
-    "@reach/visually-hidden": "^0.16.0",
+    "@reach/combobox": "^0.18.0",
+    "@reach/visually-hidden": "^0.18.0",
     "classnames": "^2.3.1",
     "fuzzysearch": "1.0.3"
   },
   "peerDependencies": {
-    "formik": "^2.2.9"
+    "formik": "^2.2.9",
+    "react": ">=16.x"
   },
   "publishConfig": {
     "access": "public"
