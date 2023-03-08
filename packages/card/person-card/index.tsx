@@ -8,6 +8,7 @@ import * as CardPrimitives from '../primitives'
 import { IconGithub16 } from '@hashicorp/flight-icons/svg-react/github-16'
 import { IconTwitter16 } from '@hashicorp/flight-icons/svg-react/twitter-16'
 import { IconLinkedin16 } from '@hashicorp/flight-icons/svg-react/linkedin-16'
+import { IconLink16 } from '@hashicorp/flight-icons/svg-react/link-16'
 import s from './style.module.css'
 
 export interface PersonCardProps {
@@ -20,8 +21,12 @@ export interface PersonCardProps {
   productBadges?: ProductBadgesProps['badges']
 }
 
-function Icon({ url }) {
-  let icon
+function Icon({ url }: { url: string }) {
+  if (url.includes('hashicorp.com')) {
+    return null
+  }
+
+  let icon = <IconLink16 data-testid={'wpl-personcard-link-icon'} />
   if (url.includes('twitter')) {
     icon = <IconTwitter16 data-testid={'wpl-personcard-twitter-icon'} />
   }
@@ -32,7 +37,7 @@ function Icon({ url }) {
     icon = <IconLinkedin16 data-testid={'wpl-personcard-linkedin-icon'} />
   }
 
-  return icon ? <div className={s.thumbnailIcon}>{icon}</div> : null
+  return <div className={s.thumbnailIcon}>{icon}</div>
 }
 
 export function PersonCard({
