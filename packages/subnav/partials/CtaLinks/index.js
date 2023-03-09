@@ -42,6 +42,7 @@ function CtaLinks({ links, product, isInDropdown, hideGithubStars, theme }) {
             title={link.text}
             url={link.url}
             icon={isDownload ? iconDownload : isGithub ? iconGithub : undefined}
+            onClick={link.onClick}
             theme={{
               brand: product,
               variant: isLastButton ? 'primary' : 'secondary',
