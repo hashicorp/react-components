@@ -1,5 +1,12 @@
 # @hashicorp/react-quote
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [[`236e9032`](https://github.com/hashicorp/react-components/commit/236e903243b555aff1814d59a6ec97c7308dedf9)]:
+  - @hashicorp/react-author-byline@0.4.0
+
 ## 0.3.1
 
 ### Patch Changes
