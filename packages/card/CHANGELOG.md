@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.10.0
+
+### Minor Changes
+
+- [#876](https://github.com/hashicorp/react-components/pull/876) [`a5be4e82`](https://github.com/hashicorp/react-components/commit/a5be4e82a3b96abff44db046e67091c29c2cc8d1) Thanks [@dstaley](https://github.com/dstaley)! - Add support for generic links for PersonCard
+
 ## 0.9.1
 
 ### Patch Changes

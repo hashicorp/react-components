@@ -1,5 +1,11 @@
 # @hashicorp/react-subnav
 
+## 9.5.2
+
+### Patch Changes
+
+- [#900](https://github.com/hashicorp/react-components/pull/900) [`9822d78b`](https://github.com/hashicorp/react-components/commit/9822d78b05e205555ad62b075c63c63b0d9694ab) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - pass onclick handler through ctalink
+
 ## 9.5.1
 
 ### Patch Changes

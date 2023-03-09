@@ -1,5 +1,11 @@
 # @hashicorp/react-author-byline
 
+## 0.4.0
+
+### Minor Changes
+
+- [#897](https://github.com/hashicorp/react-components/pull/897) [`236e9032`](https://github.com/hashicorp/react-components/commit/236e903243b555aff1814d59a6ec97c7308dedf9) Thanks [@BRKalow](https://github.com/BRKalow)! - Migrate usages of next/image to next/legacy/image for full next v13 compatibility.
+
 ## 0.3.0
 
 ### Minor Changes
