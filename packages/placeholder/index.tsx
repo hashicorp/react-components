@@ -32,21 +32,25 @@ function PlaceholderBox({
       </p>
     )
 
-  return Array.from({ length: repeat }).map((el, index) => (
-    <div
-      // eslint-disable-next-line react/no-array-index-key
-      key={index}
-      className={s.box}
-      style={{ width, height, ...props }}
-    />
-  ))
+  return (
+    <>
+      {Array.from({ length: repeat }).map((el, index) => (
+        <div
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          className={s.box}
+          style={{ width, height, ...props }}
+        />
+      ))}
+    </>
+  )
 }
 
 export default function Placeholder({
   children,
 }: {
-  children: (Box: typeof PlaceholderBox) => React.ReactNode
+  children: (Box: typeof PlaceholderBox) => JSX.Element
   className: string
-}): React.ReactNode {
-  return children(PlaceholderBox)
+}) {
+  return <>{children(PlaceholderBox)}</>
 }
