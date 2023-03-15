@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 9.0.1
+
+### Patch Changes
+
+- [#903](https://github.com/hashicorp/react-components/pull/903) [`dbd97228`](https://github.com/hashicorp/react-components/commit/dbd97228a28179e7a131a1a767e16344878e8d5a) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Set banner text color
+
 ## 9.0.0
 
 ### Major Changes
