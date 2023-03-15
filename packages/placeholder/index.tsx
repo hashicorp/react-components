@@ -14,9 +14,9 @@ function PlaceholderBox({
   height,
   ...props
 }: {
-  prose: boolean
-  lines: string[]
-  repeat: number
+  prose?: boolean
+  lines?: string[]
+  repeat?: number
 } & React.CSSProperties) {
   if (prose)
     return (
