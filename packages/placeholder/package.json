@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-placeholder",
   "description": "Generate skeleton placeholders to reserve space while loading",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "HashiCorp",
   "contributors": [
     "Bryce Kalow"
