@@ -25,6 +25,10 @@
   }
 }
 
+.text {
+  color: var(--wpl-neutral-900);
+}
+
 .link {
   color: var(--brand-link);
   text-decoration: underline;
