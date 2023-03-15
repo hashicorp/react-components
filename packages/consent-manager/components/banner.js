@@ -15,7 +15,7 @@ export default function ConsentBanner({
   return (
     <div className={s.root} data-testid="consent-banner">
       <div className={s.innerContainer}>
-        <span>
+        <span className={s.text}>
           We use cookies & other similar technology to collect data to improve
           your experience on our site, as described in our{' '}
           <a
