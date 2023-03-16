@@ -17,7 +17,7 @@
     rgba(211, 211, 211, 0) 100%
   );
   background-position: -300% 0;
-  background-size: 75%;
+  background-size: 75% 100%;
   animation: loading 2s infinite;
 }
 
