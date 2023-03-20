@@ -4,12 +4,11 @@
  */
 
 import { render, screen } from '@testing-library/react'
-import { BlogCard } from '.'
+import { BlogCard, type BlogCardProps } from '.'
 
-const defaultProps = {
+const defaultProps: BlogCardProps = {
   link: 'https://hashicorp.com',
   heading: 'Example heading',
-  description: 'Example Description',
   date: 'August 15, 2022',
   category: 'Category',
   thumbnail: {
