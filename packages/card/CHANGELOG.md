@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.10.1
+
+### Patch Changes
+
+- [#908](https://github.com/hashicorp/react-components/pull/908) [`068cace4`](https://github.com/hashicorp/react-components/commit/068cace45c5f1558da1c5619feb2ca751a26a1cc) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix separator wrapping logic
+
 ## 0.10.0
 
 ### Minor Changes
