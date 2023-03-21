@@ -65,12 +65,12 @@ function Meta({ items }: MetaProps) {
         return (
           // eslint-disable-next-line react/no-array-index-key
           <li key={stableIdx}>
-            {stableIdx > 0 ? (
+            {item}
+            {stableIdx < items.length - 1 ? (
               <span className={s.metaSeparator} aria-hidden={true}>
                 |
               </span>
             ) : null}
-            {item}
           </li>
         )
       })}
