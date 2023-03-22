@@ -44,7 +44,16 @@ function AlertBanner({
   url,
 }: AlertBannerProps): React.ReactElement {
   const dismissalCookieId = `banner_${name || slugify(text, { lower: true })}`
-  const [isShown, setIsShown] = useState(true)
+
+  const [isShown, setIsShown] = useState(() => {
+    const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
+    const hasBeenDismissed =
+      typeof window === 'undefined'
+        ? false
+        : cookie.get(dismissalCookieId) === '1'
+
+    return !hasExpired && !hasBeenDismissed
+  })
   const { themeClass } = useProductMeta(product)
 
   /**
@@ -58,7 +67,7 @@ function AlertBanner({
     setIsShown((current) =>
       current !== shouldBeShown ? shouldBeShown : current
     )
-  }, [expirationDate])
+  }, [dismissalCookieId, expirationDate])
 
   /**
    * Dismiss the banner, and set a cookie
@@ -71,32 +80,54 @@ function AlertBanner({
   }
 
   return (
-    <div
-      className={classNames(
-        s.root,
-        themeClass,
-        { [s.isShown]: isShown },
-        { [s.hideOnMobile]: hideOnMobile }
-      )}
-    >
-      <a
-        href={url}
-        className={s.linkElem}
-        onClick={() => analytics.trackClick({ linkText, product, tag, text })}
+    <>
+      <div
+        className={classNames(
+          s.root,
+          themeClass,
+          { [s.isShown]: isShown },
+          { [s.hideOnMobile]: hideOnMobile }
+        )}
+        suppressHydrationWarning
       >
-        <span className={s.textContainer}>
-          <span className={s.tag}>{tag} </span>
-          <span className={s.text}>
-            {text}
-            {linkText ? <span className={s.linkText}> {linkText}</span> : null}
+        <a
+          href={url}
+          className={s.linkElem}
+          onClick={() => analytics.trackClick({ linkText, product, tag, text })}
+        >
+          <span className={s.textContainer}>
+            <span className={s.tag}>{tag} </span>
+            <span className={s.text}>
+              {text}
+              {linkText ? (
+                <span className={s.linkText}> {linkText}</span>
+              ) : null}
+            </span>
           </span>
-        </span>
-      </a>
-      <button className={s.closeButton} onClick={closeBanner}>
-        <InlineSvg src={CloseIcon} />
-        <VisuallyHidden>Dismiss alert</VisuallyHidden>
-      </button>
-    </div>
+        </a>
+        <button className={s.closeButton} onClick={closeBanner}>
+          <InlineSvg src={CloseIcon} />
+          <VisuallyHidden>Dismiss alert</VisuallyHidden>
+        </button>
+      </div>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+(function checkDismissAlertBanner() {
+  try {
+    if (document.cookie.includes('${dismissalCookieId}=1')) {
+      const element = document.querySelector('.${s.root}')
+      element.classList.remove('${s.isShown}')
+    }
+  } catch (_) {
+    // do nothing
+  }
+})()
+`,
+        }}
+        type="text/javascript"
+      />
+    </>
   )
 }
 
