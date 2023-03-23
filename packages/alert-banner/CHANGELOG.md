@@ -1,5 +1,11 @@
 # @hashicorp/react-alert-banner
 
+## 7.0.4
+
+### Patch Changes
+
+- [#893](https://github.com/hashicorp/react-components/pull/893) [`6bd4bab2`](https://github.com/hashicorp/react-components/commit/6bd4bab2a5044b2d3e2ee5543231a4597b78fec8) Thanks [@BRKalow](https://github.com/BRKalow)! - ensure alert banner doesn't flash if previously dismissed
+
 ## 7.0.3
 
 ### Patch Changes
