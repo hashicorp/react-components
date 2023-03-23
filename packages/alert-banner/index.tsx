@@ -110,6 +110,8 @@ function AlertBanner({
           <VisuallyHidden>Dismiss alert</VisuallyHidden>
         </button>
       </div>
+      {/* This inline script checks if the alert banner has been previously dismissed, and if so it removes the isShown class.
+      The render-blocking inline script ensures the class is removed before the first paint, preventing layout shift. */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
