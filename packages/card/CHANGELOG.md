@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.10.2
+
+### Patch Changes
+
+- [#911](https://github.com/hashicorp/react-components/pull/911) [`827601f6`](https://github.com/hashicorp/react-components/commit/827601f6fe5a91b8cdba995c21fde7e08fc0937a) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - fix: thumbnail image overflow
+
 ## 0.10.1
 
 ### Patch Changes

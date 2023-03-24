@@ -1,5 +1,11 @@
 # @hashicorp/react-notification
 
+## 0.5.1
+
+### Patch Changes
+
+- [#912](https://github.com/hashicorp/react-components/pull/912) [`ba401227`](https://github.com/hashicorp/react-components/commit/ba4012277d4bb4acf4b8d4a6e3947550d09148a4) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - adds optional onclick handler
+
 ## 0.5.0
 
 ### Minor Changes
