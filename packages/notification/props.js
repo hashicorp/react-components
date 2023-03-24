@@ -29,6 +29,11 @@ module.exports = {
         type: 'string',
         required: true,
       },
+      onClick: {
+        description:
+          'An optional function that will be called when the button is clicked.',
+        type: 'function',
+      },
     },
   },
   onDismiss: {
