@@ -41,6 +41,7 @@ export default function Notification({
               variant: appearance === 'dark' ? 'tertiary-neutral' : 'tertiary',
               background: appearance,
             }}
+            onClick={cta.onClick}
           />
         </div>
       </div>

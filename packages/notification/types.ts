@@ -68,6 +68,7 @@ export interface NotificationProps {
   cta: {
     title: string
     url: string
+    onClick?: () => void
   }
 }
 
