@@ -29,7 +29,7 @@ interface CallToActionProps {
   }[]
   variant?: 'centered' | 'compact' | 'compactGrid' | 'links'
   product?: Products
-  theme?: 'light' | 'dark' | 'brand'
+  theme?: 'light' | 'gray' | 'dark' | 'brand'
   className?: string
 }
 
@@ -89,7 +89,7 @@ function CallToAction({
                     theme={{
                       variant: buttonVariant,
                       brand: product,
-                      background: theme,
+                      background: theme === 'gray' ? 'light' : theme,
                     }}
                     title={link.text}
                     url={link.url}
