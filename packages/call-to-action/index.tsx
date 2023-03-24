@@ -29,7 +29,7 @@ interface CallToActionProps {
   }[]
   variant?: 'centered' | 'compact' | 'compactGrid' | 'links'
   product?: Products
-  theme?: 'light' | 'dark' | 'brand'
+  theme?: 'light' | 'gray' | 'dark' | 'brand'
   className?: string
 }
 
