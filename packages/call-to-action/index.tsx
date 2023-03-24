@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import type { ReactNode } from 'react'
 import Button from '@hashicorp/react-button'
 import type { Products } from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
@@ -20,7 +21,7 @@ const stylesDict = {
 
 interface CallToActionProps {
   heading?: string
-  content?: string
+  content?: ReactNode
   links?: {
     type?: 'inbound' | 'outbound' | 'anchor' | 'download'
     text: string
