@@ -70,7 +70,7 @@ Alert.fragmentSpec = { fragment }
 export default Alert
 
 interface AlertProps {
-  product: Products
+  product?: Products
   url: string
   tag: string
   text: string
