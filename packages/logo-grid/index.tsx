@@ -23,7 +23,7 @@ export interface LogoGridCompany {
   /** Company name */
   name: string
   /** Short description of what the company offers */
-  description: string
+  description?: string
   /** Optional integration page to link to. */
   integrationPage?: {
     /** Slug to link to, to be constructed into a `.com/integrations/{slug}` url. */
