@@ -1,5 +1,18 @@
 # @hashicorp/react-call-to-action
 
+## 5.3.0
+
+### Minor Changes
+
+- [#915](https://github.com/hashicorp/react-components/pull/915) [`ab830b82`](https://github.com/hashicorp/react-components/commit/ab830b828b3af1d6573fe28abc61396e2318a3c6) Thanks [@dstaley](https://github.com/dstaley)! - Update TypeScript type to accept ReactNode
+
+### Patch Changes
+
+- [#918](https://github.com/hashicorp/react-components/pull/918) [`42361b16`](https://github.com/hashicorp/react-components/commit/42361b16398a9ff8fedbcb1d2ee2b1e9ab7a286e) Thanks [@dstaley](https://github.com/dstaley)! - Update TypeScript type to allow theme="gray"
+
+- Updated dependencies [[`7a22a4bf`](https://github.com/hashicorp/react-components/commit/7a22a4bf417f11adbe3daada16dc2878d07e928c)]:
+  - @hashicorp/react-button@6.3.1
+
 ## 5.2.0
 
 ### Minor Changes

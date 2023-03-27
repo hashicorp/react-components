@@ -1,5 +1,15 @@
 # @hashicorp/react-logo-grid
 
+## 5.0.4
+
+### Patch Changes
+
+- [#919](https://github.com/hashicorp/react-components/pull/919) [`7a22a4bf`](https://github.com/hashicorp/react-components/commit/7a22a4bf417f11adbe3daada16dc2878d07e928c) Thanks [@dstaley](https://github.com/dstaley)! - Add ID field to GraphQL query
+
+- Updated dependencies [[`7a22a4bf`](https://github.com/hashicorp/react-components/commit/7a22a4bf417f11adbe3daada16dc2878d07e928c)]:
+  - @hashicorp/react-button@6.3.1
+  - @hashicorp/react-image@4.1.1
+
 ## 5.0.3
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-image",
   "description": "super optimized image element, pulls from dato and formats for 7 screen sizes in two formats. Skips optimization for SVGs.",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "author": "Hashicorp",
   "contributors": [
     "Jeff Escalante"

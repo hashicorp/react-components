@@ -1,5 +1,14 @@
 # @hashicorp/react-docs-page
 
+## 17.7.2
+
+### Patch Changes
+
+- [#917](https://github.com/hashicorp/react-components/pull/917) [`3d9aeca8`](https://github.com/hashicorp/react-components/commit/3d9aeca8b67f576531850544c3b5fa7b6f5d0b2b) Thanks [@dstaley](https://github.com/dstaley)! - Remove ts-expect-error
+
+- Updated dependencies [[`3d9aeca8`](https://github.com/hashicorp/react-components/commit/3d9aeca8b67f576531850544c3b5fa7b6f5d0b2b)]:
+  - @hashicorp/react-alert@6.1.1
+
 ## 17.7.1
 
 ### Patch Changes

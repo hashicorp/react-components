@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-section-header",
   "description": "very simple headline & subheading for a section of a page",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante"
