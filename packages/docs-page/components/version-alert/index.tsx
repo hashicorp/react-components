@@ -23,7 +23,6 @@ export default function VersionAlert({ tag, text }: VersionAlertProps) {
 
   return (
     <div className={s.wrapper}>
-      {/* @ts-expect-error: explicitly not passing `product` */}
       <Alert
         url={removeVersionFromPath(router.asPath)}
         tag={tag}
