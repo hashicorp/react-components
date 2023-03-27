@@ -1,4 +1,5 @@
 fragment alertBannerFields on AlertBannerRecord {
+  id
   tag
   theme
   text

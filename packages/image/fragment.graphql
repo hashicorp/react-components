@@ -1,4 +1,5 @@
 fragment imageFields on FileFieldInterface {
+  id
   url
   alt
   format

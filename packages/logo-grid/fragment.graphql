@@ -1,4 +1,5 @@
 fragment logoGridFields on SbcLogoGridRecord {
+  id
   size
   removeBorders
   companies {
