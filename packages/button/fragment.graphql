@@ -1,4 +1,5 @@
 fragment buttonFields on SbcButtonV2Record {
+  id
   title
   url
   external

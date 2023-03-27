@@ -1,4 +1,5 @@
 fragment sectionHeaderFields on SbcSectionHeaderRecord {
+  id
   headline
   description(markdown: true)
   useH1
