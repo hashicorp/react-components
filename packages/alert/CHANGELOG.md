@@ -1,5 +1,11 @@
 # @hashicorp/react-alert
 
+## 6.1.1
+
+### Patch Changes
+
+- [#917](https://github.com/hashicorp/react-components/pull/917) [`3d9aeca8`](https://github.com/hashicorp/react-components/commit/3d9aeca8b67f576531850544c3b5fa7b6f5d0b2b) Thanks [@dstaley](https://github.com/dstaley)! - Mark product as optional
+
 ## 6.1.0
 
 ### Minor Changes
