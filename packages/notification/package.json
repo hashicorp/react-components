@@ -12,7 +12,7 @@
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "framer-motion": "^6.3.11",
+    "framer-motion": "^10.9.2",
     "react": ">=16.x",
     "next": ">=13.x"
   },

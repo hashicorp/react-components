@@ -5,11 +5,11 @@
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
-    "framer-motion": "^6.3.11"
+    "framer-motion": "^10.9.2"
   },
   "peerDependencies": {
     "react": ">=16.x",
-    "framer-motion": ">=6.3.11"
+    "framer-motion": ">=10.9.2"
   },
   "repository": {
     "type": "git",
