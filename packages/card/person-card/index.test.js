@@ -47,6 +47,7 @@ describe('<PersonCard />', () => {
       twitter: 'https://twitter.com',
       linkedin: 'https://linkedin.com',
       link: 'https://example.com',
+      mail: 'mailto:name@example.com',
     }
 
     render(
