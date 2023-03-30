@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.11.0
+
+### Minor Changes
+
+- [#924](https://github.com/hashicorp/react-components/pull/924) [`c0939f9d`](https://github.com/hashicorp/react-components/commit/c0939f9da88f8da89d7700b5985f4aa4691facbb) Thanks [@dstaley](https://github.com/dstaley)! - Add support for email links in PersonCard
+
 ## 0.10.2
 
 ### Patch Changes
