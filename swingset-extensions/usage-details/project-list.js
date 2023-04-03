@@ -9,14 +9,14 @@
  * array format is just for brevity
  */
 const PROJECT_LIST = [
-  'hashicorp/hashicorp-www-next',
-  'hashicorp/web/hashiconf',
-  'hashicorp/web/hashidays',
-  'hashicorp/web/internal-www',
+  ['hashicorp/web', '/apps/hashiconf'],
+  ['hashicorp/web', '/apps/hashidays'],
+  ['hashicorp/web', '/apps/internal-www'],
+  ['hashicorp/web', '/apps/help-hashicorp-services'],
+  ['hashicorp/web', '/apps/how-hashicorp-works'],
   ['hashicorp/web-platform-packages', '/packages/docs-mdx'],
+  'hashicorp/hashicorp-www-next',
   'hashicorp/terraform-website',
-  'hashicorp/web/help-hashicorp-services',
-  'hashicorp/web/how-hashicorp-works',
   'hashicorp/dev-portal',
 ].map((e) => {
   if (typeof e === 'string') return { repo: e, dir: '' }
