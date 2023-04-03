@@ -10,12 +10,13 @@
  */
 const PROJECT_LIST = [
   'hashicorp/hashicorp-www-next',
-  'hashicorp/hashiconf-next',
-  'hashicorp/cloud.hashicorp.com',
-  'hashicorp/learn',
+  'hashicorp/web/hashiconf',
+  'hashicorp/web/hashidays',
+  'hashicorp/web/internal-www',
   ['hashicorp/web-platform-packages', '/packages/docs-mdx'],
   'hashicorp/terraform-website',
-  'hashicorp/how-hashicorp-works',
+  'hashicorp/web/help-hashicorp-services',
+  'hashicorp/web/how-hashicorp-works',
   'hashicorp/dev-portal',
 ].map((e) => {
   if (typeof e === 'string') return { repo: e, dir: '' }
