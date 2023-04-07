@@ -46,7 +46,8 @@ interface RemoteContentLoaderOpts extends DataLoaderOpts {
  * TODO: export this from future content-api client
  * @see https://app.asana.com/0/1100423001970639/1201071725174928/f
  */
-interface VersionMetadataItem {
+export type ReleaseStage = 'alpha' | 'beta' | 'rc' | 'stable'
+export interface VersionMetadataItem {
   product: string
   ref: string
   version: string
@@ -55,6 +56,7 @@ interface VersionMetadataItem {
   sha: string
   isLatest?: boolean
   fullPath: string
+  releaseStage: ReleaseStage
 }
 
 export interface VersionSelectItem {
@@ -62,6 +64,7 @@ export interface VersionSelectItem {
   label: string
   version: string
   isLatest: boolean
+  releaseStage: ReleaseStage
 }
 
 const moizeOpts: Options = { isPromise: true, maxSize: Infinity }
@@ -70,6 +73,19 @@ const cachedFetchVersionMetadataList = moize(
   fetchVersionMetadataList,
   moizeOpts
 )
+
+const determineLabel =
+  (displayValue: string) => (option: VersionMetadataItem) => {
+    if (option.isLatest) {
+      return `${displayValue} (latest)`
+    }
+
+    if (option.releaseStage !== 'stable') {
+      return `${displayValue} (${option.releaseStage})`
+    }
+
+    return displayValue
+  }
 
 /**
  * Formats a list of version-metadata to,
@@ -81,17 +97,19 @@ export function mapVersionList(
 ): VersionSelectItem[] {
   const versions = list
     .sort((a, b) =>
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       semver.compare(semver.coerce(b.version)!, semver.coerce(a.version)!)
     )
-    .map((e) => {
-      const { isLatest, version, display } = e
-
+    .map((versionOption) => {
+      const { isLatest, version, display, releaseStage } = versionOption
       const displayValue = display || version
+      const createVersionLabel = determineLabel(displayValue)
 
       return {
         name: isLatest ? 'latest' : version,
-        label: isLatest ? `${displayValue} (latest)` : displayValue,
+        label: createVersionLabel(versionOption),
         isLatest: isLatest || false,
+        releaseStage: releaseStage as ReleaseStage,
         version,
       }
     })

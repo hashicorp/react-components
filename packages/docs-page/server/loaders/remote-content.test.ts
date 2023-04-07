@@ -11,7 +11,10 @@ import document_v4 from '../../content-api/__fixtures__/document_v0.4.x.json'
 import navData_v4 from '../../content-api/__fixtures__/navData_v0.4.x.json'
 import versionMetadata_200 from '../../content-api/__fixtures__/versionMetadata_200.json'
 
-import RemoteContentLoader, { mapVersionList } from './remote-content'
+import RemoteContentLoader, {
+  mapVersionList,
+  VersionMetadataItem,
+} from './remote-content'
 
 let loader: RemoteContentLoader
 let scope: nock.Scope
@@ -256,12 +259,14 @@ describe('RemoteContentLoader', () => {
 
 describe('mapVersionList', () => {
   const versionMetadataList = versionMetadata_200.result
-  const versionList = mapVersionList(versionMetadataList)
+  const versionResponseList = mapVersionList(
+    versionMetadataList as VersionMetadataItem[]
+  )
 
-  test('should label the first item as "latest"', () => {
-    expect(versionList[0].name).toEqual('latest')
-    expect(versionList[0].label.endsWith('(latest)')).toBe(true)
-  })
+  // test('should label the first item as "latest"', () => {
+  //   expect(versionList[0].name).toEqual('latest')
+  //   expect(versionList[0].label.endsWith('(latest)')).toBe(true)
+  // })
 
   test('should sort by semver descending', () => {
     const list = [
@@ -324,24 +329,27 @@ describe('mapVersionList', () => {
   })
 
   test('should map a list of version-metadata to a format for <VersionSelect/>', () => {
-    expect(versionList).toMatchInlineSnapshot(`
+    expect(versionResponseList).toMatchInlineSnapshot(`
       Array [
         Object {
-          "isLatest": true,
-          "label": "v0.5.2 (latest)",
-          "name": "latest",
+          "isLatest": false,
+          "label": "v0.5.2 (alpha)",
+          "name": "v0.5.x",
+          "releaseStage": "alpha",
           "version": "v0.5.x",
         },
         Object {
-          "isLatest": false,
-          "label": "v0.4.x",
-          "name": "v0.4.x",
+          "isLatest": true,
+          "label": "v0.4.x (latest)",
+          "name": "latest",
+          "releaseStage": "stable",
           "version": "v0.4.x",
         },
         Object {
           "isLatest": false,
           "label": "v0.3.x",
           "name": "v0.3.x",
+          "releaseStage": "stable",
           "version": "v0.3.x",
         },
       ]
