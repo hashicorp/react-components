@@ -9,7 +9,6 @@ import TelephoneField from '../fields/telephone-field'
 import TextareaField from '../fields/textarea-field'
 import SelectField from '../fields/select-field'
 import CheckboxField from '../fields/checkbox-field'
-import PrivacyPolicyField from '../fields/privacy-policy-field'
 import HiddenField from '../fields/hidden-field'
 import HtmltextField from '../fields/htmltext-field'
 import FormPageUrlField from '../fields/form-page-url-field'
@@ -57,9 +56,6 @@ const Field = ({
       if (components && 'checkbox' in components) {
         const Component = components.checkbox!
         return <Component field={field} />
-      }
-      if (field.id === 'Consent_Privacy_Policy__c') {
-        return <PrivacyPolicyField field={field} />
       }
       return <CheckboxField field={field} />
     case 'hidden':
