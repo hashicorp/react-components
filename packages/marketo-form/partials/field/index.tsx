@@ -11,6 +11,7 @@ import SelectField from '../fields/select-field'
 import CheckboxField from '../fields/checkbox-field'
 import PrivacyPolicyField from '../fields/privacy-policy-field'
 import HiddenField from '../fields/hidden-field'
+import HtmltextField from '../fields/htmltext-field'
 import FormPageUrlField from '../fields/form-page-url-field'
 import type { MarketoFormField, MarketoFormComponents } from '../../types'
 
@@ -70,6 +71,12 @@ const Field = ({
         return <FormPageUrlField field={field} />
       }
       return <HiddenField field={field} />
+    case 'htmltext':
+      if (components && 'htmltext' in components) {
+        const Component = components.htmltext!
+        return <Component field={field} />
+      }
+      return <HtmltextField field={field} />
     default:
       console.error(`Unknown form field type: ${(field as any).Datatype}`)
   }
