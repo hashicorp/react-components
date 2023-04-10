@@ -46,8 +46,7 @@ interface RemoteContentLoaderOpts extends DataLoaderOpts {
  * TODO: export this from future content-api client
  * @see https://app.asana.com/0/1100423001970639/1201071725174928/f
  */
-export type ReleaseStage = 'alpha' | 'beta' | 'rc' | 'stable'
-export interface VersionMetadataItem {
+interface VersionMetadataItem {
   product: string
   ref: string
   version: string
@@ -56,7 +55,6 @@ export interface VersionMetadataItem {
   sha: string
   isLatest?: boolean
   fullPath: string
-  releaseStage: ReleaseStage
 }
 
 export interface VersionSelectItem {
@@ -64,7 +62,6 @@ export interface VersionSelectItem {
   label: string
   version: string
   isLatest: boolean
-  releaseStage: ReleaseStage
 }
 
 const moizeOpts: Options = { isPromise: true, maxSize: Infinity }
@@ -73,19 +70,6 @@ const cachedFetchVersionMetadataList = moize(
   fetchVersionMetadataList,
   moizeOpts
 )
-
-const determineLabel =
-  (displayValue: string) => (option: VersionMetadataItem) => {
-    if (option.isLatest) {
-      return `${displayValue} (latest)`
-    }
-
-    if (option.releaseStage !== 'stable') {
-      return `${displayValue} (${option.releaseStage})`
-    }
-
-    return displayValue
-  }
 
 /**
  * Formats a list of version-metadata to,
@@ -97,19 +81,17 @@ export function mapVersionList(
 ): VersionSelectItem[] {
   const versions = list
     .sort((a, b) =>
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       semver.compare(semver.coerce(b.version)!, semver.coerce(a.version)!)
     )
-    .map((versionOption) => {
-      const { isLatest, version, display, releaseStage } = versionOption
+    .map((e) => {
+      const { isLatest, version, display } = e
+
       const displayValue = display || version
-      const createVersionLabel = determineLabel(displayValue)
 
       return {
         name: isLatest ? 'latest' : version,
-        label: createVersionLabel(versionOption),
+        label: isLatest ? `${displayValue} (latest)` : displayValue,
         isLatest: isLatest || false,
-        releaseStage: releaseStage as ReleaseStage,
         version,
       }
     })
