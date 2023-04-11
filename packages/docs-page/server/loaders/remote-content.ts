@@ -80,7 +80,10 @@ const determineLabel =
       return `${displayValue} (latest)`
     }
 
-    if (option.releaseStage !== 'stable') {
+    if (
+      typeof option.releaseStage !== 'undefined' &&
+      option.releaseStage !== 'stable'
+    ) {
       return `${displayValue} (${option.releaseStage})`
     }
 
@@ -95,24 +98,19 @@ const determineLabel =
 export function mapVersionList(
   list: VersionMetadataItem[]
 ): VersionSelectItem[] {
-  const versions = list
-    .sort((a, b) =>
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      semver.compare(semver.coerce(b.version)!, semver.coerce(a.version)!)
-    )
-    .map((versionOption) => {
-      const { isLatest, version, display, releaseStage } = versionOption
-      const displayValue = display || version
-      const createVersionLabel = determineLabel(displayValue)
+  const versions = list.map((versionOption) => {
+    const { isLatest, version, display, releaseStage } = versionOption
+    const displayValue = display || version
+    const createVersionLabel = determineLabel(displayValue)
 
-      return {
-        name: isLatest ? 'latest' : version,
-        label: createVersionLabel(versionOption),
-        isLatest: isLatest || false,
-        releaseStage: releaseStage as ReleaseStage,
-        version,
-      }
-    })
+    return {
+      name: isLatest ? 'latest' : version,
+      label: createVersionLabel(versionOption),
+      isLatest: isLatest || false,
+      releaseStage: releaseStage as ReleaseStage,
+      version,
+    }
+  })
 
   return versions
 }

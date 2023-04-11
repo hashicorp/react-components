@@ -12,6 +12,7 @@ import versionMetadata_200 from '../../content-api/__fixtures__/versionMetadata_
 import RemoteContentLoader, {
   mapVersionList,
   VersionMetadataItem,
+  VersionSelectItem,
 } from './remote-content'
 
 let loader: RemoteContentLoader
@@ -261,70 +262,21 @@ describe('mapVersionList', () => {
     versionMetadataList as VersionMetadataItem[]
   )
 
-  // test('should label the first item as "latest"', () => {
-  //   expect(versionList[0].name).toEqual('latest')
-  //   expect(versionList[0].label.endsWith('(latest)')).toBe(true)
-  // })
+  test('should label the latest version as "latest"', () => {
+    const latestVersion = versionList.find(
+      (version) => version.isLatest === true
+    )
 
-  // test('should sort by semver descending', () => {
-  //   const list = [
-  //     { version: 'v0.11.x' },
-  //     { version: 'v0.9.x' },
-  //     { version: 'v0.10.x' },
-  //     { version: 'v1.9.x' },
-  //     { version: 'v1.1.x' },
-  //     { version: 'v1.10.x' },
-  //     { version: 'v2.11.x' },
-  //   ]
-  //   const versionList = mapVersionList(list as any)
+    expect(latestVersion?.label.endsWith('(latest)')).toBe(true)
+  })
 
-  //   expect(versionList).toMatchInlineSnapshot(`
-  //     Array [
-  //       Object {
-  //         "isLatest": false,
-  //         "label": "v2.11.x",
-  //         "name": "v2.11.x",
-  //         "version": "v2.11.x",
-  //       },
-  //       Object {
-  //         "isLatest": false,
-  //         "label": "v1.10.x",
-  //         "name": "v1.10.x",
-  //         "version": "v1.10.x",
-  //       },
-  //       Object {
-  //         "isLatest": false,
-  //         "label": "v1.9.x",
-  //         "name": "v1.9.x",
-  //         "version": "v1.9.x",
-  //       },
-  //       Object {
-  //         "isLatest": false,
-  //         "label": "v1.1.x",
-  //         "name": "v1.1.x",
-  //         "version": "v1.1.x",
-  //       },
-  //       Object {
-  //         "isLatest": false,
-  //         "label": "v0.11.x",
-  //         "name": "v0.11.x",
-  //         "version": "v0.11.x",
-  //       },
-  //       Object {
-  //         "isLatest": false,
-  //         "label": "v0.10.x",
-  //         "name": "v0.10.x",
-  //         "version": "v0.10.x",
-  //       },
-  //       Object {
-  //         "isLatest": false,
-  //         "label": "v0.9.x",
-  //         "name": "v0.9.x",
-  //         "version": "v0.9.x",
-  //       },
-  //     ]
-  //   `)
-  // })
+  test('should label the alpha version as "alpha"', () => {
+    const latestVersion = versionList.find(
+      (version) => version.releaseStage === 'alpha'
+    )
+
+    expect(latestVersion?.label.endsWith('(alpha)')).toBe(true)
+  })
 
   test('should map a list of version-metadata to a format for <VersionSelect/>', () => {
     expect(versionList).toMatchInlineSnapshot(`
