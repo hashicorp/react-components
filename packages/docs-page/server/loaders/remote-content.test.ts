@@ -12,7 +12,6 @@ import versionMetadata_200 from '../../content-api/__fixtures__/versionMetadata_
 import RemoteContentLoader, {
   mapVersionList,
   VersionMetadataItem,
-  VersionSelectItem,
 } from './remote-content'
 
 let loader: RemoteContentLoader
