@@ -74,21 +74,20 @@ const cachedFetchVersionMetadataList = moize(
   moizeOpts
 )
 
-const determineLabel =
-  (displayValue: string) => (option: VersionMetadataItem) => {
-    if (option.isLatest) {
-      return `${displayValue} (latest)`
-    }
-
-    if (
-      typeof option.releaseStage !== 'undefined' &&
-      option.releaseStage !== 'stable'
-    ) {
-      return `${displayValue} (${option.releaseStage})`
-    }
-
-    return displayValue
+const determineLabel = (option: VersionMetadataItem, displayValue: string) => {
+  if (option.isLatest) {
+    return `${displayValue} (latest)`
   }
+
+  if (
+    typeof option.releaseStage !== 'undefined' &&
+    option.releaseStage !== 'stable'
+  ) {
+    return `${displayValue} (${option.releaseStage})`
+  }
+
+  return displayValue
+}
 
 /**
  * Formats a list of version-metadata to,
@@ -101,11 +100,10 @@ export function mapVersionList(
   const versions = list.map((versionOption) => {
     const { isLatest, version, display, releaseStage } = versionOption
     const displayValue = display || version
-    const createVersionLabel = determineLabel(displayValue)
 
     return {
       name: isLatest ? 'latest' : version,
-      label: createVersionLabel(versionOption),
+      label: determineLabel(versionOption, displayValue),
       isLatest: isLatest || false,
       releaseStage: releaseStage as ReleaseStage,
       version,
