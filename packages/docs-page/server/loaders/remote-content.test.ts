@@ -169,21 +169,31 @@ describe('RemoteContentLoader', () => {
         "navData": Any<Array>,
         "versions": Array [
           Object {
+            "isLatest": false,
+            "label": "v0.6.2 (alpha)",
+            "name": "v0.6.x",
+            "releaseStage": "alpha",
+            "version": "v0.6.x",
+          },
+          Object {
             "isLatest": true,
             "label": "v0.5.2 (latest)",
             "name": "latest",
+            "releaseStage": "stable",
             "version": "v0.5.x",
           },
           Object {
             "isLatest": false,
             "label": "v0.4.x",
             "name": "v0.4.x",
+            "releaseStage": "stable",
             "version": "v0.4.x",
           },
           Object {
             "isLatest": false,
             "label": "v0.3.x",
             "name": "v0.3.x",
+            "releaseStage": "stable",
             "version": "v0.3.x",
           },
         ],
@@ -282,15 +292,22 @@ describe('mapVersionList', () => {
       Array [
         Object {
           "isLatest": false,
-          "label": "v0.5.2 (alpha)",
-          "name": "v0.5.x",
+          "label": "v0.6.2 (alpha)",
+          "name": "v0.6.x",
           "releaseStage": "alpha",
-          "version": "v0.5.x",
+          "version": "v0.6.x",
         },
         Object {
           "isLatest": true,
-          "label": "v0.4.x (latest)",
+          "label": "v0.5.2 (latest)",
           "name": "latest",
+          "releaseStage": "stable",
+          "version": "v0.5.x",
+        },
+        Object {
+          "isLatest": false,
+          "label": "v0.4.x",
+          "name": "v0.4.x",
           "releaseStage": "stable",
           "version": "v0.4.x",
         },
