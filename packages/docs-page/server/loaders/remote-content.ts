@@ -46,7 +46,8 @@ interface RemoteContentLoaderOpts extends DataLoaderOpts {
  * TODO: export this from future content-api client
  * @see https://app.asana.com/0/1100423001970639/1201071725174928/f
  */
-interface VersionMetadataItem {
+export type ReleaseStage = 'alpha' | 'beta' | 'rc' | 'stable'
+export interface VersionMetadataItem {
   product: string
   ref: string
   version: string
@@ -55,6 +56,7 @@ interface VersionMetadataItem {
   sha: string
   isLatest?: boolean
   fullPath: string
+  releaseStage: ReleaseStage
 }
 
 export interface VersionSelectItem {
@@ -62,6 +64,7 @@ export interface VersionSelectItem {
   label: string
   version: string
   isLatest: boolean
+  releaseStage: ReleaseStage
 }
 
 const moizeOpts: Options = { isPromise: true, maxSize: Infinity }
@@ -71,6 +74,23 @@ const cachedFetchVersionMetadataList = moize(
   moizeOpts
 )
 
+const determineLabel = (option: VersionMetadataItem) => {
+  const displayValue = option.display || option.version
+
+  if (option.isLatest) {
+    return `${displayValue} (latest)`
+  }
+
+  if (
+    typeof option.releaseStage !== 'undefined' &&
+    option.releaseStage !== 'stable'
+  ) {
+    return `${displayValue} (${option.releaseStage})`
+  }
+
+  return displayValue
+}
+
 /**
  * Formats a list of version-metadata to,
  * be passed to `<VersionSelect versions={[...]} />`.
@@ -79,22 +99,17 @@ const cachedFetchVersionMetadataList = moize(
 export function mapVersionList(
   list: VersionMetadataItem[]
 ): VersionSelectItem[] {
-  const versions = list
-    .sort((a, b) =>
-      semver.compare(semver.coerce(b.version)!, semver.coerce(a.version)!)
-    )
-    .map((e) => {
-      const { isLatest, version, display } = e
+  const versions = list.map((versionOption) => {
+    const { isLatest, version, releaseStage } = versionOption
 
-      const displayValue = display || version
-
-      return {
-        name: isLatest ? 'latest' : version,
-        label: isLatest ? `${displayValue} (latest)` : displayValue,
-        isLatest: isLatest || false,
-        version,
-      }
-    })
+    return {
+      name: isLatest ? 'latest' : version,
+      label: determineLabel(versionOption),
+      isLatest: isLatest || false,
+      releaseStage: releaseStage,
+      version,
+    }
+  })
 
   return versions
 }
