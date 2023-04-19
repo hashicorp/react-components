@@ -3,7 +3,6 @@
   "version": "0.1.2",
   "dependencies": {
     "@hashicorp/flight-icons": "^2.5.0",
-    "@reach/auto-id": "^0.18.0",
     "clsx": "^1.2.1"
   }
 }

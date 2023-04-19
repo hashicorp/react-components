@@ -3,8 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import React, { ReactNode, ComponentProps } from 'react'
-import { useId } from '@reach/auto-id'
+import React, { ReactNode, ComponentProps, useId } from 'react'
 import s from './style.module.css'
 import clsx from 'clsx'
 
