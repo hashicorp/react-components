@@ -1,5 +1,11 @@
 # @hashicorp/react-motion-config
 
+## 0.3.0
+
+### Minor Changes
+
+- [#936](https://github.com/hashicorp/react-components/pull/936) [`9bac2aed`](https://github.com/hashicorp/react-components/commit/9bac2aed9fc190c445675c4226a01ee89560d114) Thanks [@dstaley](https://github.com/dstaley)! - Remove framer-motion as a direct dependency
+
 ## 0.2.0
 
 ### Minor Changes
