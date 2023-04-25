@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-docs-page",
   "description": "Create a Hashicorp branded docs page in NextJS projects.",
-  "version": "17.7.2",
+  "version": "17.8.0",
   "author": "HashiCorp",
   "contributors": [
     "Jeff Escalante",

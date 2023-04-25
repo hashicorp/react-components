@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.8.0
+
+### Minor Changes
+
+- [#927](https://github.com/hashicorp/react-components/pull/927) [`89403f14`](https://github.com/hashicorp/react-components/commit/89403f142a86fb3a75eafec383873d492e7446b9) Thanks [@nayres](https://github.com/nayres)! - Add support for pre-release versions in versionSelectItem
+
 ## 17.7.2
 
 ### Patch Changes

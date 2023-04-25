@@ -9,10 +9,6 @@
   color: var(--label-text-color);
   margin-bottom: 16px;
 
-  & .required {
-    color: tomato;
-  }
-
   &.hasHelp,
   &.hasError {
     margin-bottom: 0;

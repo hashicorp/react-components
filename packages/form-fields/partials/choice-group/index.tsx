@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { useId } from '@reach/auto-id'
+import { useId } from 'react'
 import Radio from '../../radio'
 import Checkbox from '../../checkbox'
 import Label from '../label'

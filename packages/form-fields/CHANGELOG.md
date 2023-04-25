@@ -1,5 +1,11 @@
 # @hashicorp/react-form-fields
 
+## 0.1.2
+
+### Patch Changes
+
+- [#921](https://github.com/hashicorp/react-components/pull/921) [`534a28e2`](https://github.com/hashicorp/react-components/commit/534a28e24bc61c39938a30cc6311473a97d284cc) Thanks [@alexcarpenter](https://github.com/alexcarpenter)! - Removes tomato color usage
+
 ## 0.1.1
 
 ### Patch Changes

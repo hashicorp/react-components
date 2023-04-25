@@ -3,12 +3,14 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import { memo, type ReactNode } from 'react'
 import type { CardProps, ProductBadgesProps, ThumbnailProps } from '../types'
 import * as CardPrimitives from '../primitives'
 import { IconGithub16 } from '@hashicorp/flight-icons/svg-react/github-16'
 import { IconTwitter16 } from '@hashicorp/flight-icons/svg-react/twitter-16'
 import { IconLinkedin16 } from '@hashicorp/flight-icons/svg-react/linkedin-16'
 import { IconLink16 } from '@hashicorp/flight-icons/svg-react/link-16'
+import { IconMail16 } from '@hashicorp/flight-icons/svg-react/mail-16'
 import s from './style.module.css'
 
 export interface PersonCardProps {
@@ -21,24 +23,40 @@ export interface PersonCardProps {
   productBadges?: ProductBadgesProps['badges']
 }
 
-function Icon({ url }: { url: string }) {
-  if (url.includes('hashicorp.com')) {
+// Map of hostnames to icons.
+/* eslint-disable react/jsx-key */
+const iconMap = new Map<string, ReactNode>([
+  // null signals that we don't want to render any icon
+  ['hashicorp.com', null],
+  [
+    'twitter.com',
+    <IconTwitter16 data-testid={'wpl-personcard-twitter-icon'} />,
+  ],
+  ['github.com', <IconGithub16 data-testid={'wpl-personcard-github-icon'} />],
+  [
+    'linkedin.com',
+    <IconLinkedin16 data-testid={'wpl-personcard-linkedin-icon'} />,
+  ],
+  ['mailto:', <IconMail16 data-testid={'wpl-personcard-mail-icon'} />],
+])
+/* eslint-enable react/jsx-key */
+
+const Icon = memo(function Icon({ url }: { url: string }) {
+  const { protocol, host } = new URL(url)
+  const icon = iconMap.get(protocol === 'mailto:' ? 'mailto:' : host)
+
+  // If the icon value is null, don't render an icon
+  if (icon === null) {
     return null
   }
 
-  let icon = <IconLink16 data-testid={'wpl-personcard-link-icon'} />
-  if (url.includes('twitter')) {
-    icon = <IconTwitter16 data-testid={'wpl-personcard-twitter-icon'} />
-  }
-  if (url.includes('github')) {
-    icon = <IconGithub16 data-testid={'wpl-personcard-github-icon'} />
-  }
-  if (url.includes('linkedin')) {
-    icon = <IconLinkedin16 data-testid={'wpl-personcard-linkedin-icon'} />
-  }
-
-  return <div className={s.thumbnailIcon}>{icon}</div>
-}
+  // Render the icon or the default icon if the icon value is undefined
+  return (
+    <div className={s.thumbnailIcon}>
+      {icon ?? <IconLink16 data-testid={'wpl-personcard-link-icon'} />}
+    </div>
+  )
+})
 
 export function PersonCard({
   appearance,

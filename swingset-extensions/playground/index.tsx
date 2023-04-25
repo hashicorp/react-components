@@ -7,10 +7,10 @@ import {
   useRef,
   useState,
   Children,
-  FC,
   ElementType,
   ReactElement,
   useEffect,
+  type ReactNode,
 } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import classNames from 'classnames'
@@ -50,6 +50,7 @@ interface PlaygroundProps {
    * WARNING: only one Playground per page can have its state persisted to the URL
    */
   persistStateToUrl?: boolean
+  children: ReactNode
 }
 
 /**
@@ -197,12 +198,12 @@ const PlaygroundInner = ({ layout, persistStateToUrl }) => {
   )
 }
 
-const Playground: FC<PlaygroundProps> = ({
+const Playground = ({
   children,
   title,
   layout,
   persistStateToUrl,
-}) => {
+}: PlaygroundProps) => {
   const [codeChild, styleChild] = Children.toArray(children)
 
   const initialCode =

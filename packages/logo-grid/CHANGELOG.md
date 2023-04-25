@@ -1,5 +1,11 @@
 # @hashicorp/react-logo-grid
 
+## 5.0.5
+
+### Patch Changes
+
+- [#920](https://github.com/hashicorp/react-components/pull/920) [`874e9298`](https://github.com/hashicorp/react-components/commit/874e92985d7cf52043e85188929d5065ed83626e) Thanks [@dstaley](https://github.com/dstaley)! - Allow undefined descriptions
+
 ## 5.0.4
 
 ### Patch Changes

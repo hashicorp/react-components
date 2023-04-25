@@ -41,7 +41,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/react": "^17.0.38",
+    "@types/react": "^18.0.37",
     "dotenv": "^14.3.0",
     "eslint": "^7.32.0",
     "identity-obj-proxy": "^3.0.0",

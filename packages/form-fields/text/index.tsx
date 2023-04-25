@@ -4,7 +4,7 @@
  */
 
 import classNames from 'classnames'
-import { useId } from '@reach/auto-id'
+import { useId } from 'react'
 import s from './style.module.css'
 import type { HTMLProps } from 'react'
 import Label from '../partials/label'
