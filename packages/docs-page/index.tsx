@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { useEffect, FunctionComponent, ReactElement } from 'react'
+import { useEffect, ReactElement, type ReactNode } from 'react'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -32,6 +32,7 @@ import type { VersionSelectItem } from './server/loaders/remote-content'
 
 interface DocsPageInnerProps {
   canonicalUrl: string | null
+  children: ReactNode
   description: string
   navData: NavData
   currentPath: string
@@ -48,7 +49,7 @@ interface DocsPageInnerProps {
   projectName?: string
 }
 
-export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
+export const DocsPageInner = ({
   canonicalUrl,
   children,
   description,
@@ -64,7 +65,7 @@ export const DocsPageInner: FunctionComponent<DocsPageInnerProps> = ({
   algoliaConfig,
   optInBanner,
   projectName,
-}) => {
+}: DocsPageInnerProps) => {
   const isMobile = useIsMobile()
   const { asPath } = useRouter()
   const versionInPath = getVersionFromPath(asPath)

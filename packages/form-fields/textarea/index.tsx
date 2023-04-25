@@ -4,7 +4,7 @@
  */
 
 import clsx from 'clsx'
-import { useId } from '@reach/auto-id'
+import { useId } from 'react'
 import s from './style.module.css'
 import { HTMLProps } from 'react'
 import Label from '../partials/label'
