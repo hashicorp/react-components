@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.9.0
+
+### Minor Changes
+
+- [#938](https://github.com/hashicorp/react-components/pull/938) [`b4ac21ad`](https://github.com/hashicorp/react-components/commit/b4ac21adec2d76163e1f6a9c3ca5173440d4a934) Thanks [@dstaley](https://github.com/dstaley)! - Update TypeScript types to be compatible with React v18
+
 ## 17.8.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/react-form-fields",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "dependencies": {
     "@hashicorp/flight-icons": "^2.5.0",
     "clsx": "^1.2.1"

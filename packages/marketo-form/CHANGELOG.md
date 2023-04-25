@@ -1,5 +1,14 @@
 # @hashicorp/react-marketo-form
 
+## 0.8.3
+
+### Patch Changes
+
+- [#941](https://github.com/hashicorp/react-components/pull/941) [`855af8ac`](https://github.com/hashicorp/react-components/commit/855af8ac0cad8a89920b733c1f914d2dff91c391) Thanks [@BRKalow](https://github.com/BRKalow)! - Updates @hashicorp/platform-analytics to address type errors.
+
+- Updated dependencies [[`b4ac21ad`](https://github.com/hashicorp/react-components/commit/b4ac21adec2d76163e1f6a9c3ca5173440d4a934)]:
+  - @hashicorp/react-form-fields@0.2.0
+
 ## 0.8.2
 
 ### Patch Changes

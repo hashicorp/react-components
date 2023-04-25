@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 9.0.2
+
+### Patch Changes
+
+- [#941](https://github.com/hashicorp/react-components/pull/941) [`855af8ac`](https://github.com/hashicorp/react-components/commit/855af8ac0cad8a89920b733c1f914d2dff91c391) Thanks [@BRKalow](https://github.com/BRKalow)! - Remove unused @ts-expect-error comment.
+
 ## 9.0.1
 
 ### Patch Changes
