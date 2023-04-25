@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-consent-manager",
   "description": "A GDPR-compliant Consent Manager",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "author": "HashiCorp",
   "contributors": [
     "Jennifer Yip",

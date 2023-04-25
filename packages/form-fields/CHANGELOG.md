@@ -1,5 +1,11 @@
 # @hashicorp/react-form-fields
 
+## 0.2.0
+
+### Minor Changes
+
+- [#938](https://github.com/hashicorp/react-components/pull/938) [`b4ac21ad`](https://github.com/hashicorp/react-components/commit/b4ac21adec2d76163e1f6a9c3ca5173440d4a934) Thanks [@dstaley](https://github.com/dstaley)! - Replace @reach/auto-id with React.useId
+
 ## 0.1.2
 
 ### Patch Changes
