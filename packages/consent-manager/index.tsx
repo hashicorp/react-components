@@ -65,7 +65,6 @@ export default function ConsentManager(props: ConsentManagerProps) {
 
       // If analytics have already been added to page, it's likely you're updating your preferences
       // We reload the page to re-initiate the script with the updated integrations
-      // @ts-expect-error -- initialized doesn't exist on the segment type?
       if (window.analytics && window.analytics.initialized) {
         window.location.reload()
         return
