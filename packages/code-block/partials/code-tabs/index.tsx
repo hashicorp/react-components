@@ -137,7 +137,6 @@ function CodeTabs({
               {hasOverflow ? (
                 <TabsAsDropdown
                   tabLabels={tabLabels}
-                  activeTabIdx={activeTabIdx}
                   setActiveTabIdx={setActiveTabWithEvent}
                   hasHeading={hasHeading}
                 />
