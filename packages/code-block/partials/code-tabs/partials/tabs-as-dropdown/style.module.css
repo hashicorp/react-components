@@ -17,6 +17,10 @@ to be present.
   &.hasHeading {
     margin-left: auto;
   }
+
+  & option {
+    color: initial;
+  }
 }
 
 .listboxInput {
@@ -26,6 +30,8 @@ to be present.
 
 .listboxButton {
   composes: g-type-body-small-strong from global;
+  background-color: transparent;
+  border: 0;
   color: var(--text-color-faded);
   min-height: var(--base-height);
   padding: 0 16px;
