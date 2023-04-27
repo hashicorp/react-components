@@ -3,11 +3,12 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import Image from '@hashicorp/react-image'
 import Button from '@hashicorp/react-button'
 import fragment from './fragment.graphql'
 import classNames from 'classnames'
+import * as Popover from '@radix-ui/react-popover'
 import PopoverTooltip from './partials/popover-tooltip'
 import s from './style.module.css'
 
@@ -116,24 +117,12 @@ function LogoGrid({
 }
 
 function TileWithTooltip({ children, company, theme }) {
-  const [showDialog, setShowDialog] = useState(false)
-  const triggerRef = useRef<HTMLButtonElement>(null)
-
   return (
-    <>
-      <button
-        className={classNames(s.tileClickable, { [s.showDialog]: showDialog })}
-        ref={triggerRef}
-        onClick={() => setShowDialog(!showDialog)}
-      >
-        {children}
-      </button>
-      <PopoverTooltip
-        triggerRef={triggerRef}
-        shown={showDialog}
-        setIsShown={setShowDialog}
-        theme={theme}
-      >
+    <Popover.Root>
+      <Popover.Trigger asChild>
+        <button className={classNames(s.tileClickable)}>{children}</button>
+      </Popover.Trigger>
+      <PopoverTooltip theme={theme}>
         <h5 className={classNames(s.companyName, s[theme])}>{company.name}</h5>
         <p className={classNames(s.companyDescription, s[theme])}>
           {company.description}
@@ -149,7 +138,7 @@ function TileWithTooltip({ children, company, theme }) {
           />
         )}
       </PopoverTooltip>
-    </>
+    </Popover.Root>
   )
 }
 
