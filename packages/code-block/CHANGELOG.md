@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.3.0
+
+### Minor Changes
+
+- [#942](https://github.com/hashicorp/react-components/pull/942) [`8d1faaa5`](https://github.com/hashicorp/react-components/commit/8d1faaa5841edc4c3a02f02d5c7127c4dc6e7f6e) Thanks [@dstaley](https://github.com/dstaley)! - Use a native select element instead of @reach/listbox
+
 ## 6.2.2
 
 ### Patch Changes
