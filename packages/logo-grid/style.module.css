@@ -122,7 +122,7 @@
   transition-property: border, box-shadow, transform;
 
   &:hover,
-  &.showDialog {
+  &[aria-expanded='true'] {
     box-shadow: var(--tile-box-shadow);
     transform: translateY(-4px);
   }
