@@ -3,6 +3,12 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { domMax } from 'framer-motion'
+import { domAnimation } from 'framer-motion'
+import { layoutFeatures } from 'framer-motion/dist/es/motion/features/layout'
+import { HTMLProjectionNode } from 'framer-motion/dist/es/projection/node/HTMLProjectionNode'
 
-export default domMax
+export default {
+  ...domAnimation,
+  ...layoutFeatures,
+  projectionNodeConstructor: HTMLProjectionNode,
+}
