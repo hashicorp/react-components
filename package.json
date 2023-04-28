@@ -11,7 +11,7 @@
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
     "formik": "^2.2.9",
-    "framer-motion": "^6.3.11",
+    "framer-motion": "^10.12.4",
     "lightningcss-wasm": "^1.17.1",
     "lz-string": "^1.4.4",
     "next": "^13.2.3",
