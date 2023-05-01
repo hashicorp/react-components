@@ -32,10 +32,6 @@ module.exports = {
     required: true,
     properties: {
       heading: { type: 'string', description: 'Title of the tab' },
-      tooltip: {
-        type: 'string',
-        description: 'Optional tooltip to be displayed next to the tab title',
-      },
       group: {
         type: 'string',
         description:

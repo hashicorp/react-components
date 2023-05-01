@@ -17,8 +17,6 @@ interface TabChildProps {
   heading: string
   /** Accepts a string such that, when the tab is active, other Tab elements outside the instance with a matching `group` value will automatically be shown. Note that `TabProvider` is required in order for this feature to function.v */
   group?: string
-  /** Plain text displayed in a tooltip beside the tab heading. */
-  tooltip?: string
 }
 
 function Tab({ children }: TabChildProps): React.ReactElement {
@@ -26,7 +24,7 @@ function Tab({ children }: TabChildProps): React.ReactElement {
 }
 
 interface TabsProps {
-  /** Children to be displayed as tabs. Each child accepts the props `{ children: ReactElement, heading: string, tooltip?: string, group?: string }` */
+  /** Children to be displayed as tabs. Each child accepts the props `{ children: ReactElement, heading: string, group?: string }` */
   children: Array<React.ReactElement<TabChildProps>>
   /** If set to true, the tabs are centered in their container. Default is left-aligned. */
   centered?: boolean
@@ -107,8 +105,8 @@ function Tabs({
       <TabTriggers
         className={classNameTabBar}
         tabs={children.map((tab, index) => {
-          const { heading, group, tooltip } = tab.props
-          return { index, heading, group, tooltip }
+          const { heading, group } = tab.props
+          return { index, heading, group }
         })}
         centered={centered}
         fullWidthBorder={fullWidthBorder}
