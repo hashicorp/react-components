@@ -9,7 +9,7 @@ import formatStarCount from './formatStarCount/index.js'
 import parseGithubUrl from './parseGithubUrl/index.js'
 import StarIcon from '../icons/star'
 import GithubIcon from '../icons/github-logo'
-import VisuallyHidden from '@reach/visually-hidden'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import s from './style.module.css'
 
 function GithubStarsButton(props) {

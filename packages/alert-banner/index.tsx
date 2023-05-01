@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import cookie from 'js-cookie'
 import slugify from 'slugify'
 import classNames from 'classnames'
-import VisuallyHidden from '@reach/visually-hidden'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import useProductMeta, {
   Products as HashiCorpProduct,
 } from '@hashicorp/platform-product-meta'
