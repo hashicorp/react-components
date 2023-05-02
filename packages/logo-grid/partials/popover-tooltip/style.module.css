@@ -28,18 +28,8 @@ usual since .dialogArrow is rendered into a Portal. */
 
 .popover {
   composes: theme;
-
-  /* top & left positioning is done in JS,
-    via @reach/popovers built-in `position` prop */
-  position: fixed;
-
-  /* --collision-buffer is set in JS, as it is
-  used for dynamic positioning calculations */
-  --max-collision-width: calc(100vw - calc(var(--collision-buffer) * 2));
-
   border-radius: 2px;
   background: var(--background-color);
-  max-width: min(26rem, var(--max-collision-width));
   text-align: left;
 
   /* More right padding accounts for "close" button */
@@ -50,18 +40,7 @@ usual since .dialogArrow is rendered into a Portal. */
 
 .dialogArrow {
   composes: theme;
-  position: fixed;
-
-  /* --top, --left, and --arrow-size
-   are set in JS, to allow for dynamic,
-   collision-free positioning. */
-  top: var(--top);
-  left: var(--left);
-  width: 0;
-  height: 0;
-  border-left: var(--arrow-size) solid transparent;
-  border-right: var(--arrow-size) solid transparent;
-  border-bottom: var(--arrow-size) solid var(--background-color);
+  fill: var(--background-color);
 }
 
 .dialogClose {
