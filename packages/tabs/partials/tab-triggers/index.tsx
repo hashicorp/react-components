@@ -159,7 +159,6 @@ function TabTriggers({
                   updateScrollOffset(targetIdx)
                 }}
                 tab={tab}
-                theme={theme}
               />
             ))}
           </div>
