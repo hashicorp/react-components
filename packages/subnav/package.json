@@ -12,7 +12,7 @@
     "@hashicorp/react-button": "^6.0.4",
     "@hashicorp/react-inline-svg": "^6.0.3",
     "@hashicorp/react-link-wrap": "^3.0.3",
-    "@reach/visually-hidden": "^0.16.0",
+    "@radix-ui/react-visually-hidden": "^1.0.2",
     "camel-case": "^4.1.2",
     "classnames": "^2.3.1",
     "isomorphic-unfetch": "^3.1.0"

@@ -8,8 +8,6 @@
   ],
   "dependencies": {
     "@hashicorp/react-inline-svg": "^6.0.3",
-    "@reach/portal": "^0.16.2",
-    "@reach/tooltip": "^0.17.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
