@@ -1,5 +1,11 @@
 # @hashicorp/react-logo-grid
 
+## 5.1.0
+
+### Minor Changes
+
+- [#947](https://github.com/hashicorp/react-components/pull/947) [`3457a6d8`](https://github.com/hashicorp/react-components/commit/3457a6d8dac33b54615a0c55ae335a48aa970db9) Thanks [@dstaley](https://github.com/dstaley)! - Replace @reach/popover with radix
+
 ## 5.0.5
 
 ### Patch Changes

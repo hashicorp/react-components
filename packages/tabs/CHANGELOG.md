@@ -1,5 +1,11 @@
 # @hashicorp/react-tabs
 
+## 8.0.0
+
+### Major Changes
+
+- [#948](https://github.com/hashicorp/react-components/pull/948) [`9d34c385`](https://github.com/hashicorp/react-components/commit/9d34c3850697e6caebca0299e1eea46f6e929b53) Thanks [@dstaley](https://github.com/dstaley)! - Remove support for tooltips
+
 ## 7.2.1
 
 ### Patch Changes
