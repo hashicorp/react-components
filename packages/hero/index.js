@@ -11,7 +11,6 @@ import { eliminateOrphans } from '@hashicorp/js-utils'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import VideoCarousel from './carousel'
 import ArrowIcon from './arrow-icon'
-import HeroLeadForm from './heroLeadForm'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 
@@ -25,7 +24,6 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
     backgroundTheme = 'dark',
     buttons,
     description,
-    formLeadInput,
     helpText,
     image,
     product,
@@ -97,19 +95,7 @@ function Hero({ data, centered, gaPrefix, className, videoControlsTop }) {
               }}
             />
           )}
-          {formLeadInput ? (
-            <div className={s.headlineFormLead}>
-              <HeroLeadForm
-                submitRedirectUrl={formLeadInput.destinationUrl}
-                buttonText={formLeadInput.buttonText}
-                theme={{
-                  background: backgroundTheme,
-                  brand: product,
-                  variant: 'primary',
-                }}
-              />
-            </div>
-          ) : buttons && buttons.length ? (
+          {buttons && buttons.length ? (
             <div
               className={classNames(s.headlineButtons, {
                 [s.centered]: isCentered,

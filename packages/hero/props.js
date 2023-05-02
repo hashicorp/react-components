@@ -82,15 +82,6 @@ module.exports = {
           text: { type: 'string' },
         },
       },
-      formLeadInput: {
-        type: 'object',
-        description:
-          'A single-field form intended to capture emails, appears below the headline, description, and buttons',
-        properties: {
-          destinationUrl: { type: 'string' },
-          buttonText: { type: 'string' },
-        },
-      },
       buttons: {
         type: 'array',
         description:
@@ -158,15 +149,13 @@ module.exports = {
       backgroundTheme: 'dark',
       theme: 'nomad-green',
       backgroundImage: {
-        url:
-          'https://www.datocms-assets.com/2885/1538522323-vault-grid-background.jpg',
+        url: 'https://www.datocms-assets.com/2885/1538522323-vault-grid-background.jpg',
         format: 'svg',
         alt: 'terraform background',
       },
       smallTextTag: null,
       titleLogo: {
-        url:
-          'https://www.datocms-assets.com/2885/1512161155-terraform-color.svg',
+        url: 'https://www.datocms-assets.com/2885/1512161155-terraform-color.svg',
         format: 'svg',
         alt: 'terraform logo',
       },
@@ -176,7 +165,6 @@ module.exports = {
         tagColor: 'error-red',
         text: 'Some notification',
       },
-      formLeadInput: { destinationUrl: '#', buttonText: 'Submit' },
       buttons: [
         {
           title: 'Download',
@@ -208,8 +196,7 @@ module.exports = {
             },
             {
               srcType: 'mp4',
-              url:
-                '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-ui.mp4',
+              url: '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-ui.mp4',
             },
           ],
         },
@@ -218,8 +205,7 @@ module.exports = {
           src: [
             {
               srcType: 'mp4',
-              url:
-                '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-cli.mp4',
+              url: '//consul-static-asssets.global.ssl.fastly.net/videos/v1/connect-video-cli.mp4',
             },
           ],
         },
