@@ -1,5 +1,11 @@
 # @hashicorp/react-hero
 
+## 9.0.0
+
+### Major Changes
+
+- [#946](https://github.com/hashicorp/react-components/pull/946) [`e99310f3`](https://github.com/hashicorp/react-components/commit/e99310f3b884757bf4d14de9b69c0963c4c3929b) Thanks [@dstaley](https://github.com/dstaley)! - Remove support for formLeadInput
+
 ## 8.0.4
 
 ### Patch Changes

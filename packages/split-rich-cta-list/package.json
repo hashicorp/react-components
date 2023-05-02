@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-split-rich-cta-list",
   "description": "Display a horizontally split title with a list of rich CTAs.",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "HashiCorp",
   "contributors": [
     "Brandon Romano",

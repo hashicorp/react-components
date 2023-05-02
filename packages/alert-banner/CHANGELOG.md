@@ -1,5 +1,11 @@
 # @hashicorp/react-alert-banner
 
+## 7.1.0
+
+### Minor Changes
+
+- [#949](https://github.com/hashicorp/react-components/pull/949) [`565a1b1a`](https://github.com/hashicorp/react-components/commit/565a1b1acc33753818cd38b63218f746ba084652) Thanks [@dstaley](https://github.com/dstaley)! - Replace Reach VisuallyHidden with Radix
+
 ## 7.0.5
 
 ### Patch Changes
