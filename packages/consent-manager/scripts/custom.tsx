@@ -25,6 +25,10 @@ function CustomScript({ service }: CustomScriptProps) {
   const strategy =
     service.strategy ?? service.async ? 'afterInteractive' : 'beforeInteractive'
 
+  if (service.hide !== undefined && !!service.hide()) {
+    return null
+  }
+
   return (
     <Script
       src={service.url}
