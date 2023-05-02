@@ -13,7 +13,7 @@ export interface ConsentManagerService {
   name: string
   url?: string
   dataAttrs?: { name: string; value: string }[]
-  hide?: boolean
+  hide?: () => boolean
 }
 
 export interface ConsentManagerPreset {
