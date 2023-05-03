@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 9.1.0
+
+### Minor Changes
+
+- [#951](https://github.com/hashicorp/react-components/pull/951) [`cb32ea4f`](https://github.com/hashicorp/react-components/commit/cb32ea4f35d2dee5a85358f0af0bc869434651bf) Thanks [@pbortnick](https://github.com/pbortnick)! - feat(consent-manager): Add custom scripts wrapper component
+
 ## 9.0.2
 
 ### Patch Changes
