@@ -1,5 +1,5 @@
 ---
-"@hashicorp/react-consent-manager": patch
+"@hashicorp/react-consent-manager": minor
 ---
 
 feat(consent-manager): Add custom scripts wrapper component
