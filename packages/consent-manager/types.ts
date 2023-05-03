@@ -13,7 +13,11 @@ export interface ConsentManagerService {
   name: string
   url?: string
   dataAttrs?: { name: string; value: string }[]
-  hide?: () => boolean
+  /**
+   * Optional function that determines whether
+   * or not the service should load on the page
+   */
+  shouldLoad?: () => boolean
 }
 
 export interface ConsentManagerPreset {
