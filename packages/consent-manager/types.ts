@@ -15,7 +15,8 @@ export interface ConsentManagerService {
   dataAttrs?: { name: string; value: string }[]
   /**
    * Optional function that determines whether
-   * or not the service should load on the page
+   * or not the script will load on the page.
+   * If left undefined, script will load as usual.
    */
   shouldLoad?: () => boolean
 }
