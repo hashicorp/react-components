@@ -13,6 +13,12 @@ export interface ConsentManagerService {
   name: string
   url?: string
   dataAttrs?: { name: string; value: string }[]
+  /**
+   * Optional function that determines whether
+   * or not the script will load on the page.
+   * If left undefined, script will load as usual.
+   */
+  shouldLoad?: () => boolean
 }
 
 export interface ConsentManagerPreset {
