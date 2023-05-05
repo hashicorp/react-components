@@ -1,4 +1,5 @@
 ---
+'@hashicorp/react-alert-banner': 'minor'
 '@hashicorp/react-button': minor
 ---
 
