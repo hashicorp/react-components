@@ -115,6 +115,10 @@ export default function ConsentManager(props: ConsentManagerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
   }, [])
 
+  const filteredAdditionalServices = props.additionalServices?.filter(
+    (service) => service.shouldLoad === undefined || service.shouldLoad()
+  )
+
   return (
     <div className={classNames(s.root, props.className)}>
       {/*  Consent banner at the bottom */}
@@ -143,7 +147,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
           version={props.version}
           segmentWriteKey={props.segmentWriteKey}
           segmentServices={props.segmentServices}
-          additionalServices={props.additionalServices}
+          additionalServices={filteredAdditionalServices}
           preferences={preferences}
           categories={props.categories}
           privacyPolicyLink={props.privacyPolicyLink}
@@ -157,7 +161,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
       />
       <CustomScripts
         preferences={preferences}
-        services={props.additionalServices}
+        services={filteredAdditionalServices}
       />
     </div>
   )
