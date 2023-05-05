@@ -209,40 +209,6 @@ test('loads segment and additional services if loadAll is passed', async () => {
   )
 })
 
-test('loads segment and additional services if loadAll is passed', async () => {
-  await runWithMockedImport(
-    './util/cookies',
-    {
-      loadPreferences: () => {
-        return { loadAll: true, segment: { foo: 'bar' } }
-      },
-      savePreferences: () => {},
-    },
-    (MockedConsentManager) => {
-      render(
-        <MockedConsentManager {...defaultProps} forceShow={false} version={2} />
-      )
-      const html = document.body.innerHTML
-      // script was injected
-      expect(html).toMatch(
-        /<script type="text\/javascript" src="https:\/\/artemis.hashicorp.com\/script/
-      )
-      // all services loaded, as well as custom segment
-      expect(html).toMatch(
-        /analytics\.load\("iyi06c432UL7SB1r3fQReec4bNwFyzkW", {"integrations":{"All":true,"Segment\.io":true,"foo":"bar"}}\);/
-      )
-
-      // custom service loaded
-      expect(html).toMatch(
-        /src="http:\/\/www.an-optional-url-for-a-script-to-add-to-the-page\.com"/
-      )
-
-      // custom inline script
-      expect(html).toMatch(/window\.foo = "bar"/)
-    }
-  )
-})
-
 describe('handles custom events', () => {
   test('manage preferences callback', async () => {
     const fn = jest.fn()
