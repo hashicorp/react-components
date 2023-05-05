@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 9.1.1
+
+### Patch Changes
+
+- [#956](https://github.com/hashicorp/react-components/pull/956) [`18dd2caa`](https://github.com/hashicorp/react-components/commit/18dd2caac0338bb0e921ddd9ca5cc031a55df444) Thanks [@pbortnick](https://github.com/pbortnick)! - fix: filter additional services in main component
+
 ## 9.1.0
 
 ### Minor Changes
