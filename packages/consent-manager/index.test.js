@@ -57,6 +57,21 @@ const defaultProps = {
         },
       ],
     },
+    {
+      name: 'Name of the conditionally loaded service',
+      category: 'Example Category with conditionally loaded service',
+      description: 'A script with additional elements to be injected',
+      body: 'window.foo = "bar"',
+      url: 'https://source-of-conditionally-loaded-script.com',
+      async: true,
+      dataAttrs: [
+        {
+          name: 'test',
+          value: 'foobar',
+        },
+      ],
+      shouldLoad: () => false,
+    },
   ],
   categories: [
     {
@@ -183,6 +198,11 @@ test('loads segment and additional services if loadAll is passed', async () => {
         /src="http:\/\/www.an-optional-url-for-a-script-to-add-to-the-page\.com"/
       )
 
+      // conditionally loaded service not loaded
+      expect(html).not.toMatch(
+        /src="https:\/\/source-of-conditionally-loaded-script\.com"/
+      )
+
       // custom inline script
       expect(html).toMatch(/window\.foo = "bar"/)
     }
@@ -230,6 +250,62 @@ describe('handles custom events', () => {
         expect(fn).toHaveBeenCalled()
       }
     )
+  })
+})
+
+describe('handles conditionally loaded services in dialog', () => {
+  test('additional services category is not in dialog when shouldLoad() is false in all category services', async () => {
+    const { default: ConsentManager, open } = require('./')
+    render(<ConsentManager {...defaultProps} />)
+    act(() => open())
+
+    const shownCategory = await screen.findByText('Example Category')
+    const hiddenCategory = screen.queryByText(
+      'Example Category with conditionally loaded service'
+    )
+    expect(shownCategory).toBeInTheDocument()
+    expect(hiddenCategory).not.toBeInTheDocument()
+  })
+
+  test('additional services category is in dialog when shouldLoad() is false in some category services but service is not in dialog', async () => {
+    const newService = {
+      name: 'Name of the new service',
+      category: 'Example Category with conditionally loaded service',
+      description: 'A script with additional elements to be injected',
+      body: 'window.foo = "bar"',
+      async: true,
+      dataAttrs: [
+        {
+          name: 'test',
+          value: 'foobar',
+        },
+      ],
+    }
+
+    const { default: ConsentManager, open } = require('./')
+    render(
+      <ConsentManager
+        {...{
+          ...defaultProps,
+          additionalServices: [...defaultProps.additionalServices, newService],
+        }}
+      />
+    )
+    act(() => open())
+    const category = await screen.findByText(
+      'Example Category with conditionally loaded service'
+    )
+
+    expect(category).toBeInTheDocument()
+    const showMoreButton = category.nextSibling.nextSibling
+    // Open category accordion item to make services visible
+    fireEvent.click(showMoreButton)
+    const shouldLoadService = await screen.findByText('Name of the new service')
+    const shouldNotLoadService = screen.queryByText(
+      'Name of the conditionally loaded service'
+    )
+    expect(shouldLoadService).toBeInTheDocument()
+    expect(shouldNotLoadService).not.toBeInTheDocument()
   })
 })
 
