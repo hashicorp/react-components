@@ -12,7 +12,7 @@ import useProductMeta, {
   Products as HashiCorpProduct,
 } from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import CloseIcon from './img/close-icon.svg?include'
+import CloseIcon from './img/close-icon.raw'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 import analytics from './analytics'
