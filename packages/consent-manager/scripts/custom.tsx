@@ -25,9 +25,9 @@ function CustomScript({ service }: CustomScriptProps) {
   const strategy =
     service.strategy ?? service.async ? 'afterInteractive' : 'beforeInteractive'
 
-  if (service.shouldLoad !== undefined && !service.shouldLoad()) {
-    return null
-  }
+  // if (service.shouldLoad !== undefined && !service.shouldLoad()) {
+  //   return null
+  // }
 
   return (
     <Script
@@ -59,9 +59,13 @@ export default function CustomScripts({
 
   return (
     <>
-      {servicesToInject.map((service) => (
-        <CustomScript service={service} key={service.name} />
-      ))}
+      {servicesToInject
+        // .filter(
+        //   (service) => service.shouldLoad === undefined || service.shouldLoad()
+        // )
+        .map((service) => (
+          <CustomScript service={service} key={service.name} />
+        ))}
     </>
   )
 }
