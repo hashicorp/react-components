@@ -1,5 +1,5 @@
 ---
-'@hashicorp/actions': patch
+'@hashicorp/react-actions': patch
 '@hashicorp/react-call-to-action': patch
 '@hashicorp/react-marketo-form': patch
 ---
