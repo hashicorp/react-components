@@ -332,6 +332,7 @@ describe('handles conditionally loaded services in dialog', () => {
 
     expect(category).toBeInTheDocument()
     const showMoreButton = category.nextSibling.nextSibling
+    // Open category accordion item to make services visible
     fireEvent.click(showMoreButton)
     const shouldLoadService = await screen.findByText('Name of the new service')
     const shouldNotLoadService = screen.queryByText(
