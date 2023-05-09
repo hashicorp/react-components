@@ -1,5 +1,11 @@
 # @hashicorp/react-marketo-form
 
+## 0.8.4
+
+### Patch Changes
+
+- [#959](https://github.com/hashicorp/react-components/pull/959) [`2084dc74`](https://github.com/hashicorp/react-components/commit/2084dc74bb3390227011c9b2052b4ac393554b6e) Thanks [@dstaley](https://github.com/dstaley)! - Treat all-whitespace values as invalid
+
 ## 0.8.3
 
 ### Patch Changes
