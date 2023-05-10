@@ -8,7 +8,7 @@ module.exports = {
     type: 'string',
     description:
       'Controls the visual appearance of the call to action, defaults to `centered`.',
-    options: ['centered', 'compact', 'compactGrid', 'links'],
+    options: ['centered', 'compact', 'compactGrid', 'compactTertiary', 'links'],
   },
   heading: {
     type: 'string',
