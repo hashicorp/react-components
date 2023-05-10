@@ -5,6 +5,7 @@
 
 import type { ReactNode } from 'react'
 import Button from '@hashicorp/react-button'
+import type { ThemeVariant } from '@hashicorp/react-button/types'
 import type { Products } from '@hashicorp/platform-product-meta'
 import classNames from 'classnames'
 import variantCentered from './styles/variant-centered.module.css'
@@ -15,6 +16,7 @@ import variantLinks from './styles/variant-links.module.css'
 const stylesDict = {
   centered: variantCentered,
   compact: variantCompact,
+  compactTertiary: variantCompact,
   compactGrid: variantCompactGrid,
   links: variantLinks,
 }
@@ -27,7 +29,7 @@ interface CallToActionProps {
     text: string
     url: string
   }[]
-  variant?: 'centered' | 'compact' | 'compactGrid' | 'links'
+  variant?: keyof typeof stylesDict
   product?: Products
   theme?: 'light' | 'gray' | 'dark' | 'brand'
   className?: string
@@ -72,12 +74,13 @@ function CallToAction({
           {links && (
             <div className={s.links} data-testid="links">
               {links.map((link, stableIdx) => {
-                const buttonVariant =
-                  variant === 'links'
-                    ? 'tertiary-neutral'
-                    : stableIdx === 0
-                    ? 'primary'
-                    : 'secondary'
+                let buttonVariant: ThemeVariant =
+                  stableIdx === 0 ? 'primary' : 'secondary'
+                if (variant === 'links') {
+                  buttonVariant = 'tertiary-neutral'
+                } else if (variant === 'compactTertiary') {
+                  buttonVariant = 'tertiary'
+                }
                 const linkType =
                   variant === 'links' ? link.type || 'inbound' : link.type
                 return (
