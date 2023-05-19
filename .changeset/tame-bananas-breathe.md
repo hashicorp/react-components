@@ -1,5 +1,5 @@
 ---
-'@hashicorp/react-consent-manager': major
+'@hashicorp/react-consent-manager': patch
 ---
 
 Remove unused consent manager services
