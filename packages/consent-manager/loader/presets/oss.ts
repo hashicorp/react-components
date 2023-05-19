@@ -12,5 +12,4 @@ export default {
     services.linkedIn,
     services.marketo,
   ],
-  additionalServices: [services.optinMonster],
 }
