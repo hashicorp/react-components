@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 9.1.2
+
+### Patch Changes
+
+- [#965](https://github.com/hashicorp/react-components/pull/965) [`a6b25bbf`](https://github.com/hashicorp/react-components/commit/a6b25bbfb8a21eb4984ee79e11190fef39dbfeef) Thanks [@mwickett](https://github.com/mwickett)! - Remove unused consent manager services
+
 ## 9.1.1
 
 ### Patch Changes
