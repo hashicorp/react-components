@@ -55,7 +55,7 @@ const FieldWithVisibilityRule = ({
     ) : null
   }
 
-  return <Field field={field} components={components} />
+  return null
 }
 
 const VisibilityRule = ({
