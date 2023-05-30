@@ -55,7 +55,10 @@ const FieldWithVisibilityRule = ({
     ) : null
   }
 
-  return null
+  // If the ruleType is show, that means the field is hidden by default.
+  return field.visibilityRules!.ruleType === 'show' ? null : (
+    <Field field={field} components={components} />
+  )
 }
 
 const VisibilityRule = ({
