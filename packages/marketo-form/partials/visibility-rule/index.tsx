@@ -9,10 +9,10 @@ import Field from '../field'
 import type {
   MarketoFormField,
   MarketoFormComponents,
-  VisibilityRule,
+  VisibilityRule as VisibilityRuleType,
 } from '../../types'
 
-function ruleApplies(rule: VisibilityRule, value: any): boolean {
+function ruleApplies(rule: VisibilityRuleType, value: any): boolean {
   switch (rule.operator) {
     case 'is':
       return (
