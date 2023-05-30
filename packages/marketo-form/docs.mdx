@@ -158,11 +158,12 @@ Renders a form from Marketo.
         },
         {
           id: "Consent_Privacy_Policy__c",
+          label: "Send me news about HashiCorp products, releases and events.",
           dataType: "checkbox",
           validationMessage: "This field is required.",
           rowNumber: 6,
           columnNumber: 0,
-          required: true,
+          required: false,
           formPrefill: true,
           fieldMetaData: {
             initiallyChecked: false,
@@ -171,6 +172,17 @@ Renders a form from Marketo.
             ruleType: "alwaysShow",
           },
         },
+        {
+          id: "SHRtbFRleHRfMjAyMy0wNC0wNVQyMjo0NDo0Ny45OTZa",
+          labelWidth: 260,
+          dataType: "htmltext",
+          rowNumber: 9,
+          columnNumber: 0,
+          visibilityRules: {
+            ruleType: "alwaysShow"
+          },
+          text: "By submitting this form, you acknowledge and agree that HashiCorp will process your personal information in accordance with the <a href=\\"https://hashicorp.com/privacy\\" target=\\"_blank\\" id=\\"\\">Privacy Policy</a>."
+        }
       ],
     }}
     submitTitle="Download Now"
