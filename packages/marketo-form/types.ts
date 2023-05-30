@@ -13,6 +13,7 @@ export type MarketoFormDatatype =
   | 'select'
   | 'checkbox'
   | 'hidden'
+  | 'htmltext'
 
 export interface Autofill {
   value: string
@@ -22,14 +23,14 @@ export interface Autofill {
 
 export interface VisibilityRule {
   subjectField: string
-  operator: 'is'
+  operator: 'is' | 'isEmpty'
   values: string[]
   altLabel: string
 }
 
 export interface VisibilityRules {
   rules?: VisibilityRule[]
-  ruleType: 'alwaysShow' | 'show'
+  ruleType: 'alwaysShow' | 'show' | 'hide'
 }
 
 export interface MarketoBaseFormField {
@@ -92,6 +93,11 @@ export interface MarketoFormHiddenField extends MarketoBaseFormField {
   dataType: 'hidden'
 }
 
+export interface MarketoFormHtmltextField extends MarketoBaseFormField {
+  dataType: 'htmltext'
+  text: string
+}
+
 export type MarketoFormField =
   | MarketoFormTextField
   | MarketoFormEmailField
@@ -100,6 +106,7 @@ export type MarketoFormField =
   | MarketoFormSelectField
   | MarketoFormCheckboxField
   | MarketoFormHiddenField
+  | MarketoFormHtmltextField
 
 export interface MarketoFormMetadata {
   id: number
@@ -150,6 +157,7 @@ export interface MarketoFormComponents {
   select?: (props: { field: MarketoFormSelectField }) => JSX.Element
   checkbox?: (props: { field: MarketoFormCheckboxField }) => JSX.Element
   hidden?: (props: { field: MarketoFormHiddenField }) => JSX.Element
+  htmltext?: (props: { field: MarketoFormHtmltextField }) => JSX.Element
 }
 
 /**
