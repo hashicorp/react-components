@@ -23,14 +23,14 @@ export interface Autofill {
 
 export interface VisibilityRule {
   subjectField: string
-  operator: 'is'
+  operator: 'is' | 'isEmpty'
   values: string[]
   altLabel: string
 }
 
 export interface VisibilityRules {
   rules?: VisibilityRule[]
-  ruleType: 'alwaysShow' | 'show'
+  ruleType: 'alwaysShow' | 'show' | 'hide'
 }
 
 export interface MarketoBaseFormField {
