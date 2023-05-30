@@ -1,0 +1,6 @@
+.htmltext {
+  composes: g-type-body-small from global;
+  color: var(--wpl-neutral-500);
+  margin-top: var(--wpl-spacing-02);
+  margin-bottom: var(--wpl-spacing-05);
+}

@@ -6,7 +6,26 @@
 import { useMemo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import Field from '../field'
-import type { MarketoFormField, MarketoFormComponents } from '../../types'
+import type {
+  MarketoFormField,
+  MarketoFormComponents,
+  VisibilityRule as VisibilityRuleType,
+} from '../../types'
+
+function ruleApplies(rule: VisibilityRuleType, value: any): boolean {
+  switch (rule.operator) {
+    case 'is':
+      return (
+        rule.values.includes(value) ||
+        (value === false && rule.values.includes('no')) ||
+        (value === true && rule.values.includes('yes'))
+      )
+    case 'isEmpty':
+      return value === null || typeof value === 'undefined' || value === ''
+    default:
+      return false
+  }
+}
 
 const FieldWithVisibilityRule = ({
   field,
@@ -20,17 +39,23 @@ const FieldWithVisibilityRule = ({
   // Currently we only support the first defined rule.
   const value = watch(field.visibilityRules!.rules![0].subjectField)
 
-  const show = useMemo(() => {
-    const { operator, values } = field.visibilityRules!.rules![0]
-    return (
-      operator === 'is' &&
-      (values.includes(value) ||
-        (value === false && values.includes('no')) ||
-        (value === true && values.includes('yes')))
+  const hasMatchingRule = useMemo(() => {
+    return field.visibilityRules!.rules!.some((rule) =>
+      ruleApplies(rule, value)
     )
   }, [field, value])
 
-  return show ? <Field field={field} components={components} /> : null
+  if (
+    hasMatchingRule &&
+    (field.visibilityRules!.ruleType === 'show' ||
+      field.visibilityRules!.ruleType === 'hide')
+  ) {
+    return field.visibilityRules!.ruleType === 'show' ? (
+      <Field field={field} components={components} />
+    ) : null
+  }
+
+  return <Field field={field} components={components} />
 }
 
 const VisibilityRule = ({
@@ -40,7 +65,11 @@ const VisibilityRule = ({
   field: MarketoFormField
   components?: MarketoFormComponents
 }) => {
-  if (field.visibilityRules && field.visibilityRules.ruleType === 'show') {
+  if (
+    field.visibilityRules &&
+    (field.visibilityRules.ruleType === 'show' ||
+      field.visibilityRules.ruleType === 'hide')
+  ) {
     return <FieldWithVisibilityRule field={field} components={components} />
   }
 
