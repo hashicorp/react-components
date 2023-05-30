@@ -45,7 +45,11 @@ const FieldWithVisibilityRule = ({
     )
   }, [field, value])
 
-  if (hasMatchingRule && field.visibilityRules!.ruleType === 'show') {
+  if (
+    hasMatchingRule &&
+    (field.visibilityRules!.ruleType === 'show' ||
+      field.visibilityRules!.ruleType === 'hide')
+  ) {
     return field.visibilityRules!.ruleType === 'show' ? (
       <Field field={field} components={components} />
     ) : null
