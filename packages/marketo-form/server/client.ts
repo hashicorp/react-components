@@ -58,7 +58,7 @@ export async function getDraftFormProps(formId: number) {
     metadataResponse.json(),
   ])
 
-  return { result: { fields, metadata } }
+  return { fields, metadata }
 }
 
 export async function getFormProps(
