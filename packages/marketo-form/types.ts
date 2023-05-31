@@ -135,6 +135,11 @@ export interface MarketoFormMetadata {
   labelPosition: string
   fontFamily: string
   fontSize: string
+  folder?: {
+    type: string
+    value: number
+    folderName: string
+  }
   buttonLocation: number
   buttonLabel: string
   waitingLabel: string
