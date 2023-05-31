@@ -54,16 +54,19 @@ export interface MarketoFormTextField extends MarketoBaseFormField {
 export interface MarketoFormEmailField extends MarketoBaseFormField {
   dataType: 'email'
   hintText?: string
+  formPrefill: boolean
 }
 
 export interface MarketoFormTelephoneField extends MarketoBaseFormField {
   dataType: 'telephone'
   hintText?: string
+  formPrefill: boolean
 }
 
 export interface MarketoFormTextAreaField extends MarketoBaseFormField {
   dataType: 'textArea'
   hintText?: string
+  formPrefill: boolean
 }
 
 export interface SelectValue {
@@ -80,6 +83,7 @@ export interface SelectFieldMetaData {
 export interface MarketoFormSelectField extends MarketoBaseFormField {
   dataType: 'select'
   fieldMetaData: SelectFieldMetaData
+  formPrefill: boolean
 }
 
 export interface CheckboxFieldMetaData {
@@ -89,6 +93,7 @@ export interface CheckboxFieldMetaData {
 export interface MarketoFormCheckboxField extends MarketoBaseFormField {
   dataType: 'checkbox'
   fieldMetaData: CheckboxFieldMetaData
+  formPrefill: boolean
 }
 
 export interface MarketoFormHiddenField extends MarketoBaseFormField {
