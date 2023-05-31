@@ -13,6 +13,7 @@ export type MarketoFormDatatype =
   | 'select'
   | 'checkbox'
   | 'hidden'
+  | 'htmltext'
 
 export interface Autofill {
   value: string
@@ -22,19 +23,21 @@ export interface Autofill {
 
 export interface VisibilityRule {
   subjectField: string
-  operator: 'is'
+  operator: 'is' | 'isEmpty'
   values: string[]
   altLabel: string
 }
 
 export interface VisibilityRules {
   rules?: VisibilityRule[]
-  ruleType: 'alwaysShow' | 'show'
+  ruleType: 'alwaysShow' | 'show' | 'hide'
 }
 
 export interface MarketoBaseFormField {
   id: string
   dataType: MarketoFormDatatype
+  rowNumber: number
+  columnNumber: number
   defaultValue?: string
   label?: string
   required: boolean
@@ -51,16 +54,19 @@ export interface MarketoFormTextField extends MarketoBaseFormField {
 export interface MarketoFormEmailField extends MarketoBaseFormField {
   dataType: 'email'
   hintText?: string
+  formPrefill: boolean
 }
 
 export interface MarketoFormTelephoneField extends MarketoBaseFormField {
   dataType: 'telephone'
   hintText?: string
+  formPrefill: boolean
 }
 
 export interface MarketoFormTextAreaField extends MarketoBaseFormField {
   dataType: 'textArea'
   hintText?: string
+  formPrefill: boolean
 }
 
 export interface SelectValue {
@@ -77,6 +83,7 @@ export interface SelectFieldMetaData {
 export interface MarketoFormSelectField extends MarketoBaseFormField {
   dataType: 'select'
   fieldMetaData: SelectFieldMetaData
+  formPrefill: boolean
 }
 
 export interface CheckboxFieldMetaData {
@@ -86,10 +93,21 @@ export interface CheckboxFieldMetaData {
 export interface MarketoFormCheckboxField extends MarketoBaseFormField {
   dataType: 'checkbox'
   fieldMetaData: CheckboxFieldMetaData
+  formPrefill: boolean
 }
 
 export interface MarketoFormHiddenField extends MarketoBaseFormField {
   dataType: 'hidden'
+}
+
+export interface MarketoFormHtmltextField {
+  id: string
+  labelWidth: number
+  dataType: 'htmltext'
+  rowNumber: number
+  columnNumber: number
+  visibilityRules?: VisibilityRules
+  text: string
 }
 
 export type MarketoFormField =
@@ -100,6 +118,7 @@ export type MarketoFormField =
   | MarketoFormSelectField
   | MarketoFormCheckboxField
   | MarketoFormHiddenField
+  | MarketoFormHtmltextField
 
 export interface MarketoFormMetadata {
   id: number
@@ -116,6 +135,11 @@ export interface MarketoFormMetadata {
   labelPosition: string
   fontFamily: string
   fontSize: string
+  folder?: {
+    type: string
+    value: number
+    folderName: string
+  }
   buttonLocation: number
   buttonLabel: string
   waitingLabel: string
@@ -150,6 +174,7 @@ export interface MarketoFormComponents {
   select?: (props: { field: MarketoFormSelectField }) => JSX.Element
   checkbox?: (props: { field: MarketoFormCheckboxField }) => JSX.Element
   hidden?: (props: { field: MarketoFormHiddenField }) => JSX.Element
+  htmltext?: (props: { field: MarketoFormHtmltextField }) => JSX.Element
 }
 
 /**
