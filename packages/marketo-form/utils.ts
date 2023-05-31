@@ -176,7 +176,8 @@ export function calculateDefaultValues(
       }
     } else if (field.dataType === 'checkbox') {
       initialValues[field.id] = field.fieldMetaData.initiallyChecked
-    } else {
+    } else if (field.dataType !== 'htmltext') {
+      // htmltext is a presentational element, and shouldn't have a value
       initialValues[field.id] = ''
     }
   })
