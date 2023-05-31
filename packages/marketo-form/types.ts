@@ -36,6 +36,8 @@ export interface VisibilityRules {
 export interface MarketoBaseFormField {
   id: string
   dataType: MarketoFormDatatype
+  rowNumber: number
+  columnNumber: number
   defaultValue?: string
   label?: string
   required: boolean
@@ -93,8 +95,13 @@ export interface MarketoFormHiddenField extends MarketoBaseFormField {
   dataType: 'hidden'
 }
 
-export interface MarketoFormHtmltextField extends MarketoBaseFormField {
+export interface MarketoFormHtmltextField {
+  id: string
+  labelWidth: number
   dataType: 'htmltext'
+  rowNumber: number
+  columnNumber: number
+  visibilityRules?: VisibilityRules
   text: string
 }
 
