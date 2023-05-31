@@ -140,6 +140,15 @@ export interface MarketoFormMetadata {
     value: number
     folderName: string
   }
+  knownVisitor?: {
+    type: string
+    template: unknown
+  }
+  thankYouList?: {
+    followupType: string
+    followupValue: string
+    default: boolean
+  }[]
   buttonLocation: number
   buttonLabel: string
   waitingLabel: string
