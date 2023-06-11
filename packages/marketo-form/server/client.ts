@@ -61,8 +61,8 @@ export async function getFormProps(
   id: number
 ): Promise<MarketoFormAPIResponse> {
   const res = await getForm(id)
-  if (!res.fields.success || !res.metadata.success) {
-    throw new Error(
+  if (res.fields.success === false || res.metadata.success === false) {
+    console.log(
       `[marketo-form] non-200 status code when requesting form ${id}: ${JSON.stringify(
         res
       )}`
