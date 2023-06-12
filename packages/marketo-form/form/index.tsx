@@ -139,12 +139,18 @@ const Form = ({
   // If a field doesn't belong to a group, it is placed in a group keyed by
   // field.Name.
   const groupedFields = useMemo(() => {
+    if (!('result' in fields)) {
+      return {}
+    }
     return groupFields(fields.result, groups)
   }, [fields, groups])
 
   const methods = useForm({
     mode: 'onBlur',
-    defaultValues: calculateDefaultValues(fields.result, initialValues),
+    defaultValues:
+      'result' in fields
+        ? calculateDefaultValues(fields.result, initialValues)
+        : {},
     resolver: async (values: Record<string, string | boolean>) => {
       let errors: Record<string, { message: string }> = {}
 
@@ -266,6 +272,14 @@ const Form = ({
 
       throw new Error('An error occurred while submitting form.')
     }
+  }
+
+  if (fields.success === false || metadata.success === false) {
+    return (
+      <div>
+        <p>This form is currently unavailable. Please try again later.</p>
+      </div>
+    )
   }
 
   return (

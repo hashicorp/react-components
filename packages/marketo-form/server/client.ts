@@ -27,26 +27,49 @@ export async function getToken(): Promise<MarketoTokenResponse> {
 }
 
 export async function getForm(formId: number) {
-  return await fetch(`https://content.hashicorp.com/api/marketo?id=${formId}`)
+  const { access_token } = await getToken()
+
+  const fieldsResponse = await fetch(
+    `${process.env.MARKETO_ENDPOINT}/asset/v1/form/${formId}/fields.json`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  )
+
+  const metadataResponse = await fetch(
+    `${process.env.MARKETO_ENDPOINT}/asset/v1/form/${formId}.json`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  )
+
+  const [fields, metadata] = await Promise.all([
+    fieldsResponse.json(),
+    metadataResponse.json(),
+  ])
+
+  return { fields, metadata }
 }
 
 export async function getFormProps(
   id: number
 ): Promise<MarketoFormAPIResponse> {
   const res = await getForm(id)
-  if (res.status !== 200) {
-    throw new Error(
-      `[marketo-form] non-200 status code when requesting form ${id}: ${res.status}`
+  if (res.fields.success === false || res.metadata.success === false) {
+    console.log(
+      `[marketo-form] non-200 status code when requesting form ${id}: ${JSON.stringify(
+        res
+      )}`
     )
   }
-  const form = (await res.json()) as {
-    result: {
-      fields: MarketoFormFieldsResponse
-      metadata: MarketoFormMetadataResponse
-    }
-  }
 
-  return form.result
+  return res
 }
 export const memoizedGetFormProps = moize(getFormProps, {
   isPromise: true,
