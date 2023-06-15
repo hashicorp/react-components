@@ -20,6 +20,8 @@ function ruleApplies(rule: VisibilityRuleType, value: any): boolean {
         (value === false && rule.values.includes('no')) ||
         (value === true && rule.values.includes('yes'))
       )
+    case 'isNot':
+      return !rule.values.includes(value)
     case 'isEmpty':
       return value === null || typeof value === 'undefined' || value === ''
     default:

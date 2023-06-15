@@ -23,7 +23,7 @@ export interface Autofill {
 
 export interface VisibilityRule {
   subjectField: string
-  operator: 'is' | 'isEmpty'
+  operator: 'is' | 'isNot' | 'isEmpty'
   values: string[]
   altLabel: string
 }
