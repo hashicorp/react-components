@@ -100,7 +100,7 @@ export function convertToRESTFields(
 
 // Returns the label for a field.
 export function formattedLabel(field: MarketoFormField): string {
-  if (field.label) {
+  if ('label' in field && field.label) {
     return field.label
   }
 
@@ -162,7 +162,11 @@ export function calculateDefaultValues(
 ): Record<string, string | boolean> {
   const initialValues: Record<string, string | boolean> = {}
   fields.forEach((field) => {
-    if (field.defaultValue && field.defaultValue !== '') {
+    if (
+      'defaultValue' in field &&
+      field.defaultValue &&
+      field.defaultValue !== ''
+    ) {
       if (field.dataType === 'select') {
         // For some reason, the Marketo API returns the value for <select> fields
         // as a JSON encoded string.
@@ -172,7 +176,8 @@ export function calculateDefaultValues(
       }
     } else if (field.dataType === 'checkbox') {
       initialValues[field.id] = field.fieldMetaData.initiallyChecked
-    } else {
+    } else if (field.dataType !== 'htmltext') {
+      // htmltext is a presentational element, and shouldn't have a value
       initialValues[field.id] = ''
     }
   })
