@@ -155,7 +155,7 @@ const Form = ({
       let errors: Record<string, { message: string }> = {}
 
       fields.result.forEach((field) => {
-        if (field.required) {
+        if ('required' in field && field.required) {
           if (
             !(field.id in values) ||
             values[field.id] === '' ||

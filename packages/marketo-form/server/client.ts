@@ -57,6 +57,37 @@ export async function getForm(formId: number) {
   return { fields, metadata }
 }
 
+export async function getDraftFormProps(formId: number) {
+  const { access_token } = await getToken()
+
+  const fieldsResponse = await fetch(
+    `${process.env.MARKETO_ENDPOINT}/asset/v1/form/${formId}/fields.json?status=draft`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  )
+
+  const metadataResponse = await fetch(
+    `${process.env.MARKETO_ENDPOINT}/asset/v1/form/${formId}.json?status=draft`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  )
+
+  const [fields, metadata] = await Promise.all([
+    fieldsResponse.json(),
+    metadataResponse.json(),
+  ])
+
+  return { fields, metadata }
+}
+
 export async function getFormProps(
   id: number
 ): Promise<MarketoFormAPIResponse> {
