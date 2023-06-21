@@ -1,5 +1,15 @@
 # @hashicorp/react-marketo-form
 
+## 0.9.0
+
+### Minor Changes
+
+- [#928](https://github.com/hashicorp/react-components/pull/928) [`cc787d0f`](https://github.com/hashicorp/react-components/commit/cc787d0f5c880fe5d569b68ea54d56e5bc1642b6) Thanks [@dstaley](https://github.com/dstaley)! - Add support for htmltext fields
+
+### Patch Changes
+
+- [#972](https://github.com/hashicorp/react-components/pull/972) [`dbb75084`](https://github.com/hashicorp/react-components/commit/dbb75084839ef20949c37114ea3e58ebd955b33d) Thanks [@dstaley](https://github.com/dstaley)! - Remove content API
+
 ## 0.8.4
 
 ### Patch Changes
