@@ -1,5 +1,11 @@
 # @hashicorp/react-form-fields
 
+## 0.2.1
+
+### Patch Changes
+
+- [#976](https://github.com/hashicorp/react-components/pull/976) [`ebc94630`](https://github.com/hashicorp/react-components/commit/ebc94630ff31ec1fbbde3185fc35b1c2ae78da37) Thanks [@dstaley](https://github.com/dstaley)! - Add dependency on classnames
+
 ## 0.2.0
 
 ### Minor Changes
