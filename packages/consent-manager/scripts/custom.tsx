@@ -31,6 +31,7 @@ function CustomScript({ service }: CustomScriptProps) {
       strategy={strategy}
       id={service.name}
       {...dataAttrs}
+      onLoad={service?.onLoad}
     >
       {service.body ? service.body : null}
     </Script>
