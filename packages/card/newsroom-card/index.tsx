@@ -28,7 +28,7 @@ export function NewsroomCard({
       withArrow={false}
       appearance={appearance}
     >
-      <CardPrimitives.Thumbnail {...thumbnail} />
+      <CardPrimitives.LogoThumbnail {...thumbnail} />
       <CardPrimitives.Content>
         <CardPrimitives.Meta items={[date]} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>

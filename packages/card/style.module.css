@@ -92,6 +92,20 @@
   }
 }
 
+.logoThumbnail {
+  composes: thumbnail;
+  padding: var(--wpl-spacing-05);
+
+  & .image {
+    aspect-ratio: none;
+
+    & img {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+  }
+}
+
 .meta {
   composes: g-type-label from global;
   color: var(--secondary-text-color);
