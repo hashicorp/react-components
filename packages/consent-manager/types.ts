@@ -19,6 +19,12 @@ export interface ConsentManagerService {
    * If left undefined, script will load as usual.
    */
   shouldLoad?: () => boolean
+  /**
+   * Optional function that runs when a script has
+   * finished loading.
+   * Docs: https://nextjs.org/docs/pages/api-reference/components/script#onload
+   */
+  onLoad?: () => void
 }
 
 export interface ConsentManagerPreset {
