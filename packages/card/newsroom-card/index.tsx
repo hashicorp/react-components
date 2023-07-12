@@ -25,7 +25,6 @@ export function NewsroomCard({
   appearance,
   withArrow = false,
 }: NewsroomCardProps): JSX.Element {
-  console.log(withArrow)
   return (
     <CardPrimitives.Card
       heading={heading}
