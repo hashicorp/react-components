@@ -9,28 +9,33 @@ import type { CardProps, ThumbnailProps } from '../types'
 export interface NewsroomCardProps {
   heading: string
   date: string
+  category: string
   link: string
-  thumbnail: ThumbnailProps
+  thumbnail?: ThumbnailProps
   appearance?: CardProps['appearance']
+  withArrow?: boolean
 }
 
 export function NewsroomCard({
   heading,
   date,
+  category,
   link,
   thumbnail,
   appearance,
+  withArrow = false,
 }: NewsroomCardProps): JSX.Element {
+  console.log(withArrow)
   return (
     <CardPrimitives.Card
       heading={heading}
       link={link}
-      withArrow={false}
+      withArrow={withArrow}
       appearance={appearance}
     >
-      <CardPrimitives.LogoThumbnail {...thumbnail} />
+      {thumbnail ? <CardPrimitives.LogoThumbnail {...thumbnail} /> : null}
       <CardPrimitives.Content>
-        <CardPrimitives.Meta items={[date]} />
+        <CardPrimitives.Meta items={[date, category]} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
       </CardPrimitives.Content>
     </CardPrimitives.Card>
