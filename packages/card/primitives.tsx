@@ -58,6 +58,16 @@ function Thumbnail({ src, alt }: ThumbnailProps) {
   )
 }
 
+function LogoThumbnail({ src, alt }: ThumbnailProps) {
+  return (
+    <div className={s.logoThumbnail} data-testid="wpl-card-logo-thumbnail">
+      <div className={s.image}>
+        <Image src={src} alt={alt} width={800} height={450} />
+      </div>
+    </div>
+  )
+}
+
 function Meta({ items }: MetaProps) {
   return (
     <ul className={s.meta} data-testid="wpl-card-meta">
@@ -121,4 +131,13 @@ function Description({ children }: DescriptionProps) {
 }
 
 Card.displayName = 'Card'
-export { Card, Thumbnail, Meta, Content, Heading, Description, ProductBadges }
+export {
+  Card,
+  Thumbnail,
+  LogoThumbnail,
+  Meta,
+  Content,
+  Heading,
+  Description,
+  ProductBadges,
+}
