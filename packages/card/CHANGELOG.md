@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.12.0
+
+### Minor Changes
+
+- [#982](https://github.com/hashicorp/react-components/pull/982) [`95de3a34`](https://github.com/hashicorp/react-components/commit/95de3a34f3df2814ae06e040f4672197f3570a86) Thanks [@EnMod](https://github.com/EnMod)! - Updates NewsroomCard with new/updated props, and creates a LogoThumbnail primitive for use within NewsroomCard
+
 ## 0.11.0
 
 ### Minor Changes
