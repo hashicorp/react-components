@@ -1,5 +1,11 @@
 # @hashicorp/react-consent-manager
 
+## 9.2.0
+
+### Minor Changes
+
+- [#981](https://github.com/hashicorp/react-components/pull/981) [`0aedf445`](https://github.com/hashicorp/react-components/commit/0aedf44529c1a07bde59b9cc196db06635dcb305) Thanks [@nandereck](https://github.com/nandereck)! - Add onload functionality to scripts handled by ConsentManager
+
 ## 9.1.2
 
 ### Patch Changes
