@@ -161,6 +161,7 @@ export interface MarketoFormMetadata {
 export interface MarketoFormResponse<T> {
   success: boolean
   errors: { code: string; message: string }[]
+  requestId: string
   result: T[]
 }
 
