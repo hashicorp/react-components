@@ -3,8 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import React from 'react'
-import { useId } from '@reach/auto-id'
+import React, { useId } from 'react'
 import s from './style.module.css'
 import classNames from 'classnames'
 
