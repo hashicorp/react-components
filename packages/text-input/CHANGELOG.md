@@ -1,5 +1,11 @@
 # @hashicorp/react-text-input
 
+## 6.0.0
+
+### Major Changes
+
+- [#989](https://github.com/hashicorp/react-components/pull/989) [`1338cdc4`](https://github.com/hashicorp/react-components/commit/1338cdc47b083b04d103b00b26166b357418152a) Thanks [@kendallstrautman](https://github.com/kendallstrautman)! - Remove @reach/auto-id dependency in favor of react's `useId` and update peer dependency `react` version to >=18.x
+
 ## 5.0.2
 
 ### Patch Changes

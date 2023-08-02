@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-checkbox-input",
   "description": "A boolean input that displays a checkbox and label.",
-  "version": "5.0.3",
+  "version": "6.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
