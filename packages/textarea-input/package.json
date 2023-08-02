@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-textarea-input",
   "description": "Textarea field input to be used in formik forms",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
