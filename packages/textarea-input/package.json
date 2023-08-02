@@ -7,13 +7,12 @@
     "Zach Shilton"
   ],
   "dependencies": {
-    "@reach/auto-id": "^0.17.0",
     "clsx": "^1.1.1"
   },
   "license": "MPL-2.0",
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "react": ">=16.x"
+    "react": ">=18.x"
   },
   "publishConfig": {
     "access": "public"

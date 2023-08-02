@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import { useId } from 'react'
 import clsx from 'clsx'
-import { useId } from '@reach/auto-id'
 import type { ChangeEventHandler, FocusEventHandler } from 'react'
 import s from './style.module.css'
 

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import { useId } from 'react'
 import classNames from 'classnames'
-import { useId } from '@reach/auto-id'
 import s from './style.module.css'
 
 function TextInput({
