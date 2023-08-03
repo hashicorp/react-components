@@ -16,6 +16,7 @@ function CodeLines({
   lineNumbers,
   highlight,
   hasFloatingCopyButton,
+  wrapCode,
 }) {
   const linesOfCode = useMemo(() => {
     const isHtmlString = typeof code === 'string'
@@ -28,7 +29,7 @@ function CodeLines({
   return (
     <pre className={classNames(s.pre, `language-${language}`)}>
       <code className={classNames(s.code, `language-${language}`)}>
-        {lineNumbers ? (
+        {lineNumbers && !wrapCode ? (
           <span className={s.numbersColumn}>
             {linesOfCode.map((_lineChildren, stableIdx) => {
               const number = stableIdx + 1
@@ -44,39 +45,105 @@ function CodeLines({
                   lineCount={lineCount}
                   isHighlighted={isHighlighted}
                   isNotHighlighted={isNotHighlighted}
+                  wrapCode={false}
                 />
               )
             })}
           </span>
         ) : null}
-        <span className={classNames(s.linesColumn, s.styledScrollbars)}>
-          <span className={s.linesWrapper}>
+        <span
+          className={classNames(s.linesColumn, s.styledScrollbars, {
+            [s.wrapCode]: wrapCode,
+          })}
+        >
+          {wrapCode ? (
+            <LineSpacer
+              lineCount={lineCount}
+              hasFloatingCopyButton={hasFloatingCopyButton}
+            />
+          ) : null}
+          <span
+            className={classNames(s.linesWrapper, { [s.wrapCode]: wrapCode })}
+          >
             {linesOfCode.map((lineChildren, stableIdx) => {
               const number = stableIdx + 1
               const isHighlighted = highlightedLines.indexOf(number) !== -1
               const isNotHighlighted = highlightedLines.length && !isHighlighted
               return (
-                <LineOfCode
-                  // This array is stable, so we can use index as key
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={stableIdx}
-                  isHighlighted={isHighlighted}
-                  isNotHighlighted={isNotHighlighted}
-                  hasFloatingCopyButton={hasFloatingCopyButton}
-                >
-                  {lineChildren}
-                  {'\n'}
-                </LineOfCode>
+                // This array is stable, so we can use index as key
+                // eslint-disable-next-line react/no-array-index-key
+                <div className={s.lineWrapper} key={stableIdx}>
+                  {lineNumbers && wrapCode ? (
+                    <LineNumber
+                      // This array is stable, so we can use index as key
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={stableIdx}
+                      number={number}
+                      lineCount={lineCount}
+                      isHighlighted={isHighlighted}
+                      isNotHighlighted={isNotHighlighted}
+                      wrapCode={true}
+                    />
+                  ) : null}
+                  <LineOfCode
+                    isHighlighted={isHighlighted}
+                    isNotHighlighted={isNotHighlighted}
+                    hasFloatingCopyButton={hasFloatingCopyButton}
+                    wrapCode={wrapCode}
+                  >
+                    {lineChildren}
+                    {'\n'}
+                  </LineOfCode>
+                </div>
               )
             })}
           </span>
+          {wrapCode ? (
+            <LineSpacer
+              lineCount={lineCount}
+              hasFloatingCopyButton={hasFloatingCopyButton}
+            />
+          ) : null}
         </span>
       </code>
     </pre>
   )
 }
 
-function LineNumber({ number, isHighlighted, isNotHighlighted, lineCount }) {
+function LineSpacer({ lineCount, hasFloatingCopyButton }) {
+  return (
+    <div
+      className={classNames(s.linesSpacer, {
+        [s.wrapCode]: true,
+      })}
+    >
+      <LineNumber
+        number=""
+        lineCount={lineCount}
+        isHighlighted={false}
+        isNotHighlighted={true}
+        wrapCode={true}
+      />
+      <LineOfCode
+        isHighlighted={false}
+        isNotHighlighted={true}
+        hasFloatingCopyButton={hasFloatingCopyButton}
+        wrapCode={true}
+      >
+        {''}
+        {'\n'}
+      </LineOfCode>
+    </div>
+  )
+}
+
+function LineNumber({
+  number,
+  isHighlighted,
+  isNotHighlighted,
+  lineCount,
+  wrapCode,
+}) {
   const padLevel = Math.max(lineCount.toString().length, 1)
   const paddedNumber = number.toString().padEnd(padLevel)
   return (
@@ -84,6 +151,7 @@ function LineNumber({ number, isHighlighted, isNotHighlighted, lineCount }) {
       className={classNames(s.LineNumber, {
         [s.isHighlighted]: isHighlighted,
         [s.isNotHighlighted]: isNotHighlighted,
+        [s.wrapCode]: wrapCode,
       })}
       dangerouslySetInnerHTML={{ __html: paddedNumber }}
     />
@@ -95,6 +163,7 @@ function LineOfCode({
   isHighlighted,
   isNotHighlighted,
   hasFloatingCopyButton,
+  wrapCode,
 }) {
   return (
     <span
@@ -102,6 +171,7 @@ function LineOfCode({
         [s.isHighlighted]: isHighlighted,
         [s.isNotHighlighted]: isNotHighlighted,
         [s.hasFloatingCopyButton]: hasFloatingCopyButton,
+        [s.wrapCode]: wrapCode,
       })}
     >
       {children}
