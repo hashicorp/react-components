@@ -54,6 +54,10 @@ pre.pre {
   */
   overflow-x: auto;
   overflow-y: hidden;
+
+  &.wrapCode {
+    padding: 0;
+  }
 }
 
 .styledScrollbars {
@@ -82,6 +86,10 @@ pre.pre {
   min-width: 100%;
   flex-direction: column;
   flex-shrink: 0;
+
+  &.wrapCode {
+    width: 100%;
+  }
 }
 
 .numbersColumn {
@@ -99,6 +107,10 @@ pre.pre {
   white-space: pre;
   padding: 0 var(--code-padding);
   color: var(--text-color-faded);
+
+  &.wrapCode {
+    border-right: 1px solid var(--divider-line-color);
+  }
 
   &.isHighlighted {
     background: var(--background-highlighted-line);
@@ -121,6 +133,12 @@ pre.pre {
   min-width: max-content;
   white-space: pre;
 
+  &.wrapCode {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
   &.hasFloatingCopyButton {
     /* Adds right padding so that the floating copy button
     does not obscure content at the end of the line */
@@ -141,5 +159,30 @@ pre.pre {
       globally scoped by necessity */
       color: var(--text-color-faded) !important;
     }
+  }
+}
+
+/*
+
+Additions to make code-wrap work as expected
+
+TODO: refactor this whole component so there's less conditional stuff going on.
+
+*/
+
+.lineWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* adds space at the top and bottom of the block,
+   while supporting a continuous border for line numbers */
+.linesSpacer {
+  display: flex;
+  flex-wrap: nowrap;
+  height: var(--code-padding);
+
+  &.wrapCode {
+    display: flex;
   }
 }
