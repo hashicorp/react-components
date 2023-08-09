@@ -12,12 +12,21 @@
  */
 /* eslint-disable react/no-array-index-key */
 
-import React, { useMemo } from 'react'
+import React, { PropsWithChildren, useMemo } from 'react'
 import classNames from 'classnames'
 import parseHighlightedLines from '../../utils/parse-highlighted-lines'
 import splitJsxIntoLines from './utils/split-jsx-into-lines'
 import splitHtmlIntoLines from './utils/split-html-into-lines'
-import s from './style.module.css'
+import s from './code-lines.module.css'
+
+interface CodeLinesProps {
+  code: string
+  language: string
+  lineNumbers?: boolean
+  highlight?: string
+  hasFloatingCopyButton?: boolean
+  wrapCode?: boolean
+}
 
 /**
  * Render the provided code into separate line elements,
@@ -30,9 +39,9 @@ function CodeLines({
   highlight,
   hasFloatingCopyButton,
   wrapCode,
-}) {
+}: CodeLinesProps) {
   // Parse out an array of integers representing which lines to highlight
-  const highlightedLines = parseHighlightedLines(highlight)
+  const highlightedLines = parseHighlightedLines(highlight) as number[]
 
   /**
    * Split the incoming code into lines.
@@ -58,14 +67,14 @@ function CodeLines({
 
   // When rendering wrapped code with line numbers shown, we need a spacer value
   // that matches the padding inset of all other line numbers
-  let numberSpacer = null
+  let numberSpacer: string | null = null
   if (lineNumbers) {
     const padLevel = Math.max(linesOfCode.length.toString().length, 1)
     numberSpacer = ''.padEnd(padLevel)
   }
 
   // When the floating copy button is present, we add padding to many lines
-  const padRight = hasFloatingCopyButton
+  const padRight = Boolean(hasFloatingCopyButton)
 
   if (wrapCode) {
     /**
@@ -128,7 +137,10 @@ function CodeLines({
  * Set up the `<pre>` + `<code>` container
  * which is necessary for language-specific syntax highlighting styles
  */
-function PreCode({ children, language }) {
+function PreCode({
+  children,
+  language,
+}: PropsWithChildren<{ language: string }>) {
   return (
     <pre className={classNames(s.pre, `language-${language}`)}>
       <code className={classNames(s.code, `language-${language}`)}>
@@ -150,7 +162,13 @@ function PreCode({ children, language }) {
  * between the "numbers" and "lines" columns, we use this component,
  * which is essentially and empty line of code that's been shortened a bit.
  */
-function WrappedLinesSpacer({ number, padRight }) {
+function WrappedLinesSpacer({
+  number,
+  padRight,
+}: {
+  number: string | null
+  padRight: boolean
+}) {
   return (
     <div className={s.wrappedLinesSpacer}>
       {number ? <LineNumber number={number} wrap /> : null}
@@ -166,7 +184,17 @@ function WrappedLinesSpacer({ number, padRight }) {
  * so that if a padded string is passed, we can allow for table-like alignment
  * of line numbers, and consistent horizontal width of numbers across all lines.
  */
-function LineNumber({ number, highlight, dim, wrap }) {
+function LineNumber({
+  number,
+  highlight,
+  dim,
+  wrap,
+}: {
+  number: number | string
+  highlight?: boolean
+  dim?: boolean
+  wrap?: boolean
+}) {
   return (
     <span
       className={classNames(s.LineNumber, {
@@ -183,7 +211,18 @@ function LineNumber({ number, highlight, dim, wrap }) {
 /**
  * Renders a line of code
  */
-function LineOfCode({ children, highlight, dim, padRight, wrap }) {
+function LineOfCode({
+  children,
+  highlight,
+  dim,
+  padRight,
+  wrap,
+}: PropsWithChildren<{
+  highlight?: boolean
+  dim?: boolean
+  padRight?: boolean
+  wrap?: boolean
+}>) {
   return (
     <span
       className={classNames(s.LineOfCode, {
