@@ -62,6 +62,11 @@ module.exports = {
         description:
           'Set to `true` to show the copy-to-clipboard prompt and functionality.',
       },
+      wrapCode: {
+        type: 'boolean',
+        description:
+          'Set to `true` to make long lines of code wrap rather than overflow.',
+      },
     },
   },
 }
