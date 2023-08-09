@@ -21,7 +21,7 @@ import s from './style.module.css'
 
 export interface CodeBlockOptions {
   showChrome?: boolean
-  highlight?: boolean
+  highlight?: string
   lineNumbers?: boolean
   showClipboard?: boolean
   showWindowBar?: boolean
@@ -49,7 +49,6 @@ function CodeBlock({
   onCopyCallBack,
   options = {
     showChrome: false,
-    highlight: false,
     lineNumbers: false,
     showClipboard: false,
     showWindowBar: false,

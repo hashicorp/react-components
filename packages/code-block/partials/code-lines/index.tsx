@@ -12,7 +12,7 @@
  */
 /* eslint-disable react/no-array-index-key */
 
-import React, { PropsWithChildren, useMemo } from 'react'
+import React, { PropsWithChildren, ReactElement, useMemo } from 'react'
 import classNames from 'classnames'
 import parseHighlightedLines from '../../utils/parse-highlighted-lines'
 import splitJsxIntoLines from './utils/split-jsx-into-lines'
@@ -20,8 +20,8 @@ import splitHtmlIntoLines from './utils/split-html-into-lines'
 import s from './code-lines.module.css'
 
 interface CodeLinesProps {
-  code: string
-  language: string
+  code: string | ReactElement
+  language?: string
   lineNumbers?: boolean
   highlight?: string
   hasFloatingCopyButton?: boolean
@@ -140,7 +140,7 @@ function CodeLines({
 function PreCode({
   children,
   language,
-}: PropsWithChildren<{ language: string }>) {
+}: PropsWithChildren<{ language?: string }>) {
   return (
     <pre className={classNames(s.pre, `language-${language}`)}>
       <code className={classNames(s.code, `language-${language}`)}>
