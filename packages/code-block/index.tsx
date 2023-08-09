@@ -27,6 +27,7 @@ export interface CodeBlockOptions {
   showWindowBar?: boolean
   filename?: string
   heading?: string
+  wrapCode?: boolean
 }
 
 export interface CodeBlockProps {
@@ -52,6 +53,7 @@ function CodeBlock({
     lineNumbers: false,
     showClipboard: false,
     showWindowBar: false,
+    wrapCode: false,
   },
 }: CodeBlockProps) {
   const copyRef = useRef<HTMLPreElement>()
@@ -76,6 +78,7 @@ function CodeBlock({
     lineNumbers,
     showClipboard,
     showWindowBar,
+    wrapCode,
   } = options
   if (showWindowBar) {
     console.warn(
@@ -119,6 +122,7 @@ function CodeBlock({
           highlight={highlight}
           lineNumbers={lineNumbers}
           hasFloatingCopyButton={hasFloatingCopyButton}
+          wrapCode={wrapCode}
         />
         {hasFloatingCopyButton ? (
           <div className={s.copyButtonContainer}>

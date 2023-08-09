@@ -34,6 +34,9 @@ Longer lines of code may take up more space than the available content width. In
 ````
 ```
 A line that goes on for a very long time so that it overflows the container in which it is located, which might be a pretty wide container.
+This is a second line of code.
+And a third line.
+And another line, this is the fourth line.
 ```
 ````
 
@@ -42,7 +45,54 @@ A line that goes on for a very long time so that it overflows the container in w
 <CodeBlock
   options={{ showClipboard: true }}
   theme="dark"
-  code={`A line that goes on for a very long time so that it overflows the container in which it is located, which might be a pretty wide container.`}
+  code={`A line that goes on for a very long time so that it overflows the container in which it is located, which might be a pretty wide container.\nThis is a second line of code.\nAnd a third line.\nAnd another line, this is the fourth line.`}
+/>
+
+Note this also works with line numbers and line highlighting.
+
+<CodeBlock
+  options={{ showClipboard: true, lineNumbers: true, highlight: '1,3' }}
+  theme="dark"
+  code={`A line that goes on for a very long time so that it overflows the container in which it is located, which might be a pretty wide container.\nThis is a second line of code.\nAnd a third line.\nAnd another line, this is the fourth line.`}
+/>
+
+#### Wrap Code
+
+In cases where wrapping code to new lines is preferred over horizontal scrolling, the `options.wrapCode` prop can be set to `true`. Note that this option is not yet supported in MDX contexts.
+
+`Source`
+
+````
+```
+A line that goes on for a very long time so that it overflows the container in which it is located, which might be a pretty wide container.
+This is a second line of code.
+And a third line.
+And another line, this is the fourth line.
+```
+````
+
+`Result`
+
+<CodeBlock
+  options={{
+    showClipboard: true,
+    wrapCode: true,
+  }}
+  theme="dark"
+  code={`A line that goes on for a very long time so that it overflows the container in which it is located, which might be a pretty wide container.\nThis is a second line of code.\nAnd a third line.\nAnd another line, this is the fourth line.`}
+/>
+
+Note this also works with line numbers and line highlighting.
+
+<CodeBlock
+  options={{
+    showClipboard: true,
+    lineNumbers: true,
+    wrapCode: true,
+    highlight: '1,3',
+  }}
+  theme="dark"
+  code={`A line that goes on for a very long time so that it overflows the container in which it is located, which might be a pretty wide container.\nThis is a second line of code.\nAnd a third line.\nAnd another line, this is the fourth line.`}
 />
 
 #### Syntax Highlighting
@@ -219,7 +269,7 @@ function hello() {
   options={{ lineNumbers: true, showClipboard: true }}
   code={`<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'bar'</span>
 <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-{/* */}  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
+  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'Hello'</span> <span class="token operator">:</span> <span class="token string">'Bonjour'</span>
 <span class="token punctuation">}</span>`}
 />
 

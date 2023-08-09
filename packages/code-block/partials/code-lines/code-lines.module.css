@@ -9,6 +9,12 @@ code-block/theme-(dark|light).module.css
 to be present.
 */
 
+/*
+
+SHARED
+
+*/
+
 pre.pre {
   --code-padding: 16px;
   --code-font-size: 0.84375rem; /* 13.5 px at default text size */
@@ -30,6 +36,83 @@ pre.pre {
   position: relative;
   display: flex;
   overflow: hidden;
+}
+
+.LineNumber {
+  composes: g-type-code from global;
+  display: block;
+  font-size: var(--code-font-size);
+  line-height: var(--code-line-height);
+  white-space: pre;
+  padding: 0 var(--code-padding);
+  color: var(--text-color-faded);
+
+  &.wrap {
+    border-right: 1px solid var(--divider-line-color);
+  }
+
+  &.highlight {
+    background: var(--background-highlighted-line);
+    color: var(--text-color-base);
+  }
+
+  &.dim > * {
+    color: var(--text-color-faded);
+  }
+}
+
+.LineOfCode {
+  composes: g-type-code from global;
+  display: block;
+  color: var(--text-color-base);
+  padding-right: calc(var(--code-padding) * 2);
+  padding-left: var(--code-padding);
+  font-size: var(--code-font-size);
+  line-height: var(--code-line-height);
+  min-width: max-content;
+  white-space: pre;
+
+  &.wrap {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    min-width: 0;
+    width: 100%;
+  }
+
+  &.padRight {
+    /* Adds right padding so that the floating copy button
+    does not obscure content at the end of the line */
+    padding-right: 96px;
+  }
+
+  &.highlight {
+    background: var(--background-highlighted-line);
+  }
+
+  &.dim {
+    opacity: 0.7;
+
+    &,
+    & * {
+      /* !important is necessary here to override
+      syntax highlight color styles, which are
+      globally scoped by necessity */
+      color: var(--text-color-faded) !important;
+    }
+  }
+}
+
+/*
+
+SCROLL OVERFLOW LAYOUT
+
+*/
+
+.numbersColumn {
+  display: block;
+  border-right: 1px solid var(--divider-line-color);
+  flex-shrink: 0;
+  padding: var(--code-padding) 0;
 }
 
 .linesColumn {
@@ -76,7 +159,7 @@ pre.pre {
   }
 }
 
-.linesWrapper {
+.linesScrollContainer {
   display: flex;
   width: max-content;
   min-width: 100%;
@@ -84,62 +167,28 @@ pre.pre {
   flex-shrink: 0;
 }
 
-.numbersColumn {
-  display: block;
-  border-right: 1px solid var(--divider-line-color);
+/*
+
+WRAP LAYOUT
+
+*/
+
+.wrappedLinesContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
   flex-shrink: 0;
-  padding: var(--code-padding) 0;
 }
 
-.LineNumber {
-  composes: g-type-code from global;
-  display: block;
-  font-size: var(--code-font-size);
-  line-height: var(--code-line-height);
-  white-space: pre;
-  padding: 0 var(--code-padding);
-  color: var(--text-color-faded);
-
-  &.isHighlighted {
-    background: var(--background-highlighted-line);
-    color: var(--text-color-base);
-  }
-
-  &.isNotHighlighted > * {
-    color: var(--text-color-faded);
-  }
+.wrappedLine {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
-.LineOfCode {
-  composes: g-type-code from global;
-  display: block;
-  color: var(--text-color-base);
-  padding-right: calc(var(--code-padding) * 2);
-  padding-left: var(--code-padding);
-  font-size: var(--code-font-size);
-  line-height: var(--code-line-height);
-  min-width: max-content;
-  white-space: pre;
-
-  &.hasFloatingCopyButton {
-    /* Adds right padding so that the floating copy button
-    does not obscure content at the end of the line */
-    padding-right: 96px;
-  }
-
-  &.isHighlighted {
-    background: var(--background-highlighted-line);
-  }
-
-  &.isNotHighlighted {
-    opacity: 0.7;
-
-    &,
-    & * {
-      /* !important is necessary here to override
-      syntax highlight color styles, which are
-      globally scoped by necessity */
-      color: var(--text-color-faded) !important;
-    }
-  }
+/* adds space at the top and bottom of the block,
+   while supporting a continuous border for line numbers */
+.wrappedLinesSpacer {
+  display: flex;
+  flex-wrap: nowrap;
+  height: var(--code-padding);
 }
