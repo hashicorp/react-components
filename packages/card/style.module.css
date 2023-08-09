@@ -36,12 +36,15 @@
 
   &.dark {
     --border-color: transparent;
-    --primary-text-color: var(--wpl-neutral-0);
-    --secondary-text-color: var(--wpl-neutral-400);
-    --background-color: var(--wpl-neutral-700);
+    --primary-text-color: var(--token-color-dark-foreground-primary, #d5d7db);
+    --secondary-text-color: var(--token-color-dark-foreground-faint, #b2b6bd);
+    --background-color: var(--token-color-dark-surface-strong, #1e222a);
 
     &:hover {
-      --background-color: var(--wpl-neutral-600);
+      --background-color: var(
+        --token-color-dark-surface-interactive-active,
+        #2b303c
+      );
     }
   }
 }
