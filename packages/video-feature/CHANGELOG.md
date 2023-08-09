@@ -1,5 +1,12 @@
 # @hashicorp/react-video-feature
 
+## 0.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`2bd1ec60`](https://github.com/hashicorp/react-components/commit/2bd1ec6023d71ccab75f58937ec1107fb87143d2)]:
+  - @hashicorp/react-inline-video@0.5.0
+
 ## 0.2.1
 
 ### Patch Changes

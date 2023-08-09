@@ -1,5 +1,11 @@
 # @hashicorp/react-inline-video
 
+## 0.5.0
+
+### Minor Changes
+
+- [#993](https://github.com/hashicorp/react-components/pull/993) [`2bd1ec60`](https://github.com/hashicorp/react-components/commit/2bd1ec6023d71ccab75f58937ec1107fb87143d2) Thanks [@pbortnick](https://github.com/pbortnick)! - feat(inline video): add `videoClassName` prop
+
 ## 0.4.0
 
 ### Minor Changes
