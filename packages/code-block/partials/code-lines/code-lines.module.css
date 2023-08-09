@@ -159,7 +159,7 @@ SCROLL OVERFLOW LAYOUT
   }
 }
 
-.linesScrollContainer {
+.linesScrollableContent {
   display: flex;
   width: max-content;
   min-width: 100%;

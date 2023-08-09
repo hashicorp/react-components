@@ -119,7 +119,7 @@ function CodeLines({
           </span>
         ) : null}
         <span className={classNames(s.linesColumn, s.styledScrollbars)}>
-          <span className={s.linesScrollContainer}>
+          <span className={s.linesScrollableContent}>
             {linesOfCode.map(({ children, highlight, dim }, idx) => (
               <LineOfCode key={idx} {...{ highlight, dim, padRight }}>
                 {children}
