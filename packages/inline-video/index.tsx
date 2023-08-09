@@ -17,6 +17,7 @@ export default function InlineVideo(props: InlineVideoProps) {
     url,
     description,
     solution,
+    videoClassName,
   } = props
 
   const playerProps = {
@@ -44,7 +45,7 @@ export default function InlineVideo(props: InlineVideoProps) {
       data-testid="wpl-inline-video"
     >
       <div className={classNames(s.videoContainer, solution && s[solution])}>
-        <div className={s.video}>
+        <div className={classNames(s.video, videoClassName)}>
           {hasWindow ? (
             <>
               {url.includes('wistia') ? (

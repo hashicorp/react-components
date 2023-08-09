@@ -9,4 +9,5 @@ export interface InlineVideoProps {
   description?: string
   solution?: 'infrastructure' | 'security' | 'networking' | 'applications'
   gradientPosition?: 'left' | 'right' | false
+  videoClassName?: string
 }
