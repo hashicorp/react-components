@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.13.0
+
+### Minor Changes
+
+- [#992](https://github.com/hashicorp/react-components/pull/992) [`3959f8f0`](https://github.com/hashicorp/react-components/commit/3959f8f01d9d23aaab52507433dafe9f2379c872) Thanks [@pbortnick](https://github.com/pbortnick)! - Update dark mode colors to align with HashiCorp Developer's dark palette
+
 ## 0.12.0
 
 ### Minor Changes
