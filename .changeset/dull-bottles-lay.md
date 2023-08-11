@@ -2,4 +2,4 @@
 "@hashicorp/react-card": minor
 ---
 
-update(react-card): dark mode colors
+Update dark mode colors to align with HashiCorp Developer's dark palette
