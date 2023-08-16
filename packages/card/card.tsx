@@ -14,9 +14,15 @@ function Card({
   meta,
   description,
   productBadges,
+  isExternal,
 }: CardProps) {
   return (
-    <CardPrimitive.Card appearance={appearance} heading={heading} link={link}>
+    <CardPrimitive.Card
+      appearance={appearance}
+      heading={heading}
+      link={link}
+      isExternal={isExternal}
+    >
       {thumbnail ? (
         <CardPrimitive.Thumbnail src={thumbnail.src} alt={thumbnail.alt} />
       ) : null}

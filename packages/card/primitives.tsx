@@ -30,6 +30,11 @@ const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
       isExternal,
       children,
     } = props
+
+    const linkProps = isExternal
+      ? { target: '_blank', rel: 'noopener noreferrer' }
+      : {}
+
     return (
       <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
         <div className={s.contentContainer}>
@@ -44,7 +49,7 @@ const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
             ref={ref}
             className={s.link}
             aria-label={heading}
-            {...(isExternal && { target: '_blank' })}
+            {...linkProps}
           />
         </div>
       </div>
