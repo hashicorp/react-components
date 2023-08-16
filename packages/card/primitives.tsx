@@ -27,6 +27,7 @@ const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
       withArrow = true,
       heading,
       link,
+      isExternal,
       children,
     } = props
     return (
@@ -40,7 +41,12 @@ const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
 
           <Link href={link} legacyBehavior>
             {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-            <a ref={ref} className={s.link} aria-label={heading} />
+            <a
+              ref={ref}
+              className={s.link}
+              aria-label={heading}
+              target={isExternal ? '_blank' : undefined}
+            />
           </Link>
         </div>
       </div>
