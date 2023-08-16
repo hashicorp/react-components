@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.14.0
+
+### Minor Changes
+
+- [#997](https://github.com/hashicorp/react-components/pull/997) [`33ace018`](https://github.com/hashicorp/react-components/commit/33ace018726cba053118248294f74cc32a614908) Thanks [@pbortnick](https://github.com/pbortnick)! - feat(react-card): add isExternal prop to allow card link to open in new tab
+
 ## 0.13.0
 
 ### Minor Changes
