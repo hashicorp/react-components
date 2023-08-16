@@ -19,6 +19,7 @@ export interface BaseCardProps {
   withArrow?: boolean
   heading: string
   link: string
+  isExternal?: boolean
 }
 
 export interface CardPrimitiveProps extends BaseCardProps {

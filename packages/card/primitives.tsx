@@ -27,8 +27,14 @@ const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
       withArrow = true,
       heading,
       link,
+      isExternal,
       children,
     } = props
+
+    const linkProps = isExternal
+      ? { target: '_blank', rel: 'noopener noreferrer' }
+      : {}
+
     return (
       <div className={classNames(s.card, s[appearance])} data-testid="wpl-card">
         <div className={s.contentContainer}>
@@ -38,10 +44,13 @@ const Card = React.forwardRef<HTMLAnchorElement, CardPrimitiveProps>(
             {withArrow ? <IconArrowRight24 /> : null}
           </div>
 
-          <Link href={link} legacyBehavior>
-            {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-            <a ref={ref} className={s.link} aria-label={heading} />
-          </Link>
+          <Link
+            href={link}
+            ref={ref}
+            className={s.link}
+            aria-label={heading}
+            {...linkProps}
+          />
         </div>
       </div>
     )

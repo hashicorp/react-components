@@ -73,6 +73,11 @@ const baseProps = {
     required: true,
     testValue: 'https://hashicorp.com',
   },
+  isExternal: {
+    type: 'boolean',
+    description: 'If true, card link opens in new tab',
+    required: false,
+  },
 }
 
 const thumbnailProps = {
