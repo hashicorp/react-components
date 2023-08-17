@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.4.0
+
+### Minor Changes
+
+- [#991](https://github.com/hashicorp/react-components/pull/991) [`534b6517`](https://github.com/hashicorp/react-components/commit/534b6517b4fcb76b3450c329b9c9e3c76236fe6a) Thanks [@zchsh](https://github.com/zchsh)! - Implements support for code wrapping, through an options.wrapCode boolean property.
+
 ## 6.3.0
 
 ### Minor Changes
