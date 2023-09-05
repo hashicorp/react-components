@@ -18,7 +18,7 @@ const defaultProps = {
 }
 
 describe('<ResourceCard />', () => {
-  it('should render the provided metadata correctly', () => {
+  it('should render the provided date and category with separator', () => {
     const expectedMeta = [defaultProps.date, defaultProps.category]
 
     render(<ResourceCard {...defaultProps} />)
@@ -30,5 +30,19 @@ describe('<ResourceCard />', () => {
     })
 
     expect(metaElement).toContainElement(screen.getByText('|'))
+  })
+
+  it('should not render the date if no date is provided', () => {
+    defaultProps.date = ''
+
+    render(<ResourceCard {...defaultProps} />)
+
+    const metaElement = screen.getByTestId('wpl-card-meta')
+
+    expect(metaElement).toContainElement(
+      screen.getByText(defaultProps.category)
+    )
+
+    expect(metaElement).not.toContainElement(screen.queryByText('|'))
   })
 })
