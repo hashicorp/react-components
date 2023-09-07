@@ -8,7 +8,7 @@ import type { CardProps, ThumbnailProps } from '../types'
 
 export interface ResourceCardProps {
   heading: string
-  date: string
+  date?: string
   category: string
   link: string
   productBadges?: CardProps['productBadges']
@@ -25,6 +25,12 @@ export function ResourceCard({
   thumbnail,
   appearance,
 }: ResourceCardProps): JSX.Element {
+  const meta: string[] = [category]
+
+  if (date) {
+    meta.unshift(date)
+  }
+
   return (
     <CardPrimitives.Card
       heading={heading}
@@ -34,7 +40,7 @@ export function ResourceCard({
     >
       <CardPrimitives.Thumbnail {...thumbnail} />
       <CardPrimitives.Content>
-        <CardPrimitives.Meta items={[date, category]} />
+        <CardPrimitives.Meta items={meta} />
         <CardPrimitives.Heading>{heading}</CardPrimitives.Heading>
         {productBadges && productBadges?.length > 0 ? (
           <CardPrimitives.ProductBadges
