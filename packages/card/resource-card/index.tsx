@@ -25,11 +25,7 @@ export function ResourceCard({
   thumbnail,
   appearance,
 }: ResourceCardProps): JSX.Element {
-  const meta: string[] = [category]
-
-  if (date) {
-    meta.unshift(date)
-  }
+  const meta: string[] = date ? [date, category] : [category]
 
   return (
     <CardPrimitives.Card

@@ -33,9 +33,9 @@ describe('<ResourceCard />', () => {
   })
 
   it('should not render the date if no date is provided', () => {
-    defaultProps.date = ''
+    const defaultPropsWithoutDate = { ...defaultProps, date: '' }
 
-    render(<ResourceCard {...defaultProps} />)
+    render(<ResourceCard {...defaultPropsWithoutDate} />)
 
     const metaElement = screen.getByTestId('wpl-card-meta')
 
