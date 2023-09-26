@@ -1,5 +1,12 @@
 # @hashicorp/react-related-content
 
+## 0.3.8
+
+### Patch Changes
+
+- Updated dependencies [[`901bf28a`](https://github.com/hashicorp/react-components/commit/901bf28a1f3e61735c07444c41e9a4eb36324ba4)]:
+  - @hashicorp/react-card@0.15.0
+
 ## 0.3.7
 
 ### Patch Changes

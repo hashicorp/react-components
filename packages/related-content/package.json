@@ -1,12 +1,12 @@
 {
   "name": "@hashicorp/react-related-content",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "",
   "author": "HashiCorp",
   "license": "MPL-2.0",
   "dependencies": {
     "classnames": "^2.3.1",
-    "@hashicorp/react-card": "^0.14.0",
+    "@hashicorp/react-card": "^0.15.0",
     "@hashicorp/react-standalone-link": "^0.4.0"
   },
   "peerDependencies": {

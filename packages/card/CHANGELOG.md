@@ -1,5 +1,11 @@
 # @hashicorp/react-card
 
+## 0.15.0
+
+### Minor Changes
+
+- [#1001](https://github.com/hashicorp/react-components/pull/1001) [`901bf28a`](https://github.com/hashicorp/react-components/commit/901bf28a1f3e61735c07444c41e9a4eb36324ba4) Thanks [@EnMod](https://github.com/EnMod)! - Makes the `date` prop optional, preventing it and the `|` separator from rendering if not set.
+
 ## 0.14.0
 
 ### Minor Changes
