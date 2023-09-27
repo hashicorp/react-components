@@ -12,9 +12,9 @@
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
-    "next": ">=13.x",
+    "framer-motion": "^10.16.4",
     "react": ">=16.x",
-    "framer-motion": "^10.16.4"
+    "next": ">=13.x"
   },
   "repository": {
     "type": "git",
