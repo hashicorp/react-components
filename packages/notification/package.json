@@ -8,13 +8,13 @@
     "@hashicorp/flight-icons": "^2.0.2",
     "@hashicorp/platform-product-meta": "^0.1.0",
     "@hashicorp/react-close-button": "^0.1.1",
-    "classnames": "^2.3.1",
-    "framer-motion": "^10.16.4"
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "@hashicorp/mktg-global-styles": ">=3.x",
     "next": ">=13.x",
-    "react": ">=16.x"
+    "react": ">=16.x",
+    "framer-motion": "^10.16.4"
   },
   "repository": {
     "type": "git",
