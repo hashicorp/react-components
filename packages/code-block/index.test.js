@@ -16,7 +16,17 @@ import { heapAttributes } from './analytics'
 // we import it so that we don't have to manually recreate its output
 import processSnippet from './utils/process-snippet'
 
-afterEach(cleanup)
+// mock the clipboard API
+Object.assign(navigator, {
+  clipboard: {
+    writeText: jest.fn(),
+  },
+})
+
+afterEach(() => {
+  cleanup()
+  jest.clearAllMocks()
+})
 
 it('should render a root element with a `g-code-block` class', () => {
   const { container } = render(<CodeBlock code="some-example-code" />)
@@ -103,9 +113,10 @@ it('should use the `Copy` button to copy code to the clipboard', async () => {
   fireEvent.click(buttonElem)
   //  Expect copyToClipboard to have been called with our code snippet
   //  (note: this function is mocked at the top of this test file)
-  await waitFor(() => expect(copyToClipboard).toHaveBeenCalledTimes(1))
-  expect(copyToClipboard).toHaveBeenCalledWith(codeString)
-  copyToClipboard.mockClear()
+  await waitFor(() =>
+    expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1)
+  )
+  expect(navigator.clipboard.writeText).toHaveBeenCalledWith(codeString)
 })
 
 it('should track a "Copy" event when the "Copy" button is clicked', async () => {
@@ -131,7 +142,6 @@ it('should track a "Copy" event when the "Copy" button is clicked', async () => 
   })
   // Cleanup
   window.analytics = forMockRestore
-  copyToClipboard.mockClear()
 })
 
 it('should call "onCopyCallback" when the "Copy" button is clicked', async () => {
@@ -151,9 +161,10 @@ it('should call "onCopyCallback" when the "Copy" button is clicked', async () =>
   expect(buttonElem).toBeInTheDocument()
   fireEvent.click(buttonElem)
   //  Expect onCopyCallback to have been called
-  await waitFor(() => expect(onCopyCallback).toHaveBeenCalledTimes(1))
+  await waitFor(() =>
+    expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1)
+  )
   expect(onCopyCallback).toBeCalledWith(true)
-  copyToClipboard.mockClear()
 })
 
 it('should track a "Click" event when the root element is clicked', async () => {
@@ -187,11 +198,12 @@ it('should use process-snippet to strip the leading $ from shell snippets', asyn
   const buttonElem = screen.getByText('Copy')
   expect(buttonElem).toBeInTheDocument()
   fireEvent.click(buttonElem)
-  //  Expect copyToClipboard to have been called with our code snippet
+  //  Expect navigator.clipboard.writeText to have been called with our code snippet
   //  (note: this function is mocked at the top of this test file)
   //  We also expect the code to have been modified by processSnippet
   const expectedCode = processSnippet(codeString)
-  await waitFor(() => expect(copyToClipboard).toHaveBeenCalledTimes(1))
-  expect(copyToClipboard).toHaveBeenCalledWith(expectedCode)
-  copyToClipboard.mockClear()
+  await waitFor(() =>
+    expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1)
+  )
+  expect(navigator.clipboard.writeText).toHaveBeenCalledWith(expectedCode)
 })
