@@ -5,10 +5,26 @@
 
 import React from 'react'
 import ClipboardButton from '../clipboard-button'
-import InlineSvg from '@hashicorp/react-inline-svg'
-import svgFile from './svg/file.svg?include'
-
 import s from './style.module.css'
+
+function FileIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={25}
+      viewBox="0 0 24 25"
+      fill="none"
+    >
+      <path
+        fill="#000"
+        fillRule="evenodd"
+        d="M6 2.08a2.75 2.75 0 0 0-2.75 2.75v16A2.75 2.75 0 0 0 6 23.58h12a2.75 2.75 0 0 0 2.75-2.75v-11a.748.748 0 0 0-.22-.53l-7-7a.751.751 0 0 0-.53-.22m-.75 1.5H6c-.69 0-1.25.56-1.25 1.25v16c0 .691.56 1.25 1.25 1.25h12c.69 0 1.25-.559 1.25-1.25V10.58H13a.75.75 0 0 1-.75-.75V3.58Zm5.94 5.5-4.44-4.439v4.44h4.44Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  )
+}
 
 function SnippetBar({ showChrome, filename, getText, heading, showClipboard }) {
   if (showClipboard && !getText) {
@@ -29,7 +45,7 @@ function SnippetBar({ showChrome, filename, getText, heading, showClipboard }) {
         ) : null}
         {filename ? (
           <div className={s.filename}>
-            <InlineSvg src={svgFile} />
+            <FileIcon />
             {filename}
           </div>
         ) : null}

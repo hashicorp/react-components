@@ -7,7 +7,6 @@
     "Zach Shilton"
   ],
   "dependencies": {
-    "@hashicorp/react-inline-svg": "^6.0.3",
     "classnames": "^2.3.1"
   },
   "license": "MPL-2.0",

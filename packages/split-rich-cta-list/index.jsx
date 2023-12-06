@@ -10,6 +10,7 @@ import InlineSvg from '@hashicorp/react-inline-svg'
 import LinkWrap from '@hashicorp/react-link-wrap'
 import RightArrow from './img/arrow-right.svg?include'
 import styles from './styles.module.css'
+import Image from 'next/image'
 
 export default function SplitRichCTAList({
   className,
@@ -30,7 +31,7 @@ export default function SplitRichCTAList({
                 <h5>{item.title}</h5>
                 <p className={styles.bodySmall}>{item.description}</p>
               </div>
-              <InlineSvg className={styles.arrow} src={RightArrow} />
+              <Image className={styles.arrow} {...RightArrow} />
             </LinkWrap>
           </li>
         ))}

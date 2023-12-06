@@ -11,8 +11,8 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import useProductMeta, {
   Products as HashiCorpProduct,
 } from '@hashicorp/platform-product-meta'
-import InlineSvg from '@hashicorp/react-inline-svg'
-import CloseIcon from './img/close-icon.svg?include'
+import Image from 'next/image'
+import CloseIcon from './img/close-icon.svg'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 import analytics from './analytics'
@@ -106,7 +106,7 @@ function AlertBanner({
           </span>
         </a>
         <button className={s.closeButton} onClick={closeBanner}>
-          <InlineSvg src={CloseIcon} />
+          <Image alt="Close" {...CloseIcon} />
           <VisuallyHidden>Dismiss alert</VisuallyHidden>
         </button>
       </div>

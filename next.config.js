@@ -12,7 +12,6 @@ module.exports = withHashicorp({
     '@hashicorp/sentinel-embedded',
     '@hashicorp/flight-icons',
   ],
-  nextOptimizedImages: true,
 })(
   withSwingset({
     componentsRoot: 'packages/**/*',
@@ -41,7 +40,7 @@ module.exports = withHashicorp({
     ],
     images: {
       domains: ['www.datocms-assets.com'],
-      disableStaticImages: true,
+      disableStaticImages: false,
     },
     webpack(config) {
       // disable `exports` support for framer-motion. This will cause Webpack to
