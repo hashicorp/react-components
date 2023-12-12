@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-tabs",
   "description": "Display content in a tabbed interface",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"

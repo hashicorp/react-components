@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-accordion",
   "description": "A block that displays a set of title + content items, with content collapsed by default, but expandable to view. Also includes an optional heading for the block.",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "author": "HashiCorp",
   "contributors": [
     "Zach Shilton"
