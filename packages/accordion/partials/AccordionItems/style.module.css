@@ -60,7 +60,7 @@
   transition: transform 0.4s;
   transform: var(--icon-transform);
 
-  & svg {
+  & img {
     display: block;
     width: 24px;
     height: 24px;

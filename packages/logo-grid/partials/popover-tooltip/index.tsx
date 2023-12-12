@@ -5,9 +5,9 @@
 
 import React from 'react'
 import * as Popover from '@radix-ui/react-popover'
-import InlineSvg from '@hashicorp/react-inline-svg'
+import Image from 'next/image'
 import classNames from 'classnames'
-import svgX from '../../icons/x.svg?include'
+import svgX from '../../icons/x.svg'
 import s from './style.module.css'
 
 interface PopoverTooltipProps {
@@ -23,7 +23,7 @@ function PopoverTooltip({ children, theme = 'light' }: PopoverTooltipProps) {
       <Popover.Content className={classNames(s.popover, s[theme])}>
         {children}
         <Popover.Close className={s.dialogClose} aria-label="Close">
-          <InlineSvg src={svgX} aria-hidden />
+          <Image {...svgX} aria-hidden />
         </Popover.Close>
         <Popover.Arrow className={s.dialogArrow}></Popover.Arrow>
       </Popover.Content>

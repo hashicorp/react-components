@@ -11,7 +11,6 @@
   ],
   "dependencies": {
     "@hashicorp/platform-product-meta": "^0.1.0",
-    "@hashicorp/react-inline-svg": "^6.0.3",
     "@radix-ui/react-visually-hidden": "^1.0.2",
     "js-cookie": "^2.2.1",
     "slugify": "^1.6.5"

@@ -102,7 +102,7 @@ there is overflow.
     opacity: 0;
   }
 
-  & svg {
+  & img {
     display: block;
     width: 20px;
     height: 20px;
@@ -125,7 +125,7 @@ there is overflow.
   composes: arrow;
   left: 0;
 
-  & svg {
+  & img {
     transform: rotate(180deg);
     margin-right: 20px;
   }
@@ -135,7 +135,7 @@ there is overflow.
   composes: arrow;
   right: 0;
 
-  & svg {
+  & img {
     margin-left: 20px;
   }
 }

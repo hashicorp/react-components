@@ -4,11 +4,13 @@
  */
 
 import React from 'react'
-import InlineSvg from '@hashicorp/react-inline-svg'
+import Image from 'next/image'
 import qs from '../../utils/query-string'
 import useHover from '../../hooks/use-hover'
 import getConfig from 'next/config'
 import styles from './style.module.css'
+import SourcegraphLogo from '../../svg/sourcegraph-logo.svg'
+import ExternalLink from '../../svg/external-link.svg'
 
 const { publicRuntimeConfig } = getConfig()
 const { SOURCEGRAPH_URL } = publicRuntimeConfig
@@ -24,13 +26,10 @@ function SourcegraphLink({ packageName }) {
       })}`}
     >
       Search with{' '}
-      <InlineSvg
-        className={styles.sourcegraphLogo}
-        src={require('../../svg/sourcegraph-logo.svg?include')}
-      />
-      <InlineSvg
+      <Image className={styles.sourcegraphLogo} {...SourcegraphLogo} />
+      <Image
         className={styles.externalIcon}
-        src={require('../../svg/external-link.svg?include')}
+        {...ExternalLink}
         data-hovered={isHovered}
       />
     </a>

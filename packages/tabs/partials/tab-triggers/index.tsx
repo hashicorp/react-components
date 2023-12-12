@@ -5,9 +5,9 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import InlineSvg from '@hashicorp/react-inline-svg'
+import Image from 'next/image'
 import TabTrigger, { TabTriggerType } from '../tab-trigger'
-import SvgChevronRight from '../../icons/chevron-right.svg?include'
+import SvgChevronRight from '../../icons/chevron-right.svg'
 import smoothScroll from '../../utils/smooth-scroll.js'
 import useWindowSize from '../../hooks/use-window-size'
 import useScrollLeft from '../../hooks/use-scroll-left'
@@ -221,7 +221,7 @@ function NextPrevArrows({ hasOverflow, hiddenArrows, onPrev, onNext }) {
         })}
         onClick={onPrev}
       >
-        <InlineSvg src={SvgChevronRight} />
+        <Image alt="Previous" {...SvgChevronRight} />
       </div>
       <div
         className={classNames(s.nextArrow, {
@@ -230,7 +230,7 @@ function NextPrevArrows({ hasOverflow, hiddenArrows, onPrev, onNext }) {
         })}
         onClick={onNext}
       >
-        <InlineSvg src={SvgChevronRight} />
+        <Image alt="Next" {...SvgChevronRight} />
       </div>
     </>
   )

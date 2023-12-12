@@ -4,34 +4,26 @@
  */
 
 import React from 'react'
-import InlineSvg from '@hashicorp/react-inline-svg'
+import Image from 'next/image'
+import LoadingSpinner from '../../svg/loading-spinner.svg'
+import GithubIcon from '../../svg/github-icon.svg'
+import XIcon from '../../svg/x-icon.svg'
 import s from './style.module.css'
 
 function Icon({ icon, isHovered }) {
   if (icon == 'loading') {
-    return (
-      <InlineSvg
-        className={s.loadingIcon}
-        src={require('../../svg/loading-spinner.svg?include')}
-      />
-    )
+    return <Image className={s.loadingIcon} {...LoadingSpinner} />
   }
   if (icon == 'github') {
     return (
-      <InlineSvg
+      <Image
         className={s.githubIcon}
-        src={require('../../svg/github-icon.svg?include')}
+        {...GithubIcon}
         data-hovered={isHovered}
       />
     )
   }
-  return (
-    <InlineSvg
-      className={s.xIcon}
-      src={require('../../svg/x-icon.svg?include')}
-      data-hovered={isHovered}
-    />
-  )
+  return <Image className={s.xIcon} {...XIcon} data-hovered={isHovered} />
 }
 
 export default Icon

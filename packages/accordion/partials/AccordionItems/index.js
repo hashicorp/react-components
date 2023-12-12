@@ -4,10 +4,10 @@
  */
 
 import React, { useState } from 'react'
-import InlineSvg from '@hashicorp/react-inline-svg'
-import SvgArrowDown from './icons/arrow-down.svg?include'
+import Image from 'next/image'
 import classnames from 'classnames'
 import Collapsible from '../Collapsible'
+import SvgArrowDown from './icons/arrow-down.svg'
 import s from './style.module.css'
 
 function AccordionItem({ heading, children, isCollapsed, toggleCollapsed }) {
@@ -20,7 +20,7 @@ function AccordionItem({ heading, children, isCollapsed, toggleCollapsed }) {
       >
         <span className={s.triggerText}>{heading}</span>
         <span className={s.triggerIcon}>
-          <InlineSvg src={SvgArrowDown} />
+          <Image alt="" {...SvgArrowDown} />
         </span>
       </button>
       <Collapsible isCollapsed={isCollapsed}>

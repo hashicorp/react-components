@@ -9,7 +9,6 @@
   "dependencies": {
     "@hashicorp/react-button": "^6.3.1",
     "@hashicorp/react-image": "^4.1.1",
-    "@hashicorp/react-inline-svg": "^6.0.3",
     "@radix-ui/react-popover": "^1.0.5",
     "@radix-ui/react-visually-hidden": "^1.0.2",
     "classnames": "^2.3.1"
