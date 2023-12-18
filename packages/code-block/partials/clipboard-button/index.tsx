@@ -42,14 +42,14 @@ function ClipboardButton({
     }
 
     // Otherwise, continue on...
-    let isCopied = false;
-		try {
+    let isCopied = false
+    try {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			await navigator.clipboard.writeText(text!)
-			isCopied = true
-		} catch (err) {
-			// noop
-		}
+      await navigator.clipboard.writeText(text!)
+      isCopied = true
+    } catch (err) {
+      // noop
+    }
 
     // If there's an internal failure copying text, exit early to handle the error
     if (!isCopied) {
