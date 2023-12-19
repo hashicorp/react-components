@@ -17,12 +17,8 @@ afterEach(() => {
  * useIndexedTabs hook works as expected.
  */
 function TestComponent({ tabGroupIds, defaultTabIdx }) {
-  const [
-    localTabIdx,
-    setActiveTabIdx,
-    activeTabGroup,
-    setActiveTabGroup,
-  ] = useIndexedTabs(tabGroupIds, defaultTabIdx)
+  const [localTabIdx, setActiveTabIdx, activeTabGroup, setActiveTabGroup] =
+    useIndexedTabs(tabGroupIds, defaultTabIdx)
   return (
     <div>
       <p data-value={localTabIdx}>localTabIdx</p>

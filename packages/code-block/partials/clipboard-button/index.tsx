@@ -8,7 +8,6 @@ import classnames from 'classnames'
 import { IconCheckSquare16 } from '@hashicorp/flight-icons/svg-react/check-square-16'
 import { IconDuplicate16 } from '@hashicorp/flight-icons/svg-react/duplicate-16'
 import { IconXSquare16 } from '@hashicorp/flight-icons/svg-react/x-square-16'
-import copyToClipboard from './copy-to-clipboard'
 import analytics, { heapAttributes } from '../../analytics'
 import s from './style.module.css'
 
@@ -43,8 +42,14 @@ function ClipboardButton({
     }
 
     // Otherwise, continue on...
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const isCopied = copyToClipboard(text!)
+    let isCopied = false
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      await navigator.clipboard.writeText(text!)
+      isCopied = true
+    } catch (err) {
+      // noop
+    }
 
     // If there's an internal failure copying text, exit early to handle the error
     if (!isCopied) {
