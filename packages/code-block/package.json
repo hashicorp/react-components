@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-code-block",
   "description": "A simple code block with clipboard functionality",
-  "version": "6.5.0",
+  "version": "6.6.0",
   "author": "HashiCorp",
   "dependencies": {
     "shellwords": "^0.1.1"

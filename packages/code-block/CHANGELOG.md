@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.6.0
+
+### Minor Changes
+
+- [#1006](https://github.com/hashicorp/react-components/pull/1006) [`affb374c`](https://github.com/hashicorp/react-components/commit/affb374ccc869f18415b165a37c98d0bb541f130) Thanks [@RubenSandwich](https://github.com/RubenSandwich)! - Update to modern clipboard API
+
 ## 6.5.0
 
 ### Minor Changes
