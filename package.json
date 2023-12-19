@@ -14,7 +14,7 @@
     "framer-motion": "^6.3.11",
     "lightningcss-wasm": "^1.17.1",
     "lz-string": "^1.4.4",
-    "next": "^13.2.3",
+    "next": "^13.5.1",
     "next-remote-watch": "^1.0.0",
     "node-cache": "^5.1.2",
     "react": "^18.2.0",
