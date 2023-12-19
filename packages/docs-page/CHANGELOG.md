@@ -1,5 +1,11 @@
 # @hashicorp/react-docs-page
 
+## 17.9.1
+
+### Patch Changes
+
+- [#1005](https://github.com/hashicorp/react-components/pull/1005) [`6964d982`](https://github.com/hashicorp/react-components/commit/6964d982bc9db24c36b7fd6d492b737f4ef26bfb) Thanks [@dstaley](https://github.com/dstaley)! - Fix hasIndexPage calculation
+
 ## 17.9.0
 
 ### Minor Changes
