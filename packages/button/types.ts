@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import type { ReactNode } from 'react'
 import { Products as HashiCorpProduct } from '@hashicorp/platform-product-meta'
 
 export type Size = 'medium' | 'small'
@@ -39,7 +40,7 @@ export interface Theme {
 }
 
 export interface IconProps {
-  svg: string
+  svg: ReactNode
   position: IconPosition
   animationId?: LinkType
   isAnimated?: boolean
