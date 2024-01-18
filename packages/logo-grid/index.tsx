@@ -26,10 +26,7 @@ export interface LogoGridCompany {
   /** Short description of what the company offers */
   description?: string
   /** Optional integration page to link to. */
-  integrationPage?: {
-    /** Slug to link to, to be constructed into a `.com/integrations/{slug}` url. */
-    slug: string
-  }
+  integrationPageSlug?: string
   /** Company website address. */
   link?: string
   /** Color logo image. */
@@ -49,7 +46,7 @@ interface LogoGridProps {
   color?: 'color' | 'white' | 'monochrome'
   /** If true, when a logo with a company.description is clicked, a tooltip-style dialog  that links to the company website will be shown. */
   details?: boolean
-  /** If true, links to integration pages are enabled. If an item has a valid `data.integrationPage` property, the logo grid item will be linked. If grid items have both a link and a tooltip, only the link will be used. */
+  /** If true, links to integration pages are enabled. If an item has a valid `data.integrationPageSlug` property, the logo grid item will be linked. If grid items have both a link and a tooltip, only the link will be used. */
   integrationLink?: boolean
   /** If true, borders around logo items will be removed. */
   removeBorders?: boolean
@@ -75,7 +72,7 @@ function LogoGrid({
       {data.map((company) => {
         // What we wrap the TileImage in within the tile
         // varies on whether we need a link or tooltip
-        const hasLink = integrationLink && company.integrationPage
+        const hasLink = integrationLink && company.integrationPageSlug
         const hasTooltip = details && company.description
         // Configure the company logo for clarity in conditional rendering
         function TileImage() {
@@ -94,7 +91,7 @@ function LogoGrid({
               // the hashicorp-www-next project. We should likely clarify this.
               <a
                 className={s.tileClickable}
-                href={`/integrations/${company.integrationPage!.slug}`}
+                href={`/integrations/${company.integrationPageSlug}`}
               >
                 <TileImage />
               </a>

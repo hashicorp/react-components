@@ -30,7 +30,7 @@ module.exports = {
           name: { type: 'string' },
           description: { type: 'string' },
           logo: { type: 'object', properties: image },
-          integrationPage: { type: 'string' },
+          integrationPageSlug: { type: 'string' },
         },
       },
     ],
@@ -40,20 +40,17 @@ module.exports = {
         description:
           'Gloo provides all the tools needed to glue together traditional and cloud-native apps.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
-          url:
-            'https://www.datocms-assets.com/2885/1531117610-sknnx4wk400x4002.svg',
+          url: 'https://www.datocms-assets.com/2885/1531117610-sknnx4wk400x4002.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1531120298-sknnx4wk400x400black.svg',
+          url: 'https://www.datocms-assets.com/2885/1531120298-sknnx4wk400x400black.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1531120304-sknnx4wk400x400white.svg',
+          url: 'https://www.datocms-assets.com/2885/1531120304-sknnx4wk400x400white.svg',
           format: 'svg',
         },
       },
@@ -62,26 +59,24 @@ module.exports = {
         description:
           'PostgreSQL is a powerful, open source object-relational database system.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'https://www.datocms-assets.com/2885/1539818112-postgresql.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1539818117-postgresql-black.svg',
+          url: 'https://www.datocms-assets.com/2885/1539818117-postgresql-black.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1539818125-postgresql-white.svg',
+          url: 'https://www.datocms-assets.com/2885/1539818125-postgresql-white.svg',
           format: 'svg',
         },
       },
       {
         name: 'AA Cloud',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'https://www.datocms-assets.com/2885/1520536519-aa-cloud.png',
           format: 'png',
@@ -99,7 +94,7 @@ module.exports = {
         name: 'Cumulus Technologies',
         description: 'Cumulus Technologies description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'https://www.datocms-assets.com/2885/1519150128-kumulus.jpg',
           format: 'jpg',
@@ -117,7 +112,7 @@ module.exports = {
         name: 'Magentys',
         description: 'Magentys description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'https://www.datocms-assets.com/2885/1520536829-magentys.png',
           format: 'png',
@@ -135,20 +130,17 @@ module.exports = {
         name: 'AWS',
         description: 'AWS description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
-          url:
-            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
+          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
+          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
+          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
           format: 'svg',
         },
       },
@@ -156,20 +148,17 @@ module.exports = {
         name: 'Azure',
         description: 'Azure description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
-          url:
-            'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
+          url: 'https://www.datocms-assets.com/2885/1539799149-azure-stacked-color.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1539799149-azure-stacked-black.svg',
+          url: 'https://www.datocms-assets.com/2885/1539799149-azure-stacked-black.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1539799149-azure-stacked-white.svg',
+          url: 'https://www.datocms-assets.com/2885/1539799149-azure-stacked-white.svg',
           format: 'svg',
         },
       },
@@ -177,7 +166,7 @@ module.exports = {
         name: 'MongoDB',
         description: 'MongoDB description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'https://www.datocms-assets.com/2885/1506540175-color.svg',
           format: 'svg',
@@ -195,7 +184,7 @@ module.exports = {
         name: 'Wide Placeholder',
         description: 'Wide Placeholder description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'http://placehold.it/600x100.png',
           format: 'png',
@@ -213,7 +202,7 @@ module.exports = {
         name: 'Tall Placeholder',
         description: 'Tall Placeholder description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'http://placehold.it/100x600.png',
           format: 'png',
@@ -231,7 +220,7 @@ module.exports = {
         name: 'Square Placeholder',
         description: 'Square Placeholder description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'http://placehold.it/100x100.png',
           format: 'png',
@@ -249,7 +238,7 @@ module.exports = {
         name: 'Tiny Placeholder',
         description: 'Tiny Placeholder description.',
         link: '',
-        integrationPage: { slug: '' },
+        integrationPageSlug: '',
         logo: {
           url: 'http://placehold.it/20x20.png',
           format: 'png',
@@ -267,20 +256,17 @@ module.exports = {
         name: 'AWS with Integration Link',
         description: 'AWS with Integration Link description.',
         link: '',
-        integrationPage: { slug: 'aws' },
+        integrationPageSlug: 'aws',
         logo: {
-          url:
-            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
+          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_fullcolor.svg',
           format: 'svg',
         },
         monochromeLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
+          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_blk.svg',
           format: 'svg',
         },
         whiteLogo: {
-          url:
-            'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
+          url: 'https://www.datocms-assets.com/2885/1510033601-aws_logo_rgb_wht.svg',
           format: 'svg',
         },
       },
@@ -313,7 +299,7 @@ module.exports = {
   integrationLink: {
     type: 'boolean',
     description:
-      'If true, links to integration pages are enabled if an item has a valid `data.integrationPage` property. It will override `details` if true',
+      'If true, links to integration pages are enabled if an item has a valid `data.integrationPageSlug` property. It will override `details` if true',
     control: { type: 'checkbox', value: false },
   },
   details: {

@@ -11,8 +11,6 @@ fragment logoGridFields on SbcLogoGridRecord {
     monochromeLogo {
       ...imageFields
     }
-    integrationPage {
-      slug
-    }
+    integrationPageSlug
   }
 }
