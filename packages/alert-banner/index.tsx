@@ -4,18 +4,14 @@
  */
 
 import { useEffect, useState } from 'react'
-import cookie from 'js-cookie'
-import slugify from 'slugify'
 import classNames from 'classnames'
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import useProductMeta, {
   Products as HashiCorpProduct,
 } from '@hashicorp/platform-product-meta'
-import Image from 'next/image'
-import CloseIcon from './img/close-icon.svg'
 import fragment from './fragment.graphql'
 import s from './style.module.css'
 import analytics from './analytics'
+import { IconArrowRight16 } from '@hashicorp/flight-icons/svg-react/arrow-right-16'
 
 interface AlertBannerProps {
   tag: string
@@ -43,41 +39,23 @@ function AlertBanner({
   text,
   url,
 }: AlertBannerProps): React.ReactElement {
-  const dismissalCookieId = `banner_${name || slugify(text, { lower: true })}`
-
   const [isShown, setIsShown] = useState(() => {
     const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
-    const hasBeenDismissed =
-      typeof window === 'undefined'
-        ? false
-        : cookie.get(dismissalCookieId) === '1'
 
-    return !hasExpired && !hasBeenDismissed
+    return !hasExpired
   })
   const { themeClass } = useProductMeta(product)
 
   /**
-   * On mount, hide the banner if it is expired or
-   * if a cookie indicates it was previously closed
+   * On mount, hide the banner if it is expired
    */
   useEffect(() => {
-    const hasBeenDismissed = cookie.get(dismissalCookieId)
     const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
-    const shouldBeShown = !hasBeenDismissed && !hasExpired
+    const shouldBeShown = !hasExpired
     setIsShown((current) =>
       current !== shouldBeShown ? shouldBeShown : current
     )
-  }, [dismissalCookieId, expirationDate])
-
-  /**
-   * Dismiss the banner, and set a cookie
-   * to remember the dismissal of this banner
-   */
-  function closeBanner() {
-    cookie.set(dismissalCookieId, '1')
-    setIsShown(false)
-    analytics.trackClose({ linkText, product, tag, text })
-  }
+  }, [expirationDate])
 
   return (
     <>
@@ -100,35 +78,15 @@ function AlertBanner({
             <span className={s.text}>
               {text}
               {linkText ? (
-                <span className={s.linkText}> {linkText}</span>
+                <span className={s.link}>
+                  <span className={s.linkText}> {linkText}</span>
+                  <IconArrowRight16 />
+                </span>
               ) : null}
             </span>
           </span>
         </a>
-        <button className={s.closeButton} onClick={closeBanner}>
-          <Image alt="Close" {...CloseIcon} />
-          <VisuallyHidden>Dismiss alert</VisuallyHidden>
-        </button>
       </div>
-      {/* This inline script checks if the alert banner has been previously dismissed, and if so it removes the isShown class.
-      The render-blocking inline script ensures the class is removed before the first paint, preventing layout shift. */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-(function checkDismissAlertBanner() {
-  try {
-    if (document.cookie.includes('${dismissalCookieId}=1')) {
-      const element = document.querySelector('.${s.root}')
-      element.classList.remove('${s.isShown}')
-    }
-  } catch (_) {
-    // do nothing
-  }
-})()
-`,
-        }}
-        type="text/javascript"
-      />
     </>
   )
 }
