@@ -1,5 +1,11 @@
 # @hashicorp/react-alert-banner
 
+## 7.2.1
+
+### Patch Changes
+
+- [#1023](https://github.com/hashicorp/react-components/pull/1023) [`b18321fb`](https://github.com/hashicorp/react-components/commit/b18321fbe0bdc135e72db4387af96b084d190d92) Thanks [@LeahMarieBush](https://github.com/LeahMarieBush)! - add z-index to prevent overlay blur from sub nav
+
 ## 7.2.0
 
 ### Minor Changes
