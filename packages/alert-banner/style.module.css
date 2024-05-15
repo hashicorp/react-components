@@ -8,6 +8,7 @@
   overflow: hidden;
   position: relative;
   transition: height 0.3s ease-out;
+  z-index: 901; /* higher than subnav for to prevent overlay blur */
 
   &.isShown {
     display: block;
