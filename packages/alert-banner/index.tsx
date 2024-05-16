@@ -51,10 +51,7 @@ function AlertBanner({
    */
   useEffect(() => {
     const hasExpired = expirationDate && Date.now() > Date.parse(expirationDate)
-    const shouldBeShown = !hasExpired
-    setIsShown((current) =>
-      current !== shouldBeShown ? shouldBeShown : current
-    )
+    setIsShown((current) => (current !== !hasExpired ? !hasExpired : current))
   }, [expirationDate])
 
   return (

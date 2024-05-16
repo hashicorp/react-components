@@ -4,9 +4,6 @@
  */
 
 .root {
-  --token-color-foreground-primary: #3b3d45;
-  --token-color-foreground-faint: #656a76;
-
   display: none;
   overflow: hidden;
   position: relative;
@@ -28,7 +25,7 @@
 
 .linkElem {
   background: var(--brand-secondary);
-  color: var(--token-color-foreground-faint);
+  color: var(--token-color-foreground-faint, #656a76);
   display: block;
   position: relative;
 }
@@ -59,7 +56,7 @@
   &::after {
     content: '';
     height: 16px;
-    background: var(--token-color-foreground-faint);
+    background: var(--token-color-foreground-faint, #656a76);
     width: 1px;
     display: block;
     margin-left: 8px;
@@ -81,7 +78,7 @@
 }
 
 .link {
-  color: var(--token-color-foreground-primary);
+  color: var(--token-color-foreground-primary, #3b3d45);
   composes: g-type-body-small-x-strong from global;
   display: none;
 
