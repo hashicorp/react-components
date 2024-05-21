@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-alert-banner",
   "description": "Render an alert banner with text and a link",
-  "version": "7.3.0",
+  "version": "7.3.1",
   "author": "HashiCorp",
   "bugs": "https://github.com/hashicorp/react-components/issues?q=is:issue+%22alert-banner%22",
   "contributors": [
