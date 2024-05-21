@@ -1,5 +1,11 @@
 # @hashicorp/react-alert-banner
 
+## 7.3.0
+
+### Minor Changes
+
+- [#1021](https://github.com/hashicorp/react-components/pull/1021) [`41591ebf`](https://github.com/hashicorp/react-components/commit/41591ebf0c862e2b1ddfa2ba17dc2442165306bc) Thanks [@LeahMarieBush](https://github.com/LeahMarieBush)! - alert banner styling updates
+
 ## 7.2.1
 
 ### Patch Changes
