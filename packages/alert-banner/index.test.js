@@ -3,9 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { fireEvent, render, screen } from '@testing-library/react'
-import cookie from 'js-cookie'
-import slugify from 'slugify'
+import { render, screen } from '@testing-library/react'
 import AlertBanner from './'
 
 /**
@@ -28,23 +26,6 @@ describe('<AlertBanner />', () => {
     expect(linkElem).toBeInTheDocument()
     expect(linkElem.textContent).toBe(`${tag} ${text} ${linkText}`)
     expect(linkElem.href).toBe(url)
-  })
-
-  it('should allow closing the banner, and set a cookie to remember', () => {
-    const tag = 'Newish'
-    const text = 'This is a cool banner'
-    const linkText = 'Check it out'
-    const { container } = render(
-      <AlertBanner tag={tag} text={text} linkText={linkText} />
-    )
-    const rootElem = container.firstChild
-    const closeButton = screen.getByText('Dismiss alert')
-    expect(rootElem).toHaveClass('isShown')
-    fireEvent.click(closeButton)
-    expect(rootElem).not.toHaveClass('isShown')
-
-    const dismissalCookieId = `banner_${slugify(text, { lower: true })}`
-    expect(cookie.get(dismissalCookieId)).toBe('1')
   })
 
   describe('with an expiration date set', () => {

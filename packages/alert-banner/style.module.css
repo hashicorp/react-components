@@ -25,7 +25,7 @@
 
 .linkElem {
   background: var(--brand-secondary);
-  color: var(--black);
+  color: var(--token-color-foreground-faint, #656a76);
   display: block;
   position: relative;
 }
@@ -35,9 +35,9 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-bottom: 15px;
-  padding-top: 15px;
+  min-height: 32px;
+  margin: 0;
+  padding: 4px 0 4px 10px;
 
   @media (min-width: 576px) {
     flex-direction: row;
@@ -48,7 +48,7 @@
   align-items: center;
   composes: g-type-body-small-x-strong from global;
   display: flex;
-  margin-right: 11px;
+  margin-right: 8px;
   position: relative;
   white-space: nowrap;
 
@@ -56,10 +56,10 @@
   &::after {
     content: '';
     height: 16px;
-    background: black;
+    background: var(--token-color-foreground-faint, #656a76);
     width: 1px;
     display: block;
-    margin-left: 11px;
+    margin-left: 8px;
   }
 }
 
@@ -77,39 +77,24 @@
   }
 }
 
-.linkText {
+.link {
+  color: var(--token-color-foreground-primary, #3b3d45);
   composes: g-type-body-small-x-strong from global;
   display: none;
 
   @media (min-width: 992px) {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-left: 8px;
-    text-decoration: underline;
     white-space: nowrap;
   }
 }
 
-.closeButton {
-  background: none;
-  border: none;
-  margin: 0;
-  opacity: 0.75;
-  padding: 0;
-  position: absolute;
-  right: 24px;
-  top: 16px;
-  transition: opacity 0.15s;
-  z-index: 2;
-
-  & > svg {
-    display: block;
-    & [stroke] {
-      stroke: var(--black);
-    }
-  }
-
+.linkText {
   &:hover {
-    cursor: pointer;
-    opacity: 1;
+    text-decoration: underline;
   }
+
+  margin-right: 6px;
 }
