@@ -99,6 +99,11 @@ interface Props {
     values: Record<string, string | boolean>,
     errors: Record<string, { message: string }>
   ) => Promise<{ values: any; errors: Record<string, { message: string }> }>
+
+  /**
+   * Optional name of form to use for the forms aria-label.
+   */
+  formName?: string
 }
 
 const defaultFieldGroupings = {
@@ -130,6 +135,7 @@ const Form = ({
   onSubmitSuccess,
   onSubmitError,
   validateFields,
+  formName,
 }: Props) => {
   // Track if the form has been rendered at least once, so that we know if
   // react-hook-form has already cached values.
@@ -289,6 +295,7 @@ const Form = ({
           className={className}
           onSubmit={methods.handleSubmit(onSubmit)}
           data-marketo-form-id={metadata.result[0].id}
+          aria-label={formName}
         >
           {Object.entries(groupedFields).map(([groupName, fields]) => {
             // If this group name has a custom component defined, use that
