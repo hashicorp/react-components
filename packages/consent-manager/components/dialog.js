@@ -108,18 +108,18 @@ export default class ConsentPreferences extends Component {
     const categoryItems = items.map((item) => {
       return (
         <div className={s.categoryItem} key={item.name}>
-          <header className={s.categoryItemHeader}>
+          <div className={s.categoryItemHeader}>
             <h4 className={s.categoryItemTitle}>{item.name}</h4>
             <Toggle
               onChange={this.handleToggle.bind(this, item.name, item.origin)}
               enabled={Boolean(
                 this.state.consent.loadAll ||
-                  (this.state.consent &&
-                    this.state.consent[item.origin] &&
-                    this.state.consent[item.origin][item.name])
+                (this.state.consent &&
+                  this.state.consent[item.origin] &&
+                  this.state.consent[item.origin][item.name])
               )}
             />
-          </header>
+          </div>
           <p className={s.categoryItemDescription}>{item.description}</p>
         </div>
       )
@@ -127,7 +127,7 @@ export default class ConsentPreferences extends Component {
 
     return (
       <div className={s.category} key={name}>
-        <header className={s.categoryHeader}>
+        <div className={s.categoryHeader}>
           <h3 className={s.categoryHeaderTitle}>{name}</h3>
           {!this.state.showCategories[name] && (
             <Toggle
@@ -150,7 +150,7 @@ export default class ConsentPreferences extends Component {
           >
             <IconArrowDown24 />
           </button>
-        </header>
+        </div>
         {this.state.showCategories[name] && (
           <div className={s.categoryFold}>
             <p className={s.categoryFoldDescription}>
@@ -176,9 +176,9 @@ export default class ConsentPreferences extends Component {
       <div className={s.root} data-testid="consent-mgr-dialog">
         {/* Manage preferences dialog */}
         <div className={s.visibleDialog}>
-          <header className={s.dialogHeader}>
+          <div className={s.dialogHeader}>
             <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
-          </header>
+          </div>
           <div className={s.dialogBody}>
             <p className={s.dialogBodyIntro}>
               HashiCorp uses data collected by cookies and JavaScript libraries
