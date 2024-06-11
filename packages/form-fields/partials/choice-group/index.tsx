@@ -50,8 +50,12 @@ function ChoiceGroup({
   inputs,
 }: ChoiceGroupProps) {
   const helpId = useId()
+  const errorId = useId()
   return (
-    <fieldset className={clsx(s.root, className, s[`theme-${appearance}`])}>
+    <fieldset
+      className={clsx(s.root, className, s[`theme-${appearance}`])}
+      aria-describedby={error ? errorId : undefined}
+    >
       {label && (
         <Label
           legend
@@ -60,6 +64,7 @@ function ChoiceGroup({
           helpText={helpText}
           required={required}
           error={error}
+          errorId={errorId}
         />
       )}
       <div>

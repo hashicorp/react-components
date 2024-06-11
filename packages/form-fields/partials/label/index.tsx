@@ -15,6 +15,7 @@ interface LabelProps {
   id?: string
   required?: boolean
   error?: string | false
+  errorId?: string
   legend?: boolean
 }
 
@@ -26,6 +27,7 @@ const Label = ({
   id,
   required,
   error,
+  errorId,
   legend = false,
 }: LabelProps) => {
   const LabelElement = legend ? 'legend' : 'label'
@@ -54,9 +56,9 @@ const Label = ({
         </div>
       )}
       {error && (
-        <div className={s.error}>
+        <div className={s.error} id={errorId}>
           <IconAlertTriangleFill16 />
-          {error}
+          <span dangerouslySetInnerHTML={{ __html: error }} />
         </div>
       )}
     </>

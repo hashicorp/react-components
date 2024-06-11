@@ -34,6 +34,7 @@ function TextareaInput({
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = useId()
   const helpId = useId()
+  const errorId = useId()
   return (
     <div className={clsx(s.root, className, s[`theme-${appearance}`])}>
       {label && (
@@ -44,6 +45,7 @@ function TextareaInput({
           helpText={helpText}
           required={required}
           error={error}
+          errorId={errorId}
         />
       )}
       <textarea
@@ -51,6 +53,7 @@ function TextareaInput({
         className={clsx(s.input, { [s.hasError]: error })}
         placeholder={placeholder}
         aria-label={label ?? field.name}
+        aria-describedby={error ? errorId : undefined}
         rows={3}
         {...field}
       />

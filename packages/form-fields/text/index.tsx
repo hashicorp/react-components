@@ -27,7 +27,6 @@ function Text({
   error,
   type = 'text',
   label,
-  helpText,
   required,
   placeholder,
   appearance = 'light',
@@ -35,7 +34,8 @@ function Text({
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = useId()
-  const helpId = useId()
+  const errorId = useId()
+
   return (
     <div
       className={classNames(s.root, className, s[`theme-${appearance}`], {
@@ -46,10 +46,9 @@ function Text({
         <Label
           htmlFor={inputId}
           label={label}
-          helpId={helpId}
-          helpText={helpText}
           required={required}
           error={error}
+          errorId={errorId}
         />
       )}
       <input
@@ -58,7 +57,7 @@ function Text({
         className={classNames(s.input, { [s.hasError]: error })}
         placeholder={placeholder}
         aria-label={label ?? field.name}
-        aria-describedby={helpText ? helpId : undefined}
+        aria-describedby={error ? errorId : undefined}
         {...field}
       />
     </div>
