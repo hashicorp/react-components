@@ -1,5 +1,14 @@
 # @hashicorp/react-marketo-form
 
+## 0.9.1
+
+### Patch Changes
+
+- [#1029](https://github.com/hashicorp/react-components/pull/1029) [`c0c94d3a`](https://github.com/hashicorp/react-components/commit/c0c94d3a404bc197b7b595e4d34a4bfedec37663) Thanks [@LeahMarieBush](https://github.com/LeahMarieBush)! - Add aria-describedBy for errors to form elements and aria-label for form name to MarketoForm
+
+- Updated dependencies [[`c0c94d3a`](https://github.com/hashicorp/react-components/commit/c0c94d3a404bc197b7b595e4d34a4bfedec37663)]:
+  - @hashicorp/react-form-fields@0.2.2
+
 ## 0.9.0
 
 ### Minor Changes
