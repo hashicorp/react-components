@@ -50,6 +50,7 @@ function ChoiceGroup({
   inputs,
 }: ChoiceGroupProps) {
   const helpId = useId()
+  const errorId = useId()
   return (
     <fieldset className={clsx(s.root, className, s[`theme-${appearance}`])}>
       {label && (
@@ -60,6 +61,7 @@ function ChoiceGroup({
           helpText={helpText}
           required={required}
           error={error}
+          errorId={errorId}
         />
       )}
       <div>
@@ -67,7 +69,10 @@ function ChoiceGroup({
           const props = {
             ...input,
             appearance,
-            field: { ...input.field, 'aria-describedby': helpId },
+            field: {
+              ...input.field,
+              'aria-describedby': `${helpId} ${errorId}`,
+            },
           }
           return type === 'radio' ? (
             <Radio key={(input as RadioProps).key} {...props} />

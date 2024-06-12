@@ -34,6 +34,7 @@ function Select({
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = useId()
   const helpId = useId()
+  const errorId = useId()
   return (
     <div className={classNames(s.root, className, s[`theme-${appearance}`])}>
       {label && (
@@ -44,12 +45,14 @@ function Select({
           helpText={helpText}
           required={required}
           error={error}
+          errorId={errorId}
         />
       )}
       <select
         id={inputId}
         className={classNames(s.input, { [s.hasError]: error })}
         aria-label={label ?? field.name}
+        aria-describedby={error ? errorId : undefined}
         {...field}
       >
         {options.map((o) => (
