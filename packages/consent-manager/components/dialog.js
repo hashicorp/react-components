@@ -106,11 +106,14 @@ export default class ConsentPreferences extends Component {
   // Build each individual category and integration row
   buildCategory(items, name) {
     const categoryItems = items.map((item) => {
+      const categoryItemTitleID = `consent-manager-categoryItemTitle-${item.name}`;
+
       return (
         <div className={s.categoryItem} key={item.name}>
           <div className={s.categoryItemHeader}>
-            <h4 className={s.categoryItemTitle}>{item.name}</h4>
+            <h4 id={categoryItemTitleID} className={s.categoryItemTitle}>{item.name}</h4>
             <Toggle
+              ariaLabelledBy={categoryItemTitleID}
               onChange={this.handleToggle.bind(this, item.name, item.origin)}
               enabled={Boolean(
                 this.state.consent.loadAll ||
@@ -125,12 +128,15 @@ export default class ConsentPreferences extends Component {
       )
     })
 
+    const categoryHeaderTitleID = `consent-manager-categoryHeaderTitle-${name}`;
+
     return (
       <div className={s.category} key={name}>
         <div className={s.categoryHeader}>
-          <h3 className={s.categoryHeaderTitle}>{name}</h3>
+          <h3 id={categoryHeaderTitleID} className={s.categoryHeaderTitle}>{name}</h3>
           {!this.state.showCategories[name] && (
             <Toggle
+              ariaLabelledBy={categoryHeaderTitleID}
               onChange={this.handleToggle.bind(this, name, 'categories')}
               enabled={
                 this.state.consent.loadAll || this.getCategoryToggle(name)
@@ -146,8 +152,8 @@ export default class ConsentPreferences extends Component {
             }}
             aria-label={
               this.state.showCategories[name] ?
-                `See less in ${this.state.showCategories[name]}` :
-                `See more in ${this.state.showCategories[name]}`
+                `See less in ${name}` :
+                `See more in ${name}`
             }
           >
             <IconArrowDown24 />

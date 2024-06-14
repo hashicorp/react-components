@@ -10,8 +10,9 @@ import s from './style.module.css'
 export default function Toggle({
   appearance = 'light',
   enabled,
-  onChange = () => {},
+  onChange = () => { },
   disabled = false,
+  ariaLabelledBy,
 }) {
   const [enabledState, setEnabledState] = useState(enabled || false)
 
@@ -40,6 +41,7 @@ export default function Toggle({
       )}
     >
       <input
+        aria-labelledby={ariaLabelledBy}
         type="checkbox"
         role="switch"
         checked={enabledState}
