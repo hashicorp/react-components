@@ -31,6 +31,13 @@ export default function Toggle({
     onChange(event.currentTarget.checked)
   }
 
+  const handleKey = (event) => {
+    if (event.key === 'Enter') {
+      setEnabledState(!event.currentTarget.checked)
+      onChange(!event.currentTarget.checked)
+    }
+  }
+
   return (
     <label
       className={classNames(
@@ -46,6 +53,7 @@ export default function Toggle({
         role="switch"
         checked={enabledState}
         onChange={handleChange}
+        onKeyDown={handleKey}
         className={s.toggleInput}
         disabled={disabled}
         data-testid="react-toggle"
