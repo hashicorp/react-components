@@ -31,6 +31,7 @@ function RadioCheckboxInput({
   //  Label htmlFor relies on an id on the input field, which must be
   //  unique to prevent collisions between fields or forms on the same page
   const inputId = useId()
+  const errorId = useId()
 
   return (
     <div
@@ -49,6 +50,7 @@ function RadioCheckboxInput({
             className={clsx(s.input, { [s.hasError]: error })}
             id={inputId}
             type={type}
+            aria-describedby={error ? errorId : undefined}
             {...field}
           />
         </span>
@@ -59,7 +61,11 @@ function RadioCheckboxInput({
           </label>
         )}
       </div>
-      {error && <div className={s.error}>{error}</div>}
+      {error && (
+        <div className={s.error} id={errorId}>
+          {error}
+        </div>
+      )}
     </div>
   )
 }
