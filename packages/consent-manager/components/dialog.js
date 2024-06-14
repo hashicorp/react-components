@@ -145,7 +145,9 @@ export default class ConsentPreferences extends Component {
               this.handleFold(name)
             }}
             aria-label={
-              this.state.showCategories[name] ? 'See less' : 'See more'
+              this.state.showCategories[name] ?
+                `See less in ${this.state.showCategories[name]}` :
+                `See more in ${this.state.showCategories[name]}`
             }
           >
             <IconArrowDown24 />
