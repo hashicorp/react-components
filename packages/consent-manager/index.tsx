@@ -77,7 +77,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
         return
       }
 
-      closeDialog();
+      closeDialog()
     },
     [props.version]
   )
@@ -122,15 +122,15 @@ export default function ConsentManager(props: ConsentManagerProps) {
     if (showDialog && event.key === "Escape") {
 			closeDialog()
     }
-  }, [showDialog]);
+  }, [showDialog])
 
   useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
+    document.addEventListener("keydown", escFunction, false)
 
     return () => {
-      document.removeEventListener("keydown", escFunction, false);
-    };
-  }, [escFunction]);
+      document.removeEventListener("keydown", escFunction, false)
+    }
+  }, [escFunction])
 
   const filteredAdditionalServices = props.additionalServices?.filter(
     (service) => service.shouldLoad === undefined || service.shouldLoad()

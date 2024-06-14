@@ -106,7 +106,7 @@ export default class ConsentPreferences extends Component {
   // Build each individual category and integration row
   buildCategory(items, name) {
     const categoryItems = items.map((item) => {
-      const categoryItemTitleID = `consent-manager-categoryItemTitle-${item.name}`;
+      const categoryItemTitleID = `consent-manager-categoryItemTitle-${item.name}`
 
       return (
         <div className={s.categoryItem} key={item.name}>
@@ -128,7 +128,7 @@ export default class ConsentPreferences extends Component {
       )
     })
 
-    const categoryHeaderTitleID = `consent-manager-categoryHeaderTitle-${name}`;
+    const categoryHeaderTitleID = `consent-manager-categoryHeaderTitle-${name}`
 
     return (
       <div className={s.category} key={name}>
