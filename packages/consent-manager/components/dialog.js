@@ -8,7 +8,7 @@
   Managing preferences dialog
 */
 
-import { Component } from 'react'
+import { Component, createRef } from 'react'
 import getIntegrations from '../util/integrations'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
@@ -33,6 +33,7 @@ export default class ConsentPreferences extends Component {
 
     this.handleFold = this.handleFold.bind(this)
     this.getCategoryToggle = this.getCategoryToggle.bind(this)
+    this.dialogRef = createRef()
   }
 
   componentDidMount() {
@@ -44,6 +45,12 @@ export default class ConsentPreferences extends Component {
     ).then((groupedIntegrations) => {
       this.setState({ groupedIntegrations })
     })
+
+    this.dialogRef.current?.showModal()
+  }
+
+  componentWillUnmount() {
+    this.dialogRef.current?.close()
   }
 
   // Handler for when user toggles a category or individual integration
@@ -111,7 +118,9 @@ export default class ConsentPreferences extends Component {
       return (
         <div className={s.categoryItem} key={item.name}>
           <div className={s.categoryItemHeader}>
-            <h4 id={categoryItemTitleID} className={s.categoryItemTitle}>{item.name}</h4>
+            <h4 id={categoryItemTitleID} className={s.categoryItemTitle}>
+              {item.name}
+            </h4>
             <Toggle
               ariaLabelledBy={categoryItemTitleID}
               onChange={this.handleToggle.bind(this, item.name, item.origin)}
@@ -133,7 +142,9 @@ export default class ConsentPreferences extends Component {
     return (
       <div className={s.category} key={name}>
         <div className={s.categoryHeader}>
-          <h3 id={categoryHeaderTitleID} className={s.categoryHeaderTitle}>{name}</h3>
+          <h3 id={categoryHeaderTitleID} className={s.categoryHeaderTitle}>
+            {name}
+          </h3>
           {!this.state.showCategories[name] && (
             <Toggle
               ariaLabelledBy={categoryHeaderTitleID}
@@ -151,9 +162,9 @@ export default class ConsentPreferences extends Component {
               this.handleFold(name)
             }}
             aria-label={
-              this.state.showCategories[name] ?
-                `See less in ${name}` :
-                `See more in ${name}`
+              this.state.showCategories[name]
+                ? `See less in ${name}`
+                : `See more in ${name}`
             }
           >
             <IconArrowDown24 />
@@ -181,11 +192,18 @@ export default class ConsentPreferences extends Component {
     })
 
     return (
-      <div className={s.root} data-testid="consent-mgr-dialog">
+      <dialog
+        aria-labelledby="consent-mgr-dialog-title"
+        className={s.root}
+        data-testid="consent-mgr-dialog"
+        ref={this.dialogRef}
+      >
         {/* Manage preferences dialog */}
         <div className={s.visibleDialog}>
           <div className={s.dialogHeader}>
-            <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
+            <h2 id="consent-mgr-dialog-title" className={s.dialogHeaderTitle}>
+              Manage cookies
+            </h2>
           </div>
           <div className={s.dialogBody}>
             <p className={s.dialogBodyIntro}>
@@ -232,6 +250,7 @@ export default class ConsentPreferences extends Component {
               }}
             />
             <Button
+              autoFocus
               className={s.saveButton}
               title="Accept all"
               onClick={() => {
@@ -240,7 +259,7 @@ export default class ConsentPreferences extends Component {
             />
           </div>
         </div>
-      </div>
+      </dialog>
     )
   }
 }
