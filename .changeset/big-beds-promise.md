@@ -8,3 +8,4 @@ Fix a variety of accessiblity issuies around the consent manager.
 - see more/less button missing accessible name
 - allowing ESC to close the dialog
 - removing unneeded headers
+- trapping focus inside consent manager dialog
