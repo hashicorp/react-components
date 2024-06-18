@@ -126,9 +126,9 @@ export default class ConsentPreferences extends Component {
               onChange={this.handleToggle.bind(this, item.name, item.origin)}
               enabled={Boolean(
                 this.state.consent.loadAll ||
-                (this.state.consent &&
-                  this.state.consent[item.origin] &&
-                  this.state.consent[item.origin][item.name])
+                  (this.state.consent &&
+                    this.state.consent[item.origin] &&
+                    this.state.consent[item.origin][item.name])
               )}
             />
           </div>
@@ -138,6 +138,7 @@ export default class ConsentPreferences extends Component {
     })
 
     const categoryHeaderTitleID = `consent-manager-categoryHeaderTitle-${name}`
+    const categoryListID = `consent-manager-categoryHeaderTitle-${name}-list`
 
     return (
       <div className={s.category} key={name}>
@@ -166,12 +167,16 @@ export default class ConsentPreferences extends Component {
                 ? `See less in ${name}`
                 : `See more in ${name}`
             }
+            aria-expanded={this.state.showCategories[name] ? `true` : `false`}
+            aria-controls={
+              this.state.showCategories[name] ? categoryListID : null
+            }
           >
             <IconArrowDown24 />
           </button>
         </div>
         {this.state.showCategories[name] && (
-          <div className={s.categoryFold}>
+          <div className={s.categoryFold} id={categoryListID}>
             <p className={s.categoryFoldDescription}>
               {this.state.categories[name]}
             </p>
