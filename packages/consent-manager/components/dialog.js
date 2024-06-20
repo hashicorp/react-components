@@ -8,7 +8,7 @@
   Managing preferences dialog
 */
 
-import { Component } from 'react'
+import { Component, createRef } from 'react'
 import getIntegrations from '../util/integrations'
 import Button from '@hashicorp/react-button'
 import Toggle from '@hashicorp/react-toggle'
@@ -33,6 +33,7 @@ export default class ConsentPreferences extends Component {
 
     this.handleFold = this.handleFold.bind(this)
     this.getCategoryToggle = this.getCategoryToggle.bind(this)
+    this.dialogRef = createRef()
   }
 
   componentDidMount() {
@@ -44,6 +45,12 @@ export default class ConsentPreferences extends Component {
     ).then((groupedIntegrations) => {
       this.setState({ groupedIntegrations })
     })
+
+    this.dialogRef.current?.showModal()
+  }
+
+  componentWillUnmount() {
+    this.dialogRef.current?.close()
   }
 
   // Handler for when user toggles a category or individual integration
@@ -106,11 +113,16 @@ export default class ConsentPreferences extends Component {
   // Build each individual category and integration row
   buildCategory(items, name) {
     const categoryItems = items.map((item) => {
+      const categoryItemTitleID = `consent-manager-categoryItemTitle-${item.name}`
+
       return (
         <div className={s.categoryItem} key={item.name}>
-          <header className={s.categoryItemHeader}>
-            <h4 className={s.categoryItemTitle}>{item.name}</h4>
+          <div className={s.categoryItemHeader}>
+            <h4 id={categoryItemTitleID} className={s.categoryItemTitle}>
+              {item.name}
+            </h4>
             <Toggle
+              ariaLabelledBy={categoryItemTitleID}
               onChange={this.handleToggle.bind(this, item.name, item.origin)}
               enabled={Boolean(
                 this.state.consent.loadAll ||
@@ -119,18 +131,24 @@ export default class ConsentPreferences extends Component {
                     this.state.consent[item.origin][item.name])
               )}
             />
-          </header>
+          </div>
           <p className={s.categoryItemDescription}>{item.description}</p>
         </div>
       )
     })
 
+    const categoryHeaderTitleID = `consent-manager-categoryHeaderTitle-${name}`
+    const categoryListID = `consent-manager-categoryHeaderTitle-${name}-list`
+
     return (
       <div className={s.category} key={name}>
-        <header className={s.categoryHeader}>
-          <h3 className={s.categoryHeaderTitle}>{name}</h3>
+        <div className={s.categoryHeader}>
+          <h3 id={categoryHeaderTitleID} className={s.categoryHeaderTitle}>
+            {name}
+          </h3>
           {!this.state.showCategories[name] && (
             <Toggle
+              ariaLabelledBy={categoryHeaderTitleID}
               onChange={this.handleToggle.bind(this, name, 'categories')}
               enabled={
                 this.state.consent.loadAll || this.getCategoryToggle(name)
@@ -145,14 +163,20 @@ export default class ConsentPreferences extends Component {
               this.handleFold(name)
             }}
             aria-label={
-              this.state.showCategories[name] ? 'See less' : 'See more'
+              this.state.showCategories[name]
+                ? `See less in ${name}`
+                : `See more in ${name}`
+            }
+            aria-expanded={this.state.showCategories[name] ? `true` : `false`}
+            aria-controls={
+              this.state.showCategories[name] ? categoryListID : null
             }
           >
             <IconArrowDown24 />
           </button>
-        </header>
+        </div>
         {this.state.showCategories[name] && (
-          <div className={s.categoryFold}>
+          <div className={s.categoryFold} id={categoryListID}>
             <p className={s.categoryFoldDescription}>
               {this.state.categories[name]}
             </p>
@@ -173,12 +197,19 @@ export default class ConsentPreferences extends Component {
     })
 
     return (
-      <div className={s.root} data-testid="consent-mgr-dialog">
+      <dialog
+        aria-labelledby="consent-mgr-dialog-title"
+        className={s.root}
+        data-testid="consent-mgr-dialog"
+        ref={this.dialogRef}
+      >
         {/* Manage preferences dialog */}
         <div className={s.visibleDialog}>
-          <header className={s.dialogHeader}>
-            <h2 className={s.dialogHeaderTitle}>Manage cookies</h2>
-          </header>
+          <div className={s.dialogHeader}>
+            <h2 id="consent-mgr-dialog-title" className={s.dialogHeaderTitle}>
+              Manage cookies
+            </h2>
+          </div>
           <div className={s.dialogBody}>
             <p className={s.dialogBodyIntro}>
               HashiCorp uses data collected by cookies and JavaScript libraries
@@ -224,6 +255,7 @@ export default class ConsentPreferences extends Component {
               }}
             />
             <Button
+              autoFocus
               className={s.saveButton}
               title="Accept all"
               onClick={() => {
@@ -232,7 +264,7 @@ export default class ConsentPreferences extends Component {
             />
           </div>
         </div>
-      </div>
+      </dialog>
     )
   }
 }

@@ -82,6 +82,12 @@ const defaultProps = {
   container: '#consent-manager',
 }
 
+beforeAll(() => {
+  HTMLDialogElement.prototype.show = jest.fn()
+  HTMLDialogElement.prototype.showModal = jest.fn()
+  HTMLDialogElement.prototype.close = jest.fn()
+})
+
 test('shows the banner if the forceShow prop is true', () => {
   const { default: ConsentManager } = require('./')
   render(<ConsentManager {...defaultProps} forceShow={true} />)

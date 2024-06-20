@@ -52,6 +52,13 @@ export default function ConsentManager(props: ConsentManagerProps) {
     if (props.forceShow) return true
   })
 
+	const closeDialog = () => {
+		document.body.classList.remove('g-noscroll')
+		setShowDialog(false)
+		setShowBanner(false)
+		setPreferences(loadPreferences() ?? {})
+	}
+
   const hasEmptyPreferencesOrVersionMismatch =
     Object.keys(preferences).length === 0 ||
     preferences.version !== props.version
@@ -70,11 +77,7 @@ export default function ConsentManager(props: ConsentManagerProps) {
         return
       }
 
-      // Close all dialogs
-      document.body.classList.remove('g-noscroll')
-      setShowDialog(false)
-      setShowBanner(false)
-      setPreferences(loadPreferences() ?? {})
+      closeDialog()
     },
     [props.version]
   )
@@ -114,6 +117,20 @@ export default function ConsentManager(props: ConsentManagerProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this check once
   }, [])
+
+  const escFunction = useCallback((event) => {
+    if (showDialog && event.key === "Escape") {
+			closeDialog()
+    }
+  }, [showDialog])
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false)
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false)
+    }
+  }, [escFunction])
 
   const filteredAdditionalServices = props.additionalServices?.filter(
     (service) => service.shouldLoad === undefined || service.shouldLoad()
