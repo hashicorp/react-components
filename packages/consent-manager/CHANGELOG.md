@@ -1,5 +1,18 @@
 # @hashicorp/react-consent-manager
 
+## 9.2.1
+
+### Patch Changes
+
+- [#1030](https://github.com/hashicorp/react-components/pull/1030) [`e9bd6dac`](https://github.com/hashicorp/react-components/commit/e9bd6dacd8e43517d345b29aded88e2e5bd63ba9) Thanks [@RubenSandwich](https://github.com/RubenSandwich)! - Fix a variety of accessiblity issuies around the consent manager.
+  - Toggles missing accessible names
+  - see more/less button missing accessible name
+  - allowing ESC to close the dialog
+  - removing unneeded headers
+  - trapping focus inside consent manager dialog
+- Updated dependencies [[`e9bd6dac`](https://github.com/hashicorp/react-components/commit/e9bd6dacd8e43517d345b29aded88e2e5bd63ba9)]:
+  - @hashicorp/react-toggle@5.1.1
+
 ## 9.2.0
 
 ### Minor Changes
