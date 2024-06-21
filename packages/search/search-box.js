@@ -23,7 +23,6 @@ function SearchBox({
   setQuery,
   onSubmit,
   activeHit,
-  heapId,
 }) {
   const searchBoxRef = useRef(null)
 
@@ -95,7 +94,6 @@ function SearchBox({
           aria-autocomplete="list"
           aria-controls={SEARCH_RESULTS_ID}
           aria-activedescendant={activeHit > 0 ? `hit-${activeHit}` : undefined}
-          data-heap-track={heapId}
         />
         <button
           type="submit"

@@ -5,42 +5,6 @@
 
 import Script from 'next/script'
 
-declare global {
-  interface Window {
-    heap?: $TSFixMe
-  }
-}
-
-// Define a function that's responsible for sending Segment-related properties to Heap
-// We pass this callback function to Segment's ready method (https://segment.com/docs/sources/website/analytics.js/#ready)
-const segmentReadyCb = function passSegmentKeysToHeap() {
-  if (!window.heap) return
-
-  // Send XID
-  if (!localStorage.getItem('seg_heap_xid')) {
-    const xId = localStorage.getItem('seg_xid')
-
-    if (xId) {
-      window.heap.addUserProperties({
-        'Segment Cross Origin ID': JSON.parse(xId),
-      })
-      localStorage.setItem('seg_heap_xid', Date.now().toString())
-    }
-  }
-
-  // Send Anonymous ID
-  if (!localStorage.getItem('seg_heap_anonymous_id')) {
-    const anonId = localStorage.getItem('ajs_anonymous_id')
-
-    if (anonId) {
-      window.heap.addUserProperties({
-        'Segment Dotcom Anonymous ID': JSON.parse(anonId),
-      })
-      localStorage.setItem('seg_heap_anonymous_id', Date.now().toString())
-    }
-  }
-}
-
 // Version of the segment snippet we're using. This is used by:
 // - SegmentScript
 // - SegmentPreloadScript
@@ -85,7 +49,6 @@ export default function SegmentScript({ preferences, writeKey }) {
         integrations ? JSON.stringify({ integrations: integrations }) : {}
       });
   analytics.page();
-  analytics.ready(${segmentReadyCb});
   }}();`}
     </Script>
   )

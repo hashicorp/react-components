@@ -11,7 +11,6 @@ import {
   waitFor,
 } from '@testing-library/react'
 import CodeBlock from './'
-import { heapAttributes } from './analytics'
 // We want to make sure copied code is passed through processSnippet,
 // we import it so that we don't have to manually recreate its output
 import processSnippet from './utils/process-snippet'
@@ -31,11 +30,6 @@ afterEach(() => {
 it('should render a root element with a `g-code-block` class', () => {
   const { container } = render(<CodeBlock code="some-example-code" />)
   expect(container.firstChild).toHaveClass('g-code-block')
-})
-
-it('should have a data-heap-track="code-block" attribute on the root element', () => {
-  const { container } = render(<CodeBlock code="some-example-code" />)
-  expect(container.firstChild).toHaveAttribute('data-heap-track')
 })
 
 it('should render `code` passed as a string of highlighted HTML', () => {
@@ -79,15 +73,6 @@ it('should render a button with a `Copy` label', () => {
   const buttonElem = screen.getByText('Copy')
   expect(buttonElem).toBeInTheDocument()
   expect(buttonElem.tagName).toBe('BUTTON')
-})
-
-it('should have a data-heap-track="code-block-clipboard-icon" attribute on the Copy button', () => {
-  render(
-    <CodeBlock code="some-example-code" options={{ showClipboard: true }} />
-  )
-  const copyButton = screen.getByText('Copy')
-  expect(copyButton.tagName).toBe('BUTTON')
-  expect(copyButton.getAttribute('data-heap-track')).toBe(heapAttributes.copy)
 })
 
 it('should render a keyboard-focusable `Copy` button', () => {
