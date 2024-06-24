@@ -35,10 +35,4 @@ module.exports = {
     description: 'Enable the search keyboard legend',
     default: false,
   },
-  heapId: {
-    type: 'string',
-    description:
-      'Value for `data-heap-track` attribute applied to the search input',
-    default: 'SearchBox',
-  },
 }

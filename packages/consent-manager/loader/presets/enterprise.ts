@@ -10,7 +10,6 @@ export default {
     services.googleAnalytics,
     services.googleTagManager,
     services.linkedIn,
-    services.heap,
     services.marketo,
     services.googleAds,
   ],

@@ -65,7 +65,6 @@ const Question: React.FC<FeedbackQuestion> = (props) => {
               className={`${s.choiceButton} ${
                 answer.value === 'no' ? s.negative : ''
               }`}
-              data-heap-track={`feedback-form-button-${id}-${answer.value}`}
             />
           ))}
         </div>
