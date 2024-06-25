@@ -55,14 +55,6 @@ const mockSegmentResponse = [
     category: 'Email Marketing',
   },
   {
-    name: 'Heap',
-    creationName: 'Heap',
-    description:
-      'Heap is an analytics tool that automatically tracks all of the actions your users perform just by flipping a switch, instead of after adding custom tracking code.',
-    website: 'http://heapanalytics.com',
-    category: 'Analytics',
-  },
-  {
     name: 'Google Tag Manager',
     creationName: 'Google Tag Manager',
     description:

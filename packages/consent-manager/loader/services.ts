@@ -22,12 +22,6 @@ export default {
       'This small script allows us to see how effective our LinkedIn campaigns are by measuring how many users have clicked prompts on LinkedIn to arrive at our site.',
     category: 'Advertising',
   },
-  heap: {
-    name: 'Heap',
-    description:
-      'Heap is an analytics tool that is used to track interaction with specific elements on websites, like menus or buttons in sequence, as opposed to tracking overall pageviews like Google Analytics. We use this to test our user experience and ensure that people are able to find what they are looking for on our websites.',
-    category: 'Analytics',
-  },
   marketo: {
     name: 'Marketo V2',
     description:

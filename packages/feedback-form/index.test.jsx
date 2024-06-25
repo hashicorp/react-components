@@ -70,23 +70,6 @@ describe('FeedbackForm', () => {
     expect(finished).not.toBeNull()
   })
 
-  test('choice question tracking attributes', async () => {
-    const { container } = render(
-      <FeedbackForm questions={multipleQuestions} finished="All done!" />
-    )
-
-    const yesButton = container.querySelector(
-      '[data-heap-track="feedback-form-button-myChoice-yes"]'
-    )
-
-    const noButton = container.querySelector(
-      '[data-heap-track="feedback-form-button-myChoice-no"]'
-    )
-
-    expect(yesButton).not.toBeNull()
-    expect(noButton).not.toBeNull()
-  })
-
   test('multiple questions with different path', async () => {
     render(<FeedbackForm questions={multipleQuestions} finished="All done!" />)
 

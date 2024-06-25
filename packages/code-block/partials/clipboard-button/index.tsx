@@ -8,7 +8,7 @@ import classnames from 'classnames'
 import { IconCheckSquare16 } from '@hashicorp/flight-icons/svg-react/check-square-16'
 import { IconDuplicate16 } from '@hashicorp/flight-icons/svg-react/duplicate-16'
 import { IconXSquare16 } from '@hashicorp/flight-icons/svg-react/x-square-16'
-import analytics, { heapAttributes } from '../../analytics'
+import analytics from '../../analytics'
 import s from './style.module.css'
 
 export interface ClipboardButtonProps {
@@ -127,7 +127,6 @@ function ClipboardButton({
       className={classnames(s.button, className, {
         [s.isCopied]: copiedState == true,
       })}
-      data-heap-track={heapAttributes.copy}
       onClick={onClick}
       ref={buttonRef}
       type="button"

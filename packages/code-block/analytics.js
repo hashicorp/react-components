@@ -4,15 +4,6 @@
  */
 
 /**
- * data-heap-track attributes are used on Learn
- * for reporting via Heap
- */
-const heapAttributes = {
-  root: 'code-block',
-  copy: 'code-block-clipboard-icon',
-}
-
-/**
  * trackCodeClick is intended to capture manual click-and-select
  * interactions with our `code-block` component.
  *
@@ -59,7 +50,6 @@ function hasTrackFunction() {
   )
 }
 
-export { heapAttributes }
 export default {
   trackCodeClick,
   trackCopy,

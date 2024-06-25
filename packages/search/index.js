@@ -27,7 +27,6 @@ function Search({
     event.preventDefault()
   },
   showSearchLegend = true,
-  heapId = 'SearchBox',
 }) {
   if (!renderHitContent) {
     throw new Error(
@@ -84,7 +83,6 @@ function Search({
             setCancelled,
             setQuery,
             onSubmit,
-            heapId,
           }}
           activeHit={hitIndex}
         />
