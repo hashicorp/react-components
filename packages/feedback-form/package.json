@@ -1,7 +1,7 @@
 {
   "name": "@hashicorp/react-feedback-form",
   "description": "Create a feedback form to solicit feedback from users",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "author": "HashiCorp",
   "contributors": [
     "Bryce Kalow"
