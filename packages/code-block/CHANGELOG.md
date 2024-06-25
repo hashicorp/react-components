@@ -1,5 +1,11 @@
 # @hashicorp/react-code-block
 
+## 6.7.0
+
+### Minor Changes
+
+- [#1033](https://github.com/hashicorp/react-components/pull/1033) [`d5c680a0`](https://github.com/hashicorp/react-components/commit/d5c680a0ac0fde7a51adf85604b7c1b365fbce8b) Thanks [@heatlikeheatwave](https://github.com/heatlikeheatwave)! - Remove support for Heap
+
 ## 6.6.0
 
 ### Minor Changes
