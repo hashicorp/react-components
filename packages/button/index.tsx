@@ -10,10 +10,10 @@ import fragment from './fragment.graphql'
 import classNames from 'classnames'
 import useProductMeta from '@hashicorp/platform-product-meta'
 import InlineSvg from '@hashicorp/react-inline-svg'
-import svgArrowRight from './icons/arrow-right.svg?include'
-import svgExternalLink from './icons/external-link.svg?include'
-import svgCornerRightDown from './icons/corner-right-down.svg?include'
-import svgDownload from './icons/download.svg?include'
+import ArrowRight from './icons/arrow-right'
+import ExternalLink from './icons/external-link'
+import CornerRightDown from './icons/corner-right-down'
+import Download from './icons/download'
 import s from './style.module.css'
 import sTheme from './theme.module.css'
 import useHover from './hooks/use-hover'
@@ -21,10 +21,10 @@ import normalizeButtonTheme from './helpers/normalizeButtonTheme.js'
 import { Size, LinkType, IconObject, Theme, IconProps } from './types'
 
 const linkTypeToIcon = {
-  inbound: svgArrowRight,
-  outbound: svgExternalLink,
-  anchor: svgCornerRightDown,
-  download: svgDownload,
+  inbound: <ArrowRight />,
+  outbound: <ExternalLink />,
+  anchor: <CornerRightDown />,
+  download: <Download />,
 }
 
 interface ButtonProps {
@@ -137,8 +137,23 @@ function Icon({
   isHovered,
   size,
 }: IconProps) {
+  if (typeof svg === 'string') {
+    return (
+      <InlineSvg
+        className={classNames(
+          s.icon,
+          s[`size-${size}`],
+          s[`at-${position}`],
+          { [s.isHovered]: isHovered },
+          { [s[`animation-${animationId}`]]: isAnimated }
+        )}
+        src={svg}
+      />
+    )
+  }
+
   return (
-    <InlineSvg
+    <div
       className={classNames(
         s.icon,
         s[`size-${size}`],
@@ -146,8 +161,9 @@ function Icon({
         { [s.isHovered]: isHovered },
         { [s[`animation-${animationId}`]]: isAnimated }
       )}
-      src={svg}
-    />
+    >
+      {svg}
+    </div>
   )
 }
 
