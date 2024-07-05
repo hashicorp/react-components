@@ -21,7 +21,10 @@ import { getNodeFromPath } from '../get-node-from-path'
 
 import { DataLoader, DataLoaderOpts } from './types'
 
-interface FileSystemLoaderOpts extends DataLoaderOpts {
+/**
+ * Constructor object for {@link FileSystemLoader}
+ */
+export interface FileSystemLoaderOpts extends DataLoaderOpts {
   navDataFile: string
   localContentDir: string
   mainBranch?: string // = 'main',

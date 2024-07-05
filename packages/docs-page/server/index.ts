@@ -5,8 +5,10 @@
 
 import { GetStaticPaths, GetStaticProps, GetStaticPathsResult } from 'next'
 import { ContentApiError } from '../content-api'
-import FileSystemLoader from './loaders/file-system'
-import RemoteContentLoader from './loaders/remote-content'
+import FileSystemLoader, { FileSystemLoaderOpts } from './loaders/file-system'
+import RemoteContentLoader, {
+  RemoteContentLoaderOpts,
+} from './loaders/remote-content'
 import { DataLoader } from './loaders/types'
 
 // We currently export most utilities individually,
@@ -19,32 +21,61 @@ export { getPathsFromNavData } from './get-paths-from-nav-data'
 export { validateNavData } from './validate-nav-data'
 export { default as validateFilePaths } from '@hashicorp/react-docs-sidenav/utils/validate-file-paths'
 
-interface BaseOpts {
+/**
+ * Shared config fields for both the `remote` and `fs` strategies.
+ * - See {@link RemoteOptions} & {@link FsOptions} for more details.
+ */
+export interface BaseOpts {
   fallback?: GetStaticPathsResult['fallback']
-  revalidate?: number
+  revalidate?: number | boolean
   product: string
   scope?: Record<string, $TSFixMe>
 }
 
-export function getStaticGenerationFunctions(
-  opts:
-    | ({
-        basePath: string
-        strategy: 'remote'
-      } & BaseOpts &
-        Partial<ConstructorParameters<typeof RemoteContentLoader>[0]>)
-    | ({
-        localContentDir: string
-        navDataFile: string
-        strategy: 'fs'
-        /** Optional location of the partials directory
-         * relative to process.cwd().
-         * Passed to our resolveIncludes plugin.
-         * Defaults to "content/partials". */
-        localPartialsDir?: string
-      } & BaseOpts &
-        Partial<ConstructorParameters<typeof FileSystemLoader>[0]>)
-): {
+/**
+ * Config object that is passed to {@link getStaticGenerationFunctions}
+ * when using the `remote` strategy
+ */
+export type RemoteOptions = {
+  basePath: string
+  strategy: 'remote'
+} & BaseOpts &
+  Partial<RemoteContentLoaderOpts>
+
+/**
+ * Config object that is passed to {@link getStaticGenerationFunctions}
+ * when using the `fs` strategy
+ */
+export type FsOptions = {
+  localContentDir: string
+  navDataFile: string
+  strategy: 'fs'
+  /** Optional location of the partials directory
+   * relative to process.cwd().
+   * Passed to our resolveIncludes plugin.
+   * Defaults to "content/partials". */
+  localPartialsDir?: string
+} & BaseOpts &
+  Partial<FileSystemLoaderOpts>
+
+/**
+ *
+ * @usage
+ *
+ * ```typescript
+ * declare const remoteOpts: RemoteOptions
+ * declare const fsOpts: FsOptions
+ *
+ * declare const useFs: boolean
+ *
+ * const { getStaticPaths, getStaticProps } = getStaticGenerationFunctions(
+ *   useFs ? fsOpts : remoteOpts
+ * )
+ *
+ * export { getStaticPaths, getStaticProps }
+ * ```
+ */
+export function getStaticGenerationFunctions(opts: RemoteOptions | FsOptions): {
   getStaticPaths: GetStaticPaths
   getStaticProps: GetStaticProps
 } {
