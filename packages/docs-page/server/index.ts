@@ -8,6 +8,8 @@ import { ContentApiError } from '../content-api'
 import FileSystemLoader from './loaders/file-system'
 import RemoteContentLoader from './loaders/remote-content'
 import { DataLoader } from './loaders/types'
+import { isInvalidURI } from './is-invalid-uri'
+import { DEFAULT_PARAM_ID } from './consts'
 
 // We currently export most utilities individually,
 // since we have cases such as Packer remote plugin docs
@@ -72,6 +74,21 @@ export function getStaticGenerationFunctions(
       }
     },
     getStaticProps: async (ctx) => {
+      const pathParams = ctx.params?.[opts.paramId || DEFAULT_PARAM_ID]
+
+      if (pathParams) {
+        if (Array.isArray(pathParams)) {
+          const path = pathParams.join('/')
+          if (isInvalidURI(path)) {
+            return { notFound: true }
+          }
+        } else if (typeof pathParams === 'string') {
+          if (isInvalidURI(pathParams)) {
+            return { notFound: true }
+          }
+        }
+      }
+
       try {
         const props = await loader.loadStaticProps(ctx)
         return {
