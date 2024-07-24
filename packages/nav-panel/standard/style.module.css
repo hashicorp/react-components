@@ -1,0 +1,11 @@
+.columns {
+  display: flex;
+  gap: var(--hdsplus-spacing-03, 0.5rem);
+  flex-direction: column;
+  margin-top: var(--hdsplus-spacing-06, 1.25rem);
+
+  @media (--large) {
+    flex-direction: row;
+    margin-top: 0;
+  }
+}

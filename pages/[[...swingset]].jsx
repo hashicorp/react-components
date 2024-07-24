@@ -14,6 +14,7 @@ import FormikStateViewer from '../swingset-extensions/formik-state-viewer'
 import NextRouterDebugger from '../swingset-extensions/next-router-debugger'
 import Playground from '../swingset-extensions/playground'
 import ComboboxField from '../packages/combobox/field'
+import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 
 import { Tab } from '../packages/tabs'
 import codeMdxComponents from '../packages/code-block/mdx'
@@ -134,6 +135,7 @@ const components = {
   NextRouterDebugger,
   ComboboxField, // @TODO - Consider Swingset support for components at nested entry points
   Playground,
+  NavigationMenu,
 }
 
 export default createPage({ components, logo: <Logo />, index: <Index /> })

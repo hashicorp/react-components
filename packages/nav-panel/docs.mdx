@@ -1,0 +1,90 @@
+---
+componentName: NavPanel
+---
+
+The NavPanel package includes two variants of NavPanels, the ProductsPanel and the StandardPanel. Each panel should be used as the content for a navigation dropdown.
+You can see in the examples below that each panel needs to be contained in the NavigationMenu.Content section of the overall navigation. More info on using the Navigation menu components can be found [here](https://www.radix-ui.com/primitives/docs/components/navigation-menu)
+
+## ProductsPanel
+
+### No promo
+
+<LiveComponent>
+{`<NavigationMenu.Root>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>
+			  Hover over me
+		  </NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <ProductsPanel
+          productCategories={[{"products":[{"url":"/products/terraform","product":"Terraform","description":"Provisioning cloud infrastructure using a common workflow"},{"url":"/products/packer","product":"Packer","description":"Build and manage images as code​​​​‌‌"},{"url":"/products/waypoint","product":"Waypoint","description":"​​​​Internal developer platform‍‌"},{"url":"/products/nomad","product":"Nomad","description":"Workload scheduling and orchestration"}],"title":"Infrastructure Lifecycle Management"},{"products":[{"url":"/products/vault","product":"Vault","description":"Identity-based secrets management​​​​‌‌"},{"url":"/products/boundary","product":"Boundary","description":"Secure remote access"},{"url":"/products/consul","product":"Consul","description":"Service-based networking"}],"title":"Security Lifecycle Management"}]}
+        />
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.Root>`}
+</LiveComponent>
+
+### With promo
+
+<LiveComponent>
+{`<NavigationMenu.Root>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>
+			  Hover over me
+		  </NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <ProductsPanel
+          promo={{"linkUrl":"https://portal.cloud.hashicorp.com/sign-up?ajs_aid=3e3b5796-ecd1-48e1-afed-7ee0ddb0f256","linkTitle":"Sign up for free","theme":"default","title":"HashiCorp Cloud Platform","description":"Get started in minutes with our cloud products","icon":"hashicorp"}}
+          productCategories={[{"products":[{"url":"/products/terraform","product":"Terraform","description":"Provisioning cloud infrastructure using a common workflow"},{"url":"/products/packer","product":"Packer","description":"Build and manage images as code​​​​‌‌"},{"url":"/products/waypoint","product":"Waypoint","description":"​​​​Internal developer platform‍‌"},{"url":"/products/nomad","product":"Nomad","description":"Workload scheduling and orchestration"}],"title":"Infrastructure Lifecycle Management"},{"products":[{"url":"/products/vault","product":"Vault","description":"Identity-based secrets management​​​​‌‌"},{"url":"/products/boundary","product":"Boundary","description":"Secure remote access"},{"url":"/products/consul","product":"Consul","description":"Service-based networking"}],"title":"Security Lifecycle Management"}]}
+        />
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.Root>`}
+</LiveComponent>
+
+## StandardPanel
+
+### No promo
+
+<LiveComponent>
+{`<NavigationMenu.Root>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>
+			  Hover over me
+		  </NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <StandardPanel
+          navData={[{"navItems":[{"title":"The Infrastructure Cloud","url":"/infrastructure-cloud","description":"Solve your biggest cloud infrastructure challenges","external":false,"icon":"cloud","iconGradient":"Cloud"},{"title":"Infrastructure Lifecycle Management","url":"/infrastructure-cloud/infrastructure-lifecycle-management","description":"Infrastructure as code to automate and manage all environments","external":false,"icon":"layers","iconGradient":"ILM"},{"title":"Security Lifecycle Management","url":"/infrastructure-cloud/security-lifecycle-management","description":"Protect, inspect, and connect your infrastructure to reduce your risk and improve your security posture","external":false,"icon":"shield-alert","iconGradient":"SLM"}]}]}
+        />
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.Root>`}
+</LiveComponent>
+
+### With promo
+
+<LiveComponent>
+{`<NavigationMenu.Root>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>
+			  Hover over me
+		  </NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <StandardPanel
+          promo={{"linkUrl":"/conferences/hashiconf","linkTitle":"Register now","theme":"hashiconf","title":"HashiConf 2024","description":"Join HashiCorp in Boston this October for our global cloud conference on all things cloud","icon":"identity-user"}}
+          navData={[{"navItems":[{"title":"About","url":"/about","description":"","external":false,"icon":"hashicorp","iconGradient":""},{"title":"Press","url":"/press","description":"","external":false,"icon":"newspaper","iconGradient":""},{"title":"Careers","url":"/careers","description":"","external":false,"icon":"monitor","iconGradient":""},{"title":"Events","url":"/events?type=all","description":"","external":false,"icon":"users","iconGradient":""},{"title":"Our principles","url":"/our-principles","description":"","external":false,"icon":"heart","iconGradient":""},{"title":"The Tao of HashiCorp","url":"/tao-of-hashicorp","description":"","external":false,"icon":"docs","iconGradient":""}]},{"navItems":[{"title":"Become a partner","url":"/partners/become-a-partner","description":"","external":false,"icon":"handshake","iconGradient":""},{"title":"Investors","url":"https://ir.hashicorp.com/","description":"","external":false,"icon":"briefcase","iconGradient":""}]}]}
+        />
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.Root>`}
+</LiveComponent>
+
+
+
+
+
+<UsageDetails packageJson={packageJson} />
+
+### Props
+
+<PropsTable props={componentProps} />

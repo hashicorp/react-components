@@ -1,0 +1,14 @@
+.column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 190px;
+  padding: 0;
+  margin: 0 var(--hdsplus-spacing-05, 1rem);
+  border-radius: var(--hdsplus-spacing-03, 0.5rem);
+
+  @media (--large) {
+    margin: 0;
+  }
+}

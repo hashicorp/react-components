@@ -1,0 +1,101 @@
+.productCategories {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  margin: var(--hdsplus-spacing-06, 1.25rem) 0 0;
+
+  @media (--large) {
+    margin: 0;
+  }
+}
+
+.productCategory {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+
+  &:first-child {
+    border-bottom: 1px solid var(--token-color-border-primary, #656a7633);
+    margin-bottom: var(--hdsplus-spacing-05, 1rem);
+    padding-bottom: var(--hdsplus-spacing-05, 1rem);
+  }
+}
+
+.eyebrow {
+  padding-bottom: var(--hdsplus-spacing-04, 0.75rem);
+  color: var(--token-color-foreground-strong, #0c0c0e);
+  font-weight: var(--font-weight-semi-bold, 600);
+
+  @media (--large) {
+    padding: 0 0 var(--hdsplus-spacing-01, 0.25rem)
+      var(--hdsplus-spacing-04, 0.75rem);
+  }
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (--large) {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: repeat(2, max-content);
+    gap: 0;
+  }
+}
+
+/* NavProduct styles */
+
+.productWrapper {
+  display: flex;
+  margin-bottom: var(--hdsplus-spacing-05, 1rem);
+  gap: var(--hdsplus-spacing-05, 1rem);
+
+  @media (--large) {
+    padding: var(--hdsplus-spacing-05, 1rem);
+    margin-bottom: 0;
+
+    &:hover {
+      background-color: var(--token-color-surface-interactive-hover, #f1f2f3);
+      border-radius: var(--hdsplus-spacing-01, 0.25rem);
+    }
+  }
+}
+
+.productLogo {
+  margin-top: 3px;
+
+  & svg {
+    height: 42px;
+    width: 42px;
+
+    @media (--large) {
+      height: var(--hdsplus-spacing-08, 2rem);
+      width: var(--hdsplus-spacing-08, 2rem);
+    }
+  }
+}
+
+.productTextContent {
+  display: flex;
+  flex-direction: column;
+  color: var(--token-color-foreground-strong, #0c0c0e);
+}
+
+.productDesc {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.0125em;
+  color: var(--token-color-foreground-faint, #656a76);
+}
+
+.focusIndicator {
+  &:focus {
+    outline: 2px solid var(--token-color-focus-action-internal, #0c56e9);
+    outline-style: auto;
+  }
+}

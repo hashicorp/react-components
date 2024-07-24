@@ -1,0 +1,26 @@
+{
+  "name": "@hashicorp/nav-panel",
+  "description": "Dropdown panel for top navigation bar",
+  "version": "0.0.0",
+  "author": "HashiCorp",
+  "contributors": [
+    "Leah Bush"
+  ],
+  "peerDependencies": {
+    "@hashicorp/mktg-global-styles": ">=3.x",
+    "@hashicorp/react-design-system-components": "0.0.0-nightly.3d21315",
+    "@hashicorp/react-design-system-tokens": "0.0.0-nightly.3d21315",
+    "@radix-ui/react-navigation-menu": "^1.1.3",
+    "react": ">=16.x",
+    "next": ">=13.x"
+  },
+  "license": "MPL-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/react-components.git",
+    "directory": "packages/nav-panel"
+  }
+}

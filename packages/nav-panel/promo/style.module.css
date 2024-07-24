@@ -1,0 +1,92 @@
+.promo {
+  display: flex;
+  border-radius: var(--hdsplus-spacing-01, 0.25rem);
+  border: 1px solid var(--token-color-border-faint, #656a761a);
+  background-color: var(--token-color-surface-faint, #fafafa);
+  padding: var(--hdsplus-spacing-05, 1rem) var(--hdsplus-spacing-08, 2rem)
+    var(--hdsplus-spacing-06, 1.25rem) var(--hdsplus-spacing-08, 2rem);
+  flex-direction: row;
+  gap: var(--hdsplus-spacing-04, 0.75rem);
+  margin: var(--hdsplus-spacing-05, 1rem);
+
+  @media (--large) {
+    margin: 0;
+    width: min-content;
+    min-width: 100%;
+  }
+}
+
+.rightContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hdsplus-spacing-03, 0.5rem);
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: var(--font-weight-semi-bold, 600);
+}
+
+.description {
+  font-size: var(--hdsplus-typography-body-200-font-size, 0.875rem);
+  font-weight: var(--token-typography-font-weight-regular, 400);
+  margin-top: var(--hdsplus-spacing-01, 0.25rem);
+}
+
+.icon {
+  display: none;
+
+  @media (--large) {
+    display: block;
+    margin-top: 3px;
+  }
+}
+
+.link {
+  color: var(--token-color-foreground-strong, #0c0c0e);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--hdsplus-spacing-02, 0.375rem);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid var(--token-color-focus-action-internal, #0c56e9);
+    outline-style: auto;
+  }
+}
+
+.hashidays {
+  background: linear-gradient(
+    90deg,
+    #7b54b6 0%,
+    #4c69d8 74.77%,
+    #60d0dc 115.93%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  max-width: fit-content;
+
+  & svg {
+    color: #7956b9;
+  }
+}
+
+.hashiconf {
+  background: linear-gradient(
+    to right,
+    var(--token-color-terraform-foreground, #773cb4),
+    var(--token-color-vagrant-foreground, #1c61d8)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  max-width: fit-content;
+
+  & svg {
+    color: var(--token-color-terraform-foreground, #773cb4);
+  }
+}
