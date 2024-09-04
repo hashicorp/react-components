@@ -1,5 +1,11 @@
 # @hashicorp/react-inline-video
 
+## 0.5.1
+
+### Patch Changes
+
+- [#1036](https://github.com/hashicorp/react-components/pull/1036) [`659481c2`](https://github.com/hashicorp/react-components/commit/659481c20fc95bc75eafcadd9dd7a9d0b711bf86) Thanks [@LeahMarieBush](https://github.com/LeahMarieBush)! - fix description centering on inline-video
+
 ## 0.5.0
 
 ### Minor Changes
