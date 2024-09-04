@@ -74,6 +74,7 @@
   color: var(--wpl-neutral-500);
   padding: 16px 24px 0 24px;
   margin: 0;
+  text-align: center;
 
   @media (--large) {
     @nest .left & {
