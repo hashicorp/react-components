@@ -12,8 +12,8 @@ module.exports = {
     testValue: {
       name: 'mytextinput',
       value: '',
-      onChange: jest.fn(),
-      onBlur: jest.fn(),
+      onChange: () => {},
+      onBlur: () => {},
     },
     // sub-props
     name: {
