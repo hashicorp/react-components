@@ -8,9 +8,20 @@ import TextareaInput from '.'
 import props from './props'
 import { getTestValues } from 'swingset/testing'
 
-const defaultProps = getTestValues(props)
+const baseProps = getTestValues(props)
+const defaultProps = {
+  ...baseProps,
+  field: {
+    ...baseProps.field,
+    onChange: jest.fn(),
+    onBlur: jest.fn(),
+  },
+}
 
 describe('<TextareaInput />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
   it('should add a provided className to the root element', () => {
     const className = 'my-text-input'
     const { container } = render(

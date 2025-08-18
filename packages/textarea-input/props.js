@@ -12,8 +12,6 @@ module.exports = {
     testValue: {
       name: 'mytextinput',
       value: '',
-      onChange: () => {},
-      onBlur: () => {},
     },
     // sub-props
     name: {
