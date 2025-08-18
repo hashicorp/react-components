@@ -33,7 +33,7 @@ describe('fetchWithRetry', () => {
     expect(fn).toHaveBeenCalledTimes(4)
   })
 
-  test.only('adds backoff delay', async () => {
+  test('adds backoff delay', async () => {
     const fn = jest
       .fn()
       .mockRejectedValueOnce({})

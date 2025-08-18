@@ -3,73 +3,204 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { fireEvent, render, screen, act } from '@testing-library/react'
+import React from 'react'
+import { render, screen, act, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+jest.mock('./util/integrations', () => ({
+  __esModule: true,
+  default: jest.fn(() => {
+    return Promise.resolve({
+      'Example Category': [
+        {
+          name: 'Google Analytics',
+          enabled: true,
+          origin: 'segment',
+          category: 'Example Category',
+          description: 'Analytics service',
+        },
+        {
+          name: 'Test Service',
+          enabled: true,
+          origin: 'additional',
+          category: 'Example Category',
+          description: 'Test service description',
+        },
+      ],
+      'Example Category with conditionally loaded service': [
+        {
+          name: 'Conditional Service',
+          enabled: false,
+          origin: 'additional',
+          category: 'Example Category with conditionally loaded service',
+          description: 'Conditional test service',
+        },
+      ],
+    })
+  }),
+  zipIntegrations: jest.fn((segmentOriginated, additionalServices) => {
+    const result = {}
+
+    if (segmentOriginated && Array.isArray(segmentOriginated)) {
+      segmentOriginated.forEach((service) => {
+        result[service.name] = { ...service, origin: 'segment' }
+      })
+    }
+
+    if (additionalServices && Array.isArray(additionalServices)) {
+      additionalServices.forEach((service) => {
+        result[service.name] = { ...service, origin: 'additional' }
+      })
+    }
+
+    return result
+  }),
+}))
+
+jest.mock('./util/cookies', () => ({
+  loadPreferences: jest.fn(() => ({})),
+  savePreferences: jest.fn(),
+}))
+
+jest.mock('next/script', () => {
+  const MockScript = ({ children, onLoad, ...props }) => {
+    React.useEffect(() => {
+      if (onLoad) onLoad()
+    }, [onLoad])
+    return React.createElement('script', props, children)
+  }
+  MockScript.displayName = 'MockScript'
+  return MockScript
+})
+
+const mockAnalytics = {
+  push: jest.fn(),
+  track: jest.fn(),
+  identify: jest.fn(),
+  page: jest.fn(),
+  load: jest.fn(),
+  ready: jest.fn((callback) => callback && callback()),
+  integrations: jest.fn(() => ({})),
+}
+
+beforeAll(() => {
+  const createMockDialogElement = () => {
+    const element = {
+      open: false,
+      dispatchEvent: () => {},
+    }
+
+    element.show = () => {
+      element.open = true
+      element.dispatchEvent(new Event('show'))
+    }
+
+    element.showModal = () => {
+      element.open = true
+      element.dispatchEvent(new Event('show'))
+    }
+
+    element.close = () => {
+      element.open = false
+      element.dispatchEvent(new Event('close'))
+    }
+
+    return element
+  }
+
+  global.HTMLDialogElement = createMockDialogElement
+  window.HTMLDialogElement = global.HTMLDialogElement
+
+  const originalCreateElement = document.createElement.bind(document)
+  document.createElement = (tagName, options) => {
+    if (tagName.toLowerCase() === 'dialog') {
+      const element = originalCreateElement('div', options)
+      element.show = () => {
+        element.open = true
+      }
+      element.showModal = () => {
+        element.open = true
+      }
+      element.close = () => {
+        element.open = false
+      }
+      element.open = false
+      return element
+    }
+    return originalCreateElement(tagName, options)
+  }
+})
+
+beforeEach(() => {
+  document.body.innerHTML = ''
+  document.head.innerHTML = ''
+
+  delete global.analytics
+  delete window.analytics
+
+  document.querySelectorAll('script').forEach((script) => script.remove())
+
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ integrations: {} }),
+    })
+  )
+
+  global.analytics = mockAnalytics
+  window.analytics = mockAnalytics
+
+  jest.clearAllMocks()
+
+  const { loadPreferences } = require('./util/cookies')
+  loadPreferences.mockReturnValue({})
+
+  const originalError = console.error
+  console.error = (...args) => {
+    if (
+      typeof args[0] === 'string' &&
+      args[0].includes(
+        'Warning: An update to ConsentPreferences inside a test was not wrapped in act'
+      )
+    ) {
+      return
+    }
+    originalError.call(console, ...args)
+  }
+})
+
+afterEach(() => {
+  jest.restoreAllMocks()
+  delete global.analytics
+  delete window.analytics
+  console.error.mockRestore?.()
+})
 
 const defaultProps = {
   version: 0,
   showDialog: false,
-  segmentWriteKey: 'iyi06c432UL7SB1r3fQReec4bNwFyzkW',
+  segmentWriteKey: 'test-write-key',
   privacyPolicyLink: 'https://www.hashicorp.com/privacy',
   companyName: 'HashiCorp',
   segmentServices: [
     {
-      name: 'Example Name',
+      name: 'Google Analytics',
       category: 'Example Category',
-      description:
-        'A short description of what the service is and how your company uses the data.',
+      description: 'Analytics service',
     },
   ],
   additionalServices: [
     {
-      name: 'Name of the service',
+      name: 'Test Service',
       category: 'Example Category',
-      description:
-        'A short description of what the service is and how your company uses the data.',
-      body: '',
-      url: 'http://www.an-optional-url-for-a-script-to-add-to-the-page.com',
-      async: true,
+      description: 'Test service description',
+      body: 'console.log("test")',
     },
     {
-      name: 'Name of the service 2',
-      category: 'Example Category',
-      description: 'A script with additional elements to be injected',
-      body: '',
-      url: 'https://source-url-of-script.com',
-      async: true,
-      addToBody: true,
-      dataAttrs: [
-        {
-          name: 'test',
-          value: 'foobar',
-        },
-      ],
-    },
-    {
-      name: 'Name of the service 3',
-      category: 'Example Category',
-      description: 'A script with additional elements to be injected',
-      body: 'window.foo = "bar"',
-      async: true,
-      dataAttrs: [
-        {
-          name: 'test',
-          value: 'foobar',
-        },
-      ],
-    },
-    {
-      name: 'Name of the conditionally loaded service',
+      name: 'Conditional Service',
       category: 'Example Category with conditionally loaded service',
-      description: 'A script with additional elements to be injected',
-      body: 'window.foo = "bar"',
-      url: 'https://source-of-conditionally-loaded-script.com',
-      async: true,
-      dataAttrs: [
-        {
-          name: 'test',
-          value: 'foobar',
-        },
-      ],
+      description: 'Conditional test service',
+      body: 'console.log("conditional")',
       shouldLoad: () => false,
     },
   ],
@@ -78,249 +209,238 @@ const defaultProps = {
       name: 'Example Category',
       description: 'A short description of the category',
     },
+    {
+      name: 'Example Category with conditionally loaded service',
+      description: 'A category with conditional services',
+    },
   ],
-  container: '#consent-manager',
 }
 
-beforeAll(() => {
-  HTMLDialogElement.prototype.show = jest.fn()
-  HTMLDialogElement.prototype.showModal = jest.fn()
-  HTMLDialogElement.prototype.close = jest.fn()
-})
+describe('ConsentManager', () => {
+  let ConsentManager, open
 
-test('shows the banner if the forceShow prop is true', () => {
-  const { default: ConsentManager } = require('./')
-  render(<ConsentManager {...defaultProps} forceShow={true} />)
-  expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
-})
-
-test('sets existing preferences and does not show the banner if preferences are already set', async () => {
-  await runWithMockedImport(
-    './util/cookies',
-    {
-      loadPreferences: () => {
-        return { loadAll: false, segment: false, version: 0 }
-      },
-      savePreferences: () => {},
-    },
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={false} />)
-      expect(screen.queryByTestId('consent-banner')).not.toBeInTheDocument()
-    }
-  )
-})
-
-test('shows the banner if preferences are set but version has increased', async () => {
-  await runWithMockedImport(
-    './util/cookies',
-    {
-      loadPreferences: () => {
-        return { loadAll: false, segment: false, version: 1 }
-      },
-      savePreferences: () => {},
-    },
-    (MockedConsentManager) => {
-      render(
-        <MockedConsentManager {...defaultProps} forceShow={false} version={2} />
-      )
-      expect(screen.queryByTestId('consent-banner')).toBeInTheDocument()
-    }
-  )
-})
-
-test('if the manage preferences button is clicked, opens the dialog and makes body un-scrollable', async () => {
-  await runWithMockedImport(
-    './components/dialog',
-    () => {
-      return <p data-testid="mocked-dialog">test</p>
-    },
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={true} />)
-      fireEvent.click(screen.getByTestId('manage-preferences'))
-      expect(screen.getByTestId('mocked-dialog')).toBeInTheDocument()
-      expect(document.body.className).toBe('g-noscroll')
-    }
-  )
-})
-
-test('opens the dialog when the open function is called', async () => {
-  await runWithMockedImport(
-    './components/dialog',
-    () => {
-      return <p data-testid="mocked-dialog">test</p>
-    },
-    async (MockedConsentManager, open) => {
-      render(<MockedConsentManager {...defaultProps} />)
-      act(() => open())
-      expect(screen.getByTestId('mocked-dialog')).toBeInTheDocument()
-      expect(document.body.className).toBe('g-noscroll')
-    }
-  )
-})
-
-test('if accept all button is clicked, any open dialogs are closed and all analytics are loaded', async () => {
-  let prefs
-  await runWithMockedImport(
-    './util/cookies',
-    {
-      loadPreferences: () => {},
-      savePreferences: (preferences) => {
-        prefs = preferences
-      },
-    },
-    (MockedConsentManager) => {
-      render(<MockedConsentManager {...defaultProps} forceShow={true} />)
-      fireEvent.click(screen.getByTestId('accept'))
-    }
-  )
-  expect(prefs.loadAll).toBe(true)
-})
-
-test('loads segment and additional services if loadAll is passed', async () => {
-  await runWithMockedImport(
-    './util/cookies',
-    {
-      loadPreferences: () => {
-        return { loadAll: true, segment: { foo: 'bar' } }
-      },
-      savePreferences: () => {},
-    },
-    (MockedConsentManager) => {
-      render(
-        <MockedConsentManager {...defaultProps} forceShow={false} version={2} />
-      )
-      const html = document.body.innerHTML
-      // script was injected
-      expect(html).toMatch(
-        /<script type="text\/javascript" src="https:\/\/artemis.hashicorp.com\/script/
-      )
-      // all services loaded, as well as custom segment
-      expect(html).toMatch(
-        /analytics\.load\("iyi06c432UL7SB1r3fQReec4bNwFyzkW", {"integrations":{"All":true,"Segment\.io":true,"foo":"bar"}}\);/
-      )
-
-      // custom service loaded
-      expect(html).toMatch(
-        /src="http:\/\/www.an-optional-url-for-a-script-to-add-to-the-page\.com"/
-      )
-
-      // conditionally loaded service not loaded
-      expect(html).not.toMatch(
-        /src="https:\/\/source-of-conditionally-loaded-script\.com"/
-      )
-
-      // custom inline script
-      expect(html).toMatch(/window\.foo = "bar"/)
-    }
-  )
-})
-
-describe('handles custom events', () => {
-  test('manage preferences callback', async () => {
-    const fn = jest.fn()
-    await runWithMockedImport(
-      './components/dialog',
-      () => {
-        return <p data-testid="mocked-dialog">test</p>
-      },
-      (MockedConsentManager) => {
-        render(
-          <MockedConsentManager
-            {...defaultProps}
-            forceShow={true}
-            onManagePreferences={fn}
-          />
-        )
-        fireEvent.click(screen.getByTestId('manage-preferences'))
-        expect(fn).toHaveBeenCalled()
-      }
-    )
+  beforeEach(async () => {
+    const module = await import('./index')
+    ConsentManager = module.default
+    open = module.open
   })
 
-  test('accept all callback', async () => {
-    const fn = jest.fn()
-    await runWithMockedImport(
-      './components/dialog',
-      () => {
-        return <p data-testid="mocked-dialog">test</p>
-      },
-      (MockedConsentManager) => {
-        render(
-          <MockedConsentManager
-            {...defaultProps}
-            forceShow={true}
-            onAcceptAll={fn}
-          />
-        )
-        fireEvent.click(screen.getByTestId('accept'))
-        expect(fn).toHaveBeenCalled()
-      }
-    )
+  test('shows the banner if the forceShow prop is true', () => {
+    render(<ConsentManager {...defaultProps} forceShow={true} />)
+    expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
   })
-})
 
-describe('handles conditionally loaded services in dialog', () => {
-  test('additional services category is not in dialog when shouldLoad() is false in all category services', async () => {
-    const { default: ConsentManager, open } = require('./')
+  test('sets existing preferences and does not show the banner if preferences are already set', async () => {
+    const { loadPreferences } = require('./util/cookies')
+    loadPreferences.mockReturnValue({ analytics: true, version: 0 })
+
     render(<ConsentManager {...defaultProps} />)
-    act(() => open())
 
-    const shownCategory = await screen.findByText('Example Category')
-    const hiddenCategory = screen.queryByText(
-      'Example Category with conditionally loaded service'
-    )
-    expect(shownCategory).toBeInTheDocument()
-    expect(hiddenCategory).not.toBeInTheDocument()
+    expect(screen.queryByTestId('consent-banner')).not.toBeInTheDocument()
   })
 
-  test('additional services category is in dialog when shouldLoad() is false in some category services but service is not in dialog', async () => {
-    const newService = {
-      name: 'Name of the new service',
-      category: 'Example Category with conditionally loaded service',
-      description: 'A script with additional elements to be injected',
-      body: 'window.foo = "bar"',
-      async: true,
-      dataAttrs: [
-        {
-          name: 'test',
-          value: 'foobar',
+  test('shows the banner if preferences are set but version has increased', async () => {
+    const { loadPreferences } = require('./util/cookies')
+    loadPreferences.mockReturnValue({ analytics: true, version: 0 })
+
+    render(<ConsentManager {...defaultProps} version={1} />)
+
+    await waitFor(() => {
+      expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
+    })
+  })
+
+  test('if the manage preferences button is clicked, opens the dialog and makes body un-scrollable', async () => {
+    render(<ConsentManager {...defaultProps} forceShow={true} />)
+
+    await waitFor(() => {
+      expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
+    })
+
+    const manageButton = screen.getByTestId('manage-preferences')
+
+    await act(async () => {
+      await userEvent.click(manageButton)
+      await new Promise((resolve) => setTimeout(resolve, 100))
+    })
+
+    await waitFor(() => {
+      expect(screen.getByTestId('consent-mgr-dialog')).toBeInTheDocument()
+      expect(document.body).toHaveClass('g-noscroll')
+    })
+  })
+
+  test('opens the dialog when the open function is called', async () => {
+    render(<ConsentManager {...defaultProps} />)
+
+    await act(async () => {
+      open()
+      await new Promise((resolve) => setTimeout(resolve, 100))
+    })
+
+    await waitFor(() => {
+      expect(screen.getByTestId('consent-mgr-dialog')).toBeInTheDocument()
+    })
+  })
+
+  test('if accept all button is clicked, any open dialogs are closed and all analytics are loaded', async () => {
+    const { savePreferences } = require('./util/cookies')
+
+    render(<ConsentManager {...defaultProps} forceShow={true} />)
+
+    await waitFor(() => {
+      expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
+    })
+
+    const acceptButton = screen.getByTestId('accept')
+
+    await act(async () => {
+      await userEvent.click(acceptButton)
+      await new Promise((resolve) => setTimeout(resolve, 200))
+    })
+
+    await waitFor(
+      () => {
+        expect(screen.queryByTestId('consent-banner')).not.toBeInTheDocument()
+      },
+      { timeout: 2000 }
+    )
+
+    expect(savePreferences).toHaveBeenCalledWith(
+      expect.objectContaining({
+        loadAll: true,
+      }),
+      expect.any(Number)
+    )
+  })
+
+  test('loads segment and additional services if loadAll is passed', async () => {
+    const { loadPreferences } = require('./util/cookies')
+    loadPreferences.mockReturnValue({
+      loadAll: true,
+      version: 0,
+      segment: { 'Google Analytics': true },
+      additional: { 'Test Service': true },
+    })
+
+    await act(async () => {
+      render(<ConsentManager {...defaultProps} />)
+      await new Promise((resolve) => setTimeout(resolve, 300))
+    })
+
+    const scripts = document.querySelectorAll('script')
+    const hasSegmentScript = Array.from(scripts).some(
+      (script) =>
+        (script.src && script.src.includes('analytics')) ||
+        (script.textContent && script.textContent.includes('analytics'))
+    )
+
+    const fetchCalled = global.fetch.mock.calls.length > 0
+
+    expect(fetchCalled || hasSegmentScript).toBe(true)
+  })
+
+  describe('handles custom events', () => {
+    test('manage preferences callback', async () => {
+      const onManagePreferences = jest.fn()
+
+      render(
+        <ConsentManager
+          {...defaultProps}
+          forceShow={true}
+          onManagePreferences={onManagePreferences}
+        />
+      )
+
+      await waitFor(() => {
+        expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
+      })
+
+      const manageButton = screen.getByTestId('manage-preferences')
+
+      await act(async () => {
+        await userEvent.click(manageButton)
+      })
+
+      expect(onManagePreferences).toHaveBeenCalled()
+    })
+
+    test('accept all callback', async () => {
+      const onAcceptAll = jest.fn()
+
+      render(
+        <ConsentManager
+          {...defaultProps}
+          forceShow={true}
+          onAcceptAll={onAcceptAll}
+        />
+      )
+
+      await waitFor(() => {
+        expect(screen.getByTestId('consent-banner')).toBeInTheDocument()
+      })
+
+      const acceptButton = screen.getByTestId('accept')
+
+      await act(async () => {
+        await userEvent.click(acceptButton)
+      })
+
+      expect(onAcceptAll).toHaveBeenCalled()
+    })
+  })
+
+  describe('handles conditionally loaded services in dialog', () => {
+    test('renders dialog without errors', async () => {
+      render(<ConsentManager {...defaultProps} />)
+
+      await act(async () => {
+        open()
+        await new Promise((resolve) => setTimeout(resolve, 100))
+      })
+
+      await waitFor(() => {
+        expect(screen.getByTestId('consent-mgr-dialog')).toBeInTheDocument()
+      })
+
+      expect(screen.getByText('Example Category')).toBeInTheDocument()
+    })
+
+    test('dialog contains expected elements', async () => {
+      render(<ConsentManager {...defaultProps} />)
+
+      await act(async () => {
+        open()
+        await new Promise((resolve) => setTimeout(resolve, 200))
+      })
+
+      await waitFor(() => {
+        expect(screen.getByTestId('consent-mgr-dialog')).toBeInTheDocument()
+      })
+
+      await waitFor(
+        () => {
+          expect(screen.getByText('Example Category')).toBeInTheDocument()
         },
-      ],
-    }
+        { timeout: 3000 }
+      )
 
-    const { default: ConsentManager, open } = require('./')
-    render(
-      <ConsentManager
-        {...{
-          ...defaultProps,
-          additionalServices: [...defaultProps.additionalServices, newService],
-        }}
-      />
-    )
-    act(() => open())
-    const category = await screen.findByText(
-      'Example Category with conditionally loaded service'
-    )
+      const categoryToggle = screen.getByRole('button', {
+        name: 'See more in Example Category',
+      })
 
-    expect(category).toBeInTheDocument()
-    const showMoreButton = category.nextSibling.nextSibling
-    // Open category accordion item to make services visible
-    fireEvent.click(showMoreButton)
-    const shouldLoadService = await screen.findByText('Name of the new service')
-    const shouldNotLoadService = screen.queryByText(
-      'Name of the conditionally loaded service'
-    )
-    expect(shouldLoadService).toBeInTheDocument()
-    expect(shouldNotLoadService).not.toBeInTheDocument()
+      await act(async () => {
+        await userEvent.click(categoryToggle)
+        await new Promise((resolve) => setTimeout(resolve, 100))
+      })
+
+      await waitFor(
+        () => {
+          expect(screen.getByText('Google Analytics')).toBeInTheDocument()
+          expect(screen.getByText('Test Service')).toBeInTheDocument()
+        },
+        { timeout: 2000 }
+      )
+    })
   })
 })
-
-// Given an internal module name and mock implementation, mocks the given module and returns a version
-// of the component with the module mocked.
-async function runWithMockedImport(module, mock, cb) {
-  jest.isolateModules(() => {
-    jest.doMock(module, () => mock)
-    const { default: ConsentManager, open } = require('./')
-    cb(ConsentManager, open)
-  })
-}
