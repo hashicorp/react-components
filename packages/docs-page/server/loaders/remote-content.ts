@@ -21,7 +21,10 @@ import { DEFAULT_PARAM_ID } from '../consts'
 import { DataLoader, DataLoaderOpts } from './types'
 import { getPathsFromNavData } from '../get-paths-from-nav-data'
 
-interface RemoteContentLoaderOpts extends DataLoaderOpts {
+/**
+ * Constructor object for {@link RemoteContentLoader}
+ */
+export interface RemoteContentLoaderOpts extends DataLoaderOpts {
   basePath: string
   /**
    * In most cases, `basePath` should suffice when resolving nav-data, because
